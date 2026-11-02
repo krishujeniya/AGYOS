@@ -711,6 +711,7 @@ def sync_skills_to_runtimes():
     gemini_config_skills_dir = os.path.expanduser("~/.gemini/config/skills")
     codex_skills_dir = os.path.expanduser("~/.codex/skills")
     agents_skills_dir = os.path.expanduser("~/.agents/skills")
+    claude_skills_dir = os.path.expanduser("~/.claude/skills")
 
     repo_skills = {}
 
@@ -770,6 +771,7 @@ def sync_skills_to_runtimes():
         (gemini_config_skills_dir, "AGY config (~/.gemini/config/skills)"),
         (codex_skills_dir, "Codex (~/.codex/skills)"),
         (agents_skills_dir, "Agents (~/.agents/skills)"),
+        (claude_skills_dir, "Claude Code (~/.claude/skills)"),
     ]:
         count = 0
         for name, sp in all_to_sync.items():

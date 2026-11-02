@@ -155,58 +155,31 @@
       <section id="installation">
         <h2>Installation and setup</h2>
         <p>
-          Skills can be linked into your global agent environment or cloned into individual project workspaces. The repository supports AGY (Gemini), Codex, and Claude Code runtime discovery.
-        </p>
-
-        <h3>1. Global installation for AGY and Codex</h3>
-        <p>
-          Clone the repository to your local projects folder, then run the link script to make all skills accessible to both AGY (<code>~/.gemini/skills</code>) and Codex (<code>~/.codex/skills</code>):
+          Copy and paste this prompt into your coding agent (Antigravity, OpenAI Codex, Claude Code, Cursor, Windsurf, or Gemini CLI) to set up and link all 1,580+ skills automatically:
         </p>
 
         <div class="code-header">
-          <span>Terminal (bash)</span>
-          <button class="copy-btn" data-copy="git clone https://github.com/krishujeniya/SKILL.git ~/Documents/projects/SKILL&#10;cd ~/Documents/projects/SKILL&#10;python3 scripts/build_docs_data.py">Copy</button>
+          <span>Agent prompt</span>
+          <button class="copy-btn" data-copy="Set up and install all skills from the SKILL monorepo into my active coding agent environment:&#10;&#10;1. Check repository:&#10;   If not already cloned at ~/Documents/projects/SKILL, clone it:&#10;   git clone https://github.com/krishujeniya/SKILL.git ~/Documents/projects/SKILL&#10;   Otherwise, navigate to ~/Documents/projects/SKILL and pull the latest changes:&#10;   cd ~/Documents/projects/SKILL &amp;&amp; git pull origin main&#10;&#10;2. Run skill installation and runtime linking:&#10;   python3 ~/Documents/projects/SKILL/scripts/build_docs_data.py&#10;&#10;3. Verify skills are active:&#10;   Confirm that all skills (Anchor, Agent Council, Freelance Suite, ScrollHeart, Aegis, SEO Suite, Founder Suite, Gravitas, and Developer Tools) are linked into whichever agent runtime I am currently using:&#10;   - Antigravity / AGY: ~/.gemini/skills and ~/.gemini/config/skills&#10;   - OpenAI Codex: ~/.codex/skills&#10;   - Claude Code: ~/.claude/skills&#10;   - Cursor / Windsurf / Universal: ~/.agents/skills&#10;   Print a confirmation table of the installed skills.">Copy prompt</button>
         </div>
-        <pre><code>git clone https://github.com/krishujeniya/SKILL.git ~/Documents/projects/SKILL
-cd ~/Documents/projects/SKILL
-python3 scripts/build_docs_data.py</code></pre>
+        <pre><code>Set up and install all skills from the SKILL monorepo into my active coding agent environment:
 
-        <h3>2. Agent discovery locations</h3>
-        <p>Different AI agent hosts discover skills through specific directories:</p>
+1. Check repository:
+   If not already cloned at ~/Documents/projects/SKILL, clone it:
+   git clone https://github.com/krishujeniya/SKILL.git ~/Documents/projects/SKILL
+   Otherwise, navigate to ~/Documents/projects/SKILL and pull the latest changes:
+   cd ~/Documents/projects/SKILL &amp;&amp; git pull origin main
 
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Agent runtime</th>
-                <th>Global skill directory</th>
-                <th>Workspace skill directory</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Antigravity / AGY</strong></td>
-                <td><code>~/.gemini/skills/</code>, <code>~/.gemini/config/skills/</code></td>
-                <td><code>.agents/skills/</code></td>
-              </tr>
-              <tr>
-                <td><strong>OpenAI Codex</strong></td>
-                <td><code>~/.codex/skills/</code></td>
-                <td><code>.agents/skills/</code></td>
-              </tr>
-              <tr>
-                <td><strong>Claude Code</strong></td>
-                <td><code>~/.claude/skills/</code></td>
-                <td><code>.claude/skills/</code></td>
-              </tr>
-              <tr>
-                <td><strong>Cursor / Windsurf</strong></td>
-                <td><code>~/.agents/skills/</code></td>
-                <td><code>.agents/skills/</code></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+2. Run skill installation and runtime linking:
+   python3 ~/Documents/projects/SKILL/scripts/build_docs_data.py
+
+3. Verify skills are active:
+   Confirm that all skills (Anchor, Agent Council, Freelance Suite, ScrollHeart, Aegis, SEO Suite, Founder Suite, Gravitas, and Developer Tools) are linked into whichever agent runtime I am currently using:
+   - Antigravity / AGY: ~/.gemini/skills and ~/.gemini/config/skills
+   - OpenAI Codex: ~/.codex/skills
+   - Claude Code: ~/.claude/skills
+   - Cursor / Windsurf / Universal: ~/.agents/skills
+   Print a confirmation table of the installed skills.</code></pre>
       </section>
 
       <!-- Section: Monorepo Layout -->

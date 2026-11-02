@@ -99,16 +99,30 @@ Explore: [`ScrollHeart/`](./ScrollHeart)
 
 ---
 
-## Installation in AGY and Codex
+## Installation using any coding agent
 
-To install and verify all skills across your local AI environments:
+Copy and paste this prompt into your coding agent (Antigravity, OpenAI Codex, Claude Code, Cursor, Windsurf, or Gemini CLI) to set up and link all 1,580+ skills automatically:
 
-```bash
-# Link all monorepo skills into AGY (~/.gemini/skills) and Codex (~/.codex/skills)
-python3 scripts/build_docs_data.py
+```text
+Set up and install all skills from the SKILL monorepo into my active coding agent environment:
+
+1. Check repository:
+   If not already cloned at ~/Documents/projects/SKILL, clone it:
+   git clone https://github.com/krishujeniya/SKILL.git ~/Documents/projects/SKILL
+   Otherwise, navigate to ~/Documents/projects/SKILL and pull the latest changes:
+   cd ~/Documents/projects/SKILL && git pull origin main
+
+2. Run skill installation and runtime linking:
+   python3 ~/Documents/projects/SKILL/scripts/build_docs_data.py
+
+3. Verify skills are active:
+   Confirm that all skills (Anchor, Agent Council, Freelance Suite, ScrollHeart, Aegis, SEO Suite, Founder Suite, Gravitas, and Developer Tools) are linked into whichever agent runtime I am currently using:
+   - Antigravity / AGY: ~/.gemini/skills and ~/.gemini/config/skills
+   - OpenAI Codex: ~/.codex/skills
+   - Claude Code: ~/.claude/skills
+   - Cursor / Windsurf / Universal: ~/.agents/skills
+   Print a confirmation table of the installed skills.
 ```
-
-The script verifies that all skills from Anchor, Agent Council, Freelance Suite, ScrollHeart, SEO Suite, and Founder Suite are symlinked into both `~/.gemini/skills/` and `~/.codex/skills/`.
 
 ---
 
