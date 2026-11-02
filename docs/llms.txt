@@ -1,0 +1,27 @@
+# SKILL Documentation
+
+> The unified AI agent skills, frameworks, and tooling monorepo.
+> Maintained by krishujeniya.
+> Total skills documented: 1581
+
+## Core Frameworks
+
+- Anchor: Scoped, verifiable agent orchestration system with five gates (understand, analyze, plan, implement, verify), contract enforcement, and MCP server.
+- Agent Council: Multi-agent CLI deliberation panel running Codex, Gemini, Claude, and Antigravity in parallel subprocesses for architecture consensus.
+- Agentic Freelance Skills: End-to-end autonomous freelance consulting lifecycle from lead prospecting to contract delivery and operations.
+- ScrollHeart: Cinematic scroll-driven web animations using GSAP and native CSS timelines for GitHub Pages.
+- Aegis: Verification library and skill repository with 1,500+ community, core, and expert skills.
+
+## Reliability and Quality Standards
+
+- Gravitas: Six engineering invariants: ground before mutating, stay in declared scope, require evidence for completion, avoid identical retries, satisfy contract gates, and state unverifiable claims explicitly.
+- Unslop: Writing standard prohibiting AI tells, filler vocabulary, decorative emojis, superficial clauses, and false ranges.
+
+## Specialized Suites
+
+- SEO Suite: 25 modules covering technical audits, single-page inspection, E-E-A-T analysis, generative engine optimization, schema, sitemaps, and programmatic SEO.
+- Founder Suite: 11 business modeling skills including board reviews, CFO unit economics, buyer simulations, and launch checklists.
+
+## Full Skill Catalog
+
+Access the complete structured JSON catalog at https://krishujeniya.github.io/SKILL/skills-data.json

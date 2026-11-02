@@ -1,0 +1,26 @@
+{
+  "name": "SKILL Monorepo",
+  "description": "Unified AI agent skills, frameworks, and tooling monorepo.",
+  "url": "https://krishujeniya.github.io/SKILL/",
+  "version": "2.5.0",
+  "total_skills": 1581,
+  "modules": [
+    "Anchor",
+    "Agent Council",
+    "Freelance Suite",
+    "ScrollHeart",
+    "Aegis Core",
+    "Aegis Experts",
+    "Aegis Community",
+    "SEO & AEO Suite",
+    "Founder Suite",
+    "Engineering & Reliability"
+  ],
+  "runtimes_supported": [
+    "AGY",
+    "Codex",
+    "Claude Code",
+    "Antigravity",
+    "Bun"
+  ]
+}

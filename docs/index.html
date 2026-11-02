@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SKILL Documentation | Unified Agent Skills and Tooling Monorepo</title>
+  <meta name="description" content="Complete documentation for 1,580+ AI agent skills, frameworks, and verification runtimes including Anchor, Agent Council, Freelance Suite, ScrollHeart, Aegis, Gravitas, and SEO Suite.">
+  <meta name="author" content="krishujeniya">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://krishujeniya.github.io/SKILL/">
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="SKILL Documentation | Unified Agent Skills Monorepo">
+  <meta property="og:description" content="Technical documentation for 1,580+ autonomous agent skills, verification systems, and CLI frameworks across AGY, Codex, and Claude Code.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://krishujeniya.github.io/SKILL/">
+  <meta property="og:site_name" content="SKILL Monorepo">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="SKILL Documentation | Agent Skills Monorepo">
+  <meta name="twitter:description" content="Zero backend, static documentation and live explorer for 1,580+ agent skills, verification runtimes, and multi-agent systems.">
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SKILL Monorepo",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Linux, macOS, Windows",
+    "url": "https://krishujeniya.github.io/SKILL/",
+    "author": {
+      "@type": "Person",
+      "name": "krishujeniya",
+      "url": "https://github.com/krishujeniya"
+    },
+    "description": "Unified repository of AI agent skills, multi-agent deliberation systems, scoping frameworks, and engineering verification runtimes.",
+    "softwareVersion": "2.5.0",
+    "license": "https://opensource.org/licenses/MIT"
+  }
+  </script>
+
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-left">
+      <button class="btn-icon mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu">Menu</button>
+      <a href="#overview" class="brand-link">
+        <span class="brand-title">SKILL</span>
+        <span class="brand-version">v2.5.0</span>
+      </a>
+      <div class="header-search">
+        <input type="text" id="header-search" class="search-input" placeholder="Search 1,580+ skills..." aria-label="Search skills">
+        <span class="search-shortcut">/</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <nav aria-label="Top navigation">
+        <a href="#overview" class="nav-link">Docs</a>
+        <a href="#anchor" class="nav-link">Anchor</a>
+        <a href="#council" class="nav-link">Council</a>
+        <a href="#explorer" class="nav-link">Explorer</a>
+        <a href="https://github.com/krishujeniya/SKILL" class="nav-link" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <button id="theme-toggle" class="btn-icon" aria-label="Toggle dark mode">Dark mode</button>
+    </div>
+  </header>
+
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="site-sidebar" id="sidebar" aria-label="Documentation sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-heading">Getting started</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item"><a href="#overview" class="sidebar-link active">Overview</a></li>
+          <li class="sidebar-nav-item"><a href="#installation" class="sidebar-link">Installation</a></li>
+          <li class="sidebar-nav-item"><a href="#architecture" class="sidebar-link">Monorepo layout</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-heading">Core frameworks</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item"><a href="#anchor" class="sidebar-link">Anchor orchestrator <span class="sidebar-badge">7</span></a></li>
+          <li class="sidebar-nav-item"><a href="#council" class="sidebar-link">Agent Council <span class="sidebar-badge">7</span></a></li>
+          <li class="sidebar-nav-item"><a href="#freelance" class="sidebar-link">Freelance suite <span class="sidebar-badge">9</span></a></li>
+          <li class="sidebar-nav-item"><a href="#scrollheart" class="sidebar-link">ScrollHeart <span class="sidebar-badge">1</span></a></li>
+          <li class="sidebar-nav-item"><a href="#aegis" class="sidebar-link">Aegis library <span class="sidebar-badge">1,500+</span></a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-heading">Reliability and quality</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item"><a href="#gravitas" class="sidebar-link">Gravitas runtime</a></li>
+          <li class="sidebar-nav-item"><a href="#unslop" class="sidebar-link">Unslop standard</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-heading">Specialized suites</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item"><a href="#seo" class="sidebar-link">SEO and AEO suite <span class="sidebar-badge">25</span></a></li>
+          <li class="sidebar-nav-item"><a href="#founder" class="sidebar-link">Founder suite <span class="sidebar-badge">11</span></a></li>
+          <li class="sidebar-nav-item"><a href="#developer-tools" class="sidebar-link">Developer tools <span class="sidebar-badge">10</span></a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-heading">Catalog</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item"><a href="#explorer" class="sidebar-link">Interactive explorer <span class="sidebar-badge">All</span></a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="site-main" id="main-content">
+      <!-- Section: Overview -->
+      <section id="overview" class="hero-section">
+        <h1>SKILL Monorepo Documentation</h1>
+        <p class="hero-tagline">
+          The unified repository of AI agent skills, autonomous workflows, multi-agent deliberation systems, and engineering verification runtimes.
+        </p>
+        <p>
+          This repository consolidates skills and tooling for modern coding agents including Google Antigravity (AGY), OpenAI Codex, Claude Code, Cursor, and Windsurf. All skills adhere to strict verification standards, bounded file writes, and clean human documentation.
+        </p>
+
+        <div class="hero-stats">
+          <div class="stat-card">
+            <div class="stat-number">1,580+</div>
+            <div class="stat-label">Total skills</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">5</div>
+            <div class="stat-label">Core modules</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">0</div>
+            <div class="stat-label">Backend dependencies</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Static and offline</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Installation -->
+      <section id="installation">
+        <h2>Installation and setup</h2>
+        <p>
+          Skills can be linked into your global agent environment or cloned into individual project workspaces. The repository supports AGY (Gemini), Codex, and Claude Code runtime discovery.
+        </p>
+
+        <h3>1. Global installation for AGY and Codex</h3>
+        <p>
+          Clone the repository to your local projects folder, then run the link script to make all skills accessible to both AGY (<code>~/.gemini/skills</code>) and Codex (<code>~/.codex/skills</code>):
+        </p>
+
+        <div class="code-header">
+          <span>Terminal (bash)</span>
+          <button class="copy-btn" data-copy="git clone https://github.com/krishujeniya/SKILL.git ~/Documents/projects/SKILL&#10;cd ~/Documents/projects/SKILL&#10;python3 scripts/build_docs_data.py">Copy</button>
+        </div>
+        <pre><code>git clone https://github.com/krishujeniya/SKILL.git ~/Documents/projects/SKILL
+cd ~/Documents/projects/SKILL
+python3 scripts/build_docs_data.py</code></pre>
+
+        <h3>2. Agent discovery locations</h3>
+        <p>Different AI agent hosts discover skills through specific directories:</p>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Agent runtime</th>
+                <th>Global skill directory</th>
+                <th>Workspace skill directory</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Antigravity / AGY</strong></td>
+                <td><code>~/.gemini/skills/</code>, <code>~/.gemini/config/skills/</code></td>
+                <td><code>.agents/skills/</code></td>
+              </tr>
+              <tr>
+                <td><strong>OpenAI Codex</strong></td>
+                <td><code>~/.codex/skills/</code></td>
+                <td><code>.agents/skills/</code></td>
+              </tr>
+              <tr>
+                <td><strong>Claude Code</strong></td>
+                <td><code>~/.claude/skills/</code></td>
+                <td><code>.claude/skills/</code></td>
+              </tr>
+              <tr>
+                <td><strong>Cursor / Windsurf</strong></td>
+                <td><code>~/.agents/skills/</code></td>
+                <td><code>.agents/skills/</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section: Monorepo Layout -->
+      <section id="architecture">
+        <h2>Monorepo layout</h2>
+        <p>The repository organizes tools by operational domain:</p>
+
+        <div class="code-header">
+          <span>Directory structure</span>
+          <button class="copy-btn" data-copy="SKILL/&#10;├── Aegis/                     # Security, verification, and 1,500+ skills&#10;├── Anchor/                    # Scoped orchestrator, contract manager, and MCP server&#10;├── agent-council/             # Multi-agent deliberation panel CLI&#10;├── agentic-freelance-skills/  # End-to-end consulting and client delivery suite&#10;├── ScrollHeart/               # Scroll-driven web animations and storytelling&#10;├── docs/                      # Pure static documentation and explorer site&#10;└── scripts/                   # Data compilation and runtime linking utilities">Copy</button>
+        </div>
+        <pre><code>SKILL/
+├── Aegis/                     # Security, verification, and 1,500+ skills
+├── Anchor/                    # Scoped orchestrator, contract manager, and MCP server
+├── agent-council/             # Multi-agent deliberation panel CLI
+├── agentic-freelance-skills/  # End-to-end consulting and client delivery suite
+├── ScrollHeart/               # Scroll-driven web animations and storytelling
+├── docs/                      # Pure static documentation and explorer site
+└── scripts/                   # Data compilation and runtime linking utilities</code></pre>
+      </section>
+
+      <!-- Section: Anchor -->
+      <section id="anchor">
+        <h2>Anchor: Scoped orchestrator and execution runtime</h2>
+        <p>
+          Anchor is a verification system that prevents agent hallucinations, bounds mutation radius, and enforces five mandatory gates for multi-step tasks.
+        </p>
+
+        <div class="callout">
+          <p>
+            <strong>Core invariant:</strong> Never mark a task complete without direct validator output. If you did not run the tests, report that you did not run the tests.
+          </p>
+        </div>
+
+        <h3>The five execution gates</h3>
+        <ol>
+          <li><strong>Understand:</strong> Read target files, interface contracts, and callers before writing.</li>
+          <li><strong>Analyze:</strong> Identify dependencies, potential edge failures, and scope boundaries.</li>
+          <li><strong>Plan:</strong> Create an explicit step-by-step decision record with rollback points.</li>
+          <li><strong>Implement:</strong> Apply minimal, reversible changes inside declared write scope.</li>
+          <li><strong>Verify:</strong> Execute unit tests, type checkers, and linters. Require passing output.</li>
+        </ol>
+
+        <h3>Anchor skills suite</h3>
+        <div class="card-grid">
+          <div class="feature-card">
+            <h3>anchor-orchestrator</h3>
+            <p>Master router enforcing the five-gate workflow. Maps steps to native agent artifacts and blocks skipping validation.</p>
+            <div class="card-tags">
+              <span class="tag">Router</span>
+              <span class="tag">Gatekeeper</span>
+            </div>
+          </div>
+          <div class="feature-card">
+            <h3>anchor-scout</h3>
+            <p>Read-only reconnaissance tool. Inspects file hierarchies, package dependencies, and structure before edits.</p>
+            <div class="card-tags">
+              <span class="tag">Inspection</span>
+              <span class="tag">Read-only</span>
+            </div>
+          </div>
+          <div class="feature-card">
+            <h3>anchor-scope</h3>
+            <p>Boundary enforcer. Blocks writes to files outside the declared target scope in contract.json.</p>
+            <div class="card-tags">
+              <span class="tag">Safety</span>
+              <span class="tag">Write-gate</span>
+            </div>
+          </div>
+          <div class="feature-card">
+            <h3>anchor-verify</h3>
+            <p>Automated test and lint runner. Rejects completion claims that lack fresh, observed validator evidence.</p>
+            <div class="card-tags">
+              <span class="tag">Testing</span>
+              <span class="tag">Evidence</span>
+            </div>
+          </div>
+          <div class="feature-card">
+            <h3>anchor-draft-commit</h3>
+            <p>Creates atomic git checkpoints before risky changes, ensuring instant rollback if an attempt fails.</p>
+            <div class="card-tags">
+              <span class="tag">Git</span>
+              <span class="tag">Rollback</span>
+            </div>
+          </div>
+          <div class="feature-card">
+            <h3>anchor-graph</h3>
+            <p>Maps call paths, imports, and cross-module relationships before major refactoring work.</p>
+            <div class="card-tags">
+              <span class="tag">Architecture</span>
+              <span class="tag">Call-paths</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Agent Council -->
+      <section id="council">
+        <h2>Agent Council: Multi-agent deliberation panel</h2>
+        <p>
+          Agent Council runs multiple AI models (OpenAI Codex, Google Gemini, Claude, Antigravity) in isolated subprocesses against the same architectural question. Each agent answers independently, after which the chairman synthesizes a consensus verdict.
+        </p>
+
+        <h3>CLI commands</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Command</th>
+                <th>Action</th>
+                <th>Sample usage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>agent-council</code></td>
+                <td>Convenes a fresh council session</td>
+                <td><code>agent-council "Should we migrate from REST to GraphQL?"</code></td>
+              </tr>
+              <tr>
+                <td><code>council-list</code></td>
+                <td>Lists past deliberation sessions</td>
+                <td><code>council-list</code></td>
+              </tr>
+              <tr>
+                <td><code>council-replay</code></td>
+                <td>Replays full transcript and votes</td>
+                <td><code>council-replay session_20261102_0940</code></td>
+              </tr>
+              <tr>
+                <td><code>council-outcome</code></td>
+                <td>Records empirical decision accuracy</td>
+                <td><code>council-outcome session_20261102_0940 --success</code></td>
+              </tr>
+              <tr>
+                <td><code>council-revisit</code></td>
+                <td>Re-evaluates with new codebase state</td>
+                <td><code>council-revisit session_20261102_0940</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section: Freelance Suite -->
+      <section id="freelance">
+        <h2>Agentic freelance skills</h2>
+        <p>
+          A comprehensive suite of operational and client-facing skills designed for autonomous freelance software engineering and consulting.
+        </p>
+
+        <div class="card-grid">
+          <div class="feature-card">
+            <h3>freelancer-client-acquisition</h3>
+            <p>Outbound list building, Apollo.io filtering, cold email templates, and inbound referral strategies.</p>
+          </div>
+          <div class="feature-card">
+            <h3>freelancer-sales-closing</h3>
+            <p>Discovery call scripts, objection handling, pricing models (fixed, value-based, retainer), and contract signing.</p>
+          </div>
+          <div class="feature-card">
+            <h3>freelancer-project-delivery</h3>
+            <p>Sprint roadmaps, milestone tracking, client update drafts, acceptance criteria, and demo walkthroughs.</p>
+          </div>
+          <div class="feature-card">
+            <h3>freelancer-operations</h3>
+            <p>Invoicing schedules, payment tracking, contracts, tax bookkeeping, and agency standard operating procedures.</p>
+          </div>
+          <div class="feature-card">
+            <h3>freelancer-post-delivery</h3>
+            <p>Handover documentation packages, maintenance retainer agreements, testimonials, and case studies.</p>
+          </div>
+          <div class="feature-card">
+            <h3>freelancer-emergency-kit</h3>
+            <p>Production bug triage, client communication playbooks during outages, and rapid rollback procedures.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: ScrollHeart -->
+      <section id="scrollheart">
+        <h2>ScrollHeart: Cinematic web animations</h2>
+        <p>
+          ScrollHeart builds interactive, scroll-driven storytelling experiences in static HTML, CSS, and GSAP ScrollTrigger. It generates web pages that feel like motion video without requiring video rendering or heavy media files.
+        </p>
+
+        <div class="code-header">
+          <span>ScrollHeart features</span>
+        </div>
+        <pre><code>- Native CSS scroll-timeline and GSAP ScrollTrigger support
+- Kinetic typography and layout transitions triggered by user scroll
+- Pure static HTML/CSS/JS deployable directly to GitHub Pages
+- Zero backend dependencies, lightweight asset footprints</code></pre>
+      </section>
+
+      <!-- Section: Aegis Library -->
+      <section id="aegis">
+        <h2>Aegis: Verification library and skill repository</h2>
+        <p>
+          Aegis provides over 1,500 modular skills organized into community contributions, core engineering foundations, and domain-expert audit tools.
+        </p>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Tier</th>
+                <th>Skill count</th>
+                <th>Scope and focus</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Aegis Core</strong></td>
+                <td>79 skills</td>
+                <td>Foundational engineering: automated evaluation, refactoring, context restoration, memory cleanup, test patterns.</td>
+              </tr>
+              <tr>
+                <td><strong>Aegis Experts</strong></td>
+                <td>50 skills</td>
+                <td>Specialized audits: security penetration testing, cloud infrastructure, performance profiling, compliance.</td>
+              </tr>
+              <tr>
+                <td><strong>Aegis Community</strong></td>
+                <td>1,450+ skills</td>
+                <td>API integrations, database adapters, scrapers, mobile frameworks, language-specific tooling.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section: Gravitas -->
+      <section id="gravitas">
+        <h2>Gravitas: Engineering reliability runtime</h2>
+        <p>
+          Gravitas enforces engineering discipline across all coding agents. It prevents common failure modes such as modifying code on assumed file state, claiming fixes without evidence, and looping on identical failed edits.
+        </p>
+
+        <h3>The six invariants</h3>
+        <ol>
+          <li><strong>Ground before mutating:</strong> Read the target file, tests, and callers before editing. Never act on assumed state.</li>
+          <li><strong>Stay in declared scope:</strong> Writes outside <code>allowed_write_scope</code> are denied.</li>
+          <li><strong>Completion needs evidence:</strong> A criterion is complete only when an independent validator passes after the mutation.</li>
+          <li><strong>Never exact-retry a failure:</strong> A failed action must not be repeated without changing context or approach.</li>
+          <li><strong>Satisfy the contract:</strong> Acceptance criteria in <code>contract.json</code> gate completion.</li>
+          <li><strong>State unverifiable claims explicitly:</strong> If an outcome cannot be tested, declare it as an unverified assumption.</li>
+        </ol>
+      </section>
+
+      <!-- Section: Unslop -->
+      <section id="unslop">
+        <h2>Unslop writing standard</h2>
+        <p>
+          The Unslop standard removes synthetic AI vocabulary, superficial grammatical structures, and robotic formatting from documentation and user communications.
+        </p>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Banned AI word</th>
+                <th>Plain human replacement</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>leverage</code>, <code>utilize</code></td>
+                <td><code>use</code></td>
+              </tr>
+              <tr>
+                <td><code>delve</code>, <code>dive deep</code></td>
+                <td><code>inspect</code>, <code>examine</code>, <code>explore</code></td>
+              </tr>
+              <tr>
+                <td><code>seamless</code>, <code>seamlessly</code></td>
+                <td><code>direct</code>, <code>smooth</code>, <code>directly</code></td>
+              </tr>
+              <tr>
+                <td><code>robust</code></td>
+                <td><code>reliable</code>, <code>solid</code></td>
+              </tr>
+              <tr>
+                <td><code>crucial</code>, <code>paramount</code></td>
+                <td><code>essential</code>, <code>primary</code>, <code>critical</code></td>
+              </tr>
+              <tr>
+                <td><code>testament</code>, <code>tapestry</code></td>
+                <td><code>proof</code>, <code>collection</code></td>
+              </tr>
+              <tr>
+                <td><code>furthermore</code>, <code>moreover</code></td>
+                <td><code>also</code>, <code>in addition</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section: SEO Suite -->
+      <section id="seo">
+        <h2>SEO and AEO suite</h2>
+        <p>
+          A comprehensive suite of 25 search engine and answer engine optimization tools. Covers technical audits, Core Web Vitals, Schema.org JSON-LD generation, Generative Engine Optimization (GEO), and programmatic page architecture.
+        </p>
+
+        <div class="card-grid">
+          <div class="feature-card">
+            <h3>seo-audit</h3>
+            <p>Full domain audit covering crawlability, canonicals, redirects, structured data, and performance.</p>
+            <div class="card-tags"><span class="tag">/seo audit &lt;url&gt;</span></div>
+          </div>
+          <div class="feature-card">
+            <h3>seo-geo</h3>
+            <p>Generative Engine Optimization. Formats content for citations in AI Overviews, ChatGPT, and Perplexity.</p>
+            <div class="card-tags"><span class="tag">/seo geo &lt;url&gt;</span></div>
+          </div>
+          <div class="feature-card">
+            <h3>seo-technical</h3>
+            <p>Evaluates nine technical categories: status codes, robots.txt, canonical loops, mobile responsiveness, and speed.</p>
+            <div class="card-tags"><span class="tag">/seo technical &lt;url&gt;</span></div>
+          </div>
+          <div class="feature-card">
+            <h3>seo-schema</h3>
+            <p>Detects, validates, and generates Schema.org JSON-LD structured data for rich snippets.</p>
+            <div class="card-tags"><span class="tag">/seo schema &lt;url&gt;</span></div>
+          </div>
+          <div class="feature-card">
+            <h3>seo-agentic</h3>
+            <p>Audits website accessibility for autonomous AI web agents, validating llms.txt and semantic trees.</p>
+            <div class="card-tags"><span class="tag">/seo agentic &lt;url&gt;</span></div>
+          </div>
+          <div class="feature-card">
+            <h3>seo-content-brief</h3>
+            <p>Generates detailed keyword-targeted outlines with per-section word counts and competitor entity maps.</p>
+            <div class="card-tags"><span class="tag">/seo content-brief &lt;topic&gt;</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Founder Suite -->
+      <section id="founder">
+        <h2>Founder suite</h2>
+        <p>
+          A collection of 11 business modeling skills designed to evaluate unit economics, competitor positioning, and launch strategy before capital is spent.
+        </p>
+
+        <div class="card-grid">
+          <div class="feature-card">
+            <h3>founder-board</h3>
+            <p>Scores business concepts through three frameworks: $100M Offers, Zero to One, and Steve Jobs product focus.</p>
+          </div>
+          <div class="feature-card">
+            <h3>founder-cfo</h3>
+            <p>Calculates unit margins, customer acquisition cost limits, break-even unit volumes, and year-one runway.</p>
+          </div>
+          <div class="feature-card">
+            <h3>founder-consumer</h3>
+            <p>Simulates 100 diverse buyer profiles against your pitch to identify purchase friction and objections.</p>
+          </div>
+          <div class="feature-card">
+            <h3>founder-pricing</h3>
+            <p>Runs Van Westendorp price sensitivity analysis against competitor rates to build good/better/best price ladders.</p>
+          </div>
+          <div class="feature-card">
+            <h3>founder-offer</h3>
+            <p>Transforms buyer problems into solutions, pairs them with guarantees and bonuses, and calculates delivery costs.</p>
+          </div>
+          <div class="feature-card">
+            <h3>founder-launch</h3>
+            <p>Builds staged launch roadmaps: low-cost demand test, opening countdown checklist, and 30-day KPI tracker.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Developer Tools -->
+      <section id="developer-tools">
+        <h2>Developer tools and utilities</h2>
+        <p>Specialized utilities for reverse engineering, graph analysis, and system notifications:</p>
+
+        <ul>
+          <li><strong>Reverse Engineer Anything (REA):</strong> Disassembles and analyzes native binaries, Electron applications, .NET code, APKs, and web bundles.</li>
+          <li><strong>Graphify:</strong> Maps codebases into persistent knowledge graphs with god nodes, community clusters, and call trees.</li>
+          <li><strong>Bang Motion:</strong> Builds single-file browser motion graphics and kinetic typography using HTML, CSS, and GSAP.</li>
+          <li><strong>Voice Notifier:</strong> Speaks a concise completion message and triggers a KDE Connect phone ping when tasks finish.</li>
+          <li><strong>UI/UX Pro Max:</strong> Design database covering 79 UI styles, 192 product palettes, 74 font pairings, and 119 UX rules.</li>
+        </ul>
+      </section>
+
+      <!-- Section: Interactive Explorer -->
+      <section id="explorer">
+        <h2>Interactive skills catalog</h2>
+        <p>
+          Filter and search across all 1,580+ skills. Use the search input or select a category below. Click any command to copy it directly to your clipboard.
+        </p>
+
+        <div class="explorer-controls">
+          <input type="text" id="explorer-search" class="search-input" placeholder="Filter by name, keyword, command, or module..." aria-label="Filter skills">
+
+          <div>
+            <div class="sidebar-heading" style="padding: 0; margin-bottom: 6px;">Filter by module</div>
+            <div class="filter-group" id="module-filters">
+              <button class="filter-btn active" data-module="all">All modules</button>
+              <button class="filter-btn" data-module="Anchor">Anchor</button>
+              <button class="filter-btn" data-module="Agent Council">Agent Council</button>
+              <button class="filter-btn" data-module="Freelance Suite">Freelance</button>
+              <button class="filter-btn" data-module="ScrollHeart">ScrollHeart</button>
+              <button class="filter-btn" data-module="SEO & AEO Suite">SEO Suite</button>
+              <button class="filter-btn" data-module="Founder Suite">Founder Suite</button>
+              <button class="filter-btn" data-module="Engineering & Reliability">Reliability</button>
+              <button class="filter-btn" data-module="Aegis Core">Aegis Core</button>
+              <button class="filter-btn" data-module="Aegis Experts">Aegis Experts</button>
+              <button class="filter-btn" data-module="Aegis Community">Aegis Community</button>
+            </div>
+          </div>
+
+          <div>
+            <div class="sidebar-heading" style="padding: 0; margin-bottom: 6px;">Filter by runtime</div>
+            <div class="filter-group" id="runtime-filters">
+              <button class="filter-btn active" data-runtime="all">All runtimes</button>
+              <button class="filter-btn" data-runtime="AGY">AGY (Gemini)</button>
+              <button class="filter-btn" data-runtime="Codex">OpenAI Codex</button>
+              <button class="filter-btn" data-runtime="Claude Code">Claude Code</button>
+              <button class="filter-btn" data-runtime="Antigravity">Antigravity</button>
+              <button class="filter-btn" data-runtime="Bun">Bun</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="explorer-header">
+          <span id="results-count">Loading skills...</span>
+          <span>Tip: Press / to search</span>
+        </div>
+
+        <div id="skills-list" class="skills-list">
+          <!-- Populated dynamically by docs.js -->
+        </div>
+
+        <div id="pagination" class="pagination-controls">
+          <!-- Populated dynamically by docs.js -->
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div>
+        <strong>SKILL Monorepo</strong> &mdash; Maintained by <a href="https://github.com/krishujeniya" target="_blank" rel="noopener">krishujeniya</a>. Open source under MIT license.
+      </div>
+      <ul class="footer-links">
+        <li><a href="sitemap.xml">Sitemap</a></li>
+        <li><a href="robots.txt">Robots</a></li>
+        <li><a href="llms.txt">llms.txt</a></li>
+        <li><a href="ai-catalog.json">AI catalog</a></li>
+        <li><a href="https://github.com/krishujeniya/SKILL" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="docs.js"></script>
+</body>
+</html>

@@ -1,125 +1,131 @@
-# SKILL ⚡
+# SKILL
 
-> **The Unified AI Agent Skills, Frameworks, and Tooling Monorepo**  
-> Curated and maintained by [@krishujeniya](https://github.com/krishujeniya).
+The unified repository of AI agent skills, autonomous workflows, multi-agent deliberation systems, and engineering verification runtimes. Maintained by [Krish Ujeniya](https://github.com/krishujeniya).
 
-A consolidated, production-grade repository combining state-of-the-art AI agent skills, autonomous workflows, multi-agent deliberation systems, and cinematic web animation frameworks for modern coding agents (Antigravity, Gemini CLI, Claude Code, Codex, Cursor, and Windsurf).
+## Documentation and live catalog
+
+The full documentation site and interactive skill catalog is hosted on GitHub Pages:
+
+**Live documentation:** [https://krishujeniya.github.io/SKILL/](https://krishujeniya.github.io/SKILL/)
+
+- Zero backend dependencies: 100% static HTML, CSS, and client-side JavaScript.
+- Strict monochrome design: Swiss typography, high contrast, responsive layout, dark and light modes.
+- Instant search and filtering across all 1,580+ skills by module, runtime, or keyword.
+- Machine-readable discovery files: [llms.txt](https://krishujeniya.github.io/SKILL/llms.txt), [ai-catalog.json](https://krishujeniya.github.io/SKILL/ai-catalog.json), and [sitemap.xml](https://krishujeniya.github.io/SKILL/sitemap.xml).
 
 ---
 
-## 📦 What's Inside
+## Directory layout
 
 ```
 SKILL/
-├── Aegis/                     # Massive skill framework & verification library (1,500+ skills)
-├── Anchor/                    # Agent orchestration, scoping, verification & MCP server
-├── ScrollHeart/               # Cinematic scroll-driven web animation & storytelling skill
-├── agentic-freelance-skills/  # End-to-end freelance agency skills (acquisition to delivery)
-├── agent-council/             # Multi-agent deliberation council CLI (Codex, Gemini, Claude, Antigravity)
+├── Aegis/                     # Security, verification library, and 1,500+ skills
+├── Anchor/                    # Scoped orchestrator, contract manager, and MCP server
+├── agent-council/             # Multi-agent deliberation panel CLI
+├── agentic-freelance-skills/  # End-to-end consulting and client delivery suite
+├── ScrollHeart/               # Scroll-driven web animations and storytelling
+├── docs/                      # Pure static documentation and explorer site
+├── scripts/                   # Data compilation and runtime linking utilities
 ├── Motion_Graphics_Google_Flow_Master_Guide.pdf  # Motion graphics master guide
 └── github-profile-playbook.pdf                   # Developer positioning playbook
 ```
 
 ---
 
-## 🛡️ 1. Aegis — Security, Verification & Skill Library
+## Core modules
 
-`Aegis` provides a robust, defense-in-depth skill library and verification runtime for AI agents.
+### 1. Aegis: Security, verification and skill library
+Aegis provides a defense-in-depth skill library and verification runtime for AI agents.
 
-- **1,445+ Community Skills**: Covers algorithms, API integrations, DevOps, security, data science, and web frameworks.
-- **83 Core Skills**: Critical foundational skills for code review, refactoring, debugging, and architecture.
-- **Expert Domain Skills**: Specialized suites for deep security audits, performance profiling, and SEO analysis.
-- **Engine & Specs**: Standardized schema, manifests, and documentation for consistent agent tool calling.
+- **1,450+ community skills**: Covers cloud providers, scrapers, databases, web frameworks, and programming languages.
+- **79 core skills**: Foundational skills for automated evaluation, refactoring, context restoration, and test runners.
+- **50 expert skills**: Specialized suites for deep security audits, performance profiling, and architecture reviews.
 
-👉 Explore: [`Aegis/`](./Aegis)
-
----
-
-## ⚓ 2. Anchor — Agent Orchestrator & Execution Runtime
-
-`Anchor` is a scoped, verifiable agent orchestration system that prevents hallucinations, bounds blast radius, and enforces strict preflight and post-execution verification.
-
-- **Anchor Skills**:
-  - `anchor-scout`: Reconnaissance and safe codebase exploration.
-  - `anchor-scope`: Scope boundary enforcement.
-  - `anchor-orchestrator`: Multi-step plan execution.
-  - `anchor-draft-commit`: Atomic, reversible git checkpointing.
-  - `anchor-verify`: Evidence-backed test and lint validation.
-  - `anchor-graph`: Dependency and call-path analysis.
-- **MCP Server**: Lazily-loaded MCP server exposing Anchor primitives to any MCP-compliant client.
-- **Dashboard**: Live terminal monitoring and telemetry dashboard.
-
-👉 Explore: [`Anchor/`](./Anchor)
+Explore: [`Aegis/`](./Aegis)
 
 ---
 
-## 📜 3. ScrollHeart — Cinematic Motion & Visual Storytelling
+### 2. Anchor: Scoped orchestrator and execution runtime
+Anchor is an execution system that bounds blast radius and enforces five mandatory gates for multi-step tasks.
 
-`ScrollHeart` is a dedicated skill for building cinematic, video-like scroll-driven animations and narrative web experiences using HTML, CSS, and GSAP.
+- `anchor-scout`: Read-only reconnaissance and codebase exploration.
+- `anchor-scope`: Scope boundary enforcement in `contract.json`.
+- `anchor-orchestrator`: Multi-step plan execution through understand, analyze, plan, implement, and verify gates.
+- `anchor-draft-commit`: Atomic, reversible git checkpointing.
+- `anchor-verify`: Evidence-backed test and lint validation.
+- `anchor-graph`: Dependency and call-path analysis.
+- `anchor-preflight`: Preflight environment and tool verification.
+- **MCP server**: Lazily-loaded MCP server exposing Anchor primitives.
 
-- **Kinetic Typography & Storytelling**: Replaces boring slide decks with fluid, video-grade web experiences.
-- **GSAP & Native CSS Scroll Timelines**: Production-optimized scroll-driven animation presets.
-- **Examples & Resources**: Ready-to-use templates, interactive demos, and component blueprints.
-
-👉 Explore: [`ScrollHeart/`](./ScrollHeart)
-
----
-
-## 💼 4. Agentic Freelance Skills — Autonomous Agency Suite
-
-A complete suite of operational and client-facing skills designed for autonomous freelance software engineering and consulting.
-
-- **`freelancer-client-acquisition`**: Lead prospecting, proposal crafting, and outreach.
-- **`freelancer-sales-closing`**: Objection handling, scoping, and contract negotiation.
-- **`freelancer-project-delivery`**: Milestone structuring, deliverables tracking, and client updates.
-- **`freelancer-operations`**: Invoicing, time management, and agency SOPs.
-- **`freelancer-post-delivery`**: Handover packages, upsells, and testimonial gathering.
-- **`freelancer-emergency-kit`**: Urgent production bug fixes, client de-escalation, and outage playbooks.
-
-👉 Explore: [`agentic-freelance-skills/`](./agentic-freelance-skills)
+Explore: [`Anchor/`](./Anchor)
 
 ---
 
-## 🏛️ 5. Agent Council — Multi-Agent Deliberation Panel
+### 3. Agent Council: Multi-agent deliberation panel
+Agent Council runs multiple AI models (Codex, Gemini, Claude, Antigravity) in isolated subprocesses to deliberate on architectural decisions and synthesize consensus verdicts.
 
-`agent-council` convenes a panel of CLI-based AI agents (Codex, Gemini, Claude, and Antigravity) to independently deliberate on complex architectural decisions, debug hard bugs, and synthesize high-confidence consensus verdicts.
+- **Multi-model consensus**: Queries diverse models independently against the same problem.
+- **Chairman synthesis**: Summarizes common points, disagreements, and final recommendations.
+- **Audit trail**: Saves deliberation logs and replayable HTML transcripts.
 
-- **Multi-Model Consensus**: Runs diverse models against the same problem in isolated subprocesses.
-- **Antigravity Native Integration**: Seamlessly integrates Antigravity / Gemini CLI / Claude / Codex as chairmen or panel members.
-- **Interactive HTML Viewer**: Generates clean, tabbed deliberation logs and side-by-side opinions.
-
-👉 Explore: [`agent-council/`](./agent-council)
-
----
-
-## 📚 6. Guides & Reference Playbooks
-
-- **`Motion_Graphics_Google_Flow_Master_Guide.pdf`**: Comprehensive manual for mastering cinematic web animations, Google Flow, and browser video workflows.
-- **`github-profile-playbook.pdf`**: The definitive playbook for architecting standout GitHub profiles and showcasing open-source authority.
+Explore: [`agent-council/`](./agent-council)
 
 ---
 
-## 🚀 Quickstart & Skill Installation
+### 4. Agentic freelance skills: Autonomous agency suite
+An operational suite for freelance software engineers and consultants:
 
-### Symlink into Antigravity or Gemini CLI
+- `freelancer-client-acquisition`: Outbound prospecting, cold email sequences, and referral loops.
+- `freelancer-sales-closing`: Discovery calls, objection handling, pricing models, and contract signing.
+- `freelancer-project-delivery`: Milestone roadmaps, client sprint updates, and demo walkthroughs.
+- `freelancer-operations`: Invoicing, payment tracking, and standard operating procedures.
+- `freelancer-post-delivery`: Handover documentation packages and maintenance retainer agreements.
+- `freelancer-emergency-kit`: Incident runbooks and client communication playbooks for outages.
+
+Explore: [`agentic-freelance-skills/`](./agentic-freelance-skills)
+
+---
+
+### 5. ScrollHeart: Cinematic motion and storytelling
+ScrollHeart builds scroll-driven web experiences using HTML, CSS, and GSAP ScrollTrigger. It generates lightweight static pages deployable directly on GitHub Pages without video rendering pipelines.
+
+Explore: [`ScrollHeart/`](./ScrollHeart)
+
+---
+
+### 6. Reliability and quality standards
+- **Gravitas**: Enforces six engineering invariants: ground before mutating, stay in declared scope, require evidence for completion, avoid identical retries, satisfy contract gates, and state unverifiable claims.
+- **Unslop**: Strips synthetic AI vocabulary, superficial clauses, and robotic formatting from documentation.
+
+---
+
+## Installation in AGY and Codex
+
+To install and verify all skills across your local AI environments:
+
 ```bash
-# Add any skill directly to your personal agent environment
-mkdir -p ~/.agents/skills
-ln -s "$(pwd)/ScrollHeart" ~/.agents/skills/scrollheart
-ln -s "$(pwd)/agentic-freelance-skills/skills/freelancer-help" ~/.agents/skills/freelancer-help
+# Link all monorepo skills into AGY (~/.gemini/skills) and Codex (~/.codex/skills)
+python3 scripts/build_docs_data.py
 ```
 
-### Running Agent Council
+The script verifies that all skills from Anchor, Agent Council, Freelance Suite, ScrollHeart, SEO Suite, and Founder Suite are symlinked into both `~/.gemini/skills/` and `~/.codex/skills/`.
+
+---
+
+## Local preview of documentation site
+
+To preview the documentation locally with any static web server:
+
 ```bash
-cd agent-council
-bun install
-bun run start --question "Should we use Redis or PostgreSQL for session caching?"
+# Using Python
+python3 -m http.server 8080 --directory docs
+
+# Open in browser
+xdg-open http://localhost:8080
 ```
 
 ---
 
-## 📄 License
+## License
 
-This monorepo consolidates tools and skills under their respective open-source licenses (MIT / Apache-2.0). See individual subdirectories for details.
-
-Developed with ❤️ by **[Krish Ujeniya](https://github.com/krishujeniya)**.
+This repository consolidates tools and skills under their respective open-source licenses (MIT / Apache-2.0).

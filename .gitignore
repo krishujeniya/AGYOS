@@ -40,6 +40,7 @@ agent-council/bin/council-bin
 bin/council-bin
 dist/
 coverage/
+.coverage
 .nyc_output/
 
 # Backups and bundles
