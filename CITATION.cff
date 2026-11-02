@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this software in your research or production systems, please cite it as below."
+authors:
+  - family-names: "Ujeniya"
+    given-names: "Krish"
+title: "agent-skills: Autonomous AI Agent Frameworks, Workflow Orchestrators & Engineering Skills Monorepo"
+version: 1.0.0
+date-released: 2026-11-02
+url: "https://github.com/krishujeniya/agent-skills"
+keywords:
+  - "ai-agents"
+  - "agentic-workflows"
+  - "langgraph"
+  - "mcp"
+  - "autonomous-agents"
