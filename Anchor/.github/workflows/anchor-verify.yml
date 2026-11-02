@@ -1,0 +1,47 @@
+name: ANCHOR Verify
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+    - name: Make ANCHOR scripts executable
+      run: chmod +x .agents/skills/anchor-verify/scripts/*.sh
+
+    - name: Run ANCHOR Structural Checks
+      run: bash .agents/skills/anchor-verify/scripts/verify.sh .
+
+    - name: Run ANCHOR Health Checks
+      run: bash .agents/skills/anchor-verify/scripts/health-check.sh .
+
+    - name: Run shellcheck
+      run: |
+        sudo apt-get update && sudo apt-get install -y shellcheck jq
+        shellcheck -S warning $(find . -type f -name "*.sh" ! -path '*/node_modules/*' ! -path '*/.agents/eval_fixtures/*')
+
+    - name: Run markdownlint
+      run: |
+        npm install -g markdownlint-cli@0.39.0
+        markdownlint $(find . -type f -name "*.md" ! -path '*/node_modules/*' ! -path '*/.git/*' ! -path '*/.agents/eval_fixtures/*')
+
+    - name: Run bats tests
+      run: |
+        sudo apt-get install -y bats
+        bats tests/
+
+    - name: Verify package bundle
+      run: npm pack --dry-run
+
+    - name: Run eval.sh on eval_fixtures
+      run: |
+        chmod +x bin/eval.sh
+        bash bin/eval.sh

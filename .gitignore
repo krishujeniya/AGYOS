@@ -1,0 +1,57 @@
+# OS & Editor metadata
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+*.tmp
+*.bak
+.idea/
+.vscode/
+
+# Python cache & virtual environments
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+
+# Node & TypeScript
+node_modules/
+!Aegis/library/core/skills/brainstorming/scripts/node_modules/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+*.tsbuildinfo
+
+# Anchor state & telemetry
+Anchor/.agents/state/telemetry.jsonl
+Anchor/.agents/state/checkpoints/archive/
+Anchor/.agents/state/decisions/archive/
+Anchor/.agents/state/telemetry/archive/
+Anchor/.agents/state/decisions/drafts/
+Anchor/.agents/state/decisions/executed/
+Anchor/.agents/state/state.json.lock
+
+# Compiled binaries and builds
+agent-council/bin/council-bin
+bin/council-bin
+dist/
+coverage/
+.nyc_output/
+
+# Backups and bundles
+.backups/
+.bundles/
+*.bundle
+
+# Secrets and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.cert
+*.crt

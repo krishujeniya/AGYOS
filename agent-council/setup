@@ -1,0 +1,141 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+echo "Agent Council — Setup"
+echo "====================="
+echo ""
+
+# Check Bun
+if ! command -v bun &>/dev/null; then
+  echo "Error: Bun is required. Install: curl -fsSL https://bun.sh/install | bash"
+  exit 1
+fi
+echo "✓ Bun $(bun --version)"
+
+# Check available CLI agents
+AGENTS_FOUND=0
+for agent in claude codex gemini; do
+  if command -v "$agent" &>/dev/null; then
+    echo "✓ $agent found"
+    AGENTS_FOUND=$((AGENTS_FOUND + 1))
+  else
+    echo "  $agent not found (optional)"
+  fi
+done
+
+if [ "$AGENTS_FOUND" -lt 2 ]; then
+  echo ""
+  echo "Warning: Agent Council needs at least 2 CLI agents."
+  echo "Install any two of: claude (Claude Code), codex (OpenAI), gemini (Gemini CLI)"
+fi
+
+echo ""
+
+# Install skills to all detected CLI agent platforms
+# SKILL.md is a cross-platform standard: Claude Code, Codex CLI, and Gemini CLI all support it
+SKILLS_SRC="$SCRIPT_DIR/skills/claude-code"
+INSTALLED_TO=""
+
+install_skills() {
+  local BASE_DIR="$1"
+  local LABEL="$2"
+
+  # Main council skill
+  local SKILL_DIR="$BASE_DIR/agent-council"
+  mkdir -p "$SKILL_DIR"
+  cp "$SKILLS_SRC/SKILL.md" "$SKILL_DIR/SKILL.md"
+  ln -sf "$SCRIPT_DIR/bin/council" "$SKILL_DIR/council"
+
+  # Sub-command skills
+  for skill in council-list council-replay council-revisit council-outcome; do
+    mkdir -p "$BASE_DIR/$skill"
+    cp "$SKILLS_SRC/$skill/SKILL.md" "$BASE_DIR/$skill/SKILL.md"
+  done
+
+  # Nudge skill (ambient awareness)
+  mkdir -p "$BASE_DIR/agent-council-nudge"
+  cp "$SKILLS_SRC/agent-council-nudge/SKILL.md" "$BASE_DIR/agent-council-nudge/SKILL.md"
+
+  echo "✓ $LABEL skills installed to $BASE_DIR"
+  INSTALLED_TO="$INSTALLED_TO $LABEL"
+}
+
+# Claude Code: ~/.claude/skills/
+if command -v claude &>/dev/null; then
+  install_skills "$HOME/.claude/skills" "Claude Code"
+fi
+
+# Codex CLI: ~/.agents/skills/ (shared agent skills directory)
+if command -v codex &>/dev/null; then
+  install_skills "$HOME/.agents/skills" "Codex"
+fi
+
+# Gemini CLI: ~/.gemini/skills/
+if command -v gemini &>/dev/null; then
+  install_skills "$HOME/.gemini/skills" "Gemini"
+fi
+
+if [ -n "$INSTALLED_TO" ]; then
+  echo "  Commands: /council, /council-list, /council-replay, /council-revisit, /council-outcome"
+  echo "  + ambient nudge awareness (agent-council-nudge)"
+else
+  echo "Warning: No CLI agents found. Install skills manually after installing a CLI agent."
+fi
+
+# Create council home directory
+mkdir -p "$HOME/.council"
+echo "✓ Storage directory: ~/.council/"
+
+# One-time proactive preference prompt
+if [ ! -f "$HOME/.council/.proactive-prompted" ]; then
+  echo ""
+  echo "Agent Council can suggest /council when it detects you're making"
+  echo "a decision with trade-offs (e.g., 'should we use X or Y?')."
+  echo "Suggestions are quiet, max 2 per session, and never interrupt."
+  if [ -t 0 ]; then
+    printf "Keep suggestions on? [Y/n] "
+    read -r PROACTIVE_CHOICE
+  else
+    PROACTIVE_CHOICE="Y"
+    echo "✓ Proactive suggestions enabled (default, non-interactive)"
+  fi
+  if [ "$PROACTIVE_CHOICE" = "n" ] || [ "$PROACTIVE_CHOICE" = "N" ]; then
+    # Update or create config.json with proactive: false
+    if [ -f "$HOME/.council/config.json" ]; then
+      # Add proactive field if not present, or update it
+      bun -e "
+        const fs = require('fs');
+        const p = '$HOME/.council/config.json';
+        const c = JSON.parse(fs.readFileSync(p, 'utf-8'));
+        c.proactive = false;
+        fs.writeFileSync(p, JSON.stringify(c, null, 2));
+      " 2>/dev/null || true
+    else
+      echo '{"proactive": false}' > "$HOME/.council/config.json"
+    fi
+    echo "✓ Proactive suggestions disabled. Re-enable in ~/.council/config.json"
+  else
+    echo "✓ Proactive suggestions enabled"
+  fi
+  touch "$HOME/.council/.proactive-prompted"
+fi
+
+# Clean up old global nudge blocks (replaced by in-skill contextual nudges)
+remove_old_nudge() {
+  local FILE="$1"
+  if [ -f "$FILE" ] && grep -q "<!-- agent-council-nudge -->" "$FILE" 2>/dev/null; then
+    awk '
+      /<!-- agent-council-nudge -->/{skip=1}
+      /<!-- \/agent-council-nudge -->/{skip=0; next}
+      !skip
+    ' "$FILE" > "$FILE.tmp"
+    mv "$FILE.tmp" "$FILE"
+  fi
+}
+remove_old_nudge "$HOME/.claude/CLAUDE.md"
+remove_old_nudge "$HOME/.codex/instructions.md"
+remove_old_nudge "$HOME/.gemini/GEMINI.md"
+
+echo ""
+echo "Setup complete! Run: /council \"your question\" from any CLI agent"

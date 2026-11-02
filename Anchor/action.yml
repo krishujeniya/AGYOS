@@ -1,0 +1,20 @@
+name: 'ANCHOR Verify'
+description: 'Runs ANCHOR verification on your repository to enforce strict state and testing gates'
+branding:
+  icon: 'anchor'
+  color: 'blue'
+
+runs:
+  using: "composite"
+  steps:
+    - name: Ensure executable scripts
+      run: chmod +x .agents/skills/anchor-verify/scripts/*.sh
+      shell: bash
+
+    - name: Run ANCHOR Structural Checks
+      run: bash .agents/skills/anchor-verify/scripts/verify.sh .
+      shell: bash
+
+    - name: Run ANCHOR Health Checks
+      run: bash .agents/skills/anchor-verify/scripts/health-check.sh .
+      shell: bash

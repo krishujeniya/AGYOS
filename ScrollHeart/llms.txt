@@ -1,0 +1,26 @@
+# ScrollHeart
+
+> Build her a story she can scroll through.
+
+ScrollHeart is a warm, gentle AI skill that helps a boy create a romantic, scroll-driven storytelling website for a girl he cares about.
+
+## Skill Documentation
+
+- [SKILL.md](SKILL.md) - Core skill file with 5-phase workflow and brand voice
+- [Interview Flow](references/01-interview-flow.md) - 10-question conversational interview
+- [Safety Checklist](references/02-safety-checklist.md) - Red flag detection and relationship calibration
+- [Design Brief Generator](references/03-design-brief-generator.md) - Answer-to-design-spec conversion
+- [Scene Templates](references/04-scene-templates.md) - 5-scene narrative arc and parallax layers
+- [Code Generation Rules](references/05-code-generation-rules.md) - HTML/CSS/JS templates and GSAP config
+- [Deployment Guide](references/06-deployment-guide.md) - GitHub Pages setup and privacy measures
+- [Post-Build Guide](references/07-post-build-guide.md) - How to present the gift and handle responses
+
+## Resources
+
+- [Color Palettes](resources/color-palettes.json) - 4 mood-based color palettes
+- [Font Pairings](resources/font-pairings.json) - 4 personality-based typography sets
+- [Song Suggestions](resources/song-suggestions.json) - Royalty-free background music by mood
+
+## Example Output
+
+- [Example Site](examples/good-output/index.html) - Reference implementation of a ScrollHeart story

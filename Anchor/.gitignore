@@ -1,0 +1,50 @@
+# Node/JS dependencies
+node_modules/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build & Test outputs
+dashboard/dist/
+dist/
+build/
+coverage/
+.nyc_output/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# OS & Editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.tmp
+*.bak
+
+# ANCHOR State, Telemetry, and Drafts
+.agents/state/telemetry.jsonl
+.agents/state/checkpoints/archive/
+.agents/state/decisions/archive/
+.agents/state/telemetry/archive/
+.agents/state/decisions/drafts/
+.agents/state/decisions/executed
+.agents/state/state.json.lock
+
+# Personal Environment & Secret files
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.cert
+*.crt
+
+# IDE / Agent specific workspace metadata
+.gemini/
+.antigravity/

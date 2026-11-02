@@ -1,0 +1,9 @@
+{
+  "customTools": [
+    {
+      "name": "anchor_gate_check",
+      "description": "Run ANCHOR gate checks",
+      "command": "bash bin/gate-check.sh"
+    }
+  ]
+}

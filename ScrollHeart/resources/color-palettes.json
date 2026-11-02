@@ -1,0 +1,88 @@
+{
+  "version": "1.0",
+  "description": "ScrollHeart color palettes by mood preference. Each palette is designed for dark-mode romantic experiences with WCAG AA contrast compliance.",
+  "palettes": {
+    "warm_sunset": {
+      "name": "Warm Sunset",
+      "description": "Rose gold warmth, midnight depth. Evokes cozy evenings and golden light.",
+      "trigger_words": ["warm", "sunset", "gold", "rose", "cozy", "amber"],
+      "colors": {
+        "primary": "#DEA193",
+        "primary_name": "Rose Gold",
+        "background": "#0F0F1A",
+        "background_name": "Midnight",
+        "accent": "#C9A96E",
+        "accent_name": "Gold Dust",
+        "text": "#FDFBD4",
+        "text_name": "Cream"
+      },
+      "css_gradient_bg": "linear-gradient(135deg, #0F0F1A 0%, #1A1020 50%, #0F0F1A 100%)",
+      "particle_color": "rgba(222, 161, 147, 0.3)",
+      "glow_color": "rgba(201, 169, 110, 0.15)"
+    },
+    "cool_midnight": {
+      "name": "Cool Midnight",
+      "description": "Teal glow against deep navy. Evokes starry nights and quiet conversations.",
+      "trigger_words": ["cool", "midnight", "teal", "starlight", "blue", "silver", "night"],
+      "colors": {
+        "primary": "#069494",
+        "primary_name": "Teal Glow",
+        "background": "#0A0A1A",
+        "background_name": "Deep Navy",
+        "accent": "#8A9A5B",
+        "accent_name": "Moss",
+        "text": "#E8E6D9",
+        "text_name": "Soft White"
+      },
+      "css_gradient_bg": "linear-gradient(135deg, #0A0A1A 0%, #0A1520 50%, #0A0A1A 100%)",
+      "particle_color": "rgba(6, 148, 148, 0.3)",
+      "glow_color": "rgba(138, 154, 91, 0.15)"
+    },
+    "soft_pastel": {
+      "name": "Soft Pastel",
+      "description": "Dusty rose and soft blue on dark canvas. Evokes dreamy, gentle intimacy.",
+      "trigger_words": ["soft", "pastel", "dusty", "lavender", "gentle", "dreamy"],
+      "colors": {
+        "primary": "#D4A5A5",
+        "primary_name": "Dusty Rose",
+        "background": "#1A1A2E",
+        "background_name": "Soft Midnight",
+        "accent": "#B8C5D6",
+        "accent_name": "Soft Blue",
+        "text": "#F5F0E8",
+        "text_name": "Warm White"
+      },
+      "css_gradient_bg": "linear-gradient(135deg, #1A1A2E 0%, #1E1A28 50%, #1A1A2E 100%)",
+      "particle_color": "rgba(212, 165, 165, 0.25)",
+      "glow_color": "rgba(184, 197, 214, 0.12)"
+    },
+    "bold_bright": {
+      "name": "Bold & Bright",
+      "description": "Terracotta and honey on charcoal. Evokes confident warmth and vibrant energy.",
+      "trigger_words": ["bold", "bright", "vibrant", "terracotta", "honey", "coral", "confident"],
+      "colors": {
+        "primary": "#E07A5F",
+        "primary_name": "Terracotta",
+        "background": "#1D1D2E",
+        "background_name": "Charcoal",
+        "accent": "#F2CC8F",
+        "accent_name": "Honey",
+        "text": "#FFF8E7",
+        "text_name": "Ivory"
+      },
+      "css_gradient_bg": "linear-gradient(135deg, #1D1D2E 0%, #251D20 50%, #1D1D2E 100%)",
+      "particle_color": "rgba(224, 122, 95, 0.3)",
+      "glow_color": "rgba(242, 204, 143, 0.15)"
+    }
+  },
+  "forbidden_colors": [
+    { "hex": "#FF0000", "name": "Pure Red", "reason": "Aggressive, Valentine's commercial" },
+    { "hex": "#FF69B4", "name": "Hot Pink", "reason": "Aggressive romance" },
+    { "hex": "#00FF00", "name": "Lime Green", "reason": "Cheap, digital, competes with warmth" },
+    { "hex": "#FF8C00", "name": "Bright Orange", "reason": "Cheap, digital" },
+    { "hex": "#0000FF", "name": "Electric Blue", "reason": "Cold, digital" },
+    { "hex": "#FFFF00", "name": "Neon Yellow", "reason": "Cheap, jarring" },
+    { "hex": "#FFFFFF", "name": "Pure White", "reason": "Billboard, not whisper (as background)" },
+    { "hex": "#000000", "name": "Pure Black", "reason": "Void, not intimate (as background)" }
+  ]
+}

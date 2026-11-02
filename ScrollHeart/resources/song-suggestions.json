@@ -1,0 +1,157 @@
+{
+  "version": "1.0",
+  "description": "ScrollHeart song suggestions for background audio. All tracks are royalty-free or Creative Commons licensed. Organized by emotional mood.",
+  "usage_note": "If the user provides a specific copyrighted song, use it as a REFERENCE for pacing and mood only. Suggest a royalty-free alternative from this list for the actual audio track. The scene pacing should still match the emotional arc of their chosen song.",
+  "categories": {
+    "calm_dreamy": {
+      "name": "Calm & Dreamy",
+      "description": "Soft, ambient, gentle. Perfect for best friends or gentle crushes.",
+      "trigger_words": ["calm", "dreamy", "quiet", "peaceful", "soft", "ambient", "gentle"],
+      "suggestions": [
+        {
+          "title": "Weightless",
+          "artist": "Marconi Union",
+          "mood": "Ultra-calm, ambient, floating",
+          "tempo_bpm": 60,
+          "duration": "3:30",
+          "license": "Royalty-free (available on free music platforms)",
+          "scene_sync_notes": "Extremely slow tempo — great for Scene 1 intro and Scene 4 bridge"
+        },
+        {
+          "title": "Snowflake",
+          "artist": "Aakash Gandhi",
+          "mood": "Gentle piano, warm, nostalgic",
+          "tempo_bpm": 72,
+          "duration": "3:15",
+          "license": "Creative Commons (YouTube Audio Library)",
+          "scene_sync_notes": "Piano swells work well for Scene 3 climax entrance"
+        },
+        {
+          "title": "Sunset Lover",
+          "artist": "Petit Biscuit",
+          "mood": "Soft electronic, warm, golden hour",
+          "tempo_bpm": 85,
+          "duration": "3:47",
+          "license": "Check current licensing — often free for non-commercial use",
+          "scene_sync_notes": "Build-up around 1:30 syncs well with Scene 2→3 transition"
+        }
+      ]
+    },
+    "nostalgic_acoustic": {
+      "name": "Nostalgic & Acoustic",
+      "description": "Guitar-driven, warm, reflective. Perfect for shared memories and appreciation.",
+      "trigger_words": ["nostalgic", "acoustic", "guitar", "folk", "warm", "memories", "reflective"],
+      "suggestions": [
+        {
+          "title": "Morning Light",
+          "artist": "Acoustic Collective",
+          "mood": "Acoustic guitar, sunrise, hopeful",
+          "tempo_bpm": 90,
+          "duration": "3:00",
+          "license": "Creative Commons (Free Music Archive)",
+          "scene_sync_notes": "Steady tempo suits linear scroll progression"
+        },
+        {
+          "title": "Slow and Easy",
+          "artist": "The 126ers",
+          "mood": "Acoustic, laid-back, Sunday morning",
+          "tempo_bpm": 78,
+          "duration": "2:45",
+          "license": "Royalty-free (YouTube Audio Library)",
+          "scene_sync_notes": "Good for shorter scroll stories (2-3 minutes)"
+        },
+        {
+          "title": "Ukulele Sunshine",
+          "artist": "Various Artists",
+          "mood": "Light, playful, warm",
+          "tempo_bpm": 110,
+          "duration": "2:30",
+          "license": "Royalty-free (Pixabay Music)",
+          "scene_sync_notes": "Faster tempo — good for playful best-friend stage"
+        }
+      ]
+    },
+    "cinematic_epic": {
+      "name": "Cinematic & Epic",
+      "description": "Orchestral, sweeping, dramatic. Perfect for committed relationships or big gestures.",
+      "trigger_words": ["epic", "cinematic", "orchestral", "dramatic", "big", "grand", "powerful"],
+      "suggestions": [
+        {
+          "title": "Time",
+          "artist": "Hans Zimmer (Style)",
+          "mood": "Building tension, emotional release, orchestral",
+          "tempo_bpm": 68,
+          "duration": "4:35",
+          "license": "Search for royalty-free 'epic emotional orchestral' alternatives",
+          "scene_sync_notes": "Save the crescendo for Scene 3 climax"
+        },
+        {
+          "title": "Arrival of the Birds",
+          "artist": "The Cinematic Orchestra (Style)",
+          "mood": "Strings, building wonder, gentle to powerful",
+          "tempo_bpm": 76,
+          "duration": "3:20",
+          "license": "Search for royalty-free 'cinematic strings' alternatives",
+          "scene_sync_notes": "Gentle strings intro maps to Scene 1, builds to Scene 3"
+        },
+        {
+          "title": "Into the Unknown",
+          "artist": "Cinematic Ambient",
+          "mood": "Atmospheric, mysterious, emotional depth",
+          "tempo_bpm": 70,
+          "duration": "3:45",
+          "license": "Royalty-free (Pixabay Music / Free Music Archive)",
+          "scene_sync_notes": "Atmospheric build works across all 5 scenes"
+        }
+      ]
+    },
+    "lofi_chill": {
+      "name": "Lo-fi & Chill",
+      "description": "Lo-fi beats, jazzy, relaxed. Perfect for modern, casual relationships.",
+      "trigger_words": ["lofi", "lo-fi", "chill", "jazzy", "beats", "relaxed", "modern", "casual"],
+      "suggestions": [
+        {
+          "title": "Coffee Shop Vibes",
+          "artist": "Lo-Fi Beats Collective",
+          "mood": "Warm lo-fi, coffee shop, intimate",
+          "tempo_bpm": 85,
+          "duration": "3:00",
+          "license": "Royalty-free (Pixabay Music)",
+          "scene_sync_notes": "Steady, non-intrusive — lets the text take center stage"
+        },
+        {
+          "title": "Late Night Talks",
+          "artist": "Ambient Lo-Fi",
+          "mood": "Midnight, intimate, gentle beats",
+          "tempo_bpm": 75,
+          "duration": "3:30",
+          "license": "Creative Commons (Free Music Archive)",
+          "scene_sync_notes": "Night atmosphere matches midnight color palettes perfectly"
+        },
+        {
+          "title": "Rainy Day",
+          "artist": "Chillhop Essentials",
+          "mood": "Rain sounds, soft piano, contemplative",
+          "tempo_bpm": 80,
+          "duration": "2:50",
+          "license": "Search for royalty-free 'lofi rain piano' tracks",
+          "scene_sync_notes": "Rain texture adds emotional depth to Scene 4 bridge"
+        }
+      ]
+    }
+  },
+  "audio_rules": {
+    "format": "MP3 at 128kbps (or Opus/AAC if browser support allows)",
+    "max_file_size": "500KB ideal, 1MB maximum",
+    "loading": "preload='none' — only load after user clicks Begin",
+    "volume": "Start at 50%, provide mute toggle",
+    "looping": "Loop audio by default (loop attribute on audio element)",
+    "user_gesture": "ALWAYS require explicit user click/tap before playing",
+    "fallback": "If audio fails to load, degrade gracefully — the story works without sound"
+  },
+  "copyright_handling": {
+    "user_names_copyrighted_song": "Use it as MOOD REFERENCE only. Match the emotional arc (tempo, build, drop) in the scene pacing. Suggest a royalty-free alternative for actual audio.",
+    "user_has_own_audio": "They can place it in assets/music.mp3. Remind them about copyright if it's a commercial track.",
+    "no_song_provided": "Default to 'calm_dreamy' category suggestion based on relationship stage and color preference."
+  }
+}

@@ -1,0 +1,285 @@
+#!/usr/bin/env bash
+# verify.sh — Deterministic verification checks for ANCHOR projects
+# Usage: bash verify.sh [project-root]
+# Exit code: 0 = all checks pass, 1 = one or more checks failed
+#
+# Checks:
+#   1. JSON syntax validation (all .json files via jq)
+#   2. Bash syntax validation (all .sh files via bash -n)
+#   3. SKILL.md frontmatter validation (name + description required)
+#   4. state.json schema validation (required fields present)
+#   5. File structure validation (expected dirs exist)
+#   6. Checkpoint consistency (completed milestones have VERIFY entries)
+#
+# Zero external dependencies beyond jq (standard on most systems).
+
+set -euo pipefail
+
+if ! command -v jq >/dev/null 2>&1; then
+  echo "RESULT: FAIL — jq is missing. It is required for JSON verification."
+  exit 1
+fi
+
+ROOT="${1:-.}"
+ROOT=$(cd "$ROOT" && pwd)
+
+# Helper: find files only within ANCHOR-relevant paths
+# (project root files + .agents/ tree). Skips sibling reference repos.
+anchor_find() {
+  local pattern="$1"
+  # Search entire project excluding .git, node_modules, and eval_fixtures
+  find "$ROOT" -type f -name "$pattern" ! -path '*/.git/*' ! -path '*/node_modules/*' ! -path '*/.agents/eval_fixtures/*' 2>/dev/null | sort
+}
+
+PASS=0
+FAIL=0
+TOTAL=0
+
+check() {
+  local name="$1"
+  local result="$2"  # 0 = pass, nonzero = fail
+  local detail="$3"
+  TOTAL=$((TOTAL + 1))
+  if [ "$result" -eq 0 ]; then
+    PASS=$((PASS + 1))
+    echo "  PASS: $name"
+  else
+    FAIL=$((FAIL + 1))
+    echo "  FAIL: $name — $detail"
+  fi
+}
+
+echo "=== ANCHOR Verification Checks ==="
+echo "Project root: $ROOT"
+echo ""
+
+# --- CHECK 1: JSON syntax validation ---
+echo "--- Check 1: JSON syntax ---"
+json_fail=0
+json_detail=""
+while IFS= read -r jsonfile; do
+  [ -z "$jsonfile" ] && continue
+  relpath="${jsonfile#"$ROOT"/}"
+  if ! jq . "$jsonfile" > /dev/null 2>&1; then
+    json_fail=1
+    json_detail="$json_detail $relpath"
+  else
+    echo "  valid: $relpath"
+  fi
+done <<< "$(anchor_find "*.json")"
+check "JSON syntax (all .json files)" "$json_fail" "invalid files:$json_detail"
+
+echo ""
+
+# --- CHECK 2: Bash syntax validation ---
+echo "--- Check 2: Bash syntax ---"
+sh_fail=0
+sh_detail=""
+while IFS= read -r shfile; do
+  [ -z "$shfile" ] && continue
+  relpath="${shfile#"$ROOT"/}"
+  if ! bash -n "$shfile" 2>/dev/null; then
+    sh_fail=1
+    sh_detail="$sh_detail $relpath"
+  else
+    echo "  valid: $relpath"
+  fi
+done <<< "$(anchor_find "*.sh")"
+
+if [ -z "$(anchor_find "*.sh")" ]; then
+  echo "  (no .sh files found — skipping)"
+  check "Bash syntax (all .sh files)" 0 ""
+else
+  check "Bash syntax (all .sh files)" "$sh_fail" "invalid files:$sh_detail"
+fi
+
+echo ""
+
+# --- CHECK 3: SKILL.md frontmatter validation ---
+echo "--- Check 3: SKILL.md frontmatter ---"
+skill_fail=0
+skill_detail=""
+while IFS= read -r skillfile; do
+  [ -z "$skillfile" ] && continue
+  relpath="${skillfile#"$ROOT"/}"
+  # Check for YAML frontmatter with name and description
+  has_frontmatter=$(head -1 "$skillfile" | grep -c "^---" || true)
+  has_name=$(grep -c "^name:" "$skillfile" || true)
+  has_desc=$(grep -c "^description:" "$skillfile" || true)
+
+  if [ "$has_frontmatter" -eq 0 ]; then
+    skill_fail=1
+    skill_detail="$skill_detail $relpath(no-frontmatter)"
+  elif [ "$has_name" -eq 0 ]; then
+    skill_fail=1
+    skill_detail="$skill_detail $relpath(no-name)"
+  elif [ "$has_desc" -eq 0 ]; then
+    skill_fail=1
+    skill_detail="$skill_detail $relpath(no-description)"
+  else
+    echo "  valid: $relpath"
+  fi
+done <<< "$(find "$ROOT/.agents/skills" -name "SKILL.md" -type f 2>/dev/null | sort)"
+check "SKILL.md frontmatter (name + description)" "$skill_fail" "invalid:$skill_detail"
+
+echo ""
+
+# --- CHECK 4: state.json schema validation ---
+echo "--- Check 4: state.json schema ---"
+STATE_FILE="$ROOT/.agents/state/state.json"
+if [ -f "$STATE_FILE" ]; then
+  schema_fail=0
+  schema_detail=""
+
+  # Required fields (15 total)
+  for field in project current_gate current_milestone iteration iteration_cap token_budget max_cost_usd max_wall_clock_minutes tokens_used no_progress_strikes hitl_approvals last_updated last_known_commit last_known_commit_COMPACT skill_versions; do
+    if ! jq -e "has(\"$field\")" "$STATE_FILE" > /dev/null 2>&1; then
+      schema_fail=1
+      schema_detail="$schema_detail missing:$field"
+    fi
+  done
+
+  # Type checks
+  iter=$(jq -r '.iteration' "$STATE_FILE" 2>/dev/null)
+  if ! [[ "$iter" =~ ^[0-9]+$ ]]; then
+    schema_fail=1
+    schema_detail="$schema_detail iteration-not-integer"
+  fi
+
+  cap=$(jq -r '.iteration_cap' "$STATE_FILE" 2>/dev/null)
+  if ! [[ "$cap" =~ ^[0-9]+$ ]]; then
+    schema_fail=1
+    schema_detail="$schema_detail iteration_cap-not-integer"
+  fi
+
+  if [ "$schema_fail" -eq 0 ]; then
+    echo "  all required fields present with correct types"
+  fi
+  check "state.json schema" "$schema_fail" "$schema_detail"
+else
+  check "state.json schema" 1 "state.json not found"
+fi
+
+echo ""
+
+# --- CHECK 5: File structure validation ---
+echo "--- Check 5: File structure ---"
+struct_fail=0
+struct_detail=""
+for dir in ".agents/state" ".agents/state/checkpoints" ".agents/state/decisions" ".agents/skills"; do
+  if [ -d "$ROOT/$dir" ]; then
+    echo "  exists: $dir/"
+  else
+    struct_fail=1
+    struct_detail="$struct_detail missing:$dir/"
+  fi
+done
+for file in "AGENTS.md" ".agents/state/state.json" ".agents/state/CURRENT.md" ".agents/state/context-graph.json" ".agents/config.json"; do
+  if [ -f "$ROOT/$file" ]; then
+    echo "  exists: $file"
+  else
+    struct_fail=1
+    struct_detail="$struct_detail missing:$file"
+  fi
+done
+check "File structure (expected dirs + files)" "$struct_fail" "$struct_detail"
+
+echo ""
+
+# --- CHECK 6: Checkpoint consistency ---
+echo "--- Check 6: Checkpoint consistency ---"
+cp_fail=0
+cp_detail=""
+# Check that completed milestones (those with 'status': 'COMPLETE') have 'verified': true
+while IFS= read -r cpfile; do
+  [ -z "$cpfile" ] && continue
+  relpath="${cpfile#"$ROOT"/}"
+  
+  json_blocks=$(awk '/^```json/{flag=1; next} /^```/{flag=0; next} flag' "$cpfile")
+  has_complete=0
+  has_verify=0
+  
+  if [ -n "$json_blocks" ]; then
+    while IFS= read -r json_obj; do
+      [ -z "$json_obj" ] && continue
+      status=$(echo "$json_obj" | jq -r '.status // empty' 2>/dev/null || echo "")
+      verified=$(echo "$json_obj" | jq -r '.verified // empty' 2>/dev/null || echo "")
+      if [ "$status" = "COMPLETE" ]; then has_complete=1; fi
+      if [ "$verified" = "true" ]; then has_verify=1; fi
+    done <<< "$(echo "$json_blocks" | jq -c '.' 2>/dev/null || echo "")"
+  fi
+  
+  if [ "$has_complete" -eq 1 ]; then
+    if [ "$has_verify" -eq 0 ]; then
+      cp_fail=1
+      cp_detail="$cp_detail $relpath(complete-but-no-verify)"
+    else
+      echo "  consistent: $relpath"
+    fi
+  else
+    echo "  in-progress: $relpath"
+  fi
+done <<< "$(find "$ROOT/.agents/state/checkpoints" -name "*.md" ! -name ".gitkeep" -type f 2>/dev/null | sort)"
+
+if [ -z "$(find "$ROOT/.agents/state/checkpoints" -name "*.md" ! -name ".gitkeep" -type f 2>/dev/null)" ]; then
+  echo "  (no checkpoints found — skipping)"
+fi
+check "Checkpoint consistency" "$cp_fail" "$cp_detail"
+
+echo ""
+
+# --- CHECK 7: TDD Gate Enforcement ---
+echo "--- Check 7: TDD Gate Enforcement ---"
+tdd_fail=0
+tdd_detail=""
+while IFS= read -r cpfile; do
+  [ -z "$cpfile" ] && continue
+  relpath="${cpfile#"$ROOT"/}"
+  
+  json_blocks=$(awk '/^```json/{flag=1; next} /^```/{flag=0; next} flag' "$cpfile")
+  has_implement=0
+  has_tdd=0
+  
+  if [ -n "$json_blocks" ]; then
+    while IFS= read -r json_obj; do
+      [ -z "$json_obj" ] && continue
+      gate=$(echo "$json_obj" | jq -r '.gate // empty' 2>/dev/null || echo "")
+      tdd=$(echo "$json_obj" | jq -r '.tdd_evidence // empty' 2>/dev/null || echo "")
+      if [ "$gate" = "IMPLEMENT" ]; then
+        has_implement=1
+        if [ -n "$tdd" ] && [ "$tdd" != "null" ]; then has_tdd=1; fi
+      fi
+    done <<< "$(echo "$json_blocks" | jq -c '.' 2>/dev/null || echo "")"
+  fi
+  
+  if [ "$has_implement" -eq 1 ]; then
+    if [ "$has_tdd" -eq 0 ]; then
+      tdd_fail=1
+      tdd_detail="$tdd_detail $relpath(missing-tdd-evidence)"
+    else
+      echo "  TDD evidence found: $relpath"
+    fi
+  else
+    echo "  no IMPLEMENT blocks: $relpath"
+  fi
+done <<< "$(find "$ROOT/.agents/state/checkpoints" -name "*.md" ! -name ".gitkeep" -type f 2>/dev/null | sort)"
+
+if [ -z "$(find "$ROOT/.agents/state/checkpoints" -name "*.md" ! -name ".gitkeep" -type f 2>/dev/null)" ]; then
+  echo "  (no checkpoints found — skipping)"
+fi
+check "TDD Gate Enforcement (tdd_failure_evidence required)" "$tdd_fail" "$tdd_detail"
+
+echo ""
+
+# --- Summary ---
+echo "=== Summary ==="
+echo "Total: $TOTAL checks, $PASS passed, $FAIL failed"
+echo ""
+
+if [ "$FAIL" -gt 0 ]; then
+  echo "RESULT: FAIL"
+  exit 1
+else
+  echo "RESULT: PASS"
+  exit 0
+fi

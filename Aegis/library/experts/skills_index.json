@@ -1,0 +1,255 @@
+{
+  "total": 50,
+  "skills": [
+    {
+      "name": "advanced-evaluation",
+      "path": "library/engine/skills/advanced-evaluation/SKILL.md",
+      "description": "Use when the user asks to implement LLM-as-judge, compare model outputs, create evaluation rubrics, mitigate evaluation bias, or run automated quality assessments on generated outputs. Covers direct s"
+    },
+    {
+      "name": "architecture-c4-model",
+      "path": "library/engine/skills/architecture-c4-model/SKILL.md",
+      "description": "Generate comprehensive C4 architecture documentation for a system. Focuses on Context, Container, and Component levels."
+    },
+    {
+      "name": "architecture-database-design",
+      "path": "library/engine/skills/architecture-database-design/SKILL.md",
+      "description": "Master of PostgreSQL schema design, optimization, and safe migrations. Enforces strict conventions for IDs, indexes, JSONB, and transactional DDL. Use whenever modifying the data layer."
+    },
+    {
+      "name": "architecture-frontend-design",
+      "path": "library/engine/skills/architecture-frontend-design/SKILL.md",
+      "description": "Master of Frontend Design and UI/UX architecture. Enforces DFII, aesthetic intentionality, and usability standards. Use when planning layouts, themes, or UI components."
+    },
+    {
+      "name": "architecture-python-backend",
+      "path": "library/engine/skills/architecture-python-backend/SKILL.md",
+      "description": "Master of Python backend architecture. Enforces layered architecture, BFRI risk assessment, and strict error boundaries. Use when designing or reviewing core Python backend services."
+    },
+    {
+      "name": "architecture-react-nextjs",
+      "path": "library/engine/skills/architecture-react-nextjs/SKILL.md",
+      "description": "Master of React and Next.js performance and rendering architecture. Enforces server/client boundaries, waterfall elimination, and render optimization."
+    },
+    {
+      "name": "attune-task-bridge",
+      "path": "library/engine/skills/attune-task-bridge/SKILL.md",
+      "description": ""
+    },
+    {
+      "name": "brainstorming",
+      "path": "library/engine/skills/brainstorming/SKILL.md",
+      "description": "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation."
+    },
+    {
+      "name": "brainstorming-designs",
+      "path": "library/engine/skills/brainstorming-designs/SKILL.md",
+      "description": "Master of turning ideas into fully formed designs and specs through natural collaborative dialogue. Use this BEFORE any creative work (building features, modifying behavior). Relevant keywords: brains"
+    },
+    {
+      "name": "code-review-excellence",
+      "path": "library/engine/skills/code-review-excellence/SKILL.md",
+      "description": "Master effective code review practices to provide constructive feedback and catch bugs early. Use this skill when reviewing pull requests, auditing code for security, or evaluating architectural choic"
+    },
+    {
+      "name": "core-skill-obedience",
+      "path": "library/engine/skills/core-skill-obedience/SKILL.md",
+      "description": "Master rule for skill usage. Prevents rationalization and enforces strict adherence to all existing skills. Triggers on any task, question, or action."
+    },
+    {
+      "name": "design-system-architect",
+      "path": "library/engine/skills/design-system-architect/SKILL.md",
+      "description": "Master of creating Semantic Design Systems into DESIGN.md files based on references or mockups. Useful for UI/UX standardization."
+    },
+    {
+      "name": "devops-docker-architect",
+      "path": "library/engine/skills/devops-docker-architect/SKILL.md",
+      "description": "Implementation of DevOps tasks, Docker containerization, CI/CD pipelines, and infrastructure management. Use this skill when writing Dockerfiles, docker-compose.yml files, configuring deployment pipel"
+    },
+    {
+      "name": "elite-agent-memory-system",
+      "path": "library/engine/skills/elite-agent-memory-system/SKILL.md",
+      "description": "Master of building, using, and managing persistent agent memory systems with MCP integration. Enforces the use of antigravity-memory tools."
+    },
+    {
+      "name": "elite-database-architect",
+      "path": "library/engine/skills/elite-database-architect/SKILL.md",
+      "description": "PostgreSQL, schema design, migrations, and optimization. Use for all database architecture and query optimization."
+    },
+    {
+      "name": "elite-devops-architect",
+      "path": "library/engine/skills/elite-devops-architect/SKILL.md",
+      "description": "Docker, K8s, CI/CD, and Terraform. Use when deploying infrastructure, pipelines, or containerization."
+    },
+    {
+      "name": "elite-frontend-architect",
+      "path": "library/engine/skills/elite-frontend-architect/SKILL.md",
+      "description": "The absolute authority on React, Next.js, UI/UX, Tailwind, and Frontend Performance. Merged from 13+ specialized skills. Use for all frontend, styling, and UI architecture tasks."
+    },
+    {
+      "name": "elite-python-architect",
+      "path": "library/engine/skills/elite-python-architect/SKILL.md",
+      "description": "Master of Python, FastAPI, asyncio, design patterns, and distributed backend architecture."
+    },
+    {
+      "name": "elite-qa-architect",
+      "path": "library/engine/skills/elite-qa-architect/SKILL.md",
+      "description": "Master of TDD, E2E (Playwright/Cypress), Integration testing, and Bug hunting."
+    },
+    {
+      "name": "elite-skill-architect",
+      "path": "library/engine/skills/elite-skill-architect/SKILL.md",
+      "description": "The definitive meta-skill for creating, testing, optimizing, and managing AI agent skills. Use when the user wants to create a new skill, build a skill, improve an existing skill, debug skill triggers"
+    },
+    {
+      "name": "expert-dev",
+      "path": "library/engine/skills/expert-dev/SKILL.md",
+      "description": "Dev Expert for code implementation, refactoring, code reviews, debugging, and feature development. Triggers: implement, code, refactor, debug, feature, function, class, module, component, bugfix, opti"
+    },
+    {
+      "name": "expert-devops",
+      "path": "library/engine/skills/expert-devops/SKILL.md",
+      "description": "DevOps Expert for CI/CD pipelines, Docker, deployment, infrastructure, monitoring, and cloud operations. Triggers: deploy, CI/CD, pipeline, docker, kubernetes, infrastructure, monitoring, terraform, a"
+    },
+    {
+      "name": "expert-orchestrator",
+      "path": "library/engine/skills/expert-orchestrator/SKILL.md",
+      "description": "Orchestrator Expert for coordinating multi-agent workflows, delegating tasks, integrating results, and managing the swarm. CRITICAL: Swarm costs ~15\u00d7 more tokens than single agent - use ONLY for compl"
+    },
+    {
+      "name": "expert-product-manager",
+      "path": "library/engine/skills/expert-product-manager/SKILL.md",
+      "description": "Senior PM agent with frameworks, SaaS metrics, and strategic project planning. Use this when starting a software project, defining vision, creating PRDs, evaluating market opportunity, or prioritizing"
+    },
+    {
+      "name": "expert-product-owner",
+      "path": "library/engine/skills/expert-product-owner/SKILL.md",
+      "description": "Product Owner Expert for user stories, acceptance criteria, backlog prioritization, and stakeholder communication. Triggers: user story, acceptance criteria, prioritize, backlog, feature request, stak"
+    },
+    {
+      "name": "expert-qa-engineer",
+      "path": "library/engine/skills/expert-qa-engineer/SKILL.md",
+      "description": "QA Engineer Expert for test strategy, test planning, coverage goals, QA gates, and quality metrics. Triggers: test strategy, QA plan, coverage goal, quality gate, test pyramid, regression, test planni"
+    },
+    {
+      "name": "expert-qa-test",
+      "path": "library/engine/skills/expert-qa-test/SKILL.md",
+      "description": "QA Test Expert for test implementation, automation, Playwright/Cypress, test data, and test execution. Uses Factory Pattern for maintainable tests. Triggers: implement test, test automation, playwrigh"
+    },
+    {
+      "name": "expert-tech-architect",
+      "path": "library/engine/skills/expert-tech-architect/SKILL.md",
+      "description": "Tech Architect Expert for system design, technology decisions, ADRs, API design, and database architecture. Triggers: architecture, system design, tech stack, ADR, pattern, schema design, API design, "
+    },
+    {
+      "name": "mcp-builder",
+      "path": "library/engine/skills/mcp-builder/SKILL.md",
+      "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate externa"
+    },
+    {
+      "name": "notebooklm-researcher",
+      "path": "library/engine/skills/notebooklm-researcher/SKILL.md",
+      "description": "Provides methodologies for using the NotebookLM MCP integration for project research, literature reviews, and deep domain analysis."
+    },
+    {
+      "name": "openapi-spec-generation",
+      "path": "library/engine/skills/openapi-spec-generation/SKILL.md",
+      "description": "Generate and maintain OpenAPI 3.1 specifications from code, design-first specs, and validation patterns. Use when creating API documentation, generating SDKs, or ensuring API contract compliance."
+    },
+    {
+      "name": "openspec-apply-change",
+      "path": "library/engine/skills/openspec-apply-change/SKILL.md",
+      "description": "Implement tasks from an OpenSpec change. Use when the user wants to start implementing, continue implementation, or work through tasks."
+    },
+    {
+      "name": "openspec-archive-change",
+      "path": "library/engine/skills/openspec-archive-change/SKILL.md",
+      "description": "Archive a completed change in the experimental workflow. Use when the user wants to finalize and archive a change after implementation is complete."
+    },
+    {
+      "name": "openspec-explore",
+      "path": "library/engine/skills/openspec-explore/SKILL.md",
+      "description": "Enter explore mode - a thinking partner for exploring ideas, investigating problems, and clarifying requirements. Use when the user wants to think through something before or during a change."
+    },
+    {
+      "name": "openspec-propose",
+      "path": "library/engine/skills/openspec-propose/SKILL.md",
+      "description": "Propose a new change with all artifacts generated in one step. Use when the user wants to quickly describe what they want to build and get a complete proposal with design, specs, and tasks ready for i"
+    },
+    {
+      "name": "planning-with-files",
+      "path": "library/engine/skills/planning-with-files/SKILL.md",
+      "description": "Implements Manus-style file-based planning to organize and track progress on complex tasks. Creates and manages task_plan.md, findings.md, and progress.md. Use when asked to plan out, break down, or o"
+    },
+    {
+      "name": "process-project-development",
+      "path": "library/engine/skills/process-project-development/SKILL.md",
+      "description": "Master methodology for building LLM-integrated projects or complex data pipelines. Focuses on Pipeline Architecture, File System as State Machine, and Architectural Reduction. Use when designing new s"
+    },
+    {
+      "name": "process-systematic-debugging",
+      "path": "library/engine/skills/process-systematic-debugging/SKILL.md",
+      "description": "Master rule for debugging and fixing issues. Enforces the 4-phase root cause analysis process, backward tracing, defense-in-depth validation, and condition-based waiting for flaky tests. Prevents gues"
+    },
+    {
+      "name": "process-verify-completion",
+      "path": "library/engine/skills/process-verify-completion/SKILL.md",
+      "description": "Master rule for verification. Prevents claiming a task is complete, a test passes, or a bug is fixed without providing direct, fresh empirical evidence (command output). Triggers before any PR, commit"
+    },
+    {
+      "name": "process-writing-plans",
+      "path": "library/engine/skills/process-writing-plans/SKILL.md",
+      "description": "Master of creating detailed, bite-sized implementation plans. Enforces TDD, specific file paths, and strict task granularity. Use before touching code when solving complex problems or implementing new"
+    },
+    {
+      "name": "qa-tdd-architect",
+      "path": "library/engine/skills/qa-tdd-architect/SKILL.md",
+      "description": "Master of Test-Driven Development (TDD), writing tests, Systematic Debugging, and fixing failing tests. Use this skill when asked to write tests, fix a bug, debug a complex issue, or ensure code quali"
+    },
+    {
+      "name": "rag-implementation",
+      "path": "library/engine/skills/rag-implementation/SKILL.md",
+      "description": "Build Retrieval-Augmented Generation (RAG) systems for LLM applications with vector databases and semantic search. Use when implementing knowledge-grounded AI, building document Q&A systems, or integr"
+    },
+    {
+      "name": "skill-creator",
+      "path": "library/engine/skills/skill-creator/SKILL.md",
+      "description": "The definitive meta-skill for creating, testing, optimizing, and managing AI agent skills. Use when the user wants to create a new skill, build a skill, improve an existing skill, debug skill triggers"
+    },
+    {
+      "name": "subagent-driven-development",
+      "path": "library/engine/skills/subagent-driven-development/SKILL.md",
+      "description": "Use when executing implementation plans with massive, independent tasks in the current session. Dispatches background actions or subagents to parallelize work and implements a two-stage spec & quality"
+    },
+    {
+      "name": "using-git-worktrees",
+      "path": "library/engine/skills/using-git-worktrees/SKILL.md",
+      "description": "Use when starting feature work that needs isolation from the current workspace, or before executing major implementation plans. Creates isolated git worktrees with smart directory selection, ensuring "
+    },
+    {
+      "name": "vercel-composition-patterns",
+      "path": "library/engine/skills/vercel-composition-patterns/SKILL.md",
+      "description": "React and Next.js composition patterns that scale. Use when refactoring components with boolean prop proliferation, building flexible component libraries, designing reusable APIs, or applying Next.js/"
+    },
+    {
+      "name": "vibe-code-auditor",
+      "path": "library/engine/skills/vibe-code-auditor/SKILL.md",
+      "description": "Audit rapidly generated or AI-produced code for structural flaws, fragility, technical debt, and production risks. Automatically triggers before merging large features or concluding deep implementatio"
+    },
+    {
+      "name": "web-interface-guidelines",
+      "path": "library/engine/skills/web-interface-guidelines/SKILL.md",
+      "description": "Master of Web Interface Guidelines and high-craft Frontend Aesthetics. Enforces Vercel UI rules (Accessibility, Focus, Forms) and uncompromising, bold design directions (no generic AI aesthetics). Use"
+    },
+    {
+      "name": "webapp-testing",
+      "path": "library/engine/skills/webapp-testing/SKILL.md",
+      "description": "Use when executing E2E tests, interacting with local web applications, capturing browser screenshots, or writing Playwright automation scripts. Highly useful for frontend UI validation."
+    },
+    {
+      "name": "writing-clearly-and-concisely",
+      "path": "library/engine/skills/writing-clearly-and-concisely/SKILL.md",
+      "description": "Write with clarity and force. Covers Strunk's Elements of Style and avoids common AI writing patterns (\"puffery\", \"delve\", \"leverage\"). Use when writing documentation, commits, UI copy, or any prose f"
+    }
+  ]
+}

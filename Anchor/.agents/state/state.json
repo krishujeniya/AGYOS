@@ -1,0 +1,25 @@
+{
+  "project": "New ANCHOR Project",
+  "current_gate": null,
+  "current_milestone": null,
+  "iteration": 0,
+  "iteration_cap": 10,
+  "token_budget": 50000,
+  "max_cost_usd": 10.0,
+  "max_wall_clock_minutes": 60,
+  "tokens_used": 0,
+  "no_progress_strikes": 0,
+  "hitl_approvals": {},
+  "last_updated": "2026-07-25T05:20:45Z",
+  "last_known_commit": "8cfd812c1b4d2f3757d22a904ea3e40c708b109c",
+  "last_known_commit_COMPACT": null,
+  "skill_versions": {
+    "anchor-draft-commit": "1.1.0",
+    "anchor-graph": "1.1.0",
+    "anchor-orchestrator": "1.1.0",
+    "anchor-preflight": "1.1.0",
+    "anchor-scope": "1.1.0",
+    "anchor-scout": "1.1.0",
+    "anchor-verify": "1.1.0"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "version": "1.0",
+  "description": "ScrollHeart typography pairings by personality type. All fonts from Google Fonts with Open Font License (OFL).",
+  "pairings": {
+    "playful_personal": {
+      "name": "Playful & Personal",
+      "feeling": "Handwritten warmth, like a note passed in class",
+      "trigger_words": ["funny", "bubbly", "playful", "cheerful", "goofy", "energetic", "lively"],
+      "display_font": {
+        "family": "Dancing Script",
+        "category": "handwriting",
+        "weights": [400, 600, 700],
+        "google_url": "https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap"
+      },
+      "body_font": {
+        "family": "Inter",
+        "category": "sans-serif",
+        "weights": [300, 400, 600],
+        "google_url": "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      },
+      "combined_url": "https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Inter:wght@300;400;600&display=swap",
+      "css_declaration": {
+        "display": "'Dancing Script', cursive",
+        "body": "'Inter', sans-serif"
+      }
+    },
+    "gentle_intimate": {
+      "name": "Gentle & Intimate",
+      "feeling": "Elegant script, like a love letter on fine paper",
+      "trigger_words": ["kind", "warm", "gentle", "sweet", "caring", "soft", "tender"],
+      "display_font": {
+        "family": "Great Vibes",
+        "category": "handwriting",
+        "weights": [400],
+        "google_url": "https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
+      },
+      "body_font": {
+        "family": "Lora",
+        "category": "serif",
+        "weights": [300, 400, 600],
+        "google_url": "https://fonts.googleapis.com/css2?family=Lora:wght@300;400;600&display=swap"
+      },
+      "combined_url": "https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:wght@300;400;600&display=swap",
+      "css_declaration": {
+        "display": "'Great Vibes', cursive",
+        "body": "'Lora', serif"
+      }
+    },
+    "cinematic_poetic": {
+      "name": "Cinematic & Poetic",
+      "feeling": "Dramatic serif, like opening credits of an art film",
+      "trigger_words": ["mysterious", "deep", "quiet", "intense", "artistic", "poetic", "dark"],
+      "display_font": {
+        "family": "Cinzel",
+        "category": "serif",
+        "weights": [400, 600, 700],
+        "google_url": "https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap"
+      },
+      "body_font": {
+        "family": "Source Sans 3",
+        "category": "sans-serif",
+        "weights": [300, 400, 600],
+        "google_url": "https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600&display=swap"
+      },
+      "combined_url": "https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap",
+      "css_declaration": {
+        "display": "'Cinzel', serif",
+        "body": "'Source Sans 3', sans-serif"
+      }
+    },
+    "sophisticated_thoughtful": {
+      "name": "Sophisticated & Thoughtful",
+      "feeling": "Editorial elegance, like a beautifully typeset book",
+      "trigger_words": ["smart", "calm", "thoughtful", "elegant", "mature", "intellectual", "reserved"],
+      "display_font": {
+        "family": "Playfair Display",
+        "category": "serif",
+        "weights": [400, 600, 700],
+        "google_url": "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap"
+      },
+      "body_font": {
+        "family": "Open Sans",
+        "category": "sans-serif",
+        "weights": [300, 400, 600],
+        "google_url": "https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap"
+      },
+      "combined_url": "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap",
+      "css_declaration": {
+        "display": "'Playfair Display', serif",
+        "body": "'Open Sans', sans-serif"
+      }
+    }
+  },
+  "font_rules": {
+    "loading": "Always use display=swap to prevent invisible text during loading",
+    "weights": "Load max 3 weights per font (light 300, regular 400, semibold 600)",
+    "subsetting": "For static text, subset with &text= parameter to reduce payload",
+    "licensing": "All fonts must be Google Fonts with Open Font License (OFL)",
+    "fallback_stack": {
+      "handwriting": "cursive",
+      "serif": "Georgia, 'Times New Roman', serif",
+      "sans-serif": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+    }
+  }
+}

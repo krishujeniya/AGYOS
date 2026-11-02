@@ -1,0 +1,43 @@
+{
+  "name": "anchor-agent",
+  "version": "1.2.1",
+  "description": "A production-grade agentic development spine for agent-first IDEs.",
+  "main": "bin/cli.js",
+  "bin": {
+    "anchor-agent": "bin/cli.js"
+  },
+  "files": [
+    "bin",
+    ".agents/skills",
+    ".agents/rules",
+    ".agents/config.json",
+    ".agents/VERSION",
+    "dashboard",
+    "AGENTS.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "test": "bats tests/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krishujeniya/Anchor.git"
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "governance",
+    "claude-code",
+    "cursor"
+  ],
+  "author": "krishujeniya",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/krishujeniya/Anchor/issues"
+  },
+  "homepage": "https://github.com/krishujeniya/Anchor#readme"
+}

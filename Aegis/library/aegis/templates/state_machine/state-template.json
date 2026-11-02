@@ -1,0 +1,20 @@
+{
+  "project": "",
+  "current_gate": 1,
+  "current_task": 0,
+  "total_tasks": 0,
+  "started_at": "",
+  "last_updated": "",
+  "completed_gates": [],
+  "hitl_approvals": {
+    "gate_1": null,
+    "gate_2": null,
+    "gate_3": null,
+    "gate_4_skipped": true,
+    "gate_5": null
+  },
+  "security_audit": {
+    "red_team_cleared": false,
+    "last_scan_timestamp": null
+  }
+}

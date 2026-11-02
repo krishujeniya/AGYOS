@@ -1,0 +1,14 @@
+{
+  "name": "aegis",
+  "version": "2.0.0",
+  "description": "Aegis: Production-grade skill system for autonomous AI coding agents",
+  "private": true,
+  "keywords": [
+    "aegis",
+    "ai-agent",
+    "skills",
+    "autonomous-development"
+  ],
+  "author": "Krish Ujeniya",
+  "license": "MIT"
+}

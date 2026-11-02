@@ -1,0 +1,39 @@
+name: ANCHOR Nightly Chaos
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  chaos:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y jq
+
+    - name: Run ANCHOR Initialization
+      run: bash bin/init.sh
+
+    - name: Run State Chaos Injection (state mode)
+      run: bash bin/chaos-inject.sh --mode state
+    - name: Run Validate and Repair State
+      run: bash bin/state-validate.sh
+
+    - name: Run Drift Chaos Injection (drift mode)
+      run: bash bin/chaos-inject.sh --mode drift
+
+    - name: Rollback Drifted/Corrupted State
+      run: bash bin/rollback.sh
+
+    - name: Evaluate Post-Chaos Consistency
+      run: bash bin/eval.sh
+
+    - name: Upload logs on failure
+      if: failure()
+      uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08 # v4.6.0
+      with:
+        name: chaos-failure-logs
+        path: .agents/state/

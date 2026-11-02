@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    
+    <!-- SEO Optimization -->
+    <title>Aegis // Cosmic Documentation</title>
+    <meta name="description" content="A production-grade skill system of 1,600+ skills organized across expert roles, core workflows, and community contributions for autonomous AI coding agents." />
+    <meta name="keywords" content="AI, aegis, coding agents, autonomous development, 5-gate workflow, software engineering, developer swarm" />
+    <meta name="author" content="krishujeniya" />
+    <meta property="og:title" content="Aegis // Cosmic Docs" />
+    <meta property="og:description" content="A production-grade skill system of 1,600+ skills organized across expert roles, core workflows, and community contributions for autonomous AI coding agents." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="multiverse_gateway.png" />
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "bg-void": "#000000",
+                        "surface-dark": "#0a0a0a",
+                        "border-dark": "#1a1a1a",
+                        "text-primary": "#ffffff",
+                        "text-secondary": "#888888",
+                        "accent-white": "#ffffff"
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { 
+            background-color: #000000; 
+            color: #ffffff; 
+            overflow-x: hidden; 
+            transition: background-color 0.6s cubic-bezier(0.85, 0, 0.15, 1), color 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+        }
+        
+        .glass-nav { 
+            background: rgba(0, 0, 0, 0.75); 
+            backdrop-filter: blur(12px); 
+            border-bottom: 1px solid #1a1a1a; 
+            transition: all 0.6s ease;
+        }
+        
+        /* Mirror Dimension CSS */
+        body.mirror-dimension {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+        }
+        body.mirror-dimension .glass-nav {
+            background: rgba(255, 255, 255, 0.75) !important;
+            border-bottom: 1px solid #e2e2e2 !important;
+        }
+        body.mirror-dimension .skill-card {
+            background: #fafafa !important;
+            border-color: #e5e7eb !important;
+        }
+        body.mirror-dimension .skill-card:hover {
+            border-color: #000000 !important;
+        }
+        body.mirror-dimension .text-secondary {
+            color: #555555 !important;
+        }
+        body.mirror-dimension .bg-surface-dark {
+            background-color: #f9fafb !important;
+        }
+        body.mirror-dimension .border-dark {
+            border-color: #e5e7eb !important;
+        }
+        body.mirror-dimension .bg-surface-container-lowest {
+            background-color: #f3f4f6 !important;
+        }
+        body.mirror-dimension #starfield {
+            filter: invert(1);
+        }
+        body.mirror-dimension .bg-primary-inverted {
+            background-color: #000000 !important;
+            color: #ffffff !important;
+        }
+        body.mirror-dimension .border-outline-inverted {
+            border-color: #000000 !important;
+            color: #000000 !important;
+        }
+        
+        /* Starfield & Parallax */
+        #starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            background: #000000;
+            transition: background 0.6s ease;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+        }
+ 
+        /* Gravity Well */
+        .gravity-well-container {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .gravity-core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #000 35%, transparent 70%);
+            box-shadow: 0 0 100px 30px rgba(255, 255, 255, 0.05), inset 0 0 50px rgba(255, 255, 255, 0.15);
+        }
+        body.mirror-dimension .gravity-core {
+            background: radial-gradient(circle, #fff 35%, transparent 70%);
+            box-shadow: 0 0 100px 30px rgba(0, 0, 0, 0.05), inset 0 0 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Card spotlight effect */
+        .skill-card {
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 1px solid #1a1a1a;
+            background: #050505;
+        }
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.06) 0%, transparent 45%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .skill-card:hover::before {
+            opacity: 1;
+        }
+        .skill-card:hover {
+            border-color: #ffffff;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.05);
+            transform: translateY(-6px);
+        }
+        body.mirror-dimension .skill-card:hover {
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.05);
+        }
+ 
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Terminal styling */
+        .terminal-cursor { animation: blink 1.2s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+ 
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #222;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="font-body selection:bg-white selection:text-black">
+ 
+    <!-- Ambient Starfield -->
+    <div id="starfield"></div>
+ 
+    <!-- Navigation Header -->
+    <nav class="glass-nav fixed top-0 w-full z-50">
+        <div class="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
+            <a href="#" class="font-display text-lg md:text-xl font-bold tracking-tighter text-white hover:opacity-80 transition-opacity">
+                AEGIS // SYS.1600+
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8">
+                <a class="text-white hover:text-white font-mono text-xs tracking-wider transition-colors duration-300" href="#ecosystem" data-i18n="nav_ecosystem">Ecosystem</a>
+                <a class="text-text-secondary hover:text-white font-mono text-xs tracking-wider transition-colors duration-300" href="#guides" data-i18n="nav_guides">Integration</a>
+                <a class="text-text-secondary hover:text-white font-mono text-xs tracking-wider transition-colors duration-300" href="#walkthrough" data-i18n="nav_walkthrough">5-Gate Workflow</a>
+                <a class="text-text-secondary hover:text-white font-mono text-xs tracking-wider transition-colors duration-300" href="#simulator" data-i18n="nav_simulator">Simulator</a>
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <!-- Multiverse Dimension Toggle -->
+                <button onclick="toggleDimension()" id="dimension-toggle" class="flex items-center gap-2 border border-border-dark px-3 py-1 rounded-full font-mono text-xs text-text-secondary hover:text-white hover:border-white transition-all">
+                    <span class="material-symbols-outlined text-[14px]">filter_hdr</span>
+                    <span data-i18n="dimension_void">Void Dimension</span>
+                </button>
+ 
+                <!-- Language Switcher -->
+                <div class="flex gap-2 font-mono text-xs text-text-secondary">
+                    <button onclick="setLang('en')" id="lang-en" class="text-white font-bold transition-all">EN</button>
+                    <span class="opacity-30">/</span>
+                    <button onclick="setLang('ja')" id="lang-ja" class="hover:text-white transition-all">JA</button>
+                    <span class="opacity-30">/</span>
+                    <button onclick="setLang('hi')" id="lang-hi" class="hover:text-white transition-all">HI</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+ 
+    <!-- Main Content wrapper -->
+    <main class="pt-24">
+        
+        <!-- Hero Section (Void/Space Theme) -->
+        <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden px-6">
+            <div class="gravity-well-container">
+                <div class="gravity-core"></div>
+                <canvas class="w-full h-full" id="gravity-canvas"></canvas>
+            </div>
+            
+            <div class="relative z-10 text-center max-w-4xl mx-auto mt-12">
+                <span class="font-mono text-xs text-text-secondary tracking-[0.25em] mb-6 block uppercase" data-i18n="hero_subtitle">
+                    SYS.INIT // EXPLORE. ANALYZE. PLAN. IMPLEMENT. VERIFY.
+                </span>
+                <h1 class="font-display text-4xl md:text-6xl font-bold tracking-tight mb-8 leading-none text-white" data-i18n="hero_title">
+                    Production-Grade Skill System for AI Coding Agents
+                </h1>
+                <p class="font-body text-base md:text-lg text-text-secondary mb-12 max-w-2xl mx-auto" data-i18n="hero_desc">
+                    A framework of 1,600+ skills organized across expert swarm roles, core workflows, and quality rules to enable autonomous software development.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="https://github.com/krishujeniya/Aegis/archive/refs/heads/master.zip" class="w-full sm:w-auto bg-white text-black bg-primary-inverted font-display font-bold px-8 py-4 rounded-lg hover:opacity-90 transition-all active:scale-95 text-center flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined text-lg">download</span>
+                        <span data-i18n="hero_cta_zip">Download Skills (ZIP)</span>
+                    </a>
+                    <a href="#guides" class="w-full sm:w-auto border border-border-dark text-white border-outline-inverted font-display font-bold px-8 py-4 rounded-lg hover:bg-[#0a0a0a] transition-all active:scale-95 text-center flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined text-lg">integration_instructions</span>
+                        <span data-i18n="hero_cta_explore">Load in Agent</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+ 
+        <!-- Ecosystem Section -->
+        <section id="ecosystem" class="py-24 max-w-7xl mx-auto px-6 reveal">
+            <div class="mb-16 border-b border-border-dark pb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-2" data-i18n="eco_title">Ecosystem Matrix</h2>
+                    <p class="text-text-secondary font-mono text-xs tracking-wider" data-i18n="eco_desc">
+                        1,600+ skills organized across orchestrator gates, expert roles, and workflow modules.
+                    </p>
+                </div>
+                <span class="font-mono text-xs text-text-secondary">INDEX.v2.0.0</span>
+            </div>
+ 
+            <!-- 9 Skills Grid -->
+            <div id="skills" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Skill 1 -->
+                <a href="https://github.com/krishujeniya/Aegis/tree/master/library/aegis" target="_blank" class="skill-card p-8 rounded-2xl group flex flex-col justify-between min-h-[250px]">
+                    <div>
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="font-mono text-xs text-text-secondary">0x01</span>
+                            <span class="material-symbols-outlined text-white text-2xl group-hover:scale-110 transition-transform">hub</span>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-white mb-3" data-i18n="skills.identity.name">aegis-orchestrator</h3>
+                        <p class="text-text-secondary text-sm leading-relaxed" data-i18n="skills.identity.desc">
+                            Master 5-Gate controller managing the full project lifecycle from intent exploration to verification.
+                        </p>
+                    </div>
+                    <div class="mt-8 flex items-center gap-2 font-mono text-xs text-white opacity-45 group-hover:opacity-100 transition-opacity">
+                        <span>LOAD CODE</span>
+                        <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                    </div>
+                </a>
+ 
+                <!-- Skill 2 -->
+                <a href="https://github.com/krishujeniya/Aegis/tree/master/library/experts/skills" target="_blank" class="skill-card p-8 rounded-2xl group flex flex-col justify-between min-h-[250px]">
+                    <div>
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="font-mono text-xs text-text-secondary">0x02</span>
+                            <span class="material-symbols-outlined text-white text-2xl group-hover:scale-110 transition-transform">assignment</span>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-white mb-3" data-i18n="skills.acquisition.name">product-manager-swarm</h3>
+                        <p class="text-text-secondary text-sm leading-relaxed" data-i18n="skills.acquisition.desc">
+                            Expert roles managing user stories with Gherkin acceptance criteria, MoSCoW prioritization, and PRD vision.
+                        </p>
+                    </div>
+                    <div class="mt-8 flex items-center gap-2 font-mono text-xs text-white opacity-45 group-hover:opacity-100 transition-opacity">
+                        <span>LOAD CODE</span>
+                        <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                    </div>
+                </a>
+ 
+                <!-- Skill 3 -->
+                <a href="https://github.com/krishujeniya/Aegis/tree/master/library/experts/skills" target="_blank" class="skill-card p-8 rounded-2xl group flex flex-col justify-between min-h-[250px]">
+                    <div>
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="font-mono text-xs text-text-secondary">0x03</span>
+                            <span class="material-symbols-outlined text-white text-2xl group-hover:scale-110 transition-transform">architecture</span>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-white mb-3" data-i18n="skills.sales.name">tech-architect</h3>
+                        <p class="text-text-secondary text-sm leading-relaxed" data-i18n="skills.sales.desc">
+                            System design blueprints, Architecture Decision Records (ADRs), database schemas, and tool primitives.
+                        </p>
+                    </div>
+                    <div class="mt-8 flex items-center gap-2 font-mono text-xs text-white opacity-45 group-hover:opacity-100 transition-opacity">
+                        <span>LOAD CODE</span>
+                        <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                    </div>
+                </a>
+ 
+                <!-- Skill 4 -->
+                <a href="https://github.com/krishujeniya/Aegis/tree/master/library/experts/skills" target="_blank" class="skill-card p-8 rounded-2xl group flex flex-col justify-between min-h-[250px]">
+                    <div>
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="font-mono text-xs text-text-secondary">0x04</span>
+                            <span class="material-symbols-outlined text-white text-2xl group-hover:scale-110 transition-transform">code</span>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-white mb-3" data-i18n="skills.ops.name">developer-swarm</h3>
+                        <p class="text-text-secondary text-sm leading-relaxed" data-i18n="skills.ops.desc">
+                            High-fidelity engineering agents executing TDD red-green cycles, code refactoring, and SOLID principles.
+                        </p>
+                    </div>
+                    <div class="mt-8 flex items-center gap-2 font-mono text-xs text-white opacity-45 group-hover:opacity-100 transition-opacity">
+                        <span>LOAD CODE</span>
+                        <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                    </div>
+                </a>
+ 
+                <!-- Skill 5 -->
+                <a href="https://github.com/krishujeniya/Aegis/tree/master/library/experts/skills" target="_blank" class="skill-card p-8 rounded-2xl group flex flex-col justify-between min-h-[250px]">
+                    <div>
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="font-mono text-xs text-text-secondary">0x05</span>
+                            <span class="material-symbols-outlined text-white text-2xl group-hover:scale-110 transition-transform">rocket_launch</span>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-white mb-3" data-i18n="skills.delivery.name">devops-pipelines</h3>
+                        <p class="text-text-secondary text-sm leading-relaxed" data-i18n="skills.delivery.desc">
+                            Infrastructure configurations, CI/CD pipelines, Docker, Kubernetes orchestration, and automated packaging.
+                        </p>
+                    </div>
+                    <div class="mt-8 flex items-center gap-2 font-mono text-xs text-white opacity-45 group-hover:opacity-100 transition-opacity">
+                        <span>LOAD CODE</span>
+                        <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                    </div>
+                </a>
+ 
+                <!-- Skill 6 -->
+                <a href="https://github.com/krishujeniya/Aegis/tree/master/library/experts/skills" target="_blank" class="skill-card p-8 rounded-2xl group flex flex-col justify-between min-h-[250px]">
+                    <div>
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="font-mono text-xs text-text-secondary">0x06</span>
+                            <span class="material-symbols-outlined text-white text-2xl group-hover:scale-110 transition-transform">fact_check</span>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-white mb-3" data-i18n="skills.post.name">qa-validator</h3>
+                        <p class="text-text-secondary text-sm leading-relaxed" data-i18n="skills.post.desc">
+                            QA lead and tester agents verifying code changes, running test pyramids, and asserting test coverage.
+                        </p>
+                    </div>
+                    <div class="mt-8 flex items-center gap-2 font-mono text-xs text-white opacity-45 group-hover:opacity-100 transition-opacity">
+                        <span>LOAD CODE</span>
+                        <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                    </div>
+                </a>
+ 
+                <!-- Skill 7 -->
+                <a href="https://github.com/krishujeniya/Aegis/tree/master/library/experts/rules" target="_blank" class="skill-card p-8 rounded-2xl group flex flex-col justify-between min-h-[250px]">
+                    <div>
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="font-mono text-xs text-text-secondary">0x07</span>
+                            <span class="material-symbols-outlined text-white text-2xl group-hover:scale-110 transition-transform">gavel</span>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-white mb-3" data-i18n="skills.emergency.name">quality-rules</h3>
+                        <p class="text-text-secondary text-sm leading-relaxed" data-i18n="skills.emergency.desc">
+                            11 mandatory guardrails enforcing security-first dev, error-handling, git workflow, and logging standards.
+                        </p>
+                    </div>
+                    <div class="mt-8 flex items-center gap-2 font-mono text-xs text-white opacity-45 group-hover:opacity-100 transition-opacity">
+                        <span>LOAD CODE</span>
+                        <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                    </div>
+                </a>
+ 
+                <!-- Skill 8 -->
+                <a href="https://github.com/krishujeniya/Aegis/tree/master/library/core/skills" target="_blank" class="skill-card p-8 rounded-2xl group flex flex-col justify-between min-h-[250px]">
+                    <div>
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="font-mono text-xs text-text-secondary">0x08</span>
+                            <span class="material-symbols-outlined text-white text-2xl group-hover:scale-110 transition-transform">view_module</span>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-white mb-3" data-i18n="skills.dev.name">core-workflows</h3>
+                        <p class="text-text-secondary text-sm leading-relaxed" data-i18n="skills.dev.desc">
+                            81 foundational skills for common agent workflows like systematic debugging, worktrees, and state recovery.
+                        </p>
+                    </div>
+                    <div class="mt-8 flex items-center gap-2 font-mono text-xs text-white opacity-45 group-hover:opacity-100 transition-opacity">
+                        <span>LOAD CODE</span>
+                        <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                    </div>
+                </a>
+ 
+                <!-- Skill 9 -->
+                <a href="https://github.com/krishujeniya/Aegis/tree/master/library/community/skills" target="_blank" class="skill-card p-8 rounded-2xl group flex flex-col justify-between min-h-[250px]">
+                    <div>
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="font-mono text-xs text-text-secondary">0x09</span>
+                            <span class="material-symbols-outlined text-white text-2xl group-hover:scale-110 transition-transform">groups</span>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-white mb-3" data-i18n="skills.help.name">community-skills</h3>
+                        <p class="text-text-secondary text-sm leading-relaxed" data-i18n="skills.help.desc">
+                            1,459 community-contributed skills extending the agent's capability across specialized APIs and tools.
+                        </p>
+                    </div>
+                    <div class="mt-8 flex items-center gap-2 font-mono text-xs text-white opacity-45 group-hover:opacity-100 transition-opacity">
+                        <span>LOAD CODE</span>
+                        <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+ 
+        <!-- Agent Integration Guides Section -->
+        <section id="guides" class="py-24 max-w-7xl mx-auto px-6 reveal">
+            <div class="mb-16 border-b border-border-dark pb-8">
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-2" data-i18n="guide_title">Agent Integration Guides</h2>
+                <p class="text-text-secondary font-mono text-xs tracking-wider" data-i18n="guide_desc">
+                    Learn how to load and inject Aegis into various AI coding agents.
+                </p>
+            </div>
+ 
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Antigravity Agent CLI Guide -->
+                <div class="bg-surface-dark border border-border-dark p-6 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="material-symbols-outlined text-white text-3xl">smart_toy</span>
+                            <h3 class="font-display text-lg font-bold text-white" data-i18n="guide_antigravity_title">Antigravity Agent CLI</h3>
+                        </div>
+                        <p class="text-text-secondary text-xs font-mono leading-relaxed mb-6" data-i18n="guide_antigravity_desc">
+                            Inject Aegis directly into the Antigravity local workspace directory.
+                        </p>
+                        <div class="relative bg-black rounded-lg p-4 border border-border-dark mb-4 overflow-x-auto">
+                            <pre class="text-green-400 font-mono text-[10px] leading-relaxed select-all" id="code-antigravity">mkdir -p ~/.gemini/antigravity/
+git clone https://github.com/krishujeniya/Aegis.git ~/.gemini/antigravity/aegis</pre>
+                        </div>
+                    </div>
+                    <button onclick="copyToClipboard('btn-copy-antigravity', 'mkdir -p ~/.gemini/antigravity/ && git clone https://github.com/krishujeniya/Aegis.git ~/.gemini/antigravity/aegis', 'btn-copy-antigravity')" id="btn-copy-antigravity" class="w-full border border-border-dark text-white font-mono text-xs py-2 rounded-lg hover:bg-black hover:border-white transition-all flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined text-xs">content_copy</span>
+                        <span data-i18n="guide_copy">Copy Command</span>
+                    </button>
+                </div>
+ 
+                <!-- Claude Code CLI Guide -->
+                <div class="bg-surface-dark border border-border-dark p-6 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="material-symbols-outlined text-white text-3xl">terminal</span>
+                            <h3 class="font-display text-lg font-bold text-white" data-i18n="guide_claudecode_title">Claude Code CLI</h3>
+                        </div>
+                        <p class="text-text-secondary text-xs font-mono leading-relaxed mb-6" data-i18n="guide_claudecode_desc">
+                            Load Aegis into Claude's native project context as rules or skills.
+                        </p>
+                        <div class="relative bg-black rounded-lg p-4 border border-border-dark mb-4 overflow-x-auto">
+                            <pre class="text-green-400 font-mono text-[10px] leading-relaxed select-all" id="code-claude">git clone https://github.com/krishujeniya/Aegis.git</pre>
+                        </div>
+                    </div>
+                    <button onclick="copyToClipboard('btn-copy-claude', 'git clone https://github.com/krishujeniya/Aegis.git', 'btn-copy-claude')" id="btn-copy-claude" class="w-full border border-border-dark text-white font-mono text-xs py-2 rounded-lg hover:bg-black hover:border-white transition-all flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined text-xs">content_copy</span>
+                        <span data-i18n="guide_copy">Copy Command</span>
+                    </button>
+                </div>
+ 
+                <!-- Web AI (Claude/Gemini/GPT) Guide -->
+                <div class="bg-surface-dark border border-border-dark p-6 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="material-symbols-outlined text-white text-3xl">language</span>
+                            <h3 class="font-display text-lg font-bold text-white" data-i18n="guide_webai_title">Web AI (Claude/Gemini/GPT)</h3>
+                        </div>
+                        <p class="text-text-secondary text-xs font-mono leading-relaxed mb-6" data-i18n="guide_webai_desc">
+                            Set custom instructions in Projects or Custom GPTs with the Aegis system context.
+                        </p>
+                        <div class="relative bg-black rounded-lg p-4 border border-border-dark mb-4 overflow-x-auto">
+                            <pre class="text-green-400 font-mono text-[10px] leading-relaxed select-all" id="code-prompt">You are an AI autonomous coding agent. Read the library/aegis/SKILL.md master orchestrator and execute development using the 5-Gate workflow persistence and quality guardrails.</pre>
+                        </div>
+                    </div>
+                    <button onclick="copyToClipboard('btn-copy-prompt', 'You are an AI autonomous coding agent. Read the library/aegis/SKILL.md master orchestrator and execute development using the 5-Gate workflow persistence and quality guardrails.', 'btn-copy-prompt')" id="btn-copy-prompt" class="w-full border border-border-dark text-white font-mono text-xs py-2 rounded-lg hover:bg-black hover:border-white transition-all flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined text-xs">content_copy</span>
+                        <span data-i18n="guide_copy">Copy Instruction</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+ 
+        <!-- 5-Gate Workflow Timeline Section -->
+        <section id="walkthrough" class="py-24 bg-surface-dark border-y border-border-dark reveal">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="mb-16 text-center">
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4" data-i18n="aria_title">
+                        The 5-Gate Workflow
+                    </h2>
+                    <p class="font-mono text-xs text-text-secondary tracking-widest" data-i18n="aria_subtitle">
+                        DEVELOPMENT CYCLE // INTENT TO PRODUCTION
+                    </p>
+                </div>
+ 
+                <!-- Custom Graphic Presentation -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="flex justify-center order-2 lg:order-1">
+                        <img alt="Holographic multiverse gateway cosmic gravity well visual representation" src="multiverse_gateway.png" class="max-w-full h-auto rounded-2xl border border-border-dark shadow-2xl hover:scale-105 transition-transform duration-500 max-h-[420px]" />
+                    </div>
+ 
+                    <!-- Timeline Details -->
+                    <div class="order-1 lg:order-2 space-y-8 font-mono text-xs">
+                        <div class="border-l-2 border-white pl-6 relative">
+                            <span class="absolute left-[-5px] top-0 w-2 h-2 rounded-full bg-white"></span>
+                            <h4 class="text-white font-bold mb-2 text-sm" data-i18n="aria_step1">Gate 1: UNDERSTAND // Intent & Scope</h4>
+                            <p class="text-text-secondary font-body">Agent explores user requirements, performs research, and persists requirements.md. Awaits human confirmation.</p>
+                        </div>
+                        <div class="border-l-2 border-white pl-6 relative">
+                            <span class="absolute left-[-5px] top-0 w-2 h-2 rounded-full bg-white"></span>
+                            <h4 class="text-white font-bold mb-2 text-sm" data-i18n="aria_step2">Gate 2: ANALYZE // PRD & Feasibility</h4>
+                            <p class="text-text-secondary font-body">PM and PO agents write user stories, define acceptance criteria, and evaluate risks, persisting analysis.md.</p>
+                        </div>
+                        <div class="border-l-2 border-white pl-6 relative">
+                            <span class="absolute left-[-5px] top-0 w-2 h-2 rounded-full bg-white"></span>
+                            <h4 class="text-white font-bold mb-2 text-sm" data-i18n="aria_step3">Gate 3: PLAN // System Architecture</h4>
+                            <p class="text-text-secondary font-body">Architect designs APIs, defines ADR schemas, creates task_plan.md and design.md. Awaits architecture approval.</p>
+                        </div>
+                        <div class="border-l-2 border-white pl-6 relative">
+                            <span class="absolute left-[-5px] top-0 w-2 h-2 rounded-full bg-white"></span>
+                            <h4 class="text-white font-bold mb-2 text-sm" data-i18n="aria_step4">Gate 4 & 5: IMPLEMENT & VERIFY</h4>
+                            <p class="text-text-secondary font-body">Engineering agents implement tasks via TDD, DevOps sets up pipelines, QA verifies test pyramid and code review.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+ 
+        <!-- Interactive Agent Terminal Simulator -->
+        <section id="simulator" class="py-24 max-w-7xl mx-auto px-6 reveal">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-6" data-i18n="term_title">Interactive Agent Terminal</h2>
+                    <p class="font-body text-text-secondary mb-8" data-i18n="term_desc">
+                        Simulate the execution of Aegis orchestrator gates inside your coding agent session. Click commands below.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-3">
+                        <button onclick="runTerminalCommand('boot')" class="bg-white text-black font-mono text-xs px-4 py-2 rounded-lg hover:opacity-90 active:scale-95 transition-all bg-primary-inverted">
+                            <span data-i18n="term_btn_boot">Boot Orchestrator</span>
+                        </button>
+                        <button onclick="runTerminalCommand('assess')" class="border border-border-dark text-white font-mono text-xs px-4 py-2 rounded-lg hover:bg-surface-dark active:scale-95 transition-all border-outline-inverted">
+                            <span data-i18n="term_btn_assess">Assess Complexity</span>
+                        </button>
+                        <button onclick="runTerminalCommand('pack')" class="border border-border-dark text-white font-mono text-xs px-4 py-2 rounded-lg hover:bg-surface-dark active:scale-95 transition-all border-outline-inverted">
+                            <span data-i18n="term_btn_pack">Pack AST</span>
+                        </button>
+                        <button onclick="runTerminalCommand('verify')" class="border border-border-dark text-white font-mono text-xs px-4 py-2 rounded-lg hover:bg-surface-dark active:scale-95 transition-all border-outline-inverted">
+                            <span data-i18n="term_btn_verify">Verify Quality</span>
+                        </button>
+                    </div>
+                </div>
+ 
+                <!-- Mock Terminal -->
+                <div class="bg-surface-dark border border-border-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="bg-[#0f0f0f] flex items-center justify-between px-4 py-2 border-b border-border-dark">
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+                            <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+                            <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+                        </div>
+                        <span class="font-mono text-[10px] text-text-secondary">agent-session@aegis // 80×24</span>
+                        <div class="w-10"></div>
+                    </div>
+                    <div class="p-6 font-mono text-xs leading-relaxed min-h-[320px] bg-black text-[#00ff00] overflow-y-auto" id="terminal-content">
+                        <div class="text-text-secondary">Last login: Mon May 25 14:58:05 on sys.init</div>
+                        <div class="space-y-2 mt-4" id="typewriter">
+                            <div class="text-text-secondary">Ready. Click a command to start.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+ 
+    </main>
+ 
+    <!-- Footer -->
+    <footer class="border-t border-border-dark bg-black py-12">
+        <div class="flex flex-col md:flex-row justify-between items-center px-6 gap-6 w-full max-w-7xl mx-auto">
+            <div class="font-mono text-xs text-text-secondary" data-i18n="footer_build">
+                BUILD: v2.0.0 // HOSTED ON GITHUB PAGES // MIT LICENSE
+            </div>
+            <div class="flex gap-6">
+                <a class="font-mono text-xs text-text-secondary hover:text-white underline transition-all" href="https://github.com/krishujeniya/Aegis" target="_blank">GitHub</a>
+                <a class="font-mono text-xs text-text-secondary hover:text-white underline transition-all" href="https://github.com/krishujeniya/Aegis/blob/master/LICENSE" target="_blank">License</a>
+            </div>
+        </div>
+        <div class="text-center mt-8 font-mono text-[9px] text-text-secondary opacity-30 uppercase tracking-[0.4em]">
+            AEGIS // BUILD.2026.05.REV.02
+        </div>
+    </footer>
+ 
+    <!-- Translations & JavaScript Logic -->
+    <script>
+        // Language dictionaries
+        const translations = {
+            en: {
+                nav_ecosystem: "Ecosystem",
+                nav_guides: "Integration",
+                nav_walkthrough: "5-Gate Workflow",
+                nav_simulator: "Simulator",
+                hero_subtitle: "SYS.INIT // EXPLORE. ANALYZE. PLAN. IMPLEMENT. VERIFY.",
+                hero_title: "Production-Grade Skill System for AI Coding Agents",
+                hero_desc: "A framework of 1,600+ skills organized across expert swarm roles, core workflows, and quality rules to enable autonomous software development.",
+                hero_cta_zip: "Download Skills (ZIP)",
+                hero_cta_explore: "Load in Agent",
+                eco_title: "Ecosystem Matrix",
+                eco_desc: "1,600+ skills organized across orchestrator gates, expert roles, and workflow modules.",
+                "skills.identity.name": "aegis-orchestrator",
+                "skills.identity.desc": "Master 5-Gate controller managing the full project lifecycle from intent exploration to verification.",
+                "skills.acquisition.name": "product-manager-swarm",
+                "skills.acquisition.desc": "Expert roles managing user stories with Gherkin acceptance criteria, MoSCoW prioritization, and PRD vision.",
+                "skills.sales.name": "tech-architect",
+                "skills.sales.desc": "System design blueprints, Architecture Decision Records (ADRs), database schemas, and tool primitives.",
+                "skills.ops.name": "developer-swarm",
+                "skills.ops.desc": "High-fidelity engineering agents executing TDD red-green cycles, code refactoring, and SOLID principles.",
+                "skills.delivery.name": "devops-pipelines",
+                "skills.delivery.desc": "Infrastructure configurations, CI/CD pipelines, Docker, Kubernetes orchestration, and automated packaging.",
+                "skills.post.name": "qa-validator",
+                "skills.post.desc": "QA lead and tester agents verifying code changes, running test pyramids, and asserting test coverage.",
+                "skills.emergency.name": "quality-rules",
+                "skills.emergency.desc": "11 mandatory guardrails enforcing security-first dev, error-handling, git workflow, and logging standards.",
+                "skills.dev.name": "core-workflows",
+                "skills.dev.desc": "81 foundational skills for common agent workflows like systematic debugging, worktrees, and state recovery.",
+                "skills.help.name": "community-skills",
+                "skills.help.desc": "1,459 community-contributed skills extending the agent's capability across specialized APIs and tools.",
+                aria_title: "The 5-Gate Workflow",
+                aria_subtitle: "DEVELOPMENT CYCLE // INTENT TO PRODUCTION",
+                aria_step1: "Gate 1: UNDERSTAND // Intent & Scope",
+                aria_step2: "Gate 2: ANALYZE // PRD & Feasibility",
+                aria_step3: "Gate 3: PLAN // System Architecture",
+                aria_step4: "Gate 4 & 5: IMPLEMENT & VERIFY",
+                term_title: "Interactive Agent Terminal",
+                term_desc: "Simulate the execution of Aegis orchestrator gates inside your coding agent session. Click commands below.",
+                term_btn_boot: "Boot Orchestrator",
+                term_btn_assess: "Assess Complexity",
+                term_btn_pack: "Pack AST",
+                term_btn_verify: "Verify Quality",
+                footer_build: "BUILD: v2.0.0 // HOSTED ON GITHUB PAGES // MIT LICENSE",
+                dimension_void: "Void Dimension",
+                dimension_mirror: "Mirror Dimension",
+                guide_title: "Agent Integration Guides",
+                guide_desc: "Learn how to load and inject Aegis into various AI coding agents.",
+                guide_antigravity_title: "Antigravity Agent CLI",
+                guide_antigravity_desc: "Inject Aegis directly into the Antigravity local workspace directory.",
+                guide_claudecode_title: "Claude Code CLI",
+                guide_claudecode_desc: "Load Aegis into Claude's native project context as rules or skills.",
+                guide_webai_title: "Web AI (Claude/Gemini/GPT)",
+                guide_webai_desc: "Set custom instructions in Projects or Custom GPTs with the Aegis system context.",
+                guide_copy: "Copy Command",
+                guide_copied: "Copied!"
+            },
+            ja: {
+                nav_ecosystem: "エコシステム",
+                nav_guides: "エージェント連携",
+                nav_walkthrough: "5ゲート・ワークフロー",
+                nav_simulator: "シミュレーター",
+                hero_subtitle: "システム起動 // 調査・分析・計画・実行・検証",
+                hero_title: "AIコーディングエージェントのためのプロダクション実用レベルのスキル体系",
+                hero_desc: "自律的なソフトウェア開発を可能にするため、専門家スウォーム、コアワークフロー、品質ルールに整理された1,600以上のスキルフレームワーク。",
+                hero_cta_zip: "スキルダウンロード (ZIP)",
+                hero_cta_explore: "エージェントに読み込む",
+                eco_title: "エコシステム・マトリクス",
+                eco_desc: "オーケストレーターゲート、専門家ロール、およびワークフローモジュールに分類された1,600以上のスキル。",
+                "skills.identity.name": "aegis-orchestrator",
+                "skills.identity.desc": "要件定義から最終検証まで、プロジェクトライフサイクル全体を管理するマスター5ゲート・コントローラー。",
+                "skills.acquisition.name": "product-manager-swarm",
+                "skills.acquisition.desc": "Gherkin形式の受入基準、MoSCoW優先度判定、PRD定義を管理する製品管理者ロール。",
+                "skills.sales.name": "tech-architect",
+                "skills.sales.desc": "システム設計、アーキテクチャ意思決定レコード (ADR)、DBスキーマ、ツールプリミティブの設計。",
+                "skills.ops.name": "developer-swarm",
+                "skills.ops.desc": "TDD（テスト駆動開発）の赤・緑サイクル、コードのリファクタリング、SOLID原則を実行する開発者。",
+                "skills.delivery.name": "devops-pipelines",
+                "skills.delivery.desc": "インフラ設定、CI/CDパイプライン、Docker、Kubernetesオーケストレーション、自動パッケージング。",
+                "skills.post.name": "qa-validator",
+                "skills.post.desc": "コード変更を検証し、テストピラミッドを実行し、テストカバレッジを保証するQAリードおよびテスターエージェント。",
+                "skills.emergency.name": "quality-rules",
+                "skills.emergency.desc": "セキュリティ第一の開発、エラーハンドリング、gitワークフロー、ログ標準化を規定する11の必須品質ガードレール。",
+                "skills.dev.name": "core-workflows",
+                "skills.dev.desc": "体系的なデバッグ、ワークツリーの使用、状態の復旧など、エージェントのための81の基本ワークフロースキル。",
+                "skills.help.name": "community-skills",
+                "skills.help.desc": "特定のAPIやツールにまたがってエージェントの機能を拡張する、コミュニティ寄稿による1,459のスキル。",
+                aria_title: "5ゲート・ワークフロー",
+                aria_subtitle: "開発サイクル // 構想から本番環境まで",
+                aria_step1: "ゲート 1: UNDERSTAND // 構想とスコープ",
+                aria_step2: "ゲート 2: ANALYZE // PRDと実現可能性",
+                aria_step3: "ゲート 3: PLAN // システムアーキテクチャ",
+                aria_step4: "ゲート 4 & 5: IMPLEMENT & VERIFY",
+                term_title: "インタラクティブ・エージェント・ターミナル",
+                term_desc: "コーディングエージェントセッション内でのAegisオーケストレーターゲートの実行をシミュレートします。以下のコマンドをクリックしてください。",
+                term_btn_boot: "オーケストレーター起動",
+                term_btn_assess: "難易度アセスメント",
+                term_btn_pack: "ASTのパック",
+                term_btn_verify: "品質検証",
+                footer_build: "ビルド: v2.0.0 // GITHUB PAGESでホスト // MITライセンス",
+                dimension_void: "ボイド次元",
+                dimension_mirror: "ミラー次元",
+                guide_title: "エージェント連携ガイド",
+                guide_desc: "様々なAIコーディングエージェントにAegisを読み込む方法を学びます。",
+                guide_antigravity_title: "Antigravity エージェント CLI",
+                guide_antigravity_desc: "ローカルのAntigravityワークスペースディレクトリにAegisを直接流し込みます。",
+                guide_claudecode_title: "Claude Code CLI",
+                guide_claudecode_desc: "ルールまたはスキルとして、ClaudeのネイティブプロジェクトコンテキストにAegisをロードします。",
+                guide_webai_title: "Web AI プロジェクト (Claude/Gemini/GPT)",
+                guide_webai_desc: "プロジェクトまたはカスタムGPTにカスタム指示を設定し、Aegisシステムコンテキストをロードします。",
+                guide_copy: "コピーする",
+                guide_copied: "コピー完了！"
+            },
+            hi: {
+                nav_ecosystem: "पारिस्थितिकी",
+                nav_guides: "एकीकरण",
+                nav_walkthrough: "5-गेट वर्कफ़्लो",
+                nav_simulator: "सिम्युलेटर",
+                hero_subtitle: "प्रणाली प्रारंभ // खोजें. विश्लेषण. योजना. कार्यान्वयन. सत्यापन.",
+                hero_title: "AI कोडिंग एजेंटों के लिए प्रोडक्शन-ग्रेड कौशल प्रणाली",
+                hero_desc: "स्वतंत्र सॉफ़्टवेयर विकास को सक्षम करने के लिए विशेषज्ञ भूमिकाओं, मुख्य वर्कफ़्लो और गुणवत्ता नियमों में व्यवस्थित 1,600+ कौशलों का ढांचा।",
+                hero_cta_zip: "कौशल डाउनलोड (ZIP)",
+                hero_cta_explore: "एजेंट में लोड करें",
+                eco_title: "पारिस्थितिकी तंत्र मैट्रिक्स",
+                eco_desc: "ऑर्केस्ट्रेटर गेट्स, विशेषज्ञ भूमिकाओं और वर्कफ़्लो मॉड्यूल में व्यवस्थित 1,600+ कौशल।",
+                "skills.identity.name": "aegis-orchestrator",
+                "skills.identity.desc": "मास्टर 5-गेट नियंत्रक जो आवश्यकता खोज से लेकर अंतिम सत्यापन तक पूरे प्रोजेक्ट चक्र का प्रबंधन करता है।",
+                "skills.acquisition.name": "product-manager-swarm",
+                "skills.acquisition.desc": "गर्किन स्वीकृति मानदंड, MoSCoW प्राथमिकताओं और PRD दृष्टि के साथ उपयोगकर्ता कहानियों का प्रबंधन करने वाले उत्पाद प्रबंधक।",
+                "skills.sales.name": "tech-architect",
+                "skills.sales.desc": "सिस्टम डिज़ाइन ब्लूप्रिंट, आर्किटेक्चर डिसीजन रिकॉर्ड (ADR), डेटाबेस स्कीमा और टूल प्रिमिटिव।",
+                "skills.ops.name": "developer-swarm",
+                "skills.ops.desc": "TDD रेड-ग्रीन चक्र, कोड रिफैक्टरिंग और SOLID सिद्धांतों को निष्पादित करने वाले उच्च-गुणवत्ता इंजीनियरिंग एजेंट।",
+                "skills.delivery.name": "devops-pipelines",
+                "skills.delivery.desc": "इन्फ्रास्ट्रक्चर कॉन्फ़िगरेशन, CI/CD पाइपलाइन, डॉकर, कुबेरनेटीज़ ऑर्केस्ट्रेशन और स्वचालित पैकेजिंग।",
+                "skills.post.name": "qa-validator",
+                "skills.post.desc": "कोड परिवर्तनों को सत्यापित करने, परीक्षण पिरामिड चलाने और परीक्षण कवरेज का दावा करने वाले QA लीड और परीक्षक।",
+                "skills.emergency.name": "quality-rules",
+                "skills.emergency.desc": "सुरक्षा-प्रथम विकास, त्रुटि-प्रबंधन, गिट वर्कफ़्लो और लॉगिंग मानकों को लागू करने वाले 11 अनिवार्य नियम।",
+                "skills.dev.name": "core-workflows",
+                "skills.dev.desc": "सामान्य एजेंट वर्कफ़्लो जैसे कि व्यवस्थित डिबगिंग, वर्कट्री और स्थिति रिकवरी के लिए 81 बुनियादी कौशल।",
+                "skills.help.name": "community-skills",
+                "skills.help.desc": "विशेषज्ञ एपीआई और उपकरणों में एजेंट की क्षमता का विस्तार करने वाले 1,459 समुदाय-योगदान कौशल।",
+                aria_title: "5-गेट वर्कफ़्लो",
+                aria_subtitle: "विकास चक्र // विचार से उत्पादन तक",
+                aria_step1: "गेट 1: UNDERSTAND // विचार और दायरा",
+                aria_step2: "गेट 2: ANALYZE // PRD और व्यवहार्यता",
+                aria_step3: "गेट 3: PLAN // सिस्टम आर्किटेक्चर",
+                aria_step4: "गेट 4 और 5: IMPLEMENT और VERIFY",
+                term_title: "इंटरएक्टिव एजेंट टर्मिनल",
+                term_desc: "अपने कोडिंग एजेंट सत्र के भीतर Aegis ऑर्केस्ट्रेटर गेट्स के निष्पादन का अनुकरण करें। नीचे दिए गए कमांड पर क्लिक करें।",
+                term_btn_boot: "ऑर्केस्ट्रेटर प्रारंभ करें",
+                term_btn_assess: "जटिलता का आकलन",
+                term_btn_pack: "AST पैक करें",
+                term_btn_verify: "गुणवत्ता सत्यापित करें",
+                footer_build: "बिल्ड: v2.0.0 // गिथब पेजेज पर होस्टेड // एमआईटी लाइसेंस",
+                dimension_void: "शून्य आयाम",
+                dimension_mirror: "दर्पण आयाम",
+                guide_title: "एजेंट एकीकरण मार्गदर्शिका",
+                guide_desc: "सीखें कि विभिन्न एआई कोडिंग एजेंटों में Aegis को कैसे लोड और इंजेक्ट किया जाए।",
+                guide_antigravity_title: "Antigravity एजेंट CLI",
+                guide_antigravity_desc: "Antigravity स्थानीय वर्कस्पेस निर्देशिका में सीधे Aegis को इंजेक्ट करें।",
+                guide_claudecode_title: "Claude Code CLI",
+                guide_claudecode_desc: "Claude के टर्मिनल वातावरण में नियमों या कौशल के रूप में Aegis को लोड करें।",
+                guide_webai_title: "वेब एआई (Claude/Gemini/GPT)",
+                guide_webai_desc: "प्रोजेक्ट्स या कस्टम GPT में Aegis सिस्टम संदर्भ के साथ कस्टम निर्देश सेट करें।",
+                guide_copy: "कमांड कॉपी करें",
+                guide_copied: "कॉपी किया गया!"
+            }
+        };
+ 
+        let currentLang = 'en';
+ 
+        // Language Switcher Function
+        function setLang(lang) {
+            currentLang = lang;
+            
+            // Toggle highlight classes on language buttons
+            ['en', 'ja', 'hi'].forEach(l => {
+                const el = document.getElementById(`lang-${l}`);
+                if (l === lang) {
+                    el.classList.add('text-white', 'font-bold');
+                    el.classList.remove('hover:text-white');
+                } else {
+                    el.classList.remove('text-white', 'font-bold');
+                    el.classList.add('hover:text-white');
+                }
+            });
+ 
+            // Update DOM text contents dynamically
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+        }
+ 
+        // Dimension Shift Toggle Function
+        function toggleDimension() {
+            document.body.classList.toggle('mirror-dimension');
+            
+            const btnText = document.querySelector('[data-i18n="dimension_void"]');
+            const toggleBtn = document.getElementById('dimension-toggle');
+            
+            if (document.body.classList.contains('mirror-dimension')) {
+                btnText.textContent = translations[currentLang].dimension_mirror;
+                toggleBtn.classList.add('border-black', 'text-black', 'hover:border-black');
+            } else {
+                btnText.textContent = translations[currentLang].dimension_void;
+                toggleBtn.classList.remove('border-black', 'text-black', 'hover:border-black');
+            }
+        }
+ 
+        // Copy command helper
+        function copyToClipboard(elementId, textToCopy, buttonId) {
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const btn = document.getElementById(buttonId);
+                const originalContent = btn.innerHTML;
+                
+                btn.innerHTML = `<span class="material-symbols-outlined text-xs">check</span> <span>${translations[currentLang].guide_copied || 'Copied!'}</span>`;
+                setTimeout(() => {
+                    btn.innerHTML = originalContent;
+                }, 2000);
+            }).catch(err => {
+                console.error('Could not copy text: ', err);
+            });
+        }
+ 
+        // 1. Starfield Initialization
+        const initStarfield = () => {
+            const container = document.getElementById('starfield');
+            for (let i = 0; i < 150; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                const size = Math.random() * 2 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.opacity = Math.random();
+                if (Math.random() > 0.8) {
+                    star.style.animation = `twinkle ${Math.random() * 4 + 2}s infinite ease-in-out`;
+                }
+                container.appendChild(star);
+            }
+        };
+ 
+        // 2. Gravity Well Particle System
+        const initGravity = () => {
+            const canvas = document.getElementById('gravity-canvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            
+            const resize = () => {
+                canvas.width = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+            };
+            window.addEventListener('resize', resize);
+            resize();
+ 
+            class Particle {
+                constructor() {
+                    this.reset();
+                }
+                reset() {
+                    const angle = Math.random() * Math.PI * 2;
+                    const radius = Math.random() * canvas.width * 0.4 + 180;
+                    this.x = canvas.width / 2 + Math.cos(angle) * radius;
+                    this.y = canvas.height / 2 + Math.sin(angle) * radius;
+                    this.angle = angle;
+                    this.radius = radius;
+                    this.speed = Math.random() * 0.4 + 0.15;
+                    this.size = Math.random() * 1.5 + 0.5;
+                }
+                update() {
+                    this.radius -= this.speed * 1.5;
+                    this.angle += 0.008;
+                    this.x = canvas.width / 2 + Math.cos(this.angle) * this.radius;
+                    this.y = canvas.height / 2 + Math.sin(this.angle) * this.radius;
+                    
+                    if (this.radius < 45) this.reset();
+                }
+                draw() {
+                    const color = document.body.classList.contains('mirror-dimension') 
+                        ? `rgba(0, 0, 0, ${this.radius / 400})` 
+                        : `rgba(255, 255, 255, ${this.radius / 400})`;
+                    ctx.fillStyle = color;
+                    ctx.fillRect(this.x, this.y, this.size, this.size);
+                }
+            }
+ 
+            for (let i = 0; i < 120; i++) particles.push(new Particle());
+ 
+            const animate = () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                requestAnimationFrame(animate);
+            };
+            animate();
+        };
+ 
+        // 3. Interactive Agent Terminal Simulator Logic
+        const runTerminalCommand = (cmd) => {
+            const term = document.getElementById('typewriter');
+            term.innerHTML = ''; // Clear prior session
+            
+            let lines = [];
+            if (cmd === 'boot') {
+                lines = [
+                    { type: 'cmd', text: 'admin@multiverse:~$ agent boot --core:aegis' },
+                    { type: 'sys', text: '[SYS] Initializing Aegis orchestrator Gate 1...' },
+                    { type: 'sys', text: '[SYS] Reading workspace local files at Aegis/' },
+                    { type: 'sys', text: '[SYS] Active developer registered: krishujeniya' },
+                    { type: 'sys', text: '[SYS] Ready. Awaiting requirements confirmation.' }
+                ];
+            } else if (cmd === 'assess') {
+                lines = [
+                    { type: 'cmd', text: 'admin@multiverse:~$ agent run --assess-complexity' },
+                    { type: 'sys', text: '[ORCHESTRATOR] Scoring architecture and complexity...' },
+                    { type: 'sys', text: '[ORCHESTRATOR] Score: 9/10 (requires Architect + Dev + QA swarm)' },
+                    { type: 'sys', text: '[ORCHESTRATOR] Instantiating expert roles dynamically...' },
+                    { type: 'sys', text: '[SUCCESS] Swarm initialized. Proceeding to Gate 2.' }
+                ];
+            } else if (cmd === 'pack') {
+                lines = [
+                    { type: 'cmd', text: 'admin@multiverse:~$ ./library/aegis/scripts/ast_packer.sh .' },
+                    { type: 'sys', text: '[AST-PACKER] Scanning project directories...' },
+                    { type: 'sys', text: '[AST-PACKER] Packed 12 files to .sovereign/ast_index.md' },
+                    { type: 'sys', text: '[AST-PACKER] Compressed context footprint from 380KB to 2.4KB' },
+                    { type: 'sys', text: '[SUCCESS] AST compilation finished successfully.' }
+                ];
+            } else if (cmd === 'verify') {
+                lines = [
+                    { type: 'cmd', text: 'admin@multiverse:~$ agent run --verify-quality' },
+                    { type: 'sys', text: '[QA-LEAD] Enforcing 11 quality rules...' },
+                    { type: 'sys', text: '[QA-LEAD] Verified testing.md (100% target coverage)' },
+                    { type: 'sys', text: '[QA-LEAD] Verified security.md and error-handling.md' },
+                    { type: 'SUCCESS', text: '[SUCCESS] All quality gates passed. Ready to deploy.' }
+                ];
+            }
+ 
+            let lineIdx = 0;
+            let charIdx = 0;
+ 
+            const type = () => {
+                if (lineIdx < lines.length) {
+                    const currentLine = lines[lineIdx];
+                    if (charIdx === 0) {
+                        const div = document.createElement('div');
+                        div.className = currentLine.type === 'cmd' ? 'text-white font-bold mt-2' : 'text-text-secondary';
+                        div.id = `sim-line-${lineIdx}`;
+                        term.appendChild(div);
+                    }
+                    
+                    const el = document.getElementById(`sim-line-${lineIdx}`);
+                    el.textContent = currentLine.text.substring(0, charIdx + 1);
+                    charIdx++;
+ 
+                    if (charIdx < currentLine.text.length) {
+                        setTimeout(type, currentLine.type === 'cmd' ? 30 : 15);
+                    } else {
+                        charIdx = 0;
+                        lineIdx++;
+                        setTimeout(type, 350);
+                    }
+                }
+            };
+            type();
+        };
+ 
+        // 4. Ecosystem Card mouse position tracker (spotlight glow)
+        const initCards = () => {
+            document.querySelectorAll('.skill-card').forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = ((e.clientX - rect.left) / card.clientWidth) * 100;
+                    const y = ((e.clientY - rect.top) / card.clientHeight) * 100;
+                    card.style.setProperty('--mouse-x', `${x}%`);
+                    card.style.setProperty('--mouse-y', `${y}%`);
+                });
+            });
+        };
+ 
+        // 5. Scroll Reveals
+        const initReveals = () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.08 });
+ 
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        };
+ 
+        // 6. Parallax Stars Scroll Effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            document.getElementById('starfield').style.transform = `translateY(${scrolled * 0.15}px)`;
+        });
+ 
+        // Initialize All systems
+        document.addEventListener('DOMContentLoaded', () => {
+            initStarfield();
+            initGravity();
+            initCards();
+            initReveals();
+        });
+    </script>
+</body>
+</html>
