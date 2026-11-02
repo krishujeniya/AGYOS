@@ -1,17 +1,25 @@
-# SKILL
+# agent-skills
 
-The unified repository of AI agent skills, autonomous workflows, multi-agent deliberation systems, and engineering verification runtimes. Maintained by [Krish Ujeniya](https://github.com/krishujeniya).
+> **Autonomous AI Agent Frameworks, Workflow Orchestrators & Engineering Skills Monorepo**  
+> Maintained by [Krish Ujeniya](https://github.com/krishujeniya)
+
+<p align="center">
+  <a href="https://github.com/krishujeniya/agent-skills/actions/workflows/ci.yml"><img src="https://github.com/krishujeniya/agent-skills/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" alt="License: Apache-2.0" /></a>
+  <img src="https://img.shields.io/badge/Python-3.12-3776AB.svg?logo=python&logoColor=white" alt="Python 3.12" />
+  <a href="https://krishujeniya.github.io/agent-skills/"><img src="https://img.shields.io/badge/Live_Docs-GitHub_Pages-222222.svg?logo=github" alt="Live Docs" /></a>
+</p> Maintained by [Krish Ujeniya](https://github.com/krishujeniya).
 
 ## Documentation and live catalog
 
 The full documentation site and interactive skill catalog is hosted on GitHub Pages:
 
-**Live documentation:** [https://krishujeniya.github.io/SKILL/](https://krishujeniya.github.io/SKILL/)
+**Live documentation:** [https://krishujeniya.github.io/agent-skills/](https://krishujeniya.github.io/agent-skills/)
 
 - Zero backend dependencies: 100% static HTML, CSS, and client-side JavaScript.
 - Strict monochrome design: Swiss typography, high contrast, responsive layout, dark and light modes.
 - Instant search and filtering across all 1,580+ skills by module, runtime, or keyword.
-- Machine-readable discovery files: [llms.txt](https://krishujeniya.github.io/SKILL/llms.txt), [ai-catalog.json](https://krishujeniya.github.io/SKILL/ai-catalog.json), and [sitemap.xml](https://krishujeniya.github.io/SKILL/sitemap.xml).
+- Machine-readable discovery files: [llms.txt](https://krishujeniya.github.io/agent-skills/llms.txt), [ai-catalog.json](https://krishujeniya.github.io/agent-skills/ai-catalog.json), and [sitemap.xml](https://krishujeniya.github.io/agent-skills/sitemap.xml).
 
 ---
 
