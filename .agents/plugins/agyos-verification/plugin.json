@@ -1,0 +1,8 @@
+{
+  "name": "agyos-verification",
+  "description": "Test-driven development (TDD), Playwright E2E runners, property testing, and test coverage ratchets.",
+  "version": "3.1.0",
+  "author": "Krish Ujeniya",
+  "logo": "assets/logo.svg",
+  "repository": "https://github.com/krishujeniya/SKILL"
+}

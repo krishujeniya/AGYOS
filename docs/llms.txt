@@ -1,27 +1,20 @@
-# SKILL Documentation
+# AGYOS Documentation
 
-> The unified AI agent skills, frameworks, and tooling monorepo.
+> The Autonomous Cognitive Operating System for AGY CLI (`agy`).
 > Maintained by krishujeniya.
-> Total skills documented: 1581
+> Total skills documented: 1845
+> Total modular rules: 162
+> Total role agents: 74
+> Total workflow pipelines: 100
 
-## Core Frameworks
+## Core Operating Subsystems
 
-- Anchor: Scoped, verifiable agent orchestration system with five gates (understand, analyze, plan, implement, verify), contract enforcement, and MCP server.
-- Agent Council: Multi-agent CLI deliberation panel running Codex, Gemini, Claude, and Antigravity in parallel subprocesses for architecture consensus.
-- Agentic Freelance Skills: End-to-end autonomous freelance consulting lifecycle from lead prospecting to contract delivery and operations.
-- ScrollHeart: Cinematic scroll-driven web animations using GSAP and native CSS timelines for GitHub Pages.
-- Aegis: Verification library and skill repository with 1,500+ community, core, and expert skills.
+- Anchor Governance: 5-Gate spine (UNDERSTAND -> ANALYZE -> PLAN -> IMPLEMENT -> VERIFY) with FastMCP JSON-RPC 2.0 daemon and adaptive fast-path.
+- Agent Council: Multi-model CLI consensus engine deliberating across Gemini, Claude, and Codex in parallel Bun subprocesses.
+- Emil Kowalski UI/UX: Enforcing concentric border radii, 0ms/150ms/250ms motion timing, compositor-only animations, and tactile micro-interactions.
+- Adversarial Verification: 25-point falsifiable test suite validating plugins, safety hooks, MCP protocols, and ratchet monotonicity.
+- ECC Polyglot: High-efficiency coding standards across 15+ programming languages and frameworks.
 
-## Reliability and Quality Standards
+## Structured Skill Catalog
 
-- Gravitas: Six engineering invariants: ground before mutating, stay in declared scope, require evidence for completion, avoid identical retries, satisfy contract gates, and state unverifiable claims explicitly.
-- Unslop: Writing standard prohibiting AI tells, filler vocabulary, decorative emojis, superficial clauses, and false ranges.
-
-## Specialized Suites
-
-- SEO Suite: 25 modules covering technical audits, single-page inspection, E-E-A-T analysis, generative engine optimization, schema, sitemaps, and programmatic SEO.
-- Founder Suite: 11 business modeling skills including board reviews, CFO unit economics, buyer simulations, and launch checklists.
-
-## Full Skill Catalog
-
-Access the complete structured JSON catalog at https://krishujeniya.github.io/SKILL/skills-data.json
+Access the complete JSON catalog at https://krishujeniya.github.io/AGYOS/skills-data.json

@@ -1,6 +1,0 @@
-[allowlist]
-description = "Allowlist for testing ANCHOR secret detection"
-regexTarget = "match"
-regexes = [
-    '''ANCHOR_TEST_SECRET_DO_NOT_USE_12345'''
-]

@@ -110,10 +110,17 @@ body {
 
 .brand-link {
   display: flex;
-  align-items: baseline;
-  gap: 10px;
+  align-items: center;
+  gap: 8px;
   text-decoration: none;
   color: var(--fg);
+}
+
+.brand-logo {
+  display: block;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
 }
 
 .brand-title {
@@ -201,9 +208,11 @@ body {
   transition: background 0.15s, border-color 0.15s;
 }
 
-.btn-icon:hover {
-  background: var(--bg-hover);
-  border-color: var(--border-strong);
+@media (hover: hover) and (pointer: fine) {
+  .btn-icon:hover {
+    background: var(--bg-hover);
+    border-color: var(--border-strong);
+  }
 }
 
 .mobile-menu-btn {
@@ -483,13 +492,19 @@ pre code {
   padding: 2px 8px;
   border-radius: 3px;
   cursor: pointer;
-  transition: all 0.15s;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
 }
 
-.copy-btn:hover {
-  background: var(--accent-bg);
-  color: var(--accent-fg);
-  border-color: var(--accent-bg);
+.copy-btn:active {
+  transform: scale(0.98);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .copy-btn:hover {
+    background: var(--accent-bg);
+    color: var(--accent-fg);
+    border-color: var(--accent-bg);
+  }
 }
 
 /* Tables */
@@ -604,12 +619,18 @@ tr:hover td {
   padding: 5px 11px;
   border-radius: 4px;
   cursor: pointer;
-  transition: all 0.12s;
+  transition: background-color 0.12s ease, color 0.12s ease, border-color 0.12s ease, transform 0.12s ease;
 }
 
-.filter-btn:hover {
-  color: var(--fg);
-  border-color: var(--border-strong);
+.filter-btn:active {
+  transform: scale(0.98);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .filter-btn:hover {
+    color: var(--fg);
+    border-color: var(--border-strong);
+  }
 }
 
 .filter-btn.active {
@@ -775,11 +796,40 @@ tr:hover td {
   .mobile-menu-btn {
     display: block;
   }
+  .btn-icon,
+  .copy-btn,
+  .filter-btn {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sidebar-link {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
   .site-main {
     padding: 24px 20px 60px 20px;
   }
   .hero-stats {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.btn-icon:active,
+.sidebar-link:active,
+.nav-link:active {
+  transform: scale(0.98);
+}
+
+/* Accessibility & Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 

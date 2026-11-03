@@ -1,0 +1,92 @@
+#!/usr/bin/env bash
+# agyos — Unified Command Line Interface for AGYOS
+set -euo pipefail
+
+PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$PROJECT_ROOT"
+
+usage() {
+  cat << 'EOF'
+Usage: agyos <command> [arguments]
+
+Commands:
+  init        Initialize or self-repair AGYOS in this workspace
+  verify      Execute the 25-point adversarial verification suite
+  state       Display current milestone, active gate, and iteration
+  gate <name> Transition active gate (UNDERSTAND|ANALYZE|PLAN|IMPLEMENT|VERIFY)
+  compact     Execute context window compaction and reset CURRENT.md
+  fast        Fast-path bypass for trivial edits (complexity <= 2 straight to IMPLEMENT)
+  skill <name> Display instructions and documentation for a skill
+  rollback    Safely abort and revert the active milestone
+  council     Run multi-model deliberation via Agent Council
+  help        Show this help message
+EOF
+}
+
+cmd="${1:-help}"
+shift || true
+
+case "$cmd" in
+  init)
+    bash scripts/agyos-init.sh "$@"
+    ;;
+  verify)
+    bash scripts/agyos-verify.sh "$@"
+    ;;
+  state)
+    source bin/state.sh
+    if [ "${1:-}" = "--json" ]; then
+      cat .agents/state/state.json 2>/dev/null || echo "{}"
+    else
+      cat .agents/state/CURRENT.md 2>/dev/null || echo "No active session."
+    fi
+    ;;
+  gate)
+    target_gate="${1:-}"
+    if [ -z "$target_gate" ]; then
+      source bin/state.sh
+      anchor_state_get "current_gate" "IDLE"
+    else
+      source bin/state.sh
+      anchor_state_set "current_gate" "$target_gate"
+      echo "Active gate transitioned to: $target_gate"
+    fi
+    ;;
+  compact)
+    bash bin/compact.sh "$@"
+    ;;
+  fast)
+    source bin/state.sh
+    anchor_state_set "current_gate" "IMPLEMENT"
+    anchor_state_set "complexity_score" 1 "number"
+    echo "⚡ Fast-path activated: Transitioned directly to IMPLEMENT (complexity <= 2)"
+    ;;
+  skill)
+    target_skill="${1:-}"
+    if [ -z "$target_skill" ]; then
+      echo "Usage: agyos skill <skill-name>" >&2
+      exit 1
+    fi
+    skill_file=".agents/skills/${target_skill}/SKILL.md"
+    if [ -f "$skill_file" ]; then
+      cat "$skill_file"
+    else
+      echo "❌ Skill not found: $target_skill" >&2
+      exit 1
+    fi
+    ;;
+  rollback)
+    bash bin/rollback.sh "$@"
+    ;;
+  council)
+    bun run scripts/council/src/council.ts "$@"
+    ;;
+  help|--help|-h)
+    usage
+    ;;
+  *)
+    echo "Unknown command: $cmd" >&2
+    usage >&2
+    exit 1
+    ;;
+esac

@@ -1,0 +1,8 @@
+{
+  "name": "agyos-council",
+  "description": "Multi-agent CLI deliberation panel running Gemini, Claude, and Codex in parallel for architectural consensus.",
+  "version": "3.1.0",
+  "author": "Krish Ujeniya",
+  "logo": "assets/logo.svg",
+  "repository": "https://github.com/krishujeniya/SKILL"
+}

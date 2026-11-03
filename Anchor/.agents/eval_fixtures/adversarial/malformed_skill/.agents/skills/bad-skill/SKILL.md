@@ -1,2 +1,0 @@
-# Bad Skill
-Missing frontmatter.

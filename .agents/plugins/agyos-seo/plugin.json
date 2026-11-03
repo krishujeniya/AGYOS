@@ -1,0 +1,8 @@
+{
+  "name": "agyos-seo",
+  "description": "25 SEO modules covering technical audits, Schema JSON-LD, sitemaps, E-E-A-T, and AI search answer citations.",
+  "version": "3.1.0",
+  "author": "Krish Ujeniya",
+  "logo": "assets/logo.svg",
+  "repository": "https://github.com/krishujeniya/SKILL"
+}

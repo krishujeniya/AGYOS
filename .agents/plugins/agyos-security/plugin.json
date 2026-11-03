@@ -1,0 +1,8 @@
+{
+  "name": "agyos-security",
+  "description": "OWASP Top 10 auditing, secret detection, open-source sanitization, and dependency safety reviews.",
+  "version": "3.1.0",
+  "author": "Krish Ujeniya",
+  "logo": "assets/logo.svg",
+  "repository": "https://github.com/krishujeniya/SKILL"
+}

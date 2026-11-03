@@ -1,0 +1,2404 @@
+{
+  "tier1_skills": [
+    {
+      "name": "007",
+      "tier": 1,
+      "description": "Security audit, hardening, threat modeling (STRIDE/PASTA), Red/Blue Team, OWASP checks, code review, incident response, and infrastructure security for any project.",
+      "path": ".agents/skills/007"
+    },
+    {
+      "name": "active-directory-attacks",
+      "tier": 1,
+      "description": "Provide comprehensive techniques for attacking Microsoft Active Directory environments. Covers reconnaissance, credential harvesting, Kerberos attacks, lateral movement, privilege escalation, and domain dominance for red team operations and penetration testing.",
+      "path": ".agents/skills/active-directory-attacks"
+    },
+    {
+      "name": "ad-creative",
+      "tier": 1,
+      "description": "Create, iterate, and scale paid ad creative for Google Ads, Meta, LinkedIn, TikTok, and similar platforms. Use when generating headlines, descriptions, primary text, or large sets of ad variations for testing and performance optimization.",
+      "path": ".agents/skills/ad-creative"
+    },
+    {
+      "name": "aegis",
+      "tier": 1,
+      "description": "The master orchestrator for autonomous development. Activates when building a product from idea to production, managing multi-gate workflows, or when the user says 'build', 'create project', 'aegis mode', 'full lifecycle', or 'idea to deployment'. Coordinates all expert skills through the 5-Gate workflow.",
+      "path": ".agents/skills/aegis"
+    },
+    {
+      "name": "aegis-apply-change",
+      "tier": 1,
+      "description": "Implement tasks from an Aegis change. Use when the user wants to start implementing, continue implementation, or work through tasks.",
+      "path": ".agents/skills/aegis-apply-change"
+    },
+    {
+      "name": "aegis-archive-change",
+      "tier": 1,
+      "description": "Archive a completed change in the experimental workflow. Use when the user wants to finalize and archive a change after implementation is complete.",
+      "path": ".agents/skills/aegis-archive-change"
+    },
+    {
+      "name": "aegis-article-illustrator",
+      "tier": 1,
+      "description": "Analyzes article structure, identifies positions requiring visual aids, generates illustrations with Type \u00d7 Style \u00d7 Palette three-dimension approach. Use when user asks to \"illustrate article\", \"add images\", \"generate images for article\", or \"\u4e3a\u6587\u7ae0\u914d\u56fe\".",
+      "path": ".agents/skills/aegis-article-illustrator"
+    },
+    {
+      "name": "aegis-comic",
+      "tier": 1,
+      "description": "Knowledge comic creator supporting multiple art styles and tones. Creates original educational comics with detailed panel layouts and sequential image generation. Use when user asks to create \"\u77e5\u8bc6\u6f2b\u753b\", \"\u6559\u80b2\u6f2b\u753b\", \"biography comic\", \"tutorial comic\", or \"Logicomix-style comic\".",
+      "path": ".agents/skills/aegis-comic"
+    },
+    {
+      "name": "aegis-compress-image",
+      "tier": 1,
+      "description": "Compresses images to WebP (default) or PNG with automatic tool selection. Use when user asks to \"compress image\", \"optimize image\", \"convert to webp\", or reduce image file size.",
+      "path": ".agents/skills/aegis-compress-image"
+    },
+    {
+      "name": "aegis-cover-image",
+      "tier": 1,
+      "description": "Generates article cover images with 5 dimensions (type, palette, rendering, text, mood) combining 11 color palettes and 7 rendering styles. Supports cinematic (2.35:1), widescreen (16:9), and square (1:1) aspects. Use when user asks to \"generate cover image\", \"create article cover\", or \"make cover\".",
+      "path": ".agents/skills/aegis-cover-image"
+    },
+    {
+      "name": "aegis-danger-gemini-web",
+      "tier": 1,
+      "description": "Generates images and text via reverse-engineered Gemini Web API. Supports text generation, image generation from prompts, reference images for vision input, and multi-turn conversations. Use when other skills need image generation backend, or when user requests \"generate image with Gemini\", \"Gemini text generation\", or needs vision-capable AI generation.",
+      "path": ".agents/skills/aegis-danger-gemini-web"
+    },
+    {
+      "name": "aegis-danger-x-to-markdown",
+      "tier": 1,
+      "description": "Converts X (Twitter) tweets and articles to markdown with YAML front matter. Uses reverse-engineered API requiring user consent. Use when user mentions \"X to markdown\", \"tweet to markdown\", \"save tweet\", or provides x.com/twitter.com URLs for conversion.",
+      "path": ".agents/skills/aegis-danger-x-to-markdown"
+    },
+    {
+      "name": "aegis-diagram",
+      "tier": 1,
+      "description": "Create professional, dark-themed SVG diagrams of any type \u2014 architecture diagrams, flowcharts, sequence diagrams, structural diagrams, mind maps, timelines, illustrative/conceptual diagrams, and more. Use this skill whenever the user asks for any kind of technical or conceptual diagram, visualization of a system, process flow, data flow, component relationship, network topology, decision tree, org chart, state machine, or any visual representation of structure/logic/process. Also trigger when the user says \"\u753b\u4e2a\u56fe\" \"\u753b\u4e00\u4e2a\u67b6\u6784\u56fe\" \"diagram\" \"flowchart\" \"sequence diagram\" \"draw me a ...\" or uploads content and asks to visualize it. Output is always a standalone .svg file.",
+      "path": ".agents/skills/aegis-diagram"
+    },
+    {
+      "name": "aegis-explore",
+      "tier": 1,
+      "description": "Enter explore mode - a thinking partner for exploring ideas, investigating problems, and clarifying requirements. Use when the user wants to think through something before or during a change.",
+      "path": ".agents/skills/aegis-explore"
+    },
+    {
+      "name": "aegis-format-markdown",
+      "tier": 1,
+      "description": "Formats plain text or markdown files with frontmatter, titles, summaries, headings, bold, lists, and code blocks. Use when user asks to \"format markdown\", \"beautify article\", \"add formatting\", or improve article layout. Outputs to {filename}-formatted.md.",
+      "path": ".agents/skills/aegis-format-markdown"
+    },
+    {
+      "name": "aegis-image-cards",
+      "tier": 1,
+      "description": "Generates infographic image card series with 12 visual styles, 8 layouts, and 3 color palettes. Breaks content into 1-10 cartoon-style image cards optimized for social media engagement. Use when user mentions \"\u5c0f\u7ea2\u4e66\u56fe\u7247\", \"\u5c0f\u7ea2\u4e66\u79cd\u8349\", \"\u5c0f\u7eff\u4e66\", \"\u5fae\u4fe1\u56fe\u6587\", \"\u5fae\u4fe1\u8d34\u56fe\", \"image cards\", \"\u56fe\u7247\u5361\u7247\", or wants social media infographic series.",
+      "path": ".agents/skills/aegis-image-cards"
+    },
+    {
+      "name": "aegis-image-gen",
+      "tier": 1,
+      "description": "[Deprecated: use baoyu-imagine] AI image generation with OpenAI, Azure OpenAI, Google, OpenRouter, DashScope, Z.AI GLM-Image, MiniMax, Jimeng, Seedream and Replicate APIs. Supports text-to-image, reference images, aspect ratios, and batch generation from saved prompt files. Sequential by default; use batch parallel generation when the user already has multiple prompts or wants stable multi-image throughput. Use when user asks to generate, create, or draw images.",
+      "path": ".agents/skills/aegis-image-gen"
+    },
+    {
+      "name": "aegis-imagine",
+      "tier": 1,
+      "description": "AI image generation with OpenAI GPT Image 2, Azure OpenAI, Google, OpenRouter, DashScope, Z.AI GLM-Image, MiniMax, Jimeng, Seedream and Replicate APIs. Supports text-to-image, reference images, aspect ratios, and batch generation from saved prompt files. Sequential by default; use batch parallel generation when the user already has multiple prompts or wants stable multi-image throughput. Use when user asks to generate, create, or draw images.",
+      "path": ".agents/skills/aegis-imagine"
+    },
+    {
+      "name": "aegis-infographic",
+      "tier": 1,
+      "description": "Generate professional infographics with 21 layout types and 22 visual styles. Analyzes content, recommends layout\u00d7style combinations, and generates publication-ready infographics. Use when user asks to create \"infographic\", \"\u4fe1\u606f\u56fe\", \"visual summary\", \"\u53ef\u89c6\u5316\", or \"\u9ad8\u5bc6\u5ea6\u4fe1\u606f\u5927\u56fe\".",
+      "path": ".agents/skills/aegis-infographic"
+    },
+    {
+      "name": "aegis-markdown-to-html",
+      "tier": 1,
+      "description": "Converts Markdown to styled HTML with WeChat-compatible themes. Supports code highlighting, math, PlantUML, footnotes, alerts, infographics, and optional bottom citations for external links. Use when user asks for \"markdown to html\", \"convert md to html\", \"md \u8f6c html\", \"\u5fae\u4fe1\u5916\u94fe\u8f6c\u5e95\u90e8\u5f15\u7528\", or needs styled HTML output from markdown.",
+      "path": ".agents/skills/aegis-markdown-to-html"
+    },
+    {
+      "name": "aegis-post-to-wechat",
+      "tier": 1,
+      "description": "Posts content to WeChat Official Account (\u5fae\u4fe1\u516c\u4f17\u53f7) via API or Chrome CDP. Supports article posting (\u6587\u7ae0) with HTML, markdown, or plain text input, and image-text posting (\u8d34\u56fe, formerly \u56fe\u6587) with multiple images. Markdown article workflows default to converting ordinary external links into bottom citations for WeChat-friendly output. Use when user mentions \"\u53d1\u5e03\u516c\u4f17\u53f7\", \"post to wechat\", \"\u5fae\u4fe1\u516c\u4f17\u53f7\", or \"\u8d34\u56fe/\u56fe\u6587/\u6587\u7ae0\".",
+      "path": ".agents/skills/aegis-post-to-wechat"
+    },
+    {
+      "name": "aegis-post-to-weibo",
+      "tier": 1,
+      "description": "Posts content to Weibo (\u5fae\u535a). Supports regular posts with text, images, and videos, and headline articles (\u5934\u6761\u6587\u7ae0) with Markdown input via Chrome CDP. Use when user asks to \"post to Weibo\", \"\u53d1\u5fae\u535a\", \"\u53d1\u5e03\u5fae\u535a\", \"publish to Weibo\", \"share on Weibo\", \"\u5199\u5fae\u535a\", or \"\u5fae\u535a\u5934\u6761\u6587\u7ae0\".",
+      "path": ".agents/skills/aegis-post-to-weibo"
+    },
+    {
+      "name": "aegis-post-to-x",
+      "tier": 1,
+      "description": "Posts content and articles to X (Twitter). Supports regular posts with images/videos and X Articles (long-form Markdown). In Codex, honor explicit requests for the Codex Chrome plugin/@chrome by using the Chrome Extension workflow; otherwise use Chrome Computer Use when available and fall back to real Chrome CDP scripts only when allowed. Use when user asks to \"post to X\", \"tweet\", \"publish to Twitter\", or \"share on X\".",
+      "path": ".agents/skills/aegis-post-to-x"
+    },
+    {
+      "name": "aegis-propose",
+      "tier": 1,
+      "description": "Propose a new change with all artifacts generated in one step. Use when the user wants to quickly describe what they want to build and get a complete proposal with design, specs, and tasks ready for implementation.",
+      "path": ".agents/skills/aegis-propose"
+    },
+    {
+      "name": "aegis-slide-deck",
+      "tier": 1,
+      "description": "Generates professional slide deck images from content. Creates outlines with style instructions, then generates individual slide images. Use when user asks to \"create slides\", \"make a presentation\", \"generate deck\", \"slide deck\", or \"PPT\".",
+      "path": ".agents/skills/aegis-slide-deck"
+    },
+    {
+      "name": "aegis-translate",
+      "tier": 1,
+      "description": "Translates articles and documents between languages with three modes - quick (direct), normal (analyze then translate), and refined (analyze, translate, review, polish). Supports custom glossaries and terminology consistency via EXTEND.md. Use when user asks to \"translate\", \"\u7ffb\u8bd1\", \"\u7cbe\u7ffb\", \"translate article\", \"translate to Chinese/English\", \"\u6539\u6210\u4e2d\u6587\", \"\u6539\u6210\u82f1\u6587\", \"convert to Chinese\", \"localize\", \"\u672c\u5730\u5316\", or needs any document translation. Also triggers for \"refined translation\", \"\u7cbe\u7ec6\u7ffb\u8bd1\", \"proofread translation\", \"\u5feb\u901f\u7ffb\u8bd1\", \"\u5feb\u7ffb\", \"\u8fd9\u7bc7\u6587\u7ae0\u7ffb\u8bd1\u4e00\u4e0b\", or when a URL or file is provided with translation intent.",
+      "path": ".agents/skills/aegis-translate"
+    },
+    {
+      "name": "aegis-url-to-markdown",
+      "tier": 1,
+      "description": "Fetch any URL and convert to markdown using baoyu-fetch CLI (Chrome CDP with site-specific adapters). Built-in adapters for X/Twitter, YouTube transcripts, Hacker News threads, and generic pages via Defuddle. Handles login/CAPTCHA via interaction wait modes. Use when user wants to save a webpage as markdown.",
+      "path": ".agents/skills/aegis-url-to-markdown"
+    },
+    {
+      "name": "aegis-wechat-summary",
+      "tier": 1,
+      "description": "Summarizes WeChat group chat highlights into a structured digest using the local wx-cli binary (https://github.com/jackwener/wx-cli). Generates a normal digest by default; a roast (\u6bd2\u820c) version is opt-in. Maintains per-group history (history.json + history-digests.jsonl) and per-user profiles across runs, with privacy guardrails baked in. Use when the user asks to \"\u603b\u7ed3\u7fa4\u804a\", \"\u7fa4\u804a\u7cbe\u534e\", \"\u7fa4\u804a\u6458\u8981\", \"summarize group chat\", \"group chat digest\", mentions a WeChat group name with a time range, says \"\u5e2e\u6211\u770b\u770b XX \u7fa4\u6700\u8fd1\u804a\u4e86\u4ec0\u4e48\", \"XX \u7fa4\u6709\u4ec0\u4e48\u503c\u5f97\u770b\u7684\", or asks to \"\u56de\u6eaf\u753b\u50cf\" / \"\u521d\u59cb\u5316\u753b\u50cf\" / \"backfill profiles\". Adds the roast version when the user says \"\u6bd2\u820c\u7248\", \"roast \u7248\", \"\u518d\u6765\u4e2a\u6bd2\u820c\u7684\", or similar.",
+      "path": ".agents/skills/aegis-wechat-summary"
+    },
+    {
+      "name": "aegis-xhs-images",
+      "tier": 1,
+      "description": "[Deprecated: use baoyu-image-cards] Generates Xiaohongshu (Little Red Book) image card series with 12 visual styles, 8 layouts, and 3 color palettes. Breaks content into 1-10 cartoon-style image cards optimized for XHS engagement. Use when user mentions \\\"\u5c0f\u7ea2\u4e66\u56fe\u7247\\\", \\\"XHS images\\\", \\\"RedNote infographics\\\", \\\"\u5c0f\u7ea2\u4e66\u79cd\u8349\\\", \\\"\u5c0f\u7eff\u4e66\\\", \\\"\u5fae\u4fe1\u56fe\u6587\\\", \\\"\u5fae\u4fe1\u8d34\u56fe\\\", or wants social media infographic series for Chinese platforms.",
+      "path": ".agents/skills/aegis-xhs-images"
+    },
+    {
+      "name": "aegis-youtube-transcript",
+      "tier": 1,
+      "description": "Downloads YouTube video transcripts/subtitles and cover images by URL or video ID. Supports multiple languages, translation, chapters, and speaker identification. Caches raw data for fast re-formatting. Use when user asks to \"get YouTube transcript\", \"download subtitles\", \"get captions\", \"YouTube\u5b57\u5e55\", \"YouTube\u5c01\u9762\", \"\u89c6\u9891\u5c01\u9762\", \"video thumbnail\", \"video cover image\", or provides a YouTube URL and wants the transcript/subtitle text or cover image extracted.",
+      "path": ".agents/skills/aegis-youtube-transcript"
+    },
+    {
+      "name": "aegisops-ai",
+      "tier": 1,
+      "description": "Autonomous DevSecOps & FinOps Guardrails. Orchestrates Gemini 3 Flash to audit Linux Kernel patches, Terraform cost drifts, and K8s compliance.",
+      "path": ".agents/skills/aegisops-ai"
+    },
+    {
+      "name": "agent-council",
+      "tier": 1,
+      "description": "Convene a panel of CLI-based AI agents (Codex, Gemini) to deliberate on a question. Each agent answers independently, then you synthesize the council's verdict as chairman. Use for architecture decisions, code review, debugging hypotheses, or any question where diverse perspectives add value.",
+      "path": ".agents/skills/agent-council"
+    },
+    {
+      "name": "agent-evaluation",
+      "tier": 1,
+      "description": "Testing and benchmarking LLM agents including behavioral testing,",
+      "path": ".agents/skills/agent-evaluation"
+    },
+    {
+      "name": "agent-memory-mcp",
+      "tier": 1,
+      "description": "A hybrid memory system that provides persistent, searchable knowledge management for AI agents (Architecture, Patterns, Decisions).",
+      "path": ".agents/skills/agent-memory-mcp"
+    },
+    {
+      "name": "agent-security-hardening",
+      "tier": 1,
+      "description": "Security hardening guidance for AI agent frameworks that process untrusted content, invoke tools, write workspace files, manage runtime identifiers, or handle credentials. Use when building or reviewing an agent runtime, autonomous worker, tool gateway, memory service, or multi-tenant agent deployment. Do not use for general web application security or offensive testing.",
+      "path": ".agents/skills/agent-security-hardening"
+    },
+    {
+      "name": "agentic-os",
+      "tier": 1,
+      "description": "Build persistent multi-agent operating systems on Claude Code. Covers kernel architecture, specialist agents, slash commands, file-based memory, scheduled automation, and state management without external databases. Use when building a persistent multi-agent system on Claude Code with its own memory, commands, and scheduling.",
+      "path": ".agents/skills/agentic-os"
+    },
+    {
+      "name": "ai-ml",
+      "tier": 1,
+      "description": "AI and machine learning workflow covering LLM application development, RAG implementation, agent architecture, ML pipelines, and AI-powered features.",
+      "path": ".agents/skills/ai-ml"
+    },
+    {
+      "name": "ai-regression-testing",
+      "tier": 1,
+      "description": "Regression testing strategies for AI-assisted development. Sandbox-mode API testing without database dependencies, automated bug-check workflows, and patterns to catch AI blind spots where the same model writes and reviews code. Use when adding regression coverage to AI-assisted code, or when the same model both wrote and reviewed a change.",
+      "path": ".agents/skills/ai-regression-testing"
+    },
+    {
+      "name": "airflow-dag-patterns",
+      "tier": 1,
+      "description": "Build production Apache Airflow DAGs with best practices for operators, sensors, testing, and deployment. Use when creating data pipelines, orchestrating workflows, or scheduling batch jobs.",
+      "path": ".agents/skills/airflow-dag-patterns"
+    },
+    {
+      "name": "anchor-draft-commit",
+      "tier": 1,
+      "description": "Use this skill when performing dangerous operations like delete, migrate, force-push, or deploy. Draft-commit wrapper for dangerous operations (delete, migrate, force-push, deploy). Enforces the rule that one-step irreversible actions are never permitted.",
+      "path": ".agents/skills/anchor-draft-commit"
+    },
+    {
+      "name": "anchor-graph",
+      "tier": 1,
+      "description": "Use this skill when you need to build or update context-graph.json. Builds and maintains context-graph.json from the codebase's import structure. Stores file paths and grep queries, not file contents \u2014 retrieval is just-in-time, pulled by the agent on demand. Human adds 2-3 invariants by hand after each run.",
+      "path": ".agents/skills/anchor-graph"
+    },
+    {
+      "name": "anchor-orchestrator",
+      "tier": 1,
+      "description": "Use this skill when a new multi-step development task is requested. Master router for ANCHOR's 5-gate workflow (plus autonomous context compaction). Activates on \"build\", \"new feature\", \"start project\", or any multi-step development request. Routes work through UNDERSTAND \u2192 ANALYZE \u2192 PLAN \u2192 (COMPACT) \u2192 IMPLEMENT \u2192 VERIFY, mapping each gate to Antigravity's native artifacts. Never skips a gate. Never marks work done without a VERIFY pass.",
+      "path": ".agents/skills/anchor-orchestrator"
+    },
+    {
+      "name": "anchor-preflight",
+      "tier": 1,
+      "description": "Use this skill when a milestone is starting and you need to check if the work is already built. Runs before any milestone starts. Checks whether the work is already built, partially built, or unbuilt by reading state.json, checkpoints, and grepping the codebase for the symbols the plan proposes. Never assumes \u2014 searches first.",
+      "path": ".agents/skills/anchor-preflight"
+    },
+    {
+      "name": "anchor-scope",
+      "tier": 1,
+      "description": "Use this skill when scoring task complexity before spawning subagents. Scores task complexity before spawning subagents, and sets least-privilege permission scope for the task. Prevents over-parallelizing trivial work and over-granting file/shell/network access.",
+      "path": ".agents/skills/anchor-scope"
+    },
+    {
+      "name": "anchor-scout",
+      "tier": 1,
+      "description": "Use this skill when evaluating feasibility and risk during the ANALYZE gate. Acts as an edge-case hunter during the ANALYZE gate. Deep-dives into the codebase to find undocumented dependencies, security flaws, and architectural risks. Returns a hard-capped 1,000-token summary of risks to prevent context bloat.",
+      "path": ".agents/skills/anchor-scout"
+    },
+    {
+      "name": "anchor-verify",
+      "tier": 1,
+      "description": "Use this skill when you need to prove the work is correct after implementation. Runs as a separate context from whatever wrote the code \u2014 maker never grades its own work. Deterministic checks (typecheck, lint, tests) run first and are the primary gate. Browser subagent / LLM judgment used only for what can't be asserted deterministically (visual UI, UX flow). Ends with a quiz-me gate.",
+      "path": ".agents/skills/anchor-verify"
+    },
+    {
+      "name": "android-clean-architecture",
+      "tier": 1,
+      "description": "Clean Architecture patterns for Android and Kotlin Multiplatform projects \u2014 module structure, dependency rules, UseCases, Repositories, and data layer patterns. Use when structuring modules, layers, or data flow in an Android or KMP project.",
+      "path": ".agents/skills/android-clean-architecture"
+    },
+    {
+      "name": "android_ui_verification",
+      "tier": 1,
+      "description": "Automated end-to-end UI testing and verification on an Android Emulator using ADB.",
+      "path": ".agents/skills/android_ui_verification"
+    },
+    {
+      "name": "angular-best-practices",
+      "tier": 1,
+      "description": "Angular performance optimization and best practices guide. Use when writing, reviewing, or refactoring Angular code for optimal performance, bundle size, and rendering efficiency.",
+      "path": ".agents/skills/angular-best-practices"
+    },
+    {
+      "name": "angular-developer",
+      "tier": 1,
+      "description": "Generates Angular code and provides architectural guidance. Trigger when creating projects, components, or services, or for best practices on reactivity (signals, linkedSignal, resource), forms, dependency injection, routing, SSR, accessibility (ARIA), animations, styling (component styles, Tailwind CSS), testing, or CLI tooling.",
+      "path": ".agents/skills/angular-developer"
+    },
+    {
+      "name": "angular-migration",
+      "tier": 1,
+      "description": "Master AngularJS to Angular migration, including hybrid apps, component conversion, dependency injection changes, and routing migration.",
+      "path": ".agents/skills/angular-migration"
+    },
+    {
+      "name": "angular-state-management",
+      "tier": 1,
+      "description": "Master modern Angular state management with Signals, NgRx, and RxJS. Use when setting up global state, managing component stores, choosing between state solutions, or migrating from legacy patterns.",
+      "path": ".agents/skills/angular-state-management"
+    },
+    {
+      "name": "angular-ui-patterns",
+      "tier": 1,
+      "description": "Modern Angular UI patterns for loading states, error handling, and data display. Use when building UI components, handling async data, or managing component states.",
+      "path": ".agents/skills/angular-ui-patterns"
+    },
+    {
+      "name": "animate",
+      "tier": 1,
+      "description": "Build an animation from scratch, making the decisions in the order that determines whether it feels right \u2014 should it animate at all, what purpose, which tool, which properties, which curve and duration, how it interrupts, how it exits. Writes the implementation. Use when asked to animate something, add motion, make a component feel alive, or build a transition. For critiquing existing motion use review-animations; for auditing a whole codebase use improve-animations.",
+      "path": ".agents/skills/animate"
+    },
+    {
+      "name": "animate-expo",
+      "tier": 1,
+      "description": "Build animations in React Native and Expo, making the decisions in the order that determines whether they feel right \u2014 should it animate, which thread it runs on, which properties, spring or timing, how the gesture hands off, how it degrades. Writes the implementation with Reanimated, Gesture Handler, Expo Router and expo-haptics. Use when animating anything in an Expo app, adding gestures, sheets, screen transitions, press feedback or haptics, or fixing motion that stutters on device. For web animation use `animate`.",
+      "path": ".agents/skills/animate-expo"
+    },
+    {
+      "name": "api-connector-builder",
+      "tier": 1,
+      "description": "Build a new API connector or provider by matching the target repo's existing integration pattern exactly. Use when adding one more integration without inventing a second architecture.",
+      "path": ".agents/skills/api-connector-builder"
+    },
+    {
+      "name": "api-design",
+      "tier": 1,
+      "description": "REST API design patterns including resource naming, status codes, pagination, filtering, error responses, versioning, and rate limiting for production APIs. Use when designing or reviewing REST endpoints, resource names, status codes, pagination, or versioning.",
+      "path": ".agents/skills/api-design"
+    },
+    {
+      "name": "api-fuzzing-bug-bounty",
+      "tier": 1,
+      "description": "Provide comprehensive techniques for testing REST, SOAP, and GraphQL APIs during bug bounty hunting and penetration testing engagements. Covers vulnerability discovery, authentication bypass, IDOR exploitation, and API-specific attack vectors.",
+      "path": ".agents/skills/api-fuzzing-bug-bounty"
+    },
+    {
+      "name": "api-security-testing",
+      "tier": 1,
+      "description": "API security testing workflow for REST and GraphQL APIs covering authentication, authorization, rate limiting, input validation, and security best practices.",
+      "path": ".agents/skills/api-security-testing"
+    },
+    {
+      "name": "api-testing-observability-api-mock",
+      "tier": 1,
+      "description": "You are an API mocking expert specializing in realistic mock services for development, testing, and demos. Design mocks that simulate real API behavior and enable parallel development.",
+      "path": ".agents/skills/api-testing-observability-api-mock"
+    },
+    {
+      "name": "apple-design",
+      "tier": 1,
+      "description": "Apple's approach to interface design and fluid, physical motion, translated for the web. Use when building or reviewing gesture-driven UI, spring animations, drag/swipe/sheet interactions, momentum and interruptible transitions, translucent materials and depth, typography (optical sizing, tracking, leading), reduced-motion, or the design foundations (feedback, spatial consistency, restraint) behind Apple-style interfaces.",
+      "path": ".agents/skills/apple-design"
+    },
+    {
+      "name": "architect-review",
+      "tier": 1,
+      "description": "Master software architect specializing in modern architecture",
+      "path": ".agents/skills/architect-review"
+    },
+    {
+      "name": "architecture",
+      "tier": 1,
+      "description": "Architectural decision-making framework. Requirements analysis, trade-off evaluation, ADR documentation. Use when making architecture decisions or analyzing system design.",
+      "path": ".agents/skills/architecture"
+    },
+    {
+      "name": "architecture-c4-model",
+      "tier": 1,
+      "description": "Generate comprehensive C4 architecture documentation for a system. Focuses on Context, Container, and Component levels.",
+      "path": ".agents/skills/architecture-c4-model"
+    },
+    {
+      "name": "architecture-database-design",
+      "tier": 1,
+      "description": "Master of PostgreSQL schema design, optimization, and safe migrations. Enforces strict conventions for IDs, indexes, JSONB, and transactional DDL. Use whenever modifying the data layer.",
+      "path": ".agents/skills/architecture-database-design"
+    },
+    {
+      "name": "architecture-decision-records",
+      "tier": 1,
+      "description": "Capture architectural decisions as numbered ADR markdown files in docs/adr/ with context, alternatives considered, consequences, and an index README. Use when the user says 'record this decision' or 'ADR this', chooses between frameworks or databases, discusses trade-offs, or asks why the codebase is shaped this way.",
+      "path": ".agents/skills/architecture-decision-records"
+    },
+    {
+      "name": "architecture-frontend-design",
+      "tier": 1,
+      "description": "Master of Frontend Design and UI/UX architecture. Enforces DFII, aesthetic intentionality, and usability standards. Use when planning layouts, themes, or UI components.",
+      "path": ".agents/skills/architecture-frontend-design"
+    },
+    {
+      "name": "architecture-patterns",
+      "tier": 1,
+      "description": "Master proven backend architecture patterns including Clean Architecture, Hexagonal Architecture, and Domain-Driven Design to build maintainable, testable, and scalable systems.",
+      "path": ".agents/skills/architecture-patterns"
+    },
+    {
+      "name": "architecture-python-backend",
+      "tier": 1,
+      "description": "Master of Python backend architecture. Enforces layered architecture, BFRI risk assessment, and strict error boundaries. Use when designing or reviewing core Python backend services.",
+      "path": ".agents/skills/architecture-python-backend"
+    },
+    {
+      "name": "architecture-react-nextjs",
+      "tier": 1,
+      "description": "Master of React and Next.js performance and rendering architecture. Enforces server/client boundaries, waterfall elimination, and render optimization.",
+      "path": ".agents/skills/architecture-react-nextjs"
+    },
+    {
+      "name": "ask-sonner",
+      "tier": 1,
+      "description": "Guide to Sonner, the React toast library \u2014 install and wire up the Toaster, pick the right toast() call, promise and loading toasts, updating, dismissing and persisting toasts, styling, theming and icons, positioning and multiple toasters. Use when working with Sonner or troubleshooting it \u2014 toasts that don't appear, appear twice, lose their styles, ignore Tailwind classes, sit behind a modal, or don't follow dark mode.",
+      "path": ".agents/skills/ask-sonner"
+    },
+    {
+      "name": "astro",
+      "tier": 1,
+      "description": "Build content-focused websites with Astro \u2014 zero JS by default, islands architecture, multi-framework components, and Markdown/MDX support.",
+      "path": ".agents/skills/astro"
+    },
+    {
+      "name": "autonomous-loops",
+      "tier": 1,
+      "description": "Patterns and architectures for autonomous Claude Code loops \u2014 from simple sequential pipelines to RFC-driven multi-agent DAG systems. Retained for compatibility only: when new autonomous loop guidance is needed, use continuous-agent-loop instead.",
+      "path": ".agents/skills/autonomous-loops"
+    },
+    {
+      "name": "aws-penetration-testing",
+      "tier": 1,
+      "description": "Provide comprehensive techniques for penetration testing AWS cloud environments. Covers IAM enumeration, privilege escalation, SSRF to metadata endpoint, S3 bucket exploitation, Lambda code extraction, and persistence techniques for red team operations.",
+      "path": ".agents/skills/aws-penetration-testing"
+    },
+    {
+      "name": "aws-skills",
+      "tier": 1,
+      "description": "AWS development with infrastructure automation and cloud architecture patterns",
+      "path": ".agents/skills/aws-skills"
+    },
+    {
+      "name": "awt-e2e-testing",
+      "tier": 1,
+      "description": "AI-powered E2E web testing \u2014 eyes and hands for AI coding tools. Declarative YAML scenarios, Playwright execution, visual matching (OpenCV + OCR), platform auto-detection (Flutter/React/Vue), learning DB. Install: npx skills add ksgisang/awt-skill --skill awt -g",
+      "path": ".agents/skills/awt-e2e-testing"
+    },
+    {
+      "name": "azure-cosmos-db-py",
+      "tier": 1,
+      "description": "Build production-grade Azure Cosmos DB NoSQL services following clean code, security best practices, and TDD principles.",
+      "path": ".agents/skills/azure-cosmos-db-py"
+    },
+    {
+      "name": "azure-eventgrid-dotnet",
+      "tier": 1,
+      "description": "Azure Event Grid SDK for .NET. Client library for publishing and consuming events with Azure Event Grid. Use for event-driven architectures, pub/sub messaging, CloudEvents, and EventGridEvents.",
+      "path": ".agents/skills/azure-eventgrid-dotnet"
+    },
+    {
+      "name": "azure-eventgrid-py",
+      "tier": 1,
+      "description": "Azure Event Grid SDK for Python. Use for publishing events, handling CloudEvents, and event-driven architectures.",
+      "path": ".agents/skills/azure-eventgrid-py"
+    },
+    {
+      "name": "azure-eventhub-java",
+      "tier": 1,
+      "description": "Build real-time streaming applications with Azure Event Hubs SDK for Java. Use when implementing event streaming, high-throughput data ingestion, or building event-driven architectures.",
+      "path": ".agents/skills/azure-eventhub-java"
+    },
+    {
+      "name": "azure-resource-manager-playwright-dotnet",
+      "tier": 1,
+      "description": "Azure Resource Manager SDK for Microsoft Playwright Testing in .NET.",
+      "path": ".agents/skills/azure-resource-manager-playwright-dotnet"
+    },
+    {
+      "name": "backend-architect",
+      "tier": 1,
+      "description": "Expert backend architect specializing in scalable API design, microservices architecture, and distributed systems.",
+      "path": ".agents/skills/backend-architect"
+    },
+    {
+      "name": "backend-patterns",
+      "tier": 1,
+      "description": "Backend architecture patterns, API design, database optimization, and server-side best practices for Node.js, Express, and Next.js API routes. Use when building or reviewing Node.js, Express, or Next.js API routes and their data access.",
+      "path": ".agents/skills/backend-patterns"
+    },
+    {
+      "name": "backend-security-coder",
+      "tier": 1,
+      "description": "Expert in secure backend coding practices specializing in input validation, authentication, and API security. Use PROACTIVELY for backend security implementations or security code reviews.",
+      "path": ".agents/skills/backend-security-coder"
+    },
+    {
+      "name": "backtesting-frameworks",
+      "tier": 1,
+      "description": "Build robust, production-grade backtesting systems that avoid common pitfalls and produce reliable strategy performance estimates.",
+      "path": ".agents/skills/backtesting-frameworks"
+    },
+    {
+      "name": "bash-scripting",
+      "tier": 1,
+      "description": "Bash scripting workflow for creating production-ready shell scripts with defensive patterns, error handling, and testing.",
+      "path": ".agents/skills/bash-scripting"
+    },
+    {
+      "name": "bats-testing-patterns",
+      "tier": 1,
+      "description": "Master Bash Automated Testing System (Bats) for comprehensive shell script testing. Use when writing tests for shell scripts, CI/CD pipelines, or requiring test-driven development of shell utilities.",
+      "path": ".agents/skills/bats-testing-patterns"
+    },
+    {
+      "name": "bdi-mental-states",
+      "tier": 1,
+      "description": "This skill should be used when the user asks to \"model agent mental states\", \"implement BDI architecture\", \"create belief-desire-intention models\", \"transform RDF to beliefs\", \"build cognitive agent\", or mentions BDI ontology, mental state modeling, rational agency, or neuro-symbolic AI integration.",
+      "path": ".agents/skills/bdi-mental-states"
+    },
+    {
+      "name": "benchmark-optimization-loop",
+      "tier": 1,
+      "description": "Convert 'make it faster' requests into a bounded measured optimization loop \u2014 baseline first, generate one-hypothesis variants, benchmark each against a correctness gate, and promote the fastest safe variant with reproducible commands. Use when asked to speed something up, try many variants, run recursive optimization, benchmark latency/throughput/cost, or pick the best implementation by repeated measured tests.",
+      "path": ".agents/skills/benchmark-optimization-loop"
+    },
+    {
+      "name": "break-ui",
+      "tier": 1,
+      "description": "Try to break a piece of UI by feeding it worst-case data \u2014 long names, unbreakable emails, one-letter names, missing fields, huge counts, zero items, long labels, non-Latin text, emoji, extreme numbers \u2014 then render it behind a \"Demo data / Worst case\" toggle and report everything that broke, with the fix for each. Use when the user asks to stress-test, break, or find edge cases in a component or screen, or to \"try the worst case\". For visual design critique use emil-design-eng; for motion use review-animations.",
+      "path": ".agents/skills/break-ui"
+    },
+    {
+      "name": "brooks-lint",
+      "tier": 1,
+      "description": "AI code reviewer grounded in classic software engineering books for catching design smells, coupling issues, and architectural risks.",
+      "path": ".agents/skills/brooks-lint"
+    },
+    {
+      "name": "brownfield-retrospective",
+      "tier": 1,
+      "description": "Run the ECC engineering process retroactively against an existing project slice. Audit current state, reconstruct past decisions, produce a four-axis gap register (thinking, coding practice, missing features, technology selection), then execute fixes forward through the plan-TDD-review pipeline. Use when adopting ECC mid-project, taking over an inherited codebase, or asking what was missed and what would have been built differently from day one.",
+      "path": ".agents/skills/brownfield-retrospective"
+    },
+    {
+      "name": "browser-automation",
+      "tier": 1,
+      "description": "Browser automation powers web testing, scraping, and AI agent",
+      "path": ".agents/skills/browser-automation"
+    },
+    {
+      "name": "browser-qa",
+      "tier": 1,
+      "description": "Run automated post-deploy UI verification with a browser automation MCP (claude-in-chrome, Playwright, or Puppeteer): console-error and Core Web Vitals smoke checks, form and auth-flow interaction tests, screenshot visual regression across three breakpoints, and axe-core accessibility audits ending in a SHIP / DO-NOT-SHIP verdict. Use when testing a deployed feature on staging or preview, before shipping frontend changes, reviewing a frontend PR, or checking responsive layout and accessibility.",
+      "path": ".agents/skills/browser-qa"
+    },
+    {
+      "name": "bun-runtime",
+      "tier": 1,
+      "description": "Bun as runtime, package manager, bundler, and test runner. When to choose Bun vs Node, migration notes, and Vercel support.",
+      "path": ".agents/skills/bun-runtime"
+    },
+    {
+      "name": "burp-suite-testing",
+      "tier": 1,
+      "description": "Execute comprehensive web application security testing using Burp Suite's integrated toolset, including HTTP traffic interception and modification, request analysis and replay, automated vulnerability scanning, and manual testing workflows.",
+      "path": ".agents/skills/burp-suite-testing"
+    },
+    {
+      "name": "c4-architecture-c4-architecture",
+      "tier": 1,
+      "description": "Generate comprehensive C4 architecture documentation for an existing repository/codebase using a bottom-up analysis approach.",
+      "path": ".agents/skills/c4-architecture-c4-architecture"
+    },
+    {
+      "name": "c4-code",
+      "tier": 1,
+      "description": "Expert C4 Code-level documentation specialist. Analyzes code directories to create comprehensive C4 code-level documentation including function signatures, arguments, dependencies, and code structure.",
+      "path": ".agents/skills/c4-code"
+    },
+    {
+      "name": "c4-component",
+      "tier": 1,
+      "description": "Expert C4 Component-level documentation specialist. Synthesizes C4 Code-level documentation into Component-level architecture, defining component boundaries, interfaces, and relationships.",
+      "path": ".agents/skills/c4-component"
+    },
+    {
+      "name": "c4-container",
+      "tier": 1,
+      "description": "Expert C4 Container-level documentation specialist.",
+      "path": ".agents/skills/c4-container"
+    },
+    {
+      "name": "c4-context",
+      "tier": 1,
+      "description": "Expert C4 Context-level documentation specialist. Creates high-level system context diagrams, documents personas, user journeys, system features, and external dependencies.",
+      "path": ".agents/skills/c4-context"
+    },
+    {
+      "name": "cc-skill-backend-patterns",
+      "tier": 1,
+      "description": "Backend architecture patterns, API design, database optimization, and server-side best practices for Node.js, Express, and Next.js API routes.",
+      "path": ".agents/skills/cc-skill-backend-patterns"
+    },
+    {
+      "name": "clean-code",
+      "tier": 1,
+      "description": "This skill embodies the principles of \\\"Clean Code\\\" by Robert C. Martin (Uncle Bob). Use it to transform \\\"code that works\\\" into \\\"code that is clean.\\",
+      "path": ".agents/skills/clean-code"
+    },
+    {
+      "name": "code-documentation-doc-generate",
+      "tier": 1,
+      "description": "You are a documentation expert specializing in creating comprehensive, maintainable documentation from code. Generate API docs, architecture diagrams, user guides, and technical references using AI-powered analysis and industry best practices.",
+      "path": ".agents/skills/code-documentation-doc-generate"
+    },
+    {
+      "name": "code-review-ai-ai-review",
+      "tier": 1,
+      "description": "You are an expert AI-powered code review specialist combining automated static analysis, intelligent pattern recognition, and modern DevOps practices. Leverage AI tools (GitHub Copilot, Qodo, GPT-5, C",
+      "path": ".agents/skills/code-review-ai-ai-review"
+    },
+    {
+      "name": "code-review-checklist",
+      "tier": 1,
+      "description": "Comprehensive checklist for conducting thorough code reviews covering functionality, security, performance, and maintainability",
+      "path": ".agents/skills/code-review-checklist"
+    },
+    {
+      "name": "code-review-excellence",
+      "tier": 1,
+      "description": "Master effective code review practices to provide constructive feedback and catch bugs early. Use this skill when reviewing pull requests, auditing code for security, or evaluating architectural choices. Relevant keywords: code review, audit, pr, pull request, evaluate, feedback, architecture review.",
+      "path": ".agents/skills/code-review-excellence"
+    },
+    {
+      "name": "code-reviewer",
+      "tier": 1,
+      "description": "Elite code review expert specializing in modern AI-powered code",
+      "path": ".agents/skills/code-reviewer"
+    },
+    {
+      "name": "code-tour",
+      "tier": 1,
+      "description": "Create CodeTour `.tour` files \u2014 persona-targeted, step-by-step walkthroughs with real file and line anchors. Use for onboarding tours, architecture walkthroughs, PR tours, RCA tours, and structured \"explain how this works\" requests. Use when the user asks for a code tour, onboarding walkthrough, PR tour, or an explanation of how a subsystem works.",
+      "path": ".agents/skills/code-tour"
+    },
+    {
+      "name": "codebase-onboarding",
+      "tier": 1,
+      "description": "Analyze an unfamiliar codebase and generate a structured onboarding guide with architecture map, key entry points, conventions, and a starter CLAUDE.md. Use when joining a new project or setting up Claude Code for the first time in a repo.",
+      "path": ".agents/skills/codebase-onboarding"
+    },
+    {
+      "name": "codex-review",
+      "tier": 1,
+      "description": "Professional code review with auto CHANGELOG generation, integrated with Codex AI. Use when you want professional code review before commits, you need automatic CHANGELOG generation, or reviewing large-scale refactoring.",
+      "path": ".agents/skills/codex-review"
+    },
+    {
+      "name": "composition-patterns",
+      "tier": 1,
+      "description": "React composition patterns that scale. Use when refactoring components with boolean prop proliferation, building flexible component libraries, or designing reusable APIs. Triggers on tasks involving compound components, render props, context providers, or component architecture. Includes React 19 API changes.",
+      "path": ".agents/skills/composition-patterns"
+    },
+    {
+      "name": "conductor-implement",
+      "tier": 1,
+      "description": "Execute tasks from a track's implementation plan following TDD workflow",
+      "path": ".agents/skills/conductor-implement"
+    },
+    {
+      "name": "context-fundamentals",
+      "tier": 1,
+      "description": "This skill should be used when the user asks to \"understand context\", \"explain context windows\", \"design agent architecture\", \"debug context issues\", \"optimize context usage\", or discusses context components, attention mechanics, progressive disclosure, or context budgeting. Provides foundational understanding of context engineering for AI agent systems.",
+      "path": ".agents/skills/context-fundamentals"
+    },
+    {
+      "name": "council-list",
+      "tier": 1,
+      "description": "List all past Agent Council sessions for the current project. Shows session ID, mode, agent count, and question for each.",
+      "path": ".agents/skills/council-list"
+    },
+    {
+      "name": "council-multi-model",
+      "tier": 1,
+      "description": "Add one optional external Codex critique after the existing council has produced a decision draft. Use when an ambiguous, high-consequence decision would benefit from a separate model invocation's attempt to break the synthesis. Requires explicit consent before sending the compact draft and disagreement to OpenAI, labels same-provider reviews honestly, and marks the review absent when the adapter is unavailable.",
+      "path": ".agents/skills/council-multi-model"
+    },
+    {
+      "name": "council-nudge",
+      "tier": 1,
+      "description": "Nudge a specific agent to reconsider its opinion based on a corrected assumption. Sends the original question + response + correction to one agent and saves the updated opinion alongside the original for comparison.",
+      "path": ".agents/skills/council-nudge"
+    },
+    {
+      "name": "council-outcome",
+      "tier": 1,
+      "description": "Record the outcome of a past Agent Council decision. Was the council right? Builds calibration data over time to learn which models are best at what.",
+      "path": ".agents/skills/council-outcome"
+    },
+    {
+      "name": "council-replay",
+      "tier": 1,
+      "description": "Replay a past Agent Council session in the terminal. Shows the full deliberation: question, each agent's opinion, and the chairman's synthesis.",
+      "path": ".agents/skills/council-replay"
+    },
+    {
+      "name": "council-revisit",
+      "tier": 1,
+      "description": "Revisit a past Agent Council decision with current codebase context. Re-runs the same question through the council and shows a side-by-side comparison of what changed. Use for living decisions.",
+      "path": ".agents/skills/council-revisit"
+    },
+    {
+      "name": "cqrs-implementation",
+      "tier": 1,
+      "description": "Implement Command Query Responsibility Segregation for scalable architectures. Use when separating read and write models, optimizing query performance, or building event-sourced systems.",
+      "path": ".agents/skills/cqrs-implementation"
+    },
+    {
+      "name": "csharp-pro",
+      "tier": 1,
+      "description": "Write modern C# code with advanced features like records, pattern matching, and async/await. Optimizes .NET applications, implements enterprise patterns, and ensures comprehensive testing.",
+      "path": ".agents/skills/csharp-pro"
+    },
+    {
+      "name": "csharp-testing",
+      "tier": 1,
+      "description": "C# and .NET testing patterns with xUnit, FluentAssertions, mocking, integration tests, and test organization best practices. Use when writing or reviewing xUnit tests, mocks, or integration tests in a C# / .NET project.",
+      "path": ".agents/skills/csharp-testing"
+    },
+    {
+      "name": "dart-flutter-patterns",
+      "tier": 1,
+      "description": "Production-ready Dart and Flutter patterns covering null safety, immutable state with Freezed, async composition, widget architecture, state management (BLoC, Riverpod, Provider), GoRouter navigation with auth guards, Dio networking, error handling, and testing. Use when writing or reviewing Dart and Flutter code \u2014 state, widgets, navigation, networking, or architecture.",
+      "path": ".agents/skills/dart-flutter-patterns"
+    },
+    {
+      "name": "data-engineer",
+      "tier": 1,
+      "description": "Build scalable data pipelines, modern data warehouses, and real-time streaming architectures. Implements Apache Spark, dbt, Airflow, and cloud-native data platforms.",
+      "path": ".agents/skills/data-engineer"
+    },
+    {
+      "name": "data-engineering-data-driven-feature",
+      "tier": 1,
+      "description": "Build features guided by data insights, A/B testing, and continuous measurement using specialized agents for analysis, implementation, and experimentation.",
+      "path": ".agents/skills/data-engineering-data-driven-feature"
+    },
+    {
+      "name": "data-engineering-data-pipeline",
+      "tier": 1,
+      "description": "You are a data pipeline architecture expert specializing in scalable, reliable, and cost-effective data pipelines for batch and streaming data processing.",
+      "path": ".agents/skills/data-engineering-data-pipeline"
+    },
+    {
+      "name": "database-architect",
+      "tier": 1,
+      "description": "Expert database architect specializing in data layer design from scratch, technology selection, schema modeling, and scalable database architectures.",
+      "path": ".agents/skills/database-architect"
+    },
+    {
+      "name": "database-cloud-optimization-cost-optimize",
+      "tier": 1,
+      "description": "You are a cloud cost optimization expert specializing in reducing infrastructure expenses while maintaining performance and reliability. Analyze cloud spending, identify savings opportunities, and implement cost-effective architectures across AWS, Azure, and GCP.",
+      "path": ".agents/skills/database-cloud-optimization-cost-optimize"
+    },
+    {
+      "name": "database-optimizer",
+      "tier": 1,
+      "description": "Expert database optimizer specializing in modern performance tuning, query optimization, and scalable architectures.",
+      "path": ".agents/skills/database-optimizer"
+    },
+    {
+      "name": "dbt-transformation-patterns",
+      "tier": 1,
+      "description": "Production-ready patterns for dbt (data build tool) including model organization, testing strategies, documentation, and incremental processing.",
+      "path": ".agents/skills/dbt-transformation-patterns"
+    },
+    {
+      "name": "debug-buttercup",
+      "tier": 1,
+      "description": "All pods run in namespace crs. Use when pods in the crs namespace are in CrashLoopBackOff, OOMKilled, or restarting, multiple services restart simultaneously (cascade failure), or redis is unresponsive or showing AOF warnings.",
+      "path": ".agents/skills/debug-buttercup"
+    },
+    {
+      "name": "debugger",
+      "tier": 1,
+      "description": "Debugging specialist for errors, test failures, and unexpected",
+      "path": ".agents/skills/debugger"
+    },
+    {
+      "name": "debugging-strategies",
+      "tier": 1,
+      "description": "Transform debugging from frustrating guesswork into systematic problem-solving with proven strategies, powerful tools, and methodical approaches.",
+      "path": ".agents/skills/debugging-strategies"
+    },
+    {
+      "name": "debugging-toolkit-smart-debug",
+      "tier": 1,
+      "description": "Use when working with debugging toolkit smart debug",
+      "path": ".agents/skills/debugging-toolkit-smart-debug"
+    },
+    {
+      "name": "dependency-upgrade",
+      "tier": 1,
+      "description": "Master major dependency version upgrades, compatibility analysis, staged upgrade strategies, and comprehensive testing approaches.",
+      "path": ".agents/skills/dependency-upgrade"
+    },
+    {
+      "name": "deployment-pipeline-design",
+      "tier": 1,
+      "description": "Architecture patterns for multi-stage CI/CD pipelines with approval gates and deployment strategies.",
+      "path": ".agents/skills/deployment-pipeline-design"
+    },
+    {
+      "name": "deployment-validation-config-validate",
+      "tier": 1,
+      "description": "You are a configuration management expert specializing in validating, testing, and ensuring the correctness of application configurations. Create comprehensive validation schemas, implement configurat",
+      "path": ".agents/skills/deployment-validation-config-validate"
+    },
+    {
+      "name": "diagnosing-bugs",
+      "tier": 1,
+      "description": "Diagnosis loop for hard bugs and performance regressions. Use when the user says \"diagnose\"/\"debug this\", or reports something broken/throwing/failing/slow.",
+      "path": ".agents/skills/diagnosing-bugs"
+    },
+    {
+      "name": "differential-review",
+      "tier": 1,
+      "description": "Security-focused code review for PRs, commits, and diffs.",
+      "path": ".agents/skills/differential-review"
+    },
+    {
+      "name": "django-access-review",
+      "tier": 1,
+      "description": "django-access-review",
+      "path": ".agents/skills/django-access-review"
+    },
+    {
+      "name": "django-celery",
+      "tier": 1,
+      "description": "Django + Celery async task patterns \u2014 configuration, task design, beat scheduling, retries, canvas workflows, monitoring, and testing. Use when adding background jobs, scheduled tasks, or async processing to a Django app.",
+      "path": ".agents/skills/django-celery"
+    },
+    {
+      "name": "django-patterns",
+      "tier": 1,
+      "description": "Django architecture patterns, REST API design with DRF, ORM best practices, caching, signals, middleware, and production-grade Django apps. Use when building or reviewing Django apps, DRF APIs, ORM queries, or caching.",
+      "path": ".agents/skills/django-patterns"
+    },
+    {
+      "name": "django-perf-review",
+      "tier": 1,
+      "description": "Django performance code review. Use when asked to \"review Django performance\", \"find N+1 queries\", \"optimize Django\", \"check queryset performance\", \"database performance\", \"Django ORM issues\", or audit Django code for performance problems.",
+      "path": ".agents/skills/django-perf-review"
+    },
+    {
+      "name": "django-pro",
+      "tier": 1,
+      "description": "Master Django 5.x with async views, DRF, Celery, and Django Channels. Build scalable web applications with proper architecture, testing, and deployment.",
+      "path": ".agents/skills/django-pro"
+    },
+    {
+      "name": "django-security",
+      "tier": 1,
+      "description": "Django security best practices, authentication, authorization, CSRF protection, SQL injection prevention, XSS prevention, and secure deployment configurations. Use when reviewing Django authentication, authorization, input handling, or deployment settings.",
+      "path": ".agents/skills/django-security"
+    },
+    {
+      "name": "django-tdd",
+      "tier": 1,
+      "description": "Django testing strategies with pytest-django, TDD methodology, factory_boy, mocking, coverage, and testing Django REST Framework APIs. Use when writing Django or DRF tests with pytest-django, or driving a Django feature test-first.",
+      "path": ".agents/skills/django-tdd"
+    },
+    {
+      "name": "django-verification",
+      "tier": 1,
+      "description": "Run the full Django verification loop \u2014 environment check, mypy/ruff/black linting, migration safety, pytest with coverage targets, pip-audit and bandit security scans, settings and logging review, and diff review \u2014 producing a phased pass/fail report before release or PR. Use when preparing a Django pull request, validating migrations or coverage, or running pre-deploy readiness checks.",
+      "path": ".agents/skills/django-verification"
+    },
+    {
+      "name": "docker-expert",
+      "tier": 1,
+      "description": "You are an advanced Docker containerization expert with comprehensive, practical knowledge of container optimization, security hardening, multi-stage builds, orchestration patterns, and production deployment strategies based on current industry best practices.",
+      "path": ".agents/skills/docker-expert"
+    },
+    {
+      "name": "docker-patterns",
+      "tier": 1,
+      "description": "Docker and Docker Compose patterns for local development, hardened CLI installer harnesses, container security, networking, volumes, and multi-service orchestration. Use when creating or reviewing Dockerfiles and Compose services, testing installers across Linux distributions, or planning accurate native macOS and Windows validation.",
+      "path": ".agents/skills/docker-patterns"
+    },
+    {
+      "name": "docs-architect",
+      "tier": 1,
+      "description": "Creates comprehensive technical documentation from existing codebases. Analyzes architecture, design patterns, and implementation details to produce long-form technical manuals and ebooks.",
+      "path": ".agents/skills/docs-architect"
+    },
+    {
+      "name": "documentation",
+      "tier": 1,
+      "description": "Documentation generation workflow covering API docs, architecture docs, README files, code comments, and technical writing.",
+      "path": ".agents/skills/documentation"
+    },
+    {
+      "name": "documentation-generation-doc-generate",
+      "tier": 1,
+      "description": "You are a documentation expert specializing in creating comprehensive, maintainable documentation from code. Generate API docs, architecture diagrams, user guides, and technical references using AI-powered analysis and industry best practices.",
+      "path": ".agents/skills/documentation-generation-doc-generate"
+    },
+    {
+      "name": "domain-driven-design",
+      "tier": 1,
+      "description": "Plan and route Domain-Driven Design work from strategic modeling to tactical implementation and evented architecture patterns.",
+      "path": ".agents/skills/domain-driven-design"
+    },
+    {
+      "name": "e2e-testing",
+      "tier": 1,
+      "description": "Playwright E2E testing patterns, Page Object Model, configuration, CI/CD integration, artifact management, and flaky test strategies. Use when writing Playwright tests, structuring page objects, or fixing flaky E2E runs in CI.",
+      "path": ".agents/skills/e2e-testing"
+    },
+    {
+      "name": "electron-development",
+      "tier": 1,
+      "description": "Master Electron desktop app development with secure IPC, contextIsolation, preload scripts, multi-process architecture, electron-builder packaging, code signing, and auto-update.",
+      "path": ".agents/skills/electron-development"
+    },
+    {
+      "name": "elite-database-architect",
+      "tier": 1,
+      "description": "PostgreSQL, schema design, migrations, and optimization. Use for all database architecture and query optimization.",
+      "path": ".agents/skills/elite-database-architect"
+    },
+    {
+      "name": "elite-frontend-architect",
+      "tier": 1,
+      "description": "The absolute authority on React, Next.js, UI/UX, Tailwind, and Frontend Performance. Merged from 13+ specialized skills. Use for all frontend, styling, and UI architecture tasks.",
+      "path": ".agents/skills/elite-frontend-architect"
+    },
+    {
+      "name": "elite-python-architect",
+      "tier": 1,
+      "description": "Master of Python, FastAPI, asyncio, design patterns, and distributed backend architecture.",
+      "path": ".agents/skills/elite-python-architect"
+    },
+    {
+      "name": "elite-qa-architect",
+      "tier": 1,
+      "description": "Master of TDD, E2E (Playwright/Cypress), Integration testing, and Bug hunting.",
+      "path": ".agents/skills/elite-qa-architect"
+    },
+    {
+      "name": "elite-skill-architect",
+      "tier": 1,
+      "description": "The definitive meta-skill for creating, testing, optimizing, and managing AI agent skills. Use when the user wants to create a new skill, build a skill, improve an existing skill, debug skill triggers, run skill evaluations, optimize skill descriptions, benchmark skill performance, package skills, or manage skill architecture. Covers the full lifecycle from brainstorming to production-grade deployment.",
+      "path": ".agents/skills/elite-skill-architect"
+    },
+    {
+      "name": "emil-design-eng",
+      "tier": 1,
+      "description": "This skill encodes Emil Kowalski's philosophy on UI polish, component design, animation decisions, and the invisible details that make software feel great.",
+      "path": ".agents/skills/emil-design-eng"
+    },
+    {
+      "name": "ethical-hacking-methodology",
+      "tier": 1,
+      "description": "Master the complete penetration testing lifecycle from reconnaissance through reporting. This skill covers the five stages of ethical hacking methodology, essential tools, attack techniques, and professional reporting for authorized security assessments.",
+      "path": ".agents/skills/ethical-hacking-methodology"
+    },
+    {
+      "name": "eval-harness",
+      "tier": 1,
+      "description": "Eval-driven development (EDD) framework for AI coding sessions \u2014 define capability and regression evals before coding, grade with code-based, model-based, rule, or human graders, and track pass@k and pass^k reliability. Use when defining pass/fail criteria for agent tasks, measuring agent reliability, building regression suites for prompt or agent changes, or benchmarking across model versions.",
+      "path": ".agents/skills/eval-harness"
+    },
+    {
+      "name": "evaluation",
+      "tier": 1,
+      "description": "This skill should be used when the user asks to \"evaluate agent performance\", \"build test framework\", \"measure agent quality\", \"create evaluation rubrics\", or mentions LLM-as-judge, multi-dimensional evaluation, agent testing, or quality gates for agent pipelines.",
+      "path": ".agents/skills/evaluation"
+    },
+    {
+      "name": "event-sourcing-architect",
+      "tier": 1,
+      "description": "Expert in event sourcing, CQRS, and event-driven architecture patterns. Masters event store design, projection building, saga orchestration, and eventual consistency patterns. Use PROACTIVELY for event-sourced systems, audit trail requirements, or complex domain modeling with temporal queries.",
+      "path": ".agents/skills/event-sourcing-architect"
+    },
+    {
+      "name": "expert-dev",
+      "tier": 1,
+      "description": "Dev Expert for code implementation, refactoring, code reviews, debugging, and feature development. Triggers: implement, code, refactor, debug, feature, function, class, module, component, bugfix, optimize, clean code",
+      "path": ".agents/skills/expert-dev"
+    },
+    {
+      "name": "expert-tech-architect",
+      "tier": 1,
+      "description": "Tech Architect Expert for system design, technology decisions, ADRs, API design, and database architecture. Triggers: architecture, system design, tech stack, ADR, pattern, schema design, API design, microservices, database architecture, technology choice",
+      "path": ".agents/skills/expert-tech-architect"
+    },
+    {
+      "name": "fastapi-patterns",
+      "tier": 1,
+      "description": "FastAPI best practices covering project structure, Pydantic v2 schemas, dependency injection, async handlers, authentication, authorization, transactional service layers, and testing with httpx and pytest. Use when building or reviewing FastAPI apps \u2014 Pydantic schemas, dependencies, async handlers, auth, or tests.",
+      "path": ".agents/skills/fastapi-patterns"
+    },
+    {
+      "name": "fastapi-pro",
+      "tier": 1,
+      "description": "Build high-performance async APIs with FastAPI, SQLAlchemy 2.0, and Pydantic V2. Master microservices, WebSockets, and modern Python async patterns.",
+      "path": ".agents/skills/fastapi-pro"
+    },
+    {
+      "name": "fastapi-router-py",
+      "tier": 1,
+      "description": "Create FastAPI routers following established patterns with proper authentication, response models, and HTTP status codes.",
+      "path": ".agents/skills/fastapi-router-py"
+    },
+    {
+      "name": "fastapi-templates",
+      "tier": 1,
+      "description": "Create production-ready FastAPI projects with async patterns, dependency injection, and comprehensive error handling. Use when building new FastAPI applications or setting up backend API projects.",
+      "path": ".agents/skills/fastapi-templates"
+    },
+    {
+      "name": "ffuf-web-fuzzing",
+      "tier": 1,
+      "description": "Expert guidance for ffuf web fuzzing during penetration testing, including authenticated fuzzing with raw requests, auto-calibration, and result analysis",
+      "path": ".agents/skills/ffuf-web-fuzzing"
+    },
+    {
+      "name": "find-animation-opportunities",
+      "tier": 1,
+      "description": "Search a codebase or UI for places that don't animate but should, and reject everything that shouldn't. Read-only; it proposes motion with exact values, it does not implement it. Use when the user asks \"what could be animated here?\" or wants to \"make this feel more alive\". For fixing existing animations, use improve-animations or review-animations instead.",
+      "path": ".agents/skills/find-animation-opportunities"
+    },
+    {
+      "name": "find-bugs",
+      "tier": 1,
+      "description": "Find bugs, security vulnerabilities, and code quality issues in local branch changes. Use when asked to review changes, find bugs, security review, or audit code on the current branch.",
+      "path": ".agents/skills/find-bugs"
+    },
+    {
+      "name": "flutter-dart-code-review",
+      "tier": 1,
+      "description": "Library-agnostic Flutter/Dart code review checklist covering widget best practices, state management patterns (BLoC, Riverpod, Provider, GetX, MobX, Signals), Dart idioms, performance, accessibility, security, and clean architecture. Use when reviewing Flutter or Dart code, whatever state management library the project uses.",
+      "path": ".agents/skills/flutter-dart-code-review"
+    },
+    {
+      "name": "framework-migration-deps-upgrade",
+      "tier": 1,
+      "description": "You are a dependency management expert specializing in safe, incremental upgrades of project dependencies. Plan and execute dependency updates with minimal risk, proper testing, and clear migration pa",
+      "path": ".agents/skills/framework-migration-deps-upgrade"
+    },
+    {
+      "name": "freelancer-client-acquisition",
+      "tier": 1,
+      "description": "Use when designing, executing, auditing, or automating a freelancer's outbound client acquisition engine, sales prospecting, cold email/DM outreach campaigns, content marketing, or referral programs.",
+      "path": ".agents/skills/freelancer-client-acquisition"
+    },
+    {
+      "name": "freelancer-developer-resources",
+      "tier": 1,
+      "description": "Use when requesting development prompts, system design/architecture templates (ADR, tech specs), docker/API boilerplates, CI/CD configs, Prometheus/Grafana monitoring scripts, or technical/behavioral interview preparation guides.",
+      "path": ".agents/skills/freelancer-developer-resources"
+    },
+    {
+      "name": "freelancer-emergency-kit",
+      "tier": 1,
+      "description": "Use when managing freelance project crises, scope creep requests, difficult client relationships, payment disputes, freelancer burnout, or shifting business/market niches.",
+      "path": ".agents/skills/freelancer-emergency-kit"
+    },
+    {
+      "name": "freelancer-help",
+      "tier": 1,
+      "description": "Use when requesting guidance on how to navigate, query, prompt, or apply the overall freelance skill repository, or when looking for end-to-end freelancer lifecycle case studies and lifestyle impact analysis.",
+      "path": ".agents/skills/freelancer-help"
+    },
+    {
+      "name": "freelancer-identity",
+      "tier": 1,
+      "description": "Use when creating, optimizing, auditing, or positioning a freelancer's professional identity, personal brand promise, LinkedIn profile, or portfolio case studies.",
+      "path": ".agents/skills/freelancer-identity"
+    },
+    {
+      "name": "freelancer-operations",
+      "tier": 1,
+      "description": "Use when setting up freelance financial tracking, invoicing, international payment routes, drafting legal contracts (NDAs, master service agreements), configuring CRM/automation stacks, managing developer time, or designing scaling models.",
+      "path": ".agents/skills/freelancer-operations"
+    },
+    {
+      "name": "freelancer-post-delivery",
+      "tier": 1,
+      "description": "Use when asking clients for testimonials, designing maintenance and support retainers, identifying upsell or cross-sell opportunities, or offboarding freelance clients.",
+      "path": ".agents/skills/freelancer-post-delivery"
+    },
+    {
+      "name": "freelancer-project-delivery",
+      "tier": 1,
+      "description": "Use when onboarding clients, setting up git repositories, designing MLOps pipelines (ZenML, MLflow, DVC), structuring tests/QA for ML, and managing project milestones or delivery handoffs.",
+      "path": ".agents/skills/freelancer-project-delivery"
+    },
+    {
+      "name": "freelancer-sales-closing",
+      "tier": 1,
+      "description": "Use when conducting freelancer discovery calls, defining value-based pricing models, drafting Statements of Work (SOW) or proposals, negotiating project budgets/scopes, or managing client kickoff/payment conversions.",
+      "path": ".agents/skills/freelancer-sales-closing"
+    },
+    {
+      "name": "frontend-developer",
+      "tier": 1,
+      "description": "Build React components, implement responsive layouts, and handle client-side state management. Masters React 19, Next.js 15, and modern frontend architecture.",
+      "path": ".agents/skills/frontend-developer"
+    },
+    {
+      "name": "frontend-mobile-development-component-scaffold",
+      "tier": 1,
+      "description": "You are a React component architecture expert specializing in scaffolding production-ready, accessible, and performant components. Generate complete component implementations with TypeScript, tests, s",
+      "path": ".agents/skills/frontend-mobile-development-component-scaffold"
+    },
+    {
+      "name": "fsharp-testing",
+      "tier": 1,
+      "description": "F# testing patterns with xUnit, FsUnit, Unquote, FsCheck property-based testing, integration tests, and test organization best practices. Use when writing F# tests with xUnit, FsUnit, Unquote, or FsCheck.",
+      "path": ".agents/skills/fsharp-testing"
+    },
+    {
+      "name": "geo-fundamentals",
+      "tier": 1,
+      "description": "Generative Engine Optimization for AI search engines (ChatGPT, Claude, Perplexity).",
+      "path": ".agents/skills/geo-fundamentals"
+    },
+    {
+      "name": "git-advanced-workflows",
+      "tier": 1,
+      "description": "Master advanced Git techniques to maintain clean history, collaborate effectively, and recover from any situation with confidence.",
+      "path": ".agents/skills/git-advanced-workflows"
+    },
+    {
+      "name": "git-hooks-automation",
+      "tier": 1,
+      "description": "Master Git hooks setup with Husky, lint-staged, pre-commit framework, and commitlint. Automate code quality gates, formatting, linting, and commit message enforcement before code reaches CI.",
+      "path": ".agents/skills/git-hooks-automation"
+    },
+    {
+      "name": "git-pr-review",
+      "tier": 1,
+      "description": "Generate a concise and structured PR description from commit history with minimal token usage",
+      "path": ".agents/skills/git-pr-review"
+    },
+    {
+      "name": "git-pr-workflows-git-workflow",
+      "tier": 1,
+      "description": "Orchestrate a comprehensive git workflow from code review through PR creation, leveraging specialized agents for quality assurance, testing, and deployment readiness. This workflow implements modern g",
+      "path": ".agents/skills/git-pr-workflows-git-workflow"
+    },
+    {
+      "name": "git-pr-workflows-onboard",
+      "tier": 1,
+      "description": "You are an **expert onboarding specialist and knowledge transfer architect** with deep experience in remote-first organizations, technical team integration, and accelerated learning methodologies. You",
+      "path": ".agents/skills/git-pr-workflows-onboard"
+    },
+    {
+      "name": "git-pr-workflows-pr-enhance",
+      "tier": 1,
+      "description": "You are a PR optimization expert specializing in creating high-quality pull requests that facilitate efficient code reviews. Generate comprehensive PR descriptions, automate review processes, and ensu",
+      "path": ".agents/skills/git-pr-workflows-pr-enhance"
+    },
+    {
+      "name": "git-pushing",
+      "tier": 1,
+      "description": "Stage all changes, create a conventional commit, and push to the remote branch. Use when explicitly asks to push changes (\\\"push this\\\", \\\"commit and push\\\"), mentions saving work to remote (\\\"save to github\\\", \\\"push to remote\\\"), or completes a feature and wants to share it.",
+      "path": ".agents/skills/git-pushing"
+    },
+    {
+      "name": "git-workflow",
+      "tier": 1,
+      "description": "Git workflow patterns including branching strategies, commit conventions, keeping history clean and readable, tidying local commits before merging, merge vs rebase, conflict resolution, and collaborative development best practices for teams of all sizes. Use when choosing a branching strategy, writing commit conventions, cleaning up history before a pull request, deciding merge versus rebase, or resolving conflicts.",
+      "path": ".agents/skills/git-workflow"
+    },
+    {
+      "name": "github-actions-templates",
+      "tier": 1,
+      "description": "Production-ready GitHub Actions workflow patterns for testing, building, and deploying applications.",
+      "path": ".agents/skills/github-actions-templates"
+    },
+    {
+      "name": "gitlab-ci-patterns",
+      "tier": 1,
+      "description": "Comprehensive GitLab CI/CD pipeline patterns for automated testing, building, and deployment.",
+      "path": ".agents/skills/gitlab-ci-patterns"
+    },
+    {
+      "name": "go-concurrency-patterns",
+      "tier": 1,
+      "description": "Master Go concurrency with goroutines, channels, sync primitives, and context. Use when building concurrent Go applications, implementing worker pools, or debugging race conditions.",
+      "path": ".agents/skills/go-concurrency-patterns"
+    },
+    {
+      "name": "go-playwright",
+      "tier": 1,
+      "description": "Expert capability for robust, stealthy, and efficient browser automation using Playwright Go.",
+      "path": ".agents/skills/go-playwright"
+    },
+    {
+      "name": "go-rod-master",
+      "tier": 1,
+      "description": "Comprehensive guide for browser automation and web scraping with go-rod (Chrome DevTools Protocol) including stealth anti-bot-detection patterns.",
+      "path": ".agents/skills/go-rod-master"
+    },
+    {
+      "name": "golang-patterns",
+      "tier": 1,
+      "description": "Idiomatic Go patterns, best practices, and conventions for building robust, efficient, and maintainable Go applications. Use when writing or reviewing Go code and idiomatic structure or conventions are in question.",
+      "path": ".agents/skills/golang-patterns"
+    },
+    {
+      "name": "golang-pro",
+      "tier": 1,
+      "description": "Master Go 1.21+ with modern patterns, advanced concurrency, performance optimization, and production-ready microservices.",
+      "path": ".agents/skills/golang-pro"
+    },
+    {
+      "name": "golang-testing",
+      "tier": 1,
+      "description": "Go testing patterns including table-driven tests, subtests, benchmarks, fuzzing, and test coverage. Follows TDD methodology with idiomatic Go practices. Use when writing Go tests \u2014 table-driven cases, subtests, benchmarks, fuzzing, or coverage.",
+      "path": ".agents/skills/golang-testing"
+    },
+    {
+      "name": "improve-animations",
+      "tier": 1,
+      "description": "Survey a codebase's animation and motion code as a senior motion advisor, then produce a prioritized audit and self-contained implementation plans for other agents (or cheaper models) to execute. Read-only on source code \u2014 it plans improvements, it does not apply them. Use when the user asks to \"improve the animations\", \"audit the motion\", \"make this app feel better\", or wants a roadmap of animation fixes rather than a review of a single diff.",
+      "path": ".agents/skills/improve-animations"
+    },
+    {
+      "name": "indexing-issue-auditor",
+      "tier": 1,
+      "description": "High-level technical SEO and site architecture auditor. Invoke to scan local or live environments for indexing, crawl budget, and structural errors.",
+      "path": ".agents/skills/indexing-issue-auditor"
+    },
+    {
+      "name": "intent-driven-development",
+      "tier": 1,
+      "description": "Turn ambiguous or high-impact product and engineering changes into scoped, verifiable acceptance criteria before or alongside implementation. Use when a user asks to clarify a feature, define acceptance criteria, de-risk a security/data/migration/integration change, prepare implementation requirements for another agent, or make a complex request testable. Do not trigger for trivial edits, straightforward fixes, active debugging, code review, or implementation requests whose acceptance conditions are already clear unless the user explicitly invokes this skill.",
+      "path": ".agents/skills/intent-driven-development"
+    },
+    {
+      "name": "javascript-testing-patterns",
+      "tier": 1,
+      "description": "Comprehensive guide for implementing robust testing strategies in JavaScript/TypeScript applications using modern testing frameworks and best practices.",
+      "path": ".agents/skills/javascript-testing-patterns"
+    },
+    {
+      "name": "javascript-typescript-typescript-scaffold",
+      "tier": 1,
+      "description": "You are a TypeScript project architecture expert specializing in scaffolding production-ready Node.js and frontend applications. Generate complete project structures with modern tooling (pnpm, Vite, N",
+      "path": ".agents/skills/javascript-typescript-typescript-scaffold"
+    },
+    {
+      "name": "k6-load-testing",
+      "tier": 1,
+      "description": "Comprehensive k6 load testing skill for API, browser, and scalability testing. Write realistic load scenarios, analyze results, and integrate with CI/CD.",
+      "path": ".agents/skills/k6-load-testing"
+    },
+    {
+      "name": "k8s-manifest-generator",
+      "tier": 1,
+      "description": "Step-by-step guidance for creating production-ready Kubernetes manifests including Deployments, Services, ConfigMaps, Secrets, and PersistentVolumeClaims.",
+      "path": ".agents/skills/k8s-manifest-generator"
+    },
+    {
+      "name": "k8s-security-policies",
+      "tier": 1,
+      "description": "Comprehensive guide for implementing NetworkPolicy, PodSecurityPolicy, RBAC, and Pod Security Standards in Kubernetes.",
+      "path": ".agents/skills/k8s-security-policies"
+    },
+    {
+      "name": "kotlin-coroutines-expert",
+      "tier": 1,
+      "description": "Expert patterns for Kotlin Coroutines and Flow, covering structured concurrency, error handling, and testing.",
+      "path": ".agents/skills/kotlin-coroutines-expert"
+    },
+    {
+      "name": "kotlin-coroutines-flows",
+      "tier": 1,
+      "description": "Kotlin Coroutines and Flow patterns for Android and KMP \u2014 structured concurrency, Flow operators, StateFlow, error handling, and testing. Use when writing coroutines or Flow code on Android or KMP, or debugging cancellation and concurrency.",
+      "path": ".agents/skills/kotlin-coroutines-flows"
+    },
+    {
+      "name": "kotlin-ktor-patterns",
+      "tier": 1,
+      "description": "Ktor server patterns including routing DSL, plugins, authentication, Koin DI, kotlinx.serialization, WebSockets, and testApplication testing. Use when building a Ktor server \u2014 routing, plugins, auth, DI, serialization, or tests.",
+      "path": ".agents/skills/kotlin-ktor-patterns"
+    },
+    {
+      "name": "kotlin-testing",
+      "tier": 1,
+      "description": "Kotlin testing patterns with Kotest, MockK, coroutine testing, property-based testing, and Kover coverage. Follows TDD methodology with idiomatic Kotlin practices. Use when writing Kotlin tests with Kotest or MockK, or testing coroutines and checking coverage.",
+      "path": ".agents/skills/kotlin-testing"
+    },
+    {
+      "name": "lambdatest-agent-skills",
+      "tier": 1,
+      "description": "Production-grade test automation skills for 46 frameworks across E2E, unit, mobile, BDD, visual, and cloud testing in 15+ languages.",
+      "path": ".agents/skills/lambdatest-agent-skills"
+    },
+    {
+      "name": "laravel-expert",
+      "tier": 1,
+      "description": "Senior Laravel Engineer role for production-grade, maintainable, and idiomatic Laravel solutions. Focuses on clean architecture, security, performance, and modern standards (Laravel 10/11+).",
+      "path": ".agents/skills/laravel-expert"
+    },
+    {
+      "name": "laravel-patterns",
+      "tier": 1,
+      "description": "Laravel architecture patterns, routing/controllers, Eloquent ORM, service layers, queues, events, caching, and API resources for production apps. Use when building or reviewing Laravel apps \u2014 controllers, Eloquent, service layers, queues, or API resources.",
+      "path": ".agents/skills/laravel-patterns"
+    },
+    {
+      "name": "laravel-tdd",
+      "tier": 1,
+      "description": "Laravel testing strategies with PHPUnit, Pest, model factories, HTTP tests, Sanctum authentication testing, mocking, and coverage. Use when writing Laravel tests with PHPUnit or Pest, or driving a Laravel feature test-first.",
+      "path": ".agents/skills/laravel-tdd"
+    },
+    {
+      "name": "lightning-channel-factories",
+      "tier": 1,
+      "description": "Technical reference on Lightning Network channel factories, multi-party channels, LSP architectures, and Bitcoin Layer 2 scaling without soft forks. Covers Decker-Wattenhofer, timeout trees, MuSig2 key aggregation, HTLC/PTLC forwarding, and watchtower breach detection.",
+      "path": ".agents/skills/lightning-channel-factories"
+    },
+    {
+      "name": "linux-shell-scripting",
+      "tier": 1,
+      "description": "Provide production-ready shell script templates for common Linux system administration tasks including backups, monitoring, user management, log analysis, and automation. These scripts serve as building blocks for security operations and penetration testing environments.",
+      "path": ".agents/skills/linux-shell-scripting"
+    },
+    {
+      "name": "llm-evaluation",
+      "tier": 1,
+      "description": "Master comprehensive evaluation strategies for LLM applications, from automated metrics to human evaluation and A/B testing.",
+      "path": ".agents/skills/llm-evaluation"
+    },
+    {
+      "name": "logic-lens",
+      "tier": 1,
+      "description": "AI-powered Claude Code skill that performs deep code review using formal logic and reasoning frameworks to detect bugs, anti-patterns, and security risks beyond what linters catch.",
+      "path": ".agents/skills/logic-lens"
+    },
+    {
+      "name": "mailtrap-email-integration",
+      "tier": 1,
+      "description": "Guides agents through integrating transactional email sending via Mailtrap's Email API, including sandbox testing, domain verification, and API authentication. Use when implementing email-sending features, debugging delivery issues, or setting up safe dev/staging email testing.",
+      "path": ".agents/skills/mailtrap-email-integration"
+    },
+    {
+      "name": "mcp-tool-developer",
+      "tier": 1,
+      "description": "Build Model Context Protocol (MCP) servers and tools from scratch. Full-stack MCP development with TypeScript/Python, testing, deployment, and registry publishing.",
+      "path": ".agents/skills/mcp-tool-developer"
+    },
+    {
+      "name": "memory-systems",
+      "tier": 1,
+      "description": "Guides implementation of agent memory systems, compares production frameworks (Mem0, Zep/Graphiti, Letta, LangMem, Cognee), and designs persistence architectures for cross-session knowledge retention. Use when the user asks to \"implement agent memory\", \"persist state across sessions\", \"build knowledge graph for agents\", \"track entities over time\", \"add long-term memory\", \"choose a memory framework\", or mentions temporal knowledge graphs, vector stores, entity memory, adaptive memory, dynamic memory or memory benchmarks (LoCoMo, LongMemEval).",
+      "path": ".agents/skills/memory-systems"
+    },
+    {
+      "name": "mermaid-expert",
+      "tier": 1,
+      "description": "Create Mermaid diagrams for flowcharts, sequences, ERDs, and architectures. Masters syntax for all diagram types and styling.",
+      "path": ".agents/skills/mermaid-expert"
+    },
+    {
+      "name": "microservices-patterns",
+      "tier": 1,
+      "description": "Master microservices architecture patterns including service boundaries, inter-service communication, data management, and resilience patterns for building distributed systems.",
+      "path": ".agents/skills/microservices-patterns"
+    },
+    {
+      "name": "ml-engineer",
+      "tier": 1,
+      "description": "Build production ML systems with PyTorch 2.x, TensorFlow, and modern ML frameworks. Implements model serving, feature engineering, A/B testing, and monitoring.",
+      "path": ".agents/skills/ml-engineer"
+    },
+    {
+      "name": "mobile-developer",
+      "tier": 1,
+      "description": "Develop React Native, Flutter, or native mobile apps with modern architecture patterns. Masters cross-platform development, native integrations, offline sync, and app store optimization.",
+      "path": ".agents/skills/mobile-developer"
+    },
+    {
+      "name": "mobile-native",
+      "tier": 1,
+      "description": "Make a web app feel native on a phone \u2014 the small CSS and meta-tag fixes that separate \"a website in a browser\" from something that feels installed. Covers sticky hover states, tap highlight flashes, the 100vh bug, inputs that zoom the page, laggy taps, pull-to-refresh hijacking scroll, content under the notch, long-press selecting button text, carousels that scroll the wrong way, mismatched status bars, and the rule that you test on real hardware. Use when a web app is being built for or reviewed on mobile, when something \"works in Chrome but feels wrong on my phone\", when building a PWA, a bottom sheet, a carousel, a full-screen layout, or any touch interaction. For motion itself use animate; for React Native use animate-expo.",
+      "path": ".agents/skills/mobile-native"
+    },
+    {
+      "name": "monorepo-architect",
+      "tier": 1,
+      "description": "Expert in monorepo architecture, build systems, and dependency management at scale. Masters Nx, Turborepo, Bazel, and Lerna for efficient multi-project development. Use PROACTIVELY for monorepo setup,",
+      "path": ".agents/skills/monorepo-architect"
+    },
+    {
+      "name": "multi-agent-patterns",
+      "tier": 1,
+      "description": "This skill should be used when the user asks to \"design multi-agent system\", \"implement supervisor pattern\", \"create swarm architecture\", \"coordinate multiple agents\", or mentions multi-agent patterns, context isolation, agent handoffs, sub-agents, or parallel agent execution.",
+      "path": ".agents/skills/multi-agent-patterns"
+    },
+    {
+      "name": "multi-platform-apps-multi-platform",
+      "tier": 1,
+      "description": "Build and deploy the same feature consistently across web, mobile, and desktop platforms using API-first architecture and parallel implementation strategies.",
+      "path": ".agents/skills/multi-platform-apps-multi-platform"
+    },
+    {
+      "name": "nerdzao-elite",
+      "tier": 1,
+      "description": "Senior Elite Software Engineer (15+) and Senior Product Designer. Full workflow with planning, architecture, TDD, clean code, and pixel-perfect UX validation.",
+      "path": ".agents/skills/nerdzao-elite"
+    },
+    {
+      "name": "nestjs-expert",
+      "tier": 1,
+      "description": "You are an expert in Nest.js with deep knowledge of enterprise-grade Node.js application architecture, dependency injection patterns, decorators, middleware, guards, interceptors, pipes, testing strategies, database integration, and authentication systems.",
+      "path": ".agents/skills/nestjs-expert"
+    },
+    {
+      "name": "nestjs-patterns",
+      "tier": 1,
+      "description": "NestJS architecture patterns for modules, controllers, providers, DTO validation, guards, interceptors, config, and production-grade TypeScript backends. Use when building or reviewing a NestJS backend \u2014 modules, providers, DTO validation, guards, or interceptors.",
+      "path": ".agents/skills/nestjs-patterns"
+    },
+    {
+      "name": "network-101",
+      "tier": 1,
+      "description": "Configure and test common network services (HTTP, HTTPS, SNMP, SMB) for penetration testing lab environments. Enable hands-on practice with service enumeration, log analysis, and security testing against properly configured target systems.",
+      "path": ".agents/skills/network-101"
+    },
+    {
+      "name": "network-engineer",
+      "tier": 1,
+      "description": "Expert network engineer specializing in modern cloud networking, security architectures, and performance optimization.",
+      "path": ".agents/skills/network-engineer"
+    },
+    {
+      "name": "nextjs-app-router-patterns",
+      "tier": 1,
+      "description": "Comprehensive patterns for Next.js 14+ App Router architecture, Server Components, and modern full-stack React development.",
+      "path": ".agents/skills/nextjs-app-router-patterns"
+    },
+    {
+      "name": "nextjs-best-practices",
+      "tier": 1,
+      "description": "Next.js App Router principles. Server Components, data fetching, routing patterns.",
+      "path": ".agents/skills/nextjs-best-practices"
+    },
+    {
+      "name": "nodejs-best-practices",
+      "tier": 1,
+      "description": "Node.js development principles and decision-making. Framework selection, async patterns, security, and architecture. Teaches thinking, not copying.",
+      "path": ".agents/skills/nodejs-best-practices"
+    },
+    {
+      "name": "orch-add-feature",
+      "tier": 1,
+      "description": "Orchestrate building a brand-new feature end to end \u2014 research, plan, TDD implementation, review, and gated commit \u2014 by delegating each phase to the matching ECC agent. Use when adding a capability that does not exist yet.",
+      "path": ".agents/skills/orch-add-feature"
+    },
+    {
+      "name": "orch-pipeline",
+      "tier": 1,
+      "description": "Shared orchestration engine behind the orch-* skill family \u2014 the gated Research-Plan-TDD-Review-Commit pipeline, size classifier, agent and command map, and two human gates (plan approval, commit confirmation) that orch-* operation skills delegate to. Use indirectly via orch-add-feature, orch-fix-defect, orch-change-feature, orch-refine-code, or orch-build-mvp; read directly only when adding an orch operation or tuning shared phases.",
+      "path": ".agents/skills/orch-pipeline"
+    },
+    {
+      "name": "osint-investigation",
+      "tier": 1,
+      "description": "Sparse-clue OSINT investigation methodology for extracting overlooked leads, connecting fragmented evidence, and testing explanations across sources. Use for multi-step CTF challenges, image/video geolocation, event reconstruction, public-account and entity verification, artifact interpretation, infrastructure research, or stalled investigations.",
+      "path": ".agents/skills/osint-investigation"
+    },
+    {
+      "name": "pentest-commands",
+      "tier": 1,
+      "description": "Provide a comprehensive command reference for penetration testing tools including network scanning, exploitation, password cracking, and web application testing. Enable quick command lookup during security assessments.",
+      "path": ".agents/skills/pentest-commands"
+    },
+    {
+      "name": "performance-testing-review-ai-review",
+      "tier": 1,
+      "description": "You are an expert AI-powered code review specialist combining automated static analysis, intelligent pattern recognition, and modern DevOps practices. Leverage AI tools (GitHub Copilot, Qodo, GPT-5, C",
+      "path": ".agents/skills/performance-testing-review-ai-review"
+    },
+    {
+      "name": "performance-testing-review-multi-agent-review",
+      "tier": 1,
+      "description": "Use when working with performance testing review multi agent review",
+      "path": ".agents/skills/performance-testing-review-multi-agent-review"
+    },
+    {
+      "name": "perl-testing",
+      "tier": 1,
+      "description": "Perl testing patterns using Test2::V0, Test::More, prove runner, mocking, coverage with Devel::Cover, and TDD methodology. Use when writing Perl tests with Test2::V0 or Test::More, or measuring coverage.",
+      "path": ".agents/skills/perl-testing"
+    },
+    {
+      "name": "pick-ui-library",
+      "tier": 1,
+      "description": "Pick the right library for a given frontend task from a curated, opinionated list \u2014 numbers, OTP inputs, charts, command menus, virtualization, drag and drop, toasts, state, styling, and more. Only runs when explicitly invoked; it does not trigger on its own.",
+      "path": ".agents/skills/pick-ui-library"
+    },
+    {
+      "name": "playwright-skill",
+      "tier": 1,
+      "description": "IMPORTANT - Path Resolution: This skill can be installed in different locations (plugin system, manual installation, global, or project-specific). Before executing any commands, determine the skill directory based on where you loaded this SKILL.md file, and use that path in all commands below.",
+      "path": ".agents/skills/playwright-skill"
+    },
+    {
+      "name": "postgres-best-practices",
+      "tier": 1,
+      "description": "Postgres performance optimization and best practices from Supabase. Use this skill when writing, reviewing, or optimizing Postgres queries, schema designs, or database configurations.",
+      "path": ".agents/skills/postgres-best-practices"
+    },
+    {
+      "name": "postgres-patterns",
+      "tier": 1,
+      "description": "PostgreSQL database patterns for query optimization, schema design, indexing, and security. Based on Supabase best practices. Use when designing PostgreSQL schemas, indexes, or RLS policies, or when a query is too slow.",
+      "path": ".agents/skills/postgres-patterns"
+    },
+    {
+      "name": "privilege-escalation-methods",
+      "tier": 1,
+      "description": "Provide comprehensive techniques for escalating privileges from a low-privileged user to root/administrator access on compromised Linux and Windows systems. Essential for penetration testing post-exploitation phase and red team operations.",
+      "path": ".agents/skills/privilege-escalation-methods"
+    },
+    {
+      "name": "process-project-development",
+      "tier": 1,
+      "description": "Master methodology for building LLM-integrated projects or complex data pipelines. Focuses on Pipeline Architecture, File System as State Machine, and Architectural Reduction. Use when designing new system workflows.",
+      "path": ".agents/skills/process-project-development"
+    },
+    {
+      "name": "process-writing-plans",
+      "tier": 1,
+      "description": "Master of creating detailed, bite-sized implementation plans. Enforces TDD, specific file paths, and strict task granularity. Use before touching code when solving complex problems or implementing new features.",
+      "path": ".agents/skills/process-writing-plans"
+    },
+    {
+      "name": "product-lens",
+      "tier": 1,
+      "description": "Validate the why before building through four product diagnostics \u2014 a YC-style product diagnostic that produces PRODUCT-BRIEF.md with a go/no-go recommendation, a founder review scoring product-market-fit signals, a user journey audit measuring time-to-value, and ICE feature prioritization. Use when pressure-testing product direction, choosing between features, sanity-checking a launch, or converting a vague idea into a product brief.",
+      "path": ".agents/skills/product-lens"
+    },
+    {
+      "name": "production-code-audit",
+      "tier": 1,
+      "description": "Autonomously deep-scan entire codebase line-by-line, understand architecture and patterns, then systematically transform it to production-grade, corporate-level professional quality with optimizations",
+      "path": ".agents/skills/production-code-audit"
+    },
+    {
+      "name": "project-development",
+      "tier": 1,
+      "description": "This skill should be used when the user asks to \"start an LLM project\", \"design batch pipeline\", \"evaluate task-model fit\", \"structure agent project\", or mentions pipeline architecture, agent-assisted development, cost estimation, or choosing between LLM and traditional approaches.",
+      "path": ".agents/skills/project-development"
+    },
+    {
+      "name": "prototype",
+      "tier": 1,
+      "description": "Build multiple genuinely different versions of a UI piece you describe, rendered behind a visual picker so you can flip through them live and promote the one that feels right. Only runs when explicitly invoked; it does not trigger on its own.",
+      "path": ".agents/skills/prototype"
+    },
+    {
+      "name": "python-development-python-scaffold",
+      "tier": 1,
+      "description": "You are a Python project architecture expert specializing in scaffolding production-ready Python applications. Generate complete project structures with modern tooling (uv, FastAPI, Django), type hint",
+      "path": ".agents/skills/python-development-python-scaffold"
+    },
+    {
+      "name": "python-fastapi-development",
+      "tier": 1,
+      "description": "Python FastAPI backend development with async patterns, SQLAlchemy, Pydantic, authentication, and production API patterns.",
+      "path": ".agents/skills/python-fastapi-development"
+    },
+    {
+      "name": "python-packaging",
+      "tier": 1,
+      "description": "Comprehensive guide to creating, structuring, and distributing Python packages using modern packaging tools, pyproject.toml, and publishing to PyPI.",
+      "path": ".agents/skills/python-packaging"
+    },
+    {
+      "name": "python-patterns",
+      "tier": 1,
+      "description": "Pythonic idioms, PEP 8 standards, type hints, and best practices for building robust, efficient, and maintainable Python applications. Use when writing or reviewing Python code and idiomatic structure, typing, or PEP 8 is in question.",
+      "path": ".agents/skills/python-patterns"
+    },
+    {
+      "name": "python-performance-optimization",
+      "tier": 1,
+      "description": "Profile and optimize Python code using cProfile, memory profilers, and performance best practices. Use when debugging slow Python code, optimizing bottlenecks, or improving application performance.",
+      "path": ".agents/skills/python-performance-optimization"
+    },
+    {
+      "name": "python-pptx-generator",
+      "tier": 1,
+      "description": "Generate complete Python scripts that build polished PowerPoint decks with python-pptx and real slide content.",
+      "path": ".agents/skills/python-pptx-generator"
+    },
+    {
+      "name": "python-pro",
+      "tier": 1,
+      "description": "Master Python 3.12+ with modern features, async programming, performance optimization, and production-ready practices. Expert in the latest Python ecosystem including uv, ruff, pydantic, and FastAPI.",
+      "path": ".agents/skills/python-pro"
+    },
+    {
+      "name": "python-testing",
+      "tier": 1,
+      "description": "Python testing strategies using pytest, TDD methodology, fixtures, mocking, parametrization, and coverage requirements. Use when writing pytest tests \u2014 fixtures, mocks, parametrization, or coverage.",
+      "path": ".agents/skills/python-testing"
+    },
+    {
+      "name": "python-testing-patterns",
+      "tier": 1,
+      "description": "Implement comprehensive testing strategies with pytest, fixtures, mocking, and test-driven development. Use when writing Python tests, setting up test suites, or implementing testing best practices.",
+      "path": ".agents/skills/python-testing-patterns"
+    },
+    {
+      "name": "pytorch-patterns",
+      "tier": 1,
+      "description": "PyTorch deep learning patterns and best practices for building robust, efficient, and reproducible training pipelines, model architectures, and data loading. Use when writing or reviewing PyTorch training loops, model architectures, or data loading, or when a run will not reproduce.",
+      "path": ".agents/skills/pytorch-patterns"
+    },
+    {
+      "name": "qa-tdd-architect",
+      "tier": 1,
+      "description": "Master of Test-Driven Development (TDD), writing tests, Systematic Debugging, and fixing failing tests. Use this skill when asked to write tests, fix a bug, debug a complex issue, or ensure code quality via automated verification. Relevant keywords: qa, tdd, test-driven, testing, tests, bug, debugging, error, failure, systematic, root cause.",
+      "path": ".agents/skills/qa-tdd-architect"
+    },
+    {
+      "name": "quarkus-patterns",
+      "tier": 1,
+      "description": "Quarkus 3.x LTS architecture patterns with Camel for messaging, RESTful API design, CDI services, data access with Panache, and async processing. Use for Java Quarkus backend work with event-driven architectures. Use when building or reviewing a Quarkus service, especially with Camel messaging or Panache data access.",
+      "path": ".agents/skills/quarkus-patterns"
+    },
+    {
+      "name": "quarkus-tdd",
+      "tier": 1,
+      "description": "Test-driven development for Quarkus 3.x LTS using JUnit 5, Mockito, REST Assured, Camel testing, and JaCoCo. Use when adding features, fixing bugs, or refactoring event-driven services.",
+      "path": ".agents/skills/quarkus-tdd"
+    },
+    {
+      "name": "react-best-practices",
+      "tier": 1,
+      "description": "React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React components, Next.js pages, data fetching, bundle optimization, or performance improvements.",
+      "path": ".agents/skills/react-best-practices"
+    },
+    {
+      "name": "react-component-performance",
+      "tier": 1,
+      "description": "Diagnose slow React components and suggest targeted performance fixes.",
+      "path": ".agents/skills/react-component-performance"
+    },
+    {
+      "name": "react-flow-architect",
+      "tier": 1,
+      "description": "Build production-ready ReactFlow applications with hierarchical navigation, performance optimization, and advanced state management.",
+      "path": ".agents/skills/react-flow-architect"
+    },
+    {
+      "name": "react-flow-node-ts",
+      "tier": 1,
+      "description": "Create React Flow node components following established patterns with proper TypeScript types and store integration.",
+      "path": ".agents/skills/react-flow-node-ts"
+    },
+    {
+      "name": "react-modernization",
+      "tier": 1,
+      "description": "Master React version upgrades, class to hooks migration, concurrent features adoption, and codemods for automated transformation.",
+      "path": ".agents/skills/react-modernization"
+    },
+    {
+      "name": "react-native-architecture",
+      "tier": 1,
+      "description": "Production-ready patterns for React Native development with Expo, including navigation, state management, native modules, and offline-first architecture.",
+      "path": ".agents/skills/react-native-architecture"
+    },
+    {
+      "name": "react-native-patterns",
+      "tier": 1,
+      "description": "React Native and Expo app patterns \u2014 Expo Router navigation, state separation (server/client/route/form), TanStack Query data fetching with Zod, performant lists, NativeWind/StyleSheet styling, native APIs, and secure storage. Use when building or editing React Native / Expo screens, components, navigation, or data layers.",
+      "path": ".agents/skills/react-native-patterns"
+    },
+    {
+      "name": "react-native-skills",
+      "tier": 1,
+      "description": "React Native and Expo best practices for building performant mobile apps. Use when building React Native components, optimizing list performance, implementing animations, or working with native modules. Triggers on tasks involving React Native, Expo, mobile performance, or native platform APIs.",
+      "path": ".agents/skills/react-native-skills"
+    },
+    {
+      "name": "react-nextjs-development",
+      "tier": 1,
+      "description": "React and Next.js 14+ application development with App Router, Server Components, TypeScript, Tailwind CSS, and modern frontend patterns.",
+      "path": ".agents/skills/react-nextjs-development"
+    },
+    {
+      "name": "react-patterns",
+      "tier": 1,
+      "description": "React 18/19 patterns including hooks discipline, server/client component boundaries, Suspense + error boundaries, form actions, data fetching, state management decision trees, and accessibility-first composition. Use when writing or reviewing React components.",
+      "path": ".agents/skills/react-patterns"
+    },
+    {
+      "name": "react-performance",
+      "tier": 1,
+      "description": "React and Next.js performance optimization patterns adapted from Vercel Engineering's React Best Practices (https://github.com/vercel-labs/agent-skills). Organizes 70+ rules across 8 priority categories \u2014 waterfalls, bundle size, server-side, client fetching, re-render, rendering, JS micro-perf, advanced. Use when writing, reviewing, or refactoring React/Next.js code for performance.",
+      "path": ".agents/skills/react-performance"
+    },
+    {
+      "name": "react-state-management",
+      "tier": 1,
+      "description": "Master modern React state management with Redux Toolkit, Zustand, Jotai, and React Query. Use when setting up global state, managing server state, or choosing between state management solutions.",
+      "path": ".agents/skills/react-state-management"
+    },
+    {
+      "name": "react-testing",
+      "tier": 1,
+      "description": "React component testing with React Testing Library, Vitest/Jest, MSW for network mocking, accessibility assertions with axe, and the decision boundary between component tests and Playwright/Cypress end-to-end runs. Use when writing or fixing tests for React components, hooks, or pages.",
+      "path": ".agents/skills/react-testing"
+    },
+    {
+      "name": "react-ui-patterns",
+      "tier": 1,
+      "description": "Modern React UI patterns for loading states, error handling, and data fetching. Use when building UI components, handling async data, or managing UI states.",
+      "path": ".agents/skills/react-ui-patterns"
+    },
+    {
+      "name": "receiving-code-review",
+      "tier": 1,
+      "description": "Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation",
+      "path": ".agents/skills/receiving-code-review"
+    },
+    {
+      "name": "remove-animations",
+      "tier": 1,
+      "description": "Find the animations an interface doesn't need and remove them \u2014 motion on keyboard actions, high-frequency surfaces, functional data, and decoration with no purpose \u2014 then clean up what they leave behind. Edits code, but only to subtract; it never adds or retunes motion. Use when the user says the app \"feels slow\", \"has too much animation\", \"feels over-animated\", wants to \"tone down the motion\", or asks what animations to remove. For finding places that should animate, use find-animation-opportunities; for fixing animations that should stay, use improve-animations or review-animations.",
+      "path": ".agents/skills/remove-animations"
+    },
+    {
+      "name": "review-animations",
+      "tier": 1,
+      "description": "Reviews animation and motion code against a high craft bar derived from Emil Kowalski's design engineering philosophy. Default to flagging; approval is earned.",
+      "path": ".agents/skills/review-animations"
+    },
+    {
+      "name": "robius-app-architecture",
+      "tier": 1,
+      "description": "CRITICAL: Use for Robius app architecture patterns. Triggers on: Tokio, async, submit_async_request, \u5f02\u6b65, \u67b6\u6784, SignalToUI, Cx::post_action, worker task, app structure, MatchEvent, handle_startup",
+      "path": ".agents/skills/robius-app-architecture"
+    },
+    {
+      "name": "ruby-pro",
+      "tier": 1,
+      "description": "Write idiomatic Ruby code with metaprogramming, Rails patterns, and performance optimization. Specializes in Ruby on Rails, gem development, and testing frameworks.",
+      "path": ".agents/skills/ruby-pro"
+    },
+    {
+      "name": "rust-async-patterns",
+      "tier": 1,
+      "description": "Master Rust async programming with Tokio, async traits, error handling, and concurrent patterns. Use when building async Rust applications, implementing concurrent systems, or debugging async code.",
+      "path": ".agents/skills/rust-async-patterns"
+    },
+    {
+      "name": "rust-patterns",
+      "tier": 1,
+      "description": "Idiomatic Rust patterns, ownership, error handling, traits, concurrency, and best practices for building safe, performant applications. Use when writing or reviewing Rust code and ownership, error handling, traits, or concurrency is in question.",
+      "path": ".agents/skills/rust-patterns"
+    },
+    {
+      "name": "rust-pro",
+      "tier": 1,
+      "description": "Master Rust 1.75+ with modern async patterns, advanced type system features, and production-ready systems programming.",
+      "path": ".agents/skills/rust-pro"
+    },
+    {
+      "name": "rust-testing",
+      "tier": 1,
+      "description": "Rust testing patterns including unit tests, integration tests, async testing, property-based testing, mocking, and coverage. Follows TDD methodology. Use when writing Rust tests \u2014 unit, integration, async, property-based, or coverage.",
+      "path": ".agents/skills/rust-testing"
+    },
+    {
+      "name": "saas-multi-tenant",
+      "tier": 1,
+      "description": "Design and implement multi-tenant SaaS architectures with row-level security, tenant-scoped queries, shared-schema isolation, and safe cross-tenant admin patterns in PostgreSQL and TypeScript.",
+      "path": ".agents/skills/saas-multi-tenant"
+    },
+    {
+      "name": "saas-mvp-launcher",
+      "tier": 1,
+      "description": "Use when planning or building a SaaS MVP from scratch. Provides a structured roadmap covering tech stack, architecture, auth, payments, and launch checklist.",
+      "path": ".agents/skills/saas-mvp-launcher"
+    },
+    {
+      "name": "sast-configuration",
+      "tier": 1,
+      "description": "Static Application Security Testing (SAST) tool setup, configuration, and custom rule creation for comprehensive security scanning across multiple programming languages.",
+      "path": ".agents/skills/sast-configuration"
+    },
+    {
+      "name": "scala-pro",
+      "tier": 1,
+      "description": "Master enterprise-grade Scala development with functional programming, distributed systems, and big data processing. Expert in Apache Pekko, Akka, Spark, ZIO/Cats Effect, and reactive architectures.",
+      "path": ".agents/skills/scala-pro"
+    },
+    {
+      "name": "scanning-tools",
+      "tier": 1,
+      "description": "Master essential security scanning tools for network discovery, vulnerability assessment, web application testing, wireless security, and compliance validation. This skill covers tool selection, configuration, and practical usage across different scanning categories.",
+      "path": ".agents/skills/scanning-tools"
+    },
+    {
+      "name": "screen-reader-testing",
+      "tier": 1,
+      "description": "Practical guide to testing web applications with screen readers for comprehensive accessibility validation.",
+      "path": ".agents/skills/screen-reader-testing"
+    },
+    {
+      "name": "scrollheart",
+      "tier": 1,
+      "description": "Build her a story she can scroll through. ScrollHeart is a warm, gentle AI skill that helps a boy create a romantic, scroll-driven storytelling website for a girl he cares about. Generates static HTML/CSS/JS sites with GSAP ScrollTrigger, parallax layers, and optional background music \u2014 deployable free on GitHub Pages. Trigger on: romantic website, scroll story, gift for her, love page, surprise website, digital love letter, ScrollHeart, scrollheart.",
+      "path": ".agents/skills/scrollheart"
+    },
+    {
+      "name": "security-audit",
+      "tier": 1,
+      "description": "Comprehensive security auditing workflow covering web application testing, API security, penetration testing, vulnerability scanning, and security hardening.",
+      "path": ".agents/skills/security-audit"
+    },
+    {
+      "name": "security-auditor",
+      "tier": 1,
+      "description": "Expert security auditor specializing in DevSecOps, comprehensive cybersecurity, and compliance frameworks.",
+      "path": ".agents/skills/security-auditor"
+    },
+    {
+      "name": "security-bluebook-builder",
+      "tier": 1,
+      "description": "Build a minimal but real security policy for sensitive apps. The output is a single, coherent Blue Book document using MUST/SHOULD/CAN language, with explicit assumptions, scope, and security gates.",
+      "path": ".agents/skills/security-bluebook-builder"
+    },
+    {
+      "name": "security-bounty-hunter",
+      "tier": 1,
+      "description": "Hunt for exploitable, bounty-worthy security issues in repositories. Focuses on remotely reachable vulnerabilities that qualify for real reports instead of noisy local-only findings. Use when hunting reportable, remotely reachable vulnerabilities in a repository.",
+      "path": ".agents/skills/security-bounty-hunter"
+    },
+    {
+      "name": "security-compliance-compliance-check",
+      "tier": 1,
+      "description": "You are a compliance expert specializing in regulatory requirements for software systems including GDPR, HIPAA, SOC2, PCI-DSS, and other industry standards. Perform comprehensive compliance audits and provide implementation guidance for achieving and maintaining compliance.",
+      "path": ".agents/skills/security-compliance-compliance-check"
+    },
+    {
+      "name": "security-requirement-extraction",
+      "tier": 1,
+      "description": "Derive security requirements from threat models and business context. Use when translating threats into actionable requirements, creating security user stories, or building security test cases.",
+      "path": ".agents/skills/security-requirement-extraction"
+    },
+    {
+      "name": "security-review",
+      "tier": 1,
+      "description": "Use this skill when adding authentication, handling user input, working with secrets, creating API endpoints, or implementing payment/sensitive features. Provides comprehensive security checklist and patterns.",
+      "path": ".agents/skills/security-review"
+    },
+    {
+      "name": "security-scan",
+      "tier": 1,
+      "description": "Scan your Claude Code configuration (.claude/ directory) for security vulnerabilities, misconfigurations, and injection risks using AgentShield. Checks CLAUDE.md, settings.json, MCP servers, hooks, and agent definitions. Use when auditing a .claude/ directory \u2014 CLAUDE.md, settings.json, MCP servers, hooks, or agent definitions.",
+      "path": ".agents/skills/security-scan"
+    },
+    {
+      "name": "security-scanning-security-dependencies",
+      "tier": 1,
+      "description": "You are a security expert specializing in dependency vulnerability analysis, SBOM generation, and supply chain security. Scan project dependencies across multiple ecosystems to identify vulnerabilities, assess risks, and provide automated remediation strategies.",
+      "path": ".agents/skills/security-scanning-security-dependencies"
+    },
+    {
+      "name": "security-scanning-security-hardening",
+      "tier": 1,
+      "description": "Coordinate multi-layer security scanning and hardening across application, infrastructure, and compliance controls.",
+      "path": ".agents/skills/security-scanning-security-hardening"
+    },
+    {
+      "name": "security-scanning-security-sast",
+      "tier": 1,
+      "description": "Static Application Security Testing (SAST) for code vulnerability",
+      "path": ".agents/skills/security-scanning-security-sast"
+    },
+    {
+      "name": "seo",
+      "tier": 1,
+      "description": "Audit, plan, and implement SEO improvements across technical SEO, on-page optimization, structured data, Core Web Vitals, and content strategy. Use when the user wants better search visibility, SEO remediation, schema markup, sitemap/robots work, or keyword mapping.",
+      "path": ".agents/skills/seo"
+    },
+    {
+      "name": "seo-aeo-blog-writer",
+      "tier": 1,
+      "description": "Writes long-form blog posts with TL;DR block, definition sentence, comparison table, and 5-question FAQ for SEO ranking and AEO citation. Activate when the user wants to write a blog post, article, or long-form content piece.",
+      "path": ".agents/skills/seo-aeo-blog-writer"
+    },
+    {
+      "name": "seo-aeo-content-cluster",
+      "tier": 1,
+      "description": "Builds a topical authority map with a pillar page, prioritised cluster articles, content types, internal link map, and content gap analysis. Activate when the user wants to build a content cluster, topic map, or content strategy.",
+      "path": ".agents/skills/seo-aeo-content-cluster"
+    },
+    {
+      "name": "seo-aeo-content-quality-auditor",
+      "tier": 1,
+      "description": "Audits content for SEO and AEO performance with scored reports, severity-ranked fix lists, and projected scores after fixes. Activate when the user wants to audit, review, or score content for SEO or AEO compliance.",
+      "path": ".agents/skills/seo-aeo-content-quality-auditor"
+    },
+    {
+      "name": "seo-aeo-internal-linking",
+      "tier": 1,
+      "description": "Maps internal link opportunities between pages with anchor text, placement instructions, orphan page detection, and cannibalization checks. Activate when the user wants to build an internal linking strategy or find link opportunities.",
+      "path": ".agents/skills/seo-aeo-internal-linking"
+    },
+    {
+      "name": "seo-aeo-keyword-research",
+      "tier": 1,
+      "description": "Researches and prioritises SEO keywords with AEO question queries, difficulty tiers, cannibalization checks, and a content map. Activate when the user wants to find keywords, research search terms, or build a keyword strategy.",
+      "path": ".agents/skills/seo-aeo-keyword-research"
+    },
+    {
+      "name": "seo-aeo-landing-page-writer",
+      "tier": 1,
+      "description": "Writes complete, structured landing pages optimized for SEO ranking, AEO citation, and visitor conversion. Activate when the user wants to write or generate a landing page for a product, service, or offer.",
+      "path": ".agents/skills/seo-aeo-landing-page-writer"
+    },
+    {
+      "name": "seo-aeo-meta-description-generator",
+      "tier": 1,
+      "description": "Writes 3 title tag variants and 3 meta description variants per page with SERP preview, OG tags, and Twitter Card tags. Activate when the user wants to write meta tags, title tags, or social sharing tags for any page.",
+      "path": ".agents/skills/seo-aeo-meta-description-generator"
+    },
+    {
+      "name": "seo-aeo-schema-generator",
+      "tier": 1,
+      "description": "Generates valid JSON-LD structured data for 10 schema types with rich result eligibility validation and implementation-ready script blocks. Activate when the user wants to generate schema markup, JSON-LD, or structured data for any page.",
+      "path": ".agents/skills/seo-aeo-schema-generator"
+    },
+    {
+      "name": "seo-audit",
+      "tier": 1,
+      "description": "Diagnose and audit SEO issues affecting crawlability, indexation, rankings, and organic performance.",
+      "path": ".agents/skills/seo-audit"
+    },
+    {
+      "name": "seo-authority-builder",
+      "tier": 1,
+      "description": "Analyzes content for E-E-A-T signals and suggests improvements to",
+      "path": ".agents/skills/seo-authority-builder"
+    },
+    {
+      "name": "seo-cannibalization-detector",
+      "tier": 1,
+      "description": "Analyzes multiple provided pages to identify keyword overlap and potential cannibalization issues. Suggests differentiation strategies. Use PROACTIVELY when reviewing similar content.",
+      "path": ".agents/skills/seo-cannibalization-detector"
+    },
+    {
+      "name": "seo-competitor-pages",
+      "tier": 1,
+      "description": "Generate SEO-optimized competitor comparison and alternatives pages. Covers \"X vs Y\" layouts, \"alternatives to X\" pages, feature matrices, schema markup, and conversion optimization. Use when user says \"comparison page\", \"vs page\", \"alternatives page\", \"competitor comparison\", or \"X vs Y\".",
+      "path": ".agents/skills/seo-competitor-pages"
+    },
+    {
+      "name": "seo-content",
+      "tier": 1,
+      "description": "Content quality and E-E-A-T analysis with AI citation readiness assessment. Use when user says \"content quality\", \"E-E-A-T\", \"content analysis\", \"readability check\", \"thin content\", or \"content audit\".",
+      "path": ".agents/skills/seo-content"
+    },
+    {
+      "name": "seo-content-auditor",
+      "tier": 1,
+      "description": "Analyzes provided content for quality, E-E-A-T signals, and SEO best practices. Scores content and provides improvement recommendations based on established guidelines.",
+      "path": ".agents/skills/seo-content-auditor"
+    },
+    {
+      "name": "seo-content-planner",
+      "tier": 1,
+      "description": "Creates comprehensive content outlines and topic clusters for SEO.",
+      "path": ".agents/skills/seo-content-planner"
+    },
+    {
+      "name": "seo-content-refresher",
+      "tier": 1,
+      "description": "Identifies outdated elements in provided content and suggests updates to maintain freshness. Finds statistics, dates, and examples that need updating. Use PROACTIVELY for older content.",
+      "path": ".agents/skills/seo-content-refresher"
+    },
+    {
+      "name": "seo-content-writer",
+      "tier": 1,
+      "description": "Writes SEO-optimized content based on provided keywords and topic briefs. Creates engaging, comprehensive content following best practices. Use PROACTIVELY for content creation tasks.",
+      "path": ".agents/skills/seo-content-writer"
+    },
+    {
+      "name": "seo-dataforseo",
+      "tier": 1,
+      "description": "Use DataForSEO for live SERPs, keyword metrics, backlinks, competitor analysis, on-page checks, and AI visibility data. Trigger when the user needs real SEO data rather than static guidance.",
+      "path": ".agents/skills/seo-dataforseo"
+    },
+    {
+      "name": "seo-forensic-incident-response",
+      "tier": 1,
+      "description": "Investigate sudden drops in organic traffic or rankings and run a structured forensic SEO incident response with triage, root-cause analysis and recovery plan.",
+      "path": ".agents/skills/seo-forensic-incident-response"
+    },
+    {
+      "name": "seo-fundamentals",
+      "tier": 1,
+      "description": "Core principles of SEO including E-E-A-T, Core Web Vitals, technical foundations, content quality, and how modern search engines evaluate pages.",
+      "path": ".agents/skills/seo-fundamentals"
+    },
+    {
+      "name": "seo-geo",
+      "tier": 1,
+      "description": "Optimize content for AI Overviews, ChatGPT, Perplexity, and other AI search systems. Use when improving GEO, AI citations, llms.txt readiness, crawler accessibility, and passage-level citability.",
+      "path": ".agents/skills/seo-geo"
+    },
+    {
+      "name": "seo-hreflang",
+      "tier": 1,
+      "description": "Hreflang and international SEO audit, validation, and generation. Detects common mistakes, validates language/region codes, and generates correct hreflang implementations. Use when user says \"hreflang\", \"i18n SEO\", \"international SEO\", \"multi-language\", \"multi-region\", or \"language tags\".",
+      "path": ".agents/skills/seo-hreflang"
+    },
+    {
+      "name": "seo-image-gen",
+      "tier": 1,
+      "description": "Generate SEO-focused images such as OG cards, hero images, schema assets, product visuals, and infographics. Use when image generation is part of an SEO workflow or content publishing task.",
+      "path": ".agents/skills/seo-image-gen"
+    },
+    {
+      "name": "seo-images",
+      "tier": 1,
+      "description": "Image optimization analysis for SEO and performance. Checks alt text, file sizes, formats, responsive images, lazy loading, and CLS prevention. Use when user says \"image optimization\", \"alt text\", \"image SEO\", \"image size\", or \"image audit\".",
+      "path": ".agents/skills/seo-images"
+    },
+    {
+      "name": "seo-keyword-strategist",
+      "tier": 1,
+      "description": "Analyzes keyword usage in provided content, calculates density, suggests semantic variations and LSI keywords based on the topic. Prevents over-optimization. Use PROACTIVELY for content optimization.",
+      "path": ".agents/skills/seo-keyword-strategist"
+    },
+    {
+      "name": "seo-meta-optimizer",
+      "tier": 1,
+      "description": "Creates optimized meta titles, descriptions, and URL suggestions based on character limits and best practices. Generates compelling, keyword-rich metadata. Use PROACTIVELY for new content.",
+      "path": ".agents/skills/seo-meta-optimizer"
+    },
+    {
+      "name": "seo-page",
+      "tier": 1,
+      "description": "Deep single-page SEO analysis covering on-page elements, content quality, technical meta tags, schema, images, and performance. Use when user says \"analyze this page\", \"check page SEO\", or provides a single URL for review.",
+      "path": ".agents/skills/seo-page"
+    },
+    {
+      "name": "seo-plan",
+      "tier": 1,
+      "description": "Strategic SEO planning for new or existing websites. Industry-specific templates, competitive analysis, content strategy, and implementation roadmap. Use when user says \"SEO plan\", \"SEO strategy\", \"content strategy\", \"site architecture\", or \"SEO roadmap\".",
+      "path": ".agents/skills/seo-plan"
+    },
+    {
+      "name": "seo-programmatic",
+      "tier": 1,
+      "description": "Plan and audit programmatic SEO pages generated at scale from structured data. Use when designing templates, URL systems, internal linking, quality gates, and index-bloat safeguards for pages at scale.",
+      "path": ".agents/skills/seo-programmatic"
+    },
+    {
+      "name": "seo-schema",
+      "tier": 1,
+      "description": "Detect, validate, and generate Schema.org structured data. JSON-LD format preferred. Use when user says \"schema\", \"structured data\", \"rich results\", \"JSON-LD\", or \"markup\".",
+      "path": ".agents/skills/seo-schema"
+    },
+    {
+      "name": "seo-sitemap",
+      "tier": 1,
+      "description": "Analyze existing XML sitemaps or generate new ones with industry templates. Validates format, URLs, and structure. Use when user says \"sitemap\", \"generate sitemap\", \"sitemap issues\", or \"XML sitemap\".",
+      "path": ".agents/skills/seo-sitemap"
+    },
+    {
+      "name": "seo-snippet-hunter",
+      "tier": 1,
+      "description": "Formats content to be eligible for featured snippets and SERP features. Creates snippet-optimized content blocks based on best practices. Use PROACTIVELY for question-based content.",
+      "path": ".agents/skills/seo-snippet-hunter"
+    },
+    {
+      "name": "seo-structure-architect",
+      "tier": 1,
+      "description": "Analyzes and optimizes content structure including header hierarchy, suggests schema markup, and internal linking opportunities. Creates search-friendly content organization.",
+      "path": ".agents/skills/seo-structure-architect"
+    },
+    {
+      "name": "seo-technical",
+      "tier": 1,
+      "description": "Audit technical SEO across crawlability, indexability, security, URLs, mobile, Core Web Vitals, structured data, JavaScript rendering, and related platform signals like robots.txt and AI crawler access.",
+      "path": ".agents/skills/seo-technical"
+    },
+    {
+      "name": "shadcn",
+      "tier": 1,
+      "description": "Manages shadcn/ui components and projects, providing context, documentation, and usage patterns for building modern design systems.",
+      "path": ".agents/skills/shadcn"
+    },
+    {
+      "name": "shodan-reconnaissance",
+      "tier": 1,
+      "description": "Provide systematic methodologies for leveraging Shodan as a reconnaissance tool during penetration testing engagements.",
+      "path": ".agents/skills/shodan-reconnaissance"
+    },
+    {
+      "name": "software-architecture",
+      "tier": 1,
+      "description": "Guide for quality focused software architecture. This skill should be used when users want to write code, design architecture, analyze code, in any case that relates to software development.",
+      "path": ".agents/skills/software-architecture"
+    },
+    {
+      "name": "springboot-patterns",
+      "tier": 1,
+      "description": "Spring Boot architecture patterns, REST API design, layered services, data access, caching, async processing, and logging. Use for Java Spring Boot backend work. Use when building or reviewing a Spring Boot backend \u2014 REST layer, services, data access, caching, or async work.",
+      "path": ".agents/skills/springboot-patterns"
+    },
+    {
+      "name": "ssh-penetration-testing",
+      "tier": 1,
+      "description": "Conduct comprehensive SSH security assessments including enumeration, credential attacks, vulnerability exploitation, tunneling techniques, and post-exploitation activities. This skill covers the complete methodology for testing SSH service security.",
+      "path": ".agents/skills/ssh-penetration-testing"
+    },
+    {
+      "name": "swift-protocol-di-testing",
+      "tier": 1,
+      "description": "Protocol-based dependency injection for testable Swift code \u2014 mock file system, network, and external APIs using focused protocols and Swift Testing. Use when Swift code needs testing and file system, network, or external APIs must be mocked.",
+      "path": ".agents/skills/swift-protocol-di-testing"
+    },
+    {
+      "name": "swiftui-patterns",
+      "tier": 1,
+      "description": "SwiftUI architecture patterns, state management with @Observable, view composition, navigation, performance optimization, and modern iOS/macOS UI best practices. Use when building or reviewing SwiftUI views, @Observable state, navigation, or render performance.",
+      "path": ".agents/skills/swiftui-patterns"
+    },
+    {
+      "name": "swiftui-performance-audit",
+      "tier": 1,
+      "description": "Audit SwiftUI performance issues from code review and profiling evidence.",
+      "path": ".agents/skills/swiftui-performance-audit"
+    },
+    {
+      "name": "systematic-debugging",
+      "tier": 1,
+      "description": "Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes",
+      "path": ".agents/skills/systematic-debugging"
+    },
+    {
+      "name": "systems-programming-rust-project",
+      "tier": 1,
+      "description": "You are a Rust project architecture expert specializing in scaffolding production-ready Rust applications. Generate complete project structures with cargo tooling, proper module organization, testing",
+      "path": ".agents/skills/systems-programming-rust-project"
+    },
+    {
+      "name": "tailwind-patterns",
+      "tier": 1,
+      "description": "Tailwind CSS v4 principles. CSS-first configuration, container queries, modern patterns, design token architecture.",
+      "path": ".agents/skills/tailwind-patterns"
+    },
+    {
+      "name": "tdd-orchestrator",
+      "tier": 1,
+      "description": "Master TDD orchestrator specializing in red-green-refactor discipline, multi-agent workflow coordination, and comprehensive test-driven development practices.",
+      "path": ".agents/skills/tdd-orchestrator"
+    },
+    {
+      "name": "tdd-workflow",
+      "tier": 1,
+      "description": "Test-driven development workflow: write a failing test first, watch it fail, implement the smallest change to green, then refactor with 80%+ coverage across unit, integration, and E2E tests. Use when writing a new feature, fixing a bug, refactoring, or when told to write failing tests first.",
+      "path": ".agents/skills/tdd-workflow"
+    },
+    {
+      "name": "tdd-workflows-tdd-cycle",
+      "tier": 1,
+      "description": "Use when working with tdd workflows tdd cycle",
+      "path": ".agents/skills/tdd-workflows-tdd-cycle"
+    },
+    {
+      "name": "tdd-workflows-tdd-green",
+      "tier": 1,
+      "description": "Implement the minimal code needed to make failing tests pass in the TDD green phase.",
+      "path": ".agents/skills/tdd-workflows-tdd-green"
+    },
+    {
+      "name": "tdd-workflows-tdd-red",
+      "tier": 1,
+      "description": "Generate failing tests for the TDD red phase to define expected behavior and edge cases.",
+      "path": ".agents/skills/tdd-workflows-tdd-red"
+    },
+    {
+      "name": "tdd-workflows-tdd-refactor",
+      "tier": 1,
+      "description": "Use when working with tdd workflows tdd refactor",
+      "path": ".agents/skills/tdd-workflows-tdd-refactor"
+    },
+    {
+      "name": "temporal-python-pro",
+      "tier": 1,
+      "description": "Master Temporal workflow orchestration with Python SDK. Implements durable workflows, saga patterns, and distributed transactions. Covers async/await, testing strategies, and production deployment.",
+      "path": ".agents/skills/temporal-python-pro"
+    },
+    {
+      "name": "temporal-python-testing",
+      "tier": 1,
+      "description": "Comprehensive testing approaches for Temporal workflows using pytest, progressive disclosure resources for specific testing scenarios.",
+      "path": ".agents/skills/temporal-python-testing"
+    },
+    {
+      "name": "test-automator",
+      "tier": 1,
+      "description": "Master AI-powered test automation with modern frameworks, self-healing tests, and comprehensive quality engineering. Build scalable testing strategies with advanced CI/CD integration.",
+      "path": ".agents/skills/test-automator"
+    },
+    {
+      "name": "test-collaboration",
+      "tier": 1,
+      "description": "Inventory and govern a project's test assets. Connect requirements, business rules, risks, bugs, and cross-boundary contracts to stable TEST-IDs and executable evidence in the repository's existing test registry or TESTS.md. Use for test inventory, test gap analysis, unit/integration/contract/E2E/smoke classification, bug-to-test regression protection, consumer/provider contract testing, test-necessity review, and pre-delivery evidence review.",
+      "path": ".agents/skills/test-collaboration"
+    },
+    {
+      "name": "test-driven-development",
+      "tier": 1,
+      "description": "Use when implementing any feature or bugfix, before writing implementation code",
+      "path": ".agents/skills/test-driven-development"
+    },
+    {
+      "name": "test-fixing",
+      "tier": 1,
+      "description": "Systematically identify and fix all failing tests using smart grouping strategies. Use when explicitly asks to fix tests (\\\"fix these tests\\\", \\\"make tests pass\\\"), reports test failures (\\\"tests are failing\\\", \\\"test suite is broken\\\"), or completes implementation and wants tests passing.",
+      "path": ".agents/skills/test-fixing"
+    },
+    {
+      "name": "testing-patterns",
+      "tier": 1,
+      "description": "Jest testing patterns, factory functions, mocking strategies, and TDD workflow. Use when writing unit tests, creating test factories, or following TDD red-green-refactor cycle.",
+      "path": ".agents/skills/testing-patterns"
+    },
+    {
+      "name": "testing-qa",
+      "tier": 1,
+      "description": "Comprehensive testing and QA workflow covering unit testing, integration testing, E2E testing, browser automation, and quality assurance.",
+      "path": ".agents/skills/testing-qa"
+    },
+    {
+      "name": "threat-modeling-expert",
+      "tier": 1,
+      "description": "Expert in threat modeling methodologies, security architecture review, and risk assessment. Masters STRIDE, PASTA, attack trees, and security requirement extraction. Use PROACTIVELY for security architecture reviews, threat identification, or building secure-by-design systems.",
+      "path": ".agents/skills/threat-modeling-expert"
+    },
+    {
+      "name": "typescript-advanced-types",
+      "tier": 1,
+      "description": "Comprehensive guidance for mastering TypeScript's advanced type system including generics, conditional types, mapped types, template literal types, and utility types for building robust, type-safe applications.",
+      "path": ".agents/skills/typescript-advanced-types"
+    },
+    {
+      "name": "typescript-expert",
+      "tier": 1,
+      "description": "TypeScript and JavaScript expert with deep knowledge of type-level programming, performance optimization, monorepo management, migration strategies, and modern tooling.",
+      "path": ".agents/skills/typescript-expert"
+    },
+    {
+      "name": "typescript-patterns",
+      "tier": 1,
+      "description": "TypeScript patterns for strict, type-safe, maintainable code in modern TypeScript and JavaScript applications. Covers strict compiler configuration, type design, narrowing, discriminated unions, generics, async and error handling, module boundaries, dependency hygiene, and type-level testing. Use when writing or reviewing TypeScript or JavaScript code.",
+      "path": ".agents/skills/typescript-patterns"
+    },
+    {
+      "name": "typescript-pro",
+      "tier": 1,
+      "description": "Master TypeScript with advanced types, generics, and strict type safety. Handles complex type systems, decorators, and enterprise-grade patterns.",
+      "path": ".agents/skills/typescript-pro"
+    },
+    {
+      "name": "ui-visual-validator",
+      "tier": 1,
+      "description": "Rigorous visual validation expert specializing in UI testing, design system compliance, and accessibility verification.",
+      "path": ".agents/skills/ui-visual-validator"
+    },
+    {
+      "name": "uncle-bob-craft",
+      "tier": 1,
+      "description": "Use when performing code review, writing or refactoring code, or discussing architecture; complements clean-code and does not replace project linter/formatter.",
+      "path": ".agents/skills/uncle-bob-craft"
+    },
+    {
+      "name": "uv-package-manager",
+      "tier": 1,
+      "description": "Comprehensive guide to using uv, an extremely fast Python package installer and resolver written in Rust, for modern Python project management and dependency workflows.",
+      "path": ".agents/skills/uv-package-manager"
+    },
+    {
+      "name": "vercel-composition-patterns",
+      "tier": 1,
+      "description": "React and Next.js composition patterns that scale. Use when refactoring components with boolean prop proliferation, building flexible component libraries, designing reusable APIs, or applying Next.js/React 19 Server/Client component architecture. Triggers on React tasks, Next.js components, Compound Components, or context providers.",
+      "path": ".agents/skills/vercel-composition-patterns"
+    },
+    {
+      "name": "verification-loop",
+      "tier": 1,
+      "description": "Run a six-phase verification of a Claude Code session's work \u2014 build, type check, lint, tests with coverage, security grep, and diff review \u2014 then produce a PASS/FAIL verification report. Use when verifying work after completing a feature or refactor, before creating a PR, or when quality gates must pass.",
+      "path": ".agents/skills/verification-loop"
+    },
+    {
+      "name": "vibers-code-review",
+      "tier": 1,
+      "description": "Human review workflow for AI-generated GitHub projects with spec-based feedback, security review, and follow-up PRs from the Vibers service.",
+      "path": ".agents/skills/vibers-code-review"
+    },
+    {
+      "name": "vue-patterns",
+      "tier": 1,
+      "description": "Vue.js 3 Composition API patterns, component architecture, reactivity best practices, Pinia state management, Vue Router navigation, and Nuxt SSR patterns. Activates for Vue, Nuxt, Vite, or Pinia projects. Use when building or reviewing Vue 3, Nuxt, or Pinia code \u2014 Composition API, reactivity, or router navigation.",
+      "path": ".agents/skills/vue-patterns"
+    },
+    {
+      "name": "web-security-testing",
+      "tier": 1,
+      "description": "Web application security testing workflow for OWASP Top 10 vulnerabilities including injection, XSS, authentication flaws, and access control issues.",
+      "path": ".agents/skills/web-security-testing"
+    },
+    {
+      "name": "web3-testing",
+      "tier": 1,
+      "description": "Master comprehensive testing strategies for smart contracts using Hardhat, Foundry, and advanced testing patterns.",
+      "path": ".agents/skills/web3-testing"
+    },
+    {
+      "name": "webapp-testing",
+      "tier": 1,
+      "description": "Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs.",
+      "path": ".agents/skills/webapp-testing"
+    },
+    {
+      "name": "wechat-official-account-strategist",
+      "tier": 1,
+      "description": "Grow WeChat Official Accounts (\u5fae\u4fe1\u516c\u4f17\u53f7) with high-conversion content strategy, title formulas, article architecture, and Mini-Program integration.",
+      "path": ".agents/skills/wechat-official-account-strategist"
+    },
+    {
+      "name": "windows-desktop-e2e",
+      "tier": 1,
+      "description": "E2E testing for Windows native desktop apps (WPF, WinForms, Win32/MFC, Qt) using pywinauto and Windows UI Automation. Use when writing E2E tests for a Windows native desktop app with pywinauto or UI Automation.",
+      "path": ".agents/skills/windows-desktop-e2e"
+    },
+    {
+      "name": "windows-privilege-escalation",
+      "tier": 1,
+      "description": "Provide systematic methodologies for discovering and exploiting privilege escalation vulnerabilities on Windows systems during penetration testing engagements.",
+      "path": ".agents/skills/windows-privilege-escalation"
+    },
+    {
+      "name": "wordpress-plugin-development",
+      "tier": 1,
+      "description": "WordPress plugin development workflow covering plugin architecture, hooks, admin interfaces, REST API, security best practices, and WordPress 7.0 features: Real-Time Collaboration, AI Connectors, Abilities API, DataViews, and PHP-only blocks.",
+      "path": ".agents/skills/wordpress-plugin-development"
+    },
+    {
+      "name": "wordpress-theme-development",
+      "tier": 1,
+      "description": "WordPress theme development workflow covering theme architecture, template hierarchy, custom post types, block editor support, responsive design, and WordPress 7.0 features: DataViews, Pattern Editing, Navigation Overlays, and admin refresh.",
+      "path": ".agents/skills/wordpress-theme-development"
+    },
+    {
+      "name": "workflow-orchestration-patterns",
+      "tier": 1,
+      "description": "Master workflow orchestration architecture with Temporal, covering fundamental design decisions, resilience patterns, and best practices for building reliable distributed systems.",
+      "path": ".agents/skills/workflow-orchestration-patterns"
+    },
+    {
+      "name": "workflow-patterns",
+      "tier": 1,
+      "description": "Use this skill when implementing tasks according to Conductor's TDD workflow, handling phase checkpoints, managing git commits for tasks, or understanding the verification protocol.",
+      "path": ".agents/skills/workflow-patterns"
+    },
+    {
+      "name": "write-swift",
+      "tier": 1,
+      "description": "How to write modern Swift well \u2014 modeling with value types, Swift 6 data-race safety and approachable concurrency (@concurrent, main-actor-by-default, actors, task groups), protocols and generics (some vs any), API design, performance and ARC, Swift Testing, macros, and the modern language features agents don't know about yet. Use when writing, reviewing, or migrating Swift, or when a concurrency error, a hang, a data race, a retain cycle, or a performance problem needs fixing.",
+      "path": ".agents/skills/write-swift"
+    }
+  ]
+}

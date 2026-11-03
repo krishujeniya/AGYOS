@@ -1,0 +1,217 @@
+# AGYOS Master Engineering & Capability Tracker
+
+> **System**: AGYOS v3.1 — Unified Cognitive Operating System for Antigravity CLI (`agy`)  
+> **Repository Root**: `/home/ai/Documents/projects/Freelance/AGYOS`  
+> **Status**: 100% Operational • 25/25 Adversarial Verification Checks Passing  
+> **Target Runtime**: Google Antigravity CLI (`agy`) v1.4.12+  
+> **Consolidated Ecosystems**: Aegis (SDLC), Anchor (Governance), Agent Council (Consensus), Freelance Suite, ScrollHeart (Motion), Emil Kowalski (UI/UX), ECC Polyglot
+
+---
+
+## 1. System Inventory & Scale
+
+```
++---------------------------------------------------------------------------------+
+|                                 AGYOS CAPACITY                                  |
++---------------------+-------------------+------------------+--------------------+
+|  PHYSICAL SKILLS    |  MODULAR RULES    |  ROLE AGENTS     |  CORE PLUGINS      |
+|  1,845 Standalone   |  162 Rules (<24K) |  74 Specialized  |  8 Validated (`agy`)|
++---------------------+-------------------+------------------+--------------------+
+|  WORKFLOW PIPELINES |  MCP SERVERS      |  TOTAL SCRIPTS    |  TEST VERIFICATION |
+|  100 Autonomous     |  1 FastMCP Daemon |  396 Scripts     |  25 / 25 Passed    |
++---------------------+-------------------+------------------+--------------------+
+```
+
+---
+
+## 2. Hardening Ledger: Disadvantages Eliminated (ECC vs AGYOS)
+
+| Known Disadvantage / Tradeoff | Root Cause in Legacy AGYOS | Hardened Solution in AGYOS v3.1 | Status |
+| :--- | :--- | :--- | :---: |
+| **1. Prompt Context Swamping** | 1,846 skills in a flat list overwhelmed the model's system prompt budget. | **2-Tier Progressive Disclosure System**: 396 Tier 1 core software & UI/UX skills load on prompt; 1,449 Tier 2 domain extensions load JIT via `.agents/skills-manifest.json`. | **RESOLVED** |
+| **2. Ceremony / Bureaucracy on Tiny Edits** | 5-Gate Anchor process was too rigid for 1-line typo fixes or small tweaks. | **Adaptive Fast-Path Router**: `bin/agyos fast` bypasses Gates 1–3 for complexity $\le 2$, leaping directly to IMPLEMENT with zero ceremony. | **RESOLVED** |
+| **3. Pre-Tool Hook Deadlock Risk** | Missing hook paths or python errors caused exit status 2, halting all tools. | **Fail-Open Fallback Guard**: `scripts/hooks/agy_os_hook.py` catches all unhandled exceptions, defaults safely to `{"decision": "allow"}` without freezing. | **RESOLVED** |
+| **4. External Submodule Clutter** | 5 cloned git repos (`Aegis`, `Anchor`, etc.) added 200MB+ bloat & broken symlinks. | **100% Self-Contained Consolidation**: All skills physically copied to `.agents/skills/`; redundant repos & web dashboards deleted. | **RESOLVED** |
+| **5. Multi-Runtime Brittleness** | Council required Bun in arbitrary paths. | **Dedicated Council Subsystem**: Streamlined TypeScript engine housed in `scripts/council/` (59 Bun tests green, 0ms latency). | **RESOLVED** |
+| **6. Stale Docs Compiler & Web Explorer** | Legacy compiler searched deleted submodules, indexing only 73 skills. | **Unified Dynamic Ingestion Engine**: `scripts/build_docs_data.py` indexes all 1,845 skills directly from `.agents/skills/`, compiles full JSON data & sitemaps, and applies Emil Kowalski UI/UX standards. | **RESOLVED** |
+
+---
+
+## 3. The 6 Non-Negotiable Gravitas Invariants
+
+1. **Ground Before Mutating**: Inspect existing implementations, manifests, and test runs via `read_file` or `run_command` before modifying code. Speculative coding is forbidden.
+2. **Stay in Declared Scope**: Confine all mutations strictly to the active milestone path boundary (`anchor-scope`). Never touch unapproved, cross-module files out of band.
+3. **Require Machine Evidence**: Never claim a task, gate, or milestone is complete without executing and printing fresh compiler, linter, or test output.
+4. **Avoid Identical Retries**: If a command or test fails twice with the same signature, alter the underlying hypothesis or halt. Never loop blindly.
+5. **Satisfy Contract Gates**: Every phase transition must satisfy strict programmatic gate criteria recorded in `.agents/state/state.json`.
+6. **State Unverifiable Claims**: If any behavioral aspect cannot be verified by machine tests (e.g. subjective visual aesthetics), explicitly flag it to the operator.
+
+---
+
+## 4. The Anchor 5-Gate Lifecycle Engine
+
+```
+[GATE 1: UNDERSTAND] ➔ [GATE 2: ANALYZE] ➔ [GATE 3: PLAN] ➔ [GATE 4: IMPLEMENT] ➔ [GATE 5: VERIFY]
+                                 │
+                         (Complexity <= 2)
+                                 │
+                                 └───► [FAST-PATH: IMPLEMENT ➔ VERIFY]
+```
+
+- **Gate 1 (UNDERSTAND)**: Intent clarification, acceptance criteria, Task List artifact. HITL approval required.
+- **Gate 2 (ANALYZE)**: Read-only AST dependency mapping (`anchor-scout`), blast radius containment, complexity scoring.
+- **Gate 3 (PLAN)**: Architecture Decision Records (ADR), C4 models, data contracts, and compact context (`compact.sh`).
+- **Gate 4 (IMPLEMENT)**: Autonomous TDD Red-Green-Refactor loop. Functions $<50$ lines, files $<800$ lines, immutability strictly enforced.
+- **Gate 5 (VERIFY)**: Full adversarial verification (`bin/agyos verify`), test ratchet monotonicity enforcement, Quiz-Me review.
+
+---
+
+## 5. Emil Kowalski UI/UX & Motion Engineering Standards
+
+Enforced across all frontend, website, and SaaS generation workflows:
+
+1. **Concentric Border Radii Formula**:
+   $$\text{Radius}_{\text{inner}} = \text{Radius}_{\text{outer}} - \text{Padding}$$
+   Nested elements must mathematically honor this curve to eliminate mismatched optical corners.
+2. **The Animation Decision Framework**:
+   - **100+ times/day** (shortcuts, command palette, toggles): **0ms (Never animate)**.
+   - **Tens of times/day** (hover states, dropdown menus): **150ms – 200ms**.
+   - **Occasional** (modals, drawers, sheets): **250ms – 350ms**.
+   - **Never animate keyboard-initiated actions**: Immediate response is mandatory.
+3. **Compositor-Only Invariant**:
+   - Animate **ONLY** `transform` and `opacity`.
+   - Never animate layout properties (`width`, `height`, `top`, `margin`, `padding`) without FLIP projection (`<motion.div layout />`).
+4. **Tactile Micro-Interactions**:
+   - Buttons must provide tactile press feedback: `active:scale-[0.98]`.
+   - Hover effects must be wrapped in `@media (hover: hover) and (pointer: fine)` to protect touch users.
+5. **Popover Transform Origins**:
+   - Scale from the trigger button coordinates, never from the screen center.
+6. **Review Format Requirement**:
+   - All UI reviews must present issues in a structured Before / After / Why table:
+     ```markdown
+     | Before | After | Why |
+     | --- | --- | --- |
+     | transition: all 300ms | transition: transform 180ms ease-out | Prevents layout thrashing |
+     | transform: scale(0) | transform: scale(0.95); opacity: 0 | Real objects do not scale from 0 |
+     ```
+
+---
+
+## 6. Directory Layout & Subsystems
+
+```text
+/home/ai/Documents/projects/Freelance/AGYOS/
+├── .agents/                          # Core AGYOS Cognitive Runtime
+│   ├── skills/                       # 1,845 physical standalone skills
+│   ├── rules/                        # 162 modular governance rules (<24KB)
+│   ├── workflows/                    # 100 autonomous execution pipelines
+│   ├── agents/                       # 74 corporate role agents
+│   ├── plugins/                      # 8 validated AGYOS plugins
+│   ├── state/                        # State engine (CURRENT.md, state.json)
+│   ├── skills-manifest.json          # Tiered catalog index (Tier 1 vs Tier 2)
+│   ├── tier1-skills.json             # Fast-path core skills lookup table
+│   └── hooks.json                    # Real-time lifecycle bus
+│
+├── skills/                           # Direct visible shortcut to all 1,845 skills
+├── rules/                            # Direct visible shortcut to all 162 rules
+├── workflows/                        # Direct visible shortcut to all 100 workflows
+│
+├── bin/                              # Kernel binaries & verification scripts
+│   ├── agyos                         # Central CLI (init, verify, state, gate, fast, council)
+│   ├── gate-check.sh                 # Pre-commit test ratchet monotonicity validator
+│   ├── state.sh                      # Atomic 5-gate state access layer
+│   ├── state-validate.sh             # Self-healing state validator
+│   ├── compact.sh                    # Context compaction utility
+│   └── rollback.sh                   # Milestone rollback utility
+│
+├── mcp/                              # FastMCP device drivers
+│   └── agyos-state-server.cjs        # FastMCP JSON-RPC 2.0 daemon for AGY CLI
+│
+├── scripts/                          # System automation & hooks
+│   ├── hooks/agy_os_hook.py          # Real-time lifecycle interceptor (fail-open)
+│   ├── agyos-verify.sh               # 25-point adversarial test runner
+│   ├── package_agyos_plugins.py      # Dynamic plugin packager
+│   ├── build_tiered_skills_manifest.py # Tier 1 / Tier 2 catalog indexer
+│   ├── ecc/                          # 374 ECC helper automation scripts
+│   └── council/                      # Multi-model consensus engine (59 Bun tests green)
+│
+├── assets/                           # Vector branding (agyos-logo.svg)
+├── docs/                             # Documentation reference guides
+├── AGENTS.md                         # Constitution, 6 Gravitas Invariants, Emil Kowalski rules
+├── GEMINI.md -> AGENTS.md            # Dual-discovery link for Antigravity CLI
+├── README.md                         # System documentation
+├── AI_HANDOFF.md                     # Milestone handoff & audit trail
+├── TRACKER.md                        # This living ledger & engineering tracker
+└── skills-lock.json                  # Lockfile tracking installed skills
+```
+
+---
+
+## 7. Adversarial Verification Suite: 25 / 25 Passing
+
+```text
+============================================================
+🛡️ AGYOS Adversarial Verification Suite
+============================================================
+• Checking AGENTS.md size limit (<24,000 bytes)... PASS
+• Checking GEMINI.md exists and matches AGENTS.md... PASS
+• Checking AGY CLI installed and responsive... PASS
+• Checking Anchor MCP server registered in AGY... PASS
+• Checking AGYOS Safety Hook blocks dangerous commands... PASS
+• Checking AGYOS Safety Hook allows benign commands... PASS
+• Checking Anchor MCP server JSON-RPC initialize... PASS
+• Checking Anchor MCP server tools/list... PASS
+• Checking Anchor MCP server tools/call (anchor_state)... PASS
+• Checking Agent Council Bun test suite (59 passing tests)... PASS
+• Checking Plugin validation for agyos-aegis... PASS
+• Checking Plugin validation for agyos-anchor... PASS
+• Checking Plugin validation for agyos-business-creative... PASS
+• Checking Plugin validation for agyos-council... PASS
+• Checking Plugin validation for agyos-ecc-polyglot... PASS
+• Checking Plugin validation for agyos-security... PASS
+• Checking Plugin validation for agyos-seo... PASS
+• Checking Plugin validation for agyos-verification... PASS
+• Checking Anchor state validation script... PASS
+• Checking Merged skills catalog (>400 skills in .agents/skills)... PASS (1,845 skills)
+• Checking Merged rules catalog (>120 rules in .agents/rules)... PASS (162 rules)
+• Checking AGYOS master logo exists in assets/agyos-logo.svg... PASS
+• Checking bin/agyos executable exists and functional... PASS
+• Checking Tiered skills manifest exists and valid... PASS
+• Checking Fast-path state bypass functional... PASS
+============================================================
+Verification Summary: 25 PASSED, 0 FAILED
+============================================================
+```
+
+---
+
+## 8. CLI Quick Reference
+
+```bash
+# Verify system integrity across all 25 proof gates
+bin/agyos verify
+
+# Fast-path bypass for minor edits & typos (jumps straight to IMPLEMENT)
+bin/agyos fast
+
+# Inspect active milestone, gate, and session state
+bin/agyos state
+bin/agyos state --json
+
+# Manually transition Anchor gate
+bin/agyos gate UNDERSTAND
+bin/agyos gate ANALYZE
+bin/agyos gate PLAN
+bin/agyos gate IMPLEMENT
+bin/agyos gate VERIFY
+bin/agyos gate IDLE
+
+# Convene Agent Council multi-model deliberation
+bin/agyos council
+
+# Compact context window and archive current state
+bin/agyos compact
+
+# Safely rollback active milestone
+bin/agyos rollback
+```

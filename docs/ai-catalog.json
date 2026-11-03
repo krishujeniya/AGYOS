@@ -1,26 +1,25 @@
 {
-  "name": "SKILL Monorepo",
-  "description": "Unified AI agent skills, frameworks, and tooling monorepo.",
-  "url": "https://krishujeniya.github.io/SKILL/",
-  "version": "2.5.0",
-  "total_skills": 1581,
+  "name": "AGYOS",
+  "description": "The Autonomous Cognitive Operating System for AGY CLI.",
+  "url": "https://krishujeniya.github.io/AGYOS/",
+  "version": "3.1.0",
+  "total_skills": 1845,
   "modules": [
-    "Anchor",
+    "Anchor Governance",
     "Agent Council",
+    "Emil Kowalski UI/UX & Motion",
+    "Technical SEO",
     "Freelance Suite",
-    "ScrollHeart",
-    "Aegis Core",
-    "Aegis Experts",
-    "Aegis Community",
-    "SEO & AEO Suite",
-    "Founder Suite",
-    "Engineering & Reliability"
+    "ECC Polyglot Engineering",
+    "Verification & Testing",
+    "Security & Defense",
+    "Domain & Research Extensions"
   ],
   "runtimes_supported": [
-    "AGY",
-    "Codex",
+    "AGY CLI",
+    "Gemini",
     "Claude Code",
-    "Antigravity",
+    "Codex",
     "Bun"
   ]
 }

@@ -1,8 +1,0 @@
----
-description: Enforce ANCHOR framework rules
-globs: *
----
-# ANCHOR Framework
-You must strictly follow the rules in `AGENTS.md` in the root of this workspace.
-Never skip the 5-Gate Workflow (UNDERSTAND, ANALYZE, PLAN, IMPLEMENT, VERIFY).
-Do not assume a task is complete until `bin/eval.sh` or deterministic tests pass.

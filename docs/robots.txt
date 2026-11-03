@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://krishujeniya.github.io/SKILL/sitemap.xml
+Sitemap: https://krishujeniya.github.io/AGYOS/sitemap.xml
