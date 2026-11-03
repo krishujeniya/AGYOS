@@ -9,13 +9,11 @@ The Feature Implementation Workflow describes the development pipeline: research
 
 ## Feature Implementation Workflow
 
-0. **Research & Reuse** _(mandatory before any new implementation)_
-   - **GitHub code search first:** Run `gh search repos` and `gh search code` to find existing implementations, templates, and patterns before writing anything new.
-   - **Library docs second:** Use Context7 or primary vendor docs to confirm API behavior, package usage, and version-specific details before implementing.
-   - **Exa only when the first two are insufficient:** Use Exa for broader web research or discovery after GitHub search and primary docs.
-   - **Check package registries:** Search npm, PyPI, crates.io, and other registries before writing utility code. Prefer battle-tested libraries over hand-rolled solutions.
-   - **Search for adaptable implementations:** Look for open-source projects that solve 80%+ of the problem and can be forked, ported, or wrapped.
-   - Prefer adopting or porting a proven approach over writing net-new code when it meets the requirement.
+0. **Skill Discovery & Research First (Mandatory Before Any Work)**
+   - **Discover best skills first:** Automatically query `agyos_find_skill` or `.agents/skills` to retrieve the exact domain specialist instructions. Ingest them silently before taking action.
+   - **Codebase and documentation research:** Use `research`, `code-explorer`, AST/grep scans, and official vendor docs to confirm current system structure, interfaces, and dependencies before modifying any file.
+   - **Check existing patterns & registries:** Search local implementations and trusted registries. Prefer adopting proven patterns over writing speculative logic.
+   - **Human language and minimal components:** Communicate in natural, direct human prose. Reject AI buzzwords, robotic filler, and unneeded wrapper components.
 
 1. **Plan First**
    - Use **planner** agent to create implementation plan

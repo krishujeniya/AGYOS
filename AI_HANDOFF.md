@@ -1,7 +1,11 @@
 # AI Handoff — AGYOS
 
 ## Task
-Rebrand AGYOS to a unified single branding, eliminate legacy `cc-`, `claude-`, and `ecc-` prefixes and duplicate skills, rebrand `agyos-ecc-polyglot` plugin to `agyos-polyglot`, implement the FastMCP `agyos_find_skill` semantic skill finder and `bin/agyos find` CLI command, enforce Gravitas Invariant 7 (Search-First Autonomous Skill Discovery) in `AGENTS.md`, recompile manifests and documentation catalogs across all 1,838 physical skills, and pass 27/27 adversarial verification checks.
+Incorporate 3 top-priority core operating invariants into global configuration (`~/.gemini/config/AGENTS.md`), project constitution (`AGENTS.md` and `GEMINI.md`), and engineering rules (`common-coding-style.md`, `common-development-workflow.md`):
+1. **Skill-First Autonomous Routing**: Automatically find and apply best skills first via FastMCP `agyos_find_skill` or `.agents/skills`.
+2. **Mandatory Deep Research**: Always research files, manifests, and dependencies using research skills before proposing or modifying code.
+3. **Pure Human Language & Zero AI Slop**: Strictly enforce natural human prose, ban 21+ AI buzzwords, eliminate robotic/templated conversational filler, ban decorative emoji spam, and reject unnecessary/speculative components.
+Verified all 27 checks pass in `scripts/agyos-verify.sh`.
 
 ## Branch / Revision
 - Branch: `main`
@@ -9,44 +13,20 @@ Rebrand AGYOS to a unified single branding, eliminate legacy `cc-`, `claude-`, a
 - Operating System: Linux (Ubuntu)
 
 ## Changed Files & Directories
-- `mcp/agyos-state-server.cjs`: Added `agyos_find_skill` (and `anchor_find_skill` alias) FastMCP tool for high-speed token/keyword scoring against `.agents/skills-manifest.json`.
-- `bin/agyos`: Added `find <query>` / `search <query>` subcommand for rapid terminal skill discovery.
-- `scripts/package_agyos_plugins.py`: Rebranded `agyos-ecc-polyglot` to `agyos-polyglot` with canonical AGYOS repository and author metadata.
-- `.agents/plugins/agyos-polyglot`: Packaged and installed to `~/.gemini/config/plugins/agyos-polyglot`.
-- `.agents/skills/`: Purged 7 legacy `cc-skill-*` duplicate folders, renamed and rebranded 6 skills (`agyos-project-guidelines-example`, `agyos-devfleet`, `configure-agyos`, `agyos-guide`, `agyos-recipes`, `agyos-tools-cost-audit`).
-- `.agents/rules/common-agents.md`: Updated agent orchestration rule from legacy ECC syntax to native `invoke_subagent`.
-- `AGENTS.md` & `GEMINI.md`: Upgraded to 7 Gravitas Invariants with Invariant 7 (Search-First Autonomous Discovery) and Section 7.0 autonomous skill ingestion instructions.
-- `TRACKER.md`: Hardening Ledger Item 7 recorded, updated scale inventory (1,838 skills, 27/27 tests).
-- `scripts/agyos-verify.sh`: Added checks for `agyos_find_skill` JSON-RPC tool and `bin/agyos find` CLI.
+- `~/.gemini/config/AGENTS.md`: Global operating policy updated with the 3 Core Operating Invariants as highest priority across all workspaces.
+- `AGENTS.md` & `GEMINI.md`: Upgraded Section 1 Gravitas Invariants and Section 7.0 Autonomous Discovery to prioritize skill-first routing, mandatory research, and zero AI slop.
+- `.agents/rules/common-coding-style.md`: Added "Pure Human Engineering & Zero AI Slop (CRITICAL)" section.
+- `.agents/rules/common-development-workflow.md`: Re-anchored Step 0 to "Skill Discovery & Research First".
+- `TRACKER.md`: Updated Section 3 Gravitas Invariants to align with the 3 top priorities.
 
 ## Tests Actually Run & Results
 - `bin/agyos verify`: **27 PASSED, 0 FAILED**
-  - AGENTS.md size limit (<24,000 bytes): PASS
-  - GEMINI.md exists and matches AGENTS.md: PASS
-  - AGY CLI installed and responsive: PASS
-  - Anchor MCP server registered in AGY: PASS
-  - AGYOS Safety Hook blocks dangerous commands: PASS
-  - AGYOS Safety Hook allows benign commands: PASS
-  - Anchor MCP server JSON-RPC initialize: PASS
-  - Anchor MCP server tools/list: PASS
-  - Anchor MCP server tools/call (anchor_state): PASS
-  - Anchor MCP server tools/call (agyos_find_skill): PASS
-  - bin/agyos find skill search CLI: PASS
-  - Agent Council Bun test suite (59 passing tests): PASS
-  - 8 AGYOS Plugins validated (`agyos-aegis`, `agyos-anchor`, `agyos-business-creative`, `agyos-council`, `agyos-polyglot`, `agyos-security`, `agyos-seo`, `agyos-verification`): PASS
-  - Anchor state validation script: PASS
-  - Merged skills catalog (>400 skills in .agents/skills): PASS (1,838 skills)
-  - Merged rules catalog (>120 rules in .agents/rules): PASS (162 rules)
-  - AGYOS master logo exists in assets/agyos-logo.svg: PASS
-  - bin/agyos executable exists and functional: PASS
-  - Tiered skills manifest exists and valid: PASS
-  - Fast-path state bypass functional: PASS
-- `bin/gate-check.sh`: PASS (monotonicity preserved)
-- `python3 scripts/build_tiered_skills_manifest.py`: PASS (1,838 skills, 399 Tier 1, 1,439 Tier 2)
-- `python3 scripts/build_docs_data.py`: PASS (1,838 skills cataloged into docs data)
+- `bin/gate-check.sh`: **PASS** (monotonic assertions ratchet preserved)
+- `python3 scripts/build_tiered_skills_manifest.py`: **PASS** (1,838 skills cataloged)
+- `python3 scripts/build_docs_data.py`: **PASS** (all docs datasets compiled)
 
 ## Blockers
-None. 100% operational under single AGYOS branding.
+None. System is 100% operational with top-priority global human-engineering and skill-first invariants.
 
 ## One Exact Next Command
 ```bash

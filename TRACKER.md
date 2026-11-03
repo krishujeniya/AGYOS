@@ -40,13 +40,18 @@
 
 ## 3. The 7 Non-Negotiable Gravitas Invariants
 
-1. **Search-First Autonomous Discovery**: On any incoming task, prompt, or technology challenge, automatically call `agyos_find_skill` or query the catalog first to discover the top specialist skill, ingest its runbook, execute, and verify to perfection.
-2. **Ground Before Mutating**: Inspect existing implementations, manifests, and test runs via `read_file` or `run_command` before modifying code. Speculative coding is forbidden.
-3. **Stay in Declared Scope**: Confine all mutations strictly to the active milestone path boundary (`anchor-scope`). Never touch unapproved, cross-module files out of band.
-4. **Require Machine Evidence**: Never claim a task, gate, or milestone is complete without executing and printing fresh compiler, linter, or test output.
-5. **Avoid Identical Retries**: If a command or test fails twice with the same signature, alter the underlying hypothesis or halt. Never loop blindly.
-6. **Satisfy Contract Gates**: Every phase transition must satisfy strict programmatic gate criteria recorded in `.agents/state/state.json`.
-7. **State Unverifiable Claims**: If any behavioral aspect cannot be verified by machine tests (e.g. subjective visual aesthetics), explicitly flag it to the operator.
+1. **Search-First Autonomous Skill Discovery (TOP PRIORITY)**: Whenever given ANY task, problem, or objective, automatically call `agyos_find_skill` or query the catalog FIRST to discover the best matching specialist skill(s), silently ingest the runbook, and use it directly for that work. Never perform blind or speculative work.
+2. **Mandatory Deep Research (TOP PRIORITY)**: ALWAYS research using research skills (`research`, `code-explorer`, `deep-research`, codebase AST/grep scans, vendor doc lookups) BEFORE writing code or making modifications. Inspect existing files, dependencies, contracts, and tests first. Never write code on speculation or ungrounded assumptions.
+3. **Pure Human Language & Zero AI Slop (TOP PRIORITY)**:
+   - **Authentic Engineering Prose**: Use authentic, natural human engineering language. Direct, technical, grounded, and concise.
+   - **Banned AI Words & Buzzwords**: Never use words like "delve", "testament", "tapestry", "landscape", "pivotal", "in conclusion", "crucial", "embark", "game-changer", "foster", "leverage", "robust", "streamline", "seamless", "moreover", "unleash", "elevate", "beacon".
+   - **Banned Templated & Robotic Phrasing**: No formulaic chatbot intros ("Certainly!", "I'd be happy to help", "As an AI..."), generic rule-of-three, hollow intensifiers, or fake conversational fluff.
+   - **Banned AI Symbols**: No decorative emoji spam (🚀, 🛡️, ✨, ⚡, etc.) in system responses, code comments, or commits unless specifically requested.
+   - **No Unnecessary Components**: Reject speculative wrappers, premature abstractions, unnecessary utility layers, and boilerplate components. Build only what is needed with clean, minimal implementation.
+4. **Stay in Declared Scope**: Confine all file mutations strictly to the active milestone path boundary (`anchor-scope`). Never touch unapproved, cross-module files out of band.
+5. **Require Machine Evidence**: Never claim a task, gate, or milestone is complete without executing and printing fresh compiler, linter, or test output.
+6. **Avoid Identical Retries**: If a command or test fails twice with the same signature, alter the underlying hypothesis or halt. Never loop blindly.
+7. **Satisfy Contract Gates**: Every phase transition must satisfy strict programmatic gate criteria recorded in `.agents/state/state.json`.
 
 ---
 

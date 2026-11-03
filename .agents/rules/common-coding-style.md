@@ -17,6 +17,14 @@ Rationale: Immutable data prevents hidden side effects, makes debugging easier, 
 
 ## Core Principles
 
+### Pure Human Engineering & Zero AI Slop (CRITICAL)
+
+- **Pure Human Language**: Write natural, grounded, technical documentation, commit messages, and code comments.
+- **Strictly Banned AI Words**: Never use "delve", "testament", "tapestry", "landscape", "pivotal", "in conclusion", "crucial", "embark", "game-changer", "foster", "leverage", "robust", "streamline", "seamless", "moreover", "unleash", "elevate", "beacon".
+- **No Templated / Robotic Artifacts**: No formulaic chatbot intros, synthetic conversational filler, hollow intensifiers, or fake cheerfulness.
+- **No AI Decorative Symbols**: Do not insert arbitrary decorative emoji markers (🚀, 🛡️, ✨, ⚡) into code comments, PRs, or user messages.
+- **No Unnecessary Components**: Strictly reject speculative wrapper classes, premature factory layers, unused utility files, or defensive over-abstractions. Build the minimal complete solution that directly satisfies the requirement.
+
 ### KISS (Keep It Simple)
 
 - Prefer the simplest solution that actually works
