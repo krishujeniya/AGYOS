@@ -5,6 +5,7 @@ Reconcile and harden AGYOS v3.1 master capability tracker (`TRACKER.md`), re-arc
 
 ## Branch / Revision
 - Branch: `main`
+- Commit: `5f93d42` (ahead of `origin/main` by 1 commit)
 - Target Runtime: Antigravity CLI (`agy`) v1.4.12+
 - Operating System: Linux (Ubuntu)
 
