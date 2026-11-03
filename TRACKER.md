@@ -109,7 +109,7 @@ Enforced across all frontend, website, and SaaS generation workflows:
 ```text
 /home/ai/Documents/projects/Freelance/AGYOS/
 ├── .agents/                          # Core AGYOS Cognitive Runtime
-│   ├── skills/                       # 1,845 physical standalone skills
+│   ├── skills/                       # 1,838 physical standalone skills
 │   ├── rules/                        # 162 modular governance rules (<24KB)
 │   ├── workflows/                    # 100 autonomous execution pipelines
 │   ├── agents/                       # 74 corporate role agents
@@ -119,12 +119,12 @@ Enforced across all frontend, website, and SaaS generation workflows:
 │   ├── tier1-skills.json             # Fast-path core skills lookup table
 │   └── hooks.json                    # Real-time lifecycle bus
 │
-├── skills/                           # Direct visible shortcut to all 1,845 skills
+├── skills/                           # Direct visible shortcut to all 1,838 skills
 ├── rules/                            # Direct visible shortcut to all 162 rules
 ├── workflows/                        # Direct visible shortcut to all 100 workflows
 │
 ├── bin/                              # Kernel binaries & verification scripts
-│   ├── agyos                         # Central CLI (init, verify, state, gate, fast, council)
+│   ├── agyos                         # Central CLI (init, verify, find, skill, state, gate, fast, council)
 │   ├── gate-check.sh                 # Pre-commit test ratchet monotonicity validator
 │   ├── state.sh                      # Atomic 5-gate state access layer
 │   ├── state-validate.sh             # Self-healing state validator
@@ -132,19 +132,19 @@ Enforced across all frontend, website, and SaaS generation workflows:
 │   └── rollback.sh                   # Milestone rollback utility
 │
 ├── mcp/                              # FastMCP device drivers
-│   └── agyos-state-server.cjs        # FastMCP JSON-RPC 2.0 daemon for AGY CLI
+│   └── agyos-state-server.cjs        # FastMCP JSON-RPC 2.0 daemon for AGY CLI (with agyos_find_skill)
 │
 ├── scripts/                          # System automation & hooks
 │   ├── hooks/agy_os_hook.py          # Real-time lifecycle interceptor (fail-open)
-│   ├── agyos-verify.sh               # 25-point adversarial test runner
+│   ├── agyos-verify.sh               # 27-point adversarial test runner
 │   ├── package_agyos_plugins.py      # Dynamic plugin packager
 │   ├── build_tiered_skills_manifest.py # Tier 1 / Tier 2 catalog indexer
-│   ├── ecc/                          # 374 ECC helper automation scripts
+│   ├── build_docs_data.py            # Dynamic docs and skills compiler
 │   └── council/                      # Multi-model consensus engine (59 Bun tests green)
 │
 ├── assets/                           # Vector branding (agyos-logo.svg)
-├── docs/                             # Documentation reference guides
-├── AGENTS.md                         # Constitution, 6 Gravitas Invariants, Emil Kowalski rules
+├── docs/                             # Documentation reference guides & interactive explorer
+├── AGENTS.md                         # Constitution, 7 Gravitas Invariants, Emil Kowalski rules
 ├── GEMINI.md -> AGENTS.md            # Dual-discovery link for Antigravity CLI
 ├── README.md                         # System documentation
 ├── AI_HANDOFF.md                     # Milestone handoff & audit trail
@@ -154,11 +154,11 @@ Enforced across all frontend, website, and SaaS generation workflows:
 
 ---
 
-## 7. Adversarial Verification Suite: 25 / 25 Passing
+## 7. Adversarial Verification Suite: 27 / 27 Passing
 
 ```text
 ============================================================
-🛡️ AGYOS Adversarial Verification Suite
+AGYOS Adversarial Verification Suite
 ============================================================
 • Checking AGENTS.md size limit (<24,000 bytes)... PASS
 • Checking GEMINI.md exists and matches AGENTS.md... PASS
@@ -169,24 +169,26 @@ Enforced across all frontend, website, and SaaS generation workflows:
 • Checking Anchor MCP server JSON-RPC initialize... PASS
 • Checking Anchor MCP server tools/list... PASS
 • Checking Anchor MCP server tools/call (anchor_state)... PASS
+• Checking Anchor MCP server tools/call (agyos_find_skill)... PASS
+• Checking bin/agyos find skill search CLI... PASS
 • Checking Agent Council Bun test suite (59 passing tests)... PASS
 • Checking Plugin validation for agyos-aegis... PASS
 • Checking Plugin validation for agyos-anchor... PASS
 • Checking Plugin validation for agyos-business-creative... PASS
 • Checking Plugin validation for agyos-council... PASS
-• Checking Plugin validation for agyos-ecc-polyglot... PASS
+• Checking Plugin validation for agyos-polyglot... PASS
 • Checking Plugin validation for agyos-security... PASS
 • Checking Plugin validation for agyos-seo... PASS
 • Checking Plugin validation for agyos-verification... PASS
 • Checking Anchor state validation script... PASS
-• Checking Merged skills catalog (>400 skills in .agents/skills)... PASS (1,845 skills)
+• Checking Merged skills catalog (>400 skills in .agents/skills)... PASS (1,838 skills)
 • Checking Merged rules catalog (>120 rules in .agents/rules)... PASS (162 rules)
 • Checking AGYOS master logo exists in assets/agyos-logo.svg... PASS
 • Checking bin/agyos executable exists and functional... PASS
 • Checking Tiered skills manifest exists and valid... PASS
 • Checking Fast-path state bypass functional... PASS
 ============================================================
-Verification Summary: 25 PASSED, 0 FAILED
+Verification Summary: 27 PASSED, 0 FAILED
 ============================================================
 ```
 
@@ -195,8 +197,14 @@ Verification Summary: 25 PASSED, 0 FAILED
 ## 8. CLI Quick Reference
 
 ```bash
-# Verify system integrity across all 25 proof gates
+# Verify system integrity across all 27 proof gates
 bin/agyos verify
+
+# Search 1,838+ skills in AGYOS catalog for the best matching specialist
+bin/agyos find <query>
+
+# Inspect runbook instructions for a specific skill
+bin/agyos skill <name>
 
 # Fast-path bypass for minor edits & typos (jumps straight to IMPLEMENT)
 bin/agyos fast
