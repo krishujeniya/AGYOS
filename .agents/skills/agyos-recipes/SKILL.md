@@ -1,6 +1,6 @@
 ---
-name: ecc-recipes
-description: Map a described workflow to the right ECC command group with run-order and stop condition, or browse all command-group recipe families read live from the commands directory. Advisory only — never executes. Use when asked which commands run a workflow, the command sequence for a task, or to list ECC pipelines; not for executing the task (route to the command itself), single-command docs (use ecc-guide), or prompt rewrites (use prompt-optimizer).
+name: agyos-recipes
+description: Map a described workflow to the right AGYOS command group with run-order and stop condition, or browse all command-group recipe families read live from the commands directory. Advisory only — never executes. Use when asked which commands run a workflow, the command sequence for a task, or to list AGYOS pipelines; not for executing the task (route to the command itself), single-command docs (use agyos-guide), or prompt rewrites (use prompt-optimizer).
 argument-hint: <workflow description | empty=list all>
 origin: community
 author: KyawZinLatt
@@ -8,14 +8,14 @@ metadata:
   version: "1.0.0"
 ---
 
-# ECC Recipes
+# AGYOS Recipes
 
-One entry point for "which group of ECC slash-commands runs my workflow, in what
+One entry point for "which group of AGYOS slash-commands runs my workflow, in what
 order, and when do I stop." Also browses every command-group recipe family.
 
 Fills the gap between two existing skills:
 
-- `ecc-guide` — lists commands and where to read docs, but as a flat catalog.
+- `agyos-guide` — lists commands and where to read docs, but as a flat catalog.
 - `prompt-optimizer` — matches a task to components, but outputs a single prompt,
   not a multi-command group with run-order and stop condition.
 
@@ -25,14 +25,14 @@ This skill adds: **family grouping + run-order + stop condition.**
 
 - "Which command group do I run for <workflow>?"
 - "What's the command sequence to build an MVP / fix a defect / refactor?"
-- "Show me all ECC command-group recipes" (catalog mode)
-- "How many workflow pipelines does ECC have?"
-- User invokes `/ecc-recipes` with or without a description.
+- "Show me all AGYOS command-group recipes" (catalog mode)
+- "How many workflow pipelines does AGYOS have?"
+- User invokes `/agyos-recipes` with or without a description.
 
 ### Do Not Use When
 
 - User wants the task done now — route to the actual command, don't describe it.
-- User wants deep docs for ONE command — use `ecc-guide`.
+- User wants deep docs for ONE command — use `agyos-guide`.
 - User wants a draft prompt rewritten — use `prompt-optimizer`.
 
 ## Core Principle
@@ -47,14 +47,14 @@ Resolve the commands directory (first that exists), then list names:
 
 ```bash
 for D in \
-  "$HOME"/.claude/plugins/marketplaces/ecc/commands \
-  "$HOME"/.claude/plugins/cache/ecc/ecc/*/commands \
+  "$HOME"/.claude/plugins/marketplaces/agyos/commands \
+  "$HOME"/.claude/plugins/cache/agyos/agyos/*/commands \
   ./commands \
   ./.claude/commands \
   "$HOME"/.claude/commands; do
   [ -d "$D" ] && CMD_DIR="$D" && break
 done
-[ -z "${CMD_DIR:-}" ] && { echo "No ECC commands directory found."; return 1; }
+[ -z "${CMD_DIR:-}" ] && { echo "No AGYOS commands directory found."; return 1; }
 find "$CMD_DIR" -maxdepth 1 -name '*.md' -exec basename {} .md \; | sort
 ```
 
@@ -106,7 +106,7 @@ workflow for a matched recipe.
 4. **Stop condition** — always explicit (max-runs, completion-signal,
    review-passes, or single-shot). For autonomous loops, warn about subscription
    burn and recommend a backstop bound.
-5. **Where to read** — the `commands/<name>.md` path plus `/ecc-guide <name>`.
+5. **Where to read** — the `commands/<name>.md` path plus `/agyos-guide <name>`.
 
 ## Output Template (match mode)
 
@@ -125,26 +125,26 @@ Run-order:
   add a max-iteration or max-cost backstop alongside the completion signal.
 
 Read full docs:
-  commands/<cmd1>.md   (or: /ecc-guide <cmd1>)
+  commands/<cmd1>.md   (or: /agyos-guide <cmd1>)
 ```
 
 ## Examples
 
-**Catalog:** `/ecc-recipes` → prints the family table and total count.
+**Catalog:** `/agyos-recipes` → prints the family table and total count.
 
-**Match:** `/ecc-recipes plan a whole app upfront then auto-build with adversarial
+**Match:** `/agyos-recipes plan a whole app upfront then auto-build with adversarial
 review until done` → Best fit: `loop-*` (autonomous) wrapping `gan-*` or
 `santa-loop` (adversarial). Run-order: `plan-prd` then
 `loop-start rfc-dag --mode safe` then monitor `loop-status`; STOP when all units
 pass review N consecutive times (add a max-iteration backstop to bound burn).
 
-**Match:** `/ecc-recipes fix a bug in my Go service` → Best fit: `orch-fix-defect`
+**Match:** `/agyos-recipes fix a bug in my Go service` → Best fit: `orch-fix-defect`
 (reproduce, fix, review, commit). Alt: `go-test` then `go-build` then
 `go-review`. STOP: regression test green and review pass.
 
 ## Non-Goals
 
 - Not an executor — advisory only.
-- Not per-command deep docs — that's `ecc-guide`.
+- Not per-command deep docs — that's `agyos-guide`.
 - Not prompt rewriting — that's `prompt-optimizer`.
 - Never hardcode command counts or member lists — always live-read.

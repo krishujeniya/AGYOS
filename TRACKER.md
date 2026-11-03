@@ -2,9 +2,9 @@
 
 > **System**: AGYOS v3.1 — Unified Cognitive Operating System for Antigravity CLI (`agy`)  
 > **Repository Root**: `/home/ai/Documents/projects/Freelance/AGYOS`  
-> **Status**: 100% Operational • 25/25 Adversarial Verification Checks Passing  
+> **Status**: 100% Operational • 27/27 Adversarial Verification Checks Passing  
 > **Target Runtime**: Google Antigravity CLI (`agy`) v1.4.12+  
-> **Consolidated Ecosystems**: Aegis (SDLC), Anchor (Governance), Agent Council (Consensus), Freelance Suite, ScrollHeart (Motion), Emil Kowalski (UI/UX), ECC Polyglot
+> **Consolidated Ecosystems**: Aegis (SDLC), Anchor (Governance), Agent Council (Consensus), Freelance Suite, ScrollHeart (Motion), Emil Kowalski (UI/UX), AGYOS Polyglot Architecture
 
 ---
 
@@ -15,10 +15,10 @@
 |                                 AGYOS CAPACITY                                  |
 +---------------------+-------------------+------------------+--------------------+
 |  PHYSICAL SKILLS    |  MODULAR RULES    |  ROLE AGENTS     |  CORE PLUGINS      |
-|  1,845 Standalone   |  162 Rules (<24K) |  74 Specialized  |  8 Validated (`agy`)|
+|  1,838 Standalone   |  162 Rules (<24K) |  74 Specialized  |  8 Validated (`agy`)|
 +---------------------+-------------------+------------------+--------------------+
 |  WORKFLOW PIPELINES |  MCP SERVERS      |  TOTAL SCRIPTS    |  TEST VERIFICATION |
-|  100 Autonomous     |  1 FastMCP Daemon |  396 Scripts     |  25 / 25 Passed    |
+|  100 Autonomous     |  1 FastMCP Daemon |  396 Scripts     |  27 / 27 Passed    |
 +---------------------+-------------------+------------------+--------------------+
 ```
 
@@ -28,23 +28,25 @@
 
 | Known Disadvantage / Tradeoff | Root Cause in Legacy AGYOS | Hardened Solution in AGYOS v3.1 | Status |
 | :--- | :--- | :--- | :---: |
-| **1. Prompt Context Swamping** | 1,846 skills in a flat list overwhelmed the model's system prompt budget. | **2-Tier Progressive Disclosure System**: 396 Tier 1 core software & UI/UX skills load on prompt; 1,449 Tier 2 domain extensions load JIT via `.agents/skills-manifest.json`. | **RESOLVED** |
+| **1. Prompt Context Swamping** | 1,846 skills in a flat list overwhelmed the model's system prompt budget. | **2-Tier Progressive Disclosure System**: 399 Tier 1 core software & UI/UX skills load on prompt; 1,439 Tier 2 domain extensions load JIT via `.agents/skills-manifest.json`. | **RESOLVED** |
 | **2. Ceremony / Bureaucracy on Tiny Edits** | 5-Gate Anchor process was too rigid for 1-line typo fixes or small tweaks. | **Adaptive Fast-Path Router**: `bin/agyos fast` bypasses Gates 1–3 for complexity $\le 2$, leaping directly to IMPLEMENT with zero ceremony. | **RESOLVED** |
 | **3. Pre-Tool Hook Deadlock Risk** | Missing hook paths or python errors caused exit status 2, halting all tools. | **Fail-Open Fallback Guard**: `scripts/hooks/agy_os_hook.py` catches all unhandled exceptions, defaults safely to `{"decision": "allow"}` without freezing. | **RESOLVED** |
 | **4. External Submodule Clutter** | 5 cloned git repos (`Aegis`, `Anchor`, etc.) added 200MB+ bloat & broken symlinks. | **100% Self-Contained Consolidation**: All skills physically copied to `.agents/skills/`; redundant repos & web dashboards deleted. | **RESOLVED** |
 | **5. Multi-Runtime Brittleness** | Council required Bun in arbitrary paths. | **Dedicated Council Subsystem**: Streamlined TypeScript engine housed in `scripts/council/` (59 Bun tests green, 0ms latency). | **RESOLVED** |
-| **6. Stale Docs Compiler & Web Explorer** | Legacy compiler searched deleted submodules, indexing only 73 skills. | **Unified Dynamic Ingestion Engine**: `scripts/build_docs_data.py` indexes all 1,845 skills directly from `.agents/skills/`, compiles full JSON data & sitemaps, and applies Emil Kowalski UI/UX standards. | **RESOLVED** |
+| **6. Stale Docs Compiler & Web Explorer** | Legacy compiler searched deleted submodules, indexing only 73 skills. | **Unified Dynamic Ingestion Engine**: `scripts/build_docs_data.py` indexes all 1,838 skills directly from `.agents/skills/`, compiles full JSON data & sitemaps, and applies Emil Kowalski UI/UX standards. | **RESOLVED** |
+| **7. Brand Fragmentation & Passive Blindness** | Mixed legacy prefixes (`cc-`, `ecc-`, `claude-`) and no automated skill discovery mechanism. | **100% Single Brand + Autonomous Search-First**: Standardized all skills/plugins under pure AGYOS (`agyos-polyglot`), built FastMCP `agyos_find_skill` tool, `bin/agyos find` CLI, and Invariant 7. | **RESOLVED** |
 
 ---
 
-## 3. The 6 Non-Negotiable Gravitas Invariants
+## 3. The 7 Non-Negotiable Gravitas Invariants
 
-1. **Ground Before Mutating**: Inspect existing implementations, manifests, and test runs via `read_file` or `run_command` before modifying code. Speculative coding is forbidden.
-2. **Stay in Declared Scope**: Confine all mutations strictly to the active milestone path boundary (`anchor-scope`). Never touch unapproved, cross-module files out of band.
-3. **Require Machine Evidence**: Never claim a task, gate, or milestone is complete without executing and printing fresh compiler, linter, or test output.
-4. **Avoid Identical Retries**: If a command or test fails twice with the same signature, alter the underlying hypothesis or halt. Never loop blindly.
-5. **Satisfy Contract Gates**: Every phase transition must satisfy strict programmatic gate criteria recorded in `.agents/state/state.json`.
-6. **State Unverifiable Claims**: If any behavioral aspect cannot be verified by machine tests (e.g. subjective visual aesthetics), explicitly flag it to the operator.
+1. **Search-First Autonomous Discovery**: On any incoming task, prompt, or technology challenge, automatically call `agyos_find_skill` or query the catalog first to discover the top specialist skill, ingest its runbook, execute, and verify to perfection.
+2. **Ground Before Mutating**: Inspect existing implementations, manifests, and test runs via `read_file` or `run_command` before modifying code. Speculative coding is forbidden.
+3. **Stay in Declared Scope**: Confine all mutations strictly to the active milestone path boundary (`anchor-scope`). Never touch unapproved, cross-module files out of band.
+4. **Require Machine Evidence**: Never claim a task, gate, or milestone is complete without executing and printing fresh compiler, linter, or test output.
+5. **Avoid Identical Retries**: If a command or test fails twice with the same signature, alter the underlying hypothesis or halt. Never loop blindly.
+6. **Satisfy Contract Gates**: Every phase transition must satisfy strict programmatic gate criteria recorded in `.agents/state/state.json`.
+7. **State Unverifiable Claims**: If any behavioral aspect cannot be verified by machine tests (e.g. subjective visual aesthetics), explicitly flag it to the operator.
 
 ---
 

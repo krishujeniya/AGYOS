@@ -1479,6 +1479,91 @@
     "description": "Audit local AI coding-agent sessions with agenttrace for cost, tool failures, latency, anomalies, health, diffs, and CI gates."
   },
   {
+    "id": "agyos-devfleet",
+    "name": "Agyos Devfleet",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "agyos-devfleet",
+    "path": ".agents/skills/agyos-devfleet",
+    "risk": "safe",
+    "description": "Orchestrate multi-agent coding tasks via Claude DevFleet , plan projects, dispatch parallel agents in isolated worktrees, monitor progress, and read structured reports. Use when dispatching parallel coding agents across isolated worktrees and tracking their reports."
+  },
+  {
+    "id": "agyos-guide",
+    "name": "Agyos Guide",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "agyos-guide",
+    "path": ".agents/skills/agyos-guide",
+    "risk": "safe",
+    "description": "Answer questions about AGYOS by reading the live repo surface , agents, skills, commands, hooks, rules, install profiles, and docs , instead of memory. Use when the user asks what AGYOS includes, how to install or reset it, which skill or command fits a task, or how project onboarding works."
+  },
+  {
+    "id": "agyos-project-guidelines-example",
+    "name": "Agyos Project Guidelines Example",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "agyos-project-guidelines-example",
+    "path": ".agents/skills/agyos-project-guidelines-example",
+    "risk": "safe",
+    "description": "Project Guidelines Skill (Example)"
+  },
+  {
+    "id": "agyos-recipes",
+    "name": "Agyos Recipes",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "agyos-recipes",
+    "path": ".agents/skills/agyos-recipes",
+    "risk": "safe",
+    "description": "Map a described workflow to the right AGYOS command group with run-order and stop condition, or browse all command-group recipe families read live from the commands directory. Advisory only , never executes. Use when asked which commands run a workflow, the command sequence for a task, or to list AGYOS pipelines; not for executing the task (route to the command itself), single-command docs (use agyos-guide), or prompt rewrites (use prompt-optimizer)."
+  },
+  {
+    "id": "agyos-tools-cost-audit",
+    "name": "Agyos Tools Cost Audit",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "agyos-tools-cost-audit",
+    "path": ".agents/skills/agyos-tools-cost-audit",
+    "risk": "safe",
+    "description": "Evidence-first AGYOS Tools burn and billing audit workflow. Use when investigating runaway PR creation, quota bypass, premium-model leakage, duplicate jobs, or GitHub App cost spikes in the AGYOS Tools repo."
+  },
+  {
     "id": "ai-agent-development",
     "name": "Ai Agent Development",
     "module": "Domain & Research Extensions",
@@ -6868,142 +6953,6 @@
     "description": "Manage truckload, LTL, and intermodal carrier portfolios: sourcing and FMCSA vetting, freight rate and fuel-surcharge negotiation, RFPs and routing guides, carrier scorecards, allocation, and renewals. Use when onboarding carriers, running freight RFPs, negotiating rates, evaluating carrier performance, reallocating freight, or building freight strategy."
   },
   {
-    "id": "cc-skill-backend-patterns",
-    "name": "Cc Skill Backend Patterns",
-    "module": "Domain & Research Extensions",
-    "category": "Specialized",
-    "tier": 1,
-    "runtime": [
-      "AGY CLI",
-      "Gemini",
-      "Claude Code",
-      "Codex"
-    ],
-    "command": "cc-skill-backend-patterns",
-    "path": ".agents/skills/cc-skill-backend-patterns",
-    "risk": "safe",
-    "description": "Backend architecture patterns, API design, database optimization, and server-side best practices for Node.js, Express, and Next.js API routes."
-  },
-  {
-    "id": "cc-skill-clickhouse-io",
-    "name": "Cc Skill Clickhouse Io",
-    "module": "Domain & Research Extensions",
-    "category": "Specialized",
-    "tier": 2,
-    "runtime": [
-      "AGY CLI",
-      "Gemini",
-      "Claude Code",
-      "Codex"
-    ],
-    "command": "cc-skill-clickhouse-io",
-    "path": ".agents/skills/cc-skill-clickhouse-io",
-    "risk": "safe",
-    "description": "ClickHouse database patterns, query optimization, analytics, and data engineering best practices for high-performance analytical workloads."
-  },
-  {
-    "id": "cc-skill-coding-standards",
-    "name": "Cc Skill Coding Standards",
-    "module": "Domain & Research Extensions",
-    "category": "Specialized",
-    "tier": 2,
-    "runtime": [
-      "AGY CLI",
-      "Gemini",
-      "Claude Code",
-      "Codex"
-    ],
-    "command": "cc-skill-coding-standards",
-    "path": ".agents/skills/cc-skill-coding-standards",
-    "risk": "safe",
-    "description": "Universal coding standards, best practices, and patterns for TypeScript, JavaScript, React, and Node.js development."
-  },
-  {
-    "id": "cc-skill-continuous-learning",
-    "name": "Cc Skill Continuous Learning",
-    "module": "Domain & Research Extensions",
-    "category": "Specialized",
-    "tier": 2,
-    "runtime": [
-      "AGY CLI",
-      "Gemini",
-      "Claude Code",
-      "Codex"
-    ],
-    "command": "cc-skill-continuous-learning",
-    "path": ".agents/skills/cc-skill-continuous-learning",
-    "risk": "safe",
-    "description": "Development skill from everything-claude-code"
-  },
-  {
-    "id": "cc-skill-frontend-patterns",
-    "name": "Cc Skill Frontend Patterns",
-    "module": "Domain & Research Extensions",
-    "category": "Specialized",
-    "tier": 2,
-    "runtime": [
-      "AGY CLI",
-      "Gemini",
-      "Claude Code",
-      "Codex"
-    ],
-    "command": "cc-skill-frontend-patterns",
-    "path": ".agents/skills/cc-skill-frontend-patterns",
-    "risk": "safe",
-    "description": "Frontend development patterns for React, Next.js, state management, performance optimization, and UI best practices."
-  },
-  {
-    "id": "cc-skill-project-guidelines-example",
-    "name": "Cc Skill Project Guidelines Example",
-    "module": "Domain & Research Extensions",
-    "category": "Specialized",
-    "tier": 2,
-    "runtime": [
-      "AGY CLI",
-      "Gemini",
-      "Claude Code",
-      "Codex"
-    ],
-    "command": "cc-skill-project-guidelines-example",
-    "path": ".agents/skills/cc-skill-project-guidelines-example",
-    "risk": "safe",
-    "description": "Project Guidelines Skill (Example)"
-  },
-  {
-    "id": "cc-skill-security-review",
-    "name": "Cc Skill Security Review",
-    "module": "Security & Defense",
-    "category": "Security",
-    "tier": 2,
-    "runtime": [
-      "AGY CLI",
-      "Gemini",
-      "Claude Code",
-      "Codex"
-    ],
-    "command": "cc-skill-security-review",
-    "path": ".agents/skills/cc-skill-security-review",
-    "risk": "safe",
-    "description": "This skill ensures all code follows security best practices and identifies potential vulnerabilities. Use when implementing authentication or authorization, handling user input or file uploads, or creating new API endpoints."
-  },
-  {
-    "id": "cc-skill-strategic-compact",
-    "name": "Cc Skill Strategic Compact",
-    "module": "Domain & Research Extensions",
-    "category": "Specialized",
-    "tier": 2,
-    "runtime": [
-      "AGY CLI",
-      "Gemini",
-      "Claude Code",
-      "Codex"
-    ],
-    "command": "cc-skill-strategic-compact",
-    "path": ".agents/skills/cc-skill-strategic-compact",
-    "risk": "safe",
-    "description": "Development skill from everything-claude-code"
-  },
-  {
     "id": "cdk-patterns",
     "name": "Cdk Patterns",
     "module": "Domain & Research Extensions",
@@ -7257,23 +7206,6 @@
     "path": ".agents/skills/clarvia-aeo-check",
     "risk": "safe",
     "description": "Score any MCP server, API, or CLI for agent-readiness using Clarvia AEO (Agent Experience Optimization). Search 15,400+ indexed tools before adding them to your workflow."
-  },
-  {
-    "id": "claude-devfleet",
-    "name": "Claude Devfleet",
-    "module": "Domain & Research Extensions",
-    "category": "Specialized",
-    "tier": 2,
-    "runtime": [
-      "AGY CLI",
-      "Gemini",
-      "Claude Code",
-      "Codex"
-    ],
-    "command": "claude-devfleet",
-    "path": ".agents/skills/claude-devfleet",
-    "risk": "safe",
-    "description": "Orchestrate multi-agent coding tasks via Claude DevFleet , plan projects, dispatch parallel agents in isolated worktrees, monitor progress, and read structured reports. Use when dispatching parallel coding agents across isolated worktrees and tracking their reports."
   },
   {
     "id": "clean-code",
@@ -8228,8 +8160,8 @@
     "description": "Garbage collection for your Claude Code configuration. Periodically scans ~/.claude (skills, memory, hooks, permissions, MCP servers, caches) for redundant, stale, orphaned, or low-value items, then walks the user through a confirm-each-deletion cleanup. Use when the user says \"clean up my config\", \"config GC\", \"too many skills\", \"audit my setup\", \"my .claude is bloated\", or asks for a periodic config review."
   },
   {
-    "id": "configure-ecc",
-    "name": "Configure Ecc",
+    "id": "configure-agyos",
+    "name": "Configure Agyos",
     "module": "Domain & Research Extensions",
     "category": "Specialized",
     "tier": 2,
@@ -8239,10 +8171,10 @@
       "Claude Code",
       "Codex"
     ],
-    "command": "configure-ecc",
-    "path": ".agents/skills/configure-ecc",
+    "command": "configure-agyos",
+    "path": ".agents/skills/configure-agyos",
     "risk": "safe",
-    "description": "Run the conversational ECC setup wizard inside the current harness: inventory the install, collect scope (user/project/local) and hook mode (off/minimal/standard/strict) in Claude Code, use Codex's native plugin lifecycle, or install the project surface under ./.kimi-code, then preview, apply, and verify. Use when installing, updating, reconfiguring, or repairing an ECC installation, changing hook profiles, or moving ECC between install scopes."
+    "description": "Run the conversational AGYOS setup wizard inside the current harness: inventory the install, collect scope (user/project/local) and hook mode (off/minimal/standard/strict) in AGY CLI, use Codex's native plugin lifecycle, or install the project surface under ./.kimi-code, then preview, apply, and verify. Use when installing, updating, reconfiguring, or repairing an AGYOS installation, changing hook profiles, or moving AGYOS between install scopes."
   },
   {
     "id": "confluence-automation",
@@ -11082,57 +11014,6 @@
     "path": ".agents/skills/earllm-build",
     "risk": "safe",
     "description": "Build, maintain, and extend the EarLLM One Android project , a Kotlin/Compose app that connects Bluetooth earbuds to an LLM via voice pipeline."
-  },
-  {
-    "id": "ecc-guide",
-    "name": "Ecc Guide",
-    "module": "Domain & Research Extensions",
-    "category": "Specialized",
-    "tier": 2,
-    "runtime": [
-      "AGY CLI",
-      "Gemini",
-      "Claude Code",
-      "Codex"
-    ],
-    "command": "ecc-guide",
-    "path": ".agents/skills/ecc-guide",
-    "risk": "safe",
-    "description": "Answer questions about ECC by reading the live repo surface , agents, skills, commands, hooks, rules, install profiles, and docs , instead of memory. Use when the user asks what ECC includes, how to install or reset it, which skill or command fits a task, or how project onboarding works."
-  },
-  {
-    "id": "ecc-recipes",
-    "name": "Ecc Recipes",
-    "module": "Domain & Research Extensions",
-    "category": "Specialized",
-    "tier": 2,
-    "runtime": [
-      "AGY CLI",
-      "Gemini",
-      "Claude Code",
-      "Codex"
-    ],
-    "command": "ecc-recipes",
-    "path": ".agents/skills/ecc-recipes",
-    "risk": "safe",
-    "description": "Map a described workflow to the right ECC command group with run-order and stop condition, or browse all command-group recipe families read live from the commands directory. Advisory only , never executes. Use when asked which commands run a workflow, the command sequence for a task, or to list ECC pipelines; not for executing the task (route to the command itself), single-command docs (use ecc-guide), or prompt rewrites (use prompt-optimizer)."
-  },
-  {
-    "id": "ecc-tools-cost-audit",
-    "name": "Ecc Tools Cost Audit",
-    "module": "Domain & Research Extensions",
-    "category": "Specialized",
-    "tier": 2,
-    "runtime": [
-      "AGY CLI",
-      "Gemini",
-      "Claude Code",
-      "Codex"
-    ],
-    "command": "ecc-tools-cost-audit",
-    "path": ".agents/skills/ecc-tools-cost-audit",
-    "risk": "safe",
-    "description": "Evidence-first ECC Tools burn and billing audit workflow. Use when investigating runaway PR creation, quota bypass, premium-model leakage, duplicate jobs, or GitHub App cost spikes in the ECC Tools repo."
   },
   {
     "id": "ejentum-reasoning-harness",

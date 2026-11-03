@@ -1,8 +1,8 @@
 {
   "version": "3.1.0",
-  "total_skills": 1845,
-  "tier1_count": 400,
-  "tier2_count": 1445,
+  "total_skills": 1838,
+  "tier1_count": 399,
+  "tier2_count": 1439,
   "skills": [
     {
       "name": "00-andruia-consultant",
@@ -525,6 +525,36 @@
       "tier": 2,
       "description": "Audit local AI coding-agent sessions with agenttrace for cost, tool failures, latency, anomalies, health, diffs, and CI gates.",
       "path": ".agents/skills/agenttrace-session-audit"
+    },
+    {
+      "name": "agyos-devfleet",
+      "tier": 2,
+      "description": "Orchestrate multi-agent coding tasks via Claude DevFleet \u2014 plan projects, dispatch parallel agents in isolated worktrees, monitor progress, and read structured reports. Use when dispatching parallel coding agents across isolated worktrees and tracking their reports.",
+      "path": ".agents/skills/agyos-devfleet"
+    },
+    {
+      "name": "agyos-guide",
+      "tier": 2,
+      "description": "Answer questions about AGYOS by reading the live repo surface \u2014 agents, skills, commands, hooks, rules, install profiles, and docs \u2014 instead of memory. Use when the user asks what AGYOS includes, how to install or reset it, which skill or command fits a task, or how project onboarding works.",
+      "path": ".agents/skills/agyos-guide"
+    },
+    {
+      "name": "agyos-project-guidelines-example",
+      "tier": 2,
+      "description": "Project Guidelines Skill (Example)",
+      "path": ".agents/skills/agyos-project-guidelines-example"
+    },
+    {
+      "name": "agyos-recipes",
+      "tier": 2,
+      "description": "Map a described workflow to the right AGYOS command group with run-order and stop condition, or browse all command-group recipe families read live from the commands directory. Advisory only \u2014 never executes. Use when asked which commands run a workflow, the command sequence for a task, or to list AGYOS pipelines; not for executing the task (route to the command itself), single-command docs (use agyos-guide), or prompt rewrites (use prompt-optimizer).",
+      "path": ".agents/skills/agyos-recipes"
+    },
+    {
+      "name": "agyos-tools-cost-audit",
+      "tier": 2,
+      "description": "Evidence-first AGYOS Tools burn and billing audit workflow. Use when investigating runaway PR creation, quota bypass, premium-model leakage, duplicate jobs, or GitHub App cost spikes in the AGYOS Tools repo.",
+      "path": ".agents/skills/agyos-tools-cost-audit"
     },
     {
       "name": "ai-agent-development",
@@ -2429,54 +2459,6 @@
       "path": ".agents/skills/carrier-relationship-management"
     },
     {
-      "name": "cc-skill-backend-patterns",
-      "tier": 1,
-      "description": "Backend architecture patterns, API design, database optimization, and server-side best practices for Node.js, Express, and Next.js API routes.",
-      "path": ".agents/skills/cc-skill-backend-patterns"
-    },
-    {
-      "name": "cc-skill-clickhouse-io",
-      "tier": 2,
-      "description": "ClickHouse database patterns, query optimization, analytics, and data engineering best practices for high-performance analytical workloads.",
-      "path": ".agents/skills/cc-skill-clickhouse-io"
-    },
-    {
-      "name": "cc-skill-coding-standards",
-      "tier": 2,
-      "description": "Universal coding standards, best practices, and patterns for TypeScript, JavaScript, React, and Node.js development.",
-      "path": ".agents/skills/cc-skill-coding-standards"
-    },
-    {
-      "name": "cc-skill-continuous-learning",
-      "tier": 2,
-      "description": "Development skill from everything-claude-code",
-      "path": ".agents/skills/cc-skill-continuous-learning"
-    },
-    {
-      "name": "cc-skill-frontend-patterns",
-      "tier": 2,
-      "description": "Frontend development patterns for React, Next.js, state management, performance optimization, and UI best practices.",
-      "path": ".agents/skills/cc-skill-frontend-patterns"
-    },
-    {
-      "name": "cc-skill-project-guidelines-example",
-      "tier": 2,
-      "description": "Project Guidelines Skill (Example)",
-      "path": ".agents/skills/cc-skill-project-guidelines-example"
-    },
-    {
-      "name": "cc-skill-security-review",
-      "tier": 2,
-      "description": "This skill ensures all code follows security best practices and identifies potential vulnerabilities. Use when implementing authentication or authorization, handling user input or file uploads, or creating new API endpoints.",
-      "path": ".agents/skills/cc-skill-security-review"
-    },
-    {
-      "name": "cc-skill-strategic-compact",
-      "tier": 2,
-      "description": "Development skill from everything-claude-code",
-      "path": ".agents/skills/cc-skill-strategic-compact"
-    },
-    {
       "name": "cdk-patterns",
       "tier": 2,
       "description": "Common AWS CDK patterns and constructs for building cloud infrastructure with TypeScript, Python, or Java. Use when designing reusable CDK stacks and L3 constructs.",
@@ -2565,12 +2547,6 @@
       "tier": 2,
       "description": "Score any MCP server, API, or CLI for agent-readiness using Clarvia AEO (Agent Experience Optimization). Search 15,400+ indexed tools before adding them to your workflow.",
       "path": ".agents/skills/clarvia-aeo-check"
-    },
-    {
-      "name": "claude-devfleet",
-      "tier": 2,
-      "description": "Orchestrate multi-agent coding tasks via Claude DevFleet \u2014 plan projects, dispatch parallel agents in isolated worktrees, monitor progress, and read structured reports. Use when dispatching parallel coding agents across isolated worktrees and tracking their reports.",
-      "path": ".agents/skills/claude-devfleet"
     },
     {
       "name": "clean-code",
@@ -2909,10 +2885,10 @@
       "path": ".agents/skills/config-gc"
     },
     {
-      "name": "configure-ecc",
+      "name": "configure-agyos",
       "tier": 2,
-      "description": "Run the conversational ECC setup wizard inside the current harness: inventory the install, collect scope (user/project/local) and hook mode (off/minimal/standard/strict) in Claude Code, use Codex's native plugin lifecycle, or install the project surface under ./.kimi-code, then preview, apply, and verify. Use when installing, updating, reconfiguring, or repairing an ECC installation, changing hook profiles, or moving ECC between install scopes.",
-      "path": ".agents/skills/configure-ecc"
+      "description": "Run the conversational AGYOS setup wizard inside the current harness: inventory the install, collect scope (user/project/local) and hook mode (off/minimal/standard/strict) in AGY CLI, use Codex's native plugin lifecycle, or install the project surface under ./.kimi-code, then preview, apply, and verify. Use when installing, updating, reconfiguring, or repairing an AGYOS installation, changing hook profiles, or moving AGYOS between install scopes.",
+      "path": ".agents/skills/configure-agyos"
     },
     {
       "name": "confluence-automation",
@@ -3915,24 +3891,6 @@
       "tier": 2,
       "description": "Build, maintain, and extend the EarLLM One Android project \u2014 a Kotlin/Compose app that connects Bluetooth earbuds to an LLM via voice pipeline.",
       "path": ".agents/skills/earllm-build"
-    },
-    {
-      "name": "ecc-guide",
-      "tier": 2,
-      "description": "Answer questions about ECC by reading the live repo surface \u2014 agents, skills, commands, hooks, rules, install profiles, and docs \u2014 instead of memory. Use when the user asks what ECC includes, how to install or reset it, which skill or command fits a task, or how project onboarding works.",
-      "path": ".agents/skills/ecc-guide"
-    },
-    {
-      "name": "ecc-recipes",
-      "tier": 2,
-      "description": "Map a described workflow to the right ECC command group with run-order and stop condition, or browse all command-group recipe families read live from the commands directory. Advisory only \u2014 never executes. Use when asked which commands run a workflow, the command sequence for a task, or to list ECC pipelines; not for executing the task (route to the command itself), single-command docs (use ecc-guide), or prompt rewrites (use prompt-optimizer).",
-      "path": ".agents/skills/ecc-recipes"
-    },
-    {
-      "name": "ecc-tools-cost-audit",
-      "tier": 2,
-      "description": "Evidence-first ECC Tools burn and billing audit workflow. Use when investigating runaway PR creation, quota bypass, premium-model leakage, duplicate jobs, or GitHub App cost spikes in the ECC Tools repo.",
-      "path": ".agents/skills/ecc-tools-cost-audit"
     },
     {
       "name": "ejentum-reasoning-harness",

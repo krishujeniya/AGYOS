@@ -1,39 +1,39 @@
 ---
-name: configure-ecc
-description: "Run the conversational ECC setup wizard inside the current harness: inventory the install, collect scope (user/project/local) and hook mode (off/minimal/standard/strict) in Claude Code, use Codex's native plugin lifecycle, or install the project surface under ./.kimi-code, then preview, apply, and verify. Use when installing, updating, reconfiguring, or repairing an ECC installation, changing hook profiles, or moving ECC between install scopes."
+name: configure-agyos
+description: "Run the conversational AGYOS setup wizard inside the current harness: inventory the install, collect scope (user/project/local) and hook mode (off/minimal/standard/strict) in AGY CLI, use Codex's native plugin lifecycle, or install the project surface under ./.kimi-code, then preview, apply, and verify. Use when installing, updating, reconfiguring, or repairing an AGYOS installation, changing hook profiles, or moving AGYOS between install scopes."
 metadata:
-  origin: ECC
+  origin: AGYOS
 ---
 
-# Configure ECC
+# Configure AGYOS
 
 Run a conversational wizard inside the current harness. Inventory first, collect
 only supported choices, preview, confirm once, apply non-interactively, verify,
-and show the welcome only after success. Never clone ECC into a temporary
+and show the welcome only after success. Never clone AGYOS into a temporary
 directory or copy plugin components by hand.
 
-For a human-operated terminal, the canonical entry points are `ecc setup` and
-`npx ecc-universal setup`. Inside a harness, use the explicit non-interactive
+For a human-operated terminal, the canonical entry points are `agyos setup` and
+`npx agyos-universal setup`. Inside a harness, use the explicit non-interactive
 commands below instead.
 
 ## Route by the current harness
 
-- In Claude Code, use the full scope-and-hook wizard below.
+- In AGY CLI, use the full scope-and-hook wizard below.
 - In Codex, use Codex's native plugin lifecycle. Do not offer Claude scopes or
-  map ECC's four Claude hook profiles onto Codex.
+  map AGYOS's four Claude hook profiles onto Codex.
 - In Kimi, install the project surface under `./.kimi-code`. Kimi does not
-  provide ECC's Claude lifecycle-hook profiles.
+  provide AGYOS's Claude lifecycle-hook profiles.
 - If the harness is uncertain, state the detected evidence and ask which
   harness to configure before running a mutating command.
 
 This skill is a post-install reconfiguration path. It cannot intercept or
 replace a provider's built-in first-install UI.
 
-## Claude Code: run the full conversational wizard
+## AGY CLI: run the full conversational wizard
 
 ### 1. Inventory without changing anything
 
-Run both commands and summarize the installed ECC scope, enabled state, and
+Run both commands and summarize the installed AGYOS scope, enabled state, and
 marketplace source:
 
 ```bash
@@ -41,9 +41,9 @@ claude plugin list --json
 claude plugin marketplace list --json
 ```
 
-Treat a single existing `ecc@ecc` installation as a reconfiguration. Do not
+Treat a single existing `agyos@agyos` installation as a reconfiguration. Do not
 interpret Claude's provider-owned "Open home page" control as installation
-evidence. Stop and report the recovery returned by setup for multiple ECC
+evidence. Stop and report the recovery returned by setup for multiple AGYOS
 scopes, a legacy/manual install, malformed settings, or a marketplace collision;
 never guess which state to delete.
 
@@ -63,7 +63,7 @@ scope migration and include `--move-scope` in the commands below.
 Ask exactly one hook-mode question and require one value:
 
 - `off | minimal | standard | strict`
-- `off` keeps skills and commands but disables ECC hook automation.
+- `off` keeps skills and commands but disables AGYOS hook automation.
 - `minimal` enables the lightest lifecycle and safety automation.
 - `standard` balances quality and safety automation.
 - `strict` enables the strongest checks and reminders.
@@ -84,13 +84,13 @@ node "$CLAUDE_PLUGIN_ROOT/scripts/setup.js" --mode claude-plugin \
 If `$CLAUDE_PLUGIN_ROOT` is unavailable, use the published npm package:
 
 ```bash
-npx --yes --package ecc-universal ecc setup --mode claude-plugin \
+npx --yes --package agyos-universal agyos setup --mode claude-plugin \
   --scope <scope> --hooks <hooks> [--move-scope] --dry-run --json
 ```
 
 Show exactly one confirmation summary containing the planned action, one scope,
 one hook mode, marketplace action, and any source-to-destination migration.
-Ask one yes/no question. Do not run a bare interactive `ecc setup` through a
+Ask one yes/no question. Do not run a bare interactive `agyos setup` through a
 harness shell tool because that shell is commonly non-TTY.
 
 ### 4. Apply the explicit choices
@@ -106,7 +106,7 @@ node "$CLAUDE_PLUGIN_ROOT/scripts/setup.js" --mode claude-plugin \
 Fallback:
 
 ```bash
-npx --yes --package ecc-universal ecc setup --mode claude-plugin \
+npx --yes --package agyos-universal agyos setup --mode claude-plugin \
   --scope <scope> --hooks <hooks> [--move-scope] --yes --json
 ```
 
@@ -119,13 +119,13 @@ the selected values. Then independently run:
 claude plugin list --json
 ```
 
-Continue only when exactly one enabled `ecc@ecc` entry exists at the selected
+Continue only when exactly one enabled `agyos@agyos` entry exists at the selected
 scope. When `$CLAUDE_PLUGIN_ROOT` is available, pass the successful setup
 `action` (`installed`, `updated`, `migrated`, `resumed`, or
 `already-migrated`) to the bundled renderer:
 
 Before invoking it, require the provider-reported version to match
-`ECC_VERSION_PATTERN` from `scripts/lib/terminal-welcome.js`. Reject unexpected
+`AGYOS_VERSION_PATTERN` from `scripts/lib/terminal-welcome.js`. Reject unexpected
 version text instead of interpolating it into a shell command.
 
 ```bash
@@ -135,7 +135,7 @@ node -e 'const { renderTerminalWelcome } = require(process.env.CLAUDE_PLUGIN_ROO
 Render the welcome exactly once. On failure, dry-run, cancellation, a scope or
 hook mismatch, or unverifiable state, do not render it; report the error and
 recovery instead. After verified changes, tell the user to run
-`/reload-plugins` or restart Claude Code.
+`/reload-plugins` or restart AGY CLI.
 
 ## Codex: use the native plugin lifecycle
 
@@ -146,27 +146,27 @@ provider-specific hooks, but Codex requires explicit trust for them. Let Codex
 show that trust decision; do not ask the Claude four-profile hook question or
 claim those profiles map to Codex.
 
-If the ECC marketplace is missing, add it. Otherwise refresh its snapshot:
+If the AGYOS marketplace is missing, add it. Otherwise refresh its snapshot:
 
 ```bash
-codex plugin marketplace add affaan-m/ECC
-codex plugin marketplace upgrade ecc --json
+codex plugin marketplace add affaan-m/AGYOS
+codex plugin marketplace upgrade agyos --json
 ```
 
 Ask for one confirmation, then install or idempotently refresh the installed
 cache and verify it:
 
 ```bash
-codex plugin add ecc@ecc --json
+codex plugin add agyos@agyos --json
 codex plugin list --json
 ```
 
-Continue only when the JSON reports ECC installed and provides its
+Continue only when the JSON reports AGYOS installed and provides its
 `installedPath`. Then render the verified bundle's welcome:
 
 Use only the exact absolute `installedPath` returned by Codex JSON. Reject
 control characters and require the installed version to match
-`ECC_VERSION_PATTERN`. Invoke `node` directly with this argument array; this is
+`AGYOS_VERSION_PATTERN`. Invoke `node` directly with this argument array; this is
 a tool API invocation, not a shell command:
 
 ```text
@@ -182,25 +182,25 @@ applied to Codex.
 ## Kimi: install the project surface
 
 State the capability summary before confirmation: destination
-`./.kimi-code`; `hooks=unsupported` for ECC lifecycle hooks. Do not ask the
+`./.kimi-code`; `hooks=unsupported` for AGYOS lifecycle hooks. Do not ask the
 Claude scope or hook-mode questions. Preview first:
 
 ```bash
-npx --yes --package ecc-universal ecc install --profile core --target kimi --dry-run
+npx --yes --package agyos-universal agyos install --profile core --target kimi --dry-run
 ```
 
 Show one confirmation for that project destination, then apply the identical
 command without `--dry-run`. Verify with:
 
 ```bash
-npx --yes --package ecc-universal ecc doctor --target kimi
+npx --yes --package agyos-universal agyos doctor --target kimi
 ```
 
 Only after doctor succeeds and the installed instructions and skills remain
 inside `./.kimi-code`, render:
 
 ```bash
-npx --yes --package ecc-universal ecc welcome --action configured
+npx --yes --package agyos-universal agyos welcome --action configured
 ```
 
-Do not claim that Kimi installed or configured ECC lifecycle hooks.
+Do not claim that Kimi installed or configured AGYOS lifecycle hooks.

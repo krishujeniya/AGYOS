@@ -72,8 +72,8 @@ PLUGINS_SPEC = [
 - Enforce clean separation of concerns and layered architecture."""
     },
     {
-        "id": "agyos-ecc-polyglot",
-        "name": "ECC Polyglot Language & Framework Engineering",
+        "id": "agyos-polyglot",
+        "name": "AGYOS Polyglot Language & Framework Engineering",
         "description": "Enterprise coding capabilities for Rust, Go, Python, TypeScript, React, Vue, Django, and modern backend stacks.",
         "skills_src": [
             (".agents/skills/rust-patterns", "rust-patterns"),
@@ -179,7 +179,7 @@ def build_plugins():
             "version": "3.1.0",
             "author": "Krish Ujeniya",
             "logo": "assets/logo.svg",
-            "repository": "https://github.com/krishujeniya/SKILL"
+            "repository": "https://github.com/krishujeniya/AGYOS"
         }
         (p_dir / "plugin.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
         

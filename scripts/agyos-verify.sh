@@ -48,6 +48,8 @@ check "AGYOS Safety Hook allows benign commands" bash -c 'echo "{\"toolCall\":{\
 check "Anchor MCP server JSON-RPC initialize" bash -c 'echo "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\",\"params\":{}}" | node mcp/agyos-state-server.cjs | grep -q "\"serverInfo\""'
 check "Anchor MCP server tools/list" bash -c 'echo "{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"tools/list\",\"params\":{}}" | node mcp/agyos-state-server.cjs | grep -q "\"anchor_state\""'
 check "Anchor MCP server tools/call (anchor_state)" bash -c 'echo "{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"tools/call\",\"params\":{\"name\":\"anchor_state\",\"arguments\":{}}}" | node mcp/agyos-state-server.cjs | grep -q "current_gate"'
+check "Anchor MCP server tools/call (agyos_find_skill)" bash -c 'echo "{\"jsonrpc\":\"2.0\",\"id\":4,\"method\":\"tools/call\",\"params\":{\"name\":\"agyos_find_skill\",\"arguments\":{\"query\":\"react\"}}}" | node mcp/agyos-state-server.cjs | grep -q "Top Skill Matches"'
+check "bin/agyos find skill search CLI" bash -c 'bin/agyos find "postgres" | grep -q "Top Skill Matches"'
 
 # 7. Check Agent Council Bun Test Suite
 check "Agent Council Bun test suite (59 passing tests)" bash -c 'cd scripts/council && bun test'
@@ -60,7 +62,7 @@ done
 # 9. Check Anchor State Machine
 check "Anchor state validation script" bash bin/state-validate.sh
 
-# 10. Check Merged ECC Skills and Rules counts
+# 10. Check Merged AGYOS Skills and Rules counts
 check "Merged skills catalog (>400 skills in .agents/skills)" test "$(ls -1 .agents/skills | wc -l)" -gt 400
 check "Merged rules catalog (>120 rules in .agents/rules)" test "$(ls -1 .agents/rules | wc -l)" -gt 120
 

@@ -1,47 +1,52 @@
 # AI Handoff — AGYOS
 
 ## Task
-Reconcile and harden AGYOS v3.1 master capability tracker (`TRACKER.md`), re-architect documentation data compiler (`scripts/build_docs_data.py`) across all 1,845 physical skills with multiline frontmatter parsing, upgrade web documentation (`docs/index.html`, `docs/docs.css`) to Emil Kowalski UI/UX & motion standards, implement `bin/agyos skill` CLI inspection, and pass 25/25 adversarial verification checks with independent code review.
+Rebrand AGYOS to a unified single branding, eliminate legacy `cc-`, `claude-`, and `ecc-` prefixes and duplicate skills, rebrand `agyos-ecc-polyglot` plugin to `agyos-polyglot`, implement the FastMCP `agyos_find_skill` semantic skill finder and `bin/agyos find` CLI command, enforce Gravitas Invariant 7 (Search-First Autonomous Skill Discovery) in `AGENTS.md`, recompile manifests and documentation catalogs across all 1,838 physical skills, and pass 27/27 adversarial verification checks.
 
 ## Branch / Revision
 - Branch: `main`
-- Commit: `5f93d42` (ahead of `origin/main` by 1 commit)
 - Target Runtime: Antigravity CLI (`agy`) v1.4.12+
 - Operating System: Linux (Ubuntu)
 
 ## Changed Files & Directories
-- `TRACKER.md`: Master Engineering & Capability Tracker updated with exact verified inventory metrics (1,845 standalone skills, 162 modular rules, 74 specialized agents, 8 plugins, 100 workflows, 396 total scripts) and Hardening Ledger Item 6 (stale docs compiler resolved).
-- `scripts/build_docs_data.py`: Dynamically scans `.agents/skills`, parses multiline/folded YAML scalars, strips AI slop with unslop engine, generates full `docs/skills-data.json` (1.1MB, 1,845 skills), `docs/sitemap.xml`, `docs/robots.txt`, `docs/llms.txt`, and `docs/ai-catalog.json`.
-- `scripts/build_tiered_skills_manifest.py`: Fixed multiline YAML parser to accurately catalog all 1,845 skills (400 Tier 1 core software & UI/UX, 1,445 Tier 2 domain extensions).
-- `bin/agyos`: Added `skill <name>` subcommand for direct CLI skill inspection and updated usage to 25-point adversarial suite.
-- `docs/index.html`: Rebranded to AGYOS v3.1, embedded master vector logo, mapped 9 accurate module filters matching `skills-data.json`, and updated GitHub links to canonical repository.
-- `docs/docs.css`: Emil Kowalski UI/UX alignment (concentric border radii, compositor-only transitions, tactile micro-interactions `:active { transform: scale(0.98); }`, `@media (prefers-reduced-motion: reduce)`, `@media (hover: hover) and (pointer: fine)` guards, and 44px mobile touch targets).
-- `.agents/state/`: Gate lifecycle progressed through UNDERSTAND ➔ ANALYZE ➔ PLAN ➔ IMPLEMENT ➔ VERIFY.
+- `mcp/agyos-state-server.cjs`: Added `agyos_find_skill` (and `anchor_find_skill` alias) FastMCP tool for high-speed token/keyword scoring against `.agents/skills-manifest.json`.
+- `bin/agyos`: Added `find <query>` / `search <query>` subcommand for rapid terminal skill discovery.
+- `scripts/package_agyos_plugins.py`: Rebranded `agyos-ecc-polyglot` to `agyos-polyglot` with canonical AGYOS repository and author metadata.
+- `.agents/plugins/agyos-polyglot`: Packaged and installed to `~/.gemini/config/plugins/agyos-polyglot`.
+- `.agents/skills/`: Purged 7 legacy `cc-skill-*` duplicate folders, renamed and rebranded 6 skills (`agyos-project-guidelines-example`, `agyos-devfleet`, `configure-agyos`, `agyos-guide`, `agyos-recipes`, `agyos-tools-cost-audit`).
+- `.agents/rules/common-agents.md`: Updated agent orchestration rule from legacy ECC syntax to native `invoke_subagent`.
+- `AGENTS.md` & `GEMINI.md`: Upgraded to 7 Gravitas Invariants with Invariant 7 (Search-First Autonomous Discovery) and Section 7.0 autonomous skill ingestion instructions.
+- `TRACKER.md`: Hardening Ledger Item 7 recorded, updated scale inventory (1,838 skills, 27/27 tests).
+- `scripts/agyos-verify.sh`: Added checks for `agyos_find_skill` JSON-RPC tool and `bin/agyos find` CLI.
 
 ## Tests Actually Run & Results
-- `bin/agyos verify`: **25 PASSED, 0 FAILED**
-  - Constitution rule budget (<24,000 bytes): PASS
-  - Discovery symlinks: PASS
-  - AGY CLI responsiveness: PASS
-  - FastMCP registration in AGY: PASS
-  - Safety Hook block enforcement: PASS
-  - Safety Hook allow enforcement: PASS
-  - FastMCP JSON-RPC initialize, tools/list, tools/call: PASS
-  - Agent Council Bun test suite: PASS (59 tests green)
-  - 8 AGYOS plugins: PASS (`agy plugin validate` with 0 warnings)
-  - Anchor state machine validation: PASS
-  - Merged skills catalog (>400 skills in .agents/skills): PASS (1,845 skills)
+- `bin/agyos verify`: **27 PASSED, 0 FAILED**
+  - AGENTS.md size limit (<24,000 bytes): PASS
+  - GEMINI.md exists and matches AGENTS.md: PASS
+  - AGY CLI installed and responsive: PASS
+  - Anchor MCP server registered in AGY: PASS
+  - AGYOS Safety Hook blocks dangerous commands: PASS
+  - AGYOS Safety Hook allows benign commands: PASS
+  - Anchor MCP server JSON-RPC initialize: PASS
+  - Anchor MCP server tools/list: PASS
+  - Anchor MCP server tools/call (anchor_state): PASS
+  - Anchor MCP server tools/call (agyos_find_skill): PASS
+  - bin/agyos find skill search CLI: PASS
+  - Agent Council Bun test suite (59 passing tests): PASS
+  - 8 AGYOS Plugins validated (`agyos-aegis`, `agyos-anchor`, `agyos-business-creative`, `agyos-council`, `agyos-polyglot`, `agyos-security`, `agyos-seo`, `agyos-verification`): PASS
+  - Anchor state validation script: PASS
+  - Merged skills catalog (>400 skills in .agents/skills): PASS (1,838 skills)
   - Merged rules catalog (>120 rules in .agents/rules): PASS (162 rules)
-  - Master vector logo: PASS
-  - Unified CLI functional: PASS
+  - AGYOS master logo exists in assets/agyos-logo.svg: PASS
+  - bin/agyos executable exists and functional: PASS
   - Tiered skills manifest exists and valid: PASS
   - Fast-path state bypass functional: PASS
 - `bin/gate-check.sh`: PASS (monotonicity preserved)
-- `python3 scripts/build_docs_data.py`: PASS (1,845 skills compiled, 0 truncated descriptions)
-- Independent Code Review (`code-reviewer`): Completed and all findings resolved.
+- `python3 scripts/build_tiered_skills_manifest.py`: PASS (1,838 skills, 399 Tier 1, 1,439 Tier 2)
+- `python3 scripts/build_docs_data.py`: PASS (1,838 skills cataloged into docs data)
 
 ## Blockers
-None. System is 100% operational.
+None. 100% operational under single AGYOS branding.
 
 ## One Exact Next Command
 ```bash

@@ -607,12 +607,6 @@
       "path": ".agents/skills/c4-context"
     },
     {
-      "name": "cc-skill-backend-patterns",
-      "tier": 1,
-      "description": "Backend architecture patterns, API design, database optimization, and server-side best practices for Node.js, Express, and Next.js API routes.",
-      "path": ".agents/skills/cc-skill-backend-patterns"
-    },
-    {
       "name": "clean-code",
       "tier": 1,
       "description": "This skill embodies the principles of \\\"Clean Code\\\" by Robert C. Martin (Uncle Bob). Use it to transform \\\"code that works\\\" into \\\"code that is clean.\\",

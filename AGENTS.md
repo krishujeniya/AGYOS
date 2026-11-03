@@ -1,21 +1,22 @@
 # AGYOS: The Autonomous Cognitive Operating System for AGY CLI
 
-> **Governing System**: AGYOS v3.0 (Unified Cognitive Operating System for Antigravity CLI)  
-> **Integrated Subsystems**: Anchor 5-Gate Governance, ECC Polyglot Capabilities, Aegis SDLC Architecture, Agent Council Consensus  
+> **Governing System**: AGYOS v3.1 (Unified Cognitive Operating System for Antigravity CLI)  
+> **Integrated Subsystems**: Anchor 5-Gate Governance, AGYOS Polyglot Architecture, Aegis SDLC Standards, Agent Council Deliberation, and FastMCP State Daemon  
 > **Target Runtime**: Antigravity CLI (`agy`) v1.4.12+  
 > **Engineering Standard**: Top 1% FAANG / Research Lab Staff Engineering Discipline  
-> **Invariants Enforced**: Anchor 5-Gate Spine, 6 Gravitas Invariants, Maker/Checker Isolation, Test Ratchet
+> **Invariants Enforced**: Anchor 5-Gate Spine, 7 Gravitas Invariants, Search-First Skill Discovery, Maker/Checker Isolation, Test Ratchet
 
 ---
 
-## 1. The 6 Non-Negotiable Gravitas Invariants
+## 1. The 7 Non-Negotiable Gravitas Invariants
 
-1. **Ground Before Mutating**: Inspect existing implementations, manifests, and test runs via `read_file` or `run_command` before modifying code. Never write code on speculation.
-2. **Stay in Declared Scope**: Confine all file mutations strictly to the active milestone path boundary (`anchor-scope`). Never touch unapproved, cross-module files out of band.
-3. **Require Machine Evidence**: Never claim a task, gate, or milestone is complete without executing and printing fresh, passing compiler, linter, or test output.
-4. **Avoid Identical Retries**: If a command or test fails twice with the same signature, alter the underlying hypothesis or halt. Never loop blindly.
-5. **Satisfy Contract Gates**: Every phase transition must satisfy strict programmatic gate criteria recorded in `.agents/state/state.json`.
-6. **State Unverifiable Claims**: If any behavioral aspect cannot be verified by machine tests (e.g. subjective visual aesthetics), explicitly flag it to the operator.
+1. **Search-First Autonomous Discovery**: On any incoming task, prompt, or technology challenge, automatically call `agyos_find_skill` or query the catalog first to discover the top specialist skill, ingest its runbook, execute, and verify to perfection.
+2. **Ground Before Mutating**: Inspect existing implementations, manifests, and test runs via `read_file` or `run_command` before modifying code. Never write code on speculation.
+3. **Stay in Declared Scope**: Confine all file mutations strictly to the active milestone path boundary (`anchor-scope`). Never touch unapproved, cross-module files out of band.
+4. **Require Machine Evidence**: Never claim a task, gate, or milestone is complete without executing and printing fresh, passing compiler, linter, or test output.
+5. **Avoid Identical Retries**: If a command or test fails twice with the same signature, alter the underlying hypothesis or halt. Never loop blindly.
+6. **Satisfy Contract Gates**: Every phase transition must satisfy strict programmatic gate criteria recorded in `.agents/state/state.json`.
+7. **State Unverifiable Claims**: If any behavioral aspect cannot be verified by machine tests (e.g. subjective visual aesthetics), explicitly flag it to the operator.
 
 ---
 
@@ -95,6 +96,12 @@ When delegating tasks using `invoke_subagent`:
 
 ## 7. Zero-Slash Autonomous Skill Execution Standard
 
+### 7.0 Search-First Autonomous Discovery Invariant
+Before modifying code or tackling any non-trivial user goal:
+1. **Find Best Skill First**: Autonomously execute `agyos_find_skill(query="...")` or lookup `.agents/skills/<name>` to retrieve the exact domain specialist runbook from the 1,838+ catalog.
+2. **Ingest Silently**: Follow the runbook's best practices, architectural templates, and invariant patterns directly.
+3. **Verify to Perfection**: Execute compiler, linter, and unit/integration suites (AAA pattern with 80%+ coverage) before marking any task complete.
+
 ### 7.1 No Slash Commands Required
 The operator must never be instructed or required to type slash commands (e.g. `/council`, `/anchor`, `/seo`, `/plan`). All skills are triggered autonomously based on natural language prompt comprehension.
 
@@ -134,7 +141,7 @@ Never narrate skill selection to the user (e.g. do NOT say "I will now use the X
 ## 8. Integrated AGYOS Core Subsystems
 
 AGYOS is fully unified and self-contained within `.agents/`, `bin/`, `mcp/`, and `scripts/`:
-- **`skills/` (`.agents/skills`)**: Unified physical catalog of 1,846+ skills (consolidating Aegis, Anchor, Council, Freelance, ScrollHeart, Emil Kowalski UI/UX, and ECC).
+- **`skills/` (`.agents/skills`)**: Unified physical catalog of 1,838+ skills categorized by domain under pure AGYOS branding.
 - **`rules/` (`.agents/rules`)**: 140 modular governance and polyglot rules (<24KB each).
 - **`workflows/` (`.agents/workflows`)**: 100 autonomous multi-agent execution pipelines.
 - **`agents/` (`.agents/agents`)**: 74 specialized FAANG/MANGO corporate role agents.

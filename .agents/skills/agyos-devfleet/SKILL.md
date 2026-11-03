@@ -1,5 +1,5 @@
 ---
-name: claude-devfleet
+name: agyos-devfleet
 description: Orchestrate multi-agent coding tasks via Claude DevFleet — plan projects, dispatch parallel agents in isolated worktrees, monitor progress, and read structured reports. Use when dispatching parallel coding agents across isolated worktrees and tracking their reports.
 metadata:
   origin: community
@@ -9,11 +9,11 @@ metadata:
 
 ## When to Use
 
-Use this skill when you need to dispatch multiple Claude Code agents to work on coding tasks in parallel. Each agent runs in an isolated git worktree with full tooling.
+Use this skill when you need to dispatch multiple AGY CLI agents to work on coding tasks in parallel. Each agent runs in an isolated git worktree with full tooling.
 
 ## Setup
 
-The DevFleet server is a separate project, not bundled with ECC. Install and
+The DevFleet server is a separate project, not bundled with AGYOS. Install and
 run it from its repository first: <https://github.com/LEC-AI/claude-devfleet>
 
 Then connect the running instance via MCP:
