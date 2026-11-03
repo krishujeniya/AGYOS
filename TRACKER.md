@@ -2,7 +2,7 @@
 
 > **System**: AGYOS v3.1 — Unified Cognitive Operating System for Antigravity CLI (`agy`)  
 > **Repository Root**: `/home/ai/Documents/projects/Freelance/AGYOS`  
-> **Status**: 100% Operational • 27/27 Adversarial Verification Checks Passing  
+> **Status**: 100% Operational • 33/33 Adversarial Verification Checks Passing  
 > **Target Runtime**: Google Antigravity CLI (`agy`) v1.4.12+  
 > **Consolidated Ecosystems**: Aegis (SDLC), Anchor (Governance), Agent Council (Consensus), Freelance Suite, ScrollHeart (Motion), Emil Kowalski (UI/UX), AGYOS Polyglot Architecture
 
@@ -18,7 +18,7 @@
 |  1,838 Standalone   |  162 Rules (<24K) |  74 Specialized  |  8 Validated (`agy`)|
 +---------------------+-------------------+------------------+--------------------+
 |  WORKFLOW PIPELINES |  MCP SERVERS      |  TOTAL SCRIPTS    |  TEST VERIFICATION |
-|  100 Autonomous     |  1 FastMCP Daemon |  396 Scripts     |  27 / 27 Passed    |
+|  100 Autonomous     |  1 FastMCP Daemon |  396 Scripts     |  33 / 33 Passed    |
 +---------------------+-------------------+------------------+--------------------+
 ```
 
@@ -35,6 +35,7 @@
 | **5. Multi-Runtime Brittleness** | Council required Bun in arbitrary paths. | **Dedicated Council Subsystem**: Streamlined TypeScript engine housed in `scripts/council/` (59 Bun tests green, 0ms latency). | **RESOLVED** |
 | **6. Stale Docs Compiler & Web Explorer** | Legacy compiler searched deleted submodules, indexing only 73 skills. | **Unified Dynamic Ingestion Engine**: `scripts/build_docs_data.py` indexes all 1,838 skills directly from `.agents/skills/`, compiles full JSON data & sitemaps, and applies Emil Kowalski UI/UX standards. | **RESOLVED** |
 | **7. Brand Fragmentation & Passive Blindness** | Mixed legacy prefixes (`cc-`, `ecc-`, `claude-`) and no automated skill discovery mechanism. | **100% Single Brand + Autonomous Search-First**: Standardized all skills/plugins under pure AGYOS (`agyos-polyglot`), built FastMCP `agyos_find_skill` tool, `bin/agyos find` CLI, and Invariant 7. | **RESOLVED** |
+| **8. Flat vs Hierarchical AI OS Architecture** | Lack of explicit hierarchical subsystem mapping and persistent tiered memory model compared to AIOS and MemGPT. | **6-Layer Hierarchical Architecture & 3-Tier Virtual Memory**: Synthesized AIOS, MemGPT, and MetaGPT into Layer 0-5 stack, 3-tier memory paging (`.agents/state/memory.json`), `agyos_sys_info`, `agyos_memory`, and 10 Core Operating Principles (`docs/ARCHITECTURE.md`). | **RESOLVED** |
 
 ---
 
@@ -154,7 +155,18 @@ Enforced across all frontend, website, and SaaS generation workflows:
 
 ---
 
-## 7. Adversarial Verification Suite: 27 / 27 Passing
+## 7. Hierarchical AI OS Architecture & Virtual Memory Model
+
+AGYOS synthesizes the structural patterns of modern AI OS research:
+- **AIOS (`agiresearch/AIOS`)**: Kernel abstraction, unified syscall bus via FastMCP stdio daemon, tool/scheduler isolation.
+- **MemGPT / Letta (`letta-ai/letta`)**: 3-Tier Virtual Memory Paging (`tier0_core_memory`, `tier1_recall_memory`, `tier2_archival_index`) in `.agents/state/memory.json`.
+- **MetaGPT (`geekan/MetaGPT`)**: Multi-agent Standard Operating Procedures (`Code = SOP(Team)`), deterministic artifact handoffs, 5-gate lifecycle.
+
+Full architecture documentation and the 10 Core Operating Principles are codified in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+
+---
+
+## 8. Adversarial Verification Suite: 33 / 33 Passing
 
 ```text
 ============================================================
@@ -170,7 +182,11 @@ AGYOS Adversarial Verification Suite
 • Checking Anchor MCP server tools/list... PASS
 • Checking Anchor MCP server tools/call (anchor_state)... PASS
 • Checking Anchor MCP server tools/call (agyos_find_skill)... PASS
+• Checking Anchor MCP server tools/call (agyos_sys_info)... PASS
+• Checking Anchor MCP server tools/call (agyos_memory)... PASS
 • Checking bin/agyos find skill search CLI... PASS
+• Checking bin/agyos sysinfo CLI command... PASS
+• Checking bin/agyos mem virtual memory CLI... PASS
 • Checking Agent Council Bun test suite (59 passing tests)... PASS
 • Checking Plugin validation for agyos-aegis... PASS
 • Checking Plugin validation for agyos-anchor... PASS
@@ -187,18 +203,29 @@ AGYOS Adversarial Verification Suite
 • Checking bin/agyos executable exists and functional... PASS
 • Checking Tiered skills manifest exists and valid... PASS
 • Checking Fast-path state bypass functional... PASS
+• Checking Hierarchical architecture specification exists... PASS
+• Checking Virtual memory state storage exists and valid... PASS
 ============================================================
-Verification Summary: 27 PASSED, 0 FAILED
+Verification Summary: 33 PASSED, 0 FAILED
 ============================================================
 ```
 
 ---
 
-## 8. CLI Quick Reference
+## 9. CLI Quick Reference
 
 ```bash
-# Verify system integrity across all 27 proof gates
+# Verify system integrity across all 33 proof gates
 bin/agyos verify
+
+# Query kernel diagnostics, loaded skills, gate, and memory tiers
+bin/agyos sysinfo
+
+# Read or write 3-tier virtual memory paging (tier0, tier1, tier2)
+bin/agyos mem tier0
+bin/agyos mem tier1
+bin/agyos mem tier2
+bin/agyos mem write <tier> <key> <value>
 
 # Search 1,838+ skills in AGYOS catalog for the best matching specialist
 bin/agyos find <query>

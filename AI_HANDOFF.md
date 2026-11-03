@@ -1,11 +1,12 @@
 # AI Handoff — AGYOS
 
 ## Task
-Incorporate 3 top-priority core operating invariants into global configuration (`~/.gemini/config/AGENTS.md`), project constitution (`AGENTS.md` and `GEMINI.md`), and engineering rules (`common-coding-style.md`, `common-development-workflow.md`):
-1. **Skill-First Autonomous Routing**: Automatically find and apply best skills first via FastMCP `agyos_find_skill` or `.agents/skills`.
-2. **Mandatory Deep Research**: Always research files, manifests, and dependencies using research skills before proposing or modifying code.
-3. **Pure Human Language & Zero AI Slop**: Strictly enforce natural human prose, ban 21+ AI buzzwords, eliminate robotic/templated conversational filler, ban decorative emoji spam, and reject unnecessary/speculative components.
-Verified all 27 checks pass in `scripts/agyos-verify.sh`.
+Synthesize top-tier AI OS architectures (AIOS, MemGPT/Letta, MetaGPT) into AGYOS:
+1. **Hierarchical 6-Layer Architecture**: Layer 0 Kernel/Safety, Layer 1 Virtual Memory, Layer 2 FastMCP Syscall Bus, Layer 3 5-Gate SOP Engine, Layer 4 Corporate Role Hierarchy, Layer 5 Extensibility Catalog (`docs/ARCHITECTURE.md`).
+2. **3-Tier Virtual Memory Paging**: Core working persona (Tier 0), Session state & checkpoints (Tier 1), and Archival skills index (Tier 2) in `.agents/state/memory.json`.
+3. **FastMCP Syscall Daemon Extensions**: Added `agyos_sys_info` and `agyos_memory` tools with single-line JSON-RPC handling.
+4. **CLI Integration**: Added `bin/agyos sysinfo` and `bin/agyos mem` subcommands.
+5. **Adversarial Verification**: Expanded machine verification suite to 33 checks with 100% passing results.
 
 ## Branch / Revision
 - Branch: `main`
@@ -13,20 +14,22 @@ Verified all 27 checks pass in `scripts/agyos-verify.sh`.
 - Operating System: Linux (Ubuntu)
 
 ## Changed Files & Directories
-- `~/.gemini/config/AGENTS.md`: Global operating policy updated with the 3 Core Operating Invariants as highest priority across all workspaces.
-- `AGENTS.md` & `GEMINI.md`: Upgraded Section 1 Gravitas Invariants and Section 7.0 Autonomous Discovery to prioritize skill-first routing, mandatory research, and zero AI slop.
-- `.agents/rules/common-coding-style.md`: Added "Pure Human Engineering & Zero AI Slop (CRITICAL)" section.
-- `.agents/rules/common-development-workflow.md`: Re-anchored Step 0 to "Skill Discovery & Research First".
-- `TRACKER.md`: Updated Section 3 Gravitas Invariants to align with the 3 top priorities.
+- `docs/ARCHITECTURE.md`: Authored full 6-layer hierarchical architecture and 10 Core Operating Principles.
+- `.agents/state/memory.json`: Created 3-tier virtual memory state store.
+- `mcp/agyos-state-server.cjs`: Implemented `agyos_sys_info` and `agyos_memory` tools with sub-50-line helpers.
+- `bin/agyos`: Added `sysinfo` and `mem` subcommands wired to the FastMCP daemon.
+- `scripts/agyos-verify.sh`: Added checks for sysinfo, memory, CLI commands, and architecture specification (33 total checks).
+- `TRACKER.md`: Updated capability matrix, hardening ledger, and verification log to 33 passing checks.
 
 ## Tests Actually Run & Results
-- `bin/agyos verify`: **27 PASSED, 0 FAILED**
-- `bin/gate-check.sh`: **PASS** (monotonic assertions ratchet preserved)
-- `python3 scripts/build_tiered_skills_manifest.py`: **PASS** (1,838 skills cataloged)
-- `python3 scripts/build_docs_data.py`: **PASS** (all docs datasets compiled)
+- `scripts/agyos-verify.sh` / `bin/agyos verify`: **33 PASSED, 0 FAILED**
+- `bin/gate-check.sh`: **PASS** (pre-commit gate ratchet satisfied)
+- `node mcp/agyos-state-server.cjs`: **PASS** (JSON-RPC tools initialize, list, state, find, sys_info, memory)
+- `bin/agyos sysinfo`: **PASS** (returns system diagnostics JSON)
+- `bin/agyos mem tier0`: **PASS** (returns core memory partition JSON)
 
 ## Blockers
-None. System is 100% operational with top-priority global human-engineering and skill-first invariants.
+None. System is 100% operational, fully synchronized, hierarchically connected, and passing all 33 adversarial checks.
 
 ## One Exact Next Command
 ```bash

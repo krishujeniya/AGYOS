@@ -1,0 +1,34 @@
+{
+  "version": "1.0.0",
+  "system_identity": "AGYOS v3.1",
+  "tier0_core_memory": {
+    "system_role": "Unified Autonomous Cognitive Operating System for AGY CLI",
+    "user_preferences": {
+      "language": "human_direct",
+      "no_ai_slop": true,
+      "research_first": true,
+      "skill_routing": "autonomous"
+    },
+    "runtime_environment": {
+      "cli": "Google Antigravity CLI (agy)",
+      "version": "1.4.12",
+      "os": "Linux Ubuntu"
+    }
+  },
+  "tier1_recall_memory": {
+    "active_context": "Hierarchical AI OS Architecture & Synchronization",
+    "recent_milestones": [
+      "M1: Single AGYOS branding standardization",
+      "M2: FastMCP agyos_find_skill integration",
+      "M3: 3 Top-Priority Core Operating Invariants codified"
+    ],
+    "working_notes": {}
+  },
+  "tier2_archival_index": {
+    "skills_catalog": ".agents/skills-manifest.json",
+    "total_skills": 1838,
+    "plugins_count": 8,
+    "rules_count": 162,
+    "workflows_count": 100
+  }
+}

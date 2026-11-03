@@ -49,7 +49,11 @@ check "Anchor MCP server JSON-RPC initialize" bash -c 'echo "{\"jsonrpc\":\"2.0\
 check "Anchor MCP server tools/list" bash -c 'echo "{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"tools/list\",\"params\":{}}" | node mcp/agyos-state-server.cjs | grep -q "\"anchor_state\""'
 check "Anchor MCP server tools/call (anchor_state)" bash -c 'echo "{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"tools/call\",\"params\":{\"name\":\"anchor_state\",\"arguments\":{}}}" | node mcp/agyos-state-server.cjs | grep -q "current_gate"'
 check "Anchor MCP server tools/call (agyos_find_skill)" bash -c 'echo "{\"jsonrpc\":\"2.0\",\"id\":4,\"method\":\"tools/call\",\"params\":{\"name\":\"agyos_find_skill\",\"arguments\":{\"query\":\"react\"}}}" | node mcp/agyos-state-server.cjs | grep -q "Top Skill Matches"'
+check "Anchor MCP server tools/call (agyos_sys_info)" bash -c 'echo "{\"jsonrpc\":\"2.0\",\"id\":5,\"method\":\"tools/call\",\"params\":{\"name\":\"agyos_sys_info\",\"arguments\":{}}}" | node mcp/agyos-state-server.cjs | grep -q "Hierarchical Cognitive OS"'
+check "Anchor MCP server tools/call (agyos_memory)" bash -c 'echo "{\"jsonrpc\":\"2.0\",\"id\":6,\"method\":\"tools/call\",\"params\":{\"name\":\"agyos_memory\",\"arguments\":{\"action\":\"read\",\"tier\":\"tier0\"}}}" | node mcp/agyos-state-server.cjs | grep -q "user_preferences"'
 check "bin/agyos find skill search CLI" bash -c 'bin/agyos find "postgres" | grep -q "Top Skill Matches"'
+check "bin/agyos sysinfo CLI command" bash -c 'bin/agyos sysinfo | grep -q "Hierarchical Cognitive OS"'
+check "bin/agyos mem virtual memory CLI" bash -c 'bin/agyos mem tier0 | grep -q "user_preferences"'
 
 # 7. Check Agent Council Bun Test Suite
 check "Agent Council Bun test suite (59 passing tests)" bash -c 'cd scripts/council && bun test'
@@ -73,6 +77,10 @@ check "bin/agyos executable exists and functional" bin/agyos help
 # 12. Check Tiered Skills Manifest & Fast-Path Routing
 check "Tiered skills manifest exists and valid" test -s .agents/skills-manifest.json
 check "Fast-path state bypass functional" bash -c 'bin/agyos fast >/dev/null && test "$(jq -r .current_gate .agents/state/state.json)" = "IMPLEMENT" && bin/agyos gate IDLE >/dev/null'
+
+# 13. Hierarchical Architecture & Virtual Memory Storage
+check "Hierarchical architecture specification exists" test -s docs/ARCHITECTURE.md
+check "Virtual memory state storage exists and valid" bash -c 'test -s .agents/state/memory.json && jq -e .tier0_core_memory .agents/state/memory.json >/dev/null'
 
 echo "============================================================"
 echo "Verification Summary: $PASS_COUNT PASSED, $FAIL_COUNT FAILED"

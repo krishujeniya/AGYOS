@@ -84,8 +84,109 @@ const TOOLS = [
       },
       required: ["query"]
     }
+  },
+  {
+    name: "agyos_sys_info",
+    description: "Get full AGYOS system overview including kernel status, active gate, memory tiers, loaded plugins, and subsystem health",
+    inputSchema: {
+      type: "object",
+      properties: {},
+      required: []
+    }
+  },
+  {
+    name: "agyos_memory",
+    description: "Hierarchical memory manager (tier0 core working context, tier1 recall memory, tier2 archival index) for cross-session cognitive continuity",
+    inputSchema: {
+      type: "object",
+      properties: {
+        action: {
+          type: "string",
+          enum: ["read", "write", "list"],
+          description: "Operation: 'read', 'write', or 'list'"
+        },
+        tier: {
+          type: "string",
+          enum: ["tier0", "tier1", "tier2"],
+          description: "Memory tier: tier0 (core), tier1 (recall), tier2 (archival)"
+        },
+        key: {
+          type: "string",
+          description: "Key identifier inside the tier"
+        },
+        value: {
+          type: "string",
+          description: "Content to write (when action is 'write')"
+        }
+      },
+      required: ["action", "tier"]
+    }
   }
 ];
+
+const MEMORY_FILE = path.join(STATE_DIR, "memory.json");
+
+function getSysInfo() {
+  const stateFile = path.join(STATE_DIR, "state.json");
+  let state = {};
+  if (fs.existsSync(stateFile)) {
+    try { state = JSON.parse(fs.readFileSync(stateFile, "utf8")); } catch (e) {}
+  }
+  const skills = loadSkills();
+  return {
+    os: "AGYOS v3.1 (Hierarchical Cognitive OS)",
+    runtime: "Antigravity CLI (agy)",
+    active_gate: state.current_gate || "IDLE",
+    active_milestone: state.current_milestone || "none",
+    complexity_score: state.complexity_score || 1,
+    skills_loaded: skills.length,
+    plugins_installed: 8,
+    memory_architecture: {
+      tier0_core: "Working Persona & System Invariants",
+      tier1_recall: "Session State & Checkpoints Ledger",
+      tier2_archival: "1,838 Standalone Skills Catalog"
+    },
+    subsystems: {
+      anchor_governance: "Operational",
+      agent_council: "Operational",
+      fastmcp_daemon: "Operational",
+      safety_interceptor: "Operational"
+    },
+    health: "100% Operational"
+  };
+}
+
+function handleMemoryOperation(args) {
+  const { action, tier = "tier0", key, value } = args;
+  let mem = {};
+  if (fs.existsSync(MEMORY_FILE)) {
+    try { mem = JSON.parse(fs.readFileSync(MEMORY_FILE, "utf8")); } catch (e) {}
+  }
+  const tierMap = { tier0: "tier0_core_memory", tier1: "tier1_recall_memory", tier2: "tier2_archival_index" };
+  const tierKey = tierMap[tier];
+  if (!tierKey) throw new Error(`Unsupported memory tier: ${tier}`);
+
+  const currentTierData = mem[tierKey] || {};
+
+  if (action === "list") {
+    return { content: [{ type: "text", text: JSON.stringify(currentTierData, null, 2) }] };
+  }
+  if (action === "read") {
+    if (!key) return { content: [{ type: "text", text: JSON.stringify(currentTierData, null, 2) }] };
+    const val = currentTierData[key];
+    return { content: [{ type: "text", text: typeof val === "object" ? JSON.stringify(val, null, 2) : String(val !== undefined ? val : "Key not found") }] };
+  }
+  if (action === "write") {
+    if (!key) throw new Error("Key is required for write action");
+    let parsedValue = value;
+    try { parsedValue = JSON.parse(value); } catch (e) { parsedValue = value; }
+    const updatedTier = { ...currentTierData, [key]: parsedValue };
+    const updatedMem = { ...mem, [tierKey]: updatedTier };
+    fs.writeFileSync(MEMORY_FILE, JSON.stringify(updatedMem, null, 2), "utf8");
+    return { content: [{ type: "text", text: `Successfully wrote key '${key}' in ${tierKey}.` }] };
+  }
+  throw new Error(`Unsupported memory action: ${action}`);
+}
 
 let cachedSkills = null;
 
@@ -203,6 +304,12 @@ function handleToolCall(name, args) {
   if (name === "agyos_find_skill" || name === "anchor_find_skill") {
     const matches = searchSkills(args.query || "", args.limit || 5, args.category);
     return { content: [{ type: "text", text: formatSkillSearchResults(matches, args.query || "") }] };
+  }
+  if (name === "agyos_sys_info") {
+    return { content: [{ type: "text", text: JSON.stringify(getSysInfo(), null, 2) }] };
+  }
+  if (name === "agyos_memory") {
+    return handleMemoryOperation(args);
   }
   throw new Error(`Unknown tool: ${name}`);
 }

@@ -11,13 +11,15 @@ Usage: agyos <command> [arguments]
 
 Commands:
   init        Initialize or self-repair AGYOS in this workspace
-  verify      Execute the 27-point adversarial verification suite
+  verify      Execute the 33-point adversarial verification suite
   state       Display current milestone, active gate, and iteration
   gate <name> Transition active gate (UNDERSTAND|ANALYZE|PLAN|IMPLEMENT|VERIFY)
   compact     Execute context window compaction and reset CURRENT.md
   fast        Fast-path bypass for trivial edits (complexity <= 2 straight to IMPLEMENT)
   find <query> Search 1,838+ skills in AGYOS catalog for best match
   skill <name> Display instructions and documentation for a skill
+  sysinfo     Display system architecture, memory tiers, and health
+  mem <tier>  Read hierarchical memory (tier0: core, tier1: recall, tier2: archival)
   rollback    Safely abort and revert the active milestone
   council     Run multi-model deliberation via Agent Council
   help        Show this help message
@@ -84,6 +86,18 @@ case "$cmd" in
       echo "❌ Skill not found: $target_skill" >&2
       exit 1
     fi
+    ;;
+  sysinfo)
+    json_req='{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"agyos_sys_info","arguments":{}}}'
+    echo "$json_req" | node mcp/agyos-state-server.cjs | jq -r '.result.content[0].text // .result.error // "No response"'
+    ;;
+  mem|memory)
+    tier="${1:-tier0}"
+    key="${2:-}"
+    action="list"
+    if [ -n "$key" ]; then action="read"; fi
+    json_req=$(jq -c -n --arg a "$action" --arg t "$tier" --arg k "$key" '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"agyos_memory","arguments":{"action":$a,"tier":$t,"key":$k}}}')
+    echo "$json_req" | node mcp/agyos-state-server.cjs | jq -r '.result.content[0].text // .result.error // "No response"'
     ;;
   rollback)
     bash bin/rollback.sh "$@"
