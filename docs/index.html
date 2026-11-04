@@ -142,9 +142,31 @@
 
       <!-- Section: Installation -->
       <section id="installation">
-        <h2>Quickstart &amp; CLI Commands</h2>
+        <h2>Quickstart &amp; One-Prompt Setup</h2>
         <p>
-          Use the unified <code>bin/agyos</code> binary to control governance gates, verify operational integrity, or run multi-model consensus:
+          Paste this single prompt directly into your AI coding agent (Google Antigravity <code>agy</code>, Claude Code, Cursor, Codex) to clone, configure, and verify AGYOS in one pass:
+        </p>
+
+        <div class="code-header">
+          <span>One-Prompt Autonomous Agent Setup</span>
+          <button class="copy-btn" data-copy="Set up and initialize the AGYOS autonomous cognitive operating system in this workspace:&#10;1. If not already in the repository, clone https://github.com/krishujeniya/AGYOS.git and navigate into AGYOS:&#10;   git clone https://github.com/krishujeniya/AGYOS.git &amp;&amp; cd AGYOS&#10;2. Ensure executable permissions on all core binaries and scripts:&#10;   chmod +x bin/agyos scripts/agyos-init.sh scripts/agyos-verify.sh mcp/state-server.cjs scripts/hooks/*.py&#10;3. Run the zero-configuration bootstrapper to initialize state, validate plugins, register the FastMCP state daemon, and compile indices:&#10;   bash scripts/agyos-init.sh&#10;4. Execute the verification suite and unit tests to ensure all 51 automated checks pass:&#10;   bash scripts/agyos-verify.sh&#10;   python3 -m unittest discover -s scripts/tests -v&#10;5. Confirm the intent compiler and 5-pod router are operational:&#10;   bin/agyos intent &quot;audit system security and summarize findings&quot;&#10;Confirm when all 51 checks pass and the workspace is fully initialized.">Copy Agent Prompt</button>
+        </div>
+        <pre><code>Set up and initialize the AGYOS autonomous cognitive operating system in this workspace:
+1. If not already in the repository, clone https://github.com/krishujeniya/AGYOS.git and navigate into AGYOS:
+   git clone https://github.com/krishujeniya/AGYOS.git &amp;&amp; cd AGYOS
+2. Ensure executable permissions on all core binaries and scripts:
+   chmod +x bin/agyos scripts/agyos-init.sh scripts/agyos-verify.sh mcp/state-server.cjs scripts/hooks/*.py
+3. Run the zero-configuration bootstrapper to initialize state, validate plugins, register the FastMCP state daemon, and compile indices:
+   bash scripts/agyos-init.sh
+4. Execute the verification suite and unit tests to ensure all 51 automated checks pass:
+   bash scripts/agyos-verify.sh
+   python3 -m unittest discover -s scripts/tests -v
+5. Confirm the intent compiler and 5-pod router are operational:
+   bin/agyos intent "audit system security and summarize findings"
+Confirm when all 51 checks pass and the workspace is fully initialized.</code></pre>
+
+        <p>
+          Or run the unified <code>bin/agyos</code> binary manually to control governance gates, verify operational integrity, or run multi-model consensus:
         </p>
 
         <div class="code-header">

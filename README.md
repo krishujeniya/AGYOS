@@ -229,7 +229,32 @@ AGYOS provides 81 specialized agents configured under `.agents/agents/` that can
 
 ## Quickstart & CLI Usage
 
-### 1. Initialize and Validate Environment
+### 1. One-Prompt Agent Setup (For AI Coding Agents)
+
+Paste this single prompt directly into your AI coding assistant (Google Antigravity `agy`, Claude Code, Cursor, Codex) to clone, configure, and verify AGYOS in one autonomous pass:
+
+```text
+Set up and initialize the AGYOS autonomous cognitive operating system in this workspace:
+1. If not already in the repository, clone https://github.com/krishujeniya/AGYOS.git and navigate into AGYOS:
+   git clone https://github.com/krishujeniya/AGYOS.git && cd AGYOS
+2. Ensure executable permissions on all core binaries and scripts:
+   chmod +x bin/agyos scripts/agyos-init.sh scripts/agyos-verify.sh mcp/state-server.cjs scripts/hooks/*.py
+3. Run the zero-configuration bootstrapper to initialize state, validate plugins, register the FastMCP state daemon, and compile indices:
+   bash scripts/agyos-init.sh
+4. Execute the verification suite and unit tests to ensure all 51 automated checks pass:
+   bash scripts/agyos-verify.sh
+   python3 -m unittest discover -s scripts/tests -v
+5. Confirm the intent compiler and 5-pod router are operational:
+   bin/agyos intent "audit system security and summarize findings"
+Confirm when all 51 checks pass and the workspace is fully initialized.
+```
+
+Or for human terminal users (1-line execution):
+```bash
+git clone https://github.com/krishujeniya/AGYOS.git && cd AGYOS && bash scripts/agyos-init.sh && bash scripts/agyos-verify.sh
+```
+
+### 2. Manual Environment Initialization
 ```bash
 # Bootstrap repository permissions and state daemon
 bash scripts/agyos-init.sh
@@ -238,7 +263,7 @@ bash scripts/agyos-init.sh
 bash scripts/agyos-verify.sh
 ```
 
-### 2. Query the Skills Catalog via CLI
+### 3. Query the Skills Catalog via CLI
 ```bash
 # Search for skills by domain or task
 bin/agyos find "react animation"
