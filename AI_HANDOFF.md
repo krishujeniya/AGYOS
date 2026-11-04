@@ -4,6 +4,7 @@
 - Task: Hierarchical Agent OS Implementation (5 Pods, Typed TaskContracts, EVPI Gate, Recovery, Fail-Closed Hook, A/B Benchmark)
 - Pinned Runtime: Google Antigravity CLI (`agy`) v1.5.0
 - Baseline SHA: `22e8706c2be34f0d4bf87c01c01c1ee5b8741068`
+- Completed Commit SHA: `b6dba4631efdf302910aa27cc056a3752290b521`
 - Branch: `main`
 
 ## Summary of Executed Changes
