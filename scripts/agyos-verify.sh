@@ -38,7 +38,7 @@ check "GEMINI.md exists and matches AGENTS.md" test -e GEMINI.md
 check "AGY CLI installed and responsive" agy --version
 
 # 4. Check MCP Servers List
-check "Anchor MCP server registered in AGY" grep -q "anchor" <(agy mcp list)
+check "AGYOS MCP server registered in AGY" grep -q "agyos\|anchor" <(agy mcp list)
 
 # 5. Check Hook Script execution
 check "AGYOS Safety Hook blocks dangerous commands" bash -c 'echo "{\"toolCall\":{\"name\":\"run_command\",\"args\":{\"CommandLine\":\"rm -rf /\"}}}" | python3 scripts/hooks/agy_os_hook.py PreToolUse | grep -q "\"decision\": \"deny\""'
@@ -46,12 +46,12 @@ check "AGYOS Safety Hook allows benign commands" bash -c 'echo "{\"toolCall\":{\
 check "AGY startup metadata and hook contract regressions" python3 -m unittest discover -s scripts/tests -v
 
 # 6. Check FastMCP JSON-RPC Server
-check "Anchor MCP server JSON-RPC initialize" bash -c 'echo "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\",\"params\":{}}" | node mcp/state-server.cjs | grep -q "\"serverInfo\""'
-check "Anchor MCP server tools/list" bash -c 'echo "{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"tools/list\",\"params\":{}}" | node mcp/state-server.cjs | grep -q "\"anchor_state\""'
-check "Anchor MCP server tools/call (anchor_state)" bash -c 'echo "{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"tools/call\",\"params\":{\"name\":\"anchor_state\",\"arguments\":{}}}" | node mcp/state-server.cjs | grep -q "current_gate"'
-check "Anchor MCP server tools/call (agyos_find_skill)" bash -c 'echo "{\"jsonrpc\":\"2.0\",\"id\":4,\"method\":\"tools/call\",\"params\":{\"name\":\"agyos_find_skill\",\"arguments\":{\"query\":\"react\"}}}" | node mcp/state-server.cjs | grep -q "Top Skill Matches"'
-check "Anchor MCP server tools/call (agyos_sys_info)" bash -c 'echo "{\"jsonrpc\":\"2.0\",\"id\":5,\"method\":\"tools/call\",\"params\":{\"name\":\"agyos_sys_info\",\"arguments\":{}}}" | node mcp/state-server.cjs | grep -q "Hierarchical Cognitive OS"'
-check "Anchor MCP server tools/call (agyos_memory)" bash -c 'echo "{\"jsonrpc\":\"2.0\",\"id\":6,\"method\":\"tools/call\",\"params\":{\"name\":\"agyos_memory\",\"arguments\":{\"action\":\"read\",\"tier\":\"tier0\"}}}" | node mcp/state-server.cjs | grep -q "user_preferences"'
+check "AGYOS MCP server JSON-RPC initialize" bash -c 'echo "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\",\"params\":{}}" | node mcp/state-server.cjs | grep -q "\"serverInfo\""'
+check "AGYOS MCP server tools/list" bash -c 'echo "{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"tools/list\",\"params\":{}}" | node mcp/state-server.cjs | grep -q "\"agyos_state\""'
+check "AGYOS MCP server tools/call (agyos_state)" bash -c 'echo "{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"tools/call\",\"params\":{\"name\":\"agyos_state\",\"arguments\":{}}}" | node mcp/state-server.cjs | grep -q "current_gate"'
+check "AGYOS MCP server tools/call (agyos_find_skill)" bash -c 'echo "{\"jsonrpc\":\"2.0\",\"id\":4,\"method\":\"tools/call\",\"params\":{\"name\":\"agyos_find_skill\",\"arguments\":{\"query\":\"react\"}}}" | node mcp/state-server.cjs | grep -q "Top Skill Matches"'
+check "AGYOS MCP server tools/call (agyos_sys_info)" bash -c 'echo "{\"jsonrpc\":\"2.0\",\"id\":5,\"method\":\"tools/call\",\"params\":{\"name\":\"agyos_sys_info\",\"arguments\":{}}}" | node mcp/state-server.cjs | grep -q "Hierarchical Cognitive OS"'
+check "AGYOS MCP server tools/call (agyos_memory)" bash -c 'echo "{\"jsonrpc\":\"2.0\",\"id\":6,\"method\":\"tools/call\",\"params\":{\"name\":\"agyos_memory\",\"arguments\":{\"action\":\"read\",\"tier\":\"tier0\"}}}" | node mcp/state-server.cjs | grep -q "user_preferences"'
 check "bin/agyos find skill search CLI" bash -c 'bin/agyos find "postgres" | grep -q "Top Skill Matches"'
 check "bin/agyos sysinfo CLI command" bash -c 'bin/agyos sysinfo | grep -q "Hierarchical Cognitive OS"'
 check "bin/agyos mem virtual memory CLI" bash -c 'bin/agyos mem tier0 | grep -q "user_preferences"'
@@ -64,8 +64,8 @@ for p in .agents/plugins/*; do
   check "Plugin validation for $(basename "$p")" agy plugin validate "$p"
 done
 
-# 9. Check Anchor State Machine
-check "Anchor state validation script" bash bin/state-validate.sh
+# 9. Check AGYOS State Machine
+check "AGYOS state validation script" bash bin/state-validate.sh
 
 # 10. Check Merged AGYOS Skills and Rules counts
 check "Merged skills catalog (>400 skills in .agents/skills)" test "$(ls -1 .agents/skills | wc -l)" -gt 400

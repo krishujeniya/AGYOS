@@ -126,4 +126,4 @@ This command invokes:
 
 ---
 
-*Part of [ECC](https://github.com/affaan-m/ECC)*
+*Part of [AGYOS](https://github.com/krishujeniya/AGYOS)*

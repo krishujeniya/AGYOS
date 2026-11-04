@@ -35,7 +35,7 @@
       "name": "Krish Ujeniya",
       "url": "https://github.com/krishujeniya"
     },
-    "description": "Autonomous Cognitive Operating System for AGY CLI integrating Anchor 5-Gate governance, Agent Council consensus, and 1,842 skills.",
+    "description": "Autonomous Cognitive Operating System for AGY CLI integrating AGYOS 5-Gate governance, Agent Council consensus, and 1,842 skills.",
     "softwareVersion": "3.1.0",
     "license": "https://opensource.org/licenses/MIT"
   }
@@ -63,7 +63,7 @@
     <div class="header-right">
       <nav aria-label="Top navigation">
         <a href="#overview" class="nav-link">Docs</a>
-        <a href="#anchor" class="nav-link">Anchor</a>
+        <a href="#governance" class="nav-link">Governance</a>
         <a href="#council" class="nav-link">Council</a>
         <a href="#ui-ux" class="nav-link">UI/UX</a>
         <a href="#explorer" class="nav-link">Explorer</a>
@@ -88,9 +88,9 @@
       <div class="sidebar-section">
         <div class="sidebar-heading">Core Subsystems</div>
         <ul class="sidebar-nav">
-          <li class="sidebar-nav-item"><a href="#anchor" class="sidebar-link">Anchor Governance <span class="sidebar-badge">5 Gates</span></a></li>
+          <li class="sidebar-nav-item"><a href="#governance" class="sidebar-link">AGYOS Governance <span class="sidebar-badge">5 Gates</span></a></li>
           <li class="sidebar-nav-item"><a href="#council" class="sidebar-link">Agent Council <span class="sidebar-badge">59 Tests</span></a></li>
-          <li class="sidebar-nav-item"><a href="#ui-ux" class="sidebar-link">Emil Kowalski UI/UX <span class="sidebar-badge">Motion</span></a></li>
+          <li class="sidebar-nav-item"><a href="#ui-ux" class="sidebar-link">UI/UX &amp; Motion <span class="sidebar-badge">Motion</span></a></li>
           <li class="sidebar-nav-item"><a href="#gravitas" class="sidebar-link">Gravitas Invariants <span class="sidebar-badge">6 Rules</span></a></li>
           <li class="sidebar-nav-item"><a href="#verification" class="sidebar-link">Verification Suite <span class="sidebar-badge">34 / 34</span></a></li>
         </ul>
@@ -114,7 +114,7 @@
           <span style="color: var(--color-accent); font-weight: 600;">Engineered &amp; Authored by Krish Ujeniya</span>
         </p>
         <p>
-          AGYOS unifies the Anchor 5-Gate governance spine, Agent Council multi-model deliberation, Emil Kowalski UI/UX engineering, and 1,842 physical skills into a hardened, zero-configuration cognitive operating system.
+          AGYOS unifies the AGYOS 5-Gate governance spine, Agent Council multi-model deliberation, specialized UI/UX engineering, and 1,842 physical skills into a hardened, zero-configuration cognitive operating system.
         </p>
 
         <div class="hero-stats">
@@ -187,22 +187,22 @@ bin/agyos council "Postgres vs SQLite for local cache?"</code></pre>
 └── docs/                      # Pure static documentation and live explorer</code></pre>
       </section>
 
-      <!-- Section: Anchor -->
-      <section id="anchor">
-        <h2>Anchor: 5-Gate Governance Spine</h2>
+      <!-- Section: Governance -->
+      <section id="governance">
+        <h2>AGYOS: 5-Gate Governance Spine</h2>
         <p>
-          Anchor is the governing spine of AGYOS. It enforces five explicit gates across every non-trivial development task to eliminate hallucinations, out-of-scope modifications, and speculative code:
+          AGYOS Governance is the governing spine of AGYOS. It enforces five explicit gates across every non-trivial development task to eliminate hallucinations, out-of-scope modifications, and speculative code:
         </p>
 
         <div class="callout">
           <p>
-            <strong>Anchor Invariant:</strong> Ground before mutating. Never mark a milestone complete without fresh machine test output.
+            <strong>AGYOS Invariant:</strong> Ground before mutating. Never mark a milestone complete without fresh machine test output.
           </p>
         </div>
 
         <ol>
           <li><strong>UNDERSTAND:</strong> Clarify intent, gather requirements, document deliverables in a Task List.</li>
-          <li><strong>ANALYZE:</strong> AST inspection (<code>anchor-scout</code>), blast radius containment, complexity scoring.</li>
+          <li><strong>ANALYZE:</strong> AST inspection (<code>agyos-scout</code>), blast radius containment, complexity scoring.</li>
           <li><strong>PLAN:</strong> Architecture Decision Records (ADR), C4 models, test strategy, and context compaction.</li>
           <li><strong>IMPLEMENT:</strong> Autonomous TDD Red-Green-Refactor loop. Functions &lt;50 lines, files &lt;800 lines.</li>
           <li><strong>VERIFY:</strong> Full adversarial verification (<code>bin/agyos verify</code>), test ratchet monotonicity.</li>
@@ -306,12 +306,12 @@ bin/agyos council "Postgres vs SQLite for local cache?"</code></pre>
         <pre><code>• AGENTS.md size limit (&lt;24,000 bytes): PASS
 • GEMINI.md exists and matches AGENTS.md: PASS
 • AGY CLI installed and responsive: PASS
-• Anchor MCP server registered in AGY: PASS
+• AGYOS MCP server registered in AGY: PASS
 • AGYOS Safety Hook blocks dangerous commands: PASS
 • AGYOS Safety Hook allows benign commands: PASS
-• Anchor MCP server JSON-RPC initialize: PASS
-• Anchor MCP server tools/list: PASS
-• Anchor MCP server tools/call (anchor_state): PASS
+• AGYOS MCP server JSON-RPC initialize: PASS
+• AGYOS MCP server tools/list: PASS
+• AGYOS MCP server tools/call (agyos_state): PASS
 • Agent Council Bun test suite (59 passing tests): PASS
 • 8 AGYOS Plugins validated: PASS
 • Merged skills catalog (&gt;400 skills in .agents/skills): PASS (1,842 skills)
@@ -338,12 +338,12 @@ Verification Summary: 34 PASSED, 0 FAILED</code></pre>
             <div class="sidebar-heading" style="padding: 0; margin-bottom: 6px;">Filter by module</div>
             <div class="filter-group" id="module-filters">
               <button class="filter-btn active" data-module="all">All modules</button>
-              <button class="filter-btn" data-module="Anchor Governance">Anchor</button>
+              <button class="filter-btn" data-module="AGYOS Governance">Governance</button>
               <button class="filter-btn" data-module="Agent Council">Council</button>
-              <button class="filter-btn" data-module="Emil Kowalski UI/UX & Motion">UI/UX &amp; Motion</button>
+              <button class="filter-btn" data-module="UI/UX & Motion">UI/UX &amp; Motion</button>
               <button class="filter-btn" data-module="Technical SEO">SEO</button>
               <button class="filter-btn" data-module="Freelance Suite">Freelance</button>
-              <button class="filter-btn" data-module="ECC Polyglot Engineering">Polyglot</button>
+              <button class="filter-btn" data-module="AGYOS Polyglot Engineering">Polyglot</button>
               <button class="filter-btn" data-module="Verification & Testing">Verification</button>
               <button class="filter-btn" data-module="Security & Defense">Security</button>
               <button class="filter-btn" data-module="Domain & Research Extensions">Domain Extensions</button>

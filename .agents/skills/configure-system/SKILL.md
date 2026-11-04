@@ -149,7 +149,7 @@ claim those profiles map to Codex.
 If the AGYOS marketplace is missing, add it. Otherwise refresh its snapshot:
 
 ```bash
-codex plugin marketplace add affaan-m/AGYOS
+codex plugin marketplace add krishujeniya/AGYOS
 codex plugin marketplace upgrade agyos --json
 ```
 

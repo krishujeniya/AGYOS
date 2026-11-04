@@ -1,24 +1,25 @@
 {
   "name": "AGYOS",
-  "description": "Autonomous Cognitive Agent Operating System & Monorepo of 1,842+ Engineering Skills by Krish Ujeniya.",
-  "author": "Krish Ujeniya",
+  "description": "The Autonomous Cognitive Operating System for AGY CLI.",
   "url": "https://krishujeniya.github.io/AGYOS/",
-  "version": "1.0.0",
+  "version": "3.1.0",
   "total_skills": 1842,
   "modules": [
-    "5-Gate Governance",
-    "Multi-Agent Council",
-    "FastMCP Stdio Daemon",
-    "Autonomous Penetration Testing (PentAGI)",
-    "UI/UX Design Engineering",
+    "AGYOS Governance",
+    "Agent Council",
+    "UI/UX & Motion",
     "Technical SEO",
-    "Polyglot Engineering",
-    "Adversarial Verification"
+    "Freelance Suite",
+    "AGYOS Polyglot Engineering",
+    "Verification & Testing",
+    "Security & Defense",
+    "Domain & Research Extensions"
   ],
   "runtimes_supported": [
-    "CLI",
-    "FastMCP Stdio",
-    "Node.js",
-    "Python"
+    "AGY CLI",
+    "Gemini",
+    "Claude Code",
+    "Codex",
+    "Bun"
   ]
 }

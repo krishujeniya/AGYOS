@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "agyos": {
+      "command": "node",
+      "args": [
+        "/home/ai/Documents/projects/Freelance/AGYOS/mcp/agyos-state-server.cjs"
+      ]
+    }
+  }
+}

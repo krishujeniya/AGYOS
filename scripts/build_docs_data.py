@@ -116,8 +116,8 @@ def classify_skill(sid: str, name: str, desc: str):
     sid_lower = sid.lower()
     desc_lower = desc.lower()
 
-    if sid_lower.startswith("anchor-"):
-        return "Anchor Governance", "Governance"
+    if sid_lower.startswith(("agyos-", "anchor-")):
+        return "AGYOS Governance", "Governance"
     if sid_lower.startswith("council-") or sid_lower in ("council", "council"):
         return "Agent Council", "Deliberation"
     if (
@@ -126,7 +126,7 @@ def classify_skill(sid: str, name: str, desc: str):
         or "emil kowalski" in desc_lower
         or "animation" in desc_lower
     ):
-        return "Emil Kowalski UI/UX & Motion", "Frontend & Motion"
+        return "UI/UX & Motion", "Frontend & Motion"
     if sid_lower.startswith(("seo", "geo-")) or "seo" in sid_lower:
         return "Technical SEO", "SEO & Discovery"
     if sid_lower.startswith(("freelancer-", "freelance-")):
@@ -139,14 +139,14 @@ def classify_skill(sid: str, name: str, desc: str):
     ):
         return "Verification & Testing", "QA & Testing"
     if (
-        sid_lower.startswith(("security-", "sast-", "threat-"))
+        sid_lower.startswith(("security-", "sast-", "threat-", "pentagi-"))
         or sid_lower in ("secret-agent-007", "dev-orchestrator", "credential-manager", "security-review")
         or "security" in desc_lower
         or "vulnerability" in desc_lower
     ):
         return "Security & Defense", "Security"
     if sid_lower.startswith(("python-", "rust-", "golang-", "go-", "typescript-", "react-", "vue-", "angular-", "django-", "fastapi-", "postgres-", "docker-", "k8s-", "git-", "c-", "haskell-", "julia-", "ruby-")):
-        return "ECC Polyglot Engineering", "Languages & Runtimes"
+        return "AGYOS Polyglot Engineering", "Languages & Runtimes"
     return "Domain & Research Extensions", "Specialized"
 
 def load_manifest_lookup():
@@ -177,7 +177,7 @@ def compile_all_skills():
         raw_name, raw_desc = extract_frontmatter(Path(entry_path))
         clean_desc = unslop(raw_desc or f"{entry} skill for AGYOS.")
         module, category = classify_skill(entry, raw_name, clean_desc)
-        tier = manifest_tiers.get(entry, 1 if module in ("Anchor Governance", "Agent Council", "Emil Kowalski UI/UX & Motion", "Verification & Testing", "Security & Defense") else 2)
+        tier = manifest_tiers.get(entry, 1 if module in ("AGYOS Governance", "Agent Council", "UI/UX & Motion", "Verification & Testing", "Security & Defense") else 2)
 
         skill_obj = {
             "id": entry,
@@ -186,7 +186,7 @@ def compile_all_skills():
             "category": category,
             "tier": tier,
             "runtime": ["AGY CLI", "Gemini", "Claude Code", "Codex"],
-            "command": f"bin/agyos skill {entry}" if module == "Anchor Governance" else entry,
+            "command": f"bin/agyos skill {entry}" if module == "AGYOS Governance" else entry,
             "path": f".agents/skills/{entry}",
             "risk": "safe",
             "description": clean_desc
@@ -213,12 +213,12 @@ def write_json_files(skills):
         "version": "3.1.0",
         "total_skills": len(skills),
         "modules": [
-            "Anchor Governance",
+            "AGYOS Governance",
             "Agent Council",
-            "Emil Kowalski UI/UX & Motion",
+            "UI/UX & Motion",
             "Technical SEO",
             "Freelance Suite",
-            "ECC Polyglot Engineering",
+            "AGYOS Polyglot Engineering",
             "Verification & Testing",
             "Security & Defense",
             "Domain & Research Extensions"
@@ -232,16 +232,16 @@ def write_json_files(skills):
 def write_seo_files(skills):
     """Write sitemap.xml, robots.txt, and llms.txt."""
     sitemap_out = os.path.join(DOCS_DIR, "sitemap.xml")
-    modules = ["anchor", "council", "ui-ux", "seo", "freelance", "polyglot", "verification", "security", "explorer"]
+    modules = ["governance", "council", "ui-ux", "seo", "freelance", "polyglot", "verification", "security", "explorer"]
     sitemap_urls = [
-        f'  <url>\n    <loc>https://krishujeniya.github.io/AGYOS/#{m}</loc>\n    <lastmod>2026-11-03</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.9</priority>\n  </url>'
+        f'  <url>\n    <loc>https://krishujeniya.github.io/AGYOS/#{m}</loc>\n    <lastmod>2026-11-04</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.9</priority>\n  </url>'
         for m in modules
     ]
     sitemap_content = f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://krishujeniya.github.io/AGYOS/</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -261,19 +261,19 @@ def write_seo_files(skills):
     llms_content = f"""# AGYOS Documentation
 
 > The Autonomous Cognitive Operating System for AGY CLI (`agy`).
-> Maintained by krishujeniya.
+> Maintained By Krish Ujeniya (@krishujeniya).
 > Total skills documented: {len(skills)}
-> Total modular rules: 162
+> Total modular rules: 140
 > Total role agents: 74
 > Total workflow pipelines: 100
 
 ## Core Operating Subsystems
 
-- Anchor Governance: 5-Gate spine (UNDERSTAND -> ANALYZE -> PLAN -> IMPLEMENT -> VERIFY) with FastMCP JSON-RPC 2.0 daemon and adaptive fast-path.
-- Agent Council: Multi-model CLI consensus engine deliberating across Gemini, Claude, and Codex in parallel Bun subprocesses.
-- Emil Kowalski UI/UX: Enforcing concentric border radii, 0ms/150ms/250ms motion timing, compositor-only animations, and tactile micro-interactions.
-- Adversarial Verification: 25-point falsifiable test suite validating plugins, safety hooks, MCP protocols, and ratchet monotonicity.
-- ECC Polyglot: High-efficiency coding standards across 15+ programming languages and frameworks.
+- AGYOS Governance: 5-Gate spine (UNDERSTAND -> ANALYZE -> PLAN -> IMPLEMENT -> VERIFY) with FastMCP JSON-RPC 2.0 daemon and adaptive fast-path.
+- Agent Council: Multi-model CLI consensus engine deliberating across models in parallel Bun subprocesses.
+- UI/UX & Motion: Enforcing concentric border radii, 0ms/150ms/250ms motion timing, compositor-only animations, and tactile micro-interactions.
+- Adversarial Verification: 34-point falsifiable test suite validating plugins, safety hooks, MCP protocols, and ratchet monotonicity.
+- AGYOS Polyglot: High-efficiency coding standards across 15+ programming languages and frameworks.
 
 ## Structured Skill Catalog
 

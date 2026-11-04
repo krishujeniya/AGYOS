@@ -66,7 +66,7 @@ For web search, use at most three targeted queries such as:
 ```text
 "claude code skill" keyword
 "SKILL.md" keyword
-"affaan-m/ECC" keyword
+"krishujeniya/AGYOS" keyword
 ```
 
 ### Step 4 - Vet External Matches

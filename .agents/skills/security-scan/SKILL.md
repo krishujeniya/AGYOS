@@ -7,7 +7,7 @@ metadata:
 
 # Security Scan Skill
 
-Audit your Claude Code configuration for security issues using [AgentShield](https://github.com/affaan-m/agentshield).
+Audit your Claude Code configuration for security issues using [AgentShield](https://github.com/krishujeniya/AGYOS).
 
 ## When to Activate
 
@@ -33,13 +33,13 @@ AgentShield must be installed. Check and install if needed:
 
 ```bash
 # Check if installed
-npx ecc-agentshield --version
+npx agyos-shield --version
 
 # Install globally (recommended)
-npm install -g ecc-agentshield
+npm install -g agyos-shield
 
 # Or run directly via npx (no install needed)
-npx ecc-agentshield scan .
+npx agyos-shield scan .
 ```
 
 ## Usage
@@ -50,29 +50,29 @@ Run against the current project's `.claude/` directory:
 
 ```bash
 # Scan current project
-npx ecc-agentshield scan
+npx agyos-shield scan
 
 # Scan a specific path
-npx ecc-agentshield scan --path /path/to/.claude
+npx agyos-shield scan --path /path/to/.claude
 
 # Scan with minimum severity filter
-npx ecc-agentshield scan --min-severity medium
+npx agyos-shield scan --min-severity medium
 ```
 
 ### Output Formats
 
 ```bash
 # Terminal output (default) — colored report with grade
-npx ecc-agentshield scan
+npx agyos-shield scan
 
 # JSON — for CI/CD integration
-npx ecc-agentshield scan --format json
+npx agyos-shield scan --format json
 
 # Markdown — for documentation
-npx ecc-agentshield scan --format markdown
+npx agyos-shield scan --format markdown
 
 # HTML — self-contained dark-theme report
-npx ecc-agentshield scan --format html > security-report.html
+npx agyos-shield scan --format html > security-report.html
 ```
 
 ### Auto-Fix
@@ -80,7 +80,7 @@ npx ecc-agentshield scan --format html > security-report.html
 Apply safe fixes automatically (only fixes marked as auto-fixable):
 
 ```bash
-npx ecc-agentshield scan --fix
+npx agyos-shield scan --fix
 ```
 
 This will:
@@ -95,7 +95,7 @@ Run the adversarial three-agent pipeline for deeper analysis:
 ```bash
 # Requires ANTHROPIC_API_KEY
 export ANTHROPIC_API_KEY=your-key
-npx ecc-agentshield scan --opus --stream
+npx agyos-shield scan --opus --stream
 ```
 
 This runs:
@@ -108,7 +108,7 @@ This runs:
 Scaffold a new secure `.claude/` configuration from scratch:
 
 ```bash
-npx ecc-agentshield init
+npx agyos-shield init
 ```
 
 Creates:
@@ -121,7 +121,7 @@ Creates:
 Add to your CI pipeline:
 
 ```yaml
-- uses: affaan-m/agentshield@v1
+- uses: krishujeniya/AGYOS@v1
   with:
     path: '.'
     min-severity: 'medium'
@@ -162,5 +162,5 @@ Add to your CI pipeline:
 
 ## Links
 
-- **GitHub**: [github.com/affaan-m/agentshield](https://github.com/affaan-m/agentshield)
-- **npm**: [npmjs.com/package/ecc-agentshield](https://www.npmjs.com/package/ecc-agentshield)
+- **GitHub**: [github.com/krishujeniya/AGYOS](https://github.com/krishujeniya/AGYOS)
+- **npm**: [npmjs.com/package/agyos-shield](https://www.npmjs.com/package/agyos-shield)

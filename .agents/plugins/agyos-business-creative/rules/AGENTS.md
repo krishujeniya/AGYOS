@@ -1,5 +1,5 @@
 # Creative & UI/UX Design Engineering Standards
-- Enforce Emil Kowalski's Design Engineering standards for all UI/UX, SaaS apps, and website generation.
+- Enforce Design Engineering standards for all UI/UX, SaaS apps, and website generation.
 - Concentric Border Radii: Nested child radii must satisfy R_inner = R_outer - padding.
 - Animation Timing: Micro-interactions (150-200ms); modals (250-350ms); never animate keyboard actions.
 - Compositor-Only: Animate transform and opacity only. No layout thrashing on height/width.

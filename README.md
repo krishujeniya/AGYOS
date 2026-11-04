@@ -71,10 +71,10 @@ Every non-trivial engineering workflow progresses through five deterministic gat
 ### 3. FastMCP State Daemon (`mcp/state-server.cjs`)
 - Zero external dependencies; vanilla JSON-RPC 2.0 over standard I/O (`stdio`).
 - Implements Model Context Protocol (MCP) tools:
-  - `anchor_state`: Inspect active governance milestone and gate status.
-  - `anchor_current`: Human-readable session overview from `CURRENT.md`.
-  - `anchor_graph`: Dependency index and system invariant graph.
-  - `anchor_checkpoint`: Append structured execution checkpoints.
+  - `agyos_state`: Inspect active governance milestone and gate status.
+  - `agyos_current`: Human-readable session overview from `CURRENT.md`.
+  - `agyos_graph`: Dependency index and system invariant graph.
+  - `agyos_checkpoint`: Append structured execution checkpoints.
   - `agyos_find_skill`: Fast sub-10ms keyword and semantic search over 1,842 skills.
   - `agyos_sys_info`: Comprehensive kernel health and subsystem status.
   - `agyos_memory`: Virtual multi-tier cross-session memory manager.

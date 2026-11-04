@@ -1,9 +1,9 @@
-# Agent Skills Cognitive Architecture & System Principles
+# AGYOS Cognitive Architecture & System Principles
 
-> **Governing System**: Agent Skills Cognitive OS
+> **Governing System**: AGYOS Cognitive OS  
 > **Author**: Krish Ujeniya  
-> **Runtime Target**: Google Antigravity CLI (`agy`) v1.4.12+  
-> **Architecture Paradigm**: 6-Layer Hierarchical AI Operating System (Synthesizing AIOS, MemGPT/Letta, MetaGPT, and Anchor Governance)
+> **Runtime Target**: AGY CLI (`agy`) v1.4.12+  
+> **Architecture Paradigm**: 6-Layer Hierarchical AI Operating System (Synthesizing AIOS, MemGPT/Letta, MetaGPT, and AGYOS Governance)
 
 ---
 
@@ -16,7 +16,7 @@ graph TD
     User["User Prompt / Work Objective"] --> L0["Layer 0: Kernel & Safety Interceptor"]
     L0 --> L1["Layer 1: 3-Tier Hierarchical Memory"]
     L1 --> L2["Layer 2: FastMCP Syscall & Driver Bus"]
-    L2 --> L3["Layer 3: Anchor 5-Gate SOP Engine"]
+    L2 --> L3["Layer 3: AGYOS 5-Gate SOP Engine"]
     L3 --> L4["Layer 4: Multi-Agent Role Hierarchy"]
     L4 --> L5["Layer 5: Extensibility & Capability Catalog"]
 
@@ -51,17 +51,17 @@ Inspired by the virtual memory paging architectures of MemGPT and Letta:
 - **Tier 2 (Archival Memory / Deep Storage)**: The indexed 1,842-skill catalog (`.agents/skills-manifest.json` and `docs/skills-data.json`), paged into context JIT via `agyos_find_skill`.
 
 ### Layer 2: FastMCP Syscall & Driver Bus
-- **Driver**: `mcp/state-server.cjs` (Zero-dependency stdio JSON-RPC 2.0 daemon)
+- **Driver**: `mcp/agyos-state-server.cjs` (Zero-dependency stdio JSON-RPC 2.0 daemon)
 - **Exposed Syscalls**:
-  - `anchor_state`: Inspect active gate, milestone, iteration, and token metrics.
-  - `anchor_current`: Read human-readable session markdown summary.
-  - `anchor_graph`: Read context dependency DAG and invariant status.
-  - `anchor_checkpoint`: Audit ledger entries for specific milestones.
+  - `agyos_state`: Inspect active gate, milestone, iteration, and token metrics.
+  - `agyos_current`: Read human-readable session markdown summary.
+  - `agyos_graph`: Read context dependency DAG and invariant status.
+  - `agyos_checkpoint`: Audit ledger entries for specific milestones.
   - `agyos_find_skill`: High-speed multi-token semantic search over 1,842 skills.
   - `agyos_sys_info`: Comprehensive OS runtime diagnostics, loaded drivers, and subsystem health.
   - `agyos_memory`: Virtual memory read, write, and list operations across tiers.
 
-### Layer 3: Anchor 5-Gate SOP Engine (`Code = SOP(Team)`)
+### Layer 3: AGYOS 5-Gate SOP Engine (`Code = SOP(Team)`)
 Implements the deterministic Standard Operating Procedure (SOP) paradigm proven by MetaGPT:
 ```
 [GATE 1: UNDERSTAND] ➔ [GATE 2: ANALYZE] ➔ [GATE 3: PLAN] ➔ [GATE 4: IMPLEMENT] ➔ [GATE 5: VERIFY]
@@ -82,7 +82,7 @@ Simulates the organizational division of labor from FAANG/MANGO engineering orga
 - **Staff QA & Verification Lead** (Gate 5): Monotonic test ratchet enforcement, adversarial verification.
 
 ### Layer 5: Extensibility & Capability Catalog
-- **8 Validated Plugins**: Modular packages installed directly into AGY CLI (`agyos-anchor`, `agyos-council`, `agyos-polyglot`, `agyos-verification`, `agyos-business-creative`, `agyos-security`, `agyos-seo`, `agyos-aegis`).
+- **8 Validated Plugins**: Modular packages installed directly into AGY CLI (`agyos-governance`, `agyos-council`, `agyos-polyglot`, `agyos-verification`, `agyos-business-creative`, `agyos-security`, `agyos-seo`, `agyos-core`).
 - **1,842 Physical Skills**: 399 Tier 1 core software skills and 1,439 Tier 2 domain extensions.
 - **Agent Council**: Multi-model consensus panel running Gemini, Claude, and Codex in parallel via Bun.
 

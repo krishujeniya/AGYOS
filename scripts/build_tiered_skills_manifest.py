@@ -17,13 +17,13 @@ OUT_MANIFEST = ROOT / ".agents" / "skills-manifest.json"
 OUT_TIER1 = ROOT / ".agents" / "tier1-skills.json"
 
 TIER1_CORE_PREFIXES = (
-    "anchor-", "council-", "freelancer-", "emil-", "animate", "apple-design",
+    "agyos-", "council-", "freelancer-", "emil-", "animate", "apple-design",
     "ask-sonner", "break-ui", "find-animation", "improve-animation", "mobile-native",
     "pick-ui", "prototype", "remove-animation", "review-animation", "write-swift",
     "scrollheart", "seo", "geo-", "tdd-", "test-", "debug", "python-", "rust-",
     "golang-", "go-", "typescript-", "react-", "vue-", "angular-", "django-",
     "fastapi-", "postgres-", "docker-", "k8s-", "git-", "security-", "c4-",
-    "architecture-", "aegis"
+    "architecture-", "pentagi-"
 )
 
 TIER1_EXACT = {

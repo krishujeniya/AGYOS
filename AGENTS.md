@@ -1,10 +1,10 @@
 # AGYOS: The Autonomous Cognitive Operating System for AGY CLI
 
 > **Governing System**: AGYOS v3.1 (Unified Cognitive Operating System for Antigravity CLI)  
-> **Integrated Subsystems**: Anchor 5-Gate Governance, AGYOS Polyglot Architecture, Aegis SDLC Standards, Agent Council Deliberation, and FastMCP State Daemon  
+> **Integrated Subsystems**: AGYOS 5-Gate Governance, AGYOS Polyglot Architecture, AGYOS Core SDLC Standards, Agent Council Deliberation, and FastMCP State Daemon  
 > **Target Runtime**: Antigravity CLI (`agy`) v1.4.12+  
 > **Engineering Standard**: Top 1% FAANG / Research Lab Staff Engineering Discipline  
-> **Invariants Enforced**: Anchor 5-Gate Spine, 7 Gravitas Invariants, Search-First Skill Discovery, Maker/Checker Isolation, Test Ratchet
+> **Invariants Enforced**: AGYOS 5-Gate Spine, 7 Gravitas Invariants, Search-First Skill Discovery, Maker/Checker Isolation, Test Ratchet
 
 ---
 
@@ -18,14 +18,14 @@
    - **Banned Templated & Robotic Phrasing**: No formulaic chatbot intros ("Certainly!", "I'd be happy to help", "As an AI..."), generic rule-of-three, hollow intensifiers, or fake conversational fluff.
    - **Banned AI Symbols**: No decorative emoji spam (🚀, 🛡️, ✨, ⚡, etc.) in system responses, code comments, or commits unless specifically requested.
    - **No Unnecessary Components**: Reject speculative wrappers, premature abstractions, unnecessary utility layers, and boilerplate components. Build only what is needed with clean, minimal implementation.
-4. **Stay in Declared Scope**: Confine all file mutations strictly to the active milestone path boundary (`anchor-scope`). Never touch unapproved, cross-module files out of band.
+4. **Stay in Declared Scope**: Confine all file mutations strictly to the active milestone path boundary (`agyos-scope`). Never touch unapproved, cross-module files out of band.
 5. **Require Machine Evidence**: Never claim a task, gate, or milestone is complete without executing and printing fresh, passing compiler, linter, or test output.
 6. **Avoid Identical Retries**: If a command or test fails twice with the same signature, alter the underlying hypothesis or halt. Never loop blindly.
 7. **Satisfy Contract Gates**: Every phase transition must satisfy strict programmatic gate criteria recorded in `.agents/state/state.json`.
 
 ---
 
-## 2. The Anchor 5-Gate Workflow
+## 2. The AGYOS 5-Gate Workflow
 
 Every multi-step development task must execute sequentially through the 5 gates:
 
@@ -38,7 +38,7 @@ Every multi-step development task must execute sequentially through the 5 gates:
   - *Deliverable*: Task List artifact with concrete acceptance criteria.
   - *Gate Check*: Human-in-the-loop (HITL) approval required before advancing.
 - **Gate 2 (ANALYZE)**:
-  - *Goal*: Run `anchor-scout` for read-only inspection. Map dependencies, risks, and boundaries.
+  - *Goal*: Run `agyos-scout` for read-only inspection. Map dependencies, risks, and boundaries.
   - *Deliverable*: Scope & Risk specification in `.agents/state/CURRENT.md`.
   - *Gate Check*: Boundary approval; complexity score (1-5 skips to IMPLEMENT; 6-10 full flow).
 - **Gate 3 (PLAN)**:
@@ -61,7 +61,7 @@ Every multi-step development task must execute sequentially through the 5 gates:
 
 To prevent self-confirming hallucinations:
 - **Maker**: The agent executing Gate 4 (`IMPLEMENT`) writes source and tests in focused iterations.
-- **Checker**: Verification in Gate 5 (`VERIFY`) must be executed by an independent reviewer subagent (`code-reviewer`, `security-reviewer`, or `anchor-verify`).
+- **Checker**: Verification in Gate 5 (`VERIFY`) must be executed by an independent reviewer subagent (`code-reviewer`, `security-reviewer`, or `agyos-verify`).
 - No agent may approve its own pull request or mark a verification gate passed without fresh validator output.
 
 ---
@@ -109,7 +109,7 @@ Before modifying code or tackling any non-trivial user goal:
 4. **Verify to Perfection**: Execute compiler, linter, and unit/integration suites (AAA pattern with 80%+ coverage) before marking any task complete.
 
 ### 7.1 No Slash Commands Required
-The operator must never be instructed or required to type slash commands (e.g. `/council`, `/anchor`, `/seo`, `/plan`). All skills are triggered autonomously based on natural language prompt comprehension.
+The operator must never be instructed or required to type slash commands (e.g. `/council`, `/plan`). All skills are triggered autonomously based on natural language prompt comprehension.
 
 ### 7.2 Silent Skill Ingestion (Anti-Meta Rule)
 Never narrate skill selection to the user (e.g. do NOT say "I will now use the X skill" or "I am loading skill Y"). Silently read the necessary `SKILL.md` runbook using `read_file` or dispatch to the appropriate specialist subagent via `invoke_subagent`, execute the procedures directly, and deliver concrete engineering results.
@@ -119,7 +119,7 @@ Never narrate skill selection to the user (e.g. do NOT say "I will now use the X
   - Autonomously convene `agent-council` multi-model deliberation via CLI or parallel subagents.
   - Synthesize consensus, disagreements, and recommendations directly into the response without meta-announcements.
 - **Multi-Step Features & Applications** ("Build a service", "Create a dashboard", "Implement auth"):
-  - Autonomously activate the Anchor 5-Gate Workflow (`anchor-orchestrator`), generate the Task List, and guide execution through UNDERSTAND ➔ ANALYZE ➔ PLAN ➔ IMPLEMENT ➔ VERIFY.
+  - Autonomously activate the AGYOS 5-Gate Workflow (`agyos-orchestrator`), generate the Task List, and guide execution through UNDERSTAND ➔ ANALYZE ➔ PLAN ➔ IMPLEMENT ➔ VERIFY.
 - **Bugs, Crashes & Regressions** ("Fix the test failure", "Error on line 42", "Why is it throwing?"):
   - Autonomously execute `diagnosing-bugs` and `systematic-debugging` (reproduce with a failing test ➔ root cause isolation ➔ minimal fix ➔ verify green).
 - **Code Reviews & Quality Checks** ("Review this code", "Is this clean?", "Check my diff"):
