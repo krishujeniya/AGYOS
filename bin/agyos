@@ -16,6 +16,7 @@ Commands:
   gate <name> Transition active gate (UNDERSTAND|ANALYZE|PLAN|IMPLEMENT|VERIFY)
   compact     Execute context window compaction and reset CURRENT.md
   fast        Fast-path bypass for trivial edits (complexity <= 2 straight to IMPLEMENT)
+  decide <task> Run AGYOS Decision Engine to find best skill and gate complexity
   find <query> Search 1,838+ skills in AGYOS catalog for best match
   skill <name> Display instructions and documentation for a skill
   sysinfo     Display system architecture, memory tiers, and health
@@ -63,6 +64,14 @@ case "$cmd" in
     anchor_state_set "current_gate" "IMPLEMENT"
     anchor_state_set "complexity_score" 1 "number"
     echo "⚡ Fast-path activated: Transitioned directly to IMPLEMENT (complexity <= 2)"
+    ;;
+  decide|decision)
+    query="$*"
+    if [ -z "$query" ]; then
+      echo "Usage: agyos decide <task-description-or-keywords>" >&2
+      exit 1
+    fi
+    python3 scripts/agyos-decision.py "$query"
     ;;
   find|search)
     query="$*"

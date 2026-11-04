@@ -71,16 +71,26 @@ Every non-trivial engineering workflow progresses through five deterministic gat
 ### 3. FastMCP State Daemon (`mcp/state-server.cjs`)
 - Zero external dependencies; vanilla JSON-RPC 2.0 over standard I/O (`stdio`).
 - Implements Model Context Protocol (MCP) tools:
+  - `agyos_decision`: Classify task domain, assess gate complexity, and select optimal specialist skills.
   - `agyos_state`: Inspect active governance milestone and gate status.
   - `agyos_current`: Human-readable session overview from `CURRENT.md`.
   - `agyos_graph`: Dependency index and system invariant graph.
   - `agyos_checkpoint`: Append structured execution checkpoints.
-  - `agyos_find_skill`: Fast sub-10ms keyword and semantic search over 1,842 skills.
+  - `agyos_find_skill`: Fast sub-10ms keyword and semantic search over 1,843 skills.
   - `agyos_sys_info`: Comprehensive kernel health and subsystem status.
   - `agyos_memory`: Virtual multi-tier cross-session memory manager.
 
-### 4. Zero-Slash Automation
-No slash commands or manual mode switches required. The system automatically inspects user intent, discovers matching specialist runbooks via `agyos_find_skill`, and executes work with direct machine evidence.
+### 4. AGYOS Decision Engine (`agyos_decision` & `bin/agyos decide`)
+- Fast, non-autoregressive System 1 decision engine and skill router.
+- Automatically classifies incoming tasks across technical domains (`debugging`, `architecture`, `security`, `ui_ux`, `motion`, `database`, `performance`, `devops`, `seo`, `content`).
+- Evaluates task complexity on a calibrated 1–5 scale:
+  - **Complexity 1–2 (Fast-Path)**: Trivial or single-file edits bypass Gates 1–3 straight to `IMPLEMENT`.
+  - **Complexity 3–5 (Standard / High-Impact)**: Multi-file features and architecture trigger the complete 5-gate lifecycle.
+- Ranks candidate specialist skills from the 1,843 catalog with calibrated confidence scores and exact runbook paths.
+- Accessible via CLI (`bin/agyos decide "<task>"`), MCP tool (`agyos_decision`), and Python API (`from agyos_decision import decide_skill`).
+
+### 5. Zero-Slash Automation
+No slash commands or manual mode switches required. The system automatically inspects user intent, discovers matching specialist runbooks via `agyos_decision`, and executes work with direct machine evidence.
 
 ---
 
@@ -91,11 +101,12 @@ No slash commands or manual mode switches required. The system automatically ins
 │   ├── agents/                 # 74 Specialized corporate role agent definitions
 │   ├── plugins/                # Validated governance plugins (rules and config)
 │   ├── rules/                  # 161 Modular governance, polyglot, and SDLC rules
-│   ├── skills/                 # 1,842 Production skills (flat, 1 folder per skill)
+│   ├── skills/                 # 1,843 Production skills (flat, 1 folder per skill)
 │   ├── state/                  # 5-Gate runtime state and checkpoint journals
 │   ├── workflows/              # 100 Multi-agent execution pipelines
-│   ├── skills-manifest.json    # Complete index of 1,842 skills
+│   ├── skills-manifest.json    # Complete index of 1,843 skills
 │   └── tier1-skills.json       # Curated high-frequency skill registry
+├── agyos_decision/             # Autonomous Decision Engine & skill routing package
 ├── assets/
 │   ├── logo.svg                # Master project vector logo
 │   └── README.md

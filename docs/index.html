@@ -64,6 +64,7 @@
       <nav aria-label="Top navigation">
         <a href="#overview" class="nav-link">Docs</a>
         <a href="#governance" class="nav-link">Governance</a>
+        <a href="#decision" class="nav-link">Decision</a>
         <a href="#council" class="nav-link">Council</a>
         <a href="#ui-ux" class="nav-link">UI/UX</a>
         <a href="#explorer" class="nav-link">Explorer</a>
@@ -89,17 +90,18 @@
         <div class="sidebar-heading">Core Subsystems</div>
         <ul class="sidebar-nav">
           <li class="sidebar-nav-item"><a href="#governance" class="sidebar-link">AGYOS Governance <span class="sidebar-badge">5 Gates</span></a></li>
+          <li class="sidebar-nav-item"><a href="#decision" class="sidebar-link">Decision Engine <span class="sidebar-badge">System 1</span></a></li>
           <li class="sidebar-nav-item"><a href="#council" class="sidebar-link">Agent Council <span class="sidebar-badge">59 Tests</span></a></li>
           <li class="sidebar-nav-item"><a href="#ui-ux" class="sidebar-link">UI/UX &amp; Motion <span class="sidebar-badge">Motion</span></a></li>
           <li class="sidebar-nav-item"><a href="#gravitas" class="sidebar-link">Gravitas Invariants <span class="sidebar-badge">6 Rules</span></a></li>
-          <li class="sidebar-nav-item"><a href="#verification" class="sidebar-link">Verification Suite <span class="sidebar-badge">34 / 34</span></a></li>
+          <li class="sidebar-nav-item"><a href="#verification" class="sidebar-link">Verification Suite <span class="sidebar-badge">36 / 36</span></a></li>
         </ul>
       </div>
 
       <div class="sidebar-section">
         <div class="sidebar-heading">Catalog</div>
         <ul class="sidebar-nav">
-          <li class="sidebar-nav-item"><a href="#explorer" class="sidebar-link">Interactive Explorer <span class="sidebar-badge">1,842</span></a></li>
+          <li class="sidebar-nav-item"><a href="#explorer" class="sidebar-link">Interactive Explorer <span class="sidebar-badge">1,843</span></a></li>
         </ul>
       </div>
     </aside>
@@ -209,6 +211,42 @@ bin/agyos council "Postgres vs SQLite for local cache?"</code></pre>
         </ol>
       </section>
 
+      <!-- Section: Decision Engine -->
+      <section id="decision">
+        <h2>AGYOS: Autonomous Decision Engine</h2>
+        <p>
+          The AGYOS Decision Engine provides fast, non-autoregressive System 1 decision-making and optimal skill routing. Given any incoming prompt, error message, or feature request, it computes calibrated probabilities to classify technical domains, determine task complexity, and recommend the best specialist skill:
+        </p>
+
+        <div class="code-header">
+          <span>Run autonomous skill routing</span>
+        </div>
+        <pre><code>bin/agyos decide "Design Postgres database schema with migrations"</code></pre>
+
+        <div class="code-header">
+          <span>Sample Decision Output</span>
+        </div>
+        <pre><code>============================================================
+AGYOS Autonomous Decision Engine
+============================================================
+Task: Design Postgres database schema with migrations
+Domain: DATABASE (calibrated confidence: 0.98)
+Complexity: 2/5 — bounded single-file modification (fast-path bypass)
+Gate Routing: Fast-path eligible (skip Gates 1-3 direct to IMPLEMENT)
+
+Recommended Primary Skill:
+  Name: postgres-best-practices
+  Path: .agents/skills/postgres-best-practices
+  Confidence: 96.0%
+
+Candidate Rankings:
+  * #1 postgres-best-practices        (score: 242.0, conf: 96.0%)
+    #2 database-design                (score: 164.0, conf: 65.0%)
+    #3 architecture-database-design   (score: 147.0, conf: 58.0%)
+    #4 database-migrations            (score: 124.0, conf: 49.0%)
+============================================================</code></pre>
+      </section>
+
       <!-- Section: Agent Council -->
       <section id="council">
         <h2>Agent Council: Multi-Model Consensus Engine</h2>
@@ -312,21 +350,23 @@ bin/agyos council "Postgres vs SQLite for local cache?"</code></pre>
 • AGYOS MCP server JSON-RPC initialize: PASS
 • AGYOS MCP server tools/list: PASS
 • AGYOS MCP server tools/call (agyos_state): PASS
+• AGYOS MCP server tools/call (agyos_decision): PASS
+• bin/agyos decide CLI decision engine: PASS
 • Agent Council Bun test suite (59 passing tests): PASS
 • 8 AGYOS Plugins validated: PASS
-• Merged skills catalog (&gt;400 skills in .agents/skills): PASS (1,842 skills)
+• Merged skills catalog (&gt;400 skills in .agents/skills): PASS (1,843 skills)
 • Merged rules catalog (&gt;120 rules in .agents/rules): PASS (162 rules)
 • AGYOS master logo exists: PASS
 • bin/agyos executable functional: PASS
 • Tiered skills manifest exists and valid: PASS
 • Fast-path state bypass functional: PASS
 ============================================================
-Verification Summary: 34 PASSED, 0 FAILED</code></pre>
+Verification Summary: 36 PASSED, 0 FAILED</code></pre>
       </section>
 
       <!-- Section: Interactive Explorer -->
       <section id="explorer">
-        <h2>Interactive Skills Catalog (1,842 Skills)</h2>
+        <h2>Interactive Skills Catalog (1,843 Skills)</h2>
         <p>
           Filter and search across all 1,842 physical skills in AGYOS. Click any command to copy it directly:
         </p>

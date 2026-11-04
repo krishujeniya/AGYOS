@@ -1,7 +1,7 @@
 {
   "version": "3.1.0",
-  "total_skills": 1842,
-  "tier1_count": 365,
+  "total_skills": 1843,
+  "tier1_count": 366,
   "tier2_count": 1477,
   "skills": [
     {
@@ -213,6 +213,12 @@
       "tier": 2,
       "description": "Master runbook for production-grade, free-first AI engineering setups using AGY CLI exclusively. Covers environment audits, MCP server wiring, specialist skill catalog routing, Supabase/Vercel/Cloudflare integration, free-tier cost controls, and automated verification.",
       "path": ".agents/skills/agy-production-stack"
+    },
+    {
+      "name": "agyos-decision",
+      "tier": 1,
+      "description": "Autonomous System 1 decision engine and skill router. Classifies task domains, assesses gate complexity (1-5), and selects optimal specialist skills from the catalog with calibrated confidence.",
+      "path": ".agents/skills/agyos-decision"
     },
     {
       "name": "agyos-draft-commit",

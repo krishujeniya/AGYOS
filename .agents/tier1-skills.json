@@ -31,6 +31,12 @@
       "path": ".agents/skills/agentic-os"
     },
     {
+      "name": "agyos-decision",
+      "tier": 1,
+      "description": "Autonomous System 1 decision engine and skill router. Classifies task domains, assesses gate complexity (1-5), and selects optimal specialist skills from the catalog with calibrated confidence.",
+      "path": ".agents/skills/agyos-decision"
+    },
+    {
       "name": "agyos-draft-commit",
       "tier": 1,
       "description": "agyos-draft-commit skill",

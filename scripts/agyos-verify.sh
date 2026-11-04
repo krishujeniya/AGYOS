@@ -52,7 +52,9 @@ check "AGYOS MCP server tools/call (agyos_state)" bash -c 'echo "{\"jsonrpc\":\"
 check "AGYOS MCP server tools/call (agyos_find_skill)" bash -c 'echo "{\"jsonrpc\":\"2.0\",\"id\":4,\"method\":\"tools/call\",\"params\":{\"name\":\"agyos_find_skill\",\"arguments\":{\"query\":\"react\"}}}" | node mcp/state-server.cjs | grep -q "Top Skill Matches"'
 check "AGYOS MCP server tools/call (agyos_sys_info)" bash -c 'echo "{\"jsonrpc\":\"2.0\",\"id\":5,\"method\":\"tools/call\",\"params\":{\"name\":\"agyos_sys_info\",\"arguments\":{}}}" | node mcp/state-server.cjs | grep -q "Hierarchical Cognitive OS"'
 check "AGYOS MCP server tools/call (agyos_memory)" bash -c 'echo "{\"jsonrpc\":\"2.0\",\"id\":6,\"method\":\"tools/call\",\"params\":{\"name\":\"agyos_memory\",\"arguments\":{\"action\":\"read\",\"tier\":\"tier0\"}}}" | node mcp/state-server.cjs | grep -q "user_preferences"'
+check "AGYOS MCP server tools/call (agyos_decision)" bash -c 'echo "{\"jsonrpc\":\"2.0\",\"id\":7,\"method\":\"tools/call\",\"params\":{\"name\":\"agyos_decision\",\"arguments\":{\"task\":\"optimize postgres query\"}}}" | node mcp/state-server.cjs | grep -q "postgres-best-practices"'
 check "bin/agyos find skill search CLI" bash -c 'bin/agyos find "postgres" | grep -q "Top Skill Matches"'
+check "bin/agyos decide CLI decision engine" bash -c 'bin/agyos decide "fix memory leak in postgres connection" | grep -q "postgres-best-practices"'
 check "bin/agyos sysinfo CLI command" bash -c 'bin/agyos sysinfo | grep -q "Hierarchical Cognitive OS"'
 check "bin/agyos mem virtual memory CLI" bash -c 'bin/agyos mem tier0 | grep -q "user_preferences"'
 

@@ -86,6 +86,20 @@ const TOOLS = [
     }
   },
   {
+    name: "agyos_decision",
+    description: "Execute the AGYOS Decision Engine to classify task domain, assess complexity (1-5), and autonomously select the optimal specialist skill from the catalog.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        task: {
+          type: "string",
+          description: "Incoming task description, feature request, error message, or work objective."
+        }
+      },
+      required: ["task"]
+    }
+  },
+  {
     name: "agyos_sys_info",
     description: "Get full AGYOS system overview including kernel status, active gate, memory tiers, loaded plugins, and subsystem health",
     inputSchema: {
@@ -304,6 +318,17 @@ function handleToolCall(name, args) {
   if (name === "agyos_find_skill" || name === "anchor_find_skill") {
     const matches = searchSkills(args.query || "", args.limit || 5, args.category);
     return { content: [{ type: "text", text: formatSkillSearchResults(matches, args.query || "") }] };
+  }
+  if (name === "agyos_decision") {
+    const task = args.task || "";
+    try {
+      const { execFileSync } = require("child_process");
+      const scriptPath = path.join(PROJECT_ROOT, "scripts", "agyos-decision.py");
+      const stdout = execFileSync("python3", [scriptPath, task, "--json"], { encoding: "utf8" });
+      return { content: [{ type: "text", text: stdout.trim() }] };
+    } catch (err) {
+      return { content: [{ type: "text", text: JSON.stringify({ error: String(err) }) }] };
+    }
   }
   if (name === "agyos_sys_info") {
     return { content: [{ type: "text", text: JSON.stringify(getSysInfo(), null, 2) }] };

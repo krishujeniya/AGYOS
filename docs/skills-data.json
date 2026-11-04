@@ -595,6 +595,23 @@
     "description": "Master runbook for production-grade, free-first AI engineering setups using AGY CLI exclusively. Covers environment audits, MCP server wiring, specialist skill catalog routing, Supabase/Vercel/Cloudflare integration, free-tier cost controls, and automated verification."
   },
   {
+    "id": "agyos-decision",
+    "name": "Agyos Decision",
+    "module": "AGYOS Governance",
+    "category": "Governance",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill agyos-decision",
+    "path": ".agents/skills/agyos-decision",
+    "risk": "safe",
+    "description": "Autonomous System 1 decision engine and skill router. Classifies task domains, assesses gate complexity (1-5), and selects optimal specialist skills from the catalog with calibrated confidence."
+  },
+  {
     "id": "agyos-draft-commit",
     "name": "agyos-draft-commit1.1.0",
     "module": "AGYOS Governance",
