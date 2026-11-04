@@ -1,11 +1,11 @@
 # CURRENT
-- active_gate: VERIFY
-- target: hierarchical_agent_os_milestones
-- branch_revision: main / 2084777 (baseline: 22e8706c2be34f0d4bf87c01c01c1ee5b8741068)
-- scope: typed contracts, intent compilation, evpi clarification, state ledger, saga recovery, 5 merged pods, SOP skills, authorizer hook, atomic claim verifier, A/B benchmark
+- active_gate: IDLE
+- target: hierarchical_agent_os_milestones (COMPLETE)
+- branch_revision: main / 3871da1 (baseline: 22e8706c2be34f0d4bf87c01c01c1ee5b8741068)
+- scope: typed contracts, intent compilation, evpi clarification, state ledger, saga recovery, 5 merged pods, SOP skills, authorizer hook, atomic claim verifier, A/B benchmark, role tool normalization
 - iteration: 2/10
-- local_result: PASS; agyos-verify 51/51; unittests 55/55; council bun tests 59/59; canary launch audit LAUNCH_APPROVED; A/B benchmark pass^3 1.00 vs 0.80 single vs 0.00 flat
-- last_action: extended verify suite, authorizer hook, 5 pods, 5 SOP skills, and synchronized documentation
-- remaining: operator review before release
-- next_action: operator review of milestone deliverables; see AI_HANDOFF.md
-- next_command: bash scripts/agyos-verify.sh
+- local_result: PASS; agyos-verify 51/51; unittests 56/56; council bun tests 59/59; canary launch audit LAUNCH_APPROVED; A/B benchmark pass^3 1.00 vs 0.80 single vs 0.00 flat; Gate 5 signed off
+- last_action: completed Gate 5 verification walkthrough, normalized 81 agent tool schemas, and hardened hook paths
+- remaining: none; milestone completed and verified
+- next_action: standby for next user goal, operational task, or new feature request
+- next_command: bin/agyos intent "<prompt>"
