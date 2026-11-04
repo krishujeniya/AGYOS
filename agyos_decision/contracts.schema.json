@@ -1,0 +1,250 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agyos.org/schemas/contracts.schema.json",
+  "title": "TaskContract",
+  "description": "Typed TaskContract for AGYOS adaptive hierarchy, policy bounds, and rollback compensation.",
+  "type": "object",
+  "required": [
+    "task_id",
+    "run_id",
+    "parent_task_id",
+    "tenant_id",
+    "requester_id",
+    "depth",
+    "pod",
+    "objective",
+    "risk",
+    "assumptions",
+    "inputs",
+    "dependencies",
+    "allowed_actions",
+    "forbidden_actions",
+    "capability_allowlist",
+    "approval",
+    "acceptance",
+    "budget",
+    "idempotency_key",
+    "preconditions",
+    "postconditions",
+    "compensation",
+    "result"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "pattern": "^tsk_[a-zA-Z0-9_-]+$",
+      "description": "Unique identifier for the task"
+    },
+    "run_id": {
+      "type": "string",
+      "description": "Execution run identifier"
+    },
+    "parent_task_id": {
+      "type": ["string", "null"],
+      "description": "Parent task ID or null if root L0 task"
+    },
+    "tenant_id": {
+      "type": "string",
+      "description": "Multi-tenant isolation boundary identifier"
+    },
+    "requester_id": {
+      "type": "string",
+      "description": "Identity of caller requesting work"
+    },
+    "depth": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2,
+      "description": "Tree depth: 0=L0 Coordinator, 1=L1 Pod Coordinator, 2=L2 Bounded Worker (max 2 delegated levels)"
+    },
+    "pod": {
+      "type": "string",
+      "enum": [
+        "pod-growth",
+        "pod-customer",
+        "pod-build",
+        "pod-gna",
+        "pod-people"
+      ],
+      "description": "Assigned merged operational pod"
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 3,
+      "description": "Unambiguous statement of required outcome"
+    },
+    "risk": {
+      "type": "string",
+      "enum": ["R0", "R1", "R2", "R3"],
+      "description": "Risk tier: R0=read-only, R1=local-reversible, R2=shared-internal-state, R3=external-irreversible"
+    },
+    "assumptions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Explicit assumptions applied in lieu of asking clarifying questions"
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["ref", "trust", "version"],
+        "properties": {
+          "ref": { "type": "string" },
+          "trust": { "type": "string", "enum": ["trusted", "untrusted"] },
+          "version": { "type": "string" }
+        },
+        "additionalProperties": false
+      },
+      "description": "Input artifacts and trust designations"
+    },
+    "dependencies": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Upstream task IDs that must complete successfully before execution"
+    },
+    "allowed_actions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Permitted tool actions"
+    },
+    "forbidden_actions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Explicitly forbidden actions"
+    },
+    "capability_allowlist": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Least-privilege delegable capabilities"
+    },
+    "approval": {
+      "type": "object",
+      "required": ["required", "scope", "expires_at", "status"],
+      "properties": {
+        "required": { "type": "boolean" },
+        "scope": { "type": ["string", "null"] },
+        "expires_at": { "type": ["string", "null"] },
+        "status": {
+          "type": "string",
+          "enum": ["pending", "approved", "rejected"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "acceptance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type"],
+        "properties": {
+          "type": { "type": "string" },
+          "schema_id": { "type": "string" },
+          "check": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "budget": {
+      "type": "object",
+      "required": ["tokens", "usd", "seconds", "tool_calls", "max_retries"],
+      "properties": {
+        "tokens": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 30000,
+          "description": "Max token budget for this node (run cap: 30,000)"
+        },
+        "usd": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.50,
+          "description": "Max USD spend for this node (run cap: $1.50)"
+        },
+        "seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 600,
+          "description": "Max wall clock seconds (run cap: 600s / 10min)"
+        },
+        "tool_calls": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 40,
+          "description": "Max tool invocations (run cap: 40 calls)"
+        },
+        "max_retries": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2,
+          "description": "Max bounded retries (cap: 2 retries)"
+        }
+      },
+      "additionalProperties": false
+    },
+    "idempotency_key": {
+      "type": "string",
+      "description": "Idempotent execution key preventing duplicate side effects"
+    },
+    "preconditions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "System state assertions required before execution"
+    },
+    "postconditions": {
+      "type": "object",
+      "required": [
+        "output_schema_ref",
+        "verifier_cmd",
+        "required_claims_grounded"
+      ],
+      "properties": {
+        "output_schema_ref": { "type": "string" },
+        "verifier_cmd": { "type": "string" },
+        "required_claims_grounded": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "compensation": {
+      "type": "object",
+      "required": ["kind", "resource_ref", "rollback_cmd", "snapshot_id"],
+      "properties": {
+        "kind": { "type": "string" },
+        "resource_ref": { "type": "string" },
+        "rollback_cmd": { "type": "string" },
+        "snapshot_id": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "result": {
+      "type": "object",
+      "required": ["status", "artifacts", "proofs", "uncertainty"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "running",
+            "success",
+            "failed",
+            "compensated",
+            "held"
+          ]
+        },
+        "artifacts": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "proofs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "uncertainty": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

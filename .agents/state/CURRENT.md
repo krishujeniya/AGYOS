@@ -1,12 +1,11 @@
 # CURRENT
 - active_gate: VERIFY
-- target: agy_cli_startup_warnings
-- branch_revision: main / e914967
-- scope: startup metadata, hook contracts, recovered helper, regression checks, workspace config, JSON reference, handoff
-- iteration: 1/10
-- local_result: independent review PASS; main 34/34; regressions 12/12; structure 7/7; 866 Python sources compile without warnings
-- last_action: AGY 1.4.12 no-prompt startup has no metadata or hook parsing warnings
-- remaining: AGY relative GeminiDir fallback; AppArmor sandbox needs administrator access; account out of credits
-- separate_check_failure: legacy eval lacks fixtures and fails two checks
-- next_action: operator handles host/account dependencies; see AI_HANDOFF.md
-- next_command: agy --log-file /tmp/agyos-startup-recheck.log
+- target: hierarchical_agent_os_milestones
+- branch_revision: main / 22e8706c2be34f0d4bf87c01c01c1ee5b8741068
+- scope: typed contracts, intent compilation, evpi clarification, state ledger, saga recovery, 5 merged pods, SOP skills, authorizer hook, atomic claim verifier, A/B benchmark
+- iteration: 2/10
+- local_result: PASS; agyos-verify 51/51; unittests 55/55; council bun tests 59/59; canary launch audit LAUNCH_APPROVED; A/B benchmark pass^3 1.00 vs 0.80 single vs 0.00 flat
+- last_action: extended verify suite, authorizer hook, 5 pods, 5 SOP skills, and synchronized documentation
+- remaining: operator review before release
+- next_action: operator review of milestone deliverables; see AI_HANDOFF.md
+- next_command: bash scripts/agyos-verify.sh

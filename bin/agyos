@@ -21,6 +21,9 @@ Commands:
   skill <name> Display instructions and documentation for a skill
   sysinfo     Display system architecture, memory tiers, and health
   mem <tier>  Read hierarchical memory (tier0: core, tier1: recall, tier2: archival)
+  intent <prompt> Compile natural language intent to TaskContract and EVPI decision
+  benchmark   Run A/B benchmark evaluation across Single, Flat, and Adaptive architectures
+  canary      Run pre-release canary launch gate and audit receipt generator
   rollback    Safely abort and revert the active milestone
   council     Run multi-model deliberation via Agent Council
   help        Show this help message
@@ -36,6 +39,39 @@ case "$cmd" in
     ;;
   verify)
     bash scripts/agyos-verify.sh "$@"
+    ;;
+  benchmark)
+    python3 scripts/ab_compare_benchmark.py "$@"
+    ;;
+  canary)
+    python3 scripts/canary_launch_gate.py "$@"
+    ;;
+  intent)
+    query="$*"
+    if [ -z "$query" ]; then
+      echo "Usage: agyos intent <natural-language-prompt>" >&2
+      exit 1
+    fi
+    python3 -c "
+import json, sys
+sys.path.insert(0, '.')
+from agyos_decision.intent_compiler import compile_intent
+from agyos_decision.evpi_clarify import evaluate_evpi
+
+prompt = sys.argv[1]
+contract = compile_intent(prompt)
+decision = evaluate_evpi(prompt, contract)
+
+print('=== AGYOS TaskContract ===')
+print(json.dumps(contract.to_dict(), indent=2))
+print('=== EVPI Clarification Decision ===')
+print(f'Should Ask Question:  {decision.should_ask_question}')
+print(f'Question:              {decision.question}')
+print(f'Outbox Status:         {decision.outbox_status}')
+print(f'Proceed Immediately:   {decision.proceed_immediately}')
+if decision.assumptions_applied:
+    print(decision.format_assumptions_header())
+" "$query"
     ;;
   state)
     source bin/state.sh

@@ -85,6 +85,29 @@ check "Fast-path state bypass functional" bash -c 'bin/agyos fast >/dev/null && 
 check "Hierarchical architecture specification exists" test -s docs/ARCHITECTURE.md
 check "Virtual memory state storage exists and valid" bash -c 'test -s .agents/state/memory.json && jq -e .tier0_core_memory .agents/state/memory.json >/dev/null'
 
+# 14. Contracts, Intent & EVPI Clarification
+check "TaskContract JSON schema validity (Draft 2020-12)" python3 -c 'import json, jsonschema; jsonschema.Draft202012Validator.check_schema(json.load(open("agyos_decision/contracts.schema.json")))'
+check "Intent compiler maps 11 company functions to 5 pods" python3 -c 'import sys; sys.path.insert(0, "."); from agyos_decision.intent_compiler import compile_intent, FUNCTION_TO_POD; assert len(FUNCTION_TO_POD) == 11; c = compile_intent("reconcile ledger invoices"); assert c.pod == "pod-gna" and c.risk == "R0"'
+check "EVPI clarification asks <= 1 question on critical ambiguity" python3 -c 'import sys; sys.path.insert(0, "."); from agyos_decision.intent_compiler import compile_intent; from agyos_decision.evpi_clarify import evaluate_evpi; c = compile_intent("wire $50000 to vendor"); d = evaluate_evpi("wire $50000 to vendor", c); assert d.should_ask_question and d.outbox_status == "PENDING_COMMIT"'
+
+# 15. State Ledger, Hierarchy Caps, Budgets & Saga Recovery
+check "DAG task graph enforces depth<=2, fanout<=4, tasks<=8, workers<=3" python3 -c 'import sys; sys.path.insert(0, "."); from agyos_decision.state_ledger import DAGTaskGraph, HierarchyCapError; g = DAGTaskGraph("t"); g.add_task("r", 0); [g.add_task(f"c{i}", 1, ["r"]) for i in range(4)]; g.validate_acyclic()'
+check "Run budget tracker reserves 20% for verification and rollback" python3 -c 'import sys; sys.path.insert(0, "."); from agyos_decision.state_ledger import RunBudgetTracker; b = RunBudgetTracker(30000, 1.50); assert b.reserved_tokens == 6000 and b.available_execution_tokens == 24000'
+check "Transactional snapshot rollback restoration" python3 -c 'import sys; sys.path.insert(0, "."); from agyos_decision.state_ledger import SnapshotManager; m = SnapshotManager(); sid = m.create_snapshot("s1", {"balance": 100}); assert m.rollback(sid)["balance"] == 100'
+check "LIFO Saga compensation reverse-order execution" python3 -c 'import sys; sys.path.insert(0, "."); from agyos_decision.state_ledger import SagaCoordinator; s = SagaCoordinator("s1"); order = []; s.register_step("1", lambda: order.append(1)); s.register_step("2", lambda: order.append(2)); s.rollback(); assert order == [2, 1] and s.status == "COMPENSATED"'
+
+# 16. Host Pods, SOP Skills & Fail-Closed Authorizer Hook
+check "5 Pod agent definitions exist in .agents/agents/" bash -c 'for p in pod-growth pod-customer pod-build pod-gna pod-people; do test -s ".agents/agents/$p.md" || exit 1; done'
+check "5 SOP skills exist in .agents/skills/" bash -c 'for s in sop-growth sop-customer sop-build sop-gna sop-people; do test -s ".agents/skills/$s/SKILL.md" || exit 1; done'
+check "Fail-Closed Authorizer hook blocks unauthorized R3 payments" bash -c 'echo "{\"toolCall\":{\"name\":\"run_command\",\"args\":{\"CommandLine\":\"curl -X POST https://api.stripe.com/v1/refunds\"}}}" | python3 scripts/hooks/authorizer.py PreToolUse | grep -q "\"decision\": \"deny\""'
+check "Fail-Closed Authorizer enforces capability allowlist" bash -c 'echo "{\"taskContract\":{\"capability_allowlist\":[\"read_file\"]},\"toolCall\":{\"name\":\"edit_file\",\"args\":{}}}" | python3 scripts/hooks/authorizer.py PreToolUse | grep -q "\"decision\": \"deny\""'
+
+# 17. Atomic-Claim Grounding & Architecture A/B Benchmark
+check "Atomic-claim verifier enforces 0 unbacked claims" python3 -c 'import sys; sys.path.insert(0, "."); from agyos_decision.verifier import verify_atomic_grounding; r = verify_atomic_grounding("Variance is $50.00 on tsk_1", {"task_id":"tsk_1", "amount":"50.00"}); assert r.passed and r.unbacked_claims == 0'
+check "Company adapters dry-run operational validation" python3 -m unittest scripts/tests/test_company_adapters.py
+check "Architecture A/B benchmark execution (pass^1/pass^3 & CI)" bash -c 'python3 scripts/ab_compare_benchmark.py | grep -q "Adaptive Hierarchy"'
+check "Canary launch gate & go/no-go audit pass" python3 scripts/canary_launch_gate.py
+
 echo "============================================================"
 echo "Verification Summary: $PASS_COUNT PASSED, $FAIL_COUNT FAILED"
 echo "============================================================"

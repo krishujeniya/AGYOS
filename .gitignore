@@ -26,7 +26,12 @@ yarn-debug.log*
 pnpm-debug.log*
 *.tsbuildinfo
 
-# Anchor state & telemetry
+# AGYOS state, snapshots & telemetry
+.agents/state/snapshots/
+.agents/state/decisions/*.json
+.agents/state/state.json.lock
+.agents/state/telemetry/archive/
+.agents/state/checkpoints/archive/
 Anchor/.agents/state/telemetry.jsonl
 Anchor/.agents/state/checkpoints/archive/
 Anchor/.agents/state/decisions/archive/

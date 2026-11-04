@@ -1,7 +1,25 @@
 """AGYOS Decision Engine: Fast, non-autoregressive System 1 decision engine with calibrated probabilities."""
 
+from .company_adapters import (
+    BillingFinanceAdapter,
+    CRMAdapter,
+    HelpdeskAdapter,
+    HiringScreenAdapter,
+    LegalAuditAdapter,
+)
+from .contracts import (
+    Approval,
+    Budget,
+    Compensation,
+    Postconditions,
+    TaskContract,
+    TaskResult,
+    validate_contract,
+)
 from .email import clean_email_body, email_state
+from .evpi_clarify import ClarificationDecision, evaluate_evpi
 from .hooks import BaseHook, Hook, PredictContext, PredictHook
+from .intent_compiler import FUNCTION_TO_POD, compile_intent
 from .lang import analyse as detect_language
 from .lang import detect_script, is_english
 from .presets import (
@@ -13,6 +31,15 @@ from .presets import (
 )
 from .router import DEFAULT_MODELS, RouteDecision, Router
 from .skills_router import assess_complexity, classify_domain, decide_skill, select_best_skills
+from .state_ledger import (
+    DAGTaskGraph,
+    HierarchyCapError,
+    OutboxQueue,
+    ReflectionMemory,
+    RunBudgetTracker,
+    SagaCoordinator,
+    SnapshotManager,
+)
 from .structured import DecisionResult, decide
 
 __version__ = "3.1.0"
