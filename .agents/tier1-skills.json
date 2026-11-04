@@ -1909,6 +1909,36 @@
       "path": ".agents/skills/software-architecture"
     },
     {
+      "name": "sop-build",
+      "tier": 1,
+      "description": "Standard Operating Procedure for Build Pod (Product and Engineering). Governs PRD authoring, Test-Driven Development (TDD) red-green-refactor loops, code quality, and regression verification.",
+      "path": ".agents/skills/sop-build"
+    },
+    {
+      "name": "sop-customer",
+      "tier": 1,
+      "description": "Standard Operating Procedure for Customer Pod (Onboarding and Support). Governs client onboarding checklists, ticket diagnosis, policy-adherent response drafting, and defect escalation.",
+      "path": ".agents/skills/sop-customer"
+    },
+    {
+      "name": "sop-gna",
+      "tier": 1,
+      "description": "Standard Operating Procedure for General & Administrative Pod (Finance, Legal, and Operations). Governs invoice reconciliation, legal risk review, and procurement requisitions under strict fiduciary controls.",
+      "path": ".agents/skills/sop-gna"
+    },
+    {
+      "name": "sop-growth",
+      "tier": 1,
+      "description": "Standard Operating Procedure for Growth Pod (Marketing, Lead Generation, and Sales). Governs campaign drafting, audience targeting, compliant lead qualification, and non-binding quote generation.",
+      "path": ".agents/skills/sop-growth"
+    },
+    {
+      "name": "sop-people",
+      "tier": 1,
+      "description": "Standard Operating Procedure for People Pod (Hiring and Talent). Governs objective applicant screening, interview packets, evaluation rubrics, and onboarding handoffs.",
+      "path": ".agents/skills/sop-people"
+    },
+    {
       "name": "springboot-patterns",
       "tier": 1,
       "description": "Spring Boot architecture patterns, REST API design, layered services, data access, caching, async processing, and logging. Use for Java Spring Boot backend work. Use when building or reviewing a Spring Boot backend \u2014 REST layer, services, data access, caching, or async work.",

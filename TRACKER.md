@@ -16,7 +16,7 @@
 |                                 AGYOS CAPACITY                                  |
 +---------------------+-------------------+------------------+--------------------+
 |  PHYSICAL SKILLS    |  MODULAR RULES    |  ROLE AGENTS     |  CORE PLUGINS      |
-|  1,843 Standalone   |  162 Rules (<24K) |  79 Specialized  |  8 Validated (`agy`)|
+|  1,849 Standalone   |  140 Rules (<24K) |  81 Specialized  |  8 Validated (`agy`)|
 +---------------------+-------------------+------------------+--------------------+
 |  OPERATIONAL PODS   |  MCP SERVERS      |  TOTAL SCRIPTS    |  TEST VERIFICATION |
 |  5 Merged Pods      |  1 FastMCP Daemon |  402 Scripts     |  51 / 51 Passed    |

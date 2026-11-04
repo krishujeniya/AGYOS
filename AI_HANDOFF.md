@@ -49,6 +49,12 @@
 - Modernized `.agents/hooks.json` to use checkout-relative commands (`scripts/hooks/...`), removing hardcoded `/home/ai/...` absolute path assumptions.
 - Added `test_all_agent_files_declare_only_valid_host_tools` regression check to `scripts/tests/test_hooks_authorizer.py`.
 
+### 6. Manifest & Documentation Inventory Synchronization
+- Synchronized `.agents/skills-manifest.json` and `.agents/tier1-skills.json` to include the 5 newly created SOP skills (`sop-growth`, `sop-customer`, `sop-build`, `sop-gna`, `sop-people`), bringing the total physical skill count from 1,844 to 1,849 (Tier 1: 372, Tier 2: 1,477).
+- Rebuilt static documentation assets via `scripts/build_docs_data.py` (`docs/skills-data.json`, `docs/ai-catalog.json`, `docs/sitemap.xml`, `docs/robots.txt`, `docs/llms.txt`).
+- Aligned `README.md`, `docs/index.html`, `AGENTS.md`, and `TRACKER.md` with exact filesystem counts (1,849 skills, 140 rules, 81 agents, 51 verification checks).
+- Resolved specification contradiction on Gate 2 complexity score in `AGENTS.md` and `GEMINI.md`: 1-2 fast-path bypass vs 3-5 full 5-gate flow.
+
 ## Verification Evidence Actually Run
 
 - `bash scripts/agyos-verify.sh`: **51 PASSED, 0 FAILED**

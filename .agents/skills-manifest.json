@@ -1,7 +1,7 @@
 {
   "version": "3.1.0",
-  "total_skills": 1844,
-  "tier1_count": 367,
+  "total_skills": 1849,
+  "tier1_count": 372,
   "tier2_count": 1477,
   "skills": [
     {
@@ -9351,6 +9351,36 @@
       "tier": 2,
       "description": "Master smart contract security best practices, vulnerability prevention, and secure Solidity development patterns.",
       "path": ".agents/skills/solidity-security"
+    },
+    {
+      "name": "sop-build",
+      "tier": 1,
+      "description": "Standard Operating Procedure for Build Pod (Product and Engineering). Governs PRD authoring, Test-Driven Development (TDD) red-green-refactor loops, code quality, and regression verification.",
+      "path": ".agents/skills/sop-build"
+    },
+    {
+      "name": "sop-customer",
+      "tier": 1,
+      "description": "Standard Operating Procedure for Customer Pod (Onboarding and Support). Governs client onboarding checklists, ticket diagnosis, policy-adherent response drafting, and defect escalation.",
+      "path": ".agents/skills/sop-customer"
+    },
+    {
+      "name": "sop-gna",
+      "tier": 1,
+      "description": "Standard Operating Procedure for General & Administrative Pod (Finance, Legal, and Operations). Governs invoice reconciliation, legal risk review, and procurement requisitions under strict fiduciary controls.",
+      "path": ".agents/skills/sop-gna"
+    },
+    {
+      "name": "sop-growth",
+      "tier": 1,
+      "description": "Standard Operating Procedure for Growth Pod (Marketing, Lead Generation, and Sales). Governs campaign drafting, audience targeting, compliant lead qualification, and non-binding quote generation.",
+      "path": ".agents/skills/sop-growth"
+    },
+    {
+      "name": "sop-people",
+      "tier": 1,
+      "description": "Standard Operating Procedure for People Pod (Hiring and Talent). Governs objective applicant screening, interview packets, evaluation rubrics, and onboarding handoffs.",
+      "path": ".agents/skills/sop-people"
     },
     {
       "name": "spark-optimization",

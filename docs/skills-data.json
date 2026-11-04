@@ -26486,6 +26486,91 @@
     "description": "Master smart contract security best practices, vulnerability prevention, and secure Solidity development patterns."
   },
   {
+    "id": "sop-build",
+    "name": "Sop Build",
+    "module": "Verification & Testing",
+    "category": "QA & Testing",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "sop-build",
+    "path": ".agents/skills/sop-build",
+    "risk": "safe",
+    "description": "Standard Operating Procedure for Build Pod (Product and Engineering). Governs PRD authoring, Test-Driven Development (TDD) red-green-refactor loops, code quality, and regression verification."
+  },
+  {
+    "id": "sop-customer",
+    "name": "Sop Customer",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "sop-customer",
+    "path": ".agents/skills/sop-customer",
+    "risk": "safe",
+    "description": "Standard Operating Procedure for Customer Pod (Onboarding and Support). Governs client onboarding checklists, ticket diagnosis, policy-adherent response drafting, and defect escalation."
+  },
+  {
+    "id": "sop-gna",
+    "name": "Sop Gna",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "sop-gna",
+    "path": ".agents/skills/sop-gna",
+    "risk": "safe",
+    "description": "Standard Operating Procedure for General & Administrative Pod (Finance, Legal, and Operations). Governs invoice reconciliation, legal risk review, and procurement requisitions under strict fiduciary controls."
+  },
+  {
+    "id": "sop-growth",
+    "name": "Sop Growth",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "sop-growth",
+    "path": ".agents/skills/sop-growth",
+    "risk": "safe",
+    "description": "Standard Operating Procedure for Growth Pod (Marketing, Lead Generation, and Sales). Governs campaign drafting, audience targeting, compliant lead qualification, and non-binding quote generation."
+  },
+  {
+    "id": "sop-people",
+    "name": "Sop People",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "sop-people",
+    "path": ".agents/skills/sop-people",
+    "risk": "safe",
+    "description": "Standard Operating Procedure for People Pod (Hiring and Talent). Governs objective applicant screening, interview packets, evaluation rubrics, and onboarding handoffs."
+  },
+  {
     "id": "spark-optimization",
     "name": "Spark Optimization",
     "module": "Domain & Research Extensions",

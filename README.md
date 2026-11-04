@@ -5,15 +5,15 @@
 <h1 align="center">AGYOS</h1>
 
 <p align="center">
-  <strong>Autonomous Cognitive Agent Operating System &amp; Monorepo of 1,844+ Engineering Skills</strong><br />
+  <strong>Autonomous Cognitive Agent Operating System &amp; Monorepo of 1,849+ Engineering Skills</strong><br />
   <em>Engineered &amp; Authored by Krish Ujeniya</em>
 </p>
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" alt="License: Apache-2.0" /></a>
-  <img src="https://img.shields.io/badge/Skills-1%2C844%20Skills-00F0FF.svg" alt="Skills Count" />
+  <img src="https://img.shields.io/badge/Skills-1%2C849%20Skills-00F0FF.svg" alt="Skills Count" />
   <img src="https://img.shields.io/badge/Protocol-Model%20Context%20Protocol%20(MCP)-6366F1.svg" alt="MCP Daemon" />
-  <img src="https://img.shields.io/badge/Verification-36%2F36_Passed-10B981.svg" alt="Verification" />
+  <img src="https://img.shields.io/badge/Verification-51%2F51_Passed-10B981.svg" alt="Verification" />
   <a href="https://krishujeniya.github.io/AGYOS/"><img src="https://img.shields.io/badge/Docs-GitHub%20Pages-A855F7.svg" alt="Documentation" /></a>
 </p>
 
@@ -21,7 +21,7 @@
 
 ## Overview
 
-**AGYOS** is an autonomous cognitive agent operating system and physical catalog of 1,844+ modular engineering skills, designed to give AI agents deterministic reliability, zero-speculation code generation, and multi-model consensus.
+**AGYOS** is an autonomous cognitive agent operating system and physical catalog of 1,849+ modular engineering skills, designed to give AI agents deterministic reliability, zero-speculation code generation, and multi-model consensus.
 
 All skills reside in a single flat directory with zero subfolders, clear task-based naming, and zero external branding. Every skill encodes proven, actionable runbooks for software architecture, full-stack engineering, security testing, performance tuning, and technical operations.
 
@@ -52,13 +52,13 @@ AGYOS bridges natural-language, exploratory vibe coding with top-1% FAANG / Rese
         └───────────────────────────────────────────┼───────────────────────────────────────────┘
                                                     ▼
                                     ┌────────────────────────────────┐
-                                    │ 1,844+ MODULAR RUNBOOK SKILLS  │
+                                    │ 1,849+ MODULAR RUNBOOK SKILLS  │
                                     │ (Frontend, Backend, Security)  │
                                     └────────────────────────────────┘
 ```
 
 ### 1. Unified Flat Skill Catalog
-- **1,844 Physical Skills**: Every skill is stored directly under `.agents/skills/<name>/SKILL.md` (and mirrored at `skills/<name>/SKILL.md`).
+- **1,849 Physical Skills**: Every skill is stored directly under `.agents/skills/<name>/SKILL.md` (and mirrored at `skills/<name>/SKILL.md`).
 - **Work-Based Naming**: Skills use explicit task names (e.g. `deep-learning-architecture-advisor`, `wcag-accessibility-compliance`, `pentagi-orchestrator`, `clean-architecture-craftsmanship`) for instant zero-shot discovery.
 - **Zero Third-Party Branding**: Pure engineering terminology and clear responsibilities.
 
@@ -78,17 +78,17 @@ Every non-trivial engineering workflow progresses through five deterministic gat
   - `agyos_current`: Human-readable session overview from `CURRENT.md`.
   - `agyos_graph`: Dependency index and system invariant graph.
   - `agyos_checkpoint`: Append structured execution checkpoints.
-  - `agyos_find_skill`: Fast sub-10ms keyword and semantic search over 1,844 skills.
+  - `agyos_find_skill`: Fast sub-10ms keyword and semantic search over 1,849 skills.
   - `agyos_sys_info`: Comprehensive kernel health and subsystem status.
   - `agyos_memory`: Virtual multi-tier cross-session memory manager.
 
 ### 4. AGYOS Decision Engine (`agyos_decision` & `bin/agyos decide`)
 - Fast, non-autoregressive System 1 decision engine and skill router.
 - Automatically classifies incoming tasks across technical domains (`debugging`, `architecture`, `security`, `ui_ux`, `motion`, `database`, `performance`, `devops`, `seo`, `content`).
-- Evaluates task complexity on a calibrated 1–5 scale:
+- Evaluates task complexity on a 1–5 scale:
   - **Complexity 1–2 (Fast-Path)**: Trivial or single-file edits bypass Gates 1–3 straight to `IMPLEMENT`.
   - **Complexity 3–5 (Standard / High-Impact)**: Multi-file features and architecture trigger the complete 5-gate lifecycle.
-- Ranks candidate specialist skills from the 1,844 catalog with calibrated confidence scores and exact runbook paths.
+- Ranks candidate specialist skills from the 1,849 catalog with heuristic relevance scores and exact runbook paths.
 - Accessible via CLI (`bin/agyos decide "<task>"`), MCP tool (`agyos_decision`), and Python API (`from agyos_decision import decide_skill`).
 
 ### 5. Zero-Slash Automation
@@ -175,7 +175,7 @@ AGYOS operationalizes the organizational divisions of FAANG research and enginee
 
 ### Specialized Subagent Roster
 
-AGYOS provides 76 specialized agents configured under `.agents/agents/` that can be directly dispatched by the orchestrator:
+AGYOS provides 81 specialized agents configured under `.agents/agents/` that can be directly dispatched by the orchestrator:
 - `vibe-engineer`: Translates exploratory vibe coding into structured FAANG specifications, tests, and production code.
 - `faang-architect`: Senior technical architect for system scalability, API contracts, ADRs, and failure domain containment.
 - `code-reviewer`: Proactive reviewer for maintainability, idiomatic style, and polyglot quality standards.
@@ -188,13 +188,13 @@ AGYOS provides 76 specialized agents configured under `.agents/agents/` that can
 
 ```
 ├── .agents/
-│   ├── agents/                 # 76 Specialized corporate role agent definitions
+│   ├── agents/                 # 81 Specialized corporate role agent definitions
 │   ├── plugins/                # Validated governance plugins (rules and config)
-│   ├── rules/                  # 140+ Modular governance, polyglot, and SDLC rules
-│   ├── skills/                 # 1,844 Production skills (flat, 1 folder per skill)
+│   ├── rules/                  # 140 Modular governance, polyglot, and SDLC rules
+│   ├── skills/                 # 1,849 Production skills (flat, 1 folder per skill)
 │   ├── state/                  # 5-Gate runtime state and checkpoint journals
 │   ├── workflows/              # 100 Multi-agent execution pipelines
-│   ├── skills-manifest.json    # Complete index of 1,844 skills
+│   ├── skills-manifest.json    # Complete index of 1,849 skills
 │   └── tier1-skills.json       # Curated high-frequency skill registry
 ├── agyos_decision/             # Autonomous Decision Engine & skill routing package
 ├── assets/
@@ -214,7 +214,7 @@ AGYOS provides 76 specialized agents configured under `.agents/agents/` that can
 │   ├── state-server.cjs        # FastMCP zero-dependency stdio JSON-RPC daemon
 │   └── README.md
 ├── scripts/
-│   ├── agyos-verify.sh         # Adversarial verification test suite (34 checks)
+│   ├── agyos-verify.sh         # Adversarial verification test suite (51 checks)
 │   ├── agyos-init.sh           # Environment bootstrapper and self-repair
 │   └── hooks/                  # Real-time tool lifecycle interceptors
 ├── skills/                     # Direct link to .agents/skills/
@@ -234,7 +234,7 @@ AGYOS provides 76 specialized agents configured under `.agents/agents/` that can
 # Bootstrap repository permissions and state daemon
 bash scripts/agyos-init.sh
 
-# Run comprehensive 36-point verification suite
+# Run comprehensive 51-point verification suite
 bash scripts/agyos-verify.sh
 ```
 
@@ -276,7 +276,7 @@ echo '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"agyos_find
 
 ## Skills Catalog Highlights
 
-The repository contains **1,844 skills** organized across major disciplines:
+The repository contains **1,849 skills** organized across major disciplines:
 
 | Domain | Key Skills |
 |--------|------------|
@@ -308,7 +308,7 @@ If you utilize this cognitive architecture, skill catalog, or governance framewo
   title        = {AGYOS: Autonomous AI Agent Frameworks, Workflow Orchestrators & Engineering Skills Monorepo},
   year         = {2026},
   url          = {https://github.com/krishujeniya/AGYOS},
-  note         = {Monorepo containing 1,844 modular skills, 5-gate lifecycle governance, and FastMCP daemon}
+  note         = {Monorepo containing 1,849 modular skills, 5-gate lifecycle governance, and FastMCP daemon}
 }
 ```
 
