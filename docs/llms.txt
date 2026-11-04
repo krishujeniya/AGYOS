@@ -1,4 +1,4 @@
-# Agent Skills Documentation
+# AGYOS Documentation
 
 > Autonomous Cognitive Agent Operating System & Monorepo of 1,842+ Engineering Skills.
 > Engineered & Authored by Krish Ujeniya.

@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="assets/logo.svg" alt="Agent Skills Logo" width="220" />
+  <img src="assets/logo.svg" alt="AGYOS Logo" width="220" />
 </p>
 
-<h1 align="center">Agent Skills</h1>
+<h1 align="center">AGYOS</h1>
 
 <p align="center">
   <strong>Autonomous Cognitive Agent Operating System &amp; Monorepo of 1,842+ Engineering Skills</strong><br />
@@ -21,7 +21,7 @@
 
 ## Overview
 
-**Agent Skills** is an autonomous cognitive agent operating system and physical catalog of 1,842+ modular engineering skills, designed to give AI agents deterministic reliability, zero-speculation code generation, and multi-model consensus.
+**AGYOS** is an autonomous cognitive agent operating system and physical catalog of 1,842+ modular engineering skills, designed to give AI agents deterministic reliability, zero-speculation code generation, and multi-model consensus.
 
 All skills reside in a single flat directory with zero subfolders, clear task-based naming, and zero external branding. Every skill encodes proven, actionable runbooks for software architecture, full-stack engineering, security testing, performance tuning, and technical operations.
 
@@ -204,9 +204,9 @@ If you utilize this cognitive architecture, skill catalog, or governance framewo
 ```bibtex
 @software{ujeniya2026agentskills,
   author       = {Krish Ujeniya},
-  title        = {agent-skills: Autonomous AI Agent Frameworks, Workflow Orchestrators & Engineering Skills Monorepo},
+  title        = {AGYOS: Autonomous AI Agent Frameworks, Workflow Orchestrators & Engineering Skills Monorepo},
   year         = {2026},
-  url          = {https://github.com/krishujeniya/agent-skills},
+  url          = {https://github.com/krishujeniya/AGYOS},
   note         = {Monorepo containing 1,842 modular skills, 5-gate lifecycle governance, and FastMCP daemon}
 }
 ```
@@ -218,4 +218,4 @@ If you utilize this cognitive architecture, skill catalog, or governance framewo
 Licensed under the **Apache License, Version 2.0**. See the [LICENSE](LICENSE) file for terms and conditions.
 
 **Created & Maintained by Krish Ujeniya**  
-*Website: [https://github.com/krishujeniya/agent-skills](https://github.com/krishujeniya/agent-skills)*
+*Website: [https://github.com/krishujeniya/AGYOS](https://github.com/krishujeniya/AGYOS)*
