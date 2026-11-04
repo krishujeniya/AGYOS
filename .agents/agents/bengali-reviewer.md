@@ -2,9 +2,8 @@
 name: bengali-reviewer
 description: Reviews code handling Bengali (Bangla) text for Unicode correctness, proper normalization, script-aware processing, and internationalization best practices. Use when code processes, displays, or stores Bengali text.
 tools:
-  - view_file
-  - grep_search
-  - find_by_name
+  - read_file
+  - run_command
 model: pro
 ---
 

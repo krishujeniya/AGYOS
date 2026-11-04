@@ -2,9 +2,7 @@
 name: kotlin-reviewer
 description: Kotlin and Android/KMP code reviewer. Reviews Kotlin code for idiomatic patterns, coroutine safety, Compose best practices, clean architecture violations, and common Android pitfalls.
 tools:
-  - view_file
-  - grep_search
-  - find_by_name
+  - read_file
   - run_command
 model: pro
 ---

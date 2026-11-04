@@ -2,11 +2,9 @@
 name: harness-optimizer
 description: Improve local agent-harness configuration reliability and cost using eval-driven grading (pass@k/pass^k) derived from the eval-harness skill.
 tools:
-  - view_file
-  - grep_search
-  - find_by_name
+  - read_file
   - run_command
-  - replace_file_content
+  - edit_file
 model: pro
 ---
 

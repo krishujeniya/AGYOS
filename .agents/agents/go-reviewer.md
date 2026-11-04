@@ -2,9 +2,7 @@
 name: go-reviewer
 description: Expert Go code reviewer specializing in idiomatic Go, concurrency patterns, error handling, and performance. Use for all Go code changes. MUST BE USED for Go projects.
 tools:
-  - view_file
-  - grep_search
-  - find_by_name
+  - read_file
   - run_command
 model: pro
 ---

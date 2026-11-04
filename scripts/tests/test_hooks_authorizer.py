@@ -49,6 +49,27 @@ class PodDefinitionsTests(unittest.TestCase):
         for pod in self.REQUIRED_PODS:
             self.assertIn(pod, result.stdout, f"agy agents output missing {pod}")
 
+    def test_all_agent_files_declare_only_valid_host_tools(self):
+        import glob
+        import yaml
+        valid_tools = {
+            "read_file", "edit_file", "write_file", "run_command",
+            "invoke_subagent", "send_message", "search_web", "manage_task", "call_mcp_tool"
+        }
+        for agent_path in (ROOT / ".agents" / "agents").glob("*.md"):
+            content = agent_path.read_text(encoding="utf-8")
+            if content.startswith("---\n"):
+                parts = content.split("---\n", 2)
+                if len(parts) >= 3:
+                    meta = yaml.safe_load(parts[1])
+                    if meta and isinstance(meta, dict):
+                        tools = meta.get("tools", [])
+                        for tool in tools:
+                            self.assertIn(
+                                tool, valid_tools,
+                                f"Agent {agent_path.name} declares invalid host tool: '{tool}'"
+                            )
+
 
 class SOPSkillsTests(unittest.TestCase):
     REQUIRED_SOPS = [

@@ -2,11 +2,9 @@
 name: loop-operator
 description: Operate autonomous agent loops, monitor progress, and intervene safely when loops stall.
 tools:
-  - view_file
-  - grep_search
-  - find_by_name
+  - read_file
   - run_command
-  - replace_file_content
+  - edit_file
 model: pro
 ---
 

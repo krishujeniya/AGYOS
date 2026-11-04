@@ -2,8 +2,8 @@
 name: network-config-reviewer
 description: Reviews router and switch configurations for security, correctness, stale references, risky change-window commands, and missing operational guardrails.
 tools:
-  - view_file
-  - grep_search
+  - read_file
+  - run_command
 model: pro
 ---
 

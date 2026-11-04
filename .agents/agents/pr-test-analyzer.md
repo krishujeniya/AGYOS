@@ -3,9 +3,7 @@ name: pr-test-analyzer
 description: Review pull request test coverage quality and completeness, with emphasis on behavioral coverage and real bug prevention.
 model: pro
 tools:
-  - view_file
-  - grep_search
-  - find_by_name
+  - read_file
   - run_command
 ---
 

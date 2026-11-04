@@ -2,9 +2,7 @@
 name: agent-evaluator
 description: Evaluates agent output against 5-axis quality rubric (accuracy, completeness, clarity, actionability, conciseness). Use after any non-trivial task when the user wants a quality assessment, or when the agent-self-evaluation skill is active. Produces structured scorecard with evidence and improvement suggestions.
 tools:
-  - view_file
-  - grep_search
-  - find_by_name
+  - read_file
   - run_command
 model: pro
 ---

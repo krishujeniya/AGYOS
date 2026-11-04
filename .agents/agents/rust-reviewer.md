@@ -2,9 +2,7 @@
 name: rust-reviewer
 description: Expert Rust code reviewer specializing in ownership, lifetimes, error handling, unsafe usage, and idiomatic patterns. Use for all Rust code changes. MUST BE USED for Rust projects.
 tools:
-  - view_file
-  - grep_search
-  - find_by_name
+  - read_file
   - run_command
 model: pro
 ---

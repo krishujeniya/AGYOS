@@ -3,9 +3,8 @@ name: type-design-analyzer
 description: Analyze type design for encapsulation, invariant expression, usefulness, and enforcement.
 model: pro
 tools:
-  - view_file
-  - grep_search
-  - find_by_name
+  - read_file
+  - run_command
 ---
 
 ## Prompt Defense Baseline

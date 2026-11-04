@@ -2,9 +2,8 @@
 name: network-troubleshooter
 description: Diagnoses network connectivity, routing, DNS, interface, and policy symptoms with a read-only OSI-layer workflow and evidence-backed root cause summary.
 tools:
-  - view_file
+  - read_file
   - run_command
-  - grep_search
 model: pro
 ---
 

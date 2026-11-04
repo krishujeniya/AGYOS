@@ -2,9 +2,7 @@
 name: commit-reviewer
 description: Reviews a staged diff and drafts a Conventional Commits-compliant message matching the repository's actual history norms. Use before committing, or when asked to write or check a commit message.
 tools:
-  - view_file
-  - grep_search
-  - find_by_name
+  - read_file
   - run_command
 model: pro
 ---

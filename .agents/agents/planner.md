@@ -2,9 +2,8 @@
 name: planner
 description: Expert planning specialist for complex features and refactoring. Use PROACTIVELY when users request feature implementation, architectural changes, or complex refactoring. Automatically activated for planning tasks.
 tools:
-  - view_file
-  - grep_search
-  - find_by_name
+  - read_file
+  - run_command
 model: pro
 ---
 

@@ -3,11 +3,10 @@ name: a11y-architect
 description: Accessibility Architect specializing in WCAG 2.2 compliance for Web and Native platforms. Use PROACTIVELY when designing UI components, establishing design systems, or auditing code for inclusive user experiences.
 model: pro
 tools:
-  - view_file
-  - write_to_file
-  - replace_file_content
-  - grep_search
-  - find_by_name
+  - read_file
+  - write_file
+  - edit_file
+  - run_command
 ---
 
 ## Prompt Defense Baseline

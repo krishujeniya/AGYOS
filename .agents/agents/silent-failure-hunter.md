@@ -3,9 +3,7 @@ name: silent-failure-hunter
 description: Review code for silent failures, swallowed errors, bad fallbacks, and missing error propagation.
 model: pro
 tools:
-  - view_file
-  - grep_search
-  - find_by_name
+  - read_file
   - run_command
 ---
 

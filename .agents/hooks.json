@@ -7,12 +7,12 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 /home/ai/Documents/projects/Freelance/AGYOS/scripts/hooks/authorizer.py PreToolUse",
+            "command": "python3 scripts/hooks/authorizer.py PreToolUse",
             "timeout": 15
           },
           {
             "type": "command",
-            "command": "python3 /home/ai/Documents/projects/Freelance/AGYOS/scripts/hooks/agy_os_hook.py PreToolUse",
+            "command": "python3 scripts/hooks/agy_os_hook.py PreToolUse",
             "timeout": 15
           }
         ]
@@ -24,7 +24,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 /home/ai/Documents/projects/Freelance/AGYOS/scripts/hooks/agy_os_hook.py PostToolUse",
+            "command": "python3 scripts/hooks/agy_os_hook.py PostToolUse",
             "timeout": 15
           }
         ]
@@ -33,21 +33,21 @@
     "PreInvocation": [
       {
         "type": "command",
-        "command": "python3 /home/ai/Documents/projects/Freelance/AGYOS/scripts/hooks/agy_os_hook.py PreInvocation",
+        "command": "python3 scripts/hooks/agy_os_hook.py PreInvocation",
         "timeout": 15
       }
     ],
     "PostInvocation": [
       {
         "type": "command",
-        "command": "python3 /home/ai/Documents/projects/Freelance/AGYOS/scripts/hooks/agy_os_hook.py PostInvocation",
+        "command": "python3 scripts/hooks/agy_os_hook.py PostInvocation",
         "timeout": 15
       }
     ],
     "Stop": [
       {
         "type": "command",
-        "command": "python3 /home/ai/Documents/projects/Freelance/AGYOS/scripts/hooks/agy_os_hook.py Stop",
+        "command": "python3 scripts/hooks/agy_os_hook.py Stop",
         "timeout": 15
       }
     ]

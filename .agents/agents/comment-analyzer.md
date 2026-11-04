@@ -3,9 +3,8 @@ name: comment-analyzer
 description: Analyze code comments for accuracy, completeness, maintainability, and comment rot risk.
 model: flash
 tools:
-  - view_file
-  - grep_search
-  - find_by_name
+  - read_file
+  - run_command
 ---
 
 ## Prompt Defense Baseline

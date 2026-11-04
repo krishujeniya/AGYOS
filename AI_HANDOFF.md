@@ -44,10 +44,15 @@
 - `scripts/ab_compare_benchmark.py`: Evaluates Single Agent vs Flat Peer Team vs Adaptive Hierarchy across identical frozen business fixtures (`scripts/tests/fixtures/business_tasks.json`) with N=3 repeated trials and 95% bootstrap confidence intervals.
 - Extended `scripts/agyos-verify.sh`: 51 / 51 adversarial checks passing.
 
+### 5. Role Catalog & Hook Portability Hardening
+- Normalized all 81 agent definitions in `.agents/agents/` (including 71 legacy definitions) to declare strictly valid `agy` 1.5.0 host tools (`read_file`, `write_file`, `edit_file`, `run_command`, `search_web`), eliminating legacy references (`view_file`, `write_to_file`, `replace_file_content`, `grep_search`, `find_by_name`, `read_url_content`).
+- Modernized `.agents/hooks.json` to use checkout-relative commands (`scripts/hooks/...`), removing hardcoded `/home/ai/...` absolute path assumptions.
+- Added `test_all_agent_files_declare_only_valid_host_tools` regression check to `scripts/tests/test_hooks_authorizer.py`.
+
 ## Verification Evidence Actually Run
 
 - `bash scripts/agyos-verify.sh`: **51 PASSED, 0 FAILED**
-- `python3 -m unittest discover -s scripts/tests -v`: **55 PASSED, 0 FAILED**
+- `python3 -m unittest discover -s scripts/tests -v`: **56 PASSED, 0 FAILED**
 - `cd scripts/council && bun test`: **59 PASSED, 0 FAILED**
 - `python3 scripts/ab_compare_benchmark.py`:
   - Single Agent: Pass^1 = 0.80, Pass^3 = 0.80, 9 forbidden actions, 9 false approvals, 21,108 tokens, $0.950, 193ms.
