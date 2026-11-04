@@ -1,7 +1,7 @@
 # CURRENT
 - active_gate: VERIFY
 - target: hierarchical_agent_os_milestones
-- branch_revision: main / 22e8706c2be34f0d4bf87c01c01c1ee5b8741068
+- branch_revision: main / 2084777 (baseline: 22e8706c2be34f0d4bf87c01c01c1ee5b8741068)
 - scope: typed contracts, intent compilation, evpi clarification, state ledger, saga recovery, 5 merged pods, SOP skills, authorizer hook, atomic claim verifier, A/B benchmark
 - iteration: 2/10
 - local_result: PASS; agyos-verify 51/51; unittests 55/55; council bun tests 59/59; canary launch audit LAUNCH_APPROVED; A/B benchmark pass^3 1.00 vs 0.80 single vs 0.00 flat
