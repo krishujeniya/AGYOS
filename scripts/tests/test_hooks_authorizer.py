@@ -15,6 +15,7 @@ Enforces:
 
 import json
 from pathlib import Path
+import shutil
 import subprocess
 import sys
 import unittest
@@ -44,6 +45,7 @@ class PodDefinitionsTests(unittest.TestCase):
             for tool in ("read_file", "edit_file", "write_file", "run_command", "invoke_subagent"):
                 self.assertIn(tool, content)
 
+    @unittest.skipUnless(shutil.which("agy"), "agy CLI not installed in current environment")
     def test_agy_cli_lists_all_5_pods(self):
         result = subprocess.run(["agy", "agents"], capture_output=True, text=True, check=True)
         for pod in self.REQUIRED_PODS:
