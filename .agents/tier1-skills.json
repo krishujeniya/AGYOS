@@ -2113,6 +2113,12 @@
       "path": ".agents/skills/verification-loop"
     },
     {
+      "name": "vibe-to-production",
+      "tier": 1,
+      "description": "Transform high-level vibe coding prompts and non-technical ideas into production-grade, FAANG-level software with automated PRD synthesis, TDD, threat modeling, and design engineering.",
+      "path": ".agents/skills/vibe-to-production"
+    },
+    {
       "name": "vibers-code-review",
       "tier": 1,
       "description": "Human review workflow for AI-generated GitHub projects with spec-based feedback, security review, and follow-up PRs from the Vibers service.",

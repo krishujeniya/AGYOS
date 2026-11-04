@@ -73,17 +73,21 @@ Implements the deterministic Standard Operating Procedure (SOP) paradigm proven 
 - **Gate Transitions**: Programmatically locked in `.agents/state/state.json`.
 - **Fast-Path Router**: Complexity $\le 2$ bypasses Gates 1–3, avoiding bureaucracy for minor edits.
 
-### Layer 4: Virtual Corporate Role Hierarchy
-Simulates the organizational division of labor from FAANG/MANGO engineering organizations:
-- **Product VP / Staff PM** (Gate 1): Requirement synthesis, acceptance criteria, PRD generation.
-- **Principal Systems Architect** (Gate 2–3): Architecture Decision Records (ADRs), C4 models, blast radius containment.
-- **Staff Software Engineer / Maker** (Gate 4): High-velocity TDD Red-Green-Refactor, immutability, small functions (<50 lines).
-- **Principal Security Engineer** (Gate 5): Threat modeling (STRIDE), zero-secret leakage checks, boundary validation.
-- **Staff QA & Verification Lead** (Gate 5): Monotonic test ratchet enforcement, adversarial verification.
+### Layer 4: Virtual Corporate Role Hierarchy (Vibe-to-FAANG Autonomous Operating Model)
+Empowers non-technical operators and rapid vibe coders to build at the level of top-tier FAANG/MANGO engineering organizations:
+- **Staff Product VP / PM** (Gate 1): Requirement synthesis, user stories, acceptance criteria, PRD generation, and out-of-scope boundaries.
+- **Principal Systems Architect (`faang-architect`)** (Gate 2–3): Architecture Decision Records (ADRs), C4 system models, database schema indexing, and failure blast radius containment.
+- **Staff Vibe-to-Production Engineer (`vibe-engineer`)** (Gate 3–4): Translates ambiguous conversational prompts into rigorous technical contracts, TDD test suites, and clean polyglot patterns.
+- **Staff Software Engineer / Senior Maker** (Gate 4): High-velocity TDD Red-Green-Refactor, immutability, small functions (<50 lines), cohesive files (<800 lines).
+- **Vibe Code Auditor (`vibe-code-auditor`)** (Gate 4–5): Audits generated code across 7 production dimensions, eradicates swallowed errors, removes dead code, and checks input validation.
+- **Principal Security Engineer** (Gate 5): Threat modeling (STRIDE), OWASP Top 10 mitigation, zero-secret leak checks, and automated penetration testing (`pentagi-orchestrator`).
+- **Design Engineering Specialist**: Enforces Emil Kowalski UI invariants (concentric radii $R_{inner} = R_{outer} - padding$, 60fps compositor motion, tactile micro-interactions).
+- **Staff QA & Verification Lead** (Gate 5): Monotonic test ratchet enforcement, adversarial verification, and machine evidence generation.
 
 ### Layer 5: Extensibility & Capability Catalog
 - **8 Validated Plugins**: Modular packages installed directly into AGY CLI (`agyos-governance`, `agyos-council`, `agyos-polyglot`, `agyos-verification`, `agyos-business-creative`, `agyos-security`, `agyos-seo`, `agyos-core`).
-- **1,842 Physical Skills**: 399 Tier 1 core software skills and 1,439 Tier 2 domain extensions.
+- **1,844 Physical Skills**: Comprehensive catalog of domain specialists indexed in `.agents/skills-manifest.json` and `docs/skills-data.json`.
+- **AGYOS Decision Engine**: Calibrated System 1 skill router (`bin/agyos decide`) and FastMCP daemon (`agyos_decision`).
 - **Agent Council**: Multi-model consensus panel running Gemini, Claude, and Codex in parallel via Bun.
 
 ---

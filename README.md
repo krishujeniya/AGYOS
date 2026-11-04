@@ -5,15 +5,15 @@
 <h1 align="center">AGYOS</h1>
 
 <p align="center">
-  <strong>Autonomous Cognitive Agent Operating System &amp; Monorepo of 1,842+ Engineering Skills</strong><br />
+  <strong>Autonomous Cognitive Agent Operating System &amp; Monorepo of 1,844+ Engineering Skills</strong><br />
   <em>Engineered &amp; Authored by Krish Ujeniya</em>
 </p>
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" alt="License: Apache-2.0" /></a>
-  <img src="https://img.shields.io/badge/Skills-1%2C842%20Skills-00F0FF.svg" alt="Skills Count" />
+  <img src="https://img.shields.io/badge/Skills-1%2C844%20Skills-00F0FF.svg" alt="Skills Count" />
   <img src="https://img.shields.io/badge/Protocol-Model%20Context%20Protocol%20(MCP)-6366F1.svg" alt="MCP Daemon" />
-  <img src="https://img.shields.io/badge/Verification-34%2F34_Passed-10B981.svg" alt="Verification" />
+  <img src="https://img.shields.io/badge/Verification-36%2F36_Passed-10B981.svg" alt="Verification" />
   <a href="https://krishujeniya.github.io/AGYOS/"><img src="https://img.shields.io/badge/Docs-GitHub%20Pages-A855F7.svg" alt="Documentation" /></a>
 </p>
 
@@ -21,9 +21,11 @@
 
 ## Overview
 
-**AGYOS** is an autonomous cognitive agent operating system and physical catalog of 1,842+ modular engineering skills, designed to give AI agents deterministic reliability, zero-speculation code generation, and multi-model consensus.
+**AGYOS** is an autonomous cognitive agent operating system and physical catalog of 1,844+ modular engineering skills, designed to give AI agents deterministic reliability, zero-speculation code generation, and multi-model consensus.
 
 All skills reside in a single flat directory with zero subfolders, clear task-based naming, and zero external branding. Every skill encodes proven, actionable runbooks for software architecture, full-stack engineering, security testing, performance tuning, and technical operations.
+
+AGYOS bridges natural-language, exploratory vibe coding with top-1% FAANG / Research Lab engineering rigor. Non-technical operators and high-velocity builders describe what they want to achieve, while AGYOS autonomously enforces strict boundary validation, immutability, zero-leak credential management, test-driven development, and deterministic machine verification.
 
 ---
 
@@ -50,13 +52,13 @@ All skills reside in a single flat directory with zero subfolders, clear task-ba
         └───────────────────────────────────────────┼───────────────────────────────────────────┘
                                                     ▼
                                     ┌────────────────────────────────┐
-                                    │ 1,842+ MODULAR RUNBOOK SKILLS  │
+                                    │ 1,844+ MODULAR RUNBOOK SKILLS  │
                                     │ (Frontend, Backend, Security)  │
                                     └────────────────────────────────┘
 ```
 
 ### 1. Unified Flat Skill Catalog
-- **1,842 Physical Skills**: Every skill is stored directly under `.agents/skills/<name>/SKILL.md` (and mirrored at `skills/<name>/SKILL.md`).
+- **1,844 Physical Skills**: Every skill is stored directly under `.agents/skills/<name>/SKILL.md` (and mirrored at `skills/<name>/SKILL.md`).
 - **Work-Based Naming**: Skills use explicit task names (e.g. `deep-learning-architecture-advisor`, `wcag-accessibility-compliance`, `pentagi-orchestrator`, `clean-architecture-craftsmanship`) for instant zero-shot discovery.
 - **Zero Third-Party Branding**: Pure engineering terminology and clear responsibilities.
 
@@ -76,7 +78,7 @@ Every non-trivial engineering workflow progresses through five deterministic gat
   - `agyos_current`: Human-readable session overview from `CURRENT.md`.
   - `agyos_graph`: Dependency index and system invariant graph.
   - `agyos_checkpoint`: Append structured execution checkpoints.
-  - `agyos_find_skill`: Fast sub-10ms keyword and semantic search over 1,843 skills.
+  - `agyos_find_skill`: Fast sub-10ms keyword and semantic search over 1,844 skills.
   - `agyos_sys_info`: Comprehensive kernel health and subsystem status.
   - `agyos_memory`: Virtual multi-tier cross-session memory manager.
 
@@ -86,7 +88,7 @@ Every non-trivial engineering workflow progresses through five deterministic gat
 - Evaluates task complexity on a calibrated 1–5 scale:
   - **Complexity 1–2 (Fast-Path)**: Trivial or single-file edits bypass Gates 1–3 straight to `IMPLEMENT`.
   - **Complexity 3–5 (Standard / High-Impact)**: Multi-file features and architecture trigger the complete 5-gate lifecycle.
-- Ranks candidate specialist skills from the 1,843 catalog with calibrated confidence scores and exact runbook paths.
+- Ranks candidate specialist skills from the 1,844 catalog with calibrated confidence scores and exact runbook paths.
 - Accessible via CLI (`bin/agyos decide "<task>"`), MCP tool (`agyos_decision`), and Python API (`from agyos_decision import decide_skill`).
 
 ### 5. Zero-Slash Automation
@@ -94,17 +96,105 @@ No slash commands or manual mode switches required. The system automatically ins
 
 ---
 
+## The Vibe-to-FAANG Autonomous Operating Model
+
+The central challenge with AI-assisted software generation is the divergence between high-level prompt intent ("vibe coding") and production-grade engineering realities. Left ungoverned, AI assistants generate speculative code, swallow exceptions with bare `except: pass`, hardcode environment credentials, ignore database index constraints, and omit test verification.
+
+AGYOS solves this by embedding a **Virtual FAANG Corporate Engineering Squad** directly into the agent runtime. Operators express ideas in natural human language, while AGYOS autonomously drives execution through Staff and Principal-level rigor.
+
+```
+                    ┌────────────────────────────────────────────────────────┐
+                    │               NATURAL PROMPT / VIBE INTENT             │
+                    │      "Build an AI video subscription app with auth"    │
+                    └────────────────────────────────────────────────────────┘
+                                                │
+                                                ▼
+                    ┌────────────────────────────────────────────────────────┐
+                    │       AGYOS DECISION ENGINE (Domain & Complexity)      │
+                    │        Selects: stripe, clerk-auth, nextjs, drizzle    │
+                    └────────────────────────────────────────────────────────┘
+                                                │
+                                                ▼
+        ┌────────────────────────────────────────────────────────────────────────────────┐
+        │                 AUTONOMOUS 5-PHASE TRANSFORMATION PIPELINE                     │
+        ├────────────────────────────────────────────────────────────────────────────────┤
+        │  PHASE 1: SHAPE SPEC (Staff PM)                                                │
+        │  • Clarifies requirements, scope boundaries, and core user flows.              │
+        │                                                                                │
+        │  PHASE 2: CONTRACTS & ADR (Principal Systems Architect)                       │
+        │  • Authors Architecture Decision Records (`docs/adr/`).                        │
+        │  • Generates explicit Pydantic / TypeScript schema contracts.                  │
+        │                                                                                │
+        │  PHASE 3: TDD MAKER (Senior Software Engineer)                                 │
+        │  • Writes failing test suite first (RED).                                      │
+        │  • Implements minimal immutable code to pass (GREEN).                          │
+        │  • Enforces <50 line functions and clean separation of concerns.               │
+        │                                                                                │
+        │  PHASE 4: VIBE AUDIT & SECURITY (Principal Security & Vibe Auditor)            │
+        │  • Audits against 6 Production Invariants (no swallowed errors, no leaks).     │
+        │  • Scans secrets, validates SQL boundaries, verifies CSS compositor motion.   │
+        │                                                                                │
+        │  PHASE 5: MACHINE VERIFICATION (Staff QA & Verification Lead)                  │
+        │  • Executes compiler, linter, unit, and integration suites (80%+ coverage).    │
+        │  • Enforces Test Ratchet (monotonically non-decreasing test assertions).       │
+        └────────────────────────────────────────────────────────────────────────────────┘
+                                                │
+                                                ▼
+                    ┌────────────────────────────────────────────────────────┐
+                    │            FAANG-GRADE PRODUCTION ARTIFACT             │
+                    │        Clean tests, documented ADR, zero tech debt     │
+                    └────────────────────────────────────────────────────────┘
+```
+
+### The 6 Production Invariants for Vibe Coders
+
+Every piece of generated code must satisfy six non-negotiable invariants:
+
+1. **Boundary Input Validation**: All external inputs (query parameters, body payloads, webhook signatures, file uploads) must be strictly validated using schema contracts (`Pydantic`, `Zod`, or `TypeSpec`) before touching business logic.
+2. **Zero Silent Error Swallowing**: Catching bare `except:` or ignoring rejected promises is strictly blocked. Every error must be typed, logged with contextual telemetry, or propagated cleanly.
+3. **Safe & Idempotent Data Layer**: Database mutations must use transactions and idempotency keys. Queries must specify column selection (no unbounded `SELECT *`) and respect indexed lookups.
+4. **Immutability & Size Ceilings**: Functions must stay under 50 lines with a single responsibility. State must be treated as immutable, returning updated copies rather than mutating in place. Source files observe an 800-line maintainability ceiling.
+5. **Zero-Secret Security Invariant**: API keys, webhook secrets, database connection strings, and private keys must never appear in source code or repositories. Environment variables or secure secret managers are mandatory.
+6. **Deterministic Machine Evidence**: No feature or bugfix is marked complete without executing passing test and compiler output. Speculative completion claims are strictly forbidden.
+
+### The 9 Autonomous Corporate Roles
+
+AGYOS operationalizes the organizational divisions of FAANG research and engineering labs:
+
+| Role | Operational Scope & Ownership |
+|------|-------------------------------|
+| **Product VP / Staff PM** | Translates informal user prompts into rigorous PRDs, user stories, and acceptance boundaries. |
+| **Principal Systems Architect** | Establishes C4 container architecture, dataflow diagrams, and durable Architecture Decision Records. |
+| **Staff Software Engineer (Maker)** | Writes clean, focused, functional code via Red-Green-Refactor TDD loops. |
+| **Principal Security Engineer** | Performs STRIDE threat modeling, OWASP Top 10 boundary audits, and zero-leak credential audits. |
+| **Staff QA & Verification Lead** | Generates regression tests, mutation suites, and enforces test ratchet monotonicity. |
+| **Site Reliability Engineer (SRE)** | Validates operational readiness, health checks, graceful shutdown handling, and rollback plans. |
+| **Principal ML / Data Engineer** | Enforces dataset contract integrity, training split boundaries, and latency benchmarks. |
+| **Legal & Compliance Counsel** | Validates open-source license compatibility (Apache 2.0 / MIT vs GPL) and privacy boundaries (GDPR). |
+| **BizOps & FinOps Director** | Optimizes inference routing economics across fast and high-capability model tiers. |
+
+### Specialized Subagent Roster
+
+AGYOS provides 76 specialized agents configured under `.agents/agents/` that can be directly dispatched by the orchestrator:
+- `vibe-engineer`: Translates exploratory vibe coding into structured FAANG specifications, tests, and production code.
+- `faang-architect`: Senior technical architect for system scalability, API contracts, ADRs, and failure domain containment.
+- `code-reviewer`: Proactive reviewer for maintainability, idiomatic style, and polyglot quality standards.
+- `security-reviewer`: Dedicated security analyst checking OWASP Top 10 vulnerabilities, input handling, and secrets.
+- `qa-tdd-architect`: Specialist enforcing the Arrange-Act-Assert testing pattern and 80%+ test coverage.
+
+---
+
 ## Repository Structure
 
 ```
 ├── .agents/
-│   ├── agents/                 # 74 Specialized corporate role agent definitions
+│   ├── agents/                 # 76 Specialized corporate role agent definitions
 │   ├── plugins/                # Validated governance plugins (rules and config)
-│   ├── rules/                  # 161 Modular governance, polyglot, and SDLC rules
-│   ├── skills/                 # 1,843 Production skills (flat, 1 folder per skill)
+│   ├── rules/                  # 140+ Modular governance, polyglot, and SDLC rules
+│   ├── skills/                 # 1,844 Production skills (flat, 1 folder per skill)
 │   ├── state/                  # 5-Gate runtime state and checkpoint journals
 │   ├── workflows/              # 100 Multi-agent execution pipelines
-│   ├── skills-manifest.json    # Complete index of 1,843 skills
+│   ├── skills-manifest.json    # Complete index of 1,844 skills
 │   └── tier1-skills.json       # Curated high-frequency skill registry
 ├── agyos_decision/             # Autonomous Decision Engine & skill routing package
 ├── assets/
@@ -144,7 +234,7 @@ No slash commands or manual mode switches required. The system automatically ins
 # Bootstrap repository permissions and state daemon
 bash scripts/agyos-init.sh
 
-# Run comprehensive 34-point verification suite
+# Run comprehensive 36-point verification suite
 bash scripts/agyos-verify.sh
 ```
 
@@ -186,7 +276,7 @@ echo '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"agyos_find
 
 ## Skills Catalog Highlights
 
-The repository contains **1,842 skills** organized across major disciplines:
+The repository contains **1,844 skills** organized across major disciplines:
 
 | Domain | Key Skills |
 |--------|------------|
@@ -218,7 +308,7 @@ If you utilize this cognitive architecture, skill catalog, or governance framewo
   title        = {AGYOS: Autonomous AI Agent Frameworks, Workflow Orchestrators & Engineering Skills Monorepo},
   year         = {2026},
   url          = {https://github.com/krishujeniya/AGYOS},
-  note         = {Monorepo containing 1,842 modular skills, 5-gate lifecycle governance, and FastMCP daemon}
+  note         = {Monorepo containing 1,844 modular skills, 5-gate lifecycle governance, and FastMCP daemon}
 }
 ```
 

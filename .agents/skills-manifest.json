@@ -1,7 +1,7 @@
 {
   "version": "3.1.0",
-  "total_skills": 1843,
-  "tier1_count": 366,
+  "total_skills": 1844,
+  "tier1_count": 367,
   "tier2_count": 1477,
   "skills": [
     {
@@ -10515,6 +10515,12 @@
       "tier": 2,
       "description": "Audit rapidly generated or AI-produced code for structural flaws, fragility, technical debt, and production risks. Automatically triggers before merging large features or concluding deep implementation loops to ensure the code is actually robust.",
       "path": ".agents/skills/vibe-code-auditor"
+    },
+    {
+      "name": "vibe-to-production",
+      "tier": 1,
+      "description": "Transform high-level vibe coding prompts and non-technical ideas into production-grade, FAANG-level software with automated PRD synthesis, TDD, threat modeling, and design engineering.",
+      "path": ".agents/skills/vibe-to-production"
     },
     {
       "name": "vibers-code-review",

@@ -29784,6 +29784,23 @@
     "description": "Audit rapidly generated or AI-produced code for structural flaws, fragility, technical debt, and production risks. Automatically triggers before merging large features or concluding deep implementation loops to ensure the code is actually reliable."
   },
   {
+    "id": "vibe-to-production",
+    "name": "Vibe To Production",
+    "module": "Verification & Testing",
+    "category": "QA & Testing",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "vibe-to-production",
+    "path": ".agents/skills/vibe-to-production",
+    "risk": "safe",
+    "description": "Transform high-level vibe coding prompts and non-technical ideas into production-grade, FAANG-level software with automated PRD synthesis, TDD, threat modeling, and design engineering."
+  },
+  {
     "id": "vibers-code-review",
     "name": "Vibers Code Review",
     "module": "Security & Defense",
