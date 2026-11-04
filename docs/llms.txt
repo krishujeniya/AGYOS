@@ -1,19 +1,20 @@
-# AGYOS Documentation
+# Agent Skills Documentation
 
-> The Autonomous Cognitive Operating System for AGY CLI (`agy`).
-> Maintained by krishujeniya.
-> Total skills documented: 1838
-> Total modular rules: 162
+> Autonomous Cognitive Agent Operating System & Monorepo of 1,842+ Engineering Skills.
+> Engineered & Authored by Krish Ujeniya.
+> Total skills documented: 1842
+> Total modular rules: 161
 > Total role agents: 74
 > Total workflow pipelines: 100
 
 ## Core Operating Subsystems
 
-- Anchor Governance: 5-Gate spine (UNDERSTAND -> ANALYZE -> PLAN -> IMPLEMENT -> VERIFY) with FastMCP JSON-RPC 2.0 daemon and adaptive fast-path.
-- Agent Council: Multi-model CLI consensus engine deliberating across Gemini, Claude, and Codex in parallel Bun subprocesses.
-- Emil Kowalski UI/UX: Enforcing concentric border radii, 0ms/150ms/250ms motion timing, compositor-only animations, and tactile micro-interactions.
-- Adversarial Verification: 25-point falsifiable test suite validating plugins, safety hooks, MCP protocols, and ratchet monotonicity.
-- ECC Polyglot: High-efficiency coding standards across 15+ programming languages and frameworks.
+- 5-Gate Governance: Deterministic lifecycle spine (UNDERSTAND -> ANALYZE -> PLAN -> IMPLEMENT -> VERIFY) with FastMCP JSON-RPC 2.0 daemon and adaptive fast-path.
+- Multi-Model Council: Multi-agent CLI consensus engine deliberating across independent subprocesses.
+- PentAGI Autonomous Pentesting: Autonomous penetration testing orchestrator, OOB/SSRF testing, XXE injection testing, and CVE vulnerability intelligence.
+- UI/UX Design Engineering: Enforcing concentric border radii, motion timing, compositor-only animations, and tactile micro-interactions.
+- Adversarial Verification: 34-point falsifiable test suite validating plugins, safety hooks, MCP protocols, and ratchet monotonicity.
+- Polyglot Engineering: Modular engineering standards across 15+ programming languages and frameworks.
 
 ## Structured Skill Catalog
 

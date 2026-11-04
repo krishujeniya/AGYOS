@@ -42,7 +42,7 @@ echo "  ✓ .agents/hooks.json active"
 
 # 5. FastMCP Server
 echo "Verifying Anchor FastMCP Server..."
-chmod +x mcp/agyos-state-server.cjs
+chmod +x mcp/state-server.cjs
 echo "  ✓ Anchor MCP server ready"
 
 # 6. Packaging & Validating 8 AGYOS Plugins

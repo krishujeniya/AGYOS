@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: "Apply when writing or reviewing Python implementation code."
+---
+
 # Development Rules
 > Gelten für jede einzelne Änderung. Keine Ausnahmen unter Zeitdruck.
 

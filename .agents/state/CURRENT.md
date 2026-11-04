@@ -1,8 +1,12 @@
 # CURRENT
-- active_gate: IDLE
-- target: tracker_reconciliation_and_docs_compiler
-- iteration: 3/10
-- last_gate_result: Gate 5 VERIFY passed (25/25 checks green, code review complete)
-- last_action: reset state to IDLE
-- next_action: await operator instructions
-- open_questions: none
+- active_gate: VERIFY
+- target: agy_cli_startup_warnings
+- branch_revision: main / e914967
+- scope: startup metadata, hook contracts, recovered helper, regression checks, workspace config, JSON reference, handoff
+- iteration: 1/10
+- local_result: independent review PASS; main 34/34; regressions 12/12; structure 7/7; 866 Python sources compile without warnings
+- last_action: AGY 1.4.12 no-prompt startup has no metadata or hook parsing warnings
+- remaining: AGY relative GeminiDir fallback; AppArmor sandbox needs administrator access; account out of credits
+- separate_check_failure: legacy eval lacks fixtures and fails two checks
+- next_action: operator handles host/account dependencies; see AI_HANDOFF.md
+- next_command: agy --log-file /tmp/agyos-startup-recheck.log

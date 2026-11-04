@@ -118,7 +118,7 @@ def classify_skill(sid: str, name: str, desc: str):
 
     if sid_lower.startswith("anchor-"):
         return "Anchor Governance", "Governance"
-    if sid_lower.startswith("council-") or sid_lower in ("council", "agent-council"):
+    if sid_lower.startswith("council-") or sid_lower in ("council", "council"):
         return "Agent Council", "Deliberation"
     if (
         sid_lower.startswith(("emil-", "animate", "apple-design", "motion-", "swiftui-", "tailwind-", "threejs-", "ui-", "shadcn", "radix-"))
@@ -140,7 +140,7 @@ def classify_skill(sid: str, name: str, desc: str):
         return "Verification & Testing", "QA & Testing"
     if (
         sid_lower.startswith(("security-", "sast-", "threat-"))
-        or sid_lower in ("007", "aegis", "cred-omega", "security-review")
+        or sid_lower in ("secret-agent-007", "dev-orchestrator", "credential-manager", "security-review")
         or "security" in desc_lower
         or "vulnerability" in desc_lower
     ):

@@ -1,180 +1,221 @@
 <p align="center">
-  <img src="assets/agyos-logo.svg" alt="AGYOS Logo" width="220" />
+  <img src="assets/logo.svg" alt="Agent Skills Logo" width="220" />
 </p>
 
-<h1 align="center">AGYOS</h1>
+<h1 align="center">Agent Skills</h1>
 
 <p align="center">
-  <strong>The Autonomous Cognitive Operating System for AGY CLI</strong><br />
-  <em>Enterprise-Grade 5-Gate Governance • Multi-Model Deliberation • 1,846 Pure Skills • Zero-Slash Automation</em>
+  <strong>Autonomous Cognitive Agent Operating System &amp; Monorepo of 1,842+ Engineering Skills</strong><br />
+  <em>Engineered &amp; Authored by Krish Ujeniya</em>
 </p>
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" alt="License: Apache-2.0" /></a>
-  <img src="https://img.shields.io/badge/Runtime-AGY_CLI_v1.4.12+-06B6D4.svg" alt="AGY CLI" />
-  <img src="https://img.shields.io/badge/Models-Gemini_Flash_%7C_Claude_Thinking-6366F1.svg" alt="Models" />
-  <img src="https://img.shields.io/badge/Verification-23%2F23_Passed-10B981.svg" alt="Verification" />
+  <img src="https://img.shields.io/badge/Skills-1%2C842%20Skills-00F0FF.svg" alt="Skills Count" />
+  <img src="https://img.shields.io/badge/Protocol-Model%20Context%20Protocol%20(MCP)-6366F1.svg" alt="MCP Daemon" />
+  <img src="https://img.shields.io/badge/Verification-34%2F34_Passed-10B981.svg" alt="Verification" />
+  <a href="https://krishujeniya.github.io/AGYOS/"><img src="https://img.shields.io/badge/Docs-GitHub%20Pages-A855F7.svg" alt="Documentation" /></a>
 </p>
 
 ---
 
-## What is AGYOS?
+## Overview
 
-AGYOS is an autonomous operating system built specifically for Google Antigravity CLI (`agy`). It wraps the agent runtime with deterministic 5-gate lifecycle governance, multi-model consensus, strict token economics, and progressive disclosure skills.
+**Agent Skills** is an autonomous cognitive agent operating system and physical catalog of 1,842+ modular engineering skills, designed to give AI agents deterministic reliability, zero-speculation code generation, and multi-model consensus.
 
-AGYOS replaces fragmented agent configurations with a single unified operating standard:
-- **Zero Slash Commands**: Natural language prompt comprehension automatically routes tasks to the correct workflow without typing `/council`, `/anchor`, or `/plan`.
-- **Silent Skill Ingestion (Anti-Meta Standard)**: AGYOS never outputs meta-announcements like *"I am loading skill X"*. It loads runbooks under the hood and delivers direct code changes and proof.
-- **Autonomous Role Assumption**: Acts dynamically as Product Lead, Systems Architect, Lead Engineer, Security Auditor, and QA Lead across each milestone phase without manual role assignment.
-- **Token-Optimized for Flash Models**: Structured for low latency and minimal token consumption on `gemini-3.8-flash-high`, `gemini-3.8-flash-medium`, and `flash_lite` as well as Claude thinking models.
-- **No AI Slop**: Strict adherence to factual, direct human engineering language. Prohibits decorative emojis, AI boilerplate, and unverified claims.
+All skills reside in a single flat directory with zero subfolders, clear task-based naming, and zero external branding. Every skill encodes proven, actionable runbooks for software architecture, full-stack engineering, security testing, performance tuning, and technical operations.
 
 ---
 
-## The 4 Engineering Pillars
+## Core Pillars
 
 ```
-+---------------------------------------------------------------------------------+
-|                                    AGYOS CORE                                   |
-+------------------------+------------------------+-------------------------------+
-|  PROMPT ENGINEERING    |  CONTEXT ENGINEERING   |  GRAPH & HARNESS ENGINEERING  |
-|  • CRISPE + Invariant  |  • 20k Token Budget    |  • AST Dependency Graphs      |
-|  • Falsifiable Specs   |  • Progressive Paging  |  • Test Ratchet (Monotonic)   |
-|  • Negative Bounds     |  • <24KB Rule Ceilings |  • 23-Point Adversarial Suite |
-+------------------------+------------------------+-------------------------------+
+                                    ┌────────────────────────────────┐
+                                    │    NATURAL LANGUAGE PROMPT     │
+                                    └────────────────────────────────┘
+                                                    │
+                                                    ▼
+                     ┌─────────────────────────────────────────────────────────────┐
+                     │          SEARCH-FIRST AUTONOMOUS SKILL DISCOVERY             │
+                     │  (Zero-Slash Ingestion: Finds exact runbook in <10ms)       │
+                     └─────────────────────────────────────────────────────────────┘
+                                                    │
+        ┌───────────────────────────────────────────┼───────────────────────────────────────────┐
+        ▼                                           ▼                                           ▼
+┌───────────────┐                           ┌───────────────┐                           ┌───────────────┐
+│ 5-GATE ENGINE │                           │  FASTMCP STDO │                           │ AGENT COUNCIL │
+│  Governance   │                           │ State Daemon  │                           │  Deliberation │
+└───────────────┘                           └───────────────┘                           └───────────────┘
+        │                                           │                                           │
+        └───────────────────────────────────────────┼───────────────────────────────────────────┘
+                                                    ▼
+                                    ┌────────────────────────────────┐
+                                    │ 1,842+ MODULAR RUNBOOK SKILLS  │
+                                    │ (Frontend, Backend, Security)  │
+                                    └────────────────────────────────┘
 ```
 
-1. **Prompt Engineering**: Every specification follows the CRISPE + Invariant framework (Capacity, Role, Grounding, Directives, Negative Constraints, Done Criteria).
-2. **Context Engineering**: Strict enforcement of the 20,000-token rules budget (`defaultRulesBudget`). Rule files strictly respect the 24KB limit. Skills load lean YAML frontmatter by default; heavy documentation loads on demand from `references/`.
-3. **Graph Engineering**: Context graphs in `.agents/state/context-graph.json` map AST hierarchies, import chains, and blast radius before any file mutation.
-4. **Harness Engineering**: Autonomous TDD loops (RED ➔ GREEN ➔ IMPROVE), eval-driven validation, and a pre-commit Test Ratchet ensuring total test assertions never decrease.
+### 1. Unified Flat Skill Catalog
+- **1,842 Physical Skills**: Every skill is stored directly under `.agents/skills/<name>/SKILL.md` (and mirrored at `skills/<name>/SKILL.md`).
+- **Work-Based Naming**: Skills use explicit task names (e.g. `deep-learning-architecture-advisor`, `wcag-accessibility-compliance`, `pentagi-orchestrator`, `clean-architecture-craftsmanship`) for instant zero-shot discovery.
+- **Zero Third-Party Branding**: Pure engineering terminology and clear responsibilities.
+
+### 2. 5-Gate Lifecycle Governance
+Every non-trivial engineering workflow progresses through five deterministic gates:
+1. **UNDERSTAND**: Task specification, scope boundaries, and acceptance criteria.
+2. **ANALYZE**: Read-only codebase inspection, dependency mapping, and risk analysis.
+3. **PLAN**: Architecture Decision Records (ADR), interface contracts, and test strategy.
+4. **IMPLEMENT**: Test-Driven Development (TDD) red-green-refactor loop with 80%+ test coverage.
+5. **VERIFY**: Adversarial proof, machine evidence, zero linter warnings, and passing test suites.
+
+### 3. FastMCP State Daemon (`mcp/state-server.cjs`)
+- Zero external dependencies; vanilla JSON-RPC 2.0 over standard I/O (`stdio`).
+- Implements Model Context Protocol (MCP) tools:
+  - `anchor_state`: Inspect active governance milestone and gate status.
+  - `anchor_current`: Human-readable session overview from `CURRENT.md`.
+  - `anchor_graph`: Dependency index and system invariant graph.
+  - `anchor_checkpoint`: Append structured execution checkpoints.
+  - `agyos_find_skill`: Fast sub-10ms keyword and semantic search over 1,842 skills.
+  - `agyos_sys_info`: Comprehensive kernel health and subsystem status.
+  - `agyos_memory`: Virtual multi-tier cross-session memory manager.
+
+### 4. Zero-Slash Automation
+No slash commands or manual mode switches required. The system automatically inspects user intent, discovers matching specialist runbooks via `agyos_find_skill`, and executes work with direct machine evidence.
 
 ---
 
-## System Architecture
-
-```mermaid
-flowchart TD
-    Prompt(["Natural Language Prompt"]) --> Kernel["AGYOS Microkernel (agy)"]
-    
-    subgraph SPARK ["Autonomous Intent Router"]
-        Router["PreInvocation Hook (scripts/hooks/agy_os_hook.py)"]
-        Router -->|"Trade-off / Choice"| Council["Agent Council (Multi-Model Quorum)"]
-        Router -->|"Multi-Step Feature"| Anchor["5-Gate Governance Engine"]
-        Router -->|"Bug / Defect"| Debug["Systematic TDD & Root-Cause"]
-    end
-    
-    Kernel --> SPARK
-    
-    subgraph GATES ["The Anchor 5-Gate Spine"]
-        G1["Gate 1: UNDERSTAND (Task List Artifact)"]
-        G2["Gate 2: ANALYZE (Scout Risk & Scope)"]
-        G3["Gate 3: PLAN (Implementation Plan & ADR)"]
-        G4["Gate 4: IMPLEMENT (Autonomous TDD Loop)"]
-        G5["Gate 5: VERIFY (Adversarial Proof & Ratchet)"]
-        G1 --> G2 --> G3 --> G4 --> G5
-    end
-    
-    Anchor --> GATES
-    
-    subgraph DRIVERS ["FastMCP Device Driver"]
-        Server["mcp/agyos-state-server.cjs (Stdio JSON-RPC 2.0)"]
-        Server --> State["anchor_state & anchor_checkpoint"]
-    end
-    
-    Kernel --> DRIVERS
-```
-
----
-
-## The 8 Validated AGYOS Plugins
-
-Packaged in `.agents/plugins/` and verified with `agy plugin validate`:
-
-| Plugin Identifier | Domain | Core Capabilities |
-| :--- | :--- | :--- |
-| **`agyos-anchor`** | Governance | 5-Gate development spine, scope boundary jail, FastMCP server. |
-| **`agyos-council`** | Deliberation | Multi-model CLI panel running Gemini, Claude, and Codex in parallel. |
-| **`agyos-aegis`** | SDLC Architecture | 8 role agents (PM, Architect, Engineer, QA Lead, DevOps) & quality gates. |
-| **`agyos-ecc-polyglot`** | Language Stacks | Idiomatic patterns for Rust, Go, Python, TS, Vue, Django, and PostgreSQL. |
-| **`agyos-verification`** | Testing | Test-driven development (TDD), Playwright E2E testing, and test ratchets. |
-| **`agyos-security`** | Defense | OWASP Top 10 auditing, secret scanners, and repository sanitization. |
-| **`agyos-seo`** | Discovery | Technical SEO audits, Schema.org JSON-LD, sitemaps, and GEO answer engine citations. |
-| **`agyos-business-creative`**| Operations & UI/UX | Client discovery, Statements of Work, Emil Kowalski design engineering, Framer Motion, and GSAP motion engines. |
-
----
-
-## Directory Structure
+## Repository Structure
 
 ```
-AGYOS/
-├── AGENTS.md                          # AGYOS Constitution, Invariants & FAANG Corporate Model
-├── GEMINI.md -> AGENTS.md             # Automatic discovery link
-├── AI_HANDOFF.md                      # Runtime handoff, active task & verification records
-├── assets/
-│   ├── agyos-logo.svg                 # AGYOS Master Vector Logo
-│   └── README.md                      # Visual brand assets specification
-├── bin/
-│   ├── agyos                          # Central AGYOS CLI utility
-│   ├── gate-check.sh                  # Pre-commit test ratchet enforcer
-│   ├── state.sh                       # Atomic state access layer
-│   ├── state-validate.sh              # State self-healing engine
-│   ├── compact.sh                     # Context compaction utility
-│   └── rollback.sh                    # Milestone rollback utility
-├── mcp/
-│   ├── agyos-state-server.cjs         # FastMCP State Server for AGY CLI
-│   ├── README.md                      # MCP server specification & JSON-RPC docs
-│   └── examples/contra-mcp-starter/   # Example MCP server development package
-├── docs/
-│   ├── index.html                     # Web catalog interface (GitHub Pages)
-│   ├── skills-data.json               # Compiled skills dataset
-│   ├── ai-catalog.json                # Discovery metadata
-│   ├── assets/                        # Documentation logos & social previews
-│   └── references/                    # Specifications, PDFs & Prompt engineering library
-│       ├── prompts.md                 # CRISPE + Invariant production prompt library
-│       ├── github-profile-playbook.pdf# Technical portfolio engineering guide
-│       └── Motion_Graphics_Google_Flow_Master_Guide.pdf # Motion timing guide
-├── scripts/
-│   ├── agyos-init.sh                  # Universal zero-config bootstrapper
-│   ├── agyos-verify.sh                # 23-point adversarial test runner
-│   ├── package_agyos_plugins.py       # Plugin packager with logos & rules
-│   ├── build_docs_data.py             # Skill catalog compiler & unslop filter
-│   └── hooks/agy_os_hook.py           # Real-time lifecycle interceptor
 ├── .agents/
-│   ├── hooks.json                     # Real-time lifecycle bus
-│   ├── skills.json                    # Progressive disclosure manifest
-│   ├── plugins.json                   # Active plugin manifest
-│   ├── state/                         # State machine (state.json, CURRENT.md)
-│   ├── rules/                         # 140 modular rules (<24KB each)
-│   ├── workflows/                     # 100 autonomous workflows
-│   ├── agents/                        # 74 specialized role agents
-│   ├── skills/                        # 1,846 consolidated physical skills
-│   └── plugins/                       # 8 validated AGYOS plugins
-├── skills -> .agents/skills           # Direct visible access to 1,846 skills
-├── rules -> .agents/rules             # Direct visible access to 140 rules
-└── workflows -> .agents/workflows     # Direct visible access to 100 workflows
+│   ├── agents/                 # 74 Specialized corporate role agent definitions
+│   ├── plugins/                # Validated governance plugins (rules and config)
+│   ├── rules/                  # 161 Modular governance, polyglot, and SDLC rules
+│   ├── skills/                 # 1,842 Production skills (flat, 1 folder per skill)
+│   ├── state/                  # 5-Gate runtime state and checkpoint journals
+│   ├── workflows/              # 100 Multi-agent execution pipelines
+│   ├── skills-manifest.json    # Complete index of 1,842 skills
+│   └── tier1-skills.json       # Curated high-frequency skill registry
+├── assets/
+│   ├── logo.svg                # Master project vector logo
+│   └── README.md
+├── bin/
+│   ├── agyos                   # Kernel CLI (init, state, gate, verify, council, skill)
+│   ├── compact.sh              # Context compaction utility
+│   ├── gate-check.sh           # Pre-commit test ratchet enforcer
+│   └── state.sh                # Programmatic gate transitions
+├── docs/                       # Static documentation website (GitHub Pages ready)
+│   ├── index.html              # Interactive skill catalog explorer and search
+│   ├── docs.css                # Polished responsive styling
+│   ├── docs.js                 # Client-side instantaneous search
+│   └── skills-data.json        # Pre-indexed search data
+├── mcp/
+│   ├── state-server.cjs        # FastMCP zero-dependency stdio JSON-RPC daemon
+│   └── README.md
+├── scripts/
+│   ├── agyos-verify.sh         # Adversarial verification test suite (34 checks)
+│   ├── agyos-init.sh           # Environment bootstrapper and self-repair
+│   └── hooks/                  # Real-time tool lifecycle interceptors
+├── skills/                     # Direct link to .agents/skills/
+├── rules/                      # Direct link to .agents/rules/
+├── workflows/                  # Direct link to .agents/workflows/
+├── CITATION.cff                # Academic and professional citation metadata
+├── LICENSE                     # Apache 2.0 open-source license
+└── README.md                   # Primary project documentation
 ```
 
 ---
 
-## Quickstart & Verification
+## Quickstart & CLI Usage
 
+### 1. Initialize and Validate Environment
 ```bash
-# Initialize and validate AGYOS in this workspace
-bin/agyos init
+# Bootstrap repository permissions and state daemon
+bash scripts/agyos-init.sh
 
-# Execute the 23-point adversarial machine test suite
-bin/agyos verify
+# Run comprehensive 34-point verification suite
+bash scripts/agyos-verify.sh
+```
 
-# Inspect current milestone and active gate
+### 2. Query the Skills Catalog via CLI
+```bash
+# Search for skills by domain or task
+bin/agyos find "react animation"
+bin/agyos find "pentagi penetration testing"
+bin/agyos find "clean architecture"
+
+# View full skill runbook
+bin/agyos skill wcag-accessibility-compliance
+bin/agyos skill pentagi-orchestrator
+```
+
+### 3. Inspect Governance State
+```bash
+# View active gate, milestone, and invariant status
 bin/agyos state
 
-# Deliberate on an architectural tradeoff via multi-model council
-bin/agyos council "Should we use PostgreSQL or ClickHouse for event analytics?"
+# Advance governance gate
+bin/agyos gate UNDERSTAND
+bin/agyos gate ANALYZE
+bin/agyos gate PLAN
+bin/agyos gate IMPLEMENT
+bin/agyos gate VERIFY
+```
+
+### 4. Query FastMCP State Daemon Directly
+```bash
+# Discover tools via stdio JSON-RPC
+echo '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}' | node mcp/state-server.cjs
+
+# Search skills via JSON-RPC
+echo '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"agyos_find_skill","arguments":{"query":"ssrf testing"}}}' | node mcp/state-server.cjs
+```
+
+---
+
+## Skills Catalog Highlights
+
+The repository contains **1,842 skills** organized across major disciplines:
+
+| Domain | Key Skills |
+|--------|------------|
+| **Architecture & Systems** | `architecture-decision-framework`, `clean-architecture-craftsmanship`, `c4-architecture`, `hexagonal-architecture`, `microservices-patterns`, `event-sourcing-architect` |
+| **Security & Pentesting** | `pentagi-orchestrator`, `ssrf-oob-interaction-testing`, `xxe-xml-injection-testing`, `cve-vulnerability-intelligence`, `security-sandbox-runner`, `metasploit-framework`, `sqlmap-database-pentesting` |
+| **Frontend & UI/UX** | `ui-design-engineering-standards`, `wcag-accessibility-compliance`, `shadcn-ui-components`, `web-animation-design`, `threejs-webgl-development`, `tailwind-patterns` |
+| **Backend & Databases** | `database-schema-modeling`, `postgres-patterns`, `fastapi-pro`, `rust-patterns`, `golang-patterns`, `redis-patterns`, `graphql-architect` |
+| **AI, ML & Agents** | `deep-learning-architecture-advisor`, `self-supervised-learning-jepa`, `ai-agent-discovery`, `multi-agent-execution-benchmark`, `kanban-agent-pipeline`, `eval-harness` |
+| **DevOps & Infrastructure** | `aws-cloud-architecture`, `terraform-infrastructure-as-code`, `kubernetes-architect`, `docker-expert`, `decentralized-cluster-management`, `prometheus-configuration` |
+
+---
+
+## Interactive Documentation (GitHub Pages)
+
+The complete interactive documentation and live skill search explorer is available at:
+**[https://krishujeniya.github.io/AGYOS/](https://krishujeniya.github.io/AGYOS/)**
+
+The documentation site is 100% static, client-side, zero-dependency, and automatically deployed via GitHub Actions on every commit to `main`.
+
+---
+
+## Citation & Authorship
+
+If you utilize this cognitive architecture, skill catalog, or governance framework in your research, agents, or production deployments, please cite:
+
+```bibtex
+@software{ujeniya2026agentskills,
+  author       = {Krish Ujeniya},
+  title        = {agent-skills: Autonomous AI Agent Frameworks, Workflow Orchestrators & Engineering Skills Monorepo},
+  year         = {2026},
+  url          = {https://github.com/krishujeniya/agent-skills},
+  note         = {Monorepo containing 1,842 modular skills, 5-gate lifecycle governance, and FastMCP daemon}
+}
 ```
 
 ---
 
 ## License
 
-Apache-2.0. Maintained by [Krish Ujeniya](https://github.com/krishujeniya).
+Licensed under the **Apache License, Version 2.0**. See the [LICENSE](LICENSE) file for terms and conditions.
+
+**Created & Maintained by Krish Ujeniya**  
+*Website: [https://github.com/krishujeniya/agent-skills](https://github.com/krishujeniya/agent-skills)*

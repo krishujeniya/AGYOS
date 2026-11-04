@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: "Apply when profiling or changing concurrency, caching, and resource usage."
+---
+
 # Performance Rules
 
 These rules govern performance-aware development in any project using ANCHOR.

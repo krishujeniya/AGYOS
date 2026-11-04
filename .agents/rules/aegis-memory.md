@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: "Apply when configuring or using the project memory system."
+---
+
 # Memory-System — Automatisches Wissensmanagement
 
 > **Priorität:** 🟠 Hoch

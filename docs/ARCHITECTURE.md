@@ -1,6 +1,7 @@
-# AGYOS Cognitive Architecture & System Principles
+# Agent Skills Cognitive Architecture & System Principles
 
-> **Governing System**: AGYOS v3.1  
+> **Governing System**: Agent Skills Cognitive OS
+> **Author**: Krish Ujeniya  
 > **Runtime Target**: Google Antigravity CLI (`agy`) v1.4.12+  
 > **Architecture Paradigm**: 6-Layer Hierarchical AI Operating System (Synthesizing AIOS, MemGPT/Letta, MetaGPT, and Anchor Governance)
 
@@ -47,16 +48,16 @@ graph TD
 Inspired by the virtual memory paging architectures of MemGPT and Letta:
 - **Tier 0 (Core Working Memory)**: Active persona, user preferences, runtime identity, and inviolable invariants stored in `.agents/state/memory.json`. Loaded into the active prompt.
 - **Tier 1 (Recall Memory / Cache)**: Conversation summaries, milestone checkpoints (`.agents/state/checkpoints/`), and current session status (`.agents/state/CURRENT.md`).
-- **Tier 2 (Archival Memory / Deep Storage)**: The indexed 1,838-skill catalog (`.agents/skills-manifest.json` and `docs/skills-data.json`), paged into context JIT via `agyos_find_skill`.
+- **Tier 2 (Archival Memory / Deep Storage)**: The indexed 1,842-skill catalog (`.agents/skills-manifest.json` and `docs/skills-data.json`), paged into context JIT via `agyos_find_skill`.
 
 ### Layer 2: FastMCP Syscall & Driver Bus
-- **Driver**: `mcp/agyos-state-server.cjs` (Zero-dependency stdio JSON-RPC 2.0 daemon)
+- **Driver**: `mcp/state-server.cjs` (Zero-dependency stdio JSON-RPC 2.0 daemon)
 - **Exposed Syscalls**:
   - `anchor_state`: Inspect active gate, milestone, iteration, and token metrics.
   - `anchor_current`: Read human-readable session markdown summary.
   - `anchor_graph`: Read context dependency DAG and invariant status.
   - `anchor_checkpoint`: Audit ledger entries for specific milestones.
-  - `agyos_find_skill`: High-speed multi-token semantic search over 1,838 skills.
+  - `agyos_find_skill`: High-speed multi-token semantic search over 1,842 skills.
   - `agyos_sys_info`: Comprehensive OS runtime diagnostics, loaded drivers, and subsystem health.
   - `agyos_memory`: Virtual memory read, write, and list operations across tiers.
 
@@ -82,7 +83,7 @@ Simulates the organizational division of labor from FAANG/MANGO engineering orga
 
 ### Layer 5: Extensibility & Capability Catalog
 - **8 Validated Plugins**: Modular packages installed directly into AGY CLI (`agyos-anchor`, `agyos-council`, `agyos-polyglot`, `agyos-verification`, `agyos-business-creative`, `agyos-security`, `agyos-seo`, `agyos-aegis`).
-- **1,838 Physical Skills**: 399 Tier 1 core software skills and 1,439 Tier 2 domain extensions.
+- **1,842 Physical Skills**: 399 Tier 1 core software skills and 1,439 Tier 2 domain extensions.
 - **Agent Council**: Multi-model consensus panel running Gemini, Claude, and Codex in parallel via Bun.
 
 ---

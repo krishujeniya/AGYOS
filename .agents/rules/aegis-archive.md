@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: "Apply when completing or archiving OpenSpec changes."
+---
+
 # Rule: OpenSpec Archive Required
 
 > **CRITICAL:** All completed OpenSpec changes MUST be archived. Never leave finished changes in `openspec/changes/`.

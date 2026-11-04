@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: "Apply when measuring or changing service performance and database query latency."
+---
+
 # Performance Rules
 > Performance ist eine Feature-Anforderung, kein Nachgedanke.
 

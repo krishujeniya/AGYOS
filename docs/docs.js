@@ -135,7 +135,7 @@
 
     const html = pageItems.map(skill => {
       const runtimeBadges = (skill.runtime || []).map(r => `<span class="tag">${escapeHtml(r)}</span>`).join(' ');
-      const command = skill.command || `aegis use ${skill.id}`;
+      const command = skill.command || `bin/agyos skill ${skill.id}`;
       return `
         <article class="skill-row">
           <div class="skill-row-top">
@@ -143,7 +143,7 @@
               <span class="skill-name">${escapeHtml(skill.name)}</span>
               <span class="skill-id">${escapeHtml(skill.id)}</span>
             </div>
-            <span class="tag">${escapeHtml(skill.module || 'Aegis')}</span>
+            <span class="tag">${escapeHtml(skill.module || 'Engineering')}</span>
           </div>
           <p class="skill-desc">${escapeHtml(skill.description)}</p>
           <div class="skill-row-bottom">

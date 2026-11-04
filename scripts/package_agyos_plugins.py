@@ -31,7 +31,7 @@ PLUGINS_SPEC = [
             "mcpServers": {
                 "anchor": {
                     "command": "node",
-                    "args": [str(REPO_ROOT / "mcp/agyos-state-server.cjs")]
+                    "args": [str(REPO_ROOT / "mcp/state-server.cjs")]
                 }
             }
         },
@@ -45,7 +45,7 @@ PLUGINS_SPEC = [
         "name": "Agent Council Multi-Model Deliberation",
         "description": "Multi-agent CLI deliberation panel running Gemini, Claude, and Codex in parallel for architectural consensus.",
         "skills_src": [
-            (".agents/skills/agent-council-nudge", "agent-council-nudge"),
+            (".agents/skills/council-nudge", "council-nudge"),
             (".agents/skills/council-list", "council-list"),
             (".agents/skills/council-nudge", "council-nudge"),
             (".agents/skills/council-outcome", "council-outcome"),
@@ -61,7 +61,7 @@ PLUGINS_SPEC = [
         "name": "Aegis SDLC & 8 Expert Role Agents",
         "description": "Complete software development lifecycle automation with 8 expert role agents and 11 quality guardrails.",
         "skills_src": [
-            (".agents/skills/aegis", "aegis"),
+            (".agents/skills/dev-orchestrator", "dev-orchestrator"),
             (".agents/skills/architect", "architect"),
             (".agents/skills/code-architect", "code-architect"),
             (".agents/skills/code-explorer", "code-explorer"),

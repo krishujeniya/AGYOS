@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: "Apply when reviewing authentication, secrets, input validation, or data access."
+---
+
 # Security Rules
 > Security ist kein Feature — es ist eine Grundanforderung. Kein Code ohne Security-Review.
 

@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: "Apply when designing exception handling, validation, or recovery paths."
+---
+
 # Error Handling Rules
 > Kein silent fail. Kein nacktes except. Jeder Fehler wird behandelt, geloggt und kommuniziert.
 

@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: "Apply when changing environment variables, configuration, or deployment settings."
+---
+
 # Environment & Configuration Rules
 > Konfiguration ist Code. Alles ist konfigurierbar. Nichts ist hardgecoded.
 

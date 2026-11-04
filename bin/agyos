@@ -11,7 +11,7 @@ Usage: agyos <command> [arguments]
 
 Commands:
   init        Initialize or self-repair AGYOS in this workspace
-  verify      Execute the 33-point adversarial verification suite
+  verify      Execute the adversarial verification suite
   state       Display current milestone, active gate, and iteration
   gate <name> Transition active gate (UNDERSTAND|ANALYZE|PLAN|IMPLEMENT|VERIFY)
   compact     Execute context window compaction and reset CURRENT.md
@@ -71,7 +71,7 @@ case "$cmd" in
       exit 1
     fi
     json_req=$(jq -c -n --arg q "$query" '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"agyos_find_skill","arguments":{"query":$q}}}')
-    echo "$json_req" | node mcp/agyos-state-server.cjs | jq -r '.result.content[0].text // .result.error // "No response"'
+    echo "$json_req" | node mcp/state-server.cjs | jq -r '.result.content[0].text // .result.error // "No response"'
     ;;
   skill)
     target_skill="${1:-}"
@@ -89,7 +89,7 @@ case "$cmd" in
     ;;
   sysinfo)
     json_req='{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"agyos_sys_info","arguments":{}}}'
-    echo "$json_req" | node mcp/agyos-state-server.cjs | jq -r '.result.content[0].text // .result.error // "No response"'
+    echo "$json_req" | node mcp/state-server.cjs | jq -r '.result.content[0].text // .result.error // "No response"'
     ;;
   mem|memory)
     tier="${1:-tier0}"
@@ -97,7 +97,7 @@ case "$cmd" in
     action="list"
     if [ -n "$key" ]; then action="read"; fi
     json_req=$(jq -c -n --arg a "$action" --arg t "$tier" --arg k "$key" '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"agyos_memory","arguments":{"action":$a,"tier":$t,"key":$k}}}')
-    echo "$json_req" | node mcp/agyos-state-server.cjs | jq -r '.result.content[0].text // .result.error // "No response"'
+    echo "$json_req" | node mcp/state-server.cjs | jq -r '.result.content[0].text // .result.error // "No response"'
     ;;
   rollback)
     bash bin/rollback.sh "$@"

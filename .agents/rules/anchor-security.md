@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: "Apply when handling credentials, external inputs, dependencies, or tool permissions."
+---
+
 # Security Rules
 
 These rules govern security hygiene in any project using ANCHOR.

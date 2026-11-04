@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: "Apply when implementing structured logs, correlation IDs, or error reporting."
+---
+
 # Logging Rules
 > Strukturiertes Logging von Anfang an. Kein print(). Kein f"Error: {e}".
 

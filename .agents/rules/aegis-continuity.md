@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: "Apply when maintaining session continuity and project working memory."
+---
+
 # Continuity — Working Memory Protocol
 
 > **Priorität:** 🔴 Kritisch

@@ -1,25 +1,27 @@
-# AGYOS MCP Architecture & Daemons
+# Model Context Protocol (MCP) Daemons
 
-This directory contains the Model Context Protocol (MCP) server implementations and example starter packages for the AGYOS ecosystem.
+This directory contains Model Context Protocol (MCP) daemon implementations.
+All MCP tools reside directly in this directory with zero subfolders.
 
 ## Components
 
-### 1. `agyos-state-server.cjs` (Anchor FastMCP Daemon)
+### `state-server.cjs` (Anchor FastMCP Daemon)
 - **Runtime**: Node.js (Zero external dependencies, vanilla JSON-RPC 2.0 over standard I/O).
 - **Protocol**: Model Context Protocol (MCP) v2024-11-05.
-- **Port / Transport**: `stdio`.
+- **Transport**: `stdio`.
 - **Registered Tools**:
   - `anchor_state`: Returns current active milestone, gate status, iteration count, and governance flags from `.agents/state/state.json`.
+  - `anchor_current`: Read CURRENT.md human-readable session and milestone status summary.
+  - `anchor_graph`: Read context-graph.json dependency index and invariant map.
   - `anchor_checkpoint`: Atomically appends structured machine execution records to `.agents/state/checkpoints/`.
-- **Registration**: Registered in `~/.gemini/config/mcp_config.json` under the server key `anchor`.
-
-### 2. `examples/contra-mcp-starter/`
-- Example MCP server development template demonstrating tool definition, prompt registration, and resource exposure.
+  - `agyos_find_skill`: Search the unified catalog of skills to find the best matching specialist skills.
+  - `agyos_sys_info`: Get full system overview including kernel status, active gate, and subsystem health.
+  - `agyos_memory`: Hierarchical memory manager for cross-session continuity.
 
 ## Verification
 
-The FastMCP daemon is verified via deterministic JSON-RPC queries:
+The daemon is verified via deterministic JSON-RPC queries:
 
 ```bash
-echo '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"anchor_state","arguments":{}}}' | node mcp/agyos-state-server.cjs
+echo '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"anchor_state","arguments":{}}}' | node mcp/state-server.cjs
 ```

@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: "Apply when implementing error handling, retries, or logging."
+---
+
 # Error Handling Rules
 
 These rules govern how errors are handled in any project using ANCHOR.

@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: "Apply when adding, changing, or reviewing automated tests."
+---
+
 # Testing Rules
 
 These rules govern how tests are written and maintained in any project using ANCHOR.

@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: "Apply when implementing Python unit, integration, or end-to-end tests."
+---
+
 # Testing Rules
 > Kein Code gilt als fertig ohne Tests. "Ich teste das manuell" ist keine Strategie.
 

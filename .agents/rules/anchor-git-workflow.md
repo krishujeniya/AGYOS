@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: "Apply when preparing commits, branches, or pull requests."
+---
+
 # Git Workflow Rules
 
 These rules govern git operations in any project using ANCHOR.

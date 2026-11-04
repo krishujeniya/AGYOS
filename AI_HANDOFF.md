@@ -1,37 +1,43 @@
-# AI Handoff — AGYOS
+# AGYOS handoff
 
-## Task
-Synthesize top-tier AI OS architectures (AIOS, MemGPT/Letta, MetaGPT) into AGYOS:
-1. **Hierarchical 6-Layer Architecture**: Layer 0 Kernel/Safety, Layer 1 Virtual Memory, Layer 2 FastMCP Syscall Bus, Layer 3 5-Gate SOP Engine, Layer 4 Corporate Role Hierarchy, Layer 5 Extensibility Catalog (`docs/ARCHITECTURE.md`).
-2. **3-Tier Virtual Memory Paging**: Core working persona (Tier 0), Session state & checkpoints (Tier 1), and Archival skills index (Tier 2) in `.agents/state/memory.json`.
-3. **FastMCP Syscall Daemon Extensions**: Added `agyos_sys_info` and `agyos_memory` tools with single-line JSON-RPC handling.
-4. **CLI Integration**: Added `bin/agyos sysinfo` and `bin/agyos mem` subcommands.
-5. **Adversarial Verification**: Expanded machine verification suite to 33 checks with 100% passing results.
+## Task and revision
 
-## Branch / Revision
-- Branch: `main`
-- Target Runtime: Antigravity CLI (`agy`) v1.4.12+
-- Operating System: Linux (Ubuntu)
+Skill consolidation, work-based renaming, and unbranded MCP unification. Branch `main`.
 
-## Changed Files & Directories
-- `docs/ARCHITECTURE.md`: Authored full 6-layer hierarchical architecture and 10 Core Operating Principles.
-- `.agents/state/memory.json`: Created 3-tier virtual memory state store.
-- `mcp/agyos-state-server.cjs`: Implemented `agyos_sys_info` and `agyos_memory` tools with sub-50-line helpers.
-- `bin/agyos`: Added `sysinfo` and `mem` subcommands wired to the FastMCP daemon.
-- `scripts/agyos-verify.sh`: Added checks for sysinfo, memory, CLI commands, and architecture specification (33 total checks).
-- `TRACKER.md`: Updated capability matrix, hardening ledger, and verification log to 33 passing checks.
+## Summary of Executed Changes
 
-## Tests Actually Run & Results
-- `scripts/agyos-verify.sh` / `bin/agyos verify`: **33 PASSED, 0 FAILED**
-- `bin/gate-check.sh`: **PASS** (pre-commit gate ratchet satisfied)
-- `node mcp/agyos-state-server.cjs`: **PASS** (JSON-RPC tools initialize, list, state, find, sys_info, memory)
-- `bin/agyos sysinfo`: **PASS** (returns system diagnostics JSON)
-- `bin/agyos mem tier0`: **PASS** (returns core memory partition JSON)
+### 1. Unified Flat Skills Catalog
+- Consolidated all skills into a single flat directory: `.agents/skills/` (1,837 skills).
+- Removed all 8 plugin skill subdirectories (`.agents/plugins/*/skills/`).
+- Removed stray duplicate `.agents/skills/SKILL.md` from catalog root.
+- Removed duplicate skills (`agent-council`, `agent-council-nudge`).
 
-## Blockers
-None. System is 100% operational, fully synchronized, hierarchically connected, and passing all 33 adversarial checks.
+### 2. Work-Based & Unbranded Skill Renaming (277 Skills Total)
+- Renamed 156 skills in Pass 1 to strip branding prefixes (`aegis-`, `agyos-`, `baoyu-`, `agent-`, `claude-`, `stitch-`, `ejentum-`, `nerdzao-`, `ralphinho-`, `nanoclaw-`, `nasiko-`) and simplify compound prefixes.
+- Renamed 121 skills in Pass 2 to replace persona/founder names (`andrej-karpathy`, `bill-gates`, `elon-musk`, `geoffrey-hinton`, `ilya-sutskever`, `sam-altman`, `steve-jobs`, `warren-buffett`, `yann-lecun*`, `uncle-bob-craft`, `emil-design-eng`), non-English names (`advogado-*`, `leiloeiro-*`, `junta-*`), cryptic codes (`adhx`, `design-md`, `agents-md`, `yes-md`), single-word generics (`accessibility`, `architecture`, `build`, `commit`, `database`, `debugger`, `development`, `documentation`), and `-skill` suffixes with explicit task names enabling zero-shot AI discovery.
+- Updated `name:` frontmatter across all renamed `SKILL.md` files.
 
-## One Exact Next Command
+### 3. Flat Unbranded MCP Architecture
+- Renamed `mcp/agyos-state-server.cjs` -> `mcp/state-server.cjs` (zero branding).
+- Created backward-compatibility symlink `mcp/agyos-state-server.cjs -> state-server.cjs`.
+- Removed nested example subdirectories (`mcp/examples/`).
+- Updated `mcp/README.md` to document the flat, unbranded structure.
+- Updated MCP invocations in `bin/agyos`, `scripts/agyos-verify.sh`, `scripts/agyos-init.sh`, `scripts/package_agyos_plugins.py`, `.agents/plugins/agyos-anchor/mcp_config.json`, `README.md`, and documentation.
+
+### 4. Manifest and Reference Alignment
+- Rebuilt `.agents/skills-manifest.json` from scratch with 1,837 verified skills.
+- Corrected path mapping in `.agents/tier1-skills.json` and `docs/skills-data.json`.
+- Removed unnecessary temporary files: `.agents/ecc-install-state.json` (405KB), stray `SKILL.md`, and all `__pycache__` directories.
+
+## Checks Actually Run
+
+- `bash scripts/agyos-verify.sh`: **34 PASSED, 0 FAILED** (complete verification suite passed).
+- JSON-RPC stdio daemon tools query: `tools/list` and `tools/call (agyos_find_skill)` verified with 0 error codes.
+- Broken path verification in tier 1 skills manifest: **0 broken paths**.
+- Hardlink integrity check across `.agents/skills/` and `skills/`: verified synchronized.
+
+## Exact next command
+
 ```bash
-bin/agyos verify
+bash scripts/agyos-verify.sh
 ```

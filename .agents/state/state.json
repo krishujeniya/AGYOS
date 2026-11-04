@@ -1,8 +1,8 @@
 {
   "project": "New ANCHOR Project",
   "current_gate": "IDLE",
-  "current_milestone": null,
-  "iteration": 0,
+  "current_milestone": "agy_cli_startup_warnings",
+  "iteration": 1,
   "iteration_cap": 10,
   "token_budget": 50000,
   "max_cost_usd": 10.0,
@@ -10,7 +10,7 @@
   "tokens_used": 0,
   "no_progress_strikes": 0,
   "hitl_approvals": {},
-  "last_updated": "2026-07-25T05:20:45Z",
+  "last_updated": "2026-11-04T05:16:38.656984+00:00",
   "last_known_commit": "8cfd812c1b4d2f3757d22a904ea3e40c708b109c",
   "last_known_commit_COMPACT": null,
   "skill_versions": {

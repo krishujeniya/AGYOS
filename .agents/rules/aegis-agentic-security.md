@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: "Apply when implementing or reviewing autonomous agent tools and execution permissions."
+---
+
 # Agentic Security Mandate
 
 > **Enforcement Level**: CRITICAL

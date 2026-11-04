@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: "Apply when preparing commits, branches, or release history."
+---
+
 # Git Workflow Rules
 > Saubere Git-History ist Dokumentation. Jeder Commit erklärt Was und Warum.
 
