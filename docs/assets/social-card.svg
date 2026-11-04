@@ -1,68 +1,77 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640">
   <defs>
-    <radialGradient id="bg" cx="50%" cy="40%" r="70%">
-      <stop offset="0%" stop-color="#1E1B4B" stop-opacity="0.8"/>
-      <stop offset="60%" stop-color="#0B0F19" stop-opacity="0.95"/>
-      <stop offset="100%" stop-color="#030712" stop-opacity="1"/>
+    <radialGradient id="monoCardBg" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#18181B" stop-opacity="0.95"/>
+      <stop offset="60%" stop-color="#09090B" stop-opacity="0.98"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="1"/>
     </radialGradient>
-    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#00F0FF"/>
-      <stop offset="50%" stop-color="#6366F1"/>
-      <stop offset="100%" stop-color="#A855F7"/>
+    <linearGradient id="monoAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#A1A1AA"/>
+      <stop offset="100%" stop-color="#71717A"/>
     </linearGradient>
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="40" result="blur"/>
+    <filter id="monoCardGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="30" result="blur"/>
       <feComposite in="SourceGraphic" in2="blur" operator="over"/>
     </filter>
   </defs>
 
   <!-- Background -->
-  <rect width="1280" height="640" fill="url(#bg)"/>
+  <rect width="1280" height="640" fill="url(#monoCardBg)"/>
 
-  <!-- Ambient Glow Orbs -->
-  <circle cx="1120" cy="140" r="180" fill="#00F0FF" opacity="0.1" filter="url(#glow)"/>
-  <circle cx="200" cy="500" r="160" fill="#A855F7" opacity="0.08" filter="url(#glow)"/>
+  <!-- Subtle Precision Grid Accents -->
+  <circle cx="1120" cy="140" r="180" fill="#FFFFFF" opacity="0.03" filter="url(#monoCardGlow)"/>
+  <circle cx="200" cy="500" r="160" fill="#FFFFFF" opacity="0.02" filter="url(#monoCardGlow)"/>
 
-  <!-- Inner Border Card -->
-  <rect x="32" y="32" width="1216" height="576" rx="24" fill="none" stroke="#1E293B" stroke-width="2"/>
+  <!-- Inner Border Card (Concentric Radii R=24) -->
+  <rect x="32" y="32" width="1216" height="576" rx="24" fill="none" stroke="#27272A" stroke-width="2"/>
 
   <!-- Category Tag -->
-  <g transform="translate(80, 96)">
-    <rect width="320" height="34" rx="17" fill="#0F172A" stroke="#334155" stroke-width="1.2"/>
-    <text x="160" y="22" fill="#00F0FF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" letter-spacing="3" text-anchor="middle">AUTONOMOUS COGNITIVE OS</text>
+  <g transform="translate(80, 88)">
+    <rect width="320" height="34" rx="17" fill="#18181B" stroke="#3F3F46" stroke-width="1.2"/>
+    <text x="160" y="22" fill="#FAFAFA" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" letter-spacing="3" text-anchor="middle">AUTONOMOUS COGNITIVE OS</text>
   </g>
 
-  <!-- Title -->
-  <text x="80" y="220" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif" font-size="72" font-weight="900" letter-spacing="-1">AGYOS</text>
+  <!-- Title: AGYOS -->
+  <text x="80" y="210" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', Roboto, sans-serif" font-size="76" font-weight="900" letter-spacing="-1">AGYOS</text>
 
   <!-- Subtitle -->
-  <text x="80" y="295" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="26" font-weight="400">1,837+ Engineering Skills • 5-Gate Governance • Zero-Slash Automation</text>
+  <text x="80" y="280" fill="#A1A1AA" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="400">1,849 Engineering Skills • 5-Gate Governance Spine • 5 Merged Pods</text>
 
-  <!-- Maintainer Attribution -->
-  <g transform="translate(80, 375)">
-    <text x="0" y="20" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20">Created &amp; Engineered by <tspan fill="#38BDF8" font-weight="700">Krish Ujeniya</tspan></text>
+  <!-- Author Attribution -->
+  <g transform="translate(80, 355)">
+    <text x="0" y="20" fill="#71717A" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif" font-size="20">Created &amp; Engineered by <tspan fill="#FFFFFF" font-weight="700">Krish Ujeniya</tspan></text>
   </g>
 
-  <!-- Feature Tags -->
-  <g transform="translate(80, 460)">
-    <!-- Tag 1 -->
-    <rect x="0" y="0" width="170" height="42" rx="21" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
-    <text x="85" y="26" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="600" text-anchor="middle">1,837+ Skills</text>
+  <!-- Feature Pills -->
+  <g transform="translate(80, 440)">
+    <!-- Pill 1: 1,849 Skills -->
+    <rect x="0" y="0" width="180" height="42" rx="21" fill="#18181B" stroke="#3F3F46" stroke-width="1.5"/>
+    <text x="90" y="26" fill="#F4F4F5" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600" text-anchor="middle">1,849 Skills</text>
 
-    <!-- Tag 2 -->
-    <rect x="185" y="0" width="190" height="42" rx="21" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
-    <text x="280" y="26" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="600" text-anchor="middle">5-Gate Governance</text>
+    <!-- Pill 2: 5-Gate Spine -->
+    <rect x="195" y="0" width="180" height="42" rx="21" fill="#18181B" stroke="#3F3F46" stroke-width="1.5"/>
+    <text x="285" y="26" fill="#F4F4F5" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600" text-anchor="middle">5-Gate Spine</text>
 
-    <!-- Tag 3 -->
-    <rect x="390" y="0" width="180" height="42" rx="21" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
-    <text x="480" y="26" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="600" text-anchor="middle">FastMCP Daemon</text>
+    <!-- Pill 3: FastMCP Daemon -->
+    <rect x="390" y="0" width="195" height="42" rx="21" fill="#18181B" stroke="#3F3F46" stroke-width="1.5"/>
+    <text x="487" y="26" fill="#F4F4F5" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600" text-anchor="middle">FastMCP Daemon</text>
 
-    <!-- Tag 4 -->
-    <rect x="585" y="0" width="200" height="42" rx="21" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
-    <text x="685" y="26" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="600" text-anchor="middle">Multi-Agent Council</text>
+    <!-- Pill 4: 51/51 Verified -->
+    <rect x="600" y="0" width="180" height="42" rx="21" fill="#18181B" stroke="#3F3F46" stroke-width="1.5"/>
+    <text x="690" y="26" fill="#F4F4F5" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600" text-anchor="middle">51/51 Verified</text>
+  </g>
 
-    <!-- Tag 5 -->
-    <rect x="800" y="0" width="160" height="42" rx="21" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
-    <text x="880" y="26" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="600" text-anchor="middle">Zero AI Slop</text>
+  <!-- Right Side Emblem Illustration -->
+  <g transform="translate(1040, 320)">
+    <circle r="140" fill="none" stroke="#27272A" stroke-width="1.5" stroke-dasharray="6 8"/>
+    <circle r="110" fill="none" stroke="#3F3F46" stroke-width="1.5"/>
+    <polygon points="0,-80 69,-40 69,40 0,80 -69,40 -69,-40" 
+             fill="#09090B" stroke="#FFFFFF" stroke-width="3"/>
+    <polygon points="0,-80 0,80 69,40" fill="none" stroke="#71717A" stroke-width="1" stroke-opacity="0.5"/>
+    <polygon points="0,-80 0,80 -69,40" fill="none" stroke="#A1A1AA" stroke-width="1" stroke-opacity="0.5"/>
+    <circle r="30" fill="#18181B" stroke="#FFFFFF" stroke-width="2"/>
+    <polygon points="0,-16 14,8 -14,8" fill="#FFFFFF"/>
+    <circle r="6" fill="#000000"/>
   </g>
 </svg>

@@ -2,24 +2,28 @@
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>AGYOS Documentation | Autonomous Cognitive Agent OS by Krish Ujeniya</title>
-  <meta name="description" content="Official documentation and interactive skill catalog for AGYOS by Krish Ujeniya: 1,849 autonomous engineering skills, 5-gate lifecycle governance, FastMCP daemon, and multi-model consensus.">
+  <meta name="description" content="Official documentation and interactive skill catalog for AGYOS by Krish Ujeniya: 1,849 autonomous engineering skills, 5-gate lifecycle governance, 5 corporate pods, FastMCP daemon, and multi-model consensus.">
   <meta name="author" content="Krish Ujeniya">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://krishujeniya.github.io/AGYOS/">
 
   <!-- OpenGraph -->
   <meta property="og:title" content="AGYOS Documentation | Autonomous Cognitive Agent OS by Krish Ujeniya">
-  <meta property="og:description" content="Interactive explorer and documentation for 1,849 modular skills, 5-gate lifecycle governance, FastMCP state daemon, and verified adversarial testing by Krish Ujeniya.">
+  <meta property="og:description" content="Interactive explorer and documentation for 1,849 modular skills, 5-gate lifecycle governance, 5 corporate pods, FastMCP state daemon, and verified adversarial testing by Krish Ujeniya.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://krishujeniya.github.io/AGYOS/">
   <meta property="og:site_name" content="AGYOS">
+  <meta property="og:image" content="https://krishujeniya.github.io/AGYOS/assets/social-card.svg">
 
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="AGYOS Documentation | By Krish Ujeniya">
-  <meta name="twitter:description" content="Client-side static documentation and interactive explorer for 1,849 modular skills and FastMCP daemon by Krish Ujeniya.">
+  <meta name="twitter:description" content="Client-side static documentation and interactive explorer for 1,849 modular skills, 5 corporate pods, and FastMCP daemon by Krish Ujeniya.">
+  <meta name="twitter:image" content="https://krishujeniya.github.io/AGYOS/assets/social-card.svg">
+
+  <link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg">
 
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
@@ -35,9 +39,9 @@
       "name": "Krish Ujeniya",
       "url": "https://github.com/krishujeniya"
     },
-    "description": "Autonomous Cognitive Operating System for AGY CLI integrating AGYOS 5-Gate governance, Agent Council consensus, and 1,849 skills.",
+    "description": "Autonomous Cognitive Operating System for AGY CLI integrating AGYOS 5-Gate governance, Agent Council consensus, 5 corporate pods, and 1,849 skills.",
     "softwareVersion": "3.1.0",
-    "license": "https://opensource.org/licenses/MIT"
+    "license": "https://opensource.org/licenses/Apache-2.0"
   }
   </script>
 
@@ -49,60 +53,60 @@
   <!-- Header -->
   <header class="site-header">
     <div class="header-left">
-      <button class="btn-icon mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu">Menu</button>
+      <button class="btn-icon mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">&#9776; Menu</button>
       <a href="#overview" class="brand-link">
-        <img src="assets/logo.svg" alt="AGYOS Logo" class="brand-logo" width="24" height="24">
+        <img src="assets/logo-mark.svg" alt="AGYOS Mark" class="brand-logo" width="28" height="28">
         <span class="brand-title">AGYOS</span>
         <span class="brand-version">v3.1.0</span>
       </a>
       <div class="header-search">
-        <input type="text" id="header-search" class="search-input" placeholder="Search 1,849 skills, rules..." aria-label="Search skills">
+        <input type="text" id="header-search" class="search-input" placeholder="Search 1,849 skills, rules, pods..." aria-label="Search skills">
         <span class="search-shortcut">/</span>
       </div>
     </div>
     <div class="header-right">
-      <nav aria-label="Top navigation">
-        <a href="#overview" class="nav-link">Docs</a>
+      <nav class="header-nav" aria-label="Top navigation">
+        <a href="#overview" class="nav-link">Overview</a>
+        <a href="#installation" class="nav-link">Quickstart</a>
+        <a href="#pods" class="nav-link">5 Pods</a>
         <a href="#governance" class="nav-link">Governance</a>
-        <a href="#decision" class="nav-link">Decision</a>
-        <a href="#council" class="nav-link">Council</a>
+        <a href="#security" class="nav-link">Security</a>
         <a href="#ui-ux" class="nav-link">UI/UX</a>
         <a href="#explorer" class="nav-link">Explorer</a>
         <a href="https://github.com/krishujeniya/AGYOS" class="nav-link" target="_blank" rel="noopener">GitHub</a>
       </nav>
-      <button id="theme-toggle" class="btn-icon" aria-label="Toggle dark mode">Dark mode</button>
+      <button id="theme-toggle" class="btn-icon" aria-label="Toggle dark mode">Theme</button>
     </div>
   </header>
 
   <div class="app-container">
+    <!-- Mobile Backdrop -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
     <!-- Sidebar -->
     <aside class="site-sidebar" id="sidebar" aria-label="Documentation sidebar">
       <div class="sidebar-section">
         <div class="sidebar-heading">Getting started</div>
         <ul class="sidebar-nav">
           <li class="sidebar-nav-item"><a href="#overview" class="sidebar-link active">Overview</a></li>
-          <li class="sidebar-nav-item"><a href="#installation" class="sidebar-link">Quickstart &amp; CLI</a></li>
+          <li class="sidebar-nav-item"><a href="#installation" class="sidebar-link">One-Prompt Setup</a></li>
           <li class="sidebar-nav-item"><a href="#architecture" class="sidebar-link">5-Tier OS Layout</a></li>
         </ul>
       </div>
 
       <div class="sidebar-section">
-        <div class="sidebar-heading">Core Subsystems</div>
+        <div class="sidebar-heading">Autonomous Architecture</div>
         <ul class="sidebar-nav">
-          <li class="sidebar-nav-item"><a href="#governance" class="sidebar-link">AGYOS Governance <span class="sidebar-badge">5 Gates</span></a></li>
+          <li class="sidebar-nav-item"><a href="#pods" class="sidebar-link">5 Corporate Pods <span class="sidebar-badge">Merged</span></a></li>
+          <li class="sidebar-nav-item"><a href="#governance" class="sidebar-link">5-Gate Governance <span class="sidebar-badge">Spine</span></a></li>
           <li class="sidebar-nav-item"><a href="#decision" class="sidebar-link">Decision Engine <span class="sidebar-badge">System 1</span></a></li>
-          <li class="sidebar-nav-item"><a href="#vibe-faang" class="sidebar-link">Vibe-to-FAANG <span class="sidebar-badge">FAANG Grade</span></a></li>
+          <li class="sidebar-nav-item"><a href="#security" class="sidebar-link">Security &amp; Dual Hooks <span class="sidebar-badge">Fail-Closed</span></a></li>
+          <li class="sidebar-nav-item"><a href="#vibe-faang" class="sidebar-link">Vibe-to-FAANG <span class="sidebar-badge">Production</span></a></li>
           <li class="sidebar-nav-item"><a href="#council" class="sidebar-link">Agent Council <span class="sidebar-badge">59 Tests</span></a></li>
-          <li class="sidebar-nav-item"><a href="#ui-ux" class="sidebar-link">UI/UX &amp; Motion <span class="sidebar-badge">Motion</span></a></li>
+          <li class="sidebar-nav-item"><a href="#ui-ux" class="sidebar-link">UI/UX &amp; Motion <span class="sidebar-badge">Emil Kowalski</span></a></li>
           <li class="sidebar-nav-item"><a href="#gravitas" class="sidebar-link">Gravitas Invariants <span class="sidebar-badge">6 Rules</span></a></li>
           <li class="sidebar-nav-item"><a href="#verification" class="sidebar-link">Verification Suite <span class="sidebar-badge">51 / 51</span></a></li>
-        </ul>
-      </div>
-
-      <div class="sidebar-section">
-        <div class="sidebar-heading">Catalog</div>
-        <ul class="sidebar-nav">
-          <li class="sidebar-nav-item"><a href="#explorer" class="sidebar-link">Interactive Explorer <span class="sidebar-badge">1,849</span></a></li>
+          <li class="sidebar-nav-item"><a href="#explorer" class="sidebar-link">Skills Catalog <span class="sidebar-badge">1,849</span></a></li>
         </ul>
       </div>
     </aside>
@@ -114,10 +118,10 @@
         <h1>AGYOS Operating System</h1>
         <p class="hero-tagline">
           Autonomous Cognitive Agent Operating System &amp; Monorepo of 1,849+ Engineering Skills<br />
-          <span style="color: var(--color-accent); font-weight: 600;">Engineered &amp; Authored by Krish Ujeniya</span>
+          <span style="font-weight: 600; color: var(--fg);">Engineered &amp; Authored by Krish Ujeniya</span>
         </p>
         <p>
-          AGYOS unifies the AGYOS 5-Gate governance spine, Agent Council multi-model deliberation, specialized UI/UX engineering, and 1,849 physical skills into a hardened, zero-configuration cognitive operating system.
+          AGYOS unifies the 5-Gate lifecycle governance spine, 5 corporate execution pods, Agent Council multi-model deliberation, fail-closed security hooks, and 1,849 physical engineering skills into a hardened, zero-configuration cognitive operating system for AI agents.
         </p>
 
         <div class="hero-stats">
@@ -126,12 +130,12 @@
             <div class="stat-label">Physical Skills</div>
           </div>
           <div class="stat-card">
-            <div class="stat-number">140+</div>
-            <div class="stat-label">Modular Rules</div>
+            <div class="stat-number">5 Pods</div>
+            <div class="stat-label">Corporate Org</div>
           </div>
           <div class="stat-card">
-            <div class="stat-number">81</div>
-            <div class="stat-label">Corporate Agents</div>
+            <div class="stat-number">140+</div>
+            <div class="stat-label">Modular Rules</div>
           </div>
           <div class="stat-card">
             <div class="stat-number">51 / 51</div>
@@ -140,18 +144,19 @@
         </div>
       </section>
 
-      <!-- Section: Installation -->
+      <!-- Section: Installation & One-Prompt Setup -->
       <section id="installation">
         <h2>Quickstart &amp; One-Prompt Setup</h2>
         <p>
-          Paste this single prompt directly into your AI coding agent (Google Antigravity <code>agy</code>, Claude Code, Cursor, Codex) to clone, configure, and verify AGYOS in one pass:
+          Paste this single prompt directly into your AI coding assistant (Google Antigravity <code>agy</code>, Claude Code, Cursor, Codex) to clone, configure, and verify AGYOS in one autonomous pass:
         </p>
 
-        <div class="code-header">
-          <span>One-Prompt Autonomous Agent Setup</span>
-          <button class="copy-btn" data-copy="Set up and initialize the AGYOS autonomous cognitive operating system in this workspace:&#10;1. If not already in the repository, clone https://github.com/krishujeniya/AGYOS.git and navigate into AGYOS:&#10;   git clone https://github.com/krishujeniya/AGYOS.git &amp;&amp; cd AGYOS&#10;2. Ensure executable permissions on all core binaries and scripts:&#10;   chmod +x bin/agyos scripts/agyos-init.sh scripts/agyos-verify.sh mcp/state-server.cjs scripts/hooks/*.py&#10;3. Run the zero-configuration bootstrapper to initialize state, validate plugins, register the FastMCP state daemon, and compile indices:&#10;   bash scripts/agyos-init.sh&#10;4. Execute the verification suite and unit tests to ensure all 51 automated checks pass:&#10;   bash scripts/agyos-verify.sh&#10;   python3 -m unittest discover -s scripts/tests -v&#10;5. Confirm the intent compiler and 5-pod router are operational:&#10;   bin/agyos intent &quot;audit system security and summarize findings&quot;&#10;Confirm when all 51 checks pass and the workspace is fully initialized.">Copy Agent Prompt</button>
-        </div>
-        <pre><code>Set up and initialize the AGYOS autonomous cognitive operating system in this workspace:
+        <div class="code-container">
+          <div class="code-header">
+            <span>One-Prompt Autonomous Agent Setup</span>
+            <button class="copy-btn" data-copy="Set up and initialize the AGYOS autonomous cognitive operating system in this workspace:&#10;1. If not already in the repository, clone https://github.com/krishujeniya/AGYOS.git and navigate into AGYOS:&#10;   git clone https://github.com/krishujeniya/AGYOS.git &amp;&amp; cd AGYOS&#10;2. Ensure executable permissions on all core binaries and scripts:&#10;   chmod +x bin/agyos scripts/agyos-init.sh scripts/agyos-verify.sh mcp/state-server.cjs scripts/hooks/*.py&#10;3. Run the zero-configuration bootstrapper to initialize state, validate plugins, register the FastMCP state daemon, and compile indices:&#10;   bash scripts/agyos-init.sh&#10;4. Execute the verification suite and unit tests to ensure all 51 automated checks pass:&#10;   bash scripts/agyos-verify.sh&#10;   python3 -m unittest discover -s scripts/tests -v&#10;5. Confirm the intent compiler and 5-pod router are operational:&#10;   bin/agyos intent &quot;audit system security and summarize findings&quot;&#10;Confirm when all 51 checks pass and the workspace is fully initialized.">Copy Agent Prompt</button>
+          </div>
+          <pre><code>Set up and initialize the AGYOS autonomous cognitive operating system in this workspace:
 1. If not already in the repository, clone https://github.com/krishujeniya/AGYOS.git and navigate into AGYOS:
    git clone https://github.com/krishujeniya/AGYOS.git &amp;&amp; cd AGYOS
 2. Ensure executable permissions on all core binaries and scripts:
@@ -164,92 +169,215 @@
 5. Confirm the intent compiler and 5-pod router are operational:
    bin/agyos intent "audit system security and summarize findings"
 Confirm when all 51 checks pass and the workspace is fully initialized.</code></pre>
-
-        <p>
-          Or run the unified <code>bin/agyos</code> binary manually to control governance gates, verify operational integrity, or run multi-model consensus:
-        </p>
-
-        <div class="code-header">
-          <span>AGYOS CLI reference</span>
-          <button class="copy-btn" data-copy="bin/agyos init&#10;bin/agyos verify&#10;bin/agyos state&#10;bin/agyos gate UNDERSTAND&#10;bin/agyos fast&#10;bin/agyos council &quot;Architectural decision&quot;">Copy commands</button>
         </div>
-        <pre><code># Initialize or self-repair AGYOS
-bin/agyos init
 
-# Execute 51-point adversarial verification suite
-bin/agyos verify
-
-# Inspect active milestone, gate, and session state
-bin/agyos state
-
-# Fast-path bypass for minor edits (jumps directly to IMPLEMENT)
-bin/agyos fast
-
-# Convene multi-model consensus via Agent Council
-bin/agyos council "Postgres vs SQLite for local cache?"</code></pre>
+        <p>Or for terminal operators running via bash (1-line execution):</p>
+        <div class="code-container">
+          <div class="code-header">
+            <span>Terminal 1-Liner</span>
+            <button class="copy-btn" data-copy="git clone https://github.com/krishujeniya/AGYOS.git &amp;&amp; cd AGYOS &amp;&amp; bash scripts/agyos-init.sh &amp;&amp; bash scripts/agyos-verify.sh">Copy command</button>
+          </div>
+          <pre><code>git clone https://github.com/krishujeniya/AGYOS.git &amp;&amp; cd AGYOS &amp;&amp; bash scripts/agyos-init.sh &amp;&amp; bash scripts/agyos-verify.sh</code></pre>
+        </div>
       </section>
 
-      <!-- Section: 5-Tier OS Layout -->
+      <!-- Section: Architecture -->
       <section id="architecture">
         <h2>5-Tier Operating System Architecture</h2>
-        <p>AGYOS organizes its subsystems into a pristine 5-tier architecture:</p>
+        <p>AGYOS organizes its subsystems into a pristine, modular 5-tier architecture:</p>
 
-        <div class="code-header">
-          <span>Filesystem tree</span>
-          <button class="copy-btn" data-copy="AGYOS/&#10;├── .agents/                   # Core Runtime: 1,849 skills, 140+ rules, 81 agents, 8 plugins&#10;├── bin/                       # Kernel CLI (bin/agyos) and 5-gate state engine&#10;├── mcp/                       # FastMCP JSON-RPC 2.0 daemon for AGY CLI&#10;├── scripts/                   # Verification suite (51 checks), Council (59 tests), hooks&#10;├── assets/                    # Master vector branding (agyos-logo.svg)&#10;└── docs/                      # Pure static documentation and live explorer">Copy</button>
-        </div>
-        <pre><code>AGYOS/
+        <div class="code-container">
+          <div class="code-header">
+            <span>Filesystem Tree</span>
+            <button class="copy-btn" data-copy="AGYOS/&#10;├── .agents/                   # Core Runtime: 1,849 skills, 140+ rules, 81 agents, 8 plugins&#10;│   ├── agents/                # 81 Corporate role agent definitions (5 merged pods)&#10;│   ├── skills/                # 1,849 physical standalone skills&#10;│   ├── rules/                 # 140+ modular rules (&lt;24KB)&#10;│   ├── workflows/             # 100 autonomous pipelines&#10;│   └── state/                 # 5-Gate state ledger, snapshots, outbox, decisions&#10;├── agyos_decision/            # Autonomous Intent Compiler, Task Contracts &amp; Ledger&#10;├── bin/                       # Kernel CLI (bin/agyos) and 5-gate state engine&#10;├── mcp/                       # FastMCP JSON-RPC 2.0 daemon for AGY CLI&#10;├── scripts/                   # Verification suite (51 checks), Council (59 tests), hooks&#10;│   └── hooks/                 # Fail-closed authorizer.py and agy_os_hook.py&#10;├── assets/                    # Master monochrome vector branding (logo.svg)&#10;└── docs/                      # Pure static documentation and live explorer">Copy tree</button>
+          </div>
+          <pre><code>AGYOS/
 ├── .agents/                   # Core Runtime: 1,849 skills, 140+ rules, 81 agents, 8 plugins
+│   ├── agents/                # 81 Corporate role agent definitions (5 merged pods)
 │   ├── skills/                # 1,849 physical standalone skills
 │   ├── rules/                 # 140+ modular rules (&lt;24KB)
 │   ├── workflows/             # 100 autonomous pipelines
-│   ├── agents/                # 81 corporate role agents
-│   └── plugins/               # 8 validated AGYOS plugins
+│   └── state/                 # 5-Gate state ledger, snapshots, outbox, decisions
+├── agyos_decision/            # Autonomous Intent Compiler, Task Contracts &amp; Ledger
 ├── bin/                       # Kernel CLI (bin/agyos) and 5-gate state engine
 ├── mcp/                       # FastMCP JSON-RPC 2.0 daemon for AGY CLI
 ├── scripts/                   # Verification suite (51 checks), Council (59 tests), hooks
-├── assets/                    # Master vector branding (agyos-logo.svg)
+│   └── hooks/                 # Fail-closed authorizer.py and agy_os_hook.py
+├── assets/                    # Master monochrome vector branding (logo.svg)
 └── docs/                      # Pure static documentation and live explorer</code></pre>
+        </div>
+      </section>
+
+      <!-- Section: The 5 Corporate Execution Pods -->
+      <section id="pods">
+        <h2>The 5 Merged Corporate Execution Pods</h2>
+        <p>
+          AGYOS compresses 11 traditional company departments into five high-velocity corporate pods. Each pod is equipped with dedicated SOP skills, host tool contracts, and autonomous risk boundaries:
+        </p>
+
+        <div class="card-grid">
+          <div class="pod-card">
+            <div class="pod-card-header">
+              <span class="pod-name">pod-growth</span>
+              <span class="tag">Revenue &amp; Market</span>
+            </div>
+            <p>Unifies Marketing, Growth, Sales, and Partnerships. Orchestrates lead discovery, positioning audits, content distribution, and outbound revenue campaigns.</p>
+            <div class="card-tags">
+              <span class="tag">sop-growth</span>
+              <span class="tag">Risk: R1/R3</span>
+              <span class="tag">Search + Web</span>
+            </div>
+          </div>
+
+          <div class="pod-card">
+            <div class="pod-card-header">
+              <span class="pod-name">pod-customer</span>
+              <span class="tag">Success &amp; Support</span>
+            </div>
+            <p>Coordinates Customer Support, Client Onboarding, and Retention. Performs reproducible bug isolation, ticket diagnosis, and policy-adherent customer communications.</p>
+            <div class="card-tags">
+              <span class="tag">sop-customer</span>
+              <span class="tag">Risk: R1/R3</span>
+              <span class="tag">Read + Comm</span>
+            </div>
+          </div>
+
+          <div class="pod-card">
+            <div class="pod-card-header">
+              <span class="pod-name">pod-build</span>
+              <span class="tag">Core Engineering</span>
+            </div>
+            <p>Staff-level execution across Engineering, QA, DevSecOps, SRE, and Infrastructure. Enforces TDD red-green-refactor loops, C4 models, and the monotonic test ratchet.</p>
+            <div class="card-tags">
+              <span class="tag">sop-build</span>
+              <span class="tag">Risk: R0-R2</span>
+              <span class="tag">Files + Exec</span>
+            </div>
+          </div>
+
+          <div class="pod-card">
+            <div class="pod-card-header">
+              <span class="pod-name">pod-gna</span>
+              <span class="tag">Finance &amp; Legal</span>
+            </div>
+            <p>Manages Accounting, Legal Compliance, Risk Audit, and Executive Ops. Enforces 4-eyes review on contracts, disbursements, and regulatory compliance disclosures.</p>
+            <div class="card-tags">
+              <span class="tag">sop-gna</span>
+              <span class="tag">Risk: R1/R3</span>
+              <span class="tag">Audit Hold</span>
+            </div>
+          </div>
+
+          <div class="pod-card">
+            <div class="pod-card-header">
+              <span class="pod-name">pod-people</span>
+              <span class="tag">Talent &amp; HR</span>
+            </div>
+            <p>Operational pod coordinating Hiring, People Operations, and Team Onboarding. Manages objective applicant screening rubrics, interview packets, and compliance handoffs.</p>
+            <div class="card-tags">
+              <span class="tag">sop-people</span>
+              <span class="tag">Risk: R1/R2</span>
+              <span class="tag">Rubrics</span>
+            </div>
+          </div>
+        </div>
+
+        <h3>Autonomous Intent Routing Matrix</h3>
+        <p>Every natural-language prompt automatically compiles into its target pod, action class, and risk level in &lt;5ms:</p>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Operator Prompt</th>
+                <th>Target Pod</th>
+                <th>Action Class</th>
+                <th>Risk Tier</th>
+                <th>Enforced Constraint</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>"Implement checkout endpoint with Stripe idempotency"</td>
+                <td><code>pod-build</code></td>
+                <td><code>feature_implementation</code></td>
+                <td><code>R1</code></td>
+                <td>TDD Red-Green + AAA unit tests</td>
+              </tr>
+              <tr>
+                <td>"Draft outbound cold email sequence for Series B SaaS"</td>
+                <td><code>pod-growth</code></td>
+                <td><code>marketing_campaign</code></td>
+                <td><code>R1</code></td>
+                <td>Local draft; zero unsanctioned sends</td>
+              </tr>
+              <tr>
+                <td>"Diagnose client report of 500 error on CSV export"</td>
+                <td><code>pod-customer</code></td>
+                <td><code>ticket_triage</code></td>
+                <td><code>R0</code></td>
+                <td>Read-only log analysis &amp; repro steps</td>
+              </tr>
+              <tr>
+                <td>"Disburse vendor payment of $12,500 via ACH"</td>
+                <td><code>pod-gna</code></td>
+                <td><code>financial_disbursement</code></td>
+                <td><code>R3</code></td>
+                <td>Fail-closed hold; human token required</td>
+              </tr>
+              <tr>
+                <td>"Screen 15 engineering candidates against staff rubric"</td>
+                <td><code>pod-people</code></td>
+                <td><code>candidate_screening</code></td>
+                <td><code>R1</code></td>
+                <td>Blind rubric evaluation; zero bias</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <!-- Section: Governance -->
       <section id="governance">
-        <h2>AGYOS: 5-Gate Governance Spine</h2>
+        <h2>5-Gate Lifecycle Governance Spine</h2>
         <p>
-          AGYOS Governance is the governing spine of AGYOS. It enforces five explicit gates across every non-trivial development task to eliminate hallucinations, out-of-scope modifications, and speculative code:
+          AGYOS Governance is the deterministic spine of AGYOS. It enforces five explicit gates across every development milestone to eliminate hallucinations, out-of-scope modifications, and speculative code:
         </p>
 
         <div class="callout">
           <p>
-            <strong>AGYOS Invariant:</strong> Ground before mutating. Never mark a milestone complete without fresh machine test output.
+            <strong>Governance Invariant:</strong> Ground before mutating. Never mark a milestone complete without executing fresh machine evidence.
           </p>
         </div>
 
         <ol>
-          <li><strong>UNDERSTAND:</strong> Clarify intent, gather requirements, document deliverables in a Task List.</li>
-          <li><strong>ANALYZE:</strong> AST inspection (<code>agyos-scout</code>), blast radius containment, complexity scoring.</li>
-          <li><strong>PLAN:</strong> Architecture Decision Records (ADR), C4 models, test strategy, and context compaction.</li>
-          <li><strong>IMPLEMENT:</strong> Autonomous TDD Red-Green-Refactor loop. Functions &lt;50 lines, files &lt;800 lines.</li>
-          <li><strong>VERIFY:</strong> Full adversarial verification (<code>bin/agyos verify</code>), test ratchet monotonicity.</li>
+          <li><strong>UNDERSTAND:</strong> Clarify intent, gather requirements, document deliverables in a structured Task List.</li>
+          <li><strong>ANALYZE:</strong> AST inspection (<code>agyos-scout</code>), blast radius containment, complexity scoring (1-2 fast-path skips to IMPLEMENT; 3-5 full flow).</li>
+          <li><strong>PLAN:</strong> Architecture Decision Records (ADR), C4 models, test strategy, and context compaction (<code>bin/compact.sh</code>).</li>
+          <li><strong>IMPLEMENT:</strong> Autonomous TDD Red-Green-Refactor loop. Functions &lt;50 lines, source files &lt;800 lines.</li>
+          <li><strong>VERIFY:</strong> Full adversarial verification (<code>bin/agyos verify</code>), test ratchet monotonicity enforcement.</li>
         </ol>
       </section>
 
       <!-- Section: Decision Engine -->
       <section id="decision">
-        <h2>AGYOS: Autonomous Decision Engine</h2>
+        <h2>AGYOS Decision Engine</h2>
         <p>
-          The AGYOS Decision Engine provides fast, non-autoregressive System 1 decision-making and optimal skill routing. Given any incoming prompt, error message, or feature request, it computes calibrated probabilities to classify technical domains, determine task complexity, and recommend the best specialist skill:
+          The AGYOS Decision Engine provides fast, non-autoregressive System 1 decision-making and optimal skill routing. Given any incoming prompt, error message, or feature request, it computes calibrated probabilities to classify technical domains, determine task complexity, and recommend the primary specialist skill:
         </p>
 
-        <div class="code-header">
-          <span>Run autonomous skill routing</span>
+        <div class="code-container">
+          <div class="code-header">
+            <span>Run Autonomous Skill Routing</span>
+            <button class="copy-btn" data-copy="bin/agyos decide &quot;Design Postgres database schema with migrations&quot;">Copy</button>
+          </div>
+          <pre><code>bin/agyos decide "Design Postgres database schema with migrations"</code></pre>
         </div>
-        <pre><code>bin/agyos decide "Design Postgres database schema with migrations"</code></pre>
 
-        <div class="code-header">
-          <span>Sample Decision Output</span>
-        </div>
-        <pre><code>============================================================
+        <div class="code-container">
+          <div class="code-header">
+            <span>Sample Decision Output</span>
+          </div>
+          <pre><code>============================================================
 AGYOS Autonomous Decision Engine
 ============================================================
 Task: Design Postgres database schema with migrations
@@ -268,18 +396,82 @@ Candidate Rankings:
     #3 architecture-database-design   (score: 147.0, conf: 58.0%)
     #4 database-migrations            (score: 124.0, conf: 49.0%)
 ============================================================</code></pre>
+        </div>
       </section>
 
-      <!-- Section: Vibe-to-FAANG Autonomous Operating Model -->
-      <section id="vibe-faang">
-        <h2>Vibe-to-FAANG: Operating Model for Vibe Coders &amp; Non-Tech Builders</h2>
+      <!-- Section: Security & Fail-Closed Architecture -->
+      <section id="security">
+        <h2>Security &amp; Fail-Closed Tool Architecture</h2>
         <p>
-          AGYOS enables general builders, non-technical operators, and vibe coders to produce FAANG-grade software without architectural rot. Users describe high-level goals in plain English, while AGYOS autonomously drives execution through Staff and Principal-level corporate engineering standards:
+          AGYOS enforces host-native tool binding aligned with Google Antigravity (<code>agy</code>) v1.5.0 host tools: <code>read_file</code>, <code>write_file</code>, <code>edit_file</code>, <code>run_command</code>, and <code>search_web</code>. All agent definitions declare only valid host tools.
         </p>
 
         <div class="callout">
           <p>
-            <strong>Core Operating Thesis:</strong> Vibe coders provide vision and domain requirements; AGYOS enforces contract-first architecture, test-driven development, and zero-speculation verification.
+            <strong>Dual-Hook Architecture:</strong> Real-time pre-tool interception via <code>authorizer.py</code> executes synchronously before any tool invocation. Destructive or external operations are intercepted before execution.
+          </p>
+        </div>
+
+        <h3>Risk Classification Tiers</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Tier</th>
+                <th>Classification</th>
+                <th>Host Tools Allowed</th>
+                <th>Safety Policy</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>R0</code></td>
+                <td>Read-Only Inspection</td>
+                <td><code>read_file</code>, <code>search_web</code></td>
+                <td>Auto-authorized; read-only guarantees.</td>
+              </tr>
+              <tr>
+                <td><code>R1</code></td>
+                <td>Benign Workspace Write</td>
+                <td><code>write_file</code>, <code>edit_file</code></td>
+                <td>Authorized within declared task scope boundaries.</td>
+              </tr>
+              <tr>
+                <td><code>R2</code></td>
+                <td>System Execution</td>
+                <td><code>run_command</code> (local test/build)</td>
+                <td>Authorized with command whitelisting and pre-write snapshots.</td>
+              </tr>
+              <tr>
+                <td><code>R3</code></td>
+                <td>Irreversible / Live External</td>
+                <td>External payments, live email, remote deletes</td>
+                <td><strong>BLOCKED</strong>; held in <code>PENDING_COMMIT</code> outbox until signed.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>State Ledger Invariants</h3>
+        <ul>
+          <li><strong>Hierarchy Caps:</strong> Tree depth &le; 2, fanout &le; 4, workers &le; 3, total tasks &le; 8.</li>
+          <li><strong>Kahn's Acyclicity:</strong> Task dependency graphs must be strictly acyclic DAGs.</li>
+          <li><strong>Budget Guard:</strong> 30,000 tokens / $1.50 cap per task, with 20% reserved for verification.</li>
+          <li><strong>Reflection Memory:</strong> Identical retries with the same error signature are blocked.</li>
+          <li><strong>LIFO Saga Compensation:</strong> Rollback executes inverse actions in reverse order on failure.</li>
+        </ul>
+      </section>
+
+      <!-- Section: Vibe-to-FAANG -->
+      <section id="vibe-faang">
+        <h2>Vibe-to-FAANG: Operating Model for Non-Tech Builders</h2>
+        <p>
+          AGYOS enables general builders, non-technical founders, and vibe coders to produce production-grade software without architectural rot. Users describe high-level goals in plain English, while AGYOS autonomously drives execution through Staff and Principal-level corporate engineering standards:
+        </p>
+
+        <div class="callout">
+          <p>
+            <strong>Operating Thesis:</strong> Vibe coders provide product vision and user requirements; AGYOS enforces contract-first architecture, test-driven development, and zero-speculation verification.
           </p>
         </div>
 
@@ -292,86 +484,6 @@ Candidate Rankings:
           <li><strong>Zero-Secret Security:</strong> Private keys, tokens, and database credentials must never be committed to source files. Environment variables are required.</li>
           <li><strong>Deterministic Machine Evidence:</strong> No task is marked complete without passing test runs and clean compiler checks.</li>
         </ol>
-
-        <h3>5-Phase Autonomous Transformation Lifecycle</h3>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Phase</th>
-                <th>Autonomous Role</th>
-                <th>Key Deliverables</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>1. Shape Spec</strong></td>
-                <td>Staff Product Manager</td>
-                <td>PRD, core user journeys, acceptance criteria, non-goals</td>
-              </tr>
-              <tr>
-                <td><strong>2. Contracts &amp; ADR</strong></td>
-                <td>Principal Systems Architect</td>
-                <td>Architecture Decision Record (<code>docs/adr/</code>), schema contracts</td>
-              </tr>
-              <tr>
-                <td><strong>3. TDD Maker</strong></td>
-                <td>Senior Maker / SWE</td>
-                <td>Failing tests first (RED), clean immutable code (GREEN), &gt;80% coverage</td>
-              </tr>
-              <tr>
-                <td><strong>4. Vibe Audit</strong></td>
-                <td>Principal Security &amp; Vibe Auditor</td>
-                <td>Secret scan, OWASP review, error handling check, UI animation check</td>
-              </tr>
-              <tr>
-                <td><strong>5. Verify</strong></td>
-                <td>Staff QA &amp; Verification Lead</td>
-                <td>Compiler checks, linter clean, test ratchet verification</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>Autonomous Corporate Subagents</h3>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Subagent</th>
-                <th>Role</th>
-                <th>Execution Responsibility</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>vibe-engineer</code></td>
-                <td>Vibe-to-Production Staff Engineer</td>
-                <td>Turns informal prompts into structured specs, schema contracts, and tests</td>
-              </tr>
-              <tr>
-                <td><code>faang-architect</code></td>
-                <td>Principal Systems Architect</td>
-                <td>Defines C4 models, durable ADRs, API boundaries, and failure isolation</td>
-              </tr>
-              <tr>
-                <td><code>code-reviewer</code></td>
-                <td>Quality &amp; Idiomatic Reviewer</td>
-                <td>Independent reviewer checking immutability, &lt;50 line functions, and style</td>
-              </tr>
-              <tr>
-                <td><code>security-reviewer</code></td>
-                <td>Security &amp; Pentesting Specialist</td>
-                <td>Validates OWASP Top 10 defenses, token security, and boundary sanity</td>
-              </tr>
-              <tr>
-                <td><code>qa-tdd-architect</code></td>
-                <td>Staff QA &amp; Verification Lead</td>
-                <td>Enforces Arrange-Act-Assert pattern and monotonicity ratchet</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
       </section>
 
       <!-- Section: Agent Council -->
@@ -414,11 +526,12 @@ Candidate Rankings:
         </p>
 
         <ol>
-          <li><strong>Concentric Border Radii Formula:</strong> Nested elements must satisfy <code>R_inner = R_outer - padding</code> to eliminate optical corner clipping.</li>
-          <li><strong>Animation Decision Framework:</strong> 100+ times/day = 0ms (no motion); tens of times/day = 150-200ms; modals/sheets = 250-350ms; never animate keyboard actions.</li>
+          <li><strong>Concentric Border Radii Formula:</strong> Nested child radii must satisfy <code>R_inner = R_outer - padding</code> to eliminate optical corner distortion.</li>
+          <li><strong>Animation Decision Framework:</strong> 100+ times/day = 0ms (no motion); tens of times/day = 150-200ms; modals/drawers = 250-350ms; never animate keyboard actions.</li>
           <li><strong>Compositor-Only Animations:</strong> Animate ONLY <code>transform</code> and <code>opacity</code>. No layout thrashing on width/height/margin/padding.</li>
-          <li><strong>Tactile Micro-Interactions:</strong> Active scale press feedback (<code>active:scale-[0.98]</code>) on interactive controls.</li>
+          <li><strong>Tactile Micro-Interactions:</strong> Active scale press feedback (<code>active:scale-[0.98]</code>) on interactive controls. Separate hover styles via <code>@media (hover: hover)</code>.</li>
           <li><strong>Popover Transform Origins:</strong> Set <code>transform-origin</code> to the trigger button coordinates, never screen center.</li>
+          <li><strong>Before / After / Why Table:</strong> Mandatory code review table for all visual mutations.</li>
         </ol>
 
         <div class="table-wrapper">
@@ -434,12 +547,17 @@ Candidate Rankings:
               <tr>
                 <td><code>transition: all 0.3s</code></td>
                 <td><code>transition: transform 0.15s ease</code></td>
-                <td>Prevents layout thrashing on geometric reflow properties.</td>
+                <td>Prevents layout thrashing and geometric reflow pipeline spikes.</td>
               </tr>
               <tr>
                 <td><code>transform: scale(0)</code></td>
                 <td><code>transform: scale(0.95); opacity: 0</code></td>
                 <td>Physical UI elements do not scale from a dimensionless point.</td>
+              </tr>
+              <tr>
+                <td><code>.btn:hover { background: #333; }</code></td>
+                <td><code>@media (hover: hover) { .btn:hover { ... } }</code></td>
+                <td>Prevents sticky hovered state on touch and mobile devices.</td>
               </tr>
             </tbody>
           </table>
@@ -465,10 +583,12 @@ Candidate Rankings:
         <p>
           AGYOS includes an adversarial proof runner (<code>bin/agyos verify</code>) covering 51 machine checks:
         </p>
-        <div class="code-header">
-          <span>Verification proof output</span>
-        </div>
-        <pre><code>• AGENTS.md size limit (&lt;24,000 bytes): PASS
+        <div class="code-container">
+          <div class="code-header">
+            <span>Verification Proof Output</span>
+            <button class="copy-btn" data-copy="bin/agyos verify">Run verify</button>
+          </div>
+          <pre><code>• AGENTS.md size limit (&lt;24,000 bytes): PASS
 • GEMINI.md exists and matches AGENTS.md: PASS
 • AGY CLI installed and responsive: PASS
 • AGYOS MCP server registered in AGY: PASS
@@ -489,6 +609,7 @@ Candidate Rankings:
 • Fast-path state bypass functional: PASS
 ============================================================
 Verification Summary: 51 PASSED, 0 FAILED</code></pre>
+        </div>
       </section>
 
       <!-- Section: Interactive Explorer -->
@@ -502,10 +623,11 @@ Verification Summary: 51 PASSED, 0 FAILED</code></pre>
           <input type="text" id="explorer-search" class="search-input" placeholder="Filter by name, keyword, or module..." aria-label="Filter skills">
 
           <div>
-            <div class="sidebar-heading" style="padding: 0; margin-bottom: 6px;">Filter by module</div>
+            <div class="sidebar-heading" style="padding: 0; margin-bottom: 8px;">Filter by module</div>
             <div class="filter-group" id="module-filters">
               <button class="filter-btn active" data-module="all">All modules</button>
               <button class="filter-btn" data-module="AGYOS Governance">Governance</button>
+              <button class="filter-btn" data-module="Corporate Pods">Pods</button>
               <button class="filter-btn" data-module="Agent Council">Council</button>
               <button class="filter-btn" data-module="UI/UX & Motion">UI/UX &amp; Motion</button>
               <button class="filter-btn" data-module="Technical SEO">SEO</button>
@@ -518,44 +640,49 @@ Verification Summary: 51 PASSED, 0 FAILED</code></pre>
           </div>
 
           <div>
-            <div class="sidebar-heading" style="padding: 0; margin-bottom: 6px;">Filter by runtime</div>
+            <div class="sidebar-heading" style="padding: 0; margin-bottom: 8px;">Filter by runtime</div>
             <div class="filter-group" id="runtime-filters">
               <button class="filter-btn active" data-runtime="all">All runtimes</button>
-              <button class="filter-btn" data-runtime="AGY CLI">AGY CLI</button>
-              <button class="filter-btn" data-runtime="Gemini">Gemini</button>
-              <button class="filter-btn" data-runtime="Claude Code">Claude Code</button>
-              <button class="filter-btn" data-runtime="Codex">Codex</button>
-              <button class="filter-btn" data-runtime="Bun">Bun</button>
+              <button class="filter-btn" data-runtime="agy">AGY CLI</button>
+              <button class="filter-btn" data-runtime="node">Node.js</button>
+              <button class="filter-btn" data-runtime="python">Python</button>
+              <button class="filter-btn" data-runtime="bash">Bash</button>
             </div>
           </div>
         </div>
 
         <div class="explorer-header">
-          <span id="results-count">Loading skills...</span>
-          <span>Tip: Press / to search</span>
+          <span id="results-count">Loading skills database...</span>
         </div>
 
-        <div id="skills-list" class="skills-list">
-          <!-- Populated dynamically by docs.js -->
+        <div class="skills-list" id="skills-list" aria-live="polite">
+          <!-- Dynamically populated by docs.js -->
         </div>
 
-        <div id="pagination" class="pagination-controls">
-          <!-- Populated dynamically by docs.js -->
+        <div class="pagination-controls" id="pagination">
+          <!-- Dynamically populated by docs.js -->
         </div>
       </section>
     </main>
+  </div>
+
+  <!-- Floating Quick Navigation for Mobile Thumb Zones -->
+  <div class="floating-quick-nav">
+    <button class="quick-nav-btn" id="quick-nav-btn" aria-label="Scroll back to top">&#8593;</button>
   </div>
 
   <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-content">
       <div>
-                <strong>AGYOS</strong> &mdash; Engineered &amp; Authored by <a href="https://github.com/krishujeniya" target="_blank" rel="noopener">Krish Ujeniya</a>. Open source under Apache 2.0 license.</div>
+        <strong>AGYOS</strong> &bull; Autonomous Cognitive Operating System<br>
+        <span>Engineered &amp; Authored by Krish Ujeniya &bull; Apache-2.0 License</span>
+      </div>
       <ul class="footer-links">
-        <li><a href="sitemap.xml">Sitemap</a></li>
-        <li><a href="robots.txt">Robots</a></li>
-        <li><a href="llms.txt">llms.txt</a></li>
-        <li><a href="ai-catalog.json">AI catalog</a></li>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#installation">Setup</a></li>
+        <li><a href="#pods">Pods</a></li>
+        <li><a href="#explorer">Explorer</a></li>
         <li><a href="https://github.com/krishujeniya/AGYOS" target="_blank" rel="noopener">GitHub</a></li>
       </ul>
     </div>

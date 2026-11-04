@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="100%" height="100%">
+  <defs>
+    <radialGradient id="markBg" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#18181B"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+    <linearGradient id="markStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#71717A"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="56" fill="url(#markBg)"/>
+  <rect width="252" height="252" x="2" y="2" rx="54" fill="none" stroke="#27272A" stroke-width="2"/>
+  <g transform="translate(128, 128)">
+    <circle r="92" fill="none" stroke="#27272A" stroke-width="1.5" stroke-dasharray="4 6"/>
+    <circle r="74" fill="none" stroke="#52525B" stroke-width="1.5"/>
+    <polygon points="0,-56 48,-28 48,28 0,56 -48,28 -48,-28" 
+             fill="#09090B" stroke="url(#markStroke)" stroke-width="3"/>
+    <polygon points="0,-56 0,56 48,28" fill="none" stroke="#71717A" stroke-width="1" stroke-opacity="0.4"/>
+    <polygon points="0,-56 0,56 -48,28" fill="none" stroke="#A1A1AA" stroke-width="1" stroke-opacity="0.4"/>
+    <circle r="20" fill="#18181B" stroke="#FFFFFF" stroke-width="1.5"/>
+    <polygon points="0,-11 10,6 -10,6" fill="#FFFFFF"/>
+    <circle r="4" fill="#000000"/>
+  </g>
+</svg>
