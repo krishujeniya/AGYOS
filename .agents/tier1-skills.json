@@ -121,6 +121,12 @@
       "path": ".agents/skills/agyos-startup-distribution"
     },
     {
+      "name": "agyos-swarm-prediction-engine",
+      "tier": 1,
+      "description": "Multi-agent swarm intelligence and scenario prediction engine. Builds GraphRAG knowledge graphs from seed documents, provisions memory-backed synthetic agent populations, executes multi-round market and behavioral simulations, and compiles structured prediction reports.",
+      "path": ".agents/skills/agyos-swarm-prediction-engine"
+    },
+    {
       "name": "agyos-verify",
       "tier": 1,
       "description": "agyos-verify skill",

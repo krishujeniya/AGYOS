@@ -36,7 +36,7 @@
   <text x="80" y="210" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', Roboto, sans-serif" font-size="76" font-weight="900" letter-spacing="-1">AGYOS</text>
 
   <!-- Subtitle -->
-  <text x="80" y="280" fill="#A1A1AA" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="400">1,857 Engineering Skills • 5-Gate Governance Spine • 5 Merged Pods</text>
+  <text x="80" y="280" fill="#A1A1AA" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="400">1,858 Engineering Skills • 5-Gate Governance Spine • 5 Merged Pods</text>
 
   <!-- Author Attribution -->
   <g transform="translate(80, 355)">
@@ -45,9 +45,9 @@
 
   <!-- Feature Pills -->
   <g transform="translate(80, 440)">
-    <!-- Pill 1: 1,857 Skills -->
+    <!-- Pill 1: 1,858 Skills -->
     <rect x="0" y="0" width="180" height="42" rx="21" fill="#18181B" stroke="#3F3F46" stroke-width="1.5"/>
-    <text x="90" y="26" fill="#F4F4F5" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600" text-anchor="middle">1,857 Skills</text>
+    <text x="90" y="26" fill="#F4F4F5" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600" text-anchor="middle">1,858 Skills</text>
 
     <!-- Pill 2: 5-Gate Spine -->
     <rect x="195" y="0" width="180" height="42" rx="21" fill="#18181B" stroke="#3F3F46" stroke-width="1.5"/>

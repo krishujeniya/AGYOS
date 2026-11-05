@@ -4,7 +4,7 @@
 - Task: Hierarchical Agent OS Implementation (5 Pods, Typed TaskContracts, EVPI Gate, Recovery, Fail-Closed Hook, A/B Benchmark)
 - Pinned Runtime: Google Antigravity CLI (`agy`) v1.5.0
 - Baseline SHA: `22e8706c2be34f0d4bf87c01c01c1ee5b8741068`
-- Completed Commit SHA: `e01e2d9`
+- Completed Commit SHA: `ea98092`
 - Branch: `main`
 
 ## Summary of Executed Changes
@@ -50,9 +50,9 @@
 - Added `test_all_agent_files_declare_only_valid_host_tools` regression check to `scripts/tests/test_hooks_authorizer.py`.
 
 ### 6. Manifest & Documentation Inventory Synchronization
-- Synchronized `.agents/skills-manifest.json` and `.agents/tier1-skills.json` to include 8 newly created AGYOS skills (`agyos-karpathy-guidelines`, `agyos-agency-agents`, `agyos-app-launch-checklist`, `agyos-anti-ai-design`, `agyos-lead-scraper`, `agyos-free-infra-catalog`, `agyos-startup-distribution`, `agyos-academic-research`), bringing the total physical skill count from 1,849 to 1,857 (Tier 1: 376, Tier 2: 1,481).
+- Synchronized `.agents/skills-manifest.json` and `.agents/tier1-skills.json` to include 8 newly created AGYOS skills (`agyos-karpathy-guidelines`, `agyos-agency-agents`, `agyos-app-launch-checklist`, `agyos-anti-ai-design`, `agyos-lead-scraper`, `agyos-free-infra-catalog`, `agyos-startup-distribution`, `agyos-academic-research`), bringing the total physical skill count from 1,849 to 1,858 (Tier 1: 376, Tier 2: 1,481).
 - Rebuilt static documentation assets via `scripts/build_docs_data.py` (`docs/skills-data.json`, `docs/ai-catalog.json`, `docs/sitemap.xml`, `docs/robots.txt`, `docs/llms.txt`).
-- Aligned `README.md`, `docs/index.html`, `AGENTS.md`, and `TRACKER.md` with exact filesystem counts (1,857 skills, 140 rules, 81 agents, 51 verification checks).
+- Aligned `README.md`, `docs/index.html`, `AGENTS.md`, and `TRACKER.md` with exact filesystem counts (1,858 skills, 140 rules, 81 agents, 51 verification checks).
 - Resolved specification contradiction on Gate 2 complexity score in `AGENTS.md` and `GEMINI.md`: 1-2 fast-path bypass vs 3-5 full 5-gate flow.
 
 ## Verification Evidence Actually Run

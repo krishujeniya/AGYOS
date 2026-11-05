@@ -850,6 +850,23 @@
     "description": "Playbook for launching, distributing, and syndicating software products. Covers 100+ directory submissions, Product Hunt launches, Show HN guidelines, and early user acquisition."
   },
   {
+    "id": "agyos-swarm-prediction-engine",
+    "name": "Agyos Swarm Prediction Engine",
+    "module": "AGYOS Governance",
+    "category": "Governance",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill agyos-swarm-prediction-engine",
+    "path": ".agents/skills/agyos-swarm-prediction-engine",
+    "risk": "safe",
+    "description": "Multi-agent swarm intelligence and scenario prediction engine. Builds GraphRAG knowledge graphs from seed documents, provisions memory-backed synthetic agent populations, executes multi-round market and behavioral simulations, and compiles structured prediction reports."
+  },
+  {
     "id": "agyos-verify",
     "name": "agyos-verifyt be",
     "module": "AGYOS Governance",

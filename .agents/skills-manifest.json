@@ -1,7 +1,7 @@
 {
   "version": "3.1.0",
-  "total_skills": 1857,
-  "tier1_count": 376,
+  "total_skills": 1858,
+  "tier1_count": 377,
   "tier2_count": 1481,
   "skills": [
     {
@@ -303,6 +303,12 @@
       "tier": 1,
       "description": "Playbook for launching, distributing, and syndicating software products. Covers 100+ directory submissions, Product Hunt launches, Show HN guidelines, and early user acquisition.",
       "path": ".agents/skills/agyos-startup-distribution"
+    },
+    {
+      "name": "agyos-swarm-prediction-engine",
+      "tier": 1,
+      "description": "Multi-agent swarm intelligence and scenario prediction engine. Builds GraphRAG knowledge graphs from seed documents, provisions memory-backed synthetic agent populations, executes multi-round market and behavioral simulations, and compiles structured prediction reports.",
+      "path": ".agents/skills/agyos-swarm-prediction-engine"
     },
     {
       "name": "agyos-verify",
