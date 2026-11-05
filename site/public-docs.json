@@ -1,0 +1,16 @@
+{
+  "site": "AGYOS",
+  "base": "/AGYOS/",
+  "documents": [
+    {"source":"README.md","slug":"overview","title":"Project overview","category":"Start here","description":"What AGYOS is, how it works, and where to begin."},
+    {"source":"docs/public/quickstart.md","slug":"quickstart","title":"Quickstart","category":"Start here","description":"Install AGYOS and check a local workspace."},
+    {"source":"docs/ARCHITECTURE.md","slug":"architecture","title":"System architecture","category":"Core concepts","description":"The six-layer architecture, governance, memory, and execution."},
+    {"source":"docs/SKILL_ROUTING.md","slug":"skill-routing","title":"Skill routing","category":"Core concepts","description":"How runbooks are discovered and selected."},
+    {"source":"docs/RULES.md","slug":"rules","title":"Rules and standards","category":"Core concepts","description":"Common and language-specific rule installation."},
+    {"source":"docs/NATIVE_WORKFLOWS.md","slug":"native-workflows","title":"Native workflows","category":"Guides","description":"Review workflow pilot and its limitations."},
+    {"source":"docs/adr/0001-skill-routing.md","slug":"decisions/skill-routing","title":"Skill routing ADR","category":"Guides","description":"The decision behind shared skill discovery metadata."},
+    {"source":"SECURITY.md","slug":"security","title":"Security policy","category":"Project","description":"Supported versions and responsible disclosure."}
+  ],
+  "public_root": "docs/public",
+  "exclude": ["AGENTS.md","GEMINI.md","TRACKER.md","AI_HANDOFF.md","docs/RESEARCH_PLAN.md","docs/prompts.md","docs/references/",".agents/","skills/",".env",".agents/state/"]
+}

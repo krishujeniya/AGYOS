@@ -24,13 +24,30 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Pages
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install static generator dependencies
+        run: python -m pip install 'mistune==3.2.1'
+
+      - name: Generate only approved public docs
+        run: python scripts/build_docs_site.py --out _site --base /AGYOS/
+
+      - name: Validate JavaScript syntax
+        run: node --check site/site.js
+
+      - name: Verify documentation build
+        run: python scripts/test_docs_site.py --site _site --base /AGYOS/
+
+      - name: Set up Pages
         uses: actions/configure-pages@v5
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './docs'
+          path: './_site'
 
       - name: Deploy to GitHub Pages
         id: deployment
