@@ -1,3 +1,38 @@
+# AGYOS handoff: skill routing consistency
+
+- Task: update catalog-wide rules, skill discovery metadata, decision routing, README/docs, and push to GitHub.
+- Branch: `main`; implementation base: `8e15b83` (three existing unpushed skill commits retained).
+- Scope and contract: `docs/SKILL_ROUTING.md`; decision record: `docs/adr/0001-skill-routing.md`.
+- Changes: shared routing policy covers 1,862 skills and 141 modular rules; repaired malformed headers and normalized canonical IDs; shared YAML parser; safe catalog fallbacks; task-first matching; conservative complexity; CLI/MCP runbook delivery; consistent search; generated catalog commands and risk labels; deterministic regeneration check in CI.
+- Files: `.agents/rules/common-skill-routing.md`, `.agents/skills/AGENTS.md`, repaired skill headers and governance runbooks, manifests, `agyos_decision/catalog.py`, `agyos_decision/skills_router.py`, CLI/MCP entry points, generators, routing tests, CI, README, docs, gate records, and the pre-commit zero-assertion count fix with two real Git fixture regressions.
+
+## Executed evidence
+
+- `python3 -m unittest discover -s scripts/tests -v`: **75 passed**, including 17 routing/catalog tests and CLI/MCP integration (unrestricted host run).
+- `bash scripts/agyos-verify.sh`: **51 passed, 0 failed**. The final risk fix was subsequently verified by the routing suite and independent checker.
+- `bun test` in `scripts/council`: **59 passed, 0 failed**.
+- `python3 -X pycache_prefix=/tmp/agyos-bytecode -m compileall -q .`: **passed**; `node --check mcp/state-server.cjs`, `bash -n bin/agyos`, and `git diff --check`: **passed**.
+- Both manifests and all generated documentation assets reproduced byte-for-byte in a temporary output directory.
+- All 1,862 skill YAML headers and 141 rule headers/size limits validated. Independent body comparison found preserved original text, with intentional governance updates and restored cluster warnings.
+- Independent checker: **Gate 5 PASS**; verified destructive/external tasks score 5, unknown scope 3, bounded tasks 2, and a README typo 1.
+- Browser: updated section rendered at 1440x900 and 390x844; no page overflow at those widths; internal anchors valid; Enter activated the updated Copy button and showed Copied feedback. A file URL was used, so live catalog fetch/deployment acceptance was not claimed.
+- Gitleaks with `--redact`: existing three outgoing commits and current tracked diff **clean**. The staged diff also passed the redacted scan before commit preparation.
+
+## Limits and next step
+
+Keyword routing cannot guarantee every host invokes a skill or certify every specialist procedure. Historical body fragments were preserved rather than invented. Selection and file delivery remain separate from execution evidence. No configured Python linter or type checker was found; these were not claimed as passing.
+
+The user explicitly authorized push. Local validation and independent review are complete. The staged diff is checked with Gitleaks and the test ratchet before commit; remote delivery is confirmed separately. No force-push is authorized. This handoff records the implementation base; use Git history for the resulting revision.
+
+Exact next command:
+
+```bash
+git ls-remote origin refs/heads/main
+```
+
+---
+
+## Previous milestone (historical evidence)
 # AGYOS Engineering Handoff — Adaptive Hierarchy & Policy Verification
 
 ## Task and Revision

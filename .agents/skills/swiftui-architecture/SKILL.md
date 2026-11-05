@@ -1,5 +1,8 @@
 ---
-name: swiftui-architecturet propagate changes — pass nested objects directly; `@Observable` handles nesting fine
+name: swiftui-architecture
+description: Structure SwiftUI views and observable state with clear ownership and dependency boundaries.
+---
+t propagate changes — pass nested objects directly; `@Observable` handles nesting fine
 
 ### View Composition
 - Extract complex views into separate subviews for better readability and performance

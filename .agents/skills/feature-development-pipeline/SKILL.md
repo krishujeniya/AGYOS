@@ -1,5 +1,6 @@
 ---
-name: feature-development-pipeline1.0"
+name: feature-development-pipeline
+description: Feature development pipeline - research, plan, track, and implement major features.
 ---
 
 Feature development pipeline - research, plan, track, and implement major features.

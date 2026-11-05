@@ -1,5 +1,8 @@
 ---
-name: interactive-scroll-storySKILL.md")
+name: interactive-scroll-story
+description: Create an interactive scrolling story with a consistent visual direction, readable content, and reduced-motion support.
+---
+SKILL.md")
 ```
 
 The root `SKILL.md` contains:

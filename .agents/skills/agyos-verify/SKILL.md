@@ -1,12 +1,12 @@
 ---
-name: agyos-verifyt be
-  asserted deterministically (visual UI, UX flow). Ends with a quiz-me gate.
+name: agyos-verify
+description: Verify implementation with deterministic checks, independent review, and evidence for unresolved acceptance criteria.
 license: MIT
 metadata:
-  version: "1.1.0"
+  version: 1.1.0
 allowed-tools:
-  - run_command
-  - view_file
+- run_command
+- view_file
 ---
 
 # agyos-verify

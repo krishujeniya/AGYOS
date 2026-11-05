@@ -1,5 +1,6 @@
 ---
-name: favicon-generator1.0"
+name: favicon-generator
+description: Generate a complete set of favicons from the source image at `$1` and update the project's HTML with the appropriate link tags.
 ---
 
 Generate a complete set of favicons from the source image at `$1` and update the project's HTML with the appropriate link tags.

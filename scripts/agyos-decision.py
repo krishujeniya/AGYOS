@@ -18,13 +18,20 @@ from agyos_decision.skills_router import decide_skill
 
 
 def main() -> int:
-    args = [a for a in sys.argv[1:] if a != "--json"]
+    args = [a for a in sys.argv[1:] if a not in ("--json", "--runbook")]
     if not args:
-        print("Usage: agyos-decision.py \"<task description>\" [--json]", file=sys.stderr)
+        print("Usage: agyos-decision.py \"<task description>\" [--json] [--runbook]", file=sys.stderr)
         return 1
 
     query = " ".join(args).strip()
-    result = decide_skill(query)
+    try:
+        result = decide_skill(query)
+        if "--runbook" in sys.argv:
+            result["runbook"] = (PROJECT_ROOT / result["runbook_path"]).read_text(encoding="utf-8")
+            result["execution_status"] = "runbook_returned"
+    except (ValueError, OSError) as exc:
+        print(f"Skill routing failed: {exc}", file=sys.stderr)
+        return 1
 
     if "--json" in sys.argv:
         print(json.dumps(result, indent=2))
@@ -41,7 +48,7 @@ def main() -> int:
     print("AGYOS Autonomous Decision Engine")
     print("============================================================")
     print(f"Task: {query}")
-    print(f"Domain: {domain.upper()} (calibrated confidence: {confidence:.2f})")
+    print(f"Domain: {domain.upper()} (heuristic match: {confidence:.2f})")
     print(f"Complexity: {complexity}/5 — {guidance}")
     if fast_path:
         print("Gate Routing: Fast-path eligible (skip Gates 1-3 direct to IMPLEMENT)")
@@ -51,7 +58,8 @@ def main() -> int:
     print(f"\nRecommended Primary Skill:")
     print(f"  Name: {result['primary_skill']}")
     print(f"  Path: {result['primary_path']}")
-    print(f"  Confidence: {result['confidence'] * 100:.1f}%")
+    print(f"  Match strength: {result['confidence']:.2f} (not a probability)")
+    print(f"  Selection: {result['selection_status']}")
 
     candidates = result.get("candidates", [])
     if len(candidates) > 1:
@@ -62,7 +70,12 @@ def main() -> int:
             print(f"  {star} #{cand['rank']} {cand['name']:<30} (score: {cand['score']:>5.1f}, conf: {cand['confidence']*100:>4.1f}%) — {desc}...")
 
     print("\nNext Action: Ingest skill runbook before mutating code:")
-    print(f"  cat {result['primary_path']}/SKILL.md")
+    print(f"  CLI:   {result['runbook_command']}")
+    print(f"  Tool:  {result['read_tool_call']}")
+    print(f"  Rule:  {result['execution_invariant']}")
+    if "runbook" in result:
+        print("\nSelected runbook (apply its relevant steps; execution is not certified):")
+        print(result["runbook"])
     print("============================================================")
     return 0
 

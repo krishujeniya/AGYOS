@@ -1,5 +1,8 @@
 ---
-name: agent-skill-creatort watch an agent fail without the skill, you don't know if the skill teaches the right thing.
+name: agent-skill-creator
+description: Create and update agent skills with explicit triggers, focused instructions, and task-based validation.
+---
+t watch an agent fail without the skill, you don't know if the skill teaches the right thing.
 
 **REQUIRED BACKGROUND:** You MUST understand superpowers:test-driven-development before using this skill. That skill defines the fundamental RED-GREEN-REFACTOR cycle. This skill adapts TDD to documentation.
 

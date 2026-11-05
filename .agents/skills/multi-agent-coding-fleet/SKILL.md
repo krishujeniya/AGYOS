@@ -1,5 +1,8 @@
 ---
-name: multi-agent-coding-fleetBuild a REST API with auth and tests"
+name: multi-agent-coding-fleet
+description: Plan dependent coding missions and coordinate isolated agent work with explicit scope, collected results, and verification.
+---
+Build a REST API with auth and tests"
   ↓
 plan_project(prompt) → project_id + mission DAG
   ↓

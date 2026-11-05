@@ -1,5 +1,8 @@
 ---
-name: agent-email-infrastructures reputation high.
+name: agent-email-infrastructure
+description: Set up and inspect email infrastructure for agent applications; check provider configuration, delivery, and reputation before authorized sending.
+---
+s reputation high.
 
 Base URL: `https://api.theagentmail.net`
 

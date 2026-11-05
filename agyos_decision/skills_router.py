@@ -1,17 +1,17 @@
 """AGYOS Decision Engine — Autonomous Skill Routing & Selection.
 
-Evaluates task intent, technical domains, and complexity against AGYOS's 1,842+
+Evaluates task intent, technical domains, and complexity against AGYOS's 1,862+
 skills catalog to decide the optimal specialist skill and workflow gate.
-Zero external dependencies; pure Python standard library.
+Catalog metadata is validated with the repository's PyYAML dependency.
 """
 from __future__ import annotations
 
 import json
-import os
 import re
-import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
+
+from .catalog import canonical_entry, physical_catalog
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DOCS_DATA = REPO_ROOT / "docs" / "skills-data.json"
@@ -48,11 +48,11 @@ DOMAIN_TAXONOMY: Dict[str, Dict[str, Any]] = {
     },
     "motion": {
         "keywords": [
-            "animation", "motion", "transition", "micro-interaction", "spring",
+            "animate", "animation", "motion", "transition", "micro-interaction", "spring",
             "keyframes", "gsap", "framer", "threejs", "canvas", "svg", "tween"
         ],
-        "primary": "animate",
-        "alternatives": ["review-animation", "animation-performance", "motion-patterns", "threejs-animation"],
+        "primary": "motion-patterns",
+        "alternatives": ["motion-foundations", "review-animations", "animation-performance", "threejs-animation"],
     },
     "security": {
         "keywords": [
@@ -118,10 +118,10 @@ DOMAIN_TAXONOMY: Dict[str, Dict[str, Any]] = {
     "council": {
         "keywords": [
             "council", "deliberation", "consensus", "multi-model", "compare",
-            "tradeoff", "differing", "second opinion", "panel"
+            "tradeoff", "tradeoffs", "vs", "versus", "differing", "second opinion", "panel"
         ],
-        "primary": "agent-council",
-        "alternatives": ["council-multi-model", "council-revisit"],
+        "primary": "council",
+        "alternatives": ["council-multi-model", "council-revisit", "council-outcome"],
     },
     "content": {
         "keywords": [
@@ -136,8 +136,108 @@ DOMAIN_TAXONOMY: Dict[str, Dict[str, Any]] = {
             "freelance", "client", "proposal", "sow", "invoice", "hourly",
             "contract", "delivery", "rate", "pitch", "consulting"
         ],
-        "primary": "agentic-freelance-skills",
-        "alternatives": ["freelancer-client-acquisition", "freelancer-project-delivery", "freelancer-operations"],
+        "primary": "freelancer-project-delivery",
+        "alternatives": ["freelancer-client-acquisition", "freelancer-operations", "freelancer-sales-closing"],
+    },
+    "startup": {
+        "keywords": [
+            "startup", "founder", "stack", "bootstrap", "venture", "pre-seed",
+            "seed", "fundraising", "pitch deck", "pitch", "mvp", "early stage"
+        ],
+        "primary": "agyos-startup-stack",
+        "alternatives": ["agyos-founder-guide", "agyos-startup-distribution", "market-opportunity", "financial-projections"],
+    },
+    "reverse_engineering": {
+        "keywords": [
+            "binary", "disassembly", "decompile", "decompilation", "ghidra",
+            "hopper", "ida", "frida", "hook", "assembly", "reversing",
+            "reverse engineer", "elf", "protocol re"
+        ],
+        "primary": "agyos-binary-analysis",
+        "alternatives": ["binary-analysis-patterns", "protocol-reverse-engineering", "anti-reversing-techniques"],
+    },
+    "software_protection": {
+        "keywords": [
+            "obfuscation", "control-flow flattening", "opaque predicate",
+            "anti-debug", "anti-reversing", "tamper", "software protection",
+            "binary hardening", "symbol stripping"
+        ],
+        "primary": "agyos-software-protection",
+        "alternatives": ["security-hardening", "anti-reversing-techniques", "sast-scan"],
+    },
+    "simulation_prediction": {
+        "keywords": [
+            "swarm", "simulation", "prediction", "forecast", "synthetic population",
+            "graphrag", "scenario simulation", "market prediction", "scenario"
+        ],
+        "primary": "agyos-swarm-prediction-engine",
+        "alternatives": ["prediction-market-oracle-research", "multi-agent-patterns", "swot-pestel-market-analysis"],
+    },
+    "academic_research": {
+        "keywords": [
+            "academic", "literature review", "citation", "scholar", "paper",
+            "arxiv", "systematic review", "peer-reviewed", "research gap"
+        ],
+        "primary": "agyos-academic-research",
+        "alternatives": ["scientific-thinking-literature-review", "citation-management", "scientific-research"],
+    },
+    "coding_discipline": {
+        "keywords": [
+            "karpathy", "clean code", "surgical changes", "overcomplication",
+            "simplification", "llm coding", "simplicity"
+        ],
+        "primary": "agyos-karpathy-guidelines",
+        "alternatives": ["clean-code", "simplify-code", "code-simplifier"],
+    },
+    "agency_operations": {
+        "keywords": [
+            "agency", "creative agency", "pod dispatch", "agency agents",
+            "account management", "deliverables"
+        ],
+        "primary": "agyos-agency-agents",
+        "alternatives": ["team-agent-orchestration", "freelancer-operations", "dev-team"],
+    },
+    "lead_generation": {
+        "keywords": [
+            "lead", "leads", "prospect", "scraping", "lead scraper",
+            "google maps scraper", "business directory", "outreach list"
+        ],
+        "primary": "agyos-lead-scraper",
+        "alternatives": ["apify-lead-generation", "lead-intelligence", "data-scraper-agent"],
+    },
+    "app_launch": {
+        "keywords": [
+            "launch checklist", "app launch", "production checklist", "favicon",
+            "opengraph", "meta tags", "pre-launch"
+        ],
+        "primary": "agyos-app-launch-checklist",
+        "alternatives": ["app-manifest-generator", "seo-audit", "favicon-generator"],
+    },
+    "free_infrastructure": {
+        "keywords": [
+            "free tier", "free infra", "free cloud", "free host",
+            "free database", "free compute", "free for dev"
+        ],
+        "primary": "agyos-free-infra-catalog",
+        "alternatives": ["cost-optimization", "aws-cost-cleanup"],
+    },
+    "anti_ai_design": {
+        "keywords": [
+            "anti ai design", "purple gradient", "ai look", "banned font",
+            "boring ui", "fresh design"
+        ],
+        "primary": "agyos-anti-ai-design",
+        "alternatives": ["design-spells", "frontend-design-direction", "apple-design"],
+    },
+    "skill_routing": {
+        "keywords": ["skill", "skills", "runbook", "runbooks", "skill routing", "decision engine"],
+        "primary": "agyos-decision",
+        "alternatives": ["skill-creator", "eval-harness", "verification-loop"],
+    },
+    "android_verification": {
+        "keywords": ["android screen", "android emulator", "android ui", "adb", "screen visually"],
+        "primary": "android_ui_verification",
+        "alternatives": ["android-clean-architecture", "android-jetpack-compose-expert"],
     },
 }
 
@@ -153,7 +253,9 @@ LANGUAGE_FRAMEWORK_MAP = {
     "nextjs": "nextjs-best-practices",
     "next": "nextjs-best-practices",
     "vue": "vue-patterns",
-    "angular": "angular-patterns",
+    "angular": "angular-best-practices",
+    "flutter": "flutter-expert",
+    "svelte": "sveltekit",
     "docker": "docker-patterns",
     "k8s": "kubernetes-patterns",
     "kubernetes": "kubernetes-patterns",
@@ -162,46 +264,39 @@ LANGUAGE_FRAMEWORK_MAP = {
     "tailwind": "tailwind-patterns",
     "expo": "expo-api-routes",
     "swift": "swiftui-patterns",
+    "solidity": "solidity-security",
 }
 
 
 def load_catalog() -> List[Dict[str, Any]]:
-    """Load skill catalog from docs data or manifest."""
-    if DOCS_DATA.exists():
+    """Prefer the runtime manifest; recover from stale or missing generated data."""
+    for source in (MANIFEST_DATA, DOCS_DATA):
         try:
-            raw = json.loads(DOCS_DATA.read_text(encoding="utf-8"))
-            return [
-                {
-                    "name": s.get("id") or s.get("name"),
-                    "tier": s.get("tier", 1),
-                    "description": s.get("description", ""),
-                    "path": s.get("path") or f".agents/skills/{s.get('id')}",
-                    "category": (s.get("category") or s.get("module") or "").lower(),
-                }
-                for s in raw
-                if s.get("id") or s.get("name")
-            ]
-        except Exception:
-            pass
+            raw = json.loads(source.read_text(encoding="utf-8"))
+            entries = raw.get("skills", []) if isinstance(raw, dict) else raw
+            if not isinstance(entries, list):
+                continue
+            valid = [item for entry in entries if (item := canonical_entry(entry))]
+            physical_names = {p.parent.name for p in (REPO_ROOT / ".agents/skills").glob("*/SKILL.md")}
+            if {s["name"] for s in valid} == physical_names and len(valid) == len(physical_names):
+                return valid
+        except (OSError, ValueError, TypeError):
+            continue
+    return physical_catalog()
 
-    if MANIFEST_DATA.exists():
-        try:
-            raw = json.loads(MANIFEST_DATA.read_text(encoding="utf-8"))
-            return raw.get("skills", [])
-        except Exception:
-            pass
 
-    return []
+def keyword_matches(keyword: str, query: str) -> bool:
+    """Match complete words and phrases, never accidental substrings."""
+    return bool(re.search(r"(?<!\w)" + re.escape(keyword) + r"(?!\w)", query, re.I))
 
 
 def classify_domain(query: str) -> Tuple[str, float]:
-    """Classify the technical domain with calibrated confidence."""
-    tokens = set(re.findall(r"\w+", query.lower()))
+    """Classify domain using bounded words and weighted phrases."""
     scores: Dict[str, int] = {}
 
     for domain, data in DOMAIN_TAXONOMY.items():
         kws = data["keywords"]
-        hits = sum(1 for kw in kws if kw in tokens or any(kw in t for t in tokens))
+        hits = sum(len(kw.split()) + (2 if " " in kw else 0) for kw in kws if keyword_matches(kw, query))
         if hits > 0:
             scores[domain] = hits
 
@@ -219,9 +314,11 @@ def assess_complexity(query: str) -> Tuple[int, str]:
     words = re.findall(r"\w+", lower)
     length = len(words)
 
-    # Complexity 1: single-line typo, string tweak, log deletion
-    if length <= 6 and any(w in lower for w in ["typo", "rename", "fix link", "remove log", "comment", "spelling"]):
-        return 1, "trivial single-line edit (fast-path bypass)"
+    if any(keyword_matches(phrase, lower) for phrase in [
+        "delete production", "drop database", "drop table", "wire money",
+        "deploy to production", "production deployment", "send payment",
+    ]):
+        return 5, "high-impact external or destructive action (full workflow; authorization required)"
 
     # Complexity 5: cross-system architectural overhaul, protocol change, breaking schema migration
     if any(w in lower for w in [
@@ -231,19 +328,23 @@ def assess_complexity(query: str) -> Tuple[int, str]:
         return 5, "cross-module architectural overhaul (full 5-gate workflow + council deliberation)"
 
     # Complexity 4: multi-file refactoring, major migration, security reviews
-    if any(w in lower for w in ["refactor", "migrate", "rewrite", "threat model", "vulnerability", "auth flow"]):
+    if any(keyword_matches(w, lower) for w in ["refactor", "migrate", "migration", "migrations", "rewrite", "threat model", "vulnerability", "security", "permissions", "jwt", "auth", "authentication", "payment", "payments", "all rules", "all skills"]):
         return 4, "multi-file structural change (full 5-gate workflow + ADR)"
+
+    if length <= 6 and any(keyword_matches(w, lower) for w in ["typo", "rename", "fix link", "remove log", "comment", "spelling"]):
+        return 1, "trivial single-line edit (fast-path bypass)"
 
     # Complexity 3: standard feature development, bug fix with regression check
     if any(w in lower for w in ["add", "implement", "create", "test", "feature", "endpoint", "service", "fix bug"]):
         return 3, "standard feature development (5-gate workflow)"
 
-    # Complexity 2: bounded single-function or single-file fix
-    return 2, "bounded single-file modification (fast-path bypass)"
+    if any(keyword_matches(phrase, lower) for phrase in ["single function", "single-file", "one file"]):
+        return 2, "explicitly bounded modification (fast-path bypass)"
+    return 3, "scope requires inspection (standard 5-gate workflow)"
 
 
 def score_skill_fit(skill: Dict[str, Any], query: str, domain: str) -> float:
-    """Calculate calibrated relevance score for a skill."""
+    """Calculate a deterministic relevance heuristic, not a probability."""
     name = skill.get("name", "").lower()
     desc = skill.get("description", "").lower()
     tokens = [t for t in re.findall(r"\w+", query.lower()) if len(t) > 2]
@@ -251,33 +352,36 @@ def score_skill_fit(skill: Dict[str, Any], query: str, domain: str) -> float:
 
     # Exact skill name match
     clean_query = query.lower().strip()
-    if clean_query == name or clean_query.replace("-", " ") == name.replace("-", " "):
-        score += 250.0
+    if keyword_matches(name, clean_query) or clean_query.replace("-", " ") == name.replace("-", " "):
+        score += 1000.0
 
     # Framework exact mapping
     for fw, sk in LANGUAGE_FRAMEWORK_MAP.items():
         if fw in tokens and name == sk:
-            score += 120.0
+            score += 45.0
 
     # Domain primary and alternative alignment
     if domain in DOMAIN_TAXONOMY:
         domain_info = DOMAIN_TAXONOMY[domain]
         if domain_info["primary"] == name:
-            score += 90.0
+            score += 220.0
         elif name in domain_info.get("alternatives", []):
             score += 50.0
 
     # Token-level matching
+    name_tokens = set(re.split(r"[-_]", name))
     for token in tokens:
         if token == name:
             score += 50.0
+        elif token in name_tokens:
+            score += 35.0
         elif token in name:
             score += 25.0
         if token in desc:
             score += 8.0
 
     # Tier 1 priority boost
-    if skill.get("tier") == 1:
+    if score > 0 and skill.get("tier") == 1:
         score += 15.0
 
     return score
@@ -285,6 +389,8 @@ def score_skill_fit(skill: Dict[str, Any], query: str, domain: str) -> float:
 
 def select_best_skills(query: str, catalog: Optional[List[Dict[str, Any]]] = None, limit: int = 5) -> List[Dict[str, Any]]:
     """Rank catalog skills against the query and domain."""
+    if limit <= 0:
+        return []
     if catalog is None:
         catalog = load_catalog()
 
@@ -296,7 +402,7 @@ def select_best_skills(query: str, catalog: Optional[List[Dict[str, Any]]] = Non
         if fit > 0:
             scored.append((fit, s))
 
-    scored.sort(key=lambda x: x[0], reverse=True)
+    scored.sort(key=lambda x: (-x[0], x[1]["name"]))
     results = []
 
     top_score = scored[0][0] if scored else 1.0
@@ -318,16 +424,36 @@ def select_best_skills(query: str, catalog: Optional[List[Dict[str, Any]]] = Non
 
 def decide_skill(query: str) -> Dict[str, Any]:
     """Execute complete decision pipeline for a task."""
+    if not isinstance(query, str) or not query.strip():
+        raise ValueError("A non-empty task description is required")
     catalog = load_catalog()
+    if not catalog:
+        raise ValueError("No valid skill catalog is available")
     domain, domain_conf = classify_domain(query)
     complexity, complexity_reason = assess_complexity(query)
     candidates = select_best_skills(query, catalog, limit=5)
+    explicit = any(keyword_matches(s["name"], query) for s in catalog)
+    technology = any(keyword_matches(name, query) for name in LANGUAGE_FRAMEWORK_MAP)
+    ignored = {"please", "help", "use", "run", "check", "inspect", "review", "explain",
+               "implement", "add", "create", "write", "show", "tell", "want", "need",
+               "how", "can", "the", "with", "for", "this", "and", "from"}
+    task_tokens = set(re.findall(r"\w+", query.lower())) - ignored
+    catalog_match = any(
+        len(token) > 2
+        for candidate in candidates
+        for token in task_tokens & set(re.split(r"[-_]", candidate["name"]))
+    )
+    fallback = domain == "general" and not explicit and not technology and not catalog_match
 
-    if candidates:
+    if candidates and not fallback:
         primary = candidates[0]
     else:
-        fallback_name = DOMAIN_TAXONOMY.get(domain, {}).get("primary", "codebase-onboarding")
+        fallback_name = DOMAIN_TAXONOMY.get(domain, {}).get("primary", "agyos-decision")
+        entry = next((s for s in catalog if s["name"] == fallback_name), None)
+        if entry is None:
+            raise ValueError(f"Required fallback skill missing from catalog: {fallback_name}")
         primary = {
+            **entry,
             "rank": 1,
             "name": fallback_name,
             "score": 50.0,
@@ -336,7 +462,9 @@ def decide_skill(query: str) -> Dict[str, Any]:
             "description": "Default specialist for domain",
             "path": f".agents/skills/{fallback_name}",
         }
+        candidates = [primary]
 
+    runbook_path = f"{primary.get('path', '')}/SKILL.md"
     return {
         "task": query,
         "classification": {
@@ -349,5 +477,12 @@ def decide_skill(query: str) -> Dict[str, Any]:
         "primary_skill": primary["name"],
         "primary_path": primary.get("path", ""),
         "confidence": primary.get("confidence", 0.70),
+        "confidence_kind": "heuristic_not_probability",
+        "selection_status": "fallback" if fallback else "matched",
+        "execution_status": "pending_runbook_read",
+        "runbook_path": runbook_path,
+        "runbook_command": f"bin/agyos skill {primary['name']}",
+        "read_tool_call": f"read_file(Path='{runbook_path}')",
+        "execution_invariant": f"Autonomous Skill Invariant: Ingest runbook at {runbook_path} and adhere to domain rules before mutating code.",
         "candidates": candidates,
     }

@@ -105,7 +105,7 @@
           <li class="sidebar-nav-item"><a href="#council" class="sidebar-link">Agent Council <span class="sidebar-badge">59 Tests</span></a></li>
           <li class="sidebar-nav-item"><a href="#ui-ux" class="sidebar-link">UI/UX &amp; Motion <span class="sidebar-badge">Emil Kowalski</span></a></li>
           <li class="sidebar-nav-item"><a href="#gravitas" class="sidebar-link">Gravitas Invariants <span class="sidebar-badge">6 Rules</span></a></li>
-          <li class="sidebar-nav-item"><a href="#verification" class="sidebar-link">Verification Suite <span class="sidebar-badge">51 / 51</span></a></li>
+          <li class="sidebar-nav-item"><a href="#verification" class="sidebar-link">Verification Suite <span class="sidebar-badge">51 checks</span></a></li>
           <li class="sidebar-nav-item"><a href="#explorer" class="sidebar-link">Skills Catalog <span class="sidebar-badge">1,862</span></a></li>
         </ul>
       </div>
@@ -134,11 +134,11 @@
             <div class="stat-label">Corporate Org</div>
           </div>
           <div class="stat-card">
-            <div class="stat-number">140+</div>
+            <div class="stat-number">141</div>
             <div class="stat-label">Modular Rules</div>
           </div>
           <div class="stat-card">
-            <div class="stat-number">51 / 51</div>
+            <div class="stat-number">51</div>
             <div class="stat-label">Verified Proofs</div>
           </div>
         </div>
@@ -189,13 +189,13 @@ Confirm when all 51 checks pass and the workspace is fully initialized.</code></
         <div class="code-container">
           <div class="code-header">
             <span>Filesystem Tree</span>
-            <button class="copy-btn" data-copy="AGYOS/&#10;├── .agents/                   # Core Runtime: 1,862 skills, 140+ rules, 81 agents, 8 plugins&#10;│   ├── agents/                # 81 Corporate role agent definitions (5 merged pods)&#10;│   ├── skills/                # 1,862 physical standalone skills&#10;│   ├── rules/                 # 140+ modular rules (&lt;24KB)&#10;│   ├── workflows/             # 100 autonomous pipelines&#10;│   └── state/                 # 5-Gate state ledger, snapshots, outbox, decisions&#10;├── agyos_decision/            # Autonomous Intent Compiler, Task Contracts &amp; Ledger&#10;├── bin/                       # Kernel CLI (bin/agyos) and 5-gate state engine&#10;├── mcp/                       # FastMCP JSON-RPC 2.0 daemon for AGY CLI&#10;├── scripts/                   # Verification suite (51 checks), Council (59 tests), hooks&#10;│   └── hooks/                 # Fail-closed authorizer.py and agy_os_hook.py&#10;├── assets/                    # Master monochrome vector branding (logo.svg)&#10;└── docs/                      # Pure static documentation and live explorer">Copy tree</button>
+            <button class="copy-btn" data-copy="AGYOS/&#10;├── .agents/                   # Core Runtime: 1,862 skills, 141 rules, 81 agents, 8 plugins&#10;│   ├── agents/                # 81 Corporate role agent definitions (5 merged pods)&#10;│   ├── skills/                # 1,862 physical standalone skills&#10;│   ├── rules/                 # 141 modular rules (&lt;24KB)&#10;│   ├── workflows/             # 100 autonomous pipelines&#10;│   └── state/                 # 5-Gate state ledger, snapshots, outbox, decisions&#10;├── agyos_decision/            # Autonomous Intent Compiler, Task Contracts &amp; Ledger&#10;├── bin/                       # Kernel CLI (bin/agyos) and 5-gate state engine&#10;├── mcp/                       # FastMCP JSON-RPC 2.0 daemon for AGY CLI&#10;├── scripts/                   # Verification suite (51 checks), Council (59 tests), hooks&#10;│   └── hooks/                 # Fail-closed authorizer.py and agy_os_hook.py&#10;├── assets/                    # Master monochrome vector branding (logo.svg)&#10;└── docs/                      # Pure static documentation and live explorer">Copy tree</button>
           </div>
           <pre><code>AGYOS/
-├── .agents/                   # Core Runtime: 1,862 skills, 140+ rules, 81 agents, 8 plugins
+├── .agents/                   # Core Runtime: 1,862 skills, 141 rules, 81 agents, 8 plugins
 │   ├── agents/                # 81 Corporate role agent definitions (5 merged pods)
 │   ├── skills/                # 1,862 physical standalone skills
-│   ├── rules/                 # 140+ modular rules (&lt;24KB)
+│   ├── rules/                 # 141 modular rules (&lt;24KB)
 │   ├── workflows/             # 100 autonomous pipelines
 │   └── state/                 # 5-Gate state ledger, snapshots, outbox, decisions
 ├── agyos_decision/            # Autonomous Intent Compiler, Task Contracts &amp; Ledger
@@ -362,41 +362,27 @@ Confirm when all 51 checks pass and the workspace is fully initialized.</code></
       <section id="decision">
         <h2>AGYOS Decision Engine</h2>
         <p>
-          The AGYOS Decision Engine provides fast, non-autoregressive System 1 decision-making and optimal skill routing. Given any incoming prompt, error message, or feature request, it computes calibrated probabilities to classify technical domains, determine task complexity, and recommend the primary specialist skill:
+          For every task and follow-up, discover a relevant skill, read its runbook, apply relevant steps, and verify the result. The decision engine matches task intent and phrases against the physical catalog. Scores are heuristics, not calibrated probabilities.
         </p>
 
         <div class="code-container">
           <div class="code-header">
-            <span>Run Autonomous Skill Routing</span>
-            <button class="copy-btn" data-copy="bin/agyos decide &quot;Design Postgres database schema with migrations&quot;">Copy</button>
+            <span>Select and read a skill</span>
+            <button class="copy-btn" data-copy="bin/agyos decide &quot;fix python crash&quot; --json --runbook">Copy</button>
           </div>
-          <pre><code>bin/agyos decide "Design Postgres database schema with migrations"</code></pre>
+          <pre><code>bin/agyos decide "fix python crash" --json --runbook</code></pre>
         </div>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>Sample Decision Output</span>
-          </div>
-          <pre><code>============================================================
-AGYOS Autonomous Decision Engine
-============================================================
-Task: Design Postgres database schema with migrations
-Domain: DATABASE (calibrated confidence: 0.98)
-Complexity: 2/5 — bounded single-file modification (fast-path bypass)
-Gate Routing: Fast-path eligible (skip Gates 1-3 direct to IMPLEMENT)
-
-Recommended Primary Skill:
-  Name: postgres-best-practices
-  Path: .agents/skills/postgres-best-practices
-  Confidence: 96.0%
-
-Candidate Rankings:
-  * #1 postgres-best-practices        (score: 242.0, conf: 96.0%)
-    #2 database-design                (score: 164.0, conf: 65.0%)
-    #3 architecture-database-design   (score: 147.0, conf: 58.0%)
-    #4 database-migrations            (score: 124.0, conf: 49.0%)
-============================================================</code></pre>
-        </div>
+        <p>
+          This selects <code>diagnosing-bugs</code> and returns its instructions.
+          MCP <code>agyos_decision</code> supports <code>include_runbook: true</code>.
+          Unknown tasks fall back to objective inspection. Reuse unchanged runbooks
+          already read in the session and discover again when the task changes.
+        </p>
+        <p>
+          Selection starts at <code>pending_runbook_read</code>; returning the file
+          changes it to <code>runbook_returned</code>. Neither certifies execution.
+          <a href="https://github.com/krishujeniya/AGYOS/blob/main/docs/SKILL_ROUTING.md">Read the operating contract and limits</a>.
+        </p>
       </section>
 
       <!-- Section: Security & Fail-Closed Architecture -->
@@ -579,7 +565,7 @@ Candidate Rankings:
 
       <!-- Section: Verification Suite -->
       <section id="verification">
-        <h2>Adversarial Verification Suite: 51 / 51 Passing</h2>
+        <h2>Adversarial Verification Suite</h2>
         <p>
           AGYOS includes an adversarial proof runner (<code>bin/agyos verify</code>) covering 51 machine checks:
         </p>
@@ -602,7 +588,7 @@ Candidate Rankings:
 • Agent Council Bun test suite (59 passing tests): PASS
 • 8 AGYOS Plugins validated: PASS
 • Merged skills catalog (&gt;400 skills in .agents/skills): PASS (1,862 skills)
-• Merged rules catalog (&gt;120 rules in .agents/rules): PASS (140+ rules)
+• Merged rules catalog (&gt;120 rules in .agents/rules): PASS (141 rules)
 • AGYOS master logo exists: PASS
 • bin/agyos executable functional: PASS
 • Tiered skills manifest exists and valid: PASS

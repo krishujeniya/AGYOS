@@ -96,6 +96,35 @@ git clone https://github.com/krishujeniya/AGYOS.git && cd AGYOS && bash scripts/
 
 ---
 
+## Skill selection for every task
+
+Discover a relevant skill, read its runbook, apply the steps needed for the task,
+and verify the result. Repeat discovery when the objective changes; reuse an
+unchanged runbook already read in the session. The shared
+[routing rule](.agents/rules/common-skill-routing.md) covers all 1,862 skills and
+141 modular rules without loading the entire catalog into each prompt.
+
+```bash
+# Select a skill and return its instructions
+bin/agyos decide "fix python crash" --json --runbook
+
+# Search alternatives or read a known runbook
+bin/agyos find "database schema migration"
+bin/agyos skill database-design
+
+# Rebuild and validate the complete catalog after metadata changes
+python3 scripts/build_tiered_skills_manifest.py
+python3 scripts/build_docs_data.py
+python3 -m unittest scripts.tests.test_skill_routing -v
+```
+
+MCP `agyos_decision` accepts `include_runbook: true`. Task intent takes priority
+over language keywords; unclassified tasks fall back to objective inspection.
+Scores are matching heuristics, not probabilities. Returning a runbook does not
+prove an assistant applied it. See [the operating contract and limits](docs/SKILL_ROUTING.md).
+
+---
+
 ## The 5 Merged Corporate Execution Pods
 
 AGYOS compresses 11 traditional company departments into five autonomous, high-velocity corporate pods. Each pod is bound to explicit host tool contracts and standard operating procedures:
@@ -110,7 +139,7 @@ AGYOS compresses 11 traditional company departments into five autonomous, high-v
 
 ### Autonomous Intent Routing Matrix
 
-Every natural language prompt automatically compiles into its target pod, action class, and risk level in under 5 milliseconds:
+Every natural language prompt can be compiled into a target pod, action class, and risk level:
 
 ```bash
 # Test intent classification from the command line:
@@ -222,10 +251,10 @@ AGYOS solves this by embedding a **Virtual FAANG Corporate Engineering Squad** d
 
 ```
 AGYOS/
-├── .agents/                   # Core Runtime: 1,862 skills, 140+ rules, 81 agents, 8 plugins
+├── .agents/                   # Core Runtime: 1,862 skills, 141 rules, 81 agents, 8 plugins
 │   ├── agents/                # 81 Corporate role agent definitions (5 merged pods)
 │   ├── plugins/               # 8 Validated governance plugins (rules and config)
-│   ├── rules/                 # 140 Modular governance, polyglot, and SDLC rules (<24KB)
+│   ├── rules/                 # 141 Modular governance, polyglot, and SDLC rules (<24KB)
 │   ├── skills/                # 1,862 Physical standalone skills (1 folder per skill)
 │   ├── state/                 # 5-Gate runtime state, snapshots, and outbox queue
 │   ├── workflows/             # 100 Multi-agent execution pipelines
@@ -305,9 +334,9 @@ The repository contains **1,862 skills** organized across major engineering disc
 
 ---
 
-## Adversarial Verification Suite: 51 / 51 Passing
+## Adversarial Verification Suite
 
-Execute the comprehensive proof runner to verify system health across all subsystems:
+Run the proof runner in your environment. The following output is illustrative; current results depend on installed dependencies and host access:
 
 ```bash
 bash scripts/agyos-verify.sh
@@ -328,7 +357,7 @@ bash scripts/agyos-verify.sh
 • Agent Council Bun test suite (59 passing tests): PASS
 • 8 AGYOS Plugins validated: PASS
 • Merged skills catalog (>400 skills in .agents/skills): PASS (1,862 skills)
-• Merged rules catalog (>120 rules in .agents/rules): PASS (140+ rules)
+• Merged rules catalog (>120 rules in .agents/rules): PASS (141 rules)
 • AGYOS master logo exists: PASS
 • bin/agyos executable functional: PASS
 • Tiered skills manifest exists and valid: PASS

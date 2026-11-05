@@ -1,5 +1,6 @@
 ---
-name: web-vitals-performance-benchmarkit feels slow' reports, verifying launch performance targets, or comparing stack alternatives.
+name: web-vitals-performance-benchmark
+description: it feels slow' reports, verifying launch performance targets, or comparing stack alternatives.
 license: MIT
 metadata:
   origin: ECC

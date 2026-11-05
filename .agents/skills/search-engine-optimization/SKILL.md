@@ -1,5 +1,8 @@
 ---
-name: search-engine-optimization@context": "https://schema.org",
+name: search-engine-optimization
+description: Inspect search visibility, metadata, crawlability, and eligible structured data using the rendered page and primary evidence.
+---
+@context": "https://schema.org",
   "@type": "Article",
   "headline": "Page Title Here",
   "author": {

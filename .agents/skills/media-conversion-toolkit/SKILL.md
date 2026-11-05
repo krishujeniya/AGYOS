@@ -1,5 +1,8 @@
 ---
-name: media-conversion-toolkita, T> = Pin<Box<dyn PlatformSendFuture<Output = T> + 'a>>;
+name: media-conversion-toolkit
+description: Inspect and convert audio, video, and image files using available media tools; verify output format and preserve source files.
+---
+a, T> = Pin<Box<dyn PlatformSendFuture<Output = T> + 'a>>;
 
 /// Boxed stream type for cross-platform use
 pub type BoxPlatformSendStream<'a, T> = Pin<Box<dyn PlatformSendStream<Item = T> + 'a>>;

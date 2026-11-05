@@ -1,5 +1,8 @@
 ---
-name: multichannel-content-crosspostingcrosspost", "post this everywhere", or "adapt this for X and LinkedIn"
+name: multichannel-content-crossposting
+description: Adapt existing content for multiple channels and prepare platform-specific drafts for authorized publication.
+---
+crosspost", "post this everywhere", or "adapt this for X and LinkedIn"
 
 ## Core Rules
 

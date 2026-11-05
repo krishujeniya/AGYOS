@@ -48,7 +48,7 @@ graph TD
 Inspired by the virtual memory paging architectures of MemGPT and Letta:
 - **Tier 0 (Core Working Memory)**: Active persona, user preferences, runtime identity, and inviolable invariants stored in `.agents/state/memory.json`. Loaded into the active prompt.
 - **Tier 1 (Recall Memory / Cache)**: Conversation summaries, milestone checkpoints (`.agents/state/checkpoints/`), and current session status (`.agents/state/CURRENT.md`).
-- **Tier 2 (Archival Memory / Deep Storage)**: The indexed 1,842-skill catalog (`.agents/skills-manifest.json` and `docs/skills-data.json`), paged into context JIT via `agyos_find_skill`.
+- **Tier 2 (Archival Memory / Deep Storage)**: The indexed 1,862-skill catalog (`.agents/skills-manifest.json` and `docs/skills-data.json`), paged into context JIT via `agyos_find_skill`.
 
 ### Layer 2: FastMCP Syscall & Driver Bus
 - **Driver**: `mcp/agyos-state-server.cjs` (Zero-dependency stdio JSON-RPC 2.0 daemon)
@@ -57,7 +57,7 @@ Inspired by the virtual memory paging architectures of MemGPT and Letta:
   - `agyos_current`: Read human-readable session markdown summary.
   - `agyos_graph`: Read context dependency DAG and invariant status.
   - `agyos_checkpoint`: Audit ledger entries for specific milestones.
-  - `agyos_find_skill`: High-speed multi-token semantic search over 1,842 skills.
+  - `agyos_find_skill`: Deterministic keyword and phrase search over 1,862 skills.
   - `agyos_sys_info`: Comprehensive OS runtime diagnostics, loaded drivers, and subsystem health.
   - `agyos_memory`: Virtual memory read, write, and list operations across tiers.
 
@@ -150,3 +150,12 @@ Evaluated across 14 frozen multi-domain business task fixtures (`scripts/tests/f
    Keep high-frequency core instructions in Tier 1 context; load heavy domain manuals and schemas JIT.
 10. **Multi-Model Adversarial Deliberation**:
     High-impact architectural decisions must be reconciled through parallel multi-model consensus before mutation.
+
+## Skill routing contract
+
+All skills and modular rules follow `.agents/rules/common-skill-routing.md`.
+Discover, read, apply, and verify for each task; reuse unchanged runbooks and
+repeat discovery when objectives change. `bin/agyos decide "<task>" --json
+--runbook` and MCP `agyos_decision` with `include_runbook: true` return selected
+instructions. Task intent outranks a language keyword. Matching scores are
+heuristics; delivery does not certify execution. See [SKILL_ROUTING.md](SKILL_ROUTING.md).

@@ -1,12 +1,24 @@
 ---
-name: agent-skill-security-auditExpert security auditor for AI Skills and Bundles. Performs non-intrusive static analysis to identify malicious patterns, data leaks, system stability risks, and obfuscated payloads across Windows, macOS, Linux/Unix, and Mobile (Android/iOS)."
+name: agent-skill-security-audit
+description: Expert security auditor for AI Skills and Bundles. Performs non-intrusive static analysis to identify malicious patterns, data leaks, system stability risks, and obfuscated payloads across Windows, macOS, Linux/Unix, and Mobile (Android/iOS).
 category: security
 risk: safe
 source: community
-date_added: "2026-03-07"
-author: "Krish Ujeniya"
-tags: [security, audit, skills, bundles, cross-platform]
-tools: [claude, gemini, gpt, llama, mistral, etc]
+date_added: '2026-03-07'
+author: Krish Ujeniya
+tags:
+- security
+- audit
+- skills
+- bundles
+- cross-platform
+tools:
+- claude
+- gemini
+- gpt
+- llama
+- mistral
+- etc
 ---
 
 <!-- security-allowlist: curl-pipe-bash -->

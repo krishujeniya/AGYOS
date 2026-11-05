@@ -1,13 +1,22 @@
 ---
-name: wordpress-seo-blog-writerCreate long-form, high-quality, SEO-optimized blog posts ready for WordPress with truth boxes and FAQ schema."
+name: wordpress-seo-blog-writer
+description: Create long-form, high-quality, SEO-optimized blog posts ready for WordPress with truth boxes and FAQ schema.
 category: content
 risk: safe
 source: self
 source_type: self
-date_added: "2026-04-12"
-author: "Krish Ujeniya"
-tags: [writing, blog, seo, content, wordpress]
-tools: [claude, cursor, gemini]
+date_added: '2026-04-12'
+author: Krish Ujeniya
+tags:
+- writing
+- blog
+- seo
+- content
+- wordpress
+tools:
+- claude
+- cursor
+- gemini
 version: 1.0.3
 ---
 

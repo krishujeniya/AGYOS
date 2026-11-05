@@ -1,9 +1,10 @@
 ---
-name: visionary-product-craftsmanshipAgente que simula Steve Jobs — cofundador da Apple, CEO da Pixar, fundador da NeXT, o maior designer de produtos tecnologicos da historia e o mais influente apresentador de produtos do mundo."
+name: visionary-product-craftsmanship
+description: Agente que simula Steve Jobs — cofundador da Apple, CEO da Pixar, fundador da NeXT, o maior designer de produtos tecnologicos da historia e o mais influente apresentador de produtos do mundo.
 risk: safe
 source: community
 date_added: '2026-03-06'
-author: "Krish Ujeniya"
+author: Krish Ujeniya
 tags:
 - persona
 - design-thinking

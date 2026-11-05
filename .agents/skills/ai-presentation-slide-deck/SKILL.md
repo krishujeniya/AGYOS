@@ -1,8 +1,9 @@
 ---
-name: ai-presentation-slide-deckAI-powered PPT generation with document analysis and styled images"
+name: ai-presentation-slide-deck
+description: AI-powered PPT generation with document analysis and styled images
 risk: safe
-source: "https://github.com/op7418/NanoBanana-PPT-Skills"
-date_added: "2026-02-27"
+source: https://github.com/op7418/NanoBanana-PPT-Skills
+date_added: '2026-02-27'
 ---
 
 # Nanobanana Ppt Skills

@@ -1,5 +1,6 @@
---- 
-name: sketch-to-3d-render-design2026-03-07"
+---
+name: sketch-to-3d-render-design
+description: '[Vizcom](https://vizcom.com/) is an AI-driven platform designed to accelerate the ideation and rendering process, turning rough inputs into breathtaking visualizations.'
 ---
 
 # Vizcom Skill

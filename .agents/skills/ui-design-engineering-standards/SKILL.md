@@ -1,5 +1,6 @@
 ---
-name: ui-design-engineering-standardss philosophy on UI polish, component design, animation decisions, and the invisible details that make software feel great.
+name: ui-design-engineering-standards
+description: s philosophy on UI polish, component design, animation decisions, and the invisible details that make software feel great.
 ---
 
 # Design Engineering

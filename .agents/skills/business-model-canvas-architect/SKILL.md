@@ -1,13 +1,21 @@
 ---
-name: business-model-canvas-architectIterative consultant agent for building and validating logically consistent 9-block Business Model Canvases."
+name: business-model-canvas-architect
+description: Iterative consultant agent for building and validating logically consistent 9-block Business Model Canvases.
 category: business-strategy
 risk: safe
 source: self
 source_type: self
-date_added: "2026-04-17"
-author: "Krish Ujeniya"
-tags: [business-model, osterwalder, strategy, bmc]
-tools: [claude, cursor, gemini]
+date_added: '2026-04-17'
+author: Krish Ujeniya
+tags:
+- business-model
+- osterwalder
+- strategy
+- bmc
+tools:
+- claude
+- cursor
+- gemini
 ---
 
 # Osterwalder Business Model Canvas Architect

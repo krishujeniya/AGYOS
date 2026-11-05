@@ -1,12 +1,21 @@
 ---
-name: legal-contract-truth-engineCentralized 'Truth Engine' for cross-jurisdictional legal context (US, EU, CA) and contract scaffolding."
+name: legal-contract-truth-engine
+description: Centralized 'Truth Engine' for cross-jurisdictional legal context (US, EU, CA) and contract scaffolding.
 category: business
 risk: safe
 source: community
-date_added: "2026-03-10"
-author: "Krish Ujeniya"
-tags: [legal, context, cross-jurisdictional, compliance, scaffolding]
-tools: [claude, cursor, gemini]
+date_added: '2026-03-10'
+author: Krish Ujeniya
+tags:
+- legal
+- context
+- cross-jurisdictional
+- compliance
+- scaffolding
+tools:
+- claude
+- cursor
+- gemini
 ---
 
 # LEX: Legal-Entity-X-ref

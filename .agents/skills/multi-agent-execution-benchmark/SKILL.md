@@ -1,8 +1,9 @@
 ---
-name: multi-agent-execution-benchmarkBlockRun works with Claude Code and Google Antigravity."
+name: multi-agent-execution-benchmark
+description: BlockRun works with Claude Code and Google Antigravity.
 risk: unknown
 source: community
-date_added: "2026-02-27"
+date_added: '2026-02-27'
 ---
 
 # BlockRun

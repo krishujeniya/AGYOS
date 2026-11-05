@@ -1,5 +1,8 @@
 ---
-name: rsvp-speed-readers prior response into a word-by-word reading view.
+name: rsvp-speed-reader
+description: Present text in a word-by-word reading view with adjustable speed, pause controls, and readable typography.
+---
+s prior response into a word-by-word reading view.
 - You need a quick reading aid rather than a document transformation or summary.
 
 ## Instructions

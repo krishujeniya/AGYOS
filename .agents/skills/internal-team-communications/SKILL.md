@@ -1,8 +1,9 @@
 ---
-name: internal-team-communicationsTo write internal communications, use this skill for:"
+name: internal-team-communications
+description: 'To write internal communications, use this skill for:'
 risk: unknown
 source: community
-date_added: "2026-02-27"
+date_added: '2026-02-27'
 ---
 
 ## When to use this skill

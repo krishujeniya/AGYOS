@@ -1,5 +1,6 @@
 ---
-name: visual-design-taste-auditors video skills from b-roll generation to distribution. Use when a video must feel intentional rather than merely functional — music videos, fancams, moodboard-driven reels, or giving AI-generated b-roll a coherent visual direction.
+name: visual-design-taste-auditor
+description: s video skills from b-roll generation to distribution. Use when a video must feel intentional rather than merely functional — music videos, fancams, moodboard-driven reels, or giving AI-generated b-roll a coherent visual direction.
 origin: ECC
 ---
 

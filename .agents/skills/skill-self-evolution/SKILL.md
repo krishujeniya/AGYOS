@@ -1,5 +1,6 @@
 ---
-name: skill-self-evolutionThis skill enables makepad-skills to self-improve continuously during development."
+name: skill-self-evolution
+description: This skill enables makepad-skills to self-improve continuously during development.
 risk: critical
 source: community
 ---

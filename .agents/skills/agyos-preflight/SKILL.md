@@ -1,8 +1,9 @@
 ---
-name: agyos-preflight1.1.0"
+name: agyos-preflight
+description: Inspect planned deliverables before implementation and report whether they are unbuilt, partial, or already built.
 allowed-tools:
-  - view_file
-  - grep_search
+- view_file
+- grep_search
 ---
 
 # agyos-preflight

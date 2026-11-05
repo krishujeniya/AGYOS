@@ -1,8 +1,9 @@
 ---
-name: agyos-scout1.1.0"
+name: agyos-scout
+description: Inspect the codebase before planning; identify dependencies, hidden risks, and breaking changes in a concise scope report.
 allowed-tools:
-  - view_file
-  - grep_search
+- view_file
+- grep_search
 ---
 
 # agyos-scout

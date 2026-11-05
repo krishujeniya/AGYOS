@@ -1,21 +1,22 @@
 ---
-name: hierarchical-bullet-notesConvert input into clean, structured, hierarchical bullet points for summarization, note-taking, and structured thinking."
+name: hierarchical-bullet-notes
+description: Convert input into clean, structured, hierarchical bullet points for summarization, note-taking, and structured thinking.
 category: writing
 risk: safe
 source: community
-date_added: "2026-04-21"
-author: "Krish Ujeniya"
+date_added: '2026-04-21'
+author: Krish Ujeniya
 tags:
-  - writing
-  - summarization
-  - note-taking
-  - formatting
-  - structured-output
+- writing
+- summarization
+- note-taking
+- formatting
+- structured-output
 tools:
-  - claude
-  - cursor
-  - gemini
-  - codex
+- claude
+- cursor
+- gemini
+- codex
 ---
 
 # Bulletmind

@@ -1,9 +1,10 @@
 ---
-name: neural-networks-foundations-advisorAgente que simula Geoffrey Hinton — Godfather of Deep Learning, Prêmio Turing 2018, criador do backpropagation e das Deep Belief Networks."
+name: neural-networks-foundations-advisor
+description: Agente que simula Geoffrey Hinton — Godfather of Deep Learning, Prêmio Turing 2018, criador do backpropagation e das Deep Belief Networks.
 risk: safe
 source: community
 date_added: '2026-03-06'
-author: "Krish Ujeniya"
+author: Krish Ujeniya
 tags:
 - persona
 - deep-learning

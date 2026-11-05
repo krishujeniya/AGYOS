@@ -1,8 +1,9 @@
 ---
-name: twitter-article-publisherPublish articles to X/Twitter"
+name: twitter-article-publisher
+description: Publish articles to X/Twitter
 risk: safe
-source: "https://github.com/wshuyi/x-article-publisher-skill"
-date_added: "2026-02-27"
+source: https://github.com/wshuyi/x-article-publisher-skill
+date_added: '2026-02-27'
 ---
 
 # X Article Publisher Skill

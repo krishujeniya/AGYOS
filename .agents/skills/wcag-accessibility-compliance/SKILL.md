@@ -1,5 +1,8 @@
 ---
-name: wcag-accessibility-complianceread."
+name: wcag-accessibility-compliance
+description: Audit interface accessibility against applicable WCAG criteria using keyboard, focus, labels, semantics, and contrast checks.
+---
+read."
 - **Focus Management**: Controlling the order and visibility of the keyboard/screen reader cursor.
 - **Labeling & Hints**: Providing context through `aria-label`, `accessibilityLabel`, and `contentDescription`.
 

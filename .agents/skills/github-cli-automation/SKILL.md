@@ -1,8 +1,9 @@
 ---
-name: github-cli-automationUse the `gh` CLI for issues, pull requests, Actions runs, and GitHub API queries."
+name: github-cli-automation
+description: Use the `gh` CLI for issues, pull requests, Actions runs, and GitHub API queries.
 risk: safe
-source: "Dimillian/Skills (MIT)"
-date_added: "2026-03-25"
+source: Dimillian/Skills (MIT)
+date_added: '2026-03-25'
 ---
 
 # GitHub Skill

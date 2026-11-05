@@ -1,6 +1,7 @@
 ---
-name: auction-risk-assessment2026-03-06'
-author: "Krish Ujeniya"
+name: auction-risk-assessment
+description: Analise de risco em leiloes de imoveis. Score 36 pontos, riscos juridicos/financeiros/operacionais, stress test 4 cenarios e ROI ponderado por risco.
+author: Krish Ujeniya
 tags:
 - risk-analysis
 - scoring

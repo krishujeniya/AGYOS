@@ -1,5 +1,6 @@
 ---
-name: conversion-copywriting2026-02-27"
+name: conversion-copywriting
+description: Produce **clear, credible, and action-oriented marketing copy** that aligns with user intent and business goals.
 ---
 
 # Copywriting

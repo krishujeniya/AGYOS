@@ -1,11 +1,12 @@
 # CURRENT
+- task: skill-routing-consistency
+- branch_revision: main; implementation base 8e15b83; resulting revision is the commit containing this checkpoint
 - active_gate: IDLE
-- target: hierarchical_agent_os_milestones (COMPLETE)
-- branch_revision: main / 3871da1 (baseline: 22e8706c2be34f0d4bf87c01c01c1ee5b8741068)
-- scope: typed contracts, intent compilation, evpi clarification, state ledger, saga recovery, 5 merged pods, SOP skills, authorizer hook, atomic claim verifier, A/B benchmark, role tool normalization
-- iteration: 2/10
-- local_result: PASS; agyos-verify 51/51; unittests 56/56; council bun tests 59/59; canary launch audit LAUNCH_APPROVED; A/B benchmark pass^3 1.00 vs 0.80 single vs 0.00 flat; Gate 5 signed off
-- last_action: completed Gate 5 verification walkthrough, normalized 81 agent tool schemas, and hardened hook paths
-- remaining: none; milestone completed and verified
-- next_action: standby for next user goal, operational task, or new feature request
-- next_command: bin/agyos intent "<prompt>"
+- local_status: VERIFIED
+- scope: catalog metadata, shared rule, router, CLI/MCP, generators, tests, CI, README/docs, handoff
+- acceptance: docs/SKILL_ROUTING.md
+- checks: Python 75/75; routing/catalog 17/17; council 59/59; host verifier 51/51; syntax and generated reproducibility PASS
+- independent_checker: scoped Gate 5 PASS; original runbook bodies preserved except intentional governance updates
+- limits: keyword heuristics do not certify every host invocation or specialist procedure; publication checked separately
+- push: explicitly requested by user; no force-push
+- next_command: git ls-remote origin refs/heads/main

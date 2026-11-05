@@ -1,16 +1,28 @@
 ---
-name: llm-token-cost-optimizerMeasurement-driven model router for Claude Code. Routes Haiku/Sonnet/Opus per task class, logs every routed task with real $ numbers, and A/B tests cheaper tiers before you trust the savings."
+name: llm-token-cost-optimizer
+description: Measurement-driven model router for Claude Code. Routes Haiku/Sonnet/Opus per task class, logs every routed task with real $ numbers, and A/B tests cheaper tiers before you trust the savings.
 category: developer-tools
 risk: safe
 source: community
 source_repo: CodeShuX/tokenwise
 source_type: community
-date_added: "2026-05-12"
-author: "Krish Ujeniya"
-tags: [model-routing, token-optimization, cost-reduction, anthropic, haiku, sonnet, opus, claude-code, ab-testing, measurement]
-tools: [claude]
-license: "MIT"
-license_source: "https://github.com/CodeShuX/tokenwise/blob/main/LICENSE"
+date_added: '2026-05-12'
+author: Krish Ujeniya
+tags:
+- model-routing
+- token-optimization
+- cost-reduction
+- anthropic
+- haiku
+- sonnet
+- opus
+- claude-code
+- ab-testing
+- measurement
+tools:
+- claude
+license: MIT
+license_source: https://github.com/CodeShuX/tokenwise/blob/main/LICENSE
 ---
 
 # TokenWise — Measurement-Driven Model Router

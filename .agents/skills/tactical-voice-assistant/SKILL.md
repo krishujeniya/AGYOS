@@ -1,11 +1,18 @@
 ---
-name: tactical-voice-assistantBuild a low-latency, Iron Man-inspired tactical voice assistant (F.R.I.D.A.Y.) using Pipecat, Gemini, and OpenAI."
+name: tactical-voice-assistant
+description: Build a low-latency, Iron Man-inspired tactical voice assistant (F.R.I.D.A.Y.) using Pipecat, Gemini, and OpenAI.
 category: voice-agents
 risk: safe
 source: community
-date_added: "2026-03-10"
-tags: [pipecat, voice, gemini, openai, python]
-tools: [pipecat]
+date_added: '2026-03-10'
+tags:
+- pipecat
+- voice
+- gemini
+- openai
+- python
+tools:
+- pipecat
 ---
 
 # Pipecat Friday Agent

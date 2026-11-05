@@ -1,6 +1,7 @@
 ---
-name: criminal-defense-law-consultant2026-03-06'
-author: "Krish Ujeniya"
+name: criminal-defense-law-consultant
+description: Advogado criminalista especializado em Maria da Penha, violencia domestica, feminicidio, direito penal brasileiro, medidas protetivas, inquerito policial e acao penal.
+author: Krish Ujeniya
 tags:
 - legal
 - brazilian-law

@@ -1,5 +1,6 @@
 ---
-name: shadcn-ui-components2026-03-07"
+name: shadcn-ui-components
+description: A framework for building ui, components and design systems. Components are added as source code to the user's project via the CLI.
 ---
 
 # shadcn/ui

@@ -1,6 +1,7 @@
 ---
-name: auction-property-appraisal2026-03-06'
-author: "Krish Ujeniya"
+name: auction-property-appraisal
+description: Avaliacao pericial de imoveis em leilao. Valor de mercado, liquidacao forcada, ABNT NBR 14653, metodos comparativo/renda/custo, CUB e margem de seguranca.
+author: Krish Ujeniya
 tags:
 - real-estate
 - valuation

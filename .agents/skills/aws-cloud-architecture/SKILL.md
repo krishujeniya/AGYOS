@@ -1,8 +1,9 @@
 ---
-name: aws-cloud-architectureAWS development with infrastructure automation and cloud architecture patterns"
+name: aws-cloud-architecture
+description: AWS development with infrastructure automation and cloud architecture patterns
 risk: safe
-source: "https://github.com/zxkane/aws-skills"
-date_added: "2026-02-27"
+source: https://github.com/zxkane/aws-skills
+date_added: '2026-02-27'
 ---
 
 # Aws Skills

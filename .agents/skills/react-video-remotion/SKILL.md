@@ -1,5 +1,8 @@
 ---
-name: react-video-remotionremotion";
+name: react-video-remotion
+description: Create React video compositions with Remotion, frame-based animation, and verified rendering settings.
+---
+remotion";
 
 export const FadeIn = () => {
   const frame = useCurrentFrame();

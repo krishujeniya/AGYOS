@@ -1,9 +1,10 @@
 ---
-name: database-schema-modelingDatabase development and operations workflow covering SQL, NoSQL, database design, migrations, optimization, and data engineering."
+name: database-schema-modeling
+description: Database development and operations workflow covering SQL, NoSQL, database design, migrations, optimization, and data engineering.
 category: workflow-bundle
 risk: safe
 source: personal
-date_added: "2026-02-27"
+date_added: '2026-02-27'
 ---
 
 # Database Workflow Bundle

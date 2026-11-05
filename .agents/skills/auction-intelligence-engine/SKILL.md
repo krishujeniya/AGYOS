@@ -1,6 +1,7 @@
 ---
-name: auction-intelligence-engine2026-03-06'
-author: "Krish Ujeniya"
+name: auction-intelligence-engine
+description: Especialista em leiloes judiciais e extrajudiciais de imoveis. Analise juridica, pericial e de mercado integrada. Orquestra os 5 modulos especializados.
+author: Krish Ujeniya
 tags:
 - auction
 - ai-analysis

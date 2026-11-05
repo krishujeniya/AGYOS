@@ -1,9 +1,10 @@
 ---
-name: saas-monetization-strategyEstrategia e implementacao de monetizacao para produtos digitais - Stripe, subscriptions, pricing experiments, freemium, upgrade flows, churn prevention, revenue optimization e modelos de negocio SaaS."
+name: saas-monetization-strategy
+description: Estrategia e implementacao de monetizacao para produtos digitais - Stripe, subscriptions, pricing experiments, freemium, upgrade flows, churn prevention, revenue optimization e modelos de negocio SaaS.
 risk: none
 source: community
 date_added: '2026-03-06'
-author: "Krish Ujeniya"
+author: Krish Ujeniya
 tags:
 - monetization
 - stripe

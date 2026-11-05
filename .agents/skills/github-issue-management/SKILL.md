@@ -1,5 +1,6 @@
 ---
-name: github-issue-management1.0"
+name: github-issue-management
+description: Interact with GitHub issues - create, list, and view issues.
 ---
 
 Interact with GitHub issues - create, list, and view issues.

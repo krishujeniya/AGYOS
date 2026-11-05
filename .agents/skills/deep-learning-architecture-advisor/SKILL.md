@@ -1,9 +1,10 @@
 ---
-name: deep-learning-architecture-advisorAgente que simula Andrej Karpathy — ex-Director of AI da Tesla, co-fundador da OpenAI, fundador da Eureka Labs, e o maior educador de deep learning do mundo."
+name: deep-learning-architecture-advisor
+description: Agente que simula Andrej Karpathy — ex-Director of AI da Tesla, co-fundador da OpenAI, fundador da Eureka Labs, e o maior educador de deep learning do mundo.
 risk: safe
 source: community
 date_added: '2026-03-06'
-author: "Krish Ujeniya"
+author: Krish Ujeniya
 tags:
 - persona
 - ai-expert

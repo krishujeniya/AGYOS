@@ -1,8 +1,9 @@
 ---
-name: agyos-scope1.1.0"
+name: agyos-scope
+description: Assess task complexity and define the file, command, and network permissions needed for a milestone.
 allowed-tools:
-  - view_file
-  - grep_search
+- view_file
+- grep_search
 ---
 
 # agyos-scope
@@ -42,6 +43,8 @@ Total:       _/24
 ```
 
 ### Score interpretation
+
+This rubric is a raw 0-24 scope score, distinct from the router's canonical 1-5 complexity. Map raw 0-5 to canonical 1-2, 6-9 to 3, 10-20 to 4, and 21-24 to 5. Risk overrides the raw total: authentication, payments, migrations, or broad catalog changes require canonical complexity at least 4. Record both scores; never compare the raw total with the canonical fast-path threshold.
 
 | Score | Category | Agent strategy | Gate process |
 |-------|----------|---------------|--------------|

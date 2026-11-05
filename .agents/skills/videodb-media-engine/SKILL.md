@@ -1,5 +1,6 @@
 ---
-name: videodb-media-engine[task description]"
+name: videodb-media-engine
+description: '[task description]'
 ---
 
 # VideoDB Skill

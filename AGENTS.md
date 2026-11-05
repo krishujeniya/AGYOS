@@ -10,7 +10,7 @@
 
 ## 1. The 7 Non-Negotiable Gravitas Invariants
 
-1. **Search-First Autonomous Skill Discovery (TOP PRIORITY)**: Whenever given ANY task, problem, or objective, automatically call `agyos_find_skill` or query the catalog FIRST to discover the best matching specialist skill(s), silently ingest the runbook, and use it directly for that work. Never perform blind or speculative work.
+1. **Search-First Autonomous Skill Discovery (TOP PRIORITY)**: For every task and follow-up, discover a relevant skill using `agyos_decision`, `agyos_find_skill`, `bin/agyos decide "<task>" --json --runbook`, or local catalog inspection. Read its `SKILL.md`, apply relevant steps, and verify the result. Reuse an unchanged runbook already read in the session; discover again when the objective changes. All rules and skills follow `.agents/rules/common-skill-routing.md`. Selection and returned instructions do not certify execution. Matching scores are heuristics, not probabilities.
 2. **Mandatory Deep Research (TOP PRIORITY)**: ALWAYS research using research skills (`research`, `code-explorer`, `deep-research`, codebase AST/grep scans, vendor doc lookups) BEFORE writing code or making modifications. Inspect existing files, dependencies, contracts, and tests first. Never write code on speculation or ungrounded assumptions.
 3. **Pure Human Language & Zero AI Slop (TOP PRIORITY)**:
    - **Authentic Engineering Prose**: Use authentic, natural human engineering language. Direct, technical, grounded, and concise.
@@ -103,7 +103,7 @@ When delegating tasks using `invoke_subagent`:
 
 ### 7.0 Search-First Autonomous Discovery Invariant
 Before modifying code or tackling any non-trivial user goal:
-1. **Find Best Skill First**: Autonomously execute `agyos_find_skill(query="...")` or lookup `.agents/skills/<name>` to retrieve the exact domain specialist runbook from the 1,862+ catalog.
+1. **Find Best Skill First**: Use `bin/agyos decide "<task>" --json --runbook`, MCP `agyos_decision` with `include_runbook: true`, `agyos_find_skill`, or local catalog inspection. Honor explicit skill choices and inspect fallback recommendations before specialist work.
 2. **Conduct Grounded Research**: Trace execution paths and inspect manifests using research skills (`research`, `code-explorer`, `deep-research`) before proposing or modifying files.
 3. **Ingest Silently & Humanly**: Follow the runbook's best practices directly. Communicate in pure human engineering language with zero AI buzzwords, robotic filler, or unneeded decorative components.
 4. **Verify to Perfection**: Execute compiler, linter, and unit/integration suites (AAA pattern with 80%+ coverage) before marking any task complete.
@@ -116,7 +116,7 @@ Never narrate skill selection to the user (e.g. do NOT say "I will now use the X
 
 ### 7.3 Natural Prompt Intent Routing Matrix
 - **Architectural Tradeoffs & Technical Decisions** ("Should we use X or Y?", "Which database is better?", "Postgres vs Redis"):
-  - Autonomously convene `agent-council` multi-model deliberation via CLI or parallel subagents.
+  - Autonomously convene `council` deliberation with available tools and authorization for any paid model calls.
   - Synthesize consensus, disagreements, and recommendations directly into the response without meta-announcements.
 - **Multi-Step Features & Applications** ("Build a service", "Create a dashboard", "Implement auth"):
   - Autonomously activate the AGYOS 5-Gate Workflow (`agyos-orchestrator`), generate the Task List, and guide execution through UNDERSTAND ➔ ANALYZE ➔ PLAN ➔ IMPLEMENT ➔ VERIFY.
@@ -131,7 +131,7 @@ Never narrate skill selection to the user (e.g. do NOT say "I will now use the X
 - **Search & Indexing Work** ("Audit site SEO", "Generate schema markup"):
   - Autonomously execute the `seo` suite.
 - **UI/UX Design, Designer Work, Websites & SaaS Apps** ("Design a UI", "Make modern UX", "Build SaaS app", "Create landing page", "Generate website", "Polish interface", "Add animations"):
-  - Autonomously trigger Emil Kowalski's design engineering skills (`emil-design-eng`, `animate`, `review-animations`, `animation-performance`, `apple-design`, `break-ui`) alongside `architecture-frontend-design` and `elite-frontend-architect`.
+  - Autonomously trigger Emil Kowalski's design engineering skills (`motion-patterns`, `motion-foundations`, `review-animations`, `animation-performance`, `apple-design`, `break-ui`) alongside `architecture-frontend-design` and `elite-frontend-architect`.
   - Enforce Emil Kowalski's 6 Design Engineering Invariants:
     1. **Concentric Border Radii Formula**: Nested child radii must satisfy $R_{\text{inner}} = R_{\text{outer}} - \text{padding}$.
     2. **Animation Decision Framework**: Frequency dictates motion: 100+ times/day = 0ms (no animation ever); tens of times/day = 150-200ms; modals/drawers = 250-350ms; never animate keyboard-initiated actions.
@@ -140,7 +140,7 @@ Never narrate skill selection to the user (e.g. do NOT say "I will now use the X
     5. **Popover Transform Origins**: Set `transform-origin` to trigger position, not center (modals remain centered).
     6. **Before/After/Why Review Table**: Mandatory markdown table with `| Before | After | Why |` columns for all UI/UX code reviews.
 - **Freelance & Client Management** ("Draft proposal", "Create SOW", "Invoice client"):
-  - Autonomously execute the `agentic-freelance-skills` suite.
+  - Select `freelancer-project-delivery`, `freelancer-client-acquisition`, or `freelancer-operations` according to the objective.
 
 ---
 
@@ -148,7 +148,7 @@ Never narrate skill selection to the user (e.g. do NOT say "I will now use the X
 
 AGYOS is fully unified and self-contained within `.agents/`, `bin/`, `mcp/`, and `scripts/`:
 - **`skills/` (`.agents/skills`)**: Unified physical catalog of 1,862+ skills categorized by domain under pure AGYOS branding.
-- **`rules/` (`.agents/rules`)**: 140 modular governance and polyglot rules (<24KB each).
+- **`rules/` (`.agents/rules`)**: 141 modular governance and polyglot rules (<24KB each).
 - **`workflows/` (`.agents/workflows`)**: 100 autonomous multi-agent execution pipelines.
 - **`agents/` (`.agents/agents`)**: 81 specialized FAANG/MANGO corporate role and pod agents.
 - **`bin/`**: Kernel CLI (`agyos`), 5-gate state engine (`state.sh`), and pre-commit test ratchet (`gate-check.sh`).

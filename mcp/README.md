@@ -25,3 +25,17 @@ The daemon is verified via deterministic JSON-RPC queries:
 ```bash
 echo '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"anchor_state","arguments":{}}}' | node mcp/state-server.cjs
 ```
+
+## Select and read a skill
+
+Send this JSON-RPC line to `node mcp/state-server.cjs`:
+
+```json
+{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"agyos_decision","arguments":{"task":"fix python crash","include_runbook":true}}}
+```
+
+The result contains the decision JSON and selected runbook. Without
+`include_runbook`, `execution_status` remains `pending_runbook_read`; read the
+returned `runbook_path` before specialist work. `runbook_returned` confirms
+file delivery only. Scores are heuristics, not calibrated probabilities.
+Apply relevant steps and report actual verification evidence.

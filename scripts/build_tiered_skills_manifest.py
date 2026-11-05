@@ -6,12 +6,13 @@ Generate Tiered Skill Manifest for AGYOS:
 Prevents prompt context swamping while maintaining 100% searchability and JIT availability.
 """
 
-import os
 import json
-import re
+import sys
 from pathlib import Path
 
-ROOT = Path("/home/ai/Documents/projects/Freelance/AGYOS")
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from agyos_decision.catalog import read_metadata
 SKILLS_DIR = ROOT / ".agents" / "skills"
 OUT_MANIFEST = ROOT / ".agents" / "skills-manifest.json"
 OUT_TIER1 = ROOT / ".agents" / "tier1-skills.json"
@@ -35,39 +36,9 @@ TIER1_EXACT = {
 }
 
 def extract_frontmatter(skill_md: Path):
-    """Extract name and description from SKILL.md frontmatter supporting folded/literal blocks."""
-    name = skill_md.parent.name
-    desc = ""
-    try:
-        content = skill_md.read_text(encoding="utf-8", errors="ignore")
-        if content.startswith("---"):
-            parts = content.split("---", 2)
-            if len(parts) >= 3:
-                fm = parts[1]
-                in_desc = False
-                desc_lines = []
-                for line in fm.splitlines():
-                    if line.startswith("name:"):
-                        in_desc = False
-                        name = line.split("name:", 1)[1].strip()
-                    elif line.startswith("description:"):
-                        val = line.split("description:", 1)[1].strip().strip('"').strip("'")
-                        if val in (">", "|", ""):
-                            in_desc = True
-                            desc_lines = []
-                        else:
-                            in_desc = False
-                            desc = val
-                    elif in_desc:
-                        if line.startswith(" ") or line.startswith("\t"):
-                            desc_lines.append(line.strip())
-                        elif line.strip() and not line.startswith("#"):
-                            in_desc = False
-                if desc_lines and not desc:
-                    desc = " ".join(desc_lines)
-    except Exception:
-        pass
-    return name, desc
+    """Use the same strict metadata parser as the runtime and docs index."""
+    metadata = read_metadata(skill_md)
+    return metadata["name"], metadata["description"].strip()
 
 def build_manifest():
     skills = []
@@ -80,7 +51,7 @@ def build_manifest():
         if not skill_md.exists():
             continue
             
-        sname, desc = extract_frontmatter(skill_md)
+        _, desc = extract_frontmatter(skill_md)
         is_tier1 = (
             item.name in TIER1_EXACT or
             item.name.startswith(TIER1_CORE_PREFIXES) or

@@ -1,5 +1,6 @@
 ---
-name: developer-session-diaryUnified Diary System: A context-preserving automated logger for multi-project development."
+name: developer-session-diary
+description: 'Unified Diary System: A context-preserving automated logger for multi-project development.'
 risk: safe
 source: self
 ---

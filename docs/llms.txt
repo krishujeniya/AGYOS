@@ -3,18 +3,26 @@
 > The Autonomous Cognitive Operating System for AGY CLI (`agy`).
 > Maintained By Krish Ujeniya (@krishujeniya).
 > Total skills documented: 1862
-> Total modular rules: 140
-> Total role agents: 74
-> Total workflow pipelines: 100
+> Total modular rules: 141
+> Total role agents: 81
+> Total workflow pipelines: 98
 
 ## Core Operating Subsystems
 
 - AGYOS Governance: 5-Gate spine (UNDERSTAND -> ANALYZE -> PLAN -> IMPLEMENT -> VERIFY) with FastMCP JSON-RPC 2.0 daemon and adaptive fast-path.
 - Agent Council: Multi-model CLI consensus engine deliberating across models in parallel Bun subprocesses.
 - UI/UX & Motion: Enforcing concentric border radii, 0ms/150ms/250ms motion timing, compositor-only animations, and tactile micro-interactions.
-- Adversarial Verification: 34-point falsifiable test suite validating plugins, safety hooks, MCP protocols, and ratchet monotonicity.
+- Adversarial Verification: execute the local verification suite; results depend on the installed host and dependencies.
 - AGYOS Polyglot: High-efficiency coding standards across 15+ programming languages and frameworks.
 
 ## Structured Skill Catalog
 
 Access the complete JSON catalog at https://krishujeniya.github.io/AGYOS/skills-data.json
+
+## Skill Execution Contract
+
+For every task, discover a relevant skill, read its runbook, apply applicable steps, and verify the result.
+Run `bin/agyos decide "<task>" --json --runbook` to return the selected instructions.
+MCP `agyos_decision` accepts `include_runbook: true`.
+Matching scores are heuristics, not calibrated probabilities. Runbook delivery does not certify execution.
+See https://github.com/krishujeniya/AGYOS/blob/main/docs/SKILL_ROUTING.md for the contract and limits.

@@ -65,7 +65,7 @@ const TOOLS = [
   },
   {
     name: "agyos_find_skill",
-    description: "Search the unified AGYOS catalog of 1,838+ skills to find the best matching specialist skills for any task, prompt, technology, or problem domain.",
+    description: "Search the physical AGYOS skill catalog for relevant specialist runbooks. Read and apply the chosen runbook before specialist work.",
     inputSchema: {
       type: "object",
       properties: {
@@ -94,6 +94,10 @@ const TOOLS = [
         task: {
           type: "string",
           description: "Incoming task description, feature request, error message, or work objective."
+        },
+        include_runbook: {
+          type: "boolean",
+          description: "Return the selected SKILL.md contents. Delivery does not certify execution."
         }
       },
       required: ["task"]
@@ -235,59 +239,34 @@ function loadSkills() {
 }
 
 function searchSkills(query, limit = 5, category = null) {
-  const skills = loadSkills();
-  if (!query || typeof query !== "string") {
-    return skills.slice(0, limit);
-  }
-  
-  const cleanQuery = query.toLowerCase().trim();
-  const tokens = cleanQuery.split(/[\s,._-]+/).filter(t => t.length > 0);
-  const scored = [];
-  const catFilter = category ? category.toLowerCase().trim() : null;
-  
-  for (const s of skills) {
-    if (catFilter && s.category && !s.category.includes(catFilter)) {
-      continue;
-    }
-    const sName = (s.name || "").toLowerCase();
-    const sDesc = (s.description || "").toLowerCase();
-    let score = 0;
-    
-    if (sName === cleanQuery) {
-      score += 150;
-    } else if (cleanQuery.length > 1 && sName.includes(cleanQuery)) {
-      score += 60;
-    }
-    
-    for (const token of tokens) {
-      if (sName === token) score += 40;
-      else if (token.length > 1 && sName.includes(token)) score += 20;
-      
-      if (token.length > 2 && sDesc.includes(token)) score += 6;
-    }
-    
-    if (score > 0) {
-      if (s.tier === 1) score += 4; // Tier 1 core software boost
-      scored.push({ skill: s, score });
-    }
-  }
-  
-  scored.sort((a, b) => b.score - a.score);
-  return scored.slice(0, Math.min(limit, 20)).map(item => item.skill);
+  const { execFileSync } = require("child_process");
+  const count = Number.isFinite(limit) ? Math.max(0, Math.min(Math.floor(limit), 20)) : 5;
+  const code = [
+    "import json,sys",
+    "from agyos_decision.skills_router import load_catalog,select_best_skills",
+    "catalog=load_catalog()",
+    "categories={s['id']:(s.get('category','')+' '+s.get('module','')).lower() for s in json.load(open('docs/skills-data.json'))} if sys.argv[3] else {}",
+    "catalog=[s for s in catalog if not sys.argv[3] or sys.argv[3].lower() in categories.get(s['name'],'')]",
+    "print(json.dumps(select_best_skills(sys.argv[1],catalog,limit=int(sys.argv[2]))))"
+  ].join("\n");
+  const output = execFileSync("python3", ["-c", code, query || "", String(count), category || ""], {
+    cwd: PROJECT_ROOT, encoding: "utf8", maxBuffer: 4 * 1024 * 1024
+  });
+  return JSON.parse(output);
 }
 
 function formatSkillSearchResults(matches, query) {
   if (matches.length === 0) {
     return `No matching skills found in AGYOS catalog for query: "${query}".`;
   }
-  let resultText = `### 🎯 AGYOS Top Skill Matches for: "${query}"\n\n`;
+  let resultText = `### AGYOS Top Skill Matches for: "${query}"\n\n`;
   matches.forEach((m, idx) => {
     resultText += `${idx + 1}. **\`${m.name}\`** (Tier ${m.tier || 1})\n`;
     resultText += `   - **Path**: \`${m.path}/SKILL.md\`\n`;
     resultText += `   - **Description**: ${m.description || "No description."}\n`;
     resultText += `   - **Inspection**: \`bin/agyos skill ${m.name}\`\n\n`;
   });
-  resultText += `> **Search-First Autonomous Invariant**: Ingest the top matching skill runbook before modifying code.`;
+  resultText += `> **Search-First Autonomous Invariant**: Read the best matching runbook, apply its relevant steps, and verify the result. Selection alone does not certify execution.`;
   return resultText;
 }
 
@@ -316,7 +295,7 @@ function handleToolCall(name, args) {
     return { content: [{ type: "text", text: fs.readFileSync(file, "utf8") }] };
   }
   if (name === "agyos_find_skill" || name === "anchor_find_skill") {
-    const matches = searchSkills(args.query || "", args.limit || 5, args.category);
+    const matches = searchSkills(args.query || "", args.limit ?? 5, args.category);
     return { content: [{ type: "text", text: formatSkillSearchResults(matches, args.query || "") }] };
   }
   if (name === "agyos_decision") {
@@ -324,10 +303,12 @@ function handleToolCall(name, args) {
     try {
       const { execFileSync } = require("child_process");
       const scriptPath = path.join(PROJECT_ROOT, "scripts", "agyos-decision.py");
-      const stdout = execFileSync("python3", [scriptPath, task, "--json"], { encoding: "utf8" });
+      const argv = [scriptPath, task, "--json"];
+      if (args.include_runbook === true) argv.push("--runbook");
+      const stdout = execFileSync("python3", argv, { encoding: "utf8", maxBuffer: 4 * 1024 * 1024 });
       return { content: [{ type: "text", text: stdout.trim() }] };
     } catch (err) {
-      return { content: [{ type: "text", text: JSON.stringify({ error: String(err) }) }] };
+      return { isError: true, content: [{ type: "text", text: JSON.stringify({ error: String(err) }) }] };
     }
   }
   if (name === "agyos_sys_info") {

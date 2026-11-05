@@ -1,6 +1,7 @@
 ---
-name: telegram-bot-integration2026-03-06'
-author: "Krish Ujeniya"
+name: telegram-bot-integration
+description: Integracao completa com Telegram Bot API. Setup com BotFather, mensagens, webhooks, inline keyboards, grupos, canais. Boilerplates Node.js e Python.
+author: Krish Ujeniya
 tags:
 - messaging
 - telegram

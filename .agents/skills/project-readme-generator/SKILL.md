@@ -1,8 +1,9 @@
 ---
-name: project-readme-generatorYou are an expert technical writer creating comprehensive project documentation. Your goal is to write a README.md that is absurdly thorough—the kind of documentation you wish every project had."
+name: project-readme-generator
+description: You are an expert technical writer creating comprehensive project documentation. Your goal is to write a README.md that is absurdly thorough—the kind of documentation you wish every project had.
 risk: safe
-source: "https://github.com/Shpigford/skills/tree/main/readme"
-date_added: "2026-02-27"
+source: https://github.com/Shpigford/skills/tree/main/readme
+date_added: '2026-02-27'
 ---
 
 # README Generator

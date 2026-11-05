@@ -1,5 +1,6 @@
 ---
-name: engineering-recipes-playbook1.0.0"
+name: engineering-recipes-playbook
+description: Find the appropriate AGYOS workflow recipe and its ordered steps and stopping conditions.
 ---
 
 # AGYOS Recipes

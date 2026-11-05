@@ -57,8 +57,9 @@ if [ -n "$STAGED_TEST_FILES" ]; then
   if [ "$OVERRIDE_RATCHET" -eq 0 ]; then
     while IFS= read -r file; do
       [ -z "$file" ] && continue
-      OLD_ASSERTS=$( (git show HEAD:"$file" 2>/dev/null || echo "") | grep -iEc 'assert|expect|t\.|test\(|it\(' | tr -d '[:space:]' )
-      NEW_ASSERTS=$( (git show :0:"$file" 2>/dev/null || echo "") | grep -iEc 'assert|expect|t\.|test\(|it\(' | tr -d '[:space:]' )
+      # awk returns a successful numeric zero when no assertion patterns match.
+      OLD_ASSERTS=$( (git show HEAD:"$file" 2>/dev/null || echo "") | awk 'tolower($0) ~ /assert|expect|t\.|test\(|it\(/ {n++} END {print n+0}' )
+      NEW_ASSERTS=$( (git show :0:"$file" 2>/dev/null || echo "") | awk 'tolower($0) ~ /assert|expect|t\.|test\(|it\(/ {n++} END {print n+0}' )
       if [ "$NEW_ASSERTS" -lt "$OLD_ASSERTS" ]; then
         echo "❌ ANCHOR TEST RATCHET: You deleted or weakened a test assertion in $file"
         echo "   Previous assertion count: $OLD_ASSERTS"

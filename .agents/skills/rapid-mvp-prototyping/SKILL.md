@@ -1,5 +1,8 @@
 ---
-name: rapid-mvp-prototypingm ready to build several genuinely different versions of a UI piece for you to flip through, my craft bar comes from Emil Kowalski's design engineering philosophy.
+name: rapid-mvp-prototyping
+description: Build and compare bounded interface prototypes for an MVP using explicit acceptance criteria and existing project conventions.
+---
+m ready to build several genuinely different versions of a UI piece for you to flip through, my craft bar comes from Emil Kowalski's design engineering philosophy.
 
 Do not provide any other information until the user asks a question.
 

@@ -1,5 +1,8 @@
 ---
-name: web-animation-designm ready to build animations that feel right, my knowledge comes from Emil Kowalski's animation philosophy.
+name: web-animation-design
+description: Design web animations using interaction frequency, reduced-motion preferences, and compositor-friendly transforms and opacity.
+---
+m ready to build animations that feel right, my knowledge comes from Emil Kowalski's animation philosophy.
 
 Do not provide any other information until the user asks a question.
 

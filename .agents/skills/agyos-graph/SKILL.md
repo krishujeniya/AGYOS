@@ -1,14 +1,13 @@
 ---
-name: agyos-graphs import structure.
-  Stores file paths and grep queries, not file contents — retrieval is just-in-time,
-  pulled by the agent on demand. Human adds 2-3 invariants by hand after each run.
+name: agyos-graph
+description: Map repository dependencies and retrieval pointers for the active milestone without copying file contents.
 license: MIT
 metadata:
-  version: "1.1.0"
+  version: 1.1.0
 allowed-tools:
-  - run_command
-  - view_file
-  - read_file
+- run_command
+- view_file
+- read_file
 ---
 
 # agyos-graph

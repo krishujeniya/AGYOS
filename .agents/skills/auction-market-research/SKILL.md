@@ -1,6 +1,7 @@
 ---
-name: auction-market-research2026-03-06'
-author: "Krish Ujeniya"
+name: auction-market-research
+description: Analise de mercado imobiliario para leiloes. Liquidez, desagio tipico, ROI, estrategias de saida (flip/reforma/renda), Selic 2025 e benchmark CDI/FII.
+author: Krish Ujeniya
 tags:
 - market-analysis
 - real-estate

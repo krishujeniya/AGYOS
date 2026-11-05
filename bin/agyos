@@ -16,8 +16,8 @@ Commands:
   gate <name> Transition active gate (UNDERSTAND|ANALYZE|PLAN|IMPLEMENT|VERIFY)
   compact     Execute context window compaction and reset CURRENT.md
   fast        Fast-path bypass for trivial edits (complexity <= 2 straight to IMPLEMENT)
-  decide <task> Run AGYOS Decision Engine to find best skill and gate complexity
-  find <query> Search 1,838+ skills in AGYOS catalog for best match
+  decide <task> [--json] [--runbook] Select a skill and optionally return its instructions
+  find <query> Search the physical AGYOS skill catalog for relevant runbooks
   skill <name> Display instructions and documentation for a skill
   sysinfo     Display system architecture, memory tiers, and health
   mem <tier>  Read hierarchical memory (tier0: core, tier1: recall, tier2: archival)
@@ -107,7 +107,7 @@ if decision.assumptions_applied:
       echo "Usage: agyos decide <task-description-or-keywords>" >&2
       exit 1
     fi
-    python3 scripts/agyos-decision.py "$query"
+    python3 scripts/agyos-decision.py "$@"
     ;;
   find|search)
     query="$*"

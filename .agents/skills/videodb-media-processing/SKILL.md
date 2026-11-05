@@ -1,10 +1,11 @@
 ---
-name: videodb-media-processingUpload, stream, search, edit, transcribe, and generate AI video and audio using the VideoDB SDK."
+name: videodb-media-processing
+description: Upload, stream, search, edit, transcribe, and generate AI video and audio using the VideoDB SDK.
 category: media
 risk: safe
 source: community
-tags: "[video, editing, transcription, subtitles, search, streaming, ai-generation, media]"
-date_added: "2026-02-27"
+tags: '[video, editing, transcription, subtitles, search, streaming, ai-generation, media]'
+date_added: '2026-02-27'
 ---
 
 # VideoDB Skills

@@ -1,5 +1,8 @@
 ---
-name: conventional-git-commitre on `main` or `master`, you MUST create a feature branch first** — unless the user explicitly asked to commit to main. Do not ask the user whether to create a branch; just proceed with branch creation. The `create-branch` skill will still propose a branch name for the user to confirm.
+name: conventional-git-commit
+description: Prepare Conventional Commit messages and review staged changes before an explicitly authorized Git commit.
+---
+re on `main` or `master`, you MUST create a feature branch first** — unless the user explicitly asked to commit to main. Do not ask the user whether to create a branch; just proceed with branch creation. The `create-branch` skill will still propose a branch name for the user to confirm.
 
 Use the `create-branch` skill to create the branch. After `create-branch` completes, verify the current branch has changed before proceeding:
 

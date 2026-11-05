@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Compile comprehensive skills database and SEO assets for AGYOS documentation site.
-Indexes all 1,845 physical skills from .agents/skills/ and generates:
+Indexes all physical skills from .agents/skills/ and generates:
 - docs/skills-data.json
 - docs/sitemap.xml
 - docs/robots.txt
@@ -13,9 +13,12 @@ Applies unslop rules to remove AI buzzwords, decorative symbols, and fluff.
 import os
 import json
 import re
+import sys
 from pathlib import Path
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, REPO_ROOT)
+from agyos_decision.catalog import read_metadata
 DOCS_DIR = os.path.join(REPO_ROOT, "docs")
 SKILLS_DIR = os.path.join(REPO_ROOT, ".agents", "skills")
 MANIFEST_PATH = os.path.join(REPO_ROOT, ".agents", "skills-manifest.json")
@@ -74,42 +77,9 @@ def unslop(text: str) -> str:
     return clean
 
 def extract_frontmatter(skill_dir: Path):
-    """Extract name and description from SKILL.md frontmatter supporting folded/literal blocks."""
-    skill_file = skill_dir / "SKILL.md"
-    name = skill_dir.name
-    desc = ""
-    if not skill_file.exists():
-        return name, desc
-    try:
-        content = skill_file.read_text(encoding="utf-8", errors="ignore")
-        if content.startswith("---"):
-            parts = content.split("---", 2)
-            if len(parts) >= 3:
-                fm = parts[1]
-                in_desc = False
-                desc_lines = []
-                for line in fm.splitlines():
-                    if line.startswith("name:"):
-                        in_desc = False
-                        name = line.split("name:", 1)[1].strip().strip('"').strip("'")
-                    elif line.startswith("description:"):
-                        val = line.split("description:", 1)[1].strip().strip('"').strip("'")
-                        if val in (">", "|", ""):
-                            in_desc = True
-                            desc_lines = []
-                        else:
-                            in_desc = False
-                            desc = val
-                    elif in_desc:
-                        if line.startswith(" ") or line.startswith("\t"):
-                            desc_lines.append(line.strip())
-                        elif line.strip() and not line.startswith("#"):
-                            in_desc = False
-                if desc_lines and not desc:
-                    desc = " ".join(desc_lines)
-    except Exception:
-        pass
-    return name, desc
+    """Use strict shared discovery metadata; do not hide invalid headers."""
+    metadata = read_metadata(skill_dir / "SKILL.md")
+    return metadata["name"], metadata["description"].strip()
 
 def classify_skill(sid: str, name: str, desc: str):
     """Classify a skill into an AGYOS module and category."""
@@ -186,9 +156,9 @@ def compile_all_skills():
             "category": category,
             "tier": tier,
             "runtime": ["AGY CLI", "Gemini", "Claude Code", "Codex"],
-            "command": f"bin/agyos skill {entry}" if module == "AGYOS Governance" else entry,
+            "command": f"bin/agyos skill {entry}",
             "path": f".agents/skills/{entry}",
-            "risk": "safe",
+            "risk": "assess_for_task",
             "description": clean_desc
         }
         if entry not in seen:
@@ -263,21 +233,29 @@ def write_seo_files(skills):
 > The Autonomous Cognitive Operating System for AGY CLI (`agy`).
 > Maintained By Krish Ujeniya (@krishujeniya).
 > Total skills documented: {len(skills)}
-> Total modular rules: 140
-> Total role agents: 74
-> Total workflow pipelines: 100
+> Total modular rules: {len(list((Path(REPO_ROOT) / '.agents/rules').glob('*.md')))}
+> Total role agents: {len(list((Path(REPO_ROOT) / '.agents/agents').glob('*.md')))}
+> Total workflow pipelines: {len(list((Path(REPO_ROOT) / '.agents/workflows').glob('*.md')))}
 
 ## Core Operating Subsystems
 
 - AGYOS Governance: 5-Gate spine (UNDERSTAND -> ANALYZE -> PLAN -> IMPLEMENT -> VERIFY) with FastMCP JSON-RPC 2.0 daemon and adaptive fast-path.
 - Agent Council: Multi-model CLI consensus engine deliberating across models in parallel Bun subprocesses.
 - UI/UX & Motion: Enforcing concentric border radii, 0ms/150ms/250ms motion timing, compositor-only animations, and tactile micro-interactions.
-- Adversarial Verification: 34-point falsifiable test suite validating plugins, safety hooks, MCP protocols, and ratchet monotonicity.
+- Adversarial Verification: execute the local verification suite; results depend on the installed host and dependencies.
 - AGYOS Polyglot: High-efficiency coding standards across 15+ programming languages and frameworks.
 
 ## Structured Skill Catalog
 
 Access the complete JSON catalog at https://krishujeniya.github.io/AGYOS/skills-data.json
+
+## Skill Execution Contract
+
+For every task, discover a relevant skill, read its runbook, apply applicable steps, and verify the result.
+Run `bin/agyos decide "<task>" --json --runbook` to return the selected instructions.
+MCP `agyos_decision` accepts `include_runbook: true`.
+Matching scores are heuristics, not calibrated probabilities. Runbook delivery does not certify execution.
+See https://github.com/krishujeniya/AGYOS/blob/main/docs/SKILL_ROUTING.md for the contract and limits.
 """
     with open(llms_out, "w", encoding="utf-8") as f:
         f.write(llms_content)
@@ -288,37 +266,12 @@ Access the complete JSON catalog at https://krishujeniya.github.io/AGYOS/skills-
         f.write("")
     print(f"Saved: {nojekyll_out}")
 
-def sync_skills_to_runtimes():
-    """Verify skills catalog and check user agent runtimes (~/.gemini, ~/.codex, ~/.claude)."""
-    print("\n--- Synchronizing skills to AGY and Codex runtimes ---")
-    runtime_dirs = [
-        (os.path.expanduser("~/.gemini/skills"), "AGY (~/.gemini/skills)"),
-        (os.path.expanduser("~/.gemini/config/skills"), "AGY config (~/.gemini/config/skills)"),
-        (os.path.expanduser("~/.codex/skills"), "Codex (~/.codex/skills)"),
-        (os.path.expanduser("~/.agents/skills"), "Agents (~/.agents/skills)"),
-        (os.path.expanduser("~/.claude/skills"), "Claude Code (~/.claude/skills)"),
-    ]
-
-    workspace_count = 0
-    if os.path.exists(SKILLS_DIR):
-        workspace_count = len([s for s in os.listdir(SKILLS_DIR) if os.path.isdir(os.path.join(SKILLS_DIR, s))])
-    print(f"AGYOS Master Catalog (.agents/skills): {workspace_count} physical skills ready.")
-
-    for target_dir, label in runtime_dirs:
-        try:
-            os.makedirs(target_dir, exist_ok=True)
-            active_count = len([s for s in os.listdir(target_dir) if not s.startswith(".")])
-            print(f"Verified {label}: {active_count} active installed skills.")
-        except Exception:
-            pass
-
 def build_data():
     """Main execution entrypoint."""
     skills = compile_all_skills()
     print(f"Total compiled unique skills: {len(skills)}")
     write_json_files(skills)
     write_seo_files(skills)
-    sync_skills_to_runtimes()
 
 if __name__ == "__main__":
     build_data()

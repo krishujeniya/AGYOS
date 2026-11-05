@@ -1,8 +1,9 @@
 ---
-name: daily-webrtc-video-api1.0"
+name: daily-webrtc-video-api
+description: Build and debug real-time audio, video, and multimodal applications using Daily and Pipecat service pipelines.
 risk: safe
 source: community
-date_added: "2026-03-07"
+date_added: '2026-03-07'
 ---
 
 ## When to Use

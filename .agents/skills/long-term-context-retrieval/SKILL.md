@@ -1,12 +1,28 @@
 ---
-name: long-term-context-retrievalFREE — God-tier long-context memory for AI agents. Injects 500K-1M clean tokens, auto-summarizes with tone/intent preservation, compresses 14-turn history into 800 tokens."
+name: long-term-context-retrieval
+description: FREE — God-tier long-context memory for AI agents. Injects 500K-1M clean tokens, auto-summarizes with tone/intent preservation, compresses 14-turn history into 800 tokens.
 category: memory
 risk: safe
 source: community
-date_added: "2026-03-13"
-author: "Krish Ujeniya"
-tags: [memory, context, rag, summarization, compression, long-context, agent-infrastructure]
-tools: [claude, cursor, codex, gemini, copilot, windsurf, antigravity, grok]
+date_added: '2026-03-13'
+author: Krish Ujeniya
+tags:
+- memory
+- context
+- rag
+- summarization
+- compression
+- long-context
+- agent-infrastructure
+tools:
+- claude
+- cursor
+- codex
+- gemini
+- copilot
+- windsurf
+- antigravity
+- grok
 ---
 
 # RecallMax — God-Tier Long-Context Memory

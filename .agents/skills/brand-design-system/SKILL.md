@@ -1,8 +1,9 @@
 ---
-name: brand-design-systemTo access Anthropic's official brand identity and style resources, use this skill."
+name: brand-design-system
+description: To access Anthropic's official brand identity and style resources, use this skill.
 risk: unknown
 source: community
-date_added: "2026-02-27"
+date_added: '2026-02-27'
 ---
 
 # Anthropic Brand Styling

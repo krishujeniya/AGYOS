@@ -1,5 +1,6 @@
 ---
-name: react-native-mobile-development1.0.0'
+name: react-native-mobile-development
+description: Comprehensive best practices for React Native and Expo applications. Contains rules across multiple categories covering performance, animations, UI patterns, and platform-specific optimizations.
 ---
 
 # React Native Skills

@@ -1,7 +1,8 @@
 ---
-name: adversarial-verification-methodMulti-agent adversarial verification: two independent reviewers with the same rubric must both pass before output ships, with a fix-and-re-review convergence loop and human escalation cap. Use when gating publishing, production deploys, compliance or brand-sensitive content, or hallucination-prone claims before they ship."
+name: adversarial-verification-method
+description: 'Multi-agent adversarial verification: two independent reviewers with the same rubric must both pass before output ships, with a fix-and-re-review convergence loop and human escalation cap. Use when gating publishing, production deploys, compliance or brand-sensitive content, or hallucination-prone claims before they ship.'
 metadata:
-  origin: "Ronald Skelton - Founder, RapportScore.ai"
+  origin: Ronald Skelton - Founder, RapportScore.ai
 ---
 
 # Santa Method

@@ -1,12 +1,23 @@
 ---
-name: cofounder-compatibility-matcherPsychological compatibility matching — find cofounders, collaborators, and friends through validated psychometrics"
+name: cofounder-compatibility-matcher
+description: Psychological compatibility matching — find cofounders, collaborators, and friends through validated psychometrics
 category: collaboration
 risk: safe
 source: community
-date_added: "2026-03-29"
-author: "Krish Ujeniya"
-tags: [matching, psychology, compatibility, networking, collaboration]
-tools: [claude, cursor, codex, gemini, windsurf]
+date_added: '2026-03-29'
+author: Krish Ujeniya
+tags:
+- matching
+- psychology
+- compatibility
+- networking
+- collaboration
+tools:
+- claude
+- cursor
+- codex
+- gemini
+- windsurf
 ---
 
 # Viboscope

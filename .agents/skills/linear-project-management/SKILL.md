@@ -1,8 +1,9 @@
 ---
-name: linear-project-managementManage Linear issues, projects, and teams"
+name: linear-project-management
+description: Manage Linear issues, projects, and teams
 risk: safe
-source: "https://github.com/wrsmith108/linear-claude-skill"
-date_added: "2026-02-27"
+source: https://github.com/wrsmith108/linear-claude-skill
+date_added: '2026-02-27'
 ---
 
 ## When to Use This Skill

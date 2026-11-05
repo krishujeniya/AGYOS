@@ -1,6 +1,7 @@
 ---
-name: auctioneer-registry-lookup2026-03-06'
-author: "Krish Ujeniya"
+name: auctioneer-registry-lookup
+description: Coleta e consulta dados de leiloeiros oficiais de todas as 27 Juntas Comerciais do Brasil. Scraper multi-UF, banco SQLite, API FastAPI e exportacao CSV/JSON.
+author: Krish Ujeniya
 tags:
 - scraping
 - brazilian-data

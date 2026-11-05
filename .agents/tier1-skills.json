@@ -15,8 +15,14 @@
     {
       "name": "agent-benchmarking",
       "tier": 1,
-      "description": "Testing and benchmarking LLM agents including behavioral testing,",
+      "description": "Testing and benchmarking LLM agents including behavioral testing, capability assessment, reliability metrics, and production monitoring\u2014where even top agents achieve less than 50% on real-world benchmarks",
       "path": ".agents/skills/agent-benchmarking"
+    },
+    {
+      "name": "agent-memory-architecture",
+      "tier": 1,
+      "description": "Memory is the cornerstone of intelligent agents. Without it, every interaction starts from zero. This skill covers the architecture of agent memory: short-term (context window), long-term (vector stores), and the cognitive architectures that organize them.",
+      "path": ".agents/skills/agent-memory-architecture"
     },
     {
       "name": "agent-security-hardening",
@@ -63,13 +69,13 @@
     {
       "name": "agyos-decision",
       "tier": 1,
-      "description": "Autonomous System 1 decision engine and skill router. Classifies task domains, assesses gate complexity (1-5), and selects optimal specialist skills from the catalog with calibrated confidence.",
+      "description": "Select relevant AGYOS skills for any task or follow-up, inspect their runbooks, and assess workflow complexity. Use when starting work, changing objectives, or maintaining skill routing and discovery metadata.",
       "path": ".agents/skills/agyos-decision"
     },
     {
       "name": "agyos-draft-commit",
       "tier": 1,
-      "description": "agyos-draft-commit skill",
+      "description": "Prepare a scoped commit from verified changes, review the staged diff, and preserve the test ratchet.",
       "path": ".agents/skills/agyos-draft-commit"
     },
     {
@@ -87,7 +93,7 @@
     {
       "name": "agyos-graph",
       "tier": 1,
-      "description": "agyos-graph skill",
+      "description": "Map repository dependencies and retrieval pointers for the active milestone without copying file contents.",
       "path": ".agents/skills/agyos-graph"
     },
     {
@@ -105,25 +111,25 @@
     {
       "name": "agyos-orchestrator",
       "tier": 1,
-      "description": "agyos-orchestrator skill",
+      "description": "Coordinate multi-step development through UNDERSTAND, ANALYZE, PLAN, IMPLEMENT, and VERIFY with scoped work and recorded checks.",
       "path": ".agents/skills/agyos-orchestrator"
     },
     {
       "name": "agyos-preflight",
       "tier": 1,
-      "description": "agyos-preflight skill",
+      "description": "Inspect planned deliverables before implementation and report whether they are unbuilt, partial, or already built.",
       "path": ".agents/skills/agyos-preflight"
     },
     {
       "name": "agyos-scope",
       "tier": 1,
-      "description": "agyos-scope skill",
+      "description": "Assess task complexity and define the file, command, and network permissions needed for a milestone.",
       "path": ".agents/skills/agyos-scope"
     },
     {
       "name": "agyos-scout",
       "tier": 1,
-      "description": "agyos-scout skill",
+      "description": "Inspect the codebase before planning; identify dependencies, hidden risks, and breaking changes in a concise scope report.",
       "path": ".agents/skills/agyos-scout"
     },
     {
@@ -153,7 +159,7 @@
     {
       "name": "agyos-verify",
       "tier": 1,
-      "description": "agyos-verify skill",
+      "description": "Verify implementation with deterministic checks, independent review, and evidence for unresolved acceptance criteria.",
       "path": ".agents/skills/agyos-verify"
     },
     {
@@ -285,7 +291,7 @@
     {
       "name": "architecture-decision-framework",
       "tier": 1,
-      "description": "architecture-decision-framework skill",
+      "description": "Architectural decision-making framework. Requirements analysis, trade-off evaluation, ADR documentation. Use when making architecture decisions or analyzing system design.",
       "path": ".agents/skills/architecture-decision-framework"
     },
     {
@@ -335,6 +341,12 @@
       "tier": 1,
       "description": "Patterns and architectures for autonomous Claude Code loops \u2014 from simple sequential pipelines to RFC-driven multi-agent DAG systems. Retained for compatibility only: when new autonomous loop guidance is needed, use continuous-agent-loop instead.",
       "path": ".agents/skills/autonomous-loops"
+    },
+    {
+      "name": "aws-cloud-architecture",
+      "tier": 1,
+      "description": "AWS development with infrastructure automation and cloud architecture patterns",
+      "path": ".agents/skills/aws-cloud-architecture"
     },
     {
       "name": "aws-penetration-testing",
@@ -447,8 +459,14 @@
     {
       "name": "browser-automation",
       "tier": 1,
-      "description": "Browser automation powers web testing, scraping, and AI agent",
+      "description": "Browser automation powers web testing, scraping, and AI agent interactions. The difference between a flaky script and a reliable system comes down to understanding selectors, waiting strategies, and anti-detection patterns.",
       "path": ".agents/skills/browser-automation"
+    },
+    {
+      "name": "browser-extension-builder",
+      "tier": 1,
+      "description": "Expert in building browser extensions that solve real problems - Chrome, Firefox, and cross-browser extensions. Covers extension architecture, manifest v3, content scripts, popup UIs, monetization strategies, and Chrome Web Store publishing.",
+      "path": ".agents/skills/browser-extension-builder"
     },
     {
       "name": "browser-qa",
@@ -499,9 +517,15 @@
       "path": ".agents/skills/c4-context"
     },
     {
+      "name": "clean-architecture-craftsmanship",
+      "tier": 1,
+      "description": "Use when performing code review, writing or refactoring code, or discussing architecture; complements clean-code and does not replace project linter/formatter.",
+      "path": ".agents/skills/clean-architecture-craftsmanship"
+    },
+    {
       "name": "clean-code",
       "tier": 1,
-      "description": "This skill embodies the principles of \\\"Clean Code\\\" by Robert C. Martin (Uncle Bob). Use it to transform \\\"code that works\\\" into \\\"code that is clean.\\",
+      "description": "This skill embodies the principles of \"Clean Code\" by Robert C. Martin (Uncle Bob). Use it to transform \"code that works\" into \"code that is clean.\"",
       "path": ".agents/skills/clean-code"
     },
     {
@@ -559,6 +583,12 @@
       "path": ".agents/skills/config-validator"
     },
     {
+      "name": "context-and-decisions",
+      "tier": 1,
+      "description": "Govern stable domain context with a narrowly scoped CONTEXT.md when needed, and route hard-to-reverse decisions to ECC's existing architecture-decision-records skill. Use when domain terms require repeated explanation, one term has multiple meanings, unclear language causes module-boundary mistakes, or domain semantics must remain separate from architecture decisions.",
+      "path": ".agents/skills/context-and-decisions"
+    },
+    {
       "name": "context-fundamentals",
       "tier": 1,
       "description": "This skill should be used when the user asks to \"understand context\", \"explain context windows\", \"design agent architecture\", \"debug context issues\", \"optimize context usage\", or discusses context components, attention mechanics, progressive disclosure, or context budgeting. Provides foundational understanding of context engineering for AI agent systems.",
@@ -567,7 +597,7 @@
     {
       "name": "council-list",
       "tier": 1,
-      "description": "List all past Agent Council sessions for the current project. Shows session ID, mode, agent count, and question for each.",
+      "description": "List all past Agent Council sessions for the current project.\nShows session ID, mode, agent count, and question for each.",
       "path": ".agents/skills/council-list"
     },
     {
@@ -579,25 +609,25 @@
     {
       "name": "council-nudge",
       "tier": 1,
-      "description": "Nudge a specific agent to reconsider its opinion based on a corrected assumption. Sends the original question + response + correction to one agent and saves the updated opinion alongside the original for comparison.",
+      "description": "Nudge a specific agent to reconsider its opinion based on a corrected assumption.\nSends the original question + response + correction to one agent and saves the\nupdated opinion alongside the original for comparison.",
       "path": ".agents/skills/council-nudge"
     },
     {
       "name": "council-outcome",
       "tier": 1,
-      "description": "Record the outcome of a past Agent Council decision. Was the council right? Builds calibration data over time to learn which models are best at what.",
+      "description": "Record the outcome of a past Agent Council decision. Was the council right?\nBuilds calibration data over time to learn which models are best at what.",
       "path": ".agents/skills/council-outcome"
     },
     {
       "name": "council-replay",
       "tier": 1,
-      "description": "Replay a past Agent Council session in the terminal. Shows the full deliberation: question, each agent's opinion, and the chairman's synthesis.",
+      "description": "Replay a past Agent Council session in the terminal. Shows the full\ndeliberation: question, each agent's opinion, and the chairman's synthesis.",
       "path": ".agents/skills/council-replay"
     },
     {
       "name": "council-revisit",
       "tier": 1,
-      "description": "Revisit a past Agent Council decision with current codebase context. Re-runs the same question through the council and shows a side-by-side comparison of what changed. Use for living decisions.",
+      "description": "Revisit a past Agent Council decision with current codebase context.\nRe-runs the same question through the council and shows a side-by-side\ncomparison of what changed. Use for living decisions.",
       "path": ".agents/skills/council-revisit"
     },
     {
@@ -1003,6 +1033,12 @@
       "path": ".agents/skills/fsharp-testing"
     },
     {
+      "name": "gcp-cloud-run",
+      "tier": 1,
+      "description": "Specialized skill for building production-ready serverless applications on GCP. Covers Cloud Run services (containerized), Cloud Run Functions (event-driven), cold start optimization, and event-driven architecture with Pub/Sub.",
+      "path": ".agents/skills/gcp-cloud-run"
+    },
+    {
       "name": "geo-fundamentals",
       "tier": 1,
       "description": "Generative Engine Optimization for AI search engines (ChatGPT, Claude, Perplexity).",
@@ -1035,7 +1071,7 @@
     {
       "name": "git-pushing",
       "tier": 1,
-      "description": "Stage all changes, create a conventional commit, and push to the remote branch. Use when explicitly asks to push changes (\\\"push this\\\", \\\"commit and push\\\"), mentions saving work to remote (\\\"save to github\\\", \\\"push to remote\\\"), or completes a feature and wants to share it.",
+      "description": "Stage all changes, create a conventional commit, and push to the remote branch. Use when explicitly asks to push changes (\"push this\", \"commit and push\"), mentions saving work to remote (\"save to github\", \"push to remote\"), or completes a feature and wants to share it.",
       "path": ".agents/skills/git-pushing"
     },
     {
@@ -1557,7 +1593,7 @@
     {
       "name": "react-native-mobile-development",
       "tier": 1,
-      "description": "react-native-mobile-development skill",
+      "description": "Comprehensive best practices for React Native and Expo applications. Contains rules across multiple categories covering performance, animations, UI patterns, and platform-specific optimizations.",
       "path": ".agents/skills/react-native-mobile-development"
     },
     {
@@ -1605,7 +1641,7 @@
     {
       "name": "react-video-remotion",
       "tier": 1,
-      "description": "react-video-remotion skill",
+      "description": "Create React video compositions with Remotion, frame-based animation, and verified rendering settings.",
       "path": ".agents/skills/react-video-remotion"
     },
     {
@@ -1629,7 +1665,7 @@
     {
       "name": "robius-app-architecture",
       "tier": 1,
-      "description": "CRITICAL: Use for Robius app architecture patterns. Triggers on: Tokio, async, submit_async_request, \u5f02\u6b65, \u67b6\u6784, SignalToUI, Cx::post_action, worker task, app structure, MatchEvent, handle_startup",
+      "description": "CRITICAL: Use for Robius app architecture patterns. Triggers on:\nTokio, async, submit_async_request, \u5f02\u6b65, \u67b6\u6784,\nSignalToUI, Cx::post_action, worker task,\napp structure, MatchEvent, handle_startup",
       "path": ".agents/skills/robius-app-architecture"
     },
     {
@@ -1683,7 +1719,7 @@
     {
       "name": "sast-scan",
       "tier": 1,
-      "description": "Static Application Security Testing (SAST) for code vulnerability",
+      "description": "Static Application Security Testing (SAST) for code vulnerability\nanalysis across multiple languages and frameworks",
       "path": ".agents/skills/sast-scan"
     },
     {
@@ -1779,7 +1815,7 @@
     {
       "name": "seo-authority-builder",
       "tier": 1,
-      "description": "Analyzes content for E-E-A-T signals and suggests improvements to",
+      "description": "Analyzes content for E-E-A-T signals and suggests improvements to\nbuild authority and trust. Identifies missing credibility elements. Use\nPROACTIVELY for YMYL topics.",
       "path": ".agents/skills/seo-authority-builder"
     },
     {
@@ -1821,7 +1857,7 @@
     {
       "name": "seo-content-planner",
       "tier": 1,
-      "description": "Creates comprehensive content outlines and topic clusters for SEO.",
+      "description": "Creates comprehensive content outlines and topic clusters for SEO.\nPlans content calendars and identifies topic gaps. Use PROACTIVELY for content\nstrategy and planning.",
       "path": ".agents/skills/seo-content-planner"
     },
     {
@@ -2089,6 +2125,18 @@
       "path": ".agents/skills/tdd-workflow"
     },
     {
+      "name": "technical-documentation-writer",
+      "tier": 1,
+      "description": "Documentation generation workflow covering API docs, architecture docs, README files, code comments, and technical writing.",
+      "path": ".agents/skills/technical-documentation-writer"
+    },
+    {
+      "name": "telegram-bot-builder",
+      "tier": 1,
+      "description": "Expert in building Telegram bots that solve real problems - from simple automation to complex AI-powered bots. Covers bot architecture, the Telegram Bot API, user experience, monetization strategies, and scaling bots to thousands of users.",
+      "path": ".agents/skills/telegram-bot-builder"
+    },
+    {
       "name": "temporal-python-pro",
       "tier": 1,
       "description": "Master Temporal workflow orchestration with Python SDK. Implements durable workflows, saga patterns, and distributed transactions. Covers async/await, testing strategies, and production deployment.",
@@ -2121,7 +2169,7 @@
     {
       "name": "test-fixing",
       "tier": 1,
-      "description": "Systematically identify and fix all failing tests using smart grouping strategies. Use when explicitly asks to fix tests (\\\"fix these tests\\\", \\\"make tests pass\\\"), reports test failures (\\\"tests are failing\\\", \\\"test suite is broken\\\"), or completes implementation and wants tests passing.",
+      "description": "Systematically identify and fix all failing tests using smart grouping strategies. Use when explicitly asks to fix tests (\"fix these tests\", \"make tests pass\"), reports test failures (\"tests are failing\", \"test suite is broken\"), or completes implementation and wants tests passing.",
       "path": ".agents/skills/test-fixing"
     },
     {

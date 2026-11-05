@@ -1,7 +1,7 @@
 {
   "project": "New ANCHOR Project",
   "current_gate": "IDLE",
-  "current_milestone": "hierarchical_agent_os_milestones",
+  "current_milestone": "skill-routing-consistency",
   "iteration": 1,
   "iteration_cap": 10,
   "token_budget": 50000,
@@ -9,9 +9,13 @@
   "max_wall_clock_minutes": 60,
   "tokens_used": 0,
   "no_progress_strikes": 0,
-  "hitl_approvals": {},
-  "last_updated": "2026-11-04T15:03:00+05:30",
-  "last_known_commit": "2084777",
+  "hitl_approvals": {
+    "UNDERSTAND": "User requested all skill/rule routing, docs and GitHub push on 2026-11-05",
+    "ANALYZE": "Same request covers the catalog, decision entry points and docs",
+    "PLAN": "Authorized implementation within the documented routing scope"
+  },
+  "last_updated": "2026-11-05T06:14:02.054524+00:00",
+  "last_known_commit": "8e15b83",
   "last_known_commit_COMPACT": null,
   "skill_versions": {
     "anchor-draft-commit": "1.1.0",
@@ -22,5 +26,17 @@
     "anchor-scout": "1.1.0",
     "anchor-verify": "1.1.0"
   },
-  "complexity_score": 1
+  "complexity_score": 4,
+  "verification": {
+    "status": "PASS",
+    "scope": "skill-routing-consistency",
+    "python_tests": 75,
+    "routing_catalog_tests": 17,
+    "council_tests": 59,
+    "host_checks": 51,
+    "skill_headers": 1862,
+    "rules": 141,
+    "independent_checker": "routing_checker: final scoped Gate 5 PASS",
+    "delivery": "User authorized GitHub push; confirm remote revision separately"
+  }
 }

@@ -1,8 +1,9 @@
 ---
-name: agyos-draft-commit1.1.0"
+name: agyos-draft-commit
+description: Prepare a scoped commit from verified changes, review the staged diff, and preserve the test ratchet.
 allowed-tools:
-  - write_to_file
-  - replace_file_content
+- write_to_file
+- replace_file_content
 ---
 
 # agyos-draft-commit

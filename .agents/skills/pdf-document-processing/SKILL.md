@@ -1,5 +1,8 @@
 ---
-name: pdf-document-processingdocument.pdf")
+name: pdf-document-processing
+description: Extract text and inspect pages in PDF documents; validate page counts and preserve the original document.
+---
+document.pdf")
 print(f"Pages: {len(reader.pages)}")
 
 # Extract text

@@ -1,6 +1,7 @@
 ---
-name: auction-notice-audit2026-03-06'
-author: "Krish Ujeniya"
+name: auction-notice-audit
+description: Analise e auditoria de editais de leilao judicial e extrajudicial. Riscos ocultos, clausulas perigosas, debitos, ocupante e classificacao da oportunidade.
+author: Krish Ujeniya
 tags:
 - auction
 - legal-analysis

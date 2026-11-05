@@ -1,9 +1,6 @@
 ---
-name: root-cause-debuggerDebugging specialist for errors, test failures, and unexpected
-
-  behavior. Use proactively when encountering any issues.
-
-  '
+name: root-cause-debugger
+description: Diagnose errors, test failures, and unexpected behavior by reproducing the issue and isolating its root cause.
 risk: safe
 source: community
 date_added: '2026-02-27'

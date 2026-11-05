@@ -1,3 +1,14 @@
+## Current update: skill routing consistency (2026-11-05)
+
+- Shared discovery/read/apply/verify policy covers all 1,862 skills and 141 rules.
+- Catalog metadata, routing, CLI/MCP runbook delivery, generators, and README/docs updated; existing specialist bodies and attribution retained.
+- Validation: 75 Python tests, 59 council tests, 51 host verification checks; strict metadata/rule validation; generated assets reproduced; independent Gate 5 review passed.
+- Contract and limitations: [docs/SKILL_ROUTING.md](docs/SKILL_ROUTING.md).
+- GitHub push requested by the user; remote revision verification follows commit.
+- Earlier counts and execution evidence below are historical snapshots.
+
+---
+
 # AGYOS Master Engineering & Capability Tracker
 
 > **System**: AGYOS v3.1 — Unified Cognitive Operating System for Antigravity CLI (`agy`)  
