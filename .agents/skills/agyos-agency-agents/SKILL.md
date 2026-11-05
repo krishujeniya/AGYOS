@@ -7,33 +7,22 @@ description: Specialized agent roles, personas, and pod execution workflows for 
 
 A modular roster of specialized corporate and agency roles integrated into AGYOS execution pods, coordinating autonomous multi-agent delivery with clear boundary isolation.
 
-## 1. Core Operational Roles
+## 1. Core Operational Roles & Divisions
 
-AGYOS routes multi-disciplinary work across specialized agent definitions:
+AGYOS organizes agent capabilities into 12 functional divisions mapped to the 5 execution pods:
 
-1. Systems Architect (`architect` / `faang-architect`):
-   - Scope: System design, ADR authoring, C4 models, distributed state management, and blast radius containment.
-   - Deliverable: Architectural design artifacts in `docs/adr/`.
-
-2. Senior Maker / Staff Engineer (`tdd-guide` / `elite-dev`):
-   - Scope: Autonomous TDD implementation, immutability enforcement, functions under 50 lines, test ratchet monotonicity.
-   - Deliverable: Tested, idiomatic source code with 80%+ test coverage.
-
-3. Frontend Engineering & UX (`elite-frontend-architect` / `ui-ux-expert`):
-   - Scope: Responsive UI, concentric border radii, compositor-only motion, accessibility audits (WCAG AAA), and design tokens.
-   - Deliverable: Production components with Before/After/Why review matrices.
-
-4. Principal Security Reviewer (`security-reviewer` / `security-auditor`):
-   - Scope: STRIDE threat analysis, OWASP Top 10 defenses, zero-secret leak enforcement, input validation at system boundaries.
-   - Deliverable: Security audit findings and blocking verdicts on high-risk mutations.
-
-5. Technical Copywriter & Positioning (`content-creator` / `ux-copy`):
-   - Scope: Conversion copy, landing page headlines, technical documentation, clear user error messages, zero AI buzzwords.
-   - Deliverable: Markdown documentation, microcopy, and customer communication drafts.
-
-6. Quality Lead (`elite-qa-architect` / `e2e-runner`):
-   - Scope: Arrange-Act-Assert integration tests, Playwright browser journeys, edge-case fuzzing, mutation tests.
-   - Deliverable: Passing automated test suites and deterministic machine logs.
+- Engineering (`pod-build`): Systems Architect, Frontend Wizard, Backend Specialist, API Builder, Refactoring Cleaner, Database Modeler.
+- Testing & Quality (`pod-build`): QA Lead, Test Automator, E2E Browser Runner, Mutation Verifier.
+- Security & Defense (`pod-build` / `pod-gna`): AppSec Auditor, Reverse Engineer, Cryptographic Reviewer, Anti-Decompilation Specialist.
+- Product & Design (`pod-build`): UI/UX Designer, Design System Architect, Accessibility Specialist, Micro-Interaction Engineer.
+- Strategy & Project Management (`pod-build` / `pod-growth`): Implementation Planner, Technical Program Manager, Reality Checker, Scrum Facilitator.
+- Marketing & Growth (`pod-growth`): Content Strategist, Reddit Community Specialist, Copywriter, Programmatic SEO Architect.
+- Paid Media (`pod-growth`): Ad Creative Engineer, Campaign Audience Profiler, Conversion Rate Optimizer.
+- Sales & Distribution (`pod-growth`): Lead Intelligence Researcher, Sales Pipeline Specialist, Outreach Copywriter.
+- Customer & Operations (`pod-customer`): Support Ticket Diagnostician, Customer Onboarding Lead, Documentation Author.
+- Finance & Billing (`pod-gna`): Billing Operations Specialist, Revenue Analyst, Unit Economics Auditor.
+- Legal & Compliance (`pod-gna`): Privacy/GDPR Auditor, Contract Analyzer, License Compatibility Reviewer.
+- People & Talent (`pod-people`): Applicant Screener, Technical Interview Packager, Onboarding Coordinator.
 
 ## 2. Pod Delegation Contracts
 

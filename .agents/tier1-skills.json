@@ -55,6 +55,12 @@
       "path": ".agents/skills/agyos-app-launch-checklist"
     },
     {
+      "name": "agyos-binary-analysis",
+      "tier": 1,
+      "description": "Static and dynamic reverse engineering of binaries, compiled applications, and network protocols. Bridges disassembly engines, decompilation validation, and runtime tracing within AGYOS.",
+      "path": ".agents/skills/agyos-binary-analysis"
+    },
+    {
       "name": "agyos-decision",
       "tier": 1,
       "description": "Autonomous System 1 decision engine and skill router. Classifies task domains, assesses gate complexity (1-5), and selects optimal specialist skills from the catalog with calibrated confidence.",
@@ -65,6 +71,12 @@
       "tier": 1,
       "description": "agyos-draft-commit skill",
       "path": ".agents/skills/agyos-draft-commit"
+    },
+    {
+      "name": "agyos-founder-guide",
+      "tier": 1,
+      "description": "Operational guide for startup founders navigating skill stacking, customer discovery, pricing psychology, MVP scoping, and investor narrative construction within the AGYOS ecosystem.",
+      "path": ".agents/skills/agyos-founder-guide"
     },
     {
       "name": "agyos-free-infra-catalog",
@@ -115,10 +127,22 @@
       "path": ".agents/skills/agyos-scout"
     },
     {
+      "name": "agyos-software-protection",
+      "tier": 1,
+      "description": "Defensive software hardening and counter-reverse-engineering playbook. Protects proprietary binaries and builds against automated AI decompilation, resource exhaustion, and static pattern mining.",
+      "path": ".agents/skills/agyos-software-protection"
+    },
+    {
       "name": "agyos-startup-distribution",
       "tier": 1,
       "description": "Playbook for launching, distributing, and syndicating software products. Covers 100+ directory submissions, Product Hunt launches, Show HN guidelines, and early user acquisition.",
       "path": ".agents/skills/agyos-startup-distribution"
+    },
+    {
+      "name": "agyos-startup-stack",
+      "tier": 1,
+      "description": "The 9-tool operational stack for solo founders and technical builders using AGYOS. Coordinates agent orchestration, literature research, zero-cost infra, automated lead generation, launch distribution, binary inspection, code protection, and release verification.",
+      "path": ".agents/skills/agyos-startup-stack"
     },
     {
       "name": "agyos-swarm-prediction-engine",

@@ -16,7 +16,7 @@
 |                                 AGYOS CAPACITY                                  |
 +---------------------+-------------------+------------------+--------------------+
 |  PHYSICAL SKILLS    |  MODULAR RULES    |  ROLE AGENTS     |  CORE PLUGINS      |
-|  1,858 Standalone   |  140 Rules (<24K) |  81 Specialized  |  8 Validated (`agy`)|
+|  1,862 Standalone   |  140 Rules (<24K) |  81 Specialized  |  8 Validated (`agy`)|
 +---------------------+-------------------+------------------+--------------------+
 |  OPERATIONAL PODS   |  MCP SERVERS      |  TOTAL SCRIPTS    |  TEST VERIFICATION |
 |  5 Merged Pods      |  1 FastMCP Daemon |  402 Scripts     |  51 / 51 Passed    |
@@ -30,9 +30,9 @@
 | Known Disadvantage / Tradeoff | Root Cause in Legacy AGYOS | Hardened Solution in AGYOS v3.1 | Status |
 | :--- | :--- | :--- | :---: |
 | **1. Prompt Context Swamping** | 1,846 skills in a flat list overwhelmed the model's system prompt budget. | **2-Tier Progressive Disclosure System**: 399 Tier 1 core software & UI/UX skills load on prompt; 1,439 Tier 2 domain extensions load JIT via `.agents/skills-manifest.json`. | **RESOLVED** |
-| **2. Ceremony / Bureaucracy on Tiny Edits** | 5-Gate Anchor process was too rigid for 1-line typo fixes or small tweaks. | **Adaptive Fast-Path Router**: `bin/agyos fast` bypasses Gates 1–3 for complexity $\le 2$, leaping directly to IMPLEMENT with zero ceremony. | **RESOLVED** |
+| **2. Ceremony / Bureaucracy on Tiny Edits** | 5-Gate AGYOS process was too rigid for 1-line typo fixes or small tweaks. | **Adaptive Fast-Path Router**: `bin/agyos fast` bypasses Gates 1–3 for complexity $\le 2$, leaping directly to IMPLEMENT with zero ceremony. | **RESOLVED** |
 | **3. Pre-Tool Hook Deadlock Risk** | Missing hook paths or python errors caused exit status 2, halting all tools. | **Fail-Open Fallback Guard**: `scripts/hooks/agy_os_hook.py` catches all unhandled exceptions, defaults safely to `{"decision": "allow"}` without freezing. | **RESOLVED** |
-| **4. External Submodule Clutter** | 5 cloned git repos (`Aegis`, `Anchor`, etc.) added 200MB+ bloat & broken symlinks. | **100% Self-Contained Consolidation**: All skills physically copied to `.agents/skills/`; redundant repos & web dashboards deleted. | **RESOLVED** |
+| **4. External Submodule Clutter** | 5 cloned git repos  added 200MB+ bloat & broken symlinks. | **100% Self-Contained Consolidation**: All skills physically copied to `.agents/skills/`; redundant repos & web dashboards deleted. | **RESOLVED** |
 | **5. Multi-Runtime Brittleness** | Council required Bun in arbitrary paths. | **Dedicated Council Subsystem**: Streamlined TypeScript engine housed in `scripts/council/` (59 Bun tests green, 0ms latency). | **RESOLVED** |
 | **6. Stale Docs Compiler & Web Explorer** | Legacy compiler searched deleted submodules, indexing only 73 skills. | **Unified Dynamic Ingestion Engine**: `scripts/build_docs_data.py` indexes all 1,838 skills directly from `.agents/skills/`, compiles full JSON data & sitemaps, and applies Emil Kowalski UI/UX standards. | **RESOLVED** |
 | **7. Brand Fragmentation & Passive Blindness** | Mixed legacy prefixes (`cc-`, `ecc-`, `claude-`) and no automated skill discovery mechanism. | **100% Single Brand + Autonomous Search-First**: Standardized all skills/plugins under pure AGYOS (`agyos-polyglot`), built FastMCP `agyos_find_skill` tool, `bin/agyos find` CLI, and Invariant 7. | **RESOLVED** |
@@ -50,14 +50,14 @@
    - **Banned Templated & Robotic Phrasing**: No formulaic chatbot intros ("Certainly!", "I'd be happy to help", "As an AI..."), generic rule-of-three, hollow intensifiers, or fake conversational fluff.
    - **Banned AI Symbols**: No decorative emoji spam (🚀, 🛡️, ✨, ⚡, etc.) in system responses, code comments, or commits unless specifically requested.
    - **No Unnecessary Components**: Reject speculative wrappers, premature abstractions, unnecessary utility layers, and boilerplate components. Build only what is needed with clean, minimal implementation.
-4. **Stay in Declared Scope**: Confine all file mutations strictly to the active milestone path boundary (`anchor-scope`). Never touch unapproved, cross-module files out of band.
+4. **Stay in Declared Scope**: Confine all file mutations strictly to the active milestone path boundary (`agyos-scope`). Never touch unapproved, cross-module files out of band.
 5. **Require Machine Evidence**: Never claim a task, gate, or milestone is complete without executing and printing fresh compiler, linter, or test output.
 6. **Avoid Identical Retries**: If a command or test fails twice with the same signature, alter the underlying hypothesis or halt. Never loop blindly.
 7. **Satisfy Contract Gates**: Every phase transition must satisfy strict programmatic gate criteria recorded in `.agents/state/state.json`.
 
 ---
 
-## 4. The Anchor 5-Gate Lifecycle Engine
+## 4. The AGYOS 5-Gate Lifecycle Engine
 
 ```
 [GATE 1: UNDERSTAND] ➔ [GATE 2: ANALYZE] ➔ [GATE 3: PLAN] ➔ [GATE 4: IMPLEMENT] ➔ [GATE 5: VERIFY]
@@ -68,7 +68,7 @@
 ```
 
 - **Gate 1 (UNDERSTAND)**: Intent clarification, acceptance criteria, Task List artifact. HITL approval required.
-- **Gate 2 (ANALYZE)**: Read-only AST dependency mapping (`anchor-scout`), blast radius containment, complexity scoring.
+- **Gate 2 (ANALYZE)**: Read-only AST dependency mapping (`agyos-scout`), blast radius containment, complexity scoring.
 - **Gate 3 (PLAN)**: Architecture Decision Records (ADR), C4 models, data contracts, and compact context (`compact.sh`).
 - **Gate 4 (IMPLEMENT)**: Autonomous TDD Red-Green-Refactor loop. Functions $<50$ lines, files $<800$ lines, immutability strictly enforced.
 - **Gate 5 (VERIFY)**: Full adversarial verification (`bin/agyos verify`), test ratchet monotonicity enforcement, Quiz-Me review.
@@ -274,7 +274,7 @@ bin/agyos fast
 bin/agyos state
 bin/agyos state --json
 
-# Manually transition Anchor gate
+# Manually transition AGYOS gate
 bin/agyos gate UNDERSTAND
 bin/agyos gate ANALYZE
 bin/agyos gate PLAN

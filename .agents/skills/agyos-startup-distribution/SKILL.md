@@ -26,21 +26,26 @@ An execution playbook for launching new software products, syndicating across de
   - Maker Comment: Clear explanation of problem, solution, and special release incentive.
 - Launch Timing: Schedule for 12:01 AM PST on a Tuesday, Wednesday, or Thursday for optimal discovery.
 
-## 2. Directory Syndication Checklist
+## 2. Community & Directory Syndication Checklist
 
-Submit the product to high-authority indexing platforms to establish domain backlinks and organic traffic:
+Submit the product to high-authority indexing platforms and developer communities to establish domain backlinks, referral loops, and initial organic distribution:
 
-1. General & Indie Tech:
-   - BetaList (pre-launch and early beta products)
-   - AlternativeTo (target alternatives to incumbents)
-   - SaaSHub (SaaS directory and comparison engine)
-   - MicroLaunch (indie software launches)
-   - Uneed.best (daily curated web tools)
+### High-Intent Subreddit Communities
+- `/r/SideProject` (builders sharing working side projects and tools)
+- `/r/SaaS` (software-as-a-service architecture, feedback, and growth discussions)
+- `/r/IndieBiz` & `/r/indiehackers` (bootstrapped founders and revenue milestones)
+- `/r/AlphaandBetausers` (early beta testers and structured user feedback)
+- `/r/RoastMyStartup` (candid positioning and UI critique)
+- `/r/buildinpublic` (daily iterative engineering and growth logs)
+- `/r/microsaas` (focused micro-products and niche utilities)
+- `/r/Startups` & `/r/Entrepreneur` (general founder discussions and case studies)
 
-2. AI & Developer Catalogs:
-   - Toolify.ai / There's An AI For That
-   - Futurepedia
-   - Devpost / ProductHunt / GitHub Trending
+Rules for Reddit: Never post naked marketing links. Share the technical breakdown, architecture choices, real lessons learned, and host link in comments.
+
+### Product Directories & Indexes
+- Indie Tech: BetaList, AlternativeTo, SaaSHub, MicroLaunch, Uneed.best, 10words, AllTopStartups.
+- AI Catalogs: Toolify.ai, There's An AI For That, Futurepedia, TopAI.tools.
+- Open Source & Developer: Devpost, ProductHunt, GitHub Trending, Awesome Lists.
 
 ## 3. Launch Day Operational Runbook
 

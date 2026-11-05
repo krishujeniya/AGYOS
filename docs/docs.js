@@ -1,6 +1,6 @@
 /**
  * AGYOS Documentation Client-Side Engine
- * Zero backend, 100% static, fast client-side filtering across 1,858+ skills.
+ * Zero backend, 100% static, fast client-side filtering across 1,862+ skills.
  * Features: Mobile drawer with backdrop, scroll spy, copy feedback, keyboard navigation.
  */
 

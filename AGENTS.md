@@ -103,7 +103,7 @@ When delegating tasks using `invoke_subagent`:
 
 ### 7.0 Search-First Autonomous Discovery Invariant
 Before modifying code or tackling any non-trivial user goal:
-1. **Find Best Skill First**: Autonomously execute `agyos_find_skill(query="...")` or lookup `.agents/skills/<name>` to retrieve the exact domain specialist runbook from the 1,858+ catalog.
+1. **Find Best Skill First**: Autonomously execute `agyos_find_skill(query="...")` or lookup `.agents/skills/<name>` to retrieve the exact domain specialist runbook from the 1,862+ catalog.
 2. **Conduct Grounded Research**: Trace execution paths and inspect manifests using research skills (`research`, `code-explorer`, `deep-research`) before proposing or modifying files.
 3. **Ingest Silently & Humanly**: Follow the runbook's best practices directly. Communicate in pure human engineering language with zero AI buzzwords, robotic filler, or unneeded decorative components.
 4. **Verify to Perfection**: Execute compiler, linter, and unit/integration suites (AAA pattern with 80%+ coverage) before marking any task complete.
@@ -147,7 +147,7 @@ Never narrate skill selection to the user (e.g. do NOT say "I will now use the X
 ## 8. Integrated AGYOS Core Subsystems
 
 AGYOS is fully unified and self-contained within `.agents/`, `bin/`, `mcp/`, and `scripts/`:
-- **`skills/` (`.agents/skills`)**: Unified physical catalog of 1,858+ skills categorized by domain under pure AGYOS branding.
+- **`skills/` (`.agents/skills`)**: Unified physical catalog of 1,862+ skills categorized by domain under pure AGYOS branding.
 - **`rules/` (`.agents/rules`)**: 140 modular governance and polyglot rules (<24KB each).
 - **`workflows/` (`.agents/workflows`)**: 100 autonomous multi-agent execution pipelines.
 - **`agents/` (`.agents/agents`)**: 81 specialized FAANG/MANGO corporate role and pod agents.

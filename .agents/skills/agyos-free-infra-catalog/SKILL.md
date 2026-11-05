@@ -30,14 +30,22 @@ Curated providers offering reliable free-tier allowances without requiring upfro
 - Clerk: Generous free tier for modern React/Next.js authentication and user management.
 - Supabase Auth: Complete email/password and OAuth provider integration out of the box.
 
-### Messaging & Background Jobs
+### Transactional Email & Messaging
+- Resend: 3,000 emails/month free for transactional authentication and notifications.
+- Postmark / SendGrid: 100 emails/day developer tier.
 - Upstash QStash: Serverless HTTP-based message queue and cron scheduler for async task dispatch.
 - Inngest: Event-driven background functions with automatic retries and step execution.
 
-### CI/CD & Observability
-- GitHub Actions: 2,000 free runner minutes/month for automated tests, linting, and build validation.
+### Search & Vector Indices
+- Pinecone: 1 free serverless index with 2GB storage for vector embeddings.
+- Algolia: 10,000 search requests/month free tier.
+
+### Code Quality, Security & DNS
+- Cloudflare DNS: Free global authoritative DNS with DDoS mitigation and automatic TLS.
+- Semgrep: Free CLI and community rules for SAST scanning in GitHub Actions.
 - Sentry: Developer plan with 5,000 free error events/month for exception telemetry.
 - Axiom: Free tier for centralized JSON log ingestion and query analytics.
+- GitHub Actions: 2,000 free runner minutes/month for automated tests and build validation.
 
 ## 2. Recommended Zero-Cost Stacks
 

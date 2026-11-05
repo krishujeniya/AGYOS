@@ -663,6 +663,23 @@
     "description": "Production pre-launch verification checklist for web and mobile apps. Covers Open Graph previews, Twitter Cards, favicons, meta tags, canonical URLs, error tracking, and release gates."
   },
   {
+    "id": "agyos-binary-analysis",
+    "name": "Agyos Binary Analysis",
+    "module": "AGYOS Governance",
+    "category": "Governance",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill agyos-binary-analysis",
+    "path": ".agents/skills/agyos-binary-analysis",
+    "risk": "safe",
+    "description": "Static and dynamic reverse engineering of binaries, compiled applications, and network protocols. Bridges disassembly engines, decompilation validation, and runtime tracing within AGYOS."
+  },
+  {
     "id": "agyos-decision",
     "name": "Agyos Decision",
     "module": "AGYOS Governance",
@@ -695,6 +712,23 @@
     "path": ".agents/skills/agyos-draft-commit",
     "risk": "safe",
     "description": "agyos-draft-commit skill for AGYOS."
+  },
+  {
+    "id": "agyos-founder-guide",
+    "name": "Agyos Founder Guide",
+    "module": "AGYOS Governance",
+    "category": "Governance",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill agyos-founder-guide",
+    "path": ".agents/skills/agyos-founder-guide",
+    "risk": "safe",
+    "description": "Operational guide for startup founders handling skill stacking, customer discovery, pricing psychology, MVP scoping, and investor narrative construction within the AGYOS ecosystem."
   },
   {
     "id": "agyos-free-infra-catalog",
@@ -833,6 +867,23 @@
     "description": "agyos-scout skill for AGYOS."
   },
   {
+    "id": "agyos-software-protection",
+    "name": "Agyos Software Protection",
+    "module": "AGYOS Governance",
+    "category": "Governance",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill agyos-software-protection",
+    "path": ".agents/skills/agyos-software-protection",
+    "risk": "safe",
+    "description": "Defensive software hardening and counter-reverse-engineering playbook. Protects proprietary binaries and builds against automated AI decompilation, resource exhaustion, and static pattern mining."
+  },
+  {
     "id": "agyos-startup-distribution",
     "name": "Agyos Startup Distribution",
     "module": "AGYOS Governance",
@@ -848,6 +899,23 @@
     "path": ".agents/skills/agyos-startup-distribution",
     "risk": "safe",
     "description": "Playbook for launching, distributing, and syndicating software products. Covers 100+ directory submissions, Product Hunt launches, Show HN guidelines, and early user acquisition."
+  },
+  {
+    "id": "agyos-startup-stack",
+    "name": "Agyos Startup Stack",
+    "module": "AGYOS Governance",
+    "category": "Governance",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill agyos-startup-stack",
+    "path": ".agents/skills/agyos-startup-stack",
+    "risk": "safe",
+    "description": "The 9-tool operational stack for solo founders and technical builders using AGYOS. Coordinates agent orchestration, literature research, zero-cost infra, automated lead generation, launch distribution, binary inspection, code protection, and release verification."
   },
   {
     "id": "agyos-swarm-prediction-engine",
