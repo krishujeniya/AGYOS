@@ -595,6 +595,74 @@
     "description": "Master runbook for production-grade, free-first AI engineering setups using AGY CLI exclusively. Covers environment audits, MCP server wiring, specialist skill catalog routing, Supabase/Vercel/Cloudflare integration, free-tier cost controls, and automated verification."
   },
   {
+    "id": "agyos-academic-research",
+    "name": "Agyos Academic Research",
+    "module": "AGYOS Governance",
+    "category": "Governance",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill agyos-academic-research",
+    "path": ".agents/skills/agyos-academic-research",
+    "risk": "safe",
+    "description": "Systematic academic research and literature analysis. Identifies research gaps, evaluates empirical methodologies, synthesizes papers, manages citations, and builds defensible problem statements."
+  },
+  {
+    "id": "agyos-agency-agents",
+    "name": "Agyos Agency Agents",
+    "module": "AGYOS Governance",
+    "category": "Governance",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill agyos-agency-agents",
+    "path": ".agents/skills/agyos-agency-agents",
+    "risk": "safe",
+    "description": "Specialized agent roles, personas, and pod execution workflows for AGYOS. Use when delegating domain-specific tasks across copywriting, design, system architecture, marketing, and security review."
+  },
+  {
+    "id": "agyos-anti-ai-design",
+    "name": "Agyos Anti Ai Design",
+    "module": "AGYOS Governance",
+    "category": "Governance",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill agyos-anti-ai-design",
+    "path": ".agents/skills/agyos-anti-ai-design",
+    "risk": "safe",
+    "description": "Diagnostic and design guide to eliminate AI-generated UI slop. Replaces generic purple gradients, Inter overuse, emoji icons, uniform 3-card grids, and synthetic floating blobs with production design."
+  },
+  {
+    "id": "agyos-app-launch-checklist",
+    "name": "Agyos App Launch Checklist",
+    "module": "AGYOS Governance",
+    "category": "Governance",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill agyos-app-launch-checklist",
+    "path": ".agents/skills/agyos-app-launch-checklist",
+    "risk": "safe",
+    "description": "Production pre-launch verification checklist for web and mobile apps. Covers Open Graph previews, Twitter Cards, favicons, meta tags, canonical URLs, error tracking, and release gates."
+  },
+  {
     "id": "agyos-decision",
     "name": "Agyos Decision",
     "module": "AGYOS Governance",
@@ -629,6 +697,23 @@
     "description": "agyos-draft-commit skill for AGYOS."
   },
   {
+    "id": "agyos-free-infra-catalog",
+    "name": "Agyos Free Infra Catalog",
+    "module": "AGYOS Governance",
+    "category": "Governance",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill agyos-free-infra-catalog",
+    "path": ".agents/skills/agyos-free-infra-catalog",
+    "risk": "safe",
+    "description": "Curated architectural guide to zero-cost developer infrastructure. Covers free tiers for hosting, serverless Postgres, vector databases, authentication, object storage, and background queues."
+  },
+  {
     "id": "agyos-graph",
     "name": "agyos-graphs import structure.",
     "module": "AGYOS Governance",
@@ -644,6 +729,40 @@
     "path": ".agents/skills/agyos-graph",
     "risk": "safe",
     "description": "agyos-graph skill for AGYOS."
+  },
+  {
+    "id": "agyos-karpathy-guidelines",
+    "name": "Agyos Karpathy Guidelines",
+    "module": "AGYOS Governance",
+    "category": "Governance",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill agyos-karpathy-guidelines",
+    "path": ".agents/skills/agyos-karpathy-guidelines",
+    "risk": "safe",
+    "description": "Behavioral guidelines to eliminate LLM coding mistakes. Use when writing, reviewing, or refactoring code to avoid overcomplication, make surgical changes, surface assumptions, and define verifiable success criteria."
+  },
+  {
+    "id": "agyos-lead-scraper",
+    "name": "Agyos Lead Scraper",
+    "module": "AGYOS Governance",
+    "category": "Governance",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill agyos-lead-scraper",
+    "path": ".agents/skills/agyos-lead-scraper",
+    "risk": "safe",
+    "description": "Local and headless web scraping playbook for Google Maps, directories, and business leads. Covers query generation, rate limiting, proxy handling, data normalization, and CSV/JSON export."
   },
   {
     "id": "agyos-orchestrator",
@@ -712,6 +831,23 @@
     "path": ".agents/skills/agyos-scout",
     "risk": "safe",
     "description": "agyos-scout skill for AGYOS."
+  },
+  {
+    "id": "agyos-startup-distribution",
+    "name": "Agyos Startup Distribution",
+    "module": "AGYOS Governance",
+    "category": "Governance",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill agyos-startup-distribution",
+    "path": ".agents/skills/agyos-startup-distribution",
+    "risk": "safe",
+    "description": "Playbook for launching, distributing, and syndicating software products. Covers 100+ directory submissions, Product Hunt launches, Show HN guidelines, and early user acquisition."
   },
   {
     "id": "agyos-verify",
@@ -26507,7 +26643,7 @@
     "name": "Sop Customer",
     "module": "Domain & Research Extensions",
     "category": "Specialized",
-    "tier": 1,
+    "tier": 2,
     "runtime": [
       "AGY CLI",
       "Gemini",
@@ -26524,7 +26660,7 @@
     "name": "Sop Gna",
     "module": "Domain & Research Extensions",
     "category": "Specialized",
-    "tier": 1,
+    "tier": 2,
     "runtime": [
       "AGY CLI",
       "Gemini",
@@ -26541,7 +26677,7 @@
     "name": "Sop Growth",
     "module": "Domain & Research Extensions",
     "category": "Specialized",
-    "tier": 1,
+    "tier": 2,
     "runtime": [
       "AGY CLI",
       "Gemini",
@@ -26558,7 +26694,7 @@
     "name": "Sop People",
     "module": "Domain & Research Extensions",
     "category": "Specialized",
-    "tier": 1,
+    "tier": 2,
     "runtime": [
       "AGY CLI",
       "Gemini",

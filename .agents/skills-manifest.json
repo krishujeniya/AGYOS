@@ -1,8 +1,8 @@
 {
   "version": "3.1.0",
-  "total_skills": 1849,
-  "tier1_count": 372,
-  "tier2_count": 1477,
+  "total_skills": 1857,
+  "tier1_count": 376,
+  "tier2_count": 1481,
   "skills": [
     {
       "name": "3d-web-experience",
@@ -215,6 +215,30 @@
       "path": ".agents/skills/agy-production-stack"
     },
     {
+      "name": "agyos-academic-research",
+      "tier": 1,
+      "description": "Systematic academic research and literature analysis. Identifies research gaps, evaluates empirical methodologies, synthesizes papers, manages citations, and builds defensible problem statements.",
+      "path": ".agents/skills/agyos-academic-research"
+    },
+    {
+      "name": "agyos-agency-agents",
+      "tier": 1,
+      "description": "Specialized agent roles, personas, and pod execution workflows for AGYOS. Use when delegating domain-specific tasks across copywriting, design, system architecture, marketing, and security review.",
+      "path": ".agents/skills/agyos-agency-agents"
+    },
+    {
+      "name": "agyos-anti-ai-design",
+      "tier": 1,
+      "description": "Diagnostic and design guide to eliminate AI-generated UI slop. Replaces generic purple gradients, Inter overuse, emoji icons, uniform 3-card grids, and synthetic floating blobs with production design.",
+      "path": ".agents/skills/agyos-anti-ai-design"
+    },
+    {
+      "name": "agyos-app-launch-checklist",
+      "tier": 1,
+      "description": "Production pre-launch verification checklist for web and mobile apps. Covers Open Graph previews, Twitter Cards, favicons, meta tags, canonical URLs, error tracking, and release gates.",
+      "path": ".agents/skills/agyos-app-launch-checklist"
+    },
+    {
       "name": "agyos-decision",
       "tier": 1,
       "description": "Autonomous System 1 decision engine and skill router. Classifies task domains, assesses gate complexity (1-5), and selects optimal specialist skills from the catalog with calibrated confidence.",
@@ -227,10 +251,28 @@
       "path": ".agents/skills/agyos-draft-commit"
     },
     {
+      "name": "agyos-free-infra-catalog",
+      "tier": 1,
+      "description": "Curated architectural guide to zero-cost developer infrastructure. Covers free tiers for hosting, serverless Postgres, vector databases, authentication, object storage, and background queues.",
+      "path": ".agents/skills/agyos-free-infra-catalog"
+    },
+    {
       "name": "agyos-graph",
       "tier": 1,
       "description": "agyos-graph skill",
       "path": ".agents/skills/agyos-graph"
+    },
+    {
+      "name": "agyos-karpathy-guidelines",
+      "tier": 1,
+      "description": "Behavioral guidelines to eliminate LLM coding mistakes. Use when writing, reviewing, or refactoring code to avoid overcomplication, make surgical changes, surface assumptions, and define verifiable success criteria.",
+      "path": ".agents/skills/agyos-karpathy-guidelines"
+    },
+    {
+      "name": "agyos-lead-scraper",
+      "tier": 1,
+      "description": "Local and headless web scraping playbook for Google Maps, directories, and business leads. Covers query generation, rate limiting, proxy handling, data normalization, and CSV/JSON export.",
+      "path": ".agents/skills/agyos-lead-scraper"
     },
     {
       "name": "agyos-orchestrator",
@@ -255,6 +297,12 @@
       "tier": 1,
       "description": "agyos-scout skill",
       "path": ".agents/skills/agyos-scout"
+    },
+    {
+      "name": "agyos-startup-distribution",
+      "tier": 1,
+      "description": "Playbook for launching, distributing, and syndicating software products. Covers 100+ directory submissions, Product Hunt launches, Show HN guidelines, and early user acquisition.",
+      "path": ".agents/skills/agyos-startup-distribution"
     },
     {
       "name": "agyos-verify",
@@ -9360,25 +9408,25 @@
     },
     {
       "name": "sop-customer",
-      "tier": 1,
+      "tier": 2,
       "description": "Standard Operating Procedure for Customer Pod (Onboarding and Support). Governs client onboarding checklists, ticket diagnosis, policy-adherent response drafting, and defect escalation.",
       "path": ".agents/skills/sop-customer"
     },
     {
       "name": "sop-gna",
-      "tier": 1,
+      "tier": 2,
       "description": "Standard Operating Procedure for General & Administrative Pod (Finance, Legal, and Operations). Governs invoice reconciliation, legal risk review, and procurement requisitions under strict fiduciary controls.",
       "path": ".agents/skills/sop-gna"
     },
     {
       "name": "sop-growth",
-      "tier": 1,
+      "tier": 2,
       "description": "Standard Operating Procedure for Growth Pod (Marketing, Lead Generation, and Sales). Governs campaign drafting, audience targeting, compliant lead qualification, and non-binding quote generation.",
       "path": ".agents/skills/sop-growth"
     },
     {
       "name": "sop-people",
-      "tier": 1,
+      "tier": 2,
       "description": "Standard Operating Procedure for People Pod (Hiring and Talent). Governs objective applicant screening, interview packets, evaluation rubrics, and onboarding handoffs.",
       "path": ".agents/skills/sop-people"
     },

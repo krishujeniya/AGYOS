@@ -1,0 +1,50 @@
+---
+name: agyos-startup-distribution
+description: Playbook for launching, distributing, and syndicating software products. Covers 100+ directory submissions, Product Hunt launches, Show HN guidelines, and early user acquisition.
+---
+
+# AGYOS Startup Launch & Distribution Playbook
+
+An execution playbook for launching new software products, syndicating across developer directories, and driving early user distribution with structured launch processes.
+
+## 1. Primary Launch Channels
+
+### Hacker News: "Show HN"
+- Title Formula: `Show HN: [Product Name] – [Direct, one-sentence explanation of what it does]`.
+- First Comment Protocol:
+  - Why you built it (the concrete technical or workflow frustration).
+  - How it works technically (stack, architecture, key decisions).
+  - Honest disclosure of current limitations and future roadmap.
+  - Link directly to live demo or open-source repo without marketing redirects.
+- Rules: Avoid promotional hype, buzzwords, or manufactured testimonials. HN audiences value transparent engineering discussions.
+
+### Product Hunt
+- Asset Checklist:
+  - Product Logo: 240 x 240 px clean square icon.
+  - Tagline: Under 60 characters explaining utility (e.g., "Autonomous cognitive OS for AI coding agents").
+  - Gallery Media: 4-6 high-resolution screenshots (1270 x 760 px) showcasing actual UI features.
+  - Maker Comment: Clear explanation of problem, solution, and special release incentive.
+- Launch Timing: Schedule for 12:01 AM PST on a Tuesday, Wednesday, or Thursday for optimal discovery.
+
+## 2. Directory Syndication Checklist
+
+Submit the product to high-authority indexing platforms to establish domain backlinks and organic traffic:
+
+1. General & Indie Tech:
+   - BetaList (pre-launch and early beta products)
+   - AlternativeTo (target alternatives to incumbents)
+   - SaaSHub (SaaS directory and comparison engine)
+   - MicroLaunch (indie software launches)
+   - Uneed.best (daily curated web tools)
+
+2. AI & Developer Catalogs:
+   - Toolify.ai / There's An AI For That
+   - Futurepedia
+   - Devpost / ProductHunt / GitHub Trending
+
+## 3. Launch Day Operational Runbook
+
+- Hour 0 (12:01 AM PST): Launch live on primary platform. Verify links, pricing gates, and analytics.
+- Hour 1-4: Seed discussion in relevant Discord, Reddit (r/SideProject, r/webdev), and developer communities.
+- Hour 4-12: Monitor error tracking (Sentry) and server latency. Respond to all user comments within 15 minutes.
+- Hour 24: Post retrospective update with usage metrics, user feedback, and immediate release fixes.
