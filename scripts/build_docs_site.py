@@ -85,7 +85,7 @@ class Renderer(mistune.HTMLRenderer):
         return f'<h{level} id="{html.escape(slug)}"><a class="heading-anchor" href="#{html.escape(slug)}" aria-label="Link to {html.escape(heading)}">#</a>{text}</h{level}>\n'
 
     def block_code(self, code: str, info: str | None = None) -> str:
-        lang = (info or '').split()[0].lower()
+        lang = ((info or '').split() or [''])[0].lower()
         if lang in ('mermaid', 'plantuml'):
             self.unsupported.append(lang + ' diagram rendered as source')
         return f'<div class="code-shell"><div class="code-toolbar"><span>{html.escape(lang or "text")}</span><button type="button" class="code-copy" aria-label="Copy code">Copy</button></div><pre><code class="language-{html.escape(lang)}">{html.escape(code)}</code></pre></div>\n'
