@@ -47,3 +47,17 @@ html,body{overflow-x:clip}
 @media(max-width:800px){.hero-content{display:block;min-height:0;padding-block:74px}.hero-side-note{margin-top:44px;max-width:none;display:grid;grid-template-columns:90px 1fr;align-items:start;gap:10px 15px}.hero-side-note span{margin:0}.architecture-path{grid-template-columns:minmax(0,1fr)}.architecture-path li:last-child{grid-column:auto}.architecture-path li:last-child{border-bottom:0}}
 @media(max-width:680px){.hero-content{padding-block:52px 64px}.hero h1{font-size:clamp(3rem,10vw,5rem)}.hero-actions{gap:18px;flex-wrap:wrap}.section-pad{padding-block:76px}.system-diagram{margin-top:30px;padding:22px}.architecture-path li{gap:12px}}
 @media(prefers-reduced-motion:reduce){.reveal,.reveal-title{animation:none!important;opacity:1;transform:none!important}}
+
+/* Hallmark v2 | readable documentation pages share functional navigation. */
+.docs-layout{grid-template-columns:minmax(190px,245px) minmax(0,800px) minmax(150px,210px);column-gap:clamp(24px,3.3vw,52px);justify-content:center}
+.docs-article{min-width:0}
+.doc-heading{max-width:790px}
+.doc-heading h1{font-family:var(--display);font-size:clamp(2.3rem,4vw,4.5rem);letter-spacing:-.065em;line-height:1.1;overflow-wrap:break-word}
+.doc-heading .eyebrow{font-family:var(--body);font-size:12px;font-weight:500;letter-spacing:0;text-transform:none}
+.docs-sidebar,.docs-toc{font-family:var(--body)}
+.sidebar-head,.toc-title,.doc-breadcrumb{font-family:var(--body);text-transform:none;letter-spacing:0;font-size:12px}
+.docs-article p,.docs-article li{line-height:1.75}
+.docs-article a:focus-visible,.docs-sidebar a:focus-visible,.docs-toc a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+@media(max-width:1220px){.docs-layout{grid-template-columns:minmax(190px,245px) minmax(0,1fr)}}
+@media(max-width:950px){.docs-layout{display:block;max-width:850px;padding-inline:clamp(18px,4vw,40px)}}
+@media(max-width:680px){.doc-heading h1{font-size:clamp(2.1rem,8vw,3.2rem)}}
