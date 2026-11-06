@@ -217,11 +217,11 @@ def build(out: Path, base: str) -> dict:
         nxt = docs[i+1] if i+1<len(docs) else None
         pager = '<div class="doc-pager">' + (f'<a href="{base}docs/{prev["slug"]}/"><span>← Previous</span><strong>{html.escape(prev["title"])}</strong></a>' if prev else '<span></span>') + (f'<a href="{base}docs/{nxt["slug"]}/"><span>Next →</span><strong>{html.escape(nxt["title"])}</strong></a>' if nxt else '<span></span>') + '</div>'
         main = (site_header(base, True) + '<div class="docs-layout"><button type="button" class="mobile-docs-toggle" data-docs-menu aria-expanded="false">Browse documentation <span>☰</span></button>'
-            + f'<aside class="docs-sidebar" id="docs-sidebar" aria-label="Documentation navigation"><div class="sidebar-head">DOCUMENTATION <span>{len(docs)} PAGES</span></div>{pages_sidebar(docs,doc["slug"],base)}</aside>'
+            + f'<aside class="docs-sidebar" id="docs-sidebar" aria-label="Documentation navigation"><div class="sidebar-head">Documentation <span>{len(docs)} guides</span></div>{pages_sidebar(docs,doc["slug"],base)}</aside>'
             + f'<main id="main" class="docs-article"><div class="doc-breadcrumb"><a href="{base}docs/overview/">Documentation</a><span>/</span><span>{html.escape(doc["category"])}</span></div>'
             + f'<div class="doc-heading"><p class="eyebrow">{html.escape(doc["category"])}</p><h1>{html.escape(doc["title"])}</h1><p>{html.escape(doc["description"])}</p></div>'
             + f'<article class="prose" id="doc-content">{rendered}</article>{pager}<div class="source-link"><a href="{GITHUB+quote(doc["source"],safe="/")}" target="_blank" rel="noopener noreferrer">View source on GitHub ↗</a></div></main>'
-            + f'<aside class="docs-toc" aria-label="On this page"><div class="toc-title">ON THIS PAGE</div>{toc or "<p>No subsections</p>"}</aside></div>' + footer(base) + search_dialog(base))
+            + f'<aside class="docs-toc" aria-label="On this page"><div class="toc-title">On this page</div>{toc or "<p>No subsections</p>"}</aside></div>' + footer(base) + search_dialog(base))
         dest = out / 'docs' / doc['slug'] / 'index.html'
         dest.parent.mkdir(parents=True, exist_ok=True)
         dest.write_text(template(base, doc['title'], doc['description'], URL+'docs/'+doc['slug']+'/', main, 'docs-page'), encoding='utf-8')
