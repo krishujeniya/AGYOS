@@ -2201,3 +2201,18 @@ mark {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* Hallmark v2 | skills catalog: function-led layout, not particle-generated ambience. */
+html,body{overflow-x:clip}
+.hero{min-height:0;position:relative;background:var(--bg,var(--background,#fff));padding:0;border-bottom:1px solid var(--border)}
+.hero::before,.hero::after{display:none!important;content:none!important}
+.hero-content{max-width:1100px;margin-inline:auto;padding:clamp(75px,11vh,135px) clamp(20px,5vw,78px);min-height:0;position:relative}
+.hero-headline{font-size:clamp(3.1rem,6vw,6.6rem);line-height:1.06;letter-spacing:-.062em;font-weight:650;max-width:950px;margin:0 0 29px;animation:none!important;opacity:1!important;transform:none!important}
+.hero-subtext{max-width:740px;font-size:clamp(1rem,1.5vw,1.23rem);line-height:1.65;margin:0 0 28px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+.hero-canvas,.hero-eyebrow,.hero-scroll-indicator,.stats-band{display:none!important}
+.section-label,.sidebar-group-label,.footer-col-label{letter-spacing:0;text-transform:none;font-family:inherit;font-size:13px;font-weight:600}
+.section-title{overflow-wrap:break-word}
+:where(button,a,input,select,textarea,summary):focus-visible{outline:3px solid var(--accent,var(--fg,#444));outline-offset:3px}
+@media(max-width:700px){.hero-content{padding:58px 22px 70px}.hero-headline{font-size:clamp(2.9rem,10vw,4.7rem)}.hero-actions{gap:12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important;opacity:1}}
