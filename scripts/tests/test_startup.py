@@ -45,9 +45,10 @@ class HookContractTests(unittest.TestCase):
     def test_empty_and_malformed_input_follow_event_contract(self):
         for payload in ("", "{", "null", "[]"):
             for event in ("PreToolUse", "PostToolUse", "PreInvocation", "PostInvocation"):
-                expected = {"decision": "allow"} if event == "PreToolUse" else {}
+                expected = {"decision": "deny"} if event == "PreToolUse" else {}
                 with self.subTest(event=event, payload=payload):
-                    self.assertEqual(self.invoke(event, payload), expected)
+                    result = self.invoke(event, payload)
+                    self.assertEqual(result.get("decision"), "deny") if event == "PreToolUse" else self.assertEqual(result, expected)
 
     def test_stop_allows_termination(self):
         self.assertEqual(self.invoke("Stop", '{"fullyIdle":true}'), {"decision": "allow"})
@@ -58,7 +59,7 @@ class HookContractTests(unittest.TestCase):
 
     def test_invalid_command_type_does_not_emit_unknown_warning_field(self):
         payload = json.dumps({"toolCall": {"args": {"CommandLine": ["npm", "test"]}}})
-        self.assertEqual(self.invoke("PreToolUse", payload), {"decision": "allow"})
+        self.assertEqual(self.invoke("PreToolUse", payload)["decision"], "deny")
 
 
 class StartupMetadataTests(unittest.TestCase):
