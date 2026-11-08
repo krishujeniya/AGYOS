@@ -60,5 +60,6 @@ echo "  ✓ Skills database compiled"
 
 echo ""
 echo "============================================================"
-echo "🚀 AGYOS is 100% OPERATIONAL on AGY CLI $(agy --version)"
+echo "✅ AGYOS core initialization and plugin validation completed on AGY CLI $(agy --version)"
+echo "Note: third-party channels, encrypted storage, host permissions and production workflows require separate verification."
 echo "============================================================"
