@@ -22,3 +22,7 @@ Include detailed reproduction steps, proof of concept, and affected environment.
 ## Endpoint-Side Encrypted File Exchange
 
 The optional encrypted-envelope CLI is described in [docs/security/END_TO_END_ENCRYPTION.md](docs/security/END_TO_END_ENCRYPTION.md). No system-wide end-to-end encryption guarantee is made: AGYOS memory, model requests and external tools remain outside this envelope. Verify peer fingerprints out-of-band. Keep private identities and passphrases off Git, AGYOS chat, remote models and logs. A compromised endpoint can still reveal plaintext, and long-lived X25519 recipient keys do not supply full post-compromise forward secrecy. Report cryptographic findings using private vulnerability reporting.
+
+## Encrypted envelope boundary
+
+Optional AGYOS secure-envelope support encrypts and authenticates files only between independently keyed endpoints. It is not a claim that the entire OS, LLM provider interactions, existing MCP tools, or checked-in state files are end-to-end encrypted. Verify identity fingerprints independently; review [the security design](docs/security/E2EE.md) before using it for sensitive data. No cryptography has received an independent external audit.

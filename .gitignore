@@ -66,3 +66,8 @@ coverage/
 *.e2ee.json
 *.private-identity.json
 .agyos-secure/
+
+# E2EE private identity and plaintext exchange files (never commit)
+.agyos-private/
+*.agyos.enc.json
+*.agyos.private.json

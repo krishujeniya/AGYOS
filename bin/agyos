@@ -26,6 +26,7 @@ Commands:
   canary      Run pre-release canary launch gate and audit receipt generator
   rollback    Safely abort and revert the active milestone
   council     Run multi-model deliberation via Agent Council
+  secure      Encrypt/decrypt authenticated endpoint-to-endpoint envelopes
   secure      Exchange authenticated encrypted files between trusted endpoints
   help        Show this help message
 EOF
@@ -153,6 +154,9 @@ if decision.assumptions_applied:
     ;;
   council)
     bun run scripts/council/src/council.ts "$@"
+    ;;
+  secure)
+    node scripts/agyos-runtime/secure-envelope.cjs "$@"
     ;;
   help|--help|-h)
     usage
