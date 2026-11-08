@@ -79,7 +79,7 @@ check "bin/agyos executable exists and functional" bin/agyos help
 
 # 12. Check Tiered Skills Manifest & Fast-Path Routing
 check "Tiered skills manifest exists and valid" test -s .agents/skills-manifest.json
-check "Fast-path state bypass functional" bash -c 'bin/agyos fast >/dev/null && test "$(jq -r .current_gate .agents/state/state.json)" = "IMPLEMENT" && bin/agyos gate IDLE >/dev/null'
+check "Fast-path state bypass functional (isolated fixture)" bash -c 'tmp=$(mktemp -d); trap '\''rm -rf -- "$tmp"'\'' EXIT; cp .agents/state/state.json "$tmp/state.json"; STATE_FILE="$tmp/state.json" bin/agyos fast >/dev/null && test "$(jq -r .current_gate "$tmp/state.json")" = "IMPLEMENT" && STATE_FILE="$tmp/state.json" bin/agyos gate IDLE >/dev/null && test "$(jq -r .current_gate "$tmp/state.json")" = "IDLE"'
 
 # 13. Hierarchical Architecture & Virtual Memory Storage
 check "Hierarchical architecture specification exists" test -s docs/ARCHITECTURE.md
