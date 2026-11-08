@@ -36,5 +36,3 @@ jobs:
       - name: Check endpoint encryption round-trip and tamper resistance
         run: node --test scripts/tests/test_secure_envelope.cjs
 
-      - name: Verify endpoint encrypted envelope exchange (Node built-in test runner)
-        run: node --test scripts/tests/test_secure_envelope.cjs
