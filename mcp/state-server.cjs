@@ -268,6 +268,10 @@ function loadSkills() {
 }
 
 function searchSkills(query, limit = 5, category = null) {
+  if (typeof query !== "string" || !query.trim() || query.length > 512 ||
+      (category !== null && (typeof category !== "string" || category.length > 128))) {
+    throw new Error("Invalid or oversized skill-search input");
+  }
   const { execFileSync } = require("child_process");
   const count = Number.isFinite(limit) ? Math.max(0, Math.min(Math.floor(limit), 20)) : 5;
   const code = [
@@ -279,7 +283,7 @@ function searchSkills(query, limit = 5, category = null) {
     "print(json.dumps(select_best_skills(sys.argv[1],catalog,limit=int(sys.argv[2]))))"
   ].join("\n");
   const output = execFileSync("python3", ["-c", code, query || "", String(count), category || ""], {
-    cwd: PROJECT_ROOT, encoding: "utf8", maxBuffer: 4 * 1024 * 1024
+    cwd: PROJECT_ROOT, encoding: "utf8", maxBuffer: 1024 * 1024, timeout: 15000
   });
   return JSON.parse(output);
 }
@@ -329,12 +333,15 @@ function handleToolCall(name, args) {
   }
   if (name === "agyos_decision") {
     const task = args.task || "";
+    if (typeof task !== "string" || !task.trim() || task.length > 3000) {
+      return { isError: true, content: [{ type: "text", text: "Invalid or oversized task input" }] };
+    }
     try {
       const { execFileSync } = require("child_process");
       const scriptPath = path.join(PROJECT_ROOT, "scripts", "agyos-decision.py");
       const argv = [scriptPath, task, "--json"];
       if (args.include_runbook === true) argv.push("--runbook");
-      const stdout = execFileSync("python3", argv, { encoding: "utf8", maxBuffer: 4 * 1024 * 1024 });
+      const stdout = execFileSync("python3", argv, { cwd: PROJECT_ROOT, encoding: "utf8", maxBuffer: 4 * 1024 * 1024, timeout: 15000 });
       return { content: [{ type: "text", text: stdout.trim() }] };
     } catch (err) {
       return { isError: true, content: [{ type: "text", text: JSON.stringify({ error: String(err) }) }] };
