@@ -109,3 +109,34 @@ test('vault CLI initializes without secret appearing in stdout or on disk', () =
   assert.match(status.stdout, /"initialized":true/);
   assert.equal(invoke(['vault-init', '--path', file, '--passphrase-fd', '0']).status, 1);
 }));
+
+
+test('strict private-only mode never returns checked-in legacy memory', () => temporary(dir => {
+  const file = path.join(dir, 'private.vault.json');
+  const script = path.join(__dirname, '..', '..', 'mcp', 'state-server.cjs');
+  const request = JSON.stringify({
+    jsonrpc: '2.0', id: 50, method: 'tools/call',
+    params: { name: 'agyos_memory', arguments: { action: 'read', tier: 'tier0' } }
+  }) + '\n';
+  const env = { ...process.env, AGYOS_MEMORY_PRIVATE_ONLY: '1', AGYOS_VAULT_PATH: file };
+  delete env.AGYOS_VAULT_PASSPHRASE_FD;
+  const locked = spawnSync(process.execPath, [script], {
+    env, input: request, encoding: 'utf8', timeout: 15000,
+  });
+  assert.equal(locked.status, 0, locked.stderr);
+  assert.match(locked.stdout, /"isError":true/);
+  assert.doesNotMatch(locked.stdout, /user_preferences/);
+  vault.initializeVault(file, PASSWORD);
+  const passFile = path.join(dir, 'key.fd');
+  fs.writeFileSync(passFile, PASSWORD, { mode: 0o600 });
+  const fd = fs.openSync(passFile, 'r');
+  try {
+    const response = spawnSync(process.execPath, [script], {
+      env: { ...env, AGYOS_VAULT_PASSPHRASE_FD: '3' }, input: request,
+      encoding: 'utf8', stdio: ['pipe', 'pipe', 'pipe', fd], timeout: 15000,
+    });
+    assert.equal(response.status, 0, response.stderr);
+    assert.equal(response.stdout.includes('"isError":true'), false);
+    assert.doesNotMatch(response.stdout, /user_preferences/);
+  } finally { fs.closeSync(fd); }
+}));
