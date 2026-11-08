@@ -10,13 +10,10 @@ const path = require("path");
 const readline = require("readline");
 const privateVault = require("../scripts/agyos-runtime/lib/private-vault.cjs");
 
-// Discover project root
+// Resolve from the installed file location, even when a release bundle has
+// no .git directory. Never climb to '/' and accidentally read global paths.
 function findProjectRoot() {
-  let curr = path.resolve(__dirname, "..");
-  while (curr !== "/" && !fs.existsSync(path.join(curr, ".git"))) {
-    curr = path.resolve(curr, "..");
-  }
-  return curr;
+  return path.resolve(__dirname, "..");
 }
 
 const PROJECT_ROOT = findProjectRoot();
@@ -163,7 +160,7 @@ function getSysInfo() {
     memory_architecture: {
       tier0_core: "Working Persona & System Invariants",
       tier1_recall: "Session State & Checkpoints Ledger",
-      tier2_archival: "1,838 Standalone Skills Catalog"
+      tier2_archival: `${skills.length} indexed native skill records`
     },
     subsystems: {
       anchor_governance: "Operational",
