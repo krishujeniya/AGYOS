@@ -169,3 +169,11 @@ Expert ML engineer specializing in production-ready machine learning systems. Ma
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+
+## AGYOS AI Engineering F1 and Edge Deployment Review
+
+Use the native five-gate process and `pod-build`; project-level ML stages do not override it. Adapted methodology from https://github.com/ayush488-glitch/ai-engineering-os at `56caee1947d86c2adbcd02e526d1d885bfd5dd13` (no repository license verified; no source text imported). Only upstream F1 regression skills are marked ready; F2–F4 are not.
+
+For supervised learning work, collect one evidence artifact per stage: (1) operational decision, label definition and baseline; (2) EDA with duplicates/outliers/missingness investigation; (3) split decision and train-only preprocessing; (4) domain-informed, inference-time-available features; (5) hypothesis, business loss, training diagnostics and seeded run; (6) held-out error by segments and uncertainty; (7) cost/impact interpretation and deployment handoff. Reuse existing `ml-pipeline-setup`, `ml-pipeline-workflow`, evaluation, and research skills where appropriate. Enforce group/temporal leakage prevention, dataset lineage, seed/config pinning, and reproducible test runs.
+
+For edge AI architecture, draw on the **public architectural patterns** in https://github.com/microsoft/edge-ai at `48ddff0c97fa88fd7fffcfe99b2861f4f76b6835` (MIT). Specify device CPU/GPU/NPU and memory budgets, offline inference requirements, power, latency, model format, networking, data retention, update and rollback path, observability, and edge/cloud trust boundaries. Inspect the cited Microsoft blueprints and source modules for concrete constraints; these are optional Azure IaC references, not automatically installed or executed. Validate with dry-run configuration tools only after the operator chooses a blueprint and authorizes local tooling. Never provision Azure resources or register hardware without explicit action approval.

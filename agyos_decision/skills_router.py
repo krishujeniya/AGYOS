@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 from .catalog import canonical_entry, physical_catalog
+from .integrations.source_registry import match_sources
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DOCS_DATA = REPO_ROOT / "docs" / "skills-data.json"
@@ -464,6 +465,23 @@ def decide_skill(query: str) -> Dict[str, Any]:
         }
         candidates = [primary]
 
+    # Reviewed external references may refine a clear, multi-concept intent.
+    # No upstream prompt or tool is executed; only existing physical skills route.
+    try:
+        integration_matches = match_sources(query)
+    except (OSError, ValueError, TypeError):
+        integration_matches = []  # Bad registry never grants authority.
+    for integration in integration_matches[:1]:
+        native = next((s for s in catalog if s["name"] == integration["primary_skill"]), None)
+        if native is None:
+            break
+        primary = {
+            **native, "rank": 1, "score": integration["score"],
+            "confidence": 0.75, "tier": native.get("tier", 2),
+        }
+        candidates = [primary] + [s for s in candidates if s["name"] != primary["name"]][:4]
+        fallback = False
+
     runbook_path = f"{primary.get('path', '')}/SKILL.md"
     return {
         "task": query,
@@ -485,4 +503,6 @@ def decide_skill(query: str) -> Dict[str, Any]:
         "read_tool_call": f"read_file(Path='{runbook_path}')",
         "execution_invariant": f"Autonomous Skill Invariant: Ingest runbook at {runbook_path} and adhere to domain rules before mutating code.",
         "candidates": candidates,
+        "integration_sources": integration_matches,
+        "integration_status": "native_skill_routed_not_executed" if integration_matches else "none",
     }

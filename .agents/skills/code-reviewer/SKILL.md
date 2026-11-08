@@ -178,3 +178,9 @@ Master code reviewer focused on ensuring code quality, security, performance, an
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+
+## Pre-Release Engineering Discipline (gstack adaptation)
+
+Provenance: https://github.com/garrytan/gstack at `d479c5bf1efed979297dc4498c60aef7b67aa639` (MIT). Preserve AGYOS gates, maker/checker contexts, risk approvals, and natural-language routing; do not run gstack's Claude-specific commands, hooks, Bun setup, or browser daemon implicitly.
+
+For PR or release reviews: enumerate changed surfaces and failure paths; inspect architecture and product requirements; do independent functional, security/STRIDE, data-loss, accessibility and design-review passes appropriate to scope; produce reproduction steps and severity-ranked evidence. Run existing static analysis/unit/integration/regression tests and browser QA only on an authorized test URL and when a compatible browser tool exists. Record test commands, exit codes, screenshots if available, missing coverage, and a `SHIP` / `DO NOT SHIP` / `INCONCLUSIVE` recommendation. The independent checker signs off under AGYOS governance; a checklist alone is not proof of execution.

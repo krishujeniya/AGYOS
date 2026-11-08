@@ -56,3 +56,9 @@ When scoping an initial release:
 
 - Ban AI Jargon: Eliminate buzzwords ("seamless", "game-changing", "revolutionary") in pitch decks, landing pages, and documentation.
 - Lead with Metrics: Replace subjective claims with concrete technical baselines (latency numbers, uptime figures, test counts).
+
+## Founders Kit Resource Navigation (pinned, read-only adaptation)
+
+Source: https://github.com/avinash201199/founders-kit at `996e77be35a11723a43eb74f387205a087b91358` (MIT repository, independent resource licenses unknown). Its README is a directory, not an executable business agent.
+
+For startup questions, select the existing relevant corporate pod: `pod-growth` for positioning, distribution, sales, fundraising research; `pod-build` for customer problem framing, product planning and MVP work; `pod-gna` for operations, legal and finance; `pod-people` for recruiting. Search the pinned directory for targeted resources and record their exact links as *unverified external references* until opened and checked. Avoid wholesale ingestion of SaaS sites, unverified marketing claims, or links that are dead. Pair discovery with user-interview evidence, paid-commitment signals, benchmark costs and a measurable launch experiment. Send nothing, raise no funds and commit no spend without approval.
