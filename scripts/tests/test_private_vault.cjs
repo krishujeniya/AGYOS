@@ -74,27 +74,26 @@ test('MCP memory writes never fall back to plaintext and encrypted state is fail
   assert.match(locked.stdout, /passphrase FD not configured/);
   const passFile = path.join(dir, 'key.fd');
   fs.writeFileSync(passFile, PASSWORD, { mode: 0o600 });
-  const fd = fs.openSync(passFile, 'r');
-  try {
-    const configured = { ...env, AGYOS_VAULT_PASSPHRASE_FD: '3' };
-    const stored = spawnSync(process.execPath, [script], {
-      input: req({ action: 'write', tier: 'tier1', key: 'my_secret', value: 'CONFIDENTIAL-AGYOS-PROTECTED' }),
-      encoding: 'utf8', env: configured, stdio: ['pipe', 'pipe', 'pipe', fd], timeout: 15000,
-    });
+  const configured = { ...env, AGYOS_VAULT_PASSPHRASE_FD: '3' };
+  const withPassFd = request => {
+    const fd = fs.openSync(passFile, 'r');
+    try {
+      return spawnSync(process.execPath, [script], {
+        input: request, encoding: 'utf8', env: configured,
+        stdio: ['pipe', 'pipe', 'pipe', fd], timeout: 15000,
+      });
+    } finally { fs.closeSync(fd); }
+  };
+  {
+    const stored = withPassFd(req({ action: 'write', tier: 'tier1', key: 'my_secret', value: 'CONFIDENTIAL-AGYOS-PROTECTED' }));
     assert.equal(stored.status, 0, stored.stderr);
     assert.match(stored.stdout, /saved in encrypted/);
     assert.doesNotMatch(fs.readFileSync(file, 'utf8'), /CONFIDENTIAL-AGYOS-PROTECTED/);
-    const reread = spawnSync(process.execPath, [script], {
-      input: req({ action: 'read', tier: 'tier1', key: 'my_secret' }),
-      encoding: 'utf8', env: configured, stdio: ['pipe', 'pipe', 'pipe', fd], timeout: 15000,
-    });
+    const reread = withPassFd(req({ action: 'read', tier: 'tier1', key: 'my_secret' }));
     assert.match(reread.stdout, /CONFIDENTIAL-AGYOS-PROTECTED/);
-    const unsafe = spawnSync(process.execPath, [script], {
-      input: req({ action: 'write', tier: 'tier1', key: '__proto__', value: 'hijack' }),
-      encoding: 'utf8', env: configured, stdio: ['pipe', 'pipe', 'pipe', fd], timeout: 15000,
-    });
+    const unsafe = withPassFd(req({ action: 'write', tier: 'tier1', key: '__proto__', value: 'hijack' }));
     assert.match(unsafe.stdout, /Invalid memory key/);
-  } finally { fs.closeSync(fd); }
+  }
 }));
 test('vault CLI initializes without secret appearing in stdout or on disk', () => temporary(dir => {
   const file = path.join(dir, 'vault.json');
