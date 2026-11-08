@@ -1,3 +1,28 @@
+# AGYOS handoff: master architecture, model router & platform research
+
+- Task: Synchronize local `main` with remote, audit 10 reference agent platforms, crosswalk FAANG/SRE/DevOps standards, create threat model and data flow inventory, implement AGYOS Model Registry and Router with strict privacy gating and context economics, fix `bin/agyos mem` CLI parameter defect, clean obsolete files, and execute full verification.
+- Branch: `main`; baseline SHA: `35903ad9125607daf89ca2f189864136dbe18a67`.
+- Scope and contracts: `docs/research/AGYOS_MASTER_IMPLEMENTATION_PLAN.md`, `docs/security/THREAT_MODEL.md`, `docs/security/ENCRYPTION_COVERAGE.md`.
+- Changes:
+  1. `agyos_decision/model_router.py`: Canonical model registry (Gemini Flash, Claude Sonnet/Opus), alias resolution, 4-tier task mapping (T0-T3), fail-closed privacy boundary for confidential/secret data (`LOCAL_INFERENCE_UNAVAILABLE`), and context budget calculations.
+  2. `bin/agyos`: Added `model-route` command with `--sensitivity` and `--override` options; fixed memory CLI argument bug where empty string `key=""` broke MCP parameter validation.
+  3. `scripts/tests/test_model_router.py`: 12 comprehensive unit tests covering canonical specs, aliases, complexity tiers, privacy failure modes, and context allocations.
+  4. Platform & Standards Research: 10 open-source agent platforms audited across 45 principles in `docs/research/TEN_AGENT_PLATFORMS.md`; 41 FAANG/SRE standards crosswalked in `docs/research/FAANG_SRE_DEVOPS_PRINCIPLES.md`.
+  5. Security & Operations: Created `docs/security/THREAT_MODEL.md`, `docs/security/DATA_FLOW_INVENTORY.md`, `docs/security/ENCRYPTION_COVERAGE.md`, `docs/OPERATIONS_RUNBOOK.md`, and `docs/IMPLEMENTATION_REPORT.md`.
+  6. Cleaned obsolete script `.agents/state/decisions/executed/20260725-050600-cleanup-unnecessary-files.sh`.
+
+## Executed Evidence
+
+- `python3 -m unittest discover -s scripts/tests -q`: **110 passed, 0 failed** in ~25.8s (monotonic increase from 98 to 110).
+- `node --test scripts/tests/test_secure_envelope.cjs`: **5 passed, 0 failed**.
+- `node --test scripts/tests/test_private_vault.cjs`: **6 passed, 0 failed**.
+- `node --test scripts/tests/test_mcp_protocol.cjs`: **6 passed, 0 failed**.
+- `bash scripts/agyos-verify.sh`: **51 passed, 0 failed**.
+- `bin/gate-check.sh`: **passed**.
+- `python3 scripts/agyos-privacy-audit.py`: **clean read-only scan**; reports `PARTIAL_ENCRYPTION_NOT_SYSTEM_WIDE_E2EE` honestly.
+
+---
+
 # AGYOS handoff: skill routing consistency
 
 - Task: update catalog-wide rules, skill discovery metadata, decision routing, README/docs, and push to GitHub.

@@ -28,6 +28,7 @@ Commands:
   council     Run multi-model deliberation via Agent Council
   secure      Exchange authenticated encrypted files between trusted endpoints
   privacy-audit  Inspect local plaintext data paths and encryption limits
+  model-route <task>  Determine optimal model, thinking level, and privacy compliance
   help        Show this help message
 EOF
 }
@@ -142,12 +143,85 @@ if decision.assumptions_applied:
     tier="${1:-tier0}"
     key="${2:-}"
     action="list"
-    if [ -n "$key" ]; then action="read"; fi
-    json_req=$(jq -c -n --arg a "$action" --arg t "$tier" --arg k "$key" '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"agyos_memory","arguments":{"action":$a,"tier":$t,"key":$k}}}')
+    if [ -n "$key" ]; then
+      action="read"
+      json_req=$(jq -c -n --arg a "$action" --arg t "$tier" --arg k "$key" '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"agyos_memory","arguments":{"action":$a,"tier":$t,"key":$k}}}')
+    else
+      json_req=$(jq -c -n --arg a "$action" --arg t "$tier" '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"agyos_memory","arguments":{"action":$a,"tier":$t}}}')
+    fi
     echo "$json_req" | node mcp/state-server.cjs | jq -r '.result.content[0].text // .result.error // "No response"'
     ;;
   privacy-audit)
     exec python3 scripts/agyos-privacy-audit.py "$@"
+    ;;
+  model-route|route-model)
+    task=""
+    sensitivity="internal"
+    override=""
+    while [[ $# -gt 0 ]]; do
+      case "$1" in
+        --sensitivity)
+          sensitivity="$2"
+          shift 2
+          ;;
+        --override)
+          override="$2"
+          shift 2
+          ;;
+        *)
+          if [ -z "$task" ]; then
+            task="$1"
+          else
+            task="$task $1"
+          fi
+          shift
+          ;;
+      esac
+    done
+    if [ -z "$task" ]; then
+      echo "Usage: agyos model-route <task> [--sensitivity <public|internal|confidential|secret>] [--override <model>]" >&2
+      exit 1
+    fi
+    python3 -c "
+import json, sys
+sys.path.insert(0, '.')
+from agyos_decision.skills_router import assess_complexity
+from agyos_decision.model_router import ModelRouter, DataSensitivity
+
+task = sys.argv[1]
+sensitivity_str = sys.argv[2].lower()
+override = sys.argv[3] if len(sys.argv) > 3 and sys.argv[3] else None
+
+try:
+    sensitivity = DataSensitivity(sensitivity_str)
+except ValueError:
+    sensitivity = DataSensitivity.INTERNAL
+
+complexity, reason = assess_complexity(task)
+router = ModelRouter()
+decision = router.route(
+    task=task,
+    complexity=complexity,
+    sensitivity=sensitivity,
+    user_override_model=override
+)
+
+output = {
+    'task': task,
+    'complexity': complexity,
+    'complexity_reason': reason,
+    'allowed': decision.allowed,
+    'tier': decision.tier.value,
+    'model_id': decision.model_id,
+    'provider': decision.provider.value,
+    'thinking_level': decision.thinking_level,
+    'reason': decision.reason,
+    'privacy_boundary': decision.privacy_boundary,
+    'compaction_threshold_tokens': decision.compaction_threshold,
+    'error_code': decision.error_code
+}
+print(json.dumps(output, indent=2))
+" "$task" "$sensitivity" "$override"
     ;;
   secure)
     if [[ "${1:-}" == vault-init || "${1:-}" == vault-status ]]; then
