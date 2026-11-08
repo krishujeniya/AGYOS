@@ -10,16 +10,28 @@ cd "$SCRIPT_DIR"
 PASS_COUNT=0
 FAIL_COUNT=0
 
+# The previous fixed /tmp/agyos-check.log was predictable and could follow a
+# symlink. Keep verifier output private and remove it on exit.
+VERIFY_LOG_DIR="$(mktemp -d "${TMPDIR:-/tmp}/agyos-verify.XXXXXXXX")"
+chmod 700 "$VERIFY_LOG_DIR"
+trap 'rm -rf -- "$VERIFY_LOG_DIR"' EXIT
+VERIFY_LOG_FILE="$VERIFY_LOG_DIR/check.log"
+AGYOS_CHECK_TIMEOUT_SEC="${AGYOS_CHECK_TIMEOUT_SEC:-180}"
+if ! [[ "$AGYOS_CHECK_TIMEOUT_SEC" =~ ^[1-9][0-9]{0,3}$ ]]; then
+  echo "Invalid AGYOS_CHECK_TIMEOUT_SEC" >&2
+  exit 2
+fi
+
 check() {
   local desc="$1"
   shift
   echo -n "• Checking $desc... "
-  if "$@" >/tmp/agyos-check.log 2>&1; then
+  if timeout --signal=TERM --kill-after=5s "${AGYOS_CHECK_TIMEOUT_SEC}s" "$@" >"$VERIFY_LOG_FILE" 2>&1; then
     echo "PASS"
     PASS_COUNT=$((PASS_COUNT + 1))
   else
     echo "FAIL"
-    cat /tmp/agyos-check.log
+    sed -n "1,120p" "$VERIFY_LOG_FILE"
     FAIL_COUNT=$((FAIL_COUNT + 1))
   fi
 }
