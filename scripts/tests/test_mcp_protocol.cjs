@@ -69,3 +69,18 @@ test('normal MCP initialization and tool listing remain compatible', () => {
 test('notification does not receive JSON-RPC response', () => {
   assert.deepEqual(rpc({ jsonrpc: '2.0', method: 'notifications/initialized' }), []);
 });
+
+
+test('search and decision reject oversized tasks without spawning Python', () => {
+  for (const [name, args] of [
+    ['agyos_find_skill', { query: 'x'.repeat(600) }],
+    ['agyos_decision', { task: 'x'.repeat(3100) }],
+  ]) {
+    const result = rpc({
+      jsonrpc: '2.0', method: 'tools/call', id: 77,
+      params: { name, arguments: args },
+    })[0];
+    assert.equal(result.id, 77);
+    assert.equal(result.result.isError, true);
+  }
+});
