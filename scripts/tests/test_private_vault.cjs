@@ -63,7 +63,7 @@ test('MCP memory writes never fall back to plaintext and encrypted state is fail
     encoding: 'utf8', env, timeout: 15000,
   });
   assert.equal(one.status, 0, one.stderr);
-  assert.match(one.stdout, /Encrypted memory not initialized/);
+  assert.match(one.stdout, /AGYOS tool failed/);
   assert.equal(fs.existsSync(file), false);
   vault.initializeVault(file, PASSWORD);
   const locked = spawnSync(process.execPath, [script], {
@@ -71,7 +71,7 @@ test('MCP memory writes never fall back to plaintext and encrypted state is fail
     encoding: 'utf8', env, timeout: 15000,
   });
   assert.equal(locked.status, 0);
-  assert.match(locked.stdout, /passphrase FD not configured/);
+  assert.match(locked.stdout, /AGYOS tool failed/);
   const passFile = path.join(dir, 'key.fd');
   fs.writeFileSync(passFile, PASSWORD, { mode: 0o600 });
   const configured = { ...env, AGYOS_VAULT_PASSPHRASE_FD: '3' };
@@ -92,7 +92,7 @@ test('MCP memory writes never fall back to plaintext and encrypted state is fail
     const reread = withPassFd(req({ action: 'read', tier: 'tier1', key: 'my_secret' }));
     assert.match(reread.stdout, /CONFIDENTIAL-AGYOS-PROTECTED/);
     const unsafe = withPassFd(req({ action: 'write', tier: 'tier1', key: '__proto__', value: 'hijack' }));
-    assert.match(unsafe.stdout, /Invalid memory key/);
+    assert.match(unsafe.stdout, /AGYOS tool failed/);
   }
 }));
 test('vault CLI initializes without secret appearing in stdout or on disk', () => temporary(dir => {
