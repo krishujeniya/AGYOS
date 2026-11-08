@@ -1,3 +1,14 @@
+## Current engineering update — 2026-11-08
+
+- Added safe, single-branch Git revert rollback with regression tests; removed destructive reset/clean behavior and automatic rescue branch creation.
+- Hardened verification with an isolated state fixture, private temporary logs, timeouts and actual AGENTS.md / GEMINI.md content comparison.
+- Added opt-in private-only MCP memory view and read-only privacy coverage diagnostics.
+- Bounded external Python subprocess arguments and execution time in the MCP routing services.
+- Full-system end-to-end encryption, trustworthy external R3 approval, and live Ubuntu AGY runtime verification remain **open**; see [docs/ENGINEERING_AUDIT_2026-11-08.md](docs/ENGINEERING_AUDIT_2026-11-08.md).
+- Older version numbers, verification counts and operational claims below are **historical records**, not current proof.
+
+---
+
 ## Current update: skill routing consistency (2026-11-05)
 
 - Shared discovery/read/apply/verify policy covers all 1,862 skills and 141 rules.
@@ -13,7 +24,7 @@
 
 > **System**: AGYOS v3.1 — Unified Cognitive Operating System for Antigravity CLI (`agy`)  
 > **Repository Root**: `/home/ai/Documents/projects/Freelance/AGYOS`  
-> **Status**: 100% Operational • 51/51 Adversarial Verification Checks Passing • 56/56 Unit Tests Passing • 59/59 Bun Tests Passing  
+> **Historical status (2026-11-05)**: 51/51 Adversarial Verification Checks, 56/56 Unit Tests, 59/59 Bun Tests; **current live-host status unverified**  
 > **Target Runtime**: Google Antigravity CLI (`agy`) v1.5.0 (verified)  
 > **Commit SHA**: `ea98092` (Baseline: `22e8706c2be34f0d4bf87c01c01c1ee5b8741068`)  
 > **Consolidated Ecosystems**: AGYOS Core (SDLC), AGYOS Governance (5-Gate), Agent Council (Consensus), Adaptive Pod Hierarchy (5 Pods), Company Adapters (11 Functions), Canary Launch Gate, Fail-Closed Authorizer, LIFO Saga Recovery

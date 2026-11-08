@@ -49,3 +49,19 @@ Only claim verified changes once CI passes on the exact latest main commit. Neve
 5. Keep source citations and reproducible tests for each finding.
 
 The present audit is a verified bounded hardening pass, not a comprehensive certification.
+
+## Additional implemented fixes — 2026-11-08
+
+| Severity | Issue | Change |
+| --- | --- | --- |
+| Critical | Rollback reset/clean could erase work and create a branch against the repository owner's main-only requirement | `bin/rollback.sh` now uses an explicit inverse commit on a clean `main`, with dry-run help by default; regression tests use isolated temporary Git repositories |
+| High | Verifier's fast-path test modified live `.agents/state/state.json` | `scripts/agyos-verify.sh` tests against a temporary `STATE_FILE` fixture |
+| High | Predictable `/tmp/agyos-check.log` could be replaced/symlinked, and checks could hang | Private `mktemp -d` log storage, cleanup trap, bounded per-check timeout |
+| High | MCP search/decision subprocess could process excessive task input or block indefinitely | Bounded input length, output size and 15-second subprocess timeout |
+| Medium | Legacy memory baseline was still readable even with an initialized vault | Optional `AGYOS_MEMORY_PRIVATE_ONLY=1` skips that baseline; without vault authentication, errors stay closed |
+| Medium | No quick, content-free evidence of plaintext state risks | `bin/agyos privacy-audit` reports filename-level storage coverage without dumping sensitive data |
+| Medium | Initialization and verification displayed ungrounded readiness or content-match claims | More precise initialization message; actual `cmp` verification for AGENTS/GEMINI; dynamic CI badge |
+
+Tests were added to `scripts/tests/test_safe_rollback.py`, `test_privacy_audit.py`, `test_private_vault.cjs` and `test_mcp_protocol.cjs`. Do not assert test totals before the final `main` CI run completes.
+
+**Remaining work:** The original unresolved P0/P1 issues remain. No system-wide E2EE, external-model encrypted inference, audited key rotation, verified operator outbox approval service, or full Ubuntu host evaluation was established by these source-code patches.

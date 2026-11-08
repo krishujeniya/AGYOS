@@ -14,7 +14,7 @@
   <img src="https://img.shields.io/badge/Skills-1%2C862%20Skills-000000.svg" alt="Skills Count" />
   <img src="https://img.shields.io/badge/Protocol-FastMCP_2.0-000000.svg" alt="FastMCP Protocol" />
   <img src="https://img.shields.io/badge/Pods-5_Corporate_Pods-000000.svg" alt="Corporate Pods" />
-  <img src="https://img.shields.io/badge/Verification-51%2F51_Passing-000000.svg" alt="Verification" />
+  <img src="https://github.com/krishujeniya/AGYOS/actions/workflows/ci.yml/badge.svg" alt="Verification" />
   <a href="https://krishujeniya.github.io/AGYOS/"><img src="https://img.shields.io/badge/Docs-GitHub_Pages-000000.svg" alt="Documentation" /></a>
 </p>
 
@@ -421,3 +421,13 @@ AGYOS includes an independently keyed, authenticated **file exchange** using X25
 ## Current engineering audit
 
 See [the November 8, 2026 engineering audit](docs/ENGINEERING_AUDIT_2026-11-08.md) for security and reliability fixes, test evidence boundaries and prioritized unresolved risks. The repository's historical milestones are not proof that all optional AGY CLI, provider, E2EE or cloud runtime paths are verified. Real host-specific operations require additional checks and authorization.
+
+## Privacy diagnostics and safe recovery
+
+Run `bin/agyos privacy-audit` for a **read-only metadata scan** of plaintext state paths, vault presence and available host runtimes. `bin/agyos privacy-audit --strict` returns exit code 2 while any full-system E2EE limitation remains; it does not silently certify encryption.
+
+For an explicitly private-only MCP memory view, initialize and unlock the encrypted vault as described in [the security guide](docs/security/E2EE.md), then launch the MCP service with `AGYOS_MEMORY_PRIVATE_ONLY=1`. That setting applies to the MCP memory tool only and intentionally **hides legacy public memory** rather than migrating it.
+
+`bin/agyos rollback` now defaults to read-only guidance. To create a non-destructive inverse Git commit for the current HEAD, run `bin/agyos rollback --apply --commit HEAD` **only** when the `main` worktree is clean. It neither creates new branches nor resets/cleans user work. It also cannot undo already-sent messages, payments or other external actions.
+
+See the [engineering audit](docs/ENGINEERING_AUDIT_2026-11-08.md) for unresolved architecture and host-specific verification.
