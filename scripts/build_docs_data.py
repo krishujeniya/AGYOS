@@ -202,16 +202,16 @@ def write_json_files(skills):
 def write_seo_files(skills):
     """Write sitemap.xml, robots.txt, and llms.txt."""
     sitemap_out = os.path.join(DOCS_DIR, "sitemap.xml")
-    modules = ["governance", "council", "ui-ux", "seo", "freelance", "polyglot", "verification", "security", "explorer"]
+    modules = ["overview", "installation", "architecture", "governance", "model-router", "pods", "decision", "research", "security", "vibe-faang", "council", "verification", "explorer", "docs"]
     sitemap_urls = [
-        f'  <url>\n    <loc>https://krishujeniya.github.io/AGYOS/#{m}</loc>\n    <lastmod>2026-11-04</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.9</priority>\n  </url>'
+        f'  <url>\n    <loc>https://krishujeniya.github.io/AGYOS/#{m}</loc>\n    <lastmod>2026-11-08</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.9</priority>\n  </url>'
         for m in modules
     ]
     sitemap_content = f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://krishujeniya.github.io/AGYOS/</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -240,9 +240,12 @@ def write_seo_files(skills):
 ## Core Operating Subsystems
 
 - AGYOS Governance: 5-Gate spine (UNDERSTAND -> ANALYZE -> PLAN -> IMPLEMENT -> VERIFY) with FastMCP JSON-RPC 2.0 daemon and adaptive fast-path.
+- Model Registry & Router: 4-Tier task mapping (T0–T3), context economics (55/20/15/10), compaction trigger at 65% utilization, and strict fail-closed privacy gating (LOCAL_INFERENCE_UNAVAILABLE).
+- Architecture Research & Standards Crosswalk: Empirical synthesis of 45 verified principles from 10 reference platforms (OpenHands, agent-zero, LangGraph, etc.) and 41 FAANG/SRE/DevOps public standards.
+- Security & Cryptographic Architecture: STRIDE threat model, at-rest AES-256-GCM private memory vault, X25519 secure envelope exchange, dual hooks (agy_os_hook.py + authorizer.py), and transparent PARTIAL_ENCRYPTION_NOT_SYSTEM_WIDE_E2EE boundaries.
 - Agent Council: Multi-model CLI consensus engine deliberating across models in parallel Bun subprocesses.
-- UI/UX & Motion: Enforcing concentric border radii, 0ms/150ms/250ms motion timing, compositor-only animations, and tactile micro-interactions.
-- Adversarial Verification: execute the local verification suite; results depend on the installed host and dependencies.
+- UI/UX & Motion: Emil Kowalski design engineering invariants: concentric border radii, frequency-based timing, compositor-only animations, and tactile micro-interactions.
+- Adversarial Verification: 51-point adversarial verification suite with monotonic test ratchets.
 - AGYOS Polyglot: High-efficiency coding standards across 15+ programming languages and frameworks.
 
 ## Structured Skill Catalog

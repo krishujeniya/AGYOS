@@ -304,6 +304,10 @@ bin/agyos state
 # Compile intent into target pod, action class, and risk level
 bin/agyos intent "Implement checkout endpoint with Stripe idempotency"
 
+# Autonomous model routing with complexity tiering and privacy compliance
+bin/agyos model-route "implement user authentication with JWT"
+bin/agyos model-route "process customer PII and card records" --sensitivity confidential
+
 # Run autonomous System 1 skill discovery
 bin/agyos decide "Design Postgres database schema with migrations"
 
@@ -368,6 +372,82 @@ Verification Summary: 51 PASSED, 0 FAILED
 
 ---
 
+## Model Registry & Context Economics
+
+AGYOS includes an autonomous model routing engine (`agyos_decision/model_router.py`) that evaluates task complexity, data sensitivity, and context budget allocation across Google Gemini and Anthropic Claude:
+
+### 4-Tier Task Routing Policy
+
+| Tier | Complexity | Assigned Model | Thinking Level | Primary Use Case |
+|------|------------|----------------|----------------|------------------|
+| **T0** | 1 | `gemini-3.8-flash` | `low` | Simple file navigation, grep scans, metadata extraction |
+| **T1** | 2–3 | `gemini-3.8-flash` | `medium` | Standard feature development, code generation, unit tests |
+| **T2** | 4 | `gemini-3.8-flash` | `high` | Complex architecture, multi-file refactoring, ADR authoring |
+| **T3** | 5 | `claude-opus-4-6` / `gemini-3.8-flash` | `high` | Threat modeling, cryptographic reviews, high-impact security |
+
+### Strict Privacy Boundary Enforcement
+- Tasks tagged with sensitivity `confidential` or `secret` are **refused cloud inference** unless an authenticated local inference endpoint is verified.
+- The router fails closed with error code `LOCAL_INFERENCE_UNAVAILABLE`, preventing silent data exfiltration to cloud APIs.
+
+### Context Economics Heuristics
+- **Task Context Budget**: 55% active content, 20% tool/result overhead, 15% verification reserve, 10% safety margin.
+- **Compaction Trigger**: Automatically triggers context compaction at 65% utilization (~83,200 tokens for Gemini Flash).
+- **Atomic Step Halt**: Halts and prompts state persistence at >80% utilization.
+
+---
+
+## Architecture Research & Standards Crosswalk
+
+AGYOS incorporates verified engineering principles from ten industry-leading agent platforms and primary engineering standards:
+
+### 1. Ten Open-Source Reference Platforms Audit
+Comprehensive audit of 45 architectural principles across ten repositories in [`docs/research/TEN_AGENT_PLATFORMS.md`](docs/research/TEN_AGENT_PLATFORMS.md):
+- **OpenHands**: Event stream patterns and command AST security filtering.
+- **agent-zero**: Hierarchical subagent delegation and explicit memory eviction lifecycle.
+- **OpenManus**: Lightweight modular agent loops and ephemeral tool execution via `uvx`.
+- **LangGraph**: Channel state reducers, durable checkpointing, and inline task interrupts.
+- **Microsoft Agent Framework**: Explicit handoff contracts and tool middleware pipelines.
+- **CrewAI**: Task ownership isolation and Flow event-driven DAG execution.
+- **Agno**: Human-in-the-loop approvals, stdio FastMCP integration, and OTel JSON spans.
+- **Letta**: Tiered memory hierarchy (Core, Recall, Archival) and sensitive output scrubbing.
+- **MetaGPT**: Standard Operating Procedure (SOP) compliance and WBS task decomposition.
+- **Goose**: Structured risk-tier permission judges and subagent turn-budget caps.
+
+### 2. FAANG / SRE / DevOps Standards Crosswalk
+Detailed mapping of 41 public standards in [`docs/research/FAANG_SRE_DEVOPS_PRINCIPLES.md`](docs/research/FAANG_SRE_DEVOPS_PRINCIPLES.md):
+- **Google SRE**: Service Level Objectives (SLOs), error budget trackers, and blameless incident reflection memory.
+- **DORA Metrics**: Automated lead time optimization via complexity fast-path and monotonic test ratchets.
+- **NIST AI RMF**: Contextual risk mapping (R0–R3) and EVPI clarification gating.
+- **OWASP 2026 (LLM & Agentic Top 10)**: Perimeter command filtering, prompt injection defense, and budget caps.
+- **SLSA v1.2**: Immutable build receipts (`rcpt_*.json`), dependency lockfiles, and maker-checker separation.
+
+---
+
+## Security Architecture & Honest Encryption Boundaries
+
+AGYOS enforces absolute transparency regarding cryptographic boundaries:
+
+> [!NOTE]
+> System Status: **`PARTIAL_ENCRYPTION_NOT_SYSTEM_WIDE_E2EE`**  
+> AGYOS does **not** claim full-system E2EE. Prompts sent to hosted Gemini or Claude models are transmitted in cleartext over TLS to the provider inference endpoint.
+
+### Verified Cryptographic Modules:
+1. **At-Rest Private Memory Vault (`scripts/agyos-runtime/lib/private-vault.cjs`)**:
+   - Authenticated `aes-256-gcm` encryption with scrypt KDF (`N=32768, r=8, p=1`).
+   - File permissions: mode 0700 directory, mode 0600 file outside the Git repository.
+   - Passphrase supplied exclusively via private file descriptor (FD 3–9); never via command-line flags.
+2. **Endpoint-to-Endpoint Secure Envelope (`scripts/agyos-runtime/lib/e2ee.cjs`)**:
+   - X25519 ephemeral key agreement, HKDF-SHA256 derivation, AES-256-GCM AEAD payload encryption, and Ed25519 digital signatures for deliberate peer-to-peer file transfers.
+
+### Complete Security Documentation:
+- [STRIDE Threat Model](docs/security/THREAT_MODEL.md) — Comprehensive analysis across spoofing, tampering, repudiation, information disclosure, DoS, and elevation of privilege.
+- [Data Flow Inventory](docs/security/DATA_FLOW_INVENTORY.md) — Exact classification of state, memory, MCP, and external telemetry data paths.
+- [Encryption Coverage & Key Lifecycle](docs/security/ENCRYPTION_COVERAGE.md) — Technical specifications, key rotation, and fail-closed invariants.
+- [Operations & Incident Runbook](docs/OPERATIONS_RUNBOOK.md) — Setup, private vault initialization, SLO tracking, and SEV-1 to SEV-3 incident runbooks.
+- [Master Implementation Report](docs/IMPLEMENTATION_REPORT.md) — Machine verification outcomes and residual risk assessments.
+
+---
+
 ## Interactive Documentation (GitHub Pages)
 
 The complete interactive documentation and live skill search explorer is available at:  
@@ -402,32 +482,19 @@ Licensed under the **Apache License, Version 2.0**. See the [LICENSE](LICENSE) f
 
 ## Pinned Third-Party Capability Integrations
 
-AGYOS keeps its existing six-layer architecture, five gates, five corporate pods, skill catalog, and risk approvals. A reviewed eight-source integration registry lives in [`integrations/registry/sources.json`](integrations/registry/sources.json). The registry pins source commits and routes narrowly defined, multi-concept natural-language tasks to **existing** AGYOS skills; it does not load upstream instructions or grant new tool permissions.
+AGYOS maintains its existing six-layer architecture, five gates, five corporate pods, skill catalog, and risk approvals. A reviewed eight-source integration registry lives in [`integrations/registry/sources.json`](integrations/registry/sources.json). The registry pins source commits and routes narrowly defined, multi-concept natural-language tasks to **existing** AGYOS skills; it does not load upstream instructions or grant new tool permissions.
 
-The Python source matcher is `agyos_decision.integrations.source_registry`. A separate, optional `agent_reach_adapter` offers restricted read-only searches when the verified official CLI is present. Upstream skill catalogs, prompt archives and Azure infrastructure remain reference-only until each component passes licensing, dependency and security review. See [the integration report](docs/integrations/INTEGRATION_REPORT.md) for evidence and limitations.
+The Python source matcher is `agyos_decision.integrations.source_registry`. A separate, optional `agent_reach_adapter` offers restricted read-only searches when the verified official CLI is present. Upstream skill catalogs, prompt archives, and cloud infrastructure remain reference-only until each component passes licensing, dependency, and security review. See the [Integration Report](docs/integrations/INTEGRATION_REPORT.md) and [Capability Matrix](docs/integrations/CAPABILITY_MATRIX.md) for evidence and boundaries.
 
-## Optional Endpoint-Side Encrypted File Exchange
+---
 
-AGYOS provides a **separate, opt-in encrypted envelope** for sending files between two trusted endpoints. It uses X25519 key agreement with per-message ephemeral keys, HKDF-SHA256 key derivation, AES-256-GCM authenticated encryption, and Ed25519 sender signatures. Private identity keys are encrypted with scrypt and saved outside the Git repository. See [Encryption scope and usage](docs/security/END_TO_END_ENCRYPTION.md).
+## Privacy Diagnostics & Safe Rollback
 
-This is **not a claim that the whole AGYOS runtime is end-to-end encrypted**. New MCP memory writes can use an opt-in encrypted local vault, but telemetry, state, prompts sent to model vendors, other memory implementations and third-party integrations are not fully protected. They require separate data-flow controls and provider agreements. The encrypted exchange does not enable itself or replace the existing AGYOS governance.
+- **Privacy Audit**: Run `bin/agyos privacy-audit` for a read-only metadata scan of plaintext state paths, vault presence, and available host runtimes. Run with `--strict` to exit nonzero while full-system E2EE limitations remain.
+- **Private-Only Memory**: For an explicitly private-only view that suppresses legacy public memory, initialize the encrypted vault and launch the MCP daemon with `AGYOS_MEMORY_PRIVATE_ONLY=1`.
+- **Safe Rollback**: `bin/agyos rollback` defaults to read-only guidance. To create a non-destructive inverse Git commit for the current HEAD, run `bin/agyos rollback --apply --commit HEAD` when the `main` worktree is clean. It never resets uncommitted work or branches out of band.
+- **Engineering Quality Audit**: See the [Engineering Audit](docs/ENGINEERING_AUDIT_2026-11-08.md) for prioritized unresolved risks and verified boundaries.
 
+---
 
-## Endpoint-to-endpoint encrypted exchange (opt-in)
-
-AGYOS includes an independently keyed, authenticated **file exchange** using X25519, HKDF-SHA-256, AES-256-GCM, Ed25519 signatures, and passphrase-protected local private identities. See [E2EE limitations and setup](docs/security/E2EE.md). Invoke `bin/agyos secure help`. **This does not make all AGYOS traffic end-to-end encrypted**: model-provider requests, the MCP stdio transport, public skills, and existing plaintext state/checkpoints remain outside this encrypted file-exchange boundary; private MCP memory writes have a separate opt-in encrypted vault. Do not place private keys or plaintext secrets in Git.
-
-
-## Current engineering audit
-
-See [the November 8, 2026 engineering audit](docs/ENGINEERING_AUDIT_2026-11-08.md) for security and reliability fixes, test evidence boundaries and prioritized unresolved risks. The repository's historical milestones are not proof that all optional AGY CLI, provider, E2EE or cloud runtime paths are verified. Real host-specific operations require additional checks and authorization.
-
-## Privacy diagnostics and safe recovery
-
-Run `bin/agyos privacy-audit` for a **read-only metadata scan** of plaintext state paths, vault presence and available host runtimes. `bin/agyos privacy-audit --strict` returns exit code 2 while any full-system E2EE limitation remains; it does not silently certify encryption.
-
-For an explicitly private-only MCP memory view, initialize and unlock the encrypted vault as described in [the security guide](docs/security/E2EE.md), then launch the MCP service with `AGYOS_MEMORY_PRIVATE_ONLY=1`. That setting applies to the MCP memory tool only and intentionally **hides legacy public memory** rather than migrating it.
-
-`bin/agyos rollback` now defaults to read-only guidance. To create a non-destructive inverse Git commit for the current HEAD, run `bin/agyos rollback --apply --commit HEAD` **only** when the `main` worktree is clean. It neither creates new branches nor resets/cleans user work. It also cannot undo already-sent messages, payments or other external actions.
-
-See the [engineering audit](docs/ENGINEERING_AUDIT_2026-11-08.md) for unresolved architecture and host-specific verification.
+## Citation & Authorship
