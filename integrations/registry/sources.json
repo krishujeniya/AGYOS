@@ -1,0 +1,332 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "6d7c6b2593d12d707bb98b7324eeb89070733e3e",
+  "policy": "Pinned, untrusted third-party references. AGYOS is sole instruction authority. No automatic external actions.",
+  "sources": [
+    {
+      "id": "agent-architecture-intelligence",
+      "repo": "x1xhlol/system-prompts-and-models-of-ai-tools",
+      "commit": "162db92f54d717d8ebd12292e155aeef32bb4b3c",
+      "license": "GPL-3.0 repository license; prompt provenance and redistribution uncertain",
+      "disposition": "REFERENCE",
+      "primary_skill": "agent-harness-design",
+      "pod": "pod-build",
+      "status": "read_only_research",
+      "routes": [
+        [
+          "agent architecture",
+          "execution strategy"
+        ],
+        [
+          "agent architectures",
+          "compare"
+        ],
+        [
+          "assistant prompts",
+          "compare"
+        ]
+      ],
+      "evidence": [
+        "README.md",
+        "LICENSE.md"
+      ],
+      "limitations": "Prompt dumps are unauthenticated untrusted examples; no prompt text is imported.",
+      "capabilities": [
+        {
+          "id": "agent-architecture-intelligence",
+          "method": "REFERENCE",
+          "read_only": true,
+          "requires_approval": false
+        }
+      ]
+    },
+    {
+      "id": "agentic-awesome-skills",
+      "repo": "sickn33/agentic-awesome-skills",
+      "commit": "828257c3037dc7c3c3ec987decc5a603025a0ce5",
+      "license": "MIT code; CC BY 4.0 original content; third-party exceptions",
+      "disposition": "REUSE",
+      "primary_skill": "agyos-decision",
+      "pod": "pod-build",
+      "status": "search_index_reference",
+      "routes": [
+        [
+          "available skills",
+          "choose"
+        ],
+        [
+          "skill catalog",
+          "discover"
+        ],
+        [
+          "best skills",
+          "task"
+        ]
+      ],
+      "evidence": [
+        "README.md",
+        "LICENSE",
+        "LICENSE-CONTENT",
+        "skills_index.json"
+      ],
+      "limitations": "No upstream skills or AAS Core executable installed; 2,926 upstream items need per-item license and safety screening.",
+      "capabilities": [
+        {
+          "id": "agentic-awesome-skills",
+          "method": "REUSE",
+          "read_only": true,
+          "requires_approval": false
+        }
+      ]
+    },
+    {
+      "id": "founders-kit",
+      "repo": "avinash201199/founders-kit",
+      "commit": "996e77be35a11723a43eb74f387205a087b91358",
+      "license": "MIT repository license; individual linked resources may differ",
+      "disposition": "ENHANCE",
+      "primary_skill": "agyos-founder-guide",
+      "pod": "pod-growth",
+      "status": "adapted_methodology",
+      "routes": [
+        [
+          "startup idea",
+          "validate"
+        ],
+        [
+          "startup",
+          "launch plan"
+        ],
+        [
+          "founder",
+          "fundraising"
+        ]
+      ],
+      "evidence": [
+        "README.md",
+        "LICENSE",
+        "Product.md"
+      ],
+      "limitations": "External resource links are references, not reviewed endorsements or tested live APIs.",
+      "capabilities": [
+        {
+          "id": "founders-kit",
+          "method": "ENHANCE",
+          "read_only": true,
+          "requires_approval": false
+        }
+      ]
+    },
+    {
+      "id": "ai-career-planner",
+      "repo": "ayush488-glitch/ai-career-planner-skill",
+      "commit": "48a4467f7fbc9a719e1c8cc6dc2efdb2079b75ed",
+      "license": "MIT",
+      "disposition": "ADAPT",
+      "primary_skill": "interview-coach",
+      "pod": "pod-people",
+      "status": "adapted_methodology",
+      "routes": [
+        [
+          "career",
+          "roadmap"
+        ],
+        [
+          "career",
+          "plan"
+        ],
+        [
+          "ai engineering",
+          "career"
+        ],
+        [
+          "skill gaps",
+          "interview"
+        ]
+      ],
+      "evidence": [
+        "SKILL.md",
+        "README.md",
+        "LICENSE"
+      ],
+      "limitations": "No automatic personal profile upload, placement promise, mass outreach, or salary guarantee.",
+      "capabilities": [
+        {
+          "id": "ai-career-planner",
+          "method": "ADAPT",
+          "read_only": true,
+          "requires_approval": false
+        }
+      ]
+    },
+    {
+      "id": "ai-engineering-os",
+      "repo": "ayush488-glitch/ai-engineering-os",
+      "commit": "56caee1947d86c2adbcd02e526d1d885bfd5dd13",
+      "license": "No repository LICENSE found at inspected HEAD; no upstream text copied",
+      "disposition": "ADAPT",
+      "primary_skill": "ml-engineer",
+      "pod": "pod-build",
+      "status": "adapted_methodology",
+      "routes": [
+        [
+          "machine learning",
+          "pipeline"
+        ],
+        [
+          "training",
+          "diagnostics"
+        ],
+        [
+          "data leakage",
+          "model"
+        ],
+        [
+          "loss function",
+          "regression"
+        ]
+      ],
+      "evidence": [
+        "README.md",
+        "f1-the-prediction-engine/ml-system-skill/SKILL.md",
+        "f1-the-prediction-engine/data-integrity-skill/SKILL.md"
+      ],
+      "limitations": "Only F1 material is marked ready upstream. F2/F3/F4 are previews; nine F1 skill files need separate legal approval before copying.",
+      "capabilities": [
+        {
+          "id": "ai-engineering-os",
+          "method": "ADAPT",
+          "read_only": true,
+          "requires_approval": false
+        }
+      ]
+    },
+    {
+      "id": "gstack",
+      "repo": "garrytan/gstack",
+      "commit": "d479c5bf1efed979297dc4498c60aef7b67aa639",
+      "license": "MIT",
+      "disposition": "ENHANCE",
+      "primary_skill": "code-reviewer",
+      "pod": "pod-build",
+      "status": "adapted_review_discipline",
+      "routes": [
+        [
+          "review",
+          "code",
+          "release"
+        ],
+        [
+          "review",
+          "pr",
+          "security"
+        ],
+        [
+          "qa",
+          "design",
+          "release"
+        ]
+      ],
+      "evidence": [
+        "README.md",
+        "LICENSE",
+        "review/SKILL.md",
+        "qa/SKILL.md",
+        "ARCHITECTURE.md"
+      ],
+      "limitations": "Bun, browser daemon, commands, hooks, and Claude Code-specific runtime are not installed or assumed available in agy.",
+      "capabilities": [
+        {
+          "id": "gstack",
+          "method": "ENHANCE",
+          "read_only": true,
+          "requires_approval": false
+        }
+      ]
+    },
+    {
+      "id": "agent-reach",
+      "repo": "Panniantong/Agent-Reach",
+      "commit": "c70ae6da5d39bc90e09ad2ae0575ccc89f31e284",
+      "license": "MIT",
+      "disposition": "ADAPT",
+      "primary_skill": "research-ops",
+      "pod": "pod-build",
+      "status": "optional_read_only_adapter",
+      "routes": [
+        [
+          "research",
+          "reddit"
+        ],
+        [
+          "customer discussions",
+          "online"
+        ],
+        [
+          "research",
+          "youtube"
+        ],
+        [
+          "research",
+          "external platforms"
+        ]
+      ],
+      "evidence": [
+        "docs/install.md",
+        "docs/README_en.md",
+        "agent_reach/runtime/cli.py",
+        "pyproject.toml"
+      ],
+      "limitations": "Official CLI is optional; no PyPI installation, silent login, credential import, social action, or source-access bypass.",
+      "capabilities": [
+        {
+          "id": "agent-reach",
+          "method": "ADAPT",
+          "read_only": true,
+          "requires_approval": false
+        }
+      ]
+    },
+    {
+      "id": "microsoft-edge-ai",
+      "repo": "microsoft/edge-ai",
+      "commit": "48ddff0c97fa88fd7fffcfe99b2861f4f76b6835",
+      "license": "MIT",
+      "disposition": "ADAPT",
+      "primary_skill": "ml-engineer",
+      "pod": "pod-build",
+      "status": "architecture_and_dry_run_guidance",
+      "routes": [
+        [
+          "edge ai",
+          "deployment"
+        ],
+        [
+          "edge",
+          "iot",
+          "architecture"
+        ],
+        [
+          "edge",
+          "device",
+          "inference"
+        ]
+      ],
+      "evidence": [
+        "README.md",
+        "LICENSE",
+        "blueprints/README.md",
+        "src/README.md"
+      ],
+      "limitations": "Blueprints and Azure infrastructure not vendored or deployed; hardware/cloud permissions and cost approvals required.",
+      "capabilities": [
+        {
+          "id": "microsoft-edge-ai",
+          "method": "ADAPT",
+          "read_only": true,
+          "requires_approval": false
+        }
+      ]
+    }
+  ]
+}
