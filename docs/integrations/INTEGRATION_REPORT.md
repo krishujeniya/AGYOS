@@ -11,7 +11,7 @@ All eight upstream default branches and selected README, license, implementation
 - Single, validated eight-source provenance registry with explicit status and existing-skill mapping.
 - Multi-concept source relevance matching in `source_registry.py`, feeding the existing `agyos_decision.skills_router`. A source match returns only a physical, existing native skill; it never runs external code.
 - Career objective mapping to existing `pod-people`.
-- Existing runbook extensions for career development, supervised ML and edge AI planning, founder resources, code review, research and third-party skill discovery.
+- Existing runbook extensions for career development, supervised ML and edge AI planning, founder resources, code review, research, architecture analysis and third-party skill discovery.
 - Optional restricted Agent Reach read-only channel adapter. All authenticated channels, login, setup and external writes are rejected.
 - Offline tests for source coverage, provenance validation, path safety, intent routing, missing dependencies, malformed responses and disallowed actions.
 
@@ -26,7 +26,7 @@ AGYOS remains the only routing and execution OS. Natural-language intent still c
 ## Counts and status at implementation
 
 - Pinned sources: **8**; integrated top-level intent routes: **8**.
-- New active skill folders: **0**; native existing skills extended: **7**.
+- New active skill folders: **0**; native existing skills extended: **8**.
 - New optional tool adapters: **1**, restricted to read-only interface; live tests still outstanding.
 - Baseline existing physical skills: **1,862**; no skill directory was added or removed.
 - Baseline existing agent definitions: **81**, no changes.
@@ -36,7 +36,7 @@ AGYOS remains the only routing and execution OS. Natural-language intent still c
 
 ## Verification verdict
 
-The added test source and CI must be executed on the integration branch and their **actual run IDs and conclusions** recorded before declaring verified. Until then all new code is **pending CI and host verification**. GitHub Actions CI does not include live AGY CLI, Bun, third-party authentication, cloud infrastructure or device tests.
+The first integration CI run `42449345326` completed **successfully**, covering Python syntax, generated catalog reproducibility and the complete `scripts/tests` startup-contract suite. This is CI evidence for commit `2121301eb1c5bf51f6c5fee9b85df6006883ce96`. Later commits require their own run. Live Ubuntu/AGY CLI, Bun, authenticated third-party sources, cloud hardware and optional external tool tests remain **unverified**. GitHub Actions CI does not include live AGY CLI, Bun, third-party authentication, cloud infrastructure or device tests.
 
 ## Remaining limitations
 
