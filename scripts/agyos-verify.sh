@@ -44,7 +44,7 @@ echo "============================================================"
 check "AGENTS.md size limit (<24,000 bytes)" test "$(wc -c < AGENTS.md)" -lt 24000
 
 # 2. Check GEMINI.md link exists
-check "GEMINI.md exists and matches AGENTS.md" test -e GEMINI.md
+check "GEMINI.md content matches AGENTS.md" cmp -s AGENTS.md GEMINI.md
 
 # 3. Check AGY CLI Version
 check "AGY CLI installed and responsive" agy --version
