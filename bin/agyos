@@ -146,6 +146,9 @@ if decision.assumptions_applied:
     echo "$json_req" | node mcp/state-server.cjs | jq -r '.result.content[0].text // .result.error // "No response"'
     ;;
   secure)
+    if [[ "${1:-}" == vault-init || "${1:-}" == vault-status ]]; then
+      exec node scripts/agyos-runtime/private-vault-cli.cjs "$@"
+    fi
     exec node scripts/agyos-runtime/secure-envelope.cjs "$@"
     ;;
   rollback)
