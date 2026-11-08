@@ -43,3 +43,18 @@ def invoke_read_only(operation: str, query: str | None = None, *, timeout: int =
     if result.returncode != 0:
         return {"ok": False, "error": "UPSTREAM_ERROR", "hint": "Inspect local Agent Reach channel health without logging credentials"}
     return {"ok": parsed["ok"], "result": parsed.get("result"), "source": "Agent Reach (untrusted external data)"}
+
+
+def main() -> int:
+    import argparse
+    parser = argparse.ArgumentParser(description="AGYOS read-only Agent Reach adapter")
+    parser.add_argument("operation", choices=sorted(HEALTH_OPERATIONS | PUBLIC_SEARCH_CHANNELS))
+    parser.add_argument("query", nargs="?")
+    args = parser.parse_args()
+    result = invoke_read_only(args.operation, args.query)
+    print(json.dumps(result, ensure_ascii=False))
+    return 0 if result.get("ok") else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

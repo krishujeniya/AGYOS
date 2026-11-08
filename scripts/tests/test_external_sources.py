@@ -8,6 +8,8 @@ import tempfile
 
 from agyos_decision.integrations.source_registry import ROOT, load_registry, match_sources
 from agyos_decision.integrations.agent_reach_adapter import invoke_read_only
+from agyos_decision.skills_router import decide_skill
+from agyos_decision.intent_compiler import compile_intent
 
 
 class SourceRegistryTests(unittest.TestCase):
@@ -33,6 +35,20 @@ class SourceRegistryTests(unittest.TestCase):
                 matches = match_sources(request)
                 self.assertTrue(matches, request)
                 self.assertEqual(matches[0]["source_id"], expected)
+
+    def test_existing_native_router_and_pods_accept_source_intents(self):
+        for query, skill in (
+            ("Create a personalized AI engineering career roadmap", "interview-coach"),
+            ("Design an edge AI deployment architecture", "ml-engineer"),
+            ("Research customer discussions online across supported platforms", "research-ops"),
+            ("Review code and find problems before release", "code-reviewer"),
+        ):
+            with self.subTest(query=query):
+                decision = decide_skill(query)
+                self.assertEqual(decision["primary_skill"], skill)
+                self.assertEqual(decision["integration_status"], "native_skill_routed_not_executed")
+        self.assertEqual(compile_intent("Create a personalized AI engineering career roadmap").pod, "pod-people")
+        self.assertEqual(compile_intent("Design an edge AI deployment architecture").pod, "pod-build")
 
     def test_no_bad_matches_for_unrelated_or_partial_terms(self):
         for request in ("", "review a recipe", "I love my career", "random text", "deploy production now"):

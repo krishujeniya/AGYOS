@@ -96,3 +96,18 @@ https://github.com/dbhat93/job-search-os
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+
+## AGYOS-Native AI Career Planning (adapted from Ayush Singh, MIT)
+
+When a user describes a career objective in ordinary language, do **not** require installing JobGPT, launching /coach, or answering a fixed 15-question form. Reuse known profile details only with permission. Ask a short follow-up only when a missing constraint would materially affect the plan.
+
+1. Establish the target role and region, time budget, current skills with practical evidence, portfolio links, and constraints; identify unknowns explicitly.
+2. Compare the user's demonstrable skills against current role requirements using dated job descriptions and primary hiring sources. Mark each gap as *confirmed*, *likely*, or *unknown*; never manufacture a salary figure.
+3. Create a six-month plan in weekly milestones covering ML foundations, system design, agent/evaluation engineering, production deployment, public project artifacts, and interviews. Adapt its scope to hours available and provide free resources where possible.
+4. Assign portfolio deliverables with testable acceptance criteria: documented baseline, reproducible experiment, code review, deployment evidence, security review, and concise case study.
+5. Provide optional networking, research-paper reading, outreach-draft and LinkedIn content tasks. No unsolicited messages, auto-applications, or social posting.
+6. At follow-ups, compare evidence against milestones, rescope remaining weeks, and record progress only in user-authorized private storage. Never put personal history in repo state, logs, or public markdown.
+
+Use `pod-people` for career development, `pod-build` for projects, and existing job/research skills only when they can produce evidence. No job placement, six-month hiring, or $100k earnings guarantee.
+
+Provenance: https://github.com/ayush488-glitch/ai-career-planner-skill at pinned commit `48a4467f7fbc9a719e1c8cc6dc2efdb2079b75ed`; adapted method, not copied source instructions.

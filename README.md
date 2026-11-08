@@ -399,3 +399,9 @@ Licensed under the **Apache License, Version 2.0**. See the [LICENSE](LICENSE) f
 
 **Created & Maintained by Krish Ujeniya**  
 *GitHub: [https://github.com/krishujeniya/AGYOS](https://github.com/krishujeniya/AGYOS)*
+
+## Pinned Third-Party Capability Integrations
+
+AGYOS keeps its existing six-layer architecture, five gates, five corporate pods, skill catalog, and risk approvals. A reviewed eight-source integration registry lives in [`integrations/registry/sources.json`](integrations/registry/sources.json). The registry pins source commits and routes narrowly defined, multi-concept natural-language tasks to **existing** AGYOS skills; it does not load upstream instructions or grant new tool permissions.
+
+The Python source matcher is `agyos_decision.integrations.source_registry`. A separate, optional `agent_reach_adapter` offers restricted read-only searches when the verified official CLI is present. Upstream skill catalogs, prompt archives and Azure infrastructure remain reference-only until each component passes licensing, dependency and security review. See [the integration report](docs/integrations/INTEGRATION_REPORT.md) for evidence and limitations.

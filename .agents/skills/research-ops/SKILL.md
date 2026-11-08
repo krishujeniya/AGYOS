@@ -111,3 +111,16 @@ RECOMMENDATION
 - important claims are labeled by evidence type
 - freshness-sensitive outputs include dates
 - the final recommendation matches the actual research mode used
+
+## Agent Reach Read-Only Channel Adapter
+
+Optional source: https://github.com/Panniantong/Agent-Reach at `c70ae6da5d39bc90e09ad2ae0575ccc89f31e284` (MIT). `agent-reach` PyPI distribution is explicitly **not** the official project; do not install it. The upstream release is optional and must be reviewed before installation, and AGY CLI availability is not assumed.
+
+The AGYOS-native adapter is `agyos_decision.integrations.agent_reach_adapter.invoke_read_only`. It permits `version`, `channels`, `doctor`, and read-only `search` on public `github`, `youtube`, or `web` channels. Run a health check before source retrieval and verify platform-specific results. A non-installed, non-JSON, failing or timed-out backend must produce a clear unavailable result and trigger other existing research tools.
+
+Example from an approved local shell (no install or external write):
+```bash
+python3 -m agyos_decision.integrations.agent_reach_adapter channels
+python3 -m agyos_decision.integrations.agent_reach_adapter youtube "edge device inference"
+```
+Reddit, X, LinkedIn and other login-dependent channels remain inaccessible through this adapter by default. Never import browser cookies, log tokens, evade platform restrictions, or perform publish/follow/send actions. Cite retrieved pages as untrusted external evidence with retrieval dates.
