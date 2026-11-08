@@ -115,7 +115,7 @@ def classify_function(prompt: str) -> str:
     lower = prompt.lower()
 
     # Career development belongs to pod-people, independent of AI/ML topic.
-    if re.search(r"\\bcareer\\b", lower) and re.search(r"\\b(roadmap|plan|planning|gaps?|assessment)\\b", lower):
+    if re.search(r"\bcareer\b", lower) and re.search(r"\b(roadmap|plan|planning|gaps?|assessment)\b", lower):
         return "hiring"
 
     # Prioritize engineering implementation for feature/endpoint requests
