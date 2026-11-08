@@ -171,7 +171,16 @@ function getSysInfo() {
       fastmcp_daemon: "Operational",
       safety_interceptor: "Operational"
     },
-    health: "100% Operational"
+    security_posture: {
+      entire_os_e2ee: false,
+      encrypted_envelope_exchange: "opt_in_endpoint_file_exchange",
+      mcp_memory_writes: privateVault.isInitialized()
+        ? "encrypted_local_vault_only" : "blocked_until_vault_init",
+      existing_state_logs_checkpoints: "plaintext_unmigrated",
+      external_model_prompts: "provider_accessible",
+      verified_production_security: false
+    },
+    health: "Core services available; encryption coverage is partial"
   };
 }
 
