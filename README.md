@@ -410,9 +410,14 @@ The Python source matcher is `agyos_decision.integrations.source_registry`. A se
 
 AGYOS provides a **separate, opt-in encrypted envelope** for sending files between two trusted endpoints. It uses X25519 key agreement with per-message ephemeral keys, HKDF-SHA256 key derivation, AES-256-GCM authenticated encryption, and Ed25519 sender signatures. Private identity keys are encrypted with scrypt and saved outside the Git repository. See [Encryption scope and usage](docs/security/END_TO_END_ENCRYPTION.md).
 
-This is **not a claim that the whole AGYOS runtime is end-to-end encrypted**. Existing MCP memory, telemetry, prompts sent to model vendors and other third-party integrations are not covered. They require separate data-flow controls and provider agreements. The encrypted exchange does not enable itself or replace the existing AGYOS governance.
+This is **not a claim that the whole AGYOS runtime is end-to-end encrypted**. New MCP memory writes can use an opt-in encrypted local vault, but telemetry, state, prompts sent to model vendors, other memory implementations and third-party integrations are not fully protected. They require separate data-flow controls and provider agreements. The encrypted exchange does not enable itself or replace the existing AGYOS governance.
 
 
 ## Endpoint-to-endpoint encrypted exchange (opt-in)
 
-AGYOS includes an independently keyed, authenticated **file exchange** using X25519, HKDF-SHA-256, AES-256-GCM, Ed25519 signatures, and passphrase-protected local private identities. See [E2EE limitations and setup](docs/security/E2EE.md). Invoke `bin/agyos secure help`. **This does not make all AGYOS traffic end-to-end encrypted**: model-provider requests, the existing MCP stdio tools, public skills, and plaintext memory/state are outside this encryption boundary. Do not place private keys or plaintext secrets in Git.
+AGYOS includes an independently keyed, authenticated **file exchange** using X25519, HKDF-SHA-256, AES-256-GCM, Ed25519 signatures, and passphrase-protected local private identities. See [E2EE limitations and setup](docs/security/E2EE.md). Invoke `bin/agyos secure help`. **This does not make all AGYOS traffic end-to-end encrypted**: model-provider requests, the MCP stdio transport, public skills, and existing plaintext state/checkpoints remain outside this encrypted file-exchange boundary; private MCP memory writes have a separate opt-in encrypted vault. Do not place private keys or plaintext secrets in Git.
+
+
+## Current engineering audit
+
+See [the November 8, 2026 engineering audit](docs/ENGINEERING_AUDIT_2026-11-08.md) for security and reliability fixes, test evidence boundaries and prioritized unresolved risks. The repository's historical milestones are not proof that all optional AGY CLI, provider, E2EE or cloud runtime paths are verified. Real host-specific operations require additional checks and authorization.
