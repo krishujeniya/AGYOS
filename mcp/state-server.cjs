@@ -352,92 +352,98 @@ function handleToolCall(name, args) {
   throw new Error(`Unknown tool: ${name}`);
 }
 
+const MAX_MCP_LINE_BYTES = 1024 * 1024;
+function rpcError(id, code, message) {
+  process.stdout.write(JSON.stringify({
+    jsonrpc: "2.0", id, error: { code, message }
+  }) + "\n");
+}
+function rpcResult(id, result) {
+  process.stdout.write(JSON.stringify({ jsonrpc: "2.0", id, result }) + "\n");
+}
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout,
-  terminal: false
+  terminal: false,
+  crlfDelay: Infinity
 });
-
-rl.on("line", (line) => {
-  const trimmed = line.trim();
-  if (!trimmed) return;
-
-  try {
-    const request = JSON.parse(trimmed);
-    const { id, method, params } = request;
-
-    // Notifications (no id)
-    if (id === undefined || id === null) {
-      return;
-    }
-
-    if (method === "initialize") {
-      const response = {
-        jsonrpc: "2.0",
-        id,
-        result: {
-          protocolVersion: params?.protocolVersion || "2024-11-05",
-          capabilities: {
-            tools: {}
-          },
-          serverInfo: {
-            name: "anchor-state-server",
-            version: "2.5.0"
-          }
-        }
-      };
-      process.stdout.write(JSON.stringify(response) + "\n");
-      return;
-    }
-
-    if (method === "tools/list") {
-      const response = {
-        jsonrpc: "2.0",
-        id,
-        result: {
-          tools: TOOLS
-        }
-      };
-      process.stdout.write(JSON.stringify(response) + "\n");
-      return;
-    }
-
-    if (method === "tools/call") {
-      const { name, arguments: toolArgs } = params;
-      try {
-        const result = handleToolCall(name, toolArgs || {});
-        const response = {
-          jsonrpc: "2.0",
-          id,
-          result
-        };
-        process.stdout.write(JSON.stringify(response) + "\n");
-      } catch (err) {
-        const response = {
-          jsonrpc: "2.0",
-          id,
-          result: {
-            content: [{ type: "text", text: `Error: ${err.message}` }],
-            isError: true
-          }
-        };
-        process.stdout.write(JSON.stringify(response) + "\n");
-      }
-      return;
-    }
-
-    if (method === "ping") {
-      process.stdout.write(JSON.stringify({ jsonrpc: "2.0", id, result: {} }) + "\n");
-      return;
-    }
-
-    // Default method not found
-    process.stdout.write(JSON.stringify({
-      jsonrpc: "2.0",
-      id,
-      error: { code: -32601, message: `Method not found: ${method}` }
-    }) + "\n");
-  } catch (err) {
-    // Malformed JSON
+rl.on("line", line => {
+  if (!line.trim()) return;
+  // readline still buffers a line prior to callback. This bounds parsing and
+  // downstream execution, not total input buffering; process isolation remains required.
+  if (Buffer.byteLength(line, "utf8") > MAX_MCP_LINE_BYTES) {
+    rpcError(null, -32600, "MCP input exceeds 1 MiB");
+    return;
   }
+  let request;
+  try {
+    request = JSON.parse(line);
+  } catch {
+    rpcError(null, -32700, "Parse error");
+    return;
+  }
+  if (!request || typeof request !== "object" || Array.isArray(request) ||
+      request.jsonrpc !== "2.0" || typeof request.method !== "string") {
+    rpcError(null, -32600, "Invalid JSON-RPC request");
+    return;
+  }
+  const { id, method, params } = request;
+  if (id === undefined || id === null) {
+    // MCP notifications never receive a response.
+    return;
+  }
+  if (typeof id !== "number" && typeof id !== "string") {
+    rpcError(null, -32600, "Invalid request ID");
+    return;
+  }
+  if (method === "initialize") {
+    rpcResult(id, {
+      protocolVersion: "2024-11-05",
+      capabilities: { tools: {} },
+      serverInfo: { name: "anchor-state-server", version: "2.5.1" }
+    });
+    return;
+  }
+  if (method === "tools/list") {
+    rpcResult(id, { tools: TOOLS });
+    return;
+  }
+  if (method === "tools/call") {
+    if (!params || typeof params !== "object" || Array.isArray(params) ||
+        typeof params.name !== "string" ||
+        (params.arguments !== undefined &&
+         (!params.arguments || typeof params.arguments !== "object" ||
+          Array.isArray(params.arguments)))) {
+      rpcError(id, -32602, "Invalid tool arguments");
+      return;
+    }
+    const tool = TOOLS.find(item => item.name === params.name);
+    if (!tool) {
+      rpcError(id, -32602, "Unknown tool");
+      return;
+    }
+    const args = params.arguments || {};
+    for (const required of tool.inputSchema.required || []) {
+      if (!Object.prototype.hasOwnProperty.call(args, required)) {
+        rpcError(id, -32602, "Missing required tool argument");
+        return;
+      }
+    }
+    try {
+      rpcResult(id, handleToolCall(params.name, args));
+    } catch {
+      // Never disclose local filesystem paths, key file errors, stack traces
+      // or stderr from subprocesses through a public MCP result.
+      rpcResult(id, {
+        isError: true, content: [{
+          type: "text", text: "AGYOS tool failed; consult local protected diagnostics."
+        }]
+      });
+    }
+    return;
+  }
+  if (method === "ping") {
+    rpcResult(id, {});
+    return;
+  }
+  rpcError(id, -32601, "Method not found");
 });
