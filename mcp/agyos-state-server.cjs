@@ -8,6 +8,7 @@
 const fs = require("fs");
 const path = require("path");
 const readline = require("readline");
+const privateVault = require("../scripts/agyos-runtime/lib/private-vault.cjs");
 
 // Discover project root
 function findProjectRoot() {
@@ -174,36 +175,58 @@ function getSysInfo() {
   };
 }
 
+let unlockedVaultPassphrase = null;
+
+function publicMemoryBaseline() {
+  // This tracked file contains only non-secret legacy defaults. Never mutate it.
+  const data = JSON.parse(fs.readFileSync(MEMORY_FILE, "utf8"));
+  if (!data || typeof data !== "object" || Array.isArray(data))
+    throw new Error("Invalid public legacy memory baseline");
+  return data;
+}
+function encryptedMemory() {
+  // A configured encrypted vault must fail closed on missing credentials.
+  if (!privateVault.isInitialized()) return {};
+  if (unlockedVaultPassphrase === null)
+    unlockedVaultPassphrase = privateVault.getPassphrase();
+  return privateVault.readVault(privateVault.vaultPath(), unlockedVaultPassphrase);
+}
 function handleMemoryOperation(args) {
   const { action, tier = "tier0", key, value } = args;
-  let mem = {};
-  if (fs.existsSync(MEMORY_FILE)) {
-    try { mem = JSON.parse(fs.readFileSync(MEMORY_FILE, "utf8")); } catch (e) {}
-  }
   const tierMap = { tier0: "tier0_core_memory", tier1: "tier1_recall_memory", tier2: "tier2_archival_index" };
+  if (!Object.hasOwn(tierMap, tier)) throw new Error("Unsupported memory tier");
+  if (key !== undefined && (typeof key !== "string" ||
+      !/^[a-zA-Z][a-zA-Z0-9_-]{0,127}$/.test(key) || key === "__proto__" ||
+      key === "prototype" || key === "constructor"))
+    throw new Error("Invalid memory key");
+  if (!["read", "list", "write"].includes(action))
+    throw new Error("Unsupported memory action");
+
+  const legacy = publicMemoryBaseline();
+  const privateData = encryptedMemory();
   const tierKey = tierMap[tier];
-  if (!tierKey) throw new Error(`Unsupported memory tier: ${tier}`);
+  const currentTierData = { ...(legacy[tierKey] || {}), ...(privateData[tierKey] || {}) };
 
-  const currentTierData = mem[tierKey] || {};
+  if (action === "read" || action === "list") {
+    const result = action === "list" || !key
+      ? currentTierData : (Object.hasOwn(currentTierData, key) ? currentTierData[key] : "Key not found");
+    return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+  }
 
-  if (action === "list") {
-    return { content: [{ type: "text", text: JSON.stringify(currentTierData, null, 2) }] };
-  }
-  if (action === "read") {
-    if (!key) return { content: [{ type: "text", text: JSON.stringify(currentTierData, null, 2) }] };
-    const val = currentTierData[key];
-    return { content: [{ type: "text", text: typeof val === "object" ? JSON.stringify(val, null, 2) : String(val !== undefined ? val : "Key not found") }] };
-  }
-  if (action === "write") {
-    if (!key) throw new Error("Key is required for write action");
-    let parsedValue = value;
-    try { parsedValue = JSON.parse(value); } catch (e) { parsedValue = value; }
-    const updatedTier = { ...currentTierData, [key]: parsedValue };
-    const updatedMem = { ...mem, [tierKey]: updatedTier };
-    fs.writeFileSync(MEMORY_FILE, JSON.stringify(updatedMem, null, 2), "utf8");
-    return { content: [{ type: "text", text: `Successfully wrote key '${key}' in ${tierKey}.` }] };
-  }
-  throw new Error(`Unsupported memory action: ${action}`);
+  if (!key || typeof value !== "string" || Buffer.byteLength(value, "utf8") > 64 * 1024)
+    throw new Error("A key and bounded string value are required");
+  if (!privateVault.isInitialized())
+    throw new Error("Encrypted memory not initialized: use bin/agyos secure vault-init");
+  if (unlockedVaultPassphrase === null)
+    unlockedVaultPassphrase = privateVault.getPassphrase();
+
+  let parsedValue;
+  try { parsedValue = JSON.parse(value); } catch { parsedValue = value; }
+  privateVault.updateVault(privateVault.vaultPath(), unlockedVaultPassphrase, current => ({
+    ...current,
+    [tierKey]: { ...(current[tierKey] || {}), [key]: parsedValue }
+  }));
+  return { content: [{ type: "text", text: "Private memory saved in encrypted local vault." }] };
 }
 
 let cachedSkills = null;
