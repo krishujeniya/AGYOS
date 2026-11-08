@@ -27,6 +27,7 @@ Commands:
   rollback    Safely abort and revert the active milestone
   council     Run multi-model deliberation via Agent Council
   secure      Exchange authenticated encrypted files between trusted endpoints
+  privacy-audit  Inspect local plaintext data paths and encryption limits
   help        Show this help message
 EOF
 }
@@ -144,6 +145,9 @@ if decision.assumptions_applied:
     if [ -n "$key" ]; then action="read"; fi
     json_req=$(jq -c -n --arg a "$action" --arg t "$tier" --arg k "$key" '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"agyos_memory","arguments":{"action":$a,"tier":$t,"key":$k}}}')
     echo "$json_req" | node mcp/state-server.cjs | jq -r '.result.content[0].text // .result.error // "No response"'
+    ;;
+  privacy-audit)
+    exec python3 scripts/agyos-privacy-audit.py "$@"
     ;;
   secure)
     if [[ "${1:-}" == vault-init || "${1:-}" == vault-status ]]; then
