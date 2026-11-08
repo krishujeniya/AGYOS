@@ -11,6 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Set up Node.js for crypto regression tests
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -29,3 +33,5 @@ jobs:
           git diff --exit-code -- .agents/skills-manifest.json .agents/tier1-skills.json docs/skills-data.json docs/ai-catalog.json docs/llms.txt docs/sitemap.xml docs/robots.txt
       - name: Check AGY startup contracts
         run: python -m unittest discover -s scripts/tests -v
+      - name: Check endpoint encryption round-trip and tamper resistance
+        run: node --test scripts/tests/test_secure_envelope.cjs

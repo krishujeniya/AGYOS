@@ -61,3 +61,8 @@ coverage/
 *.key
 *.cert
 *.crt
+
+# Encryption material and exchanged data (do not commit)
+*.e2ee.json
+*.private-identity.json
+.agyos-secure/

@@ -405,3 +405,9 @@ Licensed under the **Apache License, Version 2.0**. See the [LICENSE](LICENSE) f
 AGYOS keeps its existing six-layer architecture, five gates, five corporate pods, skill catalog, and risk approvals. A reviewed eight-source integration registry lives in [`integrations/registry/sources.json`](integrations/registry/sources.json). The registry pins source commits and routes narrowly defined, multi-concept natural-language tasks to **existing** AGYOS skills; it does not load upstream instructions or grant new tool permissions.
 
 The Python source matcher is `agyos_decision.integrations.source_registry`. A separate, optional `agent_reach_adapter` offers restricted read-only searches when the verified official CLI is present. Upstream skill catalogs, prompt archives and Azure infrastructure remain reference-only until each component passes licensing, dependency and security review. See [the integration report](docs/integrations/INTEGRATION_REPORT.md) for evidence and limitations.
+
+## Optional Endpoint-Side Encrypted File Exchange
+
+AGYOS provides a **separate, opt-in encrypted envelope** for sending files between two trusted endpoints. It uses X25519 key agreement with per-message ephemeral keys, HKDF-SHA256 key derivation, AES-256-GCM authenticated encryption, and Ed25519 sender signatures. Private identity keys are encrypted with scrypt and saved outside the Git repository. See [Encryption scope and usage](docs/security/END_TO_END_ENCRYPTION.md).
+
+This is **not a claim that the whole AGYOS runtime is end-to-end encrypted**. Existing MCP memory, telemetry, prompts sent to model vendors and other third-party integrations are not covered. They require separate data-flow controls and provider agreements. The encrypted exchange does not enable itself or replace the existing AGYOS governance.
