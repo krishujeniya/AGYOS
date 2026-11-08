@@ -31,10 +31,23 @@ def main(event):
         print(json.dumps({"decision": "allow"} if event == "Stop" else {}))
         return
 
+    raw = sys.stdin.read(1048577)
+    if len(raw) > 1048576:
+        print(json.dumps({"decision": "deny", "reason": "Hook event too large"}))
+        return
     try:
-        data = json.loads(sys.stdin.read())
-    except (ValueError, UnicodeError):
-        data = {}
+        data = json.loads(raw)
+        if not isinstance(data, dict):
+            raise ValueError("Expected event object")
+        args = data.get("toolCall", {}).get("args", {}) if isinstance(data.get("toolCall"), dict) else data.get("tool_input", data)
+        if not isinstance(args, dict):
+            raise ValueError("Invalid tool arguments")
+        candidate = args.get("CommandLine", args.get("command", ""))
+        if not isinstance(candidate, str):
+            raise ValueError("Command must be text")
+    except (ValueError, UnicodeError, TypeError):
+        print(json.dumps({"decision": "deny", "reason": "Invalid tool event (fail closed)"}))
+        return
     cmd = command_from_payload(data)
     for pattern in DANGEROUS_PATTERNS:
         if re.search(pattern, cmd):
@@ -49,4 +62,4 @@ if __name__ == "__main__":
     except Exception as e:
         # Keep diagnostics out of the event's JSON response.
         print(f"Hook fallback: {e}", file=sys.stderr)
-        print(json.dumps({"decision": "allow"} if event in ("PreToolUse", "Stop") else {}))
+        print(json.dumps({"decision": "deny", "reason": "Hook failed closed"} if event == "PreToolUse" else ({"decision": "allow"} if event == "Stop" else {})))
