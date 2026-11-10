@@ -47,13 +47,14 @@ class PodDefinitionsTests(unittest.TestCase):
 
     @unittest.skipUnless(shutil.which("agy"), "agy CLI not installed in current environment")
     def test_agy_cli_lists_all_5_pods(self):
-        result = subprocess.run(["agy", "agents"], capture_output=True, text=True, check=True)
+        result = subprocess.run(["agy", "agents"], capture_output=True, text=True, check=True, cwd=str(ROOT))
         for pod in self.REQUIRED_PODS:
             self.assertIn(pod, result.stdout, f"agy agents output missing {pod}")
 
     def test_all_agent_files_declare_only_valid_host_tools(self):
         import glob
         import yaml
+        loader = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
         valid_tools = {
             "read_file", "edit_file", "write_file", "run_command",
             "invoke_subagent", "send_message", "search_web", "manage_task", "call_mcp_tool"
@@ -63,7 +64,7 @@ class PodDefinitionsTests(unittest.TestCase):
             if content.startswith("---\n"):
                 parts = content.split("---\n", 2)
                 if len(parts) >= 3:
-                    meta = yaml.safe_load(parts[1])
+                    meta = yaml.load(parts[1], Loader=loader)
                     if meta and isinstance(meta, dict):
                         tools = meta.get("tools", [])
                         for tool in tools:

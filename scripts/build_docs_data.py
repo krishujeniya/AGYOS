@@ -132,6 +132,34 @@ def load_manifest_lookup():
 
 def compile_all_skills():
     """Scan .agents/skills/ and return deduplicated, classified skills."""
+    if os.path.exists(MANIFEST_PATH):
+        try:
+            with open(MANIFEST_PATH, "r", encoding="utf-8") as f:
+                manifest = json.load(f)
+            manifest_skills = manifest.get("skills", [])
+            physical_count = sum(1 for e in os.listdir(SKILLS_DIR) if os.path.isdir(os.path.join(SKILLS_DIR, e)))
+            if len(manifest_skills) == physical_count:
+                skills = []
+                for m in manifest_skills:
+                    entry = m["name"]
+                    clean_desc = unslop(m.get("description", "") or f"{entry} skill for AGYOS.")
+                    module, category = classify_skill(entry, entry, clean_desc)
+                    skills.append({
+                        "id": entry,
+                        "name": entry.replace("-", " ").title(),
+                        "module": module,
+                        "category": category,
+                        "tier": m.get("tier", 2),
+                        "runtime": ["AGY CLI", "Gemini", "Claude Code", "Codex"],
+                        "command": f"bin/agyos skill {entry}",
+                        "path": f".agents/skills/{entry}",
+                        "risk": "assess_for_task",
+                        "description": clean_desc
+                    })
+                return skills
+        except Exception:
+            pass
+
     manifest_tiers = load_manifest_lookup()
     skills = []
     seen = set()

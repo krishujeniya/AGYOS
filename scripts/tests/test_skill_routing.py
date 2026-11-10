@@ -10,6 +10,8 @@ from unittest.mock import patch
 
 import yaml
 
+YAML_LOADER = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
+
 from agyos_decision import skills_router as router
 from agyos_decision.catalog import canonical_entry
 
@@ -116,7 +118,7 @@ class CatalogTests(unittest.TestCase):
                 text = path.read_text()
                 self.assertLess(path.stat().st_size, 24000)
                 self.assertTrue(text.startswith("---\n"))
-                metadata = yaml.safe_load(text.split("\n---\n", 1)[0][4:])
+                metadata = yaml.load(text.split("\n---\n", 1)[0][4:], Loader=YAML_LOADER)
                 self.assertIn(metadata["trigger"], ("always_on", "model_decision", "glob", "manual"))
 
     def test_every_skill_has_valid_discovery_metadata(self):
@@ -124,7 +126,7 @@ class CatalogTests(unittest.TestCase):
             with self.subTest(skill=path.parent.name):
                 text = path.read_text()
                 self.assertTrue(text.startswith("---\n"))
-                metadata = yaml.safe_load(text.split("\n---\n", 1)[0][4:])
+                metadata = yaml.load(text.split("\n---\n", 1)[0][4:], Loader=YAML_LOADER)
                 self.assertEqual(metadata["name"], path.parent.name)
                 self.assertIsInstance(metadata["description"], str)
                 self.assertTrue(metadata["description"].strip())

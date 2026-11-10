@@ -6,6 +6,7 @@ Catalog metadata is validated with the repository's PyYAML dependency.
 """
 from __future__ import annotations
 
+import functools
 import json
 import re
 from pathlib import Path
@@ -180,7 +181,32 @@ DOMAIN_TAXONOMY: Dict[str, Dict[str, Any]] = {
             "arxiv", "systematic review", "peer-reviewed", "research gap"
         ],
         "primary": "agyos-academic-research",
-        "alternatives": ["scientific-thinking-literature-review", "citation-management", "scientific-research"],
+        "alternatives": ["universal-ai-research", "scientific-thinking-literature-review", "citation-management", "scientific-research"],
+    },
+    "universal_research": {
+        "keywords": [
+            "universal research", "research pipeline", "research protocol",
+            "falsifiable research", "multi-agent research", "scholarly pipeline"
+        ],
+        "primary": "universal-ai-research",
+        "alternatives": ["agyos-academic-research", "scientific-research", "deep-research"],
+    },
+    "video_production": {
+        "keywords": [
+            "video", "video editing", "editing", "cut", "footage", "film",
+            "youtube video", "b-roll", "color grading", "film grain", "halation",
+            "cinematic", "watermark", "delogo", "de-ai"
+        ],
+        "primary": "video-editing-principles",
+        "alternatives": ["organic-film-de-ai", "ai-video-quality-enhancement", "ffmpeg-video-editor", "youtube-long-form-production", "google-flow"],
+    },
+    "scriptwriting": {
+        "keywords": [
+            "script", "scriptwriting", "screenplay", "storyboard", "retention",
+            "hook", "dialogue", "scene", "narrative", "craig mazin", "three act"
+        ],
+        "primary": "scriptwriting-principles",
+        "alternatives": ["youtube-long-form-production", "short-form-video-script", "storytelling-and-narrative", "hook-writer"],
     },
     "coding_discipline": {
         "keywords": [
@@ -266,11 +292,16 @@ LANGUAGE_FRAMEWORK_MAP = {
     "expo": "expo-api-routes",
     "swift": "swiftui-patterns",
     "solidity": "solidity-security",
+    "ffmpeg": "ffmpeg-video-editor",
+    "flow": "google-flow",
+    "remotion": "react-video-remotion",
 }
 
 
+@functools.lru_cache(maxsize=1)
 def load_catalog() -> List[Dict[str, Any]]:
     """Prefer the runtime manifest; recover from stale or missing generated data."""
+    entries_list = None
     for source in (MANIFEST_DATA, DOCS_DATA):
         try:
             raw = json.loads(source.read_text(encoding="utf-8"))
@@ -280,24 +311,45 @@ def load_catalog() -> List[Dict[str, Any]]:
             valid = [item for entry in entries if (item := canonical_entry(entry))]
             physical_names = {p.parent.name for p in (REPO_ROOT / ".agents/skills").glob("*/SKILL.md")}
             if {s["name"] for s in valid} == physical_names and len(valid) == len(physical_names):
-                return valid
+                entries_list = valid
+                break
         except (OSError, ValueError, TypeError):
             continue
-    return physical_catalog()
+    if entries_list is None:
+        entries_list = physical_catalog()
+
+    # Pre-compute query-independent attributes for accelerated lookups
+    for s in entries_list:
+        name = s.get("name", "").lower()
+        s["_name_lower"] = name
+        s["_desc_lower"] = s.get("description", "").lower()
+        s["_name_tokens"] = set(re.split(r"[-_]", name))
+        s["_clean_name_space"] = name.replace("-", " ")
+    return entries_list
+
+
+@functools.lru_cache(maxsize=4096)
+def _compile_keyword_regex(keyword: str) -> re.Pattern:
+    return re.compile(r"(?<!\w)" + re.escape(keyword) + r"(?!\w)", re.I)
 
 
 def keyword_matches(keyword: str, query: str) -> bool:
     """Match complete words and phrases, never accidental substrings."""
-    return bool(re.search(r"(?<!\w)" + re.escape(keyword) + r"(?!\w)", query, re.I))
+    return bool(_compile_keyword_regex(keyword).search(query))
 
 
 def classify_domain(query: str) -> Tuple[str, float]:
     """Classify domain using bounded words and weighted phrases."""
     scores: Dict[str, int] = {}
+    q_lower = query.lower()
 
     for domain, data in DOMAIN_TAXONOMY.items():
         kws = data["keywords"]
-        hits = sum(len(kw.split()) + (2 if " " in kw else 0) for kw in kws if keyword_matches(kw, query))
+        hits = sum(
+            len(kw.split()) + (2 if " " in kw else 0)
+            for kw in kws
+            if kw in q_lower and keyword_matches(kw, query)
+        )
         if hits > 0:
             scores[domain] = hits
 
@@ -315,7 +367,7 @@ def assess_complexity(query: str) -> Tuple[int, str]:
     words = re.findall(r"\w+", lower)
     length = len(words)
 
-    if any(keyword_matches(phrase, lower) for phrase in [
+    if any(phrase in lower and keyword_matches(phrase, lower) for phrase in [
         "delete production", "drop database", "drop table", "wire money",
         "deploy to production", "production deployment", "send payment",
     ]):
@@ -329,48 +381,62 @@ def assess_complexity(query: str) -> Tuple[int, str]:
         return 5, "cross-module architectural overhaul (full 5-gate workflow + council deliberation)"
 
     # Complexity 4: multi-file refactoring, major migration, security reviews
-    if any(keyword_matches(w, lower) for w in ["refactor", "migrate", "migration", "migrations", "rewrite", "threat model", "vulnerability", "security", "permissions", "jwt", "auth", "authentication", "payment", "payments", "all rules", "all skills"]):
+    if any(w in lower and keyword_matches(w, lower) for w in ["refactor", "migrate", "migration", "migrations", "rewrite", "threat model", "vulnerability", "security", "permissions", "jwt", "auth", "authentication", "payment", "payments", "all rules", "all skills"]):
         return 4, "multi-file structural change (full 5-gate workflow + ADR)"
 
-    if length <= 6 and any(keyword_matches(w, lower) for w in ["typo", "rename", "fix link", "remove log", "comment", "spelling"]):
+    if length <= 6 and any(w in lower and keyword_matches(w, lower) for w in ["typo", "rename", "fix link", "remove log", "comment", "spelling"]):
         return 1, "trivial single-line edit (fast-path bypass)"
 
     # Complexity 3: standard feature development, bug fix with regression check
     if any(w in lower for w in ["add", "implement", "create", "test", "feature", "endpoint", "service", "fix bug"]):
         return 3, "standard feature development (5-gate workflow)"
 
-    if any(keyword_matches(phrase, lower) for phrase in ["single function", "single-file", "one file"]):
+    if any(phrase in lower and keyword_matches(phrase, lower) for phrase in ["single function", "single-file", "one file"]):
         return 2, "explicitly bounded modification (fast-path bypass)"
     return 3, "scope requires inspection (standard 5-gate workflow)"
 
 
-def score_skill_fit(skill: Dict[str, Any], query: str, domain: str) -> float:
+def score_skill_fit(skill: Dict[str, Any], query: str, domain: str, context: Optional[Dict[str, Any]] = None) -> float:
     """Calculate a deterministic relevance heuristic, not a probability."""
-    name = skill.get("name", "").lower()
-    desc = skill.get("description", "").lower()
-    tokens = [t for t in re.findall(r"\w+", query.lower()) if len(t) > 2]
+    name = skill.get("_name_lower") or skill.get("name", "").lower()
+    desc = skill.get("_desc_lower") or skill.get("description", "").lower()
+    name_tokens = skill.get("_name_tokens") or set(re.split(r"[-_]", name))
+    clean_name_space = skill.get("_clean_name_space") or name.replace("-", " ")
+
+    if context:
+        tokens = context["tokens"]
+        clean_query = context["clean_query"]
+        query_space = context["query_space"]
+        fw_skills = context["fw_skills"]
+        domain_primary = context["domain_primary"]
+        domain_alts = context["domain_alts"]
+    else:
+        clean_query = query.lower().strip()
+        query_space = clean_query.replace("-", " ")
+        tokens = [t for t in re.findall(r"\w+", clean_query) if len(t) > 2]
+        tokens_set = set(tokens)
+        fw_skills = {sk for fw, sk in LANGUAGE_FRAMEWORK_MAP.items() if fw in tokens_set}
+        domain_info = DOMAIN_TAXONOMY.get(domain)
+        domain_primary = domain_info["primary"] if domain_info else None
+        domain_alts = set(domain_info.get("alternatives", [])) if domain_info else set()
+
     score = 0.0
 
     # Exact skill name match
-    clean_query = query.lower().strip()
-    if keyword_matches(name, clean_query) or clean_query.replace("-", " ") == name.replace("-", " "):
+    if name == clean_query or clean_name_space == query_space or (name in clean_query and keyword_matches(name, clean_query)):
         score += 1000.0
 
     # Framework exact mapping
-    for fw, sk in LANGUAGE_FRAMEWORK_MAP.items():
-        if fw in tokens and name == sk:
-            score += 45.0
+    if name in fw_skills:
+        score += 45.0
 
     # Domain primary and alternative alignment
-    if domain in DOMAIN_TAXONOMY:
-        domain_info = DOMAIN_TAXONOMY[domain]
-        if domain_info["primary"] == name:
-            score += 220.0
-        elif name in domain_info.get("alternatives", []):
-            score += 50.0
+    if name == domain_primary:
+        score += 220.0
+    elif name in domain_alts:
+        score += 50.0
 
     # Token-level matching
-    name_tokens = set(re.split(r"[-_]", name))
     for token in tokens:
         if token == name:
             score += 50.0
@@ -396,10 +462,23 @@ def select_best_skills(query: str, catalog: Optional[List[Dict[str, Any]]] = Non
         catalog = load_catalog()
 
     domain, _ = classify_domain(query)
+    clean_query = query.lower().strip()
+    tokens = [t for t in re.findall(r"\w+", clean_query) if len(t) > 2]
+    tokens_set = set(tokens)
+
+    context = {
+        "clean_query": clean_query,
+        "query_space": clean_query.replace("-", " "),
+        "tokens": tokens,
+        "fw_skills": {sk for fw, sk in LANGUAGE_FRAMEWORK_MAP.items() if fw in tokens_set},
+        "domain_primary": DOMAIN_TAXONOMY[domain]["primary"] if domain in DOMAIN_TAXONOMY else None,
+        "domain_alts": set(DOMAIN_TAXONOMY[domain].get("alternatives", [])) if domain in DOMAIN_TAXONOMY else set(),
+    }
+
     scored: List[Tuple[float, Dict[str, Any]]] = []
 
     for s in catalog:
-        fit = score_skill_fit(s, query, domain)
+        fit = score_skill_fit(s, query, domain, context=context)
         if fit > 0:
             scored.append((fit, s))
 
@@ -433,8 +512,9 @@ def decide_skill(query: str) -> Dict[str, Any]:
     domain, domain_conf = classify_domain(query)
     complexity, complexity_reason = assess_complexity(query)
     candidates = select_best_skills(query, catalog, limit=5)
-    explicit = any(keyword_matches(s["name"], query) for s in catalog)
-    technology = any(keyword_matches(name, query) for name in LANGUAGE_FRAMEWORK_MAP)
+    q_lower = query.lower()
+    explicit = any(s["_name_lower"] in q_lower and keyword_matches(s["_name_lower"], query) for s in catalog)
+    technology = any(name in q_lower and keyword_matches(name, query) for name in LANGUAGE_FRAMEWORK_MAP)
     ignored = {"please", "help", "use", "run", "check", "inspect", "review", "explain",
                "implement", "add", "create", "write", "show", "tell", "want", "need",
                "how", "can", "the", "with", "for", "this", "and", "from"}

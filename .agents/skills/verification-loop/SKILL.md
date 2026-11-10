@@ -21,9 +21,12 @@ Invoke this skill:
 ## Verification Phases
 
 ### Phase 1: Build Verification
+> [!NOTE]
+> **Local Build Policy:** When instructed or in rapid iterative development, do NOT run full production/static export builds locally (e.g., `npm run build:pages` or slow static exports). Only perform fast type checking (`npm run typecheck` / `npx tsc --noEmit`) and unit tests locally. Leave heavy multi-minute builds to remote CI/CD.
+
 ```bash
 set -o pipefail  # report the build's exit status, not tail's
-# Check if project builds
+# Check if project builds (skip if local build is disabled in favor of typecheck-only)
 npm run build 2>&1 | tail -20
 # OR
 pnpm build 2>&1 | tail -20

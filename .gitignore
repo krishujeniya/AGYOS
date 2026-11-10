@@ -47,6 +47,9 @@ dist/
 coverage/
 .coverage
 .nyc_output/
+media/
+integrations/google-flow-mcp/
+*.mp4
 
 # Backups and bundles
 .backups/

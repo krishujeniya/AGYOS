@@ -1,0 +1,91 @@
+{
+  "mcpServers": {
+    "anchor": {
+      "command": "node",
+      "args": [
+        "./mcp/agyos-state-server.cjs"
+      ]
+    },
+    "azure-mcp": {
+      "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/azure-mcp.sh",
+      "env": {
+        "AZURE_SUBSCRIPTION_ID": "60da109a-8501-4d1d-8c58-12f62c231164",
+        "AZURE_CONFIG_DIR": "/home/ai/.azure"
+      }
+    },
+    "aws-api-mcp": {
+      "command": "uvx",
+      "args": [
+        "awslabs.aws-api-mcp-server@latest"
+      ],
+      "env": {
+        "AWS_DEFAULT_REGION": "us-east-1",
+        "AWS_REGION": "us-east-1",
+        "AWS_SHARED_CREDENTIALS_FILE": "/home/ai/.aws/credentials",
+        "AWS_CONFIG_FILE": "/home/ai/.aws/config"
+      }
+    },
+    "aws-docs-mcp": {
+      "command": "uvx",
+      "args": [
+        "awslabs.aws-documentation-mcp-server@latest"
+      ],
+      "env": {
+        "AWS_DEFAULT_REGION": "us-east-1",
+        "AWS_REGION": "us-east-1"
+      }
+    },
+    "aws-iac-mcp": {
+      "command": "uvx",
+      "args": [
+        "awslabs.aws-iac-mcp-server@latest"
+      ],
+      "env": {
+        "AWS_DEFAULT_REGION": "us-east-1",
+        "AWS_REGION": "us-east-1"
+      }
+    },
+    "ibm-docling-mcp": {
+      "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/ibm-mcp.sh",
+      "args": [
+        "docling"
+      ],
+      "env": {
+        "IBMCLOUD_REGION": "in-mum",
+        "IBMCLOUD_ACCOUNT_ID": "9b8df9c9897a405b95d55653bb400ace"
+      }
+    },
+    "ibm-watsonxdata-mcp": {
+      "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/ibm-mcp.sh",
+      "args": [
+        "watsonx"
+      ],
+      "env": {
+        "IBMCLOUD_REGION": "in-mum",
+        "IBMCLOUD_ACCOUNT_ID": "9b8df9c9897a405b95d55653bb400ace"
+      }
+    },
+    "ibm-carbon-mcp": {
+      "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/ibm-mcp.sh",
+      "args": [
+        "carbon"
+      ],
+      "env": {
+        "IBMCLOUD_REGION": "in-mum",
+        "IBMCLOUD_ACCOUNT_ID": "9b8df9c9897a405b95d55653bb400ace"
+      }
+    },
+    "kaggle": {
+      "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/kaggle-mcp.sh",
+      "args": []
+    },
+    "mongodb": {
+      "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/mongodb-mcp.sh",
+      "args": []
+    },
+    "google-flow": {
+      "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/google-flow-mcp.sh",
+      "args": []
+    }
+  }
+}

@@ -1,6 +1,42 @@
 {
   "version": 1,
   "skills": {
+    "ai-image-editing": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/ai-image-editing/SKILL.md",
+      "computedHash": "39fb1f566ef93803486aaef10990e5decd2350e66caa70e88f7b336a12ff0db2"
+    },
+    "ai-music-and-sound": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/ai-music-and-sound/SKILL.md",
+      "computedHash": "ee6ae49f34f04ff6dfb8efd92ed59482188c66b066771f29b390bc4c3a5c2531"
+    },
+    "ai-search-optimization": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/ai-search-optimization/SKILL.md",
+      "computedHash": "41eb14a75ea0d5b5b3dc55ea8cb1bec95ba0242638118f6fc817bb657d1138da"
+    },
+    "ai-video": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/ai-video/SKILL.md",
+      "computedHash": "9d5e476728431af7329fa8714fa3123ae7d7b938e3fd11c2d9babd7ed14e0700"
+    },
+    "ai-voiceover": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/ai-voiceover/SKILL.md",
+      "computedHash": "1a3f98f6f2e6580022f6c2102dae8f8709c7948f9e77d458ee3b34d34fd00f79"
+    },
+    "analytics-and-reporting": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/analytics-and-reporting/SKILL.md",
+      "computedHash": "19c25df89bb2bd6b1a8d7cf365f8f9eead8d7b5f738906be71ceea7b51971b84"
+    },
     "animate": {
       "source": "emilkowalski/skill",
       "sourceType": "github",
@@ -37,11 +73,179 @@
       "skillPath": "skills/ask-sonner/SKILL.md",
       "computedHash": "8bd257b845985f4b35b603b510a126604176521094af79c4b7347ffeb8a8f7ab"
     },
+    "audience-research": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/audience-research/SKILL.md",
+      "computedHash": "ed4e6896de4059182651941b6c4ef65f540cf7721e5c2df8ec6141511af24f03"
+    },
+    "batch-content-plan": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/batch-content-plan/SKILL.md",
+      "computedHash": "dec4aee4516bc62030711fd9aac4053f48704c8ff6996ceba68def2b7fd82848"
+    },
+    "before-after-and-transformation": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/before-after-and-transformation/SKILL.md",
+      "computedHash": "ab42b986ebe4e1d705140463be17d1b5786b5cc80426ce8ca678c350f6cb9377"
+    },
+    "behind-the-scenes-and-founder": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/behind-the-scenes-and-founder/SKILL.md",
+      "computedHash": "1f36e7f1ac554d2626b11bb62316f85fb580af2516aa0b89191eee65c5699f2a"
+    },
+    "brand-profile": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/brand-profile/SKILL.md",
+      "computedHash": "5fca78964367f4b68f3c34293e17d9228a32f4e5a5423d1c26cc9b391a54e451"
+    },
     "break-ui": {
       "source": "emilkowalski/skill",
       "sourceType": "github",
       "skillPath": "skills/break-ui/SKILL.md",
       "computedHash": "60ada67662925f4df5e3c6ff41cac3ab241b66f8898100a5ffcd7ba7196cb868"
+    },
+    "campaign-and-launch-planning": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/campaign-and-launch-planning/SKILL.md",
+      "computedHash": "a3759834de51c155360021d00d06aed2ca1f3842ca85033d2effe41769ad2a66"
+    },
+    "canva": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/canva/SKILL.md",
+      "computedHash": "e01683e70692767859c71e5a46035574323cda5025e9e2572ed9ac185775781d"
+    },
+    "capcut": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/capcut/SKILL.md",
+      "computedHash": "1e0cbdae5e3646a36aa5d01a9768955c923d069e90e391070b2b56e1f911a07e"
+    },
+    "caption-writer": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/caption-writer/SKILL.md",
+      "computedHash": "456e1fb851a4714f5fae46f3dfab4f4a690aae3ae396b12f257a480da744137f"
+    },
+    "captions-and-clipping": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/captions-and-clipping/SKILL.md",
+      "computedHash": "df9cf00c3142a5e592897807dac36104cb7608cbe8f4b0bf8ad932d9a9fa9c71"
+    },
+    "carousel-writer": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/carousel-writer/SKILL.md",
+      "computedHash": "38c2cd05bc5d53d44e5b37370f5ecafea7f3a49125181c88991b643f9701c1a0"
+    },
+    "collabs-and-cross-promotion": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/collabs-and-cross-promotion/SKILL.md",
+      "computedHash": "3c2fc9ce5f335c39a511db1867570128083489a216754f04f8000620ff8dd930"
+    },
+    "community-management": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/community-management/SKILL.md",
+      "computedHash": "1a937cbbd16ef984481794f4971812d3a57d8f2d9e25ffdbb33166f1622f47ac"
+    },
+    "competitor-analysis": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/competitor-analysis/SKILL.md",
+      "computedHash": "6388fab8048ee5ae32a06bf2a42326f4e9ecb968f18d15e301e25253d3163bf5"
+    },
+    "content-audit": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/content-audit/SKILL.md",
+      "computedHash": "e82713b94b956cfa6d8ad4a2dbee66acd4ef4ae6a79ca3a5fa26f15b57f80428"
+    },
+    "content-calendar": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/content-calendar/SKILL.md",
+      "computedHash": "3cc9d9e41aa8237e6c7157ba3ecc43c819a6494973a20f63e46a385b716aa2ba"
+    },
+    "content-pillars": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/content-pillars/SKILL.md",
+      "computedHash": "bae82cf614ff260ba13d8ddb4852f37f23e10b2a2fe8465548063b33333349ec"
+    },
+    "content-recycling": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/content-recycling/SKILL.md",
+      "computedHash": "aa6a6720247186b07ac67463db7b94a21694c2930424af5fb1b1b9eee02e949f"
+    },
+    "content-research-and-sourcing": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/content-research-and-sourcing/SKILL.md",
+      "computedHash": "91a6dfc91668bd553d87f0413de4cfdd4acfd068d36d425bbc87847fb4ae59f7"
+    },
+    "contrarian-and-opinion": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/contrarian-and-opinion/SKILL.md",
+      "computedHash": "c8834f889d66cd85338df7f2777eeb24daceae539b0d04f452788ebc72d309c3"
+    },
+    "creator-monetization": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/creator-monetization/SKILL.md",
+      "computedHash": "5a990b3c461a49150369e9caa0de657a95f8b02b1761348fb6e49d85eb480f9e"
+    },
+    "crisis-and-moderation": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/crisis-and-moderation/SKILL.md",
+      "computedHash": "e454758b0e7ef7b44df7de72e18126b589bb58720858db3cfcb4ec68a566605a"
+    },
+    "cross-platform-repurposing": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/cross-platform-repurposing/SKILL.md",
+      "computedHash": "bdf4d82598f0f5af0dd14ccb82cff849cd5cdc761c6c37f8cea4d42c240c7737"
+    },
+    "data-and-original-research": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/data-and-original-research/SKILL.md",
+      "computedHash": "bd87461f23ee862df3e261f30fceaa548eb5dde46c26110436b44ef7d39ee2b8"
+    },
+    "descript": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/descript/SKILL.md",
+      "computedHash": "503d73da583e1107153e7debabfeea4f05df715f9b7865e97351461d02a3c783"
+    },
+    "design-and-templates": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/design-and-templates/SKILL.md",
+      "computedHash": "2dbfc6042da2d10bb5cb518acfece8411e09fda7e54caf3269ff749a76bc4297"
+    },
+    "educational-content-and-how-to": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/educational-content-and-how-to/SKILL.md",
+      "computedHash": "837f56017f848213cfa5da210eb11168f5991e4f53706022dbb003e13a504a80"
+    },
+    "email-and-newsletter": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/email-and-newsletter/SKILL.md",
+      "computedHash": "35d809fb4d753a6626cc0dccb6c98ded9588a5a684122e2da557ecd47e2b930e"
     },
     "emil-design-eng": {
       "source": "emilkowalski/skill",
@@ -49,11 +253,83 @@
       "skillPath": "skills/emil-design-eng/SKILL.md",
       "computedHash": "2483020b5bbaab030d6b3463bfba49c8d9c2cd8dea4d9fba836dbd471f1fb706"
     },
+    "engagement-routine": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/engagement-routine/SKILL.md",
+      "computedHash": "687892fa6d286a231a321f87033750a8868522a453c40b4b24e23b501542f454"
+    },
+    "experimentation-and-ab-testing": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/experimentation-and-ab-testing/SKILL.md",
+      "computedHash": "27ae1913ac78455d57e10d6af502bc216fd5bed189b5e80f21a014b3a9a8f8b4"
+    },
+    "facebook-groups": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/facebook-groups/SKILL.md",
+      "computedHash": "a89215964f9621e873a0d9a013978c82dda1b7cfce2bbc83f2a96344b599a692"
+    },
+    "facebook-strategy": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/facebook-strategy/SKILL.md",
+      "computedHash": "c13a0de8bc1c9704c46612a1b6d1b55fc9fb754809040fa26fd4a38935e2a424"
+    },
     "find-animation-opportunities": {
       "source": "emilkowalski/skill",
       "sourceType": "github",
       "skillPath": "skills/find-animation-opportunities/SKILL.md",
       "computedHash": "465d087c41768e4f14ed640dd049036009f613feb55baaa5831b68b33178f9d2"
+    },
+    "flux": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/flux/SKILL.md",
+      "computedHash": "e84bb551f227055dfc89c06f8ac4d5370878c0882bbe333e82717869739633e4"
+    },
+    "goals-and-kpis": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/goals-and-kpis/SKILL.md",
+      "computedHash": "2531aba999cb66c45ae8841080cd06cb08b43590be0dfdc901c9f466e90c8be3"
+    },
+    "hashtag-strategy": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/hashtag-strategy/SKILL.md",
+      "computedHash": "e1604e1f9a43168c617ee666a4fbc72c6af12c0588b106a43dac597114296cf2"
+    },
+    "heygen": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/heygen/SKILL.md",
+      "computedHash": "10f8840895a0277bd2d1bc915afad9ee86576047e60c98e5a8735c44051a6417"
+    },
+    "hook-writer": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/hook-writer/SKILL.md",
+      "computedHash": "cda0893e72ed7586ae2a6a0231e09076ca6d5aba532c1cdd8a1298b647f99f5a"
+    },
+    "idea-generation-and-ideation": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/idea-generation-and-ideation/SKILL.md",
+      "computedHash": "5a8c52588d69ba90cab9f95ec243e1f475b094876166a2a6a29a5094c6d4bef0"
+    },
+    "ideogram": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/ideogram/SKILL.md",
+      "computedHash": "5afd259278ede314dd6c88bbb0ab7219614884ace5711f8b6b9a5cca26f2050e"
+    },
+    "image-prompt": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/image-prompt/SKILL.md",
+      "computedHash": "48bf5bf8b9d9d74e745d9f391060880e2b02a987d2ee61f76965573094af76b5"
     },
     "improve-animations": {
       "source": "emilkowalski/skill",
@@ -61,11 +337,113 @@
       "skillPath": "skills/improve-animations/SKILL.md",
       "computedHash": "f6652a3bb94950baa33c684cc0966c838eb65cf22ebb5769a4f51ea205c254fe"
     },
+    "infographic-and-data-viz": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/infographic-and-data-viz/SKILL.md",
+      "computedHash": "d6535f6e54844ae2af8170d27666113178c9e1bb297f605fd44a9e4feffbb5c4"
+    },
+    "instagram-growth": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/instagram-growth/SKILL.md",
+      "computedHash": "05ff7d77d69b8cd4e3fee3361030d11ecfdca55c5dbf5deeeca9743ad99043ad"
+    },
+    "instagram-reels-publishing": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/instagram-reels-publishing/SKILL.md",
+      "computedHash": "5cfa897d3bf62579de8cbe0be094c5ab61ee8f5de9fb8aa9ecffd8768b81ad65"
+    },
+    "instagram-seo": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/instagram-seo/SKILL.md",
+      "computedHash": "310e60b316d10bcd3ea0237f35138d506ceadbc767fe9d86f28e46e2ad6dd2f6"
+    },
+    "interactive-content": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/interactive-content/SKILL.md",
+      "computedHash": "0807f1dc65f39d27d9507647bfaa39b013477749870796b3edd1028c6bb4f73f"
+    },
+    "kling": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/kling/SKILL.md",
+      "computedHash": "8e259831bec6acc9870e87a9242e1bc84adc8f108d7ee1d88bb28d368e1ec3bb"
+    },
+    "lead-magnets-and-funnels": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/lead-magnets-and-funnels/SKILL.md",
+      "computedHash": "598d16ffbd3ca389466f05ea623677b14338d07ab85a0e30c54ddfcceb65b090"
+    },
+    "link-in-bio-and-traffic": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/link-in-bio-and-traffic/SKILL.md",
+      "computedHash": "28a93b5d243f36aa8df2122ef9450d5f0845b0392862df06d3eb650b46f7eb65"
+    },
+    "linkedin-company-pages": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/linkedin-company-pages/SKILL.md",
+      "computedHash": "5257779d990467a6192d032a4b21bc29a952401f7a0bba1128d7dc9027a379e8"
+    },
+    "linkedin-growth": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/linkedin-growth/SKILL.md",
+      "computedHash": "ab55fbdbf6ac48e25ff16ed9b1a98219e657f2dc6223ecf51a114a7e66d28d19"
+    },
+    "linkedin-post-writer": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/linkedin-post-writer/SKILL.md",
+      "computedHash": "5087be5c8ddf2109efab5fc315084da0f4222d4cb79cb0c5828718f2dc03fbad"
+    },
+    "listicle-and-roundup": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/listicle-and-roundup/SKILL.md",
+      "computedHash": "285341332b7607a50bc7786d0d98e519ddb4b9a71cfb5481934105f5c441eebd"
+    },
+    "livestream-and-realtime": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/livestream-and-realtime/SKILL.md",
+      "computedHash": "bd72ed69bf438012f379b07141d19382de026be5442cbf5025fcd0362f90cbdc"
+    },
+    "luma": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/luma/SKILL.md",
+      "computedHash": "f7274d3616c08b425cbdffbd82598b1b5236391b84e2d5c4c2634528c509ee2b"
+    },
+    "meme-and-culture": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/meme-and-culture/SKILL.md",
+      "computedHash": "223e9376e9f9a707ae439ca08b4069c58a124715bc62d17d14262335d959d29a"
+    },
     "mobile-native": {
       "source": "emilkowalski/skill",
       "sourceType": "github",
       "skillPath": "skills/mobile-native/SKILL.md",
       "computedHash": "f221cea36642168df6d3d6d7f236237cbf1ae669138ff7df07775674223d49ad"
+    },
+    "nano-banana": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/nano-banana/SKILL.md",
+      "computedHash": "9ed1e5474b8d451610fafe2633e5af7ceaa1ec11857b42b1d870927ac7230fc7"
+    },
+    "opus-clip": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/opus-clip/SKILL.md",
+      "computedHash": "b7df29b0244071e7485a671de07e5f6e7b5b7e8fd59edff4b63f629670d6a405"
     },
     "pick-ui-library": {
       "source": "emilkowalski/skill",
@@ -73,11 +451,65 @@
       "skillPath": "skills/pick-ui-library/SKILL.md",
       "computedHash": "5d2a77bf0ecafbda85aa95fb49999b6d77945d9066ec83d970b62e5b388cd686"
     },
+    "pinterest-growth": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/pinterest-growth/SKILL.md",
+      "computedHash": "91eb1979b5498179d1d4c17ba3e85463289ec1d0fe6b587a22cce73d88e31f63"
+    },
+    "pinterest-pin-design": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/pinterest-pin-design/SKILL.md",
+      "computedHash": "24c9fd47fdb7d35825b86beacf279d107b7c3cb4f808888d5edf8c3e25be2c69"
+    },
+    "pinterest-seo": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/pinterest-seo/SKILL.md",
+      "computedHash": "8a4656d9b63591ebd48e3e7acd16b0d100a0870cdab84ea73452532cefccfb1d"
+    },
+    "platform-specs-and-validation": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/platform-specs-and-validation/SKILL.md",
+      "computedHash": "eabc8e5fe764187b962d64a65ed380f9a9c9e0c535cdebd28bd30e1d9b9af376"
+    },
+    "podcast-and-audiograms": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/podcast-and-audiograms/SKILL.md",
+      "computedHash": "d94f4feb2914b0d55a1065ee2a05a04266fe0593ca0ff6899366ee63106227c7"
+    },
+    "profile-optimization": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/profile-optimization/SKILL.md",
+      "computedHash": "9cb18769fb80836480436bde927682c45ce7fc83fbc8b1218fdcb949406a1b9b"
+    },
     "prototype": {
       "source": "emilkowalski/skill",
       "sourceType": "github",
       "skillPath": "skills/prototype/SKILL.md",
       "computedHash": "77be567d8c946608fdd15e61b62ab383cdf289a194dce2479828b7eda860d3ba"
+    },
+    "quote-cards-and-text-graphics": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/quote-cards-and-text-graphics/SKILL.md",
+      "computedHash": "0568749f5e5c5c460e86b9b53128c474a058ca1897a9793c9c430ffe49adfd92"
+    },
+    "reddit-marketing": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/reddit-marketing/SKILL.md",
+      "computedHash": "8c0101e9c1f06b092117f7c41e25709d9982b9e41c276d1955ebe554c96edf6f"
+    },
+    "reels-script": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/reels-script/SKILL.md",
+      "computedHash": "6a075070191f2ee367c728e391452aed90b8b54bb0bfe1cbac88b54a39f4fae1"
     },
     "remove-animations": {
       "source": "emilkowalski/skill",
@@ -85,17 +517,221 @@
       "skillPath": "skills/remove-animations/SKILL.md",
       "computedHash": "5d738305c722c25e054a9e3b67e68d4429617d9fbae4bc8861b73cc25c8ba84c"
     },
+    "reply-and-comment-writer": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/reply-and-comment-writer/SKILL.md",
+      "computedHash": "d63a435d2ae5bb9d4f63dec93d4ce4e94ecd25353da9201e382716480cb3cdaa"
+    },
     "review-animations": {
       "source": "emilkowalski/skill",
       "sourceType": "github",
       "skillPath": "skills/review-animations/SKILL.md",
       "computedHash": "b1aca2c16876b8f00e2a1eb161714e63ec41099269d5f95c2f307230749b9dcd"
     },
+    "runway": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/runway/SKILL.md",
+      "computedHash": "7792e2fbbe93f5faf18d6f77f4e3c8540c408838eff700e6a3eeeb69eaf9a08c"
+    },
+    "scheduling-and-queue": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/scheduling-and-queue/SKILL.md",
+      "computedHash": "53f27dcb705c74496a5d1f92db5571ed67ec80371d06983c5e410958d988aaa6"
+    },
+    "scripting-and-storyboarding": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/scripting-and-storyboarding/SKILL.md",
+      "computedHash": "52337c0b9f59d488940b20f8a51e758238cfd9845c5b0d7ba4636476c231ac60"
+    },
+    "seasonal-and-moment-marketing": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/seasonal-and-moment-marketing/SKILL.md",
+      "computedHash": "2a809fac1b53589faebd16188f1317333854203eb1c0b68bf68d237a53b008cb"
+    },
+    "short-form-video-script": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/short-form-video-script/SKILL.md",
+      "computedHash": "6a039eba320c8e0ad7c37f324dcf9d6b697c766f67f5f24c8a34be06325e4a7b"
+    },
+    "social-proof-and-testimonials": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/social-proof-and-testimonials/SKILL.md",
+      "computedHash": "20f4ff6a5380095df085071f6cd7a3139a7fb33ab464c6bde9ea31bc50600983"
+    },
+    "social-selling-and-dm": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/social-selling-and-dm/SKILL.md",
+      "computedHash": "7285d99309657670bc6572f504372fc801070adad50de131aa941d0b04058095"
+    },
+    "social-seo": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/social-seo/SKILL.md",
+      "computedHash": "45dd632c9a034f6470dc8ce04f2c084b8bdd542e7ffe54050faf0634ebe62dab"
+    },
+    "social-strategy": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/social-strategy/SKILL.md",
+      "computedHash": "d38d67fb5219d5204b68616b55fe83ad6a65e0ea482fa6033d4f5fdc3ce43415"
+    },
+    "story-writer": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/story-writer/SKILL.md",
+      "computedHash": "d6dd9b9eb700be75ffc20011cecb45bdf169f8c897d4e583439ef3bcb643aae5"
+    },
+    "storytelling-and-narrative": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/storytelling-and-narrative/SKILL.md",
+      "computedHash": "49f13a2f41c5fd32eaee2655b5c983bee39364271e56461e9fad1ef7977ab25e"
+    },
+    "suno": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/suno/SKILL.md",
+      "computedHash": "129d7607a1c4ffbd5ff8097f51437e01842e1ba811d4b26ac39b0d308dd30f2c"
+    },
+    "synthesia": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/synthesia/SKILL.md",
+      "computedHash": "0e933782075d174d46f97509189e133bccbf12bea57683eac7cbcd14a7fc341b"
+    },
+    "talking-head-and-piece-to-camera": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/talking-head-and-piece-to-camera/SKILL.md",
+      "computedHash": "7b2a507450f8b9e25d2c955ab93b3c3ab2d88a5ba83baca6f5b048a0832a83a5"
+    },
+    "text-post-and-microblog": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/text-post-and-microblog/SKILL.md",
+      "computedHash": "df9a04c67215018ac4fa07c13fc64ca804a2c9d1dea6a95e59f577d262d345e7"
+    },
+    "thread-writer": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/thread-writer/SKILL.md",
+      "computedHash": "cacbd6c9934ea05037e9f51670014a4c385dc5c105c8a1dabec9f7b95cad217f"
+    },
+    "threads-growth": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/threads-growth/SKILL.md",
+      "computedHash": "ee4a2f957517e29486a030011444340f3cd09b4774dbf0ce9ebdbd3767f86833"
+    },
+    "threads-post": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/threads-post/SKILL.md",
+      "computedHash": "e41bdf35638a568cc1351ed5d6b2cb2b8381990d5617ebbf30e235633c92fafa"
+    },
+    "thumbnail-design": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/thumbnail-design/SKILL.md",
+      "computedHash": "8c31872318bc64949f8ff1f44884c5704b1caf47e96f4d3643dadcb159f3c400"
+    },
+    "tiktok-growth": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/tiktok-growth/SKILL.md",
+      "computedHash": "6099b03e7001c0cfc9fec1d9676cbb6c0f862cb516a9010f50fd711727c7fa86"
+    },
+    "tiktok-photo-mode": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/tiktok-photo-mode/SKILL.md",
+      "computedHash": "5ed5069e45d5f1128dc1746c2567d2d5da9f5b74f40b4489e92df31a8226687b"
+    },
+    "tiktok-script": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/tiktok-script/SKILL.md",
+      "computedHash": "a02697ecd222ab391ef44bdc7e9feea1d08982c2088ab0b85bac04493b864826"
+    },
+    "tiktok-video-publishing": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/tiktok-video-publishing/SKILL.md",
+      "computedHash": "eb23026311c4adbc3e85319a9093a67be22c0aae36526e8db277d00ec7e27324"
+    },
+    "trend-jacking": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/trend-jacking/SKILL.md",
+      "computedHash": "12a374fbbb96c5c9dddb0caf21c9d1c0e1bb4f3c99216846164bb76664ad1bcd"
+    },
+    "ugc-and-influencer": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/ugc-and-influencer/SKILL.md",
+      "computedHash": "7f657ac338a5efd0103452efad5017859ac6861f81091ec48f692122b6583f9c"
+    },
+    "veo-3": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/veo-3/SKILL.md",
+      "computedHash": "aeeded88626698ed81f57bd61326de09809a941c1f316ba481d72ae767488a61"
+    },
+    "viral-reverse-engineering": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/viral-reverse-engineering/SKILL.md",
+      "computedHash": "406e8ccca85054053d9a7fc713ed1e7f491420e1bc734879fd1e66d0daddb349"
+    },
+    "voice-builder": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/voice-builder/SKILL.md",
+      "computedHash": "192917e941fd4aee6677c415454bfb205f8f66efbbefafd829970b3cf520931d"
+    },
     "write-swift": {
       "source": "emilkowalski/skill",
       "sourceType": "github",
       "skillPath": "skills/write-swift/SKILL.md",
       "computedHash": "f20bb9cf51dbee1900b264820a12f1d3d378dc4d23ac758e7ba9e644c49a2459"
+    },
+    "writing-style-and-tone": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/writing-style-and-tone/SKILL.md",
+      "computedHash": "f5149db093a3ca58e1620c87abff4c3c005d6009eca49c4dedaad21bf3cf1c30"
+    },
+    "x-growth": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/x-growth/SKILL.md",
+      "computedHash": "14fefc936cdcd09e5fc89a28b92e7e8b24fa9bb75f3371ed3bb04619999c80d5"
+    },
+    "youtube-long-form": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/youtube-long-form/SKILL.md",
+      "computedHash": "4686f947b9c495286e7973b3bb0974aef0fd1ca4dc0aaf1ce9cc67280e3fed2d"
+    },
+    "youtube-publishing-and-metadata": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/youtube-publishing-and-metadata/SKILL.md",
+      "computedHash": "7e35a557ae293cce4ed6fd46a54fe5d92690f2d307e3e58e7aee0f81aea70566"
+    },
+    "youtube-shorts": {
+      "source": "social-media-skills/skills",
+      "sourceType": "github",
+      "skillPath": "skills/youtube-shorts/SKILL.md",
+      "computedHash": "95da6e26dfd9fd05b5a0c56fe9bdde821b97f36bbb05bcbbb2823dcf0220b92e"
     }
   }
 }

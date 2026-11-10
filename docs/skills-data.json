@@ -867,6 +867,23 @@
     "description": "Inspect the codebase before planning; identify dependencies, hidden risks, and breaking changes in a concise scope report."
   },
   {
+    "id": "agyos-self-improvement",
+    "name": "Agyos Self Improvement",
+    "module": "AGYOS Governance",
+    "category": "Governance",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill agyos-self-improvement",
+    "path": ".agents/skills/agyos-self-improvement",
+    "risk": "assess_for_task",
+    "description": "Autonomous self-correction and continuous improvement protocol for the entire AGYOS skill catalog. Captures user corrections, integrates industry trends, maintains cross-skill dependencies, enforces quality gates, and preserves test ratchets across all 1970+ skills."
+  },
+  {
     "id": "agyos-software-protection",
     "name": "Agyos Software Protection",
     "module": "AGYOS Governance",
@@ -1139,6 +1156,23 @@
     "description": "Engineering operating model for teams where AI agents generate a large share of implementation output. Use when setting team process, review gates, or ownership rules for a codebase largely written by agents."
   },
   {
+    "id": "ai-image-editing",
+    "name": "Ai Image Editing",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill ai-image-editing",
+    "path": ".agents/skills/ai-image-editing",
+    "risk": "assess_for_task",
+    "description": "The AI image-editing router , inpainting/object removal, background removal, upscaling, outpainting, old-photo restoration, and retouch, routed task-first to the right engine. Use when someone wants to remove an object/person from a photo, cut out backgrounds, upscale an image, extend an image to new aspect ratios, restore an old photo, fix a generated image, or asks which editing tool to use. Uses the TOUCH framework. Reads brand-profile + design-and-templates first. The agent names the task, routes to the right engine, writes the spec, and can call APIs where connected; the HUMAN judges every result at 100%; WoopSocial publishes. Honesty spine: an edited real photo is an edited claim , creative upscalers hallucinate detail (never on products/documents), no defect concealment, body-retouch disclosure honored, no watermark/provenance stripping. Distinct from image-prompt/flux/nano-banana (generation), canva (the design workflow), and before-after-and-transformation (the claim rules)."
+  },
+  {
     "id": "ai-image-gen",
     "name": "Ai Image Gen",
     "module": "Domain & Research Extensions",
@@ -1171,6 +1205,23 @@
     "path": ".agents/skills/ai-ml",
     "risk": "assess_for_task",
     "description": "AI and machine learning workflow covering LLM application development, RAG implementation, agent architecture, ML pipelines, and AI-powered features."
+  },
+  {
+    "id": "ai-music-and-sound",
+    "name": "Ai Music And Sound",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill ai-music-and-sound",
+    "path": ".agents/skills/ai-music-and-sound",
+    "risk": "assess_for_task",
+    "description": "The AI music + sound-design skill for social -- original/licensed audio beds and sound design for Reels/TikToks/Shorts/videos. Use when someone needs background music, a track, or sound effects for a social video, asks which AI music tool is safe to use, or asks \"can I use this trending sound/song on my brand video?\". The real brief is \"audio that won't get muted, claimed, or sued,\" so it picks the safest licensed source and never uses copyrighted or trending music without a license. Uses the SCORE framework. Reads brand-profile + the video it scores first. The agent briefs the music + sound design, picks the safest licensed source (ElevenLabs Music/SFX or stock libraries over Suno/Udio; paid tier for commercial rights), and advises licensing/Content-ID/disclosure. The tool generates/licenses the audio; the creator bakes it in; WoopSocial publishes the video and does NOT generate music. Pure AI music may not be copyrightable; never \"100% legally safe.\" Pairs with ai-voiceover."
   },
   {
     "id": "ai-native-cli",
@@ -1258,6 +1309,23 @@
     "description": "Regression testing strategies for AI-assisted development. Sandbox-mode API testing without database dependencies, automated bug-check workflows, and patterns to catch AI blind spots where the same model writes and reviews code. Use when adding regression coverage to AI-assisted code, or when the same model both wrote and reviewed a change."
   },
   {
+    "id": "ai-search-optimization",
+    "name": "Ai Search Optimization",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill ai-search-optimization",
+    "path": ".agents/skills/ai-search-optimization",
+    "risk": "assess_for_task",
+    "description": "Use to get a brand and its content CITED and RECOMMENDED by AI answer engines , the GEO (Generative Engine Optimization) / AI-search-visibility skill. Run when the user says \"GEO,\" \"get cited by ChatGPT/Perplexity/Google AI,\" \"ChatGPT SEO,\" \"LLM SEO / LLMO,\" \"AI Overviews,\" \"answer engine optimization (AEO),\" \"will AI recommend my brand,\" or wants to show up in AI-generated answers, not just the feed or Google links. Reads brand-profile and audience first. AI engines retrieve + fan-out and cite community/social sources heavily (Reddit, YouTube, Wikipedia); platforms disagree; earned media beats product pages; extractable, fresh content drives citation. Covers the four GEO levers (retrievable, earned mentions, extractable content, entity clarity), authentic social plays, and the manual prompt-audit method. Refuses astroturfing; never fabricates \"share of voice.\" Sibling of social-seo (platform + Google search). Judges via the audit + GEO tools + AI referral traffic."
+  },
+  {
     "id": "ai-seo",
     "name": "Ai Seo",
     "module": "Technical SEO",
@@ -1290,6 +1358,74 @@
     "path": ".agents/skills/ai-studio-image",
     "risk": "assess_for_task",
     "description": "Geracao de imagens humanizadas via Google AI Studio (Gemini). Fotos realistas estilo influencer ou educacional com iluminacao natural e imperfeicoes sutis."
+  },
+  {
+    "id": "ai-video",
+    "name": "Ai Video",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill ai-video",
+    "path": ".agents/skills/ai-video",
+    "risk": "assess_for_task",
+    "description": "The model-agnostic AI-video router and brief , the counterpart to image-prompt. Use when someone asks \"which AI video tool should I use,\" \"make an AI video,\" \"generate B-roll / a talking-head / a voiceover,\" \"turn this long video into Shorts,\" or needs a video brief. Routes the job to the right tool by fit and writes a portable brief; the tool generates, the human assembles, WoopSocial schedules/publishes. Sits above the tool skills: veo-3, kling, luma (generative scenes), heygen, synthesia (avatars), ai-voiceover, captions-and-clipping. A real human on camera routes to talking-head-and-piece-to-camera. Never routes to discontinued tools."
+  },
+  {
+    "id": "ai-video-detection-forensics",
+    "name": "Ai Video Detection Forensics",
+    "module": "Verification & Testing",
+    "category": "QA & Testing",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill ai-video-detection-forensics",
+    "path": ".agents/skills/ai-video-detection-forensics",
+    "risk": "assess_for_task",
+    "description": "The 200-principle master reference for AI video detection and forensic media analysis. Covers Google SynthID detection, C2PA Content Credentials, metadata analysis, temporal consistency, anatomical and physics heuristics, multimodal audio-visual alignment, and verification workflows using FFmpeg, MediaInfo, and frame extraction."
+  },
+  {
+    "id": "ai-video-quality-enhancement",
+    "name": "Ai Video Quality Enhancement",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill ai-video-quality-enhancement",
+    "path": ".agents/skills/ai-video-quality-enhancement",
+    "risk": "assess_for_task",
+    "description": "Master reference and CLI toolkit for repairing AI-generated video defects (Google Flow & Veo 2026). Maps 200 forensic detection principles to actionable restoration pipelines using FFmpeg, CodeFormer, Real-ESRGAN, Video2X, ProPainter, DeepFilterNet, Demucs, whisper.cpp, PySceneDetect, VapourSynth, VidStab, and VMAF. Includes generation-time prompt engineering for Google Flow studio."
+  },
+  {
+    "id": "ai-voiceover",
+    "name": "Ai Voiceover",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill ai-voiceover",
+    "path": ".agents/skills/ai-voiceover",
+    "risk": "assess_for_task",
+    "description": "The AI narration / voiceover mini-skill (ElevenLabs-led). Use when someone wants an \"AI voiceover,\" \"narration,\" \"text-to-speech for a video,\" \"voice for my Reel/Short/explainer,\" \"clone my voice,\" or to \"dub a video into other languages.\" Picks the voice and model, writes for the ear, and directs the delivery; ElevenLabs generates the audio, the human mixes/reviews, WoopSocial schedules/publishes. Sits below the ai-video router, sibling to veo-3 and heygen. Consented voices only; disclose AI voice in ads/political."
   },
   {
     "id": "ai-wrapper-product",
@@ -1443,6 +1579,23 @@
     "path": ".agents/skills/amplitude-automation",
     "risk": "assess_for_task",
     "description": "Automate Amplitude tasks via Rube MCP (Composio): events, user activity, cohorts, user identification. Always search tools first for current schemas."
+  },
+  {
+    "id": "analytics-and-reporting",
+    "name": "Analytics And Reporting",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill analytics-and-reporting",
+    "path": ".agents/skills/analytics-and-reporting",
+    "risk": "assess_for_task",
+    "description": "Social media analytics and reporting , read native platform data honestly and turn it into next actions. Use when someone wants to \"check my analytics,\" \"see how my posts are doing,\" \"build a social media report,\" \"which content is working,\" \"what metrics/KPIs should I track,\" or to turn performance data into next steps. Measures goal-mapped SIGNAL metrics (saves, shares, watch time/retention, engagement-rate-by-reach, follower-growth-rate, CTR, conversions) , not vanity (followers/impressions/likes) , and closes the loop. Uses the METER framework. Reads brand-profile + social-strategy (goals) first. Reads WoopSocial post analytics for TikTok, LinkedIn, Facebook, Instagram, Pinterest, YouTube, and Bluesky; native dashboards otherwise. It NEVER fabricates a metric. Feeds content-recycling, experimentation, competitor-analysis, and every growth skill. Distinct from goals-and-kpis (sets targets) and experimentation (runs tests)."
   },
   {
     "id": "analytics-product",
@@ -2888,6 +3041,23 @@
     "path": ".agents/skills/auctioneer-registry-lookup",
     "risk": "assess_for_task",
     "description": "Coleta e consulta dados de leiloeiros oficiais de todas as 27 Juntas Comerciais do Brasil. Scraper multi-UF, banco SQLite, API FastAPI e exportacao CSV/JSON."
+  },
+  {
+    "id": "audience-research",
+    "name": "Audience Research",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill audience-research",
+    "path": ".agents/skills/audience-research",
+    "risk": "assess_for_task",
+    "description": "Use to develop a deep, usable understanding of who a brand creates content for , sharp enough that every content skill resonates with them specifically. Run when the user says \"who's my audience,\" \"audience research,\" \"target audience,\" \"build a persona,\" \"customer profile,\" \"ideal customer profile\" / \"ICP,\" \"who am I talking to,\" \"understand my followers,\" or before content work that needs more audience depth than the brand-profile sketch. Reads brand-profile first and goes deeper: jobs-to-be-done, pains, objections, and the audience's ACTUAL language (voice-of-customer), grounded in real sources where possible , never demographic theater. Produces an audience.md that content-pillars, batch-content-plan, and the content skills read. Works for any business."
   },
   {
     "id": "audio-transcriber",
@@ -5474,6 +5644,23 @@
     "description": "Bash scripting workflow for creating production-ready shell scripts with defensive patterns, error handling, and testing."
   },
   {
+    "id": "batch-content-plan",
+    "name": "Batch Content Plan",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill batch-content-plan",
+    "path": ".agents/skills/batch-content-plan",
+    "risk": "assess_for_task",
+    "description": "Use to plan and produce a full batch of social media content for a period , a week or a month , in one session: strategically balanced, on-brand, mapped to a calendar, and ready to schedule. Run when the user says \"plan my content,\" \"a month of posts,\" \"batch my content,\" \"plan the week,\" \"fill my calendar,\" or wants many posts planned at once in one sitting. Reads brand-profile, voice, and content-pillars first, and produces a brief for each post that the content skills (caption-writer, reels-script, hook-writer) execute. As a BRIDGE skill it then confirms and hands the batch to scheduling-and-queue. Builds a balanced mix , never all-promotion , matched to the user's real capacity. Suggests cadence but does not claim analytics-based timing (not a best-time model). For the ongoing recurring system , which pillars/formats post on which days, the living \"content calendar\" , use content-calendar; this skill fills one specific period of that system with actual post briefs."
+  },
+  {
     "id": "bats-testing-patterns",
     "name": "Bats Testing Patterns",
     "module": "Domain & Research Extensions",
@@ -5576,6 +5763,23 @@
     "description": "A hard-edged writing style contract for timeless, forceful English prose without modern AI tics. Use when users ask for prose or rewrites that must be clean, exact, concrete, and free of AI cadence, filler, or therapeutic tone."
   },
   {
+    "id": "before-after-and-transformation",
+    "name": "Before After And Transformation",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill before-after-and-transformation",
+    "path": ".agents/skills/before-after-and-transformation",
+    "risk": "assess_for_task",
+    "description": "The transformation / before-after content format , structure a credible, honest, satisfying transformation (fitness, beauty, business results, skill progress, makeovers, client glow-ups, product before/after). Use when someone wants a before/after, a transformation post, a client-results reveal, a progress/journey story, or a makeover. Most powerful format AND most abused/distrusted , honesty is the edge; FTC enforcement is live. Uses the SHIFT framework. Reads brand-profile + social-proof-and-testimonials (consent + FTC substantiation) + short-form-video-script first. Agent structures + specs; human/tool produces the real media; WoopSocial publishes. Never stages/exaggerates the before, hides aids, cherry-picks, or fabricates a result; \"results not typical\" alone is insufficient , disclose the actual typical result; consent + YMYL required. Distinct from social-proof-and-testimonials, short-form-video- script, infographic-and-data-viz, and storytelling-and-narrative."
+  },
+  {
     "id": "behavioral-modes",
     "name": "Behavioral Modes",
     "module": "Domain & Research Extensions",
@@ -5591,6 +5795,23 @@
     "path": ".agents/skills/behavioral-modes",
     "risk": "assess_for_task",
     "description": "AI operational modes (brainstorm, implement, debug, review, teach, ship, orchestrate). Use to adapt behavior based on task type."
+  },
+  {
+    "id": "behind-the-scenes-and-founder",
+    "name": "Behind The Scenes And Founder",
+    "module": "Security & Defense",
+    "category": "Security",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill behind-the-scenes-and-founder",
+    "path": ".agents/skills/behind-the-scenes-and-founder",
+    "risk": "assess_for_task",
+    "description": "The transparency content type , turn what's actually happening inside the business into founder/personal-brand content that builds trust: build-in-public updates, founder story, how-it's-made content, team culture, and honest struggle posts. Use when someone wants behind the scenes, build in public, founder content, a personal brand post, or a day in the life. People follow people , founder-voice content out-performs brand-page content because it's specific and true. Uses the REVEAL framework. Reads brand-profile + voice-builder first. The agent finds the real moment, sharpens specifics + stakes, checks the transparency tier (share vs never: customer data, team conflicts, legal), and frames it in founder-voice; the human owns the reveal permanently; WoopSocial publishes. Never fabricates a struggle, performs vulnerability for reach, or exposes customer/team/legal matters. Distinct from contrarian-and-opinion, storytelling-and-narrative, social-proof, and the format writers."
   },
   {
     "id": "benchmark-methodology",
@@ -5897,6 +6118,23 @@
     "path": ".agents/skills/brand-perception-psychologist",
     "risk": "assess_for_task",
     "description": "One sentence - what this skill does and when to invoke it"
+  },
+  {
+    "id": "brand-profile",
+    "name": "Brand Profile",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill brand-profile",
+    "path": ".agents/skills/brand-profile",
+    "risk": "assess_for_task",
+    "description": "Use FIRST, before any other social media skill, to load or create the brand profile , the durable record of who a business is, who it serves, how it sounds, and what it will and won't say. Run this when the user says \"set up my brand,\" \"brand profile,\" \"brand guidelines,\" \"define our brand voice,\" \"onboard,\" \"get started,\" when work begins for a new business or client, or any time another social skill needs brand context that isn't already loaded. Works for ANY business: B2B SaaS, ecommerce, local and small business, agencies and their clients, personal brands and creators, and nonprofits. For writing actual posts, see the content skills; to derive a voice from an existing body of writing, use voice-builder; this skill only builds the shared context they all read."
   },
   {
     "id": "brand-voice",
@@ -6392,6 +6630,23 @@
     "description": "Automate Calendly scheduling, event management, invitee tracking, availability checks, and organization administration via Rube MCP (Composio). Always search tools first for current schemas."
   },
   {
+    "id": "campaign-and-launch-planning",
+    "name": "Campaign And Launch Planning",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill campaign-and-launch-planning",
+    "path": ".agents/skills/campaign-and-launch-planning",
+    "risk": "assess_for_task",
+    "description": "Plan and orchestrate a product launch or social media campaign end to end , the multi-week arc, channel by channel. Use when someone wants to plan a launch, product drop, campaign, big announcement, waitlist/pre-launch push, or coordinated multi-platform moment. Plans a time-boxed campaign as ONE story across three phases (tease -> launch -> sustain) toward a single goal, and schedules the coordinated social posts via WoopSocial. Uses the STORY framework. Reads brand-profile + goals-and-kpis first. WoopSocial schedules + publishes the social posts on the timeline; the waitlist/hub, email sequence, checkout, paid ads, press/creator outreach, and livestream are external/native, and conversion/ROI come from native analytics + the store (never fabricated). Urgency must be credible (no fake countdowns/scarcity). Distinct from content-calendar (the ongoing always-on cadence) and goals-and-kpis (the targets a campaign serves)."
+  },
+  {
     "id": "canary-watch",
     "name": "Canary Watch",
     "module": "Verification & Testing",
@@ -6407,6 +6662,23 @@
     "path": ".agents/skills/canary-watch",
     "risk": "assess_for_task",
     "description": "Use this skill to monitor and verify a deployed URL after releases , checks HTTP endpoints, SSE streams, static assets, console errors, and performance regressions after deploys, merges, or dependency upgrades. Smoke / canary / post-deploy verification."
+  },
+  {
+    "id": "canva",
+    "name": "Canva",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill canva",
+    "path": ".agents/skills/canva",
+    "risk": "assess_for_task",
+    "description": "The Canva craft skill , produce on-brand social graphics, carousels, quote cards, infographics, and thumbnails at scale without a designer, and escape the \"Canva look.\" Use when someone wants to design in Canva, make social graphics, set up a Brand Kit, batch-produce graphics (Bulk Create), resize one design for every platform (Magic Resize), use Canva's AI (Magic Studio), or asks why their posts look like a template. Uses the SCALE framework. Reads brand-profile + design-and-templates + voice-builder first. The agent specs, and creates designs directly where the Canva MCP/Connect APIs are connected; the human approves every visual; the export publishes via WoopSocial. Never strips watermarks, impersonates another brand, or uses unpermitted likeness; AI-disclosure + accessibility floor apply. Distinct from design-and-templates (the brand system this executes), image-prompt + the image tools (dedicated generation), ai-image-editing (the edit router), and capcut/descript (video editing)."
   },
   {
     "id": "canva-automation",
@@ -6441,6 +6713,74 @@
     "path": ".agents/skills/canvas-design",
     "risk": "assess_for_task",
     "description": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations."
+  },
+  {
+    "id": "capcut",
+    "name": "Capcut",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill capcut",
+    "path": ".agents/skills/capcut",
+    "risk": "assess_for_task",
+    "description": "The CapCut craft skill , edit short-form social video (TikTok, Reels, Shorts) fast and safely: retention-paced cuts, auto-captions, beat-synced sound, exports. Use when someone wants to edit in CapCut, cut a reel/short, set up auto-captions, use CapCut's AI tools, pick a plan, or asks whether CapCut music/assets or client work are safe commercially. Uses the EDITS framework. Reads short-form-video-script + brand-profile/design-and-templates + voice-builder first. The agent plans the edit and flags the licensing/ToS gates; the HUMAN executes in CapCut and approves; WoopSocial publishes the finished export. Safety spine: client/NDA work edits locally, never synced (the ToS licenses uploads), and music licensing has fine print , never pirated assets, non-consensual lip-sync, or uncorrected captions. Distinct from short-form-video-script (the script), captions-and-clipping/opus-clip (clipping long video), descript (long-form), canva (graphics), and ai-video/veo-3/kling/runway (generation)."
+  },
+  {
+    "id": "caption-writer",
+    "name": "Caption Writer",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill caption-writer",
+    "path": ".agents/skills/caption-writer",
+    "risk": "assess_for_task",
+    "description": "Use to write platform-native social media captions (post copy) in the brand's voice , the words that accompany a post on Instagram, LinkedIn, TikTok, Facebook, X/Twitter, Threads, Pinterest, YouTube, or Bluesky. Run when the user says \"write a caption,\" \"caption this,\" \"post copy,\" \"write the copy for this photo/video/Reel,\" \"IG caption,\" \"what should I write for this post,\" or needs the words to go with a visual. Reads brand-profile and voice first so captions sound like the brand, not generic AI. For long-form LinkedIn thought-leadership posts use linkedin-post-writer; for X/Threads multi-post threads use thread-writer; for video scripts use the video skills. This skill writes the caption itself."
+  },
+  {
+    "id": "captions-and-clipping",
+    "name": "Captions And Clipping",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill captions-and-clipping",
+    "path": ".agents/skills/captions-and-clipping",
+    "risk": "assess_for_task",
+    "description": "The long-form-to-Shorts + sound-off captions mini-skill (Opus Clip / CapCut / Submagic). Use when someone wants to \"clip my podcast/webinar/long video into Shorts,\" \"make TikToks/Reels from a YouTube video,\" \"add captions/subtitles to a video,\" \"repurpose long-form into short-form,\" or \"auto-generate clips.\" Tools clip and caption; a human reviews; WoopSocial schedules/publishes. Below the ai-video router; sibling to veo-3, heygen, ai-voiceover. This is the general craft: route OpusClip-specific pipelines (credits, Virality Score, tiers) to opus-clip, hands-on short-form editing to capcut, and the long-form talk edit itself to descript. Export clean (no watermark); disclose AI-edited video."
+  },
+  {
+    "id": "carousel-writer",
+    "name": "Carousel Writer",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill carousel-writer",
+    "path": ".agents/skills/carousel-writer",
+    "risk": "assess_for_task",
+    "description": "Use to write a carousel , a swipeable multi-slide post (Instagram carousel, LinkedIn document/PDF carousel, or TikTok photo carousel) , one of the highest-save, highest-dwell formats. Run when the user says \"write a carousel,\" \"carousel post,\" \"slides for X,\" \"LinkedIn document/PDF post,\" \"swipe post,\" \"turn this into a carousel,\" or wants multi-slide teaching or story content. Reads brand-profile and voice first; the cover slide hooks and promises the swipe (via hook-writer); each slide advances one idea and earns the next swipe; ends on a save-leaning CTA. Specifies the design direction and bundles an image-generation prompt pack (Nano Banana / Ideogram) for the slide visuals. Hands the caption to caption-writer and scheduling to scheduling-and-queue."
   },
   {
     "id": "carrier-relationship-management",
@@ -7293,6 +7633,23 @@
     "description": "Clinically informed wisdom companion blending psychology and philosophy into a structured thinking partner"
   },
   {
+    "id": "colab-cloud-execution",
+    "name": "Colab Cloud Execution",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill colab-cloud-execution",
+    "path": ".agents/skills/colab-cloud-execution",
+    "risk": "assess_for_task",
+    "description": "Provision remote Google Colab GPU/TPU/CPU runtimes and execute Python scripts, notebooks, or shell workloads headlessly via the official Google Colab CLI (`colab`)."
+  },
+  {
     "id": "cold-email",
     "name": "Cold Email",
     "module": "Domain & Research Extensions",
@@ -7308,6 +7665,23 @@
     "path": ".agents/skills/cold-email",
     "risk": "assess_for_task",
     "description": "Write B2B cold emails and follow-up sequences that earn replies. Use when creating outbound prospecting emails, SDR outreach, personalized opening lines, subject lines, CTAs, and multi-touch follow-up sequences."
+  },
+  {
+    "id": "collabs-and-cross-promotion",
+    "name": "Collabs And Cross Promotion",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill collabs-and-cross-promotion",
+    "path": ".agents/skills/collabs-and-cross-promotion",
+    "risk": "assess_for_task",
+    "description": "Creator collabs and cross-promotion , organic creator-to-creator partnerships that swap audiences. Use when someone wants to set up a collab, audience swap, cross-promotion, shoutout swap, joint giveaway, guest spot, joint video/series, a YouTube/IG collab post, or co-promo with another creator. Picks a complementary, similar-size, values-aligned partner, agrees the plan before creating, and co-creates shared-value content (not a bare shoutout) on a coordinated schedule. Uses the UNITE framework. Reads brand-profile + goals-and-kpis first. WoopSocial publishes each partner's OWN posts to their OWN accounts; it does NOT create native IG Collab co-authored posts, run giveaways, duet/stitch, or manage the agreement. A pure mutual collab isn't a sponsorship, but payment/free product makes it one -> disclose -> ugc-and-influencer; partnerships must be genuine; metrics never fabricated. Distinct from ugc-and-influencer (brand->creator) and creator-monetization (the creator's income)."
   },
   {
     "id": "comfyui-gateway",
@@ -7342,6 +7716,23 @@
     "path": ".agents/skills/comic-creator",
     "risk": "assess_for_task",
     "description": "Knowledge comic creator supporting multiple art styles and tones. Creates original educational comics with detailed panel layouts and sequential image generation. Use when user asks to create \"\u77e5\u8bc6\u6f2b\u753b\", \"\u6559\u80b2\u6f2b\u753b\", \"biography comic\", \"tutorial comic\", or \"Logicomix-style comic\"."
+  },
+  {
+    "id": "community-management",
+    "name": "Community Management",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill community-management",
+    "path": ".agents/skills/community-management",
+    "risk": "assess_for_task",
+    "description": "Use to build a genuine community , turning an audience into people who interact with each other, not just with the brand. Run when the user asks how to build community, support belonging/loyalty, create superfans, start a group/Discord channel, get members talking to each other, or move beyond chasing followers/virality. Reads brand-profile/social-strategy/audience-research. Community outperforms virality, measured by relationship depth/retention, not follower count. Covers the audience-to-community distinction (member-to-member interaction), choosing the space (in-feed -> semi-owned -> owned groups/Discord), recurring rituals, building belonging, and nurturing superfans into advocates. KPIs read natively, never fabricated. Advisory: WoopSocial schedules the content but does NOT run Discord/Slack or show analytics , the human runs the community, the agent drafts. Never fake community; get consent before spotlighting. Pairs with reply-and-comment-writer and crisis-and-moderation."
   },
   {
     "id": "competitive-landscape",
@@ -7410,6 +7801,23 @@
     "path": ".agents/skills/competitor-alternatives",
     "risk": "assess_for_task",
     "description": "You are an expert in creating competitor comparison and alternative pages. Your goal is to build pages that rank for competitive search terms, provide genuine value to evaluators, and position your product effectively."
+  },
+  {
+    "id": "competitor-analysis",
+    "name": "Competitor Analysis",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill competitor-analysis",
+    "path": ".agents/skills/competitor-analysis",
+    "risk": "assess_for_task",
+    "description": "Competitor analysis for social media , public-data competitive reconnaissance to find the gap a brand can own. Use when someone wants to \"analyse/research our competitors,\" \"see what rivals are doing on social,\" \"benchmark against competitors,\" \"find content gaps / white space,\" or \"do a competitive landscape / SWOT.\" Reads the PUBLIC competitive field , positioning, pillars, formats, cadence, share of voice , to find the gap the brand can own, then feeds social-strategy and content-pillars. Reads brand-profile + audience-research first. Advisory and public-data only: no scraping private data, no fake monitoring accounts, no fabricated competitor metrics, no copying. Distinct from viral-reverse-engineering (single-post teardown) and audience-research (your own audience)."
   },
   {
     "id": "compliance-check",
@@ -7735,6 +8143,40 @@
     "description": "Analyze cryptographic code to detect operations that leak secret data through execution timing variations."
   },
   {
+    "id": "content-audit",
+    "name": "Content Audit",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill content-audit",
+    "path": ".agents/skills/content-audit",
+    "risk": "assess_for_task",
+    "description": "Audit an existing social media account and its content , the retrospective reality-check of what's working and what isn't. Use when someone wants to \"audit my content/account,\" \"what's working and what isn't,\" \"clean up my profile/feed,\" \"I post a lot but it's not working,\" or to triage an existing account before replanning. Produces a keep/kill/refresh triage, maps pillar coverage, catches voice drift, and fixes profile fundamentals , then a quick-wins-vs-long-term roadmap. Uses the AUDIT framework. Reads brand-profile + content-pillars + social-strategy (the plan) and analytics-and-reporting (the data) first. It reads WoopSocial post analytics on covered platforms and native dashboards otherwise, scores on signal not vanity, recommends rather than auto-deletes, and never fabricates. Feeds content-recycling, content-pillars, profile-optimization, voice-builder, and social-strategy. Distinct from analytics-and-reporting (ongoing measurement) and competitor-analysis (rivals)."
+  },
+  {
+    "id": "content-calendar",
+    "name": "Content Calendar",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill content-calendar",
+    "path": ".agents/skills/content-calendar",
+    "risk": "assess_for_task",
+    "description": "Use to build a content calendar , a sustainable, repeatable posting rhythm and recurring structure (which pillars/formats post on which days, on which platforms), derived from strategy and pillars. Run when the user says \"content calendar,\" \"editorial calendar,\" \"social media calendar,\" \"posting schedule,\" \"content plan\" (ongoing), \"what should I post each week,\" \"build me a posting routine/cadence,\" or wants a repeatable system rather than one period's posts. Reads social-strategy, content-pillars, and brand-profile first; sizes cadence to real capacity; builds a recurring skeleton of buckets and named series with room reserved for reactive/trend content; sets the planning rhythm (batch, buffer, review). Hands a period's briefs to batch-content-plan, content to the writing skills, and scheduling to scheduling-and-queue. For filling one specific week/month with actual posts use batch-content-plan; for higher-level channel/goal choices use social-strategy."
+  },
+  {
     "id": "content-creator",
     "name": "Content Creator",
     "module": "Domain & Research Extensions",
@@ -7818,6 +8260,57 @@
     "path": ".agents/skills/content-marketer",
     "risk": "assess_for_task",
     "description": "Elite content marketing strategist specializing in AI-powered content creation, omnichannel distribution, SEO optimization, and data-driven performance marketing."
+  },
+  {
+    "id": "content-pillars",
+    "name": "Content Pillars",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill content-pillars",
+    "path": ".agents/skills/content-pillars",
+    "risk": "assess_for_task",
+    "description": "Use to define a brand's content pillars , the 3-5 recurring themes it posts about , the strategic backbone between the brand profile and the content calendar. Run when the user says \"content pillars,\" \"content buckets,\" \"what should I post about,\" \"content themes,\" \"content strategy,\" \"pillars,\" or before planning a batch or calendar. Reads brand-profile first and derives pillars from positioning, point of view, audience, and proof , real ownable themes, never generic \"educational / behind-the-scenes / promotional\" buckets (those are intents and formats, not pillars). Produces a content-pillars.md that batch-content-plan and the content skills read. Works for any business: B2B, ecommerce, local, personal brand, nonprofit."
+  },
+  {
+    "id": "content-recycling",
+    "name": "Content Recycling",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill content-recycling",
+    "path": ".agents/skills/content-recycling",
+    "risk": "assess_for_task",
+    "description": "Content recycling , resurface, update, and repost proven evergreen content over time. Use when someone wants to \"get more mileage out of old posts,\" \"recycle/repost our best content,\" \"resurface evergreen pieces,\" \"update and republish an old post,\" or build a recycling queue of proven winners. Recycles the INSIGHT refreshed (new hook/format/updated data) on a deliberate cadence , never an identical repost. Distinct from cross-platform-repurposing (same moment, many platforms) and captions-and-clipping (long-form -> short clips). Reads brand-profile + voice-builder first. The agent drafts the refresh; a human reviews; WoopSocial schedules/publishes (delete+recreate, no update); winners on the covered platforms are picked from WoopSocial post analytics; nothing is fabricated."
+  },
+  {
+    "id": "content-research-and-sourcing",
+    "name": "Content Research And Sourcing",
+    "module": "Verification & Testing",
+    "category": "QA & Testing",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill content-research-and-sourcing",
+    "path": ".agents/skills/content-research-and-sourcing",
+    "risk": "assess_for_task",
+    "description": "The research-and-sourcing craft , verify the substance of a piece before it publishes: trace stats to primary sources, kill zombie stats, catch AI-hallucinated citations, and attribute properly on social. Use when someone has a stat-heavy draft to make publish-ready, wants to check if a viral statistic is real, asks how to cite sources, used AI research output, or is making health/finance claims. Uses the FACTS framework. Reads brand-profile + the piece's format skill first. AI-supplied citations are guilty until verified; a working link is not verification; aggregators are leads, not the source; where none exists, reframe as owned observation or commission data. The agent verifies where it has search; the human clicks links where it doesn't; verification happens before scheduling; WoopSocial publishes. Never invents studies or reuses retracted stats. Distinct from idea-generation, data-and-original-research, quote-cards, and infographic-and-data-viz."
   },
   {
     "id": "content-strategy",
@@ -8158,6 +8651,23 @@
     "path": ".agents/skills/contract-first",
     "risk": "assess_for_task",
     "description": "Coordinate frontend/backend or service-to-service work through one authoritative machine-checkable contract (OpenAPI, AsyncAPI, Protocol Buffers, or JSON Schema), with generated consumer types and contract-verified integration. Use when parallel consumer and provider work must evolve an API or event schema without field drift, mock/production shape mismatch, or one side silently redefining the interface."
+  },
+  {
+    "id": "contrarian-and-opinion",
+    "name": "Contrarian And Opinion",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill contrarian-and-opinion",
+    "path": ".agents/skills/contrarian-and-opinion",
+    "risk": "assess_for_task",
+    "description": "The point-of-view content type , articulate, sharpen, and argue a genuinely-held contrarian stance / hot take / opinion / thought-leadership position that builds authority and real debate. Use when someone wants a POV, a hot take, an \"unpopular opinion\", a contrarian angle, an opinion piece, or to stop sounding like everyone else and build thought leadership. Uses the STAND framework. Reads brand-profile + voice-builder first. The agent argues the human's OWN opinion with evidence; the human owns the stance and the live debate; WoopSocial publishes. Never manufactures a stance, controversy, or ragebait; no strawmen, punching down, or defamation; opinion stays clearly opinion and factual claims must be true. Distinct from hook-writer (the opening-line mechanic this feeds), educational-content-and-how-to (teaches a process), storytelling-and-narrative (narrative vs argument), and behind-the-scenes-and-founder (personal story vs argued position)."
   },
   {
     "id": "control-plane",
@@ -8704,6 +9214,23 @@
     "description": "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation."
   },
   {
+    "id": "creator-monetization",
+    "name": "Creator Monetization",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill creator-monetization",
+    "path": ".agents/skills/creator-monetization",
+    "risk": "assess_for_task",
+    "description": "Creator monetization , build a diversified revenue portfolio from an audience: memberships, products, brand deals, platform payouts. Use when someone wants to \"make money as a creator,\" \"monetize my audience,\" \"start a membership/community,\" \"sell a course/digital product,\" \"get brand deals / set my rates,\" or build diversified creator income. Builds a revenue STACK rather than chasing a viral payout, using the STACK framework. Reads brand-profile + goals-and-kpis first. WoopSocial does NOT process payments, host products/memberships, or pay creators: the agent chooses/sequences streams, designs offers + media kit, and drafts promo posts; WoopSocial publishes the promo/launch posts; infrastructure is external; income is never promised or fabricated; sponsorships are disclosed (FTC). Distinct from email-and-newsletter (the owned channel), lead-magnets-and-funnels (funnel mechanics), and ugc-and-influencer (the BRAND side of creator deals , this is the creator side)."
+  },
+  {
     "id": "credential-manager",
     "name": "Credential Manager",
     "module": "Security & Defense",
@@ -8753,6 +9280,40 @@
     "path": ".agents/skills/criminal-defense-law-consultant",
     "risk": "assess_for_task",
     "description": "Advogado criminalista especializado em Maria da Penha, violencia domestica, feminicidio, direito penal brasileiro, medidas protetivas, inquerito policial e acao penal."
+  },
+  {
+    "id": "crisis-and-moderation",
+    "name": "Crisis And Moderation",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill crisis-and-moderation",
+    "path": ".agents/skills/crisis-and-moderation",
+    "risk": "assess_for_task",
+    "description": "Use when something goes wrong on social , the crisis-and-moderation playbook for negative moments, pile-ons, misinformation/deepfakes about the brand, offensive-post backlash, and community moderation. Run when the user says \"we're getting piled on,\" \"someone's spreading false info about us,\" \"should we delete/hide this,\" \"a deepfake of our brand,\" or needs to moderate a community. Reads brand-profile/voice. Confirm facts and triage severity first; acknowledge fast; speak human, not legalese; correct misinformation with evidence, not an apology; moderate fairly (hide abuse, leave honest criticism). HIGH-STAKES and human-in-the-loop: a crisis is when the agent must NOT act autonomously , it triages, drafts holding statements, and can pause/reschedule posts via scheduling-and-queue, while a HUMAN (and legal/leadership for high-severity) approves everything and moderates in-platform. WoopSocial has no comment/inbox/moderation surface; never auto-respond or fabricate facts."
+  },
+  {
+    "id": "cross-platform-repurposing",
+    "name": "Cross Platform Repurposing",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill cross-platform-repurposing",
+    "path": ".agents/skills/cross-platform-repurposing",
+    "risk": "assess_for_task",
+    "description": "Use to turn one piece of content into multiple platform-native posts , adapt, never copy-paste. Run when the user says \"repurpose this,\" \"turn this into posts for every platform,\" \"cross-post,\" \"make this work on TikTok/LinkedIn/X too,\" \"one idea into a week of content,\" \"turn this blog/video/podcast into social posts,\" or wants to fan content out. Reads brand-profile and voice first, extracts the core idea, then re-natives it for each platform (different hook, format, length, mechanics, CTA) using the content skills, and hands the fan-out to scheduling-and-queue. This is the multiplier that makes a content operation sustainable , but every version must stand on its own and feel native, never duplicated."
   },
   {
     "id": "crypto-bd-agent",
@@ -8991,6 +9552,23 @@
     "path": ".agents/skills/dashboard-builder",
     "risk": "assess_for_task",
     "description": "Build monitoring dashboards that answer real operator questions for Grafana, SigNoz, and similar platforms. Use when turning metrics into a working dashboard instead of a vanity board."
+  },
+  {
+    "id": "data-and-original-research",
+    "name": "Data And Original Research",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill data-and-original-research",
+    "path": ".agents/skills/data-and-original-research",
+    "risk": "assess_for_task",
+    "description": "The original-research / data-study content type , turn proprietary data, a survey, a public-dataset analysis, or an experiment into the most linkable and AI-citable asset you can publish. Use when someone wants to build authority with original data, run a \"state of X\" survey or industry study, turn proprietary/customer data into a publishable stat, or get cited by journalists and AI search (GEO). Uses the PROVE framework. Reads brand-profile + audience-research first. The agent designs the study (question, method, analysis plan) and frames the findings (headline stat, report, social cuts); the human/tool gathers the real data; WoopSocial publishes the finished cuts. Feeds ai-search-optimization + social-seo, the format writers, and infographic-and-data-viz. NEVER fabricates data, stats, or methodology; discloses method + limits. Distinct from educational-content-and-how-to (existing knowledge), analytics-and-reporting (internal performance), competitor-analysis, and trend-jacking."
   },
   {
     "id": "data-driven-feature",
@@ -9722,6 +10300,40 @@
     "path": ".agents/skills/deps-upgrade",
     "risk": "assess_for_task",
     "description": "You are a dependency management expert specializing in safe, incremental upgrades of project dependencies. Plan and execute dependency updates with minimal risk, proper testing, and clear migration pa"
+  },
+  {
+    "id": "descript",
+    "name": "Descript",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill descript",
+    "path": ".agents/skills/descript",
+    "risk": "assess_for_task",
+    "description": "The Descript craft skill , edit talk content (podcasts, interviews, talking-head video) by editing the transcript instead of the timeline. Use when someone wants to edit in Descript, edit a podcast or interview, remove filler words/silences, clean up audio (Studio Sound), fix a flubbed word without re-recording (Overdub), auto-cut between speakers, turn one recording into clips + show notes + chapters, or asks about Descript's plans, credits, or Underlord. Uses the WORDS framework plus the interview rule: concision yes, meaning-flips never. Reads the recording's content skill + brand-profile/voice-builder first. The agent plans the edit (API/MCP where connected); the HUMAN verifies by ear and approves; WoopSocial publishes the exports. Overdub is consent-verified own-voice-only; tiers/credits are verified in-app. Distinct from capcut (visual short-form), captions-and-clipping/opus-clip (clip selection at scale), ai-voiceover (dedicated TTS), and podcast-and-audiograms (the strategy)."
+  },
+  {
+    "id": "design-and-templates",
+    "name": "Design And Templates",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill design-and-templates",
+    "path": ".agents/skills/design-and-templates",
+    "risk": "assess_for_task",
+    "description": "The reusable on-brand template-SYSTEM skill -- build a brand kit + a small set of reusable templates so a non-designer can produce consistent on-brand graphics fast across formats. Use when someone wants templates, a brand kit, a consistent visual system, or help choosing/using a design tool (Canva/Adobe Express/Figma). For social, consistency + speed beat bespoke. Uses the BRAND framework. Reads brand-profile first. The agent designs the SYSTEM (brand-kit tokens, template set, hierarchy rules, workflow); a design tool or the image tools produce the actual graphics; the finished asset enters the WoopSocial flow (WoopSocial publishes -- it does NOT design or generate). Honest about the ~70-80% on-brand ceiling and AI copyright limits. Distinct from brand-profile (the identity source), thumbnail-design + pinterest-pin-design (single asset types), carousel-writer (copy vs visual frame), and image-prompt + the image tools (generation vs layout)."
   },
   {
     "id": "design-orchestration",
@@ -10693,6 +11305,23 @@
     "description": "Build, maintain, and extend the EarLLM One Android project , a Kotlin/Compose app that connects Bluetooth earbuds to an LLM via voice pipeline."
   },
   {
+    "id": "educational-content-and-how-to",
+    "name": "Educational Content And How To",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill educational-content-and-how-to",
+    "path": ".agents/skills/educational-content-and-how-to",
+    "risk": "assess_for_task",
+    "description": "The teach-to-grow content type -- pick a genuinely useful topic, teach ONE thing completely, structure it as a clear lesson, keep it accurate, and route it to the right format. Use when someone wants to teach their audience, make a how-to / tutorial / step-by-step / explainer / myth-buster, build authority content, or earn saves. Uses the TEACH framework. Reads brand-profile + audience-research + content-pillars first. Feeds the format writers (carousel-writer, reels-script, tiktok-script, thread-writer, caption-writer), hook-writer, the design/image tools, and lead-magnets/social-selling-and-dm; WoopSocial publishes + schedules the series. Accuracy is non-negotiable: cite sources, stay within real expertise, YMYL care, never fabricate steps or stats; measure saves/sends, not likes. Distinct from carousel-writer (the format it pairs with), reels-script/tiktok-script/thread-writer (other formats), storytelling-and-narrative (narrative vs didactic), and content-pillars (which topics)."
+  },
+  {
     "id": "electron-development",
     "name": "Electron Development",
     "module": "Domain & Research Extensions",
@@ -10880,6 +11509,23 @@
     "description": "Write idiomatic Elixir code with OTP patterns, supervision trees, and Phoenix LiveView. Masters concurrency, fault tolerance, and distributed systems."
   },
   {
+    "id": "email-and-newsletter",
+    "name": "Email And Newsletter",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill email-and-newsletter",
+    "path": ".agents/skills/email-and-newsletter",
+    "risk": "assess_for_task",
+    "description": "Email and newsletter strategy for creators and brands , the owned-audience layer that social feeds. Use when someone wants to \"start/grow a newsletter,\" \"build an email list,\" \"turn followers into subscribers,\" \"should I use Substack/beehiiv/LinkedIn,\" \"repurpose my newsletter into social (or vice versa),\" or build the audience layer social can't take away. Runs email (habit) + a web archive (discovery) off the same work and loops content social<->email. Uses the INBOX framework. Reads brand-profile + voice-builder + content-pillars first. WoopSocial does NOT send email , the agent strategizes and drafts, the ESP is external and human-run, WoopSocial publishes only the social side; metrics come from the ESP + GA4, never fabricated; consent + unsubscribe required. Distinct from link-in-bio-and-traffic (capture), cross-platform-repurposing (same-moment), and lead-magnets-and-funnels (the magnet)."
+  },
+  {
     "id": "email-ops",
     "name": "Email Ops",
     "module": "Verification & Testing",
@@ -11048,6 +11694,23 @@
     "path": ".agents/skills/energy-procurement",
     "risk": "assess_for_task",
     "description": "Procure electricity and natural gas for commercial and industrial facilities: tariff and rate-schedule optimization, demand-charge mitigation, supplier RFPs, fixed/index/block-and-index hedging, renewable PPA and REC evaluation, and sustainability reporting. Use when procuring energy, optimizing utility tariffs, managing demand charges, evaluating PPAs, or building energy budgets and hedge strategies."
+  },
+  {
+    "id": "engagement-routine",
+    "name": "Engagement Routine",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill engagement-routine",
+    "path": ".agents/skills/engagement-routine",
+    "risk": "assess_for_task",
+    "description": "Use to design a sustainable engagement routine , the operating system that turns the engagement craft into a daily/weekly habit. Run when the user asks how to keep up with comments/DMs, how much time to spend engaging, when to engage, how to build an engagement habit/system/cadence, or how to engage without burning out. Reads brand-profile/social-strategy. Covers time-boxed daily/weekly engagement windows built around the golden hour after posting, triage order, mapping engagement to a goal, and anti-burnout boundaries. The flywheel: batch and schedule content (scheduling-and-queue, batch-content-plan) to free the time, then spend it engaging. Advisory and honest , WoopSocial has no comment/DM/inbox surface. Post performance is analytics-and-reporting, not here, so the human engages in-app and the agent drafts via reply-and-comment-writer; never automates or fakes engagement. Pairs with reply-and-comment-writer (the craft), the growth skills, community-management, and crisis-and-moderation."
   },
   {
     "id": "engineering-blueprint-planner",
@@ -11441,6 +12104,23 @@
     "description": "Use when you have a written implementation plan to execute in a separate session with review checkpoints"
   },
   {
+    "id": "experimentation-and-ab-testing",
+    "name": "Experimentation And Ab Testing",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill experimentation-and-ab-testing",
+    "path": ".agents/skills/experimentation-and-ab-testing",
+    "risk": "assess_for_task",
+    "description": "A/B testing and experimentation for social media content , evidence over opinion, at honest organic-scale rigor. Use when someone wants to \"A/B test\" or \"split test\" content, \"test which version/hook/time/caption/thumbnail works,\" \"set up an experiment,\" \"what should I test,\" or to settle a content debate with evidence instead of opinion. Designs disciplined organic tests: one variable, controlled context, a decision rule set BEFORE publishing, enough duration and repetitions to separate signal from noise. Uses the TEST framework. Reads brand-profile + goals-and-kpis first. It DESIGNS the test and drafts variants; WoopSocial schedules them as controlled sequential posts (exception: YouTube's native Test & Compare); the result is read from native analytics via analytics-and-reporting. Organic can't reach true statistical significance; nothing is fabricated or p-hacked. Distinct from analytics-and-reporting (measures) and goals-and-kpis (sets targets)."
+  },
+  {
     "id": "expert-dev",
     "name": "Expert Dev",
     "module": "Domain & Research Extensions",
@@ -11728,6 +12408,40 @@
     "path": ".agents/skills/expo-ui-swift-ui",
     "risk": "assess_for_task",
     "description": "expo-ui-swift-ui"
+  },
+  {
+    "id": "facebook-groups",
+    "name": "Facebook Groups",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill facebook-groups",
+    "path": ".agents/skills/facebook-groups",
+    "risk": "assess_for_task",
+    "description": "The Facebook Groups strategy skill -- Groups as Facebook's real organic surface, deeper than what facebook-strategy routes to community-management. Use when someone wants to build/grow/run a Facebook Group, decide Group vs Page, or turn a community into leads. Groups reach 40-50% of members per post vs ~1.5% for Pages; Facebook deliberately favors Groups. Uses the TRIBE framework. Reads brand-profile + goals-and-kpis first. The agent designs the group strategy (niche, setup, content, growth, moderation, value-first monetization) and drafts group posts + the join-funnel content. essential: WoopSocial does NOT post to Groups -- it publishes the Page + cross-channel content that funnels people to JOIN; in-group posting, admin, moderation, and Group analytics stay native/human, routed to community-management. No automation/spam or fake members; value-first, never fabricates metrics. Distinct from facebook-strategy (the Page play) and community-management (the engagement routine)."
+  },
+  {
+    "id": "facebook-strategy",
+    "name": "Facebook Strategy",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill facebook-strategy",
+    "path": ".agents/skills/facebook-strategy",
+    "risk": "assess_for_task",
+    "description": "The Facebook strategy playbook for 2026. Use when someone wants to \"grow on Facebook,\" \"fix my Facebook reach,\" \"a Facebook content/Page strategy,\" \"Facebook Reels,\" or how the Facebook algorithm works now. Page feed broadcasting is effectively dead (~1.65% reach); Facebook is now an AI discovery engine plus a community platform. Play three surfaces: Reels for unconnected discovery, Feed for connected depth, Groups for community. Uses the REACH framework. Reads brand-profile + voice-builder first. The agent drafts Page posts/Reels + reply copy; WoopSocial schedules Page posts/Reels; comment replies are human/in-app; metrics come from native Meta Insights; nothing is fabricated. To BUILD/GROW/RUN a Facebook Group (the deep Groups strategy) use facebook-groups; distinct from reels-script (Reel craft), community-management (engagement routine), and instagram-growth (sibling)."
   },
   {
     "id": "faf-expert",
@@ -12034,6 +12748,23 @@
     "path": ".agents/skills/feature-development-pipeline",
     "risk": "assess_for_task",
     "description": "Feature development pipeline - research, plan, track, and implement major features."
+  },
+  {
+    "id": "ffmpeg-video-editor",
+    "name": "Ffmpeg Video Editor",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill ffmpeg-video-editor",
+    "path": ".agents/skills/ffmpeg-video-editor",
+    "risk": "assess_for_task",
+    "description": "Automated, programmatic video and audio editing using local FFmpeg. Covers silence detection, audio ducking with sidechain compression, YouTube loudness normalization (-14 LUFS), B-roll overlay cutaways, dynamic zoom punch-ins, SRT caption styling, and multi-clip concatenation with transitions."
   },
   {
     "id": "ffuf-web-fuzzing",
@@ -12425,6 +13156,23 @@
     "path": ".agents/skills/flutter-expert",
     "risk": "assess_for_task",
     "description": "Master Flutter development with Dart 3, advanced widgets, and multi-platform deployment."
+  },
+  {
+    "id": "flux",
+    "name": "Flux",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill flux",
+    "path": ".agents/skills/flux",
+    "risk": "assess_for_task",
+    "description": "The FLUX craft skill (Black Forest Labs) , generate and edit on-brand images with the right variant and license. Use when someone wants to generate images with FLUX/FLUX.2/Kontext, edit a generated image, keep a character or product consistent across a campaign, render legible text in images, get brand-exact colors, pick between FLUX variants, or asks if their FLUX use is commercially licensed. Uses the PIXEL framework. Reads image-prompt + brand-profile + design-and-templates first. The agent writes prompts/edit instructions and can call the API where connected; the HUMAN judges every image; WoopSocial publishes. License spine: [dev] outputs are commercial-OK but self-hosting for a commercial service needs a paid BFL tier; Apache-2.0 paths are [schnell]/[klein] 4B. Never use unpermitted likeness, clone trade dress, strip provenance, or invent stats. Distinct from image-prompt, ideogram/nano-banana/Midjourney (sibling tools), ai-image-editing (the edit router this feeds), and canva."
   },
   {
     "id": "food-database-query",
@@ -13838,6 +14586,23 @@
     "description": "\u5206\u6790\u5065\u5eb7\u76ee\u6807\u6570\u636e\u3001\u8bc6\u522b\u76ee\u6807\u6a21\u5f0f\u3001\u8bc4\u4f30\u76ee\u6807\u8fdb\u5ea6,\u5e76\u63d0\u4f9b\u4e2a\u6027\u5316\u76ee\u6807\u7ba1\u7406\u5efa\u8bae\u3002\u652f\u6301\u4e0e\u8425\u517b\u3001\u8fd0\u52a8\u3001\u7761\u7720\u7b49\u5065\u5eb7\u6570\u636e\u7684\u5173\u8054\u5206\u6790\u3002"
   },
   {
+    "id": "goals-and-kpis",
+    "name": "Goals And Kpis",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill goals-and-kpis",
+    "path": ".agents/skills/goals-and-kpis",
+    "risk": "assess_for_task",
+    "description": "Set social media goals and KPIs , measurable targets and north-star metrics that aren't vanity numbers. Use when someone wants to \"set social media goals,\" \"define our KPIs,\" \"what should we be aiming for,\" \"what's our north-star metric,\" \"OKRs for social,\" or to turn vague ambitions (\"grow our following,\" \"go viral\") into measurable targets. Builds a cascade: business goal -> SMART objective -> North Star KPI (one per channel by its win condition) -> supporting metrics, with benchmark-set targets and action thresholds. Uses the NORTH framework. Reads brand-profile + social-strategy first. It SETS the targets; analytics-and-reporting MEASURES against them. Targets come from real benchmarks (never fabricated baselines), KPIs must be controllable and non-vanity, and guardrails prevent gaming. Distinct from analytics-and-reporting (measures) and social-strategy (the whole plan)."
+  },
+  {
     "id": "godot-4-migration",
     "name": "Godot 4 Migration",
     "module": "Domain & Research Extensions",
@@ -13989,6 +14754,23 @@
     "path": ".agents/skills/google-drive-automation",
     "risk": "assess_for_task",
     "description": "Lightweight Google Drive integration with standalone OAuth authentication. No MCP server required. Full read/write access."
+  },
+  {
+    "id": "google-flow",
+    "name": "Google Flow",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill google-flow",
+    "path": ".agents/skills/google-flow",
+    "risk": "assess_for_task",
+    "description": "Headless video generation and media retrieval using Google Flow and Veo 3.1. Enforces zero visible browser windows (--headless=new), automatic local downloads, machine-verified media integrity, and mandatory skill-first research routing before crafting prompts."
   },
   {
     "id": "google-sheets-automation",
@@ -14176,6 +14958,23 @@
     "path": ".agents/skills/grpc-golang",
     "risk": "assess_for_task",
     "description": "Build production-ready gRPC services in Go with mTLS, streaming, and observability. Use when designing Protobuf contracts with Buf or implementing secure service-to-service transport."
+  },
+  {
+    "id": "hashtag-strategy",
+    "name": "Hashtag Strategy",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill hashtag-strategy",
+    "path": ".agents/skills/hashtag-strategy",
+    "risk": "assess_for_task",
+    "description": "Use to build a hashtag and discoverability strategy for social posts , the modern (2026) approach, not the outdated \"30 hashtags to go viral\" playbook. Run when the user says \"hashtags,\" \"what hashtags should I use,\" \"how many hashtags,\" \"hashtag strategy,\" \"help me get discovered/reach,\" asks \"do hashtags still work / are hashtags dead,\" or asks how to tag a post. Reads brand-profile and audience first. Sets the keyword/social-SEO layer first (caption, on-screen text, spoken audio) because that , plus engagement and the content itself , drives discovery far more than hashtags now; then picks a tight, relevant, per-platform hashtag set (respecting caps like Instagram's enforced 5-tag limit), favors niche/mid-tier tags over generic mega-tags, and designs branded/campaign hashtags for community and tracking. Rotates sets rather than copy-pasting one block, and hands placement/publishing to scheduling-and-queue. Sets honest expectations: hashtags categorize and aid search; they are not a reach hack."
   },
   {
     "id": "haskell-pro",
@@ -14397,6 +15196,23 @@
     "path": ".agents/skills/hexagonal-architecture",
     "risk": "assess_for_task",
     "description": "Design, implement, and refactor Ports & Adapters systems with clear domain boundaries, dependency inversion, and testable use-case orchestration across TypeScript, Java, Kotlin, and Go services. Use when introducing or refactoring toward Ports and Adapters, or when domain logic has become entangled with I/O."
+  },
+  {
+    "id": "heygen",
+    "name": "Heygen",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill heygen",
+    "path": ".agents/skills/heygen",
+    "risk": "assess_for_task",
+    "description": "The AI avatar / talking-head mini-skill (HeyGen). Use when someone wants an \"AI avatar video,\" \"talking-head video,\" \"digital twin / clone of myself on camera,\" \"faceless presenter video,\" \"spokesperson video,\" or to \"translate/localize a video into many languages with lip-sync.\" The creator/social avatar lane; enterprise L&D/training/SCORM avatar work routes to synthesia, and a real human on camera (founder/trust content) routes to talking-head-and-piece-to-camera. Scripts and sets up the video; HeyGen renders; the human reviews/edits; WoopSocial schedules/ publishes. Sits below the ai-video router, sibling to veo-3. Consented avatars only; AI disclosure mandatory."
   },
   {
     "id": "hierarchical-agent-memory",
@@ -14805,6 +15621,23 @@
     "path": ".agents/skills/hono",
     "risk": "assess_for_task",
     "description": "Build ultra-fast web APIs and full-stack apps with Hono , runs on Cloudflare Workers, Deno, Bun, Node.js, and any WinterCG-compatible runtime."
+  },
+  {
+    "id": "hook-writer",
+    "name": "Hook Writer",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill hook-writer",
+    "path": ".agents/skills/hook-writer",
+    "risk": "assess_for_task",
+    "description": "Use to write the hook , the opening that earns attention , for any social content: a caption's first line, a video's first three seconds, a carousel cover slide, a thread opener, a YouTube title, or an email subject. Run when the user says \"write a hook,\" \"hook for this,\" \"opening line,\" \"first three seconds,\" \"cover slide,\" \"make this scroll-stopping,\" or when good content keeps getting ignored. Reads brand-profile and voice first so hooks sound like the brand, not viral-bait templates. Hooks must be TRUE to the content that follows , this skill extracts the hook from the post's strongest element and never overpromises. For full captions use caption-writer; for full video scripts use the video skills. This writes the opening itself."
   },
   {
     "id": "hookify-rules",
@@ -15300,6 +16133,23 @@
     "description": "Darwinian idea evolution engine , toss rough ideas onto an evolution island, let them compete, crossbreed, and mutate through structured rounds to surface your strongest concepts."
   },
   {
+    "id": "idea-generation-and-ideation",
+    "name": "Idea Generation And Ideation",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill idea-generation-and-ideation",
+    "path": ".agents/skills/idea-generation-and-ideation",
+    "risk": "assess_for_task",
+    "description": "The idea-system craft , never run out of content ideas by running a system instead of waiting for inspiration. Use when someone is out of ideas, stares at a blank calendar, asks where good ideas come from, wants an idea bank/backlog, feels their AI-generated ideas sound like everyone else's, or thinks their niche is \"boring.\" Uses the SPARK framework. Reads brand-profile + social-strategy + content-pillars + audience-research first. The audience is the idea engine (comments/DMs/FAQs clustered into themes); AI expands real signals, it doesn't discover them; systems beat muses; trends are a timing filter, not a source. The agent clusters/expands/scores; the HUMAN supplies proprietary signals and decides; WoopSocial publishes the content, not ideas. Never rewords competitor posts, invents audience questions, or fabricates probe results. Distinct from social-strategy/content-pillars, audience-research, cross-platform-repurposing/ content-recycling, and the format skills."
+  },
+  {
     "id": "idea-os",
     "name": "Idea Os",
     "module": "Domain & Research Extensions",
@@ -15332,6 +16182,23 @@
     "path": ".agents/skills/identity-mirror",
     "risk": "assess_for_task",
     "description": "One sentence - what this skill does and when to invoke it"
+  },
+  {
+    "id": "ideogram",
+    "name": "Ideogram",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill ideogram",
+    "path": ".agents/skills/ideogram",
+    "risk": "assess_for_task",
+    "description": "Use to write great prompts for Ideogram (Ideogram 4.0) to generate design-grade images for social media , the image-prompt-craft mini-skill for typography + layout, sibling to nano-banana under the image-prompt router. Run when the user wants an Ideogram / AI image prompt where TEXT and LAYOUT matter: quote cards, carousel covers, posters, logos/wordmark concepts, signage, ads with headlines, or any image that must say words correctly. Reads brand-profile for style/palette. Ideogram's standouts: best-in-class in-image text rendering, structured JSON prompting (bounding boxes, hex palettes), native 2K, transparency, and Layerize Text. Also covers the Ideogram app-editor workflow (Canvas, Magic Fill, Extend, Style References). Honest: review rendered text, disclose AI images and sign with C2PA, never generate real identifiable people or copyrighted characters/IP/logos. The API/connection and the generate -> upload to WoopSocial Media -> attach flow live in tools/integrations/ideogram.md."
   },
   {
     "id": "idor-testing",
@@ -15400,6 +16267,23 @@
     "path": ".agents/skills/image-gen-deprecated",
     "risk": "assess_for_task",
     "description": "[Deprecated: use baoyu-imagine] AI image generation with OpenAI, Azure OpenAI, Google, OpenRouter, DashScope, Z.AI GLM-Image, MiniMax, Jimeng, Seedream and Replicate APIs. Supports text-to-image, reference images, aspect ratios, and batch generation from saved prompt files. Sequential by default; use batch parallel generation when the user already has multiple prompts or wants stable multi-image throughput. Use when user asks to generate, create, or draw images."
+  },
+  {
+    "id": "image-prompt",
+    "name": "Image Prompt",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill image-prompt",
+    "path": ".agents/skills/image-prompt",
+    "risk": "assess_for_task",
+    "description": "Use as the foundation and router for any image a post needs , turn a social need into a clear image brief, describe it with model-agnostic prompt craft, and route to the right tool. Run when the user says \"I need a visual/image for this post,\" \"what image should I use,\" \"make a graphic,\" \"help me prompt an image,\" or is unsure which image tool/model to use. Reads brand-profile for the visual brand. Teaches the image brief, the universal anatomy of a strong prompt in natural language, and a tool router (typographic -> ideogram/nano-banana; photoreal -> nano-banana/flux; surreal -> Midjourney; editing -> nano-banana/flux; vector -> Recraft; video -> veo-3). Includes a \"should this even be AI-generated?\" gate (a real photo, screenshot, or chart often beats generic AI), accessibility, and honest scope (disclose AI, never real identifiable people or copyrighted IP, verify text/data). Hands off to the tool-specific mini-skills; WoopSocial publishes via Media and doesn't generate images."
   },
   {
     "id": "image-studio",
@@ -15555,6 +16439,23 @@
     "description": "Multi-agent research skill for parallel research execution (10 agents, battle-tested with real case studies)."
   },
   {
+    "id": "infographic-and-data-viz",
+    "name": "Infographic And Data Viz",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill infographic-and-data-viz",
+    "path": ".agents/skills/infographic-and-data-viz",
+    "risk": "assess_for_task",
+    "description": "The craft of turning real data into honest, scannable, shareable infographics and charts. Use when someone wants to visualize data, make an infographic, build a chart/graph, turn a finding or stat into a visual, or fix a chart that's confusing or misleading. A great data viz makes one insight land in 3 seconds. Uses the CHART framework (chart choice, headline takeaway, honest scale, reduce to signal, tag source + accessibility). Reads brand-profile + design-and-templates first and pulls real data from data-and-original-research / analytics-and-reporting. The agent designs the spec; a design/chart tool renders it; the human approves; WoopSocial publishes the image (it does not generate media). NEVER distorts scales or fabricates a data point/source; cites source + date; accessibility required. Distinct from design-and-templates (brand design), quote-cards-and-text-graphics (a lone quote/number), data-and-original-research (originates the data), and analytics-and-reporting."
+  },
+  {
     "id": "infographic-gen",
     "name": "Infographic Gen",
     "module": "Domain & Research Extensions",
@@ -15657,6 +16558,57 @@
     "description": "Integracao completa com Instagram via Graph API. Publicacao, analytics, comentarios, DMs, hashtags, agendamento, templates e gestao de contas Business/Creator."
   },
   {
+    "id": "instagram-growth",
+    "name": "Instagram Growth",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill instagram-growth",
+    "path": ".agents/skills/instagram-growth",
+    "risk": "assess_for_task",
+    "description": "Use to grow an Instagram account , the Instagram-specific growth strategy that diagnoses where growth is stuck (reach, follow-conversion, retention, or shares) and orchestrates the other skills to fix it. Run when the user says \"grow on Instagram,\" \"Instagram growth,\" \"get more followers/reach on Instagram,\" \"my Instagram isn't growing,\" \"Instagram strategy,\" or wants more reach/followers on IG. Reads brand-profile, social-strategy, and audience first. Built on the 2026 reality that Instagram is a discovery engine where watch time and sends (DM shares) drive non-follower reach. Diagnoses the broken stage of the growth loop and routes to the right skill (reels-script, carousel-writer, profile-optimization, content-calendar, hashtag-strategy, trend-jacking). Judges via native Instagram Insights , not WoopSocial analytics , and treats follower count as vanity."
+  },
+  {
+    "id": "instagram-reels-publishing",
+    "name": "Instagram Reels Publishing",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill instagram-reels-publishing",
+    "path": ".agents/skills/instagram-reels-publishing",
+    "risk": "assess_for_task",
+    "description": "The Instagram Reels publish-mechanics skill -- distinct from reels-script (the script), instagram-seo (the keyword caption), and platform-specs-and-validation (cross-platform validation). Use when someone has a finished Reel and needs to publish it correctly: specs, cover, safe zone, publish settings. It gets the Reel OUT the way Instagram displays it: 9:16 spec-clean video, the safe zone that survives the feed and profile-grid crops, a custom grid-safe cover (chosen before publish, can't edit after), the keyword caption, and audio. Uses the FRAME framework. Reads brand-profile + the Reel asset first. The agent specs the publish settings, cover brief, and specs/safe-zone checklist, and advises audio/tags. WoopSocial publishes postType REEL + video + caption + cover on a schedule; trending audio, Share-to-Feed, tags, and Reel Insights stay native/in-app; the video/cover come from other tools. Remove other-platform watermarks; metrics never fabricated."
+  },
+  {
+    "id": "instagram-seo",
+    "name": "Instagram Seo",
+    "module": "Technical SEO",
+    "category": "SEO & Discovery",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill instagram-seo",
+    "path": ".agents/skills/instagram-seo",
+    "risk": "assess_for_task",
+    "description": "The Instagram SEO / keyword-search skill -- IG-specific search depth, distinct from the cross-cutting social-seo. Use when someone wants an Instagram post/Reel to rank in search, needs IG keyword research, or wants a searchable caption/profile. Instagram shifted from hashtag-based discovery to keyword-based search (hashtags deprioritized to 3-5 topic labels). Search runs semantic analysis -> metadata matching -> visual recognition (checks alt text + visual MATCH the caption). Uses the MATCH framework. Reads brand-profile + the post's topic first. The agent researches the keyword cluster (never fabricates volume), writes the search-first caption (primary keyword first, no stuffing), specs on-screen text + spoken keyword, and advises profile fields/alt text. WoopSocial publishes the caption; profile fields, alt text, and IG Search/Insights stay native. No keyword stuffing; caption must match the visual. Distinct from social-seo, pinterest-seo, and hashtag-strategy."
+  },
+  {
     "id": "intent-driven-development",
     "name": "Intent Driven Development",
     "module": "Security & Defense",
@@ -15672,6 +16624,23 @@
     "path": ".agents/skills/intent-driven-development",
     "risk": "assess_for_task",
     "description": "Turn ambiguous or high-impact product and engineering changes into scoped, verifiable acceptance criteria before or alongside implementation. Use when a user asks to clarify a feature, define acceptance criteria, de-risk a security/data/migration/integration change, prepare implementation requirements for another agent, or make a complex request testable. Do not trigger for trivial edits, straightforward fixes, active debugging, code review, or implementation requests whose acceptance conditions are already clear unless the user explicitly invokes this skill."
+  },
+  {
+    "id": "interactive-content",
+    "name": "Interactive Content",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill interactive-content",
+    "path": ".agents/skills/interactive-content",
+    "risk": "assess_for_task",
+    "description": "The participation content format , polls, quizzes, Q&A / scoped AMAs, this-or-that, emoji sliders, question boxes, caption-this, Add-Yours, and challenges. Use when someone wants interactive posts, Story stickers, a poll/quiz/AMA, a challenge or contest, or to turn passive scrollers into participants. Low-friction taps are high-value algorithmic signals, and every interaction doubles as audience research. Uses the REACT framework. Reads brand-profile + audience-research + voice-builder first. The agent designs the mechanic, questions, copy, and the close-the-loop plan; the HUMAN adds native interactive elements in-app , stickers and live AMAs are NATIVE-ONLY (WoopSocial cannot attach stickers or read results); WoopSocial publishes the feed-post versions. NEVER fabricates or rigs results or fakes participation; consent before sharing anyone's answer. Distinct from community-management, reply-and-comment-writer, livestream-and-realtime, and ugc-and-influencer."
   },
   {
     "id": "interactive-portfolio",
@@ -16405,6 +17374,23 @@
     "description": "Automate Klaviyo tasks via Rube MCP (Composio): manage email/SMS campaigns, inspect campaign messages, track tags, and monitor send jobs. Always search tools first for current schemas."
   },
   {
+    "id": "kling",
+    "name": "Kling",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill kling",
+    "path": ".agents/skills/kling",
+    "risk": "assess_for_task",
+    "description": "The generative-video producer for native 4K, multi-shot storyboarding, and motion-transfer (Kling-led). Use when someone wants \"native 4K video,\" \"a multi-shot sequence / several cuts in one clip,\" \"transfer a motion/dance from a reference video,\" \"animate a product still\" (image-to-video), or names Kling / Kling 3.0 / Motion Control / Multi-Shot. Kling generates clips; audio is a guide track (pair ai-voiceover for final dialogue); a human assembles/reviews; WoopSocial schedules/ publishes. Below the ai-video router, sibling to veo-3 (all-round + audio) and luma (HDR/mood); edit-grade control jobs go to runway. Consented motion/avatars only; AI disclosure mandatory."
+  },
+  {
     "id": "knowledge-ops",
     "name": "Knowledge Ops",
     "module": "Domain & Research Extensions",
@@ -16949,6 +17935,23 @@
     "description": "Plan and optimize lead magnets for email capture and lead generation. Use when designing gated content, checklists, templates, downloadable resources, or other offers that convert visitors into subscribers."
   },
   {
+    "id": "lead-magnets-and-funnels",
+    "name": "Lead Magnets And Funnels",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill lead-magnets-and-funnels",
+    "path": ".agents/skills/lead-magnets-and-funnels",
+    "risk": "assess_for_task",
+    "description": "Lead magnets and funnels , design offers that turn social traffic into subscribers, leads, and customers. Use when someone wants to \"create a lead magnet,\" \"build a funnel,\" \"design a freebie/opt-in,\" \"make a quiz/calculator/template to grow my list,\" or turn social traffic into qualified leads and customers. Designs the magnet the capture paths deliver PLUS the whole social->capture->nurture funnel, using the MAGNET framework. Reads brand-profile + goals-and-kpis first. WoopSocial has no landing/form/email/quiz builder: the agent designs the magnet + funnel and drafts the nurture and promo posts; WoopSocial publishes the promo posts; capture/delivery/nurture run in external tools; metrics from those + GA4, never fabricated; no dark patterns. Distinct from link-in-bio-and-traffic / social-selling-and-dm (the capture paths) and email-and-newsletter (the owned channel)."
+  },
+  {
     "id": "legacy-modernize",
     "name": "Legacy Modernize",
     "module": "Domain & Research Extensions",
@@ -17119,6 +18122,23 @@
     "description": "Manage Linear issues, projects, and teams"
   },
   {
+    "id": "link-in-bio-and-traffic",
+    "name": "Link In Bio And Traffic",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill link-in-bio-and-traffic",
+    "path": ".agents/skills/link-in-bio-and-traffic",
+    "risk": "assess_for_task",
+    "description": "Link-in-bio and traffic strategy , convert social reach into clicks, subscribers, and owned audience. Use when someone wants to \"drive traffic from social,\" \"optimize my link in bio,\" \"get more clicks,\" \"turn followers into email subscribers / leads / sales,\" \"where do I put my link,\" or to convert reach into an owned audience. Turns rented reach into clicks and an OWNED audience: one clear action (not a link-dump), capture-before-sell, correct link placement per platform (in-post links are suppressed on X/LinkedIn/Facebook), and branded short links + UTM tracking. Uses the CLICK framework. Reads brand-profile + goals-and-kpis first. WoopSocial publishes the driving posts and places links where the API allows; the bio hub / landing page / email tool are external (3rd-party + human); clicks/conversions are read from those + GA4, never fabricated. Distinct from profile-optimization, social-selling-and-dm, email-and-newsletter, and lead-magnets-and-funnels."
+  },
+  {
     "id": "linkedin-automation",
     "name": "Linkedin Automation",
     "module": "Domain & Research Extensions",
@@ -17151,6 +18171,57 @@
     "path": ".agents/skills/linkedin-cli",
     "risk": "assess_for_task",
     "description": "Use when automating LinkedIn via CLI: fetch profiles, search people/companies, send messages, manage connections, create posts, and Sales Navigator."
+  },
+  {
+    "id": "linkedin-company-pages",
+    "name": "Linkedin Company Pages",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill linkedin-company-pages",
+    "path": ".agents/skills/linkedin-company-pages",
+    "risk": "assess_for_task",
+    "description": "The LinkedIn company-page (LINKEDIN_PAGES) growth strategy skill -- a separate platform from personal LINKEDIN. Use when someone wants to grow a company/business page, fix low page reach (\"our LinkedIn page gets no engagement\"), set up employee advocacy, or plan company-page content. In 2026 pages get a tiny share of feed reach, so the page is a credibility hub + paid launchpad (Ads + Thought Leader Ads), NOT the reach engine -- the growth lever is employee advocacy (people, not logos). Uses the HUMAN framework. Reads brand-profile + goals-and-kpis first. The agent strategizes, designs the advocacy program, and drafts page posts + advocacy content; WoopSocial publishes the page's own posts on a schedule; employees post from their OWN profiles (routes to linkedin-growth); first-hour engagement, Ads, and analytics stay human/native. No bait, pods, or bought followers; never fabricates metrics. Distinct from linkedin-growth (personal profile) and linkedin-post-writer (the post craft)."
+  },
+  {
+    "id": "linkedin-growth",
+    "name": "Linkedin Growth",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill linkedin-growth",
+    "path": ".agents/skills/linkedin-growth",
+    "risk": "assess_for_task",
+    "description": "The LinkedIn personal-profile growth playbook for 2026. Use when someone wants to \"grow on LinkedIn,\" \"get more LinkedIn followers/reach,\" \"a LinkedIn strategy,\" \"how the LinkedIn algorithm works,\" or how to use commenting/newsletters/video/connections to grow. Dwell time + early meaningful comments are the engine, personal profiles massively out-reach company pages, links go in the first comment, and strategic commenting on target accounts is the cheapest reach on the platform. Uses the LADDER framework. Reads brand-profile + voice-builder first. The agent drafts posts + comment copy and designs the system; a human does the live commenting/connecting/DMs; WoopSocial schedules posts; metrics come from native LinkedIn analytics (SSI as a directional check); nothing is fabricated. Single-post craft \u2192 linkedin-post-writer; company page \u2192 linkedin-company-pages."
+  },
+  {
+    "id": "linkedin-post-writer",
+    "name": "Linkedin Post Writer",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill linkedin-post-writer",
+    "path": ".agents/skills/linkedin-post-writer",
+    "risk": "assess_for_task",
+    "description": "Use to write a LinkedIn post , professional, thought-leadership, or founder/personal-brand content optimized for LinkedIn's specific mechanics (dwell time, early comments, the \"see more\" hook). Run when the user says \"write a LinkedIn post,\" \"LinkedIn,\" \"post this on LinkedIn,\" \"thought leadership post,\" \"founder post,\" or wants professional/B2B social content. Reads brand-profile and voice first, uses hook-writer for the opening line that must win the \"see more\" expand, formats for dwell, drives genuine comments, and routes links to the first comment to protect reach. Avoids LinkedIn cringe (broetry, engagement bait). This is the single-post craft: to \"grow on LinkedIn\" or set the account strategy use linkedin-growth; for company-page strategy use linkedin-company-pages; for general captions use caption-writer; for X threads use thread-writer; for the carousel slides use carousel-writer."
   },
   {
     "id": "linkedin-profile-optimizer",
@@ -17270,6 +18341,40 @@
     "path": ".agents/skills/liquid-glass-design",
     "risk": "assess_for_task",
     "description": "iOS 26 Liquid Glass design system , dynamic glass material with blur, reflection, and interactive morphing for SwiftUI, UIKit, and WidgetKit. Use when building iOS 26 Liquid Glass UI in SwiftUI, UIKit, or WidgetKit."
+  },
+  {
+    "id": "listicle-and-roundup",
+    "name": "Listicle And Roundup",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill listicle-and-roundup",
+    "path": ".agents/skills/listicle-and-roundup",
+    "risk": "assess_for_task",
+    "description": "The list/roundup content type , design honestly-curated, scannable, AI-citable listicles (\"7 ways to X\", \"best tools for Y\") and expert / product / link roundups. Use when someone wants a listicle, a \"best of\" or \"top N\" list, a ranked recommendation list, an expert roundup, a product/affiliate roundup, or a curated resource list. Ranked \"best-of\" lists are among the most-cited formats in AI search. Uses the RANKS framework. Reads brand-profile + audience-research first. The agent designs the list and frames the cuts; for roundups it drafts the contributor ask; the human secures real contributor quotes/consent and verifies product facts; WoopSocial publishes the cuts. Feeds the format writers and ai-search-optimization + social-seo. NEVER fabricates items, quotes, or rankings, or pads to a number; discloses affiliate/own-product. Distinct from carousel-writer/thread-writer, educational-content-and-how-to, data-and-original-research, and competitor-analysis."
+  },
+  {
+    "id": "livestream-and-realtime",
+    "name": "Livestream And Realtime",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill livestream-and-realtime",
+    "path": ".agents/skills/livestream-and-realtime",
+    "risk": "assess_for_task",
+    "description": "The live + realtime-format skill -- plan, promote, run, and repurpose livestreams and realtime moments (IG Live, TikTok LIVE, YouTube Live, LinkedIn Live, X, live shopping). Use when someone wants to plan a livestream, go live, run a live Q&A/AMA, do live shopping, or repurpose a live recording. Live is the \"human premium,\" but the value is the event around it: promo before, engagement during, repurposing after. Uses the STAGE framework. Reads brand-profile + the live's goal first. The agent plans the live (platform + run-of-show), writes + schedules the pre-live promo, advises the live playbook (the human broadcasts natively), and plans the repurposing (recording -> clips). WoopSocial schedules the promo and publishes the repurposed clips; it does NOT broadcast, moderate in realtime, or run live shopping. Never fabricates viewer numbers. Distinct from community-management (native live moderation), campaign-and-launch-planning, and captions-and-clipping (the clip craft it routes to)."
   },
   {
     "id": "living-docs-governance",
@@ -17576,6 +18681,23 @@
     "path": ".agents/skills/loss-aversion-designer",
     "risk": "assess_for_task",
     "description": "One sentence - what this skill does and when to invoke it"
+  },
+  {
+    "id": "luma",
+    "name": "Luma",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill luma",
+    "path": ".agents/skills/luma",
+    "risk": "assess_for_task",
+    "description": "The Luma Dream Machine craft skill , generate cinematic AI video shots (Ray3: text-to-video, image-to-video, keyframes, character reference, Modify V2V, HDR) with draft-first economics and the right rights. Use when someone wants to generate video with Luma/Dream Machine/Ray3, animate a still into video, keep a character consistent across shots, restyle real footage, control credit burn, pick a Luma model or plan, or build a multi-shot AI brand film. Uses the DREAM framework. Reads ai-video + brand-profile + short-form-video-script first. The agent writes shot briefs and can drive the API where connected; the HUMAN judges every clip; WoopSocial publishes. Generations are shots not films (no native audio); Draft Mode first, HDR only for finals; verify tiers in-app. Never use unpermitted likeness, generate fake-event footage, or state credit rates as fact. Distinct from ai-video, veo-3/kling/runway, flux (the stills this animates), heygen/synthesia, and capcut."
   },
   {
     "id": "m365-agents-dotnet",
@@ -18307,6 +19429,23 @@
     "path": ".agents/skills/media-conversion-toolkit",
     "risk": "assess_for_task",
     "description": "Inspect and convert audio, video, and image files using available media tools; verify output format and preserve source files."
+  },
+  {
+    "id": "meme-and-culture",
+    "name": "Meme And Culture",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill meme-and-culture",
+    "path": ".agents/skills/meme-and-culture",
+    "risk": "assess_for_task",
+    "description": "The cultural-fluency + meme-craft skill -- participate in internet culture and meme formats as a brand without being cringe, tone-deaf, or legally exposed. Use when someone wants to make a meme, join a cultural moment, build a meme/humor pillar, or decide whether to jump on a format. Meme marketing done wrong is worse than none. Uses the VIBES framework. Reads brand-profile + the meme/moment first. Two hard gates: brand-fit (would it work without your logo?) and safety + IP (never tragedies/divisive/ appropriation/punching-down; original visuals only, no copyrighted characters or celebrity likeness). The agent advises fit/safety/IP and writes the copy/concept; the human/creator makes the asset and adds the final wit pass; WoopSocial publishes/schedules (reactive ones often post in the moment). Sitting a meme out is valid; never fabricates relevance or virality. Distinct from trend-jacking, image-prompt/design-and-templates, community-management, and ai-music-and-sound."
   },
   {
     "id": "memory-forensics",
@@ -19463,6 +20602,23 @@
     "path": ".agents/skills/n8n-workflow-patterns",
     "risk": "assess_for_task",
     "description": "Proven architectural patterns for building n8n workflows."
+  },
+  {
+    "id": "nano-banana",
+    "name": "Nano Banana",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill nano-banana",
+    "path": ".agents/skills/nano-banana",
+    "risk": "assess_for_task",
+    "description": "Use to write great prompts for Nano Banana (Google's Gemini image model: Nano Banana Pro = Gemini 3 Pro Image) to generate or edit images for social media , the image-prompt-craft mini-skill. Run when the user wants a nano-banana / Gemini image prompt, an AI image for a post (quote graphic, carousel slide, thumbnail, infographic, product shot, ad creative), or conversational image editing. Reads brand-profile for brand colours/style. Strengths: best-in-class legible in-image text (route typography/layout-led design to ideogram), multi-image consistency, conversational editing, and Google's photoreal lane (Imagen deprecated); surreal art stays Midjourney's. Teaches prompt anatomy, the text-first approach, reference-image consistency, and per-platform aspect ratios. Honest: SynthID watermark + AI disclosure; never real identifiable people or copyrighted characters/logos; verify spelling/data. The API/connection and WoopSocial upload flow live in tools/integrations/nano-banana.md."
   },
   {
     "id": "native-data-fetching",
@@ -20723,6 +21879,23 @@
     "description": "Real vs lottery call separation for options P/C ratio analysis , prevents signal inversion from deep OTM noise"
   },
   {
+    "id": "opus-clip",
+    "name": "Opus Clip",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill opus-clip",
+    "path": ".agents/skills/opus-clip",
+    "risk": "assess_for_task",
+    "description": "The OpusClip craft skill , turn long video (podcasts, webinars, interviews, streams) into publishable short clips with AI candidate-finding, honest triage, and a human-reviewed pipeline. Use when someone wants to use OpusClip, turn a podcast/webinar/VOD into shorts, understand the Virality Score, pick a plan, pull a moment from a long recording (ClipAnything moment search), or automate a clipping pipeline. Uses the CLIPS framework. Reads captions-and-clipping + the source skill + brand-profile first. The agent plans the pipeline, credit math, and QA; the HUMAN reviews every clip and approves; WoopSocial publishes the finished exports (it does not clip or edit video). Integrity spine: the Virality Score is a PREDICTION for triage, never truth; 1 credit = 1 SOURCE minute; no unreviewed auto-post pipelines; no out-of-context clips. Distinct from captions-and-clipping (general craft), descript (long-form edit), capcut (short-form polish), and the platform publishing skills."
+  },
+  {
     "id": "oral-health-analyzer",
     "name": "Oral Health Analyzer",
     "module": "Domain & Research Extensions",
@@ -20857,6 +22030,23 @@
     "path": ".agents/skills/orchestrate-batch-refactor",
     "risk": "assess_for_task",
     "description": "Plan and execute large refactors with dependency-aware work packets and parallel analysis."
+  },
+  {
+    "id": "organic-film-de-ai",
+    "name": "Organic Film De Ai",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill organic-film-de-ai",
+    "path": ".agents/skills/organic-film-de-ai",
+    "risk": "assess_for_task",
+    "description": "Master craft and CLI engine for transforming AI-generated and AI-edited video into authentic, organic cinema. Eliminates the artificial 'AI sheen' (waxy skin, hyper-saturation, sliding camera, sterile silence, and staccato motion) using photochemical 35mm film grain, highlight halation bloom, lens optical distortion, handheld micro-drift, 180-degree shutter motion blur, Kodak 2383 tone curves, and room impulse acoustics. Integrates with the entire AGYOS video editing ecosystem."
   },
   {
     "id": "os-scripting",
@@ -21437,6 +22627,57 @@
     "description": "Pick the right library for a given frontend task from a curated, opinionated list , numbers, OTP inputs, charts, command menus, virtualization, drag and drop, toasts, state, styling, and more. Only runs when explicitly invoked; it does not trigger on its own."
   },
   {
+    "id": "pinterest-growth",
+    "name": "Pinterest Growth",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill pinterest-growth",
+    "path": ".agents/skills/pinterest-growth",
+    "risk": "assess_for_task",
+    "description": "The Pinterest growth playbook for 2026. Use when someone wants to \"grow on Pinterest,\" \"get traffic from Pinterest,\" \"a Pinterest strategy,\" a pin cadence/board structure, or to turn blog/product content into pins. Pinterest is a visual SEARCH engine where keyword-optimized, fresh, vertical pins compound into evergreen outbound traffic , optimise for discoverability + clicks, not in-the-moment engagement. Uses the PINS framework. Reads brand-profile + voice-builder first. The agent drafts pins + the schedule; WoopSocial schedules/publishes pins; metrics come from native Pinterest Analytics; nothing is fabricated. For \"Pinterest SEO\" / \"rank my pins\" / keyword titles-descriptions route to pinterest-seo; for designing the pin image route to pinterest-pin-design. Pairs with content-recycling."
+  },
+  {
+    "id": "pinterest-pin-design",
+    "name": "Pinterest Pin Design",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill pinterest-pin-design",
+    "path": ".agents/skills/pinterest-pin-design",
+    "risk": "assess_for_task",
+    "description": "The Pinterest pin design skill -- the visual half that pairs with pinterest-seo's keyword layer. Use when someone wants to design a pin, a Pinterest pin image, a pin text overlay, fresh pin variations for an existing URL, or board covers. Designs and briefs the 2:3 (1000x1500) vertical pin: one focal point, a keyword text overlay readable at feed size, brand-consistent template, safe zones, and 3-5 visually distinct FRESH designs per destination URL. Uses the SAVED framework. Reads brand-profile + the destination + the pinterest-seo keyword first. A HUMAN or an image/design tool (ideogram/canva/nano-banana/a designer) creates the final raster; WoopSocial publishes the finished pin image + title + description + board + link. No misleading pins, no repin-as-fresh dupes, engagement never fabricated. Distinct from pinterest-seo (the keyword layer -- they PAIR), pinterest-growth (the strategy), design-and-templates (the template system), and ideogram/canva (render the raster this briefs)."
+  },
+  {
+    "id": "pinterest-seo",
+    "name": "Pinterest Seo",
+    "module": "Technical SEO",
+    "category": "SEO & Discovery",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill pinterest-seo",
+    "path": ".agents/skills/pinterest-seo",
+    "risk": "assess_for_task",
+    "description": "The Pinterest SEO / search-ranking skill -- the keyword layer that pairs with pinterest-pin-design's visual. Use when someone wants pins to rank in Pinterest search, needs keyword research, or wants keyword-optimized pin titles/descriptions/boards. Pinterest is a visual search engine where keywords and relevance rank you, not followers. Uses the FOUND framework. Reads brand-profile + the pin's destination first. The agent researches real queries (autocomplete + Guided Search + Trends; never fabricates volume), writes the keyword-led title + a natural description (no stuffing), specs the on-pin overlay keyword, and advises boards + link. WoopSocial publishes the pin's title + description + board + link; profile/bio, board setup, alt text, Rich Pins, and Trends/Analytics stay native/human. No stuffing; Pin->Board->Page must match; fresh pins, not dupes. Distinct from pinterest-pin-design (the visual), pinterest-growth (the strategy), and social-seo (cross-cutting search)."
+  },
+  {
     "id": "pipedrive-automation",
     "name": "Pipedrive Automation",
     "module": "Domain & Research Extensions",
@@ -21573,6 +22814,23 @@
     "description": "Implements Manus-style file-based planning to organize and track progress on complex tasks. Creates task_plan.md, findings.md, and progress.md. Use when asked to plan out, break down, or organize a multi-step project, research task, or any work requiring 5+ tool calls. Supports automatic session recovery after /clear."
   },
   {
+    "id": "platform-specs-and-validation",
+    "name": "Platform Specs And Validation",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill platform-specs-and-validation",
+    "path": ".agents/skills/platform-specs-and-validation",
+    "risk": "assess_for_task",
+    "description": "Platform specs and publish validation , per-platform requirements and the validate-before-publish step for multi-platform fan-out. Use when fanning a post out to multiple platforms, when a post is getting rejected, when mapping per-platform postType/required fields, or to run the validate-before-publish step. Encodes the per-platform postType enums, required-field matrices, and media rules from the OpenAPI spec, and runs POST /posts/validate so a post lands correctly on every target. Uses the CHECK framework. The keystone the per-platform format skills point to. WoopSocial validates + publishes atomically and has no update endpoint; the agent maps fields and fixes spec violations, but human-judgment calls (disclosure truthfulness, privacy intent) stay with the person; metrics never fabricated. Distinct from the per-platform format skills (one platform's content) and scheduling-and-queue (timing)."
+  },
+  {
     "id": "playwright-browser-testing",
     "name": "Playwright Browser Testing",
     "module": "Domain & Research Extensions",
@@ -21622,6 +22880,23 @@
     "path": ".agents/skills/plotly",
     "risk": "assess_for_task",
     "description": "Interactive visualization library. Use when you need hover info, zoom, pan, or web-embeddable charts. Best for dashboards, exploratory analysis, and presentations. For static publication figures use matplotlib or scientific-visualization."
+  },
+  {
+    "id": "podcast-and-audiograms",
+    "name": "Podcast And Audiograms",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill podcast-and-audiograms",
+    "path": ".agents/skills/podcast-and-audiograms",
+    "risk": "assess_for_task",
+    "description": "The audio-to-social pipeline skill -- turn a podcast episode into short, branded, captioned clips and audiograms that drive people back to the full episode. Use when someone wants to repurpose a podcast, make podcast clips, create audiograms, or promote an episode on social. Uses the WAVES framework. Reads brand-profile + the episode first. Select clips by listener-retention data + timestamped transcript, not just an AI virality score, plus a strategic CTA back to the episode. The agent plans the clip strategy, briefs the clip/audiogram creation, plans the cadence, and writes hooks/CTAs; a clip or audiogram tool produces the clips; the creator finalizes; WoopSocial publishes on a schedule and does NOT record/edit/transcribe the podcast, generate clips, or host it. Captions are non-optional (85% sound-off). Never fabricates virality or clips someone's copyrighted podcast. Distinct from captions-and-clipping, content-recycling, and youtube-long-form."
   },
   {
     "id": "podcast-generation",
@@ -22319,6 +23594,23 @@
     "path": ".agents/skills/professional-proofreader",
     "risk": "assess_for_task",
     "description": "Use when a user asks to \"proofread\", \"review and correct\", \"fix grammar\", \"improve readability while keeping my voice\", and to proofread a document file and save an updated version."
+  },
+  {
+    "id": "profile-optimization",
+    "name": "Profile Optimization",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill profile-optimization",
+    "path": ".agents/skills/profile-optimization",
+    "risk": "assess_for_task",
+    "description": "Use to optimize a social media profile so it converts visitors into followers and followers into leads , bio, handle, name/headline field, profile picture, banner/header, link-in-bio, CTA, pinned posts, and highlights. Run when the user says \"optimize my profile/bio,\" \"write my bio,\" \"my Instagram/LinkedIn/TikTok bio,\" \"profile,\" \"link in bio,\" \"my profile isn't converting,\" asks about creator mode or a professional/business account, or wants their account to convert better. Reads brand-profile, voice, audience, and social-strategy first. Treats the profile as a conversion landing page , 3-second clarity, searchable-field keywords, a who/what/why bio with one CTA, a goal-matched link, and specs for the visuals, pinned posts, and highlights. Advisory: produces a ready-to-apply per-platform spec (WoopSocial publishes posts/media; it does not edit profile fields). Judges results via native profile insights, not WoopSocial analytics."
   },
   {
     "id": "programmatic-seo",
@@ -23035,6 +24327,23 @@
     "description": "Verification loop for Quarkus projects: build, static analysis (Checkstyle, PMD, SpotBugs), tests with JaCoCo coverage, OWASP dependency and container security scans, GraalVM native compilation, health checks, and config validation. Use when verifying a Quarkus service before a PR, after major refactoring or dependency upgrades, or pre-deploy."
   },
   {
+    "id": "quote-cards-and-text-graphics",
+    "name": "Quote Cards And Text Graphics",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill quote-cards-and-text-graphics",
+    "path": ".agents/skills/quote-cards-and-text-graphics",
+    "risk": "assess_for_task",
+    "description": "The craft of turning a single quote, line, or stat into a designed typographic graphic , quote cards, pull-quotes, text-on-image, stat cards, typography posts. Use when someone wants a quote card, a text graphic, a pull-quote, a stat card, or to turn a strong line into a shareable image. The design amplifies a strong line; it can't create one. Uses the QUOTE framework. Reads brand-profile + design-and-templates + voice-builder first, and pulls the line from hook-writer, storytelling, or data-and-original-research (a stat). The agent picks the line and specs the card; a design tool renders; the human approves; WoopSocial publishes the image (it does not generate media). NEVER fabricates a quote, attributes an invented line to a real person, or strips context; verifies wording + source; consent + likeness. Distinct from infographic-and-data-viz, design-and-templates, caption-writer, and social-proof-and-testimonials."
+  },
+  {
     "id": "radix-ui-design-system",
     "name": "Radix Ui Design System",
     "module": "UI/UX & Motion",
@@ -23545,6 +24854,23 @@
     "description": "Automate Reddit tasks via Rube MCP (Composio): search subreddits, create posts, manage comments, and browse top content. Always search tools first for current schemas."
   },
   {
+    "id": "reddit-marketing",
+    "name": "Reddit Marketing",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill reddit-marketing",
+    "path": ".agents/skills/reddit-marketing",
+    "risk": "assess_for_task",
+    "description": "Advisory-only guidance for showing up credibly on Reddit so your brand is accurately represented in the source layer AI engines cite most. Use when someone asks to \"do Reddit marketing,\" \"post on Reddit,\" \"which subreddits should we be in,\" \"get cited on Reddit,\" \"respond to a subreddit thread,\" \"why does AI cite Reddit about us,\" \"fix what Reddit says about our brand,\" or \"my Reddit post got removed / account got banned.\" WoopSocial does NOT support Reddit , this skill drafts; the human posts as themselves. Never automates, never uses alts or vote manipulation. Pairs with ai-search-optimization."
+  },
+  {
     "id": "redesign-existing-projects",
     "name": "Redesign Existing Projects",
     "module": "Domain & Research Extensions",
@@ -23577,6 +24903,23 @@
     "path": ".agents/skills/redis-patterns",
     "risk": "assess_for_task",
     "description": "Redis data structure patterns, caching strategies, distributed locks, rate limiting, pub/sub, and connection management for production applications. Use when adding caching, a distributed lock, rate limiting, or pub/sub with Redis, or when key design needs review."
+  },
+  {
+    "id": "reels-script",
+    "name": "Reels Script",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill reels-script",
+    "path": ".agents/skills/reels-script",
+    "risk": "assess_for_task",
+    "description": "Use to write an Instagram Reels script , a native, sound-off-first short-video script optimized for Instagram's discovery engine, built around a 3-second hook, watch-through, and sends (DM shares). Run when the user says \"Reels script,\" \"Instagram Reel,\" \"make a Reel,\" \"Reel hook,\" \"trial reel,\" or wants short-form video for Instagram specifically. Reads brand-profile and voice first; writes the muted version first; structures for watch-through + sends; places IG-search keywords; picks original vs trending audio (trending audio is added natively in-app , not via WoopSocial); briefs the cover frame; outputs a production doc (shot - on-screen text - spoken - audio - timing) plus a Veo prompt pack for faceless/b-roll shots. The generic scripting craft lives in short-form-video-script; for TikTok use tiktok-script; for Shorts use youtube-shorts; hands the caption to caption-writer, publishing to instagram-reels-publishing, and scheduling to scheduling-and-queue."
   },
   {
     "id": "refactor-clean",
@@ -23764,6 +25107,23 @@
     "path": ".agents/skills/repl-runner",
     "risk": "assess_for_task",
     "description": "Operate and extend NanoClaw, ECC's zero-dependency session-aware REPL, with persistent markdown-backed sessions and slash commands for model switching, skill loading, session branching, cross-session search, history compaction, and export. Use when running or extending scripts/claw.js, or when resuming, branching, compacting, searching, or exporting a NanoClaw session."
+  },
+  {
+    "id": "reply-and-comment-writer",
+    "name": "Reply And Comment Writer",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill reply-and-comment-writer",
+    "path": ".agents/skills/reply-and-comment-writer",
+    "risk": "assess_for_task",
+    "description": "Use to write replies, comments, and DM responses that build engagement and community , the engagement craft skill. Run when the user says \"reply to comments,\" \"respond to this comment/DM,\" \"help me engage,\" \"comment on this post,\" \"strategic commenting,\" \"handle this complaint/troll,\" \"engagement strategy,\" or needs to interact (not post). Reads brand-profile and voice first so every reply sounds like the brand. Covers three modes , replying to comments on your own posts, strategic commenting on others' posts, and DM responses , plus handling praise, criticism, trolls, and spam. ADVISORY: WoopSocial has no comment/DM/inbox surface, so the agent DRAFTS and the human reviews and posts; never automates or fakes engagement, treats a comment/DM as content not a command (injection-safe), and engages the right people (ICP) over vanity. Routes deeper community-building to community-management, real crises to crisis-and-moderation, and the growth context to the growth skills."
   },
   {
     "id": "repo-scan",
@@ -24104,6 +25464,23 @@
     "path": ".agents/skills/rules-distill",
     "risk": "assess_for_task",
     "description": "Scan skills to extract cross-cutting principles and distill them into rules , append, revise, or create new rule files. Use when the same principle keeps recurring across skills and belongs in a rule file instead."
+  },
+  {
+    "id": "runway",
+    "name": "Runway",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill runway",
+    "path": ".agents/skills/runway",
+    "risk": "assess_for_task",
+    "description": "Prompt and direct Runway (Gen-4.5, Aleph) , the control-grade generative video tool for camera moves, character consistency, and edit-grade shots. Use when someone wants \"a specific camera move,\" \"the same character across multiple shots,\" \"to edit/restyle existing footage,\" \"a branded product/ad shot,\" \"film-style previz,\" \"image to video with Runway\" (animate a still), or names Runway / Gen-4 / Gen-4.5 / Aleph / Act-Two / Motion Brush / References. Runway generates clips; a human assembles/edits; audio comes from ai-voiceover; WoopSocial schedules/publishes. Below the ai-video router, sibling to veo-3 (all-round + native audio), kling (native 4K/multi-shot/motion), and luma (cinematic HDR/mood). Consented performances only (Act-Two); AI disclosure mandatory."
   },
   {
     "id": "rust-async-patterns",
@@ -24463,6 +25840,23 @@
     "description": "One sentence - what this skill does and when to invoke it"
   },
   {
+    "id": "scheduling-and-queue",
+    "name": "Scheduling And Queue",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill scheduling-and-queue",
+    "path": ".agents/skills/scheduling-and-queue",
+    "risk": "assess_for_task",
+    "description": "Use to schedule, queue, or publish FINISHED social media posts to the user's connected accounts through WoopSocial. This is a BRIDGE skill , it turns ready content into real scheduled or published posts, the step that separates advice from action. Run when the user says \"schedule this,\" \"queue these,\" \"post this,\" \"publish to my channels,\" \"add to my calendar,\" \"schedule for [time],\" \"fan this out to all platforms,\" or right after a content skill has produced posts that are ready to go out. ALWAYS confirms before scheduling or publishing. If WoopSocial isn't connected, it produces a ready-to-use schedule and explains how to connect , it never pretends to post. It does NOT write content (use the content skills) or interpret analytics (route measurement to analytics-and-reporting; do not invent best times)."
+  },
+  {
     "id": "schema-markup",
     "name": "Schema Markup",
     "module": "Domain & Research Extensions",
@@ -24633,6 +26027,40 @@
     "description": "Practical guide to testing web applications with screen readers for comprehensive accessibility validation."
   },
   {
+    "id": "scripting-and-storyboarding",
+    "name": "Scripting And Storyboarding",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill scripting-and-storyboarding",
+    "path": ".agents/skills/scripting-and-storyboarding",
+    "risk": "assess_for_task",
+    "description": "The pre-production system , turn a video idea into a shootable, editable plan: the two-column AV script, the storyboard as a decision document, the numbered shot list, the batch-shoot plan, and the paper edit. Use when shoots are chaotic, edits drag, videos feel static (\"just me talking\"), someone wants to batch-film a week of content in one session, needs a storyboard but can't draw, is planning a multi-shot AI video sequence, or scripts keep running long. Uses the SCENE framework. Reads idea-generation-and-ideation + short-form-video-script or the long-form skill + brand-profile first. A words-only script plans half the video; the storyboard is a decision document, not art; the shot list grouped by setup enables batch shooting. The agent writes the plan; the HUMAN shoots/generates and judges; WoopSocial publishes. Never stages candid-as-real moments or lifts another creator's script. Distinct from short-form-video-script, talking-head-and-piece-to-camera, capcut/descript, luma."
+  },
+  {
+    "id": "scriptwriting-principles",
+    "name": "Scriptwriting Principles",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill scriptwriting-principles",
+    "path": ".agents/skills/scriptwriting-principles",
+    "risk": "assess_for_task",
+    "description": "The 440-principle master reference for professional scriptwriting spanning feature films, YouTube long-form, social micro-formats, documentaries, advertising, educational tutorials, and AI-assisted screenwriting. Companion to video-editing-principles. Incorporates classical dramatic theory, Craig Mazin's belief-transformation model, and platform retention engineering."
+  },
+  {
     "id": "scroll-experience",
     "name": "Scroll Experience",
     "module": "UI/UX & Motion",
@@ -24716,6 +26144,23 @@
     "path": ".agents/skills/search-specialist",
     "risk": "assess_for_task",
     "description": "Expert web researcher using advanced search techniques and"
+  },
+  {
+    "id": "seasonal-and-moment-marketing",
+    "name": "Seasonal And Moment Marketing",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill seasonal-and-moment-marketing",
+    "path": ".agents/skills/seasonal-and-moment-marketing",
+    "risk": "assess_for_task",
+    "description": "The annual moment-planning skill -- map the few seasonal/cultural/commercial moments that genuinely fit your brand, gate them for fit + authenticity, tier by weight, and plan far in advance. Use when someone wants a seasonal/holiday content plan, a moment calendar, to plan Black Friday/holiday content, or to decide whether to post for a holiday/awareness day. The planned counterpart to trend-jacking's reactivity: silence on the wrong day beats noise on the wrong topic. Uses the DATES framework. Reads brand-profile + audience-research first. The agent builds the calendar, gates fit + authenticity, tiers, plans lead-time, feeds content-calendar. Big moments route to campaign-and-launch-planning + paid; the reactive half to trend-jacking. WoopSocial schedules ahead -- it does not pick moments, judge authenticity, or run paid. Never join identity/cause moments without year-round standing; never fabricate. Distinct from trend-jacking, content-calendar, and campaign-and-launch-planning."
   },
   {
     "id": "secret-agent-007",
@@ -25942,6 +27387,23 @@
     "description": "Build Shopify apps, extensions, themes using GraphQL Admin API, Shopify CLI, Polaris UI, and Liquid."
   },
   {
+    "id": "short-form-video-script",
+    "name": "Short Form Video Script",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill short-form-video-script",
+    "path": ".agents/skills/short-form-video-script",
+    "risk": "assess_for_task",
+    "description": "The master craft of scripting short-form vertical video (Reels, TikTok, Shorts) for watch-through. Use when someone wants a short-form video script, a Reel/TikTok/Short script, help with hooks, retention, pacing, the ending/loop, sound-off captions, or fixing early drop-off. Watch-through, not likes, rules short-form; the script's only job is to be un-skippable. Uses the WATCH framework. Reads brand-profile + voice-builder first; pulls the 'what' from the content-angle skills and the hook from hook-writer. The agent writes the script (spoken lines + on-screen text + beat/shot direction + hook variants + CTA); the human shoots/performs/edits; WoopSocial publishes the finished file. Routes platform specifics to reels-script / tiktok-script / youtube-shorts; pairs with talking-head-and-piece-to-camera. NEVER bait-and-switches the hook or fabricates a stat. Distinct from hook-writer, captions-and-clipping, and ai-video/veo-3/heygen (which generate the video this scripts)."
+  },
+  {
     "id": "signup-flow-cro",
     "name": "Signup Flow Cro",
     "module": "Domain & Research Extensions",
@@ -26639,6 +28101,23 @@
     "description": "Social Media Strategist and Content Writer. Creates clear, engaging social media posts for Instagram, LinkedIn, and Facebook."
   },
   {
+    "id": "social-proof-and-testimonials",
+    "name": "Social Proof And Testimonials",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill social-proof-and-testimonials",
+    "path": ".agents/skills/social-proof-and-testimonials",
+    "risk": "assess_for_task",
+    "description": "The proof content type , turn real customer reviews, testimonials, UGC, case studies, and results into believable, objection-matched social content that converts. Use when someone wants to share testimonials, post reviews, turn happy customers or a case study into content, reshare UGC, build social proof, or add proof at a decision point. Uses the VOUCH framework. Reads brand-profile + audience-research first. The agent curates + frames REAL proof, matched to the buyer objection; the human sources the proof and secures consent/rights; WoopSocial publishes. Feeds the format writers, design-and-templates, and the placement skills. NEVER fabricate, AI-generate, inflate, or deceptively suppress reviews/testimonials; disclose paid/gifted/insider connections (FTC); get consent + likeness rights; never guarantee conversions. Distinct from ugc-and-influencer (sources/manages creators), storytelling-and-narrative (the narrative craft), and data-and-original-research (originates stats)."
+  },
+  {
     "id": "social-proof-architect",
     "name": "Social Proof Architect",
     "module": "Domain & Research Extensions",
@@ -26671,6 +28150,57 @@
     "path": ".agents/skills/social-publisher",
     "risk": "assess_for_task",
     "description": "Agent-driven scheduling and publishing of social media posts across 13 platforms via SocialClaw. Use when the user wants to publish to X, LinkedIn, Instagram, Facebook Pages, TikTok, Discord, Telegram, YouTube, Reddit, WordPress, or Pinterest , or when managing campaigns, uploading media, or monitoring post delivery status."
+  },
+  {
+    "id": "social-selling-and-dm",
+    "name": "Social Selling And Dm",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill social-selling-and-dm",
+    "path": ".agents/skills/social-selling-and-dm",
+    "risk": "assess_for_task",
+    "description": "Social selling and DM funnels , consent-first selling in the DMs, never spam. Use when someone wants to \"sell in the DMs,\" \"set up a comment-to-DM funnel,\" \"do DM outreach,\" \"turn comments/followers into leads or customers,\" or convert intent into private conversations. Works ONLY as a response to intent (comments, story replies, follows, keyword DMs) via the comment->DM->email funnel , never cold outreach. Uses the WARMS framework. Reads brand-profile + voice-builder + goals-and-kpis first. WoopSocial has NO DM/comment surface: the agent designs the funnel and drafts the trigger post, DM sequences, and manual outreach scripts; WoopSocial publishes the trigger posts; the actual comment->DM automation runs in an external official-Meta-API tool (ManyChat/LinkDM/etc.) or a human sends warm DMs; consent-first always, ban-behaviors avoided, metrics never fabricated. Distinct from link-in-bio-and-traffic, reply-and-comment-writer, and email-and-newsletter."
+  },
+  {
+    "id": "social-seo",
+    "name": "Social Seo",
+    "module": "Technical SEO",
+    "category": "SEO & Discovery",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill social-seo",
+    "path": ".agents/skills/social-seo",
+    "risk": "assess_for_task",
+    "description": "Use to make social content discoverable through SEARCH across social platforms , the social-SEO / keyword-discovery skill. Run when the user says \"social SEO,\" \"get found in search,\" \"TikTok SEO,\" \"YouTube SEO,\" \"keywords for social,\" \"searchable captions,\" or wants search across platforms rather than just the feed. For single-platform depth, route \"Instagram SEO\" to instagram-seo and Pinterest asks to pinterest-seo; this skill owns the cross-platform framework. Reads brand-profile and audience first. All platforms are search engines; keywords, not hashtags, are the lever. Covers per-platform indexed surfaces, keyword research via autocomplete + native analytics (never fabricates volumes), the triple-mention technique, topical clusters, and the profile as a search asset. Routes hashtags to hashtag-strategy; hands the AI-search/LLM-citation (GEO) layer to ai-search-optimization. Measures via native search insights, not WoopSocial analytics."
+  },
+  {
+    "id": "social-strategy",
+    "name": "Social Strategy",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill social-strategy",
+    "path": ".agents/skills/social-strategy",
+    "risk": "assess_for_task",
+    "description": "Use to set a brand's overall social media strategy , which channels to focus on (and which to ignore), what to achieve, the angle to win, and a realistic operating cadence. The top-level plan that sits above content pillars and the calendar. Run when the user says \"social strategy,\" \"social media strategy,\" \"which platforms should I be on,\" \"what's my plan,\" \"should I be on TikTok/LinkedIn,\" or is starting or resetting their social presence. Reads brand-profile, audience-research, and content-pillars first. Makes real choices and trade-offs , especially what NOT to do , ties goals to the business not vanity metrics, and measures covered networks with WoopSocial post analytics (TikTok, LinkedIn, Facebook, Instagram, Pinterest, YouTube, and Bluesky) and uses native dashboards otherwise. Produces a social-strategy.md. It names the objective; to turn it into SMART targets, KPIs, and North Star metrics, use goals-and-kpis. Works for any business."
   },
   {
     "id": "software-architecture",
@@ -27234,6 +28764,40 @@
     "description": "Manage a file-based epic \u2192 story \u2192 sprint development loop without requiring an external project management tool. Creates and tracks epics, breaks them into user stories, assigns them to sprints, and drives implementation story by story. Use when starting a new feature initiative or when the team has no Jira/Linear/Taiga but needs structured delivery tracking."
   },
   {
+    "id": "story-writer",
+    "name": "Story Writer",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill story-writer",
+    "path": ".agents/skills/story-writer",
+    "risk": "assess_for_task",
+    "description": "Writes Instagram/Facebook Stories as a content type. Use when someone wants \"a Story\" / \"Stories,\" \"an IG/FB Story sequence,\" \"Story ideas,\" interactive sticker content (polls, quizzes, question boxes, countdowns, link stickers), a Close Friends drop, a behind-the-scenes or daily-update sequence, or to turn a post into Stories. Stories are the relationship-deepening surface (not reach) , optimise for completion + interaction. Uses the FRAME framework. Reads brand-profile + voice-builder first. The agent drafts frames + sticker copy; WoopSocial schedules/publishes base frames (IG+FB); interactive stickers and DM replies are handled natively in-app by a human; metrics come from native Insights; nothing is fabricated. Distinct from reels-script (reach video) and carousel-writer (Feed swipe)."
+  },
+  {
+    "id": "storytelling-and-narrative",
+    "name": "Storytelling And Narrative",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill storytelling-and-narrative",
+    "path": ".agents/skills/storytelling-and-narrative",
+    "risk": "assess_for_task",
+    "description": "The narrative-craft layer -- apply story structure (tension, transformation, resolution) to make any social content stick and travel. Use when someone wants to tell their brand/founder/customer story, make a flat post land, build an emotional or narrative-driven piece, or structure a story across formats. Uses the BEATS framework. Reads brand-profile + voice-builder first. The agent finds the real story, structures the arc (setup -> turning point -> payoff; audience = hero, brand = guide), anchors concrete specifics, and shapes it to the format. Feeds the format writers (reels-script, carousel-writer, linkedin-post-writer, thread-writer, caption-writer) and hook-writer; serialized arcs map into content-calendar; WoopSocial publishes. NOT the IG/FB Stories format (that's story-writer). Never fabricates a customer story or testimonial; never guarantees virality. Distinct from story-writer, hook-writer (the opening it pairs with), the format writers, and campaign-and-launch-planning."
+  },
+  {
     "id": "strategic-compact",
     "name": "Strategic Compact",
     "module": "Domain & Research Extensions",
@@ -27351,6 +28915,23 @@
     "path": ".agents/skills/subject-line-psychologist",
     "risk": "assess_for_task",
     "description": "One sentence - what this skill does and when to invoke it"
+  },
+  {
+    "id": "suno",
+    "name": "Suno",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill suno",
+    "path": ".agents/skills/suno",
+    "risk": "assess_for_task",
+    "description": "The Suno craft skill , generate full songs, brand music, and audio (vocals, lyrics, stems) with the right tier, honest rights, and structure control. Use when someone wants to make music with Suno/AI, create a brand sound/theme/jingle/podcast intro, control song structure (meta-tags), build a consistent sonic identity (Personas, Voices), split stems, distribute AI music to Spotify/YouTube, or asks whether they own their Suno songs. Uses the TRACK framework. Reads ai-music-and-sound (the router) + brand-profile + the content skill the music serves first. The agent writes briefs/lyrics and can drive the API where connected; the HUMAN's ears judge every track; WoopSocial publishes the content it scores. Rights: paid plan from the first note, commercial rights not ownership, no indemnification while litigation runs, AI-disclosure at distribution; never clone a real artist's voice. Distinct from ai-music-and-sound, ai-voiceover/elevenlabs (spoken TTS), capcut, and podcast-and-audiograms."
   },
   {
     "id": "supabase-automation",
@@ -27659,6 +29240,23 @@
     "description": "SymPy is a Python library for symbolic mathematics that enables exact computation using mathematical symbols rather than numerical approximations."
   },
   {
+    "id": "synthesia",
+    "name": "Synthesia",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill synthesia",
+    "path": ".agents/skills/synthesia",
+    "risk": "assess_for_task",
+    "description": "The Synthesia craft skill , produce avatar video (training, onboarding, explainers, localized series, faceless educational content) with the consent-first architecture and honest fit boundaries. Use when someone wants to make videos with Synthesia/AI avatars, create a personal avatar/digital twin, localize one video into many languages, build training/L&D video at scale, or asks whether an avatar should replace them on camera. Uses the HUMAN framework. Reads the content skill + brand-profile + voice-builder first. The agent scripts and plans (API where connected); the HUMAN approves every video; WoopSocial publishes. Spines: the fit test (avatars win at scale/localization/training, lose to a real face for trust-led content); consent-first likeness; the script is most of avatar quality , lock copy before generating. Never impersonate, fake endorsements, or skip AI-disclosure. Distinct from heygen, talking-head-and-piece-to-camera, ai-video/luma, ai-voiceover, and descript."
+  },
+  {
     "id": "system-guide",
     "name": "System Guide",
     "module": "Domain & Research Extensions",
@@ -27759,6 +29357,23 @@
     "path": ".agents/skills/tailwind-patterns",
     "risk": "assess_for_task",
     "description": "Tailwind CSS v4 principles. CSS-first configuration, container queries, modern patterns, design token architecture."
+  },
+  {
+    "id": "talking-head-and-piece-to-camera",
+    "name": "Talking Head And Piece To Camera",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill talking-head-and-piece-to-camera",
+    "path": ".agents/skills/talking-head-and-piece-to-camera",
+    "risk": "assess_for_task",
+    "description": "The on-camera delivery craft , helping a real human film themselves talking to a lens and look like themselves doing it. Use when someone wants a \"talking head video\" or \"piece to camera,\" says \"film myself\" or \"I look stiff on camera,\" asks about a teleprompter, framing, lighting, audio, or retakes, or wants to batch-film videos. Uses the TAKES framework. Phone-first: gear is almost never the bottleneck. Reads brand-profile + voice-builder first; takes its script from short-form-video-script (that writes it, this delivers it). The agent coaches setup + delivery, formats prompter/beat-map scripts, and plans batch days; the HUMAN films and picks the take (the agent cannot see footage); WoopSocial publishes the finished file. Camera-shy? Route honestly to heygen/synthesia or faceless formats. Never fabricates \"that take looks great.\" Distinct from scripting-and-storyboarding (the shoot plan), heygen/synthesia (avatars), and captions-and-clipping/capcut/descript (the edit)."
   },
   {
     "id": "tanstack-query-expert",
@@ -28458,6 +30073,23 @@
     "description": "Comprehensive testing and QA workflow covering unit testing, integration testing, E2E testing, browser automation, and quality assurance."
   },
   {
+    "id": "text-post-and-microblog",
+    "name": "Text Post And Microblog",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill text-post-and-microblog",
+    "path": ".agents/skills/text-post-and-microblog",
+    "risk": "assess_for_task",
+    "description": "The master craft of the standalone text post / microblog (LinkedIn, X/Twitter, Threads, Bluesky, Facebook text posts). Use when someone wants to write a text post, a LinkedIn post, a short written update, a microblog, or fix a post that flopped / reads as a wall of text / has a weak opening line. A text post has nowhere to hide -- the words are everything, and the first ~140-210 characters (the 'see more' fold) are most of the job. Uses the LINES framework. Reads brand-profile + voice-builder + hook-writer first; pulls the 'what' from the content-angle skills. The agent writes the post; the human approves; WoopSocial publishes to supported platforms, routing specifics to linkedin-post-writer / threads-post / thread-writer. NEVER fabricates a stat/story/metric or uses engagement-bait; avoids AI-slop over-formatting. No native multi-post threads; Reddit/Mastodon are advisory-only. Distinct from caption-writer, thread-writer, and the content-angle skills (WHAT vs this HOW)."
+  },
+  {
     "id": "text-translator",
     "name": "Text Translator",
     "module": "Domain & Research Extensions",
@@ -28490,6 +30122,57 @@
     "path": ".agents/skills/theme-factory",
     "risk": "assess_for_task",
     "description": "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly."
+  },
+  {
+    "id": "thread-writer",
+    "name": "Thread Writer",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill thread-writer",
+    "path": ".agents/skills/thread-writer",
+    "risk": "assess_for_task",
+    "description": "Use to write a thread , a connected sequence of posts on X/Twitter or Threads that tells one story or makes one argument across multiple posts. Run when the user says \"write a thread,\" \"turn this into a thread,\" \"X thread,\" \"Twitter thread,\" \"thread about X,\" or has a multi-beat idea that won't fit one post. Reads brand-profile and voice first, uses hook-writer for the opening post (which must hook AND promise the payoff), builds one cohesive idea where every post earns the next, and lands a close with one CTA. Knows when a single post beats a thread. Naming trap: \"write a thread\" means this multi-post chain; \"post on/to Threads\" means a single post on Meta's Threads app , use threads-post for that. For a single caption use caption-writer; for just the opening hook use hook-writer."
+  },
+  {
+    "id": "threads-growth",
+    "name": "Threads Growth",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill threads-growth",
+    "path": ".agents/skills/threads-growth",
+    "risk": "assess_for_task",
+    "description": "The Threads account-growth strategy skill -- the channel layer above threads-post. Use when someone wants to grow a Threads account, understand the Threads algorithm, fix reach, plan cadence, or set a Threads strategy. Threads is conversation-first, and the #1 growth lever is Mosseri's \"reply more than you post\": replies are weighted heaviest and first-hour engagement velocity is the top ranking factor. Uses the TALKS framework. Reads brand-profile + goals-and-kpis first. The agent strategizes the channel + drafts original posts (published via WoopSocial) and suggested replies; BUT the reply flywheel is human/community-management (no reply surface in WoopSocial), and Communities/DMs/dashboards/analytics are native. No engagement-bait, original not recycled, positive tone, metrics never fabricated, growth compounds over 60-90 days. Distinct from threads-post (the single-post craft) and community-management (the reply execution); uses Threads as a discovery funnel into instagram-growth."
+  },
+  {
+    "id": "threads-post",
+    "name": "Threads Post",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill threads-post",
+    "path": ".agents/skills/threads-post",
+    "risk": "assess_for_task",
+    "description": "Write and publish single posts on Meta's Threads , the Threads format-execution skill. Use when someone wants a \"Threads post,\" to \"post to Threads,\" grow on Meta's Threads, or publish a Threads post via WoopSocial. Writes a Threads-native conversation post (text <=500 + optional media) built to earn replies , Threads is conversation-first: replies outweigh likes and engagement velocity drives distribution. Uses the REPLY framework. Reads brand-profile + goals-and-kpis first. WoopSocial publishes ONE Threads post (no native multi-post chain, no polls/voice/GIF, no reply surface); the replying that drives reach is a human/community-management job; metrics never fabricated; no engagement bait. Distinct from thread-writer (a user saying \"write a thread\" wants that multi-post X chain, not this), x-growth (sibling text platform, different culture) and caption-writer (text only)."
   },
   {
     "id": "threat-mitigation-mapping",
@@ -28713,6 +30396,23 @@
     "description": "Create 3D scenes, interactive experiences, and visual effects using Three.js. Use when user requests 3D graphics, WebGL experiences, 3D visualizations, animations, or interactive 3D elements."
   },
   {
+    "id": "thumbnail-design",
+    "name": "Thumbnail Design",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill thumbnail-design",
+    "path": ".agents/skills/thumbnail-design",
+    "risk": "assess_for_task",
+    "description": "Design YouTube video thumbnails that earn the click , mobile-legible, one focal point, honest. Use when someone wants to design a YouTube thumbnail, improve CTR, brief a thumbnail, choose thumbnail text, or plan thumbnail A/B testing. Designs and briefs high-CTR thumbnails and writes the A/B test plan: a thumbnail is a promise, not a poster, designed as a unit with the title and legible on mobile. Uses the CLICK framework. Reads brand-profile + the video/title first. A HUMAN or an image/design tool (nano-banana/ideogram/Canva/designer) creates the final raster; the YouTube custom thumbnail is uploaded NATIVELY in Studio (WoopSocial has no thumbnail field) and Test & Compare is native; TikTok/IG-Reel covers use WoopSocial's cover field via those format skills. No clickbait, no unconsented real-person/deepfake faces, CTR never fabricated. Distinct from youtube-publishing-and-metadata (the metadata) and nano-banana/ideogram (which generate the raster this briefs)."
+  },
+  {
     "id": "tiktok-automation",
     "name": "Tiktok Automation",
     "module": "Domain & Research Extensions",
@@ -28728,6 +30428,74 @@
     "path": ".agents/skills/tiktok-automation",
     "risk": "assess_for_task",
     "description": "Automate TikTok tasks via Rube MCP (Composio): upload/publish videos, post photos, manage content, and view user profiles/stats. Always search tools first for current schemas."
+  },
+  {
+    "id": "tiktok-growth",
+    "name": "Tiktok Growth",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill tiktok-growth",
+    "path": ".agents/skills/tiktok-growth",
+    "risk": "assess_for_task",
+    "description": "Use to grow a TikTok account , the TikTok-specific growth strategy that diagnoses where growth is stuck and orchestrates the other skills to fix it. Run when the user says \"grow on TikTok,\" \"TikTok growth,\" \"get more followers/views on TikTok,\" \"my TikTok isn't growing,\" \"go viral on TikTok,\" or \"TikTok strategy.\" Reads brand-profile, social-strategy, and audience first. Built on the 2026 reality that TikTok is an interest graph , follower count is not a ranking factor; completion rate and rewatches drive reach, and search/SEO is a major evergreen pillar. Diagnoses the broken stage of the test-and-expand loop and routes to the right skill (tiktok-script, hook-writer, profile-optimization, content-calendar, hashtag-strategy, trend-jacking, viral-reverse-engineering). Judges via native TikTok analytics , not WoopSocial analytics , and treats followers as a business asset, not the reach mechanism."
+  },
+  {
+    "id": "tiktok-photo-mode",
+    "name": "Tiktok Photo Mode",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill tiktok-photo-mode",
+    "path": ".agents/skills/tiktok-photo-mode",
+    "risk": "assess_for_task",
+    "description": "The TikTok Photo Mode format-execution skill. Use when someone wants a \"TikTok photo carousel,\" \"photo mode,\" \"TikTok slideshow,\" \"swipeable TikTok post,\" or to publish a multi-image TikTok post via WoopSocial (postType PHOTO). Builds a TikTok-native carousel that wins on completion rate , hook slide 1, progressive reveal with cliffhangers, reward + one CTA , AND sets the exact WoopSocial PHOTO publish config (privacy, comments, music, truthful disclosure flags). Uses the SWIPE framework. Reads brand-profile + goals-and-kpis first. The agent writes the slide plan + overlay copy + caption + config; the IMAGES are made by a human/image skill, not WoopSocial; WoopSocial publishes the native PHOTO post; metrics never fabricated and photo mode is never promised as a reach hack. Distinct from tiktok-script (VIDEO) and carousel-writer (cross-platform copy)."
+  },
+  {
+    "id": "tiktok-script",
+    "name": "Tiktok Script",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill tiktok-script",
+    "path": ".agents/skills/tiktok-script",
+    "risk": "assess_for_task",
+    "description": "Use to write a TikTok script , a native, sound-aware short-video script optimized for TikTok's discovery engine (the FYP), built around a brutal 1-second hook, watch-time, and rewatches. Run when the user says \"TikTok script,\" \"TikTok video,\" \"script for TikTok,\" \"make a TikTok,\" \"storytime,\" \"TikTok hook,\" or wants short-form video for TikTok specifically. Reads brand-profile and voice first; rides a trending sound/format where it genuinely fits (live trend research goes to trend-jacking); structures for completion + rewatch; optimizes for TikTok search; outputs a production doc (shot - on-screen text - spoken - sound - timing) plus a Veo prompt pack for faceless/b-roll shots (native filming often beats AI on TikTok). For Instagram Reels use reels-script; for YouTube Shorts use youtube-shorts; for the platform-agnostic scripting craft use short-form-video-script; hands caption to caption-writer and scheduling to scheduling-and-queue."
+  },
+  {
+    "id": "tiktok-video-publishing",
+    "name": "Tiktok Video Publishing",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill tiktok-video-publishing",
+    "path": ".agents/skills/tiktok-video-publishing",
+    "risk": "assess_for_task",
+    "description": "The TikTok VIDEO publish-config skill. Use when someone wants to \"publish/schedule a TikTok video,\" \"configure a TikTok upload,\" set the caption/cover/privacy/duet-stitch/disclosure, or post a TikTok video via WoopSocial (postType VIDEO). Configures the publish for reach, discovery, and compliant disclosure AND writes the search-optimized caption: the caption is search (lead-load the primary keyword), duet/ stitch ON is free distribution, the cover frame wins the profile grid + search, and the disclosure flags (isBrandedContent/isYourBrand) are set truthfully. Uses the REACH framework. Reads brand-profile + goals-and-kpis + the script/video first. The VIDEO FILE is filmed by a human or made by the video skills (not WoopSocial); WoopSocial publishes via raw-bytes upload and auto-discloses AI on TikTok; trending sound / pinned comment / replies are native or human; no update endpoint (edit = delete+recreate); metrics never fabricated. Distinct from tiktok-script (the VIDEO SCRIPT) and tiktok-photo-mode (PHOTO)."
   },
   {
     "id": "tinystruct-patterns",
@@ -28985,6 +30753,23 @@
     "description": "Automate Trello boards, cards, and workflows via Rube MCP (Composio). Create cards, manage lists, assign members, and search across boards programmatically."
   },
   {
+    "id": "trend-jacking",
+    "name": "Trend Jacking",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill trend-jacking",
+    "path": ".agents/skills/trend-jacking",
+    "risk": "assess_for_task",
+    "description": "Use to ride a trend , a trending sound, format, meme, hashtag, news moment, or cultural conversation , to earn reach by attaching the brand to something already getting attention (a.k.a. trendjacking / newsjacking). Run when the user says \"trend,\" \"trending,\" \"jump on this trend,\" \"trendjack,\" \"newsjack,\" \"is this trend worth doing,\" \"make this go viral,\" or wants to react to a current moment. Reads brand-profile, voice, and audience first, then runs three gates , FIT, SAFETY, and TIMING , before executing a fast, on-brand remix and handing to the right content skill (tiktok-script, reels-script, caption-writer) and scheduling-and-queue. Refuses to trendjack tragedies or divisive moments and won't force irrelevant trends; live trend discovery needs current scanning , this skill vets and executes. For meme-format craft, cultural fluency, and meme IP/likeness judgment (\"make a meme,\" \"is this meme safe\"), route to meme-and-culture."
+  },
+  {
     "id": "trending-tech-tracker",
     "name": "Trending Tech Tracker",
     "module": "Domain & Research Extensions",
@@ -29238,6 +31023,23 @@
     "path": ".agents/skills/typescript-scaffold",
     "risk": "assess_for_task",
     "description": "You are a TypeScript project architecture expert specializing in scaffolding production-ready Node.js and frontend applications. Generate complete project structures with modern tooling (pnpm, Vite, N"
+  },
+  {
+    "id": "ugc-and-influencer",
+    "name": "Ugc And Influencer",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill ugc-and-influencer",
+    "path": ".agents/skills/ugc-and-influencer",
+    "risk": "assess_for_task",
+    "description": "UGC and influencer marketing , paid or gifted creator partnerships, briefs, usage rights, and disclosure done right. Use when someone wants to run an influencer campaign, sponsored post, paid or gifted creator partnership, write a creator brief, license/whitelist creator content, source customer UGC, or build a UGC pipeline. Vets creators on engagement + audience quality (not follower count); briefs with guardrails not scripts; inks usage rights up front; enforces FTC/ASA disclosure on EVERY paid AND gifted post; runs the customer-UGC pipeline. Uses the BRIEF framework. Reads brand-profile + goals-and-kpis first. WoopSocial publishes the BRAND'S OWN posts (rights-cleared UGC reshares, campaign posts) , NOT creator DMs/payment/whitelisting/contracts. Undisclosed sponsorship = decline and correct; a tag is not usage permission. Distinct from collabs-and-cross-promotion (mutual, unpaid), creator-monetization (the creator's side), and social-proof-and-testimonials (UGC as proof content)."
   },
   {
     "id": "ui-a11y",
@@ -29614,6 +31416,23 @@
     "description": "Production patterns for Unity's Data-Oriented Technology Stack (DOTS) including Entity Component System, Job System, and Burst Compiler."
   },
   {
+    "id": "universal-ai-research",
+    "name": "Universal Ai Research",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill universal-ai-research",
+    "path": ".agents/skills/universal-ai-research",
+    "risk": "assess_for_task",
+    "description": "Universal autonomous research pipeline and scientific methodology engine based on 214 principles across 8 research domains (GPT Researcher, Research Paper Writing, Paper Agent, K-Dense Scientific Skills, Paper Review, Academic Research Agent, AI Research Skills, and Humanizer). Produces 6 core artifacts: topic survey, top-5 ranking, selected topic, literature corpus, 11-section synthesis report, and run log with noncompensatory novelty and feasibility gates."
+  },
+  {
     "id": "unreal-engine-cpp-pro",
     "name": "Unreal Engine Cpp Pro",
     "module": "Domain & Research Extensions",
@@ -29954,6 +31773,23 @@
     "description": "Vector-powered CLI for semantic file search with a Claude/Codex skill"
   },
   {
+    "id": "veo-3",
+    "name": "Veo 3",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill veo-3",
+    "path": ".agents/skills/veo-3",
+    "risk": "assess_for_task",
+    "description": "Use to write great prompts for Google Veo (Veo 3.1) to generate or animate video for social media , the video-prompt-craft mini-skill, the video counterpart to nano-banana. Run when the user wants a Veo / AI video prompt, a short video clip for a post (b-roll, product-in-motion, hook visual, spokesperson/UGC clip, ad), to animate a still image into video, or a vertical Reel/TikTok/Short clip. Reads brand-profile for brand style. Veo's standout is native synchronized audio in one pass, plus image-to-video and native 9:16 vertical. Teaches the prompt anatomy, audio prompting, the image-to-video pipeline, and the 8-second constraint + extension/stitching. Honest: iterate cheap then finalize, disclose AI video (SynthID watermark), never generate real identifiable people or copyrighted IP. This is the prompt-craft layer , the API/connection and the generate -> upload to WoopSocial Media -> attach flow live in tools/integrations/veo.md; the consuming pack is reels-script's veo-prompt-pack."
+  },
+  {
     "id": "vercel-ai-sdk-expert",
     "name": "Vercel Ai Sdk Expert",
     "module": "Domain & Research Extensions",
@@ -30141,6 +31977,23 @@
     "description": "AI-assisted video editing workflows for cutting, structuring, and augmenting real footage. Covers the full pipeline from raw capture through FFmpeg, Remotion, ElevenLabs, fal.ai, and final polish in Descript or CapCut. Use when the user wants to edit video, cut footage, create vlogs, or build video content."
   },
   {
+    "id": "video-editing-principles",
+    "name": "Video Editing Principles",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill video-editing-principles",
+    "path": ".agents/skills/video-editing-principles",
+    "risk": "assess_for_task",
+    "description": "The 440-principle master reference for professional video editing across Hollywood films, premium advertising, YouTube long-form, social formats, and documentary production. Incorporates Walter Murch's Rule of Six, cinematic techniques, sound and color engineering, AI-assisted workflows, and an autonomous self-improvement protocol for continuous evolution."
+  },
+  {
     "id": "videodb-media-engine",
     "name": "Videodb Media Engine",
     "module": "Domain & Research Extensions",
@@ -30190,6 +32043,23 @@
     "path": ".agents/skills/viral-generator-builder",
     "risk": "assess_for_task",
     "description": "Expert in building shareable generator tools that go viral - name generators, quiz makers, avatar creators, personality tests, and calculator tools. Covers the psychology of sharing, viral mechanics, and building tools people can't resist sharing with friends."
+  },
+  {
+    "id": "viral-reverse-engineering",
+    "name": "Viral Reverse Engineering",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill viral-reverse-engineering",
+    "path": ".agents/skills/viral-reverse-engineering",
+    "risk": "assess_for_task",
+    "description": "Use to reverse-engineer why a piece of content went viral (or overperformed) , yours or someone else's , and extract the repeatable mechanism to apply to your own content. Run when the user says \"why did this go viral,\" \"break down this viral post/video,\" \"reverse engineer,\" \"what made this work,\" or wants to learn from viral content. Sources the observable signal first (intake, transcript, screenshots, top comments, visible stats , an agent usually can't watch a video from a link) and never fabricates what it can't see. Reads brand-profile and audience first, deconstructs the piece layer by layer, isolates the real driver, runs a replicability check, extracts the transferable principle, and applies it to the user's niche via the content skills. Mechanism, never a copy; flags non-replicable virality; visible signals only (no WoopSocial analytics). Single-POST teardown only: for the account-level competitive landscape use competitor-analysis; for riding a live trend use trend-jacking."
   },
   {
     "id": "visa-doc-translate",
@@ -30326,6 +32196,23 @@
     "path": ".agents/skills/voice-ai-engine-development",
     "risk": "assess_for_task",
     "description": "Build real-time conversational AI voice engines using async worker pipelines, streaming transcription, LLM agents, and TTS synthesis with interrupt handling and multi-provider support"
+  },
+  {
+    "id": "voice-builder",
+    "name": "Voice Builder",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill voice-builder",
+    "path": ".agents/skills/voice-builder",
+    "risk": "assess_for_task",
+    "description": "Use to build a reusable voice guide (voice.md) by analyzing a person's or brand's ACTUAL writing samples , so every other social skill can write in their exact voice instead of generic AI prose. Run this when the user says \"build my voice,\" \"sound like me,\" \"capture my tone,\" \"analyze my writing,\" \"train on my posts,\" \"ghostwrite in my voice,\" or when content keeps coming out off-voice or generic. Requires real writing samples; if there are none, use brand-profile's voice interview instead. Works for anyone: founders, creators, executives who are ghostwritten, and brands. Read brand-profile first; this skill produces the deeper voice.md that complements it. This skill DEFINES the voice; to apply it per piece , tone shifts, style edits, de-AI-ing a draft , use writing-style-and-tone."
   },
   {
     "id": "vscode-extension-guide-en",
@@ -31263,6 +33150,23 @@
     "description": "Use when you have a spec or requirements for a multi-step task, before touching code"
   },
   {
+    "id": "writing-style-and-tone",
+    "name": "Writing Style And Tone",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill writing-style-and-tone",
+    "path": ".agents/skills/writing-style-and-tone",
+    "risk": "assess_for_task",
+    "description": "The writing-craft skill , style and tone as applied technique: rhythm, specificity, tone modulation, and the edit passes that make writing read as human. Use when someone's posts \"sound like ChatGPT,\" a draft needs a style edit, they ask how to write differently per platform or moment without losing the brand voice, writing is grammatically perfect but exhausting, a manager wants em dashes banned or detector scores chased, or any AI-assisted draft needs its mandatory quality pass. Uses the STYLE framework. Reads voice-builder + brand-profile + the format skill first. Tells must be read as a cluster with judgment , no single marker proves AI, and detectors misflag real writers; the winning move is substance so owned the question never arises. Voice is identity; tone is register. The agent drafts; the HUMAN supplies lived specifics and final say; never invents anecdotes or staged typos. Distinct from voice-builder, hook-writer, the format skills, and content-research-and-sourcing."
+  },
+  {
     "id": "x-api",
     "name": "X Api",
     "module": "Domain & Research Extensions",
@@ -31278,6 +33182,23 @@
     "path": ".agents/skills/x-api",
     "risk": "assess_for_task",
     "description": "X/Twitter API integration for posting tweets, threads, reading timelines, search, and analytics. Covers OAuth auth patterns, rate limits, and platform-native content posting. Use when the user wants to interact with X programmatically."
+  },
+  {
+    "id": "x-growth",
+    "name": "X Growth",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill x-growth",
+    "path": ".agents/skills/x-growth",
+    "risk": "assess_for_task",
+    "description": "The X/Twitter growth playbook for 2026. Use when someone wants to \"grow on X / Twitter,\" \"get more reach/followers/impressions on X,\" \"an X content/posting strategy,\" \"should I get X Premium,\" \"how the X algorithm works,\" or how to use replies/quote-posts/long-form/video to grow. Conversation is the engine (replies and first-hour velocity), Premium is effectively a baseline, and links go in the first reply. Uses the SPARK framework. Reads brand-profile + voice-builder first. The agent drafts posts + reply copy; a human does the live replying/quote-posts/community engagement; WoopSocial schedules posts; metrics come from native X analytics; nothing is fabricated. Complements thread-writer (thread-format craft)."
   },
   {
     "id": "x-publisher",
@@ -31482,6 +33403,74 @@
     "path": ".agents/skills/youtube-automation",
     "risk": "assess_for_task",
     "description": "Automate YouTube tasks via Rube MCP (Composio): upload videos, manage playlists, search content, get analytics, and handle comments. Always search tools first for current schemas."
+  },
+  {
+    "id": "youtube-long-form",
+    "name": "Youtube Long Form",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill youtube-long-form",
+    "path": ".agents/skills/youtube-long-form",
+    "risk": "assess_for_task",
+    "description": "The growth engine for YouTube long-form video in 2026. Use when someone asks to \"grow my YouTube channel,\" \"get more views on my videos,\" \"plan/script a YouTube video,\" \"improve my CTR or retention,\" \"why did my video flop,\" or wants a long-form strategy. Produces packaging concepts + scripts; the human films/edits/designs the thumbnail; publishing routes through scheduling-and-queue -> WoopSocial; analytics and session features live in YouTube Studio. The opposite engine from, and sibling to, youtube-shorts."
+  },
+  {
+    "id": "youtube-long-form-production",
+    "name": "Youtube Long Form Production",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill youtube-long-form-production",
+    "path": ".agents/skills/youtube-long-form-production",
+    "risk": "assess_for_task",
+    "description": "End-to-end engineering pipeline for high-retention, long-form YouTube videos (8-25 minutes). Integrates packaging pre-production, 4-act retention scripting, B-roll generation with Google Flow and Veo 3.1, audio mastering to -14 LUFS, and programmatic editing via FFmpeg."
+  },
+  {
+    "id": "youtube-publishing-and-metadata",
+    "name": "Youtube Publishing And Metadata",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill youtube-publishing-and-metadata",
+    "path": ".agents/skills/youtube-publishing-and-metadata",
+    "risk": "assess_for_task",
+    "description": "The YouTube publish-metadata skill. Use when someone wants to \"write a YouTube title/description,\" \"set tags/category/privacy,\" \"optimize YouTube SEO/metadata,\" set made-for-kids, or publish a YouTube video via WoopSocial. Writes the metadata (title, description+chapters, tags) and sets category/privacy/madeForKids , YouTube is a search engine, so metadata is the launchpad, and madeForKids is a COPPA/FTC legal flag set truthfully. Uses the INDEX framework. Reads brand-profile + goals-and-kpis + the script/video first. The video file + script are inputs (not WoopSocial); the thumbnail and A/B title testing are native YouTube Studio; WoopSocial publishes via the YouTube fields; metrics never fabricated. Distinct from youtube-long-form/youtube-shorts (the script) and thumbnail-design (the thumbnail)."
+  },
+  {
+    "id": "youtube-shorts",
+    "name": "Youtube Shorts",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill youtube-shorts",
+    "path": ".agents/skills/youtube-shorts",
+    "risk": "assess_for_task",
+    "description": "The growth engine for YouTube Shorts in 2026. Use when someone asks to \"grow on Shorts,\" \"get views on YouTube Shorts,\" \"write a Shorts script,\" \"why did my Short flop,\" \"make a vertical YouTube video,\" or wants a Shorts strategy. Drafts the script; the human films/ edits; publishing routes through scheduling-and-queue -> WoopSocial; analytics are read natively in YouTube Studio. Fully decoupled from, and sibling to, youtube-long-form."
   },
   {
     "id": "youtube-summarizer",

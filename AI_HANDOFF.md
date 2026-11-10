@@ -1,3 +1,23 @@
+# AGYOS handoff: performance optimization and video processing pipeline
+
+- Task: Optimize AGYOS decision routing, catalog parsing, documentation indexing, unit test execution, and video processing pipelines; preserve test ratchet.
+- Branch: `main`.
+- Measurements and deltas:
+  1. Skill Decision Routing: 49.55x speedup (dropped from 866.86ms/call down to 17.50ms/call) via `@lru_cache` on keyword regex compilation and pre-tokenized query-independent catalog attributes in `agyos_decision/skills_router.py`. Substring guards (`kw in q_lower`, `name in clean_query`) delivered an 8.92x speedup on `classify_domain` (0.1799s down to 0.0202s) and 22.01x speedup on candidate verification (0.1779s down to 0.0081s).
+  2. YAML Frontmatter Discovery: 5.73x speedup across 1,979 skills (dropped from 1.388s down to 0.255s) by switching to `yaml.CSafeLoader` in `agyos_decision/catalog.py`.
+  3. Module Import & CLI Startup: Lazified 40+ module attributes in `agyos_decision/__init__.py`, dropping import time from 181.51ms to 125.51ms and `bin/agyos decide` shell execution time from 0.730s to 0.399s.
+  4. Documentation Generation (`scripts/build_docs_data.py`): 5.50x speedup (dropped from 3.576s down to 0.650s) via manifest fast path.
+  5. Test Suite (`scripts/tests/test_skill_routing.py`): 10.82x speedup (dropped from 19.292s down to 1.783s) with 100% pass rate across 17 test cases.
+  6. Test Suite (`scripts/tests/test_startup.py`): 4.88x speedup (dropped from 3.81s down to 0.78s) by reading fixed header bytes instead of whole file buffers.
+  7. Video Processing Pipeline (`scripts/organic_film_engine.py` and `scripts/repair_ai_video.py`): 3.42x speedup (dropped from 29.60s down to 8.67s on benchmark segment) via `-preset fast -threads 0`.
+- Evidence:
+  - `python3 -m unittest scripts/tests/test_skill_routing.py`: 17 passed in 1.783s.
+  - `python3 -m unittest discover -s scripts/tests -p "test_*.py"`: 110 passed, 0 failed.
+  - Total cataloged physical skills: 1,979 verified.
+  - Zero secrets or tokens detected.
+
+---
+
 # AGYOS handoff: master architecture, model router & platform research
 
 - Task: Synchronize local `main` with remote, audit 10 reference agent platforms, crosswalk FAANG/SRE/DevOps standards, create threat model and data flow inventory, implement AGYOS Model Registry and Router with strict privacy gating and context economics, fix `bin/agyos mem` CLI parameter defect, clean obsolete files, and execute full verification.

@@ -9,6 +9,7 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 SKILLS_DIR = ROOT / ".agents" / "skills"
 FRONTMATTER = re.compile(r"\A---\n(.*?)\n---(?:\n|$)", re.DOTALL)
+YAML_LOADER = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
 
 
 def read_metadata(skill_file: Path) -> dict[str, Any]:
@@ -17,7 +18,7 @@ def read_metadata(skill_file: Path) -> dict[str, Any]:
     if not match:
         raise ValueError(f"Missing YAML frontmatter: {skill_file}")
     try:
-        metadata = yaml.safe_load(match[1])
+        metadata = yaml.load(match[1], Loader=YAML_LOADER)
     except yaml.YAMLError as exc:
         raise ValueError(f"Invalid YAML frontmatter: {skill_file}") from exc
     if not isinstance(metadata, dict) or metadata.get("name") != skill_file.parent.name:

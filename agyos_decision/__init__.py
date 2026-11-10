@@ -1,53 +1,58 @@
 """AGYOS Decision Engine: Fast, non-autoregressive System 1 decision engine with calibrated probabilities."""
 
-from .company_adapters import (
-    BillingFinanceAdapter,
-    CRMAdapter,
-    HelpdeskAdapter,
-    HiringScreenAdapter,
-    LegalAuditAdapter,
-)
-from .contracts import (
-    Approval,
-    Budget,
-    Compensation,
-    Postconditions,
-    TaskContract,
-    TaskResult,
-    validate_contract,
-)
-from .email import clean_email_body, email_state
-from .evpi_clarify import ClarificationDecision, evaluate_evpi
-from .hooks import BaseHook, Hook, PredictContext, PredictHook
-from .intent_compiler import FUNCTION_TO_POD, compile_intent
-from .lang import analyse as detect_language
-from .lang import detect_script, is_english
-from .presets import (
-    email_questions,
-    guard_questions,
-    moderation_questions,
-    router_questions,
-    triage_questions,
-)
-from .router import DEFAULT_MODELS, RouteDecision, Router
-from .skills_router import assess_complexity, classify_domain, decide_skill, select_best_skills
-from .state_ledger import (
-    DAGTaskGraph,
-    HierarchyCapError,
-    OutboxQueue,
-    ReflectionMemory,
-    RunBudgetTracker,
-    SagaCoordinator,
-    SnapshotManager,
-)
-from .structured import DecisionResult, decide
-
 __version__ = "3.1.0"
 
-# Routing, language detection and email cleaning are pure Python. The torch-backed names are
-# resolved lazily so that `import roxx` -- and therefore `from roxx import Router` or
-# `from roxx.lang import detect_script` -- does not pay torch's import time and memory.
+# Routing, language detection, email, contracts, and adapters are resolved lazily
+# so that importing specific submodules (such as `skills_router`) does not pay
+# the eager import cost of jsonschema, dataclasses, torch, or external frameworks.
 _LAZY_ATTRS = {
+    # Submodules
+    "BillingFinanceAdapter": (".company_adapters", "BillingFinanceAdapter"),
+    "CRMAdapter": (".company_adapters", "CRMAdapter"),
+    "HelpdeskAdapter": (".company_adapters", "HelpdeskAdapter"),
+    "HiringScreenAdapter": (".company_adapters", "HiringScreenAdapter"),
+    "LegalAuditAdapter": (".company_adapters", "LegalAuditAdapter"),
+    "Approval": (".contracts", "Approval"),
+    "Budget": (".contracts", "Budget"),
+    "Compensation": (".contracts", "Compensation"),
+    "Postconditions": (".contracts", "Postconditions"),
+    "TaskContract": (".contracts", "TaskContract"),
+    "TaskResult": (".contracts", "TaskResult"),
+    "validate_contract": (".contracts", "validate_contract"),
+    "clean_email_body": (".email", "clean_email_body"),
+    "email_state": (".email", "email_state"),
+    "ClarificationDecision": (".evpi_clarify", "ClarificationDecision"),
+    "evaluate_evpi": (".evpi_clarify", "evaluate_evpi"),
+    "BaseHook": (".hooks", "BaseHook"),
+    "Hook": (".hooks", "Hook"),
+    "PredictContext": (".hooks", "PredictContext"),
+    "PredictHook": (".hooks", "PredictHook"),
+    "FUNCTION_TO_POD": (".intent_compiler", "FUNCTION_TO_POD"),
+    "compile_intent": (".intent_compiler", "compile_intent"),
+    "detect_language": (".lang", "analyse"),
+    "detect_script": (".lang", "detect_script"),
+    "is_english": (".lang", "is_english"),
+    "email_questions": (".presets", "email_questions"),
+    "guard_questions": (".presets", "guard_questions"),
+    "moderation_questions": (".presets", "moderation_questions"),
+    "router_questions": (".presets", "router_questions"),
+    "triage_questions": (".presets", "triage_questions"),
+    "DEFAULT_MODELS": (".router", "DEFAULT_MODELS"),
+    "RouteDecision": (".router", "RouteDecision"),
+    "Router": (".router", "Router"),
+    "assess_complexity": (".skills_router", "assess_complexity"),
+    "classify_domain": (".skills_router", "classify_domain"),
+    "decide_skill": (".skills_router", "decide_skill"),
+    "select_best_skills": (".skills_router", "select_best_skills"),
+    "DAGTaskGraph": (".state_ledger", "DAGTaskGraph"),
+    "HierarchyCapError": (".state_ledger", "HierarchyCapError"),
+    "OutboxQueue": (".state_ledger", "OutboxQueue"),
+    "ReflectionMemory": (".state_ledger", "ReflectionMemory"),
+    "RunBudgetTracker": (".state_ledger", "RunBudgetTracker"),
+    "SagaCoordinator": (".state_ledger", "SagaCoordinator"),
+    "SnapshotManager": (".state_ledger", "SnapshotManager"),
+    "DecisionResult": (".structured", "DecisionResult"),
+    "decide": (".structured", "decide"),
     "Agent": (".agent", "Agent"),
     "RLAgent": (".agent", "RLAgent"),
     "load": (".agent", "load"),

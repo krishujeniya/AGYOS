@@ -43,6 +43,9 @@ The script checks:
 
 ### For JavaScript/TypeScript projects:
 
+> [!NOTE]
+> Do not execute slow full production builds locally (e.g. `npm run build:pages`). Run fast typecheck (`npx tsc --noEmit` or `npm run typecheck`), lint, and unit tests locally. Full builds are verified by remote CI/CD.
+
 ```bash
 # TypeScript type checking (if tsconfig.json exists):
 npx tsc --noEmit

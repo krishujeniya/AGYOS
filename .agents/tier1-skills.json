@@ -133,6 +133,12 @@
       "path": ".agents/skills/agyos-scout"
     },
     {
+      "name": "agyos-self-improvement",
+      "tier": 1,
+      "description": "Autonomous self-correction and continuous improvement protocol for the entire AGYOS skill catalog. Captures user corrections, integrates industry trends, maintains cross-skill dependencies, enforces quality gates, and preserves test ratchets across all 1970+ skills.",
+      "path": ".agents/skills/agyos-self-improvement"
+    },
+    {
       "name": "agyos-software-protection",
       "tier": 1,
       "description": "Defensive software hardening and counter-reverse-engineering playbook. Protects proprietary binaries and builds against automated AI decompilation, resource exhaustion, and static pattern mining.",
@@ -905,6 +911,12 @@
       "tier": 1,
       "description": "Expert in event sourcing, CQRS, and event-driven architecture patterns. Masters event store design, projection building, saga orchestration, and eventual consistency patterns. Use PROACTIVELY for event-sourced systems, audit trail requirements, or complex domain modeling with temporal queries.",
       "path": ".agents/skills/event-sourcing-architect"
+    },
+    {
+      "name": "experimentation-and-ab-testing",
+      "tier": 1,
+      "description": "A/B testing and experimentation for social media content \u2014 evidence over opinion, at honest organic-scale rigor. Use when someone wants to \"A/B test\" or \"split test\" content, \"test which version/hook/time/caption/thumbnail works,\" \"set up an experiment,\" \"what should I test,\" or to settle a content debate with evidence instead of opinion. Designs disciplined organic tests: one variable, controlled context, a decision rule set BEFORE publishing, enough duration and repetitions to separate signal from noise. Uses the TEST framework. Reads brand-profile + goals-and-kpis first. It DESIGNS the test and drafts variants; WoopSocial schedules them as controlled sequential posts (exception: YouTube's native Test & Compare); the result is read from native analytics via analytics-and-reporting. Organic can't reach true statistical significance; nothing is fabricated or p-hacked. Distinct from analytics-and-reporting (measures) and goals-and-kpis (sets targets).",
+      "path": ".agents/skills/experimentation-and-ab-testing"
     },
     {
       "name": "expert-dev",
@@ -2071,6 +2083,12 @@
       "path": ".agents/skills/swiftui-performance-audit"
     },
     {
+      "name": "synthesia",
+      "tier": 1,
+      "description": "The Synthesia craft skill \u2014 produce avatar video (training, onboarding, explainers, localized series, faceless educational content) with the consent-first architecture and honest fit boundaries. Use when someone wants to make videos with Synthesia/AI avatars, create a personal avatar/digital twin, localize one video into many languages, build training/L&D video at scale, or asks whether an avatar should replace them on camera. Uses the HUMAN framework. Reads the content skill + brand-profile + voice-builder first. The agent scripts and plans (API where connected); the HUMAN approves every video; WoopSocial publishes. Spines: the fit test (avatars win at scale/localization/training, lose to a real face for trust-led content); consent-first likeness; the script is most of avatar quality \u2014 lock copy before generating. Never impersonate, fake endorsements, or skip AI-disclosure. Distinct from heygen, talking-head-and-piece-to-camera, ai-video/luma, ai-voiceover, and descript.",
+      "path": ".agents/skills/synthesia"
+    },
+    {
       "name": "systematic-debugging",
       "tier": 1,
       "description": "Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes",
@@ -2189,6 +2207,12 @@
       "tier": 1,
       "description": "Expert in threat modeling methodologies, security architecture review, and risk assessment. Masters STRIDE, PASTA, attack trees, and security requirement extraction. Use PROACTIVELY for security architecture reviews, threat identification, or building secure-by-design systems.",
       "path": ".agents/skills/threat-modeling-expert"
+    },
+    {
+      "name": "thumbnail-design",
+      "tier": 1,
+      "description": "Design YouTube video thumbnails that earn the click \u2014 mobile-legible, one focal point, honest. Use when someone wants to design a YouTube thumbnail, improve CTR, brief a thumbnail, choose thumbnail text, or plan thumbnail A/B testing. Designs and briefs high-CTR thumbnails and writes the A/B test plan: a thumbnail is a promise, not a poster, designed as a unit with the title and legible on mobile. Uses the CLICK framework. Reads brand-profile + the video/title first. A HUMAN or an image/design tool (nano-banana/ideogram/Canva/designer) creates the final raster; the YouTube custom thumbnail is uploaded NATIVELY in Studio (WoopSocial has no thumbnail field) and Test & Compare is native; TikTok/IG-Reel covers use WoopSocial's cover field via those format skills. No clickbait, no unconsented real-person/deepfake faces, CTR never fabricated. Distinct from youtube-publishing-and-metadata (the metadata) and nano-banana/ideogram (which generate the raster this briefs).",
+      "path": ".agents/skills/thumbnail-design"
     },
     {
       "name": "typescript-advanced-types",
@@ -2333,6 +2357,12 @@
       "tier": 1,
       "description": "XML External Entity (XXE) vulnerability testing and mitigation. Identifies file disclosure, blind XXE, and SSRF via XML parsers.",
       "path": ".agents/skills/xxe-xml-injection-testing"
+    },
+    {
+      "name": "youtube-publishing-and-metadata",
+      "tier": 1,
+      "description": "The YouTube publish-metadata skill. Use when someone wants to \"write a YouTube title/description,\" \"set tags/category/privacy,\" \"optimize YouTube SEO/metadata,\" set made-for-kids, or publish a YouTube video via WoopSocial. Writes the metadata (title, description+chapters, tags) and sets category/privacy/madeForKids \u2014 YouTube is a search engine, so metadata is the launchpad, and madeForKids is a COPPA/FTC legal flag set truthfully. Uses the INDEX framework. Reads brand-profile + goals-and-kpis + the script/video first. The video file + script are inputs (not WoopSocial); the thumbnail and A/B title testing are native YouTube Studio; WoopSocial publishes via the YouTube fields; metrics never fabricated. Distinct from youtube-long-form/youtube-shorts (the script) and thumbnail-design (the thumbnail).",
+      "path": ".agents/skills/youtube-publishing-and-metadata"
     }
   ]
 }

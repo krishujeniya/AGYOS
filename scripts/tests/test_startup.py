@@ -86,7 +86,8 @@ class StartupMetadataTests(unittest.TestCase):
     def test_workflow_directory_contains_only_loadable_markdown(self):
         for path in (ROOT / ".agents/workflows").glob("*.md"):
             with self.subTest(path=path.name):
-                self.assertTrue(path.read_text().startswith("---\n"))
+                with path.open("r", encoding="utf-8") as f:
+                    self.assertEqual(f.read(4), "---\n")
 
 
 class NotificationTests(unittest.TestCase):
