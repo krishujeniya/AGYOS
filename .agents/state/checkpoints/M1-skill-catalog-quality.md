@@ -149,3 +149,19 @@
 ```json
 {"gate":"VERIFY","status":"PUSHED_WITH_HOST_TEST_LIMIT","commit":"20947c2d244a16a2b86bf88e0d56102a269ca736","previous_origin_main":"190e8eac09cb17675442c3740a983b5f28b81ede","origin_main_after_push":"20947c2d244a16a2b86bf88e0d56102a269ca736","push_script":".agents/state/decisions/executed/20261111-111600-push-main.sh","push_result":"PASS; fast-forward; no force push","catalog_audit":"1983 scanned; 0 structural findings; 0 duplicate descriptions; 0 exact duplicate-body groups; 310 review candidates; 7657 freshness triage candidates","focused_tests":"41 passed","security_scan":"PASS; no secrets found","gitleaks":"unavailable","git_diff_check":"PASS","github_ci_run":"43020400270: success","github_pages_workflow":"43020400187: success","live_browser_smoke":"not run","human_acceptance":"approved_for_commit_and_push"}
 ```
+
+
+## Publication-record push execution · 2026-11-11T12:34:00Z
+
+- Script: `.agents/state/decisions/executed/20261111-122900-push-publication-record.sh`
+- Command: `git push origin main`
+- Result: successful exit; the script proceeds only after this push returns zero.
+
+```text
+remote:
+remote: GitHub found 47 vulnerabilities on krishujeniya/AGYOS's default branch (2 critical, 12 high, 27 moderate, 6 low). To find out more, visit:
+remote:      https://github.com/krishujeniya/AGYOS/security/dependabot
+remote:
+To https://github.com/krishujeniya/AGYOS.git
+   20947c2..92eff1a  main -> main
+```

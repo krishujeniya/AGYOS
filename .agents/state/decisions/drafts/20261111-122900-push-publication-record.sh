@@ -24,6 +24,7 @@ fi
 git fetch origin
 git merge-base --is-ancestor origin/main main
 PUSH_OUTPUT="$(git push origin main 2>&1)"
+PUSH_OUTPUT="$(printf '%s\n' "$PUSH_OUTPUT" | sed 's/[[:blank:]]*$//')"
 printf '%s\n' "$PUSH_OUTPUT"
 
 {
@@ -44,6 +45,7 @@ git commit -m "chore(audit): record publication push execution"
 git fetch origin
 git merge-base --is-ancestor origin/main main
 ARCHIVE_PUSH_OUTPUT="$(git push origin main 2>&1)"
+ARCHIVE_PUSH_OUTPUT="$(printf '%s\n' "$ARCHIVE_PUSH_OUTPUT" | sed 's/[[:blank:]]*$//')"
 printf '%s\n' "$ARCHIVE_PUSH_OUTPUT"
 
 LOCAL_SHA="$(git rev-parse HEAD)"
