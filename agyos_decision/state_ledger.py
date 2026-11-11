@@ -14,6 +14,10 @@ Enforces:
 from __future__ import annotations
 
 import copy
+from decimal import Decimal
+from fractions import Fraction
+import math
+import time
 import uuid
 from typing import Any, Callable, Dict, List, Optional, Set
 
@@ -43,6 +47,10 @@ class DAGTaskGraph:
         self.children_map: Dict[str, List[str]] = {}
 
     def add_task(self, task_id: str, depth: int, dependencies: Optional[List[str]] = None) -> None:
+        if task_id in self.tasks:
+            raise HierarchyCapError(f"Duplicate task id: {task_id}")
+        if isinstance(depth, bool) or not isinstance(depth, int) or depth < 0:
+            raise HierarchyCapError("Task depth must be a nonnegative integer")
         if len(self.tasks) >= self.max_tasks:
             raise HierarchyCapError(f"DAG exceeds maximum allowed {self.max_tasks} tasks (current: {len(self.tasks)})")
 
@@ -50,20 +58,25 @@ class DAGTaskGraph:
             raise HierarchyCapError(f"Task depth {depth} exceeds maximum hierarchy depth {self.max_depth} (max 3 levels: 0, 1, 2)")
 
         deps = list(dependencies or [])
+        if len(set(deps)) != len(deps):
+            raise HierarchyCapError("Duplicate dependencies are not allowed")
         for dep in deps:
-            if dep not in self.tasks:
-                pass  # Dependency can be registered before or alongside
-            children = self.children_map.setdefault(dep, [])
+            children = self.children_map.get(dep, [])
             if len(children) >= self.max_children:
                 raise HierarchyCapError(f"Parent node '{dep}' exceeds maximum allowed {self.max_children} children")
-            children.append(task_id)
 
-        self.tasks[task_id] = {
+        task = {
             "task_id": task_id,
             "depth": depth,
             "dependencies": deps,
             "status": "pending",
         }
+        # Forward references remain valid; publish only after all checks succeed.
+        self.children_map = {
+            **self.children_map,
+            **{dep: [*self.children_map.get(dep, []), task_id] for dep in deps},
+        }
+        self.tasks = {**self.tasks, task_id: task}
 
     def validate_acyclic(self) -> None:
         """Validate that the graph has no dependency cycles via Kahn's algorithm."""
@@ -95,8 +108,28 @@ class DAGTaskGraph:
         return min(requested, self.max_concurrent_workers)
 
 
+def _budget_count(value: int, name: str) -> int:
+    if isinstance(value, bool) or not isinstance(value, int) or value < 0:
+        raise ValueError(f"{name} must be a nonnegative integer")
+    return value
+
+
+def _budget_decimal(value: float, name: str) -> Decimal:
+    if isinstance(value, bool) or not isinstance(value, (int, float, Decimal)):
+        raise ValueError(f"{name} must be a finite nonnegative number")
+    number = Decimal(str(value))
+    if not number.is_finite() or number < 0:
+        raise ValueError(f"{name} must be a finite nonnegative number")
+    return number
+
+
 class RunBudgetTracker:
-    """Tracks token, USD, time, and tool call envelope with 20% reserved for verification/rollback."""
+    """Single-owner accounting; callers must check before dispatching each tool.
+
+    Exact rational USD accumulation preserves decimal charges independently of
+    the caller's decimal context. Deadlines are checked on
+    consumption; this class cannot cancel a running tool or authenticate callers.
+    """
 
     def __init__(
         self,
@@ -105,56 +138,74 @@ class RunBudgetTracker:
         total_seconds: int = 600,
         total_tool_calls: int = 40,
         reserve_ratio: float = 0.20,
+        *,
+        clock: Callable[[], float] = time.monotonic,
     ) -> None:
-        self.total_tokens = int(total_tokens)
-        self.total_usd = round(float(total_usd), 2)
-        self.total_seconds = int(total_seconds)
-        self.total_tool_calls = int(total_tool_calls)
-        self.reserve_ratio = reserve_ratio
+        self.total_tokens = _budget_count(total_tokens, "total_tokens")
+        self._total_usd = Fraction(_budget_decimal(total_usd, "total_usd"))
+        self.total_usd = float(self._total_usd)
+        self.total_seconds = _budget_count(total_seconds, "total_seconds")
+        self.total_tool_calls = _budget_count(total_tool_calls, "total_tool_calls")
+        ratio = Fraction(_budget_decimal(reserve_ratio, "reserve_ratio"))
+        if ratio >= 1:
+            raise ValueError("reserve_ratio must be less than one")
+        self.reserve_ratio = float(ratio)
 
-        self.reserved_tokens = int(self.total_tokens * self.reserve_ratio)
-        self.reserved_usd = round(self.total_usd * self.reserve_ratio, 2)
+        self.reserved_tokens = int(self.total_tokens * ratio)
+        self._reserved_usd = self._total_usd * ratio
+        self.reserved_usd = float(self._reserved_usd)
         self.available_execution_tokens = self.total_tokens - self.reserved_tokens
-        self.available_execution_usd = round(self.total_usd - self.reserved_usd, 2)
+        self._execution_usd = self._total_usd - self._reserved_usd
+        self.available_execution_usd = float(self._execution_usd)
+        self.reserved_tool_calls = int(self.total_tool_calls * ratio)
+        self.available_execution_tool_calls = self.total_tool_calls - self.reserved_tool_calls
+        self.available_execution_seconds = float(self.total_seconds * (1 - ratio))
+        self._clock = clock
+        self._started = clock()
+        if not math.isfinite(self._started):
+            raise ValueError("Budget clock must be finite")
 
         self.used_tokens = 0
-        self.used_usd = 0.0
+        self._used_usd = Fraction(0)
         self.used_tool_calls = 0
+
+    @property
+    def used_usd(self) -> float:
+        """Numeric compatibility view; comparisons use the exact rational ledger."""
+        return float(self._used_usd)
 
     def consume(self, tokens: int = 0, usd: float = 0.0, tool_calls: int = 0) -> None:
         """Consume execution budget. Rejects if exceeding available non-reserved envelope."""
-        new_tokens = self.used_tokens + tokens
-        new_usd = round(self.used_usd + usd, 2)
-        new_calls = self.used_tool_calls + tool_calls
+        self._consume(tokens, usd, tool_calls, reserve=False)
 
-        if new_tokens > self.available_execution_tokens:
-            raise ValueError(
-                f"Token consumption {new_tokens} exceeds available execution budget {self.available_execution_tokens} "
-                f"({self.reserved_tokens} reserved for verification/rollback)"
-            )
-        if new_usd > self.available_execution_usd:
-            raise ValueError(
-                f"USD spend ${new_usd:.2f} exceeds available execution budget ${self.available_execution_usd:.2f} "
-                f"(${self.reserved_usd:.2f} reserved for verification/rollback)"
-            )
-        if new_calls > self.total_tool_calls:
-            raise ValueError(f"Tool calls {new_calls} exceed total envelope {self.total_tool_calls}")
+    def consume_reserve(self, tokens: int = 0, usd: float = 0.0,
+                        purpose: str = "verification", *, tool_calls: int = 0) -> None:
+        """Access the total envelope for recovery; purpose is not authorization."""
+        if purpose not in ("verification", "rollback"):
+            raise ValueError("Reserve purpose must be verification or rollback")
+        self._consume(tokens, usd, tool_calls, reserve=True)
 
+    def _consume(self, tokens: int, usd: float, tool_calls: int, *, reserve: bool) -> None:
+        new_tokens = self.used_tokens + _budget_count(tokens, "tokens")
+        new_usd = self._used_usd + Fraction(_budget_decimal(usd, "usd"))
+        new_calls = self.used_tool_calls + _budget_count(tool_calls, "tool_calls")
+        token_limit = self.total_tokens if reserve else self.available_execution_tokens
+        usd_limit = self._total_usd if reserve else self._execution_usd
+        call_limit = self.total_tool_calls if reserve else self.available_execution_tool_calls
+        time_limit = self.total_seconds if reserve else self.available_execution_seconds
+        elapsed = self._clock() - self._started
+        if not math.isfinite(elapsed) or elapsed < 0 or elapsed >= time_limit:
+            raise ValueError("Elapsed time exceeds budget or budget clock is invalid")
+        if new_tokens > token_limit:
+            raise ValueError(f"Token consumption {new_tokens} exceeds budget {token_limit}")
+        if new_usd > usd_limit:
+            raise ValueError(f"USD spend {new_usd} exceeds budget {usd_limit}")
+        if new_calls > call_limit:
+            raise ValueError(f"Tool calls {new_calls} exceed budget {call_limit}")
+        # No accounting changes occur on a rejected multi-resource charge.
         self.used_tokens = new_tokens
-        self.used_usd = new_usd
+        self._used_usd = new_usd
         self.used_tool_calls = new_calls
-
-    def consume_reserve(self, tokens: int = 0, usd: float = 0.0, purpose: str = "verification") -> None:
-        """Consume from the reserved verification/rollback budget."""
-        new_tokens = self.used_tokens + tokens
-        new_usd = round(self.used_usd + usd, 2)
-        if new_tokens > self.total_tokens:
-            raise ValueError(f"Reserve consumption {new_tokens} exceeds total envelope {self.total_tokens}")
-        if new_usd > self.total_usd:
-            raise ValueError(f"Reserve spend ${new_usd:.2f} exceeds total envelope ${self.total_usd:.2f}")
-
-        self.used_tokens = new_tokens
-        self.used_usd = new_usd
 
 
 class SnapshotManager:

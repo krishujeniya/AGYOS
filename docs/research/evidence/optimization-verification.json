@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "timestamp_utc": "2026-11-11T04:57:23.567478+00:00",
+  "baseline_revision": "190e8eac09cb17675442c3740a983b5f28b81ede",
+  "scope": "local research-led optimization; uncommitted",
+  "full_suite": {
+    "status": "FAILED",
+    "tests": 126,
+    "passed": 125,
+    "errors": 1,
+    "seconds": 54.363,
+    "failed_case": "test_hooks_authorizer.PodDefinitionsTests.test_agy_cli_lists_all_5_pods",
+    "reason": "agy agents exceeded timeout=30 seconds",
+    "note": "Before two additional precision regressions"
+  },
+  "final_local_suite": {
+    "status": "PASS",
+    "tests": 127,
+    "seconds": 11.016,
+    "explicitly_excluded": [
+      "test_hooks_authorizer.PodDefinitionsTests.test_agy_cli_lists_all_5_pods"
+    ],
+    "full_suite_pass": false
+  },
+  "independent_checker": {
+    "name": "optimization_checker",
+    "status": "SCOPED_TECHNICAL_PASS",
+    "tests": 49,
+    "seconds": 4.944,
+    "additional_probes": "Original precision bypass; precisions 1,4,28 with rounding traps",
+    "source_writes": false
+  },
+  "node": {
+    "passed": 17,
+    "failed": 0,
+    "skipped": 0
+  },
+  "bun": {
+    "passed": 59,
+    "failed": 0,
+    "expectations": 134
+  },
+  "coverage": {
+    "tool": "Python standard-library trace --count --missing --summary",
+    "tests": 49,
+    "seconds": 18.24,
+    "skills_router": {
+      "executable_lines": 370,
+      "percent": 97
+    },
+    "state_ledger": {
+      "executable_lines": 229,
+      "percent": 95
+    },
+    "kind": "line execution only; no branch coverage or subprocess coverage"
+  },
+  "generated_artifacts": {
+    "status": "PASS",
+    "byte_identical": 7,
+    "writes": "temporary directory only"
+  },
+  "syntax": "PASS: Python compileall, Bash syntax",
+  "state_schema": "PASS",
+  "diff_whitespace": "PASS",
+  "assertion_ratchet": {
+    "test_hooks_authorizer.py": [
+      18,
+      18
+    ],
+    "test_skill_routing.py": [
+      42,
+      43
+    ],
+    "test_state_recovery.py": [
+      38,
+      42
+    ]
+  },
+  "secrets": {
+    "status": "PASS",
+    "tool": "repository scanner built-in pattern fallback",
+    "matches": 0,
+    "output_redacted": true,
+    "gitleaks": "not installed; not run"
+  },
+  "lint_types": "not installed or configured; not run",
+  "host": {
+    "version": "1.5.5",
+    "discovery": "FAILED_TIMEOUT",
+    "complete_mediation": "UNVERIFIED",
+    "config_changed": false
+  },
+  "provider_calls": 0,
+  "deployment": "NOT_PERFORMED",
+  "latency_gain": "NOT_ESTABLISHED; top-k candidate rejected",
+  "source_sha256": {
+    "agyos_decision/state_ledger.py": "c2b2f1b23b35a368b462ea4fc4d997b1f94f8ae3dcc3862f51427d629442b823",
+    "agyos_decision/skills_router.py": "60b8903e2a239cf56623850e2aa528a2392884e966e8f35e59796da2471b7dbe",
+    "scripts/benchmark_decision.py": "dcf02fdd78d1bf3b15cba95a189759b27ce5faa155d39edb3c029c025a888168"
+  }
+}

@@ -77,20 +77,28 @@ class RoutingTests(unittest.TestCase):
         self.assertEqual(router.select_best_skills("python", limit=-1), [])
 
     def test_load_catalog_survives_missing_and_corrupt_indexes(self):
+        router.load_catalog.cache_clear()
+        self.addCleanup(router.load_catalog.cache_clear)
         with tempfile.TemporaryDirectory() as temp:
             missing = Path(temp) / "missing.json"
             bad = Path(temp) / "bad.json"
             bad.write_text("{broken")
-            with patch.object(router, "MANIFEST_DATA", bad), patch.object(router, "DOCS_DATA", missing):
+            with patch.object(router, "MANIFEST_DATA", bad), patch.object(router, "DOCS_DATA", missing), \
+                    patch.object(router, "physical_catalog", wraps=router.physical_catalog) as fallback:
                 catalog = router.load_catalog()
+                fallback.assert_called_once()
             self.assertEqual(len(catalog), len(list((ROOT / ".agents/skills").glob("*/SKILL.md"))))
 
     def test_complete_manifest_does_not_reparse_all_runbooks(self):
+        router.load_catalog.cache_clear()
+        self.addCleanup(router.load_catalog.cache_clear)
         with patch.object(router, "physical_catalog", side_effect=AssertionError("unneeded fallback")):
             catalog = router.load_catalog()
         self.assertIn("android_ui_verification", {s["name"] for s in catalog})
 
     def test_catalog_filters_traversal_missing_and_forged_paths(self):
+        router.load_catalog.cache_clear()
+        self.addCleanup(router.load_catalog.cache_clear)
         entries = [
             {"name": "../README", "path": ".agents/skills/../README"},
             {"name": "missing-skill", "path": ".agents/skills/missing-skill"},

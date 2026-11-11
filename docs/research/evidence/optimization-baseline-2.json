@@ -1,0 +1,1019 @@
+{
+  "catalog_entries": 1979,
+  "catalog_load_ms": 319.8710149999897,
+  "warm_decision": {
+    "p50_ms": 8.357712000020001,
+    "p95_ms": 11.953883999922255,
+    "samples_ms": [
+      6.930904000000737,
+      7.521591999875454,
+      7.213874999933978,
+      9.226111000089077,
+      7.04548499993507,
+      8.691736999935529,
+      4.717447000075481,
+      8.35149099998489,
+      11.953883999922255,
+      8.661180999979479,
+      6.599983999876713,
+      7.277912999825276,
+      7.283292000010988,
+      9.178302000009353,
+      7.011812999962785,
+      8.630584000002273,
+      4.776296000045477,
+      8.420556999908513,
+      11.859841000159577,
+      8.665678000170374,
+      6.787739999936093,
+      7.222500999887416,
+      7.178720999945654,
+      9.249564000128885,
+      7.11436100004903,
+      8.55443299997205,
+      4.749987999957739,
+      8.40312500008622,
+      11.836157000061576,
+      8.724697999923592,
+      6.819558999950459,
+      7.209947999854194,
+      7.259197999928801,
+      9.263439000051221,
+      7.043641999871397,
+      8.68551500002468,
+      4.942853000102332,
+      8.486549000053856,
+      11.856885000042894,
+      8.7185159998171,
+      6.6314319999492,
+      7.237347999989652,
+      7.346880000113742,
+      9.336252999901262,
+      7.011100999989139,
+      8.56094599998869,
+      4.6877120000772265,
+      8.390561999931379,
+      11.955087000160347,
+      8.632507999891459,
+      6.5626550001525175,
+      7.196372999942469,
+      7.276630999967892,
+      9.278847999894424,
+      7.05269800005226,
+      8.558821999940847,
+      4.712448000191216,
+      8.405098999901384,
+      11.90912200013372,
+      8.686897999950816,
+      6.6378740000345715,
+      7.452994999994189,
+      7.270109000046432,
+      9.29194200011807,
+      8.35121000000072,
+      8.845750000091357,
+      4.7278869999445305,
+      8.421367999972063,
+      11.851825999883658,
+      8.713867999858849,
+      6.678469000007681,
+      7.245232999821383,
+      7.316323999930319,
+      9.246347999805948,
+      7.076852999944094,
+      8.59777400000894,
+      4.702278999957343,
+      9.766985999931421,
+      12.726816999929724,
+      9.39681499994549,
+      7.1494759999950475,
+      8.363933000055113,
+      7.735765999996147,
+      9.932481000078042,
+      7.511422999868955,
+      9.122119000039675,
+      5.188044000078662,
+      9.104587000138054,
+      12.353321000091455,
+      8.743804999994609,
+      6.592923000198425,
+      7.475598999917565,
+      7.3324150000644295,
+      9.280201999899873,
+      7.103213000164033,
+      8.56881199979398,
+      5.228480000141644,
+      9.179356999993615,
+      12.5200100001166,
+      9.250428000086686,
+      6.731908999881853,
+      7.286951999958546,
+      7.275460000073508,
+      9.475953999981357,
+      7.115555999916978,
+      8.81176999996569,
+      5.246052000074997,
+      9.201909000012165,
+      12.757006999891018,
+      9.245439000096667,
+      7.0164740000109305,
+      7.660368999950151,
+      7.69321999996464,
+      9.856913999783501,
+      7.533546000104252,
+      9.134605000099327,
+      5.117144999985612,
+      8.972285000027114,
+      12.53494699994917,
+      9.615029999849867,
+      7.484364999982063,
+      7.834911000145439,
+      8.048102999964613,
+      10.237224999855243,
+      8.00090600000658,
+      9.627701999988858,
+      5.419411999810109,
+      9.181000000126005,
+      12.86712000000989,
+      9.067381000022579,
+      7.096810999883019,
+      7.5384950000625395,
+      7.822456999974747,
+      9.630839000010383,
+      7.368942000084644,
+      8.726802999944994,
+      4.932564999990063,
+      8.833339999910095,
+      12.813370000003488,
+      9.315538000009838,
+      7.0031990001098166,
+      7.709910000130549,
+      7.744834000050105,
+      10.066379999898345,
+      7.686507000016718,
+      8.751109000058932,
+      4.750069000010626,
+      8.397306999995635,
+      11.844827000004443,
+      8.712116999959107,
+      6.841161000011198,
+      7.23707900010595,
+      7.264690000056362,
+      9.22323800000413,
+      7.020901000032609,
+      8.823011000004044,
+      4.839634000063597,
+      8.492060999969908,
+      11.888476000194714,
+      8.601723000083439,
+      6.614303000105792,
+      7.211521999806791,
+      7.498210999983712,
+      9.258623000050648,
+      7.096881000052235,
+      8.641416000045865,
+      4.735962000040672,
+      8.465131000093606,
+      12.01784500017311,
+      8.694042999877638,
+      6.611187000089558,
+      7.3199030000523635,
+      7.296488999827488,
+      9.248876000128803,
+      7.01047200004723,
+      8.534328999985519,
+      4.743717000110337,
+      8.413025999971069,
+      11.922650000087742,
+      8.680216999891854,
+      6.64215299980242,
+      7.4198769998474745,
+      7.273848000068028,
+      9.22809700000471,
+      7.049234000078286,
+      8.610248999957548,
+      4.7110570001223095,
+      8.473727000136932,
+      12.095989000044938,
+      9.304557999939789,
+      6.766151999954673,
+      7.215570000198568,
+      7.239734999984648,
+      9.287145999905988,
+      7.435274999807007,
+      8.87547699994684,
+      4.770225999891409,
+      8.374423999839564,
+      11.985145000153352,
+      8.810116999939055,
+      6.918863000009878,
+      7.71062100011477,
+      7.359425000004194,
+      9.29210399999647,
+      7.383369000081075,
+      8.826898000052097,
+      4.803617000106897,
+      8.389963000126954,
+      11.895890999994663,
+      8.653731000094922,
+      6.630815000107759,
+      7.236260000127004,
+      7.452177999994092,
+      9.278902999994898,
+      7.037734000050477,
+      8.56210300003113,
+      4.747145000010278,
+      8.392550000053234,
+      12.052743000140254,
+      8.703733999936958,
+      6.6381679998812615,
+      7.202638000080697,
+      7.333358999858319,
+      9.330949000059263,
+      7.015493000153583,
+      8.586597999965306,
+      4.7407230001681455,
+      8.446618999869315,
+      11.914086999922802,
+      8.661274999894886,
+      6.667332000006354,
+      7.119405000139523,
+      7.259122000050411,
+      9.262603000024683,
+      6.997370000135561,
+      8.59048500001336,
+      4.738158999998632,
+      8.440457999995488,
+      11.924986999929388,
+      8.64210899999307,
+      6.609394999941287,
+      7.203309000033187,
+      7.28976799996417,
+      9.540003999973123,
+      7.0013970000673,
+      8.625739999843063,
+      4.6776369999861345,
+      8.426793999888105,
+      11.913125000091895,
+      8.668669000144291,
+      6.609946000025957,
+      7.210582999960025,
+      7.173313999828679,
+      9.238018000132797,
+      6.997120000050927,
+      8.63937399981296,
+      4.67913900001804,
+      8.365409999896656,
+      11.903116999974372,
+      8.640126000045711,
+      6.587894999938726,
+      7.153928000207088,
+      7.285611000042991,
+      9.257062999949994,
+      7.044856999982585,
+      8.595393000177864,
+      4.713833000096201,
+      8.390226000074108,
+      12.064533999819105,
+      8.606194000094547,
+      6.584690000181581,
+      7.22025000004578,
+      7.283466999979282,
+      9.294431999933295,
+      7.298184000092078,
+      9.077951999870493,
+      4.957743000204573,
+      8.61777499994787,
+      12.03346700003749,
+      8.669399999917005,
+      7.151203999910649,
+      7.237100999873292,
+      7.25823999982822,
+      9.256782000193198,
+      7.050247000051968,
+      8.605191000015111,
+      4.742205000184185,
+      8.409369999981209,
+      11.964961000103358,
+      8.656556000005367,
+      6.586563000155365,
+      7.17620899990834,
+      7.225419999940641,
+      9.30744499987668,
+      7.022755999969377,
+      8.54264599979615,
+      4.6724270000595425,
+      8.448713999996471,
+      11.95142599999599,
+      8.592257999907815
+    ]
+  },
+  "errors": [
+    {
+      "iteration": 0,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 0,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 0,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 1,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 1,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 1,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 2,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 2,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 2,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 3,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 3,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 3,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 4,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 4,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 4,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 5,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 5,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 5,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 6,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 6,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 6,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 7,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 7,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 7,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 8,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 8,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 8,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 9,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 9,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 9,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 10,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 10,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 10,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 11,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 11,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 11,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 12,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 12,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 12,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 13,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 13,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 13,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 14,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 14,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 14,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 15,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 15,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 15,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 16,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 16,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 16,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 17,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 17,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 17,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 18,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 18,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 18,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 19,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 19,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 19,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 20,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 20,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 20,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 21,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 21,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 21,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 22,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 22,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 22,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 23,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 23,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 23,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 24,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 24,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 24,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 25,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 25,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 25,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 26,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 26,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 26,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 27,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 27,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 27,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 28,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 28,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 28,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 29,
+      "task": "hello",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 29,
+      "task": "Review code and find problems before release",
+      "error": "not_json_serializable"
+    },
+    {
+      "iteration": 29,
+      "task": "Design an edge AI deployment architecture",
+      "error": "not_json_serializable"
+    }
+  ],
+  "selected": [
+    {
+      "task": "fix python crash",
+      "primary": "diagnosing-bugs",
+      "ranking": [
+        [
+          "diagnosing-bugs",
+          235.0
+        ],
+        [
+          "python-patterns",
+          103.0
+        ],
+        [
+          "systematic-debugging",
+          73.0
+        ],
+        [
+          "python-testing",
+          66.0
+        ],
+        [
+          "python-testing-patterns",
+          66.0
+        ]
+      ]
+    },
+    {
+      "task": "animate modal transition",
+      "primary": "motion-patterns",
+      "ranking": [
+        [
+          "motion-patterns",
+          236.0
+        ],
+        [
+          "animate-expo",
+          66.0
+        ],
+        [
+          "review-animations",
+          65.0
+        ],
+        [
+          "animation-performance",
+          58.0
+        ],
+        [
+          "motion-foundations",
+          50.0
+        ]
+      ]
+    },
+    {
+      "task": "write literature review",
+      "primary": "agyos-academic-research",
+      "ranking": [
+        [
+          "agyos-academic-research",
+          243.0
+        ],
+        [
+          "scientific-thinking-literature-review",
+          136.0
+        ],
+        [
+          "universal-ai-research",
+          66.0
+        ],
+        [
+          "write-swift",
+          66.0
+        ],
+        [
+          "ai-code-review",
+          58.0
+        ]
+      ]
+    },
+    {
+      "task": "optimize slow Python code latency",
+      "primary": "benchmark-optimization-loop",
+      "ranking": [
+        [
+          "benchmark-optimization-loop",
+          243.0
+        ],
+        [
+          "python-patterns",
+          111.0
+        ],
+        [
+          "n8n-code-python",
+          86.0
+        ],
+        [
+          "python-performance-optimization",
+          82.0
+        ],
+        [
+          "ai-code-review",
+          58.0
+        ]
+      ]
+    },
+    {
+      "task": "audit JWT security",
+      "primary": "security-review",
+      "ranking": [
+        [
+          "security-review",
+          278.0
+        ],
+        [
+          "security-audit",
+          101.0
+        ],
+        [
+          "security-auditor",
+          91.0
+        ],
+        [
+          "agent-skill-security-audit",
+          86.0
+        ],
+        [
+          "laravel-security-audit",
+          86.0
+        ]
+      ]
+    },
+    {
+      "task": "design database schema migration",
+      "primary": "database-design",
+      "ranking": [
+        [
+          "database-design",
+          314.0
+        ],
+        [
+          "architecture-database-design",
+          159.0
+        ],
+        [
+          "database-schema-modeling",
+          144.0
+        ],
+        [
+          "database-migrations",
+          134.0
+        ],
+        [
+          "database-migration",
+          94.0
+        ]
+      ]
+    },
+    {
+      "task": "hello",
+      "primary": "agyos-decision",
+      "ranking": [
+        [
+          "agyos-decision",
+          50.0
+        ]
+      ]
+    },
+    {
+      "task": "use agyos-founder-guide",
+      "primary": "agyos-founder-guide",
+      "ranking": [
+        [
+          "agyos-founder-guide",
+          1144.0
+        ],
+        [
+          "technical-documentation-writer",
+          235.0
+        ],
+        [
+          "agyos-karpathy-guidelines",
+          91.0
+        ],
+        [
+          "doc-generator",
+          81.0
+        ],
+        [
+          "agyos-agency-agents",
+          66.0
+        ]
+      ]
+    },
+    {
+      "task": "Review code and find problems before release",
+      "primary": "code-reviewer",
+      "ranking": [
+        [
+          "code-reviewer",
+          12
+        ],
+        [
+          "gitops-workflow",
+          228.0
+        ],
+        [
+          "receiving-code-review",
+          117.0
+        ],
+        [
+          "ai-code-review",
+          109.0
+        ],
+        [
+          "code-review-checklist",
+          109.0
+        ]
+      ]
+    },
+    {
+      "task": "Design an edge AI deployment architecture",
+      "primary": "ml-engineer",
+      "ranking": [
+        [
+          "ml-engineer",
+          9
+        ],
+        [
+          "architecture-decision-records",
+          270.0
+        ],
+        [
+          "api-design",
+          108.0
+        ],
+        [
+          "c4-architecture",
+          108.0
+        ],
+        [
+          "architecture-frontend-design",
+          101.0
+        ]
+      ]
+    }
+  ],
+  "ranking_sha256": "2df456a40aec233055cc19b9edd77599d701fe9b38658f86a02f6100cd1df5ad",
+  "schema_version": 1,
+  "kind": "offline_routing_microbenchmark",
+  "timestamp_utc": "2026-11-11T04:45:05Z",
+  "python": "3.13.3",
+  "platform": "Linux-6.14.0-37-generic-x86_64-with-glibc2.41",
+  "revision": "190e8eac09cb17675442c3740a983b5f28b81ede",
+  "router_sha256": "8ed469622cbd0df5f924efe6213f7e410d33fa33126a546b46a92f1cd848164d",
+  "repeats_per_case": 30,
+  "provider_calls": 0,
+  "limits": "Warm in-process decisions; excludes import, JSON serialization time, CLI/MCP transport and model latency. Fixed development cases, not a held-out task-success evaluation."
+}

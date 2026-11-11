@@ -22,6 +22,10 @@
 
 ## Overview
 
+Research-led maintenance: [principles and papers](docs/research/OPTIMIZATION_RESEARCH.md),
+[reusable optimization prompt](docs/OPTIMIZATION_PROMPT.md), and
+[applied changes and verification](docs/OPTIMIZATION_RESULTS.md).
+
 **AGYOS** is an autonomous cognitive agent operating system and physical catalog of 1,862+ modular engineering skills, designed to give AI coding agents deterministic reliability, zero-speculation code generation, fail-closed safety, and multi-model consensus.
 
 All skills reside in a single flat directory with zero nested subfolders, clear task-based naming, and zero external branding. Every skill encodes proven, actionable runbooks for software architecture, full-stack engineering, security testing, performance profiling, and operational workflows.

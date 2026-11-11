@@ -40,6 +40,25 @@ except ImportError as e:
 
 
 class DAGHierarchyCapTests(unittest.TestCase):
+    def test_rejected_insertion_preserves_both_graph_maps(self):
+        import copy
+        dag = DAGTaskGraph('atomic', max_children=1)
+        dag.add_task('full-child', 1, ['full-parent'])
+        before = copy.deepcopy((dag.tasks, dag.children_map))
+        with self.assertRaises(HierarchyCapError):
+            dag.add_task('rejected', 1, ['empty-parent', 'full-parent'])
+        self.assertEqual((dag.tasks, dag.children_map), before)
+
+    def test_duplicate_id_and_invalid_depth_do_not_overwrite_task(self):
+        import copy
+        dag = DAGTaskGraph('identity')
+        dag.add_task('original', 0)
+        before = copy.deepcopy((dag.tasks, dag.children_map))
+        for task_id, depth in (('original', 1), ('new', -1), ('new', 0.5), ('new', True)):
+            with self.subTest(task_id=task_id, depth=depth), self.assertRaises(ValueError):
+                dag.add_task(task_id, depth)
+            self.assertEqual((dag.tasks, dag.children_map), before)
+
     def setUp(self):
         self.assertIsNotNone(DAGTaskGraph, "DAGTaskGraph must be implemented")
 

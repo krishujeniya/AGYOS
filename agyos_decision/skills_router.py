@@ -534,7 +534,6 @@ def decide_skill(query: str) -> Dict[str, Any]:
         if entry is None:
             raise ValueError(f"Required fallback skill missing from catalog: {fallback_name}")
         primary = {
-            **entry,
             "rank": 1,
             "name": fallback_name,
             "score": 50.0,
@@ -556,7 +555,9 @@ def decide_skill(query: str) -> Dict[str, Any]:
         if native is None:
             break
         primary = {
-            **native, "rank": 1, "score": integration["score"],
+            "name": native["name"], "path": native["path"],
+            "description": native["description"],
+            "rank": 1, "score": integration["score"],
             "confidence": 0.75, "tier": native.get("tier", 2),
         }
         candidates = [primary] + [s for s in candidates if s["name"] != primary["name"]][:4]

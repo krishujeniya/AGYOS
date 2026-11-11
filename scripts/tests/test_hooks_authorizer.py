@@ -47,7 +47,8 @@ class PodDefinitionsTests(unittest.TestCase):
 
     @unittest.skipUnless(shutil.which("agy"), "agy CLI not installed in current environment")
     def test_agy_cli_lists_all_5_pods(self):
-        result = subprocess.run(["agy", "agents"], capture_output=True, text=True, check=True, cwd=str(ROOT))
+        result = subprocess.run(["agy", "agent"], capture_output=True, text=True,
+                                check=True, cwd=str(ROOT), timeout=60)
         for pod in self.REQUIRED_PODS:
             self.assertIn(pod, result.stdout, f"agy agents output missing {pod}")
 

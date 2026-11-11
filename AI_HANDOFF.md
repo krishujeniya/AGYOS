@@ -1,3 +1,18 @@
+# AGYOS handoff: research-led optimization (2026-11-11)
+
+- Task: research relevant principles and papers, write one reusable optimization prompt, and apply it locally.
+- Branch: `main`; baseline revision `190e8eac09cb17675442c3740a983b5f28b81ede`; current changes uncommitted.
+- Read first: `docs/OPTIMIZATION_RESULTS.md`, `docs/OPTIMIZATION_PROMPT.md`, and `docs/research/OPTIMIZATION_RESEARCH.md` (14 papers, 16 principles).
+- Changed runtime: `agyos_decision/state_ledger.py` (exact small-charge accounting independent of Decimal context, input/deadline/recovery limits, atomic graph insertion); `agyos_decision/skills_router.py` (explicit JSON-safe candidate fields).
+- Tests/tooling: new `test_budget_hardening.py`, `test_routing_contract.py`, `scripts/benchmark_decision.py`; graph regressions, real catalog-fallback assertions. Added plan, ADR/index, README links, raw evidence and governance records.
+- Host test fix (2026-11-11): `test_agy_cli_lists_all_5_pods` was calling `agy agents` (undocumented plural alias with variable 30-40s timing) instead of `agy agent` (documented singular subcommand, ~4s). Fixed to use `agy agent` with 60s timeout. Root cause: CLI subcommand name mismatch, not a host startup regression.
+- Fresh evidence: 128 Python tests passed (50.7s, 0 failures, 0 excluded); verification script 51/51 passed; Bun 59/59 passed (134 expectations). Standard-library trace line coverage: state ledger 95%, router 97%. Python/Bash syntax, state schema, diff and assertion ratchet passed. Built-in secret scanner found zero matches; Gitleaks/Ruff/type checker unavailable, not claimed.
+- Performance: fixed 300-call workloads retained identical ranking hashes; JSON errors reduced from 90 to 0. Top-k ranking candidate rejected because complete-routing speedup was inconsistent. Final isolated p50/p95: 8.352/11.982 ms; no overall speedup claim.
+- Gate: VERIFY/PASS. All technical suites green. Human acceptance remains open. No commit, push, deployment, or paid model call authorized/performed by this task.
+- Next: ready for operator review and commit decision.
+
+---
+
 # AGYOS handoff: performance optimization and video processing pipeline
 
 - Task: Optimize AGYOS decision routing, catalog parsing, documentation indexing, unit test execution, and video processing pipelines; preserve test ratchet.
