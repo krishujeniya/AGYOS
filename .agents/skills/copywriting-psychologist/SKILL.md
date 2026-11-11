@@ -1,6 +1,6 @@
 ---
 name: copywriting-psychologist
-description: "One sentence - what this skill does and when to invoke it"
+description: Use when drafting conversion copy or revising generic copy with clearer psychological framing and behavior goals.
 risk: safe
 source: community
 date_added: "2026-04-04"

@@ -1,39 +1,18 @@
 ---
 name: internal-team-communications
-description: 'To write internal communications, use this skill for:'
+description: "Draft internal team communications with the included examples. Use for 3P updates, newsletters, FAQs, status reports, leadership notes, project updates, and incident reports."
 risk: unknown
 source: community
-date_added: '2026-02-27'
+date_added: "2026-02-27"
 ---
 
-## When to use this skill
-To write internal communications, use this skill for:
-- 3P updates (Progress, Plans, Problems)
-- Company newsletters
-- FAQ responses
-- Status reports
-- Leadership updates
-- Project updates
-- Incident reports
+# Internal team communications
 
-## How to use this skill
+Use this skill to draft requested internal communications with the matching example from the local examples directory.
 
-To write any internal communication:
+## Workflow
 
-1. **Identify the communication type** from the request
-2. **Load the appropriate guideline file** from the `examples/` directory:
-    - `examples/3p-updates.md` - For Progress/Plans/Problems team updates
-    - `examples/company-newsletter.md` - For company-wide newsletters
-    - `examples/faq-answers.md` - For answering frequently asked questions
-    - `examples/general-comms.md` - For anything else that doesn't explicitly match one of the above
-3. **Follow the specific instructions** in that file for formatting, tone, and content gathering
-
-If the communication type doesn't match any existing guideline, ask for clarification or more context about the desired format.
-
-## Keywords
-3P updates, company newsletter, company comms, weekly update, faqs, common questions, updates, internal comms
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+1. Identify the requested communication type and audience.
+2. Read the matching file under examples: 3P updates, company newsletters, FAQ answers, or general communications.
+3. Use only facts supplied by the user or inspected from approved project sources. Mark missing details instead of inventing them.
+4. Draft for review. Do not send, publish, or distribute unless the user separately requested that action and the destination is clear.

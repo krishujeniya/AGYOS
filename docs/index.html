@@ -44,14 +44,14 @@
       "name": "Krish Ujeniya",
       "url": "https://github.com/krishujeniya"
     },
-    "description": "Autonomous cognitive agent operating system and physical catalog of 1,862 modular engineering skills, 5-gate lifecycle governance, 4-tier model router, and fail-closed security architecture.",
+    "description": "Autonomous cognitive agent operating system and physical catalog of 1,983 modular engineering skills, 5-gate lifecycle governance, 4-tier model router, and fail-closed security architecture.",
     "license": "https://opensource.org/licenses/Apache-2.0",
     "codeRepository": "https://github.com/krishujeniya/AGYOS",
     "featureList": [
       "Autonomous 4-Tier Model Routing with Strict Privacy Gating",
       "5-Gate SDLC Governance Spine (UNDERSTAND to VERIFY)",
       "FastMCP JSON-RPC 2.0 State and Memory Daemon",
-      "1,862 Modular Engineering Skills Catalog",
+      "1,983 Modular Engineering Skills Catalog",
       "AES-256-GCM Private Memory Vault & X25519 E2EE Secure Envelope",
       "PreToolUse and PostToolUse Safety Interceptor Hooks",
       "Multi-Model Agent Council Deliberation Panel",
@@ -178,7 +178,7 @@
         <kbd class="search-modal-kbd">ESC</kbd>
       </div>
       <div id="search-results" class="search-results" role="listbox" aria-label="Search results">
-        <div class="search-empty">Start typing to search documentation and 1,862 skills…</div>
+        <div class="search-empty">Start typing to search documentation and 1,983 skills…</div>
       </div>
       <div class="search-footer" aria-hidden="true">
         <span><kbd>↑↓</kbd> navigate</span>
@@ -221,8 +221,8 @@
         <div class="section-label reveal">Getting Started</div>
         <h2 class="section-title reveal">One prompt. Full OS.</h2>
         <p class="section-subtitle reveal reveal-delay-1">
-          No configuration files. No dependency installation. Paste the system prompt
-          and every one of the 1,862 skills activates immediately.
+          Add AGENTS.md to the supported agent context. It explains how to search the catalog
+          and read a relevant runbook for a task.
         </p>
 
         <div class="quickstart-grid" style="margin-top: 3rem;">
@@ -239,14 +239,14 @@
               <div class="step-num">2</div>
               <div class="step-content">
                 <h4>Add AGENTS.md to system prompt</h4>
-                <p>Copy the AGENTS.md content into your AI agent's system prompt or place it at repository root. The 1,862 skills are now active.</p>
+                <p>Copy AGENTS.md into the supported agent context or place it at repository root. It provides instructions for discovering runbooks in the catalog.</p>
               </div>
             </div>
             <div class="step-item reveal reveal-delay-2">
               <div class="step-num">3</div>
               <div class="step-content">
                 <h4>Run any natural language task</h4>
-                <p>Describe what you want. AGYOS automatically routes to the right skill, enforces TDD, and verifies the result.</p>
+                <p>Describe the task, then use the configured router to select a runbook and follow its applicable checks.</p>
               </div>
             </div>
             <div class="step-item reveal reveal-delay-3">
@@ -353,7 +353,7 @@ bin/agyos fast</code></pre>
               <div>
                 <div class="arch-layer-name">Extensibility & Skills Catalog</div>
               </div>
-              <span class="arch-layer-desc">1,862 skills</span>
+              <span class="arch-layer-desc">1,983 skills</span>
             </div>
           </div>
 
@@ -365,7 +365,7 @@ bin/agyos fast</code></pre>
             </div>
             <div class="arch-info-block reveal reveal-delay-1">
               <h4>3-Tier Memory Model (L1)</h4>
-              <p>Inspired by MemGPT/Letta. <strong>Tier 0</strong>: active persona + invariants. <strong>Tier 1</strong>: recall (checkpoints, CURRENT.md). <strong>Tier 2</strong>: archival (1,862-skill catalog, paged JIT via <code>agyos_find_skill</code>).</p>
+              <p>Inspired by MemGPT/Letta. <strong>Tier 0</strong>: active persona + invariants. <strong>Tier 1</strong>: recall (checkpoints, CURRENT.md). <strong>Tier 2</strong>: archival (1,983-skill catalog, paged JIT via <code>agyos_find_skill</code>).</p>
             </div>
             <div class="arch-info-block reveal reveal-delay-2">
               <h4>Adaptive Hierarchy (L4)</h4>
@@ -445,7 +445,7 @@ bin/agyos fast</code></pre>
           <div class="feature-card wide reveal">
             <div class="feature-icon" aria-hidden="true">⚙</div>
             <div class="feature-title">Search-First Autonomous Skill Discovery</div>
-            <p class="feature-desc">For every task, AGYOS automatically discovers the best matching skill from 1,862 options using <code>bin/agyos decide</code> or MCP <code>agyos_decision</code>. Task intent always outranks language keywords. Skill selection happens in &lt;10ms with no slash commands required.</p>
+            <p class="feature-desc">Use <code>bin/agyos decide</code> or MCP <code>agyos_decision</code> to rank relevant runbooks from the 1,983-skill catalog. Matching uses task text and catalog metadata; selection and delivery do not prove that a host executed the runbook.</p>
           </div>
 
           <div class="feature-card reveal reveal-delay-1">
@@ -1058,7 +1058,7 @@ bin/agyos model-route "process customer PII and card records" --sensitivity conf
               </div>
               <div class="verify-row">
                 <div class="verify-status pass" aria-label="Pass">✓</div>
-                <div class="verify-label">All 1,862 skill YAML headers valid</div>
+                <div class="verify-label">All 1,983 skill YAML headers valid</div>
               </div>
               <div class="verify-row">
                 <div class="verify-status pass" aria-label="Pass">✓</div>
@@ -1095,9 +1095,9 @@ bin/agyos model-route "process customer PII and card records" --sensitivity conf
 • bin/agyos decide CLI decision engine: PASS
 • Agent Council Bun test suite (59 passing tests): PASS
 • 8 AGYOS Plugins validated: PASS
-• Merged skills catalog (>400 skills in .agents/skills): PASS (1,862 skills)
+• Merged skills catalog (>400 skills in .agents/skills): PASS (1,983 skills)
 • Merged rules catalog (>120 rules in .agents/rules): PASS (141 rules)
-• All 1,862 skill YAML headers and 141 rule headers validated: PASS
+• All 1,983 skill YAML headers and 141 rule headers validated: PASS
 ============================================================
 Verification Summary: 51 PASSED, 0 FAILED</code></pre>
           </div>
@@ -1111,7 +1111,7 @@ Verification Summary: 51 PASSED, 0 FAILED</code></pre>
     <section id="explorer" class="section explorer-section">
       <div class="section-inner">
         <div class="section-label reveal">Catalog</div>
-        <h2 class="section-title reveal">1,862 Engineering Skills</h2>
+        <h2 class="section-title reveal">1,983 Engineering Skills</h2>
         <p class="section-subtitle reveal reveal-delay-1">
           Search and explore the complete skills catalog across architecture, security,
           frontend, backend, ML, DevOps, and specialized domains.
@@ -1122,7 +1122,7 @@ Verification Summary: 51 PASSED, 0 FAILED</code></pre>
             type="search"
             id="explorer-search"
             class="explorer-search"
-            placeholder="Search 1,862 skills…"
+            placeholder="Search 1,983 skills…"
             aria-label="Search skills catalog"
           >
           <div class="filter-tabs" role="tablist" aria-label="Filter by module">
@@ -1280,7 +1280,7 @@ Verification Summary: 51 PASSED, 0 FAILED</code></pre>
     <section class="section" style="text-align: center; background: var(--fg); border-top: 1px solid var(--border);">
       <div class="section-inner" style="max-width: 700px;">
         <h2 style="font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 800; letter-spacing: -0.04em; color: var(--bg); line-height: 1.1; margin-bottom: 1.5rem;" class="reveal">
-          Start building with 1,862 skills.
+          Start building with 1,983 skills.
         </h2>
         <p style="font-size: var(--text-lg); color: rgba(255,255,255,0.5); margin-bottom: 2.5rem; line-height: 1.6;" class="reveal reveal-delay-1">
           Clone the repository, add AGENTS.md to your AI agent system prompt, and every engineering skill activates immediately — no configuration required.
@@ -1309,12 +1309,12 @@ Verification Summary: 51 PASSED, 0 FAILED</code></pre>
       <div>
         <div class="footer-brand-name">AGYOS</div>
         <p class="footer-brand-desc">
-          Autonomous Cognitive Agent Operating System &amp; Monorepo of 1,862+ Engineering Skills.
+          Autonomous Cognitive Agent Operating System &amp; Monorepo of 1,983 Engineering Skills.
           Engineered &amp; Authored by Krish Ujeniya.
         </p>
         <div class="footer-badges">
           <span class="footer-badge">Apache 2.0</span>
-          <span class="footer-badge">1,862 Skills</span>
+          <span class="footer-badge">1,983 Skills</span>
           <span class="footer-badge">51/51 Verified</span>
         </div>
       </div>

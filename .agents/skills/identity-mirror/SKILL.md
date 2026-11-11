@@ -1,6 +1,6 @@
 ---
 name: identity-mirror
-description: "One sentence - what this skill does and when to invoke it"
+description: Use when adapting brand or offer messaging to reflect customers' self-image, aspirations, or in-group identity.
 risk: safe
 source: community
 date_added: "2026-04-04"

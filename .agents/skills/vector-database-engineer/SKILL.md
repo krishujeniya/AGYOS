@@ -1,6 +1,6 @@
 ---
 name: vector-database-engineer
-description: "Expert in vector databases, embedding strategies, and semantic search implementation. Masters Pinecone, Weaviate, Qdrant, Milvus, and pgvector for RAG applications, recommendation systems, and similar"
+description: "Choose or optimize a vector store and embedding workflow for RAG, semantic search, or recommendations. Use for indexing, chunking, recall, latency, and scale decisions."
 risk: unknown
 source: community
 date_added: "2026-02-27"
@@ -8,7 +8,7 @@ date_added: "2026-02-27"
 
 # Vector Database Engineer
 
-Expert in vector databases, embedding strategies, and semantic search implementation. Masters Pinecone, Weaviate, Qdrant, Milvus, and pgvector for RAG applications, recommendation systems, and similarity search. Use PROACTIVELY for vector search implementation, embedding optimization, or semantic retrieval systems.
+Choose or optimize a vector store and embedding workflow for RAG, semantic search, or recommendations. Use for indexing, chunking, recall, latency, and scale decisions.
 
 ## Do not use this skill when
 

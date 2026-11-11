@@ -559,7 +559,7 @@ Ensure:
 
 ---
 
-> **Next Module:** [02-CLIENT-ACQUISITION →](../02-CLIENT-ACQUISITION/)
+> **Next Module:** [02-CLIENT-ACQUISITION →](../../freelancer-client-acquisition/SKILL.md)
 >
 > *"Your portfolio is not what you've built. It's what you've transformed."*
 

@@ -1,6 +1,6 @@
 ---
 name: hig-components-controls
-description: "Check for .claude/apple-design-context.md before asking questions. Use existing context and only ask for information not already covered."
+description: "Design or review Apple platform selection and input controls such as toggles, pickers, sliders, text fields, and steppers. Read existing Apple design context first."
 risk: unknown
 source: community
 date_added: '2026-02-27'

@@ -1,6 +1,6 @@
 ---
 name: refactor-clean
-description: "You are a code refactoring expert specializing in clean code principles, SOLID design patterns, and modern software engineering best practices. Analyze and refactor the provided code to improve its quality, maintainability, and performance."
+description: "Clean up a focused module or small group of files for readability and testability. Use for contained refactors; use codebase-refactor for wider structural work."
 risk: unknown
 source: community
 date_added: "2026-02-27"
@@ -8,7 +8,7 @@ date_added: "2026-02-27"
 
 # Refactor and Clean Code
 
-You are a code refactoring expert specializing in clean code principles, SOLID design patterns, and modern software engineering best practices. Analyze and refactor the provided code to improve its quality, maintainability, and performance.
+Clean up a focused module or small group of files for readability and testability. Use for contained refactors; use codebase-refactor for wider structural work.
 
 ## Use this skill when
 

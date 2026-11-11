@@ -622,9 +622,7 @@ Or am I wide awake and in too deep
 [Outro: fade with glitchy effects]
 ```
 
-**The Result:** 🎵 [Listen to the track](assets/claude-code-rap.mp3)
-
-This example shows /last30days learning **music AI prompting patterns** (bracket structure, conversational style descriptions) and generating a complete song prompt that Suno turned into an actual banger.
+**The Result:** This package contains the prompt text only; it does not include generated audio or evidence of a Suno result. The example demonstrates bracketed structure and conversational style descriptions.
 
 ---
 

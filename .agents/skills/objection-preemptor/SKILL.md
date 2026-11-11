@@ -1,6 +1,6 @@
 ---
 name: objection-preemptor
-description: "One sentence - what this skill does and when to invoke it"
+description: Use when mapping recurring customer objections in a funnel, sales page, or pitch and addressing them before they arise.
 risk: safe
 source: community
 date_added: "2026-04-04"

@@ -1,6 +1,6 @@
 ---
 name: diagnostics-analysis
-description: "You are an expert error analysis specialist with deep expertise in debugging distributed systems, analyzing production incidents, and implementing comprehensive observability solutions."
+description: "Analyze errors and production incidents across distributed systems. Use when tracing failures across services or reviewing observability evidence."
 risk: safe
 source: community
 date_added: "2026-02-27"
@@ -8,7 +8,7 @@ date_added: "2026-02-27"
 
 # Error Analysis and Resolution
 
-You are an expert error analysis specialist with deep expertise in debugging distributed systems, analyzing production incidents, and implementing comprehensive observability solutions.
+Analyze errors and production incidents across distributed systems. Use when tracing failures across services or reviewing observability evidence.
 
 ## Use this skill when
 

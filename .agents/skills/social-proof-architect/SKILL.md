@@ -1,6 +1,6 @@
 ---
 name: social-proof-architect
-description: "One sentence - what this skill does and when to invoke it"
+description: Use when selecting and placing testimonials, customer evidence, logos, or case studies to address a specific trust gap.
 risk: safe
 source: community
 date_added: "2026-04-04"

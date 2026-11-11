@@ -1,6 +1,6 @@
 ---
 name: deps-audit
-description: "You are a dependency security expert specializing in vulnerability scanning, license compliance, and supply chain security. Analyze project dependencies for known vulnerabilities, licensing issues, outdated packages, and provide actionable remediation strategies."
+description: "Compatibility ID for dependency audits. Use for vulnerability, license, package freshness, or supply-chain reviews; details are in dependency-management-deps-audit."
 risk: unknown
 source: community
 date_added: "2026-02-27"
@@ -8,7 +8,7 @@ date_added: "2026-02-27"
 
 # Dependency Audit and Security Analysis
 
-You are a dependency security expert specializing in vulnerability scanning, license compliance, and supply chain security. Analyze project dependencies for known vulnerabilities, licensing issues, outdated packages, and provide actionable remediation strategies.
+Compatibility ID for dependency audits. Use for vulnerability, license, package freshness, or supply-chain reviews; details are in dependency-management-deps-audit.
 
 ## Use this skill when
 

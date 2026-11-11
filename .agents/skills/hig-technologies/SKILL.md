@@ -1,6 +1,6 @@
 ---
 name: hig-technologies
-description: "Check for .claude/apple-design-context.md before asking questions. Use existing context and only ask for information not already covered."
+description: "Choose or review Apple system technologies such as Siri, Apple Pay, HealthKit, smart home, AR, or identity. Read existing design context and account for privacy and accessibility."
 risk: safe
 source: community
 date_added: '2026-02-27'

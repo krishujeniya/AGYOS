@@ -35,7 +35,12 @@ class RoutingTests(unittest.TestCase):
         "pineapple": "agyos-decision",
         "use agyos-founder-guide": "agyos-founder-guide",
         "transcribe audio recording": "audio-transcriber",
+        "set up OpenWhispr voice dictation and connect its MCP server": "openwhispr",
         "check android screen visually": "android_ui_verification",
+        "edit a local talking-head recording, remove pauses and approved retakes, add captions": "ai-video-editor",
+        "Check every skill, improve the descriptions, organize the catalog, fix broken links, and rename only when justified": "agyos-self-improvement",
+        "Audit and clean up the AGYOS skills catalog": "agyos-self-improvement",
+        "Optimize every skill and make AGYOS skill discovery clearer": "agyos-self-improvement",
     }
 
     def test_frozen_task_cases(self):
@@ -51,6 +56,7 @@ class RoutingTests(unittest.TestCase):
         self.assertEqual(router.classify_domain("pineapple")[0], "general")
         self.assertEqual(router.classify_domain("free tier")[0], "free_infrastructure")
         self.assertEqual(router.classify_domain("literature review")[0], "academic_research")
+        self.assertEqual(router.classify_domain("organize every skill in the catalog")[0], "skill_catalog_maintenance")
 
     def test_complexity_respects_high_risk_even_in_short_prompts(self):
         for query in ("schema migration", "update all rules and skills", "add auth", "payment typo",

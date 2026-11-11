@@ -1,6 +1,6 @@
 ---
 name: emotional-arc-designer
-description: "One sentence - what this skill does and when to invoke it"
+description: Use when mapping the emotional progression a landing page, ad, narrative, email sequence, or product flow should create.
 risk: safe
 source: community
 date_added: "2026-04-04"

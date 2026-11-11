@@ -1,6 +1,6 @@
 ---
 name: awareness-stage-mapper
-description: "One sentence - what this skill does and when to invoke it"
+description: Use when diagnosing audience awareness before writing an offer or choosing stage-specific campaign messaging.
 risk: safe
 source: community
 date_added: "2026-04-04"

@@ -1,175 +1,95 @@
 ---
 name: faceless-shorts-engine
 description: >-
-  Autonomous pipeline for producing zero-cost animated faceless vertical shorts (YouTube Shorts,
-  TikTok, Instagram Reels) using local AI voice synthesis (Kokoro), word-synced subtitles (Whisper),
-  6 animation styles (Tall Tale 3D, Deep Dive 3D, Inside Out, Stick Story, Night File 3D, Paper Atlas),
-  and automated FFmpeg/Remotion compositing with organic photochemical film finishing.
+  Use when someone wants an original, code-rendered faceless vertical short with narration,
+  word-timed captions, and animated scenes, or asks for one of the six styles in the supplied
+  faceless-shorts toolkit.
 metadata:
-  version: 1.0.0
+  version: 1.1.0
   tier: 1
   domain: video
-  origin: Antigravity / Nafay 3D / Kokoro / Whisper
+  origin: user-supplied faceless-shorts toolkit and AGYOS workflow
 ---
 
-# Faceless Shorts Engine (Zero-Cost Vertical Video Pipeline)
+# Faceless Shorts Engine
 
-Guides the end-to-end creation of automated, high-retention vertical animated shorts (9:16 aspect ratio) for YouTube Shorts, TikTok, and Instagram Reels without paid API subscriptions or cloud video rendering fees.
+Use the source toolkit when it is available. This skill contains planning guidance and a manifest
+scaffolder; it does not itself render video. The supplied renderer is JavaScript/Canvas in headless
+Chrome plus FFmpeg. It is not Remotion.
 
-For deep technical specifications, inspect the reference documents:
-- [Animation Styles Manual](references/ANIMATION_STYLES_MANUAL.md)
-- [Local Toolchain Setup](references/LOCAL_TOOLCHAIN_SETUP.md)
-- [Retention & Scripting Playbook](references/RETENTION_AND_SCRIPTING_PLAYBOOK.md)
+## Find the toolkit and check the requested work
 
----
+1. Look only in the user-provided location, the current project, and the skill folder for
+   scripts/new_video.sh and styles/. Confirm the root also has scripts/voice.py and
+   scripts/words.py. Set KIT_ROOT to that root. If it is absent, offer a script/shot plan; do
+   not claim to have rendered a video or invent toolkit paths.
+2. Reuse details already provided. Ask together only for missing choices that change the result:
+   topic or source script, duration, style, voice, recorded narration versus local TTS, captions,
+   and music. Defaults from the source skill are about 30 seconds, am_michael, local TTS, and
+   the existing style example. Confirm before installing packages, creating a model environment,
+   downloading model weights, or using a paid service.
+3. For factual subjects, gather reliable sources and attach them to the script's sources field.
+   Keep health, safety, crime, and historical claims proportionate to evidence. If a fact cannot be
+   verified, omit it or label the uncertainty. Never invent quotes, statistics, or evidence.
 
-## 0. Zero-Cost Local Operating Invariants
+## Plan before rendering
 
-1. **Zero External API Costs**: All neural speech generation (Kokoro TTS), subtitle transcription (OpenAI Whisper), and video compositing run locally on device hardware. Never invoke paid cloud APIs (e.g. ElevenLabs, HeyGen, Runway) without explicit written user authorization.
-2. **Deterministic Offline Execution**: The entire pipeline functions with or without an active internet connection once local weights (`kokoro-v0_19.onnx`, Whisper `base.en`) and dependencies are cached.
-3. **9:16 Mobile Native Format**: All final outputs render at 1080x1920 resolution, 30fps or 60fps, with universal H.264 video and AAC audio encoding.
-4. **Authentic Directing & Anti-Slop Voice**: Scripts must avoid generic AI narrative formulas. Never use conversational filler, greetings, or artificial pleasantries. Hook the viewer in the first 2 seconds.
+Show a compact plan with narration, source list, line/cut timing, selected style, shot descriptions,
+caption treatment, music, and any assumptions. Wait for approval before building unless the user's
+current or prior instruction already authorized the build. Ask only for missing information that
+changes the result. Keep narration natural and continuous. The toolkit suggests roughly 90–110
+words for 35 seconds, but the generated audio duration is authoritative. A seamless loop is
+optional and must not distort the ending.
 
----
+Choose among the six styles in
+[the style reference](references/ANIMATION_STYLES_MANUAL.md). Read the selected toolkit
+styles/<id>/STYLE.md and inspect its example before changing shots.js. The six short styles
+are distinct from the seven Nafay 3D motion-graphics presets described in
+[the provenance note](references/SOURCE_PROVENANCE.md).
 
-## 1. System Requirements & Setup Protocol
+## Build with the supplied toolkit
 
-Verify core local binaries before initiating production:
-```bash
-python3 --version   # Python 3.10+
-node --version      # Node.js 18+
-ffmpeg -version     # FFmpeg 5.0+ with libx264
-```
+First inspect its README and setup script. The supplied package documents Node.js 22+, Python 3.10+,
+FFmpeg/ffprobe, Chrome or Chromium, and a first setup that creates an environment and downloads
+roughly 0.9 GB of voice and transcription models. These are source-package notes, not guarantees
+about the current machine. Do not install or download without user authorization.
 
-### Python Package Dependencies
-```bash
-pip install kokoro-onnx soundfile faster-whisper
-# or via uv:
-uv pip install kokoro-onnx soundfile faster-whisper
-```
+Use the toolkit's own voice list; do not assume a voice ID from an older runbook:
 
----
+    "$KIT_ROOT/scripts/py" "$KIT_ROOT/scripts/voice.py" --list
 
-## 2. Viral Retention & Scriptwriting Rules
+For an approved project:
 
-1. **In Medias Res Hook (0.00s–2.00s)**:
-   - Ban all introductions (*"Hey everyone"*, *"Did you know"*, *"Today we explore"*).
-   - Start directly with the punchline, anomaly, or extreme condition:
-     *Example*: "In 1999, a customer bought an entire bank for one dollar."
-2. **The 2-Second Visual Reset**:
-   - Camera perspectives, character poses, or visual layers must reset every 1.5–2.0 seconds.
-   - Alternate between wide establishing shots, extreme macro snap zooms, cutaway schematics, and horizontal pans.
-3. **Algorithmic Seamless Loop**:
-   - The final sentence must seamlessly and grammatically connect into the opening sentence.
-   - *Example closing*: "And that is how..." -> *Loops into opening*: "...he bought an entire bank for one dollar."
-4. **Pacing & Word Count**:
-   - Spoken pace: 150–165 words per minute.
-   - 35-second short: Exactly 80–90 words.
-   - 55-second short: Exactly 135–150 words (never exceed 59 seconds).
+1. Create a fresh project with the toolkit's new_video.sh, using a valid style ID and a new
+   short name. Use the path it prints as PROJECT; never overwrite an existing project.
+2. Write script.json and src/shots.js from the reviewed plan. Keep each line natural to speak;
+   align visual changes to meaning and words rather than a fixed reset interval.
+3. Generate local narration with the toolkit's voice.py and PROJECT, or align a user's recording
+   with words.py using PROJECT and the recording path. Then inspect data/words.txt; correct
+   misheard or missing words before animation. The generated-voice path can fall back to estimated
+   word timing if Whisper is unavailable; a supplied recording requires successful transcription.
+4. From PROJECT, run node tools/capture.mjs check. Continue only on CHECK OK; generate cues and
+   mix audio using the project tools.
+5. Render a timestamped contact sheet and inspect it, then inspect key frames at full size.
+   Check narration-to-image timing, readable captions, safe margins, collisions, continuity, and
+   whether the chosen style rules hold. Fix issues and repeat the visual review before final render.
+6. Render the requested range. Confirm the output exists, has the expected duration and video
+   dimensions, and contains audible speech/music before reporting completion. The renderer can
+   explicitly report SILENT when no mixed audio file exists.
 
----
+The toolkit is local after setup, but setup requires network access to fetch models. Do not call
+paid APIs, upload footage, publish, or share generated files unless the user separately requests
+that action and authorizes its destination.
 
-## 3. The 6 Standardized Animation Styles
+## Limits and handoff
 
-Select one of the 6 core visual styles based on topic intent:
+- Use the toolkit's actual style IDs, voice list, flags, and output paths; check --help or source
+  before relying on a command detail.
+- scripts/generate_shorts_manifest.py only writes a planning JSON scaffold. It does not create
+  narration, animation, or an MP4.
+- Keep the original source package's README, attribution, and third-party notices with any copy.
+- Report what was rendered and inspected separately from facts that were only planned. Never call a
+  source prompt, model, or style tested unless it was actually run.
 
-| Style | Aesthetic Character | Ideal Topic Domains | Recommended Voice |
-|---|---|---|---|
-| **Tall Tale 3D** | 2D illustrated character cutouts inside miniature 3D worlds | Crazy loopholes, true crime heists, bizarre history | `am_adam` |
-| **Deep Dive 3D** | Zack D. Films style 3D anatomical cutaways & x-ray organs | Medical phenomena, biological hazards, body explainers | `af_bella` |
-| **Inside Out** | 2D technical exploded diagrams and blueprint schematics | Mechanical engineering, physical experiments, watchmaking | `af_bella` |
-| **Stick Story** | High-contrast vector stick figures with hazard markers | Survival dilemmas, decision trees, logic riddles | `am_adam` |
-| **Night File 3D** | Noir low-key lighting, volumetric fog, dark archival files | Unsolved mysteries, disappearances, cold case archives | `am_michael` |
-| **Paper Atlas** | Aged parchment maps with animated campaign trails & tokens | Historical battles, ancient empires, maritime routes | `bm_george` |
-
-See [Animation Styles Manual](references/ANIMATION_STYLES_MANUAL.md) for camera angles and shader settings.
-
----
-
-## 4. Speech Synthesis & Kinetic Subtitle Alignment
-
-### Step 1: Local Kokoro Audio Generation
-```python
-import soundfile as sf
-from kokoro_onnx import Kokoro
-
-kokoro = Kokoro("kokoro-v0_19.onnx", "voices.json")
-samples, sample_rate = kokoro.create(
-    text="In 1999, a customer bought an entire bank for one dollar.",
-    voice="am_adam",
-    speed=1.05,
-    lang="en-us"
-)
-sf.write("speech.wav", samples, sample_rate)
-```
-
-### Step 2: Whisper Word-Level Timestamps
-```python
-from faster_whisper import WhisperModel
-import json
-
-model = WhisperModel("base.en", device="cpu", compute_type="int8")
-segments, _ = model.transcribe("speech.wav", word_timestamps=True)
-words = [{"word": w.word.strip().upper(), "start": w.start, "end": w.end} for s in segments for w in s.words]
-with open("captions.json", "w") as f:
-    json.dump(words, f, indent=2)
-```
-
-### Subtitle Visual Standard
-- Font: Heavy sans-serif (e.g. Montserrat Black).
-- Base Color: `#FFFFFF` with 4px black outline.
-- Active Word Highlight: `#FFE500` (Safety Yellow) or `#00FF66` (Signal Green).
-- Vertical Position: `Y = 68%` to avoid TikTok and Reels UI overlays.
-
----
-
-## 5. Foley, Audio Ducking & Video Assembly
-
-1. **Foley Cue Sheet**:
-   - `sfx_pop.wav`: Sync to character expression changes and text card reveals.
-   - `sfx_whoosh.wav`: Sync to camera snap zooms and wipe transitions.
-   - `sfx_ding.wav`: Sync to money figures and breakthrough choices.
-   - `sfx_impact.wav`: Sync to dramatic revelations and anatomical cutaways.
-2. **Audio Ducking**:
-   - Background music must be ducked by -18dB under speech.
-   - Master integrated loudness to -14 LUFS (EBU R128).
-3. **FFmpeg Assembly Filter**:
-   ```bash
-   ffmpeg -i speech.wav -i music.mp3 -filter_complex \
-   "[1:a]volume=0.15[music];[0:a][music]amix=inputs=2:duration=first[outa]" \
-   -map "[outa]" -c:a aac -b:a 192k audio_mixed.aac
-   ```
-
----
-
-## 6. Photochemical Film Finishing & Anti-AI Polish
-
-To eliminate the artificial digital AI sheen and give animated 3D/2D renders a cinematic look, pass the composited MP4 through the AGYOS organic film engine:
-
-```bash
-python3 scripts/organic_film_engine.py input_short.mp4 output_cinematic_short.mp4 \
-  --lut kodak_2383 \
-  --grain 0.15 \
-  --halation \
-  --loudness -14
-```
-
-This applies:
-- Kodak 2383 film stock color S-curve.
-- CineStill-style halation bloom around high-luminance highlights.
-- Organic 35mm silver halide grain simulation.
-- Two-pass EBU R128 audio mastering.
-
----
-
-## 7. Execution Checklist & Verification
-
-Before publishing or rendering a faceless short:
-- [ ] First spoken sentence delivers premise or anomaly within 0.00s–2.00s.
-- [ ] Total word count matches target duration (150–165 words/minute; <59s total).
-- [ ] Camera perspective or character state shifts at least once every 2 seconds.
-- [ ] Last spoken phrase seamlessly loops into the opening phrase.
-- [ ] Subtitle text is positioned above Y=65% to avoid platform UI clipping.
-- [ ] Background music is ducked by -18dB under speech.
-- [ ] Render resolution is exactly 1080x1920 (9:16) at 30 or 60 fps.
-- [ ] No external paid APIs were invoked.
+For setup details see [Local toolchain](references/LOCAL_TOOLCHAIN_SETUP.md); for writing and
+pacing see [Script and timing guidance](references/RETENTION_AND_SCRIPTING_PLAYBOOK.md).

@@ -1,6 +1,6 @@
 ---
 name: legacy-modernize
-description: "Orchestrate a comprehensive legacy system modernization using the strangler fig pattern, enabling gradual replacement of outdated components while maintaining continuous business operations through ex"
+description: "Plan an incremental modernization of a legacy system while preserving existing behavior. Use for strangler-pattern migrations, compatibility boundaries, and rollback planning."
 risk: unknown
 source: community
 date_added: "2026-02-27"
@@ -8,7 +8,7 @@ date_added: "2026-02-27"
 
 # Legacy Code Modernization Workflow
 
-Orchestrate a comprehensive legacy system modernization using the strangler fig pattern, enabling gradual replacement of outdated components while maintaining continuous business operations through expert agent coordination.
+Plan an incremental modernization of a legacy system while preserving existing behavior. Use for strangler-pattern migrations, compatibility boundaries, and rollback planning.
 
 [Extended thinking: The strangler fig pattern, named after the tropical fig tree that gradually envelops and replaces its host, represents the gold standard for risk-managed legacy modernization. This workflow implements a systematic approach where new functionality gradually replaces legacy components, allowing both systems to coexist during transition. By orchestrating specialized agents for assessment, testing, security, and implementation, we ensure each migration phase is validated before proceeding, minimizing disruption while maximizing modernization velocity.]
 

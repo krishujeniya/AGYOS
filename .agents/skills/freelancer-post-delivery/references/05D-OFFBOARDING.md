@@ -409,7 +409,7 @@ Make each touch feel personal, not automated.
 
 ---
 
-> **Next Module:** [06-OPERATIONS →](../06-OPERATIONS/)
+> **Next Module:** [06-OPERATIONS →](../../freelancer-operations/SKILL.md)
 >
 > *"A good goodbye is a good hello to the next opportunity."*
 

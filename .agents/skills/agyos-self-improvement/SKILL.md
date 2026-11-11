@@ -1,11 +1,9 @@
 ---
 name: agyos-self-improvement
 description: >-
-  Autonomous self-correction and continuous improvement protocol for the entire AGYOS skill catalog.
-  Captures user corrections, integrates industry trends, maintains cross-skill dependencies,
-  enforces quality gates, and preserves test ratchets across all 1970+ skills.
+  Use when maintaining the AGYOS skill catalog or improving a skill's correctness, discovery, references, or quality gates. Captures corrections, source checks, cross-skill dependencies, and test ratchets.
 metadata:
-  version: 1.0.0
+  version: 1.0.1
 license: MIT
 ---
 

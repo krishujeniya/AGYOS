@@ -413,7 +413,7 @@ Make it feel premium, not desperate. Focus on mutual value.
 
 ---
 
-> **Next Module:** [03-SALES-CLOSING →](../03-SALES-CLOSING/)
+> **Next Module:** [03-SALES-CLOSING →](../../freelancer-sales-closing/SKILL.md)
 >
 > *"Your best client is the one who already trusts you. Treat them like gold, and they'll bring you more gold."*
 

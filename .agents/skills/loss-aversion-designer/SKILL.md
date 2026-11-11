@@ -1,6 +1,6 @@
 ---
 name: loss-aversion-designer
-description: "One sentence - what this skill does and when to invoke it"
+description: Use when applying credible loss framing to an offer or message without unsupported risk claims or fear-mongering.
 risk: safe
 source: community
 date_added: "2026-04-04"

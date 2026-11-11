@@ -2,6 +2,20 @@
 
 This log tracks autonomous self-corrections, principle additions, and industry adaptations across all AGYOS skills.
 
+## [2026-11-11T09:34:30Z] agyos-self-improvement
+
+- **Category**: `factual_fix`
+- **Section**: frontmatter description
+- **Before**:
+  ```
+  Autonomous self-correction and continuous improvement protocol for the entire AGYOS skill catalog. Captures user corrections, integrates industry trends, maintains cross-skill dependencies, enforces quality gates, and preserves test ratchets across all 1970+ skills.
+  ```
+- **After**:
+  ```
+  Use when maintaining the AGYOS skill catalog or improving a skill's correctness, discovery, references, or quality gates. Captures corrections, source checks, cross-skill dependencies, and test ratchets.
+  ```
+- **Rationale**: Removed the stale hard-coded catalog count and made the maintenance trigger explicit.
+
 ## [2026-11-10T19:35:00Z] video-editing-principles
 - **Category**: `principle_addition`
 - **Section**: Full Master Reference (20 Sections)
@@ -105,3 +119,73 @@ This log tracks autonomous self-corrections, principle additions, and industry a
   Created universal-ai-research skill and scripts/universal_research_runner.py based on Research Prompt.pdf, RESEARCH_SKILL_PRINCIPLES.md, and UNIVERSAL_AI_RESEARCH_MASTER_PROMPT_v3.md. Implemented 4 execution modes (A/B/C/D), 6 mandatory artifacts, 11 topic fields, 13 paper fields, 11 synthesis sections, Q1-Q10 quality gates, and automated workspace validation.
   ```
 - **Rationale**: User requested adding an AI research skill based on the uploaded research prompt files.
+## [2026-11-11T10:56:13Z] openwhispr
+
+- **Category**: `principle_addition`
+- **Section**: Frontmatter and desktop/MCP workflow
+- **Before**:
+  ```
+  No OpenWhispr-specific runbook was present in the AGYOS catalog.
+  ```
+- **After**:
+  ```
+  Added openwhispr v1.0.0 with source-linked setup, per-activity privacy checks, local/cloud guidance, and least-privilege MCP integration steps.
+  ```
+- **Rationale**: The user requested an AGYOS skill for the OpenWhispr repository; factual workflow details were checked against its repository and current official documentation.
+
+## [2026-11-11T11:11:54Z] tech-debt-cleanup
+
+- **Category**: `cross_reference`
+- **Section**: `references/FULL_RUNBOOK.md`
+- **Before**:
+  ```
+  The legacy full-runbook path contained a near-complete copy of the canonical codebase-tech-debt procedure.
+  ```
+- **After**:
+  ```
+  Use the canonical [codebase-tech-debt full runbook](../../codebase-tech-debt/references/FULL_RUNBOOK.md). This path remains for compatibility with existing links.
+  ```
+- **Rationale**: Keep the stable legacy ID and local reference path while preventing the procedures from drifting apart.
+
+## [2026-11-11T11:22:26Z] openwhispr
+
+- **Category**: `factual_fix`
+- **Section**: macOS permissions and MCP authorization
+- **Before**:
+  ```
+  Screen Recording (macOS) for meeting audio capture.
+  Create a key with only the scopes needed. Start with read-only note/transcription scopes.
+  ```
+- **After**:
+  ```
+  System Audio is the macOS permission for capturing other meeting participants and is listed under Screen Recording settings. The separate Screen Recording permission enables optional voice-agent screenshots. Claude Connector OAuth requests all documented scopes; API-key clients can be restricted to selected scopes.
+  ```
+- **Rationale**: Corrected wording against OpenWhispr's current [macOS permission guide](https://docs.openwhispr.com/platform/macos) and [MCP scope guide](https://docs.openwhispr.com/integrations/mcp), following independent review.
+
+## [2026-11-11T11:23:26Z] remotion-best-practices
+
+- **Category**: `cross_reference`
+- **Section**: `rules/` compatibility assets
+- **Before**:
+  ```
+  The legacy Remotion skill retained duplicate Markdown rule bodies alongside the canonical remotion-video-creation rules.
+  ```
+- **After**:
+  ```
+  All 28 legacy Markdown rule paths point to matching canonical rule files. Three matching TSX example assets remain at both paths so existing references continue to resolve.
+  ```
+- **Rationale**: Avoid copied rule drift while preserving the legacy skill ID, documentation paths, and executable example assets.
+
+## [2026-11-11T11:51:22Z] openwhispr
+
+- **Category**: `factual_fix`
+- **Section**: MCP OAuth and API-key verification
+- **Before**:
+  ```
+  Verify the endpoint and selected scopes in the client's consent/configuration UI, then make a read-only request before enabling writes.
+  ```
+- **After**:
+  ```
+  Claude Connectors OAuth permission review is explicitly separate from API-key scope configuration. A read-only smoke test does not narrow OAuth permissions; selected scopes apply to API-key clients.
+  ```
+- **Rationale**: Clarified the distinction identified during independent review and aligned the skill with OpenWhispr's current MCP scope guide.

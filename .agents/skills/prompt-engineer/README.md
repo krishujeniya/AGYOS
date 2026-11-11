@@ -649,7 +649,7 @@ Then configure:
 
 - **Skill Development Guide** - Learn how to create your own skills
 - **[SKILL.md](./SKILL.md)** - Full technical specification of this skill
-- **[Repository README](../../README.md)** - Overview of all available skills
+- **[Repository README](../../../README.md)** - Overview of all available skills
 
 ---
 

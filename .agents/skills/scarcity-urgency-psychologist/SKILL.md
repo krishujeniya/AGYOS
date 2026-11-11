@@ -1,6 +1,6 @@
 ---
 name: scarcity-urgency-psychologist
-description: "One sentence - what this skill does and when to invoke it"
+description: Use when communicating real limits, deadlines, or access constraints without inventing scarcity or urgency.
 risk: safe
 source: community
 date_added: "2026-04-04"

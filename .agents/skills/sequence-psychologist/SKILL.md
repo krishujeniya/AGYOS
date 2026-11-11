@@ -1,6 +1,6 @@
 ---
 name: sequence-psychologist
-description: "One sentence - what this skill does and when to invoke it"
+description: Use when designing email, onboarding, or sales sequences with a stepwise progression instead of repeated messages.
 risk: safe
 source: community
 date_added: "2026-04-04"

@@ -388,7 +388,7 @@ Tone: Proud, professional, forward-looking.
 
 ---
 
-> **Next Module:** [05-POST-DELIVERY →](../05-POST-DELIVERY/)
+> **Next Module:** [05-POST-DELIVERY →](../../freelancer-post-delivery/SKILL.md)
 >
 > *"The handoff is not goodbye. It's the start of a long-term relationship."*
 

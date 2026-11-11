@@ -1,151 +1,96 @@
 #!/usr/bin/env python3
-"""
-Scaffold and validate execution manifests for faceless shorts production.
-Produces a standardized shorts_manifest.json with scenes, audio cues, and camera choreography.
+"""Create a planning scaffold for a code-rendered faceless short.
+
+The output is not a renderer configuration. Voice, scene timing, sound, and export
+settings stay unset until they are selected and verified for the chosen toolkit.
 """
 
 from __future__ import annotations
 
 import argparse
 import json
-import sys
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any
 
 VALID_STYLES = {
-    "tall_tale_3d": {
-        "name": "Tall Tale 3D",
-        "default_voice": "am_adam",
-        "pacing_sec": 1.8,
-        "camera": "wide_angle_macro_zooms",
-    },
-    "deep_dive_3d": {
-        "name": "Deep Dive 3D",
-        "default_voice": "af_bella",
-        "pacing_sec": 2.0,
-        "camera": "anatomical_orbit_push_in",
-    },
-    "inside_out": {
-        "name": "Inside Out",
-        "default_voice": "af_bella",
-        "pacing_sec": 2.0,
-        "camera": "isometric_exploded_slices",
-    },
-    "stick_story": {
-        "name": "Stick Story",
-        "default_voice": "am_adam",
-        "pacing_sec": 1.5,
-        "camera": "jump_cut_split_screen",
-    },
-    "night_file_3d": {
-        "name": "Night File 3D",
-        "default_voice": "am_michael",
-        "pacing_sec": 2.2,
-        "camera": "slow_creeping_dolly_fog",
-    },
-    "paper_atlas": {
-        "name": "Paper Atlas",
-        "default_voice": "bm_george",
-        "pacing_sec": 2.0,
-        "camera": "top_down_map_tracking",
-    },
+    "deep-dive": "Stylized 3D body and science explainers",
+    "night-file": "Mystery and true-crime stories",
+    "inside-out": "Flat 2D mechanisms and what-happens-if explainers",
+    "stick-story": "Survival scenarios and decision steps",
+    "paper-atlas": "Historical events, routes, and maps",
+    "tall-tale": "Funny or surprising true stories",
 }
 
 
-def build_manifest(title: str, topic: str, style_key: str, duration_sec: int = 35) -> Dict[str, Any]:
+def build_manifest(
+    title: str,
+    topic: str,
+    style_key: str,
+    duration_sec: int = 30,
+) -> dict[str, Any]:
+    """Build an unverified creative plan without guessing production settings."""
+    clean_title = title.strip()
+    clean_topic = topic.strip()
+    if not clean_title:
+        raise ValueError("title must not be empty")
+    if not clean_topic:
+        raise ValueError("topic must not be empty")
     if style_key not in VALID_STYLES:
-        raise ValueError(f"Unknown style '{style_key}'. Valid choices: {list(VALID_STYLES.keys())}")
+        raise ValueError(f"unknown style {style_key!r}; choose one of {', '.join(VALID_STYLES)}")
+    if duration_sec <= 0:
+        raise ValueError("duration must be a positive number of seconds")
 
-    style_cfg = VALID_STYLES[style_key]
-    estimated_words = int(duration_sec * 2.5)  # ~150 words per minute
-
-    manifest: Dict[str, Any] = {
-        "schema_version": "1.0",
+    return {
+        "schema_version": "1.1",
+        "status": "planning_only",
         "project": {
-            "title": title,
-            "topic": topic,
+            "title": clean_title,
+            "topic": clean_topic,
             "target_duration_sec": duration_sec,
-            "estimated_word_count": estimated_words,
             "aspect_ratio": "9:16",
-            "resolution": {"width": 1080, "height": 1920},
-            "fps": 30,
         },
         "style": {
             "key": style_key,
-            "display_name": style_cfg["name"],
-            "camera_profile": style_cfg["camera"],
-            "visual_pacing_interval_sec": style_cfg["pacing_sec"],
+            "description": VALID_STYLES[style_key],
         },
-        "audio": {
-            "tts_engine": "kokoro_onnx",
-            "voice_profile": style_cfg["default_voice"],
-            "target_sample_rate": 24000,
-            "ducking_db": -18.0,
-            "integrated_lufs": -14.0,
-            "sfx_cue_sheet": [
-                {"event": "hook_drop", "offset_sec": 0.5, "sfx": "sfx_pop.wav"},
-                {"event": "first_shift", "offset_sec": style_cfg["pacing_sec"], "sfx": "sfx_whoosh.wav"},
-            ],
+        "sources": [],
+        "narration": {
+            "mode": None,
+            "voice_id": None,
         },
         "subtitles": {
-            "engine": "whisper_word_level",
-            "model": "base.en",
-            "font_family": "Montserrat Black",
-            "font_size_px": 84,
-            "primary_color": "#FFFFFF",
-            "highlight_color": "#FFE500",
-            "outline_color": "#000000",
-            "outline_width_px": 5,
-            "vertical_alignment_percent": 68,
+            "timing_source": None,
         },
-        "photochemical_finishing": {
-            "enabled": True,
-            "lut": "kodak_2383",
-            "halation": True,
-            "grain_intensity": 0.15,
-            "audio_loudness_target": -14.0,
-        },
-        "scenes": [
-            {
-                "scene_id": 1,
-                "role": "hook_punchline",
-                "start_sec": 0.0,
-                "end_sec": 2.5,
-                "camera": "extreme_close_up",
-                "sfx": ["sfx_pop.wav"],
-            },
-            {
-                "scene_id": 2,
-                "role": "development_exposition",
-                "start_sec": 2.5,
-                "end_sec": 10.0,
-                "camera": "tracking_orbit",
-                "sfx": ["sfx_whoosh.wav"],
-            },
-        ],
+        "scenes": [],
+        "render": {},
     }
-    return manifest
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Scaffold a faceless short manifest")
-    parser.add_argument("--title", required=True, help="Title of the short")
-    parser.add_argument("--topic", required=True, help="Core subject or story premise")
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--title", required=True, help="Title for the short")
+    parser.add_argument("--topic", required=True, help="Subject or story premise")
+    parser.add_argument("--style", choices=VALID_STYLES, required=True, help="Toolkit style ID")
     parser.add_argument(
-        "--style",
-        choices=list(VALID_STYLES.keys()),
-        default="tall_tale_3d",
-        help="Animation style preset",
+        "--duration",
+        type=int,
+        default=30,
+        help="Draft target in seconds; final runtime depends on the rendered narration (default: 30)",
     )
-    parser.add_argument("--duration", type=int, default=35, help="Target duration in seconds")
-    parser.add_argument("--out", type=str, default="shorts_manifest.json", help="Output path")
-
+    parser.add_argument("--out", type=Path, default=Path("shorts_manifest.json"))
+    parser.add_argument("--force", action="store_true", help="Replace an existing output file")
     args = parser.parse_args()
-    manifest = build_manifest(args.title, args.topic, args.style, args.duration)
 
-    out_path = Path(args.out)
-    out_path.write_text(json.dumps(manifest, indent=2))
-    print(f"Scaffolded faceless short manifest written to {out_path}")
+    if args.out.exists() and not args.force:
+        parser.error(f"{args.out} already exists; choose another --out path or pass --force")
+    try:
+        manifest = build_manifest(args.title, args.topic, args.style, args.duration)
+    except ValueError as exc:
+        parser.error(str(exc))
+
+    args.out.parent.mkdir(parents=True, exist_ok=True)
+    args.out.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    print(f"Planning scaffold written to {args.out}; no media was rendered.")
 
 
 if __name__ == "__main__":

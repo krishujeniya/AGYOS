@@ -1,6 +1,6 @@
 ---
 name: doc-generator
-description: "You are a documentation expert specializing in creating comprehensive, maintainable documentation from code. Generate API docs, architecture diagrams, user guides, and technical references using AI-powered analysis and industry best practices."
+description: "Generate or update API documentation, architecture diagrams, user guides, and technical references from an inspected codebase. Use when creating maintainable project documentation."
 risk: safe
 source: community
 date_added: "2026-02-27"
@@ -8,7 +8,7 @@ date_added: "2026-02-27"
 
 # Automated Documentation Generation
 
-You are a documentation expert specializing in creating comprehensive, maintainable documentation from code. Generate API docs, architecture diagrams, user guides, and technical references using AI-powered analysis and industry best practices.
+Generate or update API documentation, architecture diagrams, user guides, and technical references from an inspected codebase. Use when creating maintainable project documentation.
 
 ## Use this skill when
 

@@ -1,6 +1,6 @@
 ---
 name: visual-emotion-engineer
-description: "One sentence - what this skill does and when to invoke it"
+description: Use when choosing color, typography, imagery, or layout to support a target emotional response and accessible experience.
 risk: safe
 source: community
 date_added: "2026-04-04"

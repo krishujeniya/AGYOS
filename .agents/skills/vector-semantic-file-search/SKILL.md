@@ -1,26 +1,24 @@
 ---
 name: vector-semantic-file-search
-description: Vector-powered CLI for semantic file search with a Claude/Codex skill
+description: "Find files by meaning with the Vexor semantic-search CLI. Use when installed and configured; inspect the embedding provider and data boundary before indexing source files."
 risk: safe
 source: https://github.com/scarletkc/vexor
 date_added: '2026-02-27'
 ---
 
-# Vexor
+# Vexor semantic file search
 
-## Overview
+Use Vexor for natural-language search over a project index when its CLI is already installed and configured.
 
-Vector-powered CLI for semantic file search with a Claude/Codex skill
+## Workflow
 
-## When to Use This Skill
+1. Check that `vexor` is available and inspect its installed-version help. Do not install it automatically.
+2. Before indexing, inspect the project's `.vexorignore` and relevant configuration without printing API keys. Confirm whether embeddings or reranking use a remote provider; ask before sending private source files to any external service.
+3. Search an existing index with the documented query command. The upstream README shows `vexor "query"` and `vexor search` as search entrypoints; check the current [CLI reference](https://github.com/scarletkc/vexor) for exact flags.
+4. Build or refresh an index only when requested. Limit the indexed paths and exclude secrets, generated files, and unrelated data.
+5. Treat results as candidate file matches. Open and verify the referenced files before relying on search snippets.
 
-Use this skill when you need to work with vector-powered cli for semantic file search with a claude/codex skill.
-
-## Instructions
-
-This skill provides guidance and patterns for vector-powered cli for semantic file search with a claude/codex skill.
-
-For more information, see the [source repository](https://github.com/scarletkc/vexor).
+Vexor documents configurable embedding and reranking providers, including offline local-model use. Do not assume the current project is offline or that an index exists until its configuration is checked.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

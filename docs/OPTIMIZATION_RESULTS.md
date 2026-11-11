@@ -15,7 +15,7 @@ Delivered: [14-paper research review and 16 principles](research/OPTIMIZATION_RE
 | Graph updates | Failed insertion could leave a child attached to an earlier parent; duplicate task IDs overwrote entries | Validate before replacing maps; reject duplicate IDs and invalid depths; preserve forward references | `test_state_recovery.py`: failure leaves both maps unchanged |
 | Routing transport | Fallback/integration candidate dictionaries exposed cached sets and failed JSON encoding | Explicit public candidate fields serialize through Python, CLI, and MCP | `test_routing_contract.py`; repeated workload JSON failures drop from 90 to zero |
 | Test isolation | Patched manifest paths could be bypassed by a populated cache | Clear cache for source-patching tests; assert that fallback actually executes | `test_skill_routing.py`; all existing assertions retained |
-| Verification liveness | Installed `agy agents` call could hang indefinitely | Existing host-discovery test has a 30-second timeout and still asserts all five pods | Full run now reports the host timeout as an error instead of hanging |
+| Verification liveness | The earlier host-discovery test used `agy agents` and exceeded its 30-second timeout | The current test invokes `agy agent` with a 60-second timeout and still asserts all five pods | In the 2026-11-11 catalog audit, `agy agent` printed the list but did not exit before 60 seconds; the case remains recorded as a host timeout, not a pass |
 
 Accounting is still a single-owner, in-process primitive. Callers must check before dispatch; this patch does not implement authenticated authorization, persistent distributed reservations, provider billing settlement, or cancellation of an already-running tool. Recovery purpose labels classify usage; they do not grant permission. Public float views can round below float resolution; internal money comparisons remain exact. Integer token/tool reserves round down to whole units.
 
@@ -23,7 +23,7 @@ Accounting is still a single-owner, in-process primitive. Callers must check bef
 
 Command: `python3 scripts/benchmark_decision.py --repeats 30 --output <path>`.
 
-Each run executes ten fixed development cases 30 times against 1,979 skills. Warm-up precedes measurement; JSON checks occur outside the timed routing call. The report includes raw samples, Python/platform/revision, router source hash, selected skills, ranking hash, and error categories. There are zero model/provider calls. These are microbenchmarks and regression fixtures, not held-out agent-quality evaluations.
+At the benchmark baseline, each run executes ten fixed development cases 30 times against the 1,979-skill index. Warm-up precedes measurement; JSON checks occur outside the timed routing call. The report includes raw samples, Python/platform/revision, router source hash, selected skills, ranking hash, and error categories. There are zero model/provider calls. These are microbenchmarks and regression fixtures, not held-out agent-quality evaluations.
 
 | Run | Warm p50 (ms) | Warm p95 (ms) | JSON errors / 300 calls | Ranking |
 |---|---:|---:|---:|---|

@@ -1,6 +1,6 @@
 ---
 name: onboarding-psychologist
-description: "One sentence - what this skill does and when to invoke it"
+description: Use when designing first-use onboarding to reduce friction and help users reach an early success.
 risk: safe
 source: community
 date_added: "2026-04-04"

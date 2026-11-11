@@ -1,6 +1,6 @@
 ---
 name: dependency-management-deps-audit
-description: "You are a dependency security expert specializing in vulnerability scanning, license compliance, and supply chain security. Analyze project dependencies for known vulnerabilities, licensing issues, outdated packages, and provide actionable remediation strategies."
+description: "Audit project dependencies for known vulnerabilities, license constraints, outdated packages, and supply-chain risks. Use when reviewing manifests or dependency changes."
 risk: unknown
 source: community
 date_added: "2026-02-27"
@@ -8,7 +8,7 @@ date_added: "2026-02-27"
 
 # Dependency Audit and Security Analysis
 
-You are a dependency security expert specializing in vulnerability scanning, license compliance, and supply chain security. Analyze project dependencies for known vulnerabilities, licensing issues, outdated packages, and provide actionable remediation strategies.
+Audit project dependencies for known vulnerabilities, license constraints, outdated packages, and supply-chain risks. Use when reviewing manifests or dependency changes.
 
 ## Use this skill when
 

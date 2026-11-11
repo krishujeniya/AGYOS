@@ -17,17 +17,17 @@ Automate video generation, tile inspection, and media downloading from **Google 
 
 1. **Headless Execution Only (Zero Visible Browser Windows)**:
    - Chrome must run in `--headless=new` mode at all times.
-   - `FLOW_MCP_HEADLESS=true` is enforced in [google-flow-mcp.sh](file:///home/ai/Documents/projects/Freelance/AGYOS/mcp/google-flow-mcp.sh).
+   - `FLOW_MCP_HEADLESS=true` is enforced in [google-flow-mcp.sh](../../../mcp/google-flow-mcp.sh).
    - Use dedicated user data directory `~/.google-flow-chrome` synchronized from the local user profile (`~/.config/google-chrome`).
    - Never launch standard desktop Chrome windows or interfere with the user's active browsing session.
 
 2. **Skill-First Research & Prompt Crafting Protocol**:
    - Never generate raw or speculative prompts directly from user queries.
    - Always research the domain and consult existing specialist skills before crafting video instructions:
-     - [veo-3](file:///home/ai/Documents/projects/Freelance/AGYOS/.agents/skills/veo-3/SKILL.md): Director prompt anatomy (Subject, Action, Setting, Camera movement/angle/lens, Lighting/mood, Style, Audio cues with quoted dialogue, SFX, ambient sound, musical score).
-     - [ai-video](file:///home/ai/Documents/projects/Freelance/AGYOS/.agents/skills/ai-video/SKILL.md): The BRIEF framework (portable specifications, duration pacing, scene composition).
-     - [scripting-and-storyboarding](file:///home/ai/Documents/projects/Freelance/AGYOS/.agents/skills/scripting-and-storyboarding/SKILL.md): Scene breakdowns, visual timing, narrative arcs.
-     - Format-specific skills when targeting social channels: [reels-script](file:///home/ai/Documents/projects/Freelance/AGYOS/.agents/skills/reels-script/SKILL.md), [tiktok-script](file:///home/ai/Documents/projects/Freelance/AGYOS/.agents/skills/tiktok-script/SKILL.md), [youtube-shorts](file:///home/ai/Documents/projects/Freelance/AGYOS/.agents/skills/youtube-shorts/SKILL.md).
+     - [veo-3](../veo-3/SKILL.md): Director prompt anatomy (Subject, Action, Setting, Camera movement/angle/lens, Lighting/mood, Style, Audio cues with quoted dialogue, SFX, ambient sound, musical score).
+     - [ai-video](../ai-video/SKILL.md): The BRIEF framework (portable specifications, duration pacing, scene composition).
+     - [scripting-and-storyboarding](../scripting-and-storyboarding/SKILL.md): Scene breakdowns, visual timing, narrative arcs.
+     - Format-specific skills when targeting social channels: [reels-script](../reels-script/SKILL.md), [tiktok-script](../tiktok-script/SKILL.md), [youtube-shorts](../youtube-shorts/SKILL.md).
      - Domain research skills (`research`, `search-specialist`, `deep-research`) to ground technical details, physical realism, or factual environments.
 
 3. **Mandatory Local Download & Verification**:
@@ -39,9 +39,9 @@ Automate video generation, tile inspection, and media downloading from **Google 
 
 ## Google Flow MCP Architecture
 
-- **MCP Server Repository**: [integrations/google-flow-mcp](file:///home/ai/Documents/projects/Freelance/AGYOS/integrations/google-flow-mcp)
-- **Launcher Script**: [mcp/google-flow-mcp.sh](file:///home/ai/Documents/projects/Freelance/AGYOS/mcp/google-flow-mcp.sh)
-- **Configuration**: [config.ts](file:///home/ai/Documents/projects/Freelance/AGYOS/integrations/google-flow-mcp/src/config.ts)
+- **MCP Server Repository**: [integrations/google-flow-mcp](../../../integrations/google-flow-mcp)
+- **Launcher Script**: [mcp/google-flow-mcp.sh](../../../mcp/google-flow-mcp.sh)
+- **Configuration**: [config.ts](../../../integrations/google-flow-mcp/src/config.ts)
 - **Active Studio Project URL**: `https://flow.google.com/project/2d5fbde7-3875-41dc-9ecc-9a3f9881da6d`
 - **CDP Debug Port**: `9333`
 
@@ -210,4 +210,4 @@ Cinematic eye-level medium shot of an artisan watchmaker in a moody wooden works
   ffprobe -v error -show_entries stream=width,height,r_frame_rate,codec_name -show_entries format=duration,size -of default=noprint_wrappers=1 <downloaded_video.mp4>
   ```
 - **Session Timeout / Auth Refresh**:
-  If Flow redirects to login, run [google-flow-mcp.sh](file:///home/ai/Documents/projects/Freelance/AGYOS/mcp/google-flow-mcp.sh) to copy updated cookies from `~/.config/google-chrome` to `~/.google-flow-chrome`.
+  If Flow redirects to login, run [google-flow-mcp.sh](../../../mcp/google-flow-mcp.sh) to copy updated cookies from `~/.config/google-chrome` to `~/.google-flow-chrome`.

@@ -160,10 +160,6 @@ digraph principle {
 **Include context:** Directory, cwd, environment variables, timestamps
 **Capture stack:** `new Error().stack` shows complete call chain
 
-## Real-World Impact
+## Example investigation record
 
-From debugging session (2025-10-03):
-- Found root cause through 5-level trace
-- Fixed at source (getter validation)
-- Added 4 layers of defense
-- 1847 tests passed, zero pollution
+In a sample investigation, trace the failing call through each caller until the original input or state transition is identified. Record the concrete path, make the smallest source-level correction, and run the relevant regression suite. Treat this as a procedure example; it does not report a measured incident or test result.

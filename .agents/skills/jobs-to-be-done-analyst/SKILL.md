@@ -1,6 +1,6 @@
 ---
 name: jobs-to-be-done-analyst
-description: "One sentence - what this skill does and when to invoke it"
+description: Use when identifying functional, emotional, and social customer jobs to guide product positioning or messaging.
 risk: safe
 source: community
 date_added: "2026-04-04"

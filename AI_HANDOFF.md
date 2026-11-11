@@ -1,3 +1,18 @@
+# AGYOS handoff: skill-catalog quality, organization, and OpenWhispr (verification complete with host test limit, 2026-11-11)
+
+- Task: inspect and improve discovery, correctness, structure, routing, references, and current documentation across the catalog; the reviewed baseline was 1,982 skills and one OpenWhispr skill was added.
+- Branch/revision: `main` at `3056ca61d85dfc026c7b8540cbddc97d9a8c3238`; existing video-skill edits and the draft push script are preserved.
+- Gates UNDERSTAND, ANALYZE, and PLAN are approved. Gate VERIFY evidence and runtime limits are recorded below; the operator explicitly approved commit and GitHub push on 2026-11-11; publication is pending. No ID was renamed or removed.
+- Catalog work: 613 long entrypoints moved into linked references with no unexplained migration loss found; ten imported placeholder workflows and eight duplicate-body candidate groups improved without removing legacy IDs; the source-backed `openwhispr` v1.0.2 skill was added. Generated indexes contain 1,983 skills (390 Tier 1, 1,593 Tier 2). All 28 legacy Remotion Markdown rules point to canonical rules; three TSX assets remain identical at both paths.
+- Audit: 0 structural findings; 0 duplicate descriptions; 0 exact duplicate-body groups; 309 long-description candidates; 1 noncanonical stable ID retained; 7,657 freshness-keyword matches requiring triage rather than treated as confirmed defects.
+- Checks: focused catalog/router suite — 41 passed; unfiltered full suite — 156 run with three errors; host-skipped suite — 155 passed, one host-dependent case skipped; filtered AGYOS wrapper — 51/51 with that same case skipped; state validation and security scan passed; all eight generated artifacts reproduced byte-for-byte. Raw and filtered verification details are recorded in the audit report.
+- Independent review: migration comparison found no unexplained loss; source-backed corrections, duplicate aliases, Azure guide, OpenWhispr OAuth/macOS distinctions, version metadata assertion, and all 28 Remotion pointers were checked with no remaining finding.
+- Documentation reconciliation: current counts were checked across README, AGENTS, docs homepage, site landing page, tracker, generated indexes, and the security threat model. The threat model's original inventory remains explicitly tied to its 2026-11-08 baseline; dated handoff and research snapshots remain historical. `docs/OPTIMIZATION_RESULTS.md` now matches the current `agy agent` test command and 60-second timeout.
+- Remaining limits: freshness candidates and high-stakes/currentness claims beyond selected fixes were not comprehensively verified; skills were not executed through every host. In the unfiltered full suite, `agy agent` timed out after 60 seconds and two subprocess integration cases errored; the host-skipped suite passed all other tests.
+- Exact next command: `python3 -B -m unittest scripts.tests.test_skill_catalog scripts.tests.test_skill_routing -v`
+
+---
+
 # AGYOS handoff: faceless-shorts-engine zero-cost video pipeline (2026-11-11)
 
 - Task: Convert the Nafay 3D / Antigravity zero-cost faceless shorts guide into a dedicated AGYOS skill (`faceless-shorts-engine`) with local speech synthesis, word-synced subtitles, 6 animation styles, and automated compositing.
@@ -211,3 +226,16 @@ git ls-remote origin refs/heads/main
 ```bash
 bash scripts/agyos-verify.sh
 ```
+
+---
+
+# AGYOS handoff: source-audited local video skills (2026-11-11)
+
+- Task: inspect the supplied `ai-video-editor` and `faceless-shorts` toolkits plus both prompt files; correct the faceless-short runbook and planning scaffold, add a local talking-head editor skill, and route each task to the right skill.
+- Branch: `main`; baseline revision `3056ca61d85dfc026c7b8540cbddc97d9a8c3238`; current changes uncommitted.
+- Changed: added `.agents/skills/ai-video-editor/` with a source-backed workflow and seven-style/provenance guide; corrected `.agents/skills/faceless-shorts-engine/` and its planning-only manifest helper; added manifest tests; updated `agyos_decision/skills_router.py`, the frozen routing case, `AGENTS.md`, `.agents/skills/ai-video/SKILL.md`, and generated catalog indexes.
+- Source boundary: the supplied editor toolkit has no LICENSE in the inspected tree, so its implementation, fonts, and assets were not copied. The recreated prompt file says it is not the original; the separate prompt document does not identify its provenance. Both limitations are recorded in the skill references.
+- Catalog at that handoff: 1,982 skills (396 Tier 1, 1,586 Tier 2), before the later OpenWhispr addition.
+- Evidence: routing/catalog suite **17 passed**; manifest suite **4 passed**; local talking-head request resolves to `ai-video-editor`; faceless-short request resolves to `faceless-shorts-engine`; `git diff --check` passed. Toolkit command help was inspected; no package install, model download, or media render was run.
+- Independent checker: read-only review identified unusable example paths and a mismatch in language choices; the runbook was corrected and final review reported no remaining findings.
+- Exact next command: `bin/agyos skill ai-video-editor`

@@ -172,11 +172,6 @@ After agents return:
 3. **Run full suite** - Verify all fixes work together
 4. **Spot check** - Agents can make systematic errors
 
-## Real-World Impact
+## Example coordination record
 
-From debugging session (2025-10-03):
-- 6 failures across 3 files
-- 3 agents dispatched in parallel
-- All investigations completed concurrently
-- All fixes integrated successfully
-- Zero conflicts between agent changes
+For a parallel investigation, record the number of work items, the assigned boundaries, actual completion order, conflicts found, and integration checks run. Do not infer time savings or conflict-free integration without measuring and reviewing the results for the current task.

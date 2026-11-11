@@ -200,6 +200,15 @@ DOMAIN_TAXONOMY: Dict[str, Dict[str, Any]] = {
         "primary": "universal-ai-research",
         "alternatives": ["agyos-academic-research", "scientific-research", "deep-research"],
     },
+    "local_talking_head_editing": {
+        "keywords": [
+            "talking-head recording", "talking head recording", "local video edit",
+            "edit local footage", "remove pauses", "remove silence", "cut retakes",
+            "edit a recording", "existing talking-head video"
+        ],
+        "primary": "ai-video-editor",
+        "alternatives": ["ffmpeg-video-editor", "video-editing", "video-editing-principles"],
+    },
     "video_production": {
         "keywords": [
             "video", "video editing", "editing", "cut", "footage", "film",
@@ -274,6 +283,17 @@ DOMAIN_TAXONOMY: Dict[str, Dict[str, Any]] = {
         ],
         "primary": "agyos-anti-ai-design",
         "alternatives": ["design-spells", "frontend-design-direction", "apple-design"],
+    },
+    "skill_catalog_maintenance": {
+        "keywords": [
+            "skill catalog", "skills catalog", "skill catalogue", "skills catalogue",
+            "every skill", "all skills", "skill descriptions", "skill metadata",
+            "skill discovery", "runbook catalog", "organize skills", "skill organization",
+            "rename skills", "skill maintenance", "improve skills", "optimize skills",
+            "skill quality", "skill inventory", "catalog of skills"
+        ],
+        "primary": "agyos-self-improvement",
+        "alternatives": ["elite-skill-architect", "skill-optimizer", "skill-creator", "agyos-decision"],
     },
     "skill_routing": {
         "keywords": ["skill", "skills", "runbook", "runbooks", "skill routing", "decision engine"],

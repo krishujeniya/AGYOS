@@ -1,6 +1,6 @@
 ---
 name: brand-perception-psychologist
-description: "One sentence - what this skill does and when to invoke it"
+description: Use when assessing how a market perceives a brand and aligning its messaging, visuals, and proof with the intended position.
 risk: safe
 source: community
 date_added: "2026-04-04"

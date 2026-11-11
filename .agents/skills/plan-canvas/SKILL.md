@@ -195,4 +195,4 @@ ecc-plan-canvas await <file> --reply "Reworked the risk table."
 - Parsing the canvas chat from state files — everything you need arrives via
   `await`.
 
-Design notes and origin: [docs/design/plan-canvas.md](../../docs/design/plan-canvas.md).
+Design notes and origin: [AGYOS plan-canvas workflow](../../workflows/plan-canvas.md).

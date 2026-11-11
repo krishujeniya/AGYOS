@@ -1,13 +1,8 @@
 ---
 name: expo-ui-jetpack-compose
-description: expo-ui-jetpack-compose
+description: Use when integrating Android Jetpack Compose views or modifiers into an Expo app with `@expo/ui/jetpack-compose`.
 risk: unknown
 source: community
----
-
----
-name: expo-ui-jetpack-compose
-description: `@expo/ui/jetpack-compose` package lets you use Jetpack Compose Views and modifiers in your app.
 ---
 
 > The instructions in this skill apply to SDK 55 only. For other SDK versions, refer to the Expo UI Jetpack Compose docs for that version for the most accurate information.

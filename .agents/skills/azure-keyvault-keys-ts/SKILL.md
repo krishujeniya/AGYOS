@@ -35,65 +35,11 @@ const credential = new DefaultAzureCredential();
 const vaultUrl = `https://${process.env.AZURE_KEYVAULT_NAME}.vault.azure.net`;
 
 const keyClient = new KeyClient(vaultUrl, credential);
-const secretClient = new SecretClient(vaultUrl, credential);
 ```
 
-## Secrets Operations
+## Secret management
 
-### Create/Set Secret
-
-```typescript
-const secret = await secretClient.setSecret("MySecret", "secret-value");
-
-// With attributes
-const secretWithAttrs = await secretClient.setSecret("MySecret", "value", {
-  enabled: true,
-  expiresOn: new Date("2025-12-31"),
-  contentType: "application/json",
-  tags: { environment: "production" }
-});
-```
-
-### Get Secret
-
-```typescript
-// Get latest version
-const secret = await secretClient.getSecret("MySecret");
-console.log(secret.value);
-
-// Get specific version
-const specificSecret = await secretClient.getSecret("MySecret", {
-  version: secret.properties.version
-});
-```
-
-### List Secrets
-
-```typescript
-for await (const secretProperties of secretClient.listPropertiesOfSecrets()) {
-  console.log(secretProperties.name);
-}
-
-// List versions
-for await (const version of secretClient.listPropertiesOfSecretVersions("MySecret")) {
-  console.log(version.version);
-}
-```
-
-### Delete Secret
-
-```typescript
-// Soft delete
-const deletePoller = await secretClient.beginDeleteSecret("MySecret");
-await deletePoller.pollUntilDone();
-
-// Purge (permanent)
-await secretClient.purgeDeletedSecret("MySecret");
-
-// Recover
-const recoverPoller = await secretClient.beginRecoverDeletedSecret("MySecret");
-await recoverPoller.pollUntilDone();
-```
+For secret storage and retrieval, use the [Azure Key Vault Secrets skill](../azure-keyvault-secrets-ts/SKILL.md).
 
 ## Keys Operations
 
@@ -112,7 +58,7 @@ const ecKey = await keyClient.createEcKey("MyEcKey", { curve: "P-256" });
 // With attributes
 const keyWithAttrs = await keyClient.createKey("MyKey", "RSA", {
   enabled: true,
-  expiresOn: new Date("2025-12-31"),
+  expiresOn: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
   tags: { purpose: "encryption" },
   keyOps: ["encrypt", "decrypt", "sign", "verify"]
 });
@@ -217,49 +163,21 @@ const unwrapResult = await cryptoClient.unwrapKey("RSA-OAEP", wrapResult.result)
 ## Backup and Restore
 
 ```typescript
-// Backup
 const keyBackup = await keyClient.backupKey("MyKey");
-const secretBackup = await secretClient.backupSecret("MySecret");
-
-// Restore (can restore to different vault)
 const restoredKey = await keyClient.restoreKeyBackup(keyBackup!);
-const restoredSecret = await secretClient.restoreSecretBackup(secretBackup!);
 ```
 
 ## Key Types
 
-```typescript
-import {
-  KeyClient,
-  KeyVaultKey,
-  KeyProperties,
-  DeletedKey,
-  CryptographyClient,
-  KnownEncryptionAlgorithms,
-  KnownSignatureAlgorithms
-} from "@azure/keyvault-keys";
-
-import {
-  SecretClient,
-  KeyVaultSecret,
-  SecretProperties,
-  DeletedSecret
-} from "@azure/keyvault-secrets";
-```
+Use the key and cryptography types exported by `@azure/keyvault-keys`; check the installed package declarations before adding a type import.
 
 ## Error Handling
 
-```typescript
-try {
-  const secret = await secretClient.getSecret("NonExistent");
-} catch (error: any) {
-  if (error.code === "SecretNotFound") {
-    console.log("Secret does not exist");
-  } else {
-    throw error;
-  }
-}
-```
+Catch SDK errors at the operation boundary, log only safe diagnostic fields, and rethrow errors the caller cannot handle. Check the installed SDK documentation for error codes before branching on them.
+
+## Official SDK reference
+
+See the [Microsoft Key Vault Keys JavaScript SDK documentation](https://learn.microsoft.com/en-us/javascript/api/overview/azure/keyvault-keys-readme?view=azure-node-latest) for the installed package version.
 
 ## Best Practices
 

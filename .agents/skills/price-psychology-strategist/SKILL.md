@@ -1,6 +1,6 @@
 ---
 name: price-psychology-strategist
-description: "One sentence - what this skill does and when to invoke it"
+description: Use when structuring pricing, packaging, or price presentation to improve perceived value and fairness.
 risk: safe
 source: community
 date_added: "2026-04-04"

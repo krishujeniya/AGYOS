@@ -290,6 +290,6 @@ ffmpeg -i input.mp4 \
 ```
 
 ### Essential Quality Invariants
-1. **Pristine Visuals**: Clean visual watermarks using localized inpainting ([remove_flow_watermark.py](file:///home/ai/Documents/projects/Freelance/AGYOS/scripts/remove_flow_watermark.py)).
-2. **Audio Compliance**: Master dialogue to -14 LUFS / -1.0 dBTP via [ffmpeg-video-editor](file:///home/ai/Documents/projects/Freelance/AGYOS/.agents/skills/ffmpeg-video-editor/SKILL.md).
+1. **Pristine Visuals**: Clean visual watermarks using localized inpainting ([remove_flow_watermark.py](../../../scripts/remove_flow_watermark.py)).
+2. **Audio Compliance**: Master dialogue to -14 LUFS / -1.0 dBTP via [ffmpeg-video-editor](../ffmpeg-video-editor/SKILL.md).
 3. **Disclosure Compliance**: In compliance with platform policies (YouTube Altered Content, EU AI Act), disclose synthetic generation in video descriptions or metadata flags. SynthID deep-latent watermarking is an indelible safety architecture designed by Google DeepMind and cannot and should not be stripped.

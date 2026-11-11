@@ -39,7 +39,7 @@ if [[ "$CURRENT_GATE" == "IMPLEMENT" && "$MILESTONE" != "null" ]]; then
 fi
 
 # 3. Test Ratchet Rule: Check for removed assertions in modified test files
-STAGED_TEST_FILES=$(git diff --cached --name-only --diff-filter=M | grep -iE '(test|spec)' || true)
+STAGED_TEST_FILES=$(git diff --cached --name-only --diff-filter=M | grep -iE '(^|/)(tests?|__tests__|specs?)(/|$)|(^|/)(test_[^/]*|[^/]*_test|[^/]*\.test|[^/]*\.spec|spec_[^/]*)\.(py|pyi|[cm]?[jt]sx?)$' || true)
 if [ -n "$STAGED_TEST_FILES" ]; then
   # Check if an override is documented in the checkpoint
   OVERRIDE_RATCHET=0

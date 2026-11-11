@@ -67,11 +67,11 @@ Every long-form script must contain concrete production cues:
 
 ## Stage 3: Generative B-Roll via Google Flow & Veo 3.1
 
-Use [google-flow](file:///home/ai/Documents/projects/Freelance/AGYOS/.agents/skills/google-flow/SKILL.md) to generate high-fidelity B-roll clips headlessly:
+Use [google-flow](../google-flow/SKILL.md) to generate high-fidelity B-roll clips headlessly:
 
 1. **Extract B-Roll List from Script**:
    Identify 10-20 specific cutaways needed throughout the narrative (establishing shots, metaphorical scenes, mechanical details).
-2. **Apply [veo-3](file:///home/ai/Documents/projects/Freelance/AGYOS/.agents/skills/veo-3/SKILL.md) Prompt Structure**:
+2. **Apply [veo-3](../veo-3/SKILL.md) Prompt Structure**:
    Structure each clip with subject, physical action, camera trajectory, lighting mood, and synchronized ambient sound.
 3. **Execute Headless Generation**:
    Run `flow_generate_video` with `model="veo-3.1-quality"`, `ratio="16:9"`, and `duration=8`.
@@ -87,7 +87,7 @@ Use [google-flow](file:///home/ai/Documents/projects/Freelance/AGYOS/.agents/ski
 2. **Sound Effects Placement**:
    Add subtle SFX (whooshes, risers, mechanical clicks, sub-bass hits) at topic transitions and visual changes.
 3. **Dynamic Music Ducking**:
-   Duck background music by 18dB during voiceover using sidechain compression via [ffmpeg-video-editor](file:///home/ai/Documents/projects/Freelance/AGYOS/.agents/skills/ffmpeg-video-editor/SKILL.md).
+   Duck background music by 18dB during voiceover using sidechain compression via [ffmpeg-video-editor](../ffmpeg-video-editor/SKILL.md).
 4. **Mastering Standard**:
    Normalize final audio mix to **-14 LUFS integrated loudness** and **-1.0 dB True Peak ceiling**.
 
@@ -95,7 +95,7 @@ Use [google-flow](file:///home/ai/Documents/projects/Freelance/AGYOS/.agents/ski
 
 ## Stage 5: Programmatic Assembly via FFmpeg
 
-Run automated assembly using recipes from [ffmpeg-video-editor](file:///home/ai/Documents/projects/Freelance/AGYOS/.agents/skills/ffmpeg-video-editor/SKILL.md):
+Run automated assembly using recipes from [ffmpeg-video-editor](../ffmpeg-video-editor/SKILL.md):
 
 ```bash
 # 1. Strip silence intervals > 400ms

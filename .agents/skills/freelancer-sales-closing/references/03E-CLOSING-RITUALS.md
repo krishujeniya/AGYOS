@@ -425,7 +425,7 @@ Make it specific to [project type], not generic.
 
 ---
 
-> **Next Module:** [04-PROJECT-DELIVERY →](../04-PROJECT-DELIVERY/)
+> **Next Module:** [04-PROJECT-DELIVERY →](../../freelancer-project-delivery/SKILL.md)
 >
 > *"The close is where trust becomes contract. Handle it with care."*
 

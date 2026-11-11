@@ -1,6 +1,6 @@
 ---
 name: monorepo-architect
-description: "Expert in monorepo architecture, build systems, and dependency management at scale. Masters Nx, Turborepo, Bazel, and Lerna for efficient multi-project development. Use PROACTIVELY for monorepo setup,"
+description: "Design or troubleshoot a monorepo using Nx, Turborepo, Bazel, or Lerna. Use for workspace boundaries, builds, dependency constraints, or task caching."
 risk: safe
 source: community
 date_added: "2026-02-27"
@@ -8,7 +8,7 @@ date_added: "2026-02-27"
 
 # Monorepo Architect
 
-Expert in monorepo architecture, build systems, and dependency management at scale. Masters Nx, Turborepo, Bazel, and Lerna for efficient multi-project development. Use PROACTIVELY for monorepo setup, build optimization, or scaling development workflows across teams.
+Design or troubleshoot a monorepo using Nx, Turborepo, Bazel, or Lerna. Use for workspace boundaries, builds, dependency constraints, or task caching.
 
 ## Do not use this skill when
 

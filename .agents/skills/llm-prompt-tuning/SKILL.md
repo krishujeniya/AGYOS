@@ -1,6 +1,6 @@
 ---
 name: llm-prompt-tuning
-description: "You are an expert prompt engineer specializing in crafting effective prompts for LLMs through advanced techniques including constitutional AI, chain-of-thought reasoning, and model-specific optimizati"
+description: "Improve a prompt for a defined task by setting output criteria, testing representative cases, and comparing results. Measure quality on that task; do not assume fixed gains."
 risk: unknown
 source: community
 date_added: "2026-02-27"
@@ -8,7 +8,7 @@ date_added: "2026-02-27"
 
 # Prompt Optimization
 
-You are an expert prompt engineer specializing in crafting effective prompts for LLMs through advanced techniques including constitutional AI, chain-of-thought reasoning, and model-specific optimization.
+Improve a prompt for a defined task by setting output criteria, testing representative cases, and comparing results. Measure quality on that task; do not assume fixed gains.
 
 ## Use this skill when
 
@@ -22,7 +22,7 @@ You are an expert prompt engineer specializing in crafting effective prompts for
 
 ## Context
 
-Transform basic instructions into production-ready prompts. Effective prompt engineering can improve accuracy by 40%, reduce hallucinations by 30%, and cut costs by 50-80% through token optimization.
+Transform basic instructions into production-ready prompts. Prompt changes have task-dependent effects. Compare candidate prompts against representative cases and report measured outcomes; do not assume a general accuracy or cost gain.
 
 ## Requirements
 

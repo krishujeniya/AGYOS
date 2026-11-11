@@ -55,7 +55,7 @@ This plan translates the 45 audited principles from ten reference platforms and 
 
 ### ADR-0004: Resource Boundedness on 4GB Ubuntu
 - **Status:** IMPLEMENTED
-- **Context:** Target host runs Ubuntu 25.04 with 3.3GB available RAM. Spawning persistent Docker daemons, browser automation instances, or 1,862 concurrent skills causes host out-of-memory kernel panic.
+- **Context:** Target host runs Ubuntu 25.04 with 3.3GB available RAM. Spawning persistent Docker daemons, browser automation instances, or unbounded concurrent skill work can exhaust available memory.
 - **Decision:** Mandate lazy catalog search (`agyos_find_skill`), single-agent execution by default, subprocess timeouts (15s), and memory-efficient Python/Node scripting.
 - **Consequences:** System executes reliably under 1.0GB active RAM without swap thrashing.
 

@@ -1,6 +1,6 @@
 ---
 name: git-workflow-guide
-description: "Orchestrate a comprehensive git workflow from code review through PR creation, leveraging specialized agents for quality assurance, testing, and deployment readiness. This workflow implements modern g"
+description: "Plan repository work from code review through tests and pull-request readiness. Use when coordinating a multi-step Git workflow and its required checks."
 risk: critical
 source: community
 date_added: "2026-02-27"
@@ -8,7 +8,7 @@ date_added: "2026-02-27"
 
 # Complete Git Workflow with Multi-Agent Orchestration
 
-Orchestrate a comprehensive git workflow from code review through PR creation, leveraging specialized agents for quality assurance, testing, and deployment readiness. This workflow implements modern git best practices including Conventional Commits, automated testing, and structured PR creation.
+Plan repository work from code review through tests and pull-request readiness. Use when coordinating a multi-step Git workflow and its required checks.
 
 [Extended thinking: This workflow coordinates multiple specialized agents to ensure code quality before commits are made. The code-reviewer agent performs initial quality checks, test-automator ensures all tests pass, and deployment-engineer verifies production readiness. By orchestrating these agents sequentially with context passing, we prevent broken code from entering the repository while maintaining high velocity. The workflow supports both trunk-based and feature-branch strategies with configurable options for different team needs.]
 

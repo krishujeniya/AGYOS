@@ -1,6 +1,6 @@
 ---
 name: ux-persuasion-engineer
-description: "One sentence - what this skill does and when to invoke it"
+description: Use when improving a UX flow through layout, sequence, and cues while preserving user choice and avoiding coercion.
 risk: safe
 source: community
 date_added: "2026-04-04"

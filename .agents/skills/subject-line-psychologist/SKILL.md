@@ -1,6 +1,6 @@
 ---
 name: subject-line-psychologist
-description: "One sentence - what this skill does and when to invoke it"
+description: Use when writing email subject lines or notifications for relevance and curiosity while accurately reflecting their content.
 risk: safe
 source: community
 date_added: "2026-04-04"

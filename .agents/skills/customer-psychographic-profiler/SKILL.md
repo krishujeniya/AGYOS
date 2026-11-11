@@ -1,6 +1,6 @@
 ---
 name: customer-psychographic-profiler
-description: "One sentence - what this skill does and when to invoke it"
+description: Use when building a customer psychographic profile for positioning, copy, or funnel design beyond demographics.
 risk: safe
 source: community
 date_added: "2026-04-04"

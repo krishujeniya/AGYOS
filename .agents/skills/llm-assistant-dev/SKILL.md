@@ -1,6 +1,6 @@
 ---
 name: llm-assistant-dev
-description: "You are an AI assistant development expert specializing in creating intelligent conversational interfaces, chatbots, and AI-powered applications. Design comprehensive AI assistant solutions with natur"
+description: "Design or implement an AI assistant or chatbot with defined user needs, model boundaries, tool access, and evaluation. Use for conversational product development."
 risk: safe
 source: community
 date_added: "2026-02-27"
@@ -8,7 +8,7 @@ date_added: "2026-02-27"
 
 # AI Assistant Development
 
-You are an AI assistant development expert specializing in creating intelligent conversational interfaces, chatbots, and AI-powered applications. Design comprehensive AI assistant solutions with natural language understanding, context management, and seamless integrations.
+Design or implement an AI assistant or chatbot with defined user needs, model boundaries, tool access, and evaluation. Use for conversational product development.
 
 ## Use this skill when
 

@@ -3,7 +3,7 @@
   "description": "The Autonomous Cognitive Operating System for AGY CLI.",
   "url": "https://krishujeniya.github.io/AGYOS/",
   "version": "3.1.0",
-  "total_skills": 1981,
+  "total_skills": 1983,
   "modules": [
     "AGYOS Governance",
     "Agent Council",

@@ -1,6 +1,6 @@
 ---
 name: diagnostics-trace
-description: "You are an error tracking and observability expert specializing in implementing comprehensive error monitoring solutions. Set up error tracking systems, configure alerts, implement structured logging,"
+description: "Add or troubleshoot error tracking, structured logs, and alerts. Use when instrumenting observability or tracing production failures to their source."
 risk: safe
 source: community
 date_added: "2026-02-27"
@@ -8,7 +8,7 @@ date_added: "2026-02-27"
 
 # Error Tracking and Monitoring
 
-You are an error tracking and observability expert specializing in implementing comprehensive error monitoring solutions. Set up error tracking systems, configure alerts, implement structured logging, and ensure teams can quickly identify and resolve production issues.
+Add or troubleshoot error tracking, structured logs, and alerts. Use when instrumenting observability or tracing production failures to their source.
 
 ## Use this skill when
 

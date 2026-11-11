@@ -51,6 +51,8 @@ best AI video tool — only a best tool per job.**
   **captions-and-clipping**.
 - **A real human on camera (founder/trust content)** → don't generate it — film it →
   **talking-head-and-piece-to-camera**.
+- **An existing local talking-head recording that needs cuts, captions, or graphics** →
+  **ai-video-editor** (the local toolkit workflow).
 - **A real product/place you have** → don't generate it. **Film it** (recipes:
   `references/routing-recipes.md`).
 
@@ -73,7 +75,8 @@ Veo / Kling / Runway instead.
 ## Where this connects
 Counterpart: **image-prompt** (image router). Tool skills below it: **veo-3, google-flow, kling, luma**
 (generative), **heygen, synthesia** (avatars), **ai-voiceover**, **captions-and-clipping**.
-Filmed human → **talking-head-and-piece-to-camera**. Thumbnails/first
+Filmed human → **talking-head-and-piece-to-camera**; edit an existing local recording →
+**ai-video-editor**. Thumbnails/first
 frames via **nano-banana, ideogram**. Brief consumers: **reels-script** (veo-prompt-pack),
 **tiktok-script**, **youtube-shorts**, **youtube-long-form**, **cross-platform-repurposing**.
 Publish: **scheduling-and-queue → WoopSocial**.

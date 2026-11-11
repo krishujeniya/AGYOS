@@ -1,6 +1,6 @@
 ---
 name: code-migration
-description: "You are a code migration expert specializing in transitioning codebases between frameworks, languages, versions, and platforms. Generate comprehensive migration plans, automated migration scripts, and"
+description: "Plan and execute migrations between frameworks, language versions, or platforms. Use when moving or upgrading a codebase while preserving behavior and defining compatibility and rollback checks."
 risk: safe
 source: community
 date_added: "2026-02-27"
@@ -8,7 +8,7 @@ date_added: "2026-02-27"
 
 # Code Migration Assistant
 
-You are a code migration expert specializing in transitioning codebases between frameworks, languages, versions, and platforms. Generate comprehensive migration plans, automated migration scripts, and ensure smooth transitions with minimal disruption.
+Plan and execute migrations between frameworks, language versions, or platforms. Use when moving or upgrading a codebase while preserving behavior and defining compatibility and rollback checks.
 
 ## Use this skill when
 

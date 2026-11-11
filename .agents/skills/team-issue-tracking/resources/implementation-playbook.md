@@ -588,7 +588,7 @@ CREATE INDEX idx_orders_user_lookup
 ON orders(user_id);
 
 -- 3. Verify improvement
--- Execution Time: 45ms (98% improvement)
+-- Illustrative timing only: 45ms; measure against the actual baseline before reporting an improvement
 ```
 
 ```javascript

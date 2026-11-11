@@ -1,6 +1,6 @@
 ---
 name: service-mesh-expert
-description: "Expert service mesh architect specializing in Istio, Linkerd, and cloud-native networking patterns. Masters traffic management, security policies, observability integration, and multi-cluster mesh con"
+description: "Design or troubleshoot Kubernetes service-mesh traffic, mTLS, policy, and service discovery. Use for zero-trust service communication or mesh connectivity issues."
 risk: safe
 source: community
 date_added: "2026-02-27"
@@ -8,7 +8,7 @@ date_added: "2026-02-27"
 
 # Service Mesh Expert
 
-Expert service mesh architect specializing in Istio, Linkerd, and cloud-native networking patterns. Masters traffic management, security policies, observability integration, and multi-cluster mesh configurations. Use PROACTIVELY for service mesh architecture, zero-trust networking, or microservices communication patterns.
+Design or troubleshoot Kubernetes service-mesh traffic, mTLS, policy, and service discovery. Use for zero-trust service communication or mesh connectivity issues.
 
 ## Do not use this skill when
 

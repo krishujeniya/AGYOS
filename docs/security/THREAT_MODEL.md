@@ -5,6 +5,8 @@
 **Baseline commit:** `35903ad9125607daf89ca2f189864136dbe18a67`
 **Methodology:** STRIDE per data flow, adapted for local-first agent OS
 
+Catalog inventory note (2026-11-11): the physical catalog now contains 1,983 skills. This note updates the inventory count only; the threat model remains the 2026-11-08 baseline and has not been re-audited by the catalog milestone.
+
 ## 1. Protected Assets
 
 | Asset | Classification | Storage | Current Protection |
@@ -18,7 +20,7 @@
 | Encrypted envelope keys | Secret | `~/.config/agyos/identity.json` | scrypt + AES-256-GCM, mode 0600, dir mode 0700 |
 | Private vault data | Confidential | `~/.local/state/agyos/private-memory.vault.json` | AES-256-GCM, scrypt KDF, mode 0600 |
 | Model API keys | Secret | Environment variables | Not stored in repo; env-only |
-| Skill catalog (1,862 skills) | Public | `.agents/skills/` | Git-tracked, read-only usage |
+| Skill catalog (1,862 skills at this threat-model baseline) | Public | `.agents/skills/` | Git-tracked, read-only usage |
 | E2EE envelope messages | Confidential | User-specified paths | X25519+AES-256-GCM+Ed25519 |
 
 ## 2. Trust Boundaries
@@ -123,7 +125,7 @@
 1. **Cloud provider inference**: Google/Anthropic hosted models must see plaintext prompts. This is an inherent trust boundary, not a fixable vulnerability. Mitigation: data classification + consent gating.
 2. **No independent cryptographic audit**: Vault and E2EE implementations use Node.js crypto primitives (well-reviewed) but the protocol design has not been independently audited.
 3. **Single-user local system**: Many enterprise threats (multi-tenant isolation, network attacks) are lower priority for a single-user CLI tool, but local compromise defeats all protections.
-4. **Skill supply chain**: 1,862 skills from various sources; no signature verification or sandboxed execution of skill-recommended commands.
+4. **Skill supply chain at this threat-model baseline**: 1,862 skills from various sources; no signature verification or sandboxed execution of skill-recommended commands.
 
 ## 6. Recommended Next Actions
 

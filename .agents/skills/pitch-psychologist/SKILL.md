@@ -1,6 +1,6 @@
 ---
 name: pitch-psychologist
-description: "One sentence - what this skill does and when to invoke it"
+description: Use when shaping a sales, investor, or product pitch to progress from audience attention to trust and commitment.
 risk: safe
 source: community
 date_added: "2026-04-04"

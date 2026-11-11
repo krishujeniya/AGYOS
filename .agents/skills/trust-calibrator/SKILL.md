@@ -1,6 +1,6 @@
 ---
 name: trust-calibrator
-description: "One sentence - what this skill does and when to invoke it"
+description: Use when calibrating claims and proof for a skeptical audience and reducing overclaiming or weak credibility signals.
 risk: safe
 source: community
 date_added: "2026-04-04"

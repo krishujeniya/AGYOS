@@ -141,15 +141,19 @@ Never narrate skill selection to the user (e.g. do NOT say "I will now use the X
     6. **Before/After/Why Review Table**: Mandatory markdown table with `| Before | After | Why |` columns for all UI/UX code reviews.
 - **Freelance & Client Management** ("Draft proposal", "Create SOW", "Invoice client"):
   - Select `freelancer-project-delivery`, `freelancer-client-acquisition`, or `freelancer-operations` according to the objective.
-- **Video Production & Faceless Shorts** ("Make a short", "Faceless video", "Animate 3D short", "Zack D style", "Tall Tale 3D", "Edit video"):
-  - Autonomously trigger `faceless-shorts-engine`, `youtube-shorts`, `organic-film-de-ai`, and `ffmpeg-video-editor` with zero-cost local Kokoro TTS and Whisper subtitle alignment.
+- **Local Talking-Head Editing** ("edit this recording", "remove pauses or retakes", "add motion graphics to my footage"):
+  - Route an existing local clip to `ai-video-editor`; keep transcript review, crop choice, output paths, and any content-changing cuts explicit.
+- **Faceless Shorts Production** ("make a faceless short", "animate a vertical short", "Deep Dive 3D", "Tall Tale 3D"):
+  - Use `faceless-shorts-engine` for the supplied local code-rendering toolkit and `youtube-shorts` for script or channel strategy; verify the local toolkit and model setup before claiming a render.
+- **Generative Video Assets** ("generate a video scene", "make AI B-roll"):
+  - Use `ai-video` to route generation tools and keep editing or publication as separate authorized steps.
 
 ---
 
 ## 8. Integrated AGYOS Core Subsystems
 
 AGYOS is fully unified and self-contained within `.agents/`, `bin/`, `mcp/`, and `scripts/`:
-- **`skills/` (`.agents/skills`)**: Unified physical catalog of 1,862+ skills categorized by domain under pure AGYOS branding.
+- **`skills/` (`.agents/skills`)**: Unified physical catalog of 1,983 skills categorized by domain under pure AGYOS branding.
 - **`rules/` (`.agents/rules`)**: 141 modular governance and polyglot rules (<24KB each).
 - **`workflows/` (`.agents/workflows`)**: 100 autonomous multi-agent execution pipelines.
 - **`agents/` (`.agents/agents`)**: 81 specialized FAANG/MANGO corporate role and pod agents.

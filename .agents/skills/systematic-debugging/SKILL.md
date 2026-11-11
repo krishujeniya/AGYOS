@@ -273,7 +273,7 @@ If systematic investigation reveals issue is truly environmental, timing-depende
 3. Implement appropriate handling (retry, timeout, error message)
 4. Add monitoring/logging for future investigation
 
-**But:** 95% of "no root cause" cases are incomplete investigation.
+If investigation has not found a cause, list the paths and evidence checked, identify the remaining unknowns, and decide whether to gather more evidence or classify the issue as environmental or unresolved.
 
 ## Supporting Techniques
 
@@ -287,10 +287,6 @@ These techniques are part of systematic debugging and available in this director
 - **superpowers:test-driven-development** - For creating failing test case (Phase 4, Step 1)
 - **superpowers:verification-before-completion** - Verify fix worked before claiming success
 
-## Real-World Impact
+## Reporting outcomes
 
-From debugging sessions:
-- Systematic approach: 15-30 minutes to fix
-- Random fixes approach: 2-3 hours of thrashing
-- First-time fix rate: 95% vs 40%
-- New bugs introduced: Near zero vs common
+Report the investigation steps, the confirmed cause, the change made, and the checks actually run. Do not attach general success rates or time savings unless they come from a defined, measured dataset.

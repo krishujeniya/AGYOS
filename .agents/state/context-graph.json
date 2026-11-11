@@ -1,1 +1,43 @@
-{"nodes": [], "edges": [], "invariants": []}
+{
+  "nodes": [
+    {"id": ".agents/skills/*/SKILL.md", "type": "skill", "grep_query": "SKILLS_DIR.glob(\"*/SKILL.md\")"},
+    {"id": "agyos_decision/catalog.py", "type": "source", "grep_query": "def read_metadata|def physical_catalog|def canonical_entry"},
+    {"id": "agyos_decision/skills_router.py", "type": "source", "grep_query": "from .catalog|MANIFEST_DATA|DOCS_DATA"},
+    {"id": "scripts/build_tiered_skills_manifest.py", "type": "source", "grep_query": "from agyos_decision.catalog|OUT_MANIFEST|OUT_TIER1"},
+    {"id": "scripts/build_docs_data.py", "type": "source", "grep_query": "from agyos_decision.catalog|MANIFEST_PATH|write_json_files"},
+    {"id": ".agents/skills-manifest.json", "type": "config"},
+    {"id": ".agents/tier1-skills.json", "type": "config"},
+    {"id": "docs/skills-data.json", "type": "config"},
+    {"id": "docs/ai-catalog.json", "type": "config"},
+    {"id": "docs/llms.txt", "type": "doc"},
+    {"id": "docs/sitemap.xml", "type": "config"},
+    {"id": "docs/robots.txt", "type": "config"},
+    {"id": "scripts/tests/test_skill_routing.py", "type": "test", "grep_query": "from agyos_decision.catalog|ROUTING_CASES|manifest"}
+  ],
+  "edges": [
+    {"from": "agyos_decision/catalog.py", "to": ".agents/skills/*/SKILL.md", "type": "references"},
+    {"from": "agyos_decision/skills_router.py", "to": "agyos_decision/catalog.py", "type": "imports"},
+    {"from": "agyos_decision/skills_router.py", "to": ".agents/skills-manifest.json", "type": "references"},
+    {"from": "agyos_decision/skills_router.py", "to": "docs/skills-data.json", "type": "references"},
+    {"from": "scripts/build_tiered_skills_manifest.py", "to": "agyos_decision/catalog.py", "type": "imports"},
+    {"from": "scripts/build_tiered_skills_manifest.py", "to": ".agents/skills/*/SKILL.md", "type": "references"},
+    {"from": "scripts/build_tiered_skills_manifest.py", "to": ".agents/skills-manifest.json", "type": "configures"},
+    {"from": "scripts/build_tiered_skills_manifest.py", "to": ".agents/tier1-skills.json", "type": "configures"},
+    {"from": "scripts/build_docs_data.py", "to": "agyos_decision/catalog.py", "type": "imports"},
+    {"from": "scripts/build_docs_data.py", "to": ".agents/skills-manifest.json", "type": "references"},
+    {"from": "scripts/build_docs_data.py", "to": "docs/skills-data.json", "type": "configures"},
+    {"from": "scripts/build_docs_data.py", "to": "docs/ai-catalog.json", "type": "configures"},
+    {"from": "scripts/build_docs_data.py", "to": "docs/llms.txt", "type": "configures"},
+    {"from": "scripts/build_docs_data.py", "to": "docs/sitemap.xml", "type": "configures"},
+    {"from": "scripts/build_docs_data.py", "to": "docs/robots.txt", "type": "configures"},
+    {"from": "scripts/tests/test_skill_routing.py", "to": "agyos_decision/skills_router.py", "type": "tests"},
+    {"from": "scripts/tests/test_skill_routing.py", "to": "agyos_decision/catalog.py", "type": "tests"},
+    {"from": "scripts/tests/test_skill_routing.py", "to": ".agents/skills-manifest.json", "type": "tests"},
+    {"from": "scripts/tests/test_skill_routing.py", "to": "docs/skills-data.json", "type": "tests"}
+  ],
+  "invariants": [
+    "Each direct skill directory has one SKILL.md; its first YAML header has a unique name equal to that directory and an actionable description.",
+    "A primary SKILL.md stays below 300 lines; detailed procedures live in linked skill-local references.",
+    "Every generated catalog contains each physical skill exactly once, and Tier 1 is a subset of the complete manifest."
+  ]
+}

@@ -13,12 +13,6 @@
       "path": ".agents/skills/ad-creative"
     },
     {
-      "name": "agent-benchmarking",
-      "tier": 1,
-      "description": "Testing and benchmarking LLM agents including behavioral testing, capability assessment, reliability metrics, and production monitoring\u2014where even top agents achieve less than 50% on real-world benchmarks",
-      "path": ".agents/skills/agent-benchmarking"
-    },
-    {
       "name": "agent-memory-architecture",
       "tier": 1,
       "description": "Memory is the cornerstone of intelligent agents. Without it, every interaction starts from zero. This skill covers the architecture of agent memory: short-term (context window), long-term (vector stores), and the cognitive architectures that organize them.",
@@ -135,7 +129,7 @@
     {
       "name": "agyos-self-improvement",
       "tier": 1,
-      "description": "Autonomous self-correction and continuous improvement protocol for the entire AGYOS skill catalog. Captures user corrections, integrates industry trends, maintains cross-skill dependencies, enforces quality gates, and preserves test ratchets across all 1970+ skills.",
+      "description": "Use when maintaining the AGYOS skill catalog or improving a skill's correctness, discovery, references, or quality gates. Captures corrections, source checks, cross-skill dependencies, and test ratchets.",
       "path": ".agents/skills/agyos-self-improvement"
     },
     {
@@ -167,12 +161,6 @@
       "tier": 1,
       "description": "Verify implementation with deterministic checks, independent review, and evidence for unresolved acceptance criteria.",
       "path": ".agents/skills/agyos-verify"
-    },
-    {
-      "name": "ai-code-review",
-      "tier": 1,
-      "description": "You are an expert AI-powered code review specialist combining automated static analysis, intelligent pattern recognition, and modern DevOps practices. Leverage AI tools (GitHub Copilot, Qodo, GPT-5, C",
-      "path": ".agents/skills/ai-code-review"
     },
     {
       "name": "ai-ml",
@@ -589,12 +577,6 @@
       "path": ".agents/skills/conductor-implement"
     },
     {
-      "name": "config-validator",
-      "tier": 1,
-      "description": "You are a configuration management expert specializing in validating, testing, and ensuring the correctness of application configurations. Create comprehensive validation schemas, implement configurat",
-      "path": ".agents/skills/config-validator"
-    },
-    {
       "name": "context-and-decisions",
       "tier": 1,
       "description": "Govern stable domain context with a narrowly scoped CONTEXT.md when needed, and route hard-to-reverse decisions to ECC's existing architecture-decision-records skill. Use when domain terms require repeated explanation, one term has multiple meanings, unclear language causes module-boundary mistakes, or domain semantics must remain separate from architecture decisions.",
@@ -739,12 +721,6 @@
       "path": ".agents/skills/deployment-pipeline-design"
     },
     {
-      "name": "deps-upgrade",
-      "tier": 1,
-      "description": "You are a dependency management expert specializing in safe, incremental upgrades of project dependencies. Plan and execute dependency updates with minimal risk, proper testing, and clear migration pa",
-      "path": ".agents/skills/deps-upgrade"
-    },
-    {
       "name": "dev-orchestrator",
       "tier": 1,
       "description": "The master orchestrator for autonomous development. Activates when building a product from idea to production, managing multi-gate workflows, or when the user says 'build', 'create project', 'aegis mode', 'full lifecycle', or 'idea to deployment'. Coordinates all expert skills through the 5-Gate workflow.",
@@ -765,7 +741,7 @@
     {
       "name": "django-access-review",
       "tier": 1,
-      "description": "django-access-review",
+      "description": "Use when reviewing Django or DRF code for IDOR, object-level authorization, or user-to-user data access gaps.",
       "path": ".agents/skills/django-access-review"
     },
     {
@@ -813,7 +789,7 @@
     {
       "name": "doc-generator",
       "tier": 1,
-      "description": "You are a documentation expert specializing in creating comprehensive, maintainable documentation from code. Generate API docs, architecture diagrams, user guides, and technical references using AI-powered analysis and industry best practices.",
+      "description": "Generate or update API documentation, architecture diagrams, user guides, and technical references from an inspected codebase. Use when creating maintainable project documentation.",
       "path": ".agents/skills/doc-generator"
     },
     {
@@ -837,7 +813,7 @@
     {
       "name": "documentation-generation-doc-generate",
       "tier": 1,
-      "description": "You are a documentation expert specializing in creating comprehensive, maintainable documentation from code. Generate API docs, architecture diagrams, user guides, and technical references using AI-powered analysis and industry best practices.",
+      "description": "Compatibility ID for generating API docs, architecture diagrams, user guides, and technical references. Use doc-generator as the canonical runbook.",
       "path": ".agents/skills/documentation-generation-doc-generate"
     },
     {
@@ -939,7 +915,7 @@
     {
       "name": "faceless-shorts-engine",
       "tier": 1,
-      "description": "Autonomous pipeline for producing zero-cost animated faceless vertical shorts (YouTube Shorts, TikTok, Instagram Reels) using local AI voice synthesis (Kokoro), word-synced subtitles (Whisper), 6 animation styles (Tall Tale 3D, Deep Dive 3D, Inside Out, Stick Story, Night File 3D, Paper Atlas), and automated FFmpeg/Remotion compositing with organic photochemical film finishing.",
+      "description": "Use when someone wants an original, code-rendered faceless vertical short with narration, word-timed captions, and animated scenes, or asks for one of the six styles in the supplied faceless-shorts toolkit.",
       "path": ".agents/skills/faceless-shorts-engine"
     },
     {
@@ -1083,7 +1059,7 @@
     {
       "name": "git-onboarding",
       "tier": 1,
-      "description": "You are an **expert onboarding specialist and knowledge transfer architect** with deep experience in remote-first organizations, technical team integration, and accelerated learning methodologies. You",
+      "description": "Onboard a developer to a repository by mapping its architecture, workflows, conventions, and starter tasks. Use when preparing team knowledge-transfer material.",
       "path": ".agents/skills/git-onboarding"
     },
     {
@@ -1107,7 +1083,7 @@
     {
       "name": "git-workflow-guide",
       "tier": 1,
-      "description": "Orchestrate a comprehensive git workflow from code review through PR creation, leveraging specialized agents for quality assurance, testing, and deployment readiness. This workflow implements modern g",
+      "description": "Plan repository work from code review through tests and pull-request readiness. Use when coordinating a multi-step Git workflow and its required checks.",
       "path": ".agents/skills/git-workflow-guide"
     },
     {
@@ -1157,6 +1133,12 @@
       "tier": 1,
       "description": "Go testing patterns including table-driven tests, subtests, benchmarks, fuzzing, and test coverage. Follows TDD methodology with idiomatic Go practices. Use when writing Go tests \u2014 table-driven cases, subtests, benchmarks, fuzzing, or coverage.",
       "path": ".agents/skills/golang-testing"
+    },
+    {
+      "name": "headline-psychologist",
+      "tier": 1,
+      "description": "Use when drafting or testing headlines for ads, landing pages, email, or social posts, with relevance and curiosity instead of clickbait.",
+      "path": ".agents/skills/headline-psychologist"
     },
     {
       "name": "improve-animations",
@@ -1267,6 +1249,12 @@
       "path": ".agents/skills/llm-evaluation"
     },
     {
+      "name": "llm-prompt-tuning",
+      "tier": 1,
+      "description": "Improve a prompt for a defined task by setting output criteria, testing representative cases, and comparing results. Measure quality on that task; do not assume fixed gains.",
+      "path": ".agents/skills/llm-prompt-tuning"
+    },
+    {
       "name": "logic-lens",
       "tier": 1,
       "description": "AI-powered Claude Code skill that performs deep code review using formal logic and reasoning frameworks to detect bugs, anti-patterns, and security risks beyond what linters catch.",
@@ -1315,12 +1303,6 @@
       "path": ".agents/skills/ml-engineer"
     },
     {
-      "name": "mobile-component-scaffold",
-      "tier": 1,
-      "description": "You are a React component architecture expert specializing in scaffolding production-ready, accessible, and performant components. Generate complete component implementations with TypeScript, tests, s",
-      "path": ".agents/skills/mobile-component-scaffold"
-    },
-    {
       "name": "mobile-developer",
       "tier": 1,
       "description": "Develop React Native, Flutter, or native mobile apps with modern architecture patterns. Masters cross-platform development, native integrations, offline sync, and app store optimization.",
@@ -1331,12 +1313,6 @@
       "tier": 1,
       "description": "Make a web app feel native on a phone \u2014 the small CSS and meta-tag fixes that separate \"a website in a browser\" from something that feels installed. Covers sticky hover states, tap highlight flashes, the 100vh bug, inputs that zoom the page, laggy taps, pull-to-refresh hijacking scroll, content under the notch, long-press selecting button text, carousels that scroll the wrong way, mismatched status bars, and the rule that you test on real hardware. Use when a web app is being built for or reviewed on mobile, when something \"works in Chrome but feels wrong on my phone\", when building a PWA, a bottom sheet, a carousel, a full-screen layout, or any touch interaction. For motion itself use animate; for React Native use animate-expo.",
       "path": ".agents/skills/mobile-native"
-    },
-    {
-      "name": "monorepo-architect",
-      "tier": 1,
-      "description": "Expert in monorepo architecture, build systems, and dependency management at scale. Masters Nx, Turborepo, Bazel, and Lerna for efficient multi-project development. Use PROACTIVELY for monorepo setup,",
-      "path": ".agents/skills/monorepo-architect"
     },
     {
       "name": "multi-agent-patterns",
@@ -1425,14 +1401,8 @@
     {
       "name": "perf-ai-review",
       "tier": 1,
-      "description": "You are an expert AI-powered code review specialist combining automated static analysis, intelligent pattern recognition, and modern DevOps practices. Leverage AI tools (GitHub Copilot, Qodo, GPT-5, C",
+      "description": "Use this compatibility route for performance-focused code reviews. Inspect the changed code for latency, throughput, allocation, and resource risks; use benchmark-optimization-loop for measured optimization.",
       "path": ".agents/skills/perf-ai-review"
-    },
-    {
-      "name": "perf-test-review",
-      "tier": 1,
-      "description": "Use when working with performance testing review multi agent review",
-      "path": ".agents/skills/perf-test-review"
     },
     {
       "name": "perl-testing",
@@ -1449,7 +1419,7 @@
     {
       "name": "postgres-best-practices",
       "tier": 1,
-      "description": "Postgres performance optimization and best practices from Supabase. Use this skill when writing, reviewing, or optimizing Postgres queries, schema designs, or database configurations.",
+      "description": "Review or optimize Postgres queries, schemas, indexes, connection pooling, or row-level security using the Supabase Postgres guidance.",
       "path": ".agents/skills/postgres-best-practices"
     },
     {
@@ -1457,12 +1427,6 @@
       "tier": 1,
       "description": "PostgreSQL database patterns for query optimization, schema design, indexing, and security. Based on Supabase best practices. Use when designing PostgreSQL schemas, indexes, or RLS policies, or when a query is too slow.",
       "path": ".agents/skills/postgres-patterns"
-    },
-    {
-      "name": "pr-enhancer",
-      "tier": 1,
-      "description": "You are a PR optimization expert specializing in creating high-quality pull requests that facilitate efficient code reviews. Generate comprehensive PR descriptions, automate review processes, and ensu",
-      "path": ".agents/skills/pr-enhancer"
     },
     {
       "name": "privilege-escalation-methods",
@@ -1489,12 +1453,6 @@
       "path": ".agents/skills/product-lens"
     },
     {
-      "name": "production-code-audit",
-      "tier": 1,
-      "description": "Autonomously deep-scan entire codebase line-by-line, understand architecture and patterns, then systematically transform it to production-grade, corporate-level professional quality with optimizations",
-      "path": ".agents/skills/production-code-audit"
-    },
-    {
       "name": "project-development",
       "tier": 1,
       "description": "This skill should be used when the user asks to \"start an LLM project\", \"design batch pipeline\", \"evaluate task-model fit\", \"structure agent project\", or mentions pipeline architecture, agent-assisted development, cost estimation, or choosing between LLM and traditional approaches.",
@@ -1503,7 +1461,7 @@
     {
       "name": "python-development-python-scaffold",
       "tier": 1,
-      "description": "You are a Python project architecture expert specializing in scaffolding production-ready Python applications. Generate complete project structures with modern tooling (uv, FastAPI, Django), type hint",
+      "description": "Scaffold a Python project with a clear package structure, dependency management, typing, tests, and standard tooling. Use when starting a Python application or library.",
       "path": ".agents/skills/python-development-python-scaffold"
     },
     {
@@ -2071,6 +2029,12 @@
       "path": ".agents/skills/ssrf-oob-interaction-testing"
     },
     {
+      "name": "supabase-postgres-best-practices",
+      "tier": 1,
+      "description": "Use Supabase-maintained Postgres guidance for query, schema, indexing, connection, concurrency, and row-level security reviews in Supabase or Postgres projects.",
+      "path": ".agents/skills/supabase-postgres-best-practices"
+    },
+    {
       "name": "svg-diagram-gen",
       "tier": 1,
       "description": "Create professional, dark-themed SVG diagrams of any type \u2014 architecture diagrams, flowcharts, sequence diagrams, structural diagrams, mind maps, timelines, illustrative/conceptual diagrams, and more. Use this skill whenever the user asks for any kind of technical or conceptual diagram, visualization of a system, process flow, data flow, component relationship, network topology, decision tree, org chart, state machine, or any visual representation of structure/logic/process. Also trigger when the user says \"\u753b\u4e2a\u56fe\" \"\u753b\u4e00\u4e2a\u67b6\u6784\u56fe\" \"diagram\" \"flowchart\" \"sequence diagram\" \"draw me a ...\" or uploads content and asks to visualize it. Output is always a standalone .svg file.",
@@ -2253,7 +2217,7 @@
     {
       "name": "typescript-scaffold",
       "tier": 1,
-      "description": "You are a TypeScript project architecture expert specializing in scaffolding production-ready Node.js and frontend applications. Generate complete project structures with modern tooling (pnpm, Vite, N",
+      "description": "Scaffold a TypeScript application or library with package management, modules, type checks, tests, and build tooling. Use when starting a TypeScript project.",
       "path": ".agents/skills/typescript-scaffold"
     },
     {

@@ -1,6 +1,6 @@
 ---
 name: upgrading-expo
-description: "Upgrade Expo SDK versions"
+description: "Upgrade Expo SDK versions safely. Use when updating an Expo project and checking breaking changes, package compatibility, native configuration, and platform builds."
 risk: safe
 source: "https://github.com/expo/skills/tree/main/plugins/upgrading-expo"
 date_added: "2026-02-27"
@@ -10,7 +10,7 @@ date_added: "2026-02-27"
 
 ## Overview
 
-Upgrade Expo SDK versions safely, handling breaking changes, dependencies, and configuration updates.
+Upgrade Expo SDK versions safely. Use when updating an Expo project and checking breaking changes, package compatibility, native configuration, and platform builds.
 
 ## When to Use This Skill
 

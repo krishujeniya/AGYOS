@@ -225,7 +225,7 @@
     "name": "Agent Benchmarking",
     "module": "Domain & Research Extensions",
     "category": "Specialized",
-    "tier": 1,
+    "tier": 2,
     "runtime": [
       "AGY CLI",
       "Gemini",
@@ -235,7 +235,7 @@
     "command": "bin/agyos skill agent-benchmarking",
     "path": ".agents/skills/agent-benchmarking",
     "risk": "assess_for_task",
-    "description": "Testing and benchmarking LLM agents including behavioral testing, capability assessment, reliability metrics, and production monitoring, where even top agents achieve less than 50% on real-world benchmarks"
+    "description": "Evaluate LLM agent behavior, capabilities, reliability, and production performance with task-specific benchmarks. Use when comparing agents or validating an agent workflow."
   },
   {
     "id": "agent-comparison",
@@ -337,7 +337,7 @@
     "command": "bin/agyos skill agent-phone-calling",
     "path": ".agents/skills/agent-phone-calling",
     "risk": "assess_for_task",
-    "description": "api_base\": \"https://api.agentphone.to/v1\"}"
+    "description": "Use when managing AgentPhone AI agents, numbers, calls, transcripts, webhooks, or SMS; require explicit approval before paid or outbound actions."
   },
   {
     "id": "agent-router",
@@ -541,7 +541,7 @@
     "command": "bin/agyos skill agents-v2-py",
     "path": ".agents/skills/agents-v2-py",
     "risk": "assess_for_task",
-    "description": "Build container-based Foundry Agents with Azure AI Projects SDK (ImageBasedHostedAgentDefinition). Use when creating hosted agents with custom container images in Azure AI Foundry."
+    "description": "Compatibility ID for Python hosted-agent tasks. The canonical current guide is hosted-agents-v2-py; use it for container-based Microsoft Foundry agents."
   },
   {
     "id": "agenttrace-session-audit",
@@ -881,7 +881,7 @@
     "command": "bin/agyos skill agyos-self-improvement",
     "path": ".agents/skills/agyos-self-improvement",
     "risk": "assess_for_task",
-    "description": "Autonomous self-correction and continuous improvement protocol for the entire AGYOS skill catalog. Captures user corrections, integrates industry trends, maintains cross-skill dependencies, enforces quality gates, and preserves test ratchets across all 1970+ skills."
+    "description": "Use when maintaining the AGYOS skill catalog or improving a skill's correctness, discovery, references, or quality gates. Captures corrections, source checks, cross-skill dependencies, and test ratchets."
   },
   {
     "id": "agyos-software-protection",
@@ -1056,9 +1056,9 @@
   {
     "id": "ai-code-review",
     "name": "Ai Code Review",
-    "module": "Domain & Research Extensions",
-    "category": "Specialized",
-    "tier": 1,
+    "module": "Security & Defense",
+    "category": "Security",
+    "tier": 2,
     "runtime": [
       "AGY CLI",
       "Gemini",
@@ -1068,7 +1068,7 @@
     "command": "bin/agyos skill ai-code-review",
     "path": ".agents/skills/ai-code-review",
     "risk": "assess_for_task",
-    "description": "You are an expert AI-powered code review specialist combining automated static analysis, intelligent pattern recognition, and modern DevOps practices. use AI tools (GitHub Copilot, Qodo, GPT-5, C"
+    "description": "Review code changes for correctness, security, maintainability, and project conventions. Use when assessing a focused diff or pull request before merge."
   },
   {
     "id": "ai-dev-jobs-mcp",
@@ -1392,6 +1392,23 @@
     "path": ".agents/skills/ai-video-detection-forensics",
     "risk": "assess_for_task",
     "description": "The 200-principle master reference for AI video detection and forensic media analysis. Covers Google SynthID detection, C2PA Content Credentials, metadata analysis, temporal consistency, anatomical and physics heuristics, multimodal audio-visual alignment, and verification workflows using FFmpeg, MediaInfo, and frame extraction."
+  },
+  {
+    "id": "ai-video-editor",
+    "name": "Ai Video Editor",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill ai-video-editor",
+    "path": ".agents/skills/ai-video-editor",
+    "risk": "assess_for_task",
+    "description": "Use when someone provides a local talking-head recording and wants transcript-guided pause or retake cuts, optional captions, or code-drawn motion graphics rendered into an edited video."
   },
   {
     "id": "ai-video-quality-enhancement",
@@ -3074,7 +3091,7 @@
     "command": "bin/agyos skill audio-transcriber",
     "path": ".agents/skills/audio-transcriber",
     "risk": "assess_for_task",
-    "description": "Transform audio recordings into professional Markdown documentation with intelligent summaries using LLM integration"
+    "description": "Use when transcribing audio or video into text, subtitles, or meeting notes; summaries require a configured model provider."
   },
   {
     "id": "audit-context-building",
@@ -3312,7 +3329,7 @@
     "command": "bin/agyos skill awareness-stage-mapper",
     "path": ".agents/skills/awareness-stage-mapper",
     "risk": "assess_for_task",
-    "description": "One sentence - what this skill does and when to invoke it"
+    "description": "Use when diagnosing audience awareness before writing an offer or choosing stage-specific campaign messaging."
   },
   {
     "id": "aws-cloud-architecture",
@@ -6049,7 +6066,7 @@
     "command": "bin/agyos skill brand-design-system",
     "path": ".agents/skills/brand-design-system",
     "risk": "assess_for_task",
-    "description": "To access Anthropic's official brand identity and style resources, use this skill."
+    "description": "Use when creating or reviewing Anthropic-branded materials and need guidance on brand colors, typography, or visual identity."
   },
   {
     "id": "brand-discovery",
@@ -6083,7 +6100,7 @@
     "command": "bin/agyos skill brand-guidelines",
     "path": ".agents/skills/brand-guidelines",
     "risk": "assess_for_task",
-    "description": "Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit from having Anthropic's look-and-feel. Use it when brand colors or style guidelines, visual formatting, or company design standards apply."
+    "description": "Compatibility ID for Anthropic brand colors, typography, and visual formatting. Use the canonical brand-design-system runbook."
   },
   {
     "id": "brand-guidelines-community",
@@ -6100,7 +6117,7 @@
     "command": "bin/agyos skill brand-guidelines-community",
     "path": ".agents/skills/brand-guidelines-community",
     "risk": "assess_for_task",
-    "description": "To access Anthropic's official brand identity and style resources, use this skill."
+    "description": "Compatibility ID for Anthropic brand guidance. Use for brand colors, typography, and visual identity; the canonical runbook is brand-design-system."
   },
   {
     "id": "brand-perception-psychologist",
@@ -6117,7 +6134,7 @@
     "command": "bin/agyos skill brand-perception-psychologist",
     "path": ".agents/skills/brand-perception-psychologist",
     "risk": "assess_for_task",
-    "description": "One sentence - what this skill does and when to invoke it"
+    "description": "Use when assessing how a market perceives a brand and aligning its messaging, visuals, and proof with the intended position."
   },
   {
     "id": "brand-profile",
@@ -7392,7 +7409,7 @@
     "command": "bin/agyos skill code-migration",
     "path": ".agents/skills/code-migration",
     "risk": "assess_for_task",
-    "description": "You are a code migration expert specializing in transitioning codebases between frameworks, languages, versions, and platforms. Generate comprehensive migration plans, automated migration scripts, and"
+    "description": "Plan and execute migrations between frameworks, language versions, or platforms. Use when moving or upgrading a codebase while preserving behavior and defining compatibility and rollback checks."
   },
   {
     "id": "code-review-checklist",
@@ -7528,7 +7545,7 @@
     "command": "bin/agyos skill codebase-refactor",
     "path": ".agents/skills/codebase-refactor",
     "risk": "assess_for_task",
-    "description": "You are a code refactoring expert specializing in clean code principles, SOLID design patterns, and modern software engineering best practices. Analyze and refactor the provided code to improve its quality, maintainability, and performance."
+    "description": "Plan behavior-preserving refactors across a codebase to reduce duplication, complexity, or code smells. Use for structural cleanup before feature work."
   },
   {
     "id": "codebase-tech-debt",
@@ -7545,7 +7562,7 @@
     "command": "bin/agyos skill codebase-tech-debt",
     "path": ".agents/skills/codebase-tech-debt",
     "risk": "assess_for_task",
-    "description": "You are a technical debt expert specializing in identifying, quantifying, and prioritizing technical debt in software projects. Analyze the codebase to uncover debt, assess its impact, and create acti"
+    "description": "Inventory technical debt, assess impact and risk, and prepare a prioritized remediation plan. Use for repository-wide debt audits or planned debt cleanup."
   },
   {
     "id": "codebase-to-wordpress-converter",
@@ -8079,7 +8096,7 @@
     "name": "Config Validator",
     "module": "Domain & Research Extensions",
     "category": "Specialized",
-    "tier": 1,
+    "tier": 2,
     "runtime": [
       "AGY CLI",
       "Gemini",
@@ -8089,7 +8106,7 @@
     "command": "bin/agyos skill config-validator",
     "path": ".agents/skills/config-validator",
     "risk": "assess_for_task",
-    "description": "You are a configuration management expert specializing in validating, testing, and ensuring the correctness of application configurations. Create comprehensive validation schemas, implement configurat"
+    "description": "Validate application configuration against schemas and environment constraints. Use when adding configuration checks, preventing invalid deployments, or diagnosing configuration drift."
   },
   {
     "id": "configure-system",
@@ -8531,7 +8548,7 @@
     "command": "bin/agyos skill context-restore",
     "path": ".agents/skills/context-restore",
     "risk": "assess_for_task",
-    "description": "Use when working with context management context restore"
+    "description": "Restore task context after a long or interrupted session by finding the active objective, decisions, artifacts, and next verified step. Use when resuming work."
   },
   {
     "id": "context-save",
@@ -8854,7 +8871,7 @@
     "command": "bin/agyos skill copywriting-psychologist",
     "path": ".agents/skills/copywriting-psychologist",
     "risk": "assess_for_task",
-    "description": "One sentence - what this skill does and when to invoke it"
+    "description": "Use when drafting conversion copy or revising generic copy with clearer psychological framing and behavior goals."
   },
   {
     "id": "core-components",
@@ -9415,7 +9432,7 @@
     "command": "bin/agyos skill customer-psychographic-profiler",
     "path": ".agents/skills/customer-psychographic-profiler",
     "risk": "assess_for_task",
-    "description": "One sentence - what this skill does and when to invoke it"
+    "description": "Use when building a customer psychographic profile for positioning, copy, or funnel design beyond demographics."
   },
   {
     "id": "customer-support",
@@ -10185,8 +10202,8 @@
   {
     "id": "dependency-management-deps-audit",
     "name": "Dependency Management Deps Audit",
-    "module": "Security & Defense",
-    "category": "Security",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
     "tier": 2,
     "runtime": [
       "AGY CLI",
@@ -10197,7 +10214,7 @@
     "command": "bin/agyos skill dependency-management-deps-audit",
     "path": ".agents/skills/dependency-management-deps-audit",
     "risk": "assess_for_task",
-    "description": "You are a dependency security expert specializing in vulnerability scanning, license compliance, and supply chain security. Analyze project dependencies for known vulnerabilities, licensing issues, outdated packages, and provide actionable remediation strategies."
+    "description": "Audit project dependencies for known vulnerabilities, license constraints, outdated packages, and supply-chain risks. Use when reviewing manifests or dependency changes."
   },
   {
     "id": "dependency-upgrade",
@@ -10299,14 +10316,14 @@
     "command": "bin/agyos skill deps-audit",
     "path": ".agents/skills/deps-audit",
     "risk": "assess_for_task",
-    "description": "You are a dependency security expert specializing in vulnerability scanning, license compliance, and supply chain security. Analyze project dependencies for known vulnerabilities, licensing issues, outdated packages, and provide actionable remediation strategies."
+    "description": "Compatibility ID for dependency audits. Use for vulnerability, license, package freshness, or supply-chain reviews; details are in dependency-management-deps-audit."
   },
   {
     "id": "deps-upgrade",
     "name": "Deps Upgrade",
     "module": "Domain & Research Extensions",
     "category": "Specialized",
-    "tier": 1,
+    "tier": 2,
     "runtime": [
       "AGY CLI",
       "Gemini",
@@ -10316,7 +10333,7 @@
     "command": "bin/agyos skill deps-upgrade",
     "path": ".agents/skills/deps-upgrade",
     "risk": "assess_for_task",
-    "description": "You are a dependency management expert specializing in safe, incremental upgrades of project dependencies. Plan and execute dependency updates with minimal risk, proper testing, and clear migration pa"
+    "description": "Plan safe dependency upgrades, assess breaking changes, and verify compatibility incrementally. Use when updating package versions or preparing a dependency refresh."
   },
   {
     "id": "descript",
@@ -10639,7 +10656,7 @@
     "command": "bin/agyos skill diagnostics-analysis",
     "path": ".agents/skills/diagnostics-analysis",
     "risk": "assess_for_task",
-    "description": "You are an expert error analysis specialist with deep expertise in debugging distributed systems, analyzing production incidents, and implementing comprehensive observability solutions."
+    "description": "Analyze errors and production incidents across distributed systems. Use when tracing failures across services or reviewing observability evidence."
   },
   {
     "id": "diagnostics-trace",
@@ -10656,7 +10673,7 @@
     "command": "bin/agyos skill diagnostics-trace",
     "path": ".agents/skills/diagnostics-trace",
     "risk": "assess_for_task",
-    "description": "You are an error tracking and observability expert specializing in implementing comprehensive error monitoring solutions. Set up error tracking systems, configure alerts, implement structured logging,"
+    "description": "Add or troubleshoot error tracking, structured logs, and alerts. Use when instrumenting observability or tracing production failures to their source."
   },
   {
     "id": "differential-review",
@@ -10775,7 +10792,7 @@
     "command": "bin/agyos skill django-access-review",
     "path": ".agents/skills/django-access-review",
     "risk": "assess_for_task",
-    "description": "django-access-review"
+    "description": "Use when reviewing Django or DRF code for IDOR, object-level authorization, or user-to-user data access gaps."
   },
   {
     "id": "django-celery",
@@ -10945,7 +10962,7 @@
     "command": "bin/agyos skill doc-generator",
     "path": ".agents/skills/doc-generator",
     "risk": "assess_for_task",
-    "description": "You are a documentation expert specializing in creating comprehensive, maintainable documentation from code. Generate API docs, architecture diagrams, user guides, and technical references using AI-powered analysis and industry best practices."
+    "description": "Generate or update API documentation, architecture diagrams, user guides, and technical references from an inspected codebase. Use when creating maintainable project documentation."
   },
   {
     "id": "docker-expert",
@@ -11030,7 +11047,7 @@
     "command": "bin/agyos skill documentation-generation-doc-generate",
     "path": ".agents/skills/documentation-generation-doc-generate",
     "risk": "assess_for_task",
-    "description": "You are a documentation expert specializing in creating comprehensive, maintainable documentation from code. Generate API docs, architecture diagrams, user guides, and technical references using AI-powered analysis and industry best practices."
+    "description": "Compatibility ID for generating API docs, architecture diagrams, user guides, and technical references. Use doc-generator as the canonical runbook."
   },
   {
     "id": "documentation-lookup",
@@ -11659,7 +11676,7 @@
     "command": "bin/agyos skill emotional-arc-designer",
     "path": ".agents/skills/emotional-arc-designer",
     "risk": "assess_for_task",
-    "description": "One sentence - what this skill does and when to invoke it"
+    "description": "Use when mapping the emotional progression a landing page, ad, narrative, email sequence, or product flow should create."
   },
   {
     "id": "employment-contract-templates",
@@ -11863,7 +11880,7 @@
     "command": "bin/agyos skill error-analysis",
     "path": ".agents/skills/error-analysis",
     "risk": "assess_for_task",
-    "description": "You are an expert error analysis specialist with deep expertise in debugging distributed systems, analyzing production incidents, and implementing comprehensive observability solutions."
+    "description": "Compatibility ID for application errors, distributed-system incidents, and observability investigations. Use diagnostics-analysis as the canonical runbook."
   },
   {
     "id": "error-detective",
@@ -11931,7 +11948,7 @@
     "command": "bin/agyos skill error-multi-review",
     "path": ".agents/skills/error-multi-review",
     "risk": "assess_for_task",
-    "description": "Use when working with error debugging multi agent review"
+    "description": "Review a reproducible software error from independent code, test, and operational perspectives. Use when a defect crosses modules or needs a structured root-cause review."
   },
   {
     "id": "error-trace",
@@ -12407,7 +12424,7 @@
     "command": "bin/agyos skill expo-ui-jetpack-compose",
     "path": ".agents/skills/expo-ui-jetpack-compose",
     "risk": "assess_for_task",
-    "description": "expo-ui-jetpack-compose"
+    "description": "Use when integrating Android Jetpack Compose views or modifiers into an Expo app with `@expo/ui/jetpack-compose`."
   },
   {
     "id": "expo-ui-swift-ui",
@@ -12424,7 +12441,7 @@
     "command": "bin/agyos skill expo-ui-swift-ui",
     "path": ".agents/skills/expo-ui-swift-ui",
     "risk": "assess_for_task",
-    "description": "expo-ui-swift-ui"
+    "description": "Use when integrating SwiftUI views or modifiers into an Expo app with `@expo/ui/swift-ui`."
   },
   {
     "id": "facebook-groups",
@@ -12463,8 +12480,8 @@
   {
     "id": "faceless-shorts-engine",
     "name": "Faceless Shorts Engine",
-    "module": "UI/UX & Motion",
-    "category": "Frontend & Motion",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
     "tier": 1,
     "runtime": [
       "AGY CLI",
@@ -12475,7 +12492,7 @@
     "command": "bin/agyos skill faceless-shorts-engine",
     "path": ".agents/skills/faceless-shorts-engine",
     "risk": "assess_for_task",
-    "description": "Autonomous pipeline for producing zero-cost animated faceless vertical shorts (YouTube Shorts, TikTok, Instagram Reels) using local AI voice synthesis (Kokoro), word-synced subtitles (Whisper), 6 animation styles (Tall Tale 3D, Deep Dive 3D, Inside Out, Stick Story, Night File 3D, Paper Atlas), and automated FFmpeg/Remotion compositing with organic photochemical film finishing."
+    "description": "Use when someone wants an original, code-rendered faceless vertical short with narration, word-timed captions, and animated scenes, or asks for one of the six styles in the supplied faceless-shorts toolkit."
   },
   {
     "id": "faf-expert",
@@ -12985,7 +13002,7 @@
     "command": "bin/agyos skill finishing-a-development-branch",
     "path": ".agents/skills/finishing-a-development-branch",
     "risk": "assess_for_task",
-    "description": "Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured options for merge, PR, or cleanup"
+    "description": "Use after implementation and required checks are complete to choose among merging, opening a pull request, or cleaning up a branch. Take an integration action only when authorized."
   },
   {
     "id": "firebase",
@@ -13342,7 +13359,7 @@
     "command": "bin/agyos skill fp-errors",
     "path": ".agents/skills/fp-errors",
     "risk": "assess_for_task",
-    "description": "Stop throwing everywhere - handle errors as values using Either and TaskEither for cleaner, more predictable code"
+    "description": "Compatibility ID for type-safe fp-ts error handling with Either and TaskEither. Use fp-ts-errors as the canonical runbook."
   },
   {
     "id": "fp-option-ref",
@@ -13393,7 +13410,7 @@
     "command": "bin/agyos skill fp-pragmatic",
     "path": ".agents/skills/fp-pragmatic",
     "risk": "assess_for_task",
-    "description": "A practical, jargon-free guide to functional programming - the 80/20 approach that gets results without the academic overhead"
+    "description": "Compatibility ID for practical functional programming and the fp-ts 80/20 approach in TypeScript. Use fp-ts-pragmatic as the canonical runbook."
   },
   {
     "id": "fp-react",
@@ -13410,7 +13427,7 @@
     "command": "bin/agyos skill fp-react",
     "path": ".agents/skills/fp-react",
     "risk": "assess_for_task",
-    "description": "Practical patterns for using fp-ts with React - hooks, state, forms, data fetching. Works with React 18/19, Next.js 14/15."
+    "description": "Compatibility ID for fp-ts with React hooks, state, forms, and data fetching. Use the fp-ts-react canonical runbook."
   },
   {
     "id": "fp-refactor",
@@ -14277,7 +14294,7 @@
     "command": "bin/agyos skill git-onboarding",
     "path": ".agents/skills/git-onboarding",
     "risk": "assess_for_task",
-    "description": "You are an **expert onboarding specialist and knowledge transfer architect** with deep experience in remote-first organizations, technical team integration, and accelerated learning methodologies. You"
+    "description": "Onboard a developer to a repository by mapping its architecture, workflows, conventions, and starter tasks. Use when preparing team knowledge-transfer material."
   },
   {
     "id": "git-pr-review",
@@ -14345,7 +14362,7 @@
     "command": "bin/agyos skill git-workflow-guide",
     "path": ".agents/skills/git-workflow-guide",
     "risk": "assess_for_task",
-    "description": "Orchestrate a comprehensive git workflow from code review through PR creation, using specialized agents for quality assurance, testing, and deployment readiness. This workflow implements modern g"
+    "description": "Plan repository work from code review through tests and pull-request readiness. Use when coordinating a multi-step Git workflow and its required checks."
   },
   {
     "id": "github-actions-templates",
@@ -15032,7 +15049,7 @@
     "name": "Headline Psychologist",
     "module": "Domain & Research Extensions",
     "category": "Specialized",
-    "tier": 2,
+    "tier": 1,
     "runtime": [
       "AGY CLI",
       "Gemini",
@@ -15042,7 +15059,7 @@
     "command": "bin/agyos skill headline-psychologist",
     "path": ".agents/skills/headline-psychologist",
     "risk": "assess_for_task",
-    "description": "One sentence - what this skill does and when to invoke it"
+    "description": "Use when drafting or testing headlines for ads, landing pages, email, or social posts, with relevance and curiosity instead of clickbait."
   },
   {
     "id": "health-assistant",
@@ -15314,7 +15331,7 @@
     "command": "bin/agyos skill hig-components-controls",
     "path": ".agents/skills/hig-components-controls",
     "risk": "assess_for_task",
-    "description": "Check for .claude/apple-design-context.md before asking questions. Use existing context and only ask for information not already covered."
+    "description": "Design or review Apple platform selection and input controls such as toggles, pickers, sliders, text fields, and steppers. Read existing Apple design context first."
   },
   {
     "id": "hig-components-dialogs",
@@ -15365,7 +15382,7 @@
     "command": "bin/agyos skill hig-components-menus",
     "path": ".agents/skills/hig-components-menus",
     "risk": "assess_for_task",
-    "description": "Check for .claude/apple-design-context.md before asking questions. Use existing context and only ask for information not already covered."
+    "description": "Design or review Apple platform menus and buttons, including context menus, toolbars, and command placement. Read existing Apple design context first."
   },
   {
     "id": "hig-components-search",
@@ -15450,7 +15467,7 @@
     "command": "bin/agyos skill hig-inputs",
     "path": ".agents/skills/hig-inputs",
     "risk": "assess_for_task",
-    "description": "Check for .claude/apple-design-context.md before asking questions. Use existing context and only ask for information not already covered."
+    "description": "Design or review Apple platform input methods such as touch, keyboard, pointer, Pencil, voice, and focus navigation. Read existing Apple design context first."
   },
   {
     "id": "hig-patterns",
@@ -15518,7 +15535,7 @@
     "command": "bin/agyos skill hig-technologies",
     "path": ".agents/skills/hig-technologies",
     "risk": "assess_for_task",
-    "description": "Check for .claude/apple-design-context.md before asking questions. Use existing context and only ask for information not already covered."
+    "description": "Choose or review Apple system technologies such as Siri, Apple Pay, HealthKit, smart home, AR, or identity. Read existing design context and account for privacy and accessibility."
   },
   {
     "id": "high-end-visual-design",
@@ -15722,7 +15739,7 @@
     "command": "bin/agyos skill hosted-agents-v2-py",
     "path": ".agents/skills/hosted-agents-v2-py",
     "risk": "assess_for_task",
-    "description": "Build hosted agents using Azure AI Projects SDK with ImageBasedHostedAgentDefinition. Use when creating container-based agents in Azure AI Foundry."
+    "description": "Create container-based Microsoft Foundry hosted agents with the Azure AI Projects Python SDK. Use when configuring or deploying hosted agents; verify the installed SDK version and current documentation."
   },
   {
     "id": "hr-pro",
@@ -16215,7 +16232,7 @@
     "command": "bin/agyos skill identity-mirror",
     "path": ".agents/skills/identity-mirror",
     "risk": "assess_for_task",
-    "description": "One sentence - what this skill does and when to invoke it"
+    "description": "Use when adapting brand or offer messaging to reflect customers' self-image, aspirations, or in-group identity."
   },
   {
     "id": "ideogram",
@@ -16419,7 +16436,7 @@
     "command": "bin/agyos skill incident-smart-fix",
     "path": ".agents/skills/incident-smart-fix",
     "risk": "assess_for_task",
-    "description": "[Extended thinking: This workflow implements a sophisticated debugging and resolution pipeline that leverages AI-assisted debugging tools and observability platforms to systematically diagnose and res"
+    "description": "Investigate a reported software issue, trace its cause, and prepare a verified fix with regression coverage. Use when diagnosing or resolving an incident."
   },
   {
     "id": "indexing-issue-auditor",
@@ -16759,7 +16776,7 @@
     "command": "bin/agyos skill internal-comms-community",
     "path": ".agents/skills/internal-comms-community",
     "risk": "assess_for_task",
-    "description": "To write internal communications, use this skill for:"
+    "description": "Compatibility ID for internal newsletters, FAQs, status reports, leadership notes, project updates, and incident reports. Use internal-team-communications as the canonical runbook."
   },
   {
     "id": "internal-team-communications",
@@ -16776,7 +16793,7 @@
     "command": "bin/agyos skill internal-team-communications",
     "path": ".agents/skills/internal-team-communications",
     "risk": "assess_for_task",
-    "description": "To write internal communications, use this skill for:"
+    "description": "Draft internal team communications with the included examples. Use for 3P updates, newsletters, FAQs, status reports, leadership notes, project updates, and incident reports."
   },
   {
     "id": "interview-coach",
@@ -17235,7 +17252,7 @@
     "command": "bin/agyos skill jobs-to-be-done-analyst",
     "path": ".agents/skills/jobs-to-be-done-analyst",
     "risk": "assess_for_task",
-    "description": "One sentence - what this skill does and when to invoke it"
+    "description": "Use when identifying functional, emotional, and social customer jobs to guide product positioning or messaging."
   },
   {
     "id": "jpa-patterns",
@@ -18000,7 +18017,7 @@
     "command": "bin/agyos skill legacy-modernize",
     "path": ".agents/skills/legacy-modernize",
     "risk": "assess_for_task",
-    "description": "Orchestrate a comprehensive legacy system modernization using the strangler fig pattern, enabling gradual replacement of outdated components while maintaining continuous business operations through ex"
+    "description": "Plan an incremental modernization of a legacy system while preserving existing behavior. Use for strangler-pattern migrations, compatibility boundaries, and rollback planning."
   },
   {
     "id": "legacy-modernizer",
@@ -18459,7 +18476,7 @@
     "command": "bin/agyos skill llm-assistant-dev",
     "path": ".agents/skills/llm-assistant-dev",
     "risk": "assess_for_task",
-    "description": "You are an AI assistant development expert specializing in creating intelligent conversational interfaces, chatbots, and AI-powered applications. Design comprehensive AI assistant solutions with natur"
+    "description": "Design or implement an AI assistant or chatbot with defined user needs, model boundaries, tool access, and evaluation. Use for conversational product development."
   },
   {
     "id": "llm-evaluation",
@@ -18517,7 +18534,7 @@
     "name": "Llm Prompt Tuning",
     "module": "Domain & Research Extensions",
     "category": "Specialized",
-    "tier": 2,
+    "tier": 1,
     "runtime": [
       "AGY CLI",
       "Gemini",
@@ -18527,7 +18544,7 @@
     "command": "bin/agyos skill llm-prompt-tuning",
     "path": ".agents/skills/llm-prompt-tuning",
     "risk": "assess_for_task",
-    "description": "You are an expert prompt engineer specializing in crafting effective prompts for LLMs through advanced techniques including constitutional AI, chain-of-thought reasoning, and model-specific optimizati"
+    "description": "Improve a prompt for a defined task by setting output criteria, testing representative cases, and comparing results. Measure quality on that task; do not assume fixed gains."
   },
   {
     "id": "llm-structured-output",
@@ -18714,7 +18731,7 @@
     "command": "bin/agyos skill loss-aversion-designer",
     "path": ".agents/skills/loss-aversion-designer",
     "risk": "assess_for_task",
-    "description": "One sentence - what this skill does and when to invoke it"
+    "description": "Use when applying credible loss framing to an offer or message without unsupported risk claims or fear-mongering."
   },
   {
     "id": "luma",
@@ -19911,7 +19928,7 @@
     "name": "Mobile Component Scaffold",
     "module": "Domain & Research Extensions",
     "category": "Specialized",
-    "tier": 1,
+    "tier": 2,
     "runtime": [
       "AGY CLI",
       "Gemini",
@@ -19921,7 +19938,7 @@
     "command": "bin/agyos skill mobile-component-scaffold",
     "path": ".agents/skills/mobile-component-scaffold",
     "risk": "assess_for_task",
-    "description": "You are a React component architecture expert specializing in scaffolding production-ready, accessible, and performant components. Generate complete component implementations with TypeScript, tests, s"
+    "description": "Scaffold reusable React or React Native components with typed props, accessible behavior, tests, and project-consistent structure. Use when creating repeatable UI components."
   },
   {
     "id": "mobile-design",
@@ -19994,8 +20011,8 @@
   {
     "id": "mobile-xss-scan",
     "name": "Mobile Xss Scan",
-    "module": "Security & Defense",
-    "category": "Security",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
     "tier": 2,
     "runtime": [
       "AGY CLI",
@@ -20006,7 +20023,7 @@
     "command": "bin/agyos skill mobile-xss-scan",
     "path": ".agents/skills/mobile-xss-scan",
     "risk": "assess_for_task",
-    "description": "You are a frontend security specialist focusing on Cross-Site Scripting (XSS) vulnerability detection and prevention. Analyze React, Vue, Angular, and vanilla JavaScript code to identify injection poi"
+    "description": "Review frontend code for XSS risks in HTML rendering, URL handling, and user-controlled content. Use when auditing React, Vue, Angular, or browser JavaScript."
   },
   {
     "id": "mock-hunter",
@@ -20108,14 +20125,14 @@
     "command": "bin/agyos skill monitoring-setup",
     "path": ".agents/skills/monitoring-setup",
     "risk": "assess_for_task",
-    "description": "You are a monitoring and observability expert specializing in implementing comprehensive monitoring solutions. Set up metrics collection, distributed tracing, log aggregation, and create insightful da"
+    "description": "Set up application monitoring with useful metrics, logs, traces, dashboards, and actionable alerts. Use when adding observability or improving production monitoring."
   },
   {
     "id": "monorepo-architect",
     "name": "Monorepo Architect",
     "module": "Domain & Research Extensions",
     "category": "Specialized",
-    "tier": 1,
+    "tier": 2,
     "runtime": [
       "AGY CLI",
       "Gemini",
@@ -20125,7 +20142,7 @@
     "command": "bin/agyos skill monorepo-architect",
     "path": ".agents/skills/monorepo-architect",
     "risk": "assess_for_task",
-    "description": "Expert in monorepo architecture, build systems, and dependency management at scale. Masters Nx, Turborepo, Bazel, and Lerna for efficient multi-project development. Use PROACTIVELY for monorepo setup,"
+    "description": "Design or troubleshoot a monorepo using Nx, Turborepo, Bazel, or Lerna. Use for workspace boundaries, builds, dependency constraints, or task caching."
   },
   {
     "id": "monorepo-management",
@@ -21213,7 +21230,7 @@
     "command": "bin/agyos skill objection-preemptor",
     "path": ".agents/skills/objection-preemptor",
     "risk": "assess_for_task",
-    "description": "One sentence - what this skill does and when to invoke it"
+    "description": "Use when mapping recurring customer objections in a funnel, sales page, or pitch and addressing them before they arise."
   },
   {
     "id": "observability-engineer",
@@ -21791,7 +21808,7 @@
     "command": "bin/agyos skill onboarding-psychologist",
     "path": ".agents/skills/onboarding-psychologist",
     "risk": "assess_for_task",
-    "description": "One sentence - what this skill does and when to invoke it"
+    "description": "Use when designing first-use onboarding to reduce friction and help users reach an early success."
   },
   {
     "id": "one-drive-automation",
@@ -21877,6 +21894,23 @@
     "path": ".agents/skills/opensource-pipeline",
     "risk": "assess_for_task",
     "description": "Open-source pipeline: fork, sanitize, and package private projects for safe public release. Chains 3 agents (forker, sanitizer, packager). Triggers: '/opensource', 'open source this', 'make this public', 'prepare for open source'. Use when a private project must be forked, stripped of secrets, and packaged for public release."
+  },
+  {
+    "id": "openwhispr",
+    "name": "Openwhispr",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill openwhispr",
+    "path": ".agents/skills/openwhispr",
+    "risk": "assess_for_task",
+    "description": "Set up, use, troubleshoot, or integrate OpenWhispr desktop voice dictation, meeting transcription, notes, local/cloud speech models, or its MCP server. Use whenever the user mentions OpenWhispr, its desktop app, or connecting its notes and transcripts to an AI assistant."
   },
   {
     "id": "operator-approval-loop",
@@ -22454,14 +22488,14 @@
     "command": "bin/agyos skill perf-ai-review",
     "path": ".agents/skills/perf-ai-review",
     "risk": "assess_for_task",
-    "description": "You are an expert AI-powered code review specialist combining automated static analysis, intelligent pattern recognition, and modern DevOps practices. use AI tools (GitHub Copilot, Qodo, GPT-5, C"
+    "description": "Use this compatibility route for performance-focused code reviews. Inspect the changed code for latency, throughput, allocation, and resource risks; use benchmark-optimization-loop for measured optimization."
   },
   {
     "id": "perf-test-review",
     "name": "Perf Test Review",
     "module": "Domain & Research Extensions",
     "category": "Specialized",
-    "tier": 1,
+    "tier": 2,
     "runtime": [
       "AGY CLI",
       "Gemini",
@@ -22471,7 +22505,7 @@
     "command": "bin/agyos skill perf-test-review",
     "path": ".agents/skills/perf-test-review",
     "risk": "assess_for_task",
-    "description": "Use when working with performance testing review multi agent review"
+    "description": "Review performance benchmarks and tests for valid, repeatable measurements. Use when checking a performance regression, optimization claim, benchmark setup, or timing-sensitive test."
   },
   {
     "id": "performance-engineer",
@@ -22743,7 +22777,7 @@
     "command": "bin/agyos skill pitch-psychologist",
     "path": ".agents/skills/pitch-psychologist",
     "risk": "assess_for_task",
-    "description": "One sentence - what this skill does and when to invoke it"
+    "description": "Use when shaping a sales, investor, or product pitch to progress from audience attention to trust and commitment."
   },
   {
     "id": "plaid-fintech",
@@ -23003,8 +23037,8 @@
   {
     "id": "postgres-best-practices",
     "name": "Postgres Best Practices",
-    "module": "AGYOS Polyglot Engineering",
-    "category": "Languages & Runtimes",
+    "module": "Security & Defense",
+    "category": "Security",
     "tier": 1,
     "runtime": [
       "AGY CLI",
@@ -23015,7 +23049,7 @@
     "command": "bin/agyos skill postgres-best-practices",
     "path": ".agents/skills/postgres-best-practices",
     "risk": "assess_for_task",
-    "description": "Postgres performance optimization and best practices from Supabase. Use this skill when writing, reviewing, or optimizing Postgres queries, schema designs, or database configurations."
+    "description": "Review or optimize Postgres queries, schemas, indexes, connection pooling, or row-level security using the Supabase Postgres guidance."
   },
   {
     "id": "postgres-patterns",
@@ -23192,7 +23226,7 @@
     "name": "Pr Enhancer",
     "module": "Domain & Research Extensions",
     "category": "Specialized",
-    "tier": 1,
+    "tier": 2,
     "runtime": [
       "AGY CLI",
       "Gemini",
@@ -23202,7 +23236,7 @@
     "command": "bin/agyos skill pr-enhancer",
     "path": ".agents/skills/pr-enhancer",
     "risk": "assess_for_task",
-    "description": "You are a PR optimization expert specializing in creating high-quality pull requests that facilitate efficient code reviews. Generate comprehensive PR descriptions, automate review processes, and ensu"
+    "description": "Prepare a pull request for review with a clear summary, scoped changes, test evidence, and reviewer context. Use when improving a PR before review."
   },
   {
     "id": "pr-writer",
@@ -23287,7 +23321,7 @@
     "command": "bin/agyos skill price-psychology-strategist",
     "path": ".agents/skills/price-psychology-strategist",
     "risk": "assess_for_task",
-    "description": "One sentence - what this skill does and when to invoke it"
+    "description": "Use when structuring pricing, packaging, or price presentation to improve perceived value and fairness."
   },
   {
     "id": "pricing-strategy",
@@ -23581,9 +23615,9 @@
   {
     "id": "production-code-audit",
     "name": "Production Code Audit",
-    "module": "Domain & Research Extensions",
-    "category": "Specialized",
-    "tier": 1,
+    "module": "Security & Defense",
+    "category": "Security",
+    "tier": 2,
     "runtime": [
       "AGY CLI",
       "Gemini",
@@ -23593,7 +23627,7 @@
     "command": "bin/agyos skill production-code-audit",
     "path": ".agents/skills/production-code-audit",
     "risk": "assess_for_task",
-    "description": "Autonomously deep-scan entire codebase line-by-line, understand architecture and patterns, then systematically transform it to production-grade, corporate-level professional quality with optimizations"
+    "description": "Audit a repository for production-readiness gaps in correctness, security, maintainability, and operations. Use for broad quality reviews; implement fixes only within the authorized scope."
   },
   {
     "id": "production-scheduling",
@@ -24069,7 +24103,7 @@
     "command": "bin/agyos skill python-development-python-scaffold",
     "path": ".agents/skills/python-development-python-scaffold",
     "risk": "assess_for_task",
-    "description": "You are a Python project architecture expert specializing in scaffolding production-ready Python applications. Generate complete project structures with modern tooling (uv, FastAPI, Django), type hint"
+    "description": "Scaffold a Python project with a clear package structure, dependency management, typing, tests, and standard tooling. Use when starting a Python application or library."
   },
   {
     "id": "python-fastapi-development",
@@ -24970,7 +25004,7 @@
     "command": "bin/agyos skill refactor-clean",
     "path": ".agents/skills/refactor-clean",
     "risk": "assess_for_task",
-    "description": "You are a code refactoring expert specializing in clean code principles, SOLID design patterns, and modern software engineering best practices. Analyze and refactor the provided code to improve its quality, maintainability, and performance."
+    "description": "Clean up a focused module or small group of files for readability and testability. Use for contained refactors; use codebase-refactor for wider structural work."
   },
   {
     "id": "refactor-context-restore",
@@ -24987,7 +25021,7 @@
     "command": "bin/agyos skill refactor-context-restore",
     "path": ".agents/skills/refactor-context-restore",
     "risk": "assess_for_task",
-    "description": "Use when working with code refactoring context restore"
+    "description": "Resume an approved refactoring task by reconciling its plan, changed files, decisions, dependencies, and next safe step. Use before continuing an interrupted refactor."
   },
   {
     "id": "reference-builder",
@@ -25060,8 +25094,8 @@
   {
     "id": "remotion-best-practices",
     "name": "Remotion Best Practices",
-    "module": "Domain & Research Extensions",
-    "category": "Specialized",
+    "module": "UI/UX & Motion",
+    "category": "Frontend & Motion",
     "tier": 2,
     "runtime": [
       "AGY CLI",
@@ -25072,7 +25106,7 @@
     "command": "bin/agyos skill remotion-best-practices",
     "path": ".agents/skills/remotion-best-practices",
     "risk": "assess_for_task",
-    "description": "Best practices for Remotion - Video creation in React"
+    "description": "Compatibility ID for Remotion video work in React. Use remotion-video-creation as the canonical guide for animations, audio, captions, charts, transitions, and 3D."
   },
   {
     "id": "remotion-video-creation",
@@ -25871,7 +25905,7 @@
     "command": "bin/agyos skill scarcity-urgency-psychologist",
     "path": ".agents/skills/scarcity-urgency-psychologist",
     "risk": "assess_for_task",
-    "description": "One sentence - what this skill does and when to invoke it"
+    "description": "Use when communicating real limits, deadlines, or access constraints without inventing scarcity or urgency."
   },
   {
     "id": "scheduling-and-queue",
@@ -25973,7 +26007,7 @@
     "command": "bin/agyos skill scientific-research",
     "path": ".agents/skills/scientific-research",
     "risk": "assess_for_task",
-    "description": "Scientific research and analysis skills"
+    "description": "Plan a scientific research question, assess evidence, and produce a source-linked summary with explicit uncertainty. Use for literature-oriented analysis; choose a specialist domain workflow when needed."
   },
   {
     "id": "scientific-thinking-literature-review",
@@ -26245,7 +26279,7 @@
     "command": "bin/agyos skill secure-env-secrets-manager",
     "path": ".agents/skills/secure-env-secrets-manager",
     "risk": "assess_for_task",
-    "description": "Secure environment variable management ensuring secrets are never exposed in Claude sessions, terminals, logs, or git commits"
+    "description": "Handle project environment variables with secret-safe inspection and execution. Use when reviewing .env wiring or running commands that need credentials; never print secret values into the session."
   },
   {
     "id": "security-audit",
@@ -27197,7 +27231,7 @@
     "command": "bin/agyos skill sequence-psychologist",
     "path": ".agents/skills/sequence-psychologist",
     "risk": "assess_for_task",
-    "description": "One sentence - what this skill does and when to invoke it"
+    "description": "Use when designing email, onboarding, or sales sequences with a stepwise progression instead of repeated messages."
   },
   {
     "id": "server-management",
@@ -27219,8 +27253,8 @@
   {
     "id": "service-mesh-expert",
     "name": "Service Mesh Expert",
-    "module": "Security & Defense",
-    "category": "Security",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
     "tier": 2,
     "runtime": [
       "AGY CLI",
@@ -27231,7 +27265,7 @@
     "command": "bin/agyos skill service-mesh-expert",
     "path": ".agents/skills/service-mesh-expert",
     "risk": "assess_for_task",
-    "description": "Expert service mesh architect specializing in Istio, Linkerd, and cloud-native networking patterns. Masters traffic management, security policies, observability integration, and multi-cluster mesh con"
+    "description": "Design or troubleshoot Kubernetes service-mesh traffic, mTLS, policy, and service discovery. Use for zero-trust service communication or mesh connectivity issues."
   },
   {
     "id": "service-mesh-observability",
@@ -27321,8 +27355,8 @@
   {
     "id": "sharp-edges",
     "name": "Sharp Edges",
-    "module": "Domain & Research Extensions",
-    "category": "Specialized",
+    "module": "Security & Defense",
+    "category": "Security",
     "tier": 2,
     "runtime": [
       "AGY CLI",
@@ -27333,7 +27367,7 @@
     "command": "bin/agyos skill sharp-edges",
     "path": ".agents/skills/sharp-edges",
     "risk": "assess_for_task",
-    "description": "sharp-edges"
+    "description": "Use when reviewing APIs, configurations, cryptographic interfaces, or security-sensitive developer choices for misuse risks."
   },
   {
     "id": "shellcheck-configuration",
@@ -27792,7 +27826,7 @@
     "command": "bin/agyos skill skill-seekers",
     "path": ".agents/skills/skill-seekers",
     "risk": "assess_for_task",
-    "description": "-Automatically convert documentation websites, GitHub repositories, and PDFs into Claude AI skills in minutes."
+    "description": "Convert approved documentation sites, GitHub repositories, or PDFs into a draft skill with Skill Seekers. Use when a source needs to become a searchable skill; review provenance, generated instructions, and outputs before adoption."
   },
   {
     "id": "skill-self-evolution",
@@ -28166,7 +28200,7 @@
     "command": "bin/agyos skill social-proof-architect",
     "path": ".agents/skills/social-proof-architect",
     "risk": "assess_for_task",
-    "description": "One sentence - what this skill does and when to invoke it"
+    "description": "Use when selecting and placing testimonials, customer evidence, logos, or case studies to address a specific trust gap."
   },
   {
     "id": "social-publisher",
@@ -28421,7 +28455,7 @@
     "command": "bin/agyos skill speed-reader",
     "path": ".agents/skills/speed-reader",
     "risk": "assess_for_task",
-    "description": "-Speed read Claude's responses at 600+ WPM using RSVP with Spritz-style ORP highlighting"
+    "description": "Present a Claude Code response in a rapid serial visual presentation reader with an ORP highlight. Use only when the skill is installed in Claude Code on macOS and the user wants that display."
   },
   {
     "id": "spline-3d-integration",
@@ -28948,7 +28982,7 @@
     "command": "bin/agyos skill subject-line-psychologist",
     "path": ".agents/skills/subject-line-psychologist",
     "risk": "assess_for_task",
-    "description": "One sentence - what this skill does and when to invoke it"
+    "description": "Use when writing email subject lines or notifications for relevance and curiosity while accurately reflecting their content."
   },
   {
     "id": "suno",
@@ -28987,9 +29021,9 @@
   {
     "id": "supabase-postgres-best-practices",
     "name": "Supabase Postgres Best Practices",
-    "module": "Domain & Research Extensions",
-    "category": "Specialized",
-    "tier": 2,
+    "module": "Security & Defense",
+    "category": "Security",
+    "tier": 1,
     "runtime": [
       "AGY CLI",
       "Gemini",
@@ -28999,7 +29033,7 @@
     "command": "bin/agyos skill supabase-postgres-best-practices",
     "path": ".agents/skills/supabase-postgres-best-practices",
     "risk": "assess_for_task",
-    "description": "Postgres performance optimization and best practices from Supabase. Use this skill when writing, reviewing, or optimizing Postgres queries, schema designs, or database configurations."
+    "description": "Use Supabase-maintained Postgres guidance for query, schema, indexing, connection, concurrency, and row-level security reviews in Supabase or Postgres projects."
   },
   {
     "id": "superpowers-lab",
@@ -29016,7 +29050,7 @@
     "command": "bin/agyos skill superpowers-lab",
     "path": ".agents/skills/superpowers-lab",
     "risk": "assess_for_task",
-    "description": "Lab environment for Claude superpowers"
+    "description": "Evaluate experimental Claude Code Superpowers Lab skills for duplicate-function discovery, on-demand MCP use, tmux interaction, or a Windows VM. Use only when the matching extension and prerequisites are installed."
   },
   {
     "id": "supply-chain-risk-auditor",
@@ -29696,7 +29730,7 @@
     "command": "bin/agyos skill team-issue-tracking",
     "path": ".agents/skills/team-issue-tracking",
     "risk": "assess_for_task",
-    "description": "You are a GitHub issue resolution expert specializing in systematic bug investigation, feature implementation, and collaborative development workflows. Your expertise spans issue triage, root cause an"
+    "description": "Triage and resolve GitHub issues through reproduction, scoped implementation, regression checks, and review-ready notes. Use for issues requiring a complete engineering workflow."
   },
   {
     "id": "tech-debt-cleanup",
@@ -29713,7 +29747,7 @@
     "command": "bin/agyos skill tech-debt-cleanup",
     "path": ".agents/skills/tech-debt-cleanup",
     "risk": "assess_for_task",
-    "description": "You are a technical debt expert specializing in identifying, quantifying, and prioritizing technical debt in software projects. Analyze the codebase to uncover debt, assess its impact, and create acti"
+    "description": "Compatibility ID for the technical-debt guide in codebase-tech-debt. Use when asked to find, assess, or prioritize technical debt."
   },
   {
     "id": "tech-interview-resume-prep",
@@ -30869,7 +30903,7 @@
     "command": "bin/agyos skill trust-calibrator",
     "path": ".agents/skills/trust-calibrator",
     "risk": "assess_for_task",
-    "description": "One sentence - what this skill does and when to invoke it"
+    "description": "Use when calibrating claims and proof for a skeptical audience and reducing overclaiming or weak credibility signals."
   },
   {
     "id": "turborepo-caching",
@@ -30937,7 +30971,7 @@
     "command": "bin/agyos skill twitter-article-publisher",
     "path": ".agents/skills/twitter-article-publisher",
     "risk": "assess_for_task",
-    "description": "Publish articles to X/Twitter"
+    "description": "Prepare a Markdown article for X Articles and save a reviewed browser draft. Use when the publishing extension is available; obtain separate explicit approval before any public post."
   },
   {
     "id": "twitter-automation",
@@ -31056,7 +31090,7 @@
     "command": "bin/agyos skill typescript-scaffold",
     "path": ".agents/skills/typescript-scaffold",
     "risk": "assess_for_task",
-    "description": "You are a TypeScript project architecture expert specializing in scaffolding production-ready Node.js and frontend applications. Generate complete project structures with modern tooling (pnpm, Vite, N"
+    "description": "Scaffold a TypeScript application or library with package management, modules, type checks, tests, and build tooling. Use when starting a TypeScript project."
   },
   {
     "id": "ugc-and-influencer",
@@ -31175,7 +31209,7 @@
     "command": "bin/agyos skill ui-design-guidelines",
     "path": ".agents/skills/ui-design-guidelines",
     "risk": "assess_for_task",
-    "description": "Opinionated, evolving constraints to guide agents when building interfaces"
+    "description": "Browse or apply design-engineering guidance from the UI Skills collection. Use when the task needs a specific interface-design guide; preserve the project's existing design system and accessibility requirements."
   },
   {
     "id": "ui-page",
@@ -31515,7 +31549,7 @@
     "command": "bin/agyos skill upgrading-expo",
     "path": ".agents/skills/upgrading-expo",
     "risk": "assess_for_task",
-    "description": "Upgrade Expo SDK versions"
+    "description": "Upgrade Expo SDK versions safely. Use when updating an Expo project and checking breaking changes, package compatibility, native configuration, and platform builds."
   },
   {
     "id": "upstash-qstash",
@@ -31702,7 +31736,7 @@
     "command": "bin/agyos skill ux-persuasion-engineer",
     "path": ".agents/skills/ux-persuasion-engineer",
     "risk": "assess_for_task",
-    "description": "One sentence - what this skill does and when to invoke it"
+    "description": "Use when improving a UX flow through layout, sequence, and cues while preserving user choice and avoiding coercion."
   },
   {
     "id": "uxui-principles",
@@ -31770,7 +31804,7 @@
     "command": "bin/agyos skill vector-database-engineer",
     "path": ".agents/skills/vector-database-engineer",
     "risk": "assess_for_task",
-    "description": "Expert in vector databases, embedding strategies, and semantic search implementation. Masters Pinecone, Weaviate, Qdrant, Milvus, and pgvector for RAG applications, recommendation systems, and similar"
+    "description": "Choose or optimize a vector store and embedding workflow for RAG, semantic search, or recommendations. Use for indexing, chunking, recall, latency, and scale decisions."
   },
   {
     "id": "vector-index-tuning",
@@ -31804,7 +31838,7 @@
     "command": "bin/agyos skill vector-semantic-file-search",
     "path": ".agents/skills/vector-semantic-file-search",
     "risk": "assess_for_task",
-    "description": "Vector-powered CLI for semantic file search with a Claude/Codex skill"
+    "description": "Find files by meaning with the Vexor semantic-search CLI. Use when installed and configured; inspect the embedding provider and data boundary before indexing source files."
   },
   {
     "id": "veo-3",
@@ -32042,7 +32076,7 @@
     "command": "bin/agyos skill videodb-media-engine",
     "path": ".agents/skills/videodb-media-engine",
     "risk": "assess_for_task",
-    "description": "[task description]"
+    "description": "Use when ingesting, indexing, searching, clipping, captioning, or editing video and live-stream media with VideoDB."
   },
   {
     "id": "videodb-media-processing",
@@ -32161,7 +32195,7 @@
     "command": "bin/agyos skill visual-emotion-engineer",
     "path": ".agents/skills/visual-emotion-engineer",
     "risk": "assess_for_task",
-    "description": "One sentence - what this skill does and when to invoke it"
+    "description": "Use when choosing color, typography, imagery, or layout to support a target emotional response and accessible experience."
   },
   {
     "id": "vite-patterns",
@@ -32399,7 +32433,7 @@
     "command": "bin/agyos skill web-fuzzing-ffuf",
     "path": ".agents/skills/web-fuzzing-ffuf",
     "risk": "assess_for_task",
-    "description": "Web fuzzing with ffuf"
+    "description": "Run scoped web-content discovery with ffuf for an owned or explicitly authorized target. Use only with a written target list, permitted test window, and agreed request limits."
   },
   {
     "id": "web-interface-guidelines",
@@ -32841,7 +32875,7 @@
     "command": "bin/agyos skill win11-system-manager",
     "path": ".agents/skills/win11-system-manager",
     "risk": "assess_for_task",
-    "description": "Windows 11 system management"
+    "description": "Update GitHub Spec Kit templates and manifests in a project. Legacy catalog ID: win11-system-manager; this skill does not manage Windows settings."
   },
   {
     "id": "windows-desktop-e2e",

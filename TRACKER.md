@@ -1,4 +1,17 @@
-## Current engineering update — 2026-11-08
+## Current update: skill catalog quality and OpenWhispr — 2026-11-11
+
+- Audited the 1,982-skill baseline and added the source-backed `openwhispr` skill; the current physical catalog and generated indexes contain 1,983 skills.
+- The catalog scanner reports zero structural findings, duplicate descriptions, or exact duplicate-body groups. All primary entrypoints are below 300 lines.
+- Moved 613 long runbooks into linked references without unexplained content loss; repaired confirmed links and metadata, improved ten imported placeholders, and resolved eight duplicate-body candidate groups while preserving legacy IDs and local assets.
+- Current indexes contain 1,983 skills (390 Tier 1, 1,593 Tier 2). The generators cover all eight catalog/documentation artifacts deterministically.
+- Focused catalog/router tests: 41 passed. The host-skipped full suite ran 156 tests: 155 passed and the `agy` CLI integration case was skipped. The filtered AGYOS wrapper passed 51/51 with that same host test skipped; the unfiltered suite recorded three errors. Full evidence is in the audit report.
+- OpenWhispr v1.0.2 documents per-activity local/cloud paths, System Audio versus optional Screen Recording, and distinct OAuth consent/API-key scope behavior; its frozen routing case selects `openwhispr`.
+- Independent review closed the migration, OpenWhispr, and legacy pointer findings. 309 long-description heuristics and 7,657 freshness-keyword matches remain review candidates; they are not verified defects.
+- Full evidence and limits: [catalog audit report](docs/SKILL_CATALOG_AUDIT_REPORT.md). No commit, push, or deployment was made.
+
+---
+
+## Engineering update — 2026-11-08
 
 - Added safe, single-branch Git revert rollback with regression tests; removed destructive reset/clean behavior and automatic rescue branch creation.
 - Hardened verification with an isolated state fixture, private temporary logs, timeouts and actual AGENTS.md / GEMINI.md content comparison.
@@ -9,7 +22,7 @@
 
 ---
 
-## Current update: skill routing consistency (2026-11-05)
+## Historical update: skill routing consistency (2026-11-05)
 
 - Shared discovery/read/apply/verify policy covers all 1,862 skills and 141 rules.
 - Catalog metadata, routing, CLI/MCP runbook delivery, generators, and README/docs updated; existing specialist bodies and attribution retained.
@@ -31,7 +44,9 @@
 
 ---
 
-## 1. System Inventory & Scale
+## 1. Historical System Inventory Snapshot (2026-11-05)
+
+The figures below are historical. See the 2026-11-11 update above for the current skill and verification summary.
 
 ```
 +---------------------------------------------------------------------------------+

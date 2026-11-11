@@ -1,26 +1,24 @@
 ---
 name: secure-env-secrets-manager
-description: Secure environment variable management ensuring secrets are never exposed in Claude sessions, terminals, logs, or git commits
+description: "Handle project environment variables with secret-safe inspection and execution. Use when reviewing .env wiring or running commands that need credentials; never print secret values into the session."
 risk: safe
 source: https://github.com/wrsmith108/varlock-claude-skill
 date_added: '2026-02-27'
 ---
 
-# Varlock Claude Skill
+# Secret-safe environment handling
 
-## Overview
+Use this procedure when project commands need credentials or when checking environment configuration.
 
-Secure environment variable management ensuring secrets are never exposed in Claude sessions, terminals, logs, or git commits
+## Workflow
 
-## When to Use This Skill
+1. Read project instructions and identify the existing secret manager and environment schema. Do not read or paste `.env` values into the conversation.
+2. Never use `cat .env`, `printenv`, shell tracing, or `echo` on secret values. Inspect a checked-in schema or example file that contains names and placeholders only.
+3. If Varlock is already installed and configured, follow its current project documentation. The upstream skill documents `varlock load --quiet` for quiet validation and `varlock run -- <command>` for a command that needs injected values.
+4. Do not install a CLI, alter a provider, or rotate credentials unless the user authorized that action. If the tool is missing, report the prerequisite and link the [Varlock skill source](https://github.com/wrsmith108/varlock-claude-skill).
+5. Before finishing, inspect the diff and logs for accidental secret values without printing or copying the values. Redact any evidence that could expose credentials.
 
-Use this skill when you need to work with secure environment variable management ensuring secrets are never exposed in claude sessions, terminals, logs, or git commits.
-
-## Instructions
-
-This skill provides guidance and patterns for secure environment variable management ensuring secrets are never exposed in claude sessions, terminals, logs, or git commits.
-
-For more information, see the [source repository](https://github.com/wrsmith108/varlock-claude-skill).
+This workflow reduces exposure risk; it cannot guarantee that secrets never appear in every host, shell, or external service.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.
