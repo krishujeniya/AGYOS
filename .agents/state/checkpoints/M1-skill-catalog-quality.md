@@ -142,3 +142,10 @@
 ```json
 {"gate":"VERIFY","status":"PASS_WITH_HOST_TEST_LIMIT","catalog_audit":"1982 scanned; 0 structural findings; 0 exact duplicate-body groups","index_consistency":"physical=manifest=docs index=1982; Tier1=390; Tier2=1592","state_validation":"PASS after documentation reconciliation","diff_check":"PASS","remaining_test_limit":"one agy agent host timeout; 152 other Python tests pass with that case skipped","documentation_plan":"all five batches reconciled; historical counts retained only as dated or baseline evidence","human_acceptance":"pending"}
 ```
+
+
+## Publication checkpoint · 2026-11-11T12:32:34Z
+
+```json
+{"gate":"VERIFY","status":"PUSHED_WITH_HOST_TEST_LIMIT","commit":"20947c2d244a16a2b86bf88e0d56102a269ca736","previous_origin_main":"190e8eac09cb17675442c3740a983b5f28b81ede","origin_main_after_push":"20947c2d244a16a2b86bf88e0d56102a269ca736","push_script":".agents/state/decisions/executed/20261111-111600-push-main.sh","push_result":"PASS; fast-forward; no force push","catalog_audit":"1983 scanned; 0 structural findings; 0 duplicate descriptions; 0 exact duplicate-body groups; 310 review candidates; 7657 freshness triage candidates","focused_tests":"41 passed","security_scan":"PASS; no secrets found","gitleaks":"unavailable","git_diff_check":"PASS","github_ci_run":"43020400270: success","github_pages_workflow":"43020400187: success","live_browser_smoke":"not run","human_acceptance":"approved_for_commit_and_push"}
+```

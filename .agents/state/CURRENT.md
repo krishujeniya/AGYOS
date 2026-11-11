@@ -25,8 +25,8 @@ Audit and improve discovery, correctness, structure, routing, references, and cu
 
 `.agents/state/context-graph.json` records 13 scoped nodes, 19 verified edges, and the three adopted invariants.
 
-## 5. Current gate and remaining work
+## 5. Publication status and remaining limits
 
-Gate VERIFY completed with the unfiltered host and integration errors documented in the audit report; the host-skipped full suite, filtered AGYOS wrapper, and focused catalog/router suite pass. The operator explicitly authorized commit and GitHub push on 2026-11-11. The `agy agent` test remains host-dependent: it prints its result but leaves the subprocess pipe open until timeout. See `docs/SKILL_CATALOG_AUDIT_REPORT.md` for the complete evidence and limits.
+Gate VERIFY is complete with the host and subprocess limits documented in the audit report. Catalog commit `20947c2d244a16a2b86bf88e0d56102a269ca736` is published on `origin/main`; CI run 43020400270 and the GitHub Pages documentation workflow 43020400187 succeeded for that commit. The final publication record and executed-script archive are included in the follow-up commit. No browser or live-page smoke test was run.
 
-Exact next command: `python3 -B scripts/audit_skill_catalog.py`
+Exact next command: `git status --short --branch`

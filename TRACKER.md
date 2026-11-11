@@ -7,7 +7,7 @@
 - Focused catalog/router tests: 41 passed. The host-skipped full suite ran 156 tests: 155 passed and the `agy` CLI integration case was skipped. The filtered AGYOS wrapper passed 51/51 with that same host test skipped; the unfiltered suite recorded three errors. Full evidence is in the audit report.
 - OpenWhispr v1.0.2 documents per-activity local/cloud paths, System Audio versus optional Screen Recording, and distinct OAuth consent/API-key scope behavior; its frozen routing case selects `openwhispr`.
 - Independent review closed the migration, OpenWhispr, and legacy pointer findings. 309 long-description heuristics and 7,657 freshness-keyword matches remain review candidates; they are not verified defects.
-- Full evidence and limits: [catalog audit report](docs/SKILL_CATALOG_AUDIT_REPORT.md). No commit, push, or deployment was made.
+- Full evidence and limits: [catalog audit report](docs/SKILL_CATALOG_AUDIT_REPORT.md). Catalog commit `20947c2d244a16a2b86bf88e0d56102a269ca736` was pushed to `origin/main`; CI and the documentation deployment workflows succeeded for that commit.
 
 ---
 

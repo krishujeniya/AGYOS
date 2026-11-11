@@ -1,15 +1,16 @@
 # AGYOS handoff: skill-catalog quality, organization, and OpenWhispr (verification complete with host test limit, 2026-11-11)
 
 - Task: inspect and improve discovery, correctness, structure, routing, references, and current documentation across the catalog; the reviewed baseline was 1,982 skills and one OpenWhispr skill was added.
-- Branch/revision: `main` at `3056ca61d85dfc026c7b8540cbddc97d9a8c3238`; existing video-skill edits and the draft push script are preserved.
-- Gates UNDERSTAND, ANALYZE, and PLAN are approved. Gate VERIFY evidence and runtime limits are recorded below; the operator explicitly approved commit and GitHub push on 2026-11-11; publication is pending. No ID was renamed or removed.
+- Baseline revision: `3056ca61d85dfc026c7b8540cbddc97d9a8c3238`; catalog update commit `20947c2d244a16a2b86bf88e0d56102a269ca736` was pushed to `origin/main`. The executed push script is archived under `.agents/state/decisions/executed/`.
+- Gates UNDERSTAND, ANALYZE, and PLAN are approved. Gate VERIFY evidence and runtime limits are recorded below; the operator explicitly approved the push, and the catalog commit is published. No ID was renamed or removed.
 - Catalog work: 613 long entrypoints moved into linked references with no unexplained migration loss found; ten imported placeholder workflows and eight duplicate-body candidate groups improved without removing legacy IDs; the source-backed `openwhispr` v1.0.2 skill was added. Generated indexes contain 1,983 skills (390 Tier 1, 1,593 Tier 2). All 28 legacy Remotion Markdown rules point to canonical rules; three TSX assets remain identical at both paths.
-- Audit: 0 structural findings; 0 duplicate descriptions; 0 exact duplicate-body groups; 309 long-description candidates; 1 noncanonical stable ID retained; 7,657 freshness-keyword matches requiring triage rather than treated as confirmed defects.
+- Audit: 1,983 skills scanned; 0 structural findings, duplicate descriptions, or exact duplicate-body groups; 310 review candidates (309 long-description heuristics and one retained noncanonical ID); 7,657 freshness-keyword matches remain unverified triage candidates.
 - Checks: focused catalog/router suite — 41 passed; unfiltered full suite — 156 run with three errors; host-skipped suite — 155 passed, one host-dependent case skipped; filtered AGYOS wrapper — 51/51 with that same case skipped; state validation and security scan passed; all eight generated artifacts reproduced byte-for-byte. Raw and filtered verification details are recorded in the audit report.
 - Independent review: migration comparison found no unexplained loss; source-backed corrections, duplicate aliases, Azure guide, OpenWhispr OAuth/macOS distinctions, version metadata assertion, and all 28 Remotion pointers were checked with no remaining finding.
 - Documentation reconciliation: current counts were checked across README, AGENTS, docs homepage, site landing page, tracker, generated indexes, and the security threat model. The threat model's original inventory remains explicitly tied to its 2026-11-08 baseline; dated handoff and research snapshots remain historical. `docs/OPTIMIZATION_RESULTS.md` now matches the current `agy agent` test command and 60-second timeout.
-- Remaining limits: freshness candidates and high-stakes/currentness claims beyond selected fixes were not comprehensively verified; skills were not executed through every host. In the unfiltered full suite, `agy agent` timed out after 60 seconds and two subprocess integration cases errored; the host-skipped suite passed all other tests.
-- Exact next command: `python3 -B -m unittest scripts.tests.test_skill_catalog scripts.tests.test_skill_routing -v`
+- Remaining limits: freshness candidates and high-stakes/currentness claims beyond selected fixes were not comprehensively verified; skills were not executed through every host. In the unfiltered full suite, `agy agent` timed out after 60 seconds and two subprocess integration cases errored; the host-skipped suite passed all other tests. Gitleaks was unavailable; the repository security scan passed.
+- GitHub Actions for the catalog commit: CI run 43020400270 succeeded; the GitHub Pages documentation workflow 43020400187 succeeded. No browser or live-page smoke test was run.
+- Exact next command: `git status --short --branch`
 
 ---
 

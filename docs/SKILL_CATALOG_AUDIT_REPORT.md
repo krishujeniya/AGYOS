@@ -78,7 +78,7 @@ The filtered full-suite run and filtered AGYOS wrapper used a temporary `sitecus
 - The 7,657 freshness-keyword hits have not been individually source-checked. Currentness-sensitive claims beyond the specific fixes above remain unverified.
 - Historical documents preserve their baseline counts. The current inventory is 1,983 skills; the threat-model inventory note updates only its count and does not claim that its 2026-11-08 threat analysis was re-audited.
 - Skill instructions were not executed through each supported host. Local routing tests prove selection and delivery behavior only.
-- The `.agents/state/decisions/drafts/20261111-111600-push-main.sh` diff and existing video-skill edits were present before this milestone and are protected baseline work, not part of this audit's changes.
+- The completed push script is archived at `.agents/state/decisions/executed/20261111-111600-push-main.sh`. The supplied video-skill work was included in the operator-approved catalog publication.
 - The standard full-suite run recorded one host CLI timeout and two subprocess integration errors; the later filtered run passed all other tests and explicitly skipped only the host-dependent CLI test. The unfiltered AGYOS wrapper recorded the same host-test limit; its final filtered run passed all 51 checks. This audit does not execute every skill through each supported runtime.
 
 ## Verification walkthrough (Quiz-Me)
@@ -87,4 +87,4 @@ The filtered full-suite run and filtered AGYOS wrapper used a temporary `sitecus
 2. **Edge case:** If dictation is local but an audio upload uses cloud processing, what should be assumed? **Answer:** The upload may still send audio to the cloud; verify that activity's own engine and data setting before use.
 3. **Change impact:** What catalog indexes changed with OpenWhispr? **Answer:** One new Tier 2 ID raises the current total to 1,983; Tier 1 remains 390 and Tier 2 becomes 1,593. The frozen routing case selects `openwhispr`.
 
-The operator explicitly approved commit and GitHub push on 2026-11-11. At this report revision, publication is pending; deployment has not been requested.
+The operator approved publication on 2026-11-11. Catalog commit `20947c2d244a16a2b86bf88e0d56102a269ca736` was pushed to `origin/main`; CI run 43020400270 and the GitHub Pages documentation workflow 43020400187 succeeded. The documentation deployment completed, but no browser or live-page smoke test was run.

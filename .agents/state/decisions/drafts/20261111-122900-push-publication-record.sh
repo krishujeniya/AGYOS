@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+# Publish the completed catalog handoff and record this script's execution.
+# The operator explicitly authorized the catalog, documentation, and GitHub push.
+# This script pushes the clean documentation commit, archives itself, commits the
+# execution record, pushes that audit record, and verifies origin/main equals HEAD.
+set -euo pipefail
+
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../../.." && pwd)"
+cd "$REPO_ROOT"
+
+DRAFT_REL=".agents/state/decisions/drafts/20261111-122900-push-publication-record.sh"
+EXECUTED_REL=".agents/state/decisions/executed/20261111-122900-push-publication-record.sh"
+CHECKPOINT=".agents/state/checkpoints/M1-skill-catalog-quality.md"
+
+if [[ "$(git branch --show-current)" != "main" ]]; then
+  echo "Refusing to publish: current branch is not main." >&2
+  exit 1
+fi
+if [[ -n "$(git status --porcelain)" ]]; then
+  echo "Refusing to publish: working tree is not clean." >&2
+  exit 1
+fi
+
+git fetch origin
+git merge-base --is-ancestor origin/main main
+PUSH_OUTPUT="$(git push origin main 2>&1)"
+printf '%s\n' "$PUSH_OUTPUT"
+
+{
+  printf '\n\n## Publication-record push execution · %s\n\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+  printf '%s\n' '- Script: `.agents/state/decisions/executed/20261111-122900-push-publication-record.sh`'
+  printf '%s\n' '- Command: `git push origin main`'
+  printf '%s\n' '- Result: successful exit; the script proceeds only after this push returns zero.'
+  printf '\n```text\n%s\n```\n' "$PUSH_OUTPUT"
+} >> "$CHECKPOINT"
+
+git mv "$DRAFT_REL" "$EXECUTED_REL"
+git add -- "$CHECKPOINT"
+git diff --cached --check
+bash bin/state-validate.sh
+bash bin/gate-check.sh
+git commit -m "chore(audit): record publication push execution"
+
+git fetch origin
+git merge-base --is-ancestor origin/main main
+ARCHIVE_PUSH_OUTPUT="$(git push origin main 2>&1)"
+printf '%s\n' "$ARCHIVE_PUSH_OUTPUT"
+
+LOCAL_SHA="$(git rev-parse HEAD)"
+REMOTE_SHA="$(git ls-remote origin refs/heads/main | awk '{print $1}')"
+if [[ "$LOCAL_SHA" != "$REMOTE_SHA" ]]; then
+  echo "Refusing success: origin/main ($REMOTE_SHA) does not match HEAD ($LOCAL_SHA)." >&2
+  exit 1
+fi
+if [[ -n "$(git status --porcelain)" ]]; then
+  echo "Refusing success: working tree is not clean after publication." >&2
+  exit 1
+fi
+printf 'Verified origin/main=%s; working tree clean.\n' "$LOCAL_SHA"
