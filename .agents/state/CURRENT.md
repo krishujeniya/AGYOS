@@ -27,6 +27,6 @@ Audit and improve discovery, correctness, structure, routing, references, and cu
 
 ## 5. Publication status and remaining limits
 
-Gate VERIFY is complete with the host and subprocess limits documented in the audit report. Catalog commit `20947c2d244a16a2b86bf88e0d56102a269ca736` is published on `origin/main`; CI run 43020400270 and the GitHub Pages documentation workflow 43020400187 succeeded for that commit. The final publication record and executed-script archive are included in the follow-up commit. No browser or live-page smoke test was run.
+Gate VERIFY is complete with the host and subprocess limits documented in the audit report. Catalog commit `20947c2d244a16a2b86bf88e0d56102a269ca736` is published on `origin/main`; CI run 43020400270 and the GitHub Pages documentation workflow 43020400187 succeeded for that commit. Live HTTP checks returned 200 for the site root and catalog; the catalog JSON contains 1,983 skills and includes OpenWhispr and both video skills. Interactive browser behavior was not tested.
 
 Exact next command: `git status --short --branch`

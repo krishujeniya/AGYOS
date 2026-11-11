@@ -181,3 +181,10 @@ remote:
 To https://github.com/krishujeniya/AGYOS.git
    92eff1a..eba928e  main -> main
 ```
+
+
+## Live documentation verification · 2026-11-11T12:39:34Z
+
+```json
+{"gate":"VERIFY","live_site_root":"HTTP 200; page title, 1983 count, and catalog link present","live_catalog":"HTTP 200; page title and docs.js reference present","live_catalog_data":"HTTP 200; 1983 skill objects; openwhispr, ai-video-editor, and faceless-shorts-engine present","interactive_browser":"not tested"}
+```

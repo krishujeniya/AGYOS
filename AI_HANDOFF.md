@@ -9,7 +9,7 @@
 - Independent review: migration comparison found no unexplained loss; source-backed corrections, duplicate aliases, Azure guide, OpenWhispr OAuth/macOS distinctions, version metadata assertion, and all 28 Remotion pointers were checked with no remaining finding.
 - Documentation reconciliation: current counts were checked across README, AGENTS, docs homepage, site landing page, tracker, generated indexes, and the security threat model. The threat model's original inventory remains explicitly tied to its 2026-11-08 baseline; dated handoff and research snapshots remain historical. `docs/OPTIMIZATION_RESULTS.md` now matches the current `agy agent` test command and 60-second timeout.
 - Remaining limits: freshness candidates and high-stakes/currentness claims beyond selected fixes were not comprehensively verified; skills were not executed through every host. In the unfiltered full suite, `agy agent` timed out after 60 seconds and two subprocess integration cases errored; the host-skipped suite passed all other tests. Gitleaks was unavailable; the repository security scan passed.
-- GitHub Actions for the catalog commit: CI run 43020400270 succeeded; the GitHub Pages documentation workflow 43020400187 succeeded. No browser or live-page smoke test was run.
+- GitHub Actions for the catalog commit: CI run 43020400270 succeeded; the GitHub Pages documentation workflow 43020400187 succeeded. Live HTTP smoke checks returned 200 for the site root and catalog; the catalog JSON contained 1,983 skills, including `openwhispr`, `ai-video-editor`, and `faceless-shorts-engine`. Interactive browser behavior was not tested.
 - Exact next command: `git status --short --branch`
 
 ---
