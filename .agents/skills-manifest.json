@@ -1,7 +1,7 @@
 {
   "version": "3.1.0",
-  "total_skills": 1979,
-  "tier1_count": 394,
+  "total_skills": 1980,
+  "tier1_count": 395,
   "tier2_count": 1585,
   "skills": [
     {
@@ -2451,6 +2451,12 @@
       "tier": 2,
       "description": "You are a workflow automation expert specializing in creating efficient CI/CD pipelines, GitHub Actions workflows, and automated development processes. Design and implement automation that reduces manual work, improves consistency, and accelerates delivery while maintaining quality and security.",
       "path": ".agents/skills/cicd-workflow"
+    },
+    {
+      "name": "cinematic-web-design",
+      "tier": 1,
+      "description": "Build world-class, cinematic, dark editorial one-page websites and high-end frontend experiences derived from the Webbzer 10 template architecture, Google Flow 188 design principles, 93-effect motion catalog, procedural Canvas 2D physics engines, and strict anti-slop copy law. Delivers self-contained, single-file zero-dependency index.html implementations with WCAG 2.2 AA accessibility.",
+      "path": ".agents/skills/cinematic-web-design"
     },
     {
       "name": "circleci-automation",

@@ -6936,6 +6936,23 @@
     "description": "You are a workflow automation expert specializing in creating efficient CI/CD pipelines, GitHub Actions workflows, and automated development processes. Design and implement automation that reduces manual work, improves consistency, and accelerates delivery while maintaining quality and security."
   },
   {
+    "id": "cinematic-web-design",
+    "name": "Cinematic Web Design",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill cinematic-web-design",
+    "path": ".agents/skills/cinematic-web-design",
+    "risk": "assess_for_task",
+    "description": "Build world-class, cinematic, dark editorial one-page websites and high-end frontend experiences derived from the Webbzer 10 template architecture, Google Flow 188 design principles, 93-effect motion catalog, procedural Canvas 2D physics engines, and strict anti-slop copy law. Delivers self-contained, single-file zero-dependency index.html implementations with WCAG 2.2 AA accessibility."
+  },
+  {
     "id": "circleci-automation",
     "name": "Circleci Automation",
     "module": "Domain & Research Extensions",

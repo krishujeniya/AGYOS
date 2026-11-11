@@ -6,3 +6,4 @@
 - Tactile Micro-Interactions: Active scale feedback (scale 0.98) on interactive controls.
 - Use structured Before/After/Why markdown tables for UI code reviews.
 - Build clean, accessible, responsive CSS, Tailwind, Framer Motion, and GSAP animations.
+- Prioritize cinematic-web-design for flow-grade, dark editorial, and canvas procedural web experiences.

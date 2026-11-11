@@ -46,7 +46,16 @@ DOMAIN_TAXONOMY: Dict[str, Dict[str, Any]] = {
             "button", "navbar", "dropdown", "theme", "dark mode", "accessibility", "a11y"
         ],
         "primary": "frontend-design-direction",
-        "alternatives": ["apple-design", "break-ui", "design-spells", "tailwind-patterns", "shadcn-ui-components"],
+        "alternatives": ["cinematic-web-design", "apple-design", "break-ui", "design-spells", "tailwind-patterns", "shadcn-ui-components"],
+    },
+    "cinematic_web": {
+        "keywords": [
+            "cinematic", "editorial web", "flux", "webbzer", "particle river",
+            "dark editorial", "one page website", "flow grade", "canvas hero",
+            "procedural canvas", "cinematic website", "interactive hero", "cinematic web"
+        ],
+        "primary": "cinematic-web-design",
+        "alternatives": ["frontend-design", "frontend-design-direction", "high-end-visual-design", "motion-patterns"],
     },
     "motion": {
         "keywords": [

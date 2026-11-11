@@ -130,8 +130,8 @@ Never narrate skill selection to the user (e.g. do NOT say "I will now use the X
   - Autonomously execute `architecture-database-design` and `elite-database-architect`.
 - **Search & Indexing Work** ("Audit site SEO", "Generate schema markup"):
   - Autonomously execute the `seo` suite.
-- **UI/UX Design, Designer Work, Websites & SaaS Apps** ("Design a UI", "Make modern UX", "Build SaaS app", "Create landing page", "Generate website", "Polish interface", "Add animations"):
-  - Autonomously trigger Emil Kowalski's design engineering skills (`motion-patterns`, `motion-foundations`, `review-animations`, `animation-performance`, `apple-design`, `break-ui`) alongside `architecture-frontend-design` and `elite-frontend-architect`.
+- **UI/UX Design, Designer Work, Websites & SaaS Apps** ("Design a UI", "Make modern UX", "Build SaaS app", "Create landing page", "Generate website", "Polish interface", "Add animations", "Cinematic web"):
+  - Autonomously trigger priority cinematic frontend design (`cinematic-web-design`, `frontend-design-direction`) and Emil Kowalski's design engineering skills (`motion-patterns`, `motion-foundations`, `review-animations`, `animation-performance`, `apple-design`, `break-ui`) alongside `architecture-frontend-design` and `elite-frontend-architect`.
   - Enforce Emil Kowalski's 6 Design Engineering Invariants:
     1. **Concentric Border Radii Formula**: Nested child radii must satisfy $R_{\text{inner}} = R_{\text{outer}} - \text{padding}$.
     2. **Animation Decision Framework**: Frequency dictates motion: 100+ times/day = 0ms (no animation ever); tens of times/day = 150-200ms; modals/drawers = 250-350ms; never animate keyboard-initiated actions.

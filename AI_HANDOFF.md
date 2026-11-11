@@ -1,3 +1,26 @@
+# AGYOS handoff: cinematic-web-design priority frontend skill (2026-11-11)
+
+- Task: Convert `/home/ai/Documents/Docs/Web.md` into a priority frontend design skill (`cinematic-web-design`) adhering to the Webbzer 10 template architecture, Google Flow 188 design principles, 93-effect motion catalog, procedural Canvas 2D physics engines, and strict anti-slop copy law.
+- Branch: `main`; baseline commit `ae1275b5ad48798d0d17135c1b6c9a17277d2d13`.
+- Added skill: `.agents/skills/cinematic-web-design/`
+  - `SKILL.md`: Concise operational runbook (<250 lines) with output contract, design tokens, 10-act anatomy, procedural canvas river, motion system, anti-slop law, WCAG 2.2 AA accessibility, and verification protocol.
+  - `references/FLUX_MASTER_PROMPT.md`: Complete Webbzer/Flux master prompt.
+  - `references/MOTION_EFFECTS_CATALOG.md`: Full 93-effect catalog (59 built, 11 adapted, 23 skipped).
+  - `references/ANTI_SLOP_LAW.md`: Complete anti-slop doctrine, banned phrases, and 8-criteria rubric.
+  - `references/PROCEDURAL_CANVAS_ENGINES.md`: Mathematical specifications for the folded particle river and the 10 Webbzer signature scene variants.
+- Routing integration:
+  - Added `cinematic-web-design` to Tier 1 core engineering skills in `scripts/build_tiered_skills_manifest.py`.
+  - Added dedicated `cinematic_web` domain and added to `ui_ux` alternatives in `agyos_decision/skills_router.py`.
+  - Added autonomous intent routing rule in `AGENTS.md` and `.agents/plugins/agyos-business-creative/rules/AGENTS.md`.
+  - Recompiled tiered skills manifest (`1980` skills total, `395` Tier 1) and documentation assets (`docs/skills-data.json`, `docs/ai-catalog.json`, `docs/sitemap.xml`, `docs/llms.txt`).
+- Machine evidence:
+  - 128 Python unit tests passing (`38.6s`, 0 failures).
+  - 51/51 adversarial verification checks passing (`scripts/agyos-verify.sh`).
+  - Pre-commit gate check passed (`bin/gate-check.sh`).
+  - Heuristic routing test confirmed: `Domain: CINEMATIC_WEB` matches `cinematic-web-design` at 97.0% confidence, and `Domain: UI_UX` includes `cinematic-web-design` in top 2 rankings.
+
+---
+
 # AGYOS handoff: research-led optimization (2026-11-11)
 
 - Task: research relevant principles and papers, write one reusable optimization prompt, and apply it locally.
