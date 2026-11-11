@@ -165,3 +165,19 @@ remote:
 To https://github.com/krishujeniya/AGYOS.git
    20947c2..92eff1a  main -> main
 ```
+
+
+## Publication-record push execution · 2026-11-11T12:35:31Z
+
+- Script: `.agents/state/decisions/executed/20261111-122900-push-publication-record.sh`
+- Command: `git push origin main`
+- Result: successful exit; the script proceeds only after this push returns zero.
+
+```text
+remote:
+remote: GitHub found 47 vulnerabilities on krishujeniya/AGYOS's default branch (2 critical, 12 high, 27 moderate, 6 low). To find out more, visit:
+remote:      https://github.com/krishujeniya/AGYOS/security/dependabot
+remote:
+To https://github.com/krishujeniya/AGYOS.git
+   92eff1a..eba928e  main -> main
+```
