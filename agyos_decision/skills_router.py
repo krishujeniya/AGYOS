@@ -207,7 +207,17 @@ DOMAIN_TAXONOMY: Dict[str, Dict[str, Any]] = {
             "cinematic", "watermark", "delogo", "de-ai"
         ],
         "primary": "video-editing-principles",
-        "alternatives": ["organic-film-de-ai", "ai-video-quality-enhancement", "ffmpeg-video-editor", "youtube-long-form-production", "google-flow"],
+        "alternatives": ["faceless-shorts-engine", "organic-film-de-ai", "ai-video-quality-enhancement", "ffmpeg-video-editor", "youtube-long-form-production", "google-flow"],
+    },
+    "faceless_shorts": {
+        "keywords": [
+            "faceless", "faceless shorts", "faceless video", "shorts", "reels",
+            "tiktok video", "youtube shorts", "kokoro", "whisper subtitles",
+            "tall tale", "deep dive 3d", "zack d", "stick story", "paper atlas",
+            "animated shorts", "viral shorts"
+        ],
+        "primary": "faceless-shorts-engine",
+        "alternatives": ["youtube-shorts", "short-form-video-script", "organic-film-de-ai", "remotion-video-creation", "ffmpeg-video-editor"],
     },
     "scriptwriting": {
         "keywords": [

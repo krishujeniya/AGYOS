@@ -1,3 +1,26 @@
+# AGYOS handoff: faceless-shorts-engine zero-cost video pipeline (2026-11-11)
+
+- Task: Convert the Nafay 3D / Antigravity zero-cost faceless shorts guide into a dedicated AGYOS skill (`faceless-shorts-engine`) with local speech synthesis, word-synced subtitles, 6 animation styles, and automated compositing.
+- Branch: `main`; baseline commit `4059f30`.
+- Added skill: `.agents/skills/faceless-shorts-engine/`
+  - `SKILL.md`: Operational runbook (<200 lines) with offline zero-cost operating invariants, Kokoro TTS integration, Whisper subtitle alignment, 6 animation styles, audio ducking, and photochemical film finishing.
+  - `references/ANIMATION_STYLES_MANUAL.md`: Complete directing guide for Tall Tale 3D, Deep Dive 3D (Zack D. Films anatomy), Inside Out, Stick Story, Night File 3D, and Paper Atlas.
+  - `references/LOCAL_TOOLCHAIN_SETUP.md`: Offline Kokoro TTS speaker profiles (`am_adam`, `af_bella`, `am_michael`, `bm_george`), Whisper word-timestamp extraction, and FFmpeg filter graph commands.
+  - `references/RETENTION_AND_SCRIPTING_PLAYBOOK.md`: 4 retention invariants (0–2s in medias res hook, 2s visual reset, seamless algorithmic loop, 150–165 wpm), 10 field-tested hook templates, and phone voice memo ingestion.
+  - `scripts/generate_shorts_manifest.py`: CLI scaffolding tool generating standardized `shorts_manifest.json` files with scenes, audio cues, and camera choreography.
+- Routing integration:
+  - Added `faceless-shorts-engine` to Tier 1 core engineering skills in `scripts/build_tiered_skills_manifest.py`.
+  - Added dedicated `faceless_shorts` domain and added to `video_production` alternatives in `agyos_decision/skills_router.py`.
+  - Added autonomous intent routing rule in `AGENTS.md` (and symlinked `GEMINI.md`).
+  - Recompiled tiered skills manifest (`1981` skills total, `396` Tier 1) and documentation assets (`docs/skills-data.json`, `docs/ai-catalog.json`, `docs/sitemap.xml`, `docs/llms.txt`).
+- Machine evidence:
+  - 128 Python unit tests passing (`10.9s`, 0 failures).
+  - 51/51 adversarial verification checks passing (`scripts/agyos-verify.sh`).
+  - Pre-commit gate check passed (`bin/gate-check.sh`).
+  - Heuristic routing test confirmed: `Domain: FACELESS_SHORTS` matches `faceless-shorts-engine` at 97.0% confidence for Tall Tale 3D and Zack D. Films style prompts.
+
+---
+
 # AGYOS handoff: cinematic-web-design priority frontend skill (2026-11-11)
 
 - Task: Convert `/home/ai/Documents/Docs/Web.md` into a priority frontend design skill (`cinematic-web-design`) adhering to the Webbzer 10 template architecture, Google Flow 188 design principles, 93-effect motion catalog, procedural Canvas 2D physics engines, and strict anti-slop copy law.

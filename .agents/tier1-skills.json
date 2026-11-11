@@ -937,6 +937,12 @@
       "path": ".agents/skills/expert-tech-architect"
     },
     {
+      "name": "faceless-shorts-engine",
+      "tier": 1,
+      "description": "Autonomous pipeline for producing zero-cost animated faceless vertical shorts (YouTube Shorts, TikTok, Instagram Reels) using local AI voice synthesis (Kokoro), word-synced subtitles (Whisper), 6 animation styles (Tall Tale 3D, Deep Dive 3D, Inside Out, Stick Story, Night File 3D, Paper Atlas), and automated FFmpeg/Remotion compositing with organic photochemical film finishing.",
+      "path": ".agents/skills/faceless-shorts-engine"
+    },
+    {
       "name": "fastapi-patterns",
       "tier": 1,
       "description": "FastAPI best practices covering project structure, Pydantic v2 schemas, dependency injection, async handlers, authentication, authorization, transactional service layers, and testing with httpx and pytest. Use when building or reviewing FastAPI apps \u2014 Pydantic schemas, dependencies, async handlers, auth, or tests.",

@@ -141,6 +141,8 @@ Never narrate skill selection to the user (e.g. do NOT say "I will now use the X
     6. **Before/After/Why Review Table**: Mandatory markdown table with `| Before | After | Why |` columns for all UI/UX code reviews.
 - **Freelance & Client Management** ("Draft proposal", "Create SOW", "Invoice client"):
   - Select `freelancer-project-delivery`, `freelancer-client-acquisition`, or `freelancer-operations` according to the objective.
+- **Video Production & Faceless Shorts** ("Make a short", "Faceless video", "Animate 3D short", "Zack D style", "Tall Tale 3D", "Edit video"):
+  - Autonomously trigger `faceless-shorts-engine`, `youtube-shorts`, `organic-film-de-ai`, and `ffmpeg-video-editor` with zero-cost local Kokoro TTS and Whisper subtitle alignment.
 
 ---
 

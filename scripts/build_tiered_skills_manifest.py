@@ -32,7 +32,8 @@ TIER1_EXACT = {
     "verification-loop", "e2e-testing", "benchmark-optimization-loop", "eval-harness",
     "clean-code", "refactoring-cleaner", "api-design", "microservices-patterns",
     "shadcn", "tailwind-patterns", "nextjs-best-practices", "bun-runtime", "uv-package-manager",
-    "playwright-skill", "sast-configuration", "threat-modeling-expert", "cinematic-web-design"
+    "playwright-skill", "sast-configuration", "threat-modeling-expert", "cinematic-web-design",
+    "faceless-shorts-engine"
 }
 
 def extract_frontmatter(skill_md: Path):
