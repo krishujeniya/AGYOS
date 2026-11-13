@@ -163,6 +163,12 @@
       "path": ".agents/skills/agyos-verify"
     },
     {
+      "name": "ai-dashboad-e2e-testing",
+      "tier": 1,
+      "description": "AI-powered E2E testing for any app \u2014 Flutter, React Native, iOS, Android, Electron, Tauri, KMP, .NET MAUI. Connects via MCP to running apps so the agent can take screenshots, tap elements, enter text, scroll, inspect UI trees, and verify state with natural language. Use when the user wants to test an app's UI end-to-end, automate cross-platform testing, run smoke tests, validate form flows, or verify navigation without writing test code.",
+      "path": ".agents/skills/ai-dashboad-e2e-testing"
+    },
+    {
       "name": "ai-ml",
       "tier": 1,
       "description": "AI and machine learning workflow covering LLM application development, RAG implementation, agent architecture, ML pipelines, and AI-powered features.",
@@ -2339,6 +2345,24 @@
       "tier": 1,
       "description": "The YouTube publish-metadata skill. Use when someone wants to \"write a YouTube title/description,\" \"set tags/category/privacy,\" \"optimize YouTube SEO/metadata,\" set made-for-kids, or publish a YouTube video via WoopSocial. Writes the metadata (title, description+chapters, tags) and sets category/privacy/madeForKids \u2014 YouTube is a search engine, so metadata is the launchpad, and madeForKids is a COPPA/FTC legal flag set truthfully. Uses the INDEX framework. Reads brand-profile + goals-and-kpis + the script/video first. The video file + script are inputs (not WoopSocial); the thumbnail and A/B title testing are native YouTube Studio; WoopSocial publishes via the YouTube fields; metrics never fabricated. Distinct from youtube-long-form/youtube-shorts (the script) and thumbnail-design (the thumbnail).",
       "path": ".agents/skills/youtube-publishing-and-metadata"
+    },
+    {
+      "name": "zakariaf-custom-canvas-and-gestures",
+      "tier": 1,
+      "description": "Enforces CustomPainter/Canvas discipline \u2014 the View/Painter/Scene split with a dumb painter fed one immutable Scene value type, shouldRepaint as a single value compare kept strictly separate from the AnimationController-as-repaint animation path, one shared affine transform read by BOTH painter and hit-tester (toCanvas/toLogical exact inverses, never re-derive scale), geometry hit-testing (integer lattice or rasterized region-ID buffer, never Path.contains), zero-allocation paint(), gesture-as-pure-translator emitting a typed command to a Notifier (never mutating in the handler), ExcludeSemantics + sibling Semantics speaking display values with redundant non-colour encoding, measured TextPainter fitting, first-party RoundedSuperellipseBorder, physical-pixel hairlines, and Directional-only geometry. Use when writing or reviewing a CustomPainter/CustomPaint, gestures on a canvas, tap/drag hit-testing, canvas animation, measured text fitting, or Semantics over custom-drawn pixels.",
+      "path": ".agents/skills/zakariaf-custom-canvas-and-gestures"
+    },
+    {
+      "name": "zakariaf-flutter-architecture",
+      "tier": 1,
+      "description": "Enforces a right-sized feature-first layered MVVM Flutter architecture \u2014 features are folders and cross-cutting foundations become packages only when a compile wall earns it, a strict downward-only dependency DAG, dumb Views over one Notifier/AsyncNotifier ViewModel per feature, repositories as the single source of truth and single write path returning immutable domain values, abstractions only where something genuinely can't run in a test, and Riverpod 3.x as the one context-free DI+state mechanism (no get_it/injectable/package:provider container). Use when creating a Flutter feature or file, deciding folder-vs-package or where a class belongs, naming a Screen/Notifier/Repository/Service, wiring providers or a composition-root/bootstrap.dart, adding a use-case/domain layer, resisting over-engineering on a small app, or reviewing whether a change respects the layer boundaries.",
+      "path": ".agents/skills/zakariaf-flutter-architecture"
+    },
+    {
+      "name": "zakariaf-flutter-conventions-index",
+      "tier": 1,
+      "description": "The repo front-door for a Flutter/Dart app \u2014 the cross-cutting house rules (feature-first layered MVVM, immutable state with a single write path, Riverpod 3.x for state + DI, typed Result/Failure errors, dumb widgets, injected side effects, complexity limits) plus a routing table that sends each task to its deep-dive skill and a recommended feature build order. Use at the start of any Flutter/Dart work, before writing or reviewing a feature, when deciding which layer or package code belongs in, when unsure which skill governs a task (architecture, state, widgets, persistence, testing, i18n, design), or when onboarding to the conventions.",
+      "path": ".agents/skills/zakariaf-flutter-conventions-index"
     }
   ]
 }

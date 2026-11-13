@@ -76,6 +76,14 @@ All MCP tools reside directly in this directory with zero subfolders.
   - `flow_scene_status`: Check status of Scene Builder scenes.
   - `flow_scene_extend`: Extend existing video scene.
 
+### `firebase-mcp-server` (`.mcp.json`)
+- **Runtime**: Node.js/npm via `npx -y firebase-tools@latest mcp`, following the [official Firebase MCP setup](https://firebase.google.com/docs/ai-assistance/mcp-server).
+- **Transport**: Local `stdio` MCP server.
+- **Authentication**: Reuses Firebase CLI credentials or Application Default Credentials; Node.js and npm must be available.
+- **Scope**: Firebase tools can manage projects and Auth users, read or write Firestore data and security rules, send FCM messages, initialize or deploy Firebase resources, and inspect Crashlytics. Treat operations as capable of remote side effects and review tool calls before approval.
+- **Context and tool limits**: The upstream server accepts `--dir <absolute-path>` to select a Firebase project context and `--only <feature1,feature2>` to limit feature groups. Core tools remain enabled even with `--only`.
+- **Package selection**: `firebase-tools@latest` is the selector shown in Firebase's documentation. It is mutable; this repository does not resolve, install, or launch it. Pin a reviewed version if reproducible package selection is required.
+
 ## Verification
 
 The daemon is verified via deterministic JSON-RPC queries:
