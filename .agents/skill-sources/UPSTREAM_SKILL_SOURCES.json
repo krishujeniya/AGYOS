@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "imported_sources": [
+    {"owner":"zakariaf","repo":"Flutter-Skills","commit":"e073e5ea10c963d2c52ab1e423bd314c28a56154","license":"MIT","path":".agents/skill-sources/zakariaf/flutter-skills","prefix":"zakariaf","expected_skills":40},
+    {"owner":"ai-dashboad","repo":"flutter-skill","commit":"c31a08ead80e0678373e6fb2835b2ffd81ce2716","license":"MIT","path":".agents/skill-sources/ai-dashboad/flutter-e2e","prefix":"ai-dashboad","expected_skills":1}
+  ],
+  "link_only_sources": [
+    {"owner":"flutter","repo":"agent-plugins","commit":"e5a88d2be19cbf7ba1ef974375e5846492aca2ac","skills":10,"reason":"BSD-3-Clause source; current automated importer supports MIT only. No skill files copied."},
+    {"owner":"RobertAlvv","repo":"flutter-skills","commit":"4772c71f182e628df8601b4868ded9b6482d3891","skills":8,"reason":"No repository license found; no skill files copied."}
+  ]
+}
