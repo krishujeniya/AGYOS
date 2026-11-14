@@ -11948,7 +11948,7 @@
     "command": "bin/agyos skill enhance-prompt",
     "path": ".agents/skills/enhance-prompt",
     "risk": "assess_for_task",
-    "description": "Transforms vague UI ideas into polished, Stitch-optimized prompts. Enhances specificity, adds UI/UX keywords, injects design system context, and structures output for better generation results."
+    "description": "Prepares UI requests as structured prompts for Google's Stitch interface, using the project's available design system and stated requirements."
   },
   {
     "id": "enterprise-agent-ops",
@@ -27367,7 +27367,7 @@
     "command": "bin/agyos skill prompt-engineer",
     "path": ".agents/skills/prompt-engineer",
     "risk": "assess_for_task",
-    "description": "Transforms user prompts into optimized prompts using frameworks (RTF, RISEN, Chain of Thought, RODES, Chain of Density, RACE, RISE, STAR, SOAP, CLEAR, GROW)"
+    "description": "Transforms user requests into clear prompts using optional task-fit structures, examples, and output contracts."
   },
   {
     "id": "prompt-engineering",
@@ -27401,7 +27401,7 @@
     "command": "bin/agyos skill prompt-engineering-patterns",
     "path": ".agents/skills/prompt-engineering-patterns",
     "risk": "assess_for_task",
-    "description": "Master advanced prompt engineering techniques to maximize LLM performance, reliability, and controllability."
+    "description": "Apply task-fit prompt patterns for instructions, examples, output formats, and evaluation without assuming universal performance gains."
   },
   {
     "id": "prompt-library",
@@ -27418,7 +27418,7 @@
     "command": "bin/agyos skill prompt-library",
     "path": ".agents/skills/prompt-library",
     "risk": "assess_for_task",
-    "description": "A comprehensive collection of battle-tested prompts inspired by [awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompts) and community best practices."
+    "description": "Reusable AGYOS prompt patterns for common tasks. Adapt them to the user's intent, context, and constraints; community provenance is recorded in the runbook."
   },
   {
     "id": "prompt-optimizer",
@@ -27435,7 +27435,7 @@
     "command": "bin/agyos skill prompt-optimizer",
     "path": ".agents/skills/prompt-optimizer",
     "risk": "assess_for_task",
-    "description": "Analyze draft prompts, detect intent and missing context, match ECC commands, skills, and agents, and output a ready-to-paste optimized prompt with diagnosis and rationale , advisory only, never executes the task. Use when the user says 'optimize prompt', 'improve my prompt', 'rewrite this prompt', 'help me prompt', \u4f18\u5316prompt, \u6539\u8fdbprompt, \u600e\u4e48\u5199prompt, or \u5e2e\u6211\u4f18\u5316\u8fd9\u4e2a\u6307\u4ee4; not for requests to optimize code or performance."
+    "description": "Analyze a draft prompt for intent, constraints, and missing context, then return a ready-to-use revision with a concise diagnosis. Advisory only; does not execute the drafted task. Use for requests to optimize, improve, or rewrite prompts, including \u4f18\u5316prompt, \u6539\u8fdbprompt, \u600e\u4e48\u5199prompt, or \u5e2e\u6211\u4f18\u5316\u8fd9\u4e2a\u6307\u4ee4; not for code or performance optimization."
   },
   {
     "id": "propose-change",

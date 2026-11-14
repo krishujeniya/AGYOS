@@ -1,6 +1,8 @@
 # Prompt principles archive audit
 
-Status: source interpretation documented; exact parser reconciliation is pending the milestone GitHub Actions run.
+Status: source interpretation documented; exact parser reconciliation is pending a corrected milestone GitHub Actions run.
+
+The first exact-revision attempt, [CI run 43572120201](https://github.com/krishujeniya/AGYOS/actions/runs/43572120201) on `dbb6f8df3c352384a8543c8908aab5a28082bc19`, failed before reconciliation. Its parser recognized 724 curated entries but no extracted entries because it expected an exact exhaustive heading and unbulleted count metadata. That zero is a parser-format failure, not evidence that the archive contains no extracted statements. The follow-up accepts the observed source format; all counts remain pending until its exact-run artifact is reviewed.
 
 ## Source and provenance
 

@@ -107,3 +107,18 @@
 ```json
 {"milestone":"M1-prompt-principles","iteration":1,"publisher_company_document_claim":26,"publisher_principle_claim":14889,"new_regression_cases":2,"local_tests_run":0,"ci_ledger_rows":"pending","generated_catalog_outputs_from_actions":false}
 ```
+
+## Gate 5 — first exact-revision CI attempt and follow-up
+
+- CI run [43572120201](https://github.com/krishujeniya/AGYOS/actions/runs/43572120201) completed with failure on `dbb6f8df3c352384a8543c8908aab5a28082bc19`.
+- `Check AGY startup contracts`: 179 tests ran, 1 failed and 1 was skipped. The sole failure expected the shortened publisher-only status instead of the current explicit ledger-limit string; the fixture assertion now matches the returned contract.
+- `Audit pinned prompt principles source`: failed because the parser expected unbulleted count metadata and an exact exhaustive heading. The run artifact reported 724 curated and 0 exhaustive rows; the latter is a parser mismatch, not a source count. No count reconciliation or completeness claim is made from this run.
+- Deployment run [43572120384](https://github.com/krishujeniya/AGYOS/actions/runs/43572120384) passed.
+- Applied only the changed files from CI artifact `agyos-skill-catalog-generated`: `.agents/skills-manifest.json`, `docs/skills-data.json`, and `docs/llms.txt`. No generator was run locally.
+- Follow-up parser and fixture now cover bullet-prefixed metadata and a suffixed exhaustive heading. `git diff --check` passed; local tests and parser execution remain prohibited by repository policy.
+- Preserved the earlier untracked executed helper as audit history and excluded it from follow-up staging; it stages the first change set and omits the refreshed catalogs. The separate guarded draft stages only the follow-up paths and checks the current `main` SHA, origin URL, remote SHA, and author identity.
+- Independent static review passed after the JSON fence was corrected and the follow-up draft was checked for scope. Corrected exact-revision CI remains pending. Renewed Gate 5 operator approval is required before follow-up commit and push.
+
+```json
+{"milestone":"M1-prompt-principles","iteration":2,"source_format_fixes":["bullet-prefixed count metadata","suffixed exhaustive section heading"],"catalog_outputs_from_ci_artifact":3,"local_tests_run":0,"local_generators_run":0,"diff_check":"PASS","independent_checker":"PASS","corrected_ci":"pending","gate5_operator_approval":"pending"}
+```

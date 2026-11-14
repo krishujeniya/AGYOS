@@ -20,8 +20,8 @@ CURATED_ENDS = ("## Repository source files", "## Scope and evidence notes", "##
 EXHAUSTIVE_START = "### 3. Complete Unified Company-Wide Principles by Domain"
 CURATED_ITEM = re.compile(r"^\s*(\d+(?:\.\d+)*)\.\s+(\S.*)$")
 DOMAIN_HEADING = re.compile(r"^####\s+3\.\d+\s+(.+?)\s+\(([\d,]+)\s+Principles?\)\s*$")
-CURATED_COUNT = re.compile(r"^\*\*Curated Principle Catalog Statements.*?\*\*:\s*([\d,]+)")
-EXHAUSTIVE_COUNT = re.compile(r"^\*\*Exhaustive Prompt-Derived Principle Statements.*?\*\*:\s*([\d,]+)")
+CURATED_COUNT = re.compile(r"^\s*-?\s*\*\*Curated Principle Catalog Statements.*?\*\*:\s*([\d,]+)")
+EXHAUSTIVE_COUNT = re.compile(r"^\s*-?\s*\*\*Exhaustive Prompt-Derived Principle Statements.*?\*\*:\s*([\d,]+)")
 INDEX_TOTAL = re.compile(r"^\|\s*\*\*Total\*\*\s*\|")
 
 EVIDENCE_PROMPTING = [
@@ -77,7 +77,11 @@ def numeric_value(value: str) -> int:
 
 
 def find_section(lines: list[str], start: str, end_markers: tuple[str, ...]) -> tuple[int, int]:
-    start_index = next((i for i, line in enumerate(lines) if line.strip() == start), -1)
+    start_index = next(
+        (i for i, line in enumerate(lines)
+         if line.strip() == start or line.strip().startswith(f"{start} ")),
+        -1,
+    )
     if start_index < 0:
         return -1, -1
     end_index = next(

@@ -17,8 +17,8 @@ ROOT = Path(__file__).resolve().parents[2]
 OPTIMIZER_PATH = ROOT / ".agents/skills/prompt-engineering-patterns/scripts/optimize-prompt.py"
 PUBLISHER_INDEX = """| **Total** | **1 Companies** | **1 Company .md Files** | Scope | **1** | **1** | **2** | **3** | **0** | Link |
 """
-COMPANY_FIXTURE = """**Curated Principle Catalog Statements (from Folder 02)**: 1
-**Exhaustive Prompt-Derived Principle Statements (from Folder 01)**: 2
+COMPANY_FIXTURE = """- **Curated Principle Catalog Statements (from Folder 02)**: 1
+- **Exhaustive Prompt-Derived Principle Statements (from Folder 01)**: 2
 
 ## Principle catalog
 
@@ -30,7 +30,7 @@ COMPANY_FIXTURE = """**Curated Principle Catalog Statements (from Folder 02)**: 
 
 ## Part II
 
-### 3. Complete Unified Company-Wide Principles by Domain
+### 3. Complete Unified Company-Wide Principles by Domain (All Prompt Rules Consolidated)
 
 #### 3.1 Communication Principles (2 Principles)
 
@@ -55,6 +55,9 @@ class PromptPrinciplesParserTests(unittest.TestCase):
 
         self.assertEqual(parsed["parsed_curated"], 1)
         self.assertEqual(parsed["parsed_exhaustive"], 2)
+        self.assertEqual(parsed["publisher_curated"], 1)
+        self.assertEqual(parsed["publisher_exhaustive"], 2)
+        self.assertEqual(parsed["warnings"], [])
         self.assertEqual(parsed["records"][0]["ordinal"], "1.1")
         self.assertEqual(parsed["records"][1]["section"], "Communication Principles")
         self.assertNotIn("Use a clear answer shape", json.dumps(parsed["records"]))
@@ -74,7 +77,10 @@ class PromptPrinciplesParserTests(unittest.TestCase):
         self.assertEqual(summary["count_status"], "mismatch")
         self.assertTrue(summary["mismatches"])
         self.assertEqual(summary["parsed"]["combined_statements"], 3)
-        self.assertEqual(summary["inventory_limits"]["tool_status"], "publisher_claim_only")
+        self.assertEqual(
+            summary["inventory_limits"]["tool_status"],
+            "publisher_claim_only; tool inventories are outside this ledger",
+        )
 
     def test_matching_source_and_index_counts_are_reported(self):
         matching_index = PUBLISHER_INDEX

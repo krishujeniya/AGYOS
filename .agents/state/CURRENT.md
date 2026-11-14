@@ -28,8 +28,10 @@ Use the supplied company prompt archive as untrusted research input to improve A
 - Publisher claims 14,889 principles; the parser must reconcile actual source units and report ambiguities without guessing.
 - The source repo lacks a root LICENSE/NOTICE; preserve provenance and emit hashes/locators, not source statement prose.
 - Local operations: read-only inspection and `git diff --check`. Run tests, parser, builds, dependency setup, and validation only in GitHub Actions.
-- No production commit or push before Gate 5 operator sign-off.
+- No follow-up production commit or push before renewed Gate 5 operator sign-off.
 
 ## 5. Next action
 
-Static review is complete. Await Gate 5 operator sign-off before the scoped `main` commit and push that trigger exact-revision CI. The first run produces the generated catalog artifact; the checked-in catalog comparison may fail until that artifact is applied. Request renewed Gate 5 sign-off before a follow-up catalog commit. Tests, parser, generators, and full CI remain unrun on this working revision.
+The first implementation commit `dbb6f8df3c352384a8543c8908aab5a28082bc19` was pushed to `main`. CI run [43572120201](https://github.com/krishujeniya/AGYOS/actions/runs/43572120201) failed on one stale startup-contract expectation and parser assumptions that did not match the pinned source's bullet-prefixed metadata and suffixed exhaustive heading. The Pages workflow `43572120384` passed. Its catalog artifact refreshed three checked-in outputs: `.agents/skills-manifest.json`, `docs/skills-data.json`, and `docs/llms.txt`.
+
+The follow-up fixes the fixture and parser for those observed source formats and uses only the generated catalog artifact. The independent static review passed after the checkpoint fence and helper-scope corrections; local `git diff --check` passed. No local tests, parser, or generators were run. Corrected exact-revision CI remains pending. Review the prepared diff and commit script, then obtain renewed Gate 5 operator sign-off before any follow-up commit or push.

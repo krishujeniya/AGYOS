@@ -1,6 +1,6 @@
 # AGYOS Prompt Principles Upgrade — Task List
 
-Status: UNDERSTAND, ANALYZE, and amended PLAN approved on 2026-11-14. The implementation is ready for Gate 5; exact-revision CI and generated catalog outputs remain pending.
+Status: UNDERSTAND, ANALYZE, and amended PLAN approved on 2026-11-14. The first exact-revision CI run failed on a parser format assumption and one outdated test expectation; changed generated catalog outputs have been applied from its Actions artifact. Corrected exact-revision CI is pending.
 
 ## Goal
 
