@@ -4,7 +4,12 @@ const fs = require('fs');
 const crypto = require('crypto');
 const os = require('os');
 const path = require('path');
-const initSqlJs = require('sql.js');
+let initSqlJs;
+try {
+  initSqlJs = require('sql.js');
+} catch {
+  initSqlJs = null;
+}
 const { withStateStoreLock, recordCleanupError } = require('./file-lock');
 
 const { applyMigrations, getAppliedMigrations } = require('./migrations');
@@ -426,6 +431,9 @@ function openDatabase(SQL, dbPath, trustedReads) {
 
 async function createStateStore(options = {}) {
   const dbPath = resolveStateStorePath(options);
+  if (!initSqlJs) {
+    initSqlJs = require('sql.js');
+  }
   const SQL = await initSqlJs();
   const trustedReads = new WeakSet();
   const db = openDatabase(SQL, dbPath, trustedReads);
