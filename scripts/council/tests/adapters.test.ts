@@ -275,9 +275,11 @@ Use Postgres.
 // --- Agent Detection ---
 
 describe("detectAgents", () => {
-  test("returns at least some agents on this machine", async () => {
+  test("returns array of detected agents", async () => {
     const agents = await detectAgents();
-    // We know all 3 are installed on this machine from preflight
-    expect(agents.length).toBeGreaterThanOrEqual(2);
+    expect(Array.isArray(agents)).toBe(true);
+    if (!process.env.CI) {
+      expect(agents.length).toBeGreaterThanOrEqual(2);
+    }
   });
 });
