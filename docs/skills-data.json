@@ -1,5 +1,22 @@
 [
   {
+    "id": "1password-mcp",
+    "name": "1Password Mcp",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill 1password-mcp",
+    "path": ".agents/skills/1password-mcp",
+    "risk": "assess_for_task",
+    "description": "Manage and inject secrets, list vaults, search vault items, and resolve op:// secret reference URIs programmatically using the 1Password CLI and 1Password Model Context Protocol (MCP) server."
+  },
+  {
     "id": "3d-web-experience",
     "name": "3D Web Experience",
     "module": "Domain & Research Extensions",
@@ -1205,6 +1222,23 @@
     "path": ".agents/skills/ai-image-gen",
     "risk": "assess_for_task",
     "description": "AI image generation with OpenAI GPT Image 2, Azure OpenAI, Google, OpenRouter, DashScope, Z.AI GLM-Image, MiniMax, Jimeng, Seedream and Replicate APIs. Supports text-to-image, reference images, aspect ratios, and batch generation from saved prompt files. Sequential by default; use batch parallel generation when the user already has multiple prompts or wants stable multi-image throughput. Use when user asks to generate, create, or draw images."
+  },
+  {
+    "id": "ai-industry-watchlist",
+    "name": "Ai Industry Watchlist",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill ai-industry-watchlist",
+    "path": ".agents/skills/ai-industry-watchlist",
+    "risk": "assess_for_task",
+    "description": "Maintain a useful, source-checked watchlist of AI companies, labs, researchers, and leaders from the supplied AI Accounts to Follow reference. Use when organizing AI news sources, building a daily reading list, checking official social profiles, or refreshing the supplied 79-account directory."
   },
   {
     "id": "ai-ml",
@@ -5899,6 +5933,23 @@
     "description": "Bengali (Bangla) text processing patterns including Unicode normalization, script detection, tokenization, conjunct handling, and Bangla-specific NLP best practices for AI applications."
   },
   {
+    "id": "benji-stage-stageshow",
+    "name": "Benji Stage Stageshow",
+    "module": "UI/UX & Motion",
+    "category": "Frontend & Motion",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill benji-stage-stageshow",
+    "path": ".agents/skills/benji-stage-stageshow",
+    "risk": "assess_for_task",
+    "description": "Build faux product UI that looks like a real product, as a still illustration or an animated demo with a cursor. Browser and app windows, dashboards, phones, notifications, terminals, bento grids and cursor walkthroughs, framed, masked and cropped the way a marketing page, feature card or docs hero needs them. Use whenever someone wants a fake or mocked UI, a product demo or walkthrough animation, a hero or feature-card illustration of an app, a product shot in the style of a polished marketing site, or an animated cursor doing things in an interface, even if they never say \"faux UI\". React and plain CSS."
+  },
+  {
     "id": "bevy-ecs-expert",
     "name": "Bevy Ecs Expert",
     "module": "Domain & Research Extensions",
@@ -6664,6 +6715,23 @@
     "description": "Automate Calendly scheduling, event management, invitee tracking, availability checks, and organization administration via Rube MCP (Composio). Always search tools first for current schemas."
   },
   {
+    "id": "camber-cloud",
+    "name": "Camber Cloud",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill camber-cloud",
+    "path": ".agents/skills/camber-cloud",
+    "risk": "assess_for_task",
+    "description": "Interact with the Camber data science and agentic platform via its MCP server. Create, discover, and chat with Camber agents; manage team and personal workspaces; and orchestrate multi-agent data workflows."
+  },
+  {
     "id": "campaign-and-launch-planning",
     "name": "Campaign And Launch Planning",
     "module": "Domain & Research Extensions",
@@ -6832,6 +6900,23 @@
     "path": ".agents/skills/carrier-relationship-management",
     "risk": "assess_for_task",
     "description": "Manage truckload, LTL, and intermodal carrier portfolios: sourcing and FMCSA vetting, freight rate and fuel-surcharge negotiation, RFPs and routing guides, carrier scorecards, allocation, and renewals. Use when onboarding carriers, running freight RFPs, negotiating rates, evaluating carrier performance, reallocating freight, or building freight strategy."
+  },
+  {
+    "id": "carto-mcp",
+    "name": "Carto Mcp",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill carto-mcp",
+    "path": ".agents/skills/carto-mcp",
+    "risk": "assess_for_task",
+    "description": "Execute spatial SQL queries, analyze geospatial data across cloud data warehouses (Snowflake, BigQuery, Redshift, PostgreSQL), create and publish CARTO Builder maps, and orchestrate spatial analytics workflows via CARTO MCP."
   },
   {
     "id": "cdk-patterns",
@@ -7138,6 +7223,23 @@
     "path": ".agents/skills/clean-code",
     "risk": "assess_for_task",
     "description": "This skill embodies the principles of \"Clean Code\" by Robert C. Martin (Uncle Bob). Use it to transform \"code that works\" into \"code that is clean.\""
+  },
+  {
+    "id": "clerk-agent-toolkit",
+    "name": "Clerk Agent Toolkit",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill clerk-agent-toolkit",
+    "path": ".agents/skills/clerk-agent-toolkit",
+    "risk": "assess_for_task",
+    "description": "Integrate Clerk user management, organizations, sessions, and invitations directly into AI agent workflows using @clerk/agent-toolkit. Covers the local MCP server, Vercel AI SDK integration, LangChain integration, session context injection, and scoped tool helpers for multi-tenant agentic apps."
   },
   {
     "id": "clerk-auth",
@@ -10149,6 +10251,23 @@
     "description": "Produce cited research reports from multiple web sources using firecrawl and exa MCP tools , plan sub-questions, search and deep-read sources, then synthesize findings with inline citations and confidence levels. Use when the user asks to research a topic in depth, run a deep dive or investigation, or do competitive analysis, technology evaluation, market sizing, or due diligence on a company."
   },
   {
+    "id": "deepnote-mcp",
+    "name": "Deepnote Mcp",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill deepnote-mcp",
+    "path": ".agents/skills/deepnote-mcp",
+    "risk": "assess_for_task",
+    "description": "Interact with Deepnote collaborative notebooks via its MCP server. Create, edit, and execute Python and SQL notebooks; manage projects, folders, integrations (Snowflake, BigQuery, Postgres), Streamlit apps, and compute machines programmatically from any AI agent or coding assistant."
+  },
+  {
     "id": "deepseek-harness-setup",
     "name": "Deepseek Harness Setup",
     "module": "Domain & Research Extensions",
@@ -10572,6 +10691,23 @@
     "path": ".agents/skills/developer-session-diary",
     "risk": "assess_for_task",
     "description": "Unified Diary System: A context-preserving automated logger for multi-project development."
+  },
+  {
+    "id": "devops-career-roadmap",
+    "name": "Devops Career Roadmap",
+    "module": "Security & Defense",
+    "category": "Security",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill devops-career-roadmap",
+    "path": ".agents/skills/devops-career-roadmap",
+    "risk": "assess_for_task",
+    "description": "Turn the supplied 30-week DevOps Roadmap by belikeanu into a paced learning plan, project sequence, or portfolio checklist. Use for DevOps beginner roadmaps covering Linux, networking, Git, scripting, Docker, CI/CD, AWS, Terraform, Ansible, Kubernetes, Argo CD, monitoring, logging, security, and job preparation."
   },
   {
     "id": "devops-deploy",
@@ -13073,6 +13209,23 @@
     "description": "Expert firmware analyst specializing in embedded systems, IoT security, and hardware reverse engineering."
   },
   {
+    "id": "first-500-paying-users",
+    "name": "First 500 Paying Users",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill first-500-paying-users",
+    "path": ".agents/skills/first-500-paying-users",
+    "risk": "assess_for_task",
+    "description": "Build an organic customer-research and creator-content experiment from the supplied First 500 Paying Users Playbook. Use when finding creators, grouping public audience complaints, planning useful short videos, checking a product offer, or measuring which content leads to paid users."
+  },
+  {
     "id": "first-principles-engineering-advisor",
     "name": "First Principles Engineering Advisor",
     "module": "Domain & Research Extensions",
@@ -15028,6 +15181,23 @@
     "description": "Build production-ready gRPC services in Go with mTLS, streaming, and observability. Use when designing Protobuf contracts with Buf or implementing secure service-to-service transport."
   },
   {
+    "id": "harvey-sales-agent-guide",
+    "name": "Harvey Sales Agent Guide",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill harvey-sales-agent-guide",
+    "path": ".agents/skills/harvey-sales-agent-guide",
+    "risk": "assess_for_task",
+    "description": "Review or plan a setup of the Harvey/Sellbird AI sales agent using the user-supplied setup guide while checking current upstream documentation, license, provider, and approval settings. Use for Harvey, Sellbird, local prospect research, sales-agent setup, or cold-email workflow questions."
+  },
+  {
     "id": "hashtag-strategy",
     "name": "Hashtag Strategy",
     "module": "Domain & Research Extensions",
@@ -16184,6 +16354,23 @@
     "description": "Extensive icon library and AI-driven icon generation skill for premium UI/UX design."
   },
   {
+    "id": "iconscout-mcp",
+    "name": "Iconscout Mcp",
+    "module": "UI/UX & Motion",
+    "category": "Frontend & Motion",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill iconscout-mcp",
+    "path": ".agents/skills/iconscout-mcp",
+    "risk": "assess_for_task",
+    "description": "Search, inspect, and download design assets from Iconscout's library of 15M+ icons, vector illustrations, 3D icons, and Lottie animations via its MCP server. Use natural language queries to find style-consistent assets and inject them directly into codebases and design files."
+  },
+  {
     "id": "idea-darwin",
     "name": "Idea Darwin",
     "module": "Domain & Research Extensions",
@@ -17134,6 +17321,3270 @@
     "path": ".agents/skills/ito-training",
     "risk": "assess_for_task",
     "description": "Inspect the availability of ML training on a completed It\u00f4 compute booking and, when the canonical backend becomes available, hand off an explicitly confirmed training manifest. Use after ito-compute has booked GPU nodes and the user wants pre-training, fine-tuning, or RL on that metal. ECC implements no training stack of its own."
+  },
+  {
+    "id": "jake-arena-arena",
+    "name": "Jake Arena Arena",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-arena-arena",
+    "path": ".agents/skills/jake-arena-arena",
+    "risk": "assess_for_task",
+    "description": "Make 100 versions of Claude fight to the death over one task. Spins up N sub-agents (default 100, --quick for 16), gives every one the exact same task plus a different strategy card (reasoning mode, workflow, strategy), then runs a single-elimination bracket: they attack each other's solutions, defend and revise, and a judge scores every match on a written rubric until one solution survives. Use when the user is not satisfied with an answer, calls it a bad answer, says try again or do better, says \"arena\", or asks to make them compete."
+  },
+  {
+    "id": "jake-chatgpt-youtube-yt-audit",
+    "name": "Jake Chatgpt Youtube Yt Audit",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-chatgpt-youtube-yt-audit",
+    "path": ".agents/skills/jake-chatgpt-youtube-yt-audit",
+    "risk": "assess_for_task",
+    "description": "Audit a YouTube channel end to end - packaging, consistency, the first fifteen seconds, and what to fix first. Use for \"audit my channel\", \"why isn't my channel growing\", \"review my videos\", or a pasted channel URL."
+  },
+  {
+    "id": "jake-chatgpt-youtube-yt-chapters",
+    "name": "Jake Chatgpt Youtube Yt Chapters",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-chatgpt-youtube-yt-chapters",
+    "path": ".agents/skills/jake-chatgpt-youtube-yt-chapters",
+    "risk": "assess_for_task",
+    "description": "Write YouTube chapters from a transcript, validated against YouTube's own rules so they actually render. Use for \"add chapters\", \"timestamps\", \"break this video into sections\"."
+  },
+  {
+    "id": "jake-chatgpt-youtube-yt-comment",
+    "name": "Jake Chatgpt Youtube Yt Comment",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-chatgpt-youtube-yt-comment",
+    "path": ".agents/skills/jake-chatgpt-youtube-yt-comment",
+    "risk": "assess_for_task",
+    "description": "Draft replies to YouTube comments in the creator's voice, triaged by which ones are worth answering. Use for \"reply to my comments\", \"handle the comment section\", \"someone asked X\", or a pasted comment thread."
+  },
+  {
+    "id": "jake-chatgpt-youtube-yt-edit",
+    "name": "Jake Chatgpt Youtube Yt Edit",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-chatgpt-youtube-yt-edit",
+    "path": ".agents/skills/jake-chatgpt-youtube-yt-edit",
+    "risk": "assess_for_task",
+    "description": "Turn a raw recording's transcript into an edit decision list - dead air, filler cues and retakes, with timecodes. Use for \"edit this\", \"cut the dead space\", \"tighten this video\", \"I rambled\", or any request to shorten footage from a transcript."
+  },
+  {
+    "id": "jake-chatgpt-youtube-yt-package",
+    "name": "Jake Chatgpt Youtube Yt Package",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-chatgpt-youtube-yt-package",
+    "path": ".agents/skills/jake-chatgpt-youtube-yt-package",
+    "risk": "assess_for_task",
+    "description": "Write and lint the title and thumbnail for a YouTube video as one pairing, checking truncation, duplication and vagueness before publish. Use for \"title ideas\", \"what should I call this\", \"thumbnail text\", \"my CTR is bad\", packaging, or any request to rename or repackage an existing video."
+  },
+  {
+    "id": "jake-chatgpt-youtube-yt-plan",
+    "name": "Jake Chatgpt Youtube Yt Plan",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-chatgpt-youtube-yt-plan",
+    "path": ".agents/skills/jake-chatgpt-youtube-yt-plan",
+    "risk": "assess_for_task",
+    "description": "Plan a week or a month of YouTube uploads - what to post, when, and in what order, sized to the creator's actual capacity. Use for \"plan my week\", \"content calendar\", \"what should I post\", \"I have no idea what to make next\"."
+  },
+  {
+    "id": "jake-chatgpt-youtube-yt-retention",
+    "name": "Jake Chatgpt Youtube Yt Retention",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-chatgpt-youtube-yt-retention",
+    "path": ".agents/skills/jake-chatgpt-youtube-yt-retention",
+    "risk": "assess_for_task",
+    "description": "Read a YouTube Studio audience-retention export and find where viewers actually leave, then say what to change. Use for \"why do people stop watching\", \"my retention is bad\", a pasted retention chart or CSV, or \"fix my pacing\"."
+  },
+  {
+    "id": "jake-chatgpt-youtube-yt-script",
+    "name": "Jake Chatgpt Youtube Yt Script",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-chatgpt-youtube-yt-script",
+    "path": ".agents/skills/jake-chatgpt-youtube-yt-script",
+    "risk": "assess_for_task",
+    "description": "Write a YouTube video script from a raw idea - hook options off 21 formulas, scored, then the full spoken script with the retention beats marked. Use whenever the user wants a video script, a hook, an opening line, \"what should I say\", \"write my next video\", or is about to record and does not have the first fifteen seconds yet."
+  },
+  {
+    "id": "jake-chatgpt-youtube-yt-seo",
+    "name": "Jake Chatgpt Youtube Yt Seo",
+    "module": "Technical SEO",
+    "category": "SEO & Discovery",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-chatgpt-youtube-yt-seo",
+    "path": ".agents/skills/jake-chatgpt-youtube-yt-seo",
+    "risk": "assess_for_task",
+    "description": "Write the description, tags and search-facing text for a YouTube video, aimed at the query a real person types. Use for \"write my description\", \"tags\", \"SEO\", \"help this video get found\", \"nobody is finding this\"."
+  },
+  {
+    "id": "jake-chatgpt-youtube-yt-shorts",
+    "name": "Jake Chatgpt Youtube Yt Shorts",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-chatgpt-youtube-yt-shorts",
+    "path": ".agents/skills/jake-chatgpt-youtube-yt-shorts",
+    "risk": "assess_for_task",
+    "description": "Find the Shorts hiding inside a long video and write them, using the transcript to pick self-contained moments. Use for \"cut this into shorts\", \"clip this\", \"repurpose this video\", \"what should I clip\"."
+  },
+  {
+    "id": "jake-chatgpt-youtube-yt-viral",
+    "name": "Jake Chatgpt Youtube Yt Viral",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-chatgpt-youtube-yt-viral",
+    "path": ".agents/skills/jake-chatgpt-youtube-yt-viral",
+    "risk": "assess_for_task",
+    "description": "Find what is actually working in the user's niche on YouTube and rank it by how far each video beat its own channel, then name the formula. Use for \"what's working right now\", \"find viral videos in my niche\", \"why did this blow up\", competitor research, or a swipe file."
+  },
+  {
+    "id": "jake-closer-contract-writer",
+    "name": "Jake Closer Contract Writer",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-closer-contract-writer",
+    "path": ".agents/skills/jake-closer-contract-writer",
+    "risk": "assess_for_task",
+    "description": "Contract Writer. Creates the contract and sends it over for you, after your yes. Turns what was agreed on the call into a plain-English services agreement (services, fee, term, launch, payment, ownership, liability, signature lines), checks the fee against what was actually said on the call or in the proposal, writes a print-ready PDF, drafts the email to send it, and marks the deal won when the signed copy comes back. Use when the user says \"write the contract\", \"send the agreement\", \"draft a services agreement\", \"send the paperwork\", \"they said yes\", or \"they signed\"."
+  },
+  {
+    "id": "jake-closer-follow-up",
+    "name": "Jake Closer Follow Up",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-closer-follow-up",
+    "path": ".agents/skills/jake-closer-follow-up",
+    "risk": "assess_for_task",
+    "description": "Follow-Up. Keeps following up until a call is booked, then stops. Every morning it reads closer/pipeline.json and says who is due a follow-up today, who replied and is waiting on you, who booked, and who is stopped and why. Drafts each follow-up (a bump, then something useful, then a polite last note), waits for your yes, logs it, and stops at the first \"no\", the moment a call is booked, after 3 follow-ups or 30 days. Use when the user says \"follow up\", \"who do I need to follow up with\", \"they haven't replied\", \"chase\", \"nudge\", \"bump this\", \"they replied\", or every morning."
+  },
+  {
+    "id": "jake-closer-forecaster",
+    "name": "Jake Closer Forecaster",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-closer-forecaster",
+    "path": ".agents/skills/jake-closer-forecaster",
+    "risk": "assess_for_task",
+    "description": "Forecaster. Tells you what you'll close this month. Reads every open deal on the board with its stage, value and close date and gives three numbers: commit (contracts out), likely (each deal weighted by the chance for its stage) and best case, deal by deal, plus what you have already won. Shows your real win rate and how long deals take once you have history, and flags what makes the forecast wrong: past close dates, deals with no close date, deals gone quiet. Use when the user says \"forecast\", \"what will I close this month\", \"how's the month looking\", \"revenue projection\", \"win rate\", \"pipeline value\", or at the start of each week."
+  },
+  {
+    "id": "jake-closer-pipeline",
+    "name": "Jake Closer Pipeline",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-closer-pipeline",
+    "path": ".agents/skills/jake-closer-pipeline",
+    "risk": "assess_for_task",
+    "description": "Pipeline Manager. Keeps every deal moving on one board, the CRM the other ten Closer skills share: contacts, deals, stages (lead, contacted, replied, call-booked, proposal, contract-sent, won, lost), every email and call, next steps and a do-not-contact list, all in one plain closer/pipeline.json in your project. Shows the board, one deal's history, moves deals between stages, and validates the file after every change. Use when the user says \"pipeline\", \"board\", \"my deals\", \"CRM\", \"where are we with X\", \"move X to proposal\", \"we won X\", \"we lost X\", \"set up the closer skill\", or wants to replace Salesforce or HubSpot."
+  },
+  {
+    "id": "jake-closer-proposal-writer",
+    "name": "Jake Closer Proposal Writer",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-closer-proposal-writer",
+    "path": ".agents/skills/jake-closer-proposal-writer",
+    "risk": "assess_for_task",
+    "description": "Proposal Writer. Turns the call into a priced proposal the same day. Uses the prospect's own words from the call notes and replies, lays out what you will do, gives two or three clearly priced options (a full build, a monthly plan) with first-year totals, says what it pays back in one true line, recommends one, and ends with a single next step. Drafts the email; it goes out on your yes. Use when the user says \"write a proposal\", \"send pricing\", \"put together a quote\", \"they asked for prices\", \"send options\", or after a good call."
+  },
+  {
+    "id": "jake-closer-prospector",
+    "name": "Jake Closer Prospector",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-closer-prospector",
+    "path": ".agents/skills/jake-closer-prospector",
+    "risk": "assess_for_task",
+    "description": "Prospector. Finds new leads and performs the cold outreach. Builds a list of local businesses from public listings, checks each one's own website for the gap you fix (no online booking, not mobile-friendly, slow, no Google Ads tag, no reviews, no online ordering), ranks them with the reason, puts the best on the board, and writes a short, specific, honest opening email for each one with the legal footer and an opt-out. Every email waits for your yes. Use when the user says \"find me leads\", \"find customers\", \"prospect\", \"cold email\", \"cold outreach\", \"build a lead list\", \"who should I reach out to\", or \"get me new clients\"."
+  },
+  {
+    "id": "jake-closer-record-keeper",
+    "name": "Jake Closer Record Keeper",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-closer-record-keeper",
+    "path": ".agents/skills/jake-closer-record-keeper",
+    "risk": "assess_for_task",
+    "description": "Record Keeper. Logs every email and call for you, so you never update a CRM by hand again. Reads your inbox through the Gmail connector, matches every message to a contact on the board, and logs it (opening, follow-up or reply) into closer/pipeline.json; logs calls with their notes saved to closer/calls/; shows the full timeline with anyone; and lists new addresses writing in that are not contacts yet. Use when the user says \"log this\", \"log my emails\", \"sync my inbox\", \"update the CRM\", \"what's my history with X\", \"save the call notes\", or at the end of every call and every morning."
+  },
+  {
+    "id": "jake-closer-researcher",
+    "name": "Jake Closer Researcher",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-closer-researcher",
+    "path": ".agents/skills/jake-closer-researcher",
+    "risk": "assess_for_task",
+    "description": "Researcher. Reads up on every prospect before the call. Reads the business's own public website (home, about, services, team, contact), pulls out the facts (how they describe themselves, what they offer, how long they have been open, their rating, phone, socials, which booking or ordering tools they use and which they do not) and writes a one-page brief to closer/research/ with talking points and questions to ask, every fact with its source. Use when the user says \"research X\", \"prep me for my call\", \"what do we know about X\", \"look into this lead\", \"brief me\", or before any booked call."
+  },
+  {
+    "id": "jake-closer-sales-coach",
+    "name": "Jake Closer Sales Coach",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-closer-sales-coach",
+    "path": ".agents/skills/jake-closer-sales-coach",
+    "risk": "assess_for_task",
+    "description": "Sales Coach. Listens to your sales call and tells you exactly what to say next. Reads the call's live captions (Google Meet's own captions, read off the page by Claude in Chrome, or any captions file), and the moment the other side raises an objection (\"it's too expensive\", \"let me think about it\", \"I need to ask my partner\", \"we already have someone\") it shows you, and only you, the answer to say next, filled from your real offer. Also flags buying signals and questions you still owe an answer, and reviews the call afterwards (talk time, questions asked, next step). Use when the user says \"coach me on this call\", \"listen to my call\", \"I have a sales call\", \"what do I say if they say it's too expensive\", \"objection\", \"handle objections\", or \"review my call\"."
+  },
+  {
+    "id": "jake-closer-scheduler",
+    "name": "Jake Closer Scheduler",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-closer-scheduler",
+    "path": ".agents/skills/jake-closer-scheduler",
+    "risk": "assess_for_task",
+    "description": "Scheduler. Puts every booked call on your calendar. Reads a reply like \"Thursday at 2 works\" and turns it into the right date and time, checks your calendar for a clash, offers open slots when they ask \"when are you free?\", creates the invite with a Google Meet link from your own calendar after your yes, confirms by email, and moves the deal to call-booked so follow-ups stop. Use when the user says \"book it\", \"schedule a call\", \"put it on my calendar\", \"send an invite\", \"when am I free\", \"they said Thursday works\", or when /follow-up shows a reply with a time."
+  },
+  {
+    "id": "jake-closer-win-back",
+    "name": "Jake Closer Win Back",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-closer-win-back",
+    "path": ".agents/skills/jake-closer-win-back",
+    "risk": "assess_for_task",
+    "description": "Win-Back. Brings back the deals that went quiet. Finds lost deals worth one more try (bad timing, budget, still thinking, no decision) once enough time has passed or on the date they asked you to come back, plus open deals that went silent after every follow-up, and writes one short, honest check-in from the reason it was lost. One win-back per deal, never to anyone who said no or unsubscribed. Use when the user says \"win back\", \"revive old deals\", \"follow up on lost deals\", \"who went quiet\", \"re-engage\", \"dead leads\", or once a week."
+  },
+  {
+    "id": "jake-console-console-anywhere",
+    "name": "Jake Console Console Anywhere",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-console-console-anywhere",
+    "path": ".agents/skills/jake-console-console-anywhere",
+    "risk": "assess_for_task",
+    "description": "Play Anywhere. Builds the port for Windows, Mac, Linux, Steam Deck, Android and PS Vita and packages it without any game files inside. doctor checks this machine's tools for a target and prints the exact install command for anything missing; plan prints the build steps taken from PS2Recomp's own README, android/README.md and vita scripts; package makes a player folder in console/dist/ (the runner, its libraries, an empty game/ folder, PLAYERS.md, a launch script, .recomp.json) and refuses outright if a disc image, PS2 ELF, IRX module, recompiled runner source or other game data is inside; guard runs that check on any folder; recomp-json writes the project's optional .recomp.json. Use when the user says \"put it on my Steam Deck\", \"build it for Android\", \"play it on my phone\", \"on my TV\", \"Vita build\", \"Mac build\", \"package it\", \"make a release folder\", \"is it safe to zip this\", or after the port plays on the machine it was built on."
+  },
+  {
+    "id": "jake-console-console-backend",
+    "name": "Jake Console Console Backend",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-console-console-backend",
+    "path": ".agents/skills/jake-console-console-backend",
+    "risk": "assess_for_task",
+    "description": "Backend Engineer. Builds the engine room the recompiled game runs on: syscalls, kernel stubs, file and disc I/O, the IOP. Reads PS2Recomp runtime logs and turns every \"Unimplemented PS2 stub\", \"[Syscall TODO]\", missing function, unhandled IOP RPC, failed disc read and untranslated instruction into a ranked fix list: count, first PC and RA, and the exact fix tool (a TOML binding, the runtime .cpp file to implement it in, an entry point and a recompile, or a game override). With the user's PS2Recomp checkout it reads the real handler names and syscall numbers. Writes nothing into the checkout; prints a table for console/STATE.md. Use when the user says \"unimplemented stub\", \"syscall TODO\", \"it crashes at boot\", \"fix the backend\", \"it can't find a file\", \"the IOP\", \"what is syscall 0x3C\", or after /console-tester reports a stop."
+  },
+  {
+    "id": "jake-console-console-controller",
+    "name": "Jake Console Console Controller",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-console-console-controller",
+    "path": ".agents/skills/jake-console-console-controller",
+    "risk": "assess_for_task",
+    "description": "Controller Mapper. Hooks the game up to any controller: DualSense, Xbox, Switch Pro, keyboard or touch, remapped how you like. Reads a mapping in console/controls.json (a layout preset plus per-button overrides, radial deadzone, invert Y, stick swap, analog trigger threshold, keyboard keys, two players, Android touch zones) and writes console/ps2_pad.cpp, a drop-in replacement for PS2Recomp's ps2xRuntime/src/lib/ps2_pad.cpp with the same class, signature and DualShock 2 report. Optional input replay and recording for scripted test runs. Backs up the stock file before installing and only touches the PS2Recomp checkout you name. Use when the user says \"my controller doesn't work\", \"remap the buttons\", \"use my Xbox pad\", \"Switch Pro buttons are swapped\", \"invert the camera\", \"keyboard controls\", \"two players\", \"touch controls on Android\", or when /console-tester needs scripted input."
+  },
+  {
+    "id": "jake-console-console-graphics",
+    "name": "Jake Console Console Graphics",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-console-console-graphics",
+    "path": ".agents/skills/jake-console-console-graphics",
+    "risk": "assess_for_task",
+    "description": "Graphics Artist. Rebuilds the graphics: dumps every texture, lets you repaint or replace them with your own art, finds the widescreen fix. Converts PS2 TIM2 textures (.tm2, 32/24/16-bit and 8/4-bit indexed) from the user's own extracted disc to PNG, rebuilds them from edited PNGs at the same size and format (GS registers kept, palettes refit or quantised), finds TIM2 blobs inside archives and puts edited ones back, and lists the 4:3 aspect and FOV constants in the ELF with 16:9 pnach lines to try in PCSX2. Reads the packets the game sends the GS from a RAM dump (DMA chains, VIF codes, GIF tags, every register write) and flags what breaks rendering. Writes to console/textures/ and console/patches/, never into the disc image. Use when the user says \"dump the textures\", \"repaint\", \"replace this texture\", \"my own art\", \"HD textures\", \"make it widescreen\", \"16:9\", \"the picture is stretched\", \"black screen\", \"garbage textures\", \"nothing draws\", or \"how does the port draw\"."
+  },
+  {
+    "id": "jake-console-console-levels",
+    "name": "Jake Console Console Levels",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-console-console-levels",
+    "path": ".agents/skills/jake-console-console-levels",
+    "risk": "assess_for_task",
+    "description": "Level Designer. Maps the disc's data files, unpacks the archives the levels live in, and swaps in your edits. Inventories an extracted PS2 disc (size, type by magic, entropy, a table-of-contents guess with a confidence score), unpacks CRI AFS archives and detected table-of-contents archives into a folder with an index.json, repacks them in the same order and alignment (keeping every offset when your edits fit), diffs two files or folders to show which bytes a change touched, lists strings, and reads the port's log to show which disc files a level loads. Writes under console/ and never modifies the original disc files. Use when the user says \"where are the levels\", \"unpack this archive\", \"what's in DATA.BIN\", \"edit the level\", \"swap in my map\", \"what changed between these two files\", \"which files does stage 3 load\", or before /console-graphics or /console-sound needs a file that sits inside an archive."
+  },
+  {
+    "id": "jake-console-console-mod",
+    "name": "Jake Console Console Mod",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-console-console-mod",
+    "path": ".agents/skills/jake-console-console-mod",
+    "risk": "assess_for_task",
+    "description": "Mod Maker. Describe any change in plain English and Claude builds it into the game: patches, cheats, new behaviour, as code that never touches the original files. Ports PCSX2 .pnach patches to the PS2Recomp port (code writes become ps2_recomp TOML instruction patches, data writes become a C++ game override that writes RDRAM at load or every frame, the rest are flagged for a manual port with the reason) and scaffolds game overrides that bind, replace or wrap a game function with the real PS2Recomp API. Writes to console/patches/, never to the game's files, the generated runner/*.cpp or headers. Use when the user says \"mod this game\", \"add a cheat\", \"infinite health\", \"port this pnach\", \"make my gun do X\", \"change how X works\", \"game override\", \"turn this PCSX2 patch into the port\", or once the port boots and they want to change it."
+  },
+  {
+    "id": "jake-console-console-physics",
+    "name": "Jake Console Console Physics",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-console-console-physics",
+    "path": ".agents/skills/jake-console-console-physics",
+    "risk": "assess_for_task",
+    "description": "Physics Tuner. Finds the numbers that decide how the game moves (speed, gravity, grip, jump height, frame rate) and tunes them. Scans the user's own game ELF for a float32 value stored in data or built in code (lui, ori or addiu, then mtc1), shows the instructions that read it, lists frame-timing candidates, and prints the exact pnach lines to test a new value in PCSX2 plus the PS2Recomp fix (TOML instruction patches or the data write /console-mod bakes in). Reads only; writes nothing. Use when the user says \"make the car faster\", \"lower the gravity\", \"jump higher\", \"more grip\", \"change the damage\", \"wider camera\", \"unlock 60 fps\", \"find the speed value\", or when /console-mod needs a number found."
+  },
+  {
+    "id": "jake-console-console-reverse",
+    "name": "Jake Console Console Reverse",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-console-console-reverse",
+    "path": ".agents/skills/jake-console-console-reverse",
+    "risk": "assess_for_task",
+    "description": "Reverse Engineer. Opens your own disc image, finds the game's code and maps how it works: the boot ELF, every function, the design doc. Drives the whole port and is the entry point of the Console pack. Reads ISO 9660 images without loading them whole, reads SYSTEM.CNF and the boot ELF (segments, CRC-32 and PCSX2 CRC, IRX modules), writes a starter PS2Recomp TOML with real keys only, and keeps console/STATE.md, the memory every /console-* skill reads first. Carries the PS2Recomp rules: never clean the build, never edit generated code or headers, a build gate, and a three-strike circuit breaker. Use when the user says \"port my PS2 game\", \"recompile my game\", \"open my ISO\", \"what's on this disc\", \"set up PS2Recomp\", \"where are we\", \"continue the port\", or at the start of any Console session."
+  },
+  {
+    "id": "jake-console-console-saves",
+    "name": "Jake Console Console Saves",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-console-console-saves",
+    "path": ".agents/skills/jake-console-console-saves",
+    "risk": "assess_for_task",
+    "description": "Save Manager. Brings your old memory card saves over, backs them up and syncs them to the cloud so you continue on any device. Reads PS2 memory card images (PCSX2 .ps2 and .mcd, raw 8 MB dumps, with or without ECC) and PCSX2 folder cards, lists every save with its title, copies saves into the port's folder memory card (mc0 next to the game's ELF), imports and exports single saves as .psu, makes timestamped zip backups, and syncs mc0 with an iCloud Drive, Dropbox, Google Drive or Syncthing folder. Card images are read only; mc0 is backed up before anything replaces a save; a sync never silently overwrites (when both sides changed it keeps both and reports a conflict). Use when the user says \"bring my saves over\", \"import my PCSX2 save\", \"my memory card\", \"back up my saves\", \"sync my saves\", \"continue on my Steam Deck\", \"restore a backup\", \"convert this .psu\", or before the first run of a port that needs a save."
+  },
+  {
+    "id": "jake-console-console-sound",
+    "name": "Jake Console Console Sound",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-console-console-sound",
+    "path": ".agents/skills/jake-console-console-sound",
+    "risk": "assess_for_task",
+    "description": "Sound Designer. Rips the music and sound effects and puts your own tracks back in. Decodes PS2 VAG files and raw SPU2 ADPCM from sound banks (.bd) to WAV, finds VAGs hidden inside archives and disc files, and encodes your own 16-bit WAV back to VAG at the original's sample rate, looping and size. Everything it writes goes under console/audio/; it refuses a replacement bigger than the original unless told otherwise, and never writes into the disc folder or the PS2Recomp checkout. Use when the user says \"rip the music\", \"extract the sound effects\", \"put my song in the game\", \"replace the soundtrack\", \"convert this VAG\", \"what is in this .bd\", \"the music loops wrong\", or after /console-levels finds audio files on the disc."
+  },
+  {
+    "id": "jake-console-console-tester",
+    "name": "Jake Console Console Tester",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-console-console-tester",
+    "path": ".agents/skills/jake-console-console-tester",
+    "risk": "assess_for_task",
+    "description": "Playtester. Runs the port again and again, reads every crash, ranks what to fix next and checks nothing broke. run.py starts ps2EntryRunner with your game's ELF under a hard timeout, kills the whole process tree, keeps the log in console/runs/ and calls the run PASS, HANG, CRASH or FAIL (soak repeats it N times; --input replays a controller script). triage.py reads the runtime's own log lines, clusters them by PC, names the function from your Ghidra CSV map, ranks them and names the /console-* skill that owns each; compare shows fixed, still there and new. abdiff.py finds the first divergence between PCSX2 and the port in register or memory dumps. Use when the user says \"run it\", \"does it boot\", \"test the port\", \"why did it crash\", \"what do I fix next\", \"did that break anything\", \"run it 100 times\", \"compare with PCSX2\", or after every build."
+  },
+  {
+    "id": "jake-day-trader-trader-alerts",
+    "name": "Jake Day Trader Trader Alerts",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-day-trader-trader-alerts",
+    "path": ".agents/skills/jake-day-trader-trader-alerts",
+    "risk": "assess_for_task",
+    "description": "Price Alerts. Rings when a price, a stop or the opening bell hits. Turns the trade plan into three alerts in one go (the stop, the target and \"flat by close\" at your flat-by time), plus above / below / stop / target levels, percent moves from the previous close, any time of day, and the NYSE opening bell, each ringing once so you are not spammed. Knows NYSE hours with the 2026 and 2027 holidays and 1:00 p.m. early closes, works out New York time itself, fetches free delayed quotes (Yahoo chart JSON, Stooq CSV) one ticker at a time, and writes trader/prices.json for sizing and the risk check. Use when the user says \"alert me when\", \"tell me if TSLA hits\", \"watch my stop\", \"watch my trade\", \"remind me to close by 3:55\", \"is the market open\", \"when does the market open\", \"get me a price\", or right after /trader-exit writes a plan."
+  },
+  {
+    "id": "jake-day-trader-trader-analyst",
+    "name": "Jake Day Trader Trader Analyst",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-day-trader-trader-analyst",
+    "path": ".agents/skills/jake-day-trader-trader-analyst",
+    "risk": "assess_for_task",
+    "description": "The Earnings Analyst. Reads a company's reported numbers straight from SEC EDGAR (XBRL company facts from its 10-Qs and 10-Ks, plus the latest earnings 8-K and its press release) and sums up what changed: revenue, gross, operating and net margins, net income and diluted EPS, quarter by quarter, each against the same quarter a year earlier, with the trailing twelve months. Reads an earnings call transcript when you paste one. Use when the user says \"how did Tesla's earnings look\", \"analyze the earnings\", \"what changed this quarter\", \"is revenue growing\", \"check the 10-Q\", \"compare margins\", \"sum up the call\", \"does it report this week\", or before trading a stock around its earnings."
+  },
+  {
+    "id": "jake-day-trader-trader-broker",
+    "name": "Jake Day Trader Trader Broker",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-day-trader-trader-broker",
+    "path": ".agents/skills/jake-day-trader-trader-broker",
+    "risk": "assess_for_task",
+    "description": "Order Executor. Sends approved orders to your broker, paper trading by default, never without your yes. Shows each order as a plain ticket (a bracket shows its stop-loss, take-profit and the max loss at the stop) plus the exact JSON for Alpaca's place_stock_order, records your yes word for word, then Claude's own Allow once / Deny card asks again. Builds the sell ticket that closes a day trade by your flat-by time, records fills, and logs each trade's max loss so trader-risk can hold the daily limit. Covers setting up Alpaca's official MCP server in Claude Desktop (paper by default, keys in env vars, never in chat), the Interactive Brokers connector, and setting order tools to \"Needs approval\". Use when the user says \"place the order\", \"buy it\", \"execute\", \"send it to my broker\", \"close my position\", \"flatten\", \"get me out\", \"connect Alpaca\", \"set up paper trading\", or after /trader-risk passes."
+  },
+  {
+    "id": "jake-day-trader-trader-budget",
+    "name": "Jake Day Trader Trader Budget",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-day-trader-trader-budget",
+    "path": ".agents/skills/jake-day-trader-trader-budget",
+    "risk": "assess_for_task",
+    "description": "Budget Manager. Sizes every position to your budget and your max loss per trade. Reads the trade plan from trader-exit (entry, stop, target), finds the whole shares that fit inside four limits (max loss per trade, position cap, max order, cash after your buffer), says which limit decided it, and writes ONE bracket order (entry, stop-loss, take-profit) to trader/orders.json in the exact shape of Alpaca's place_stock_order. A stop too far away for your max loss is a plain refusal, not a smaller order. Nothing is placed. Use when the user says \"how many shares\", \"size this trade\", \"how much should I buy\", \"I have $5,000\", \"I only want to risk $50 a trade\", \"set my rules\", \"keep 10% in cash\", or after /trader-exit writes a plan."
+  },
+  {
+    "id": "jake-day-trader-trader-entry",
+    "name": "Jake Day Trader Trader Entry",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-day-trader-trader-entry",
+    "path": ".agents/skills/jake-day-trader-trader-entry",
+    "risk": "assess_for_task",
+    "description": "Entry Timer. Watches a setup bar by bar and tells you the moment to get in. Reads free Yahoo 1-minute or 5-minute bars, builds the opening range (the first 15 minutes by default) and calls the entry on the first completed bar that CLOSES above the range high, or above a level you give it (like a 20-day high from the scanner), with an optional volume check. Says waiting and how far, triggered with the time and the price, expired, or not open yet, and writes trader/entry.json for /trader-exit. Long side only. It never places an order. Use when the user says \"tell me when to get in\", \"watch TSLA\", \"has it broken out\", \"did it break the opening range\", \"entry signal\", \"time my entry\", \"check my watchlist\", or after /trader-scanner and /trader-news, before /trader-exit."
+  },
+  {
+    "id": "jake-day-trader-trader-exit",
+    "name": "Jake Day Trader Trader Exit",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-day-trader-trader-exit",
+    "path": ".agents/skills/jake-day-trader-trader-exit",
+    "risk": "assess_for_task",
+    "description": "Exit Planner. Sets your stop and your target before you enter, so you know when to get out. Reads the entry from trader-entry (or a price you give), puts the stop at the opening-range midpoint by default (or the range low, your price, a percent, or a multiple of the ATR), rounds it down to the cent, and sets the target at 2R (or 1R, or your price). Refuses a stop at or above the entry, a target at or below it, or a stop too tight to survive the spread, and says why. Writes trader/plan.json for the Time Machine, the Budget Manager and Price Alerts. Long side only. Use when the user says \"where's my stop\", \"set my stop and target\", \"plan the exit\", \"when do I get out\", \"stop loss\", \"what's my R\", \"risk reward\", or right after /trader-entry triggers, before /trader-timemachine."
+  },
+  {
+    "id": "jake-day-trader-trader-news",
+    "name": "Jake Day Trader Trader News",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-day-trader-trader-news",
+    "path": ".agents/skills/jake-day-trader-trader-news",
+    "risk": "assess_for_task",
+    "description": "News Monitor. Tracks breaking news on every stock you watch and flags what moves it: Yahoo Finance headlines per ticker, each company's 8-K filings on SEC EDGAR (earnings, CEO changes, deals, restatements, bankruptcy) and how far each stock is from yesterday's close. Shows only what is new since the last check, newest first, in New York time, tags each item (earnings, analyst, deal, halt, regulatory, macro...) and never repeats one. Use when the user says \"any news on TSLA\", \"why is this moving\", \"what's the news on my watchlist\", \"morning briefing\", \"pre-market news\", \"monitor the news\", \"did anything break\", \"check the 8-Ks\", or after /trader-scanner finds setups."
+  },
+  {
+    "id": "jake-day-trader-trader-pelosi",
+    "name": "Jake Day Trader Trader Pelosi",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-day-trader-trader-pelosi",
+    "path": ".agents/skills/jake-day-trader-trader-pelosi",
+    "risk": "assess_for_task",
+    "description": "The Pelosi Tracker. Watches the stock trades members of Congress must disclose under the STOCK Act: reads the House Clerk's public Periodic Transaction Reports (PTRs) as soon as they are posted, alerts once per new filing, and turns each PDF into clean rows (who, owner, stock, ticker, buy or sell, options strike and expiry, trade date, amount range, how many days it took to disclose). Flags trades in stocks you hold. Senate reports are covered by a documented manual route. Use when the user says \"what is Pelosi buying\", \"track Nancy Pelosi\", \"Congress trades\", \"politician stock trades\", \"did any congressman buy X\", \"alert me when Pelosi files\", or \"run the Pelosi skill\"."
+  },
+  {
+    "id": "jake-day-trader-trader-risk",
+    "name": "Jake Day Trader Trader Risk",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-day-trader-trader-risk",
+    "path": ".agents/skills/jake-day-trader-trader-risk",
+    "risk": "assess_for_task",
+    "description": "Risk Manager. Checks every trade against your limits and stops anything over them, before it can reach the broker. For a day trade: a stop is required, the loss at the stop must fit your max loss per trade (measured from the higher of the plan's entry and a fresh price), reward:risk must meet your minimum, the day's total risk must fit your daily loss limit, no more than your trades per day, and no new entries outside your entry window or when the market is closed. It also keeps the basics: blocked tickers, order size, position cap, cash buffer, margin, short sales, options and crypto, malformed or bad bracket orders, duplicates and a daily order limit. Getting out is never blocked by a day limit. Prints PASS or BLOCK with the reason and records the verdicts so trader-broker only shows an order that passed. Use when the user says \"check my order\", \"is this safe\", \"risk check\", \"does this break my rules\", \"can I take this trade\", \"how much have I risked today\", or before /trader-broker, always."
+  },
+  {
+    "id": "jake-day-trader-trader-scanner",
+    "name": "Jake Day Trader Trader Scanner",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-day-trader-trader-scanner",
+    "path": ".agents/skills/jake-day-trader-trader-scanner",
+    "risk": "assess_for_task",
+    "description": "Chart Scanner. Scans thousands of charts for setups: opening-range breakouts, flags, oversold bounces. Builds the list of US-listed common stocks, ordinary shares and ADRs from Nasdaq Trader's symbol directories, runs a pre-market scan of daily closes (20-day closing-high breakout, bull flag, reclaimed the 20-day average, oversold, oversold bounce) and an intraday opening-range breakout scan on 5-minute bars, then writes trader/watchlist.json for trader-news and trader-entry. Free Yahoo data, bar by bar. Use when the user says \"scan the market\", \"find me setups\", \"what is breaking out\", \"opening range breakouts\", \"scan for bull flags\", \"oversold stocks\", \"pre-market scan\", \"build my watchlist\", \"what should I look at today\", or at the start of a trading day before /trader-news."
+  },
+  {
+    "id": "jake-day-trader-trader-timemachine",
+    "name": "Jake Day Trader Trader Timemachine",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-day-trader-trader-timemachine",
+    "path": ".agents/skills/jake-day-trader-trader-timemachine",
+    "risk": "assess_for_task",
+    "description": "Time Machine. Replays every possible outcome of a trade before you risk a dollar: 10,000 simulated sessions plus every past time the setup fired. Takes the plan from trader-exit (entry, stop, target), rebuilds the rest of the day 10,000 times from the stock's own 5-minute bars over the last 60 days, and re-runs the same rule on every past session. Prints the odds of target first, stop first, or neither by the close, where the price sits at the close, the average R, the history, and one honest verdict, then hands off to /trader-budget. Use when the user says \"run the time machine\", \"replay this trade\", \"what are the odds\", \"simulate this trade\", \"monte carlo\", \"backtest this setup\", \"how often does this hit the target\", \"is this a coin flip\", or after /trader-exit writes a plan, before /trader-budget."
+  },
+  {
+    "id": "jake-duel-duel",
+    "name": "Jake Duel Duel",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-duel-duel",
+    "path": ".agents/skills/jake-duel-duel",
+    "risk": "assess_for_task",
+    "description": "Have an OpenAI model challenge Claude's answer, then defend or revise it through a short evidence-led debate. Use for \"duel this with ChatGPT\", \"face off this answer\", or an explicit request for a second model to critique an answer."
+  },
+  {
+    "id": "jake-founder-founder-board",
+    "name": "Jake Founder Founder Board",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-founder-founder-board",
+    "path": ".agents/skills/jake-founder-founder-board",
+    "risk": "assess_for_task",
+    "description": "Your board of directors. Puts a business idea in front of a three-member board, each a sub-agent reading the idea through one published framework: the Offers lens (from Alex Hormozi's $100M Offers), the Monopoly lens (from Peter Thiel's Zero to One) and the Product lens (from Walter Isaacson's biography of Steve Jobs). Each member scores the idea, names the risks that would kill it and votes fund, fund with conditions, or pass. Use when the user says \"test my business idea\", \"would this work\", \"pressure-test this\", \"what would a board say\", \"is this a good business\", or starts the founder pack on a new idea."
+  },
+  {
+    "id": "jake-founder-founder-brand",
+    "name": "Jake Founder Founder Brand",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-founder-founder-brand",
+    "path": ".agents/skills/jake-founder-founder-brand",
+    "risk": "assess_for_task",
+    "description": "Your brand designer. Names the business (with the trademark, domain and handle checks to run before falling in love with a name), writes the voice, a one-line promise and a tagline, and briefs the look: colours, type, logo and the first things a customer sees, so they match the positioning the marketing director chose. Use when the user says \"name my business\", \"brand this\", \"logo\", \"brand identity\", \"what should it look like\", \"tagline\", or \"brand voice\"."
+  },
+  {
+    "id": "jake-founder-founder-cfo",
+    "name": "Jake Founder Founder Cfo",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-founder-founder-cfo",
+    "path": ".agents/skills/jake-founder-founder-cfo",
+    "risk": "assess_for_task",
+    "description": "Your CFO. Builds the unit economics of a business before money is spent: what one unit earns after its direct costs, the real profit margin at the planned volume, the break-even point in units a day, year 1 month by month, the cash needed before it pays for itself, how long the startup spend takes to earn back, and what happens if the price drops, sales come in low or costs rise. Every number traces to an input the user can check. Use when the user says \"find the profit margins\", \"do the numbers\", \"is this profitable\", \"break-even\", \"unit economics\", \"how much do I need to start\", or \"run the CFO\"."
+  },
+  {
+    "id": "jake-founder-founder-competitors",
+    "name": "Jake Founder Founder Competitors",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-founder-founder-competitors",
+    "path": ".agents/skills/jake-founder-founder-competitors",
+    "risk": "assess_for_task",
+    "description": "Maps every competitor and the gap they leave. Finds the direct competitors, indirect ones and the substitutes a buyer would use instead, from public sources only, and records what each sells, at what price, how they position themselves and what their customers complain about in public reviews, every fact with a link. Ends with a positioning map and the gap the new business can own. Use when the user says \"who are my competitors\", \"is this market crowded\", \"what else is out there\", \"competitor analysis\", \"find the gap\", or \"who am I up against\"."
+  },
+  {
+    "id": "jake-founder-founder-consumer",
+    "name": "Jake Founder Founder Consumer",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-founder-founder-consumer",
+    "path": ".agents/skills/jake-founder-founder-consumer",
+    "risk": "assess_for_task",
+    "description": "The consumer panel. Spins up a swarm of buyer sub-agents (default 100, --quick for 20) trained on the user's target customer, each with a different income, age, buying behaviour and objection, shows every one the same pitch, and runs the business through 100 buyer scenarios to see who buys, who doesn't, and why. Tallies the answers into buy rates by segment, the reasons people pass in their own words, what would flip a no, and price answers for founder-pricing. Use when the user says \"would people buy this\", \"test it on customers\", \"run the consumer panel\", \"simulate buyers\", \"who is my customer\", or \"validate demand\"."
+  },
+  {
+    "id": "jake-founder-founder-launch",
+    "name": "Jake Founder Founder Launch",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-founder-founder-launch",
+    "path": ".agents/skills/jake-founder-founder-launch",
+    "risk": "assess_for_task",
+    "description": "Your launch lead. Builds a dated, step-by-step launch plan: a cheap real-world test first (a waitlist, a pre-sale or a pop-up with a real price, so real buyers confirm what the simulated panel said), then the countdown to opening day with owners and deadlines, the launch-day run sheet, and the first 30 days of what to measure and what to change. Use when the user says \"how do I launch\", \"launch plan\", \"when can I open\", \"launch checklist\", \"go live\", or \"soft open\"."
+  },
+  {
+    "id": "jake-founder-founder-marketing",
+    "name": "Jake Founder Founder Marketing",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-founder-founder-marketing",
+    "path": ".agents/skills/jake-founder-founder-marketing",
+    "risk": "assess_for_task",
+    "description": "Your marketing director. Turns the buyer panel and the competitor map into positioning, the channels the target customer actually uses, a 30-day launch campaign with dated posts and ads, the first ten hooks, a budget split and the numbers to watch. Every message answers an objection real or simulated buyers raised. Use when the user says \"how do I market this\", \"marketing plan\", \"launch campaign\", \"how do I get customers\", \"where do I advertise\", \"write my ads\", or \"positioning\"."
+  },
+  {
+    "id": "jake-founder-founder-offer",
+    "name": "Jake Founder Founder Offer",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-founder-founder-offer",
+    "path": ".agents/skills/jake-founder-founder-offer",
+    "risk": "assess_for_task",
+    "description": "Builds an offer too good to refuse. Lists every problem the buyer hits on the way to the result they want, turns each into a solution, trims to what is cheap to deliver and valuable to the buyer, and stacks it with honest bonuses, a guarantee the CFO can afford, real urgency and a clear name. Scores it on the value equation (outcome, likelihood, time, effort) and re-tests it on a quick buyer panel. Use when the user says \"make my offer better\", \"why won't people buy\", \"what should I include\", \"guarantee\", \"bonuses\", \"grand slam offer\", or after the panel shows people passing."
+  },
+  {
+    "id": "jake-founder-founder-ops",
+    "name": "Jake Founder Founder Ops",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-founder-founder-ops",
+    "path": ".agents/skills/jake-founder-founder-ops",
+    "risk": "assess_for_task",
+    "description": "Your operations manager. Works out how the business actually runs on day one: suppliers and what they cost, who works when, the step-by-step routines for opening, serving or shipping and closing, the tools to run it, the licences and permits to check, and a risk register with what to do when each thing goes wrong. Feeds real costs back to the CFO. Use when the user says \"how do I run this\", \"operations\", \"suppliers\", \"staffing\", \"SOPs\", \"what do I need to open\", \"permits\", or \"day one\"."
+  },
+  {
+    "id": "jake-founder-founder-plan",
+    "name": "Jake Founder Founder Plan",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-founder-founder-plan",
+    "path": ".agents/skills/jake-founder-founder-plan",
+    "risk": "assess_for_task",
+    "description": "Your business planner. Compiles everything the other founder skills wrote (the board's verdict, the competitors, the buyer panel, pricing, the offer, the CFO's numbers, marketing, brand, operations and the launch plan) into one business plan with a verdict at the top that is computed from the numbers, never written by hand: Profitable, Not yet (with the failing numbers) or Incomplete. Adds an executive summary and a one-page version for a partner, lender or investor. Use when the user says \"write my business plan\", \"put it all together\", \"is it profitable\", \"give me the plan\", or at the end of the founder pack."
+  },
+  {
+    "id": "jake-founder-founder-pricing",
+    "name": "Jake Founder Founder Pricing",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-founder-founder-pricing",
+    "path": ".agents/skills/jake-founder-founder-pricing",
+    "risk": "assess_for_task",
+    "description": "Finds the price buyers will actually pay. Reads the consumer panel's four price answers per buyer into a Van Westendorp price-sensitivity range (too cheap, a bargain, getting expensive, too expensive), sets it against what competitors really charge and against the CFO's margin, and recommends a price, a price ladder (good / better / best) and an opening offer to test. Use when the user says \"how much should I charge\", \"price this\", \"is $X too expensive\", \"pricing strategy\", \"what price\", or after the consumer panel."
+  },
+  {
+    "id": "jake-hunter-hunter-apply",
+    "name": "Jake Hunter Hunter Apply",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-hunter-hunter-apply",
+    "path": ".agents/skills/jake-hunter-hunter-apply",
+    "risk": "assess_for_task",
+    "description": "The Application Assistant. Fills the user's job applications from their own saved answers and leaves every one as a draft for them to review and submit: maps each form question to hunter/profile.json (name, links, work authorization, sponsorship, start date, relocation and more), flags what only the user can answer (salary, voluntary self-identification, anything not in the profile), runs a per-application checklist (tailored resume, cover letter, research, warm intro), fills the form in the user's browser with Claude in Chrome and stops before Submit. Use when the user says \"apply to this job\", \"fill out the application\", \"fill the Greenhouse form\", \"prep my application\", \"what's left before I apply\", or \"save it as a draft\"."
+  },
+  {
+    "id": "jake-hunter-hunter-connector",
+    "name": "Jake Hunter Hunter Connector",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-hunter-hunter-connector",
+    "path": ".agents/skills/jake-hunter-hunter-connector",
+    "risk": "assess_for_task",
+    "description": "The Connector. Finds the hiring manager for a role (from the posting, the team page and a LinkedIn search the user runs), researches them from public professional information only, works out their likely work email with a confidence, drafts a personalized email and a LinkedIn note, and keeps the conversation going with polite, rule-bound follow-ups until a coffee chat is booked on the user's calendar. Nothing goes out without the user's yes for that exact message, every message is sent from the user's own accounts, and the stop rules end a thread at the first no. Use when the user says \"find the hiring manager\", \"reach out to the team\", \"get me a warm intro\", \"email the manager\", \"set up a coffee chat\", \"who is hiring for this role\", or \"follow up with Maya\"."
+  },
+  {
+    "id": "jake-hunter-hunter-cover",
+    "name": "Jake Hunter Hunter Cover",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-hunter-hunter-cover",
+    "path": ".agents/skills/jake-hunter-hunter-cover",
+    "risk": "assess_for_task",
+    "description": "Cover Letter Writer. Writes a specific cover letter for every application: addressed to the hiring manager or the team, opening with something real about the company or the team from the research brief, one paragraph of proof from the tailored resume (a result with a number), why this team, and a clear ask, in 150 to 400 words. Then checks it with cover.py: company, role and team named, at least one concrete proof point, no banned cliches, no leftover placeholders, no other company's name pasted in, every number traceable to the resume, reading level. Use when the user says \"write a cover letter\", \"cover letter for Google\", \"do I need a cover letter\", \"make this letter better\", \"check my cover letter\", or after /hunter-resume."
+  },
+  {
+    "id": "jake-hunter-hunter-followup",
+    "name": "Jake Hunter Hunter Followup",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-hunter-hunter-followup",
+    "path": ".agents/skills/jake-hunter-hunter-followup",
+    "risk": "assess_for_task",
+    "description": "Follow-up Manager. Sends polite follow-ups so no thread goes cold, and stops before anyone feels chased. Every morning it reads hunter/pipeline.json and lists what is due today: follow-ups on unanswered outreach, replies waiting on you, drafts waiting for your yes, applications with no news after 10 days, thank-you notes after interviews and coffee chats, and anyone the stop rules have closed (first \"no\", 2 follow-ups, 21 days of silence, a stop request honoured forever). Drafts each message from a polite template; you approve, it goes out from your account, and it is logged. Use when the user says \"follow up\", \"who do I need to follow up with\", \"nudge\", \"they haven't replied\", \"check on my application\", \"thank-you note\", or every morning."
+  },
+  {
+    "id": "jake-hunter-hunter-interview",
+    "name": "Jake Hunter Hunter Interview",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-hunter-hunter-interview",
+    "path": ".agents/skills/jake-hunter-hunter-interview",
+    "risk": "assess_for_task",
+    "description": "Interview Coach. Runs mock interviews with the questions this company actually asks, from a question bank that cites each company's own published interview-prep pages (Google, Meta, NVIDIA, Netflix, Amazon) and marks everything else as community-reported. Shows the company's interview loop, asks one question at a time, checks every answer for Situation, Task, Action, Result and a number, coaches the weak part, logs the session and tells you what to practice next. Use when the user says \"mock interview\", \"practice interview\", \"prep me for Google\", \"what does Amazon ask\", \"Leadership Principles\", \"behavioral questions\", \"STAR\", \"system design practice\", \"interview tomorrow\", or when a role moves to screen or interview."
+  },
+  {
+    "id": "jake-hunter-hunter-linkedin",
+    "name": "Jake Hunter Hunter Linkedin",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-hunter-hunter-linkedin",
+    "path": ".agents/skills/jake-hunter-hunter-linkedin",
+    "risk": "assess_for_task",
+    "description": "The LinkedIn Optimizer. Rewrites the user's LinkedIn headline, About, skills and experience for the job they want, using only what is true, then checks the draft against LinkedIn's field limits (headline, About, skills count, position title and description) and against the keywords of the target job description, with a before/after report: coverage, required terms, what was gained and what is still missing. The user pastes the final text into LinkedIn themselves. Use when the user says \"optimize my LinkedIn\", \"rewrite my headline\", \"fix my About section\", \"LinkedIn for this job\", \"what skills should I list\", or \"make recruiters find me\"."
+  },
+  {
+    "id": "jake-hunter-hunter-research",
+    "name": "Jake Hunter Hunter Research",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-hunter-hunter-research",
+    "path": ".agents/skills/jake-hunter-hunter-research",
+    "risk": "assess_for_task",
+    "description": "The Company Researcher. Researches each company the user is applying to and writes a one-page brief in hunter/companies/: the business from its own SEC filings (latest 10-K, 10-Q, recent 8-Ks with what each one is about), news from the company's own blogs, the culture in the company's own words, the team the user would join, and the interview loop with a source on every line (official prep pages for Google, Meta, NVIDIA, Netflix and Amazon, everything else marked community-reported). Use when the user says \"research Google\", \"tell me about this company\", \"company brief\", \"prep me for Meta\", \"what's their interview process\", \"what does this team do\", or before a coffee chat or interview."
+  },
+  {
+    "id": "jake-hunter-hunter-resume",
+    "name": "Jake Hunter Hunter Resume",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-hunter-hunter-resume",
+    "path": ".agents/skills/jake-hunter-hunter-resume",
+    "risk": "assess_for_task",
+    "description": "Resume Writer. Rewrites your resume for each role so it reads like the job description, using only what is true: it mirrors the posting's own words for skills you really have, moves buried results into strong bullets (a number, a strong verb, one line), reorders for the role, and asks you about anything the posting wants that the resume does not show. Scores the match from 0 to 100 with a published formula (minimum qualifications, preferred qualifications, bullet strength, sections) and runs a truth check that fails if the rewrite adds a number or a skill that was not in your original. Use when the user says \"rewrite my resume\", \"tailor my resume\", \"ATS score\", \"beat the ATS\", \"match my resume to this job\", \"resume for Google\", \"improve my bullets\", or after /hunter-scout picks a role."
+  },
+  {
+    "id": "jake-hunter-hunter-salary",
+    "name": "Jake Hunter Hunter Salary",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-hunter-hunter-salary",
+    "path": ".agents/skills/jake-hunter-hunter-salary",
+    "risk": "assess_for_task",
+    "description": "Salary Negotiator. Benchmarks the role and scripts your counter-offer. Turns an offer into total compensation year by year (base, bonus target, equity with its real vesting schedule including back-loaded ones, sign-on), compares offers side by side, pulls wage percentiles from the U.S. Bureau of Labor Statistics (OEWS) for your occupation and area, adds pay ranges printed in job postings with their URL, and writes a counter range and a polite script that cites every number. Never invents a market number. Use when the user says \"I got an offer\", \"negotiate my salary\", \"is this offer good\", \"compare offers\", \"counter offer\", \"what should I ask for\", \"total compensation\", \"RSU vesting\", or when a role reaches the offer stage."
+  },
+  {
+    "id": "jake-hunter-hunter-scout",
+    "name": "Jake Hunter Hunter Scout",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-hunter-hunter-scout",
+    "path": ".agents/skills/jake-hunter-hunter-scout",
+    "risk": "assess_for_task",
+    "description": "The Job Scout. Finds the best open roles for the user's profile and ranks them by fit: pulls live listings from public job boards that need no login (Greenhouse, Lever, Ashby, NVIDIA's Workday board, Netflix's careers search), filters by title, place, remote and how recent, scores every listing 0-100 against hunter/profile.json with the reasons (title, skills, location, seniority, pay range, freshness), writes hunter/jobs.json and adds the user's picks to the pipeline. Gives the manual route for Google, Meta and Amazon, whose careers sites cannot be read by a script. Use when the user says \"find me jobs\", \"best listings for me\", \"scout roles\", \"what's open at Google\", \"search Software Engineer jobs\", \"rank these jobs\", or \"where should I apply\"."
+  },
+  {
+    "id": "jake-hunter-hunter-tracker",
+    "name": "Jake Hunter Hunter Tracker",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-hunter-hunter-tracker",
+    "path": ".agents/skills/jake-hunter-hunter-tracker",
+    "risk": "assess_for_task",
+    "description": "Pipeline Tracker. Tracks every role, contact and next step in one pipeline: hunter/pipeline.json, the single file every hunter skill reads and writes. Adds and updates roles and contacts, moves roles through the stages (saved, applied, screen, interview, onsite, offer, rejected, withdrawn), shows a summary by stage, what is coming up this week, what has gone stale, and exports CSV for a spreadsheet. Owns the pipeline schema and validates it after every change. Use when the user says \"show my pipeline\", \"where am I with each application\", \"add this job\", \"I applied\", \"I got an interview\", \"I got rejected\", \"what's next\", \"what's stale\", \"export my applications\", or \"track this\"."
+  },
+  {
+    "id": "jake-illegal-codes-67",
+    "name": "Jake Illegal Codes 67",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-illegal-codes-67",
+    "path": ".agents/skills/jake-illegal-codes-67",
+    "risk": "assess_for_task",
+    "description": "Runs the task through six agents in parallel, each locked to a different strategy, then a seventh judge ranks the six attempts and synthesizes a final answer that steals the strongest part of each; invoke via /67 for high-stakes or open-ended work where a single attempt would leave quality on the table."
+  },
+  {
+    "id": "jake-illegal-codes-aura-farming",
+    "name": "Jake Illegal Codes Aura Farming",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-illegal-codes-aura-farming",
+    "path": ".agents/skills/jake-illegal-codes-aura-farming",
+    "risk": "assess_for_task",
+    "description": "Maximum-aesthetic mode for any visual deliverable (Meta ads, slide decks, landing pages, social graphics, posters, UI) that bans every AI-slop tell, forces a real design direction, and audits the result before shipping; invoke via /aura-farming whenever a visual is being created and it needs to look like a designer made it."
+  },
+  {
+    "id": "jake-illegal-codes-china-maxing",
+    "name": "Jake Illegal Codes China Maxing",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-illegal-codes-china-maxing",
+    "path": ".agents/skills/jake-illegal-codes-china-maxing",
+    "risk": "assess_for_task",
+    "description": "Session mode that translates every sub-agent prompt into Mandarin before dispatch (more meaning per character, fewer tokens) while keeping code, identifiers, and all user-facing output in English; invoke via /china-maxing at the start of any session that will fan out sub-agents and the token bill matters."
+  },
+  {
+    "id": "jake-illegal-codes-crash-out",
+    "name": "Jake Illegal Codes Crash Out",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-illegal-codes-crash-out",
+    "path": ".agents/skills/jake-illegal-codes-crash-out",
+    "risk": "assess_for_task",
+    "description": "Anti-hallucination mode where Claude drafts an answer and then becomes obsessed with proving itself wrong, attacking every claim with tools and counter-evidence and shipping only what survives; invoke via /crash-out on factual questions, debugging, research, or any answer where confident-and-wrong is expensive."
+  },
+  {
+    "id": "jake-illegal-codes-larp",
+    "name": "Jake Illegal Codes Larp",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-illegal-codes-larp",
+    "path": ".agents/skills/jake-illegal-codes-larp",
+    "risk": "assess_for_task",
+    "description": "Startup idea analyzer that channels a 24-year-old founder with Euro Summer photos and a $100M raise for a ChatGPT wrapper, runs the idea through a rigorous teardown underneath the bit, and assembles the strongest possible business model and pitch; invoke via /larp when the user shares a business, app, or product idea worth pressure-testing."
+  },
+  {
+    "id": "jake-instagram-ig-audit",
+    "name": "Jake Instagram Ig Audit",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-instagram-ig-audit",
+    "path": ".agents/skills/jake-instagram-ig-audit",
+    "risk": "assess_for_task",
+    "description": "Post-mortem on what the user has already posted - which reels actually worked, why, and what to stop making. Use when the user pastes their Instagram insights or past posts and asks \"what's working\", \"why did this flop\", \"read my analytics\", \"audit my content\", or wants to know what to do more of."
+  },
+  {
+    "id": "jake-instagram-ig-caption",
+    "name": "Jake Instagram Ig Caption",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-instagram-ig-caption",
+    "path": ".agents/skills/jake-instagram-ig-caption",
+    "risk": "assess_for_task",
+    "description": "Write the Instagram caption - the line that survives the \"... more\" cut, the body, the single ask, the search terms and the three hashtags - and lint it before it goes out. Use when the user says \"write the caption\", \"caption this\", \"what do I put in the description\", has a reel or a carousel ready and needs the text, or asks about hashtags."
+  },
+  {
+    "id": "jake-instagram-ig-carousel",
+    "name": "Jake Instagram Ig Carousel",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-instagram-ig-carousel",
+    "path": ".agents/skills/jake-instagram-ig-carousel",
+    "risk": "assess_for_task",
+    "description": "Build an Instagram carousel - the cover that earns the swipe, slide-by-slide copy, and the 1080x1350 files to upload. Use when the user says \"carousel\", \"slides\", \"swipe post\", \"turn this into a carousel\", or has a list-shaped or step-shaped idea that would die as a single image."
+  },
+  {
+    "id": "jake-instagram-ig-comment",
+    "name": "Jake Instagram Ig Comment",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-instagram-ig-comment",
+    "path": ".agents/skills/jake-instagram-ig-comment",
+    "risk": "assess_for_task",
+    "description": "Write comments on other people's Instagram posts and reels that read as a person with an opinion, not a bot. Use when the user pastes a post or a reel and wants a comment, says \"comment on this\", \"engage with this\", \"what do I say here\", or wants a batch for their daily engagement round."
+  },
+  {
+    "id": "jake-instagram-ig-dm",
+    "name": "Jake Instagram Ig Dm",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-instagram-ig-dm",
+    "path": ".agents/skills/jake-instagram-ig-dm",
+    "risk": "assess_for_task",
+    "description": "Write Instagram DMs that get replies - the keyword delivery, the first message to someone who engaged, the collab pitch, and the two follow-ups. Use when the user says \"DM this person\", \"what do I send them\", \"outreach message\", \"how do I follow up\", \"pitch this brand\", or is reaching out to someone specific."
+  },
+  {
+    "id": "jake-instagram-ig-human",
+    "name": "Jake Instagram Ig Human",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-instagram-ig-human",
+    "path": ".agents/skills/jake-instagram-ig-human",
+    "risk": "assess_for_task",
+    "description": "Strip the machine fingerprint out of any draft - em dashes, AI slop words, invisible watermark characters - and score it against a five-check detection panel before it goes out. Use whenever text needs to sound human, when the user says humanize, \"does this sound like AI\", \"remove the em dashes\", \"de-slop this\", \"this sounds like ChatGPT\", or before any caption, script, comment, reply or DM is shown to the user."
+  },
+  {
+    "id": "jake-instagram-ig-plan",
+    "name": "Jake Instagram Ig Plan",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-instagram-ig-plan",
+    "path": ".agents/skills/jake-instagram-ig-plan",
+    "risk": "assess_for_task",
+    "description": "Build the week on Instagram - what to post, which format, when, and who to engage with. Use when the user says \"plan my week\", \"what should I post\", \"content calendar\", \"I have nothing to post about\", or wants a posting schedule and an engagement list."
+  },
+  {
+    "id": "jake-instagram-ig-profile",
+    "name": "Jake Instagram Ig Profile",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-instagram-ig-profile",
+    "path": ".agents/skills/jake-instagram-ig-profile",
+    "risk": "assess_for_task",
+    "description": "Score an Instagram profile out of 100 against a 12-part rubric and rewrite the parts that lose points - name field, bio, link, highlights, pinned three, grid. Use when the user says \"optimize my profile\", \"fix my bio\", \"score my Instagram\", \"why don't people follow me\", or pastes their profile and asks how it reads."
+  },
+  {
+    "id": "jake-instagram-ig-reel",
+    "name": "Jake Instagram Ig Reel",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-instagram-ig-reel",
+    "path": ".agents/skills/jake-instagram-ig-reel",
+    "risk": "assess_for_task",
+    "description": "Write an Instagram Reel from a raw idea - hook options off 26 formulas, the spoken script, the on-screen text, and a timed beat sheet - in the user's own voice and scored before they shoot it. Use whenever the user wants a Reel, a short-form video script, a hook, a voiceover, \"make a reel about X\", \"what should I say in this video\", or is about to record and does not have the first line yet."
+  },
+  {
+    "id": "jake-instagram-ig-reply",
+    "name": "Jake Instagram Ig Reply",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-instagram-ig-reply",
+    "path": ".agents/skills/jake-instagram-ig-reply",
+    "risk": "assess_for_task",
+    "description": "Handle the comments under the user's own reels and posts - draft replies to the ones worth answering, sorted by which ones are. Use when the user pastes their comments, says \"reply to these\", \"handle my comments\", \"someone said X on my reel\", or is dealing with a critic, a hater or a lead in the comments."
+  },
+  {
+    "id": "jake-instagram-ig-repurpose",
+    "name": "Jake Instagram Ig Repurpose",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-instagram-ig-repurpose",
+    "path": ".agents/skills/jake-instagram-ig-repurpose",
+    "risk": "assess_for_task",
+    "description": "Turn one long asset - a YouTube video, podcast, livestream, newsletter, blog post or client call - into a week of reels and carousels. Use when the user says \"repurpose this\", \"turn this into reels\", \"I have a video/podcast/ transcript\", \"cut this up\", or pastes something long and wants it on Instagram."
+  },
+  {
+    "id": "jake-instagram-ig-story",
+    "name": "Jake Instagram Ig Story",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-instagram-ig-story",
+    "path": ".agents/skills/jake-instagram-ig-story",
+    "risk": "assess_for_task",
+    "description": "Write the day's Instagram Stories - the frame-by-frame sequence, which stickers to use where, and the one that moves people into the DMs. Use when the user says \"stories\", \"what do I post on my story\", \"story sequence\", \"poll idea\", \"I have nothing to story about\", or wants to sell something without making a post about it."
+  },
+  {
+    "id": "jake-instagram-ig-viral",
+    "name": "Jake Instagram Ig Viral",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-instagram-ig-viral",
+    "path": ".agents/skills/jake-instagram-ig-viral",
+    "risk": "assess_for_task",
+    "description": "Go and find the reels that are actually working right now in the user's niche, rank them by how far each beat its own account, name the hook formula each one used, and turn that into a swipe file they can shoot from. Use when the user says \"find viral videos\", \"what's working right now\", \"what are people posting in my niche\", \"reverse engineer this account\", \"build me a swipe file\", \"why is this reel doing numbers\", or asks what to make next and has no evidence to answer with."
+  },
+  {
+    "id": "jake-linkedin-li-audit",
+    "name": "Jake Linkedin Li Audit",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-linkedin-li-audit",
+    "path": ".agents/skills/jake-linkedin-li-audit",
+    "risk": "assess_for_task",
+    "description": "Post-mortem on what the user has already published - which posts actually worked, why, and what to stop doing. Use when the user pastes their LinkedIn analytics or past posts and asks \"what's working\", \"why did this flop\", \"read my analytics\", \"audit my content\", or wants to know what to double down on."
+  },
+  {
+    "id": "jake-linkedin-li-carousel",
+    "name": "Jake Linkedin Li Carousel",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-linkedin-li-carousel",
+    "path": ".agents/skills/jake-linkedin-li-carousel",
+    "risk": "assess_for_task",
+    "description": "Build a LinkedIn document post (carousel) - slide-by-slide copy, the cover that earns the swipe, and the PDF to upload. Use when the user says \"carousel\", \"document post\", \"slides for LinkedIn\", \"turn this into a carousel\", or has a list-shaped idea that would die as a text post."
+  },
+  {
+    "id": "jake-linkedin-li-comment",
+    "name": "Jake Linkedin Li Comment",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-linkedin-li-comment",
+    "path": ".agents/skills/jake-linkedin-li-comment",
+    "risk": "assess_for_task",
+    "description": "Write comments on other people's LinkedIn posts that read as a person with an opinion, not a bot. Use when the user pastes a post and wants a comment, says \"comment on this\", \"engage with this\", \"what do I say here\", or wants a batch of comments for their engagement round."
+  },
+  {
+    "id": "jake-linkedin-li-dm",
+    "name": "Jake Linkedin Li Dm",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-linkedin-li-dm",
+    "path": ".agents/skills/jake-linkedin-li-dm",
+    "risk": "assess_for_task",
+    "description": "Write connection notes and DM follow-ups that get replies - the 200-character invite, the first message, and the two follow-ups. Use when the user says \"write a connection request\", \"DM this person\", \"outreach message\", \"how do I follow up\", or is reaching out to someone specific on LinkedIn."
+  },
+  {
+    "id": "jake-linkedin-li-human",
+    "name": "Jake Linkedin Li Human",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-linkedin-li-human",
+    "path": ".agents/skills/jake-linkedin-li-human",
+    "risk": "assess_for_task",
+    "description": "Strip the machine fingerprint out of any draft - em dashes, AI slop words, invisible watermark characters - and score it against a five-check detection panel before it goes out. Use whenever text needs to sound human, when the user says humanize, \"does this sound like AI\", \"remove the em dashes\", \"de-slop this\", \"will this get flagged\", or before any LinkedIn post, comment, reply or DM is shown to the user."
+  },
+  {
+    "id": "jake-linkedin-li-inbox",
+    "name": "Jake Linkedin Li Inbox",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-linkedin-li-inbox",
+    "path": ".agents/skills/jake-linkedin-li-inbox",
+    "risk": "assess_for_task",
+    "description": "Triage the LinkedIn inbox - sort connection requests and DMs into leads, recruiters, peers and spam, and draft the replies worth sending. Use when the user says \"my inbox is a mess\", \"triage my DMs\", \"should I reply to this\", pastes a batch of LinkedIn messages, or is drowning in connection requests."
+  },
+  {
+    "id": "jake-linkedin-li-plan",
+    "name": "Jake Linkedin Li Plan",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-linkedin-li-plan",
+    "path": ".agents/skills/jake-linkedin-li-plan",
+    "risk": "assess_for_task",
+    "description": "Build the week on LinkedIn - what to post, when to post it, and who to engage with. Use when the user says \"plan my week\", \"what should I post\", \"content calendar\", \"I have nothing to post about\", or wants a posting schedule and an engagement list."
+  },
+  {
+    "id": "jake-linkedin-li-post",
+    "name": "Jake Linkedin Li Post",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-linkedin-li-post",
+    "path": ".agents/skills/jake-linkedin-li-post",
+    "risk": "assess_for_task",
+    "description": "Write a LinkedIn post from a raw idea using 21 proven hook formulas, in the user's own voice, humanized so it does not read as AI. Use whenever the user wants a LinkedIn post, a hook, a draft for the feed, \"post about X\", \"turn this into a LinkedIn post\", or asks for hook options. Produces three hook options, one full draft, and a copy-ready block that is never published without an explicit yes."
+  },
+  {
+    "id": "jake-linkedin-li-profile",
+    "name": "Jake Linkedin Li Profile",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-linkedin-li-profile",
+    "path": ".agents/skills/jake-linkedin-li-profile",
+    "risk": "assess_for_task",
+    "description": "Score a LinkedIn profile out of 100 against a 12-part rubric and rewrite the parts that lose points - headline, about, experience, featured, banner. Use when the user says \"optimize my profile\", \"score my LinkedIn\", \"rewrite my headline\", \"fix my about section\", or pastes their profile and asks how it reads."
+  },
+  {
+    "id": "jake-linkedin-li-reply",
+    "name": "Jake Linkedin Li Reply",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-linkedin-li-reply",
+    "path": ".agents/skills/jake-linkedin-li-reply",
+    "risk": "assess_for_task",
+    "description": "Handle the replies under the user's own LinkedIn posts - draft answers to every comment, sorted by which ones are worth answering. Use when the user pastes the comments on their post, says \"reply to these\", \"handle my comments\", \"someone said X on my post\", or is dealing with a critic or a lead in the comments."
+  },
+  {
+    "id": "jake-linkedin-li-repurpose",
+    "name": "Jake Linkedin Li Repurpose",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-linkedin-li-repurpose",
+    "path": ".agents/skills/jake-linkedin-li-repurpose",
+    "risk": "assess_for_task",
+    "description": "Turn one long asset - a YouTube video, podcast, newsletter, blog post, transcript or client call - into a week of LinkedIn posts. Use when the user says \"repurpose this\", \"turn this into posts\", \"I have a video/newsletter/ transcript\", or pastes a long piece of content and wants it on LinkedIn."
+  },
+  {
+    "id": "jake-master-build",
+    "name": "Jake Master Build",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-master-build",
+    "path": ".agents/skills/jake-master-build",
+    "risk": "assess_for_task",
+    "description": "Takes someone with no technical skill from \"I want a website or app that does X\" to a live, working, great-looking product. Merges the best design skills (impeccable, Anthropic's frontend-design) with the best engineering discipline (gstack, superpowers). Covers a one-page plain-English spec, the simplest stack that works, a committed design direction before any code, small verified build steps, real-browser QA at 375/768/1440 with runnable checks, then deploy and a handoff note. Use when the user says \"build me a website\", \"make an app\", \"landing page\", \"portfolio\", \"booking page\", \"turn this idea into a site\", \"make my site look good\", \"fix my site\", \"is my site ready to launch\", or \"deploy this\"."
+  },
+  {
+    "id": "jake-master-edit",
+    "name": "Jake Master Edit",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-master-edit",
+    "path": ".agents/skills/jake-master-edit",
+    "risk": "assess_for_task",
+    "description": "Edit talking-head and short-form video end to end: cut dead space, ums and retakes, add word-timed captions, dynamic visuals and stop motion, then finish the audio at -14 LUFS and export for Reels, TikTok and Shorts. Combines the HyperFrames, Remotion and video-use editing skills with local ffmpeg tools. Use whenever someone wants to edit, cut, tighten or caption a video, or says \"cut the dead space\", \"remove the silences\", \"cut the ums\", \"jump cuts\", \"add captions\" or \"subtitles\", \"make this a reel\", \"add b-roll\" or \"motion graphics\", \"make a stop motion\", \"fix my audio\", or drops raw footage that needs to become postable."
+  },
+  {
+    "id": "jake-master-virality",
+    "name": "Jake Master Virality",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-master-virality",
+    "path": ".agents/skills/jake-master-virality",
+    "risk": "assess_for_task",
+    "description": "Find what is already working in a niche, then rewrite it in the user's own voice for their audience and hand back a shoot-ready short-form video script (Reels, TikTok, Shorts), with a LinkedIn post or long-form version as a secondary output. Ranks posts by how far each beat its creator's own median, names the hook formula, scores hooks, and strips AI tells. Use when the user says \"make me a viral video\", \"write a reel/TikTok/short\", \"what's working in my niche\", \"find viral videos\", \"rewrite this in my voice\", \"give me a hook\", \"script my next video\", or wants content that performs. Fuses Jake's LinkedIn and YouTube agent skills."
+  },
+  {
+    "id": "jake-promptmaster-promptmaster",
+    "name": "Jake Promptmaster Promptmaster",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-promptmaster-promptmaster",
+    "path": ".agents/skills/jake-promptmaster-promptmaster",
+    "risk": "assess_for_task",
+    "description": "Rewrite the user's raw request into an optimized prompt before answering it, audit it against the 35 credit-waste patterns in waste-patterns.json, and enforce every locked decision in decisions.md so nothing gets re-explained and nothing contradicts itself. Use whenever the user types /promptmaster, prefixes a request with it, or asks to optimize / tighten / fix a prompt."
+  },
+  {
+    "id": "jake-replica-replica-architect",
+    "name": "Jake Replica Replica Architect",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-replica-replica-architect",
+    "path": ".agents/skills/jake-replica-replica-architect",
+    "risk": "assess_for_task",
+    "description": "Plans the stack, database schema and API for an app clone, from the recon map replica-recon wrote. Picks boring, managed tech, turns the inferred data model into real SQL with indexes and access rules, lists every route by flow, and orders the build as a thin vertical slice first. Use when the user says \"plan the clone\", \"what stack should I use\", \"design the database\", \"write the schema\", \"plan the API\", \"architecture for my version of X\", or after /replica-recon finishes."
+  },
+  {
+    "id": "jake-replica-replica-backend",
+    "name": "Jake Replica Replica Backend",
+    "module": "Security & Defense",
+    "category": "Security",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-replica-replica-backend",
+    "path": ".agents/skills/jake-replica-replica-backend",
+    "risk": "assess_for_task",
+    "description": "Builds the backend of an app clone: auth, database migrations and access rules, payments with Stripe, email, background jobs and third-party integrations through official APIs only, plus a security checklist. Use when the user says \"add login\", \"set up auth\", \"wire up the database\", \"add payments\", \"connect Stripe\", \"add Google Calendar\", \"send emails\", \"backend for my clone\", or when /replica-build is running on fake data."
+  },
+  {
+    "id": "jake-replica-replica-brand",
+    "name": "Jake Replica Replica Brand",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-replica-replica-brand",
+    "path": ".agents/skills/jake-replica-replica-brand",
+    "risk": "assess_for_task",
+    "description": "Names and rebrands an app clone so it is the user's own: name candidates with the trademark, domain, store and handle checks to run, a new palette checked for contrast, a logo brief, a voice guide, and a sweep tool that finds anything of the original left in the codebase. Use when the user says \"name my app\", \"rebrand the clone\", \"make it mine\", \"pick a name and colours\", \"logo brief\", \"brand voice\", \"check for leftovers\", or after /replica-entrepreneur. Always runs before /replica-launch."
+  },
+  {
+    "id": "jake-replica-replica-build",
+    "name": "Jake Replica Replica Build",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-replica-replica-build",
+    "path": ".agents/skills/jake-replica-replica-build",
+    "risk": "assess_for_task",
+    "description": "Rebuilds an app screen by screen from the recon map: app shell first, then the core flow as a vertical slice, then every screen with all its states, ticking off the feature matrix as it goes. Writes every line fresh, never the original's code, assets or copy. Use when the user says \"build the clone\", \"build screen S07\", \"start building\", \"rebuild this screen\", \"implement the booking page\", or after /replica-design."
+  },
+  {
+    "id": "jake-replica-replica-deploy",
+    "name": "Jake Replica Replica Deploy",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-replica-replica-deploy",
+    "path": ".agents/skills/jake-replica-replica-deploy",
+    "risk": "assess_for_task",
+    "description": "Ships an app clone live on the user's own domain: a preflight gate (tests green, parity must-haves done, rebrand sweep clean, listing linted, legal pages up), production database and env vars, the host, DNS records for the domain and for email, Stripe live mode, OAuth redirects, monitoring, and mobile builds to TestFlight and Play. Use when the user says \"deploy it\", \"ship it\", \"put it live\", \"connect my domain\", \"go to production\", \"publish the app\", or after /replica-launch."
+  },
+  {
+    "id": "jake-replica-replica-design",
+    "name": "Jake Replica Replica Design",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-replica-replica-design",
+    "path": ".agents/skills/jake-replica-replica-design",
+    "risk": "assess_for_task",
+    "description": "Rebuilds an app's design system for a clone: colour roles, type scale, spacing, radius, shadows and every component with its states, as design tokens plus component specs, with original assets instead of the target's logos, icons, illustrations or licensed fonts. Includes a WCAG contrast checker. Use when the user says \"match the design\", \"rebuild the design system\", \"get the colours and fonts\", \"make it look like X\", \"design tokens for my clone\", or after /replica-architect."
+  },
+  {
+    "id": "jake-replica-replica-diff",
+    "name": "Jake Replica Replica Diff",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-replica-replica-diff",
+    "path": ".agents/skills/jake-replica-replica-diff",
+    "risk": "assess_for_task",
+    "description": "Compares an app clone against the original: a feature parity score from the feature matrix (weighted by must, should, could) with the missing list in build order, plus a screenshot layout diff that ignores colour so a rebrand does not count against you. Two standard-library Python tools. Use when the user says \"how close is my clone\", \"compare it to the original\", \"what's missing\", \"parity check\", \"diff the screens\", \"is it ready\", or after /replica-test."
+  },
+  {
+    "id": "jake-replica-replica-entrepreneur",
+    "name": "Jake Replica Replica Entrepreneur",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-replica-replica-entrepreneur",
+    "path": ".agents/skills/jake-replica-replica-entrepreneur",
+    "risk": "assess_for_task",
+    "description": "Researches the app being cloned and reads what its real users say in public reviews (App Store, Google Play, G2, Capterra, Trustpilot, Reddit, Hacker News, its own feature-request board), then ranks what they hate, what is missing and what is unsolved, turns it into a fix plan for the clone and a positioning angle you can sell. Every quote is real, verbatim and linked. Use when the user says \"what do people hate about X\", \"read the reviews\", \"how do I make mine better\", \"find the gap\", \"what features are missing\", \"how do I position this\", \"make it sellable\", or after /replica-diff."
+  },
+  {
+    "id": "jake-replica-replica-launch",
+    "name": "Jake Replica Replica Launch",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-replica-replica-launch",
+    "path": ".agents/skills/jake-replica-replica-launch",
+    "risk": "assess_for_task",
+    "description": "Writes the launch for an app clone: the landing page built on the positioning angle, pricing set against the original's public pricing and its users' complaints, and the App Store and Google Play listing linted against the stores' limits and copycat rules. Use when the user says \"landing page\", \"pricing\", \"how much should I charge\", \"App Store listing\", \"store screenshots\", \"launch plan\", \"Product Hunt\", or after /replica-brand."
+  },
+  {
+    "id": "jake-replica-replica-recon",
+    "name": "Jake Replica Replica Recon",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-replica-replica-recon",
+    "path": ".agents/skills/jake-replica-replica-recon",
+    "risk": "assess_for_task",
+    "description": "Reverse-engineers any app into a recon map: screen inventory, user flows, component list, inferred data model and a feature matrix, from public pages, screenshots, app store listings, help docs and the user's own account. The first step of the Replica pack. Use when the user says \"clone this app\", \"reverse engineer X\", \"how does X work\", \"map out X\", \"what screens does X have\", \"I want to build my own version of X\", \"copy this app\", or pastes an app's URL or App Store link and wants to rebuild it."
+  },
+  {
+    "id": "jake-replica-replica-test",
+    "name": "Jake Replica Replica Test",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-replica-replica-test",
+    "path": ".agents/skills/jake-replica-replica-test",
+    "risk": "assess_for_task",
+    "description": "Clicks through every flow of an app clone and tests it for bugs: a test plan generated from the recon flows with happy paths and edge cases, Playwright end-to-end tests where possible, a browser click-through where not, and bug reports in a fixed format with severity, steps and evidence. Use when the user says \"test my clone\", \"find bugs\", \"QA this\", \"click through everything\", \"write e2e tests\", \"does it work\", or after /replica-build or /replica-backend."
+  },
+  {
+    "id": "jake-seed-seed-closer",
+    "name": "Jake Seed Seed Closer",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-seed-seed-closer",
+    "path": ".agents/skills/jake-seed-seed-closer",
+    "risk": "assess_for_task",
+    "description": "The Closer. Sends personalised outreach emails to investors, manages the conversations and keeps following up until an investor call is booked, and nothing leaves the user's inbox without their yes. Drafts one RFC 5322 .eml per investor from seed/investors.json and a template (a real personal line, the sender's real name and an opt-out line, generic lines refused), shows the batch, records the user's yes word for word, enforces a daily cap of 20, then Claude sends through the user's own Gmail connector where the Allow once card is a second check. Schedules follow-ups on +3 and +7 business days (3 touches at most, never after a reply), sorts replies into interested / question / not now / no / out of office, stops a thread for good on a no, an opt-out or a bounce, writes a valid .ics invite and shows the funnel. Reads seed/config.json and seed/investors.json, writes seed/pipeline.json, seed/outreach/ and seed/calls/. Use when the user says \"email the investors\", \"send the outreach\", \"follow up with everyone who hasn't replied\", \"who do I follow up with today\", \"sort my replies\", \"book the call\", \"send her an invite\", \"how is the raise going\", or after /seed-investors ranks the list."
+  },
+  {
+    "id": "jake-seed-seed-coach",
+    "name": "Jake Seed Seed Coach",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-seed-seed-coach",
+    "path": ".agents/skills/jake-seed-seed-coach",
+    "risk": "assess_for_task",
+    "description": "Pitch Coach. Rehearses the investor call with you: drills the hard questions investors ask (market, competition, traction, unit economics, team, why now, risks, the ask), tailored to your own numbers from the competitor scout, the financial model, the market size and the investor you are meeting (\"Rover has 515,771 ratings. Why will owners switch?\"), grades your written answers (a number, specifics, no hedging, under a minute spoken, answer first) and writes a 20-minute plan for a booked first call. Reads seed/competitors.json, model.json, market.json, investors.json, pipeline.json and calls/. Use when the user says \"prep me for the call\", \"practice my pitch\", \"what will investors ask\", \"drill me\", \"grade my answer\", \"mock investor\", \"call agenda\", or after /seed-closer books a call."
+  },
+  {
+    "id": "jake-seed-seed-dataroom",
+    "name": "Jake Seed Seed Dataroom",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-seed-seed-dataroom",
+    "path": ".agents/skills/jake-seed-seed-dataroom",
+    "risk": "assess_for_task",
+    "description": "Data Room Builder. Assembles the data room investors ask for and tells you what is missing. Lays out the nine standard folders (01 Company, 02 Pitch deck, 03 Financials, 04 Market, 05 Product, 06 Team, 07 Legal, 08 Cap table, 09 Customers), checks the files against a 25-item checklist (present, missing, or stale by the date in the file name or its last change), writes seed/dataroom/INDEX.md describing every file, and lists what to share before a term sheet and what only after one. Flags what must never be in a data room: passwords, keys, ID documents, raw customer lists. It never uploads or shares anything. Use when the user says \"build my data room\", \"what goes in a data room\", \"what am I missing for diligence\", \"the investor asked for the data room\", \"what can I share now\", \"make an index of my documents\", or after a /seed-closer call goes well or /seed-terms reads a term sheet."
+  },
+  {
+    "id": "jake-seed-seed-deck",
+    "name": "Jake Seed Seed Deck",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-seed-seed-deck",
+    "path": ".agents/skills/jake-seed-seed-deck",
+    "risk": "assess_for_task",
+    "description": "Pitch Deck Designer. Turns the business plan into a 10-slide pitch deck in the order investors expect: title, problem, solution, market, competition, business model, go-to-market, team, financials, the ask. Writes ONE self-contained 16:9 HTML file (inline CSS, no fonts or scripts from the web, arrow-key navigation, a print stylesheet that saves to PDF one slide a page) in your brand colours, with real charts drawn from your numbers. Lints it: 35 words or fewer a slide, one idea a slide, a use of funds that adds up to the raise, and every number on a slide traced to your plan, model, market or competitor files. Reads seed/plan.json, writes seed/deck.html. Use when the user says \"make my pitch deck\", \"turn the plan into a deck\", \"build the slides\", \"check my deck\", \"how many words a slide\", or after /seed-plan."
+  },
+  {
+    "id": "jake-seed-seed-investors",
+    "name": "Jake Seed Seed Investors",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-seed-seed-investors",
+    "path": ".agents/skills/jake-seed-seed-investors",
+    "risk": "assess_for_task",
+    "description": "Investor Finder. Researches the best investors for your idea from public sources only (the firm's own site, public profiles found through web search, SEC EDGAR Form D filings, the press) and ranks them by fit, 0 to 100, with the reasons and a source link on every row: stage, sectors, check size against your ask, geography, how recent their last relevant deal is, and a warm intro. Reads SEC Form D filings to see who in your space raised, how much and when. Writes seed/investors.json for the Closer and the Pitch Coach. Use when the user says \"find investors\", \"who should I pitch\", \"which VCs invest in pet tech\", \"build my investor list\", \"rank these investors\", \"who funded companies like mine\", \"Form D\", or after /seed-plan, before /seed-closer."
+  },
+  {
+    "id": "jake-seed-seed-market",
+    "name": "Jake Seed Seed Market",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-seed-seed-market",
+    "path": ".agents/skills/jake-seed-seed-market",
+    "risk": "assess_for_task",
+    "description": "Market Sizer. Sizes your market the way investors check it: TAM top-down (population x share x spend a year), SAM bottom-up (customers you can reach x purchases a year x price) and SOM (the share of SAM you can win in N years, with a stated reason). Every input carries a source (a URL, a named publication, or an assumption said out loud), vague sources are refused, and it refuses any result that breaks SOM <= SAM <= TAM. Records sourced facts the deck quotes. Writes seed/market.json for the plan, the deck and the pitch coach. Use when the user says \"how big is my market\", \"TAM SAM SOM\", \"size the market\", \"market size slide\", \"is this market big enough\", or after /seed-scout, before /seed-model and /seed-plan."
+  },
+  {
+    "id": "jake-seed-seed-model",
+    "name": "Jake Seed Seed Model",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-seed-seed-model",
+    "path": ".agents/skills/jake-seed-seed-model",
+    "risk": "assess_for_task",
+    "description": "Financial Modeler. Builds the 36-month financial model behind your raise: customers, orders, GMV, revenue (GMV x your take rate), contribution, payroll, marketing (new customers x CAC), opex, net and cash, month by month, then the numbers investors ask for: runway, the breakeven month, peak burn, revenue for years 1 to 3, and the unit economics (contribution per order, CAC payback, LTV:CAC). Checks that the use of funds adds up to the raise and exports a CSV. Reads seed/assumptions.json, writes seed/model.json for the business plan, the deck and the pitch coach. Use when the user says \"build my financial model\", \"how long will the money last\", \"what's my runway\", \"when do we break even\", \"3-year projections\", \"use of funds\", \"how much should I raise\", \"unit economics\", \"burn rate\", or before /seed-plan and /seed-deck."
+  },
+  {
+    "id": "jake-seed-seed-plan",
+    "name": "Jake Seed Seed Plan",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-seed-seed-plan",
+    "path": ".agents/skills/jake-seed-seed-plan",
+    "risk": "assess_for_task",
+    "description": "Business Planner. Turns your idea into a business plan investors can read: the nine sections (executive summary, problem, solution, market, competition, business model, go-to-market, financial plan, use of funds), written with you, with the numbers pulled from the other seed skills' files: TAM, SAM and SOM from seed/market.json, competitors' weak points from seed/competitors.json, revenue, breakeven and runway from seed/model.json. Computes the unit economics (take rate, contribution per order, CAC payback, LTV:CAC) and flags empty sections and numbers that disagree between files. Writes seed/config.json, seed/plan.json and seed/plan.md. Use when the user says \"turn my idea into a business plan\", \"write my business plan\", \"I have a startup idea\", \"help me plan my startup\", \"check my plan\", \"unit economics\", or before /seed-deck."
+  },
+  {
+    "id": "jake-seed-seed-scout",
+    "name": "Jake Seed Seed Scout",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-seed-seed-scout",
+    "path": ".agents/skills/jake-seed-seed-scout",
+    "risk": "assess_for_task",
+    "description": "Competitor Scout. Finds the weak points of your competitors in their own App Store reviews: searches the App Store for the apps people already use for your idea, reads up to the 500 most recent reviews of each, sorts the one- and two-star ones into themes (fees and pricing, cancellations and no-shows, support, bugs, trust and safety, payments and refunds, availability), and names each rival's weak point with the evidence (\"106 of 341 recent 1-2 star reviews mention fees\"). Writes seed/reviews/ and seed/competitors.json for the plan, the deck and the pitch coach. Use when the user says \"who are my competitors\", \"find my competitors' weak points\", \"what do people hate about Rover\", \"read their reviews\", \"scout the competition\", \"competitor research\", \"why do customers leave X\", or at the start of a raise, before /seed-market."
+  },
+  {
+    "id": "jake-seed-seed-terms",
+    "name": "Jake Seed Seed Terms",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-seed-seed-terms",
+    "path": ".agents/skills/jake-seed-seed-terms",
+    "risk": "assess_for_task",
+    "description": "Term Sheet Reader. Reads a SAFE or a term sheet in plain English, does the dilution math and flags the clauses to ask a lawyer about. Works out what a post-money SAFE owns at its cap and what it converts into at a priced round (cap price vs discount price, whichever is lower), builds a priced round's cap table with the option-pool shuffle (price per share, new shares, the pool top-up, the effective pre-money, everyone's dilution), and scans a pasted term sheet for the traps: liquidation preference over 1x, participating preferred, full ratchet, redemption, cumulative dividends, board control, operating vetoes, pay-to-play, drag-along, long no-shops, exploding deadlines, founder vesting resets, super pro rata and MFN, each with a severity and a question for the lawyer. Not legal advice. Writes seed/terms/ with --write. Use when the user says \"read this term sheet\", \"is this a good deal\", \"what does this SAFE mean\", \"how much do I own after\", \"how much dilution\", \"what's the option pool shuffle\", \"what is a post-money cap\", \"any red flags in this\", or when an investor sends terms after a /seed-closer call."
+  },
+  {
+    "id": "jake-seed-seed-updates",
+    "name": "Jake Seed Seed Updates",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-seed-seed-updates",
+    "path": ".agents/skills/jake-seed-seed-updates",
+    "risk": "assess_for_task",
+    "description": "Investor Updates. Writes the monthly investor update that keeps investors warm: a TL;DR, every metric with its month-over-month growth, highlights, lowlights, the asks, and the runway worked out from your cash and your average net burn. A short \"prospects\" version goes to warm investors who said \"not now\": the headline numbers, two highlights, the raise and an opt-out line, with no cash or runway. Reads seed/metrics.json (and seed/config.json for the founder and the raise), writes seed/updates/YYYY-MM.md. Never sends anything on its own. Use when the user says \"write my investor update\", \"monthly update\", \"update my investors\", \"keep investors warm\", \"follow up with investors who said not now\", \"what's my runway\", \"MoM growth\", or at the start of each month."
+  },
+  {
+    "id": "jake-trader-trader-alerts",
+    "name": "Jake Trader Trader Alerts",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-trader-trader-alerts",
+    "path": ".agents/skills/jake-trader-trader-alerts",
+    "risk": "assess_for_task",
+    "description": "Price Alerts. Rings when a price target, a stop or the opening bell hits: above / below / stop rules, percent moves from the previous close, and the NYSE opening bell, each ringing once so you are not spammed. Knows NYSE hours with the 2026 and 2027 holidays and 1:00 p.m. early closes, fetches free delayed quotes (Yahoo chart JSON, Stooq CSV) one ticker at a time, and writes trader/prices.json for the other skills. Use when the user says \"alert me when\", \"tell me if AAPL hits\", \"set a stop\", \"price target\", \"watch my stocks\", \"is the market open\", \"when does the market open\", \"get me prices\", or to refresh prices before sizing, risk or tax."
+  },
+  {
+    "id": "jake-trader-trader-analyst",
+    "name": "Jake Trader Trader Analyst",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-trader-trader-analyst",
+    "path": ".agents/skills/jake-trader-trader-analyst",
+    "risk": "assess_for_task",
+    "description": "The Earnings Analyst. Reads a company's reported numbers straight from SEC EDGAR (XBRL company facts from its 10-Qs and 10-Ks, plus the latest earnings 8-K and its press release) and sums up what changed: revenue, gross, operating and net margins, net income and diluted EPS, quarter by quarter, each against the same quarter a year earlier, with the trailing twelve months. Writes a metrics file the screener reads. Use when the user says \"how did Apple's earnings look\", \"analyze the earnings\", \"what changed this quarter\", \"is revenue growing\", \"check the 10-Q\", \"compare margins\", or \"run the analyst on my holdings\"."
+  },
+  {
+    "id": "jake-trader-trader-broker",
+    "name": "Jake Trader Trader Broker",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-trader-trader-broker",
+    "path": ".agents/skills/jake-trader-trader-broker",
+    "risk": "assess_for_task",
+    "description": "Order Executor. Places APPROVED orders through your brokerage connector, one at a time, and never without your explicit yes. Shows each order as a plain ticket plus the exact JSON for Alpaca's place_stock_order, records your yes word for word, then Claude's own Allow once / Deny card asks again. Covers setting up Alpaca's official MCP server in Claude Desktop (paper trading by default, keys in env vars, never in chat), the Interactive Brokers connector (orders go to your IBKR account for your approval), and setting order tools to \"Needs approval\". Use when the user says \"place the orders\", \"buy it\", \"execute\", \"send it to my broker\", \"connect Alpaca\", \"connect Interactive Brokers\", \"set up paper trading\", or after /trader-risk passes."
+  },
+  {
+    "id": "jake-trader-trader-budget",
+    "name": "Jake Trader Trader Budget",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-trader-trader-budget",
+    "path": ".agents/skills/jake-trader-trader-budget",
+    "risk": "assess_for_task",
+    "description": "Budget Manager. Sizes every position to your budget before anything is bought: keeps a cash buffer, caps any one stock (the excess is shared out to the others), drops slices under your minimum order, rounds so every dollar is used, supports fractional or whole shares, and writes the proposed buy orders to trader/orders.json in the exact shape of Alpaca's place_stock_order (notional as a string). Nothing is placed. Use when the user says \"I have $5,000\", \"size my trades\", \"how much of each should I buy\", \"manage my budget\", \"split my money\", \"keep 10% in cash\", \"no stock over 25%\", \"set my rules\", or after /trader-copycat writes targets."
+  },
+  {
+    "id": "jake-trader-trader-copycat",
+    "name": "Jake Trader Trader Copycat",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-trader-trader-copycat",
+    "path": ".agents/skills/jake-trader-trader-copycat",
+    "risk": "assess_for_task",
+    "description": "The Reverse Engineer. Reads a famous investor's public SEC filings (the quarterly 13F-HR, plus Form 4 if you want the insider trades) and rebuilds their portfolio as weights you can copy: every position, its share of the fund, what they bought, added, trimmed and sold since the last quarter, with tickers matched to every CUSIP. Then it writes trader/targets.json so the budget skill can size it to your money. Use when the user says \"copy Buffett\", \"copy Berkshire\", \"what does Ackman own\", \"reverse engineer this investor\", \"show me their 13F\", \"what did they buy last quarter\", \"copy the top 5\", or names any fund or famous investor."
+  },
+  {
+    "id": "jake-trader-trader-news",
+    "name": "Jake Trader Trader News",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-trader-trader-news",
+    "path": ".agents/skills/jake-trader-trader-news",
+    "risk": "assess_for_task",
+    "description": "The News Monitor. Watches breaking market news and SEC filings for the stocks you hold (or are about to copy): Yahoo Finance headlines per ticker and each company's 8-K filings on SEC EDGAR (earnings, CEO changes, deals, restatements, bankruptcy). Shows only what is new since the last check, newest first, flags what touches your positions and why it matters, and never repeats an item. Use when the user says \"any news on my stocks\", \"what's happening with Apple\", \"monitor the news\", \"watch my portfolio\", \"did anything break\", \"check the 8-Ks\", or \"morning briefing\"."
+  },
+  {
+    "id": "jake-trader-trader-pelosi",
+    "name": "Jake Trader Trader Pelosi",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-trader-trader-pelosi",
+    "path": ".agents/skills/jake-trader-trader-pelosi",
+    "risk": "assess_for_task",
+    "description": "The Pelosi Tracker. Watches the stock trades members of Congress must disclose under the STOCK Act: reads the House Clerk's public Periodic Transaction Reports (PTRs) as soon as they are posted, alerts once per new filing, and turns each PDF into clean rows (who, owner, stock, ticker, buy or sell, options strike and expiry, trade date, amount range, how many days it took to disclose). Flags trades in stocks you hold. Senate reports are covered by a documented manual route. Use when the user says \"what is Pelosi buying\", \"track Nancy Pelosi\", \"Congress trades\", \"politician stock trades\", \"did any congressman buy X\", \"alert me when Pelosi files\", or \"run the Pelosi skill\"."
+  },
+  {
+    "id": "jake-trader-trader-rebalance",
+    "name": "Jake Trader Trader Rebalance",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-trader-trader-rebalance",
+    "path": ".agents/skills/jake-trader-trader-rebalance",
+    "risk": "assess_for_task",
+    "description": "Rebalancer. Brings the portfolio back to its target weights when it drifts: values every holding at current prices, works out each stock's drift from its target in percentage points, trades only the stocks outside a band (default 5 points), keeps the cash buffer and the per-stock cap, skips tiny trades, lists sells before buys, and writes the trades to trader/orders.json as proposals. Use when the user says \"rebalance\", \"my portfolio drifted\", \"bring it back to the targets\", \"I added money\", \"the new 13F changed the weights\", \"am I overweight\", or on a schedule (monthly or quarterly) after /trader-copycat updates the targets."
+  },
+  {
+    "id": "jake-trader-trader-risk",
+    "name": "Jake Trader Trader Risk",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-trader-trader-risk",
+    "path": ".agents/skills/jake-trader-trader-risk",
+    "risk": "assess_for_task",
+    "description": "Risk Manager. Checks every proposed order against your limits before it can reach the broker and blocks anything over them: blocked tickers, max order size, minimum order, max position percent after the fill, the cash buffer, margin, short sales, options and crypto (off unless allowed), malformed orders, duplicates and a daily order limit. Prints PASS or BLOCK with the reason for each order and records the verdicts so trader-broker only shows an order that passed. Use when the user says \"check my orders\", \"is this safe\", \"risk check\", \"does this break my rules\", \"can I place this\", or before /trader-broker, always."
+  },
+  {
+    "id": "jake-trader-trader-screener",
+    "name": "Jake Trader Trader Screener",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-trader-trader-screener",
+    "path": ".agents/skills/jake-trader-trader-screener",
+    "risk": "assess_for_task",
+    "description": "The Stock Screener. Checks a list of companies against the user's own rules (revenue growth, margins, EPS, P/E, earnings yield, sector, anything in the metrics file), says exactly which rule each company passes or fails and by how much, and ranks the ones that pass into a shortlist. Reads the metrics /trader-analyst writes from SEC filings, or any CSV. Use when the user says \"screen for stocks\", \"find me companies that\", \"filter my watchlist\", \"which of these pass my rules\", \"shortlist candidates\", \"rank these stocks\", or \"growing companies under 30 times earnings\"."
+  },
+  {
+    "id": "jake-trader-trader-tax",
+    "name": "Jake Trader Trader Tax",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-trader-trader-tax",
+    "path": ".agents/skills/jake-trader-trader-tax",
+    "risk": "assess_for_task",
+    "description": "Tax Optimizer. Tracks cost-basis lots for every position (FIFO, highest cost first, or specific lots), shows unrealized gains and losses by lot with short or long term, works out what a sale would realize before you sell, finds tax-loss harvesting candidates over a loss threshold, checks the wash sale rule (30 days before and after, GOOG and GOOGL as one family), and writes harvest sells only as proposals. Not tax advice. Use when the user says \"what are my gains\", \"cost basis\", \"tax lots\", \"tax-loss harvest\", \"what would selling cost me in tax\", \"short or long term\", \"wash sale\", or before selling anything."
+  },
+  {
+    "id": "jake-unhinged-apollo-13",
+    "name": "Jake Unhinged Apollo 13",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-unhinged-apollo-13",
+    "path": ".agents/skills/jake-unhinged-apollo-13",
+    "risk": "assess_for_task",
+    "description": "Works a critical failure under hard constraints , limited options, no clean fix , to get the broken thing home with whatever you have; invoke via /apollo-13 when something important is down, the usual tools are unavailable, and you must improvise a survival fix."
+  },
+  {
+    "id": "jake-unhinged-autopilot-chaos",
+    "name": "Jake Unhinged Autopilot Chaos",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-unhinged-autopilot-chaos",
+    "path": ".agents/skills/jake-unhinged-autopilot-chaos",
+    "risk": "assess_for_task",
+    "description": "Takes the whole task and runs it end to end without stopping to ask, leaving the user to review at the finish line; invoke via /autopilot-chaos when you want a fully autonomous run and will inspect the result once it's done."
+  },
+  {
+    "id": "jake-unhinged-basement-hacker",
+    "name": "Jake Unhinged Basement Hacker",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-unhinged-basement-hacker",
+    "path": ".agents/skills/jake-unhinged-basement-hacker",
+    "risk": "assess_for_task",
+    "description": "Goes underground to reverse-engineer internals, read the source nobody reads, and explain how something actually works; invoke via /basement-hacker when documentation is missing or lying and you need ground truth from the implementation itself."
+  },
+  {
+    "id": "jake-unhinged-caffeine-overdose",
+    "name": "Jake Unhinged Caffeine Overdose",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-unhinged-caffeine-overdose",
+    "path": ".agents/skills/jake-unhinged-caffeine-overdose",
+    "risk": "assess_for_task",
+    "description": "Goes wide and exhaustive , every option, every edge, every step spelled out, the opposite of a compressor; invoke via /caffeine-overdose when you want maximum thoroughness and nothing left implicit."
+  },
+  {
+    "id": "jake-unhinged-chinese-grandpa",
+    "name": "Jake Unhinged Chinese Grandpa",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-unhinged-chinese-grandpa",
+    "path": ".agents/skills/jake-unhinged-chinese-grandpa",
+    "risk": "assess_for_task",
+    "description": "Compresses long, repeated sub-agent instructions by translating them into Mandarin (more meaning per character) to slash the token bill, then dispatches the compressed brief to a fleet of sub-agents while preserving original intent; invoke via /chinese-grandpa when you are about to fan out the same heavy instructions to many sub-agents and the cost is climbing."
+  },
+  {
+    "id": "jake-unhinged-cowboy-coder",
+    "name": "Jake Unhinged Cowboy Coder",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-unhinged-cowboy-coder",
+    "path": ".agents/skills/jake-unhinged-cowboy-coder",
+    "risk": "assess_for_task",
+    "description": "Makes the judgment calls itself and keeps moving instead of pausing at every fork , fast and opinionated, best on low-stakes work; invoke via /cowboy-coder when you'd rather get a decisive result than answer twenty clarifying questions."
+  },
+  {
+    "id": "jake-unhinged-crackhead-energy",
+    "name": "Jake Unhinged Crackhead Energy",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-unhinged-crackhead-energy",
+    "path": ".agents/skills/jake-unhinged-crackhead-energy",
+    "risk": "assess_for_task",
+    "description": "Fires out ideas at full speed , twenty rough directions in a minute for the user to cherry-pick; invoke via /crackhead-energy when you're brainstorming and want raw quantity and range over polish."
+  },
+  {
+    "id": "jake-unhinged-divorced-dad",
+    "name": "Jake Unhinged Divorced Dad",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-unhinged-divorced-dad",
+    "path": ".agents/skills/jake-unhinged-divorced-dad",
+    "risk": "assess_for_task",
+    "description": "Anti-gold-plating mode that builds the simplest functional version first, skips overengineering, and ships something usable today because working beats perfect; invoke via /divorced-dad when you need it live tonight, not pretty."
+  },
+  {
+    "id": "jake-unhinged-duct-tape-dev",
+    "name": "Jake Unhinged Duct Tape Dev",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-unhinged-duct-tape-dev",
+    "path": ".agents/skills/jake-unhinged-duct-tape-dev",
+    "risk": "assess_for_task",
+    "description": "Ships the quick patch that unblocks you right now and clearly flags it as debt to revisit later; invoke via /duct-tape-dev when you're blocked and need a working stopgap immediately, accepting that it's temporary."
+  },
+  {
+    "id": "jake-unhinged-feral-goblin",
+    "name": "Jake Unhinged Feral Goblin",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-unhinged-feral-goblin",
+    "path": ".agents/skills/jake-unhinged-feral-goblin",
+    "risk": "assess_for_task",
+    "description": "Drops the small talk and goes heads-down , no preamble, just code and short status lines until done; invoke via /feral-goblin when you want execution with minimal chatter."
+  },
+  {
+    "id": "jake-unhinged-gas-station-genius",
+    "name": "Jake Unhinged Gas Station Genius",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-unhinged-gas-station-genius",
+    "path": ".agents/skills/jake-unhinged-gas-station-genius",
+    "risk": "assess_for_task",
+    "description": "Solves the problem using only what is already in the repo , no new libraries, no installs, a fix built from parts on hand; invoke via /gas-station-genius when you can't or won't add dependencies and need a solution from existing code."
+  },
+  {
+    "id": "jake-unhinged-goblin-mode",
+    "name": "Jake Unhinged Goblin Mode",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-unhinged-goblin-mode",
+    "path": ".agents/skills/jake-unhinged-goblin-mode",
+    "risk": "assess_for_task",
+    "description": "Gets it working ugly first , no naming debates, no structure until structure earns its place; invoke via /goblin-mode when you want raw forward progress and will refactor later, if ever."
+  },
+  {
+    "id": "jake-unhinged-keyboard-gremlin",
+    "name": "Jake Unhinged Keyboard Gremlin",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-unhinged-keyboard-gremlin",
+    "path": ".agents/skills/jake-unhinged-keyboard-gremlin",
+    "risk": "assess_for_task",
+    "description": "Makes the smallest possible change , surgical edits, minimal diff, nothing touched that didn't need to be; invoke via /keyboard-gremlin when you want a precise fix with the tiniest footprint and zero collateral changes."
+  },
+  {
+    "id": "jake-unhinged-macgyver",
+    "name": "Jake Unhinged Macgyver",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-unhinged-macgyver",
+    "path": ".agents/skills/jake-unhinged-macgyver",
+    "risk": "assess_for_task",
+    "description": "Improvises a solution from primitives , standard library and cleverness instead of reaching for a new framework; invoke via /macgyver when the elegant answer is a few smart lines of plain code rather than another heavy dependency."
+  },
+  {
+    "id": "jake-unhinged-meth-lab",
+    "name": "Jake Unhinged Meth Lab",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-unhinged-meth-lab",
+    "path": ".agents/skills/jake-unhinged-meth-lab",
+    "risk": "assess_for_task",
+    "description": "Workflow and system optimizer that takes a messy system, bloated prompt, broken automation, or slow process and strips it to the fastest, cheapest, cleanest version that still works; invoke via /meth-lab when something runs but feels heavy, expensive, or held together with tape."
+  },
+  {
+    "id": "jake-unhinged-panic-mode",
+    "name": "Jake Unhinged Panic Mode",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-unhinged-panic-mode",
+    "path": ".agents/skills/jake-unhinged-panic-mode",
+    "risk": "assess_for_task",
+    "description": "Triages a live incident , stop the bleeding first, smallest safe fix next, post-mortem once stable; invoke via /panic-mode when something is on fire in production and you need to restore service before understanding everything."
+  },
+  {
+    "id": "jake-unhinged-questionable-engineering",
+    "name": "Jake Unhinged Questionable Engineering",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-unhinged-questionable-engineering",
+    "path": ".agents/skills/jake-unhinged-questionable-engineering",
+    "risk": "assess_for_task",
+    "description": "Picks the solution that works over the one that's technically correct , pragmatic, slightly cursed, perfect for prototypes; invoke via /questionable-engineering when you need a result that functions now and don't care that purists would wince."
+  },
+  {
+    "id": "jake-unhinged-rage-compile",
+    "name": "Jake Unhinged Rage Compile",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-unhinged-rage-compile",
+    "path": ".agents/skills/jake-unhinged-rage-compile",
+    "risk": "assess_for_task",
+    "description": "Attacks the error list in one relentless pass , fix, rebuild, repeat, no commentary , until it builds clean; invoke via /rage-compile when you have a wall of build/type/lint errors and just want them gone."
+  },
+  {
+    "id": "jake-unhinged-redneck-engineer",
+    "name": "Jake Unhinged Redneck Engineer",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-unhinged-redneck-engineer",
+    "path": ".agents/skills/jake-unhinged-redneck-engineer",
+    "risk": "assess_for_task",
+    "description": "Turns a vague idea into a clear build plan , short PRD, task list, user flows, constraints, and acceptance criteria , so Claude Code knows exactly what to build; invoke via /redneck-engineer when you know what you want but Claude keeps building the wrong thing."
+  },
+  {
+    "id": "jake-unhinged-schizotech",
+    "name": "Jake Unhinged Schizotech",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-unhinged-schizotech",
+    "path": ".agents/skills/jake-unhinged-schizotech",
+    "risk": "assess_for_task",
+    "description": "Connects the dots nobody asked for , wild, lateral architecture ideas linking things you'd never pair on purpose; invoke via /schizotech when you want unconventional cross-domain inspiration, with the explicit understanding that you must filter it heavily."
+  },
+  {
+    "id": "jake-unhinged-sleep-deprived-founder",
+    "name": "Jake Unhinged Sleep Deprived Founder",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-unhinged-sleep-deprived-founder",
+    "path": ".agents/skills/jake-unhinged-sleep-deprived-founder",
+    "risk": "assess_for_task",
+    "description": "Cuts the backlog to the one or two things that actually move the needle and ignores the rest; invoke via /sleep-deprived-founder when you have too much to do and need ruthless prioritization, not a longer list."
+  },
+  {
+    "id": "jake-unhinged-speedrun",
+    "name": "Jake Unhinged Speedrun",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-unhinged-speedrun",
+    "path": ".agents/skills/jake-unhinged-speedrun",
+    "risk": "assess_for_task",
+    "description": "Finds the shortest path to done and takes it , no detours, no nice-to-haves; invoke via /speedrun when the only goal is to complete the task as fast as possible with nothing extra."
+  },
+  {
+    "id": "jake-unhinged-tax-fraud",
+    "name": "Jake Unhinged Tax Fraud",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-unhinged-tax-fraud",
+    "path": ".agents/skills/jake-unhinged-tax-fraud",
+    "risk": "assess_for_task",
+    "description": "Hunts cost everywhere , trims tokens, kills redundant calls, and reports the cheapest path to the same result; invoke via /tax-fraud when you want aggressive (but technically legal) cost optimization of an AI workflow, pipeline, or process."
+  },
+  {
+    "id": "jake-unhinged-weaponized-autism",
+    "name": "Jake Unhinged Weaponized Autism",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-unhinged-weaponized-autism",
+    "path": ".agents/skills/jake-unhinged-weaponized-autism",
+    "risk": "assess_for_task",
+    "description": "Obsessive-detail mode that reads every relevant file, checks every edge case, questions every assumption, and chases every dependency before answering; slower on purpose and far harder to fool , invoke via /weaponized-autism when a confident-but-wrong answer would be expensive, e.g. deep debugging, auditing, or high-stakes research."
+  },
+  {
+    "id": "jake-unhinged-zero-sleep",
+    "name": "Jake Unhinged Zero Sleep",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-unhinged-zero-sleep",
+    "path": ".agents/skills/jake-unhinged-zero-sleep",
+    "risk": "assess_for_task",
+    "description": "Holds the thread across a big multi-step build without losing the plot , long-haul endurance and context-keeping; invoke via /zero-sleep when a task spans many steps and hours and you need consistency from start to finish."
+  },
+  {
+    "id": "jake-whale-case-study",
+    "name": "Jake Whale Case Study",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-whale-case-study",
+    "path": ".agents/skills/jake-whale-case-study",
+    "risk": "assess_for_task",
+    "description": "Case Study. Turns the first customer into proof, with their permission. Once the product has shipped, it writes a short before-and-after from their real numbers and their real words, and keeps it marked as a draft until they have approved that exact text in writing. Change a word and it asks again. Use when the user says \"case study\", \"testimonial\", \"customer story\", \"get a quote from them\", \"write up the result\", \"social proof\", \"can I use their name\", or once a customer has seen results."
+  },
+  {
+    "id": "jake-whale-demo-builder",
+    "name": "Jake Whale Demo Builder",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-whale-demo-builder",
+    "path": ".agents/skills/jake-whale-demo-builder",
+    "risk": "assess_for_task",
+    "description": "Demo Builder. Builds a demo showing how your product solves the problem, before the product exists. Turns a small spec into one self-contained HTML page that runs anywhere with no server: sample records, one button, every row moving through its statuses and a total counting up, with a banner that always says it is a demo with sample data. Claude can then make it look and behave more like the real thing for this buyer. Use when the user says \"build a demo\", \"mock this up\", \"show how it would work\", \"I need something to show them\", \"prototype\", or \"make a clickable demo\"."
+  },
+  {
+    "id": "jake-whale-follow-up",
+    "name": "Jake Whale Follow Up",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-whale-follow-up",
+    "path": ".agents/skills/jake-whale-follow-up",
+    "risk": "assess_for_task",
+    "description": "Follow-Up. Keeps the deal moving. Tells you who is due today after a pitch or an offer, drafts the next note (a bump, something useful, a last note), waits for your yes, logs it, and stops at the first \"no\", the moment a demo is booked, after 3 follow-ups or after 30 days. Logs their replies and knows when it's your turn. Use when the user says \"follow up\", \"who do I need to follow up with\", \"they haven't replied\", \"chase\", \"nudge\", \"bump this\", \"they replied\", \"they said no\", or every morning."
+  },
+  {
+    "id": "jake-whale-launch-planner",
+    "name": "Jake Whale Launch Planner",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-whale-launch-planner",
+    "path": ".agents/skills/jake-whale-launch-planner",
+    "risk": "assess_for_task",
+    "description": "Launch Planner. Plans the launch once it is paid for. Works backwards from the earliest date you promised a paying customer: requirements confirmed, feature complete, customers testing, fixes, first ship, then the rest. The public launch comes last, behind a gate that stays closed until someone has the product, nobody is late, and everything they paid for is built. Use when the user says \"launch plan\", \"when do we launch\", \"are we on track\", \"what's next\", \"plan the launch\", \"can we launch yet\", \"launch checklist\", or once customers have paid."
+  },
+  {
+    "id": "jake-whale-market-researcher",
+    "name": "Jake Whale Market Researcher",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-whale-market-researcher",
+    "path": ".agents/skills/jake-whale-market-researcher",
+    "risk": "assess_for_task",
+    "description": "Market Researcher. Finds problems businesses already pay thousands to solve. Looks for money that is already leaving their accounts: vendors, agencies, outsourced services and salaried jobs that exist only because of one painful problem. Builds a table of the problem, who pays and what they pay today, with a source for every number or a clearly marked estimate with its working, then helps you pick the one to go after and sets up the board the other ten Whale skills share. Use when the user says \"what should I build\", \"find me a problem\", \"market research\", \"validate this idea\", \"who would pay for this\", \"what do businesses pay for\", or \"set up the whale skill\"."
+  },
+  {
+    "id": "jake-whale-objection-handler",
+    "name": "Jake Whale Objection Handler",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-whale-objection-handler",
+    "path": ".agents/skills/jake-whale-objection-handler",
+    "risk": "assess_for_task",
+    "description": "Objection Handler. Answers every objection, and knows a no when it hears one. Matches what they said (\"it isn't built yet\", \"what if you never ship it\", \"why pay up front\", \"too expensive\", \"I need to ask my CFO\") to an honest answer filled in from your own terms, and shows why it works. A real no gets no answer at all: it stops the deal for good. Every answer is a draft for your yes. Use when the user says \"they said\", \"how do I answer this\", \"what do I say to\", \"they pushed back\", \"objection\", \"they think it's too expensive\", or pastes a reply they don't know how to answer."
+  },
+  {
+    "id": "jake-whale-offer-builder",
+    "name": "Jake Whale Offer Builder",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-whale-offer-builder",
+    "path": ".agents/skills/jake-whale-offer-builder",
+    "risk": "assess_for_task",
+    "description": "Offer Builder. Writes the offer they can say yes to. One page: the problem in their own numbers, what they get, the price, the date it ships, and the way out, with the plain statement that it isn't finished yet. A lint refuses an offer that leaves any of that out or that leans on fake urgency, made-up proof and promises nobody can keep. Every offer waits for your yes. Use when the user says \"write the offer\", \"make them an offer\", \"offer page\", \"proposal\", \"one-pager\", \"what do I send them\", \"they asked for details\", or \"founding customer offer\"."
+  },
+  {
+    "id": "jake-whale-pre-sale",
+    "name": "Jake Whale Pre Sale",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-whale-pre-sale",
+    "path": ".agents/skills/jake-whale-pre-sale",
+    "risk": "assess_for_task",
+    "description": "Pre-Sale. Gets customers to pay up front, and uses what they ask for to build the exact product. Sets honest terms (it isn't finished, the date it ships, how they get their money back), checks them, prepares a Stripe Payment Link in your own account for one buyer, logs real payments, and tells you when enough companies have paid to call it validated. Then it holds you to the date: it flags every promise coming due and writes the delay notice with the refund offer. Use when the user says \"pre-sell\", \"pre-sale\", \"get them to pay up front\", \"take a deposit\", \"charge before I build\", \"send a payment link\", \"validate with money\", \"who has paid\", \"am I validated\", or \"they said yes\"."
+  },
+  {
+    "id": "jake-whale-pricing",
+    "name": "Jake Whale Pricing",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-whale-pricing",
+    "path": ".agents/skills/jake-whale-pricing",
+    "risk": "assess_for_task",
+    "description": "Pricing. Sets the price from what they pay today. Takes the money already leaving their account for this problem, works out the year, and gives three prices with what each one leaves them, or checks a price you already have in mind, with the working shown so it can be argued with. Then puts the chosen price on the deal. Use when the user says \"what should I charge\", \"pricing\", \"how much is this worth\", \"set the price\", \"founding price\", \"am I charging too little\", or before writing an offer."
+  },
+  {
+    "id": "jake-whale-requirements",
+    "name": "Jake Whale Requirements",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-whale-requirements",
+    "path": ".agents/skills/jake-whale-requirements",
+    "risk": "assess_for_task",
+    "description": "Requirements. Turns what paying customers asked for into the build list. Captures each ask in their own words with the feature it becomes, merges the same feature across customers, and ranks the list by how much paid money is behind each line, so you build exactly what was paid for and nothing else. Asks from people who haven't paid wait on a separate list. Logs each customer confirming the list, and marks features done. Use when the user says \"what should I build\", \"requirements\", \"build list\", \"they asked for\", \"what did they want\", \"scope\", \"spec\", \"feature requests\", or right after a customer pays."
+  },
+  {
+    "id": "jake-whale-whale-hunter",
+    "name": "Jake Whale Whale Hunter",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-whale-whale-hunter",
+    "path": ".agents/skills/jake-whale-whale-hunter",
+    "risk": "assess_for_task",
+    "description": "Whale Hunter. Finds the decision makers and pitches them. Looks up who signs the check, who owns the budget and who feels the pain at a company you want as a customer, using public business sources only, then writes a short pitch to the right person: what they pay today, the demo, and one small ask. Every email waits for your yes and goes out from your own account, with the legal footer and a plain way to opt out. Use when the user says \"who decides at X\", \"find the decision maker\", \"find the CFO\", \"pitch them\", \"write the pitch\", \"cold email the buyer\", \"go after this company\", or \"hunt whales\"."
+  },
+  {
+    "id": "jake-x-x-audit",
+    "name": "Jake X X Audit",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-x-x-audit",
+    "path": ".agents/skills/jake-x-x-audit",
+    "risk": "assess_for_task",
+    "description": "Post-mortem on what the user has already published on X - which posts actually worked, why, and what to stop doing - from their own analytics export. Use when the user shares their X analytics CSV or past posts and asks \"what's working\", \"why did this flop\", \"read my analytics\", \"audit my account\", \"what should I double down on\", or wants to know whether links, threads or a posting time actually matter for them."
+  },
+  {
+    "id": "jake-x-x-comment",
+    "name": "Jake X X Comment",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-x-x-comment",
+    "path": ".agents/skills/jake-x-x-comment",
+    "risk": "assess_for_task",
+    "description": "Write replies on other people's X posts and threads that read as a person with something to add, not a reply guy. Use when the user pastes a post and wants a reply, says \"reply to this\", \"comment on this thread\", \"engage with this\", \"what do I say here\", \"quote tweet this\", or wants a batch of replies for their daily engagement round."
+  },
+  {
+    "id": "jake-x-x-dm",
+    "name": "Jake X X Dm",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-x-x-dm",
+    "path": ".agents/skills/jake-x-x-dm",
+    "risk": "assess_for_task",
+    "description": "Write X DMs that get answered - the first message, the two follow-ups - and triage the user's DM inbox and message requests. Use when the user says \"DM this person\", \"cold DM\", \"outreach on X\", \"how do I follow up\", \"what do I say to this DM\", \"go through my message requests\", or is reaching out to someone specific on X."
+  },
+  {
+    "id": "jake-x-x-human",
+    "name": "Jake X X Human",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-x-x-human",
+    "path": ".agents/skills/jake-x-x-human",
+    "risk": "assess_for_task",
+    "description": "Strip the machine fingerprint out of any draft - em dashes, AI slop words, invisible watermark characters, thread boilerplate - and score it against a five-check detection panel before it goes out. Use whenever text needs to sound human, when the user says humanize, \"does this sound like AI\", \"remove the em dashes\", \"de-slop this\", \"this sounds like ChatGPT\", or before any post, thread, reply or DM from this pack is shown to the user."
+  },
+  {
+    "id": "jake-x-x-plan",
+    "name": "Jake X X Plan",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-x-x-plan",
+    "path": ".agents/skills/jake-x-x-plan",
+    "risk": "assess_for_task",
+    "description": "Plan the user's week on X - what to post, when to post it, and who to engage with. Use when the user says \"plan my week\", \"what should I post\", \"content calendar\", \"posting schedule\", \"I have nothing to post about\", or wants a weekly mix of posts, threads and replies and a list of accounts to engage."
+  },
+  {
+    "id": "jake-x-x-post",
+    "name": "Jake X X Post",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-x-x-post",
+    "path": ".agents/skills/jake-x-x-post",
+    "risk": "assess_for_task",
+    "description": "Write an X (Twitter) post from a raw idea using 21 proven hook formulas, in the user's own voice, counted the way X counts characters and humanized so it does not read as AI. Use whenever the user wants a tweet, an X post, a hook, \"post about X\", \"turn this into a tweet\", a long post for Premium, or asks for hook options. Produces three scored hooks, one full draft, and a copy-ready block that is never published without an explicit yes."
+  },
+  {
+    "id": "jake-x-x-profile",
+    "name": "Jake X X Profile",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-x-x-profile",
+    "path": ".agents/skills/jake-x-x-profile",
+    "risk": "assess_for_task",
+    "description": "Score an X profile out of 100 against a 12-part rubric and rewrite the parts that lose points - bio, pinned post, display name, header, link. Use when the user says \"optimize my profile\", \"fix my X bio\", \"score my Twitter profile\", \"what should I pin\", \"rewrite my bio\", or pastes their profile and asks how it reads."
+  },
+  {
+    "id": "jake-x-x-reply",
+    "name": "Jake X X Reply",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-x-x-reply",
+    "path": ".agents/skills/jake-x-x-reply",
+    "risk": "assess_for_task",
+    "description": "Handle the replies under the user's own X posts - sort every one, then draft answers in the order that matters. Use when the user pastes the replies on their post, says \"reply to these\", \"handle my replies\", \"someone said X under my post\", \"how do I answer this\", or is dealing with a critic, a troll or a lead in their mentions."
+  },
+  {
+    "id": "jake-x-x-repurpose",
+    "name": "Jake X X Repurpose",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-x-x-repurpose",
+    "path": ".agents/skills/jake-x-x-repurpose",
+    "risk": "assess_for_task",
+    "description": "Turn one long asset - a YouTube video, podcast, newsletter, blog post, transcript, LinkedIn post or client call - into a week of X posts and one thread. Use when the user says \"repurpose this\", \"turn this into tweets\", \"I have a video/newsletter/transcript\", or pastes a long piece of content and wants it on X."
+  },
+  {
+    "id": "jake-x-x-thread",
+    "name": "Jake X X Thread",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-x-x-thread",
+    "path": ".agents/skills/jake-x-x-thread",
+    "risk": "assess_for_task",
+    "description": "Build an X thread: the first post that sells the whole thing, one idea per post, cut to fit X's weighted character count, and a last post that people act on. Use when the user says \"thread\", \"write a thread\", \"turn this into a thread\", \"tweetstorm\", or has a list-shaped or step-shaped idea that would be cramped in one post."
+  },
+  {
+    "id": "jake-x-x-viral",
+    "name": "Jake X X Viral",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-x-x-viral",
+    "path": ".agents/skills/jake-x-x-viral",
+    "risk": "assess_for_task",
+    "description": "The virality engine. Find the posts that are actually outperforming in the user's niche on X, rank them by how far each beat its own account, break each one down into hook, structure and format, then recreate the winners in the user's own voice for their audience. Use when the user says \"find viral posts\", \"what's working on X right now\", \"what are people posting in my niche\", \"reverse engineer this account\", \"build me a swipe file\", \"why did this tweet blow up\", \"recreate this post for me\", or has nothing to post and no evidence to decide with."
+  },
+  {
+    "id": "jake-youtube-yt-audit",
+    "name": "Jake Youtube Yt Audit",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-youtube-yt-audit",
+    "path": ".agents/skills/jake-youtube-yt-audit",
+    "risk": "assess_for_task",
+    "description": "Audit a YouTube channel end to end - packaging, consistency, the first fifteen seconds, and what to fix first. Use for \"audit my channel\", \"why isn't my channel growing\", \"review my videos\", or a pasted channel URL."
+  },
+  {
+    "id": "jake-youtube-yt-chapters",
+    "name": "Jake Youtube Yt Chapters",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-youtube-yt-chapters",
+    "path": ".agents/skills/jake-youtube-yt-chapters",
+    "risk": "assess_for_task",
+    "description": "Write YouTube chapters from a transcript, validated against YouTube's own rules so they actually render. Use for \"add chapters\", \"timestamps\", \"break this video into sections\"."
+  },
+  {
+    "id": "jake-youtube-yt-comment",
+    "name": "Jake Youtube Yt Comment",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-youtube-yt-comment",
+    "path": ".agents/skills/jake-youtube-yt-comment",
+    "risk": "assess_for_task",
+    "description": "Draft replies to YouTube comments in the creator's voice, triaged by which ones are worth answering. Use for \"reply to my comments\", \"handle the comment section\", \"someone asked X\", or a pasted comment thread."
+  },
+  {
+    "id": "jake-youtube-yt-edit",
+    "name": "Jake Youtube Yt Edit",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-youtube-yt-edit",
+    "path": ".agents/skills/jake-youtube-yt-edit",
+    "risk": "assess_for_task",
+    "description": "Turn a raw recording's transcript into an edit decision list - dead air, filler cues and retakes, with timecodes. Use for \"edit this\", \"cut the dead space\", \"tighten this video\", \"I rambled\", or any request to shorten footage from a transcript."
+  },
+  {
+    "id": "jake-youtube-yt-package",
+    "name": "Jake Youtube Yt Package",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-youtube-yt-package",
+    "path": ".agents/skills/jake-youtube-yt-package",
+    "risk": "assess_for_task",
+    "description": "Write and lint the title and thumbnail for a YouTube video as one pairing, checking truncation, duplication and vagueness before publish. Use for \"title ideas\", \"what should I call this\", \"thumbnail text\", \"my CTR is bad\", packaging, or any request to rename or repackage an existing video."
+  },
+  {
+    "id": "jake-youtube-yt-plan",
+    "name": "Jake Youtube Yt Plan",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-youtube-yt-plan",
+    "path": ".agents/skills/jake-youtube-yt-plan",
+    "risk": "assess_for_task",
+    "description": "Plan a week or a month of YouTube uploads - what to post, when, and in what order, sized to the creator's actual capacity. Use for \"plan my week\", \"content calendar\", \"what should I post\", \"I have no idea what to make next\"."
+  },
+  {
+    "id": "jake-youtube-yt-retention",
+    "name": "Jake Youtube Yt Retention",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-youtube-yt-retention",
+    "path": ".agents/skills/jake-youtube-yt-retention",
+    "risk": "assess_for_task",
+    "description": "Read a YouTube Studio audience-retention export and find where viewers actually leave, then say what to change. Use for \"why do people stop watching\", \"my retention is bad\", a pasted retention chart or CSV, or \"fix my pacing\"."
+  },
+  {
+    "id": "jake-youtube-yt-script",
+    "name": "Jake Youtube Yt Script",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-youtube-yt-script",
+    "path": ".agents/skills/jake-youtube-yt-script",
+    "risk": "assess_for_task",
+    "description": "Write a YouTube video script from a raw idea - hook options off 21 formulas, scored, then the full spoken script with the retention beats marked. Use whenever the user wants a video script, a hook, an opening line, \"what should I say\", \"write my next video\", or is about to record and does not have the first fifteen seconds yet."
+  },
+  {
+    "id": "jake-youtube-yt-seo",
+    "name": "Jake Youtube Yt Seo",
+    "module": "Technical SEO",
+    "category": "SEO & Discovery",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-youtube-yt-seo",
+    "path": ".agents/skills/jake-youtube-yt-seo",
+    "risk": "assess_for_task",
+    "description": "Write the description, tags and search-facing text for a YouTube video, aimed at the query a real person types. Use for \"write my description\", \"tags\", \"SEO\", \"help this video get found\", \"nobody is finding this\"."
+  },
+  {
+    "id": "jake-youtube-yt-shorts",
+    "name": "Jake Youtube Yt Shorts",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-youtube-yt-shorts",
+    "path": ".agents/skills/jake-youtube-yt-shorts",
+    "risk": "assess_for_task",
+    "description": "Find the Shorts hiding inside a long video and write them, using the transcript to pick self-contained moments. Use for \"cut this into shorts\", \"clip this\", \"repurpose this video\", \"what should I clip\"."
+  },
+  {
+    "id": "jake-youtube-yt-viral",
+    "name": "Jake Youtube Yt Viral",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill jake-youtube-yt-viral",
+    "path": ".agents/skills/jake-youtube-yt-viral",
+    "risk": "assess_for_task",
+    "description": "Find what is actually working in the user's niche on YouTube and rank it by how far each video beat its own channel, then name the formula. Use for \"what's working right now\", \"find viral videos in my niche\", \"why did this blow up\", competitor research, or a swipe file."
   },
   {
     "id": "java-coding-standards",
@@ -30158,6 +33609,23 @@
     "description": "Comprehensive testing and QA workflow covering unit testing, integration testing, E2E testing, browser automation, and quality assurance."
   },
   {
+    "id": "testmu-ai",
+    "name": "Testmu Ai",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill testmu-ai",
+    "path": ".agents/skills/testmu-ai",
+    "risk": "assess_for_task",
+    "description": "Run cross-browser automation, diagnose test failures, perform SmartUI visual regression audits, conduct WCAG accessibility evaluations, and orchestrate tests via HyperExecute on TestMu AI (formerly LambdaTest)."
+  },
+  {
     "id": "text-post-and-microblog",
     "name": "Text Post And Microblog",
     "module": "Domain & Research Extensions",
@@ -30819,6 +34287,23 @@
     "path": ".agents/skills/travel-health-analyzer",
     "risk": "assess_for_task",
     "description": "\u5206\u6790\u65c5\u884c\u5065\u5eb7\u6570\u636e\u3001\u8bc4\u4f30\u76ee\u7684\u5730\u5065\u5eb7\u98ce\u9669\u3001\u63d0\u4f9b\u75ab\u82d7\u63a5\u79cd\u5efa\u8bae\u3001\u751f\u6210\u591a\u8bed\u8a00\u7d27\u6025\u533b\u7597\u4fe1\u606f\u5361\u7247\u3002\u652f\u6301WHO/CDC\u6570\u636e\u96c6\u6210\u7684\u4e13\u4e1a\u7ea7\u65c5\u884c\u5065\u5eb7\u98ce\u9669\u8bc4\u4f30\u3002"
+  },
+  {
+    "id": "travis-mcp",
+    "name": "Travis Mcp",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill travis-mcp",
+    "path": ".agents/skills/travis-mcp",
+    "risk": "assess_for_task",
+    "description": "Manage Travis CI pipelines, monitor build health, retrieve and analyze job logs, compare builds, and optimize CI performance via the Travis CI MCP server (API v3)."
   },
   {
     "id": "trello-automation",

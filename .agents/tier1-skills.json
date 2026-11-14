@@ -1165,6 +1165,30 @@
       "path": ".agents/skills/intent-driven-development"
     },
     {
+      "name": "jake-illegal-codes-larp",
+      "tier": 1,
+      "description": "Startup idea analyzer that channels a 24-year-old founder with Euro Summer photos and a $100M raise for a ChatGPT wrapper, runs the idea through a rigorous teardown underneath the bit, and assembles the strongest possible business model and pitch; invoke via /larp when the user shares a business, app, or product idea worth pressure-testing.",
+      "path": ".agents/skills/jake-illegal-codes-larp"
+    },
+    {
+      "name": "jake-replica-replica-architect",
+      "tier": 1,
+      "description": "Plans the stack, database schema and API for an app clone, from the recon map replica-recon wrote. Picks boring, managed tech, turns the inferred data model into real SQL with indexes and access rules, lists every route by flow, and orders the build as a thin vertical slice first. Use when the user says \"plan the clone\", \"what stack should I use\", \"design the database\", \"write the schema\", \"plan the API\", \"architecture for my version of X\", or after /replica-recon finishes.",
+      "path": ".agents/skills/jake-replica-replica-architect"
+    },
+    {
+      "name": "jake-unhinged-schizotech",
+      "tier": 1,
+      "description": "Connects the dots nobody asked for \u2014 wild, lateral architecture ideas linking things you'd never pair on purpose; invoke via /schizotech when you want unconventional cross-domain inspiration, with the explicit understanding that you must filter it heavily.",
+      "path": ".agents/skills/jake-unhinged-schizotech"
+    },
+    {
+      "name": "jake-whale-launch-planner",
+      "tier": 1,
+      "description": "Launch Planner. Plans the launch once it is paid for. Works backwards from the earliest date you promised a paying customer: requirements confirmed, feature complete, customers testing, fixes, first ship, then the rest. The public launch comes last, behind a gate that stays closed until someone has the product, nobody is late, and everything they paid for is built. Use when the user says \"launch plan\", \"when do we launch\", \"are we on track\", \"what's next\", \"plan the launch\", \"can we launch yet\", \"launch checklist\", or once customers have paid.",
+      "path": ".agents/skills/jake-whale-launch-planner"
+    },
+    {
       "name": "javascript-testing-patterns",
       "tier": 1,
       "description": "Comprehensive guide for implementing robust testing strategies in JavaScript/TypeScript applications using modern testing frameworks and best practices.",
