@@ -1,6 +1,6 @@
 # AGYOS Prompt Principles Upgrade — Task List
 
-Status: UNDERSTAND approved by the operator on 2026-11-14. ANALYZE scope approval is pending.
+Status: UNDERSTAND approved by the operator on 2026-11-14. ANALYZE scope approval is pending. Updated to reflect the replacement repository instructions received on 2026-11-14.
 
 ## Goal
 
@@ -14,6 +14,7 @@ Review the supplied 26-company prompt archive and improve AGYOS-authored prompt 
 4. Audit and improve the prompt library and directly relevant prompt-engineering skills. Remove unrelated vendor persona/aesthetic branding from AGYOS-authored text; preserve provider names only where needed for compatibility, attribution, or accurate source discussion.
 5. Add CI-only checks or evaluation fixtures for the prompt guidance and brand boundary. Preserve existing assertions and generated outputs.
 6. Report exact files changed, source coverage, accepted and rejected principle counts, CI revision/results, and limitations. Keep uncommitted pre-existing work intact.
+7. Reconcile the live remote branch inventory with the single-main-branch rule: review each non-main branch, merge only valid changes into `main` with current CI evidence, and remove the secondary remote branch after its changes are incorporated. Ignore stale local remote-tracking refs that no longer exist upstream.
 
 ## Acceptance criteria
 
@@ -23,4 +24,5 @@ Review the supplied 26-company prompt archive and improve AGYOS-authored prompt 
 - AGYOS-authored prompt instructions use AGYOS identity and voice. The audit preserves justified technical, licensing, and provenance references.
 - Existing user changes remain intact; changes to already modified files are reconciled rather than overwritten.
 - Required checks run only in GitHub Actions. A queued, skipped, unavailable, or unrun CI result is not reported as passing.
-- No push, merge, release, or deployment occurs without separate authorization.
+- Do not create another branch or worktree. Apply the current direct-main publishing instruction while honoring the Gate 5 sign-off requirement; resolve its ordering against CI-only verification before any production publication.
+- Do not delete a branch until its changes are incorporated and its validity is established. A failed, missing, queued, or stale CI result does not establish validity.
