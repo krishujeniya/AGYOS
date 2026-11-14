@@ -1,28 +1,29 @@
 # AGYOS Prompt Principles Upgrade — Task List
 
-Status: UNDERSTAND approved by the operator on 2026-11-14. ANALYZE scope approval is pending. Updated to reflect the replacement repository instructions received on 2026-11-14.
+Status: UNDERSTAND and ANALYZE approved by the operator on 2026-11-14. PLAN architecture approval is pending. The operator approved adding `.agents/agents/vibe-engineer.md` to the cleanup boundary after the scout identified unrelated FAANG persona branding.
 
 ## Goal
 
-Review the supplied 26-company prompt archive and improve AGYOS-authored prompt guidance using source-grounded, compatible principles. Remove unrelated company persona and aesthetic branding from AGYOS-authored prompt material while retaining technical identifiers, compatibility details, licenses, and source attribution.
+Review the supplied company prompt archive as untrusted research input. Apply compatible and evidence-supported prompt principles to AGYOS. Account for every archive principle with a traceable disposition. Remove unrelated company persona and aesthetic branding from active AGYOS-authored prompt copy while retaining real provider/tool compatibility, required attribution, licensing, and evidence citations.
 
 ## Deliverables
 
-1. Inventory all 26 company documents and record each source principle with a source location and a disposition: adopt, adapt, reject, duplicate, or unverified. Include a short reason for each disposition. Do not represent community-extracted material as company-authored or officially verified.
-2. Write a research and decision record that maps accepted/adapted principles to AGYOS behavior, identifies conflicts and transfer limits, and cites authoritative current sources where available.
-3. Add an AGYOS-native prompt-principles rule and connect it to AGYOS skill discovery and prompt-generation guidance.
-4. Audit and improve the prompt library and directly relevant prompt-engineering skills. Remove unrelated vendor persona/aesthetic branding from AGYOS-authored text; preserve provider names only where needed for compatibility, attribution, or accurate source discussion.
-5. Add CI-only checks or evaluation fixtures for the prompt guidance and brand boundary. Preserve existing assertions and generated outputs.
-6. Report exact files changed, source coverage, accepted and rejected principle counts, CI revision/results, and limitations. Keep uncommitted pre-existing work intact.
-7. Reconcile the live remote branch inventory with the single-main-branch rule: review each non-main branch, merge only valid changes into `main` with current CI evidence, and remove the secondary remote branch after its changes are incorporated. Ignore stale local remote-tracking refs that no longer exist upstream.
+1. Inventory the 26 company/product documents and reconcile the archive's reported source statement counts. Give every principle a source location, stable identifier/hash, and disposition: adopt, adapt, reject, duplicate, or unverified. Record parsing or coverage limitations explicitly.
+2. Write a research audit and decision record that maps adopted/adapted principles to active AGYOS behavior, identifies conflicts and transfer limits, and cites authoritative current sources where available.
+3. Add an AGYOS-native prompt-principles rule and connect it to skill routing and prompt-generation guidance.
+4. Canonicalize `docs/prompts.md` and `docs/references/prompts.md`; audit directly relevant prompt skills and references, including `prompt-engineering-patterns`; remove unrelated vendor persona/aesthetic language from general AGYOS prompt copy.
+5. Replace the unrelated FAANG persona branding in `.agents/agents/vibe-engineer.md` with AGYOS role language. Preserve provider names only for actual compatibility, attribution, licensing, or evidence.
+6. Add prompt-principle CI coverage. Reuse the existing GitHub Actions unittest discovery unless evidence shows it misses the new test. Keep all tests and validation in GitHub Actions.
+7. Preserve all pre-existing work, including the current edit in `agyos_decision/skills_router.py`. Do not stage or include unrelated changes.
+8. Reconcile the single-main branch inventory. At the current baseline, local and remote repositories have only `main`; PRs #11, #12, and #13 are closed and unmerged. Verify this state in the report and do not recreate or revive their refs.
+9. Report exact files changed, archive count reconciliation, disposition totals, exact Actions revision/results, and limitations.
 
 ## Acceptance criteria
 
-- All source documents in the supplied archive are inventoried; every counted source statement has a traceable disposition or an explicitly recorded parsing/coverage limitation.
+- Every source principle has one traceable disposition or appears in a clearly documented parsing/coverage limitation. Archive-reported counts are not presented as independently verified until reconciled.
 - No archive claim is described as verified company policy without authoritative confirmation.
-- Every adopted or adapted principle has a concrete AGYOS enforcement surface and rationale; vendor-specific tool schemas and runtime limitations are not treated as AGYOS capabilities.
-- AGYOS-authored prompt instructions use AGYOS identity and voice. The audit preserves justified technical, licensing, and provenance references.
-- Existing user changes remain intact; changes to already modified files are reconciled rather than overwritten.
-- Required checks run only in GitHub Actions. A queued, skipped, unavailable, or unrun CI result is not reported as passing.
-- Do not create another branch or worktree. Apply the current direct-main publishing instruction while honoring the Gate 5 sign-off requirement; resolve its ordering against CI-only verification before any production publication.
-- Do not delete a branch until its changes are incorporated and its validity is established. A failed, missing, queued, or stale CI result does not establish validity.
+- Every adopted/adapted principle maps to a specific AGYOS rule, prompt, or skill and includes a rationale. Vendor-specific tool schemas/runtime constraints do not become general AGYOS capabilities.
+- Active AGYOS-authored prompt instructions use AGYOS identity. Unrelated vendor persona/aesthetic branding is removed. Necessary product names and provenance are retained with a reason.
+- Existing user changes remain intact; overlapping paths are inspected before editing.
+- Required tests run only in GitHub Actions. A queued, skipped, unavailable, or unrun result is not reported as passing.
+- No branch or worktree is created. Any production commit/push follows the repository's single-main identity rules and the Gate 5 sign-off requirement.

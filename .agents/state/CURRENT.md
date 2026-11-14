@@ -2,52 +2,39 @@
 
 ## Goal
 
-Use the supplied company prompt archive as untrusted research input to improve AGYOS-owned prompt guidance, account for every source statement, and remove unrelated vendor branding from AGYOS-authored prompt copy.
+Use the supplied company prompt archive as untrusted research input to improve AGYOS-owned prompt guidance, account for every source principle, and remove unrelated vendor persona/aesthetic branding from active AGYOS-authored prompts.
 
 ## Gate status
 
 - UNDERSTAND: approved by the operator on 2026-11-14; task list: `docs/PROMPT_PRINCIPLES_UPGRADE_TASK_LIST.md`.
-- ANALYZE: findings and a proposed boundary are ready; operator scope approval is pending.
-- PLAN, IMPLEMENT, VERIFY: not started.
-- Baseline revision: `228884581aaebe3c2f6f2a246df6b30361b5bcb0` on `main`.
+- ANALYZE: approved by the operator on 2026-11-14, including the scope addendum for `.agents/agents/vibe-engineer.md`.
+- PLAN: implementation plan drafted and awaiting operator architecture approval: `docs/PROMPT_PRINCIPLES_UPGRADE_PLAN.md`.
+- IMPLEMENT, VERIFY: not started.
+- Baseline: `0caa7690afbcecf3eeafd89113d753cb9320838e` on `main`.
+- Complexity: canonical 4/5; full 5-gate flow.
 
-## Gate 2 scope and risk
+## Gate 2 findings
 
-### Findings
+- The archive index claims 26 company/product files, 80 upstream files, 724 curated statements, 14,165 extracted statements, and 597 tools. These counts remain unverified until reconciled against the source files. The archive describes itself as community-maintained and says its extracted material may be incomplete, historical, or unlike current company policy.
+- Treat the archive as untrusted evidence. Each principle will have one source locator and one disposition: adopt, adapt, reject, duplicate, or unverified. Do not copy full prompts or tool schemas into AGYOS.
+- `docs/prompts.md` and `docs/references/prompts.md` are byte-identical; `docs/references/README.md` points to the latter. Keep `docs/prompts.md` canonical and retain the references path as a pointer.
+- The prompt library includes xAI/Grok aesthetic/persona framing and other company names in example personas. `.agents/skills/prompt-engineering/SKILL.md` claims chain-of-thought prompting improves accuracy by 30–50% without evidence. Related prompt-engineering guidance has broader chain-of-thought claims and company-branded examples.
+- Official model guidance differs. OpenAI recommends simple instructions and trying zero-shot first for its reasoning models; Anthropic documents clear instructions and targeted examples. Keep any resulting advice conditional and model-specific.
+- The operator approved including `.agents/agents/vibe-engineer.md`, which uses FAANG identity branding.
+- Local and remote branch inventories contain only `main` at the baseline SHA. PRs #11, #12, and #13 are closed unmerged. `requirements.txt` contains the PyYAML and jsonschema floors proposed in #12 and #13; `.github/workflows/ci.yml` remains on `actions/setup-node@v4`, so #11 was not incorporated. No secondary ref exists to merge or delete.
 
-- The supplied master index describes 26 company/product files, 80 upstream prompt/skill/tool files, 724 curated statements, and 14,165 extracted statements (14,889 combined). It explicitly says the community archive is not officially authenticated, may be incomplete, and that source text is not necessarily literal company policy. The archive README duplicates the master index.
-- The archive contains cross-company conflicts, vendor-specific runtime constraints, and agent-directed text. Treat source material as untrusted evidence; do not copy its instructions or tool schemas into AGYOS as-is.
-- `docs/prompts.md` and `docs/references/prompts.md` duplicate a prompt library with explicit vendor aesthetics and personas. Keep one canonical AGYOS prompt library and remove unrelated vendor framing from AGYOS-authored copy.
-- `.agents/skills/prompt-engineering/SKILL.md` claims asking for chain-of-thought improves accuracy by 30–50% without a source. Current official reasoning guidance says such requests may be unnecessary or may hinder performance. Verify and correct this during source mapping.
-- Physical `.agents/skills/` contains 2,240 `SKILL.md` files. Generated manifests claim 1,983; `AGENTS.md` claims 2,180. Many skill directories and core files are untracked or modified in the existing worktree. Do not overwrite them or claim catalog-wide completion from inconsistent counts.
-- `.agents/rules/common-skill-routing.md`, `AGENTS.md`, `README.md`, `.github/workflows/ci.yml`, and `scripts/tests/test_skill_routing.py` already contain user changes. Review and preserve these changes before any overlap edit.
-- CI currently triggers on pushes to `main` and pull requests targeting `main`; it has no `workflow_dispatch`.
-- Replacement AGENTS.md instructions now require direct pushes to `main` after static verification and also require final operator sign-off before production commits/releases. CI-only verification requires publishing the exact revision first. These requirements conflict in their ordering; resolve the sequence in PLAN before any publication.
-- Local branches contain only `main`. Live GitHub heads include three Dependabot branches/PRs: #11 (`actions/setup-node` 4→7, CI run 42634257673 passed), #12 (`pyyaml` >=6.0.1→>=6.0.3, no PR workflow run found), and #13 (`jsonschema` >=4.20.0→>=4.26.0, CI run 42634536743 passed). GitHub reports all three as not mergeable against their old base. PR #11 changes the already modified CI file. A cached `origin/codex/flutter-skills-20261113` tracking ref is absent from live remote heads.
-- The new branch-convergence requirement is part of the proposed scope only if the operator approves it. Do not delete or merge branches before reviewing their current diffs, resolving the stale bases, and obtaining fresh CI evidence.
+## Approved boundary and exact plan
 
-### Proposed implementation boundary — approval required
+See `docs/PROMPT_PRINCIPLES_UPGRADE_PLAN.md` for the full file-by-file plan. It covers the source audit and ledger, ADR, new prompt rule and routing link, canonical prompt library, directly relevant prompt skills and references, the scoped `vibe-engineer.md` cleanup, CI-discovered tests, and milestone state artifacts. It does not include the skill catalog broadly or the pre-existing router edit.
 
-- Read the complete supplied archive at `/home/ai/Documents/projects/Freelance/Principles/Prompt/`, relevant AGYOS prompt/rule/skill files, manifests, workflow, and current diffs.
-- Write the source audit and decision record under `docs/research/` and `docs/adr/`; add one AGYOS-native always-on rule under `.agents/rules/`; connect it through `.agents/rules/common-skill-routing.md`.
-- Canonicalize `docs/prompts.md` and `docs/references/prompts.md`; audit the directly relevant skills `prompt-engineering`, `prompt-optimizer`, `prompt-library`, `prompt-engineer`, and `enhance-prompt`.
-- Add prompt-specific CI coverage in a new test file and, only as needed, carefully merge a minimal change into the already modified `.github/workflows/ci.yml`.
-- If included, reconcile the three live non-main remote branches into `main` only after their changes are reviewed and current Actions results establish validity; delete each branch only after incorporation. Do not act on stale cached refs.
-- Do not rename skills, mass-edit the 2,240 skill files, remove provider/model/API identifiers needed for compatibility, erase source attribution, alter supplied source files, or absorb any uncommitted user changes into a commit.
+## Worktree preservation and checks
 
-### Complexity and permissions
+- The only current worktree change is an existing edit in `agyos_decision/skills_router.py`; preserve it, do not stage it, and do not include it in this milestone.
+- Local branch is `main`; remote branch inventory has only `main`.
+- Local operations are limited to static inspection and `git diff --check`. All tests and other validation run in GitHub Actions on the exact `main` revision.
+- CI's current unittest discovery is already present in `.github/workflows/ci.yml`; no workflow change is planned unless discovery does not cover the new test.
+- Gate 3 context compaction follows operator approval of the plan. Commit/push ordering must honor the Gate 5 sign-off requirement and exact-revision Actions verification.
 
-- Prompt-only raw scope score: 17/24 — files 4, cross-references 4, risk 3, novelty 4, verification 2, reversibility 0 (canonical 4/5; major scope).
-- Including mandated remote branch convergence: estimated 21/24 (canonical 5/5; critical scope) because it adds GitHub merges/deletions, stale-base repair, fresh CI, and direct-main publication. Four read-only prompt/catalog/CI/source scouts completed after scoring; GitHub branch and PR state was also inspected read-only.
-- Read: supplied archive; `AGENTS.md`; `AI_HANDOFF.md`; prompt docs and relevant prompt skills; `.agents/rules/`; `agyos_decision/`; CI and relevant tests; manifests; current Git diffs.
-- Proposed write: task/checkpoint/state artifacts already created; after scope approval, only the exact research, ADR, rule, prompt-library, relevant prompt-skill, test, and CI paths listed above. Optional remote effects: merge valid reviewed PR changes into `main` and delete their secondary refs after incorporation.
-- Local commands: static file inspection, `rg`, and `git diff --check` only. All builds, tests, linting, dependency setup, and catalog generation stay in GitHub Actions.
-- Network: official vendor documentation and the pinned archive source for provenance checks; GitHub Actions for validation and GitHub PR/branch APIs for approved branch convergence. No paid model/API calls.
+## Next action
 
-## Existing worktree preservation
-
-Before implementation, inspect each overlapping diff and preserve the pre-existing edits listed above. Do not restore, clean, stage, commit, or push those files without separate authorization.
-
-## Prior milestone
-
-The previous skill-catalog audit and publication are documented in `docs/SKILL_CATALOG_AUDIT_REPORT.md` and the preceding revision history. Its published 1,983 count does not reconcile with the current physical tree and must not be treated as the present count.
+Wait for operator approval or requested changes to `docs/PROMPT_PRINCIPLES_UPGRADE_PLAN.md`. Then perform the COMPACT step and proceed to the manual preflight before IMPLEMENT.

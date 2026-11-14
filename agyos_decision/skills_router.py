@@ -626,8 +626,6 @@ def decide_skill(query: str) -> Dict[str, Any]:
     except (OSError, ValueError, TypeError):
         integration_matches = []  # Bad registry never grants authority.
     for integration in integration_matches[:1]:
-        if not fallback and domain != "general" and primary.get("name") == DOMAIN_TAXONOMY.get(domain, {}).get("primary"):
-            break
         native = next((s for s in catalog if s["name"] == integration["primary_skill"]), None)
         if native is None:
             break
