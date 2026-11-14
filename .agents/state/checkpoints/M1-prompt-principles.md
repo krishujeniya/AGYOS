@@ -122,3 +122,16 @@
 ```json
 {"milestone":"M1-prompt-principles","iteration":2,"source_format_fixes":["bullet-prefixed count metadata","suffixed exhaustive section heading"],"catalog_outputs_from_ci_artifact":3,"local_tests_run":0,"local_generators_run":0,"diff_check":"PASS","independent_checker":"PASS","corrected_ci":"pending","gate5_operator_approval":"pending"}
 ```
+
+## Gate 5 — second exact-revision CI attempt and metadata accounting
+
+- Operator approved the guarded follow-up push. Script `.agents/state/decisions/executed/20261114-075100-m1-prompt-principles-followup.sh` committed and pushed `99c26eb16b79a0ebefa41b98044bf973bbc53dd6` to `origin/main` with the required identity; the push output was successful.
+- CI run [43574183754](https://github.com/krishujeniya/AGYOS/actions/runs/43574183754) passed startup contracts and the council job, then failed the source audit. Its artifact reports 724 curated and 14,164 exhaustive principle rows (14,888 total) against the publisher's 14,889 combined rows.
+- The only discrepancy is ANTHROPIC section 3.1: it declares 129 source rows, while there are 128 non-keyword principle entries and one keyword metadata row at source line 190. This appears to explain the publisher's one-row excess; the metadata row will be hashed and located separately, not added to the principle ledger. This classification remains subject to the next CI artifact.
+- Pages run [43574183813](https://github.com/krishujeniya/AGYOS/actions/runs/43574183813) passed. The generated-catalog equality step did not run after the audit failure.
+- Iteration 3 changes the summary and fixture to classify keyword metadata, reconcile publisher source-row totals, and keep ledger rows limited to principles. It also asserts that keyword text is absent from the full summary and that `main()` accepts the reconciled status. No local tests, parser execution, or generators were run. Independent static review and `git diff --check` passed; corrected exact-revision CI remains pending.
+- Renewed operator sign-off is required before another commit or push.
+
+```json
+{"milestone":"M1-prompt-principles","iteration":3,"latest_pushed_commit":"99c26eb16b79a0ebefa41b98044bf973bbc53dd6","startup_contracts":"PASS in CI 43574183754","parsed_principles":14888,"classified_metadata_rows_pending_reconciliation":1,"publisher_combined_claim":14889,"local_tests_run":0,"local_generators_run":0,"independent_checker":"PASS","diff_check":"PASS","corrected_ci":"pending","next_push_approval":"required"}
+```

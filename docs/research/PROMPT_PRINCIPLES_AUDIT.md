@@ -2,7 +2,9 @@
 
 Status: source interpretation documented; exact parser reconciliation is pending a corrected milestone GitHub Actions run.
 
-The first exact-revision attempt, [CI run 43572120201](https://github.com/krishujeniya/AGYOS/actions/runs/43572120201) on `dbb6f8df3c352384a8543c8908aab5a28082bc19`, failed before reconciliation. Its parser recognized 724 curated entries but no extracted entries because it expected an exact exhaustive heading and unbulleted count metadata. That zero is a parser-format failure, not evidence that the archive contains no extracted statements. The follow-up accepts the observed source format; all counts remain pending until its exact-run artifact is reviewed.
+The first exact-revision attempt, [CI run 43572120201](https://github.com/krishujeniya/AGYOS/actions/runs/43572120201) on `dbb6f8df3c352384a8543c8908aab5a28082bc19`, failed before reconciliation. Its parser recognized 724 curated entries but no extracted entries because it expected an exact exhaustive heading and unbulleted count metadata. That zero is a parser-format failure, not evidence that the archive contains no extracted statements.
+
+The second attempt, [CI run 43574183754](https://github.com/krishujeniya/AGYOS/actions/runs/43574183754) on `99c26eb16b79a0ebefa41b98044bf973bbc53dd6`, parsed 724 curated and 14,164 exhaustive principle entries, for 14,888 ledger rows. The publisher claims 14,889 combined rows. The only difference is in `ANTHROPIC.md`: section 3.1 declares 129 rows, while the parser finds 128 non-keyword principles; the source section also contains one keyword metadata bullet at [line 190](https://github.com/krishujeniya/Principles/blob/d1ed7de8cb338f8646d2d2f5394dd9c87bb9223e/Prompt/ANTHROPIC.md#L190). This indicates the publisher's count may include that metadata row. The corrected parser records its source locator and hash separately from the principle ledger. This interpretation awaits a passing exact-run artifact.
 
 ## Source and provenance
 
@@ -18,7 +20,9 @@ The CI parser counts two declared classes in each company document:
 1. Curated statements: individually numbered entries between the document's Principle catalog heading and its repository-source or Part II boundary.
 2. Extracted statements: top-level, non-keyword list items beneath the Complete Unified Company-Wide Principles by Domain heading and before the tool inventory heading.
 
-Each record stores its source commit, repository-relative path, source-file SHA-256, section, line number, source ordinal, statement SHA-256, and disposition. It does not store the statement text. The parser also compares per-file metadata and category counts to parsed records, then compares aggregate counts to the master index. It writes the ledger and count report under the CI runner's temporary directory and uploads them as the prompt-principles-ledger artifact for seven days.
+Keyword metadata bullets are hashed and located in the count summary but are excluded from principle records. This preserves the source row accounting without treating a keyword index as an instruction.
+
+Each principle record stores its source commit, repository-relative path, source-file SHA-256, section, line number, source ordinal, statement SHA-256, and disposition. It does not store the statement text. The parser compares per-file declarations with principle records and separately classified metadata, then reports aggregate principle counts and accounted source-row totals against the master index. It writes the ledger and count report under the CI runner's temporary directory and uploads them as the prompt-principles-ledger artifact for seven days.
 
 These units account for the archive's declared principle entries, not every instruction in the absent upstream files. A mismatch or unrecognized section is reported and fails the parser step. No completeness claim is valid until the exact-run artifact shows matching per-file, category, and aggregate principle counts.
 
@@ -43,6 +47,6 @@ These sources support narrow, conditional techniques. They do not verify the arc
 
 ## Remaining limits
 
-- Parsed counts, disposition totals, source-file digests, and the exact Actions run are recorded by the milestone workflow summary and its artifact. They remain pending until that workflow completes on the reviewed revision.
+- Parsed counts, disposition totals, source-file digests, and the final exact Actions run are recorded by the milestone workflow summary and its artifact. Reconciliation remains pending until the corrected workflow completes on the reviewed revision.
 - The upstream files and license text are absent from the supplied checkout. This audit does not make a legal conclusion about the source collection.
 - Community summaries can omit instructions or flatten context-specific differences. The parser cannot restore omitted source material or establish authenticity.

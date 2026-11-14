@@ -150,15 +150,24 @@ def parse_curated(
     return rows, []
 
 
+def keyword_metadata_record(section: str, line_number: int, line: str) -> dict[str, Any]:
+    return {
+        "section": section,
+        "line": line_number,
+        "sha256": sha256_bytes(normalize_statement(line[2:]).encode("utf-8")),
+    }
+
+
 def parse_exhaustive(
     lines: list[str], path: Path, relative_path: str, digest: str
-) -> tuple[list[dict[str, Any]], list[str], dict[str, int]]:
+) -> tuple[list[dict[str, Any]], list[str], dict[str, int], list[dict[str, Any]]]:
     start, end = find_section(lines, EXHAUSTIVE_START, ("### 4.",))
     if start < 0:
-        return [], ["missing exhaustive principle section"], {}
+        return [], ["missing exhaustive principle section"], {}, []
     rows = []
     warnings = []
     declared: dict[str, int] = {}
+    keyword_metadata = []
     section = "Uncategorized principles"
     fence = ""
     for index in range(start + 1, end):
@@ -179,7 +188,10 @@ def parse_exhaustive(
             section = line[5:].strip()
             warnings.append(f"unrecognized principle heading at line {index + 1}")
             continue
-        if not line.startswith("- ") or line.startswith("- **Keywords**:"):
+        if line.startswith("- **Keywords**:"):
+            keyword_metadata.append(keyword_metadata_record(section, index + 1, line))
+            continue
+        if not line.startswith("- "):
             continue
         rows.append(
             source_record(
@@ -189,9 +201,10 @@ def parse_exhaustive(
         )
     for name, count in declared.items():
         observed = sum(1 for row in rows if row["section"] == name)
+        observed += sum(1 for row in keyword_metadata if row["section"] == name)
         if observed != count:
-            warnings.append(f"section {name!r} declares {count} entries; parser found {observed}")
-    return rows, warnings, declared
+            warnings.append(f"section {name!r} declares {count} source rows; parser accounted for {observed}")
+    return rows, warnings, declared, keyword_metadata
 
 
 def parse_company_file(path: Path, source_root: Path) -> dict[str, Any]:
@@ -200,7 +213,7 @@ def parse_company_file(path: Path, source_root: Path) -> dict[str, Any]:
     relative_path = path.relative_to(source_root).as_posix()
     digest = sha256_bytes(raw)
     curated, warnings = parse_curated(lines, path, relative_path, digest)
-    exhaustive, exhaustive_warnings, declared_sections = parse_exhaustive(
+    exhaustive, exhaustive_warnings, declared_sections, keyword_metadata = parse_exhaustive(
         lines, path, relative_path, digest
     )
     warnings.extend(exhaustive_warnings)
@@ -220,8 +233,9 @@ def parse_company_file(path: Path, source_root: Path) -> dict[str, Any]:
         warnings.append(f"curated metadata declares {curated_claim}; parser found {len(curated)}")
     if exhaustive_claim is None:
         warnings.append("missing publisher exhaustive-count metadata")
-    elif len(exhaustive) != exhaustive_claim:
-        warnings.append(f"exhaustive metadata declares {exhaustive_claim}; parser found {len(exhaustive)}")
+    elif len(exhaustive) + len(keyword_metadata) != exhaustive_claim:
+        accounted = len(exhaustive) + len(keyword_metadata)
+        warnings.append(f"exhaustive metadata declares {exhaustive_claim}; parser accounted for {accounted}")
     return {
         "path": relative_path,
         "company": path.stem,
@@ -230,7 +244,12 @@ def parse_company_file(path: Path, source_root: Path) -> dict[str, Any]:
         "publisher_exhaustive": exhaustive_claim,
         "parsed_curated": len(curated),
         "parsed_exhaustive": len(exhaustive),
+        "parsed_keyword_metadata": len(keyword_metadata),
         "declared_exhaustive_sections": declared_sections,
+        "keyword_metadata": [
+            {"path": relative_path, "company": path.stem, **row}
+            for row in keyword_metadata
+        ],
         "records": curated + exhaustive,
         "warnings": warnings,
     }
@@ -276,6 +295,7 @@ def count_mismatches(
     company_results: list[dict[str, Any]],
     parsed_curated: int,
     parsed_exhaustive: int,
+    keyword_metadata_count: int,
     record_count: int,
 ) -> list[dict[str, Any]]:
     mismatches = [
@@ -289,8 +309,8 @@ def count_mismatches(
         })
     for label, observed, expected in (
         ("curated", parsed_curated, claims["curated"]),
-        ("exhaustive", parsed_exhaustive, claims["exhaustive"]),
-        ("combined", record_count, claims["combined"]),
+        ("exhaustive source rows", parsed_exhaustive + keyword_metadata_count, claims["exhaustive"]),
+        ("combined source rows", record_count + keyword_metadata_count, claims["combined"]),
     ):
         if observed != expected:
             mismatches.append({"path": "Prompt/", "warnings": [f"aggregate {label} count differs from index"]})
@@ -300,7 +320,8 @@ def count_mismatches(
 def build_summary(
     claims: dict[str, int], company_results: list[dict[str, Any]],
     records: list[dict[str, Any]], parsed_curated: int,
-    parsed_exhaustive: int, mismatches: list[dict[str, Any]],
+    parsed_exhaustive: int, keyword_metadata: list[dict[str, Any]],
+    mismatches: list[dict[str, Any]],
 ) -> dict[str, Any]:
     parsed_counts = Counter(row["disposition"] for row in records)
     return {
@@ -313,10 +334,16 @@ def build_summary(
             "curated_statements": parsed_curated,
             "exhaustive_statements": parsed_exhaustive,
             "combined_statements": len(records),
+            "non_principle_metadata_rows": len(keyword_metadata),
+            "accounted_source_rows": len(records) + len(keyword_metadata),
             "dispositions": dict(sorted(parsed_counts.items())),
         },
-        "count_status": "principle_counts_match" if not mismatches else "mismatch",
+        "count_status": summary_count_status(mismatches, keyword_metadata),
         "mismatches": mismatches,
+        "non_principle_metadata": {
+            "classification": "keyword metadata excluded from the principle ledger",
+            "rows": keyword_metadata,
+        },
         "inventory_limits": {
             "upstream_file_claim": claims["upstream_files"],
             "upstream_file_status": "not_reconciled; raw upstream files are absent from this supplied subtree",
@@ -331,11 +358,22 @@ def build_summary(
                 "publisher_exhaustive": result["publisher_exhaustive"],
                 "parsed_curated": result["parsed_curated"],
                 "parsed_exhaustive": result["parsed_exhaustive"],
+                "parsed_keyword_metadata": result["parsed_keyword_metadata"],
             }
             for result in company_results
         ],
         "ledger_contains_statement_text": False,
     }
+
+
+def summary_count_status(
+    mismatches: list[dict[str, Any]], keyword_metadata: list[dict[str, Any]]
+) -> str:
+    if mismatches:
+        return "mismatch"
+    if keyword_metadata:
+        return "publisher_rows_reconciled_with_metadata"
+    return "principle_counts_match"
 
 
 def build_audit(source_root: Path) -> tuple[list[dict[str, Any]], dict[str, Any]]:
@@ -352,12 +390,16 @@ def build_audit(source_root: Path) -> tuple[list[dict[str, Any]], dict[str, Any]
     apply_dispositions(records)
     parsed_curated = sum(company["parsed_curated"] for company in company_results)
     parsed_exhaustive = sum(company["parsed_exhaustive"] for company in company_results)
+    keyword_metadata = [
+        row for company in company_results for row in company["keyword_metadata"]
+    ]
     mismatches = count_mismatches(
         len(company_paths), claims, company_results, parsed_curated,
-        parsed_exhaustive, len(records),
+        parsed_exhaustive, len(keyword_metadata), len(records),
     )
     summary = build_summary(
-        claims, company_results, records, parsed_curated, parsed_exhaustive, mismatches
+        claims, company_results, records, parsed_curated, parsed_exhaustive,
+        keyword_metadata, mismatches,
     )
     return records, summary
 
@@ -386,7 +428,9 @@ def append_github_summary(summary: dict[str, Any]) -> None:
         f"- Count status: **{summary['count_status']}**",
         f"- Company files: {counts['company_files']}",
         f"- Parsed principles: {counts['combined_statements']} ({counts['curated_statements']} curated, {counts['exhaustive_statements']} exhaustive)",
-        f"- Publisher claims: {summary['publisher_claims']['combined']} principles; {summary['publisher_claims']['tools']} tools",
+        f"- Non-principle metadata rows: {counts['non_principle_metadata_rows']}",
+        f"- Accounted source rows: {counts['accounted_source_rows']} / {summary['publisher_claims']['combined']} publisher-claimed rows",
+        f"- Publisher tool claim: {summary['publisher_claims']['tools']}",
         f"- Parser mismatches: {len(summary['mismatches'])}",
         "",
     ]
@@ -414,8 +458,11 @@ def main() -> int:
                 "curated_statements": 0,
                 "exhaustive_statements": 0,
                 "combined_statements": 0,
+                "non_principle_metadata_rows": 0,
+                "accounted_source_rows": 0,
                 "dispositions": {},
             },
+            "non_principle_metadata": {"classification": "unavailable", "rows": []},
             "ledger_contains_statement_text": False,
         }
         write_outputs([], error_summary, args.output, args.summary)
@@ -428,7 +475,11 @@ def main() -> int:
         "parsed": summary["parsed"],
         "mismatches": summary["mismatches"],
     }, sort_keys=True))
-    return 0 if summary["count_status"] == "principle_counts_match" else 1
+    successful_statuses = {
+        "principle_counts_match",
+        "publisher_rows_reconciled_with_metadata",
+    }
+    return 0 if summary["count_status"] in successful_statuses else 1
 
 
 if __name__ == "__main__":

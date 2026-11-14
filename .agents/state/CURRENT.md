@@ -24,14 +24,14 @@ Use the supplied company prompt archive as untrusted research input to improve A
 
 - UNDERSTAND, ANALYZE, original PLAN, source-checkout/artifact amendment, and generated-catalog scope amendment approved on 2026-11-14.
 - Baseline is `e0d9bbfc3abd9cee2da9567e94cb725c531c59b6`; full CI run `43564722594` passed there.
-- Expanded preflight after catalog-scope approval: 40 planned repository paths; 35 existed and 5 are new deliverables. The seven generated catalog outputs are checked in and will be refreshed from Actions.
-- Publisher claims 14,889 principles; the parser must reconcile actual source units and report ambiguities without guessing.
+- Expanded preflight after catalog-scope approval: 40 planned repository paths; 35 existed and 5 are new deliverables. Changed generated catalog outputs were refreshed from the Actions artifact.
+- The publisher claims 14,889 combined rows. CI found one keyword metadata row within that total but outside the agreed principle-unit definition; keep it separate from principle records.
 - The source repo lacks a root LICENSE/NOTICE; preserve provenance and emit hashes/locators, not source statement prose.
 - Local operations: read-only inspection and `git diff --check`. Run tests, parser, builds, dependency setup, and validation only in GitHub Actions.
 - No follow-up production commit or push before renewed Gate 5 operator sign-off.
 
 ## 5. Next action
 
-The first implementation commit `dbb6f8df3c352384a8543c8908aab5a28082bc19` was pushed to `main`. CI run [43572120201](https://github.com/krishujeniya/AGYOS/actions/runs/43572120201) failed on one stale startup-contract expectation and parser assumptions that did not match the pinned source's bullet-prefixed metadata and suffixed exhaustive heading. The Pages workflow `43572120384` passed. Its catalog artifact refreshed three checked-in outputs: `.agents/skills-manifest.json`, `docs/skills-data.json`, and `docs/llms.txt`.
+Commits `dbb6f8df3c352384a8543c8908aab5a28082bc19` and `99c26eb16b79a0ebefa41b98044bf973bbc53dd6` were pushed to `main`. The first CI run failed on a stale assertion and source-format assumptions; the second passed startup contracts but found a one-row count discrepancy. Its artifact reports 724 curated plus 14,164 exhaustive principle rows; the publisher's combined total is one higher. Anthropic section 3.1 has 128 non-keyword principle rows and one keyword metadata row within its declared count of 129. Pages runs `43572120384` and `43574183813` passed. The first catalog artifact refreshed `.agents/skills-manifest.json`, `docs/skills-data.json`, and `docs/llms.txt`.
 
-The follow-up fixes the fixture and parser for those observed source formats and uses only the generated catalog artifact. The independent static review passed after the checkpoint fence and helper-scope corrections; local `git diff --check` passed. No local tests, parser, or generators were run. Corrected exact-revision CI remains pending. Review the prepared diff and commit script, then obtain renewed Gate 5 operator sign-off before any follow-up commit or push.
+The current uncommitted follow-up classifies the keyword metadata row separately and tests that publisher rows reconcile without adding metadata to the principle ledger. Independent static review and `git diff --check` passed. Tests, parser, and generators remain CI-only; corrected exact-revision CI remains pending. The latest remote commit is `99c26eb16b79a0ebefa41b98044bf973bbc53dd6`; obtain renewed Gate 5 approval before another commit or push.

@@ -15,10 +15,10 @@ from scripts import audit_prompt_principles as audit
 
 ROOT = Path(__file__).resolve().parents[2]
 OPTIMIZER_PATH = ROOT / ".agents/skills/prompt-engineering-patterns/scripts/optimize-prompt.py"
-PUBLISHER_INDEX = """| **Total** | **1 Companies** | **1 Company .md Files** | Scope | **1** | **1** | **2** | **3** | **0** | Link |
+PUBLISHER_INDEX = """| **Total** | **1 Companies** | **1 Company .md Files** | Scope | **1** | **1** | **3** | **4** | **0** | Link |
 """
 COMPANY_FIXTURE = """- **Curated Principle Catalog Statements (from Folder 02)**: 1
-- **Exhaustive Prompt-Derived Principle Statements (from Folder 01)**: 2
+- **Exhaustive Prompt-Derived Principle Statements (from Folder 01)**: 3
 
 ## Principle catalog
 
@@ -32,10 +32,10 @@ COMPANY_FIXTURE = """- **Curated Principle Catalog Statements (from Folder 02)**
 
 ### 3. Complete Unified Company-Wide Principles by Domain (All Prompt Rules Consolidated)
 
-#### 3.1 Communication Principles (2 Principles)
+#### 3.1 Communication Principles (3 Principles)
 
 - Keep the requested output format. *(Source: example.txt)*
-- **Keywords**: format, structure
+- **Keywords**: formatting, structure
 - Keep the required fields. *(Source: example.txt)*
 
 ### 4. Consolidated Company Tool Catalog (0 Tools)
@@ -55,8 +55,13 @@ class PromptPrinciplesParserTests(unittest.TestCase):
 
         self.assertEqual(parsed["parsed_curated"], 1)
         self.assertEqual(parsed["parsed_exhaustive"], 2)
+        self.assertEqual(parsed["parsed_keyword_metadata"], 1)
         self.assertEqual(parsed["publisher_curated"], 1)
-        self.assertEqual(parsed["publisher_exhaustive"], 2)
+        self.assertEqual(parsed["publisher_exhaustive"], 3)
+        self.assertEqual(len(parsed["records"]), 3)
+        self.assertEqual(parsed["keyword_metadata"][0]["section"], "Communication Principles")
+        self.assertEqual(parsed["keyword_metadata"][0]["line"], 19)
+        self.assertNotIn("formatting, structure", json.dumps(parsed["keyword_metadata"]))
         self.assertEqual(parsed["warnings"], [])
         self.assertEqual(parsed["records"][0]["ordinal"], "1.1")
         self.assertEqual(parsed["records"][1]["section"], "Communication Principles")
@@ -94,8 +99,35 @@ class PromptPrinciplesParserTests(unittest.TestCase):
             with patch.object(audit, "EXPECTED_COMPANIES", 1):
                 _, summary = audit.build_audit(source)
 
-        self.assertEqual(summary["count_status"], "principle_counts_match")
+        self.assertEqual(summary["count_status"], "publisher_rows_reconciled_with_metadata")
         self.assertEqual(summary["parsed"]["combined_statements"], 3)
+        self.assertEqual(summary["parsed"]["non_principle_metadata_rows"], 1)
+        self.assertEqual(summary["parsed"]["accounted_source_rows"], 4)
+        self.assertFalse(summary["mismatches"])
+        self.assertEqual(summary["non_principle_metadata"]["rows"][0]["line"], 19)
+        self.assertNotIn("formatting, structure", json.dumps(summary))
+
+    def test_main_accepts_reconciled_publisher_rows_with_metadata(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            arguments = [
+                "audit_prompt_principles.py",
+                "--source-dir", str(root),
+                "--output", str(root / "ledger.jsonl"),
+                "--summary", str(root / "summary.json"),
+            ]
+            summary = {
+                "count_status": "publisher_rows_reconciled_with_metadata",
+                "parsed": {},
+                "mismatches": [],
+            }
+            with (
+                patch.object(audit, "build_audit", return_value=([], summary)),
+                patch.object(audit, "append_github_summary"),
+                patch.object(sys, "argv", arguments),
+                patch("builtins.print"),
+            ):
+                self.assertEqual(audit.main(), 0)
 
     def test_every_parsed_record_has_one_supported_disposition(self):
         with tempfile.TemporaryDirectory() as temp:

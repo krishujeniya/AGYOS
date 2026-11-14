@@ -1,6 +1,6 @@
 # AGYOS Prompt Principles Upgrade — Task List
 
-Status: UNDERSTAND, ANALYZE, and amended PLAN approved on 2026-11-14. The first exact-revision CI run failed on a parser format assumption and one outdated test expectation; changed generated catalog outputs have been applied from its Actions artifact. Corrected exact-revision CI is pending.
+Status: UNDERSTAND, ANALYZE, and amended PLAN approved on 2026-11-14. CI run `43574183754` passed startup contracts but found one publisher-count row that is keyword metadata rather than a principle; the parser will account for it separately. Corrected exact-revision CI is pending.
 
 ## Goal
 
