@@ -2,7 +2,12 @@
 
 const fs = require('fs');
 const path = require('path');
-const Ajv = require('ajv');
+let Ajv;
+try {
+  Ajv = require('ajv');
+} catch {
+  Ajv = null;
+}
 
 const SCHEMA_PATH = path.join(__dirname, '..', '..', '..', 'schemas', 'state-store.schema.json');
 
@@ -32,6 +37,9 @@ function readSchema() {
 function getAjv() {
   if (cachedAjv) {
     return cachedAjv;
+  }
+  if (!Ajv) {
+    Ajv = require('ajv');
   }
 
   cachedAjv = new Ajv({
