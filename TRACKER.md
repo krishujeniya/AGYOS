@@ -1,4 +1,14 @@
-## Current update: skill catalog quality and OpenWhispr — 2026-11-11
+## Current update: prompt principles upgrade and source audit reconciliation — 2026-11-14
+
+- Audited 26 company and product prompt archive documents against AGYOS prompt principles; reconciled 14,888 principle rows plus 1 separately classified metadata row, accounting for the publisher's 14,889 source rows with zero count mismatches.
+- Removed vendor-specific persona and aesthetic branding from active AGYOS-authored prompt surfaces; integrated AGYOS prompt-principles rule in `.agents/rules/agyos-prompt-principles.md` and updated skill routing.
+- Added GitHub Actions prompt principles audit step and artifact upload with bounded retention; refreshed generated skill catalog outputs from CI artifacts.
+- Milestone `M1-prompt-principles` closed at Gate 5 with full independent review and operator sign-off; GitHub Actions CI run `43585495536` and Pages deployment `43585495534` passed on `main`.
+- Full evidence and records: [docs/PROMPT_PRINCIPLES_UPGRADE_PLAN.md](docs/PROMPT_PRINCIPLES_UPGRADE_PLAN.md), [docs/research/PROMPT_PRINCIPLES_AUDIT.md](docs/research/PROMPT_PRINCIPLES_AUDIT.md), and [AI_HANDOFF.md](AI_HANDOFF.md).
+
+---
+
+## Historical update: skill catalog quality and OpenWhispr — 2026-11-11
 
 - Audited the 1,982-skill baseline and added the source-backed `openwhispr` skill; the current physical catalog and generated indexes contain 1,983 skills.
 - The catalog scanner reports zero structural findings, duplicate descriptions, or exact duplicate-body groups. All primary entrypoints are below 300 lines.
