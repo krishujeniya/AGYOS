@@ -292,3 +292,26 @@ bash scripts/agyos-verify.sh
 - CLI: global `cf` v0.15.0 is authenticated. The Cloudflare skill installer reported a PromptScript global-scope warning after copying the skills; it also flagged `turnstile-spin` for one Socket alert and medium Snyk risk. No skill scripts were executed.
 - Evidence: skill destination count 22/22, AGY MCP list, `cf auth whoami` active, and `git diff --check` passed. No project tests, builds, or local CI-only checks were run; no push was requested.
 - Exact next command: `agy`
+
+---
+
+# AGYOS handoff: prompt principles upgrade and source audit reconciliation (2026-11-14)
+
+- Task: Review supplied company prompt archive as untrusted research input, audit 26 company and product documents, reconcile 14,889 source rows with zero count mismatches, adapt verified principles into AGYOS prompt-principles rule and skills, remove vendor persona/branding, update CI validation, and synchronize state records.
+- Branch & Revision: `main`, commit `566371e1021fc1efaa9d7f8193f8942518b37c28` (origin/main).
+- Status & Gates: UNDERSTAND, ANALYZE, PLAN, IMPLEMENT, VERIFY all passed and closed (Gate 5 PASS).
+- Verified Evidence (CI/CD only):
+  - GitHub Actions CI run `43580813396` passed: council job in 10s, validate job in 31s.
+  - GitHub Actions Pages deploy run `43580813288` passed in 20s.
+  - Ledger Accounting: 14,888 principle rows + 1 separately classified keyword metadata row = 14,889 publisher source rows. 4 adapted, 14,884 unverified, 0 mismatches.
+  - Zero local test/build executions (complies strictly with CI-only invariant); local verification: `git diff --check` passed.
+- Changed Files in Milestone:
+  - Rules: `.agents/rules/agyos-prompt-principles.md`, `.agents/rules/common-skill-routing.md`
+  - Agents: `.agents/agents/vibe-engineer.md`
+  - Skills: `.agents/skills/enhance-prompt/SKILL.md`, `.agents/skills/prompt-engineer/`, `.agents/skills/prompt-engineering-patterns/`, `.agents/skills/prompt-engineering/SKILL.md`, `.agents/skills/prompt-library/`, `.agents/skills/prompt-optimizer/`
+  - Workflows & Scripts: `.github/workflows/ci.yml`, `scripts/audit_prompt_principles.py`, `scripts/tests/test_prompt_principles.py`
+  - Documentation & ADR: `docs/PROMPT_PRINCIPLES_UPGRADE_PLAN.md`, `docs/PROMPT_PRINCIPLES_UPGRADE_TASK_LIST.md`, `docs/prompts.md`, `docs/references/prompts.md`, `docs/adr/0003-prompt-principles-integration.md`, `docs/research/PROMPT_PRINCIPLES_AUDIT.md`
+  - Generated Manifests: `.agents/skills-manifest.json`, `docs/skills-data.json`, `docs/llms.txt`
+  - State & Checkpoints: `.agents/state/CURRENT.md`, `.agents/state/checkpoints/M1-prompt-principles.md`, `.agents/state/context-graph.json`, `.agents/state/state.json`
+- Blockers: None. All milestone objectives and CI runs are green.
+- Exact next command: `git status --short --branch`
