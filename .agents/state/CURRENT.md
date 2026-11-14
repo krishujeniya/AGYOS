@@ -28,7 +28,7 @@ Use the supplied company prompt archive as untrusted research input to improve A
 - The publisher claims 14,889 combined rows. CI found one keyword metadata row within that total but outside the agreed principle-unit definition; keep it separate from principle records.
 - The source repo lacks a root LICENSE/NOTICE; preserve provenance and emit hashes/locators, not source statement prose.
 - Local operations: read-only inspection and `git diff --check`. Run tests, parser, builds, dependency setup, and validation only in GitHub Actions.
-- The implementation and evidence revisions passed exact-SHA GitHub Actions and Pages checks. Any further commit or push, including this final status-record synchronization, requires renewed Gate 5 operator sign-off.
+- The implementation, evidence, and status-record revisions passed exact-SHA GitHub Actions and Pages checks. The latest verified revision is `31b4018d38cfe68cae669f5df689c257ccc8b069`.
 
 ## 5. Verified result and next action
 
@@ -36,4 +36,4 @@ Commits `dbb6f8df3c352384a8543c8908aab5a28082bc19` and `99c26eb16b79a0ebefa41b98
 
 The keyword metadata is separately hashed and located outside the principle ledger. CI run [43576647191](https://github.com/krishujeniya/AGYOS/actions/runs/43576647191) passed on implementation commit `98486147dbab917deee345fd4c36498f5901bc01`: 14,888 principle rows plus one metadata row reconcile to 14,889 publisher source rows, with no mismatches. The evidence-only revision `9d89d84c333f7fe144d2083c834cd9c6beb8302a` passed CI run [43577287826](https://github.com/krishujeniya/AGYOS/actions/runs/43577287826) and Pages run [43577287798](https://github.com/krishujeniya/AGYOS/actions/runs/43577287798); its audit artifact confirms the same counts and dispositions. Startup contracts, council regression, prompt audit, artifact upload, generated-catalog equality, and documentation deployment passed. The audit report contains final counts. Independent review and `git diff --check` passed for the evidence revision; local tests and generators were not run.
 
-The prompt-principles implementation and evidence are verified. Independent review passed for the five-file status-record synchronization; it requires its own Gate 5 sign-off before commit or push.
+The final status-record synchronization was independently reviewed, approved, and pushed as `31b4018d38cfe68cae669f5df689c257ccc8b069`. CI run [43579658988](https://github.com/krishujeniya/AGYOS/actions/runs/43579658988) and Pages run [43579658930](https://github.com/krishujeniya/AGYOS/actions/runs/43579658930) passed on that exact revision. The prompt-principles milestone verification status is PASS; tests and generators were run only in GitHub Actions.
