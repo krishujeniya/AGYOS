@@ -67,7 +67,7 @@ mkdir -p "$STATE_DIR"
     else
       jq_status=$?
       case "$jq_status" in
-        1|4)
+        1|4|5)
           backup=$(backup_corrupt_state)
           echo "State JSON is corrupt or is not an object; preserved original at $backup and initialized state.json defaults."
           write_defaults
