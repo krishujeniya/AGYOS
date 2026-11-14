@@ -69,6 +69,22 @@ const {
 const OPENCODE_BUILD_ARTIFACT = path.join('.opencode', 'dist');
 const OPENCODE_BUILD_SCRIPT = path.join('scripts', 'build-opencode.js');
 const OPENCODE_PLUGIN_NOT_BUILT_CODE = 'opencode-plugin-not-built';
+const INSTALL_LIFECYCLE_STATUSES = Object.freeze({
+  repair: Object.freeze(['planned', 'repaired', 'ok', 'error']),
+  uninstall: Object.freeze(['planned', 'partial', 'uninstalled', 'error']),
+});
+
+function assertLifecycleResultStatuses(results, operation) {
+  const statuses = INSTALL_LIFECYCLE_STATUSES[operation];
+  if (!statuses) throw new Error(`Unknown install lifecycle operation '${operation}'`);
+  const allowed = new Set(statuses);
+  for (const result of results) {
+    if (!result || !allowed.has(result.status)) {
+      throw new Error(`Invalid ${operation} result status '${result && result.status}'`);
+    }
+  }
+  return results;
+}
 
 const DEFAULT_REPO_ROOT = path.join(__dirname, '../..');
 
@@ -1880,6 +1896,7 @@ function repairInstalledStates(options = {}) {
         repairedPaths: repairResult?.repairedPaths || [], plannedRepairs: [], error: error.message };
     }
   });
+  assertLifecycleResultStatuses(results, 'repair');
 
   const summary = results.reduce(
     (accumulator, result) => ({
@@ -2031,6 +2048,7 @@ function uninstallInstalledStates(options = {}) {
       if (releaseSettingsLock) releaseSettingsLock();
     }
   });
+  assertLifecycleResultStatuses(results, 'uninstall');
 
   const summary = results.reduce(
     (accumulator, result) => ({
@@ -2059,6 +2077,8 @@ function uninstallInstalledStates(options = {}) {
 
 module.exports = {
   DEFAULT_REPO_ROOT,
+  INSTALL_LIFECYCLE_STATUSES,
+  assertLifecycleResultStatuses,
   buildDoctorReport,
   discoverInstalledStates,
   normalizeTargets,

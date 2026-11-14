@@ -179,8 +179,8 @@
 
     // Static doc pages
     const staticPages = [
-      { id: 'overview', title: 'Overview', category: 'Getting Started', excerpt: 'AGYOS is an autonomous cognitive agent operating system and physical catalog of 1,862+ modular engineering skills.' },
-      { id: 'installation', title: 'Quickstart & Installation', category: 'Getting Started', excerpt: 'Install AGYOS with a single prompt. Paste the AGENTS.md content into your AI agent system prompt to activate all 1,862 skills.' },
+      { id: 'overview', title: 'Overview', category: 'Getting Started', excerpt: 'AGYOS is an autonomous cognitive agent operating system and physical catalog of 2,180 modular engineering skills.' },
+      { id: 'installation', title: 'Quickstart & Installation', category: 'Getting Started', excerpt: 'Install AGYOS with a single prompt. Paste the AGENTS.md content into your AI agent system prompt to activate all 2,180 skills.' },
       { id: 'architecture', title: 'System Architecture', category: 'Architecture', excerpt: 'AGYOS embeds LLM agents into a 6-layer hierarchical cognitive harness: Kernel, Memory, FastMCP, 5-Gate SOP, Agent Hierarchy, and Skills Catalog.' },
       { id: 'governance', title: '5-Gate Governance', category: 'Governance', excerpt: 'The AGYOS 5-Gate Workflow: UNDERSTAND → ANALYZE → PLAN → IMPLEMENT → VERIFY. Every multi-step task executes sequentially through 5 gates.' },
       { id: 'pods', title: '5 Corporate Pods', category: 'Architecture', excerpt: 'Five merged operational pods: pod-growth, pod-customer, pod-build, pod-gna, pod-people. Covers all 11 business functions.' },
@@ -198,7 +198,7 @@
       { id: 'skill-routing', title: 'Skill Routing', category: 'Reference', excerpt: 'Shared skill discovery and routing policy. Use bin/agyos decide or agyos_decision MCP for autonomous skill selection.' },
       { id: 'rules', title: 'Rules Catalog', category: 'Reference', excerpt: '141 modular governance rules organized by language and domain. Common rules plus language-specific extensions.' },
       { id: 'workflows', title: 'Native Workflows', category: 'Reference', excerpt: 'Deterministic multi-agent orchestration scripts. orch-review workflow for parallel code review with deduplication.' },
-      { id: 'explorer', title: 'Skills Catalog Explorer', category: 'Reference', excerpt: '1,862 engineering skills across architecture, security, frontend, backend, ML, DevOps, and more.' },
+      { id: 'explorer', title: 'Skills Catalog Explorer', category: 'Reference', excerpt: '2,180 engineering skills across architecture, security, frontend, backend, ML, DevOps, and more.' },
       { id: 'cli', title: 'CLI Reference', category: 'Reference', excerpt: 'bin/agyos commands: init, verify, state, intent, decide, fast, council, skill.' },
       { id: 'adr-0001', title: 'ADR-0001: Skill Discovery Metadata', category: 'ADRs', excerpt: 'Architecture decision record for shared skill discovery metadata and explicit runbook delivery.' },
     ];

@@ -25,19 +25,48 @@ jobs:
           pip install -r requirements.txt
       - name: Check AGYOS shell entrypoints syntax
         run: |
-          for f in bin/agyos bin/rollback.sh scripts/agyos-verify.sh scripts/agyos-init.sh; do
+          for f in bin/agyos bin/rollback.sh bin/state-validate.sh scripts/agyos-verify.sh scripts/agyos-init.sh; do
             bash -n "$f"
           done
       - name: Validate Python Syntax
         run: |
           python -m compileall .
-      - name: Verify generated catalog matches every physical runbook
+      - name: Verify pinned upstream skill adapters
+        run: python scripts/import_upstream_skill_packs.py --check
+      - name: Generate skill catalog outputs
         run: |
           python scripts/build_tiered_skills_manifest.py
           python scripts/build_docs_data.py
-          git diff --exit-code -- .agents/skills-manifest.json .agents/tier1-skills.json docs/skills-data.json docs/ai-catalog.json docs/llms.txt docs/sitemap.xml docs/robots.txt
+      - name: Upload generated skill catalog for CI-only updates
+        uses: actions/upload-artifact@v4
+        with:
+          name: agyos-skill-catalog-generated
+          path: |
+            .agents/skills-manifest.json
+            .agents/tier1-skills.json
+            docs/skills-data.json
+            docs/ai-catalog.json
+            docs/llms.txt
+            docs/sitemap.xml
+            docs/robots.txt
+          include-hidden-files: true
+          retention-days: 7
       - name: Check AGY startup contracts
         run: python -m unittest discover -s scripts/tests -v
       - name: Check endpoint encryption round-trip and tamper resistance
-        run: node --test scripts/tests/test_secure_envelope.cjs scripts/tests/test_private_vault.cjs scripts/tests/test_mcp_protocol.cjs
+        run: node --test scripts/tests/test_secure_envelope.cjs scripts/tests/test_private_vault.cjs scripts/tests/test_mcp_protocol.cjs scripts/tests/test_github_coordination_state.cjs scripts/tests/test_work_item_state.cjs scripts/tests/test_plan_canvas_sessions.cjs scripts/tests/test_bash_hook_state.cjs scripts/tests/test_release_approval_state.cjs scripts/tests/test_guided_install_state.cjs scripts/tests/test_observer_session_leases.cjs scripts/tests/test_install_lifecycle_state.cjs scripts/tests/test_nasiko_release_state.cjs scripts/tests/test_process_lock.cjs scripts/tests/test_session_end_state.cjs scripts/tests/test_explicit_state_machines.cjs
+      - name: Verify generated catalog matches every physical runbook
+        run: |
+          git diff --exit-code -- .agents/skills-manifest.json .agents/tier1-skills.json docs/skills-data.json docs/ai-catalog.json docs/llms.txt docs/sitemap.xml docs/robots.txt
+
+  council:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Run Council regression suite
+        working-directory: scripts/council
+        run: bun test
 

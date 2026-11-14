@@ -304,7 +304,7 @@ bin/agyos find <query>
 # Inspect runbook instructions for a specific skill
 bin/agyos skill <name>
 
-# Fast-path bypass for minor edits & typos (jumps straight to IMPLEMENT)
+# Fast-path for complexity 1-2 tasks after ANALYZE (transitions to IMPLEMENT)
 bin/agyos fast
 
 # Inspect active milestone, gate, and session state

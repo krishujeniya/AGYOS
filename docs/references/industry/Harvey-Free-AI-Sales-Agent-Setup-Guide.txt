@@ -1,0 +1,53 @@
+Harvey: a free AI sales agent that runs on your Claude plan
+Comment HARVEY · Turban Tech Guy · scaleus.in · checked 1 Nov 2026
+1. What it is
+Harvey (github.com/ethanplusai/harvey) is a free, open-source (MIT) sales agent, about 3,700 GitHub stars. It runs on your own computer in a loop,
+every 15 minutes by default, and does the boring half of sales:
+ STEP           WHAT HARVEY DOES
+ Find           Finds local businesses that match your ideal customer. Default source is OpenStreetMap: free, no account. Paid sources are
+                optional (e.g. about $0.37 per 1,000 listings).
+ Read           Reads each business's website (three web requests, no AI call) and notes something specific about them.
+ Write          Writes a cold email that mentions that specific thing (e.g. "saw your new sourdough oven").
+ Reply          Reads the replies, drafts an answer and works the conversation toward a meeting.
+ Dashboard      Everything is on a dashboard at localhost:5555: Today, Outbox, Contacts, Signals.
+
+2. Why there's no API bill
+         Harvey uses your Claude Pro or Max subscription through Claude Code (or a ChatGPT plan through Codex). No API key, no per-token billing.
+         It reads your plan's quota and throttles itself to leave room for your own work (setting max_daily_claude_percent, e.g. 80).
+         You still need a mailbox to send from: about $7 a month for Google Workspace, ideally on a separate, secondary domain.
+
+3. What you need
+ THING                      NOTES
+ Claude Pro or Max          Claude CLI logged in: claude login. Needs a recent CLI (claude update).
+ Python 3.11+               Check python3 --version. Mac ships 3.9: brew install python@3.13.
+ A sending mailbox          Gmail/Workspace or Microsoft 365, on a new secondary domain, warmed up before cold email.
+
+4. Setup: the easy way (Claude does it)
+git clone https://github.com/ethanplusai/harvey.git → cd harvey → claude, then type: "set up Harvey for me". The repo ships a
+CLAUDE.md that turns Claude Code into a setup wizard: it installs what's missing, asks what it needs and learns your product.
+
+5. Setup: by hand
+ #   COMMAND                                                                                        WHAT IT DOES
+ 1   python3.13 -m venv .venv && source .venv/bin/activate && pip install -e .                      Install
+ 2   cp .env.example .env and fill it in                                                            Mailbox and settings (each one explained
+                                                                                                    inside)
+ 3   harvey train https://your-company.com                                                          Learns what you sell from your website
+ 4   harvey signals --confirm free                                                                  You choose what makes a good prospect
+ 5   harvey discover                                                                                Finds businesses (free source)
+ 6   harvey dashboard then harvey run                                                               Opens the dashboard and starts the loop
+
+6. Nothing sends without you
+         By default every email waits in the Outbox for your approval: A approve, R reject.
+         Kill switch: harvey sending pause stops everything mid-flight.
+         Opt-outs ("no thanks", "STOP", "unsubscribe") are honoured immediately and permanently. Add competitors and existing clients to
+         compliance.do_not_contact.
+
+7. The honest limits
+         You are the sender. Follow cold-email law where your prospects are: CAN-SPAM (US) needs your postal address and a working opt-out;
+         GDPR/PECR (EU/UK) needs a real reason the person would care. India: B2B only, keep it relevant and stop on the first "no".
+         OpenStreetMap is thin for businesses without a shop front (roofers, plumbers). Use a paid source if your customers are like that.
+         Warm up a new mailbox first, or your emails land in spam. Never send from your main company domain.
+         It uses your subscription's usage limits, so a busy day of Harvey means less Claude for you.
+Good to know: download only from github.com/ethanplusai/harvey. Not affiliated with Anthropic, OpenAI or the Harvey authors. Everything from the
+videos: scaleus.in/prompts
+

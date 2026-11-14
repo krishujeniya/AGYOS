@@ -1,0 +1,330 @@
+AI WITH DIVYAM · THE FOLLOW LIST
+
+
+
+Stay ahead in AI in 10 minutes a
+day.
+Every company, CEO, researcher and lab from the reel, with a direct link to follow each one
+on X, LinkedIn, Instagram and Reddit. Tap any link in this PDF to open the profile.
+
+    THE HABIT
+
+
+    Swap 10 minutes of doom scrolling for this
+    feed.
+    You'll see new AI tools, model launches, research papers and where the industry is
+    moving, straight from the people building it.
+
+
+What's inside
+  18                                     15                                    19
+  US & Europe AI                         Chinese AI companies                  CEOs & industry leaders
+  companies                              DeepSeek, Qwen, Moonshot              Sam Altman, Demis Hassabis,
+  OpenAI, Anthropic, Google              (Kimi), Z.ai, MiniMax…                Jensen Huang…
+  DeepMind, NVIDIA, Mistral…
+
+
+
+  23                                     4                                     79
+  AI researchers & builders              Emerging AI labs                      accounts in total
+  Andrej Karpathy, Andrew Ng,            Thinking Machines, SSI, World         Plus the Reddit communities
+  Yann LeCun, Fei-Fei Li…                Labs, Reflection                      worth joining (page 6).
+
+
+
+How to use it
+    Start with X: almost everyone here posts there first.
+    Follow the companies on LinkedIn for launches and the leaders for their takes.
+    Join 2–3 subreddits from page 6 for open models and research discussion.
+    Give it 5–10 minutes a day. Turn on notifications for 5 accounts you care about most.
+Every link was checked on 12 Nov 2026. “—” means we found no official profile on that platform, so we didn't
+guess one. Watch out for fan and parody accounts with similar names.
+
+
+
+
+AI WITH DIVYAM · @aiwithdivyam                                                                           1 / 6
+01 · COMPANIES
+
+
+US & Europe AI companies
+ACCOUNT                                      X                 LINKEDIN   INSTAGRAM       REDDIT
+
+
+01   OpenAI                                  @OpenAI           Page       @openai         —
+     ChatGPT, GPT models, Sora
+
+02   Anthropic                               @AnthropicAI      Page       @claudeai       —
+     Claude
+
+03   Google DeepMind                         @GoogleDeepMind Page         @googledeepmind —
+     Gemini, AlphaFold
+
+04   NVIDIA                                  @nvidia           Page       @nvidia         —
+     GPUs, AI infrastructure
+
+05   Meta AI                                 @AIatMeta         Page       @aiatmeta       —
+     Llama, AI research at Meta
+
+06   Microsoft                               @Microsoft        Page       @microsoft      —
+     Copilot, Azure AI
+
+07   Hugging Face                            @huggingface      Page       —               —
+     Open models and datasets hub
+
+08   Mistral AI                              @MistralAI        Page       —               r/MistralAI
+     Open-weight models, Le Chat
+
+09   Perplexity                              @perplexity_ai    Page       @perplexity     —
+     AI answer engine, Comet
+
+10   LangChain                               @LangChain        Page       @langchain.ai   —
+     Agent framework, LangSmith
+
+11   LlamaIndex                              @llama_index      Page       —               —
+     Document AI, agents over data
+
+12   Cohere                                  @cohere           Page       @cohere_ai      u/Cohere
+     Enterprise AI models
+
+13   Cursor                                  @cursor_ai        Page       @cursor_ai      —
+     AI code editor
+
+14   Together AI                             @togethercompute Page        —               —
+     Open-model cloud
+
+15   Fireworks AI                            @FireworksAI_HQ   Page       —               —
+     Fast inference platform
+
+16   Runway                                  @runwayml         Page       @runwayapp      —
+     AI video generation
+
+17   ElevenLabs                              @ElevenLabs       Page       @elevenlabs     —
+     Voice AI
+
+18   AI2                                     @allen_ai         Page       —               r/allenai
+     Allen Institute for AI, open research
+
+
+
+
+AI WITH DIVYAM · @aiwithdivyam                                                                 2 / 6
+02 · COMPANIES
+
+
+Chinese AI companies
+ ACCOUNT                                     X                    LINKEDIN      INSTAGRAM           REDDIT
+
+
+ 01   DeepSeek                               @deepseek_ai         Page          —                   —
+      DeepSeek-V / R models
+
+ 02   Alibaba Qwen                           @Alibaba_Qwen        Page          —                   —
+      Qwen open models
+
+ 03   Moonshot AI                            @Kimi_Moonshot       —             @kimiai.official    r/kimi
+      Kimi
+
+ 04   Z.ai                                   @Zai_org             Page          —                   —
+      GLM models (formerly Zhipu)
+
+ 05   ByteDance                              @ByteDanceOSS        Page          —                   —
+      Seed models, open source
+
+ 06   Baidu                                  @Baidu_Inc           —             —                   —
+      ERNIE models
+
+ 07   Tencent                                @TencentGlobal       Page          —                   —
+      Hunyuan models
+
+ 08   MiniMax                                @MiniMax_AI          Page          —                   —
+      MiniMax models, Hailuo video
+
+ 09   01.AI                                  @01AI_Yi             Page          —                   —
+      Yi models
+
+ 10   StepFun                                @StepFun_ai          Page          —                   —
+      Step models
+
+ 11   Shanghai AI Lab                        —                    —             —                   —
+      InternLM
+
+ 12   Huawei                                 @Huawei              Page          @huawei             —
+      Ascend chips, Pangu models
+
+ 13   Kling AI                               @Kling_ai            —             @klingai_official   —
+      AI video generation
+
+ 14   SenseTime                              @SenseTime_AI        Page          —                   —
+      SenseNova models
+
+ 15   ModelBest                              @OpenBMB             —             —                   —
+      MiniCPM (via OpenBMB)
+
+Many Chinese labs post mainly on Chinese platforms (WeChat, Weibo, Zhihu). On X they post their model releases
+in English.
+
+
+
+
+AI WITH DIVYAM · @aiwithdivyam                                                                          3 / 6
+03 · PEOPLE
+
+
+CEOs & industry leaders
+ACCOUNT                                   X                  LINKEDIN   INSTAGRAM
+
+
+01     Sam Altman CEO, OpenAI             @sama              —          —
+
+02     Dario Amodei CEO, Anthropic        @DarioAmodei       —          —
+
+03     Demis Hassabis Google DeepMind     @demishassabis     Profile    —
+
+04     Jensen Huang CEO, NVIDIA           @JensenHuang       —          —
+
+05     Satya Nadella CEO, Microsoft       @satyanadella      Profile    —
+
+06     Sundar Pichai CEO, Google &        @sundarpichai      —          @sundarpichai
+Alphabet
+
+07     Mustafa Suleyman CEO, Microsoft    @mustafasuleyman   Profile    —
+AI
+
+08     Clem Delangue CEO, Hugging Face    @ClementDelangue   Profile    —
+
+09     Arthur Mensch CEO, Mistral AI      @arthurmensch      Profile    —
+
+10     Aravind Srinivas CEO, Perplexity   @AravSrinivas      Profile    —
+
+11     Harrison Chase CEO, LangChain      @hwchase17         Profile    —
+
+12     Elon Musk xAI, Tesla               @elonmusk          —          —
+
+13     Alexandr Wang Chief AI Officer,    @alexandr_wang     Profile    —
+Meta
+
+14     Thomas Wolf Co-founder, Hugging    @Thom_Wolf         Profile    —
+Face
+
+15     Aidan Gomez Co-founder & CEO,      @aidangomez        Profile    —
+Cohere
+
+16     Liang Wenfeng Founder, DeepSeek    —                  —          —
+
+17     Junyang Lin Built Qwen models      @JustinLin610      Profile    —
+
+18     Yang Zhilin Founder, Moonshot AI   —                  —          —
+
+19     Kai-Fu Lee CEO, 01.AI              @kaifulee          Profile    —
+
+
+
+
+AI WITH DIVYAM · @aiwithdivyam                                                      4 / 6
+04 · PEOPLE
+
+
+AI researchers & builders
+ACCOUNT                                    X                 LINKEDIN   INSTAGRAM
+
+
+01   Andrej Karpathy Neural nets, LLM      @karpathy         Profile    —
+education
+
+02   Andrew Ng DeepLearning.AI,            @AndrewYNg        Profile    —
+Coursera
+
+03   Yann LeCun AMI Labs, NYU              @ylecun           Profile    —
+
+04   Fei-Fei Li World Labs, Stanford       @drfeifei         Profile    —
+
+05   Ilya Sutskever Safe Superintelligence @ilyasut          Profile    —
+
+06   Noam Shazeer Transformer co-          @NoamShazeer      Profile    @noamshazeer
+author
+
+07   Jeff Dean Discovery Loop              @JeffDean         —          —
+
+08   Oriol Vinyals Discovery Loop          @OriolVinyalsML   Profile    —
+
+09   Percy Liang Stanford                  @percyliang       —          —
+
+10   Tri Dao FlashAttention, Princeton     @tri_dao          —          —
+
+11   Jim Fan Robotics, NVIDIA              @DrJimFan         Profile    —
+
+12   Chip Huyen AI Engineering author      @chipro           Profile    @huyenchip19
+
+13   Sebastian Raschka LLMs from           @rasbt            Profile    —
+scratch
+
+14   Philipp Schmid Google DeepMind        @_philschmid      Profile    —
+
+15   Jerry Liu CEO, LlamaIndex             @jerryjliu0       Profile    —
+
+16   Jay Alammar Illustrated Transformer   @JayAlammar       Profile    —
+
+17   Allie K. Miller AI for business       @alliekmiller     Profile    @alliekmiller
+
+18   Lilian Weng Thinking Machines Lab     @lilianweng       Profile    —
+
+19   Ethan Mollick Wharton, One Useful     @emollick         Profile    —
+Thing
+
+20   Simon Willison Datasette, LLM tools   @simonw           —          —
+
+21   Jianlin Su RoPE, Moonshot AI          @Jianlin_S        —          —
+
+22   Shunyu Yao ReAct, language agents     @ShunyuYao12      —          —
+
+23   Kaiming He ResNet, MIT                —                 —          —
+
+
+AI WITH DIVYAM · @aiwithdivyam                                                          5 / 6
+05 · LABS
+
+
+Emerging AI labs
+ ACCOUNT                                     X                     LINKEDIN      INSTAGRAM          REDDIT
+
+
+ 01   Thinking Machines Lab                  @thinkymachines       Page          —                  —
+      Mira Murati's lab
+
+ 02   Safe Superintelligence                 @ssi                  —             —                  —
+      Ilya Sutskever's lab
+
+ 03   World Labs                             @theworldlabs         Page          @theworldlabs      —
+      Fei-Fei Li's world models
+
+ 04   Reflection AI                          @reflection_ai        Page          —                  —
+      Open frontier models
+
+
+06 · REDDIT
+
+
+Communities worth joining
+Most companies and people above aren't active on Reddit. These communities are where their releases get
+discussed first.
+
+ r/LocalLLaMA                     Open models you can run yourself. Fastest place for new open
+                                  releases.
+ r/MachineLearning                Research papers and discussion.
+ r/OpenAI                         Community around ChatGPT and OpenAI news (not official).
+ r/ClaudeAI                       Community around Claude (not official).
+ r/singularity                    Big-picture AI news and debate.
+ r/MistralAI                      Mistral's official subreddit.
+ r/allenai                        Ai2's official subreddit.
+
+
+
+      Follow, then spend 5–10 minutes a day. That's the
+      whole hack.
+
+
+
+
+AI WITH DIVYAM · @aiwithdivyam                                                                          6 / 6
+

@@ -5,7 +5,7 @@
 **Baseline commit:** `35903ad9125607daf89ca2f189864136dbe18a67`
 **Methodology:** STRIDE per data flow, adapted for local-first agent OS
 
-Catalog inventory note (2026-11-11): the physical catalog now contains 1,983 skills. This note updates the inventory count only; the threat model remains the 2026-11-08 baseline and has not been re-audited by the catalog milestone.
+Catalog inventory note (2026-11-12): the physical catalog now contains 2,180 skills, including pinned third-party source adapters. This note updates the inventory count only; the threat model remains the 2026-11-08 baseline and has not been re-audited for these imports.
 
 ## 1. Protected Assets
 

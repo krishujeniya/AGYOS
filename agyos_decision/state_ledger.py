@@ -232,6 +232,10 @@ class SnapshotManager:
 class OutboxQueue:
     """R3 Outbox Hold Queue staging irreversible external actions until explicit authorization."""
 
+    PENDING_COMMIT = "PENDING_COMMIT"
+    COMMITTED = "COMMITTED"
+    ABORTED = "ABORTED"
+
     def __init__(self) -> None:
         self.items: Dict[str, Dict[str, Any]] = {}
 
@@ -240,7 +244,7 @@ class OutboxQueue:
         self.items[item_id] = {
             "item_id": item_id,
             "action": action,
-            "status": "PENDING_COMMIT",
+            "status": self.PENDING_COMMIT,
             "authorized_by": None,
             "reason": None,
         }
@@ -250,19 +254,29 @@ class OutboxQueue:
         return self.items[item_id]["status"]
 
     def is_committed(self, item_id: str) -> bool:
-        return self.items[item_id]["status"] == "COMMITTED"
+        return self.items[item_id]["status"] == self.COMMITTED
 
     def commit_action(self, item_id: str, authorized_by: str) -> None:
-        if item_id not in self.items:
-            raise KeyError(f"Outbox item '{item_id}' not found")
-        self.items[item_id]["status"] = "COMMITTED"
+        item = self._pending_item(item_id)
+        if not authorized_by or not authorized_by.strip():
+            raise ValueError("authorized_by must be a non-empty operator identity")
+        item["status"] = self.COMMITTED
         self.items[item_id]["authorized_by"] = authorized_by
 
     def abort_action(self, item_id: str, reason: str) -> None:
+        item = self._pending_item(item_id)
+        if not reason or not reason.strip():
+            raise ValueError("reason must be non-empty")
+        item["status"] = self.ABORTED
+        self.items[item_id]["reason"] = reason
+
+    def _pending_item(self, item_id: str) -> Dict[str, Any]:
         if item_id not in self.items:
             raise KeyError(f"Outbox item '{item_id}' not found")
-        self.items[item_id]["status"] = "ABORTED"
-        self.items[item_id]["reason"] = reason
+        item = self.items[item_id]
+        if item["status"] != self.PENDING_COMMIT:
+            raise ValueError(f"Outbox item '{item_id}' is terminal ({item['status']})")
+        return item
 
 
 class ReflectionMemory:
@@ -302,15 +316,32 @@ class SagaCoordinator:
         self.status = "ACTIVE"
 
     def register_step(self, step_name: str, compensation_fn: Callable[[], Any]) -> None:
+        if self.status != "ACTIVE":
+            raise RuntimeError(f"Cannot register a step while saga is {self.status}")
+        if not step_name or not step_name.strip():
+            raise ValueError("step_name must be non-empty")
+        if not callable(compensation_fn):
+            raise TypeError("compensation_fn must be callable")
         self.steps.append({
             "name": step_name,
             "compensation": compensation_fn,
+            "compensated": False,
         })
 
     def rollback(self) -> None:
         """Execute compensations in strict LIFO (reverse) order."""
+        if self.status != "ACTIVE":
+            raise RuntimeError(f"Cannot roll back a saga while it is {self.status}")
+        self.status = "COMPENSATING"
         for step in reversed(self.steps):
+            if step["compensated"]:
+                continue
             comp_fn = step["compensation"]
-            if callable(comp_fn):
-                comp_fn()
+            try:
+                if callable(comp_fn):
+                    comp_fn()
+                step["compensated"] = True
+            except Exception:
+                self.status = "COMPENSATION_FAILED"
+                raise
         self.status = "COMPENSATED"

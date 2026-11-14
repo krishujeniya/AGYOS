@@ -1,0 +1,102 @@
+name: Video Toolkits
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.agents/skills/ai-video-editor/**'
+      - '.agents/skills/faceless-shorts-engine/**'
+      - 'tools/video/**'
+      - '.github/workflows/video-toolkits.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - '.agents/skills/ai-video-editor/**'
+      - '.agents/skills/faceless-shorts-engine/**'
+      - 'tools/video/**'
+      - '.github/workflows/video-toolkits.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: video-toolkits-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  static-checks:
+    name: Static package checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check required toolkit entrypoints
+        run: |
+          test -f tools/video/ai-video-editor/scripts/transcribe.py
+          test -f tools/video/ai-video-editor/scripts/cut.py
+          test -f tools/video/ai-video-editor/scripts/render.py
+          test -f tools/video/ai-video-editor/engine/player.js
+          test -f tools/video/ai-video-editor/styles/index.json
+          test -f tools/video/faceless-shorts/scripts/new_video.sh
+          test -f tools/video/faceless-shorts/scripts/voice.py
+          test -f tools/video/faceless-shorts/scripts/words.py
+      - name: Check Python and shell syntax
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          for path in Path("tools/video").rglob("*.py"):
+              compile(path.read_bytes(), str(path), "exec")
+          PY
+          while IFS= read -r -d '' file; do bash -n "$file"; done < <(find tools/video -type f -name '*.sh' -print0)
+      - name: Check JSON and JavaScript syntax
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          for path in Path("tools/video").rglob("*.json"):
+              with path.open(encoding="utf-8") as source:
+                  json.load(source)
+          PY
+          while IFS= read -r -d '' file; do node --check --input-type=module < "$file"; done < <(find tools/video -type f \( -name '*.js' -o -name '*.mjs' \) -print0)
+      - name: Reject generated Python caches
+        run: |
+          if find tools/video -type d -name __pycache__ -o -type f \( -name '*.pyc' -o -name '*.pyo' \) | grep -q .; then
+            echo 'Generated Python cache files must not be committed.' >&2
+            exit 1
+          fi
+
+  faceless-render-smoke:
+    name: Render all six short styles without model downloads
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes ffmpeg
+      - name: Install smoke-render dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install 'numpy>=1.24,<3' 'playwright>=1.40,<2'
+          python -m playwright install --with-deps chromium
+      - name: Configure headless Chromium
+        run: |
+          browser_path="$(python -c 'from playwright.sync_api import sync_playwright; p = sync_playwright().start(); print(p.chromium.executable_path); p.stop()')"
+          echo "CHROME=$browser_path" >> "$GITHUB_ENV"
+      - name: Run all style smoke renders with estimated narration timing
+        run: bash tools/video/faceless-shorts/scripts/selftest.sh --no-voice

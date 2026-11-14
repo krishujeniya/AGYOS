@@ -240,3 +240,55 @@ bash scripts/agyos-verify.sh
 - Evidence: routing/catalog suite **17 passed**; manifest suite **4 passed**; local talking-head request resolves to `ai-video-editor`; faceless-short request resolves to `faceless-shorts-engine`; `git diff --check` passed. Toolkit command help was inspected; no package install, model download, or media render was run.
 - Independent checker: read-only review identified unusable example paths and a mismatch in language choices; the runbook was corrected and final review reported no remaining findings.
 - Exact next command: `bin/agyos skill ai-video-editor`
+# AGYOS implicit state-machine repairs (implementation complete, CI pending, 2026-11-12)
+
+- Task: repair audited workflow state machines one at a time; preserve the user's CI-only test/build rule.
+- Branch and baseline revision: `main`, `2288845`.
+- Implemented queue repairs: gate transitions and complexity fast-path rules; terminal outbox and Saga recovery; GitHub coordination vocabularies, eligible claim origins, closed-dependency gating, publish prerequisites, and same-store claim serialization; state-file schema recovery that preserves files when jq execution fails; work-item lifecycle rules and safe GitHub stale pruning; Plan Canvas lifecycle guards and rejection of late agent replies; installer/update/uninstall outcomes; Council retry and quorum states; explicit hook outcomes; session-end and release-approval outcomes.
+- Review follow-ups: Nasiko now removes its own partial receipt and binary if publication fails, with lock and rollback regressions; observer locks use owner-tagged files and recover dead local main-lock owners. A crash during stale-lock recovery leaves a fail-closed `.reclaim` guard for operator inspection. These details are documented in `docs/STATE_MACHINE_REPAIR.md`.
+- Added CI regressions: Python unittest discovery includes `test_state_validate.py`; the Node CI command includes GitHub coordination, Plan Canvas, observer lifecycle, and Nasiko lock/rollback suites; Council cases remain in the Bun job.
+- Local verification: no tests, builds, linters, type checks, dependency resolution, setup, or renders run. `git diff --check` is the only local verification allowed and was run after the current edits.
+- CI status: pending; changes are uncommitted and no push was requested.
+- Independent review: fresh read-only review found no remaining transition, GitHub mutation-lock, publish/review, or work-item lifecycle defects. It confirmed the documented limitation that a process killed while holding the short `.reclaim` guard can leave that guard behind for manual inspection. Independent hosts with separate stores still require external serialization.
+- Remaining: GitHub Actions execution against the final revision. No state-machine implementation rows remain queued in source; the stale-reclaim-guard crash edge remains fail-closed and documented. The full CI job is also expected to stop at the generated-catalog drift gate until the CI-generated skill manifests and docs indexes from the separate upstream-skill import work are synchronized, as recorded in the following handoff section.
+- Exact next command: `git status --short --branch`
+
+# AGYOS upstream skills and industry references (in progress, 2026-11-12)
+
+- Task: import licensed upstream skill packs, retain the four supplied PDFs with searchable text, add focused AGYOS runbooks, and route those runbooks in the local catalog.
+- Branch and base revision: `main`, `2288845`; pre-existing worktree changes from the state-machine and video-toolkit tasks remain in place.
+- Sources: 20 Jake Schincariol repos with root MIT licenses (192 skill directories), Benji Taylor's Stageshow skill with its own MIT license (1), plus four user-supplied PDFs. Two Jake skill repos without licenses are recorded as link-only; no unlicensed skill text was copied.
+- Added: pinned source snapshots and license notices in `.agents/skill-sources/`; 193 namespaced source adapters; four PDF-derived skills; searchable PDF copies and provenance/hash notes; source inventory docs; importer script; router and regression-case updates.
+- Harvey note: the supplied PDF says MIT, but the linked upstream repo now redirects to Sellbird and its changelog says releases from 0.4.0 are AGPL-3.0-only. The source PDF is retained as historical reference and the new skill requires current-source checks.
+- Verification: no tests, builds, linters, type checks, dependency installs, or setup commands run locally. GitHub Actions is required. Generated skill manifests and docs indexes still reflect the old catalog and must be regenerated in Actions and brought back into the branch before the existing drift check can pass. Final `git diff --check` passed.
+- CI status: pending; no push was requested or performed.
+- Independent review: read-only review found no adapter, source-path, license-retention, routing, or CI wiring defects. It flagged that the supplied PDFs and extracted text remain in the repository working tree; Pages excludes `docs/references/`, but a push to the public remote would expose them. The industry reference guide now states that rights must be checked before public publication.
+- Exact next command: `git status --short --branch`
+
+# AGYOS handoff: video toolkits and CI-only verification (2026-11-12)
+
+- Task: move the supplied `ai-video-editor`, `faceless-shorts`, and two prompt/reference files from Downloads into the repository, connect them to the existing AGYOS skills/docs, and require CI-only verification for repository work.
+- Branch and base revision: `main`, `2288845`.
+- Changes: toolkits are under `tools/video/`; prompt materials and provenance guidance are under `docs/references/video/`; both video skill runbooks point to their repository-local toolkit; root and references READMEs link the organization; `AGENTS.md` records the CI-only rule; `.github/workflows/video-toolkits.yml` runs static checks and six no-model faceless render smoke checks.
+- Provenance: the recreated Nafay prompts are explicitly described as newly written from visible descriptions, not originals. The former `Untitled document.txt` is retained as `creator-motion-graphics-reference.txt` and marked unverified. Toolkits retain their own README and bundled notices; AGYOS licensing is not presented as a grant for imported material.
+- Verification: required toolkit entrypoints are present, original Downloads paths are absent, generated toolkit `__pycache__` was removed, and `git diff --check` passed. No tests, builds, dependency installs, setup, model downloads, or renders were run locally. The new workflow has not run because these changes have not been pushed; no push was requested.
+- CI status: pending GitHub Actions execution for the published revision.
+- Exact next command: `git status --short`
+
+# AGYOS canonical README consolidation (2026-11-12)
+
+- Task: replace the duplicated, stale root README with one source-backed project overview combining the current architecture, commands, governance, security boundaries, CI policy, provenance, and documentation map.
+- Branch and base revision: `main`, `2288845`; prior state-machine, video-toolkit, and upstream-skill work remains in the shared uncommitted worktree.
+- Changed: `README.md`, `docs/public/quickstart.md`, and `CITATION.cff`. The root README now describes catalog source versus generated indexes, clarifies that routing does not prove execution or authorization, and removes fixed catalog badges and unsupported performance/security claims. The public quickstart points to the root README and no longer instructs local test/setup runs. Citation metadata no longer carries an outdated skill count.
+- Evidence: claims were checked against `bin/agyos`, `.github/workflows/ci.yml`, `.github/workflows/video-toolkits.yml`, `AGENTS.md`, and the linked project references. `git diff --check` passed. No tests, builds, linters, type checks, dependency resolution, setup, or renders were run locally.
+- CI status: not run against these uncommitted edits. Catalog parity still depends on synchronizing the generated artifact described in the upstream-skill handoff. No push was requested or performed.
+- Exact next command: `git status --short --branch`
+
+# AGYOS Cloudflare setup for AGY CLI (2026-11-12)
+
+- Task: add Cloudflare's official skills and remote MCP to the installed Antigravity CLI (`agy`), in addition to Codex setup.
+- Skills: copied all 22 installed Cloudflare skill folders into `~/.gemini/antigravity-cli/skills/`; the source and AGY destinations each contain 22 `SKILL.md` files, with no name collisions.
+- MCP: registered `cloudflare` as a global HTTP server at `https://mcp.cloudflare.com/mcp` using `agy mcp add`; `agy mcp list` reports it enabled. AGY OAuth has not been initiated and is expected on first Cloudflare MCP use.
+- CLI: global `cf` v0.15.0 is authenticated. The Cloudflare skill installer reported a PromptScript global-scope warning after copying the skills; it also flagged `turnstile-spin` for one Socket alert and medium Snyk risk. No skill scripts were executed.
+- Evidence: skill destination count 22/22, AGY MCP list, `cf auth whoami` active, and `git diff --check` passed. No project tests, builds, or local CI-only checks were run; no push was requested.
+- Exact next command: `agy`

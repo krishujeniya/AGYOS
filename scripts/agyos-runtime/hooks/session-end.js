@@ -13,6 +13,7 @@ const path = require('path');
 const fs = require('fs');
 const { getSessionsDir, getDateString, getTimeString, getSessionIdShort, sanitizeSessionId, getProjectName, getRepoIdentity, ensureDir, readFile, writeFile, runCommand, stripAnsi, log } = require('../lib/utils');
 const { generateSessionSummary, getContextRemainingPct, getContextThreshold } = require('../lib/llm-summary');
+const { resolveSessionEndState } = require('../lib/session-end-state');
 
 const SUMMARY_START_MARKER = '<!-- ECC:SUMMARY:START -->';
 const SUMMARY_END_MARKER = '<!-- ECC:SUMMARY:END -->';
@@ -311,7 +312,10 @@ async function main() {
   // hooks inherit this dedicated marker. Skip that known internal session
   // before touching session state. Transcript cardinality is not a safe proxy:
   // an ordinary user session may legitimately contain one prompt and no tools.
-  if (process.env.ECC_LLM_SUMMARY_SUBPROCESS === '1') {
+  const initialState = resolveSessionEndState({
+    internalSummarySubprocess: process.env.ECC_LLM_SUMMARY_SUBPROCESS === '1'
+  });
+  if (initialState.action === 'skip') {
     log('[SessionEnd] Skipped ECC LLM summary subprocess');
     return;
   }
@@ -341,12 +345,18 @@ async function main() {
   const currentTime = getTimeString();
   const llmSummary = transcriptPath && summary && transcriptExists ? maybeGenerateLlmSummary(transcriptPath, summary) : null;
   const context = { today, currentTime, metadata, summary, llmSummary };
+  const sessionState = resolveSessionEndState({
+    sessionFileExists: fs.existsSync(sessionFile),
+    summary,
+    llmSummary,
+  });
 
-  if (fs.existsSync(sessionFile)) {
+  if (sessionState.action === 'update') {
     updateSessionFile(sessionFile, context);
   } else {
     createSessionFile(sessionFile, context);
   }
+  log(`[SessionEnd] ${sessionState.action} session artifact with ${sessionState.summaryOutcome} summary`);
 
   process.exit(0);
 }

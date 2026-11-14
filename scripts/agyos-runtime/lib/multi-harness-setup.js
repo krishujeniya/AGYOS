@@ -11,6 +11,14 @@ const { assertWithinTrustedRoot, realpathNearestExisting } = require('./path-saf
 const VALID_CLAUDE_SCOPES = new Set(['user', 'project', 'local']);
 const VALID_CLAUDE_HOOKS = new Set(['off', 'minimal', 'standard', 'strict']);
 const VALID_PROFILES = new Set(['minimal', 'core', 'developer', 'security', 'research', 'full']);
+const GUIDED_INSTALL_STATUSES = new Set(['preview', 'complete', 'partial', 'failed']);
+
+function guidedInstallResult(status, details) {
+  if (!GUIDED_INSTALL_STATUSES.has(status)) {
+    throw new Error(`Invalid guided install result status '${status}'.`);
+  }
+  return { status, ...details };
+}
 
 function catalogHelpers() {
   return require('./harness-capabilities');
@@ -486,7 +494,7 @@ async function createMultiHarnessPlan(request, injected = {}, options = {}) {
 async function applyMultiHarnessPlan(plan, injected = {}, options = {}) {
   const dependencies = { ...defaultDependencies(options), ...injected };
   if (plan.request.dryRun) {
-    return { status: 'preview', completed: [], retryHarnesses: [...plan.request.harnesses] };
+    return guidedInstallResult('preview', { completed: [], retryHarnesses: [...plan.request.harnesses] });
   }
 
   let completed = [];
@@ -507,21 +515,21 @@ async function applyMultiHarnessPlan(plan, injected = {}, options = {}) {
       }
       completed = [...completed, { id: entry.id, result }];
     } catch (error) {
-      return {
-        status: completed.length > 0 ? 'partial' : 'failed',
+      return guidedInstallResult(completed.length > 0 ? 'partial' : 'failed', {
         completed,
         failure: { id: entry.id, message: error.message },
         retryHarnesses: plan.harnesses.slice(index).map(item => item.id),
-      };
+      });
     }
   }
-  return { status: 'complete', completed, retryHarnesses: [] };
+  return guidedInstallResult('complete', { completed, retryHarnesses: [] });
 }
 
 module.exports = {
   VALID_CLAUDE_HOOKS,
   VALID_CLAUDE_SCOPES,
   VALID_PROFILES,
+  GUIDED_INSTALL_STATUSES,
   applyMultiHarnessPlan,
   createMultiHarnessPlan,
   normalizeGuidedInstallRequest,

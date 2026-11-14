@@ -1,0 +1,20 @@
+{
+  "name": "whale-skill",
+  "description": "11 Claude skills that get you paying customers before you launch. Research, demo, pitch, pre-sale. Free.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Jake Schincariol",
+    "url": "https://opusjake.ai"
+  },
+  "homepage": "https://github.com/Jakeschincariol/whale-skill",
+  "repository": "https://github.com/Jakeschincariol/whale-skill",
+  "license": "MIT",
+  "skills": "./",
+  "keywords": [
+    "claude",
+    "claude-skills",
+    "pre-sales",
+    "customer-discovery",
+    "startup"
+  ]
+}

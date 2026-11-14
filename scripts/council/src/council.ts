@@ -167,16 +167,27 @@ async function dispatchAgentWithRetry(
   timeoutMs: number,
   retries: number = 1
 ): Promise<AgentResult> {
-  const result = await dispatchAgent(adapter, prompt, repoRoot, timeoutMs);
-  if (result.status === "ok" || retries <= 0) return result;
+  return dispatchWithRetries(
+    () => dispatchAgent(adapter, prompt, repoRoot, timeoutMs),
+    retries
+  );
+}
 
-  // Only retry transient failures
-  const ec = result.error_class || "unknown";
-  if (!RETRYABLE_ERRORS.has(ec)) return result;
-
-  console.error(`  ${adapter.id} failed (${ec}). Retrying in 3s...`);
-  await new Promise((r) => setTimeout(r, 3000));
-  return dispatchAgent(adapter, prompt, repoRoot, timeoutMs);
+export async function dispatchWithRetries(
+  dispatch: () => Promise<AgentResult>,
+  retries: number = 1,
+  retryDelayMs: number = 3000
+): Promise<AgentResult> {
+  let attemptsRemaining = Number.isFinite(retries) ? Math.max(0, Math.floor(retries)) : 0;
+  while (true) {
+    const result = await dispatch();
+    if (result.status === "ok" || attemptsRemaining === 0) return result;
+    const errorClass = result.error_class || "unknown";
+    if (!RETRYABLE_ERRORS.has(errorClass)) return result;
+    attemptsRemaining -= 1;
+    console.error(`  ${result.agent} failed (${errorClass}). Retrying in ${retryDelayMs}ms...`);
+    if (retryDelayMs > 0) await new Promise((resolveDelay) => setTimeout(resolveDelay, retryDelayMs));
+  }
 }
 
 // --- Stage 1: Independent Opinions (with quorum + grace window) ---
@@ -271,9 +282,38 @@ async function runStage1(
   repoRoot: string,
   timeouts: Record<string, number>,
   gracePeriodMs: number
-): Promise<AgentResult[]> {
+): Promise<{ results: AgentResult[]; summary: DispatchStageSummary }> {
   const prompt = stage1Prompt(question, context);
-  return dispatchWithQuorum(members, prompt, repoRoot, timeouts, gracePeriodMs, "Stage 1");
+  const results = await dispatchWithQuorum(members, prompt, repoRoot, timeouts, gracePeriodMs, "Stage 1");
+  return { results, summary: summarizeDispatchStage(results, members.length) };
+}
+
+interface DispatchStageSummary {
+  status: "complete" | "grace-expired" | "quorum-failed";
+  quorum: number;
+  successfulAgents: number;
+  totalAgents: number;
+  quorumMet: boolean;
+  reason: "all-agents-completed" | "grace-period-expired" | "quorum-not-reached";
+}
+
+export function summarizeDispatchStage(results: AgentResult[], memberCount: number): DispatchStageSummary {
+  const quorum = Math.max(2, memberCount - 1);
+  const successfulAgents = results.filter(result => result.status === "ok").length;
+  const quorumMet = successfulAgents >= quorum;
+  const graceExpired = results.some(result => (
+    result.status === "timeout"
+    && result.error === "Skipped (quorum reached, grace period expired)"
+  ));
+  const status = !quorumMet ? "quorum-failed" : graceExpired ? "grace-expired" : "complete";
+  return {
+    status,
+    quorum,
+    successfulAgents,
+    totalAgents: memberCount,
+    quorumMet,
+    reason: graceExpired ? "grace-period-expired" : quorumMet ? "all-agents-completed" : "quorum-not-reached",
+  };
 }
 
 // --- Stage 2: Anonymized Peer Review ---
@@ -301,10 +341,11 @@ async function runStage2(
   repoRoot: string,
   timeouts: Record<string, number>,
   gracePeriodMs: number
-): Promise<AgentResult[]> {
+): Promise<{ results: AgentResult[]; summary: DispatchStageSummary }> {
   const { anonymized } = anonymizeOpinions(opinions);
   const prompt = stage2Prompt(question, anonymized);
-  return dispatchWithQuorum(members, prompt, repoRoot, timeouts, gracePeriodMs, "Stage 2", 0);
+  const results = await dispatchWithQuorum(members, prompt, repoRoot, timeouts, gracePeriodMs, "Stage 2", 0);
+  return { results, summary: summarizeDispatchStage(results, members.length) };
 }
 
 // --- Storage ---
@@ -486,7 +527,7 @@ async function revisitSession(
   await writeSnapshot(sessionDir, context);
 
   // Run Stage 1 with original question + current context
-  const opinions = await runStage1(
+  const stage1 = await runStage1(
     available,
     parentMeta.question,
     context,
@@ -494,6 +535,7 @@ async function revisitSession(
     config.timeout_ms,
     config.quorum_grace_ms
   );
+  const opinions = stage1.results;
 
   // Write opinion files
   for (const opinion of opinions) {
@@ -503,6 +545,7 @@ async function revisitSession(
       opinion
     );
   }
+  await writeJson(resolve(sessionDir, "stage1"), "status.json", stage1.summary);
 
   const successfulOpinions = opinions.filter((o) => o.status === "ok");
   console.error(
@@ -1077,7 +1120,7 @@ async function main(): Promise<void> {
   await writeSnapshot(sessionDir, context);
 
   // Stage 1: Independent opinions
-  const opinions = await runStage1(
+  const stage1 = await runStage1(
     members,
     question,
     context,
@@ -1085,6 +1128,7 @@ async function main(): Promise<void> {
     config.timeout_ms,
     config.quorum_grace_ms
   );
+  const opinions = stage1.results;
 
   // Write opinion files
   for (const opinion of opinions) {
@@ -1094,6 +1138,7 @@ async function main(): Promise<void> {
       opinion
     );
   }
+  await writeJson(resolve(sessionDir, "stage1"), "status.json", stage1.summary);
 
   const successfulOpinions = opinions.filter((o) => o.status === "ok");
   console.error(
@@ -1124,7 +1169,7 @@ async function main(): Promise<void> {
     mkdirSync(resolve(sessionDir, "stage2"), { recursive: true });
     console.error("\nRunning Stage 2: Anonymized peer review...");
 
-    const reviews = await runStage2(
+    const stage2 = await runStage2(
       members,
       question,
       successfulOpinions,
@@ -1132,6 +1177,7 @@ async function main(): Promise<void> {
       config.timeout_ms,
       config.quorum_grace_ms
     );
+    const reviews = stage2.results;
 
     for (const review of reviews) {
       await writeJson(
@@ -1140,6 +1186,7 @@ async function main(): Promise<void> {
         review
       );
     }
+    await writeJson(resolve(sessionDir, "stage2"), "status.json", stage2.summary);
 
     const successfulReviews = reviews.filter((r) => r.status === "ok");
     console.error(

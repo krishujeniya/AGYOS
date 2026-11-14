@@ -15,6 +15,20 @@ const path = require('path');
 
 const FEEDBACK_KINDS = new Set(['chat', 'annotation', 'verdict']);
 const VERDICTS = new Set(['approve', 'request-changes']);
+const SESSION_TRANSITIONS = {
+  new: new Set(['open']),
+  open: new Set(['open', 'feedback', 'ended']),
+  feedback: new Set(['feedback', 'open', 'ended']),
+  ended: new Set(['ended', 'open'])
+};
+
+function transitionSession(session, nextStatus) {
+  const currentStatus = session.status || 'new';
+  if (!SESSION_TRANSITIONS[currentStatus] || !SESSION_TRANSITIONS[currentStatus].has(nextStatus)) {
+    throw new Error(`Invalid Plan Canvas session transition ${currentStatus} -> ${nextStatus}`);
+  }
+  session.status = nextStatus;
+}
 
 // The producer and the SessionStart/Stop hooks must land on one directory. The
 // hooks resolve CLAUDE_CONFIG_DIR (they cannot require this file: managed
@@ -152,7 +166,7 @@ function createSessionStore({ stateDir = resolveStateDir() } = {}) {
       pendingFeedback: [],
       createdAt: nowIso()
     };
-    session.status = 'open';
+    transitionSession(session, 'open');
     delete session.endedBy;
     session.updatedAt = nowIso();
     state.sessions[key] = session;
@@ -177,10 +191,10 @@ function createSessionStore({ stateDir = resolveStateDir() } = {}) {
       session.chat.push({ role: 'user', kind: item.kind, text: chatLineFor(item), at: item.at });
     }
     if (endSession) {
-      session.status = 'ended';
+      transitionSession(session, 'ended');
       session.endedBy = 'user';
     } else if (accepted.length > 0) {
-      session.status = 'feedback';
+      transitionSession(session, 'feedback');
     }
     session.updatedAt = nowIso();
     persist();
@@ -201,7 +215,7 @@ function createSessionStore({ stateDir = resolveStateDir() } = {}) {
         result.sessionEnded = true;
         result.endedBy = session.endedBy;
       } else {
-        session.status = 'open';
+        transitionSession(session, 'open');
       }
       session.updatedAt = nowIso();
       persist();
@@ -215,7 +229,7 @@ function createSessionStore({ stateDir = resolveStateDir() } = {}) {
 
   function addAgentReply(key, text) {
     const session = get(key);
-    if (!session) return null;
+    if (!session || session.status === 'ended') return null;
     const entry = { role: 'agent', kind: 'chat', text: sanitizeText(text), at: nowIso() };
     session.chat.push(entry);
     session.updatedAt = nowIso();
@@ -226,8 +240,10 @@ function createSessionStore({ stateDir = resolveStateDir() } = {}) {
   function end(key, endedBy) {
     const session = get(key);
     if (!session) return null;
-    session.status = 'ended';
-    session.endedBy = endedBy === 'user' ? 'user' : 'agent';
+    if (session.status !== 'ended') {
+      transitionSession(session, 'ended');
+      session.endedBy = endedBy === 'user' ? 'user' : 'agent';
+    }
     session.updatedAt = nowIso();
     persist();
     return session;

@@ -4,6 +4,7 @@ const path = require('path');
 const crypto = require('crypto');
 const { spawnSync } = require('child_process');
 const { ensureDir, sanitizeSessionId } = require('./utils');
+const { acquireProcessLock } = require('./process-lock');
 
 function getHomunculusDir() {
   const override = process.env.CLV2_HOMUNCULUS_DIR;
@@ -223,31 +224,48 @@ function getSessionLeaseFile(context, rawSessionId = process.env.CLAUDE_SESSION_
   return path.join(getSessionLeaseDir(context), `${sessionId}.json`);
 }
 
+function withObserverLifecycleLock(context, operation) {
+  const lockPath = path.join(context.projectDir, '.observer-lifecycle.lock');
+  ensureDir(context.projectDir);
+  const release = acquireProcessLock(lockPath, { label: 'Observer lifecycle' });
+  try { return operation(); } finally { release(); }
+}
+
 function writeSessionLease(context, rawSessionId = process.env.CLAUDE_SESSION_ID, extra = {}) {
   const leaseFile = getSessionLeaseFile(context, rawSessionId);
   if (!leaseFile) return '';
-
-  ensureDir(getSessionLeaseDir(context));
-  const payload = {
-    sessionId: resolveSessionId(rawSessionId),
-    cwd: process.cwd(),
-    pid: process.pid,
-    updatedAt: new Date().toISOString(),
-    ...extra
-  };
-  fs.writeFileSync(leaseFile, JSON.stringify(payload, null, 2) + '\n');
-  return leaseFile;
+  return withObserverLifecycleLock(context, () => {
+    ensureDir(getSessionLeaseDir(context));
+    const payload = {
+      ...extra,
+      sessionId: resolveSessionId(rawSessionId),
+      cwd: process.cwd(),
+      pid: process.pid,
+      updatedAt: new Date().toISOString()
+    };
+    const tempFile = `${leaseFile}.tmp-${process.pid}-${crypto.randomBytes(4).toString('hex')}`;
+    try {
+      fs.writeFileSync(tempFile, JSON.stringify(payload, null, 2) + '\n', { mode: 0o600 });
+      fs.renameSync(tempFile, leaseFile);
+    } catch (error) {
+      fs.rmSync(tempFile, { force: true });
+      throw error;
+    }
+    return leaseFile;
+  });
 }
 
 function removeSessionLease(context, rawSessionId = process.env.CLAUDE_SESSION_ID) {
   const leaseFile = getSessionLeaseFile(context, rawSessionId);
   if (!leaseFile) return false;
-  try {
-    fs.rmSync(leaseFile, { force: true });
-    return true;
-  } catch {
-    return false;
-  }
+  return withObserverLifecycleLock(context, () => {
+    try {
+      fs.rmSync(leaseFile, { force: true });
+      return true;
+    } catch {
+      return false;
+    }
+  });
 }
 
 function listSessionLeases(context) {
@@ -259,31 +277,36 @@ function listSessionLeases(context) {
 }
 
 function stopObserverForContext(context) {
-  const pidFile = getObserverPidFile(context);
-  if (!fs.existsSync(pidFile)) return false;
+  return withObserverLifecycleLock(context, () => {
+    // Lease registration and shutdown share this lock, so a concurrent
+    // SessionStart cannot be lost between the lease check and signal.
+    if (listSessionLeases(context).length > 0) return false;
+    const pidFile = getObserverPidFile(context);
+    if (!fs.existsSync(pidFile)) return false;
 
-  const pid = (fs.readFileSync(pidFile, 'utf8') || '').trim();
-  if (!/^[0-9]+$/.test(pid) || pid === '0' || pid === '1') {
+    const pid = (fs.readFileSync(pidFile, 'utf8') || '').trim();
+    if (!/^[0-9]+$/.test(pid) || pid === '0' || pid === '1') {
+      fs.rmSync(pidFile, { force: true });
+      return false;
+    }
+
+    try {
+      process.kill(Number(pid), 0);
+    } catch {
+      fs.rmSync(pidFile, { force: true });
+      return false;
+    }
+
+    try {
+      process.kill(Number(pid), 'SIGTERM');
+    } catch {
+      return false;
+    }
+
     fs.rmSync(pidFile, { force: true });
-    return false;
-  }
-
-  try {
-    process.kill(Number(pid), 0);
-  } catch {
-    fs.rmSync(pidFile, { force: true });
-    return false;
-  }
-
-  try {
-    process.kill(Number(pid), 'SIGTERM');
-  } catch {
-    return false;
-  }
-
-  fs.rmSync(pidFile, { force: true });
-  fs.rmSync(getObserverSignalCounterFile(context), { force: true });
-  return true;
+    fs.rmSync(getObserverSignalCounterFile(context), { force: true });
+    return true;
+  });
 }
 
 module.exports = {

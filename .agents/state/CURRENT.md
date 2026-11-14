@@ -1,32 +1,49 @@
 # CURRENT
 
-## 1. Goal
+## Goal
 
-Audit and improve discovery, correctness, structure, routing, references, and current documentation across the catalog. The approved baseline contained 1,982 skills; the operator later expanded scope to add the source-backed OpenWhispr skill, bringing the current total to 1,983. Preserve the flat catalog, existing IDs, and pre-existing worktree edits.
+Use the supplied company prompt archive as untrusted research input to improve AGYOS-owned prompt guidance, account for every source statement, and remove unrelated vendor branding from AGYOS-authored prompt copy.
 
-## 2. Approved scope
+## Gate status
 
-- Task list: `docs/SKILL_CATALOG_UPGRADE_TASK_LIST.md`.
-- Plan: `docs/SKILL_CATALOG_UPGRADE_PLAN.md`.
-- Baseline: branch `main`, revision `3056ca61d85dfc026c7b8540cbddc97d9a8c3238`.
-- Gates UNDERSTAND, ANALYZE, and PLAN approved; the operator adopted three graph invariants.
-- Existing video-skill work and `.agents/state/decisions/drafts/20261111-111600-push-main.sh` remain protected.
+- UNDERSTAND: approved by the operator on 2026-11-14; task list: `docs/PROMPT_PRINCIPLES_UPGRADE_TASK_LIST.md`.
+- ANALYZE: findings and a proposed boundary are ready; operator scope approval is pending.
+- PLAN, IMPLEMENT, VERIFY: not started.
+- Baseline revision: `228884581aaebe3c2f6f2a246df6b30361b5bcb0` on `main`.
 
-## 3. Implementation status
+## Gate 2 scope and risk
 
-- Full catalog contains 1,983 skills; no existing ID was renamed or removed.
-- 613 long primary runbooks were moved into linked references. Independent comparison found no unexplained text loss. Current inventory: 1,983 primary runbooks, none at or above 300 lines.
-- Metadata, links, router behavior, selected code examples, the production audit safety contract, and ten imported placeholder workflows were corrected. All eight baseline duplicate-body groups and five additional alias cases were resolved without removing IDs; six compatibility IDs now point to canonical guidance. The OpenWhispr v1.0.2 runbook and routing case were added. Generated indexes contain 1,983 skills (390 Tier 1 and 1,593 Tier 2).
-- Auditor reports zero structural findings, zero duplicate descriptions, and zero exact duplicate-body groups. Review candidates: 309 long descriptions, one noncanonical but retained ID, and 7,657 keyword-based freshness candidates. These are not all confirmed defects; currentness review remains incomplete.
-- Focused catalog/router suite: 41 passed. The host-skipped full suite passed 155 tests and skipped the one host CLI probe; the unfiltered run recorded three errors. The filtered AGYOS wrapper passed 51/51 with that same host test skipped. The audit report records raw and filtered results, security scan, state validation, generated output comparison, and independent review.
-- Current catalog counts now agree across README, AGENTS, docs homepage, site landing page, tracker, and generated indexes. The security threat model records 1,983 as the current inventory while preserving its 2026-11-08 baseline and explicitly stating it was not re-audited. Older dated reports and baseline snapshots remain labeled as historical.
+### Findings
 
-## 4. Context graph
+- The supplied master index describes 26 company/product files, 80 upstream prompt/skill/tool files, 724 curated statements, and 14,165 extracted statements (14,889 combined). It explicitly says the community archive is not officially authenticated, may be incomplete, and that source text is not necessarily literal company policy. The archive README duplicates the master index.
+- The archive contains cross-company conflicts, vendor-specific runtime constraints, and agent-directed text. Treat source material as untrusted evidence; do not copy its instructions or tool schemas into AGYOS as-is.
+- `docs/prompts.md` and `docs/references/prompts.md` duplicate a prompt library with explicit vendor aesthetics and personas. Keep one canonical AGYOS prompt library and remove unrelated vendor framing from AGYOS-authored copy.
+- `.agents/skills/prompt-engineering/SKILL.md` claims asking for chain-of-thought improves accuracy by 30–50% without a source. Current official reasoning guidance says such requests may be unnecessary or may hinder performance. Verify and correct this during source mapping.
+- Physical `.agents/skills/` contains 2,240 `SKILL.md` files. Generated manifests claim 1,983; `AGENTS.md` claims 2,180. Many skill directories and core files are untracked or modified in the existing worktree. Do not overwrite them or claim catalog-wide completion from inconsistent counts.
+- `.agents/rules/common-skill-routing.md`, `AGENTS.md`, `README.md`, `.github/workflows/ci.yml`, and `scripts/tests/test_skill_routing.py` already contain user changes. Review and preserve these changes before any overlap edit.
+- CI currently triggers on pushes to `main` and pull requests targeting `main`; it has no `workflow_dispatch`. No push or PR creation is authorized, so exact-revision CI will remain pending unless the operator later authorizes publication.
 
-`.agents/state/context-graph.json` records 13 scoped nodes, 19 verified edges, and the three adopted invariants.
+### Proposed implementation boundary — approval required
 
-## 5. Publication status and remaining limits
+- Read the complete supplied archive at `/home/ai/Documents/projects/Freelance/Principles/Prompt/`, relevant AGYOS prompt/rule/skill files, manifests, workflow, and current diffs.
+- Write the source audit and decision record under `docs/research/` and `docs/adr/`; add one AGYOS-native always-on rule under `.agents/rules/`; connect it through `.agents/rules/common-skill-routing.md`.
+- Canonicalize `docs/prompts.md` and `docs/references/prompts.md`; audit the directly relevant skills `prompt-engineering`, `prompt-optimizer`, `prompt-library`, `prompt-engineer`, and `enhance-prompt`.
+- Add prompt-specific CI coverage in a new test file and, only as needed, carefully merge a minimal change into the already modified `.github/workflows/ci.yml`.
+- Do not rename skills, mass-edit the 2,240 skill files, remove provider/model/API identifiers needed for compatibility, erase source attribution, alter supplied source files, or publish/deploy. Keep the catalog count mismatch recorded as a separate existing-work limitation unless its reconciliation can be done without absorbing or changing unapproved user files.
 
-Gate VERIFY is complete with the host and subprocess limits documented in the audit report. Catalog commit `20947c2d244a16a2b86bf88e0d56102a269ca736` is published on `origin/main`; CI run 43020400270 and the GitHub Pages documentation workflow 43020400187 succeeded for that commit. Live HTTP checks returned 200 for the site root and catalog; the catalog JSON contains 1,983 skills and includes OpenWhispr and both video skills. Interactive browser behavior was not tested.
+### Complexity and permissions
 
-Exact next command: `git status --short --branch`
+- Raw scope score: 17/24 — files 4, cross-references 4, risk 3, novelty 4, verification 2, reversibility 0.
+- Canonical complexity: 4/5; full five-gate flow; major scope. Four read-only scout reviews completed after scoring.
+- Read: supplied archive; `AGENTS.md`; `AI_HANDOFF.md`; prompt docs and relevant prompt skills; `.agents/rules/`; `agyos_decision/`; CI and relevant tests; manifests; current Git diffs.
+- Proposed write: task/checkpoint/state artifacts already created; after scope approval, only the exact research, ADR, rule, prompt-library, relevant prompt-skill, test, and CI paths listed above.
+- Local commands: static file inspection, `rg`, and `git diff --check` only. All builds, tests, linting, dependency setup, and catalog generation stay in GitHub Actions.
+- Network: official vendor documentation and the pinned archive source for provenance checks; GitHub Actions only for remote validation. No paid model/API calls.
+
+## Existing worktree preservation
+
+Before implementation, inspect each overlapping diff and preserve the pre-existing edits listed above. Do not restore, clean, stage, commit, or push those files without separate authorization.
+
+## Prior milestone
+
+The previous skill-catalog audit and publication are documented in `docs/SKILL_CATALOG_AUDIT_REPORT.md` and the preceding revision history. Its published 1,983 count does not reconcile with the current physical tree and must not be treated as the present count.

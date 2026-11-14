@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "imported_sources": [
+    {"owner": "Jakeschincariol", "repo": "arena-skill", "commit": "df07b8e518e10cdecd8cd7712d9958b6f396250e", "license": "MIT", "path": ".agents/skill-sources/jakeschincariol/arena-skill", "prefix": "jake-arena", "expected_skills": 1},
+    {"owner": "Jakeschincariol", "repo": "chatgpt-youtube-agent-skill", "commit": "6314d3c17dfa1e5960966542048e8a09e28cdfd74", "license": "MIT", "path": ".agents/skill-sources/jakeschincariol/chatgpt-youtube-agent-skill", "prefix": "jake-chatgpt-youtube", "expected_skills": 11},
+    {"owner": "Jakeschincariol", "repo": "claude-illegal-codes", "commit": "ae136db77f3271c2490dbd267be0efe00596d2ec", "license": "MIT", "path": ".agents/skill-sources/jakeschincariol/claude-illegal-codes", "prefix": "jake-illegal-codes", "expected_skills": 5},
+    {"owner": "Jakeschincariol", "repo": "closer-skill", "commit": "0b0107690e202010710a59eb7d0b47d331255e59", "license": "MIT", "path": ".agents/skill-sources/jakeschincariol/closer-skill", "prefix": "jake-closer", "expected_skills": 11},
+    {"owner": "Jakeschincariol", "repo": "console-skill", "commit": "a508929f1e8f5dd6f54afe489fd74340df3b6f74", "license": "MIT", "path": ".agents/skill-sources/jakeschincariol/console-skill", "prefix": "jake-console", "expected_skills": 11},
+    {"owner": "Jakeschincariol", "repo": "day-trader-skill", "commit": "3d0f4ef6986f4984b7c6bd46f7ff4f87744c3abd", "license": "MIT", "path": ".agents/skill-sources/jakeschincariol/day-trader-skill", "prefix": "jake-day-trader", "expected_skills": 11},
+    {"owner": "Jakeschincariol", "repo": "duel-skill", "commit": "eacccef179a4d301afb1169504296a9afac68743", "license": "MIT", "path": ".agents/skill-sources/jakeschincariol/duel-skill", "prefix": "jake-duel", "expected_skills": 1},
+    {"owner": "Jakeschincariol", "repo": "founder-skill", "commit": "fd9385b0cfe1b96bebce3898fbd506d73eff5a9d", "license": "MIT", "path": ".agents/skill-sources/jakeschincariol/founder-skill", "prefix": "jake-founder", "expected_skills": 11},
+    {"owner": "Jakeschincariol", "repo": "hunter-skill", "commit": "f40d6a94b61283785b20e47a237608d5b1976b1c", "license": "MIT", "path": ".agents/skill-sources/jakeschincariol/hunter-skill", "prefix": "jake-hunter", "expected_skills": 11},
+    {"owner": "Jakeschincariol", "repo": "instagram-agent-skill", "commit": "d03c56bb598be770c60b201f94237e5d1a4268a6", "license": "MIT", "path": ".agents/skill-sources/jakeschincariol/instagram-agent-skill", "prefix": "jake-instagram", "expected_skills": 13},
+    {"owner": "Jakeschincariol", "repo": "linkedin-agent-skill", "commit": "add2c23882fe79180737d242ff80a5da205eda6a", "license": "MIT", "path": ".agents/skill-sources/jakeschincariol/linkedin-agent-skill", "prefix": "jake-linkedin", "expected_skills": 11},
+    {"owner": "Jakeschincariol", "repo": "master-skills", "commit": "b5b43e44f0a976ad25bda5095a94c161aab2f086", "license": "MIT", "path": ".agents/skill-sources/jakeschincariol/master-skills", "prefix": "jake-master", "expected_skills": 3},
+    {"owner": "Jakeschincariol", "repo": "promptmaster-skill", "commit": "43c704602fccaf18da67760bcb1022428591ddeb", "license": "MIT", "path": ".agents/skill-sources/jakeschincariol/promptmaster-skill", "prefix": "jake-promptmaster", "expected_skills": 1},
+    {"owner": "Jakeschincariol", "repo": "replica-skill", "commit": "77c9436fb3d18c3d58169efb8caf4fe906b0dc51", "license": "MIT", "path": ".agents/skill-sources/jakeschincariol/replica-skill", "prefix": "jake-replica", "expected_skills": 11},
+    {"owner": "Jakeschincariol", "repo": "seed-skill", "commit": "fde88957238bd3bc28e80e1fe0b252a64507b108", "license": "MIT", "path": ".agents/skill-sources/jakeschincariol/seed-skill", "prefix": "jake-seed", "expected_skills": 11},
+    {"owner": "Jakeschincariol", "repo": "trader-skill", "commit": "5189e79b9a480755a3733ac9713f5353981dbe18", "license": "MIT", "path": ".agents/skill-sources/jakeschincariol/trader-skill", "prefix": "jake-trader", "expected_skills": 11},
+    {"owner": "Jakeschincariol", "repo": "unhinged-claude-skills", "commit": "8f60ec6d9e28e430849b57b5e21cbdfe9860df99", "license": "MIT", "path": ".agents/skill-sources/jakeschincariol/unhinged-claude-skills", "prefix": "jake-unhinged", "expected_skills": 25},
+    {"owner": "Jakeschincariol", "repo": "whale-skill", "commit": "67390fc00e9c33f2d9f9ed5c3d52e330d520dc72", "license": "MIT", "path": ".agents/skill-sources/jakeschincariol/whale-skill", "prefix": "jake-whale", "expected_skills": 11},
+    {"owner": "Jakeschincariol", "repo": "x-agent-skill", "commit": "7822c29b4aedbd400b9339839d3f59f3652b1317", "license": "MIT", "path": ".agents/skill-sources/jakeschincariol/x-agent-skill", "prefix": "jake-x", "expected_skills": 11},
+    {"owner": "Jakeschincariol", "repo": "youtube-agent-skill", "commit": "a2feb2104981a375ffd4f87ee04f4f5344ac43c6", "license": "MIT", "path": ".agents/skill-sources/jakeschincariol/youtube-agent-skill", "prefix": "jake-youtube", "expected_skills": 11},
+    {"owner": "benjitaylor", "repo": "skills", "commit": "299140fafd08df55a9c234e610c3f64af3f45531", "license": "MIT", "license_file": "LICENSE", "path": ".agents/skill-sources/benjitaylor/stageshow", "prefix": "benji-stage", "expected_skills": 1, "include_root_skill": true},
+    {"owner": "zakariaf", "repo": "Flutter-Skills", "commit": "e073e5ea10c963d2c52ab1e423bd314c28a56154", "license": "MIT", "path": ".agents/skill-sources/zakariaf/flutter-skills", "prefix": "zakariaf", "expected_skills": 40},
+    {"owner": "ai-dashboad", "repo": "flutter-skill", "commit": "c31a08ead80e0678373e6fb2835b2ffd81ce2716", "license": "MIT", "path": ".agents/skill-sources/ai-dashboad/flutter-e2e", "prefix": "ai-dashboad", "expected_skills": 1}
+  ],
+  "link_only_sources": [
+    {"owner": "Jakeschincariol", "repo": "Influencer-Clone", "commit": "ee6fb5433849761c0543abeff6114744f4de09f1", "skills": 1, "reason": "No repository license found; source linked, not copied."},
+    {"owner": "Jakeschincariol", "repo": "video-production-skills", "commit": "f80248b5e2e41286a6ad5662601e0aa41e121201", "skills": 13, "reason": "No repository license found; source linked, not copied."},
+    {"owner": "flutter", "repo": "agent-plugins", "commit": "e5a88d2be19cbf7ba1ef974375e5846492aca2ac", "skills": 10, "reason": "BSD-3-Clause source; the current AGYOS upstream adapter generator accepts MIT only. No skill files copied."},
+    {"owner": "RobertAlvv", "repo": "flutter-skills", "commit": "4772c71f182e628df8601b4868ded9b6482d3891", "skills": 8, "reason": "No repository license found; source linked, not copied."}
+  ]
+}

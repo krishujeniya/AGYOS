@@ -1,0 +1,18 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "whale-skill",
+  "description": "The Whale skill pack for Claude",
+  "owner": {
+    "name": "Jake Schincariol",
+    "url": "https://opusjake.ai"
+  },
+  "plugins": [
+    {
+      "name": "whale-skill",
+      "description": "Eleven Claude skills that get you paying customers before you launch: a market researcher, a demo builder, a whale hunter, a pre-sale skill, requirements, an offer builder, pricing, follow-ups, an objection handler, case studies and a launch planner.",
+      "source": "./",
+      "category": "productivity",
+      "homepage": "https://github.com/Jakeschincariol/whale-skill"
+    }
+  ]
+}

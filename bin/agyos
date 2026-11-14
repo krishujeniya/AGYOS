@@ -91,7 +91,7 @@ if decision.assumptions_applied:
       anchor_state_get "current_gate" "IDLE"
     else
       source bin/state.sh
-      anchor_state_set "current_gate" "$target_gate"
+      anchor_gate_transition "$target_gate"
       echo "Active gate transitioned to: $target_gate"
     fi
     ;;
@@ -100,9 +100,8 @@ if decision.assumptions_applied:
     ;;
   fast)
     source bin/state.sh
-    anchor_state_set "current_gate" "IMPLEMENT"
-    anchor_state_set "complexity_score" 1 "number"
-    echo "⚡ Fast-path activated: Transitioned directly to IMPLEMENT (complexity <= 2)"
+    anchor_gate_transition "IMPLEMENT" fast
+    echo "Fast-path activated: Transitioned from ANALYZE to IMPLEMENT (complexity <= 2)"
     ;;
   decide|decision)
     query="$*"

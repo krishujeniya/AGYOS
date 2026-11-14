@@ -3,8 +3,7 @@
 
 const os = require('os');
 const { spawnSync } = require('child_process');
-const { createStateStore } = require('./lib/state-store');
-const { claimWorkItem } = require('./lib/control-pane/work-item-mutations');
+const { DONE_STATUSES, claimWorkItem, validateWorkItemStatus } = require('./lib/control-pane/work-item-mutations');
 
 const VALUE_FLAGS = new Set([
   '--as',
@@ -338,6 +337,10 @@ function closeStaleGithubItems(store, repo, activeIds, options = {}) {
   return closed;
 }
 
+function isGithubListingComplete(pullRequests, issues, limit) {
+  return pullRequests.length < limit && issues.length < limit;
+}
+
 function syncGithubWorkItems(store, options) {
   const repo = options.githubRepo;
   if (!repo) {
@@ -366,13 +369,17 @@ function syncGithubWorkItems(store, options) {
       items.push(refreshGithubWorkItem(store, payload, syncedAt));
     }
 
-    const closedItems = closeStaleGithubItems(store, repo, activeIds, { limit: Math.max(limit * 4, 1000) });
+    const listingComplete = isGithubListingComplete(prs, issues, limit);
+    const closedItems = listingComplete
+      ? closeStaleGithubItems(store, repo, activeIds, { limit: Math.max(limit * 4, 1000) })
+      : [];
     return {
       repo,
       syncedAt,
       prCount: prs.length,
       issueCount: issues.length,
       closedCount: closedItems.length,
+      staleCloseSkipped: !listingComplete,
       items,
       closedItems
     };
@@ -389,13 +396,18 @@ function buildUpsertPayload(options, existing = null) {
   if (!title) {
     throw new Error('Missing --title for a new work item.');
   }
+  const status = validateWorkItemStatus(options.status ?? (existing && existing.status) ?? 'open');
+  const existingStatus = existing ? validateWorkItemStatus(existing.status) : null;
+  if (existingStatus && DONE_STATUSES.has(existingStatus) && !DONE_STATUSES.has(status)) {
+    throw new Error(`Work item ${id} is terminal (${existingStatus}) and cannot return to active status '${status}'.`);
+  }
 
   return {
     id,
     source: options.source ?? (existing && existing.source) ?? 'manual',
     sourceId: options.sourceId ?? (existing && existing.sourceId) ?? null,
     title,
-    status: options.status ?? (existing && existing.status) ?? 'open',
+    status,
     priority: options.priority ?? (existing && existing.priority) ?? null,
     url: options.url ?? (existing && existing.url) ?? null,
     owner: options.owner ?? (existing && existing.owner) ?? null,
@@ -405,6 +417,14 @@ function buildUpsertPayload(options, existing = null) {
     createdAt: existing ? existing.createdAt : undefined,
     updatedAt: new Date().toISOString()
   };
+}
+
+function validateCloseStatus(status = 'done') {
+  const normalized = validateWorkItemStatus(status);
+  if (!DONE_STATUSES.has(normalized)) {
+    throw new Error(`close status '${normalized}' must be terminal.`);
+  }
+  return normalized;
 }
 
 function printWorkItem(item) {
@@ -482,6 +502,7 @@ async function main() {
       showHelp(0);
     }
 
+    const { createStateStore } = require('./lib/state-store');
     store = await createStateStore({
       dbPath: options.dbPath,
       homeDir: process.env.HOME || os.homedir()
@@ -540,7 +561,7 @@ async function main() {
           {
             ...options,
             id,
-            status: options.status || 'done'
+            status: validateCloseStatus(options.status || 'done')
           },
           existing
         )
@@ -595,7 +616,11 @@ module.exports = {
   buildUpsertPayload,
   buildGithubIssueWorkItem,
   buildGithubPrWorkItem,
+  closeStaleGithubItems,
+  isGithubListingComplete,
+  isLocallyManagedGithubItem,
   main,
   parseArgs,
-  syncGithubWorkItems
+  syncGithubWorkItems,
+  validateCloseStatus
 };

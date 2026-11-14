@@ -8,6 +8,11 @@
  */
 
 const DONE_STATUSES = new Set(['done', 'closed', 'resolved', 'merged', 'cancelled']);
+const WORK_ITEM_STATUSES = new Set([
+  'open', 'ready', 'running', 'claimed', 'in-progress', 'active', 'working',
+  'available', 'validated', 'published', 'blocked', 'needs-review', 'failed',
+  'stalled', 'done', 'closed', 'resolved', 'merged', 'cancelled'
+]);
 // Only explicitly admitted work may be newly claimed.
 const CLAIMABLE_STATUSES = new Set(['open', 'ready']);
 const PRIORITY_RANK = { critical: 0, high: 1, urgent: 1, medium: 2, normal: 2, low: 3 };
@@ -21,6 +26,14 @@ const LANE_TO_STATUS = {
 };
 const VALID_LANES = new Set(Object.keys(LANE_TO_STATUS));
 const VALID_ASSIGNEE_KINDS = new Set(['agent', 'human']);
+
+function validateWorkItemStatus(status) {
+  const normalized = String(status || '').trim().toLowerCase();
+  if (!WORK_ITEM_STATUSES.has(normalized)) {
+    throw new Error(`Invalid work-item status '${status}'.`);
+  }
+  return normalized;
+}
 
 function isOpenStatus(status) {
   return CLAIMABLE_STATUSES.has(String(status || '').trim().toLowerCase());
@@ -56,6 +69,10 @@ function claimWorkItem(store, { id, owner, assigneeKind, sessionId, status } = {
   if (!owner) {
     throw new Error('claim requires an owner.');
   }
+  const claimStatus = status === undefined ? 'running' : validateWorkItemStatus(status);
+  if (!['running', 'claimed', 'in-progress'].includes(claimStatus)) {
+    throw new Error(`Claim result status '${claimStatus}' must be an active status.`);
+  }
   const kind = assigneeKind ? String(assigneeKind).toLowerCase() : null;
   if (kind && !VALID_ASSIGNEE_KINDS.has(kind)) {
     throw new Error("assigneeKind must be 'agent' or 'human'.");
@@ -87,7 +104,7 @@ function claimWorkItem(store, { id, owner, assigneeKind, sessionId, status } = {
     ...target,
     owner,
     sessionId: sessionId ?? target.sessionId ?? null,
-    status: status ?? 'running',
+    status: claimStatus,
     metadata,
     updatedAt: new Date().toISOString()
   });
@@ -111,9 +128,14 @@ function moveWorkItem(store, { id, lane } = {}) {
   if (!target) {
     throw new Error(`Work item not found: ${id}`);
   }
+  const currentStatus = validateWorkItemStatus(target.status);
+  const nextStatus = LANE_TO_STATUS[laneKey];
+  if (DONE_STATUSES.has(currentStatus) && nextStatus !== currentStatus) {
+    throw new Error(`Work item ${id} is terminal (${currentStatus}) and cannot move to ${laneKey}.`);
+  }
   const item = store.upsertWorkItem({
     ...target,
-    status: LANE_TO_STATUS[laneKey],
+    status: nextStatus,
     updatedAt: new Date().toISOString()
   });
   return { moved: true, item };
@@ -124,7 +146,9 @@ module.exports = {
   LANE_TO_STATUS,
   VALID_LANES,
   VALID_ASSIGNEE_KINDS,
+  WORK_ITEM_STATUSES,
   isOpenStatus,
+  validateWorkItemStatus,
   priorityRank,
   selectClaimTarget,
   claimWorkItem,

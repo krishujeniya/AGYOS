@@ -1,40 +1,20 @@
 # Quickstart
 
-AGYOS runs from the existing repository and exposes a command-line entry point. The steps below are taken from the project's README; follow the repository's current prerequisites before installing dependencies.
+The root [README](https://github.com/krishujeniya/AGYOS#readme) is the canonical project overview and command guide. It combines the current architecture summary, CLI examples, security boundaries, CI policy, and links to detailed references.
 
-## Clone and initialize
+Clone the repository and inspect the available commands:
 
 ```bash
 git clone https://github.com/krishujeniya/AGYOS.git
 cd AGYOS
-bash scripts/agyos-init.sh
+bin/agyos help
 ```
 
-The repository also documents an optional one-command setup:
+To find a relevant runbook and read it:
 
 ```bash
-git clone https://github.com/krishujeniya/AGYOS.git && cd AGYOS && bash scripts/agyos-init.sh && bash scripts/agyos-verify.sh
+bin/agyos decide "fix a Python error" --json --runbook
+bin/agyos skill technical-documentation-writer
 ```
 
-## Verify the workspace
-
-```bash
-bash scripts/agyos-verify.sh
-python3 -m unittest discover -s scripts/tests -v
-```
-
-Verification requirements depend on the host environment. A passing documentation build is not proof that the AGYOS runtime itself has been verified on your machine.
-
-## Find a skill
-
-```bash
-bin/agyos decide "fix python crash" --json --runbook
-bin/agyos find "database schema migration"
-bin/agyos skill database-design
-```
-
-For routing guarantees and limitations, see [Skill routing](../SKILL_ROUTING.md). To learn the system structure, read [System architecture](../ARCHITECTURE.md).
-
-## Browse the skill catalog
-
-The [interactive catalog](../../catalog/) lists AGYOS's published skill metadata. Search and filter to identify a runbook; read the source before executing it.
+Read the repository's [`AGENTS.md`](https://github.com/krishujeniya/AGYOS/blob/main/AGENTS.md) before making changes. Tests, builds, linters, type checks, dependency resolution, setup, and media renders for this repository run in GitHub Actions; see the [CI workflows](https://github.com/krishujeniya/AGYOS/tree/main/.github/workflows).

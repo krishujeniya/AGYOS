@@ -106,7 +106,7 @@ function normalizeHookResult(previousRaw, output) {
   };
 }
 
-function runHooks(rawInput, hooks) {
+function runHooks(rawInput, hooks, env = process.env) {
   let currentRaw = rawInput;
   // Track whether a sub-hook deliberately produced stdout (a string or
   // {stdout}) versus currentRaw still being the untouched input event.
@@ -116,9 +116,11 @@ function runHooks(rawInput, hooks) {
   let rawModified = false;
   let stderr = '';
   let additionalContext = '';
+  const outcomes = [];
 
   for (const hook of hooks) {
-    if (!isHookEnabled(hook.id, { profiles: hook.profiles })) {
+    if (!isHookEnabled(hook.id, { profiles: hook.profiles, env })) {
+      outcomes.push({ id: hook.id, outcome: 'skipped' });
       continue;
     }
 
@@ -135,15 +137,19 @@ function runHooks(rawInput, hooks) {
         additionalContext = combineAdditionalContext(additionalContext, result.additionalContext);
       }
       if (result.exitCode !== 0) {
+        outcomes.push({ id: hook.id, outcome: 'stopped', exitCode: result.exitCode });
         return {
           output: rawModified ? currentRaw : '',
           stderr,
           additionalContext,
           exitCode: result.exitCode,
+          outcomes,
         };
       }
+      outcomes.push({ id: hook.id, outcome: 'continued' });
     } catch (error) {
       stderr += `[Hook] ${hook.id} failed: ${error.message}\n`;
+      outcomes.push({ id: hook.id, outcome: 'failed', policy: 'continue' });
     }
   }
 
@@ -156,6 +162,7 @@ function runHooks(rawInput, hooks) {
     stderr,
     additionalContext,
     exitCode: 0,
+    outcomes,
   };
 }
 
@@ -204,6 +211,8 @@ if (require.main === module) {
 module.exports = {
   PRE_BASH_HOOKS,
   POST_BASH_HOOKS,
+  normalizeHookResult,
+  runHooks,
   runPreBash,
   runPostBash,
 };

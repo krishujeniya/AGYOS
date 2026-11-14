@@ -7,6 +7,9 @@ const path = require('path');
 
 const SCHEMA_VERSION = 'ecc.release-approval-gate.v1';
 const SCRIPT_PATH = 'scripts/release-approval-gate.js';
+const DECISION_STATES = new Set([
+  'pending', 'approve', 'approved', 'reject', 'rejected', 'defer', 'deferred', 'block', 'blocked'
+]);
 const REQUIRED_COMMAND = 'npm run release:approval-gate -- --format json';
 
 const REQUIRED_DECISIONS = [
@@ -262,7 +265,17 @@ function parseDecisionRegister(packet) {
       continue;
     }
 
-    decisions.set(normalizedDecision, normalizeState(state));
+    const normalizedState = normalizeState(state);
+    const stateValue = DECISION_STATES.has(normalizedState)
+      ? normalizedState
+      : `invalid:${normalizedState || 'empty'}`;
+    const previous = decisions.get(normalizedDecision);
+    decisions.set(
+      normalizedDecision,
+      previous && previous !== stateValue
+        ? `conflict:${previous}|${stateValue}`
+        : stateValue
+    );
   }
 
   return decisions;
@@ -566,11 +579,13 @@ if (require.main === module) {
 
 module.exports = {
   ANNOUNCEMENT_FILE_NAMES,
+  DECISION_STATES,
   REQUIRED_COMMAND,
   REQUIRED_DECISIONS,
   REQUIRED_URL_SURFACES,
   buildReport,
   releasePathsFor,
   parseArgs,
+  parseDecisionRegister,
   renderText,
 };

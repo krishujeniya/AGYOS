@@ -41,6 +41,11 @@ class RoutingTests(unittest.TestCase):
         "Check every skill, improve the descriptions, organize the catalog, fix broken links, and rename only when justified": "agyos-self-improvement",
         "Audit and clean up the AGYOS skills catalog": "agyos-self-improvement",
         "Optimize every skill and make AGYOS skill discovery clearer": "agyos-self-improvement",
+        "Create a 30 week DevOps career learning plan": "devops-career-roadmap",
+        "Help us find the first 500 paying users through creator comments": "first-500-paying-users",
+        "Make an AI accounts to follow watchlist": "ai-industry-watchlist",
+        "How do I set up the Harvey free AI sales agent safely?": "harvey-sales-agent-guide",
+        "Import all skill repositories into AGYOS": "agyos-self-improvement",
     }
 
     def test_frozen_task_cases(self):

@@ -1,0 +1,9 @@
+{
+  "name": "1password-mcp",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "server.js",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.2.0"
+  }
+}

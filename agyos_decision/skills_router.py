@@ -1,6 +1,6 @@
 """AGYOS Decision Engine — Autonomous Skill Routing & Selection.
 
-Evaluates task intent, technical domains, and complexity against AGYOS's 1,862+
+Evaluates task intent, technical domains, and complexity against AGYOS's 2,180+
 skills catalog to decide the optimal specialist skill and workflow gate.
 Catalog metadata is validated with the repository's PyYAML dependency.
 """
@@ -109,6 +109,39 @@ DOMAIN_TAXONOMY: Dict[str, Dict[str, Any]] = {
         ],
         "primary": "gitops-workflow",
         "alternatives": ["docker-patterns", "kubernetes-patterns", "cicd-workflow", "github-workflow-automation"],
+    },
+    "devops_career": {
+        "keywords": [
+            "devops roadmap", "devops career", "devops learning plan",
+            "become a devops engineer", "devops study plan", "30 week devops"
+        ],
+        "primary": "devops-career-roadmap",
+        "alternatives": ["elite-devops-architect", "expert-devops", "devops-troubleshooter"],
+    },
+    "creator_acquisition": {
+        "keywords": [
+            "first 500 paying users", "creator comment research", "creator-led acquisition",
+            "find paying users through creators", "complaint themes from comments",
+            "organic customer acquisition"
+        ],
+        "primary": "first-500-paying-users",
+        "alternatives": ["growth-engine", "creator-monetization", "marketing-campaign"],
+    },
+    "ai_industry_watchlist": {
+        "keywords": [
+            "ai accounts to follow", "ai industry watchlist", "ai news sources",
+            "official ai researcher profiles", "ai company social accounts"
+        ],
+        "primary": "ai-industry-watchlist",
+        "alternatives": ["news-sentiment-engine", "trending-tech-tracker", "market-research"],
+    },
+    "sales_agent_setup": {
+        "keywords": [
+            "sellbird setup", "harvey sales agent", "harvey free ai sales agent",
+            "configure sellbird", "harvey cold email agent"
+        ],
+        "primary": "harvey-sales-agent-guide",
+        "alternatives": ["sales-automator", "sales-enablement", "security-review"],
     },
     "seo": {
         "keywords": [
@@ -290,7 +323,10 @@ DOMAIN_TAXONOMY: Dict[str, Dict[str, Any]] = {
             "every skill", "all skills", "skill descriptions", "skill metadata",
             "skill discovery", "runbook catalog", "organize skills", "skill organization",
             "rename skills", "skill maintenance", "improve skills", "optimize skills",
-            "skill quality", "skill inventory", "catalog of skills"
+            "skill quality", "skill inventory", "catalog of skills",
+            "import upstream skills", "third-party skill packs", "external skill repositories",
+            "skill repo", "skill repos", "skill repository", "skill repositories",
+            "import skill repositories", "add third-party skills", "add upstream skills"
         ],
         "primary": "agyos-self-improvement",
         "alternatives": ["elite-skill-architect", "skill-optimizer", "skill-creator", "agyos-decision"],

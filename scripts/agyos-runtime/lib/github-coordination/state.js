@@ -4,6 +4,49 @@ const { DEFAULT_POLICY, DEFAULT_SCHEMA_VERSION } = require('./policy');
 const { extractIssueReferences, extractTasks } = require('./parsing');
 const { normalizeLabels, listIssues, editIssue } = require('./gh-api');
 
+const COORDINATION_STATUSES = new Set(['available', 'claimed', 'validated', 'ready', 'blocked', 'published']);
+const VALIDATION_STATES = new Set(['pending', 'passed', 'failed']);
+const REVIEW_STATES = new Set(['not-requested', 'requested', 'approved', 'changes-requested']);
+const PROJECT_STATES = new Set(['backlog', 'in-progress', 'ready', 'blocked', 'done']);
+
+function assertActionTransition(current, next, action) {
+  if (current.status === 'published' && action !== 'sync') {
+    throw new Error(`Published epic state is terminal; cannot apply '${action}'`);
+  }
+  if (current.status === 'published' && (
+    next.validation !== current.validation
+    || next.review !== current.review
+    || next.project.state !== current.project.state
+  )) {
+    throw new Error('Published epic status axes are terminal and cannot change during sync');
+  }
+  const valid = {
+    sync: current.status === next.status,
+    claim: ['available', 'ready'].includes(current.status)
+      && next.status === 'claimed'
+      && next.validation === current.validation
+      && ['requested', current.review].includes(next.review)
+      && next.project.state === 'in-progress',
+    validate: next.status === current.status
+      || (current.status !== 'blocked' && next.status === 'validated'),
+    publish: ['validated', 'ready'].includes(current.status)
+      && next.status === 'published'
+      && next.validation === 'passed'
+      && next.review === 'approved'
+      && next.project.state === 'done',
+    review: ['claimed', 'validated', 'ready'].includes(current.status)
+      && ((next.review === 'requested' && next.status === 'claimed' && next.project.state === 'in-progress')
+        || (next.review === 'approved' && next.status === 'ready' && next.project.state === 'ready')
+        || (next.review === 'changes-requested' && next.status === 'blocked' && next.project.state === 'blocked')),
+    decompose: next.status === current.status,
+    unblock: current.status === 'blocked' && next.status === 'ready',
+  };
+  if (!Object.prototype.hasOwnProperty.call(valid, action)) throw new Error(`Unknown coordination action '${action}'`);
+  if (!valid[action]) {
+    throw new Error(`Invalid coordination status transition ${current.status} -> ${next.status} for ${action}`);
+  }
+}
+
 function slugifySegment(value) {
   return String(value || '')
     .toLowerCase()
@@ -84,6 +127,14 @@ function buildIssueStateFromAction(issue, currentState, action, options = {}, po
   if (options.notes !== undefined) next.notes = options.notes;
   if (options.tasks !== undefined) next.tasks = options.tasks;
   if (options.dependencies !== undefined) next.dependencies = options.dependencies;
+
+  if (!COORDINATION_STATUSES.has(next.status)) throw new Error(`Invalid coordination status '${next.status}'`);
+  if (!VALIDATION_STATES.has(next.validation)) throw new Error(`Invalid validation state '${next.validation}'`);
+  if (!REVIEW_STATES.has(next.review)) throw new Error(`Invalid review state '${next.review}'`);
+  if (!PROJECT_STATES.has(next.project && next.project.state)) {
+    throw new Error(`Invalid project state '${next.project && next.project.state}'`);
+  }
+  assertActionTransition(currentState, next, action);
 
   return next;
 }
@@ -211,8 +262,12 @@ function assertIssueClaimable(issue, state) {
     throw new Error(`Issue #${issue.number} is not open`);
   }
 
-  if (state.status === 'claimed') {
-    throw new Error(`Issue #${issue.number} is already claimed by ${state.owner || 'unknown'}`);
+  if (!['available', 'ready'].includes(state.status)) {
+    throw new Error(`Issue #${issue.number} cannot be claimed from coordination status '${state.status}'`);
+  }
+  if (state.validation === 'failed' || state.review === 'changes-requested'
+    || (state.project && state.project.state === 'blocked')) {
+    throw new Error(`Issue #${issue.number} cannot be claimed while a coordination axis is blocked or failed`);
   }
 }
 
@@ -236,6 +291,7 @@ function verifyDependenciesClosed(repo, dependencyNumbers, options = {}, allIssu
 }
 
 module.exports = {
+  assertActionTransition,
   assertIssueClaimable,
   buildIssueComment,
   buildIssueStateFromAction,

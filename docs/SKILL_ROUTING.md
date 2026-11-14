@@ -18,23 +18,22 @@ preserved. No paid calls or global runtime installation are required.
 - Unknown tasks use the decision runbook instead of an unrelated specialist.
 - CLI and MCP can return the selected runbook; selection alone stays pending.
 - Risk and structural work cannot become a trivial edit merely because a prompt is short.
-- Full offline tests, catalog validation, syntax checks, and independent review precede push.
+- Catalog validation, syntax checks, tests, and independent review run in GitHub Actions; local verification is prohibited for this repository.
 
 ## Implementation and checks
 
 Shared parsing lives in `agyos_decision/catalog.py`; routing lives in
 `agyos_decision/skills_router.py`. `scripts/agyos-decision.py`, `bin/agyos`, and
 `mcp/state-server.cjs` expose the same decision pipeline. Catalog generators read
-the same metadata and operate only in this checkout.
+the same metadata. Adapter checks, catalog generation, tests, and syntax checks
+run in GitHub Actions only. CI uploads generated indexes as
+`agyos-skill-catalog-generated` so a reviewed branch can receive them without a
+local build.
 
-```bash
-python3 scripts/build_tiered_skills_manifest.py
-python3 scripts/build_docs_data.py
-python3 -m unittest discover -s scripts/tests -v
-python3 -m compileall -q agyos_decision scripts
-node --check mcp/state-server.cjs
-bash scripts/agyos-verify.sh
-```
+GitHub Actions runs `python scripts/import_upstream_skill_packs.py --check`, both
+catalog generators, the Python and Node suites, and shell/Python syntax checks.
+Download `agyos-skill-catalog-generated` from the matching Actions run when
+generated files need to be updated. Do not run those commands locally.
 
 ## Operating contract
 

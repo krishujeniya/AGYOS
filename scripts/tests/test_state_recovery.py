@@ -189,6 +189,27 @@ class OutboxHoldQueueTests(unittest.TestCase):
         outbox.abort_action(item_id, reason="operator rejected")
         self.assertEqual(outbox.get_status(item_id), "ABORTED")
 
+    def test_terminal_outbox_states_cannot_be_overwritten(self):
+        outbox = OutboxQueue()
+        committed = outbox.stage_action({"action_type": "publish"})
+        outbox.commit_action(committed, authorized_by="operator")
+        with self.assertRaises(ValueError):
+            outbox.abort_action(committed, reason="too late")
+        self.assertEqual(outbox.get_status(committed), "COMMITTED")
+
+        aborted = outbox.stage_action({"action_type": "transfer"})
+        outbox.abort_action(aborted, reason="operator rejected")
+        with self.assertRaises(ValueError):
+            outbox.commit_action(aborted, authorized_by="operator")
+        self.assertEqual(outbox.get_status(aborted), "ABORTED")
+
+    def test_outbox_requires_authorization_identity_before_commit(self):
+        outbox = OutboxQueue()
+        item_id = outbox.stage_action({"action_type": "publish"})
+        with self.assertRaises(ValueError):
+            outbox.commit_action(item_id, authorized_by=" ")
+        self.assertEqual(outbox.get_status(item_id), "PENDING_COMMIT")
+
 
 class ReflectionMemoryTests(unittest.TestCase):
     def setUp(self):
@@ -244,6 +265,32 @@ class LIFOSagaCompensationTests(unittest.TestCase):
         self.assertEqual(execution_order, ["C3", "C2", "C1"],
                          f"Saga compensation must be strictly LIFO, got {execution_order}")
         self.assertEqual(saga.status, "COMPENSATED")
+
+    def test_saga_rejects_steps_and_repeated_rollback_after_completion(self):
+        saga = SagaCoordinator(saga_id="saga_terminal_01")
+        saga.register_step("step1", lambda: None)
+        saga.rollback()
+        with self.assertRaises(RuntimeError):
+            saga.register_step("step2", lambda: None)
+        with self.assertRaises(RuntimeError):
+            saga.rollback()
+
+    def test_failed_saga_compensation_is_terminal_and_not_replayed(self):
+        saga = SagaCoordinator(saga_id="saga_retry_01")
+        execution_order = []
+
+        def compensate_step2():
+            execution_order.append("step2")
+            raise RuntimeError("compensation failure")
+
+        saga.register_step("step1", lambda: execution_order.append("step1"))
+        saga.register_step("step2", compensate_step2)
+        with self.assertRaisesRegex(RuntimeError, "compensation failure"):
+            saga.rollback()
+        self.assertEqual(saga.status, "COMPENSATION_FAILED")
+        with self.assertRaisesRegex(RuntimeError, "COMPENSATION_FAILED"):
+            saga.rollback()
+        self.assertEqual(execution_order, ["step2"])
 
 
 if __name__ == "__main__":

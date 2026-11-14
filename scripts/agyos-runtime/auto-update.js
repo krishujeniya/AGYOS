@@ -8,6 +8,17 @@ const { spawnSync } = require('child_process');
 const { discoverInstalledStates } = require('./lib/install-lifecycle');
 const { getRecordedHookConsent } = require('./lib/install/hook-consent');
 const { SUPPORTED_INSTALL_TARGETS } = require('./lib/install-manifests');
+const AUTO_UPDATE_STATUSES = Object.freeze(['planned', 'updated', 'error']);
+
+function assertAutoUpdateResultStatuses(results) {
+  const allowed = new Set(AUTO_UPDATE_STATUSES);
+  for (const result of results) {
+    if (!result || !allowed.has(result.status)) {
+      throw new Error(`Invalid auto-update result status '${result && result.status}'`);
+    }
+  }
+  return results;
+}
 
 function showHelp(exitCode = 0) {
   console.log(`
@@ -315,6 +326,7 @@ function runAutoUpdate(options = {}, dependencies = {}) {
     }
   }
 
+  assertAutoUpdateResultStatuses(results);
   return {
     dryRun: Boolean(options.dryRun),
     repoRoot,
@@ -393,6 +405,8 @@ if (require.main === module) {
 }
 
 module.exports = {
+  AUTO_UPDATE_STATUSES,
+  assertAutoUpdateResultStatuses,
   parseArgs,
   deriveRepoRootFromState,
   buildInstallApplyArgs,

@@ -19,9 +19,10 @@ Chrome plus FFmpeg. It is not Remotion.
 
 ## Find the toolkit and check the requested work
 
-1. Look only in the user-provided location, the current project, and the skill folder for
-   scripts/new_video.sh and styles/. Confirm the root also has scripts/voice.py and
-   scripts/words.py. Set KIT_ROOT to that root. If it is absent, offer a script/shot plan; do
+1. Check `tools/video/faceless-shorts` first, then the user-provided location, current project,
+   and skill folder for scripts/new_video.sh and styles/. Confirm the root also has
+   scripts/voice.py and scripts/words.py. Set KIT_ROOT to that root. If absent, offer a
+   script/shot plan; do
    not claim to have rendered a video or invent toolkit paths.
 2. Reuse details already provided. Ask together only for missing choices that change the result:
    topic or source script, duration, style, voice, recorded narration versus local TTS, captions,

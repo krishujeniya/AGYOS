@@ -17,10 +17,11 @@ shorts, filming advice, and long-video-to-short clipping.
 
 ## Locate the actual toolkit
 
-Find a user-provided toolkit root containing scripts/transcribe.py, scripts/cut.py,
-scripts/render.py, engine/player.js, and styles/index.json. Set KIT_ROOT to that confirmed path.
-The AGYOS skill does not include or duplicate the renderer. If the toolkit is missing, stop at an
-edit plan and ask for its location; do not invent script paths or claim an export.
+The repository copy is `tools/video/ai-video-editor`. Confirm it contains
+scripts/transcribe.py, scripts/cut.py, scripts/render.py, engine/player.js, and styles/index.json,
+then set KIT_ROOT to that path. A user-provided alternate root is also valid. The AGYOS skill does
+not include or duplicate the renderer. If no toolkit is present, stop at an edit plan and ask for
+its location; do not invent script paths or claim an export.
 
 Use a new, user-approved work directory separate from the source clip. Pass it with transcribe.py's
 --work option so generated files do not land beside the original recording. Never overwrite an

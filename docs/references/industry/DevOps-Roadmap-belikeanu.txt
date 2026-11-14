@@ -1,0 +1,452 @@
+Your step-by-step plan to a DevOps job
+Simple steps, in the right order. Learn a little every day, build small projects, and you will be job-ready.
+
+
+      LEARN                   BUILD                DEPLOY                MONITOR                  GROW
+      Weeks 1 to 8           Weeks 9 to 14        Weeks 15 to 22         Weeks 23 to 25         Weeks 26 to 30
+
+
+
+
+belikeanu · DevOps Roadmap
+How to use this roadmap
+    1     Go in order. Every step needs the one                       2    For every topic: learn it, then do the
+          before it.                                                       task.
+
+
+
+    3     Put everything you build on GitHub.                         4    1 to 2 hours a day is enough. Just don't
+                                                                           stop.
+
+
+
+
+The full map
+                          The basics                                                                      Weeks 1 to 8
+     LEARN
+                          Linux · Networking · Git and GitHub · Scripting
+
+
+                          Package and test your app                                                      Weeks 9 to 14
+     BUILD
+                          Docker · CI/CD · Cloud: AWS
+
+
+                          Run it in the real world                                                      Weeks 15 to 22
+    DEPLOY
+                          Terraform · Ansible · Kubernetes · GitOps with Argo CD
+
+
+                          Watch it and keep it safe                                                    Weeks 23 to 25
+  MONITOR
+                          Metrics and dashboards · Logs · Security basics
+
+
+                          Get the job                                                                  Weeks 26 to 30
+     GROW
+                          4 projects · resume · interviews · certification
+
+Times are a suggestion for 1 to 2 hours a day. Faster or slower is fine.
+
+
+
+
+belikeanu · DevOps Roadmap
+   S TA G E
+                             The basics
+   LEARN                     Weeks 1 to 8 · Get comfortable with the computer and the internet before any
+                             DevOps tool.
+
+
+
+
+     01       Linux                                                                                ⏱ 2 weeks
+
+
+      What is it? The operating system almost every server runs on. You will use it every day.
+
+   LEARN                                                         DO THIS
+       Move around folders: pwd, ls, cd
+                                                                   Play the free game OverTheWire
+       Create, copy, move and delete files                         Bandit, levels 0 to 15.
+       File permissions: who can read, write, run (chmod)
+                                                                 FREE RESOURCE
+       See running programs and stop them: ps, top, kill
+                                                                 overthewire.org/wargames/bandit
+       Install software: apt install
+       Log in to another computer: ssh
+
+
+
+
+     02       Networking                                                                            ⏱ 1 week
+
+
+      What is it? How computers talk to each other. Most real problems are network problems.
+
+   LEARN                                                         DO THIS
+       IP address and port: the address and the door of an
+                                                                   Write down, step by step, what
+       app
+                                                                   happens when you open a website.
+       DNS: turns google.com into an IP address
+       HTTP and HTTPS: how websites send data, status            FREE RESOURCE
+       codes like 200 and 404                                    Search YouTube: "how DNS works"
+       Firewall and load balancer: who can come in, and
+       sharing the traffic
+       Handy commands: ping, curl, dig
+
+
+
+
+belikeanu · DevOps Roadmap
+     03     Git and GitHub                                                                    ⏱ 1 week
+
+
+      What is it? Saves every change in your code, and lets a team work together.
+
+   LEARN                                                    DO THIS
+       git init, add, commit, log
+                                                              Put all your practice scripts on GitHub
+       Branches and merging                                   with a short README.
+       Push and pull to GitHub
+                                                            FREE RESOURCE
+       Pull Requests: asking a teammate to review your
+       code                                                 git-scm.com/book (free book)
+
+
+
+
+     04     Scripting                                                                   ⏱ 2 to 3 weeks
+
+
+      What is it? Small programs that do boring work for you. Automation is the job.
+
+   LEARN                                                    DO THIS
+       Bash: variables, if/else, loops, running commands
+                                                              Write a script that checks 5 websites
+       Python: basics, files, reading JSON and YAML           and tells you which one is down.
+       YAML: almost every DevOps tool uses it
+                                                            FREE RESOURCE
+                                                            learnpython.org
+
+
+
+
+belikeanu · DevOps Roadmap
+   S TA G E
+
+   BUILD                 Package and test your app
+                         Weeks 9 to 14 · Learn how code becomes a ready-to-ship app, automatically.
+
+
+
+
+     05       Docker                                                                           ⏱ 2 weeks
+
+
+      What is it? Packs your app with everything it needs, so it runs the same everywhere.
+
+   LEARN                                                      DO THIS
+       Image vs container: the recipe vs the running dish
+                                                                Put a small Python or Node app in
+       Write a Dockerfile                                       Docker and run it with a database.
+       Run, stop and see logs of containers
+                                                              FREE RESOURCE
+       Docker Compose: run app + database together
+                                                              docs.docker.com/get-started
+       Push images to Docker Hub
+
+
+
+
+     06       CI/CD                                                                            ⏱ 2 weeks
+
+
+      What is it? Every time you push code, it gets tested and built automatically.
+
+   LEARN                                                      DO THIS
+       What CI and CD mean
+                                                                Make GitHub Actions run tests and
+       GitHub Actions: a YAML file that runs on every push      build your Docker image on every
+       Jenkins: the older, very popular tool, with a            push.
+       Jenkinsfile
+       Steps: test, build image, push image                   FREE RESOURCE
+                                                              docs.github.com/actions
+
+
+
+
+belikeanu · DevOps Roadmap
+     07     Cloud: AWS                                                                       ⏱ 3 weeks
+
+
+      What is it? Renting servers, storage and databases on the internet instead of buying them.
+
+   LEARN                                                   DO THIS
+       IAM: users and permissions (do this first)
+                                                             Set a billing alarm first. Then run your
+       EC2: virtual servers                                  Docker app on an EC2 server.
+       S3: file storage
+                                                           FREE RESOURCE
+       VPC: your private network in the cloud
+                                                           skillbuilder.aws (free courses)
+       RDS: managed database
+       Load balancer and auto scaling
+       Billing alarm: so you never get a surprise bill
+
+
+
+
+belikeanu · DevOps Roadmap
+   S TA G E
+
+   DEPLOY                      Run it in the real world
+                               Weeks 15 to 22 · Create servers with code and run apps at scale.
+
+
+
+
+     08       Terraform                                                                           ⏱ 2 weeks
+
+
+      What is it? Write your servers and network as code, then create them with one command.
+
+   LEARN                                                        DO THIS
+       Providers and resources
+                                                                  Create an EC2 server and an S3
+       terraform init, plan, apply, destroy                       bucket using only Terraform.
+       Variables and outputs
+                                                                FREE RESOURCE
+       State file: Terraform's memory of what it built
+                                                                developer.hashicorp.com/terraform/tutorial
+                                                                s
+
+
+
+
+     09       Ansible                                                                              ⏱ 1 week
+
+
+      What is it? Sets up software on many servers at once, over SSH.
+
+   LEARN                                                        DO THIS
+       Inventory: the list of your servers
+                                                                  Write a playbook that installs Nginx on
+       Playbooks: the steps, written in YAML                      2 servers.
+       Install packages and copy files to servers
+                                                                FREE RESOURCE
+                                                                docs.ansible.com
+
+
+
+
+belikeanu · DevOps Roadmap
+     10     Kubernetes                                                                        ⏱ 4 weeks
+
+
+      What is it? Runs many containers, restarts crashed ones and scales up when traffic grows.
+
+   LEARN                                                     DO THIS
+       Pod, Deployment, Service
+                                                                Run your app on a local cluster
+       kubectl: get, describe, logs, apply                      (minikube or kind) with 3 copies.
+       ConfigMap and Secret
+                                                             FREE RESOURCE
+       Rolling updates and rollbacks
+                                                             kubernetes.io/docs/tutorials
+       Helm: install a whole app with one command
+
+
+
+
+     11     GitOps with Argo CD                                                                 ⏱ 1 week
+
+
+      What is it? Git decides what runs in your cluster. Change Git, and the cluster updates itself.
+
+   LEARN                                                     DO THIS
+       Git as the single source of truth
+                                                                Change the image version in Git and
+       Install Argo CD and connect a repo                       watch Argo CD deploy it.
+       Auto sync and rollback
+                                                             FREE RESOURCE
+                                                             argo-cd.readthedocs.io
+
+
+
+
+belikeanu · DevOps Roadmap
+   S TA G E
+
+   MONITOR                        Watch it and keep it safe
+                                  Weeks 23 to 25 · If you can't see it, you can't fix it.
+
+
+
+
+     12       Metrics and dashboards                                                         ⏱ 1 to 2 weeks
+
+
+      What is it? Prometheus collects numbers like CPU and errors. Grafana shows them as charts.
+
+   LEARN                                                          DO THIS
+       Metrics: CPU, memory, requests, errors
+                                                                    Build a dashboard for your app with
+       Prometheus scrapes your apps every few seconds               error rate and CPU.
+       Grafana dashboards
+                                                                  FREE RESOURCE
+       Alerts: get notified when errors go up
+                                                                  prometheus.io/docs
+
+
+
+
+     13       Logs                                                                                 ⏱ 1 week
+
+
+      What is it? Logs tell you why something broke. Collect them all in one place.
+
+   LEARN                                                          DO THIS
+       What a log is and log levels (INFO, ERROR)
+                                                                    Send your app's logs to Loki and
+       Loki + Grafana, or the ELK stack                             search for ERROR.
+       Search logs for errors
+                                                                  FREE RESOURCE
+                                                                  grafana.com/docs/loki
+
+
+
+
+belikeanu · DevOps Roadmap
+     14     Security basics                                                                ⏱ 1 week
+
+
+      What is it? Keep passwords out of code and catch problems before they reach users.
+
+   LEARN                                                 DO THIS
+       Never put passwords in code
+                                                           Add a Trivy scan to your CI pipeline.
+       Store secrets in Vault or AWS Secrets Manager
+       Scan Docker images with Trivy                     FREE RESOURCE
+
+       Give only the access people need                  trivy.dev
+
+
+
+
+belikeanu · DevOps Roadmap
+   S TA G E
+
+   GROW                      Get the job
+                             Weeks 26 to 30 · Show what you can do
+
+
+
+
+Build these 4 projects
+Projects get you interviews. Give each one its own GitHub repo with a README, a diagram and
+screenshots.
+
+
+
+              Website on AWS
+     P1       A static website on S3, created with Terraform and deployed by GitHub Actions.
+               Terraform · AWS · CI/CD
+
+
+
+
+              App in containers
+     P2       A frontend, an API and a database running together with Docker Compose.
+               Docker · Compose
+
+
+
+
+              App on Kubernetes
+     P3       Deploy the app with Helm, let Argo CD update it, and watch it in Grafana.
+               Kubernetes · Helm · Argo CD · Grafana
+
+
+
+
+              Full pipeline
+     P4       Push code, run tests, build, scan with Trivy, deploy, and get an alert if it fails.
+               Everything together
+
+
+
+
+belikeanu · DevOps Roadmap
+Certifications (optional, but they help)
+Do them alongside your projects, not instead of them.
+
+
+             AWS Cloud Practitioner
+      1
+             Start here. Cloud basics. No IT background needed.
+                                                                                                          $100
+
+
+             AWS Solutions Architect – Associate
+      2
+             A great next step. Design systems on AWS.
+                                                                                                          $150
+
+
+             AWS DevOps Engineer – Professional
+      3
+             The long-term goal. 2+ years experience recommended.
+                                                                                                         $300
+
+Prices from aws.amazon.com/certification (Nov 2026). Pass one and you get 50% off your next AWS exam. Certifications
+are valid for 3 years.
+
+
+
+
+Getting the job
+RESUME AND PROFILE                                                 PRACTICE THESE QUESTIONS
+    One page, projects at the top                                      What happens when you open a website?
+    Each project: problem, what you built, tools, GitHub link          Docker image vs container?
+    LinkedIn headline: Aspiring DevOps Engineer | AWS |                What is a Kubernetes Pod and Deployment?
+    Docker | Kubernetes                                                Why does Terraform need a state file?
+    Post what you build every week                                     How would you build a CI/CD pipeline?
+    Apply on company career pages and job sites with the               A pod keeps crashing. How do you find out
+    fresher filter                                                     why?
+                                                                       How do you keep passwords safe?
+                                                                       Explain one of your projects from start to
+                                                                       end.
+
+
+
+
+belikeanu · DevOps Roadmap
+Mistakes to avoid
+  ✕ Only watching videos and never building anything
+
+
+  ✕ Jumping to Kubernetes before learning Linux
+
+
+  ✕ Collecting certificates with no projects
+
+
+  ✕ Forgetting to stop AWS resources (set a billing alarm!)
+
+
+  ✕ Paying for "100% job guarantee" courses. Nobody can guarantee a job
+
+
+
+
+                             You can do this.
+                             Start with Linux today. One topic at a time.
+                             Follow belikeanu for simple AWS and DevOps content.
+
+
+
+
+belikeanu · DevOps Roadmap
+

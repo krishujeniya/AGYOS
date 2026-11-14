@@ -1,4 +1,18 @@
 # AGYOS: The Autonomous Cognitive Operating System for AGY CLI
+## STRICT REPOSITORY & DEPLOYMENT INVARIANT: SINGLE MAIN BRANCH & IDENTITY LOCK
+- **Single `main` Branch Exclusive**: NEVER create feature branches, task branches, or divergent worktrees. The repository must maintain ONLY the `main` branch.
+- **Auto-Prune & Branch Convergence**: If any other branch exists locally or on remote (e.g. `master`, feature branches, dependabot branches), immediately merge its valid changes into `main` and delete the secondary branch (`git branch -D <branch>`, `git push origin --delete <branch>`). Rename any legacy `master` branch to `main`.
+- **Identity Enforcement (Krish Ujeniya)**:
+  - All git commits MUST strictly be authored and committed under the verified GitHub identity:
+    `git config user.name "Krish Ujeniya"`
+    `git config user.email "100012208+krishujeniya@users.noreply.github.com"`
+  - Commits must properly link to `https://github.com/krishujeniya` to display the verified account profile picture and attribution badge.
+- **Auto-Deploy to GitHub**: Once a task or code change is complete and verified statically, automatically commit and push directly to `origin main` using the active authenticated `krishujeniya` GitHub account.
+## STRICT GLOBAL INVARIANT: ZERO LOCAL BUILDS/TESTS (CI/CD ONLY VIA GITHUB ACTIONS)
+- **Zero Local Execution for Heavy Verification**: NEVER run unit/integration/E2E test suites, compiler builds, linters, type checks, packaging, dependency installation, or media renders locally.
+- **GitHub Actions Mandatory**: All testing, building, linting, and validation MUST run strictly in GitHub Actions CI/CD workflows. Trigger the workflow, push to branch, or dispatch via GitHub CLI (`gh workflow run`), then inspect the run results (`gh run watch` / `gh run view`).
+- **Allowed Local Operations**: Only read-only static inspection (grep, AST read, file inspection) and `git diff --check` are permitted locally.
+- **Prevent Pollution**: Keep temporary build caches, rendered artifacts, model checkpoints, virtual environments, and intermediate files completely off local disk and out of Git.
 
 > **Governing System**: AGYOS v3.1 (Unified Cognitive Operating System for Antigravity CLI)  
 > **Integrated Subsystems**: AGYOS 5-Gate Governance, AGYOS Polyglot Architecture, AGYOS Core SDLC Standards, Agent Council Deliberation, and FastMCP State Daemon  
@@ -22,6 +36,12 @@
 5. **Require Machine Evidence**: Never claim a task, gate, or milestone is complete without executing and printing fresh, passing compiler, linter, or test output.
 6. **Avoid Identical Retries**: If a command or test fails twice with the same signature, alter the underlying hypothesis or halt. Never loop blindly.
 7. **Satisfy Contract Gates**: Every phase transition must satisfy strict programmatic gate criteria recorded in `.agents/state/state.json`.
+
+### CI-only verification for this repository
+
+Run tests, builds, linters, type checks, dependency resolution, toolkit setup, and media renders only in GitHub Actions. Do not run those commands locally, even for a quick check. Use the relevant workflow and report its run and commit SHA; until Actions completes successfully, report the result as pending. Local read-only inspection and `git diff --check` are allowed. Keep generated environments, model weights, caches, and rendered media out of the repository.
+
+When interacting with Cloudflare, use the `cf` CLI unless the project has a Wrangler configuration file.
 
 ---
 
@@ -115,6 +135,29 @@ The operator must never be instructed or required to type slash commands (e.g. `
 Never narrate skill selection to the user (e.g. do NOT say "I will now use the X skill" or "I am loading skill Y"). Silently read the necessary `SKILL.md` runbook using `read_file` or dispatch to the appropriate specialist subagent via `invoke_subagent`, execute the procedures directly, and deliver concrete engineering results.
 
 ### 7.3 Natural Prompt Intent Routing Matrix
+- **Authentication, User Management & Multi-Tenant Access** ("Implement user auth", "Manage Clerk users", "Setup organization roles", "Invite team members"):
+  - Autonomously trigger `clerk-agent-toolkit` (local MCP) and `clerk-auth`.
+  - Enforce least-privilege scoping: pass `userId` or `orgId` bounds to toolkit instances. Inject verified session claims (`userId`, `sessionId`, `orgId`) into model prompts. Never expose destructive actions (`users_delete`, `sessions_revoke`) without operator confirmation.
+- **Enterprise Secret & Credential Handling** ("Fetch API secret", "Inject environment variable", "Check 1Password vault", "Read credentials"):
+  - Autonomously route through `1password-mcp` (`op_read_reference`, `op_list_items`) and `credential-manager`.
+  - Invariant: NEVER output plaintext credentials into session artifacts, transcripts, or committed configuration files. Always use `op://` reference URIs.
+- **Continuous Integration, Pipeline Triage & Build Performance** ("Why did CI fail?", "Restart build", "Check Travis logs", "Optimize pipeline speed"):
+  - Autonomously invoke `travis-mcp` tools (`travis_getBuildLogs`, `travis_getBuildInsights`, `travis_getOptimizationRecommendations`).
+  - Diagnose with machine evidence first: pull job logs, isolate exact failing stages, recommend caching configurations (`node_modules`, pip cache, Docker layers), and compare before/after runs with `travis_compareBuilds`.
+- **Collaborative Data Science, Notebooks & Streamlit Apps** ("Create notebook", "Run Python/SQL block", "Deploy Streamlit app", "Analyze dataset in Deepnote"):
+  - Autonomously invoke `deepnote-mcp` tools (`create_notebook`, `create_block`, `create_run`, `get_run`, `create_streamlit_app`).
+  - Follow reproducible execution flow: inspect workspace via `list_projects` -> inspect block hierarchy via `get_notebook` -> execute detached run -> verify stdout/errors before declaring completion.
+- **Geospatial Analytics & Location Intelligence** ("Analyze spatial data", "Query H3 cells", "Build CARTO map", "Geospatial warehouse join"):
+  - Autonomously route through `carto-mcp` (`explore_data`, `execute_query`, `execute_async_query`, `validate_map`, `create_map`).
+  - Pre-validate all map payloads using `validate_map` dry-runs before persisting. Use `execute_async_query` for long-running spatial joins or H3/Quadbin index operations.
+- **Cross-Browser Automation, Visual Regressions & WCAG Audits** ("Run cross-browser test", "Check accessibility", "Visual regression diff", "Audit WCAG compliance"):
+  - Autonomously invoke `testmu-ai` (`mcp-lambdatest`) and `elite-qa-architect`.
+  - Triage failures using command logs + console logs + network HAR captures via `getAutomationLogs`. Use `getAccessibilityReport` for WCAG 2.1/2.2 audit summaries with DOM repair suggestions.
+- **Creative UI Assets, Vector Design & Lottie Animations** ("Find icon", "Add illustration", "Get Lottie animation", "Consistent UI icons"):
+  - Autonomously invoke `iconscout-mcp` (`search_assets`, `get_asset_details`, `download_assets`, `find_related_assets`).
+  - Enforce design consistency: always use `find_related_assets` to source siblings from the same icon pack. Never mix outline and solid styles in the same view.
+- **Camber Scientific Cloud & Agent Workflows** ("Run Camber agent", "Execute on Camber compute", "List Camber teams"):
+  - Autonomously invoke `camber-cloud` and `camber-mcp` tools (`agents_chat`, `teams_select`, `agents_list`). Use the local `camber` CLI for stash file synchronizations and compute pod inspections.
 - **Architectural Tradeoffs & Technical Decisions** ("Should we use X or Y?", "Which database is better?", "Postgres vs Redis"):
   - Autonomously convene `council` deliberation with available tools and authorization for any paid model calls.
   - Synthesize consensus, disagreements, and recommendations directly into the response without meta-announcements.
@@ -141,6 +184,16 @@ Never narrate skill selection to the user (e.g. do NOT say "I will now use the X
     6. **Before/After/Why Review Table**: Mandatory markdown table with `| Before | After | Why |` columns for all UI/UX code reviews.
 - **Freelance & Client Management** ("Draft proposal", "Create SOW", "Invoice client"):
   - Select `freelancer-project-delivery`, `freelancer-client-acquisition`, or `freelancer-operations` according to the objective.
+- **DevOps Career Planning** ("make a DevOps roadmap", "help me become a DevOps engineer"):
+  - Use `devops-career-roadmap` and treat its 30-week schedule, prices, and hiring notes as source material to adapt and recheck.
+- **Creator-Led Customer Acquisition** ("get my first 500 paying users", "research creator comments for content ideas"):
+  - Use `first-500-paying-users`; analyze only authorized public material, draft content without publishing, and do not spam creator comments or messages.
+- **AI Industry Watchlists** ("AI accounts to follow", "build an AI news-source list"):
+  - Use `ai-industry-watchlist` and verify official profiles and roles before treating the supplied directory as current.
+- **Harvey/Sellbird Sales-Agent Setup** ("set up Harvey", "configure Sellbird"):
+  - Use `harvey-sales-agent-guide`; check the current upstream release and license, keep sending in approval mode, and do not install or send without explicit authorization.
+- **Imported Third-Party Skill Packs**:
+  - Use the namespaced `jake-*` or `benji-stage-*` catalog entry, inspect its pinned source runbook, license, references, and scripts, and honor AGYOS permissions and the CI-only rule.
 - **Local Talking-Head Editing** ("edit this recording", "remove pauses or retakes", "add motion graphics to my footage"):
   - Route an existing local clip to `ai-video-editor`; keep transcript review, crop choice, output paths, and any content-changing cuts explicit.
 - **Faceless Shorts Production** ("make a faceless short", "animate a vertical short", "Deep Dive 3D", "Tall Tale 3D"):
@@ -153,7 +206,7 @@ Never narrate skill selection to the user (e.g. do NOT say "I will now use the X
 ## 8. Integrated AGYOS Core Subsystems
 
 AGYOS is fully unified and self-contained within `.agents/`, `bin/`, `mcp/`, and `scripts/`:
-- **`skills/` (`.agents/skills`)**: Unified physical catalog of 1,983 skills categorized by domain under pure AGYOS branding.
+- **`skills/` (`.agents/skills`)**: Physical catalog of 2,180 first-party and pinned upstream skills. Imported entries use namespaced AGYOS adapters (generated indexes await CI regeneration).
 - **`rules/` (`.agents/rules`)**: 141 modular governance and polyglot rules (<24KB each).
 - **`workflows/` (`.agents/workflows`)**: 100 autonomous multi-agent execution pipelines.
 - **`agents/` (`.agents/agents`)**: 81 specialized FAANG/MANGO corporate role and pod agents.

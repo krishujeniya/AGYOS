@@ -546,6 +546,7 @@ function createPlanCanvasServer({
           return sendJson(res, 400, { error: 'text is required' });
         }
         const entry = store.addAgentReply(key, body.text);
+        if (!entry) return sendJson(res, 409, { error: 'session already ended' });
         clearAgentActivity(key);
         broadcast(key, 'chat-sync', { chat: store.get(key).chat });
         broadcastPresence(key);

@@ -237,11 +237,16 @@ function runHooks(raw, hooks, options = {}) {
   const outputs = [];
   let stderr = '';
   let exitCode = 0;
+  const outcomes = [];
 
   for (const hook of hooks) {
-    if (!matchesTool(hook.matcher, toolName) || !isEnabled(hook, env)) continue;
+    if (!matchesTool(hook.matcher, toolName) || !isEnabled(hook, env)) {
+      outcomes.push({ id: hook.id, outcome: 'skipped' });
+      continue;
+    }
     if (env.ECC_DRY_RUN === '1') {
       stderr += buildDryRunPreview(hook, raw);
+      outcomes.push({ id: hook.id, outcome: 'dry-run' });
       continue;
     }
 
@@ -265,9 +270,13 @@ function runHooks(raw, hooks, options = {}) {
       if (result.exitCode !== 0) {
         if (exitCode === 0) exitCode = result.exitCode;
         stderr = appendLine(stderr, `[Hook] ${hook.id} exited with code ${result.exitCode}; continuing`);
+        outcomes.push({ id: hook.id, outcome: 'failed', policy: 'continue', exitCode: result.exitCode });
+      } else {
+        outcomes.push({ id: hook.id, outcome: 'continued' });
       }
     } catch (error) {
       stderr = appendLine(stderr, `[Hook] ${hook.id} failed: ${error.message}`);
+      outcomes.push({ id: hook.id, outcome: 'failed', policy: 'continue' });
     }
   }
 
@@ -278,7 +287,7 @@ function runHooks(raw, hooks, options = {}) {
   // hook exit. An unrelated sibling hook failure must not downgrade the block
   // into a generic non-blocking hook error.
   const finalExitCode = mergedDecision?.isBlocked ? 0 : exitCode;
-  return { stdout: merged.stdout, stderr, exitCode: finalExitCode };
+  return { stdout: merged.stdout, stderr, exitCode: finalExitCode, outcomes };
 }
 
 function readStdinRaw() {

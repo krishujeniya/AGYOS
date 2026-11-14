@@ -6,6 +6,7 @@ const https = require('https');
 const os = require('os');
 const path = require('path');
 const zlib = require('zlib');
+const { acquireProcessLock } = require('./process-lock');
 
 const REGISTRY_ORIGIN = 'https://registry.nasiko.dev';
 const REPOSITORY = 'nasiko/nasiko';
@@ -274,7 +275,11 @@ function inspectInstalledNasiko(executable, resolveRelease = getQualifiedRelease
   return { installed: true, qualified, version: qualified ? metadata.version : null, executable, binaryDigest, metadataPath: metadataPathFor(executable) };
 }
 
-function writeMetadataExclusive(metadataPath, metadata) {
+function writeMetadataExclusive(metadataPath, metadata, descriptor = undefined) {
+  if (descriptor !== undefined) {
+    fs.writeFileSync(descriptor, `${JSON.stringify(metadata, null, 2)}\n`);
+    return;
+  }
   fs.writeFileSync(metadataPath, `${JSON.stringify(metadata, null, 2)}\n`, { mode: 0o600, flag: 'wx' });
 }
 
@@ -282,119 +287,31 @@ function sameFileIdentity(left, right) {
   return left.dev === right.dev && left.ino === right.ino;
 }
 
-function processIsAlive(pid) {
+function removeOwnedFile(filePath, expectedIdentity) {
+  if (!expectedIdentity) return;
   try {
-    process.kill(pid, 0);
-    return true;
-  } catch (error) {
-    return error.code !== 'ESRCH';
-  }
-}
-
-function inspectLifecycleLock(lockPath, fileSystem) {
-  const descriptor = fileSystem.openSync(lockPath, fs.constants.O_RDONLY | (fs.constants.O_NOFOLLOW || 0));
-  try {
-    const descriptorStats = fileSystem.fstatSync(descriptor, { bigint: true });
-    if (!descriptorStats.isFile() || descriptorStats.size <= 0n || descriptorStats.size > 4096n) return null;
-    const bytes = fileSystem.readFileSync(descriptor);
-    const pathStats = fileSystem.lstatSync(lockPath);
-    if (pathStats.isSymbolicLink() || !pathStats.isFile()) return null;
-    let metadata;
-    try { metadata = JSON.parse(bytes.toString('utf8')); } catch (_error) { return null; }
-    if (
-      !Number.isSafeInteger(metadata.pid)
-      || metadata.pid <= 0
-      || typeof metadata.startedAt !== 'string'
-      || !Number.isFinite(Date.parse(metadata.startedAt))
-    ) return null;
-    return { metadata, stats: descriptorStats };
-  } finally { fileSystem.closeSync(descriptor); }
-}
-
-function removeLockIfOwned(lockPath, expectedStats, fileSystem) {
-  let descriptor;
-  try {
-    descriptor = fileSystem.openSync(lockPath, fs.constants.O_RDONLY | (fs.constants.O_NOFOLLOW || 0));
-    const current = fileSystem.fstatSync(descriptor, { bigint: true });
-    const pathStats = fileSystem.lstatSync(lockPath);
-    if (!pathStats.isSymbolicLink() && pathStats.isFile() && current.isFile() && sameFileIdentity(current, expectedStats)) {
-      fileSystem.closeSync(descriptor);
-      descriptor = undefined;
-      fileSystem.rmSync(lockPath, { force: true });
-      return true;
+    const current = fs.lstatSync(filePath);
+    if (current.isFile() && !current.isSymbolicLink() && sameFileIdentity(current, expectedIdentity)) {
+      fs.rmSync(filePath, { force: true });
     }
   } catch (error) {
-    if (error.code !== 'ENOENT' && error.code !== 'ELOOP') throw error;
-  } finally {
-    if (descriptor !== undefined) fileSystem.closeSync(descriptor);
+    if (error.code !== 'ENOENT') throw error;
   }
-  return false;
 }
 
-function createLifecycleLock(lockPath, fileSystem) {
-  let descriptor;
-  try {
-    descriptor = fileSystem.openSync(lockPath, 'wx', 0o600);
-    fileSystem.writeFileSync(descriptor, `${JSON.stringify({
-      pid: process.pid,
-      startedAt: new Date().toISOString(),
-      token: crypto.randomBytes(16).toString('hex'),
-    })}\n`);
-    fileSystem.fsyncSync(descriptor);
-  }
-  catch (error) {
-    if (descriptor !== undefined) {
-      const ownedStats = fileSystem.fstatSync(descriptor, { bigint: true });
-      try { fileSystem.closeSync(descriptor); } finally { removeLockIfOwned(lockPath, ownedStats, fileSystem); }
-    }
-    throw error;
-  }
-  const ownedStats = fileSystem.fstatSync(descriptor, { bigint: true });
-  let released = false;
-  return () => {
-    if (released) return;
-    released = true;
-    try { fileSystem.closeSync(descriptor); } finally { removeLockIfOwned(lockPath, ownedStats, fileSystem); }
-  };
+function recordCleanupFailure(primary, key, cleanupError) {
+  if (!primary || (typeof primary !== 'object' && typeof primary !== 'function')) return;
+  try { primary[key] = cleanupError; } catch (_error) { /* Preserve the original failure. */ }
 }
 
 function acquireLifecycleLock(installDirectory, fileSystem = fs, options = {}) {
   const lockPath = path.join(installDirectory, '.ecc-nasiko-lifecycle.lock');
-  try {
-    return createLifecycleLock(lockPath, fileSystem);
-  } catch (error) {
-    if (error.code !== 'EEXIST') throw error;
-  }
-
-  let existing;
-  try { existing = inspectLifecycleLock(lockPath, fileSystem); }
-  catch (error) {
-    if (error.code === 'ENOENT') {
-      try { return createLifecycleLock(lockPath, fileSystem); }
-      catch (retryError) {
-        if (retryError.code === 'EEXIST') {
-          throw new Error(`Another Nasiko lifecycle operation won lock acquisition: ${lockPath}.`);
-        }
-        throw retryError;
-      }
-    }
-    throw error;
-  }
-  const isProcessAlive = options.isProcessAlive || processIsAlive;
-  if (!existing || isProcessAlive(existing.metadata.pid)) {
-    throw new Error(`Another Nasiko lifecycle operation is already in progress; inspect ${lockPath} before recovering a stale lock.`);
-  }
-  if (!removeLockIfOwned(lockPath, existing.stats, fileSystem)) {
-    throw new Error(`Nasiko lifecycle lock changed during stale-owner recovery: ${lockPath}.`);
-  }
-  try {
-    return createLifecycleLock(lockPath, fileSystem);
-  } catch (error) {
-    if (error.code === 'EEXIST') {
-      throw new Error(`Another Nasiko lifecycle operation won stale-lock recovery: ${lockPath}.`);
-    }
-    throw error;
-  }
+  return acquireProcessLock(lockPath, {
+    fileSystem,
+    timeoutMs: options.timeoutMs ?? 5000,
+    label: 'Nasiko lifecycle',
+    isProcessAlive: options.isProcessAlive,
+  });
 }
 
 function qualifiedReleaseFor(options, dependencies) {
@@ -432,19 +349,30 @@ function writeBinary(descriptor, binary) {
 function publishBinary(plan, release, layer, binary, dependencies) {
   const { destination } = plan;
   const metadataPath = metadataPathFor(destination);
-  let destinationOwned = false;
-  let metadataOwned = false;
+  let destinationIdentity = null;
+  let metadataIdentity = null;
+  let metadataDescriptor;
   try {
     const descriptor = fs.openSync(destination, 'wx', 0o700);
-    destinationOwned = true;
+    destinationIdentity = fs.fstatSync(descriptor);
     writeBinary(descriptor, binary);
     const metadata = { version: plan.version, platform: release.os, architecture: release.arch, manifestDigest: release.manifestDigest, artifactDigest: layer.digest, binaryDigest: release.binaryDigest, installedPath: destination, license: release.license, sourceUrl: release.sourceUrl };
-    (dependencies.writeMetadata || writeMetadataExclusive)(metadataPath, metadata);
-    metadataOwned = true;
+    metadataDescriptor = fs.openSync(metadataPath, 'wx', 0o600);
+    metadataIdentity = fs.fstatSync(metadataDescriptor);
+    (dependencies.writeMetadata || writeMetadataExclusive)(metadataPath, metadata, metadataDescriptor);
+    fs.fsyncSync(metadataDescriptor);
+    const descriptorToClose = metadataDescriptor;
+    metadataDescriptor = undefined;
+    fs.closeSync(descriptorToClose);
     return { ...plan, dryRun: false, installed: true, reused: false, artifactDigest: layer.digest };
   } catch (error) {
-    if (metadataOwned) fs.rmSync(metadataPath, { force: true });
-    if (destinationOwned) fs.rmSync(destination, { force: true });
+    if (metadataDescriptor !== undefined) {
+      const descriptorToClose = metadataDescriptor;
+      metadataDescriptor = undefined;
+      try { fs.closeSync(descriptorToClose); } catch (closeError) { recordCleanupFailure(error, 'closeError', closeError); }
+    }
+    try { removeOwnedFile(metadataPath, metadataIdentity); } catch (cleanupError) { recordCleanupFailure(error, 'metadataCleanupError', cleanupError); }
+    try { removeOwnedFile(destination, destinationIdentity); } catch (cleanupError) { recordCleanupFailure(error, 'binaryCleanupError', cleanupError); }
     throw error;
   }
 }

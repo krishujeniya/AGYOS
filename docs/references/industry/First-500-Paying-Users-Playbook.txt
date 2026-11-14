@@ -1,0 +1,89 @@
+                                                                  COMMENT USERS · TURBAN TECH GUY · SCALEUS.IN
+
+
+
+
+Your first 500 paying users, without ads.
+The creator-comments playbook from the video, with five prompts you can copy into Claude or ChatGPT.
+Checked 4 Nov 2026.
+
+1. The idea
+People who already want your product are telling each other so, in the comments under creators they follow.
+You read those comments, make one useful short video per complaint, and show your app as the fix. You
+borrow trust from an audience that already exists instead of paying to rent attention.
+
+2. The three steps
+ STEP            WHAT TO DO                                                      HOW YOU KNOW IT IS DONE
+
+
+ Find 20         Accounts your dream customers already follow, with 5K           A sheet with 20 names, niche,
+ creators        to 50K followers. Bigger accounts have noisy comments;          followers and 3 top posts
+                 smaller ones have too few.                                      each
+
+ Read the        Open their top-performing posts. Copy the complaints            3 to 5 complaint groups, each
+ comments        and questions word for word, then group them. Your              with a count
+                 customers' words become your hooks.
+
+ One video       50 to 80 seconds each. Hook with the complaint, give            One video per group, and a
+ per issue       real value first, then show how your app solves it.             follow-up on the group that
+                                                                                 responds best
+
+3. The maths, and what it is not
+20 creators × 25 paying users each = 500. That is a target to work towards, not a guarantee. Your numbers
+depend on your product, your price and how good the videos are. Measure signups and payments per video,
+then double down on what converts.
+
+ Do it clean. Do not drop links under creators' posts or spam their comments. Use the comments as research, post
+ on your own accounts, and tag or collaborate only when a creator agrees. The ThaliFit app in our video is an
+ invented example.
+                                                                                                         THE FIVE PROMPTS
+
+
+
+Prompt 1: find the 20 creators
+  I sell [APP] to [CUSTOMER] in [COUNTRY]. Their main problem is [PROBLEM].
+  List the topics and search terms these people follow on Instagram, YouTube and TikTok.
+  Then give me a checklist to judge a creator with 5K to 50K followers: audience fit, comment
+  quality, posting frequency.
+  Do not invent creator names. I will search the terms myself and fill in a sheet.
+
+
+
+Prompt 2: mine the complaints
+  Below are real comments from top posts in my niche. Group them into complaint themes.
+  For each theme give: a short name, how many comments fit it, 3 exact quotes, and what the person
+  really wants.
+  Rank the themes by how often they appear and how strongly people say they would pay.
+  Use only these comments. If something is not in the data, say so.
+
+
+  [PASTE COMMENTS]
+
+
+
+Prompt 3: write the 50 to 80 second video
+  Write a [LANGUAGE] short video script, 50 to 80 seconds, about this complaint: "[EXACT QUOTE]".
+  Hook: use the viewer's own words in the first line.
+  Middle: 3 specific tips that help even if they never use my app.
+  End: show how [APP] solves it in one clear step, then one call to action.
+  Do not make claims I cannot prove. Mark anything I must verify.
+
+
+
+Prompt 4: check the offer before you post
+  Here is my landing page text and price: [PASTE].
+  A viewer arrives from a video about "[COMPLAINT]". Does the first screen answer that complaint?
+  List the 5 biggest reasons they would leave without paying, and rewrite the headline and button
+  text.
+
+
+
+Prompt 5: read the results weekly
+  Here is my weekly data per video: views, profile visits, signups, payments. [PASTE]
+  Tell me which complaint theme converts best per 1,000 views, which video to remake, and which to
+  stop.
+  Give me next week's 3 videos. Do not treat views alone as success.
+
+
+Turban Tech Guy is Jasminder Singh Chhabra, founder of Scale Us. Everything from the videos: scaleus.in/resources
+
