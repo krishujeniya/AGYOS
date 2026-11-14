@@ -86,6 +86,14 @@
     "google-flow": {
       "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/google-flow-mcp.sh",
       "args": []
+    },
+    "firebase-mcp-server": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "firebase-tools@latest",
+        "mcp"
+      ]
     }
   }
 }
