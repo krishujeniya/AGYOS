@@ -148,3 +148,14 @@
 ```json
 {"milestone":"M1-prompt-principles","iteration":4,"verified_code_commit":"98486147dbab917deee345fd4c36498f5901bc01","ci_run":"43576647191: PASS","pages_run":"43576647123: PASS","company_files":26,"curated_principles":724,"exhaustive_principles":14164,"principle_ledger_rows":14888,"non_principle_metadata_rows":1,"publisher_source_rows_accounted":14889,"dispositions":{"adapt":4,"unverified":14884},"count_mismatches":0,"local_tests_run":0,"local_generators_run":0,"evidence_commit_review":"PASS","evidence_commit_approval":"required"}
 ```
+
+## Gate 5 — evidence revision verification and final state synchronization
+
+- Operator approved the guarded evidence-only push. Script `.agents/state/decisions/executed/20261114-084400-m1-prompt-audit-evidence.sh` committed and pushed `9d89d84c333f7fe144d2083c834cd9c6beb8302a` to `main`.
+- CI run [43577287826](https://github.com/krishujeniya/AGYOS/actions/runs/43577287826) and Pages run [43577287798](https://github.com/krishujeniya/AGYOS/actions/runs/43577287798) passed on that exact revision. The audit artifact reconfirms 26 company documents, 14,888 principle ledger rows, one separately classified metadata row, 14,889 accounted publisher source rows, zero mismatches, and dispositions of 4 adapted / 14,884 unverified.
+- The status-record update records those successful runs and keeps the limitation that the publisher's claims of 80 upstream files and 597 tools are not reconciled. No local tests, parser, generators, builds, or dependency setup were run.
+- Independent reviewer `/root/prompt_metadata_checker` confirmed the evidence counts, exact run references, five-file scope, and draft guard. `git diff --check` passed. The checkpoint wording was corrected after review; the final status-record push still requires renewed Gate 5 approval.
+
+```json
+{"milestone":"M1-prompt-principles","iteration":5,"verified_evidence_commit":"9d89d84c333f7fe144d2083c834cd9c6beb8302a","ci_run":"43577287826: PASS","pages_run":"43577287798: PASS","company_files":26,"curated_principles":724,"exhaustive_principles":14164,"principle_ledger_rows":14888,"non_principle_metadata_rows":1,"publisher_source_rows_accounted":14889,"dispositions":{"adapt":4,"unverified":14884},"count_mismatches":0,"local_tests_run":0,"local_generators_run":0,"state_sync_independent_review":"PASS","state_sync_approval":"required"}
+```
