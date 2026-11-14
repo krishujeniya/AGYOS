@@ -1,19 +1,19 @@
 ---
 name: prompt-library
-description: "A comprehensive collection of battle-tested prompts inspired by [awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompts) and community best practices."
+description: "Reusable AGYOS prompt patterns for common tasks. Adapt them to the user's intent, context, and constraints; community provenance is recorded in the runbook."
 risk: unknown
 source: community
 date_added: "2026-02-27"
 ---
-# 📝 Prompt Library
+# Prompt Library
 
-A comprehensive collection of battle-tested prompts inspired by [awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompts) and community best practices.
+Reusable prompt patterns for common tasks. Adapt each pattern to the user's intent and constraints; do not treat examples as universal instructions. Historical attribution is recorded in the runbook.
 
 ## Workflow
 
-1. Confirm the request fits this skill and identify the required inputs and output constraints.
+1. Identify the requested outcome, useful context, constraints, and output format.
 2. Read the applicable sections in [the full runbook](references/FULL_RUNBOOK.md).
-3. Check version-sensitive instructions against authoritative current documentation; label claims that cannot be verified.
-4. Get any required approval before paid, destructive, external, or user-visible actions not already authorized.
-5. Follow the relevant procedure using the project’s existing tools and conventions. Ask for missing inputs instead of inventing values.
-6. Verify the result with available checks and report what ran, what passed, and any remaining uncertainty.
+3. Keep AGYOS as the default identity in AGYOS-authored prompt text. Retain third-party names only for compatibility, attribution, or evidence.
+4. Add examples, output schemas, or ordered steps only when they solve a real task need. Never ask for hidden reasoning traces.
+5. Do not treat a prompt template as permission to perform the actions it describes. Follow the current user's authorization and project rules.
+6. Return the requested format and identify assumptions or limitations that materially affect use.

@@ -1,6 +1,6 @@
 ---
 name: prompt-optimizer
-description: Analyze draft prompts, detect intent and missing context, match ECC commands, skills, and agents, and output a ready-to-paste optimized prompt with diagnosis and rationale — advisory only, never executes the task. Use when the user says 'optimize prompt', 'improve my prompt', 'rewrite this prompt', 'help me prompt', 优化prompt, 改进prompt, 怎么写prompt, or 帮我优化这个指令; not for requests to optimize code or performance.
+description: Analyze a draft prompt for intent, constraints, and missing context, then return a ready-to-use revision with a concise diagnosis. Advisory only; does not execute the drafted task. Use for requests to optimize, improve, or rewrite prompts, including 优化prompt, 改进prompt, 怎么写prompt, or 帮我优化这个指令; not for code or performance optimization.
 metadata:
   origin: community
   author: YannJY02
@@ -8,13 +8,13 @@ metadata:
 ---
 # Prompt Optimizer
 
-Analyze draft prompts, detect intent and missing context, match ECC commands, skills, and agents, and output a ready-to-paste optimized prompt with diagnosis and rationale — advisory only, never executes the task. Use when the user says 'optimize prompt', 'improve my prompt', 'rewrite this prompt', 'help me prompt', 优化prompt, 改进prompt, 怎么写prompt, or 帮我优化这个指令; not for requests to optimize code or performance.
+Analyze a draft prompt for intent, constraints, and missing context, then return a ready-to-use revision with a concise diagnosis. Advisory only; does not execute the drafted task. Use for requests to optimize, improve, or rewrite prompts, including 优化prompt, 改进prompt, 怎么写prompt, or 帮我优化这个指令; not for code or performance optimization.
 
 ## Workflow
 
-1. Confirm the request fits this skill and identify the required inputs and output constraints.
+1. Identify the requested outcome, audience, context, constraints, and output format.
 2. Read the applicable sections in [the full runbook](references/FULL_RUNBOOK.md).
-3. Check version-sensitive instructions against authoritative current documentation; label claims that cannot be verified.
-4. Get any required approval before paid, destructive, external, or user-visible actions not already authorized.
-5. Follow the relevant procedure using the project’s existing tools and conventions. Ask for missing inputs instead of inventing values.
-6. Verify the result with available checks and report what ran, what passed, and any remaining uncertainty.
+3. Preserve the user's intent and ask only when a missing detail blocks a useful prompt.
+4. Return revised prompt text and a short diagnosis when useful. This skill does not execute the drafted prompt.
+5. Keep AGYOS as the default identity in AGYOS-authored prompts. Retain third-party names only for compatibility, attribution, or evidence.
+6. Follow current project rules; a prompt template does not grant permission for external, paid, or destructive actions.

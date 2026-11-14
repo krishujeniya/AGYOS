@@ -11,6 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Check out pinned prompt principles source
+        uses: actions/checkout@v4
+        with:
+          repository: krishujeniya/Principles
+          ref: d1ed7de8cb338f8646d2d2f5394dd9c87bb9223e
+          path: principles-source
+          sparse-checkout: Prompt
+          sparse-checkout-cone-mode: true
       - name: Set up Node.js for crypto regression tests
         uses: actions/setup-node@v4
         with:
@@ -53,6 +61,23 @@ jobs:
           retention-days: 7
       - name: Check AGY startup contracts
         run: python -m unittest discover -s scripts/tests -v
+      - name: Audit pinned prompt principles source
+        if: always()
+        run: >-
+          python scripts/audit_prompt_principles.py
+          --source-dir principles-source/Prompt
+          --output "$RUNNER_TEMP/prompt-principles-ledger.jsonl"
+          --summary "$RUNNER_TEMP/prompt-principles-summary.json"
+      - name: Upload prompt principles audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: prompt-principles-ledger
+          path: |
+            ${{ runner.temp }}/prompt-principles-ledger.jsonl
+            ${{ runner.temp }}/prompt-principles-summary.json
+          if-no-files-found: error
+          retention-days: 7
       - name: Check endpoint encryption round-trip and tamper resistance
         run: node --test scripts/tests/test_secure_envelope.cjs scripts/tests/test_private_vault.cjs scripts/tests/test_mcp_protocol.cjs scripts/tests/test_github_coordination_state.cjs scripts/tests/test_work_item_state.cjs scripts/tests/test_plan_canvas_sessions.cjs scripts/tests/test_bash_hook_state.cjs scripts/tests/test_release_approval_state.cjs scripts/tests/test_guided_install_state.cjs scripts/tests/test_observer_session_leases.cjs scripts/tests/test_install_lifecycle_state.cjs scripts/tests/test_nasiko_release_state.cjs scripts/tests/test_process_lock.cjs scripts/tests/test_session_end_state.cjs scripts/tests/test_explicit_state_machines.cjs
       - name: Verify generated catalog matches every physical runbook

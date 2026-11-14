@@ -37,6 +37,12 @@ rules and relevant language, workflow, and risk rules; do not load every skill
 or force unrelated specialist steps into a simple task. Scores are matching
 heuristics, never calibrated success probabilities.
 
+For prompt creation, prompt rewriting, or prompt evaluation, also apply
+.agents/rules/agyos-prompt-principles.md and route to the relevant prompt skill.
+Keep model-specific advice conditional and preserve AGYOS as the default
+identity; provider names belong only in compatibility notes, attribution, or
+evidence.
+
 Honor host permissions and explicit user constraints. Existing authorization
 remains valid within scope. A runbook does not authorize external actions or
 unsupported tools. Follow the host's actual tool schema rather than copying an

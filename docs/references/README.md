@@ -6,7 +6,7 @@ This directory contains external reference specifications, production prompt eng
 
 | File | Type | Description |
 | :--- | :--- | :--- |
-| [`prompts.md`](prompts.md) | Markdown | Production prompt engineering library with CRISPE + Invariant framework prompts. |
+| [`prompts.md`](prompts.md) | Markdown | Compatibility pointer to the canonical AGYOS prompt library and task-fit guidance. |
 | [`github-profile-playbook.pdf`](github-profile-playbook.pdf) | PDF Guide | Portfolio and open-source profile architecture guide for technical engineering. |
 | [`Motion_Graphics_Google_Flow_Master_Guide.pdf`](Motion_Graphics_Google_Flow_Master_Guide.pdf) | PDF Guide | Google Flow and cinematic animation timing guide for ScrollHeart components. |
 | [`video/`](video/README.md) | Source toolkits and prompt references | Local talking-head editor, faceless-shorts renderer, and provenance notes for supplied prompt material. |

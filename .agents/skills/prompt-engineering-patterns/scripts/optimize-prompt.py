@@ -7,7 +7,7 @@ Automatically test and optimize prompts using A/B testing and metrics tracking.
 
 import json
 import time
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 from dataclasses import dataclass
 from concurrent.futures import ThreadPoolExecutor
 import numpy as np
@@ -101,65 +101,56 @@ class PromptOptimizer:
         overlap = len(response_words & expected_words)
         return overlap / len(expected_words)
 
-    def optimize(self, base_prompt: str, max_iterations: int = 5) -> Dict[str, Any]:
-        """Iteratively optimize a prompt."""
-        current_prompt = base_prompt
-        best_prompt = base_prompt
-        best_score = 0
+    def _record_iteration(
+        self, iteration: int, prompt: str, metrics: Dict[str, float],
+        best_prompt: str, best_score: float,
+    ) -> tuple[str, float]:
+        print(f"Accuracy: {metrics['avg_accuracy']:.2f}, Latency: {metrics['avg_latency']:.2f}s")
+        self.results_history.append({
+            'iteration': iteration,
+            'prompt': prompt,
+            'metrics': metrics
+        })
+        if metrics['avg_accuracy'] > best_score:
+            return prompt, metrics['avg_accuracy']
+        return best_prompt, best_score
+
+    def _best_variation(
+        self, prompt: str, metrics: Dict[str, float]
+    ) -> tuple[str, Dict[str, float]]:
+        best_prompt = prompt
+        best_metrics = metrics
+        for variation in self.generate_variations(prompt, metrics):
+            candidate_metrics = self.evaluate_prompt(variation)
+            if candidate_metrics['avg_accuracy'] > best_metrics['avg_accuracy']:
+                best_prompt = variation
+                best_metrics = candidate_metrics
+        return best_prompt, best_metrics
+
+    def optimize(
+        self,
+        base_prompt: str,
+        max_iterations: int = 5,
+        target_score: Optional[float] = None,
+    ) -> Dict[str, Any]:
+        """Iteratively optimize against an optional caller-defined score target."""
+        if target_score is not None and not 0.0 <= target_score <= 1.0:
+            raise ValueError("target_score must be between 0 and 1")
+        current_prompt = best_prompt = base_prompt
+        best_score = 0.0
         current_metrics = None
 
         for iteration in range(max_iterations):
             print(f"\nIteration {iteration + 1}/{max_iterations}")
-
-            # Evaluate current prompt
-            # Bolt Optimization: Avoid re-evaluating if we already have metrics from previous iteration
-            if current_metrics:
-                metrics = current_metrics
-            else:
-                metrics = self.evaluate_prompt(current_prompt)
-
-            print(f"Accuracy: {metrics['avg_accuracy']:.2f}, Latency: {metrics['avg_latency']:.2f}s")
-
-            # Track results
-            self.results_history.append({
-                'iteration': iteration,
-                'prompt': current_prompt,
-                'metrics': metrics
-            })
-
-            # Update best if improved
-            if metrics['avg_accuracy'] > best_score:
-                best_score = metrics['avg_accuracy']
-                best_prompt = current_prompt
-
-            # Stop if good enough
-            if metrics['avg_accuracy'] > 0.95:
-                print("Achieved target accuracy!")
+            metrics = current_metrics or self.evaluate_prompt(current_prompt)
+            best_prompt, best_score = self._record_iteration(
+                iteration, current_prompt, metrics, best_prompt, best_score
+            )
+            if target_score is not None and metrics['avg_accuracy'] >= target_score:
                 break
+            current_prompt, current_metrics = self._best_variation(current_prompt, metrics)
 
-            # Generate variations for next iteration
-            variations = self.generate_variations(current_prompt, metrics)
-
-            # Test variations and pick best
-            best_variation = current_prompt
-            best_variation_score = metrics['avg_accuracy']
-            best_variation_metrics = metrics
-
-            for variation in variations:
-                var_metrics = self.evaluate_prompt(variation)
-                if var_metrics['avg_accuracy'] > best_variation_score:
-                    best_variation_score = var_metrics['avg_accuracy']
-                    best_variation = variation
-                    best_variation_metrics = var_metrics
-
-            current_prompt = best_variation
-            current_metrics = best_variation_metrics
-
-        return {
-            'best_prompt': best_prompt,
-            'best_score': best_score,
-            'history': self.results_history
-        }
+        return {'best_prompt': best_prompt, 'best_score': best_score, 'history': self.results_history}
 
     def generate_variations(self, prompt: str, current_metrics: Dict) -> List[str]:
         """Generate prompt variations to test."""
@@ -168,8 +159,8 @@ class PromptOptimizer:
         # Variation 1: Add explicit format instruction
         variations.append(prompt + "\n\nProvide your answer in a clear, concise format.")
 
-        # Variation 2: Add step-by-step instruction
-        variations.append("Let's solve this step by step.\n\n" + prompt)
+        # Variation 2: Add an observable final check, not a private reasoning request.
+        variations.append(prompt + "\n\nCheck the answer against the requested constraints before responding.")
 
         # Variation 3: Add verification step
         variations.append(prompt + "\n\nVerify your answer before responding.")

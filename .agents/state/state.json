@@ -1,6 +1,6 @@
 {
   "project": "AGYOS",
-  "current_gate": "PLAN",
+  "current_gate": "VERIFY",
   "current_milestone": "M1-prompt-principles",
   "iteration": 1,
   "iteration_cap": 10,
@@ -11,13 +11,15 @@
   "no_progress_strikes": 0,
   "hitl_approvals": {
     "UNDERSTAND": "Operator replied y to docs/PROMPT_PRINCIPLES_UPGRADE_TASK_LIST.md on 2026-11-14",
-    "ANALYZE": "Operator replied y to scope on 2026-11-14; approved .agents/agents/vibe-engineer.md scope addendum",
-    "PLAN": null,
-    "VERIFY": null
+    "ANALYZE": "Operator approved prompt scope, vibe-engineer.md addition, and response to the CI blocker on 2026-11-14; baseline CI passed on e0d9bbfc",
+    "PLAN": "Operator replied y to docs/PROMPT_PRINCIPLES_UPGRADE_PLAN.md and approved three context-graph invariants on 2026-11-14",
+    "PLAN_AMENDMENT": "Operator approved the pinned-source sparse checkout and 7-day CI ledger artifact amendment on 2026-11-14",
+    "PLAN_AMENDMENT_CATALOGS": "Operator approved including generated skill catalog outputs affected by revised skill descriptions on 2026-11-14",
+    "VERIFY": "Operator replied y to the scoped M1 commit/push and CI trigger on 2026-11-14; the catalog-refresh commit requires renewed sign-off"
   },
-  "last_updated": "2026-11-14T05:57:00+00:00",
-  "last_known_commit": "0caa7690afbcecf3eeafd89113d753cb9320838e",
-  "last_known_commit_COMPACT": null,
+  "last_updated": "2026-11-14T07:37:50+00:00",
+  "last_known_commit": "e0d9bbfc3abd9cee2da9567e94cb725c531c59b6",
+  "last_known_commit_COMPACT": "e0d9bbfc3abd9cee2da9567e94cb725c531c59b6",
   "skill_versions": {
     "anchor-draft-commit": "1.1.0",
     "anchor-graph": "1.1.0",
@@ -31,9 +33,11 @@
   "verification": {
     "status": "PENDING",
     "human_acceptance": "pending",
-    "independent_checker": "pending"
+    "independent_checker": "PASS: read-only static review; CI remains pending"
   },
   "last_known_commit_UNDERSTAND": "228884581aaebe3c2f6f2a246df6b30361b5bcb0",
-  "last_known_commit_ANALYZE": "0caa7690afbcecf3eeafd89113d753cb9320838e",
-  "last_known_commit_PLAN": null
+  "last_known_commit_ANALYZE": "e0d9bbfc3abd9cee2da9567e94cb725c531c59b6",
+  "last_known_commit_PLAN": "e0d9bbfc3abd9cee2da9567e94cb725c531c59b6",
+  "last_known_commit_IMPLEMENT": "e0d9bbfc3abd9cee2da9567e94cb725c531c59b6",
+  "last_known_commit_VERIFY": "e0d9bbfc3abd9cee2da9567e94cb725c531c59b6"
 }
