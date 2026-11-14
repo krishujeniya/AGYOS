@@ -1,6 +1,6 @@
 # AGYOS Prompt Principles Upgrade — Task List
 
-Status: UNDERSTAND, ANALYZE, and amended PLAN approved on 2026-11-14. CI run `43574183754` passed startup contracts but found one publisher-count row that is keyword metadata rather than a principle; the parser will account for it separately. Corrected exact-revision CI is pending.
+Status: UNDERSTAND, ANALYZE, and amended PLAN approved on 2026-11-14. Exact-revision CI run `43576647191` passed on `98486147dbab917deee345fd4c36498f5901bc01`; 14,888 principle rows plus one separately classified metadata row reconcile to the publisher's 14,889 combined source rows. The audit report and milestone records are updated from that artifact; the evidence-only follow-up commit requires renewed Gate 5 sign-off.
 
 ## Goal
 

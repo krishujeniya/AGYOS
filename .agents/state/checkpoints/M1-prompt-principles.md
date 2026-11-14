@@ -135,3 +135,16 @@
 ```json
 {"milestone":"M1-prompt-principles","iteration":3,"latest_pushed_commit":"99c26eb16b79a0ebefa41b98044bf973bbc53dd6","startup_contracts":"PASS in CI 43574183754","parsed_principles":14888,"classified_metadata_rows_pending_reconciliation":1,"publisher_combined_claim":14889,"local_tests_run":0,"local_generators_run":0,"independent_checker":"PASS","diff_check":"PASS","corrected_ci":"pending","next_push_approval":"required"}
 ```
+
+## Gate 5 — exact-revision verification after metadata accounting
+
+- Operator approved the guarded metadata-accounting commit/push. Script `.agents/state/decisions/executed/20261114-082500-m1-prompt-metadata-reconciliation.sh` committed `98486147dbab917deee345fd4c36498f5901bc01` and pushed successfully to `origin/main` with the required identity.
+- CI run [43576647191](https://github.com/krishujeniya/AGYOS/actions/runs/43576647191) passed on that SHA. Startup contracts, council regression, source audit, both artifact uploads, endpoint-encryption regression tests, and generated-catalog equality passed.
+- Audit artifact reports 26 company documents; 724 curated and 14,164 exhaustive principle rows; 14,888 ledger records; one separately hashed keyword metadata row; and 14,889 accounted publisher source rows. Dispositions: 4 adapted, 14,884 unverified. There are no count mismatches, and the ledger contains no source statement text.
+- Publisher claims of 80 upstream files and 597 tools remain unreconciled because those inventories are absent from the supplied subtree or outside the ledger. The archive's publisher count includes one keyword metadata row, which is not treated as an instruction.
+- Pages run [43576647123](https://github.com/krishujeniya/AGYOS/actions/runs/43576647123) passed on the same SHA. The generated catalog equality check passed in CI.
+- No local tests, parser, generators, builds, or dependency setup were run. Final counts are now recorded in the audit report and handoff; independent review and `git diff --check` passed. This evidence-only diff needs renewed sign-off before its commit/push and has no exact-revision Actions run yet.
+
+```json
+{"milestone":"M1-prompt-principles","iteration":4,"verified_code_commit":"98486147dbab917deee345fd4c36498f5901bc01","ci_run":"43576647191: PASS","pages_run":"43576647123: PASS","company_files":26,"curated_principles":724,"exhaustive_principles":14164,"principle_ledger_rows":14888,"non_principle_metadata_rows":1,"publisher_source_rows_accounted":14889,"dispositions":{"adapt":4,"unverified":14884},"count_mismatches":0,"local_tests_run":0,"local_generators_run":0,"evidence_commit_review":"PASS","evidence_commit_approval":"required"}
+```
