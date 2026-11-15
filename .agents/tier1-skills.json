@@ -1,6 +1,12 @@
 {
   "tier1_skills": [
     {
+      "name": "3b1b-manim",
+      "tier": 1,
+      "description": "Programmatic mathematical animation and technical explainer engine using 3Blue1Brown's Manim (manimlib/manimgl) for 2D/3D geometry, calculus, linear algebra, coordinate transformations, and headless video rendering.",
+      "path": ".agents/skills/3b1b-manim"
+    },
+    {
       "name": "active-directory-attacks",
       "tier": 1,
       "description": "Provide comprehensive techniques for attacking Microsoft Active Directory environments. Covers reconnaissance, credential harvesting, Kerberos attacks, lateral movement, privilege escalation, and domain dominance for red team operations and penetration testing.",

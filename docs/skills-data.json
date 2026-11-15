@@ -17,6 +17,23 @@
     "description": "Manage and inject secrets, list vaults, search vault items, and resolve op:// secret reference URIs programmatically using the 1Password CLI and 1Password Model Context Protocol (MCP) server."
   },
   {
+    "id": "3b1b-manim",
+    "name": "3B1B Manim",
+    "module": "UI/UX & Motion",
+    "category": "Frontend & Motion",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill 3b1b-manim",
+    "path": ".agents/skills/3b1b-manim",
+    "risk": "assess_for_task",
+    "description": "Programmatic mathematical animation and technical explainer engine using 3Blue1Brown's Manim (manimlib/manimgl) for 2D/3D geometry, calculus, linear algebra, coordinate transformations, and headless video rendering."
+  },
+  {
     "id": "3d-web-experience",
     "name": "3D Web Experience",
     "module": "Domain & Research Extensions",

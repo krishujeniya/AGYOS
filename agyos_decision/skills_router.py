@@ -82,7 +82,7 @@ DOMAIN_TAXONOMY: Dict[str, Dict[str, Any]] = {
             "keyframes", "gsap", "framer", "threejs", "canvas", "svg", "tween"
         ],
         "primary": "motion-patterns",
-        "alternatives": ["motion-foundations", "review-animations", "animation-performance", "threejs-animation"],
+        "alternatives": ["motion-foundations", "review-animations", "animation-performance", "threejs-animation", "3b1b-manim"],
     },
     "security": {
         "keywords": [
@@ -306,6 +306,15 @@ DOMAIN_TAXONOMY: Dict[str, Dict[str, Any]] = {
         ],
         "primary": "faceless-shorts-engine",
         "alternatives": ["youtube-shorts", "short-form-video-script", "organic-film-de-ai", "remotion-video-creation", "ffmpeg-video-editor"],
+    },
+    "manim": {
+        "keywords": [
+            "manim", "3b1b", "manimlib", "manimgl", "3blue1brown",
+            "math animation", "mathematical animation", "grant sanderson",
+            "calculus animation", "geometry animation", "latex animation"
+        ],
+        "primary": "3b1b-manim",
+        "alternatives": ["manim-video", "motion-patterns", "video-editing-principles", "faceless-shorts-engine"],
     },
     "scriptwriting": {
         "keywords": [

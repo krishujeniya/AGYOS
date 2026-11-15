@@ -1,7 +1,7 @@
 {
   "version": "3.1.0",
-  "total_skills": 2235,
-  "tier1_count": 403,
+  "total_skills": 2236,
+  "tier1_count": 404,
   "tier2_count": 1832,
   "skills": [
     {
@@ -9,6 +9,12 @@
       "tier": 2,
       "description": "Manage and inject secrets, list vaults, search vault items, and resolve op:// secret reference URIs programmatically using the 1Password CLI and 1Password Model Context Protocol (MCP) server.",
       "path": ".agents/skills/1password-mcp"
+    },
+    {
+      "name": "3b1b-manim",
+      "tier": 1,
+      "description": "Programmatic mathematical animation and technical explainer engine using 3Blue1Brown's Manim (manimlib/manimgl) for 2D/3D geometry, calculus, linear algebra, coordinate transformations, and headless video rendering.",
+      "path": ".agents/skills/3b1b-manim"
     },
     {
       "name": "3d-web-experience",
