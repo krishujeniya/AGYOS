@@ -517,6 +517,12 @@
       "path": ".agents/skills/c4-context"
     },
     {
+      "name": "chrome-extensions",
+      "tier": 1,
+      "description": "Build and publish Chrome Extensions using Manifest V3 best practices. Trigger on Chrome extensions, browser extensions, manifest.json, content scripts, extension service workers, side panels, chrome.* APIs, declarativeNetRequest, and Chrome Web Store publishing.",
+      "path": ".agents/skills/chrome-extensions"
+    },
+    {
       "name": "cinematic-web-design",
       "tier": 1,
       "description": "Build world-class, cinematic, dark editorial one-page websites and high-end frontend experiences derived from the Webbzer 10 template architecture, Google Flow 188 design principles, 93-effect motion catalog, procedural Canvas 2D physics engines, and strict anti-slop copy law. Delivers self-contained, single-file zero-dependency index.html implementations with WCAG 2.2 AA accessibility.",
@@ -1349,6 +1355,12 @@
       "tier": 1,
       "description": "Make a web app feel native on a phone \u2014 the small CSS and meta-tag fixes that separate \"a website in a browser\" from something that feels installed. Covers sticky hover states, tap highlight flashes, the 100vh bug, inputs that zoom the page, laggy taps, pull-to-refresh hijacking scroll, content under the notch, long-press selecting button text, carousels that scroll the wrong way, mismatched status bars, and the rule that you test on real hardware. Use when a web app is being built for or reviewed on mobile, when something \"works in Chrome but feels wrong on my phone\", when building a PWA, a bottom sheet, a carousel, a full-screen layout, or any touch interaction. For motion itself use animate; for React Native use animate-expo.",
       "path": ".agents/skills/mobile-native"
+    },
+    {
+      "name": "modern-web-guidance",
+      "tier": 1,
+      "description": "Search tool for modern web development best practices. Execute FIRST for all HTML/CSS and client-side JS tasks. Web APIs evolve rapidly and training weights contain obsolete patterns. Trigger immediately for modals, dialogs, popovers, tables, dark mode, anchor positioning, container queries, view transitions, scroll-driven animations, parallax, reveals, forms, validation, autofill, accessibility, custom selects, scrollbars, CWV (LCP, INP, CLS), content-visibility, fetch priority, image optimization, security, passkeys, HTML sanitization, web components, dates, timezones, built-in AI, WebAssembly, and modern HTML/CSS/DOM in frameworks.",
+      "path": ".agents/skills/modern-web-guidance"
     },
     {
       "name": "multi-agent-patterns",

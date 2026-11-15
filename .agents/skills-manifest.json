@@ -1,7 +1,7 @@
 {
   "version": "3.1.0",
-  "total_skills": 2230,
-  "tier1_count": 399,
+  "total_skills": 2232,
+  "tier1_count": 401,
   "tier2_count": 1831,
   "skills": [
     {
@@ -2475,6 +2475,12 @@
       "tier": 2,
       "description": "Expert in building Chrome Extensions using Manifest V3. Covers background scripts, service workers, content scripts, and cross-context communication.",
       "path": ".agents/skills/chrome-extension-developer"
+    },
+    {
+      "name": "chrome-extensions",
+      "tier": 1,
+      "description": "Build and publish Chrome Extensions using Manifest V3 best practices. Trigger on Chrome extensions, browser extensions, manifest.json, content scripts, extension service workers, side panels, chrome.* APIs, declarativeNetRequest, and Chrome Web Store publishing.",
+      "path": ".agents/skills/chrome-extensions"
     },
     {
       "name": "chrome-mcp-troubleshoot",
@@ -8313,6 +8319,12 @@
       "tier": 2,
       "description": "Comprehensive guide for mastering modern JavaScript (ES6+) features, functional programming patterns, and best practices for writing clean, maintainable, and performant code.",
       "path": ".agents/skills/modern-javascript-patterns"
+    },
+    {
+      "name": "modern-web-guidance",
+      "tier": 1,
+      "description": "Search tool for modern web development best practices. Execute FIRST for all HTML/CSS and client-side JS tasks. Web APIs evolve rapidly and training weights contain obsolete patterns. Trigger immediately for modals, dialogs, popovers, tables, dark mode, anchor positioning, container queries, view transitions, scroll-driven animations, parallax, reveals, forms, validation, autofill, accessibility, custom selects, scrollbars, CWV (LCP, INP, CLS), content-visibility, fetch priority, image optimization, security, passkeys, HTML sanitization, web components, dates, timezones, built-in AI, WebAssembly, and modern HTML/CSS/DOM in frameworks.",
+      "path": ".agents/skills/modern-web-guidance"
     },
     {
       "name": "module-governance",
