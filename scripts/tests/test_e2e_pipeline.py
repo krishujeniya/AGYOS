@@ -17,6 +17,7 @@ if str(ROOT) not in sys.path:
 
 from scripts.agyos_e2e import (
     check_git_invariants,
+    deliver_milestone,
     execute_static_verification,
     get_next_milestone_id,
     init_milestone,
@@ -29,6 +30,18 @@ from scripts.agyos_e2e import (
 
 
 class EndToEndPipelineTests(unittest.TestCase):
+    def test_delivery_requires_trusted_approval_and_never_claims_commit(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            result = deliver_milestone(
+                "M1-safe-delivery",
+                {"prompt": "publish change"},
+                auto_push=True,
+                root_dir=Path(tmp_dir),
+            )
+        self.assertEqual(result["status"], "BLOCKED")
+        self.assertIsNone(result["committed_sha"])
+        self.assertFalse(result["pushed"])
+
     def test_validate_prompt(self):
         self.assertEqual(validate_prompt("  build new auth flow  "), "build new auth flow")
         with self.assertRaises(ValueError):

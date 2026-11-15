@@ -135,12 +135,13 @@ def main(event: str) -> None:
         deny("Hook payload exceeds 1 MiB limit")
         return
     try:
-        data = json.loads(raw_input) if raw_input.strip() else {}
-    except (ValueError, UnicodeError):
-        if is_high_impact_command(raw_input):
-            deny("Cannot authorize high-impact action with malformed input")
+        if not raw_input.strip():
+            deny("Hook payload is empty")
             return
-        data = {}
+        data = json.loads(raw_input)
+    except (ValueError, UnicodeError):
+        deny("Hook payload is malformed")
+        return
     if not isinstance(data, dict):
         deny("Expected a JSON tool event object")
         return

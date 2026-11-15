@@ -59,6 +59,12 @@ class AuthorizerRegressionTests(unittest.TestCase):
         for payload in ("[]", "null", '"text"'):
             self.assertEqual(check(payload)["decision"], "deny")
 
+    def test_empty_and_malformed_payloads_denied(self):
+        for payload in ("", "   ", "not-json", '{"toolCall":'):
+            result = check(payload)
+            self.assertEqual(result["decision"], "deny", payload)
+            self.assertIn("payload", result["reason"].lower())
+
     def test_benign_cli_and_read_only_permitted(self):
         result = check({"toolCall": {"name": "run_command", "args": {
             "CommandLine": "python3 -m unittest discover -s scripts/tests -v"

@@ -354,87 +354,18 @@ def deliver_milestone(
     watch_ci: bool = False,
     root_dir: Path = ROOT,
 ) -> Dict[str, Any]:
-    """Commit verified changes, push to origin main, and transition gate to IDLE."""
-    git_ok, git_reason = check_git_invariants(root_dir)
-    if not git_ok:
-        return {"status": "BLOCKED", "reason": git_reason}
-
-    status_res = subprocess.run(
-        ["git", "status", "--porcelain"],
-        cwd=root_dir,
-        capture_output=True,
-        text=True,
-    )
-    has_changes = bool(status_res.stdout.strip())
-    committed_sha = None
-
-    if has_changes:
-        subprocess.run(["git", "add", "-A"], cwd=root_dir, check=True)
-        default_msg = f"feat({milestone_id}): implement {plan['prompt']}"
-        final_msg = commit_msg or default_msg
-        commit_res = subprocess.run(
-            ["git", "commit", "-m", final_msg],
-            cwd=root_dir,
-            capture_output=True,
-            text=True,
-        )
-        if commit_res.returncode == 0:
-            rev_res = subprocess.run(
-                ["git", "rev-parse", "HEAD"],
-                cwd=root_dir,
-                capture_output=True,
-                text=True,
-            )
-            committed_sha = rev_res.stdout.strip()
-
-    pushed = False
-    if auto_push and committed_sha:
-        push_res = subprocess.run(
-            ["git", "push", "origin", "main"],
-            cwd=root_dir,
-            capture_output=True,
-            text=True,
-        )
-        pushed = push_res.returncode == 0
-
-    ci_run_id = None
-    if watch_ci and pushed:
-        list_res = subprocess.run(
-            ["gh", "run", "list", "--limit", "1", "--json", "databaseId,status,conclusion"],
-            cwd=root_dir,
-            capture_output=True,
-            text=True,
-        )
-        if list_res.returncode == 0:
-            try:
-                runs = json.loads(list_res.stdout)
-                if runs:
-                    ci_run_id = runs[0].get("databaseId")
-            except Exception:
-                pass
-
-    run_state_gate("IDLE", root_dir)
-    state_file = root_dir / ".agents" / "state" / "state.json"
-    state = read_state_file(state_file)
-    state["current_milestone"] = milestone_id
-    if committed_sha:
-        state["last_known_commit"] = committed_sha
-    write_state_file(state_file, state)
-
-    checkpoint_file = root_dir / ".agents" / "state" / "checkpoints" / f"{milestone_id}.md"
-    append_checkpoint_entry(
-        checkpoint_file,
-        f"- Gate IDLE: milestone completed. Commit: {committed_sha or 'none'}, Pushed: {pushed}",
-    )
-    update_current_summary(root_dir, milestone_id, "IDLE", plan)
-
+    """Block commits and pushes until a trusted approval verifier is available."""
     return {
-        "status": "DELIVERED",
+        "status": "BLOCKED",
+        "reason": (
+            "Delivery requires an authenticated approval bound to the exact change; "
+            "the current host integration cannot verify that approval."
+        ),
         "milestone_id": milestone_id,
-        "committed_sha": committed_sha,
-        "pushed": pushed,
-        "ci_run_id": ci_run_id,
-        "current_gate": "IDLE",
+        "committed_sha": None,
+        "pushed": False,
+        "ci_run_id": None,
+        "current_gate": "VERIFY",
     }
 
 
@@ -456,7 +387,11 @@ def run_full_pipeline(
         root_dir=root_dir,
     )
     return {
-        "pipeline": "SUCCESS" if verify_res["status"] == "PASS" else "FAILED_VERIFICATION",
+        "pipeline": (
+            "FAILED_VERIFICATION" if verify_res["status"] != "PASS"
+            else "BLOCKED_DELIVERY" if deliver_res["status"] != "DELIVERED"
+            else "SUCCESS"
+        ),
         "plan": plan,
         "init": init_res,
         "verify": verify_res,
