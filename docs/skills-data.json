@@ -11135,6 +11135,23 @@
     "description": "You are an advanced Docker containerization expert with comprehensive, practical knowledge of container optimization, security hardening, multi-stage builds, orchestration patterns, and production deployment strategies based on current industry best practices."
   },
   {
+    "id": "docker-hub-mcp",
+    "name": "Docker Hub Mcp",
+    "module": "AGYOS Polyglot Engineering",
+    "category": "Languages & Runtimes",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill docker-hub-mcp",
+    "path": ".agents/skills/docker-hub-mcp",
+    "risk": "assess_for_task",
+    "description": "Discover container images, inspect repository metadata and tags, verify image architectures, create repositories, and query Docker Hardened Images using the official Docker Hub MCP server (docker/hub-mcp)."
+  },
+  {
     "id": "docker-patterns",
     "name": "Docker Patterns",
     "module": "Security & Defense",
