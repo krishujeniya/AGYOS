@@ -3,7 +3,7 @@
 # Walks through credentials for all configured local MCP servers.
 set -euo pipefail
 
-mkdir -p ~/.config/clerk-mcp ~/.config/deepnote-mcp ~/.config/travis-mcp ~/.config/carto-mcp ~/.config/docker-hub-mcp
+mkdir -p ~/.config/clerk-mcp ~/.config/deepnote-mcp ~/.config/travis-mcp ~/.config/carto-mcp ~/.config/docker-hub-mcp ~/.config/1password-mcp ~/.config/cloudflare ~/.config/ibmcloud ~/.aws
 chmod 700 ~/.config/*mcp* 2>/dev/null || true
 
 echo "=================================================="
@@ -56,6 +56,15 @@ prompt_token "CARTO API Token" "$HOME/.config/carto-mcp/token" "Optional: Develo
 # 5. Docker Hub
 prompt_token "Docker Hub PAT" "$HOME/.config/docker-hub-mcp/token" "Generate Personal Access Token in Docker Hub -> Account Settings -> Personal access tokens"
 prompt_token "Docker Hub Username" "$HOME/.config/docker-hub-mcp/username" "Your Docker Hub account or organization namespace handle"
+
+# 6. 1Password Service Account
+prompt_token "1Password Service Account" "$HOME/.config/1password-mcp/token" "Service account token (ops_...) from 1Password -> Developer -> Service Accounts"
+
+# 7. Cloudflare API Token
+prompt_token "Cloudflare API Token" "$HOME/.config/cloudflare/api_token" "API token from Cloudflare Dashboard -> My Profile -> API Tokens"
+
+# 8. IBM Cloud API Key
+prompt_token "IBM Cloud API Key" "$HOME/.config/ibmcloud/api_key" "API key from IBM Cloud -> Manage -> Access (IAM) -> API keys"
 
 echo ""
 echo "=================================================="
