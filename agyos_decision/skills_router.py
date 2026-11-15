@@ -250,7 +250,17 @@ DOMAIN_TAXONOMY: Dict[str, Dict[str, Any]] = {
             "arxiv", "systematic review", "peer-reviewed", "research gap"
         ],
         "primary": "agyos-academic-research",
-        "alternatives": ["universal-ai-research", "scientific-thinking-literature-review", "citation-management", "scientific-research"],
+        "alternatives": ["paper-orchestra", "universal-ai-research", "scientific-thinking-literature-review", "citation-management", "scientific-research"],
+    },
+    "paper_orchestra": {
+        "keywords": [
+            "paper orchestra", "paper-orchestra", "paperwritingbench",
+            "latex manuscript", "academic paper writing", "automated paper writing",
+            "scientific manuscript drafting", "multi-agent paper writing",
+            "outline agent", "agentreview"
+        ],
+        "primary": "paper-orchestra",
+        "alternatives": ["agyos-academic-research", "scientific-writing", "latex-paper-conversion", "scientific-thinking-literature-review"],
     },
     "universal_research": {
         "keywords": [

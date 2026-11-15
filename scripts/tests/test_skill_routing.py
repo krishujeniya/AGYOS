@@ -48,6 +48,7 @@ class RoutingTests(unittest.TestCase):
         "Import all skill repositories into AGYOS": "agyos-self-improvement",
         "modern web guidance for native dialog and popover": "modern-web-guidance",
         "build Chrome extension with Manifest V3": "chrome-extensions",
+        "draft research paper using paper-orchestra": "paper-orchestra",
     }
 
     def test_frozen_task_cases(self):

@@ -1435,6 +1435,12 @@
       "path": ".agents/skills/osint-investigation"
     },
     {
+      "name": "paper-orchestra",
+      "tier": 1,
+      "description": "Automated AI research paper drafting and publication-ready LaTeX manuscript generation using Google Cloud AI Research's PaperOrchestra multi-agent architecture and PaperWritingBench methodology.",
+      "path": ".agents/skills/paper-orchestra"
+    },
+    {
       "name": "pentagi-orchestrator",
       "tier": 1,
       "description": "Autonomous multi-agent penetration testing orchestrator. Coordinates target reconnaissance, vulnerability analysis, exploit planning, and remediation reporting.",
