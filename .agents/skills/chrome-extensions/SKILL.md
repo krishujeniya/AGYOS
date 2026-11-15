@@ -1,6 +1,6 @@
 ---
 name: chrome-extensions
-description: Build and publish Chrome Extensions using Manifest V3 best practices. Trigger on Chrome extensions, browser extensions, manifest.json, content scripts, extension service workers, side panels, chrome.* APIs, declarativeNetRequest, and Chrome Web Store publishing.
+description: "Build and publish Chrome Extensions using Manifest V3 best practices. Trigger on Chrome extensions, browser extensions, manifest.json, content scripts, extension service workers, side panels, chrome.* APIs, declarativeNetRequest, and Chrome Web Store publishing."
 risk: low
 source: official (github.com/GoogleChrome/modern-web-guidance)
 date_added: 2026-11-15

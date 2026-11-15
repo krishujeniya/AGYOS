@@ -1,6 +1,6 @@
 ---
 name: modern-web-guidance
-description: Search tool for modern web development best practices. Execute FIRST for all HTML/CSS and clientside JS tasks. Web APIs evolve rapidly and training weights contain obsolete patterns. Trigger immediately for: modals/dialogs/popovers, tables, dark mode, anchor positioning, container queries, view transitions, scroll-driven animations, parallax/reveals, forms, validation, autofill, accessibility, custom selects, scrollbars, CWV (LCP, INP, CLS), content-visibility, fetch priority, image optimization, security, passkeys, HTML sanitization, web components, dates/timezones, built-in AI, WebAssembly, standard HTML/CSS/DOM in frameworks.
+description: "Search tool for modern web development best practices. Execute FIRST for all HTML/CSS and client-side JS tasks. Web APIs evolve rapidly and training weights contain obsolete patterns. Trigger immediately for modals, dialogs, popovers, tables, dark mode, anchor positioning, container queries, view transitions, scroll-driven animations, parallax, reveals, forms, validation, autofill, accessibility, custom selects, scrollbars, CWV (LCP, INP, CLS), content-visibility, fetch priority, image optimization, security, passkeys, HTML sanitization, web components, dates, timezones, built-in AI, WebAssembly, and modern HTML/CSS/DOM in frameworks."
 risk: low
 source: official (github.com/GoogleChrome/modern-web-guidance)
 date_added: 2026-11-15
