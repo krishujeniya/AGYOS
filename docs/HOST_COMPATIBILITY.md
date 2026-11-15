@@ -1,5 +1,15 @@
 # Host compatibility checkpoint
 
+## Current checkpoint — 2026-11-15
+
+The installed CLI reports `agy 1.5.9`. This version query establishes the local binary version only; no tool invocation or model-backed host probe was run.
+
+The current official [hooks reference](https://antigravity.google/docs/hooks) documents workspace `.agents/hooks.json` configuration, `PreToolUse` input under `toolCall.name` and `toolCall.args`, and `decision: deny` as a hard block. It also documents the standard file-write argument as `TargetFile`. This is documentation evidence, not a test of the installed CLI, hook loading, child-agent inheritance, or coverage of every effect path.
+
+Accordingly, the model registry entries are candidate routing profiles, not verified host models. `verified_on_host` is false for each built-in profile. Context limits, thinking options, model identifiers, and prices still require dated provider/host evidence; their current presence in the registry does not establish current validity. Model selection results must not be treated as execution capability proof.
+
+Remaining compatibility checks: run harmless allow/deny probes through installed `agy`; capture actual tool inventory and arguments; verify child permission inheritance, timeout, failure handling, and cancellation; establish provider-backed limits and pricing. Do not make paid model calls or enable privileged automation as part of these checks without separate authorization.
+
 Status: **M0 incomplete; runtime mediation is unverified.** The operator approved the implementation plan, which requires separate authorization for paid model calls.
 
 On 2026-11-05, `agy --version` returned **1.5.1**, newer than the 1.5.0 used for the research audit. `agy --help`, `agy agents --help`, and `agy mcp --help` ran successfully. These commands establish CLI availability and advertised command-line flags, not the model's tool schema, hook behavior, subagent inheritance, or cancellation.

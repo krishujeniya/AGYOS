@@ -37,6 +37,7 @@ class TestModelRegistry(unittest.TestCase):
         self.assertIn("medium", spec.thinking_levels)
         self.assertIn("low", spec.thinking_levels)
         self.assertEqual(spec.context_window, 1048576)
+        self.assertFalse(spec.verified_on_host)
 
     def test_alias_gemini_flash_high_resolves_to_base_with_high_thinking(self):
         canonical_id, thinking_level = self.registry.resolve_model_alias("gemini-3.8-flash-high")
@@ -54,9 +55,11 @@ class TestModelRegistry(unittest.TestCase):
         sonnet = self.registry.get_model("claude-sonnet-4-6")
         self.assertIsNotNone(sonnet)
         self.assertEqual(sonnet.provider, ModelProvider.ANTHROPIC)
+        self.assertFalse(sonnet.verified_on_host)
         opus = self.registry.get_model("claude-opus-4-6")
         self.assertIsNotNone(opus)
         self.assertEqual(opus.provider, ModelProvider.ANTHROPIC)
+        self.assertFalse(opus.verified_on_host)
 
 
 class TestModelRouter(unittest.TestCase):

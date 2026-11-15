@@ -65,7 +65,7 @@ class RoutingPolicyDecision:
     compaction_threshold: int = 65000
 
 
-# Canonical models supported by the host and official APIs
+# Candidate model profiles. Host support and provider limits require fresh verification.
 CANONICAL_MODELS: Dict[str, ModelSpec] = {
     "gemini-3.8-flash": ModelSpec(
         api_model_id="gemini-3.8-flash",
@@ -78,7 +78,7 @@ CANONICAL_MODELS: Dict[str, ModelSpec] = {
         cost_per_1m_input_usd=0.15,
         cost_per_1m_output_usd=0.60,
         privacy_boundary="provider_visible",
-        verified_on_host=True,
+        verified_on_host=False,
     ),
     "claude-sonnet-4-6": ModelSpec(
         api_model_id="claude-sonnet-4-6",
@@ -91,7 +91,7 @@ CANONICAL_MODELS: Dict[str, ModelSpec] = {
         cost_per_1m_input_usd=3.00,
         cost_per_1m_output_usd=15.00,
         privacy_boundary="provider_visible",
-        verified_on_host=True,
+        verified_on_host=False,
     ),
     "claude-opus-4-6": ModelSpec(
         api_model_id="claude-opus-4-6",
@@ -104,7 +104,7 @@ CANONICAL_MODELS: Dict[str, ModelSpec] = {
         cost_per_1m_input_usd=15.00,
         cost_per_1m_output_usd=75.00,
         privacy_boundary="provider_visible",
-        verified_on_host=True,
+        verified_on_host=False,
     ),
 }
 
