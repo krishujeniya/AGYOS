@@ -45,8 +45,8 @@ DOMAIN_TAXONOMY: Dict[str, Dict[str, Any]] = {
             "shadcn", "component", "styling", "responsive", "design", "modal",
             "button", "navbar", "dropdown", "theme", "dark mode", "accessibility", "a11y"
         ],
-        "primary": "modern-web-guidance",
-        "alternatives": ["frontend-design-direction", "cinematic-web-design", "apple-design", "break-ui", "design-spells", "tailwind-patterns", "shadcn-ui-components"],
+        "primary": "frontend-design-direction",
+        "alternatives": ["modern-web-guidance", "cinematic-web-design", "apple-design", "break-ui", "design-spells", "tailwind-patterns", "shadcn-ui-components"],
     },
     "modern_web": {
         "keywords": [

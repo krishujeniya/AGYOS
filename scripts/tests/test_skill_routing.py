@@ -46,6 +46,8 @@ class RoutingTests(unittest.TestCase):
         "Make an AI accounts to follow watchlist": "ai-industry-watchlist",
         "How do I set up the Harvey free AI sales agent safely?": "harvey-sales-agent-guide",
         "Import all skill repositories into AGYOS": "agyos-self-improvement",
+        "modern web guidance for native dialog and popover": "modern-web-guidance",
+        "build Chrome extension with Manifest V3": "chrome-extensions",
     }
 
     def test_frozen_task_cases(self):
