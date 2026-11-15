@@ -30,6 +30,7 @@ Commands:
   privacy-audit  Inspect local plaintext data paths and encryption limits
   model-route <task>  Determine optimal model, thinking level, and privacy compliance
   e2e <task>  Execute autonomous end-to-end lifecycle without manual commands
+  obscura|browser  Control Obscura headless browser engine (MCP, CDP, fetch, scrape)
   help        Show this help message
 EOF
 }
@@ -241,6 +242,9 @@ print(json.dumps(output, indent=2))
       exit 1
     fi
     exec python3 scripts/agyos_e2e.py "$@"
+    ;;
+  obscura|browser)
+    exec bash bin/obscura "$@"
     ;;
   help|--help|-h)
     usage

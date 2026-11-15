@@ -98,3 +98,49 @@ test('agyos_pipeline returns valid plan from MCP invocation', () => {
   assert.equal(parsed.pod, 'pod-build');
   assert.ok(parsed.skill.name.includes('postgres') || parsed.skill.name.includes('database'));
 });
+
+const obscuraServer = path.join(__dirname, '..', '..', 'mcp', 'obscura-server.cjs');
+
+function rpcObscura(input) {
+  const result = spawnSync(process.execPath, [obscuraServer], {
+    input: typeof input === 'string' ? input : JSON.stringify(input) + '\n',
+    encoding: 'utf8', timeout: 20000,
+  });
+  assert.equal(result.status, 0, result.stderr);
+  return result.stdout.split('\n').filter(Boolean).map(line => JSON.parse(line));
+}
+
+test('Obscura MCP initialization and tool listing meet spec', () => {
+  const init = rpcObscura({ jsonrpc: '2.0', method: 'initialize', id: 1, params: {
+    protocolVersion: '2024-11-05',
+  } })[0];
+  assert.equal(init.result.serverInfo.name, 'obscura');
+  const list = rpcObscura({ jsonrpc: '2.0', method: 'tools/list', id: 2 })[0];
+  assert.ok(list.result.tools.some(t => t.name === 'browser_navigate'));
+  assert.ok(list.result.tools.some(t => t.name === 'browser_snapshot'));
+  assert.ok(list.result.tools.some(t => t.name === 'browser_click'));
+  assert.ok(list.result.tools.some(t => t.name === 'browser_cdp_endpoint'));
+  assert.ok(list.result.tools.some(t => t.name === 'browser_evaluate'));
+  const ping = rpcObscura({ jsonrpc: '2.0', method: 'ping', id: 3 })[0];
+  assert.equal(ping.id, 3);
+});
+
+test('Obscura tools handle execution headlessly and safely', () => {
+  const cdp = rpcObscura({
+    jsonrpc: '2.0', method: 'tools/call', id: 4,
+    params: { name: 'browser_cdp_endpoint', arguments: {} }
+  })[0];
+  assert.equal(cdp.id, 4);
+  const parsed = JSON.parse(cdp.result.content[0].text);
+  assert.equal(parsed.headless, true);
+  assert.equal(parsed.gui_disabled, true);
+  assert.ok(parsed.endpoint_url.includes('9222'));
+
+  const evalRes = rpcObscura({
+    jsonrpc: '2.0', method: 'tools/call', id: 5,
+    params: { name: 'browser_evaluate', arguments: { script: '1 + 1' } }
+  })[0];
+  assert.equal(evalRes.id, 5);
+  const evalJson = JSON.parse(evalRes.result.content[0].text);
+  assert.equal(evalJson.result, 2);
+});

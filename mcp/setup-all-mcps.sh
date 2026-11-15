@@ -66,6 +66,18 @@ prompt_token "Cloudflare API Token" "$HOME/.config/cloudflare/api_token" "API to
 # 8. IBM Cloud API Key
 prompt_token "IBM Cloud API Key" "$HOME/.config/ibmcloud/api_key" "API key from IBM Cloud -> Manage -> Access (IAM) -> API keys"
 
+# 9. Obscura Headless Browser Engine
+echo "--------------------------------------------------"
+echo "[Obscura Headless Browser Engine Setup]"
+echo "Source: https://github.com/h4ckf0r0day/obscura"
+if command -v obscura >/dev/null 2>&1; then
+  echo "Status: Native obscura binary detected ($(command -v obscura))"
+elif command -v docker >/dev/null 2>&1 && docker info >/dev/null 2>&1; then
+  echo "Status: Docker available. Image h4ckf0r0day/obscura supported"
+else
+  echo "Status: AGYOS FastMCP headless daemon ready (mcp/obscura-server.cjs)"
+fi
+
 echo ""
 echo "=================================================="
 echo "OAuth-based Remote Servers (Browser-based):"

@@ -99,6 +99,25 @@ All MCP tools reside directly in this directory with zero subfolders.
   - `createRepository`: Provision a new repository in a namespace.
   - `dockerHardenedImages`: Query certified Docker Hardened Images (DHI) with security attestations.
 
+### `obscura-mcp.sh` & `obscura-server.cjs` (Obscura Headless Browser Engine)
+- **Runtime**: Native Rust binary (`obscura mcp`), Docker container (`h4ckf0r0day/obscura`), or Node.js FastMCP daemon (`obscura-server.cjs`).
+- **Upstream**: [`h4ckf0r0day/obscura`](https://github.com/h4ckf0r0day/obscura).
+- **Transport**: `stdio`.
+- **Mode**: Strictly headless. Never opens a graphical browser window or desktop session.
+- **Coverage**: 12 tools for web scraping, page navigation, and agent automation:
+  - `browser_navigate`: Direct navigation to URLs with configurable wait triggers (`load`, `domcontentloaded`, `networkidle0`).
+  - `browser_snapshot`: Structured semantic accessibility and interactive element tree snapshot.
+  - `browser_click`: Element click by reference id or CSS selector.
+  - `browser_fill`: Form field and text input value population.
+  - `browser_type`: Sequential keyboard typing into target elements.
+  - `browser_wait_for`: State synchronization on elements and selectors.
+  - `browser_evaluate`: JavaScript execution inside the headless V8 runtime.
+  - `browser_search`: In-page text and pattern searches.
+  - `browser_screenshot`: Headless base64 PNG rendering.
+  - `browser_pdf`: Document export as PDF.
+  - `browser_cdp_endpoint`: Active WebSocket endpoint for drop-in Playwright/Puppeteer connections.
+  - `browser_close`: Active tab and session reset.
+
 ## Verification
 
 The daemon is verified via deterministic JSON-RPC queries:
