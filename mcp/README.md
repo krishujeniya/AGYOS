@@ -84,6 +84,21 @@ All MCP tools reside directly in this directory with zero subfolders.
 - **Context and tool limits**: The upstream server accepts `--dir <absolute-path>` to select a Firebase project context and `--only <feature1,feature2>` to limit feature groups. Core tools remain enabled even with `--only`.
 - **Package selection**: `firebase-tools@latest` is the selector shown in Firebase's documentation. It is mutable; this repository does not resolve, install, or launch it. Pin a reviewed version if reproducible package selection is required.
 
+### `docker-hub-mcp.sh` (Docker Hub MCP Server)
+- **Runtime**: Containerized via Docker (`docker run -i --rm mcp/dockerhub`) or local compiled Node.js build.
+- **Upstream**: [`docker/hub-mcp`](https://github.com/docker/hub-mcp).
+- **Transport**: `stdio`.
+- **Authentication**: Personal Access Token (PAT) via `HUB_PAT_TOKEN` or `~/.config/docker-hub-mcp/token` (file permission `600`), Docker Hub username via `DOCKER_HUB_USERNAME` or `~/.config/docker-hub-mcp/username`.
+- **Coverage**: 8 tools for Docker Hub management and discovery:
+  - `search`: Search container images and repositories across Docker Hub.
+  - `checkRepository`: Verify repository existence in a namespace.
+  - `checkRepositoryTag`: Verify tag existence for a repository.
+  - `getRepositoryInfo`: Query repository metadata, descriptions, stars, and pull counts.
+  - `listRepositoriesByNamespace`: Enumerate repositories under a user or organization namespace.
+  - `listRepositoryTags`: Enumerate tags, digest hashes, and supported architectures.
+  - `createRepository`: Provision a new repository in a namespace.
+  - `dockerHardenedImages`: Query certified Docker Hardened Images (DHI) with security attestations.
+
 ## Verification
 
 The daemon is verified via deterministic JSON-RPC queries:

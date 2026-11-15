@@ -3,7 +3,7 @@
 # Walks through credentials for all configured local MCP servers.
 set -euo pipefail
 
-mkdir -p ~/.config/clerk-mcp ~/.config/deepnote-mcp ~/.config/travis-mcp ~/.config/carto-mcp
+mkdir -p ~/.config/clerk-mcp ~/.config/deepnote-mcp ~/.config/travis-mcp ~/.config/carto-mcp ~/.config/docker-hub-mcp
 chmod 700 ~/.config/*mcp* 2>/dev/null || true
 
 echo "=================================================="
@@ -52,6 +52,10 @@ prompt_token "Travis CI" "$HOME/.config/travis-mcp/token" "Generate API token fr
 
 # 4. CARTO (Optional API token for automated pipelines)
 prompt_token "CARTO API Token" "$HOME/.config/carto-mcp/token" "Optional: Developers -> Credentials -> Create API Access Token with MCP Server permissions"
+
+# 5. Docker Hub
+prompt_token "Docker Hub PAT" "$HOME/.config/docker-hub-mcp/token" "Generate Personal Access Token in Docker Hub -> Account Settings -> Personal access tokens"
+prompt_token "Docker Hub Username" "$HOME/.config/docker-hub-mcp/username" "Your Docker Hub account or organization namespace handle"
 
 echo ""
 echo "=================================================="

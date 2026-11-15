@@ -110,6 +110,14 @@ DOMAIN_TAXONOMY: Dict[str, Dict[str, Any]] = {
         "primary": "gitops-workflow",
         "alternatives": ["docker-patterns", "kubernetes-patterns", "cicd-workflow", "github-workflow-automation"],
     },
+    "container_registry": {
+        "keywords": [
+            "docker hub", "hub-mcp", "dockerhub", "container registry",
+            "docker image tag", "hardened images", "docker hardened images"
+        ],
+        "primary": "docker-hub-mcp",
+        "alternatives": ["docker-patterns", "docker-expert", "k8s-manifest-generator"],
+    },
     "devops_career": {
         "keywords": [
             "devops roadmap", "devops career", "devops learning plan",
@@ -370,6 +378,9 @@ LANGUAGE_FRAMEWORK_MAP = {
     "ffmpeg": "ffmpeg-video-editor",
     "flow": "google-flow",
     "remotion": "react-video-remotion",
+    "dockerhub": "docker-hub-mcp",
+    "hub-mcp": "docker-hub-mcp",
+    "docker-hub-mcp": "docker-hub-mcp",
 }
 
 

@@ -158,6 +158,9 @@ Never narrate skill selection to the user (e.g. do NOT say "I will now use the X
   - Enforce design consistency: always use `find_related_assets` to source siblings from the same icon pack. Never mix outline and solid styles in the same view.
 - **Camber Scientific Cloud & Agent Workflows** ("Run Camber agent", "Execute on Camber compute", "List Camber teams"):
   - Autonomously invoke `camber-cloud` and `camber-mcp` tools (`agents_chat`, `teams_select`, `agents_list`). Use the local `camber` CLI for stash file synchronizations and compute pod inspections.
+- **Container Registries, Docker Hub & Image Discovery** ("Search Docker Hub", "Check container image tags", "Inspect Docker repository", "Docker Hardened Images", "hub-mcp"):
+  - Autonomously invoke `docker-hub-mcp` tools (`search`, `checkRepository`, `checkRepositoryTag`, `listRepositoryTags`, `getRepositoryInfo`, `dockerHardenedImages`).
+  - Verify image existence, multi-architecture tags, and publisher status before drafting Dockerfiles or deployment manifests.
 - **Architectural Tradeoffs & Technical Decisions** ("Should we use X or Y?", "Which database is better?", "Postgres vs Redis"):
   - Autonomously convene `council` deliberation with available tools and authorization for any paid model calls.
   - Synthesize consensus, disagreements, and recommendations directly into the response without meta-announcements.

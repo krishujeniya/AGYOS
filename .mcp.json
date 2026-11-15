@@ -94,6 +94,10 @@
         "firebase-tools@latest",
         "mcp"
       ]
+    },
+    "docker-hub": {
+      "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/docker-hub-mcp.sh",
+      "args": []
     }
   }
 }
