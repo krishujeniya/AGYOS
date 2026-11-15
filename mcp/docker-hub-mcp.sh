@@ -37,6 +37,7 @@ fi
 # 3. Execution Strategy:
 # Preferred 1: Local compiled Node.js build if available
 for candidate in \
+  "${HOME}/.local/share/hub-mcp/dist/index.js" \
   "${PROJECT_ROOT}/mcp/hub-mcp/dist/index.js" \
   "${PROJECT_ROOT}/integrations/hub-mcp/dist/index.js" \
   "${PROJECT_ROOT}/integrations/docker-hub-mcp/dist/index.js"; do
