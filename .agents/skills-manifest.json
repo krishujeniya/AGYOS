@@ -1,8 +1,8 @@
 {
   "version": "3.1.0",
-  "total_skills": 2233,
-  "tier1_count": 402,
-  "tier2_count": 1831,
+  "total_skills": 2235,
+  "tier1_count": 403,
+  "tier2_count": 1832,
   "skills": [
     {
       "name": "1password-mcp",
@@ -8969,6 +8969,12 @@
       "path": ".agents/skills/openclaw-persona-forge"
     },
     {
+      "name": "opendots-coworker-pattern",
+      "tier": 2,
+      "description": "Architect and orchestrate persistent AI coworkers (Dots), document workspaces (Spaces & Pages), isolated sandboxes, and human-in-the-loop review gates following OpenDots principles without adding application code.",
+      "path": ".agents/skills/opendots-coworker-pattern"
+    },
+    {
       "name": "opensource-pipeline",
       "tier": 2,
       "description": "Open-source pipeline: fork, sanitize, and package private projects for safe public release. Chains 3 agents (forker, sanitizer, packager). Triggers: '/opensource', 'open source this', 'make this public', 'prepare for open source'. Use when a private project must be forked, stripped of secrets, and packaged for public release.",
@@ -12177,6 +12183,12 @@
       "tier": 2,
       "description": "Configure Turborepo for efficient monorepo builds with local and remote caching. Use when setting up Turborepo, optimizing build pipelines, or implementing distributed caching.",
       "path": ".agents/skills/turborepo-caching"
+    },
+    {
+      "name": "turn-ideas-into-reality",
+      "tier": 1,
+      "description": "Turn ideas into reality using the Time to Materialize (TTM) 3-step framework: reverse engineer the smallest proof of success, apply the 24-hour execution constraint, and compress feedback loops through single-variable iteration.",
+      "path": ".agents/skills/turn-ideas-into-reality"
     },
     {
       "name": "tutorial-engineer",

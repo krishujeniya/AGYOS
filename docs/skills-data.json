@@ -25398,6 +25398,23 @@
     "description": "\u4e3a OpenClaw AI Agent \u953b\u9020\u5b8c\u6574\u7684\u9f99\u867e\u7075\u9b42\u65b9\u6848\u3002\u6839\u636e\u7528\u6237\u504f\u597d\u6216\u968f\u673a\u62bd\u5361\uff0c \u8f93\u51fa\u8eab\u4efd\u5b9a\u4f4d\u3001\u7075\u9b42\u63cf\u8ff0(SOUL.md)\u3001\u89d2\u8272\u5316\u5e95\u7ebf\u89c4\u5219\u3001\u540d\u5b57\u548c\u5934\u50cf\u751f\u56fe\u63d0\u793a\u8bcd\u3002 \u5982\u5f53\u524d\u73af\u5883\u63d0\u4f9b\u5df2\u5ba1\u6838\u7684\u751f\u56fe skill\uff0c\u53ef\u81ea\u52a8\u751f\u6210\u7edf\u4e00\u98ce\u683c\u5934\u50cf\u56fe\u7247\u3002 \u5f53\u7528\u6237\u9700\u8981\u521b\u5efa\u3001\u8bbe\u8ba1\u6216\u5b9a\u5236 OpenClaw \u9f99\u867e\u7075\u9b42\u65f6\u4f7f\u7528\u3002 \u4e0d\u9002\u7528\u4e8e\uff1a\u5fae\u8c03\u5df2\u6709 SOUL.md\u3001\u975e OpenClaw \u5e73\u53f0\u7684\u89d2\u8272\u8bbe\u8ba1\u3001\u7eaf\u5de5\u5177\u578b\u65e0\u6027\u683c Agent\u3002 \u89e6\u53d1\u8bcd\uff1a\u9f99\u867e\u7075\u9b42\u3001\u867e\u9b42\u3001OpenClaw \u7075\u9b42\u3001\u517b\u867e\u7075\u9b42\u3001\u9f99\u867e\u89d2\u8272\u3001\u9f99\u867e\u5b9a\u4f4d\u3001 \u9f99\u867e\u5267\u672c\u6740\u89d2\u8272\u3001\u9f99\u867e\u6e38\u620f\u89d2\u8272\u3001\u9f99\u867e NPC\u3001\u9f99\u867e\u6027\u683c\u3001\u9f99\u867e\u80cc\u666f\u6545\u4e8b\u3001 lobster soul\u3001lobster character\u3001\u62bd\u5361\u3001\u968f\u673a\u9f99\u867e\u3001\u9f99\u867e SOUL\u3001gacha\u3002 Use when creating, designing, or customizing an OpenClaw lobster persona , identity, SOUL.md, name, or avatar prompt."
   },
   {
+    "id": "opendots-coworker-pattern",
+    "name": "Opendots Coworker Pattern",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill opendots-coworker-pattern",
+    "path": ".agents/skills/opendots-coworker-pattern",
+    "risk": "assess_for_task",
+    "description": "Architect and orchestrate persistent AI coworkers (Dots), document workspaces (Spaces & Pages), isolated sandboxes, and human-in-the-loop review gates following OpenDots principles without adding application code."
+  },
+  {
     "id": "opensource-pipeline",
     "name": "Opensource Pipeline",
     "module": "Domain & Research Extensions",
@@ -34491,6 +34508,23 @@
     "path": ".agents/skills/turborepo-caching",
     "risk": "assess_for_task",
     "description": "Configure Turborepo for efficient monorepo builds with local and remote caching. Use when setting up Turborepo, optimizing build pipelines, or implementing distributed caching."
+  },
+  {
+    "id": "turn-ideas-into-reality",
+    "name": "Turn Ideas Into Reality",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill turn-ideas-into-reality",
+    "path": ".agents/skills/turn-ideas-into-reality",
+    "risk": "assess_for_task",
+    "description": "Turn ideas into reality using the Time to Materialize (TTM) 3-step framework: reverse engineer the smallest proof of success, apply the 24-hour execution constraint, and compress feedback loops through single-variable iteration."
   },
   {
     "id": "tutorial-engineer",

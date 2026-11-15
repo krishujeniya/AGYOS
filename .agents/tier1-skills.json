@@ -2245,6 +2245,12 @@
       "path": ".agents/skills/thumbnail-design"
     },
     {
+      "name": "turn-ideas-into-reality",
+      "tier": 1,
+      "description": "Turn ideas into reality using the Time to Materialize (TTM) 3-step framework: reverse engineer the smallest proof of success, apply the 24-hour execution constraint, and compress feedback loops through single-variable iteration.",
+      "path": ".agents/skills/turn-ideas-into-reality"
+    },
+    {
       "name": "typescript-advanced-types",
       "tier": 1,
       "description": "Comprehensive guidance for mastering TypeScript's advanced type system including generics, conditional types, mapped types, template literal types, and utility types for building robust, type-safe applications.",

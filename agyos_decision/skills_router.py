@@ -216,7 +216,16 @@ DOMAIN_TAXONOMY: Dict[str, Dict[str, Any]] = {
             "seed", "fundraising", "pitch deck", "pitch", "mvp", "early stage"
         ],
         "primary": "agyos-startup-stack",
-        "alternatives": ["agyos-founder-guide", "agyos-startup-distribution", "market-opportunity", "financial-projections"],
+        "alternatives": ["agyos-founder-guide", "agyos-startup-distribution", "market-opportunity", "financial-projections", "turn-ideas-into-reality"],
+    },
+    "idea_execution": {
+        "keywords": [
+            "turn ideas into reality", "time to materialize", "ttm", "idea execution",
+            "idea validation", "validate idea", "rapid execution", "smallest proof of success",
+            "feedback loop compression", "super skill"
+        ],
+        "primary": "turn-ideas-into-reality",
+        "alternatives": ["rapid-mvp-prototyping", "orch-build-mvp", "idea-os", "agyos-startup-stack"],
     },
     "reverse_engineering": {
         "keywords": [
