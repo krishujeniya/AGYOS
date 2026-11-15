@@ -29,6 +29,7 @@ Commands:
   secure      Exchange authenticated encrypted files between trusted endpoints
   privacy-audit  Inspect local plaintext data paths and encryption limits
   model-route <task>  Determine optimal model, thinking level, and privacy compliance
+  e2e <task>  Execute autonomous end-to-end lifecycle without manual commands
   help        Show this help message
 EOF
 }
@@ -233,6 +234,13 @@ print(json.dumps(output, indent=2))
     ;;
   council)
     bun run scripts/council/src/council.ts "$@"
+    ;;
+  e2e|auto|run|pipeline)
+    if [ $# -eq 0 ]; then
+      echo "Usage: agyos e2e <task-description> [--action plan|init|verify|deliver|full] [--auto-push] [--watch-ci] [--json]" >&2
+      exit 1
+    fi
+    exec python3 scripts/agyos_e2e.py "$@"
     ;;
   help|--help|-h)
     usage

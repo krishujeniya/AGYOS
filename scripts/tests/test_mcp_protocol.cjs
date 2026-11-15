@@ -62,6 +62,7 @@ test('normal MCP initialization and tool listing remain compatible', () => {
   const list = rpc({ jsonrpc: '2.0', method: 'tools/list', id: 2 })[0];
   assert.ok(list.result.tools.some(t => t.name === 'agyos_decision'));
   assert.ok(list.result.tools.some(t => t.name === 'agyos_memory'));
+  assert.ok(list.result.tools.some(t => t.name === 'agyos_pipeline'));
   const ping = rpc({ jsonrpc: '2.0', method: 'ping', id: 'ok' })[0];
   assert.equal(ping.id, 'ok');
 });
@@ -71,10 +72,11 @@ test('notification does not receive JSON-RPC response', () => {
 });
 
 
-test('search and decision reject oversized tasks without spawning Python', () => {
+test('search, decision, and pipeline reject oversized tasks without spawning Python', () => {
   for (const [name, args] of [
     ['agyos_find_skill', { query: 'x'.repeat(600) }],
     ['agyos_decision', { task: 'x'.repeat(3100) }],
+    ['agyos_pipeline', { prompt: 'x'.repeat(3100) }],
   ]) {
     const result = rpc({
       jsonrpc: '2.0', method: 'tools/call', id: 77,
@@ -83,4 +85,16 @@ test('search and decision reject oversized tasks without spawning Python', () =>
     assert.equal(result.id, 77);
     assert.equal(result.result.isError, true);
   }
+});
+
+test('agyos_pipeline returns valid plan from MCP invocation', () => {
+  const result = rpc({
+    jsonrpc: '2.0', method: 'tools/call', id: 88,
+    params: { name: 'agyos_pipeline', arguments: { prompt: 'optimize postgres database queries', action: 'plan' } },
+  })[0];
+  assert.equal(result.id, 88);
+  assert.equal(result.result.isError, undefined);
+  const parsed = JSON.parse(result.result.content[0].text);
+  assert.equal(parsed.pod, 'pod-build');
+  assert.ok(parsed.skill.name.includes('postgres') || parsed.skill.name.includes('database'));
 });

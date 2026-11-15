@@ -137,6 +137,33 @@ const TOOLS = [
       },
       required: ["action", "tier"]
     }
+  },
+  {
+    name: "agyos_pipeline",
+    description: "Execute the AGYOS end-to-end autonomous pipeline: plan, initialize milestone gates, verify statically, or run full lifecycle without manual commands.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        prompt: {
+          type: "string",
+          description: "Incoming task, engineering requirement, or work objective."
+        },
+        action: {
+          type: "string",
+          enum: ["plan", "init", "verify", "deliver", "full"],
+          description: "Lifecycle action to perform (default: plan)"
+        },
+        auto_push: {
+          type: "boolean",
+          description: "Automatically push committed changes to origin main upon delivery"
+        },
+        watch_ci: {
+          type: "boolean",
+          description: "Track the triggered GitHub Actions CI run"
+        }
+      },
+      required: ["prompt"]
+    }
   }
 ];
 
@@ -354,6 +381,33 @@ function handleToolCall(name, args) {
   }
   if (name === "agyos_sys_info") {
     return { content: [{ type: "text", text: JSON.stringify(getSysInfo(), null, 2) }] };
+  }
+  if (name === "agyos_pipeline") {
+    const prompt = (args && args.prompt) || "";
+    if (typeof prompt !== "string" || !prompt.trim() || prompt.length > 3000) {
+      return { isError: true, content: [{ type: "text", text: "Invalid or oversized prompt input" }] };
+    }
+    const action = (args && args.action) || "plan";
+    const allowedActions = ["plan", "init", "verify", "deliver", "full"];
+    if (!allowedActions.includes(action)) {
+      return { isError: true, content: [{ type: "text", text: `Invalid action: ${action}` }] };
+    }
+    try {
+      const { execFileSync } = require("child_process");
+      const scriptPath = path.join(PROJECT_ROOT, "scripts", "agyos_e2e.py");
+      const argv = [scriptPath, prompt, "--action", action, "--json"];
+      if (args && args.auto_push === true) argv.push("--auto-push");
+      if (args && args.watch_ci === true) argv.push("--watch-ci");
+      const stdout = execFileSync("python3", argv, {
+        cwd: PROJECT_ROOT,
+        encoding: "utf8",
+        maxBuffer: 4 * 1024 * 1024,
+        timeout: 30000
+      });
+      return { content: [{ type: "text", text: stdout.trim() }] };
+    } catch (err) {
+      return { isError: true, content: [{ type: "text", text: JSON.stringify({ error: String(err) }) }] };
+    }
   }
   if (name === "agyos_memory") {
     return handleMemoryOperation(args);

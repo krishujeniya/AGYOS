@@ -1,6 +1,6 @@
 {
   "project": "AGYOS",
-  "current_gate": "VERIFY",
+  "current_gate": "IDLE",
   "current_milestone": "M1-prompt-principles",
   "iteration": 6,
   "iteration_cap": 10,

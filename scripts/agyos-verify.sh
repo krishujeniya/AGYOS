@@ -69,6 +69,8 @@ check "bin/agyos find skill search CLI" bash -c 'bin/agyos find "postgres" | gre
 check "bin/agyos decide CLI decision engine" bash -c 'bin/agyos decide "fix memory leak in postgres connection" | grep -q "postgres-best-practices"'
 check "bin/agyos sysinfo CLI command" bash -c 'bin/agyos sysinfo | grep -q "Hierarchical Cognitive OS"'
 check "bin/agyos mem virtual memory CLI" bash -c 'bin/agyos mem tier0 | grep -q "user_preferences"'
+check "AGYOS MCP server tools/call (agyos_pipeline)" bash -c 'echo "{\"jsonrpc\":\"2.0\",\"id\":9,\"method\":\"tools/call\",\"params\":{\"name\":\"agyos_pipeline\",\"arguments\":{\"prompt\":\"optimize postgres query\",\"action\":\"plan\"}}}" | node mcp/state-server.cjs | grep -q "pod-build"'
+check "bin/agyos e2e CLI command" bash -c 'bin/agyos e2e "optimize postgres query" --json | grep -q "pod-build"'
 
 # 7. Check Agent Council Bun Test Suite
 check "Agent Council Bun test suite (59 passing tests)" bash -c 'cd scripts/council && bun test'
