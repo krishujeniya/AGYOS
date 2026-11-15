@@ -1,7 +1,7 @@
 {
   "version": "3.1.0",
-  "total_skills": 2232,
-  "tier1_count": 401,
+  "total_skills": 2233,
+  "tier1_count": 402,
   "tier2_count": 1831,
   "skills": [
     {
@@ -9111,6 +9111,12 @@
       "tier": 2,
       "description": "Design and implement production-grade Pakistani payment integrations (JazzCash, Easypaisa, bank/PSP rails, optional Raast) for SaaS with PKR billing, webhook reliability, and reconciliation.",
       "path": ".agents/skills/pakistan-payments-stack"
+    },
+    {
+      "name": "paper-orchestra",
+      "tier": 1,
+      "description": "Automated AI research paper drafting and publication-ready LaTeX manuscript generation using Google Cloud AI Research's PaperOrchestra multi-agent architecture and PaperWritingBench methodology.",
+      "path": ".agents/skills/paper-orchestra"
     },
     {
       "name": "parallel-agents",

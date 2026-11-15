@@ -25806,6 +25806,23 @@
     "description": "Design and implement production-grade Pakistani payment integrations (JazzCash, Easypaisa, bank/PSP rails, optional Raast) for SaaS with PKR billing, webhook reliability, and reconciliation."
   },
   {
+    "id": "paper-orchestra",
+    "name": "Paper Orchestra",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill paper-orchestra",
+    "path": ".agents/skills/paper-orchestra",
+    "risk": "assess_for_task",
+    "description": "Automated AI research paper drafting and publication-ready LaTeX manuscript generation using Google Cloud AI Research's PaperOrchestra multi-agent architecture and PaperWritingBench methodology."
+  },
+  {
     "id": "parallel-agents",
     "name": "Parallel Agents",
     "module": "Domain & Research Extensions",
