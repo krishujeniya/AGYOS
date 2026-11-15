@@ -9,6 +9,7 @@ contain duplicate tool implementations.
 | [`ai-video-editor/`](ai-video-editor/README.md) | Local editing of an existing talking-head recording, with transcription, reviewed cuts, and optional motion graphics. | [ai-video-editor](../../.agents/skills/ai-video-editor/SKILL.md) |
 | [`faceless-shorts/`](faceless-shorts/README.md) | Local code-rendered narrated vertical shorts with word-timed captions and animated scenes. | [faceless-shorts-engine](../../.agents/skills/faceless-shorts-engine/SKILL.md) |
 | `3b1b-manim` | Mathematical animation engine (3b1b/manim, manimlib) for geometry, calculus, and technical video explainers. | [3b1b-manim](../../.agents/skills/3b1b-manim/SKILL.md) |
+| `vertical-video-psychology` | Empirical psychology, 116 research principles, safe-zone framing, cognitive pacing, and audit prompts for vertical video. | [vertical-video-psychology](../../.agents/skills/vertical-video-psychology/SKILL.md) |
 
 Use each toolkit's own README and setup scripts as the source of truth for dependencies and
 commands. Setup may download model weights; the runbooks require approval before doing so.

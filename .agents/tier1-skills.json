@@ -2311,6 +2311,12 @@
       "path": ".agents/skills/verification-loop"
     },
     {
+      "name": "vertical-video-psychology",
+      "tier": 1,
+      "description": "Master engineering and editing reference for vertical short-form video (Reels, Shorts, TikTok, clips) codifying 116 empirical psychology principles across openings, framing, audio, cuts, cognitive load, trust, and measurement.",
+      "path": ".agents/skills/vertical-video-psychology"
+    },
+    {
       "name": "vibe-to-production",
       "tier": 1,
       "description": "Transform high-level vibe coding prompts and non-technical ideas into production-grade, FAANG-level software with automated PRD synthesis, TDD, threat modeling, and design engineering.",

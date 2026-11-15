@@ -34,7 +34,7 @@ TIER1_EXACT = {
     "shadcn", "tailwind-patterns", "nextjs-best-practices", "bun-runtime", "uv-package-manager",
     "playwright-skill", "sast-configuration", "threat-modeling-expert", "cinematic-web-design",
     "faceless-shorts-engine", "modern-web-guidance", "chrome-extensions", "turn-ideas-into-reality",
-    "3b1b-manim"
+    "3b1b-manim", "vertical-video-psychology"
 }
 
 def extract_frontmatter(skill_md: Path):

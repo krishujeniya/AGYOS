@@ -295,7 +295,7 @@ DOMAIN_TAXONOMY: Dict[str, Dict[str, Any]] = {
             "cinematic", "watermark", "delogo", "de-ai"
         ],
         "primary": "video-editing-principles",
-        "alternatives": ["faceless-shorts-engine", "organic-film-de-ai", "ai-video-quality-enhancement", "ffmpeg-video-editor", "youtube-long-form-production", "google-flow"],
+        "alternatives": ["vertical-video-psychology", "faceless-shorts-engine", "organic-film-de-ai", "ai-video-quality-enhancement", "ffmpeg-video-editor", "youtube-long-form-production", "google-flow"],
     },
     "faceless_shorts": {
         "keywords": [
@@ -305,7 +305,17 @@ DOMAIN_TAXONOMY: Dict[str, Dict[str, Any]] = {
             "animated shorts", "viral shorts"
         ],
         "primary": "faceless-shorts-engine",
-        "alternatives": ["youtube-shorts", "short-form-video-script", "organic-film-de-ai", "remotion-video-creation", "ffmpeg-video-editor"],
+        "alternatives": ["vertical-video-psychology", "youtube-shorts", "short-form-video-script", "organic-film-de-ai", "remotion-video-creation", "ffmpeg-video-editor"],
+    },
+    "vertical_video_psychology": {
+        "keywords": [
+            "vertical video", "vertical video psychology", "short form video psychology",
+            "video psychology", "reels psychology", "shorts psychology", "tiktok psychology",
+            "vertical editing", "safe zone", "retention editing", "hook psychology",
+            "116 principles", "vertical frame"
+        ],
+        "primary": "vertical-video-psychology",
+        "alternatives": ["short-form-video-script", "video-editing-principles", "faceless-shorts-engine", "youtube-shorts"],
     },
     "manim": {
         "keywords": [

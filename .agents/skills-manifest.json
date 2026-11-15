@@ -1,7 +1,7 @@
 {
   "version": "3.1.0",
-  "total_skills": 2236,
-  "tier1_count": 404,
+  "total_skills": 2237,
+  "tier1_count": 405,
   "tier2_count": 1832,
   "skills": [
     {
@@ -12561,6 +12561,12 @@
       "tier": 1,
       "description": "Run a six-phase verification of a Claude Code session's work \u2014 build, type check, lint, tests with coverage, security grep, and diff review \u2014 then produce a PASS/FAIL verification report. Use when verifying work after completing a feature or refactor, before creating a PR, or when quality gates must pass.",
       "path": ".agents/skills/verification-loop"
+    },
+    {
+      "name": "vertical-video-psychology",
+      "tier": 1,
+      "description": "Master engineering and editing reference for vertical short-form video (Reels, Shorts, TikTok, clips) codifying 116 empirical psychology principles across openings, framing, audio, cuts, cognitive load, trust, and measurement.",
+      "path": ".agents/skills/vertical-video-psychology"
     },
     {
       "name": "vexor-cli",

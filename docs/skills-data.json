@@ -35581,6 +35581,23 @@
     "description": "Run a six-phase verification of a Claude Code session's work , build, type check, lint, tests with coverage, security grep, and diff review , then produce a PASS/FAIL verification report. Use when verifying work after completing a feature or refactor, before creating a PR, or when quality gates must pass."
   },
   {
+    "id": "vertical-video-psychology",
+    "name": "Vertical Video Psychology",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill vertical-video-psychology",
+    "path": ".agents/skills/vertical-video-psychology",
+    "risk": "assess_for_task",
+    "description": "Master engineering and editing reference for vertical short-form video (Reels, Shorts, TikTok, clips) codifying 116 empirical psychology principles across openings, framing, audio, cuts, cognitive load, trust, and measurement."
+  },
+  {
     "id": "vexor-cli",
     "name": "Vexor Cli",
     "module": "Domain & Research Extensions",
