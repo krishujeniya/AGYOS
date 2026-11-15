@@ -100,3 +100,13 @@ jobs:
           echo "CHROME=$browser_path" >> "$GITHUB_ENV"
       - name: Run all style smoke renders with estimated narration timing
         run: bash tools/video/faceless-shorts/scripts/selftest.sh --no-voice
+      - name: Upload rendered small videos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rendered-shorts-videos
+          path: |
+            /home/runner/faceless-shorts/_selftest/*/renders/*.mp4
+            /home/runner/faceless-shorts/_selftest/*/review/*.jpg
+            /home/runner/faceless-shorts/_selftest/selftest.log
+          retention-days: 7
