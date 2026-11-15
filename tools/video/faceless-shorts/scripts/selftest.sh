@@ -2,14 +2,25 @@
 # Proves the pipeline on this computer (~2-4 min): voice + Whisper on a 2-line script, then every style's example:
 # voice -> words -> check -> cues -> mix -> contact sheet -> a 4 s clip with sound. Prints SELFTEST PASSED.
 #   bash selftest.sh              all styles
-#   bash selftest.sh --no-voice   skip Kokoro/Whisper (estimated timing), e.g. before setup.sh has finished
+#   bash selftest.sh --no-voice   skip Kokoro/Whisper (estimated timing)
+#   bash selftest.sh [style]      run a single style (e.g. deep-dive)
 set -u
 SKILL="$(cd "$(dirname "$0")/.." && pwd)"; PY="$SKILL/scripts/py"
 T="$HOME/faceless-shorts/_selftest"; rm -rf "$T"; mkdir -p "$T"; LOG="$T/selftest.log"; : > "$LOG"
-VOICE=1; [ "${1:-}" = "--no-voice" ] && VOICE=0
+VOICE=1; STYLE_FILTER=""
+for arg in "$@"; do
+  case "$arg" in
+    --no-voice) VOICE=0 ;;
+    *) [ -z "$STYLE_FILTER" ] && STYLE_FILTER="$arg" ;;
+  esac
+done
 fail=0; note() { printf '%-22s %s\n' "$1" "$2"; }
 for d in "$SKILL"/styles/*/; do
-  s=$(basename "$d"); P="$T/$s"; t1=$(date +%s)
+  s=$(basename "$d")
+  if [ -n "$STYLE_FILTER" ] && [ "$STYLE_FILTER" != "all" ] && [ "$s" != "$STYLE_FILTER" ]; then
+    continue
+  fi
+  P="$T/$s"; t1=$(date +%s)
   bash "$SKILL/scripts/new_video.sh" "$s" "$s" --dir "$T" >> "$LOG" 2>&1 || { note "$s" "FAILED to create (see $LOG)"; fail=1; continue; }
   (
     cd "$P" || exit 1; echo "== $s"
