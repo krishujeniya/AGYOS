@@ -99,7 +99,7 @@ jobs:
           browser_path="$(python -c 'from playwright.sync_api import sync_playwright; p = sync_playwright().start(); print(p.chromium.executable_path); p.stop()')"
           echo "CHROME=$browser_path" >> "$GITHUB_ENV"
       - name: Run style smoke render with estimated narration timing
-        run: bash tools/video/faceless-shorts/scripts/selftest.sh --no-voice deep-dive
+        run: bash tools/video/faceless-shorts/scripts/selftest.sh --no-voice stick-story
       - name: Upload rendered small videos
         if: always()
         uses: actions/upload-artifact@v4
