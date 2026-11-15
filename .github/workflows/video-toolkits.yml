@@ -6,6 +6,10 @@ on:
     paths:
       - '.agents/skills/ai-video-editor/**'
       - '.agents/skills/faceless-shorts-engine/**'
+      - '.agents/skills/3b1b-manim/**'
+      - '.agents/skills/vertical-video-psychology/**'
+      - 'scripts/video_pipeline.py'
+      - 'scripts/tests/test_video_pipeline.py'
       - 'tools/video/**'
       - '.github/workflows/video-toolkits.yml'
   pull_request:
@@ -13,6 +17,10 @@ on:
     paths:
       - '.agents/skills/ai-video-editor/**'
       - '.agents/skills/faceless-shorts-engine/**'
+      - '.agents/skills/3b1b-manim/**'
+      - '.agents/skills/vertical-video-psychology/**'
+      - 'scripts/video_pipeline.py'
+      - 'scripts/tests/test_video_pipeline.py'
       - 'tools/video/**'
       - '.github/workflows/video-toolkits.yml'
   workflow_dispatch:
@@ -46,6 +54,11 @@ jobs:
           test -f tools/video/faceless-shorts/scripts/new_video.sh
           test -f tools/video/faceless-shorts/scripts/voice.py
           test -f tools/video/faceless-shorts/scripts/words.py
+          test -f tools/video/manim-shorts/templates/vertical_scene.py
+          test -f scripts/video_pipeline.py
+          test -f scripts/tests/test_video_pipeline.py
+      - name: Run video pipeline regression tests
+        run: python -m unittest scripts/tests/test_video_pipeline.py -v
       - name: Check Python and shell syntax
         run: |
           python - <<'PY'
