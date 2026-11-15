@@ -125,9 +125,42 @@ def deny(reason: str) -> None:
     print(json.dumps({"decision": "deny", "reason": reason}))
 
 
+def auto_activate_demand(tool_name: str, tool_args: dict) -> None:
+    try:
+        sys_path = str(ROOT_DIR)
+        if sys_path not in sys.path:
+            sys.path.insert(0, sys_path)
+        from scripts.agy_ondemand import enable_mcp_server, activate_target
+
+        if tool_name == "call_mcp_tool":
+            server = tool_args.get("ServerName")
+            if isinstance(server, str) and server:
+                enable_mcp_server(server)
+        elif tool_name.startswith("mcp_"):
+            activate_target(tool_name)
+        elif tool_name in ("invoke_subagent", "call_subagent"):
+            role = tool_args.get("Role") or tool_args.get("TypeName")
+            if isinstance(role, str) and role:
+                activate_target(role)
+    except Exception:
+        pass
+
+
 def main(event: str) -> None:
+    if event == "Stop":
+        try:
+            sys_path = str(ROOT_DIR)
+            if sys_path not in sys.path:
+                sys.path.insert(0, sys_path)
+            from scripts.agy_ondemand import startup_guard
+            startup_guard()
+        except Exception:
+            pass
+        print(json.dumps({"decision": "allow"}))
+        return
+
     if event != "PreToolUse":
-        print(json.dumps({"decision": "allow"} if event == "Stop" else {}))
+        print(json.dumps({}))
         return
 
     raw_input = sys.stdin.read(MAX_HOOK_INPUT + 1)
@@ -147,6 +180,7 @@ def main(event: str) -> None:
         return
 
     tool_name, tool_args = extract_tool_info(data)
+    auto_activate_demand(tool_name, tool_args)
     contract = data.get("taskContract")
     if isinstance(contract, dict):
         allowlist = contract.get("capability_allowlist")

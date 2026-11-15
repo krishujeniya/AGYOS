@@ -32,6 +32,8 @@ Commands:
   e2e <task>  Execute autonomous end-to-end lifecycle without manual commands
   obscura|browser  Control Obscura headless browser engine (MCP, CDP, fetch, scrape)
   video       Automate vertical video scripting, psychology audit, and Manim 9:16
+  ondemand    Manage on-demand MCP servers and plugins (startup, status, activate, reset)
+  use <name>  Activate an MCP server or plugin on-demand
   help        Show this help message
 EOF
 }
@@ -249,6 +251,12 @@ print(json.dumps(output, indent=2))
     ;;
   video)
     exec python3 scripts/video_pipeline.py "$@"
+    ;;
+  ondemand)
+    exec python3 scripts/agy_ondemand.py "$@"
+    ;;
+  use)
+    exec python3 scripts/agy_ondemand.py activate "$@"
     ;;
   help|--help|-h)
     usage

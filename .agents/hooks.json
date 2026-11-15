@@ -47,6 +47,11 @@
     "Stop": [
       {
         "type": "command",
+        "command": "python3 scripts/hooks/authorizer.py Stop",
+        "timeout": 15
+      },
+      {
+        "type": "command",
         "command": "python3 scripts/hooks/agy_os_hook.py Stop",
         "timeout": 15
       }

@@ -4,14 +4,16 @@
       "command": "node",
       "args": [
         "./mcp/agyos-state-server.cjs"
-      ]
+      ],
+      "disabled": true
     },
     "azure-mcp": {
       "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/azure-mcp.sh",
       "env": {
         "AZURE_SUBSCRIPTION_ID": "60da109a-8501-4d1d-8c58-12f62c231164",
         "AZURE_CONFIG_DIR": "/home/ai/.azure"
-      }
+      },
+      "disabled": true
     },
     "aws-api-mcp": {
       "command": "uvx",
@@ -23,7 +25,8 @@
         "AWS_REGION": "us-east-1",
         "AWS_SHARED_CREDENTIALS_FILE": "/home/ai/.aws/credentials",
         "AWS_CONFIG_FILE": "/home/ai/.aws/config"
-      }
+      },
+      "disabled": true
     },
     "aws-docs-mcp": {
       "command": "uvx",
@@ -33,7 +36,8 @@
       "env": {
         "AWS_DEFAULT_REGION": "us-east-1",
         "AWS_REGION": "us-east-1"
-      }
+      },
+      "disabled": true
     },
     "aws-iac-mcp": {
       "command": "uvx",
@@ -43,7 +47,8 @@
       "env": {
         "AWS_DEFAULT_REGION": "us-east-1",
         "AWS_REGION": "us-east-1"
-      }
+      },
+      "disabled": true
     },
     "ibm-docling-mcp": {
       "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/ibm-mcp.sh",
@@ -53,7 +58,8 @@
       "env": {
         "IBMCLOUD_REGION": "in-mum",
         "IBMCLOUD_ACCOUNT_ID": "9b8df9c9897a405b95d55653bb400ace"
-      }
+      },
+      "disabled": true
     },
     "ibm-watsonxdata-mcp": {
       "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/ibm-mcp.sh",
@@ -63,7 +69,8 @@
       "env": {
         "IBMCLOUD_REGION": "in-mum",
         "IBMCLOUD_ACCOUNT_ID": "9b8df9c9897a405b95d55653bb400ace"
-      }
+      },
+      "disabled": true
     },
     "ibm-carbon-mcp": {
       "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/ibm-mcp.sh",
@@ -73,19 +80,23 @@
       "env": {
         "IBMCLOUD_REGION": "in-mum",
         "IBMCLOUD_ACCOUNT_ID": "9b8df9c9897a405b95d55653bb400ace"
-      }
+      },
+      "disabled": true
     },
     "kaggle": {
       "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/kaggle-mcp.sh",
-      "args": []
+      "args": [],
+      "disabled": true
     },
     "mongodb": {
       "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/mongodb-mcp.sh",
-      "args": []
+      "args": [],
+      "disabled": true
     },
     "google-flow": {
       "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/google-flow-mcp.sh",
-      "args": []
+      "args": [],
+      "disabled": true
     },
     "firebase-mcp-server": {
       "command": "npx",
@@ -93,15 +104,18 @@
         "-y",
         "firebase-tools@latest",
         "mcp"
-      ]
+      ],
+      "disabled": true
     },
     "docker-hub": {
       "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/docker-hub-mcp.sh",
-      "args": []
+      "args": [],
+      "disabled": true
     },
     "obscura": {
       "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/obscura-mcp.sh",
-      "args": []
+      "args": [],
+      "disabled": true
     }
   }
 }
