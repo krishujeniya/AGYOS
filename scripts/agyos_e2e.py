@@ -305,12 +305,21 @@ def verify_milestone(
 def check_git_invariants(root_dir: Path) -> Tuple[bool, str]:
     """Verify single main branch and Krish Ujeniya git identity lock."""
     branch_res = subprocess.run(
-        ["git", "rev-parse", "--abbrev-ref", "HEAD"],
+        ["git", "branch", "--show-current"],
         cwd=root_dir,
         capture_output=True,
         text=True,
     )
     branch = branch_res.stdout.strip()
+    if not branch:
+        rev_res = subprocess.run(
+            ["git", "rev-parse", "--abbrev-ref", "HEAD"],
+            cwd=root_dir,
+            capture_output=True,
+            text=True,
+        )
+        branch = rev_res.stdout.strip()
+
     if branch != "main":
         return False, f"Branch invariant violation: active branch is '{branch}', must be 'main'"
 
