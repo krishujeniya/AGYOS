@@ -121,8 +121,28 @@ class EndToEndPipelineTests(unittest.TestCase):
             self.assertIn("M9-fix-typo", current_file.read_text())
 
     def test_git_invariants_verification(self):
-        ok, reason = check_git_invariants(ROOT)
-        self.assertTrue(ok, reason)
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            tmp_root = Path(tmp_dir)
+            import subprocess
+            subprocess.run(["git", "init", "-b", "main"], cwd=tmp_root, capture_output=True, check=True)
+            subprocess.run(["git", "config", "user.name", "Krish Ujeniya"], cwd=tmp_root, check=True)
+            subprocess.run(["git", "config", "user.email", "100012208+krishujeniya@users.noreply.github.com"], cwd=tmp_root, check=True)
+
+            ok, reason = check_git_invariants(tmp_root)
+            self.assertTrue(ok, reason)
+
+            # Test invariant rejection on divergent feature branch
+            subprocess.run(["git", "checkout", "-b", "feature/divergent"], cwd=tmp_root, capture_output=True, check=True)
+            bad_branch_ok, bad_branch_reason = check_git_invariants(tmp_root)
+            self.assertFalse(bad_branch_ok)
+            self.assertIn("branch invariant violation", bad_branch_reason.lower())
+
+            # Return to main and test invariant rejection on unverified identity
+            subprocess.run(["git", "checkout", "main"], cwd=tmp_root, capture_output=True, check=True)
+            subprocess.run(["git", "config", "user.name", "Unauthorized Committer"], cwd=tmp_root, check=True)
+            bad_name_ok, bad_name_reason = check_git_invariants(tmp_root)
+            self.assertFalse(bad_name_ok)
+            self.assertIn("identity invariant violation", bad_name_reason.lower())
 
 
 if __name__ == "__main__":
