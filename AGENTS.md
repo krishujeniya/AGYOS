@@ -158,6 +158,11 @@ Never narrate skill selection to the user (e.g. do NOT say "I will now use the X
   - Enforce design consistency: always use `find_related_assets` to source siblings from the same icon pack. Never mix outline and solid styles in the same view.
 - **Camber Scientific Cloud & Agent Workflows** ("Run Camber agent", "Execute on Camber compute", "List Camber teams"):
   - Autonomously invoke `camber-cloud` and `camber-mcp` tools (`agents_chat`, `teams_select`, `agents_list`). Use the local `camber` CLI for stash file synchronizations and compute pod inspections.
+- **Modern Web Standards & Best Practices (TOP PRIORITY)** ("Modern web best practices", "Modern web guidance", "Native popover", "Native dialog", "Anchor positioning", "Container queries", "View transitions", "Legacy web scan", "googlechrome/modern-web-guidance"):
+  - Autonomously trigger `modern-web-guidance` as TOP PRIORITY for all HTML/CSS, UI layout, and client-side web platform features.
+  - Query guidelines using `modern-web-guidance search "<query>"` and `modern-web-guidance retrieve "<id>"`. Verify implementations against modern baseline web standards, replacing bloated JavaScript workarounds with native browser capabilities.
+- **Chrome Extensions & Manifest V3 Architecture** ("Build Chrome extension", "Browser extension", "Manifest V3", "content script", "Chrome Web Store"):
+  - Autonomously trigger `chrome-extensions` to enforce Manifest V3 rules, background worker isolation, declarativeNetRequest patterns, side panels, and Chrome Web Store review compliance.
 - **Container Registries, Docker Hub & Image Discovery** ("Search Docker Hub", "Check container image tags", "Inspect Docker repository", "Docker Hardened Images", "hub-mcp"):
   - Autonomously invoke `docker-hub-mcp` tools (`search`, `checkRepository`, `checkRepositoryTag`, `listRepositoryTags`, `getRepositoryInfo`, `dockerHardenedImages`).
   - Verify image existence, multi-architecture tags, and publisher status before drafting Dockerfiles or deployment manifests.

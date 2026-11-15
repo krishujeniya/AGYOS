@@ -91,10 +91,11 @@ def classify_skill(sid: str, name: str, desc: str):
     if sid_lower.startswith("council-") or sid_lower in ("council", "council"):
         return "Agent Council", "Deliberation"
     if (
-        sid_lower.startswith(("emil-", "animate", "apple-design", "motion-", "swiftui-", "tailwind-", "threejs-", "ui-", "shadcn", "radix-"))
-        or sid_lower in ("break-ui", "scrollheart", "bang-motion", "design-spells", "design-taste-frontend", "ask-sonner", "find-animation", "improve-animation", "remove-animation", "review-animation")
+        sid_lower.startswith(("emil-", "animate", "apple-design", "motion-", "swiftui-", "tailwind-", "threejs-", "ui-", "shadcn", "radix-", "chrome-extension"))
+        or sid_lower in ("break-ui", "scrollheart", "bang-motion", "design-spells", "design-taste-frontend", "ask-sonner", "find-animation", "improve-animation", "remove-animation", "review-animation", "modern-web-guidance", "chrome-extensions")
         or "emil kowalski" in desc_lower
         or "animation" in desc_lower
+        or "modern web" in desc_lower
     ):
         return "UI/UX & Motion", "Frontend & Motion"
     if sid_lower.startswith(("seo", "geo-")) or "seo" in sid_lower:

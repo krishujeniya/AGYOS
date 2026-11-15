@@ -45,8 +45,27 @@ DOMAIN_TAXONOMY: Dict[str, Dict[str, Any]] = {
             "shadcn", "component", "styling", "responsive", "design", "modal",
             "button", "navbar", "dropdown", "theme", "dark mode", "accessibility", "a11y"
         ],
-        "primary": "frontend-design-direction",
-        "alternatives": ["cinematic-web-design", "apple-design", "break-ui", "design-spells", "tailwind-patterns", "shadcn-ui-components"],
+        "primary": "modern-web-guidance",
+        "alternatives": ["frontend-design-direction", "cinematic-web-design", "apple-design", "break-ui", "design-spells", "tailwind-patterns", "shadcn-ui-components"],
+    },
+    "modern_web": {
+        "keywords": [
+            "modern web", "modern web guidance", "googlechrome/modern-web-guidance",
+            "web guidance", "native dialog", "native popover", "anchor positioning",
+            "container queries", "view transitions", "scroll-driven animation",
+            "content-visibility", "subgrid", "modern css", "baseline web", "html semantics"
+        ],
+        "primary": "modern-web-guidance",
+        "alternatives": ["frontend-design-direction", "cinematic-web-design", "chrome-extensions", "tailwind-patterns"],
+    },
+    "chrome_extension": {
+        "keywords": [
+            "chrome extension", "chrome extensions", "browser extension", "manifest v3",
+            "manifest.json", "content script", "chrome.*", "side panel", "extension popup",
+            "chrome web store", "declarative net request", "declarativenetrequest"
+        ],
+        "primary": "chrome-extensions",
+        "alternatives": ["chrome-extension-developer", "modern-web-guidance", "browser-extension-builder"],
     },
     "cinematic_web": {
         "keywords": [
@@ -381,6 +400,11 @@ LANGUAGE_FRAMEWORK_MAP = {
     "dockerhub": "docker-hub-mcp",
     "hub-mcp": "docker-hub-mcp",
     "docker-hub-mcp": "docker-hub-mcp",
+    "modern-web": "modern-web-guidance",
+    "modern-web-guidance": "modern-web-guidance",
+    "modern web guidance": "modern-web-guidance",
+    "chrome-extensions": "chrome-extensions",
+    "chrome extensions": "chrome-extensions",
 }
 
 
