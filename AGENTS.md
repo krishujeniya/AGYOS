@@ -8,6 +8,9 @@
     `git config user.email "100012208+krishujeniya@users.noreply.github.com"`
   - Commits must properly link to `https://github.com/krishujeniya` to display the verified account profile picture and attribution badge.
 - **Auto-Deploy to GitHub**: Once a task or code change is complete and verified statically, automatically commit and push directly to `origin main` using the active authenticated `krishujeniya` GitHub account.
+## STRICT BROWSER INVARIANT: OBSCURA HEADLESS ONLY (ZERO CHROME / ZERO GUI BROWSERS)
+- **Obscura Headless Exclusively**: All browser automation, scraping, web navigation, and testing MUST run strictly through the Obscura headless browser engine (`h4ckf0r0day/obscura`, `bin/obscura`, `mcp/obscura-mcp.sh`).
+- **Zero Chrome / GUI Launch**: NEVER launch, spawn, or open Google Chrome, Chromium, or any graphical browser window. All browser operations must remain strictly headless.
 ## STRICT GLOBAL INVARIANT: ZERO LOCAL BUILDS/TESTS (CI/CD ONLY VIA GITHUB ACTIONS)
 - **Zero Local Execution for Heavy Verification**: NEVER run unit/integration/E2E test suites, compiler builds, linters, type checks, packaging, dependency installation, or media renders locally.
 - **GitHub Actions Mandatory**: All testing, building, linting, and validation MUST run strictly in GitHub Actions CI/CD workflows. Trigger the workflow, push to branch, or dispatch via GitHub CLI (`gh workflow run`), then inspect the run results (`gh run watch` / `gh run view`).

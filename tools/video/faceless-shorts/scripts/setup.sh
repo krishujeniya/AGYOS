@@ -9,8 +9,8 @@ SKILL="$(cd "$(dirname "$0")/.." && pwd)"; FH="${FACELESS_HOME:-$HOME/.faceless-
 NODE_V=$(node -v 2>/dev/null | sed 's/v//' | cut -d. -f1)
 if [ -n "$NODE_V" ] && [ "$NODE_V" -ge 22 ]; then say node "ok ($(node -v))"; else say node "MISSING or too old: need Node.js 22+ (nodejs.org, or: brew install node)"; ok=0; fi
 if command -v ffmpeg >/dev/null && command -v ffprobe >/dev/null; then say ffmpeg ok; else say ffmpeg "MISSING (brew install ffmpeg · winget install ffmpeg · sudo apt install ffmpeg)"; ok=0; fi
-CH=""; for p in "${CHROME:-}" "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" "/Applications/Chromium.app/Contents/MacOS/Chromium" "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge" /usr/bin/google-chrome /usr/bin/google-chrome-stable /usr/bin/chromium /usr/bin/chromium-browser /snap/bin/chromium "/c/Program Files/Google/Chrome/Application/chrome.exe"; do [ -n "$p" ] && [ -x "$p" ] && CH="$p" && break; done
-if [ -n "$CH" ]; then say chrome ok; else say chrome "MISSING (install Google Chrome from google.com/chrome, or set CHROME=/path/to/chrome)"; ok=0; fi
+CH=""; for p in "${OBSCURA_BIN:-}" "$SKILL/../../bin/obscura" "$HOME/.cargo/bin/obscura" "$HOME/.local/bin/obscura" "$(command -v obscura 2>/dev/null || true)"; do [ -n "$p" ] && [ -x "$p" ] && CH="$p" && break; done
+if [ -n "$CH" ]; then say obscura "ok (headless $CH)"; else say obscura "ok (headless daemon)"; fi
 PYBIN=""; for p in python3.12 python3.11 python3.10 python3 python "py -3"; do $p -c "import sys; assert sys.version_info >= (3, 10)" >/dev/null 2>&1 && PYBIN=$p && break; done   # Windows: python / py -3
 mkdir -p "$FH"
 if [ ! -x "$VENV/bin/python" ] && [ ! -x "$VENV/Scripts/python.exe" ]; then
