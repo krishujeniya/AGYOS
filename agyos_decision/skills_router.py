@@ -88,10 +88,18 @@ DOMAIN_TAXONOMY: Dict[str, Dict[str, Any]] = {
         "keywords": [
             "security", "audit", "vulnerability", "cve", "auth", "token", "jwt",
             "secret", "key", "owasp", "xss", "csrf", "sqli", "injection", "sast",
-            "pentest", "permission", "rbac", "threat", "sandbox", "pentagi"
+            "permission", "rbac", "threat", "sandbox", "pentagi"
         ],
         "primary": "security-review",
-        "alternatives": ["pentagi-orchestrator", "cve-vulnerability-intelligence", "sast-scan", "threat-modeling-expert"],
+        "alternatives": ["penetration-testing-with-strix", "pentagi-orchestrator", "cve-vulnerability-intelligence", "sast-scan", "threat-modeling-expert"],
+    },
+    "pentest": {
+        "keywords": [
+            "pentest", "penetration test", "penetration testing", "strix",
+            "exploit", "owasp top 10", "appsec", "vulnerability scan", "find vulnerabilities"
+        ],
+        "primary": "penetration-testing-with-strix",
+        "alternatives": ["web-app-penetration-testing", "owasp-top-10-testing", "application-security-testing", "find-security-vulnerabilities-in-code", "managed-pentesting-with-strix"],
     },
     "verification": {
         "keywords": [

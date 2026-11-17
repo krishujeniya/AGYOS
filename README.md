@@ -83,6 +83,7 @@ The repository instructions require human approval at defined gate boundaries. C
 | `mcp/` | Local stdio MCP state server and optional service launchers. |
 | `integrations/` | Optional adapters; external services may require separate installation, credentials, and authorization. |
 | `tools/video/` | Bundled video-editing and faceless-shorts toolkits with their own setup and license notes. |
+| `tools/security/` | Bundled autonomous security testing and penetration testing toolkits (Strix) with sandbox specifications and verified finding workflows. |
 | `docs/`, `.github/workflows/` | Project references, generated documentation, and CI workflows. |
 
 ### Five operating pods
@@ -149,6 +150,7 @@ When catalog source changes, review and sync the generated artifact from the mat
 | Upstream skill sources and notices | [`docs/references/upstream-skills/README.md`](docs/references/upstream-skills/README.md) |
 | Supplied industry PDFs and provenance | [`docs/references/industry/README.md`](docs/references/industry/README.md) |
 | Video toolkits and prompt provenance | [`tools/video/README.md`](tools/video/README.md), [`docs/references/video/README.md`](docs/references/video/README.md) |
+| Security toolkits and penetration testing | [`tools/security/README.md`](tools/security/README.md), [`tools/security/strix/README.md`](tools/security/strix/README.md) |
 | Research, decisions, and optimization records | [`docs/research/`](docs/research/), [`docs/adr/`](docs/adr/), [`docs/OPTIMIZATION_RESULTS.md`](docs/OPTIMIZATION_RESULTS.md) |
 | MCP server entry points | [`mcp/README.md`](mcp/README.md) |
 | Current task handoff and verification status | [`AI_HANDOFF.md`](AI_HANDOFF.md) |

@@ -2618,6 +2618,23 @@
     "description": "Apple's approach to interface design and fluid, physical motion, translated for the web. Use when building or reviewing gesture-driven UI, spring animations, drag/swipe/sheet interactions, momentum and interruptible transitions, translucent materials and depth, typography (optical sizing, tracking, leading), reduced-motion, or the design foundations (feedback, spatial consistency, restraint) behind Apple-style interfaces."
   },
   {
+    "id": "application-security-testing",
+    "name": "Application Security Testing",
+    "module": "Security & Defense",
+    "category": "Security",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill application-security-testing",
+    "path": ".agents/skills/application-security-testing",
+    "risk": "assess_for_task",
+    "description": "Application security testing (AppSec) across a whole product with Strix , decide which asset needs which test (source code, running web app, API, CI pipeline), run it, and turn the results into a ranked remediation plan. Autonomous agents exploit and prove each issue instead of emitting static-analysis alerts, so the plan is ordered by what is actually reachable. Use when the user asks for an application security review or audit, an appsec assessment, vulnerability scanning across their stack, a security review before a launch or a customer security questionnaire, or does not yet know which kind of security test they need."
+  },
+  {
     "id": "apply-change",
     "name": "Apply Change",
     "module": "Domain & Research Extensions",
@@ -7070,6 +7087,23 @@
     "path": ".agents/skills/churn-prevention",
     "risk": "assess_for_task",
     "description": "Reduce voluntary and involuntary churn with cancel flows, save offers, dunning, win-back tactics, and retention strategy. Use when users are cancelling, failed payments are rising, or subscription retention needs improvement."
+  },
+  {
+    "id": "ci-security-scanning-with-strix",
+    "name": "Ci Security Scanning With Strix",
+    "module": "Security & Defense",
+    "category": "Security",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill ci-security-scanning-with-strix",
+    "path": ".agents/skills/ci-security-scanning-with-strix",
+    "risk": "assess_for_task",
+    "description": "Add security scanning to CI/CD with Strix , GitHub Actions, GitLab CI, or any pipeline , so every pull request gets a diff-scoped AI pentest that blocks vulnerable code before it merges, with results as PR comments and SARIF uploaded to code scanning. Covers both the self-hosted open-source CLI (runs in your runner) and the managed app.strix.ai platform (GitHub/GitLab app or API, no runner infra). Use when the user asks to add security scanning, SAST/DAST, pentesting, vulnerability checks, or automated security review to their CI pipeline, pre-merge gate, or PR workflow."
   },
   {
     "id": "cicd-workflow",
@@ -13192,6 +13226,23 @@
     "description": "Find bugs, security vulnerabilities, and code quality issues in local branch changes. Use when asked to review changes, find bugs, security review, or audit code on the current branch."
   },
   {
+    "id": "find-security-vulnerabilities-in-code",
+    "name": "Find Security Vulnerabilities In Code",
+    "module": "Security & Defense",
+    "category": "Security",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill find-security-vulnerabilities-in-code",
+    "path": ".agents/skills/find-security-vulnerabilities-in-code",
+    "risk": "assess_for_task",
+    "description": "Find security vulnerabilities in a codebase or repository with Strix , a white-box AI security review that reads your source, reasons about the actual data flow and authorization model, then exploits what it finds in a live sandbox so every reported issue has a working proof-of-concept instead of a noisy static-analysis alert. Covers injection, XSS, SSRF, broken access control and IDOR, insecure deserialization, secrets in code, unsafe dependencies, and business-logic flaws. Use when the user asks to security-scan, security-review, or audit their code, repo, or pull request for vulnerabilities."
+  },
+  {
     "id": "finishing-a-development-branch",
     "name": "Finishing A Development Branch",
     "module": "Domain & Research Extensions",
@@ -13326,6 +13377,23 @@
     "path": ".agents/skills/fix-review",
     "risk": "assess_for_task",
     "description": "Verify fix commits address audit findings without new bugs"
+  },
+  {
+    "id": "fix-security-vulnerabilities-with-strix",
+    "name": "Fix Security Vulnerabilities With Strix",
+    "module": "Security & Defense",
+    "category": "Security",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill fix-security-vulnerabilities-with-strix",
+    "path": ".agents/skills/fix-security-vulnerabilities-with-strix",
+    "risk": "assess_for_task",
+    "description": "Fix security vulnerabilities found by a Strix pentest (open-source CLI or app.strix.ai cloud) , triage by severity, patch the root cause rather than the symptom, and re-run Strix to prove each fix actually closes the exploit. Handles injection, XSS, SSRF, broken access control, IDOR, and other validated findings. Use after a Strix scan reports findings, or when the user asks to remediate, patch, or fix security issues from a strix_runs report, vulnerabilities.json, findings.sarif, or a cloud scan."
   },
   {
     "id": "fixing-accessibility",
@@ -22695,6 +22763,23 @@
     "description": "Expert malware analyst specializing in defensive malware research, threat intelligence, and incident response. Masters sandbox analysis, behavioral analysis, and malware family identification."
   },
   {
+    "id": "managed-pentesting-with-strix",
+    "name": "Managed Pentesting With Strix",
+    "module": "Security & Defense",
+    "category": "Security",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill managed-pentesting-with-strix",
+    "path": ".agents/skills/managed-pentesting-with-strix",
+    "risk": "assess_for_task",
+    "description": "Run a managed pentest of a web app, API, repository, or local workspace on the app.strix.ai platform with the `strix cloud` CLI or REST API , no local Docker or LLM key needed. Safely review and upload local source, register assets, launch and poll scans, triage vulnerabilities, export SARIF, download compliance reports, start PR reviews, buy credits, and set up schedules or webhooks. Use for managed, continuous, scheduled, team-tracked, or sandboxed-agent security testing."
+  },
+  {
     "id": "manim-video",
     "name": "Manim Video",
     "module": "Domain & Research Extensions",
@@ -25755,6 +25840,23 @@
     "description": "Automate Outlook Calendar tasks via Rube MCP (Composio): create events, manage attendees, find meeting times, and handle invitations. Always search tools first for current schemas."
   },
   {
+    "id": "owasp-top-10-testing",
+    "name": "Owasp Top 10 Testing",
+    "module": "Security & Defense",
+    "category": "Security",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill owasp-top-10-testing",
+    "path": ".agents/skills/owasp-top-10-testing",
+    "risk": "assess_for_task",
+    "description": "Test an application against the OWASP Top 10 with Strix , autonomous AI agents that attempt real exploits for each category of the current OWASP Top 10:2025 (broken access control including SSRF, security misconfiguration, software supply chain failures, cryptographic failures, injection, insecure design, authentication failures, integrity failures, logging and alerting failures, mishandling of exceptional conditions) and report only what they could actually prove, mapped back to the category with a proof-of-concept. Also covers the OWASP API Security Top 10 (2023). Use when the user asks for an OWASP Top 10 assessment, OWASP compliance testing, or a security review mapped to OWASP categories."
+  },
+  {
     "id": "page-cro",
     "name": "Page Cro",
     "module": "Domain & Research Extensions",
@@ -25991,6 +26093,23 @@
     "path": ".agents/skills/pdf-official",
     "risk": "assess_for_task",
     "description": "This guide covers essential PDF processing operations using Python libraries and command-line tools. For advanced features, JavaScript libraries, and detailed examples, see reference.md. If you need to fill out a PDF form, read forms.md and follow its instructions."
+  },
+  {
+    "id": "penetration-testing-with-strix",
+    "name": "Penetration Testing With Strix",
+    "module": "Security & Defense",
+    "category": "Security",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill penetration-testing-with-strix",
+    "path": ".agents/skills/penetration-testing-with-strix",
+    "risk": "assess_for_task",
+    "description": "Pentest a web app, API, codebase, repository, URL, domain, or IP with Strix , autonomous AI penetration testing that exploits and proves vulnerabilities (OWASP Top 10 and beyond , injection, XSS, SSRF, auth/access-control flaws, IDOR, business logic) instead of just flagging them. Runs self-hosted with the open-source CLI or via the managed app.strix.ai cloud, and returns validated findings with proof-of-concept exploits (Markdown, JSON, CSV, SARIF). Use when the user asks to pentest, hack, security-scan, security-audit, or find vulnerabilities in an app, API, website, or repo."
   },
   {
     "id": "pentagi-orchestrator",
@@ -32521,6 +32640,23 @@
     "description": "Master Stripe payment processing integration for reliable, PCI-compliant payment flows including checkout, subscriptions, webhooks, and refunds."
   },
   {
+    "id": "strix-api-security-testing",
+    "name": "Strix Api Security Testing",
+    "module": "Security & Defense",
+    "category": "Security",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill strix-api-security-testing",
+    "path": ".agents/skills/strix-api-security-testing",
+    "risk": "assess_for_task",
+    "description": "Security-test a REST, GraphQL, or gRPC API with Strix , autonomous agents that enumerate endpoints from an OpenAPI/GraphQL schema (or by crawling), then actually exploit the API-specific vulnerability classes in the OWASP API Security Top 10 (2023) , broken object-level authorization (BOLA/IDOR), broken object property level authorization (excessive data exposure and mass assignment), broken function-level authorization, unrestricted resource consumption, SSRF, injection, and auth/token flaws. Every finding comes with a working proof-of-concept request. Use when the user asks to pentest, security-test, audit, or find vulnerabilities in an API, endpoint, or backend service."
+  },
+  {
     "id": "subagent-driven-development",
     "name": "Subagent Driven Development",
     "module": "Domain & Research Extensions",
@@ -36021,6 +36157,23 @@
     "path": ".agents/skills/web-animation-design",
     "risk": "assess_for_task",
     "description": "Design web animations using interaction frequency, reduced-motion preferences, and compositor-friendly transforms and opacity."
+  },
+  {
+    "id": "web-app-penetration-testing",
+    "name": "Web App Penetration Testing",
+    "module": "Security & Defense",
+    "category": "Security",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill web-app-penetration-testing",
+    "path": ".agents/skills/web-app-penetration-testing",
+    "risk": "assess_for_task",
+    "description": "Pentest a web app or website end to end , black-box testing of a live URL, staging environment, or local dev server that finds and exploits real vulnerabilities (auth bypass, broken access control, IDOR, injection, XSS, SSRF, business logic) and proves each one with a working proof-of-concept instead of a signature match. Runs with Strix, either the self-hosted open-source CLI or the managed app.strix.ai cloud. Use when the user asks to pentest, hack, security-test, or audit their web app, website, web application, or staging site."
   },
   {
     "id": "web-artifacts-builder",

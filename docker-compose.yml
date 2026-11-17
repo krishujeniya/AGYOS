@@ -1,0 +1,20 @@
+services:
+  agyos-site:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: agyos_engine
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:8080/"]
+      interval: 20s
+      timeout: 3s
+      retries: 3
+    networks:
+      - agyos-net
+
+networks:
+  agyos-net:
+    driver: bridge

@@ -31,6 +31,7 @@ Commands:
   model-route <task>  Determine optimal model, thinking level, and privacy compliance
   e2e <task>  Execute autonomous end-to-end lifecycle without manual commands
   obscura|browser  Control Obscura headless browser engine (MCP, CDP, fetch, scrape)
+  strix|pentest    Run Strix autonomous security pentesting and vulnerability checks
   video       Automate vertical video scripting, psychology audit, and Manim 9:16
   ondemand    Manage on-demand MCP servers and plugins (startup, status, activate, reset)
   use <name>  Activate an MCP server or plugin on-demand
@@ -248,6 +249,9 @@ print(json.dumps(output, indent=2))
     ;;
   obscura|browser)
     exec bash bin/obscura "$@"
+    ;;
+  strix|pentest)
+    exec python3 scripts/strix_runner.py "$@"
     ;;
   video)
     exec python3 scripts/video_pipeline.py "$@"

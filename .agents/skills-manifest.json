@@ -1,7 +1,7 @@
 {
   "version": "3.1.0",
-  "total_skills": 2237,
-  "tier1_count": 405,
+  "total_skills": 2246,
+  "tier1_count": 414,
   "tier2_count": 1832,
   "skills": [
     {
@@ -927,6 +927,12 @@
       "tier": 1,
       "description": "Apple's approach to interface design and fluid, physical motion, translated for the web. Use when building or reviewing gesture-driven UI, spring animations, drag/swipe/sheet interactions, momentum and interruptible transitions, translucent materials and depth, typography (optical sizing, tracking, leading), reduced-motion, or the design foundations (feedback, spatial consistency, restraint) behind Apple-style interfaces.",
       "path": ".agents/skills/apple-design"
+    },
+    {
+      "name": "application-security-testing",
+      "tier": 1,
+      "description": "Application security testing (AppSec) across a whole product with Strix \u2014 decide which asset needs which test (source code, running web app, API, CI pipeline), run it, and turn the results into a ranked remediation plan. Autonomous agents exploit and prove each issue instead of emitting static-analysis alerts, so the plan is ordered by what is actually reachable. Use when the user asks for an application security review or audit, an appsec assessment, vulnerability scanning across their stack, a security review before a launch or a customer security questionnaire, or does not yet know which kind of security test they need.",
+      "path": ".agents/skills/application-security-testing"
     },
     {
       "name": "apply-change",
@@ -2499,6 +2505,12 @@
       "tier": 2,
       "description": "Reduce voluntary and involuntary churn with cancel flows, save offers, dunning, win-back tactics, and retention strategy. Use when users are cancelling, failed payments are rising, or subscription retention needs improvement.",
       "path": ".agents/skills/churn-prevention"
+    },
+    {
+      "name": "ci-security-scanning-with-strix",
+      "tier": 1,
+      "description": "Add security scanning to CI/CD with Strix \u2014 GitHub Actions, GitLab CI, or any pipeline \u2014 so every pull request gets a diff-scoped AI pentest that blocks vulnerable code before it merges, with results as PR comments and SARIF uploaded to code scanning. Covers both the self-hosted open-source CLI (runs in your runner) and the managed app.strix.ai platform (GitHub/GitLab app or API, no runner infra). Use when the user asks to add security scanning, SAST/DAST, pentesting, vulnerability checks, or automated security review to their CI pipeline, pre-merge gate, or PR workflow.",
+      "path": ".agents/skills/ci-security-scanning-with-strix"
     },
     {
       "name": "cicd-workflow",
@@ -4661,6 +4673,12 @@
       "path": ".agents/skills/find-bugs"
     },
     {
+      "name": "find-security-vulnerabilities-in-code",
+      "tier": 1,
+      "description": "Find security vulnerabilities in a codebase or repository with Strix \u2014 a white-box AI security review that reads your source, reasons about the actual data flow and authorization model, then exploits what it finds in a live sandbox so every reported issue has a working proof-of-concept instead of a noisy static-analysis alert. Covers injection, XSS, SSRF, broken access control and IDOR, insecure deserialization, secrets in code, unsafe dependencies, and business-logic flaws. Use when the user asks to security-scan, security-review, or audit their code, repo, or pull request for vulnerabilities.",
+      "path": ".agents/skills/find-security-vulnerabilities-in-code"
+    },
+    {
       "name": "finishing-a-development-branch",
       "tier": 2,
       "description": "Use after implementation and required checks are complete to choose among merging, opening a pull request, or cleaning up a branch. Take an integration action only when authorized.",
@@ -4707,6 +4725,12 @@
       "tier": 2,
       "description": "Verify fix commits address audit findings without new bugs",
       "path": ".agents/skills/fix-review"
+    },
+    {
+      "name": "fix-security-vulnerabilities-with-strix",
+      "tier": 1,
+      "description": "Fix security vulnerabilities found by a Strix pentest (open-source CLI or app.strix.ai cloud) \u2014 triage by severity, patch the root cause rather than the symptom, and re-run Strix to prove each fix actually closes the exploit. Handles injection, XSS, SSRF, broken access control, IDOR, and other validated findings. Use after a Strix scan reports findings, or when the user asks to remediate, patch, or fix security issues from a strix_runs report, vulnerabilities.json, findings.sarif, or a cloud scan.",
+      "path": ".agents/skills/fix-security-vulnerabilities-with-strix"
     },
     {
       "name": "fixing-accessibility",
@@ -8015,6 +8039,12 @@
       "path": ".agents/skills/malware-analyst"
     },
     {
+      "name": "managed-pentesting-with-strix",
+      "tier": 1,
+      "description": "Run a managed pentest of a web app, API, repository, or local workspace on the app.strix.ai platform with the `strix cloud` CLI or REST API \u2014 no local Docker or LLM key needed. Safely review and upload local source, register assets, launch and poll scans, triage vulnerabilities, export SARIF, download compliance reports, start PR reviews, buy credits, and set up schedules or webhooks. Use for managed, continuous, scheduled, team-tracked, or sandboxed-agent security testing.",
+      "path": ".agents/skills/managed-pentesting-with-strix"
+    },
+    {
       "name": "manim-video",
       "tier": 2,
       "description": "Build reusable Manim explainers for technical concepts, graphs, system diagrams, and product walkthroughs, then hand off to the wider ECC video stack if needed. Use when the user wants a clean animated explainer rather than a generic talking-head script.",
@@ -9095,6 +9125,12 @@
       "path": ".agents/skills/outlook-calendar-automation"
     },
     {
+      "name": "owasp-top-10-testing",
+      "tier": 1,
+      "description": "Test an application against the OWASP Top 10 with Strix \u2014 autonomous AI agents that attempt real exploits for each category of the current OWASP Top 10:2025 (broken access control including SSRF, security misconfiguration, software supply chain failures, cryptographic failures, injection, insecure design, authentication failures, integrity failures, logging and alerting failures, mishandling of exceptional conditions) and report only what they could actually prove, mapped back to the category with a proof-of-concept. Also covers the OWASP API Security Top 10 (2023). Use when the user asks for an OWASP Top 10 assessment, OWASP compliance testing, or a security review mapped to OWASP categories.",
+      "path": ".agents/skills/owasp-top-10-testing"
+    },
+    {
       "name": "page-cro",
       "tier": 2,
       "description": "Analyze and optimize individual pages for conversion performance.",
@@ -9177,6 +9213,12 @@
       "tier": 2,
       "description": "This guide covers essential PDF processing operations using Python libraries and command-line tools. For advanced features, JavaScript libraries, and detailed examples, see reference.md. If you need to fill out a PDF form, read forms.md and follow its instructions.",
       "path": ".agents/skills/pdf-official"
+    },
+    {
+      "name": "penetration-testing-with-strix",
+      "tier": 1,
+      "description": "Pentest a web app, API, codebase, repository, URL, domain, or IP with Strix \u2014 autonomous AI penetration testing that exploits and proves vulnerabilities (OWASP Top 10 and beyond \u2014 injection, XSS, SSRF, auth/access-control flaws, IDOR, business logic) instead of just flagging them. Runs self-hosted with the open-source CLI or via the managed app.strix.ai cloud, and returns validated findings with proof-of-concept exploits (Markdown, JSON, CSV, SARIF). Use when the user asks to pentest, hack, security-scan, security-audit, or find vulnerabilities in an app, API, website, or repo.",
+      "path": ".agents/skills/penetration-testing-with-strix"
     },
     {
       "name": "pentagi-orchestrator",
@@ -11483,6 +11525,12 @@
       "path": ".agents/skills/stripe-integration"
     },
     {
+      "name": "strix-api-security-testing",
+      "tier": 1,
+      "description": "Security-test a REST, GraphQL, or gRPC API with Strix \u2014 autonomous agents that enumerate endpoints from an OpenAPI/GraphQL schema (or by crawling), then actually exploit the API-specific vulnerability classes in the OWASP API Security Top 10 (2023) \u2014 broken object-level authorization (BOLA/IDOR), broken object property level authorization (excessive data exposure and mass assignment), broken function-level authorization, unrestricted resource consumption, SSRF, injection, and auth/token flaws. Every finding comes with a working proof-of-concept request. Use when the user asks to pentest, security-test, audit, or find vulnerabilities in an API, endpoint, or backend service.",
+      "path": ".agents/skills/strix-api-security-testing"
+    },
+    {
       "name": "subagent-driven-development",
       "tier": 2,
       "description": "Use when executing implementation plans with independent tasks in the current session",
@@ -12717,6 +12765,12 @@
       "tier": 2,
       "description": "Design web animations using interaction frequency, reduced-motion preferences, and compositor-friendly transforms and opacity.",
       "path": ".agents/skills/web-animation-design"
+    },
+    {
+      "name": "web-app-penetration-testing",
+      "tier": 1,
+      "description": "Pentest a web app or website end to end \u2014 black-box testing of a live URL, staging environment, or local dev server that finds and exploits real vulnerabilities (auth bypass, broken access control, IDOR, injection, XSS, SSRF, business logic) and proves each one with a working proof-of-concept instead of a signature match. Runs with Strix, either the self-hosted open-source CLI or the managed app.strix.ai cloud. Use when the user asks to pentest, hack, security-test, or audit their web app, website, web application, or staging site.",
+      "path": ".agents/skills/web-app-penetration-testing"
     },
     {
       "name": "web-artifacts-builder",

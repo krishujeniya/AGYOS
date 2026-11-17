@@ -1,3 +1,34 @@
+# AGYOS handoff: Strix autonomous penetration testing toolkit integration (2026-11-17)
+
+- Task: Integrate Strix autonomous penetration testing toolkit (`/home/ai/Downloads/strix-main`) into AGYOS for testing and security verification.
+- Branch: `main`.
+- Added toolkit: `tools/security/strix/` (with symlink `tools/strix -> security/strix` and `tools/security/README.md`)
+  - Full source package retained: `strix/` (agents, tools, runtime, core, interface, report), `tests/` (115 test files), `benchmarks/`, `containers/`, `pyproject.toml`, `Makefile`, and `docs/`.
+  - Zero local execution of heavy test suites or builds; static inspection verified.
+- Added skills in `.agents/skills/`:
+  - `penetration-testing-with-strix`: primary autonomous pentest runbook across web apps, APIs, codebases, and domains.
+  - `managed-pentesting-with-strix`: managed cloud scanning workflow (`app.strix.ai`) via CLI.
+  - `ci-security-scanning-with-strix`: CI/CD PR scanning workflow for GitHub Actions and GitLab CI.
+  - `fix-security-vulnerabilities-with-strix`: automated and guided remediation workflow with verification.
+  - `application-security-testing`: holistic product AppSec testing across source, runtime, and APIs.
+  - `web-app-penetration-testing`: black-box web application penetration testing.
+  - `owasp-top-10-testing`: systematic OWASP Top 10 vulnerability exploration with proof-of-concept verification.
+  - `find-security-vulnerabilities-in-code`: white-box code review and vulnerability scanning.
+  - `strix-api-security-testing`: REST/GraphQL/gRPC API security testing covering OWASP API Top 10.
+- Routing and CLI integration:
+  - Added `pentest` domain and Strix alternatives to `agyos_decision/skills_router.py`.
+  - Added Strix skills to Tier 1 core engineering manifest in `scripts/build_tiered_skills_manifest.py`.
+  - Added CLI runner `scripts/strix_runner.py` and registered `bin/agyos strix` / `bin/agyos pentest` commands.
+  - Updated catalog datasets (`docs/skills-data.json`, `docs/ai-catalog.json`, `docs/sitemap.xml`, `docs/llms.txt`).
+- Machine evidence:
+  - `bin/agyos strix status`: verified toolkit present, Docker available, uv available, Obscura headless available, 9/9 skills installed.
+  - `bin/agyos pentest skills`: verified all 9 Strix skills registered.
+  - `bin/agyos strix test-inventory`: 115 test files verified statically.
+  - `scripts/audit_skill_catalog.py`: 0 structural findings across all registered skills.
+- Exact next command: `git status --short --branch`
+
+---
+
 # AGYOS handoff: skill-catalog quality, organization, and OpenWhispr (verification complete with host test limit, 2026-11-11)
 
 - Task: inspect and improve discovery, correctness, structure, routing, references, and current documentation across the catalog; the reviewed baseline was 1,982 skills and one OpenWhispr skill was added.
