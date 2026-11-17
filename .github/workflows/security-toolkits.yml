@@ -1,0 +1,91 @@
+name: Security Toolkits
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/security/**'
+      - '.agents/skills/*strix*/**'
+      - '.agents/skills/application-security-testing/**'
+      - '.agents/skills/web-app-penetration-testing/**'
+      - '.agents/skills/owasp-top-10-testing/**'
+      - '.agents/skills/find-security-vulnerabilities-in-code/**'
+      - 'scripts/strix_runner.py'
+      - 'scripts/tests/test_strix_runner.py'
+      - '.github/workflows/security-toolkits.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'tools/security/**'
+      - '.agents/skills/*strix*/**'
+      - '.agents/skills/application-security-testing/**'
+      - '.agents/skills/web-app-penetration-testing/**'
+      - '.agents/skills/owasp-top-10-testing/**'
+      - '.agents/skills/find-security-vulnerabilities-in-code/**'
+      - 'scripts/strix_runner.py'
+      - 'scripts/tests/test_strix_runner.py'
+      - '.github/workflows/security-toolkits.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: security-toolkits-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  static-checks:
+    name: Security toolkit static checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install repository requirements
+        run: pip install -r requirements.txt
+
+      - name: Check required toolkit entrypoints
+        run: |
+          test -f tools/security/strix/pyproject.toml
+          test -f tools/security/strix/strix/interface/main.py
+          test -f scripts/strix_runner.py
+          test -f scripts/tests/test_strix_runner.py
+
+      - name: Run Strix runner regression tests
+        run: python -m unittest scripts/tests/test_strix_runner.py -v
+
+      - name: Validate toolkit status and skills via runner
+        run: |
+          python scripts/strix_runner.py status --json
+          python scripts/strix_runner.py skills --json
+          python scripts/strix_runner.py test-inventory --json
+          python scripts/strix_runner.py scan --target ./ --dry-run
+
+      - name: Check Python syntax across security toolkits
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          for path in Path("tools/security").rglob("*.py"):
+              compile(path.read_bytes(), str(path), "exec")
+          PY
+
+      - name: Check shell scripts syntax
+        run: |
+          while IFS= read -r -d '' file; do
+            bash -n "$file"
+          done < <(find tools/security -type f -name '*.sh' -print0)
+
+      - name: Reject committed Python caches
+        run: |
+          if find tools/security -type d -name __pycache__ -o -type f \( -name '*.pyc' -o -name '*.pyo' \) | grep -q .; then
+            echo 'Generated Python cache files must not be committed.' >&2
+            exit 1
+          fi
+
+      - name: Audit registered security skills
+        run: |
+          python scripts/audit_skill_catalog.py
