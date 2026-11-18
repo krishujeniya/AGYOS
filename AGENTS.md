@@ -220,7 +220,7 @@ AGYOS is fully unified and self-contained within `.agents/`, `bin/`, `mcp/`, and
 - **`skills/` (`.agents/skills`)**: Physical catalog of 2,180 first-party and pinned upstream skills. Imported entries use namespaced AGYOS adapters (generated indexes await CI regeneration).
 - **`rules/` (`.agents/rules`)**: 141 modular governance and polyglot rules (<24KB each).
 - **`workflows/` (`.agents/workflows`)**: 100 autonomous multi-agent execution pipelines.
-- **`agents/` (`.agents/agents`)**: 81 specialized FAANG/MANGO corporate role and pod agents.
+- **`agents/` (`.agents/agents`)**: 185 specialized FAANG/MANGO corporate role and pod agents.
 - **`bin/`**: Kernel CLI (`agyos`), 5-gate state engine (`state.sh`), and pre-commit test ratchet (`gate-check.sh`).
 - **`mcp/`**: FastMCP Stdio JSON-RPC 2.0 state daemon (`agyos-state-server.cjs`).
 - **`scripts/`**: Real-time lifecycle interceptor (`hooks/agy_os_hook.py`), verification runner (`agyos-verify.sh`), and multi-model deliberation panel (`council/`).
