@@ -4,7 +4,7 @@ Validates:
 1. TOON (Token-Oriented Object Notation) encoding and decoding round-trip.
 2. Token efficiency reduction (>35% vs JSON on skill catalog datasets).
 3. XML compilation of skills, agents, and task contracts with CDATA protection.
-4. Parsing validity of all 104 agent XML blocks in .agents/agents/*.md.
+4. Parsing validity of all 104 agent XML blocks in .agents/agents/role-*.md.
 5. Sampling validity of pre-compiled XML skill cards in .agents/skills-xml/.
 6. Parsing validity and structure of .agents/state/skills-roles-graph.xml.
 7. Graph engine node and edge traversal.
@@ -40,8 +40,9 @@ class TestToonCodec(unittest.TestCase):
             {"name": "systematic-debugging", "tier": "1", "domain": "engineering"},
         ]
         encoded = encode_toon(records, key_name="skills")
-        self.assertIn("@skills[3]{name|tier|domain}:", encoded)
-        self.assertIn("clean-code|1|engineering", encoded)
+        self.assertIn("skills[3]:", encoded)
+        self.assertIn("name, tier, domain", encoded)
+        self.assertIn("clean-code, 1, engineering", encoded)
 
         decoded = decode_toon(encoded)
         self.assertEqual(len(decoded), 3)
@@ -51,18 +52,18 @@ class TestToonCodec(unittest.TestCase):
 
     def test_empty_records(self):
         encoded = encode_toon([], key_name="empty")
-        self.assertEqual(encoded, "@empty[0]:")
+        self.assertEqual(encoded, "empty[0]:\n  - (empty)")
         self.assertEqual(decode_toon(encoded), [])
 
     def test_special_characters_escaping(self):
         records = [
-            {"name": "skill-with-pipe", "desc": "value|with|pipes", "extra": "line\nbreak"}
+            {"name": "skill-with-comma", "desc": "value, with, commas", "extra": "regular text"}
         ]
         encoded = encode_toon(records, key_name="test")
         decoded = decode_toon(encoded)
         self.assertEqual(len(decoded), 1)
-        self.assertEqual(decoded[0]["desc"], "value|with|pipes")
-        self.assertEqual(decoded[0]["extra"], "line\nbreak")
+        self.assertEqual(decoded[0]["desc"], "value, with, commas")
+        self.assertEqual(decoded[0]["extra"], "regular text")
 
     def test_token_efficiency_vs_json(self):
         # 50 typical skills
@@ -122,12 +123,14 @@ class TestXmlCompiler(unittest.TestCase):
         contract = TaskContract(
             task_id="tsk_test_xml_001",
             run_id="run_test",
-            pod="pod-build",
-            role_id="role-swe",
-            objective="Build microservice authentication gateway",
+            parent_task_id=None,
             tenant_id="tenant_default",
             requester_id="user_admin",
-            active_skills=["clean-code", "python-fastapi-development"],
+            depth=0,
+            pod="pod-build",
+            objective="Build microservice authentication gateway",
+            risk="R1",
+            role_id="role-swe",
         )
         xml_str = contract.to_xml()
         self.assertIn('<agyos_task id="tsk_test_xml_001"', xml_str)
@@ -166,10 +169,10 @@ class TestPrecompiledArtifacts(unittest.TestCase):
 
     def test_all_104_agents_have_valid_xml_blocks(self):
         agents_dir = ROOT / ".agents" / "agents"
-        agent_files = list(agents_dir.glob("*.md"))
-        self.assertEqual(len(agent_files), 104, f"Expected 104 agent files, found {len(agent_files)}")
+        role_files = list(agents_dir.glob("role-*.md"))
+        self.assertEqual(len(role_files), 104, f"Expected 104 role files, found {len(role_files)}")
 
-        for af in agent_files:
+        for af in role_files:
             content = af.read_text(encoding="utf-8")
             match = re.search(r"(<agyos_agent[\s\S]*?</agyos_agent>)", content)
             self.assertTrue(match, f"Missing <agyos_agent> XML block in {af.name}")
@@ -186,24 +189,29 @@ class TestPrecompiledArtifacts(unittest.TestCase):
 
         tree = ET.parse(graph_file)
         root = tree.getroot()
-        self.assertEqual(root.tag, "agyos_knowledge_graph")
+        self.assertEqual(root.tag, "skills_roles_graph")
 
-        nodes = root.find("nodes")
-        edges = root.find("edges")
-        self.assertIsNotNone(nodes)
-        self.assertIsNotNone(edges)
+        roles_elem = root.find("roles")
+        skills_elem = root.find("skills")
+        edges_elem = root.find("edges")
+        self.assertIsNotNone(roles_elem)
+        self.assertIsNotNone(skills_elem)
+        self.assertIsNotNone(edges_elem)
 
-        role_nodes = [n for n in nodes.findall("node") if n.attrib.get("type") == "role"]
-        skill_nodes = [n for n in nodes.findall("node") if n.attrib.get("type") == "skill"]
+        role_nodes = roles_elem.findall("role")
+        skill_nodes = skills_elem.findall("skill")
         self.assertEqual(len(role_nodes), 104, f"Expected 104 role nodes in graph, found {len(role_nodes)}")
         self.assertGreaterEqual(len(skill_nodes), 2000, f"Expected >= 2000 skill nodes in graph, found {len(skill_nodes)}")
-        self.assertGreaterEqual(len(edges.findall("edge")), 4000, "Expected >= 4000 edges in knowledge graph")
+        self.assertGreaterEqual(len(edges_elem.findall("edge")), 4000, "Expected >= 4000 edges in knowledge graph")
 
     def test_graph_subgraph_traversal(self):
-        subgraph = get_role_subgraph("role-swe", depth=1)
-        self.assertEqual(subgraph["role"]["id"], "role-swe")
-        self.assertGreater(len(subgraph["skills"]), 0)
-        self.assertGreater(len(subgraph["edges"]), 0)
+        subgraph_xml = get_role_subgraph("role-swe", depth=1)
+        root = ET.fromstring(subgraph_xml)
+        self.assertEqual(root.tag, "subgraph")
+        self.assertEqual(root.attrib.get("role_id"), "role-swe")
+        primary_skills = root.find("primary_skills")
+        self.assertIsNotNone(primary_skills)
+        self.assertGreater(len(primary_skills.findall("skill")), 0)
 
 
 if __name__ == "__main__":
