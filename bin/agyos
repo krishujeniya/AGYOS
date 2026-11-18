@@ -33,6 +33,7 @@ Commands:
   obscura|browser  Control Obscura headless browser engine (MCP, CDP, fetch, scrape)
   strix|pentest    Run Strix autonomous security pentesting and vulnerability checks
   video       Automate vertical video scripting, psychology audit, and Manim 9:16
+  gemini-notebook|notebooklm|nlm Run Gemini Notebook (NotebookLM) MCP server or nlm CLI
   workspace   Manage transactional workspace milestones and revisions (status|transact|project|restore|replay)
   diagnostics Export redacted system diagnostics, state, and environment metrics
   ondemand    Manage on-demand MCP servers and plugins (startup, status, activate, reset)
@@ -267,6 +268,9 @@ print(json.dumps(output, indent=2))
     ;;
   video)
     exec python3 scripts/video_pipeline.py "$@"
+    ;;
+  gemini-notebook|notebooklm|nlm)
+    exec bash mcp/gemini-notebook-mcp.sh "$@"
     ;;
   workspace)
     exec node bin/workspace-state.cjs "$@"

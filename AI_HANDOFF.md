@@ -1,3 +1,24 @@
+# AGYOS handoff: Gemini Notebook MCP & CLI integration (2026-11-18)
+
+- Task: Integrate Gemini Notebook (formerly NotebookLM) MCP Server & CLI (`jacob-bd/gemini-notebook-mcp-cli`) into AGYOS.
+- Branch: `main`.
+- Delivered changes:
+  - `mcp/gemini-notebook-mcp.sh`: executable launcher supporting both FastMCP server daemon and `nlm` CLI modes with automatic session cookie resolution (`NOTEBOOKLM_COOKIES`, `~/.config/gemini-notebook-mcp/cookies`, or legacy path).
+  - `.mcp.json`: registered `gemini-notebook` MCP server (kept disabled by default under ADR-4 / on-demand startup policy).
+  - `mcp/README.md`: documented runtime, upstream repo, transport, authentication, and full 53-tool inventory across notebooks, sources, queries, automated research, studio synthesis, and workspace exports.
+  - `mcp/setup-all-mcps.sh`: added interactive credential setup for Gemini Notebook session cookies.
+  - `scripts/agy_ondemand.py`: added `notebooklm_`, `gemini_notebook_`, and `nlm_` tool prefix routes.
+  - `agyos_decision/skills_router.py`: added `gemini_notebook` domain with keyword patterns routing to `gemini-notebook`.
+  - `bin/agyos`: registered `gemini-notebook`, `notebooklm`, and `nlm` subcommands routing directly to `mcp/gemini-notebook-mcp.sh`.
+  - `integrations/registry/sources.json`: registered upstream repository `jacob-bd/gemini-notebook-mcp-cli` under `pod-build` with `ENHANCE` disposition.
+  - `scripts/build_tiered_skills_manifest.py`: added `gemini-notebook` to Tier 1 core engineering manifest.
+  - `.agents/skills/gemini-notebook/`: added comprehensive operational skill (`SKILL.md`) and references (`AUTHENTICATION.md`, `CLI_GUIDE.md`, `MCP_TOOLS_REFERENCE.md`).
+  - `.agents/skills/notebooklm-researcher/SKILL.md` and `.agents/skills/notebooklm/SKILL.md`: cross-referenced canonical `gemini-notebook` skill.
+- Verification evidence: static read-only inspection, `git diff --check`, `bash -n` on all shell scripts, and Node.js JSON schema checks all passed cleanly with zero errors; zero local builds/tests run.
+- Exact next command: `git status --short --branch`
+
+---
+
 # AGYOS handoff: master plan M2 release candidate, M3 host qualification, and M4 refinement (2026-11-18)
 
 - Task: Complete master plan through Milestone 2 (release candidate B08–B10), Milestone 3 (host qualification B07), and Milestone 4 (product refinement B11–B12).

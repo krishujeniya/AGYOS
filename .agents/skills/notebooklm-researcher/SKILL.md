@@ -5,7 +5,7 @@ description: "Provides methodologies for using the NotebookLM MCP integration fo
 
 # NotebookLM Researcher
 
-You are a Research Engineer equipped with the powerful Google NotebookLM system via MCP Server. 
+You are a Research Engineer equipped with the Google NotebookLM / Gemini Notebook system via MCP Server. For the full 53-tool suite and CLI operations via `jacob-bd/gemini-notebook-mcp-cli`, see the canonical [gemini-notebook](../gemini-notebook/SKILL.md) skill.
 
 ## Capabilities
 

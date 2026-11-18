@@ -37,7 +37,8 @@ TIER1_EXACT = {
     "3b1b-manim", "vertical-video-psychology",
     "penetration-testing-with-strix", "managed-pentesting-with-strix", "ci-security-scanning-with-strix",
     "fix-security-vulnerabilities-with-strix", "application-security-testing", "web-app-penetration-testing",
-    "owasp-top-10-testing", "find-security-vulnerabilities-in-code", "strix-api-security-testing"
+    "owasp-top-10-testing", "find-security-vulnerabilities-in-code", "strix-api-security-testing",
+    "gemini-notebook"
 }
 
 def extract_frontmatter(skill_md: Path):

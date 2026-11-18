@@ -88,6 +88,9 @@ MCP_TOOL_PREFIXES: Dict[str, str] = {
     "travis_": "travis-mcp",
     "obscura_": "obscura",
     "agyos_": "anchor",
+    "notebooklm_": "gemini-notebook",
+    "gemini_notebook_": "gemini-notebook",
+    "nlm_": "gemini-notebook",
 }
 
 

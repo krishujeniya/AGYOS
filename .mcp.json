@@ -116,6 +116,11 @@
       "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/obscura-mcp.sh",
       "args": [],
       "disabled": true
+    },
+    "gemini-notebook": {
+      "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/gemini-notebook-mcp.sh",
+      "args": [],
+      "disabled": true
     }
   }
 }

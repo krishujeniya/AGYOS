@@ -287,6 +287,16 @@ DOMAIN_TAXONOMY: Dict[str, Dict[str, Any]] = {
         "primary": "universal-ai-research",
         "alternatives": ["agyos-academic-research", "scientific-research", "deep-research"],
     },
+    "gemini_notebook": {
+        "keywords": [
+            "gemini notebook", "gemini-notebook", "notebooklm", "notebooklm-mcp",
+            "gemini-notebook-mcp-cli", "nlm", "google notebooklm", "notebooklm query",
+            "notebooklm audio overview", "notebooklm studio", "notebooklm research",
+            "notebooklm podcast", "notebooklm sources", "jacob-bd"
+        ],
+        "primary": "gemini-notebook",
+        "alternatives": ["notebooklm-researcher", "notebooklm", "universal-ai-research", "deep-research"],
+    },
     "local_talking_head_editing": {
         "keywords": [
             "talking-head recording", "talking head recording", "local video edit",

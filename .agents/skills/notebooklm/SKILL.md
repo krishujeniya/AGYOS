@@ -5,7 +5,7 @@ description: Use this skill to query your Google NotebookLM notebooks directly f
 
 # NotebookLM Research Assistant Skill
 
-Interact with Google NotebookLM to query documentation with Gemini's source-grounded answers. Each question opens a fresh browser session, retrieves the answer exclusively from your uploaded documents, and closes.
+Interact with Google NotebookLM to query documentation with Gemini's source-grounded answers. For programmatic FastMCP and `nlm` CLI automation via `jacob-bd/gemini-notebook-mcp-cli`, see the canonical [gemini-notebook](../gemini-notebook/SKILL.md) skill.
 
 ## When to Use This Skill
 

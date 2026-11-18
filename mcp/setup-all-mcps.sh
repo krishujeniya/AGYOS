@@ -3,7 +3,7 @@
 # Walks through credentials for all configured local MCP servers.
 set -euo pipefail
 
-mkdir -p ~/.config/clerk-mcp ~/.config/deepnote-mcp ~/.config/travis-mcp ~/.config/carto-mcp ~/.config/docker-hub-mcp ~/.config/1password-mcp ~/.config/cloudflare ~/.config/ibmcloud ~/.aws
+mkdir -p ~/.config/clerk-mcp ~/.config/deepnote-mcp ~/.config/travis-mcp ~/.config/carto-mcp ~/.config/docker-hub-mcp ~/.config/1password-mcp ~/.config/cloudflare ~/.config/ibmcloud ~/.config/gemini-notebook-mcp ~/.aws
 chmod 700 ~/.config/*mcp* 2>/dev/null || true
 
 echo "=================================================="
@@ -66,7 +66,10 @@ prompt_token "Cloudflare API Token" "$HOME/.config/cloudflare/api_token" "API to
 # 8. IBM Cloud API Key
 prompt_token "IBM Cloud API Key" "$HOME/.config/ibmcloud/api_key" "API key from IBM Cloud -> Manage -> Access (IAM) -> API keys"
 
-# 9. Obscura Headless Browser Engine
+# 9. Gemini Notebook (formerly NotebookLM)
+prompt_token "Gemini Notebook Cookies" "$HOME/.config/gemini-notebook-mcp/cookies" "Copy Cookie header from notebook.google.com via Chrome DevTools Network tab or run 'nlm login'"
+
+# 10. Obscura Headless Browser Engine
 echo "--------------------------------------------------"
 echo "[Obscura Headless Browser Engine Setup]"
 echo "Source: https://github.com/h4ckf0r0day/obscura"

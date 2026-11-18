@@ -118,6 +118,26 @@ All MCP tools reside directly in this directory with zero subfolders.
   - `browser_cdp_endpoint`: Active WebSocket endpoint for drop-in Playwright/Puppeteer connections.
   - `browser_close`: Active tab and session reset.
 
+### `gemini-notebook-mcp.sh` (Gemini Notebook / NotebookLM MCP Server & CLI)
+- **Runtime**: Python FastMCP via `notebooklm-mcp` or `uvx --from notebooklm-mcp-cli notebooklm-mcp`.
+- **Upstream**: [`jacob-bd/gemini-notebook-mcp-cli`](https://github.com/jacob-bd/gemini-notebook-mcp-cli).
+- **Transport**: `stdio`.
+- **Modes**:
+  - MCP Server (`./mcp/gemini-notebook-mcp.sh`): FastMCP daemon exposing 53 tools.
+  - CLI (`./mcp/gemini-notebook-mcp.sh cli <command>` or `./mcp/gemini-notebook-mcp.sh nlm <command>`): `nlm` terminal command interface.
+- **Authentication**:
+  - `NOTEBOOKLM_COOKIES` environment variable or saved cookie credentials in `~/.config/gemini-notebook-mcp/cookies` (or legacy `~/.config/notebooklm-mcp/cookies`, file permission `600`).
+  - Automated CSRF token refresh and session ID extraction.
+  - Optional protected keychain credential encryption via `nlm auth storage set protected`.
+- **Coverage**: 53 tools across notebook and research workflows:
+  - Notebook lifecycle: `notebook_list`, `notebook_get`, `notebook_create`, `notebook_rename`, `notebook_delete`.
+  - Multi-source ingestion: `source_add` (supports URL, text, PDF/local files, Google Drive), `source_list`, `source_get_content`, `source_rename`, `source_delete`, `source_list_drive`, `source_sync_drive`.
+  - Source-grounded queries: `chat_send`, `chat_list`, `chat_delete`, `chat_save_to_note`.
+  - Automated research: `research_start` (Web and Drive research in fast or deep mode), `research_status`, `research_import`.
+  - Studio content generation: `studio_create` (Audio Overviews, videos, infographics, slide decks, reports, study guides, quizzes, flashcards, mind maps), `studio_status`, `studio_delete`, `studio_revise`.
+  - Artifact exports: `download_artifact`, `download_all_artifacts`, `export_artifact` (Google Docs & Sheets).
+  - Notebook administration: `note`, `label`, `profile`, `alias`, `pipeline`, `refresh_auth`, `save_auth_tokens`.
+
 ## Verification
 
 The daemon is verified via deterministic JSON-RPC queries:
