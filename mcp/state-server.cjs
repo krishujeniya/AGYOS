@@ -164,10 +164,36 @@ const TOOLS = [
       },
       required: ["prompt"]
     }
+  },
+  {
+    name: "agyos_workspace_state",
+    description: "Get transactional workspace status and revision audit trail from authoritative SQLite store",
+    inputSchema: {
+      type: "object",
+      properties: {
+        milestone_id: {
+          type: "string",
+          description: "Optional milestone identifier filter"
+        }
+      },
+      required: []
+    }
   }
 ];
 
 const MEMORY_FILE = path.join(STATE_DIR, "memory.json");
+
+function getNextSafeAction(gate) {
+  switch (gate) {
+    case "IDLE": return "Initialize milestone with 'bin/agyos gate UNDERSTAND' or discover runbook via 'bin/agyos decide <task>'";
+    case "UNDERSTAND": return "Analyze requirements and transition to ANALYZE with 'bin/agyos gate ANALYZE'";
+    case "ANALYZE": return "Create architecture plan with 'bin/agyos gate PLAN' or fast-path to IMPLEMENT if complexity <= 2";
+    case "PLAN": return "Implement minimal code following TDD and transition to IMPLEMENT with 'bin/agyos gate IMPLEMENT'";
+    case "IMPLEMENT": return "Run verification checks and transition to VERIFY with 'bin/agyos gate VERIFY'";
+    case "VERIFY": return "Review monotonic test ratchet evidence and complete milestone with 'bin/agyos gate IDLE'";
+    default: return "Inspect state with 'bin/agyos state' or consult local runbook";
+  }
+}
 
 function readMilestoneState() {
   try {
@@ -190,6 +216,7 @@ function getSysInfo() {
     runtime: "Antigravity CLI (agy)",
     active_gate: state.current_gate || "STATE_UNAVAILABLE",
     active_milestone: state.current_milestone || "none",
+    next_safe_action: getNextSafeAction(state.current_gate),
     complexity_score: state.complexity_score || 1,
     skills_loaded: skills.length,
     plugins_installed: 8,
@@ -350,7 +377,20 @@ function handleToolCall(name, args) {
     if (!state) {
       return { isError: true, content: [{ type: "text", text: '{"error":"STATE_UNAVAILABLE"}' }] };
     }
-    return { content: [{ type: "text", text: JSON.stringify(state) }] };
+    const enriched = { ...state, next_safe_action: getNextSafeAction(state.current_gate) };
+    return { content: [{ type: "text", text: JSON.stringify(enriched) }] };
+  }
+  if (name === "agyos_workspace_state") {
+    try {
+      const { execFileSync } = require("child_process");
+      const cliPath = path.join(PROJECT_ROOT, "bin", "workspace-state.cjs");
+      const stdout = execFileSync("node", [cliPath, "status", "--json"], {
+        cwd: PROJECT_ROOT, encoding: "utf8", maxBuffer: 1024 * 1024, timeout: 15000
+      });
+      return { content: [{ type: "text", text: stdout.trim() }] };
+    } catch {
+      return { isError: true, content: [{ type: "text", text: '{"error":"WORKSPACE_STORE_UNAVAILABLE"}' }] };
+    }
   }
   if (name === "agyos_current" || name === "anchor_current") {
     const file = path.join(STATE_DIR, "CURRENT.md");

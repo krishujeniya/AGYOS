@@ -73,6 +73,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--repeats', type=int, default=30)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--check-thresholds', action='store_true',
+                        help='Assert latency p50 < 25ms and p95 < 50ms')
     args = parser.parse_args()
     if not 1 <= args.repeats <= 1000:
         parser.error('--repeats must be between 1 and 1000')
@@ -90,7 +92,13 @@ def main():
     args.output.write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps({k: result[k] for k in ('catalog_entries', 'catalog_load_ms', 'ranking_sha256')}))
     print(f"p50={result['warm_decision']['p50_ms']:.3f}ms p95={result['warm_decision']['p95_ms']:.3f}ms errors={len(result['errors'])}")
-    return 1 if result['errors'] else 0
+    if result['errors']:
+        return 1
+    if args.check_thresholds:
+        if result['warm_decision']['p50_ms'] > 25.0 or result['warm_decision']['p95_ms'] > 50.0:
+            sys.stderr.write(f"Latency threshold exceeded: p50={result['warm_decision']['p50_ms']:.3f}ms p95={result['warm_decision']['p95_ms']:.3f}ms\n")
+            return 1
+    return 0
 
 
 if __name__ == '__main__':

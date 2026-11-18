@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.4
-FROM python:3.12-slim AS builder
+FROM python:3.12.9-slim-bookworm AS builder
 
 WORKDIR /app
 RUN python -m pip install --no-cache-dir 'mistune==3.2.1'
@@ -9,7 +9,7 @@ COPY docs/ docs/
 COPY site/ site/
 RUN python scripts/build_docs_site.py --out /public --base /
 
-FROM python:3.12-slim AS runner
+FROM python:3.12.9-slim-bookworm AS runner
 
 RUN groupadd -r agyos -g 1001 && \
     useradd -r -u 1001 -g agyos -d /nonexistent -s /usr/sbin/nologin agyos

@@ -33,6 +33,8 @@ Commands:
   obscura|browser  Control Obscura headless browser engine (MCP, CDP, fetch, scrape)
   strix|pentest    Run Strix autonomous security pentesting and vulnerability checks
   video       Automate vertical video scripting, psychology audit, and Manim 9:16
+  workspace   Manage transactional workspace milestones and revisions (status|transact|project|restore|replay)
+  diagnostics Export redacted system diagnostics, state, and environment metrics
   ondemand    Manage on-demand MCP servers and plugins (startup, status, activate, reset)
   use <name>  Activate an MCP server or plugin on-demand
   help        Show this help message
@@ -82,12 +84,22 @@ if decision.assumptions_applied:
     print(decision.format_assumptions_header())
 " "$query"
     ;;
-  state)
+  state|status)
     source bin/state.sh
     if [ "${1:-}" = "--json" ]; then
-      cat .agents/state/state.json 2>/dev/null || echo "{}"
+      gate=$(anchor_state_get "current_gate" "IDLE")
+      next_action=$(anchor_next_safe_action "$gate")
+      if [ -f .agents/state/state.json ]; then
+        jq --arg nsa "$next_action" '. + {next_safe_action: $nsa}' .agents/state/state.json 2>/dev/null || echo "{}"
+      else
+        echo "{}"
+      fi
     else
       cat .agents/state/CURRENT.md 2>/dev/null || echo "No active session."
+      gate=$(anchor_state_get "current_gate" "IDLE")
+      echo ""
+      echo "Active Gate: $gate"
+      echo "Next Safe Action: $(anchor_next_safe_action "$gate")"
     fi
     ;;
   gate)
@@ -255,6 +267,12 @@ print(json.dumps(output, indent=2))
     ;;
   video)
     exec python3 scripts/video_pipeline.py "$@"
+    ;;
+  workspace)
+    exec node bin/workspace-state.cjs "$@"
+    ;;
+  diagnostics)
+    exec python3 scripts/export_diagnostics.py "$@"
     ;;
   ondemand)
     exec python3 scripts/agy_ondemand.py "$@"

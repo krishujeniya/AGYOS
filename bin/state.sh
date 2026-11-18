@@ -99,6 +99,21 @@ anchor_gate_transition() {
   ) 200>"${STATE_FILE}.lock"
 }
 
+# anchor_next_safe_action [gate]
+# Returns the recommended next safe action for the given or current gate.
+anchor_next_safe_action() {
+  local gate="${1:-$(anchor_state_get "current_gate" "IDLE")}"
+  case "$gate" in
+    IDLE) echo "Initialize milestone with 'bin/agyos gate UNDERSTAND' or discover runbook via 'bin/agyos decide <task>'" ;;
+    UNDERSTAND) echo "Analyze requirements and transition to ANALYZE with 'bin/agyos gate ANALYZE'" ;;
+    ANALYZE) echo "Create architecture plan with 'bin/agyos gate PLAN' or fast-path to IMPLEMENT if complexity <= 2" ;;
+    PLAN) echo "Implement minimal code following TDD and transition to IMPLEMENT with 'bin/agyos gate IMPLEMENT'" ;;
+    IMPLEMENT) echo "Run verification checks and transition to VERIFY with 'bin/agyos gate VERIFY'" ;;
+    VERIFY) echo "Review monotonic test ratchet evidence and complete milestone with 'bin/agyos gate IDLE'" ;;
+    *) echo "Inspect state with 'bin/agyos state' or consult local runbook" ;;
+  esac
+}
+
 # anchor_state_lock_run <command> [args...]
 # Executes a command safely holding the state.json lock
 anchor_state_lock_run() {

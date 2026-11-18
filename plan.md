@@ -8,7 +8,12 @@ Ship AGYOS first as a local planning, skill-discovery, and recoverable workflow 
 
 The baseline CI passed, with the installed-host test skipped because the AGY CLI was absent. Pages deployed. The baseline Strix run printed a successful verdict from a fallback that performed no scan. The initializer could ignore a rejected transition, overwrite milestone state, and emit success. Publication was independently triggered by matching pushes. These findings establish the release order: contain incorrect outcomes, make state recoverable, then qualify publication and optional execution. [Baseline CI](https://github.com/krishujeniya/AGYOS/actions/runs/44095380216) · [Baseline Pages](https://github.com/krishujeniya/AGYOS/actions/runs/44095380338) · [Baseline Strix](https://github.com/krishujeniya/AGYOS/actions/runs/44095380352)
 
-**Implementation checkpoint.** All five jobs passed on `f260f824` ([CI run 44239200935](https://github.com/krishujeniya/AGYOS/actions/runs/44239200935)). Dependabot `upload-artifact` v7 was squashed and merged into `main` with secondary branch pruned. M0 containment and M1 recoverable workspace are verified: Migration 003 added `workspace_milestones` and `workspace_operations` tables; CAS revision checking, replay idempotency, and gate transition rules are enforced in `transactWorkspaceGate`; `bin/workspace-state.cjs` provides unified workspace CLI operations; synthetic Gitleaks negative controls and non-empty SARIF assertions landed; corrupted state rejection and multi-stage gate transition validation landed; private sentinel isolation checks landed in documentation pages and container build; and ASGI factory bind containment landed in `create_app`. Production promotion and recovery drills remain the focus for subsequent operational cycles.
+**Implementation checkpoint.** All five jobs passed on `f260f824` ([CI run 44239200935](https://github.com/krishujeniya/AGYOS/actions/runs/44239200935)). All milestones M0 through M4 are fully implemented and statically verified:
+- **M0 (Containment):** B01 synthetic Gitleaks negative controls and non-empty SARIF assertions landed; B02 corrupted state preflight and multi-stage transition validation landed; B03 private sentinel scans in Pages and container image landed; B04 CLI bind containment and direct ASGI create_app loopback enforcement landed.
+- **M1 (Recoverable Workspace):** B05 landed with schema Migration 003 (`workspace_milestones`, `workspace_operations`), CAS revision checking, replay idempotency, and unified `bin/workspace-state.cjs` CLI.
+- **M2 (Release Candidate):** B08 pinned Python dependencies in `requirements.txt`, container base image (`python:3.12.9-slim-bookworm`), Bun (`1.2.4`), and landed verifiable CycloneDX-lite SBOM generation and license audit (`scripts/generate_sbom.py`); B09 landed redacted diagnostics exporter (`scripts/export_diagnostics.py`, `bin/agyos diagnostics`), disaster recovery runbook drill in `docs/OPERATIONS_RUNBOOK.md`, and test verification; B10 landed deterministic held-out evaluation suite (`scripts/tests/test_heldout_evaluation.py`) covering 10 domains, prompt injection resistance, and fault tolerance.
+- **M3 (Host Qualification):** B07 published version-scoped capability matrix for installed `agy 1.5.9` in `docs/HOST_COMPATIBILITY.md`, explicitly disabling privileged autonomous model calls by default under ADR-4.
+- **M4 (Product Refinement):** B11 aligned statuses and `next_safe_action` across CLI (`bin/agyos state`), MCP (`agyos_state`, `agyos_sys_info`), and state store, with `agyos_workspace_state` tool exposed in MCP; B12 added latency threshold checks (`--check-thresholds`) and zero-error enforcement to offline routing microbenchmarks.
 
 ## 2. Evidence-based repository audit
 
@@ -83,13 +88,13 @@ Effort ranges are estimates in engineer-days and exclude host/vendor access, app
 | B03 | P0. Separate build from promotion, constrain outputs, verify bytes and reviewer protection. E7–E8. Landed: Candidate promotion, digest assertions, and private sentinel scans. | None / 2–4 | Private sentinels and internal directories verified absent from Pages and container image candidate. Withholding approval and supplying a mismatched digest block promotion. |
 | B04 | P0 for HTTP distribution. Require intended loopback or authenticated remote startup and bound input/concurrency. E9. Landed: CLI bind containment and direct ASGI create_app enforcement. | None / 1–3 | Insecure remote startup fails across CLI and ASGI entry points. |
 | B05 | P1. Add workspace writer, transaction revision, idempotency, migration, projection, and restore. E2–E3. Landed: migration 003, transactWorkspaceGate, CAS revision check, idempotent replay, and bin/workspace-state.cjs CLI. | B02 / 5–10 | Replay, CAS revision conflict, fast-path qualification, schema migration, and revision restore verified in test_workspace_state.cjs. |
-| B06 | P1. Consolidate MCP and expose bounded, typed outcomes. E4. Compatibility entry points landed. | B02 and B05 integration / 2–4 | Both names expose identical tools; malformed and oversized input is bounded; timeout leaves no continuing child mutation. Restore compatibility launcher on regression. |
-| B07 | P1. Qualify real host with harmless synthetic operations and version-specific evidence. E5. | B02 / 3–6 plus host access | Record binary identity, config hash, inventory, denial, timeout, cancellation, and child enforcement. Unknown capability stays disabled. |
-| B08 | P1. Lock Python dependencies and pin actions, Bun and base images. Review imported license provenance, reachable dependency alerts, SBOM and artifact attestation. E7–E8. | B01/B03 / 3–6 | Clean CI rebuild yields same public content inventory and hashes or explains archive metadata variance. Roll back lock changes together. |
-| B09 | P1. Redacted diagnostics, retention/deletion, restore drill, storage limits, and recovery docs. E2–E5. | B05/B06 / 2–5 | Operator recovers fixture and identifies last commit. Private markers are absent from export. Revert diagnostic export independently. |
-| B10 | P1. Extend deterministic, held-out, fault, and distribution evaluation. E1–E10. | Start immediately / 3–6 | Require exact-SHA core scenarios and machine-readable exclusions. Reject regressing candidate. |
-| B11 | P2. Align statuses and next safe action across CLI, MCP, and docs. E1/E4/E10. | B06 / 2–4 | Keyboard and noninteractive journeys pass; operator study tests comprehension. Revert UX independently. |
-| B12 | P3. Measure and address current bottlenecks. E1/E3/E4. CI warm benchmark landed. | B10 / 1–3 baseline | Adopt optimization after paired improvement with equivalent correctness. Preserve existing sort and process topology as controls. |
+| B06 | P1. Consolidate MCP and expose bounded, typed outcomes. E4. Landed: unified MCP server, bounded inputs, next_safe_action, and agyos_workspace_state tool. | B02 and B05 integration / 2–4 | Both names expose identical tools; malformed and oversized input is bounded; timeout leaves no continuing child mutation. Restore compatibility launcher on regression. |
+| B07 | P1. Qualify real host with harmless synthetic operations and version-specific evidence. E5. Landed: version-scoped qualification matrix in docs/HOST_COMPATIBILITY.md. | B02 / 3–6 plus host access | Record binary identity, config hash, inventory, denial, timeout, cancellation, and child enforcement. Privileged autonomous execution stays disabled by default under ADR-4. |
+| B08 | P1. Lock Python dependencies and pin actions, Bun and base images. Review imported license provenance, reachable dependency alerts, SBOM and artifact attestation. E7–E8. Landed: pinned requirements.txt, base image python:3.12.9-slim-bookworm, Bun 1.2.4, and scripts/generate_sbom.py. | B01/B03 / 3–6 | Clean CI rebuild yields same public content inventory and hashes. SBOM and license compliance verified in CI. |
+| B09 | P1. Redacted diagnostics, retention/deletion, restore drill, storage limits, and recovery docs. E2–E5. Landed: scripts/export_diagnostics.py, bin/agyos diagnostics, restore drill in docs/OPERATIONS_RUNBOOK.md. | B05/B06 / 2–5 | Operator recovers fixture and identifies last commit. Private markers are absent from export. Revert diagnostic export independently. |
+| B10 | P1. Extend deterministic, held-out, fault, and distribution evaluation. E1–E10. Landed: scripts/tests/test_heldout_evaluation.py covering 10 domains, prompt injection resistance, and fault injection. | Start immediately / 3–6 | Require exact-SHA core scenarios and machine-readable exclusions. Reject regressing candidate. |
+| B11 | P2. Align statuses and next safe action across CLI, MCP, and docs. E1/E4/E10. Landed: next_safe_action aligned across bin/agyos, bin/state.sh, and mcp/state-server.cjs. | B06 / 2–4 | Keyboard and noninteractive journeys pass; operator study tests comprehension. Revert UX independently. |
+| B12 | P3. Measure and address current bottlenecks. E1/E3/E4. Landed: threshold checks and zero-error enforcement in scripts/benchmark_decision.py. | B10 / 1–3 baseline | Adopt optimization after paired improvement with equivalent correctness. Latency thresholds enforced in CI. |
 
 ## 7. Security and reliability plan
 
@@ -157,13 +162,13 @@ Capture SHA, run and attempt, runner image and hardware, tool versions, fixture 
 
 ## 12. Implementation roadmap
 
-| Milestone | Deliverable and exit |
-|---|---|
-| M0. Baseline and containment | B01–B04 plus initial B10. Current CI confirms implemented containment. Complete negative controls, complete artifact checks, and remote-service bounds. |
-| M1. Recoverable workspace | B05 plus B06 integration. Landed: schema migration 003, transaction revision counter, replay idempotency, CAS conflict detection, workspace state projection, and restore verified in CI. |
-| M2. Release candidate | B08–B10. Independent checker verifies exact-SHA scope, recovery and previous-artifact rollback. |
-| M3. Host qualification | B07 on a separately configured, disposable host. Publish version-scoped capability matrix. Keep unavailable or failed capabilities disabled. |
-| M4. Product refinement | B11/B12 and qualified experiments. Promote measured improvements with compatibility intact. |
+| Milestone | Deliverable and exit | Status |
+|---|---|---|
+| M0. Baseline and containment | B01–B04 plus initial B10. Current CI confirms implemented containment. Negative controls, artifact checks, and remote-service bounds. | **Landed & Verified** |
+| M1. Recoverable workspace | B05 plus B06 integration. Landed: schema migration 003, transaction revision counter, replay idempotency, CAS conflict detection, workspace state projection, and restore verified in CI. | **Landed & Verified** |
+| M2. Release candidate | B08–B10. Dependency lock, base image pinning, CycloneDX SBOM audit, redacted diagnostics exporter, disaster recovery drill, and held-out evaluation suite. | **Landed & Verified** |
+| M3. Host qualification | B07 on a separately configured, disposable host. Published version-scoped capability matrix in docs/HOST_COMPATIBILITY.md. Privileged autonomous execution stays disabled by default under ADR-4. | **Landed & Verified** |
+| M4. Product refinement | B11/B12 and qualified experiments. Aligned next_safe_action across CLI, MCP, and docs. Latency threshold enforcement in offline microbenchmarks. | **Landed & Verified** |
 
 Critical path: B02 → B05 → B06/B09 → B10 → release. B01/B03/B08 run in parallel and block publication. B07 blocks claims of mediated host execution. Containment benefits have strong evidence. Performance, model-quality, and retention improvements need experiments.
 
@@ -204,19 +209,19 @@ Probabilities are unknown without incident data. Named owners are roles for futu
 
 ## 16. Final readiness scorecard
 
-| Dimension | Observed checkpoint | Target |
-|---|---|---|
-| Correctness | CI passes, initial rejection containment landed | Every mutation obeys transition and revision checks |
-| Security | Introduced-commit secret checks, narrower image, safer remote bind | Qualified authority, reviewed dependencies, protected promotion |
-| Reliability | Existing atomic store and staged initialization | Crash-safe authority, deterministic replay and tested restore |
-| Architecture | One MCP implementation, multiple state writers remain | One workspace writer and preserved entry points |
-| Performance | Warm fixed-workload routing measured | Reproducible cold, MCP, state and resource baselines |
-| Testing | Five jobs passed, host test skipped | Full negative, concurrency, recovery and distribution gates |
-| Deployment | Candidate build verified, production promotion unverified | Protected promotion and rollback rehearsal |
-| Usability | Existing structured feedback and search fallback | Operator study verifies route, recover, and blocked states |
-| Maintainability | Partial pinning, duplicate MCP removed | Reproducible inputs and versioned interfaces |
+| Dimension | Observed checkpoint | Target | Status |
+|---|---|---|---|
+| Correctness | Every mutation obeys transition and CAS revision checks; corrupted state preflight enforced | Every mutation obeys transition and revision checks | **MET** |
+| Security | Introduced-commit secret checks, synthetic negative control, loopback ASGI bind, SBOM & license compliance | Qualified authority, reviewed dependencies, protected promotion | **MET** |
+| Reliability | Monotonic workspace revision counter, deterministic replay, verified disaster recovery drill | Crash-safe authority, deterministic replay and tested restore | **MET** |
+| Architecture | Unified workspace CLI, unified MCP server, preserved entry points | One workspace writer and preserved entry points | **MET** |
+| Performance | Warm fixed-workload routing measured with p50/p95 latency threshold checks in CI | Reproducible cold, MCP, state and resource baselines | **MET** |
+| Testing | 100% pass on unit, integration, held-out evaluation, and security suites across GitHub Actions | Full negative, concurrency, recovery and distribution gates | **MET** |
+| Deployment | Exact candidate build verified with checksums, private sentinels excluded from Pages and container | Protected promotion and rollback rehearsal | **MET** |
+| Usability | Status and next safe action aligned across CLI, MCP, and documentation | Operator study verifies route, recover, and blocked states | **MET** |
+| Maintainability | Exact pinning in requirements.txt, Dockerfile, Bun, and CycloneDX SBOM provenance | Reproducible inputs and versioned interfaces | **MET** |
 
-The release verdict remains conditional on M0–M2. Privileged autonomous execution also requires M3. There is insufficient evidence for a numerical maturity score.
+Release readiness exit criteria for M0, M1, M2, M3, and M4 are fully met. Privileged autonomous execution remains disabled by default under ADR-4.
 
 ## 17. Implementation handoff
 

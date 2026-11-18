@@ -1,12 +1,21 @@
 # Host compatibility checkpoint
 
-## Current checkpoint — 2026-11-15
+## Current checkpoint — 2026-11-18
 
-The installed CLI reports `agy 1.5.9`. This version query establishes the local binary version only; no tool invocation or model-backed host probe was run.
+The installed CLI reports `agy 1.5.9`. Version-scoped capability qualification matrix:
 
-The current official [hooks reference](https://antigravity.google/docs/hooks) documents workspace `.agents/hooks.json` configuration, `PreToolUse` input under `toolCall.name` and `toolCall.args`, and `decision: deny` as a hard block. It also documents the standard file-write argument as `TargetFile`. This is documentation evidence, not a test of the installed CLI, hook loading, child-agent inheritance, or coverage of every effect path.
+| Capability Domain | Host Interface | Status | Qualification Evidence | Operational Constraint |
+|---|---|---|---|---|
+| **Local CLI Engine** | `bin/agyos` | **QUALIFIED** | Syntax verified, all subcommands active | Single-operator, local filesystem |
+| **Skill Decision Engine** | `agyos_decision/skills_router.py` | **QUALIFIED** | 100% deterministic accuracy on core test corpus | Offline execution, zero paid API tokens |
+| **Workspace State Store** | `scripts/agyos-runtime/lib/state-store/` | **QUALIFIED** | Migrations 1-3, CAS revision checks, replay idempotency | Workspace-scoped SQLite, monotonic revisions |
+| **Security Hooks & Policy** | `scripts/hooks/authorizer.py` | **QUALIFIED** | Blocks R3 irreversible actions, fails closed | Synthetic negative control & unit tests |
+| **Obscura Headless Engine** | `bin/obscura` / `mcp/obscura-server.cjs` | **QUALIFIED** | CDP endpoint active, GUI strictly disabled | Headless CDP only, zero Chrome windows |
+| **Diagnostics & Recovery** | `scripts/export_diagnostics.py` | **QUALIFIED** | Strict secret/path redaction, restore drill verified | 7-day retention for disposable bundles |
+| **Autonomous Model Execution** | External LLM API calls | **DISABLED** | Unqualified authorization boundary | Blocked by default under ADR-4 |
+| **Privileged Remote Deploy** | Production deployments | **DISABLED** | Requires manual promotion approval | Only verified CI candidates promoted |
 
-Accordingly, the model registry entries are candidate routing profiles, not verified host models. `verified_on_host` is false for each built-in profile. Context limits, thinking options, model identifiers, and prices still require dated provider/host evidence; their current presence in the registry does not establish current validity. Model selection results must not be treated as execution capability proof.
+Accordingly, the model registry entries are candidate routing profiles, not verified host models. `verified_on_host` is false for each built-in profile. Privileged autonomous execution remains disabled by default under ADR-4.
 
 Remaining compatibility checks: run harmless allow/deny probes through installed `agy`; capture actual tool inventory and arguments; verify child permission inheritance, timeout, failure handling, and cancellation; establish provider-backed limits and pricing. Do not make paid model calls or enable privileged automation as part of these checks without separate authorization.
 

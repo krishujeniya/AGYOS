@@ -63,6 +63,7 @@ test('normal MCP initialization and tool listing remain compatible', () => {
   assert.ok(list.result.tools.some(t => t.name === 'agyos_decision'));
   assert.ok(list.result.tools.some(t => t.name === 'agyos_memory'));
   assert.ok(list.result.tools.some(t => t.name === 'agyos_pipeline'));
+  assert.ok(list.result.tools.some(t => t.name === 'agyos_workspace_state'));
   const ping = rpc({ jsonrpc: '2.0', method: 'ping', id: 'ok' })[0];
   assert.equal(ping.id, 'ok');
 });

@@ -157,7 +157,60 @@ Before tagging or pushing any release to `origin/main`:
    bash bin/gate-check.sh
    ```
 
-## Documentation release candidates
+---
+
+## 6. Disaster Recovery, Restore Drill & Retention Limits
+
+### 6.1 Workspace State Machine Architecture & Authoritative Storage
+AGYOS uses a dual-layer state architecture:
+1. **Primary Authoritative Store (`.agents/state/agyos_state.sqlite`):** ACID transactional store managing `workspace_milestones` and `workspace_operations` tables with monotonically increasing revision counters, CAS conflict detection, and deterministic replay.
+2. **Projections (`.agents/state/state.json`, `.agents/state/CURRENT.md`):** Derived read-only summaries reconstructed from the authoritative database.
+
+### 6.2 Disaster Recovery Drill: Reconstructing Corrupted State (<5 min MTTR)
+If `.agents/state/state.json` is corrupted, truncated, or removed:
+```bash
+# 1. Inspect SQLite workspace status to identify the authoritative milestone and latest revision
+bin/agyos workspace status
+
+# 2. Re-project the authoritative state directly from SQLite
+bin/agyos workspace project <milestone_id>
+
+# 3. If an explicit revision rollback is required:
+bin/agyos workspace restore <milestone_id> <target_revision>
+
+# 4. Verify working state integrity
+bin/agyos state
+```
+
+### 6.3 Transactional Replay & In-Flight Crash Recovery
+If an operation process was terminated in mid-flight (power outage, kill -9):
+```bash
+# Replay the operation idempotently; if already committed, returns existing result without mutation
+bin/agyos workspace replay <milestone_id> <operation_id>
+```
+
+### 6.4 Redacted Diagnostics Export
+To share system state or file an issue without disclosing user paths or secrets:
+```bash
+# Export redacted diagnostic bundle
+bin/agyos diagnostics --output /tmp/agyos-diagnostic-bundle.json
+
+# Preview redacted diagnostic bundle
+bin/agyos diagnostics --preview
+```
+The export engine guarantees:
+- All `/home/*` and `/Users/*` paths are sanitized to `~`.
+- All tokens (`ghp_*`, `AKIA*`, Bearer tokens, private keys) are replaced with redacted markers.
+- All internal sentinels (`AGYOS_PRIVATE_SENTINEL`) are stripped.
+
+### 6.5 Storage Retention & Deletion Policy
+- **Disposable Diagnostics & CI Artifacts:** Retained for 7 days, then automatically purged.
+- **Pre-write Snapshots (`.agents/state/snapshots/`):** Retained for the duration of the active milestone, pruned upon milestone completion.
+- **Authoritative Milestones & Audit Trails:** Retained locally until explicitly archived by the operator.
+
+---
+
+## 7. Documentation release candidates
 
 A successful push-triggered CI run produces `pages-candidate` and
 `documentation-image-candidate`. Record the run URL and full commit SHA.

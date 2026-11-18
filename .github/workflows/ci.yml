@@ -37,6 +37,16 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+      - name: Generate and audit SBOM license compliance
+        run: python scripts/generate_sbom.py --check --output "$RUNNER_TEMP/sbom.json"
+      - name: Upload Software Bill of Materials (SBOM)
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: agyos-sbom
+          path: ${{ runner.temp }}/sbom.json
+          if-no-files-found: ignore
+          retention-days: 7
       - name: Check AGYOS shell entrypoints syntax
         run: |
           for f in bin/agyos bin/rollback.sh bin/state-validate.sh scripts/agyos-verify.sh scripts/agyos-init.sh; do
@@ -66,7 +76,7 @@ jobs:
           include-hidden-files: true
           retention-days: 7
       - name: Measure the fixed offline routing workload
-        run: python scripts/benchmark_decision.py --repeats 30 --output "$RUNNER_TEMP/routing.json"
+        run: python scripts/benchmark_decision.py --repeats 30 --output "$RUNNER_TEMP/routing.json" --check-thresholds
       - name: Upload routing measurements
         if: always()
         uses: actions/upload-artifact@v7
@@ -106,7 +116,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
         with:
-          bun-version: latest
+          bun-version: '1.2.4'
       - name: Run Council regression suite
         working-directory: scripts/council
         run: bun test

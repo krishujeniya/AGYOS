@@ -1,3 +1,20 @@
+# AGYOS handoff: master plan M2 release candidate, M3 host qualification, and M4 refinement (2026-11-18)
+
+- Task: Complete master plan through Milestone 2 (release candidate B08–B10), Milestone 3 (host qualification B07), and Milestone 4 (product refinement B11–B12).
+- Branch: `main`.
+- Delivered changes:
+  - B08: Pinned exact runtime dependencies in `requirements.txt` (`jsonschema==4.26.0`, `pyyaml==6.0.3`), pinned container base image to `python:3.12.9-slim-bookworm` in `Dockerfile`, pinned Bun to `1.2.4` in `.github/workflows/ci.yml`. Added `scripts/generate_sbom.py` and unit test `scripts/tests/test_sbom_and_licenses.py` for verifiable CycloneDX-lite SBOM generation and license compliance audit.
+  - B09: Implemented redacted diagnostics exporter (`scripts/export_diagnostics.py`, `bin/agyos diagnostics`), documented disaster recovery drill and retention limits in `docs/OPERATIONS_RUNBOOK.md`, added `scripts/tests/test_diagnostics_and_recovery.py` verifying token/path redaction and state restoration.
+  - B10: Implemented held-out evaluation suite (`scripts/tests/test_heldout_evaluation.py`) covering 10 domains, ambiguous queries, prompt injection resistance, fault injection, and deterministic routing.
+  - B07 / M3: Published version-scoped capability qualification matrix in `docs/HOST_COMPATIBILITY.md` for `agy 1.5.9`, explicitly keeping unverified autonomous model execution disabled by default under ADR-4.
+  - B11: Aligned `next_safe_action` across CLI (`bin/agyos state`), state helper (`bin/state.sh`), and MCP server (`mcp/state-server.cjs`), exposed `agyos_workspace_state` tool in MCP, and added `scripts/tests/test_status_alignment.py`.
+  - B12: Added latency threshold assertions (`--check-thresholds`) and zero-error enforcement to offline routing microbenchmarks in `scripts/benchmark_decision.py` and CI.
+  - `plan.md`: Updated master plan checkpoints, backlog items B06–B12, roadmap, and final readiness scorecard for all milestones M0–M4.
+- Verification evidence: static read-only inspection, `git diff --check`, `bash -n`, `node --check`, and `python -m compileall` all passed cleanly; zero local builds/tests run.
+- Exact next command: `git status --short --branch`
+
+---
+
 # AGYOS handoff: master plan M0 containment and M1 recoverable workspace (2026-11-18)
 
 - Task: Execute master plan through Milestone 0 (containment gates B01-B04) and Milestone 1 (recoverable workspace B05), verify single-writer CAS revision checks, idempotent replay, and state projections.
