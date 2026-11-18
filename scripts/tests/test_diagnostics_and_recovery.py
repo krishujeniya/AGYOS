@@ -74,8 +74,9 @@ class DisasterRecoveryDrillTests(unittest.TestCase):
         )
         self.assertEqual(init_res.returncode, 0)
         out_init = json.loads(init_res.stdout)
-        self.assertEqual(out_init["revision"], 1)
-        self.assertEqual(out_init["current_gate"], "UNDERSTAND")
+        ms = out_init.get("milestone", out_init)
+        self.assertEqual(ms["revision"], 1)
+        self.assertEqual(ms["currentGate"], "UNDERSTAND")
 
         # 2. Corrupt state.json
         state_file = self.state_dir / "state.json"

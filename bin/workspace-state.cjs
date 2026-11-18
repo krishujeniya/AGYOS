@@ -36,10 +36,13 @@ function parseArgs(args) {
   for (let i = 1; i < args.length; i++) {
     const arg = args[i];
     if (arg === '--db' && args[i + 1]) parsed.db = path.resolve(args[++i]);
-    else if (arg === '--state-file' && args[i + 1]) parsed.stateFile = path.resolve(args[++i]);
+    else if ((arg === '--state-file' || arg === '--out') && args[i + 1]) parsed.stateFile = path.resolve(args[++i]);
     else if (arg === '--current-file' && args[i + 1]) parsed.currentFile = path.resolve(args[++i]);
     else if ((arg === '--milestone' || arg === '--milestone-id') && args[i + 1]) parsed.milestoneId = args[++i];
-    else if ((arg === '--gate' || arg === '--target-gate') && args[i + 1]) parsed.gate = args[++i];
+    else if ((arg === '--gate' || arg === '--target-gate' || arg === '--transition') && args[i + 1]) {
+      const g = args[++i];
+      parsed.gate = g.includes('->') ? g.split('->')[1] : g;
+    }
     else if ((arg === '--op' || arg === '--op-id' || arg === '--operation-id') && args[i + 1]) parsed.opId = args[++i];
     else if ((arg === '--revision' || arg === '--expected-revision') && args[i + 1]) parsed.revision = parseInt(args[++i], 10);
     else if (arg === '--mode' && args[i + 1]) parsed.mode = args[++i];
@@ -173,8 +176,13 @@ async function main() {
       }
 
       case 'project': {
-        const milestones = store.listWorkspaceMilestones();
-        const active = milestones[0] || null;
+        let active = null;
+        if (options.milestoneId) {
+          active = store.getWorkspaceMilestone(options.milestoneId);
+        } else {
+          const milestones = store.listWorkspaceMilestones();
+          active = milestones[0] || null;
+        }
         if (active) {
           projectWorkspaceState(active, options.stateFile, options.currentFile);
           console.log(JSON.stringify({ status: 'PROJECTED', milestone: active }, null, 2));

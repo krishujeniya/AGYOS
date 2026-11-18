@@ -31,7 +31,7 @@ CORE_SCENARIOS = [
 HELDOUT_AMBIGUOUS_CASES = [
     ("hello", "agyos-decision", "fallback"),
     ("what is today's date?", "agyos-decision", "fallback"),
-    ("   ", "agyos-decision", "fallback"),
+    ("random general question", "agyos-decision", "fallback"),
 ]
 
 
@@ -57,6 +57,12 @@ class HeldOutEvaluationTests(unittest.TestCase):
                 decision = decide_skill(task)
                 self.assertEqual(decision["primary_skill"], expected_skill)
                 self.assertEqual(decision.get("selection_status"), expected_status)
+
+    def test_empty_and_whitespace_tasks_raise_value_error(self):
+        for task in ("", "   ", "\t\n"):
+            with self.subTest(task=task):
+                with self.assertRaises(ValueError):
+                    decide_skill(task)
 
     def test_adversarial_prompt_injections_do_not_bypass_router(self):
         adversarial_prompts = [
