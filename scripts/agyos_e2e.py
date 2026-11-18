@@ -13,12 +13,15 @@ Executes autonomous development lifecycles without manual command input:
 from __future__ import annotations
 
 import argparse
+import fcntl
+import os
 from datetime import datetime, timezone
 import json
 from pathlib import Path
 import re
 import subprocess
 import sys
+import tempfile
 from typing import Any, Dict, List, Optional, Tuple
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -80,12 +83,13 @@ def write_state_file(state_file: Path, data: Dict[str, Any]) -> None:
     tmp.replace(state_file)
 
 
-def run_state_gate(target_gate: str, root_dir: Path, mode: str = "normal") -> bool:
+def run_state_gate(target_gate: str, root_dir: Path, mode: str = "normal", *, state_file: Optional[Path] = None) -> bool:
     """Transition state gate using the safe state abstraction."""
     cmd = ["bash", "bin/agyos", "gate", target_gate]
     if mode == "fast":
         cmd = ["bash", "bin/agyos", "fast"]
-    res = subprocess.run(cmd, cwd=root_dir, capture_output=True, text=True)
+    env = {**os.environ, "STATE_FILE": str(state_file)} if state_file else None
+    res = subprocess.run(cmd, cwd=root_dir, capture_output=True, text=True, env=env)
     return res.returncode == 0
 
 
@@ -187,31 +191,53 @@ def update_current_summary(
 def init_milestone(plan: Dict[str, Any], root_dir: Path = ROOT) -> Dict[str, Any]:
     """Initialize milestone, advance gate sequence, and record checkpoint."""
     state_file = root_dir / ".agents" / "state" / "state.json"
-    state = read_state_file(state_file)
     milestone_id = plan["milestone_id"]
+    state_file.parent.mkdir(parents=True, exist_ok=True)
 
-    if state.get("current_gate") == "VERIFY":
-        run_state_gate("IDLE", root_dir)
-        state = read_state_file(state_file)
+    with state_file.with_suffix(".json.lock").open("a") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        try:
+            state = json.loads(state_file.read_text(encoding="utf-8"))
+        except FileNotFoundError:
+            state = read_state_file(state_file)
+        except (ValueError, OSError) as exc:
+            raise ValueError("Milestone state is unavailable") from exc
 
-    if state.get("current_gate") != "IDLE":
-        run_state_gate("IDLE", root_dir)
+        if not isinstance(state, dict) or state.get("current_gate") not in ("IDLE", "VERIFY"):
+            raise ValueError("Milestone initialization requires idle or verified state")
+        verification = state.get("verification")
+        if state["current_gate"] == "VERIFY" and (
+            not isinstance(verification, dict) or verification.get("status") != "PASS"
+        ):
+            raise ValueError("Current milestone has not passed verification")
 
-    run_state_gate("UNDERSTAND", root_dir)
-    run_state_gate("ANALYZE", root_dir)
+        with tempfile.TemporaryDirectory(dir=state_file.parent) as directory:
+            staged = Path(directory) / "state.json"
+            write_state_file(staged, state)
 
-    state = read_state_file(state_file)
-    state["current_milestone"] = milestone_id
-    state["complexity_score"] = plan["complexity_score"]
-    state["iteration"] = 1
-    state["last_updated"] = datetime.now(timezone.utc).isoformat()
-    write_state_file(state_file, state)
+            def advance(gate: str, mode: str = "normal") -> None:
+                if not run_state_gate(gate, root_dir, mode, state_file=staged):
+                    raise ValueError(f"Milestone initialization rejected at {gate}")
 
-    if plan["fast_path"]:
-        run_state_gate("IMPLEMENT", root_dir, mode="fast")
-    else:
-        run_state_gate("PLAN", root_dir)
-        run_state_gate("IMPLEMENT", root_dir)
+            if state["current_gate"] == "VERIFY":
+                advance("IDLE")
+            advance("UNDERSTAND")
+            advance("ANALYZE")
+            state = json.loads(staged.read_text(encoding="utf-8"))
+            state.update(
+                current_milestone=milestone_id,
+                complexity_score=plan["complexity_score"],
+                iteration=1,
+                last_updated=datetime.now(timezone.utc).isoformat(),
+            )
+            write_state_file(staged, state)
+            if plan["fast_path"]:
+                advance("IMPLEMENT", "fast")
+            else:
+                advance("PLAN")
+                advance("IMPLEMENT")
+            final_state = json.loads(staged.read_text(encoding="utf-8"))
+            staged.replace(state_file)
 
     checkpoint_file = root_dir / ".agents" / "state" / "checkpoints" / f"{milestone_id}.md"
     checkpoint_file.parent.mkdir(parents=True, exist_ok=True)
@@ -222,7 +248,6 @@ def init_milestone(plan: Dict[str, Any], root_dir: Path = ROOT) -> Dict[str, Any
     )
     update_current_summary(root_dir, milestone_id, "IMPLEMENT", plan)
 
-    final_state = read_state_file(state_file)
     return {
         "status": "INITIALIZED",
         "milestone_id": milestone_id,

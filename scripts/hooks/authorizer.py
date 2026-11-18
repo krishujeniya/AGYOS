@@ -201,7 +201,7 @@ def main(event: str) -> None:
     if tool_name in WRITE_TOOLS:
         target = (
             tool_args.get("Path") or tool_args.get("file_path")
-            or tool_args.get("target_file")
+            or tool_args.get("target_file") or tool_args.get("TargetFile")
         )
         if isinstance(target, str) and target:
             try:

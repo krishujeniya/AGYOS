@@ -1,12 +1,11 @@
 name: Deploy Documentation to GitHub Pages
 
 on:
-  push:
-    branches: ["main"]
   workflow_dispatch:
 
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 
@@ -16,11 +15,18 @@ concurrency:
 
 jobs:
   deploy:
+    if: github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      - name: Require successful CI for this revision
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          result=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow ci.yml --commit "$GITHUB_SHA" --event push --limit 1 --json conclusion --jq '.[0].conclusion')
+          test "$result" = success
       - name: Checkout repository
         uses: actions/checkout@v4
 

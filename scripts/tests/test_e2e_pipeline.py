@@ -8,6 +8,7 @@ from pathlib import Path
 import shutil
 import tempfile
 import unittest
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -116,6 +117,13 @@ class EndToEndPipelineTests(unittest.TestCase):
                 "evpi": {"assumptions_applied": []},
                 "contract": {"task_id": "tsk_test", "pod": "pod-build"},
             }
+
+            original = (state_dir / "state.json").read_bytes()
+            with patch("scripts.agyos_e2e.run_state_gate", return_value=False):
+                with self.assertRaisesRegex(ValueError, "rejected at UNDERSTAND"):
+                    init_milestone(plan, root_dir=tmp_root)
+            self.assertEqual((state_dir / "state.json").read_bytes(), original)
+            self.assertFalse((state_dir / "checkpoints").exists())
 
             result = init_milestone(plan, root_dir=tmp_root)
             self.assertEqual(result["status"], "INITIALIZED")

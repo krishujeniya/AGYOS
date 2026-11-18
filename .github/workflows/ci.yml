@@ -99,3 +99,20 @@ jobs:
         working-directory: scripts/council
         run: bun test
 
+
+  documentation-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build documentation image
+        run: docker build -t agyos-docs-ci .
+      - name: Verify public image contents
+        run: |
+          docker run --rm agyos-docs-ci sh -ec '
+            test -f /app/site/index.html
+            test -f /app/site/search-index.json
+            test ! -e /app/.agents
+            test ! -e /app/scripts
+          '
