@@ -21,31 +21,26 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Require successful CI for this revision
+      - name: Resolve the successful candidate for this revision
+        id: candidate
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          result=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow ci.yml --commit "$GITHUB_SHA" --event push --limit 1 --json conclusion --jq '.[0].conclusion')
-          test "$result" = success
-      - name: Checkout repository
-        uses: actions/checkout@v4
+          run_id=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow ci.yml --commit "$GITHUB_SHA" --event push --limit 1 --json databaseId,conclusion --jq '.[] | select(.conclusion == "success") | .databaseId')
+          test -n "$run_id"
+          echo "run-id=$run_id" >> "$GITHUB_OUTPUT"
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/download-artifact@v4
         with:
-          python-version: '3.12'
+          name: pages-candidate
+          run-id: ${{ steps.candidate.outputs.run-id }}
+          github-token: ${{ github.token }}
+          path: candidate
 
-      - name: Install static generator dependencies
-        run: python -m pip install 'mistune==3.2.1'
-
-      - name: Generate only approved public docs
-        run: python scripts/build_docs_site.py --out _site --base /AGYOS/
-
-      - name: Validate JavaScript syntax
-        run: node --check site/site.js
-
-      - name: Verify documentation build
-        run: python scripts/test_docs_site.py --site _site --base /AGYOS/
+      - name: Verify the complete candidate file inventory
+        run: |
+          (cd candidate/_site && find . -type f -print0 | sort -z | xargs -0 sha256sum) > actual-sha256.txt
+          diff -u candidate/pages-sha256.txt actual-sha256.txt
 
       - name: Set up Pages
         uses: actions/configure-pages@v5
@@ -53,7 +48,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './_site'
+          path: './candidate/_site'
 
       - name: Deploy to GitHub Pages
         id: deployment

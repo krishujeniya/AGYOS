@@ -100,6 +100,33 @@ jobs:
         run: bun test
 
 
+  documentation-pages:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build and validate public documentation
+        run: |
+          python -m pip install 'mistune==3.2.1'
+          python scripts/build_docs_site.py --out _site --base /AGYOS/
+          node --check site/site.js
+          python scripts/test_docs_site.py --site _site --base /AGYOS/
+      - name: Record public file digests
+        run: |
+          (cd _site && find . -type f -print0 | sort -z | xargs -0 sha256sum) > pages-sha256.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pages-candidate
+          path: |
+            _site/
+            pages-sha256.txt
+          if-no-files-found: error
+          retention-days: 14
+
   documentation-image:
     runs-on: ubuntu-latest
     permissions:
