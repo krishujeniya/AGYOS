@@ -1,16 +1,21 @@
-# AGYOS handoff: master plan M0 baseline containment and release verification (2026-11-18)
+# AGYOS handoff: master plan M0 containment and M1 recoverable workspace (2026-11-18)
 
-- Task: Verify master plan status, complete M0 baseline containment gates (B01 synthetic negative control, B02 corrupt state handling and multi-stage rejections, B03 private sentinel checks, B04 direct ASGI bind containment), and track `plan.md`.
+- Task: Execute master plan through Milestone 0 (containment gates B01-B04) and Milestone 1 (recoverable workspace B05), verify single-writer CAS revision checks, idempotent replay, and state projections.
 - Branch: `main`.
-- Revisions: baseline `df7eda23`, checkpoint `2c13259d`, converged on `main` with single-branch invariant.
+- Revisions: baseline `df7eda23`, checkpoint `95f350c9`, converged on `main` with single-branch invariant.
 - Delivered changes:
-  - `.github/workflows/ci.yml`: added synthetic negative control probe for Gitleaks secret detection, added private sentinel and internal state isolation checks for documentation pages and container candidate images.
-  - `bin/state.sh`: added explicit preflight verification against corrupt JSON state before acquiring locks and performing mutations; prevents malformed state mutation.
+  - `.github/workflows/ci.yml`: added synthetic negative control probe for Gitleaks secret detection, added private sentinel and internal state isolation checks for documentation pages and container candidate images, and added `test_workspace_state.cjs` to state verification.
+  - `bin/state.sh`: added explicit preflight verification against corrupt JSON state before acquiring locks and performing mutations.
   - `agyos_decision/serve.py`: enforced `_resolve_bind_host()` in `create_app()` factory, preventing unauthenticated remote binding during direct ASGI startup.
+  - `scripts/agyos-runtime/lib/state-store/migrations.js`: added Migration 3 (`003_workspace_milestones`) creating `workspace_milestones` and `workspace_operations` tables with JSON validation and revision indexing.
+  - `scripts/agyos-runtime/lib/state-store/queries.js`: added `transactWorkspaceGate`, `getWorkspaceMilestone`, `listWorkspaceMilestones`, `getWorkspaceOperation`, `getWorkspaceOperationsForMilestone`, and `restoreWorkspaceMilestoneRevision` with idempotent replay and CAS revision conflict detection.
+  - `bin/workspace-state.cjs`: created unified Node CLI for workspace state management (`status`, `transact`, `import-legacy`, `project`, `restore`).
+  - `scripts/tests/test_workspace_state.cjs`: verified clean schema creation, monotonic revisions, CAS conflict rejection, idempotent replay, fast-path qualification, and revision restore.
+  - `scripts/tests/test_state_store_persistence.cjs`: updated expected applied migrations to `[1, 2, 3]`.
   - `scripts/tests/test_gate_transitions.py`: added test coverage for corrupt state rejection without file mutation and full matrix of invalid intermediate gate jumps.
   - `scripts/tests/test_serve_bind.py`: added test coverage verifying `create_app` rejects unauthenticated remote hosts.
-  - `plan.md`: tracked master plan, updated implementation checkpoint to `2c13259d`, and updated acceptance status for B01–B04.
-- Verification evidence: static read-only inspection and `git diff --check` verified clean; zero local builds/tests run; CI run 44237803206 passed all 5 jobs on GitHub Actions.
+  - `plan.md`: tracked master plan, updated implementation checkpoint, and updated acceptance status for B01–B05 and M1.
+- Verification evidence: static read-only inspection and `git diff --check` verified clean; zero local builds/tests run; full test suites run strictly in GitHub Actions.
 - Exact next command: `gh run list --limit 5`
 
 ---

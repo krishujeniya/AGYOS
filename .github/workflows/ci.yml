@@ -26,7 +26,9 @@ jobs:
       - name: Install pinned state-store runtime dependencies
         run: npm ci --prefix scripts/agyos-runtime --ignore-scripts --no-audit --no-fund
       - name: Verify state-store migration and persistence
-        run: node --test scripts/tests/test_state_store_persistence.cjs
+        run: |
+          node --test scripts/tests/test_state_store_persistence.cjs
+          node --test scripts/tests/test_workspace_state.cjs
       - name: Set up Python
         uses: actions/setup-python@v5
         with:

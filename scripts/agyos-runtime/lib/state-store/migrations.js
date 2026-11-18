@@ -133,6 +133,38 @@ CREATE INDEX IF NOT EXISTS idx_work_items_session_id_updated_at
   ON work_items (session_id, updated_at DESC);
 `;
 
+const WORKSPACE_MILESTONES_SQL = `
+CREATE TABLE IF NOT EXISTS workspace_milestones (
+  id TEXT PRIMARY KEY,
+  current_gate TEXT NOT NULL,
+  revision INTEGER NOT NULL DEFAULT 1,
+  complexity_score INTEGER,
+  fast_path INTEGER NOT NULL DEFAULT 0,
+  metadata TEXT NOT NULL CHECK (json_valid(metadata)),
+  created_at TEXT NOT NULL,
+  updated_at TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_workspace_milestones_gate
+  ON workspace_milestones (current_gate);
+
+CREATE TABLE IF NOT EXISTS workspace_operations (
+  operation_id TEXT PRIMARY KEY,
+  milestone_id TEXT NOT NULL,
+  revision INTEGER NOT NULL,
+  from_gate TEXT NOT NULL,
+  to_gate TEXT NOT NULL,
+  mode TEXT NOT NULL DEFAULT 'normal',
+  input_hash TEXT NOT NULL,
+  payload TEXT NOT NULL CHECK (json_valid(payload)),
+  committed_at TEXT NOT NULL,
+  FOREIGN KEY (milestone_id) REFERENCES workspace_milestones (id) ON DELETE CASCADE
+);
+
+CREATE INDEX IF NOT EXISTS idx_workspace_operations_milestone_rev
+  ON workspace_operations (milestone_id, revision DESC);
+`;
+
 const MIGRATIONS = [
   {
     version: 1,
@@ -143,6 +175,11 @@ const MIGRATIONS = [
     version: 2,
     name: '002_work_items',
     sql: WORK_ITEMS_SQL,
+  },
+  {
+    version: 3,
+    name: '003_workspace_milestones',
+    sql: WORKSPACE_MILESTONES_SQL,
   },
 ];
 

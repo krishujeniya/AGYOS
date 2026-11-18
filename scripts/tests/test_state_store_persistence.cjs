@@ -12,7 +12,7 @@ test('state store migrates a clean database and persists work items across reope
   const dbPath = path.join(directory, 'state.db');
   try {
     const first = await createStateStore({ dbPath });
-    assert.deepEqual(first.getAppliedMigrations().map(item => item.version), [1, 2]);
+    assert.deepEqual(first.getAppliedMigrations().map(item => item.version), [1, 2, 3]);
     first.upsertWorkItem({
       id: 'task-persist-1',
       source: 'agyos-task',
@@ -23,7 +23,7 @@ test('state store migrates a clean database and persists work items across reope
     first.close();
 
     const reopened = await createStateStore({ dbPath });
-    assert.deepEqual(reopened.getAppliedMigrations().map(item => item.version), [1, 2]);
+    assert.deepEqual(reopened.getAppliedMigrations().map(item => item.version), [1, 2, 3]);
     assert.deepEqual(reopened.getWorkItemById('task-persist-1').metadata, {
       lifecycleVersion: 1,
       attempt: 0,

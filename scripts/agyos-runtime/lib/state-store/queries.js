@@ -1,5 +1,6 @@
 'use strict';
 
+const crypto = require('crypto');
 const { assertValidEntity } = require('./schema');
 
 const ACTIVE_SESSION_STATES = ['active', 'running', 'idle'];
@@ -138,6 +139,35 @@ function mapWorkItemRow(row) {
     metadata: parseJsonColumn(row.metadata, null),
     createdAt: row.created_at,
     updatedAt: row.updated_at,
+  };
+}
+
+function mapWorkspaceMilestoneRow(row) {
+  if (!row) return null;
+  return {
+    id: row.id,
+    currentGate: row.current_gate,
+    revision: row.revision,
+    complexityScore: row.complexity_score,
+    fastPath: Boolean(row.fast_path),
+    metadata: parseJsonColumn(row.metadata, {}),
+    createdAt: row.created_at,
+    updatedAt: row.updated_at,
+  };
+}
+
+function mapWorkspaceOperationRow(row) {
+  if (!row) return null;
+  return {
+    operationId: row.operation_id,
+    milestoneId: row.milestone_id,
+    revision: row.revision,
+    fromGate: row.from_gate,
+    toGate: row.to_gate,
+    mode: row.mode,
+    inputHash: row.input_hash,
+    payload: parseJsonColumn(row.payload, {}),
+    committedAt: row.committed_at,
   };
 }
 
@@ -732,6 +762,54 @@ function createQueryApi(db, { prepareRead = sql => db.prepare(sql) } = {}) {
       updated_at = excluded.updated_at
   `);
 
+  const getWorkspaceMilestoneStatement = prepareRead(`
+    SELECT id, current_gate, revision, complexity_score, fast_path, metadata, created_at, updated_at
+    FROM workspace_milestones
+    WHERE id = ?
+  `);
+
+  const listWorkspaceMilestonesStatement = prepareRead(`
+    SELECT id, current_gate, revision, complexity_score, fast_path, metadata, created_at, updated_at
+    FROM workspace_milestones
+    ORDER BY updated_at DESC
+  `);
+
+  const getWorkspaceOperationStatement = prepareRead(`
+    SELECT operation_id, milestone_id, revision, from_gate, to_gate, mode, input_hash, payload, committed_at
+    FROM workspace_operations
+    WHERE operation_id = ?
+  `);
+
+  const getWorkspaceOperationsForMilestoneStatement = prepareRead(`
+    SELECT operation_id, milestone_id, revision, from_gate, to_gate, mode, input_hash, payload, committed_at
+    FROM workspace_operations
+    WHERE milestone_id = ?
+    ORDER BY revision ASC
+  `);
+
+  const upsertWorkspaceMilestoneStatement = db.prepare(`
+    INSERT INTO workspace_milestones (
+      id, current_gate, revision, complexity_score, fast_path, metadata, created_at, updated_at
+    ) VALUES (
+      @id, @current_gate, @revision, @complexity_score, @fast_path, @metadata, @created_at, @updated_at
+    )
+    ON CONFLICT (id) DO UPDATE SET
+      current_gate = excluded.current_gate,
+      revision = excluded.revision,
+      complexity_score = excluded.complexity_score,
+      fast_path = excluded.fast_path,
+      metadata = excluded.metadata,
+      updated_at = excluded.updated_at
+  `);
+
+  const insertWorkspaceOperationStatement = db.prepare(`
+    INSERT INTO workspace_operations (
+      operation_id, milestone_id, revision, from_gate, to_gate, mode, input_hash, payload, committed_at
+    ) VALUES (
+      @operation_id, @milestone_id, @revision, @from_gate, @to_gate, @mode, @input_hash, @payload, @committed_at
+    )
+  `);
+
   function getSessionById(id) {
     const row = getSessionStatement.get(id);
     return row ? mapSessionRow(row) : null;
@@ -955,6 +1033,163 @@ function createQueryApi(db, { prepareRead = sql => db.prepare(sql) } = {}) {
       });
       const row = getSkillVersionStatement.get(normalized.skillId, normalized.version);
       return row ? mapSkillVersionRow(row) : null;
+    },
+    getWorkspaceMilestone(id) {
+      const row = getWorkspaceMilestoneStatement.get(id);
+      return mapWorkspaceMilestoneRow(row);
+    },
+    listWorkspaceMilestones() {
+      return listWorkspaceMilestonesStatement.all().map(mapWorkspaceMilestoneRow);
+    },
+    getWorkspaceOperation(operationId) {
+      const row = getWorkspaceOperationStatement.get(operationId);
+      return mapWorkspaceOperationRow(row);
+    },
+    getWorkspaceOperationsForMilestone(milestoneId) {
+      return getWorkspaceOperationsForMilestoneStatement.all(milestoneId).map(mapWorkspaceOperationRow);
+    },
+    transactWorkspaceGate({
+      milestoneId,
+      expectedRevision = null,
+      operationId,
+      targetGate,
+      mode = 'normal',
+      complexityScore = null,
+      payload = {},
+    }) {
+      if (!milestoneId || typeof milestoneId !== 'string') {
+        throw new Error('milestoneId must be a non-empty string');
+      }
+      if (!operationId || typeof operationId !== 'string') {
+        throw new Error('operationId must be a non-empty string');
+      }
+      const validGates = ['IDLE', 'UNDERSTAND', 'ANALYZE', 'PLAN', 'IMPLEMENT', 'VERIFY'];
+      if (!validGates.includes(targetGate)) {
+        throw new Error(`Invalid target gate: '${targetGate}'`);
+      }
+
+      const inputSignature = `${milestoneId}:${targetGate}:${mode}:${JSON.stringify(payload || {})}`;
+      const inputHash = crypto.createHash('sha256').update(inputSignature).digest('hex');
+
+      const existingOpRow = getWorkspaceOperationStatement.get(operationId);
+      if (existingOpRow) {
+        if (existingOpRow.input_hash === inputHash && existingOpRow.to_gate === targetGate) {
+          return {
+            status: 'REPLAY',
+            milestoneId: existingOpRow.milestone_id,
+            revision: existingOpRow.revision,
+            currentGate: existingOpRow.to_gate,
+            operationId: existingOpRow.operation_id,
+            committedAt: existingOpRow.committed_at,
+          };
+        }
+        throw new Error(`CONFLICT: Operation ID '${operationId}' previously committed with conflicting parameters.`);
+      }
+
+      const milestoneRow = getWorkspaceMilestoneStatement.get(milestoneId);
+      let currentGate = 'IDLE';
+      let currentRevision = 0;
+      let complexity = complexityScore !== null && complexityScore !== undefined ? complexityScore : 3;
+      let fastPath = mode === 'fast' ? 1 : 0;
+      let createdAt = new Date().toISOString();
+      let metadata = {};
+
+      if (!milestoneRow) {
+        if (targetGate !== 'UNDERSTAND') {
+          throw new Error(`INVALID_TRANSITION: New milestone '${milestoneId}' must start at UNDERSTAND (requested '${targetGate}')`);
+        }
+      } else {
+        const milestone = mapWorkspaceMilestoneRow(milestoneRow);
+        if (expectedRevision !== null && expectedRevision !== undefined && milestone.revision !== expectedRevision) {
+          throw new Error(`CONFLICT: Expected revision ${expectedRevision} but found ${milestone.revision} for milestone '${milestoneId}'`);
+        }
+        currentGate = milestone.currentGate;
+        currentRevision = milestone.revision;
+        complexity = complexityScore !== null && complexityScore !== undefined ? complexityScore : milestone.complexityScore;
+        fastPath = mode === 'fast' ? 1 : (milestone.fastPath ? 1 : 0);
+        createdAt = milestone.createdAt;
+        metadata = milestone.metadata || {};
+      }
+
+      let allowed = false;
+      const transitionKey = `${currentGate}:${targetGate}:${mode}`;
+      const normalAllowed = [
+        'IDLE:UNDERSTAND:normal',
+        'UNDERSTAND:ANALYZE:normal',
+        'ANALYZE:PLAN:normal',
+        'PLAN:IMPLEMENT:normal',
+        'IMPLEMENT:VERIFY:normal',
+        'VERIFY:IDLE:normal',
+      ];
+      if (normalAllowed.includes(transitionKey)) {
+        allowed = true;
+      } else if (transitionKey === 'ANALYZE:IMPLEMENT:fast') {
+        if (typeof complexity === 'number' && complexity >= 1 && complexity <= 2) {
+          allowed = true;
+        } else {
+          throw new Error(`INVALID_TRANSITION: Fast-path requires complexity 1 or 2 (found ${complexity})`);
+        }
+      }
+
+      if (!allowed) {
+        throw new Error(`INVALID_TRANSITION: Transition ${currentGate} -> ${targetGate} (${mode}) is not permitted`);
+      }
+
+      const newRevision = currentRevision + 1;
+      const now = new Date().toISOString();
+      const updatedMetadata = { ...metadata, ...(payload || {}), lastTransition: { from: currentGate, to: targetGate, at: now } };
+
+      upsertWorkspaceMilestoneStatement.run({
+        id: milestoneId,
+        current_gate: targetGate,
+        revision: newRevision,
+        complexity_score: complexity,
+        fast_path: fastPath,
+        metadata: stringifyJson(updatedMetadata, 'workspaceMilestone.metadata'),
+        created_at: createdAt,
+        updated_at: now,
+      });
+
+      insertWorkspaceOperationStatement.run({
+        operation_id: operationId,
+        milestone_id: milestoneId,
+        revision: newRevision,
+        from_gate: currentGate,
+        to_gate: targetGate,
+        mode: mode,
+        input_hash: inputHash,
+        payload: stringifyJson(payload || {}, 'workspaceOperation.payload'),
+        committed_at: now,
+      });
+
+      return {
+        status: 'ACCEPTED',
+        milestoneId,
+        revision: newRevision,
+        fromGate: currentGate,
+        currentGate: targetGate,
+        operationId,
+        committedAt: now,
+      };
+    },
+    restoreWorkspaceMilestoneRevision(milestoneId, targetRevision) {
+      const ops = getWorkspaceOperationsForMilestoneStatement.all(milestoneId).map(mapWorkspaceOperationRow);
+      const targetOp = ops.find(op => op.revision === targetRevision);
+      if (!targetOp) {
+        throw new Error(`Revision ${targetRevision} not found for milestone '${milestoneId}'`);
+      }
+      const now = new Date().toISOString();
+      upsertWorkspaceMilestoneStatement.run({
+        id: milestoneId,
+        current_gate: targetOp.toGate,
+        revision: targetOp.revision,
+        complexity_score: 3,
+        fast_path: targetOp.mode === 'fast' ? 1 : 0,
+        metadata: stringifyJson({ restoredFromRevision: targetRevision, restoredAt: now }, 'metadata'),
+        created_at: targetOp.committedAt,
+        updated_at: now,
+      });
+      return mapWorkspaceMilestoneRow(getWorkspaceMilestoneStatement.get(milestoneId));
     },
   };
 }
