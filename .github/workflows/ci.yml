@@ -143,6 +143,18 @@ jobs:
             test ! -e /app/.agents
             test ! -e /app/scripts
           '
+      - name: Save verified container candidate
+        run: |
+          docker save agyos-docs-ci -o documentation-image.tar
+          sha256sum documentation-image.tar > documentation-image.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: documentation-image-candidate
+          path: |
+            documentation-image.tar
+            documentation-image.sha256
+          if-no-files-found: error
+          retention-days: 14
 
   secret-detection:
     runs-on: ubuntu-latest
