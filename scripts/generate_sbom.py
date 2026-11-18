@@ -33,6 +33,15 @@ PYTHON_LICENSE_MAP = {
     "mistune": "BSD-3-Clause",
 }
 
+NODE_LICENSE_MAP = {
+    "ajv": "MIT",
+    "sql.js": "MIT",
+    "fast-deep-equal": "MIT",
+    "fast-uri": "BSD-3-Clause",
+    "json-schema-traverse": "MIT",
+    "require-from-string": "MIT",
+}
+
 
 def load_python_components():
     req_file = ROOT / "requirements.txt"
@@ -78,7 +87,18 @@ def load_node_components():
                     continue
                 name = pkg_path.replace("node_modules/", "")
                 version = meta.get("version", "unknown")
-                license_id = meta.get("license", "UNKNOWN")
+                license_id = meta.get("license")
+                if not license_id or license_id == "UNKNOWN":
+                    # Check installed package.json if present
+                    installed_pkg = runtime_dir / pkg_path / "package.json"
+                    if installed_pkg.exists():
+                        try:
+                            pkg_json = json.loads(installed_pkg.read_text(encoding="utf-8"))
+                            license_id = pkg_json.get("license")
+                        except Exception:
+                            pass
+                if not license_id or license_id == "UNKNOWN":
+                    license_id = NODE_LICENSE_MAP.get(name.lower(), "UNKNOWN")
                 integrity = meta.get("integrity", "")
                 components.append({
                     "type": "library",
