@@ -201,8 +201,8 @@ jobs:
         run: |
           test_dir="$RUNNER_TEMP/test-leak-probe"
           mkdir -p "$test_dir"
-          echo 'AWS_KEY="AKIAIOSFODNN7EXAMPLE"' > "$test_dir/secret.txt"
-          if "$RUNNER_TEMP/gitleaks" detect --source="$test_dir" --no-git --no-banner 2>/dev/null; then
+          echo 'TOKEN="ghp_012345678901234567890123456789012345"' > "$test_dir/secret.txt"
+          if "$RUNNER_TEMP/gitleaks" detect --source="$test_dir" --no-git --no-banner; then
             echo "Error: Gitleaks failed negative control (expected leak detection to exit non-zero)" >&2
             exit 1
           fi
