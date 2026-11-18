@@ -1,0 +1,32 @@
+<agyos_skill id="fp-taskeither-ref">
+  <intent>Quick reference for TaskEither. Use when user needs async error handling, API calls, or Promise-based operations that can fail.</intent>
+  <instructions>
+<![CDATA[
+TaskEither = async operation that can fail. Like `Promise<Either<E, A>>`.
+- You need a quick fp-ts reference for async operations that can fail.
+- The task involves API calls, Promise wrapping, or composing asynchronous error-handling pipelines.
+- You want a concise cheat sheet for `TaskEither` operators and patterns.
+```typescript
+import * as TE from 'fp-ts/TaskEither'
+TE.right(value)          // Async success
+TE.left(error)           // Async failure
+TE.tryCatch(asyncFn, toError)  // Promise → TaskEither
+TE.fromEither(either)    // Either → TaskEither
+```
+```typescript
+TE.map(fn)               // Transform success value
+TE.mapLeft(fn)           // Transform error
+TE.flatMap(fn)           // Chain (fn returns TaskEither)
+TE.orElse(fn)            // Recover from error
+```
+```typescript
+// TaskEither is lazy - must call () to run
+const result = await myTaskEither()  // Either<E, A>
+// Or pattern match
+await pipe(
+myTaskEither,
+TE.match(
+(err) => console.error(err),
+]]>
+  </instructions>
+</agyos_skill>

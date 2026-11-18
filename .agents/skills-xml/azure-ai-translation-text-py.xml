@@ -1,0 +1,32 @@
+<agyos_skill id="azure-ai-translation-text-py">
+  <intent>Azure AI Text Translation SDK for real-time text translation, transliteration, language detection, and dictionary lookup. Use for translating text content in applications.</intent>
+  <instructions>
+<![CDATA[
+Client library for Azure AI Translator text translation service for real-time text translation, transliteration, and language operations.
+```bash
+pip install azure-ai-translation-text
+```
+```bash
+AZURE_TRANSLATOR_KEY=<your-api-key>
+AZURE_TRANSLATOR_REGION=<your-region>  # e.g., eastus, westus2
+AZURE_TRANSLATOR_ENDPOINT=https://<resource>.cognitiveservices.azure.com
+```
+```python
+import os
+from azure.ai.translation.text import TextTranslationClient
+from azure.core.credentials import AzureKeyCredential
+key = os.environ["AZURE_TRANSLATOR_KEY"]
+region = os.environ["AZURE_TRANSLATOR_REGION"]
+credential = AzureKeyCredential(key)
+client = TextTranslationClient(credential=credential, region=region)
+```
+```python
+endpoint = os.environ["AZURE_TRANSLATOR_ENDPOINT"]
+client = TextTranslationClient(
+credential=AzureKeyCredential(key),
+endpoint=endpoint
+)
+```
+]]>
+  </instructions>
+</agyos_skill>

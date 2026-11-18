@@ -1,0 +1,32 @@
+<agyos_skill id="pinterest-seo">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **keyword / search-ranking layer** — research the queries and write the keyworded words that make a pin
+rank. The agent **researches + writes the title/description + specs the on-pin keyword + advises the board/
+link**; **WoopSocial publishes the pin's title + description + board + link**; **profile, board setup, alt
+text, Rich Pins, and the research tools are native/advised.**
+Pinterest is **"Google with pictures"** (631M MAU Q1 2026, **DA 94**, pins also rank in Google image results),
+where **~97% of top searches are unbranded** and **follower count barely matters — keywords + relevance +
+engagement rank you.** Pins have a **~4-month lifespan**, so optimization **compounds.** The craft is
+Pinterest-specific: research via **autocomplete + Guided Search bubbles + Trends**, layer **long-tail
+keywords** across profile → board → pin, align **Pin → Board → Page**, and optimize for **saves + long
+clicks.** WoopSocial publishes the pin's **title + description + board + link**; the rest is native/advised.
+**Pairs with `pinterest-pin-design`** (the keyword goes in the overlay AND the title).
+1. **brand-profile** — niche/voice.
+2. the **destination** — the page the pin links to.
+(Depth: `references/the-found-framework.md`.)
+- **F — Find the real queries:** Pinterest autocomplete + Guided Search bubbles + Trends/Predicts; long-tail
+(3+ words); think like a searcher. *Advise the method; never fabricate volume.*
+- **O — Optimize the pin's words:** title leads with the primary keyword (`[Keyword] | [Benefit] | [Context]`,
+≤100); a natural keyword-rich description (~100–200 chars, no stuffing) — the **publishable** surfaces; spec
+the on-pin overlay keyword → `ideogram`.
+- **U — Unify Pin → Board → Page:** the pin, its semantically-precise board, and the destination page
+reinforce the **same keyword phrase**; claim the site + Rich Pins; the link delivers the promise.
+- **N — Nest keywords across every surface:** profile (broad) → board titles/descriptions (topic) → pin
+title/description/alt/file-name (long-tail). *Most native/advised; WoopSocial publishes the pin's title +
+description + board + link.*
+- **D — Deploy fresh, in clusters, on a seasonal clock:** fresh keyword-optimized pins (not dupes); related
+]]>
+  </instructions>
+</agyos_skill>

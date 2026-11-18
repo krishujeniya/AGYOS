@@ -1,0 +1,32 @@
+<agyos_skill id="content-research-and-sourcing">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **verification craft** — find the load-bearing claims, ascend to the primary source, check freshness and
+context, test AI output hard, and show your sources. The agent verifies where it has search; the **human
+clicks where it doesn't**; verification happens **before scheduling**; **WoopSocial publishes**. (Craft skill
+— no tool file.)
+2026 made verification structural: generative search tools answered **over 60% of tested news-citation queries
+incorrectly** (CJR); fabricated references **surged ~12-fold since 2023** — 1 in 277 PubMed papers now carries
+one (Columbia/Lancet audit); a major consultancy shipped a report where **only 5 of 45 citations were
+accurate**; and Google's AI Overview cited an April Fool's satire as fact — citogenesis laundering errors into
+apparent consensus. Four disciplines follow. **(1) AI-supplied citations are guilty until verified — and a
+working link is not verification:** 29% of fabricated citations carry real DOIs resolving to *unrelated*
+papers (identifier hijacking); the source must exist AND say what's claimed. **(2) Ubiquity is not evidence:**
+the goldfish-attention-span class of zombie stats survives on repetition — the tell is a citation trail that
+circles blogs and never lands on a named study. **(3) Aggregators are leads, not sources:** cite the primary
+most competitors never read — differentiation at near-zero cost, and AI answer engines preferentially cite
+verifiable sourcing (the GEO flywheel). **(4) Where no source exists, don't fake one:** reframe as an owned
+observation, ask it as a question, or commission the data and *become* the citation. The payoff is asymmetric:
+one debunkable stat can sink a great piece; the precisely-sourced account compounds trust.
+1. **brand-profile** — the voice attribution lives in.
+2. The piece's **format skill** (text-post, listicle, educational, carousel…).
+(Depth: `references/the-facts-framework.md`.)
+- **F — Find the load-bearing claims:** inventory + triage — the piece stands on a few claims; those get the
+full chain, color gets a glance (proportionality makes rigor sustainable).
+- **A — Ascend to the primary source:** trace up the chain; check who ran it, sample, funder (vendor studies
+attributed as such), and what it actually says.
+- **C — Check freshness + context:** staleness, supersession, retraction; the zombie-stat autopsy;
+]]>
+  </instructions>
+</agyos_skill>

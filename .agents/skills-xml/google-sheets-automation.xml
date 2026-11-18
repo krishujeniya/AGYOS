@@ -1,0 +1,32 @@
+<agyos_skill id="google-sheets-automation">
+  <intent>Lightweight Google Sheets integration with standalone OAuth authentication. No MCP server required. Full read/write access.</intent>
+  <instructions>
+<![CDATA[
+Lightweight Google Sheets integration with standalone OAuth authentication. No MCP server required. Full read/write access.
+> **Requires Google Workspace account.** Personal Gmail accounts are not supported.
+Authenticate with Google (opens browser):
+```bash
+python scripts/auth.py login
+```
+Check authentication status:
+```bash
+python scripts/auth.py status
+```
+Logout when needed:
+```bash
+python scripts/auth.py logout
+```
+All operations via `scripts/sheets.py`. Auto-authenticates on first use if not logged in.
+```bash
+python scripts/sheets.py get-text SPREADSHEET_ID
+python scripts/sheets.py get-text SPREADSHEET_ID --format csv
+python scripts/sheets.py get-text SPREADSHEET_ID --format json
+python scripts/sheets.py get-range SPREADSHEET_ID "Sheet1!A1:D10"
+python scripts/sheets.py get-range SPREADSHEET_ID "A1:C5"
+python scripts/sheets.py find "budget 2024"
+python scripts/sheets.py find "sales report" --limit 5
+python scripts/sheets.py get-metadata SPREADSHEET_ID
+```
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="odoo-edi-connector">
+  <intent>Guide for implementing EDI (Electronic Data Interchange) with Odoo: X12, EDIFACT document mapping, partner onboarding, and automated order processing.</intent>
+  <instructions>
+<![CDATA[
+Electronic Data Interchange (EDI) is the standard for automated B2B document exchange — purchase orders, invoices, ASNs (Advance Shipping Notices). This skill guides you through mapping EDI transactions (ANSI X12 or EDIFACT) to Odoo business objects, setting up trading partner configurations, and automating inbound/outbound document flows.
+- A retail partner requires EDI 850 (Purchase Orders) to do business with you.
+- You need to send EDI 856 (ASN) when goods are shipped.
+- Automating EDI 810 (Invoice) generation from Odoo confirmed deliveries.
+- Mapping EDI fields to Odoo fields for a new trading partner.
+1. **Activate**: Mention `@odoo-edi-connector` and specify the EDI transaction set and trading partner.
+2. **Map**: Receive a complete field mapping table between EDI segments and Odoo fields.
+3. **Automate**: Get Python code to parse incoming EDI files and create Odoo records.
+| EDI Transaction | Odoo Object |
+|---|---|
+| 850 Purchase Order | `sale.order` (inbound customer PO) |
+| 855 PO Acknowledgment | Confirmation email / SO confirmation |
+| 856 ASN (Advance Ship Notice) | `stock.picking` (delivery order) |
+| 810 Invoice | `account.move` (customer invoice) |
+| 846 Inventory Inquiry | `product.product` stock levels |
+| 997 Functional Acknowledgment | Automated receipt confirmation |
+```python
+from pyx12 import x12file  # pip install pyx12
+from datetime import datetime
+import xmlrpc.client
+import os
+odoo_url = os.getenv("ODOO_URL")
+db = os.getenv("ODOO_DB")
+pwd = os.getenv("ODOO_API_KEY")
+uid = int(os.getenv("ODOO_UID", "2"))
+]]>
+  </instructions>
+</agyos_skill>

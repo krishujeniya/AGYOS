@@ -1,0 +1,32 @@
+<agyos_skill id="odoo-ecommerce-configurator">
+  <intent>Expert guide for Odoo eCommerce and Website: product catalog, payment providers, shipping methods, SEO, and order-to-fulfillment workflow.</intent>
+  <instructions>
+<![CDATA[
+This skill helps you set up and optimize an Odoo-powered online store. It covers product publishing, payment gateway integration, shipping carrier configuration, cart and checkout customization, and the workflow from online order to warehouse fulfillment.
+- Launching an Odoo eCommerce store for the first time.
+- Integrating a payment provider (Stripe, PayPal, Adyen).
+- Configuring shipping rates with carrier integration (UPS, FedEx, DHL).
+- Optimizing product pages for SEO with Odoo Website tools.
+1. **Activate**: Mention `@odoo-ecommerce-configurator` and describe your store scenario.
+2. **Configure**: Receive step-by-step Odoo eCommerce setup with menu paths.
+3. **Optimize**: Get SEO, conversion, and catalog best practices.
+```text
+Menu: Website → eCommerce → Products → Select Product
+Fields to complete for a great product listing:
+Name:               Ergonomic Mesh Office Chair  (keyword-rich)
+Internal Reference: CHAIR-MESH-001               (required for inventory)
+Sales Price:        $299.00
+Website Description (website tab): 150–300 words of unique content
+Publishing:
+Toggle "Published" in the top-right corner of the product form
+or via: Website → Go to Website → Toggle "Published" button
+SEO (website tab → SEO section):
+Page Title:       Ergonomic Mesh Chair | Office Chairs | YourStore
+Meta Description: Discover the most comfortable ergonomic mesh office
+chair, designed for all-day support...  (≤160 chars)
+Website tab:
+Can be Sold: YES
+Website:     yourstore.com  (if running multiple websites)
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="constant-time-analysis">
+  <intent>Analyze cryptographic code to detect operations that leak secret data through execution timing variations.</intent>
+  <instructions>
+<![CDATA[
+Analyze cryptographic code to detect operations that leak secret data through execution timing variations.
+```text
+User writing crypto code? ──yes──> Use this skill
+│
+no
+│
+v
+User asking about timing attacks? ──yes──> Use this skill
+│
+no
+│
+v
+Code handles secret keys/tokens? ──yes──> Use this skill
+│
+no
+│
+v
+Skip this skill
+```
+**Concrete triggers:**
+- User implements signature, encryption, or key derivation
+- Code contains `/` or `%` operators on secret-derived values
+- User mentions "constant-time", "timing attack", "side-channel", "KyberSlash"
+- Reviewing functions named `sign`, `verify`, `encrypt`, `decrypt`, `derive_key`
+- Non-cryptographic code (business logic, UI, etc.)
+]]>
+  </instructions>
+</agyos_skill>

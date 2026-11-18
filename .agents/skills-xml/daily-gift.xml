@@ -1,0 +1,32 @@
+<agyos_skill id="daily-gift">
+  <intent>Relationship-aware daily gift engine with five-stage creative pipeline — editorial judgment, synthesis, concept generation, visual strategy, and rendering in H5, image, or video</intent>
+  <instructions>
+<![CDATA[
+A relationship-aware gift engine that decides *whether* a gift should exist before deciding *what* it should be. Uses a five-stage creative pipeline to generate personalized daily gifts in H5 (interactive web pages), AI-generated images, or AI-generated videos. The core design principle is "idea before medium" — the creative concept is locked before the output format is chosen.
+Published on ClawHub: https://clawhub.ai/jiawei248/daily-gift
+- Use when the agent should autonomously decide whether today deserves a personalized gift
+- Use when a milestone, anniversary, or emotionally meaningful moment should be marked with a creative artifact
+- Use when the user manually requests a visual gift from a quote, poem, or creative brief
+- Use when you want a daily cron-triggered creative output that avoids repetition and template fatigue
+Decide whether a gift should exist today, how heavy it should be (skip / nudge / light / standard / heavy), and what content direction to take (reflect, extension, compass, mirror, play, curation, utility, etc.). Format is NOT chosen here.
+Extract six content slots from conversation context (today_theme, emotion_peaks, historical_echo, open_loop, lobster_judgment, preference_hint). Form a gift thesis = anchor (which moment deserves the center) + return (what new perspective the agent gives back). If the thesis has no return, it's not a gift — it's a decorated log entry.
+Generate 5+ concept candidates using seven thinking angles (metaphor flip, format mashup, impossible action, scale shift, role reversal, time distortion, cultural remix). Cross-pollinate with a library of 73 creative seeds across 8 categories. Run three quality checks: concept quality, concept diversity (8 families), and visual/theme collision detection.
+Only after the concept is locked does the system choose the output format (H5, image, or video) based on what best serves the concept.
+Choose visual approach, plan assets (pure code, generated background, hybrid), select visual style, and run pre-visualization checks against recent gifts for anti-repetition.
+Produce the final artifact. H5 gifts use p5.js/canvas with a quality floor set by built-in templates (300-400 lines of tuned code). Image and video gifts use AI generation APIs. All formats have fallback chains.
+- **Five-stage creative pipeline** with explicit quality gates between stages
+- **Multi-layer anti-repetition**: concept family, visual elements, theme, style, content direction — each tracked across sliding windows of recent gifts
+- **Three-layer user taste profile**: Layer 1 (identity — stable), Layer 2 (context — updates every 5-7 gifts), Layer 3 (signals — auto-appended after every gift)
+- **Three runtime modes**: onboarding setup, daily cron, and manual trigger
+- **11 content directions**: reflect, extension, compass, mirror, gift-from-elsewhere, play, real-world-nudge, curation, delayed-payoff, openclaw-inner-life, utility
+- **8 concept families**: borrowed-media, interactive-object, transformation, narrative, data-viz, game-puzzle, real-world, poetic-literary
+- ✅ Let the editorial judgment decide — not every day needs a gift
+- ✅ Generate 5+ concept candidates before selecting one
+- ✅ Check recent gifts for visual and thematic collision before rendering
+- ✅ Use the taste profile to personalize over time
+- ❌ Don't skip straight from thesis to rendering without a real creative concept
+- ❌ Don't default to "reflect on today" every time — vary content direction
+- ❌ Don't choose the format before locking the concept
+]]>
+  </instructions>
+</agyos_skill>

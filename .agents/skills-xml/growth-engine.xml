@@ -1,0 +1,32 @@
+<agyos_skill id="growth-engine">
+  <intent>Motor de crescimento para produtos digitais -- growth hacking, SEO, ASO, viral loops, email marketing, CRM, referral programs e aquisicao organica.</intent>
+  <instructions>
+<![CDATA[
+Motor de crescimento para produtos digitais -- growth hacking, SEO, ASO, viral loops, email marketing, CRM, referral programs e aquisicao organica. Ativar para: criar estrategia de growth, SEO tecnico, ASO para app stores, programa de referral, email marketing, viral coefficient, funil de aquisicao, conteudo para crescimento organico, campanhas de lancamento.
+- When you need specialized assistance with this domain
+- The task is unrelated to growth engine
+- A simpler, more specific tool can handle the request
+- The user needs general-purpose assistance without domain expertise
+> O melhor marketing e um produto que as pessoas amam. -- Sam Altman
+> Crescimento real comeca com um produto que vale a pena recomendar.
+AQUISICAO:  Como as pessoas descobrem a Auri?
+Meta: 10.000 visitantes/mes -> 1.000 cadastros
+Canais: SEO, Product Hunt, Influencers tech, PR
+ATIVACAO:   Quando o usuario experimenta o primeiro valor?
+Meta: 60% completam primeira conversa em 24h
+Metrica: First Conversation Rate (FCR)
+RETENCAO:   As pessoas voltam?
+Meta: D7 = 30%, D30 = 15%, D90 = 8%
+Metrica: WAC (Weekly Active Conversationalists)
+RECEITA:    As pessoas pagam?
+Meta: 8% trial->Pro conversao
+Metrica: MRR, ARPU, LTV
+REFERENCIA: As pessoas indicam?
+Meta: NPS > 50, Viral Coefficient > 0.3
+Metrica: Referrals per user, K-factor
+<title>Auri -- O Assistente de Voz que Realmente Pensa | para Alexa</title>
+<meta name="description" content="Auri transforma seu Alexa em um assistente
+com Claude AI. Analise de negocios, decisoes estrategicas e memoria real.">
+]]>
+  </instructions>
+</agyos_skill>

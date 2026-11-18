@@ -1,0 +1,25 @@
+<agyos_skill id="conductor-manage">
+  <intent>Manage track lifecycle: archive, restore, delete, rename, and cleanup</intent>
+  <instructions>
+<![CDATA[
+Manage the complete track lifecycle including archiving, restoring, deleting, renaming, and cleaning up orphaned artifacts.
+- Archiving, restoring, renaming, or deleting Conductor tracks
+- Listing track status or cleaning orphaned artifacts
+- Managing the track lifecycle across active, completed, and archived states
+- Conductor is not initialized in the repository
+- You lack permission to modify track metadata or files
+- The task is unrelated to Conductor track management
+- Verify `conductor/` structure and required files before proceeding.
+- Determine the operation mode from arguments or interactive prompts.
+- Confirm destructive actions (delete/cleanup) before applying.
+- Update `tracks.md` and metadata consistently.
+- If detailed steps are required, open `resources/implementation-playbook.md`.
+- Backup track data before delete operations.
+- Avoid removing archived tracks without explicit approval.
+- `resources/implementation-playbook.md` for detailed modes, prompts, and workflows.
+- Use this skill only when the task clearly matches the scope described above.
+- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
+- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="ai-video">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **router + brief** for AI video — the counterpart to image-prompt, sitting above the video
+tool mini-skills. It generates nothing itself: it names the job, writes a portable brief, and
+points to the right tool.
+In AI video the **tools die and the leaderboard churns weekly** — Sora launched to hype and was
+discontinued within a year; Runway led the benchmark at launch and fell out of the top 10 months
+later. So never marry a vendor. Define the **job** in portable terms, route to whatever wins this
+quarter, and keep the brief tool-agnostic so a dead vendor is a one-day swap. **There is no single
+best AI video tool — only a best tool per job.**
+1. **brand-profile** — look, palette, mood, non-negotiables.
+2. **voice-builder** — tone, so any scripted/voiced video sounds like the brand.
+(Depth: `references/the-brief-framework.md`.)
+- **B — Brief the job, not the tool:** a portable spec (subject, action, setting, light/mood,
+camera, aspect, duration, audio plan, brand fit). No vendor name in the brief.
+- **R — Route by fit:** match the job to the tool category, then the tool by real strength.
+- **I — Iterate cheaply:** concept-test on fast/cheap tools, finalize on quality tools, judge on
+your own prompts not demos.
+- **E — Edit & assemble:** clips are raw material; the human stitches/edits; cutaways, not whole videos.
+- **F — Finalize & disclose:** AI disclosure per platform; publish via scheduling-and-queue → WoopSocial.
+- **Generative B-roll / scenes** → Veo 3.1 (all-round + native dialogue) → **veo-3** (prompt craft) and **google-flow** (headless MCP video generation & download); Kling 3.0
+(native 4K / multi-shot / motion-transfer) → **kling**; Luma Ray3/Ray3.14 (cinematic HDR/mood,
+silent — sound in post) → **luma**; Runway Gen-4.5 (control/ads) → **runway**;
+Hailuo (fast/cheap — *rights caution, active lawsuit*).
+- **Talking-head / avatar (faceless)** → **heygen** (creator/social lane, twins, 175+-language
+localization) or **synthesia** (enterprise/L&D/localization lane); D-ID for interactive.
+- **Voiceover / narration** → ElevenLabs → **ai-voiceover**.
+]]>
+  </instructions>
+</agyos_skill>

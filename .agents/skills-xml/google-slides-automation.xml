@@ -1,0 +1,32 @@
+<agyos_skill id="google-slides-automation">
+  <intent>Lightweight Google Slides integration with standalone OAuth authentication. No MCP server required. Full read/write access.</intent>
+  <instructions>
+<![CDATA[
+Lightweight Google Slides integration with standalone OAuth authentication. No MCP server required. Full read/write access.
+> **Requires Google Workspace account.** Personal Gmail accounts are not supported.
+- You need to create, inspect, or modify Google Slides presentations from local automation.
+- The task involves reading slide text, adding/removing slides, or batch updating presentation content.
+- You want Slides automation for Workspace documents without using an MCP server.
+Authenticate with Google (opens browser):
+```bash
+python scripts/auth.py login
+```
+Check authentication status:
+```bash
+python scripts/auth.py status
+```
+Logout when needed:
+```bash
+python scripts/auth.py logout
+```
+All operations via `scripts/slides.py`. Auto-authenticates on first use if not logged in.
+```bash
+python scripts/slides.py get-text "1abc123xyz789"
+python scripts/slides.py get-text "https://docs.google.com/presentation/d/1abc123xyz789/edit"
+python scripts/slides.py find "quarterly report"
+python scripts/slides.py find "project proposal" --limit 5
+python scripts/slides.py get-metadata "1abc123xyz789"
+```
+]]>
+  </instructions>
+</agyos_skill>

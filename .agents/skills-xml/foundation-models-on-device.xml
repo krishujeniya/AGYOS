@@ -1,0 +1,32 @@
+<agyos_skill id="foundation-models-on-device">
+  <intent>Apple FoundationModels framework for on-device LLM — text generation, guided generation with @Generable, tool calling, and snapshot streaming in iOS 26+. Use when adding on-device LLM features with Apple FoundationModels on iOS 26+.</intent>
+  <instructions>
+<![CDATA[
+Patterns for integrating Apple's on-device language model into apps using the FoundationModels framework. Covers text generation, structured output with `@Generable`, custom tool calling, and snapshot streaming — all running on-device for privacy and offline support.
+- Building AI-powered features using Apple Intelligence on-device
+- Generating or summarizing text without cloud dependency
+- Extracting structured data from natural language input
+- Implementing custom tool calling for domain-specific AI actions
+- Streaming structured responses for real-time UI updates
+- Need privacy-preserving AI (no data leaves the device)
+Always check model availability before creating a session:
+```swift
+struct GenerativeView: View {
+private var model = SystemLanguageModel.default
+var body: some View {
+switch model.availability {
+case .available:
+ContentView()
+case .unavailable(.deviceNotEligible):
+Text("Device not eligible for Apple Intelligence")
+case .unavailable(.appleIntelligenceNotEnabled):
+Text("Please enable Apple Intelligence in Settings")
+case .unavailable(.modelNotReady):
+Text("Model is downloading or not ready")
+case .unavailable(let other):
+Text("Model unavailable: \(other)")
+}
+}
+]]>
+  </instructions>
+</agyos_skill>

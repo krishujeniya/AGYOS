@@ -1,0 +1,32 @@
+<agyos_skill id="multi-platform-apps-multi-platform">
+  <intent>Build and deploy the same feature consistently across web, mobile, and desktop platforms using API-first architecture and parallel implementation strategies.</intent>
+  <instructions>
+<![CDATA[
+Build and deploy the same feature consistently across web, mobile, and desktop platforms using API-first architecture and parallel implementation strategies.
+[Extended thinking: This workflow orchestrates multiple specialized agents to ensure feature parity across platforms while maintaining platform-specific optimizations. The coordination strategy emphasizes shared contracts and parallel development with regular synchronization points. By establishing API contracts and data models upfront, teams can work independently while ensuring consistency. The workflow benefits include faster time-to-market, reduced integration issues, and maintainable cross-platform codebases.]
+- Working on multi-platform feature development workflow tasks or workflows
+- Needing guidance, best practices, or checklists for multi-platform feature development workflow
+- The task is unrelated to multi-platform feature development workflow
+- You need a different domain or tool outside this scope
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+- Use Task tool with subagent_type="backend-architect"
+- Prompt: "Design the API contract for feature: $ARGUMENTS. Create OpenAPI 3.1 specification with:
+- RESTful endpoints with proper HTTP methods and status codes
+- GraphQL schema if applicable for complex data queries
+- WebSocket events for real-time features
+- Request/response schemas with validation rules
+- Authentication and authorization requirements
+- Rate limiting and caching strategies
+- Error response formats and codes
+Define shared data models that all platforms will consume."
+- Expected output: Complete API specification, data models, and integration guidelines
+- Use Task tool with subagent_type="ui-ux-designer"
+- Prompt: "Create cross-platform design system for feature using API spec: [previous output]. Include:
+- Component specifications for each platform (Material Design, iOS HIG, Fluent)
+- Responsive layouts for web (mobile-first approach)
+]]>
+  </instructions>
+</agyos_skill>

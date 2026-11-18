@@ -1,0 +1,32 @@
+<agyos_skill id="descript">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **talk-content editing tool skill** — write the edit in the transcript, Overdub with consent, refine the
+sound, dress the visuals, and ship the cuts. The agent plans (and can drive Underlord via API/MCP where
+connected); the **human verifies by ear and approves**; **WoopSocial publishes** the exports. (Ships with
+`tools/integrations/descript.md`.)
+For dialogue-heavy content, editing the transcript beats scrubbing a timeline: delete the sentence, the clip
+disappears; move the paragraph, the footage follows — reviews report ~60–70% editing-time cuts for talk content.
+But the paradigm has two sharp edges the top 1% respect. **(1) The voice spine:** Overdub's consent-verified,
+**own-voice-only** design is the model, not an obstacle — it exists so nobody types words into someone else's
+mouth; and the craft truth is it shines on flubbed *words*, not paragraphs (long Overdub drifts synthetic —
+re-record those). **(2) The meaning spine:** text-editing makes it dangerously easy to rearrange a guest into
+saying something they didn't — **concision yes, meaning-flips never**, and the human owns the final cut of anyone
+else's words. Operationally: the **accuracy pass is mandatory** (transcript errors become wrong edits AND wrong
+captions), and since the Sept 2025 overhaul, the workflow must be **credit-aware** — media minutes count
+everything you import, and formerly-unlimited AI features are metered.
+1. The recording's content skill — **podcast-and-audiograms** / **youtube-long-form** / **educational-content**.
+2. **brand-profile** + **voice-builder** (written outputs) + **design-and-templates** (captions/layout).
+(Depth: `references/the-words-framework.md`.)
+- **W — Write the edit:** accuracy pass first; then cut tangents/bad takes, one-step filler+silence removal
+(Underlord), restructure by moving paragraphs — decide in text, **verify by ear.**
+- **O — Overdub with consent:** own-voice-only, consent-verified; single words/short phrases (paragraphs =
+re-record); vocabulary/credit limits; disclose synthetic speech where required.
+- **R — Refine the sound:** Studio Sound once per source (credits; cleaner audio also improves the transcript);
+level speakers; extreme noise is a re-record, not a rescue.
+- **D — Dress the visuals:** Automatic Multicam (record separate tracks on purpose), captions from the corrected
+transcript, human-approved B-roll, Eye Contact used honestly; beat-sync/color route elsewhere.
+]]>
+  </instructions>
+</agyos_skill>

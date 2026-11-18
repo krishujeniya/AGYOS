@@ -1,0 +1,32 @@
+<agyos_skill id="gemini-api-integration">
+  <intent>Use when integrating Google Gemini API into projects. Covers model selection, multimodal inputs, streaming, function calling, and production best practices.</intent>
+  <instructions>
+<![CDATA[
+This skill guides AI agents through integrating Google Gemini API into applications — from basic text generation to advanced multimodal, function calling, and streaming use cases. It covers the full Gemini SDK lifecycle with production-grade patterns.
+- Use when setting up Gemini API for the first time in a Node.js, Python, or browser project
+- Use when implementing multimodal inputs (text + image/audio/video)
+- Use when adding streaming responses to improve perceived latency
+- Use when implementing function calling / tool use with Gemini
+- Use when optimizing model selection (Flash vs Pro vs Ultra) for cost and performance
+- Use when debugging Gemini API errors, rate limits, or quota issues
+**Node.js / TypeScript:**
+```bash
+npm install @google/generative-ai
+```
+**Python:**
+```bash
+pip install google-generativeai
+```
+Set your API key securely:
+```bash
+export GEMINI_API_KEY="your-api-key-here"
+```
+**Node.js:**
+```javascript
+import { GoogleGenerativeAI } from "@google/generative-ai";
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const result = await model.generateContent("Explain async/await in JavaScript");
+]]>
+  </instructions>
+</agyos_skill>

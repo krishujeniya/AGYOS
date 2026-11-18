@@ -1,0 +1,32 @@
+<agyos_skill id="github-cli-automation">
+  <intent>Use the `gh` CLI for issues, pull requests, Actions runs, and GitHub API queries.</intent>
+  <instructions>
+<![CDATA[
+Use the `gh` CLI to interact with GitHub. Always specify `--repo owner/repo` when not in a git directory, or use URLs directly.
+- When the user asks about GitHub issues, pull requests, workflow runs, or CI failures.
+- When you need `gh issue`, `gh pr`, `gh run`, or `gh api` from the command line.
+Check CI status on a PR:
+```bash
+gh pr checks 55 --repo owner/repo
+```
+List recent workflow runs:
+```bash
+gh run list --repo owner/repo --limit 10
+```
+View a run and see which steps failed:
+```bash
+gh run view <run-id> --repo owner/repo
+```
+View logs for failed steps only:
+```bash
+gh run view <run-id> --repo owner/repo --log-failed
+```
+Follow this sequence to investigate a failing CI run:
+1. **Check PR status** — identify which checks are failing:
+```bash
+gh pr checks 55 --repo owner/repo
+```
+2. **List recent runs** — find the relevant run ID:
+]]>
+  </instructions>
+</agyos_skill>

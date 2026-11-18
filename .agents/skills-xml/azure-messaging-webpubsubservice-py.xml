@@ -1,0 +1,32 @@
+<agyos_skill id="azure-messaging-webpubsubservice-py">
+  <intent>Azure Web PubSub Service SDK for Python. Use for real-time messaging, WebSocket connections, and pub/sub patterns.</intent>
+  <instructions>
+<![CDATA[
+Real-time messaging with WebSocket connections at scale.
+```bash
+pip install azure-messaging-webpubsubservice
+pip install azure-messaging-webpubsubclient
+```
+```bash
+AZURE_WEBPUBSUB_CONNECTION_STRING=Endpoint=https://<name>.webpubsub.azure.com;AccessKey=...
+AZURE_WEBPUBSUB_HUB=my-hub
+```
+```python
+from azure.messaging.webpubsubservice import WebPubSubServiceClient
+client = WebPubSubServiceClient.from_connection_string(
+connection_string=os.environ["AZURE_WEBPUBSUB_CONNECTION_STRING"],
+hub="my-hub"
+)
+from azure.identity import DefaultAzureCredential
+client = WebPubSubServiceClient(
+endpoint="https://<name>.webpubsub.azure.com",
+hub="my-hub",
+credential=DefaultAzureCredential()
+)
+```
+```python
+token = client.get_client_access_token()
+print(f"URL: {token['url']}")
+]]>
+  </instructions>
+</agyos_skill>

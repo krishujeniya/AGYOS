@@ -1,0 +1,32 @@
+<agyos_skill id="search-first">
+  <intent>Research-before-coding workflow: search npm/PyPI, MCP servers, skills, and GitHub for existing tools before writing custom code, then adopt, extend, or build. Launches the researcher agent for non-trivial needs. Use when starting a feature, adding a dependency or integration, or about to write a utility that may already exist.</intent>
+  <instructions>
+<![CDATA[
+Systematizes the "search for existing solutions before implementing" workflow.
+Use this skill when:
+- Starting a new feature that likely has existing solutions
+- Adding a dependency or integration
+- The user asks "add X functionality" and you're about to write code
+- Before creating a new utility, helper, or abstraction
+```
+┌─────────────────────────────────────────────┐
+│  0. TOOL AVAILABILITY PREFLIGHT             │
+│     Check search channels before relying on │
+│     them; report skipped channels honestly   │
+├─────────────────────────────────────────────┤
+│  1. NEED ANALYSIS                           │
+│     Define what functionality is needed      │
+│     Identify language/framework constraints  │
+├─────────────────────────────────────────────┤
+│  2. PARALLEL SEARCH (researcher agent)      │
+│     ┌──────────┐ ┌──────────┐ ┌──────────┐  │
+│     │  npm /   │ │  MCP /   │ │  GitHub / │  │
+│     │  PyPI    │ │  Skills  │ │  Web      │  │
+│     └──────────┘ └──────────┘ └──────────┘  │
+├─────────────────────────────────────────────┤
+│  3. EVALUATE                                │
+│     Score candidates (functionality, maint, │
+│     community, docs, license, deps)         │
+]]>
+  </instructions>
+</agyos_skill>

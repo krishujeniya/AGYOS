@@ -1,0 +1,28 @@
+<agyos_skill id="data-quality-frameworks">
+  <intent>Implement data quality validation with Great Expectations, dbt tests, and data contracts. Use when building data quality pipelines, implementing validation rules, or establishing data contracts.</intent>
+  <instructions>
+<![CDATA[
+Production patterns for implementing data quality with Great Expectations, dbt tests, and data contracts to ensure reliable data pipelines.
+- Implementing data quality checks in pipelines
+- Setting up Great Expectations validation
+- Building comprehensive dbt test suites
+- Establishing data contracts between teams
+- Monitoring data quality metrics
+- Automating data validation in CI/CD
+- The data sources are undefined or unavailable
+- You cannot modify validation rules or schemas
+- The task is unrelated to data quality or contracts
+- Identify critical datasets and quality dimensions.
+- Define expectations/tests and contract rules.
+- Automate validation in CI/CD and schedule checks.
+- Set alerting, ownership, and remediation steps.
+- If detailed patterns are required, open `resources/implementation-playbook.md`.
+- Avoid blocking critical pipelines without a fallback plan.
+- Handle sensitive data securely in validation outputs.
+- `resources/implementation-playbook.md` for detailed frameworks, templates, and examples.
+- Use this skill only when the task clearly matches the scope described above.
+- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
+- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+]]>
+  </instructions>
+</agyos_skill>

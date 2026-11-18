@@ -1,0 +1,32 @@
+<agyos_skill id="seo-page">
+  <intent>&gt;</intent>
+  <instructions>
+<![CDATA[
+- Use when the user provides a single URL for detailed on-page SEO review.
+- Use when auditing one page rather than an entire site.
+- Use when checking metadata, content, schema, images, and page-level technical signals together.
+- Title tag: 50-60 characters, includes primary keyword, unique
+- Meta description: 150-160 characters, compelling, includes keyword
+- H1: exactly one, matches page intent, includes keyword
+- H2-H6: logical hierarchy (no skipped levels), descriptive
+- URL: short, descriptive, hyphenated, no parameters
+- Internal links: sufficient, relevant anchor text, no orphan pages
+- External links: to authoritative sources, reasonable count
+- Word count vs page type minimums (see quality-gates.md)
+- Readability: Flesch Reading Ease score, grade level
+- Keyword density: natural (1-3%), semantic variations present
+- E-E-A-T signals: author bio, credentials, first-hand experience markers
+- Content freshness: publication date, last updated date
+- Canonical tag: present, self-referencing or correct
+- Meta robots: index/follow unless intentionally blocked
+- Open Graph: og:title, og:description, og:image, og:url
+- Twitter Card: twitter:card, twitter:title, twitter:description
+- Hreflang: if multi-language, correct implementation
+- Detect all types (JSON-LD preferred)
+- Validate required properties
+- Identify missing opportunities
+- NEVER recommend HowTo (deprecated) or FAQ (restricted to gov/health)
+- Alt text: present, descriptive, includes keywords where natural
+]]>
+  </instructions>
+</agyos_skill>

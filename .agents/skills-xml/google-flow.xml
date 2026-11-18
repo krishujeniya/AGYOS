@@ -1,0 +1,32 @@
+<agyos_skill id="google-flow">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+Automate video generation, tile inspection, and media downloading from **Google Flow** via the `google-flow-mcp` service. All operations execute strictly headless without launching visible Chrome windows.
+1. **Headless Execution Only (Zero Visible Browser Windows)**:
+- Chrome must run in `--headless=new` mode at all times.
+- `FLOW_MCP_HEADLESS=true` is enforced in [google-flow-mcp.sh](../../../mcp/google-flow-mcp.sh).
+- Use dedicated user data directory `~/.google-flow-chrome` synchronized from the local user profile (`~/.config/google-chrome`).
+- Never launch standard desktop Chrome windows or interfere with the user's active browsing session.
+2. **Skill-First Research & Prompt Crafting Protocol**:
+- Never generate raw or speculative prompts directly from user queries.
+- Always research the domain and consult existing specialist skills before crafting video instructions:
+- [veo-3](../veo-3/SKILL.md): Director prompt anatomy (Subject, Action, Setting, Camera movement/angle/lens, Lighting/mood, Style, Audio cues with quoted dialogue, SFX, ambient sound, musical score).
+- [ai-video](../ai-video/SKILL.md): The BRIEF framework (portable specifications, duration pacing, scene composition).
+- [scripting-and-storyboarding](../scripting-and-storyboarding/SKILL.md): Scene breakdowns, visual timing, narrative arcs.
+- Format-specific skills when targeting social channels: [reels-script](../reels-script/SKILL.md), [tiktok-script](../tiktok-script/SKILL.md), [youtube-shorts](../youtube-shorts/SKILL.md).
+- Domain research skills (`research`, `search-specialist`, `deep-research`) to ground technical details, physical realism, or factual environments.
+3. **Mandatory Local Download & Verification**:
+- All generated clips must be saved to the local workspace directory (e.g. `/home/ai/Documents/projects/Freelance/AGYOS`).
+- The tool automatically downloads outputs as `flow_<media_id>_<job_id>.mp4`.
+- Run `ffprobe` to verify media integrity: container, resolution, frame rate, duration, and audio track.
+- **MCP Server Repository**: [integrations/google-flow-mcp](../../../integrations/google-flow-mcp)
+- **Launcher Script**: [mcp/google-flow-mcp.sh](../../../mcp/google-flow-mcp.sh)
+- **Configuration**: [config.ts](../../../integrations/google-flow-mcp/src/config.ts)
+- **Active Studio Project URL**: `https://flow.google.com/project/2d5fbde7-3875-41dc-9ecc-9a3f9881da6d`
+- **CDP Debug Port**: `9333`
+```bash
+FLOW_MCP_CHROME_PATH="/usr/bin/google-chrome"
+]]>
+  </instructions>
+</agyos_skill>

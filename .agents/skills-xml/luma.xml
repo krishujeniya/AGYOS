@@ -1,0 +1,32 @@
+<agyos_skill id="luma">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **cinematic video-generation tool skill** — define the shot, reference with stills + frames, economize with
+drafts, assemble the sequence, and mind the rights. The agent briefs (and can drive the API where connected);
+the **human judges every clip**; **WoopSocial publishes**. (Ships with `tools/integrations/luma.md`.)
+Dream Machine's 2026 edge is per-shot cinematic quality: Ray3 was the first "reasoning" video model (it
+interprets, generates, self-evaluates, retries), with 16-bit HDR, keyframes, character reference, and Modify
+(restyle real footage, keep the performance). The top-1% operator holds four truths the marketing softens.
+**(1) Generations are shots, not films:** 5–10 seconds each, Extend degrades past the initial clip — a brand
+film is a shot list, generated shot-by-shot and **assembled in an editor** with **sound added in post** (no
+native audio; that's Veo/Kling territory). **(2) Draft first, always:** iterate cheap in Draft Mode, Hi-Fi
+master only the winner — because HDR at 1080p runs ~16× standard credits and monthly credits expire at reset.
+**(3) Variance is real:** the same prompt differs run-to-run more than half the time (independent testing) — so
+client-grade consistency comes from **references** (still-first image-to-video, character reference on base
+Ray3, keyframes), never from luck. **(4) The rights fine print:** free = watermarked non-commercial, the
+commercial floor is the Plus-level plan (tier tables genuinely conflict — verify in-app), and **Luma keeps a
+marketing license on your generations** — the clause client work needs to know about.
+1. **ai-video** — the model-agnostic router/craft above the video tools.
+2. **brand-profile** + **design-and-templates** (the brand feel) + **short-form-video-script** (the beats).
+(Depth: `references/the-dream-framework.md`.)
+- **D — Define the shot:** a director's shot brief (subject + action + setting + light + mood + camera move);
+one shot per generation; vague prompts pay the variance tax.
+- **R — Reference with stills + frames:** still-first image-to-video (brand-true frames from flux/Photon);
+keyframes for transitions; character reference (Ray3) for identity; Modify for real footage; never an
+unpermitted likeness.
+- **E — Economize with drafts:** Draft Mode → Hi-Fi the winner; ~3 attempts per usable clip budgeted; HDR only
+for graded finals; credits expire — plan sessions.
+]]>
+  </instructions>
+</agyos_skill>

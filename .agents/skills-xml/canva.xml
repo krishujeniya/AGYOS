@@ -1,0 +1,32 @@
+<agyos_skill id="canva">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **on-brand-at-scale design tool skill** — start from the Brand Kit, customize past the template, automate the
+repeatable, layer in AI while keeping it editable, and export right. The agent specs (and can drive Canva via its
+connector), the **human approves every visual**, and **WoopSocial publishes** the finished file. (Ships with
+`tools/integrations/canva.md`.)
+Canva in 2026 is not a template toy; it's a five-surface design platform (editor, Sheets, Code, Video 2.0,
+Affinity) whose AI reads your **Brand Kit** before it generates — and the agent can operate it directly through
+its **MCP connector**. Two top-1% moves separate expert use from everyone else's. **(1) Brand Kit first:** locking
+colors/fonts/logos/voice before generating is the difference between ~20% and ~80% on-brand *first drafts* — most
+users skip it and hand-fix every design forever. **(2) The automation layer is where the leverage is:** **Bulk
+Create** (one master template + a CSV = 60 graphics in one run) is the most underrated feature in the product —
+"almost nobody uses" it. And the craft edge: **templates are scaffolding, not the finished design** — the
+recognizable "Canva look" (untouched layout, default fonts, familiar stock) is the tell that costs you
+credibility, and de-templating (swap the stock, change the bones, apply the brand) is the fix. Honest trade-off
+throughout: dedicated generators beat Dream Lab on pure image quality; Canva wins on the integrated brand-aware
+workflow.
+1. **brand-profile** + **design-and-templates** — the brand system this executes.
+2. **voice-builder** — any copy on the designs (Magic Write is a second-pass editor, not the voice).
+(Depth: `references/the-scale-framework.md`.)
+- **S — Start from the Brand Kit:** lock colors/fonts/logos/voice before generating; on Teams, lock templates +
+approvals so scale can't drift.
+- **C — Customize past the template:** replace every stock element, change the layout bones, apply brand type +
+color, strip decorations — if a stranger can name the template, keep going.
+- **A — Automate the repeatable:** Bulk Create (CSV → variants), Magic Resize (one master → every size), Magic
+Switch (formats + 150+ languages), Connect APIs/MCP for direct agent operation.
+- **L — Layer in AI, keep it editable:** Dream Lab / Canva AI 2.0 / Magic Layers as editable material; Magic
+]]>
+  </instructions>
+</agyos_skill>

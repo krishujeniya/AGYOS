@@ -1,0 +1,32 @@
+<agyos_skill id="google-calendar-automation">
+  <intent>Lightweight Google Calendar integration with standalone OAuth authentication. No MCP server required.</intent>
+  <instructions>
+<![CDATA[
+Lightweight Google Calendar integration with standalone OAuth authentication. No MCP server required.
+> **⚠️ Requires Google Workspace account.** Personal Gmail accounts are not supported.
+- You need to list, create, inspect, or update Google Calendar events from local scripts.
+- The task requires OAuth-backed calendar automation without standing up an MCP server.
+- You need quick operational access to calendars, schedules, attendees, or event details in a Workspace environment.
+Authenticate with Google (opens browser):
+```bash
+python scripts/auth.py login
+```
+Check authentication status:
+```bash
+python scripts/auth.py status
+```
+Logout when needed:
+```bash
+python scripts/auth.py logout
+```
+All operations via `scripts/gcal.py`. Auto-authenticates on first use if not logged in.
+```bash
+python scripts/gcal.py list-calendars
+```
+```bash
+python scripts/gcal.py list-events
+python scripts/gcal.py list-events --time-min 2024-01-15T00:00:00Z --time-max 2024-01-31T23:59:59Z
+python scripts/gcal.py list-events --calendar "work@example.com"
+]]>
+  </instructions>
+</agyos_skill>

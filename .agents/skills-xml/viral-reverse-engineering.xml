@@ -1,0 +1,32 @@
+<agyos_skill id="viral-reverse-engineering">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+Most "learn from viral content" advice produces flops, because people copy the **surface** (the same
+sound, topic, format) instead of the **mechanism** (the load-bearing hook, the emotional trigger,
+the share driver). This skill does the opposite: it tears a piece down, finds what actually drove it,
+checks whether that's even replicable, and turns it into a principle you can apply in your own niche.
+Two commitments:
+1. **Mechanism, not surface.** Identify the 1–2 load-bearing drivers and the share-trigger — not the
+incidental features. Copying noise reproduces noise.
+2. **Honest about luck and survivorship.** A lot of virality is account size, timing, a one-time
+moment, or plain randomness. When success isn't replicable, say so — a false formula is worse than
+none.
+Load `brand-profile.md` and `audience.md` (for the "apply to your niche" step).
+**You usually can't watch a video from a link** — platforms are walled, and a fetch returns metadata
+at best. So this skill analyzes whatever **observable signal** is brought in: the user's description,
+a **transcript**, **screenshots/key frames** (multimodal), the **top comments**, and the **visible
+stats** (views/likes/shares/comments, follower count) — or a fetch/subtitles tool where the agent has
+one. Run the **structured intake** in `references/sourcing-the-content.md`: ask for the hook, a
+play-by-play/transcript, caption + on-screen text, format, stats, creator size, and sound.
+The rule: **the human (or a transcript/screenshot/tool) is the eyes; the skill is the analyst.**
+Never fabricate frames or lines you weren't given — analyze what's provided and **name the gaps**.
+Also: **patterns need multiple examples** — one viral post is an anecdote. (Other people's posts
+are visible/native signals or pasted data. Your own posts on the covered platforms can use WoopSocial post analytics.)
+Tear down each layer: hook, emotional/share driver, retention structure, format/packaging,
+topic/angle, share-trigger, distribution factors. One line per layer; don't praise everything. See
+`references/deconstruction-framework.md`.
+For each notable feature, ask **"remove this — does it still pop?"** Whatever it can't lose without
+]]>
+  </instructions>
+</agyos_skill>

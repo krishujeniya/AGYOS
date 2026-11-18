@@ -1,0 +1,32 @@
+<agyos_skill id="database-schema-modeling">
+  <intent>Database development and operations workflow covering SQL, NoSQL, database design, migrations, optimization, and data engineering.</intent>
+  <instructions>
+<![CDATA[
+Comprehensive database workflow for database design, development, optimization, migrations, and data engineering. Covers SQL, NoSQL, and modern data platforms.
+Use this workflow when:
+- Designing database schemas
+- Implementing database migrations
+- Optimizing query performance
+- Setting up data pipelines
+- Managing database operations
+- Implementing data quality
+- `database-architect` - Database architecture
+- `database-design` - Schema design
+- `postgresql` - PostgreSQL design
+- `nosql-expert` - NoSQL design
+1. Gather requirements
+2. Design schema
+3. Define relationships
+4. Plan indexing strategy
+5. Design for scalability
+```
+Use @database-architect to design database schema
+```
+```
+Use @postgresql to design PostgreSQL schema
+```
+- `prisma-expert` - Prisma ORM
+- `database-migrations-sql-migrations` - SQL migrations
+]]>
+  </instructions>
+</agyos_skill>

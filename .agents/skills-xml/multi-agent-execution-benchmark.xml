@@ -1,0 +1,32 @@
+<agyos_skill id="multi-agent-execution-benchmark">
+  <intent>BlockRun works with Claude Code and Google Antigravity.</intent>
+  <instructions>
+<![CDATA[
+**BlockRun works with Claude Code and Google Antigravity.**
+You can't generate images. You have no real-time X/Twitter access. BlockRun gives you these capabilities.
+You have a wallet. When you need a capability you lack, you pay for it autonomously.
+| You Need | You Call | Pricing |
+|----------|----------|---------|
+| Image generation | DALL-E | $0.04/image |
+| Real-time X data | Grok + Live Search | $0.025/source |
+| Second opinion | GPT-5.2 | $1.75/M input, $14/M output |
+| Cheaper processing | DeepSeek | $0.14/M input, $0.28/M output |
+**How it works:** BlockRun uses x402 micropayments to route your requests to OpenAI, xAI, Google, and other providers. No API keys needed - your wallet pays per token.
+If the user specifies a budget (e.g., "use at most $1"), track spending and stop when budget is reached:
+```python
+from blockrun_llm import setup_agent_wallet
+client = setup_agent_wallet()
+budget = 1.0  # User's budget
+spending = client.get_spending()
+if spending['total_usd'] >= budget:
+print(f"Budget reached: ${spending['total_usd']:.4f} spent")
+# Stop making calls
+else:
+response = client.chat("openai/gpt-5.2", "Hello!")
+spending = client.get_spending()
+print(f"💰 Total spent: ${spending['total_usd']:.4f} across {spending['calls']} calls")
+```
+| Trigger | Your Action |
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="scientific-db-pubmed-database">
+  <intent>Direct PubMed and NCBI E-utilities search workflows for biomedical literature, MeSH queries, PMID lookup, citation retrieval, and API-backed literature monitoring. Use when a task needs biomedical literature from PubMed rather than general web search.</intent>
+  <instructions>
+<![CDATA[
+Use this skill when a task needs biomedical literature from PubMed rather than
+general web search.
+- Searching MEDLINE or life-sciences literature.
+- Building PubMed queries with MeSH terms, field tags, dates, or article types.
+- Looking up PMIDs, abstracts, publication metadata, or related citations.
+- Running systematic-review search passes that need repeatable search strings.
+- Using NCBI E-utilities directly from Python, shell, or another HTTP client.
+Start with the research question, split it into concepts, then combine concepts
+with Boolean operators.
+```text
+concept_1 AND concept_2 AND filter
+synonym_a OR synonym_b
+NOT exclusion_term
+```
+Useful PubMed field tags:
+- `[ti]`: title
+- `[ab]`: abstract
+- `[tiab]`: title or abstract
+- `[au]`: author
+- `[ta]`: journal title abbreviation
+- `[mh]`: MeSH term
+- `[majr]`: major MeSH topic
+- `[pt]`: publication type
+- `[dp]`: date of publication
+- `[la]`: language
+]]>
+  </instructions>
+</agyos_skill>

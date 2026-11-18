@@ -1,0 +1,32 @@
+<agyos_skill id="intercom-automation">
+  <intent>Automate Intercom tasks via Rube MCP (Composio): conversations, contacts, companies, segments, admins. Always search tools first for current schemas.</intent>
+  <instructions>
+<![CDATA[
+Automate Intercom operations through Composio's Intercom toolkit via Rube MCP.
+- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
+- Active Intercom connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `intercom`
+- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
+2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `intercom`
+3. If connection is not ACTIVE, follow the returned auth link to complete Intercom OAuth
+4. Confirm connection status shows ACTIVE before running any workflows
+**When to use**: User wants to create, list, search, or manage support conversations
+**Tool sequence**:
+1. `INTERCOM_LIST_ALL_ADMINS` - Get admin IDs for assignment [Prerequisite]
+2. `INTERCOM_LIST_CONVERSATIONS` - List all conversations [Optional]
+3. `INTERCOM_SEARCH_CONVERSATIONS` - Search with filters [Optional]
+4. `INTERCOM_GET_CONVERSATION` - Get conversation details [Optional]
+5. `INTERCOM_CREATE_CONVERSATION` - Create a new conversation [Optional]
+**Key parameters**:
+- `from`: Object with `type` ('user'/'lead') and `id` for conversation creator
+- `body`: Message body (HTML supported)
+- `id`: Conversation ID for retrieval
+- `query`: Search query object with `field`, `operator`, `value`
+**Pitfalls**:
+- CREATE_CONVERSATION requires a contact (user/lead) as the `from` field, not an admin
+- Conversation bodies support HTML; plain text is auto-wrapped in `<p>` tags
+- Search query uses structured filter objects, not free-text search
+]]>
+  </instructions>
+</agyos_skill>

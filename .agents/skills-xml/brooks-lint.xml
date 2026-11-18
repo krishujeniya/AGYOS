@@ -1,0 +1,32 @@
+<agyos_skill id="brooks-lint">
+  <intent>AI code reviewer grounded in classic software engineering books for catching design smells, coupling issues, and architectural risks.</intent>
+  <instructions>
+<![CDATA[
+Brooks Lint is a Claude Code skill that reviews your code through the lens of 12 classic software engineering books. Instead of checking style rules, it asks: "What would the authors of *The Pragmatic Programmer*, *Clean Code*, and *Designing Data-Intensive Applications* say about this code?"
+It synthesizes the principles from landmark engineering books into actionable, structured feedback — catching design smells, tight coupling, missing abstractions, and architectural risks that linters and AI tools typically miss.
+Named after Fred Brooks, author of *The Mythical Man-Month* — because the hardest bugs are conceptual, not syntactic.
+| Book | Key Principles Applied |
+|------|----------------------|
+| *The Pragmatic Programmer* | DRY, orthogonality, tracer bullets |
+| *Clean Code* | Naming, function size, comment clarity |
+| *The Mythical Man-Month* | Conceptual integrity, second-system effect |
+| *Designing Data-Intensive Applications* | Data consistency, fault tolerance, scalability |
+| *A Philosophy of Software Design* | Deep modules, information hiding, complexity |
+| *Refactoring* | Code smells, extract method, encapsulation |
+| *Working Effectively with Legacy Code* | Seams, characterization tests, dependency breaking |
+| *Domain-Driven Design* | Ubiquitous language, bounded contexts, aggregates |
+| *Release It!* | Stability patterns, timeouts, bulkheads, circuit breakers |
+| *Structure and Interpretation of Computer Programs* | Abstraction, recursion, metalinguistic abstraction |
+| *The Art of UNIX Programming* | Modularity, composability, rule of least surprise |
+| *Extreme Programming Explained* | YAGNI, simple design, collective ownership |
+- Use when you want architectural feedback beyond what linters provide
+- Use before major refactors to identify structural debt
+- Use when reviewing code that "works but feels wrong"
+- Use when onboarding to a codebase to quickly map risk areas
+- Use for design reviews before starting a new module or service
+Brooks Lint applies each book's core principles as a review lens:
+1. **Smell detection**: Flags violations of DRY, SRP, Law of Demeter, etc.
+2. **Coupling analysis**: Identifies tight dependencies and missing abstraction layers
+]]>
+  </instructions>
+</agyos_skill>

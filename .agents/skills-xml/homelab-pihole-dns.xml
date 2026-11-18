@@ -1,0 +1,32 @@
+<agyos_skill id="homelab-pihole-dns">
+  <intent>Pi-hole installation, blocklist management, DNS-over-HTTPS setup, DHCP integration, local DNS records, and troubleshooting broken DNS resolution on a home network. Use when the task explicitly involves Pi-hole — installing it, managing blocklists, configuring DoH or DHCP, adding local DNS records, or diagnosing DNS resolution with Pi-hole in the path.</intent>
+  <instructions>
+<![CDATA[
+Pi-hole is a network-wide DNS ad blocker that runs on a Raspberry Pi or any Linux host.
+Every device on your network gets ad and malware domain blocking automatically — no browser
+extension needed.
+- Installing Pi-hole on a Raspberry Pi or Linux host
+- Configuring Pi-hole as the DNS server for a home network
+- Adding or managing blocklists
+- Setting up DNS-over-HTTPS (DoH) upstream resolvers
+- Creating local DNS records (e.g. `nas.home.lan`, `pi.home.lan`)
+- Troubleshooting devices that lose internet access after Pi-hole is installed
+- Running Pi-hole alongside or instead of DHCP
+```
+Normal flow (without Pi-hole):
+Device → requests ads.tracker.com → ISP DNS → real IP → ads load
+With Pi-hole:
+Device → requests ads.tracker.com → Pi-hole DNS → blocked (returns 0.0.0.0) → no ad
+All DNS queries go through Pi-hole first.
+Pi-hole checks against blocklists.
+Blocked domains return a null response — the ad/tracker never loads.
+Allowed domains get forwarded to your upstream resolver (Cloudflare, Google, etc.).
+```
+Docker is the easiest way to install Pi-hole and makes updates and backups
+straightforward.
+```yaml
+services:
+pihole:
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="azure-storage-blob-rust">
+  <intent>Azure Blob Storage SDK for Rust. Use for uploading, downloading, and managing blobs and containers.</intent>
+  <instructions>
+<![CDATA[
+Client library for Azure Blob Storage — Microsoft's object storage solution for the cloud.
+```sh
+cargo add azure_storage_blob azure_identity
+```
+```bash
+AZURE_STORAGE_ACCOUNT_NAME=<storage-account-name>
+```
+```rust
+use azure_identity::DeveloperToolsCredential;
+use azure_storage_blob::{BlobClient, BlobClientOptions};
+let credential = DeveloperToolsCredential::new(None)?;
+let blob_client = BlobClient::new(
+"https://<account>.blob.core.windows.net/",
+"container-name",
+"blob-name",
+Some(credential),
+Some(BlobClientOptions::default()),
+)?;
+```
+| Client | Purpose |
+|--------|---------|
+| `BlobServiceClient` | Account-level operations, list containers |
+| `BlobContainerClient` | Container operations, list blobs |
+| `BlobClient` | Individual blob operations |
+```rust
+]]>
+  </instructions>
+</agyos_skill>

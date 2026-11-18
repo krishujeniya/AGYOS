@@ -1,0 +1,32 @@
+<agyos_skill id="mixpanel-automation">
+  <intent>Automate Mixpanel tasks via Rube MCP (Composio): events, segmentation, funnels, cohorts, user profiles, JQL queries. Always search tools first for current schemas.</intent>
+  <instructions>
+<![CDATA[
+Automate Mixpanel product analytics through Composio's Mixpanel toolkit via Rube MCP.
+- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
+- Active Mixpanel connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `mixpanel`
+- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
+2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `mixpanel`
+3. If connection is not ACTIVE, follow the returned auth link to complete Mixpanel authentication
+4. Confirm connection status shows ACTIVE before running any workflows
+**When to use**: User wants to count events, get totals, or track event trends over time
+**Tool sequence**:
+1. `MIXPANEL_GET_ALL_PROJECTS` - List projects to get project ID [Prerequisite]
+2. `MIXPANEL_AGGREGATE_EVENT_COUNTS` - Get event counts and aggregations [Required]
+**Key parameters**:
+- `event`: Event name or array of event names to aggregate
+- `from_date` / `to_date`: Date range in 'YYYY-MM-DD' format
+- `unit`: Time granularity ('minute', 'hour', 'day', 'week', 'month')
+- `type`: Aggregation type ('general', 'unique', 'average')
+- `where`: Filter expression for event properties
+**Pitfalls**:
+- Date format must be 'YYYY-MM-DD'; other formats cause errors
+- Event names are case-sensitive; use exact names from your Mixpanel project
+- `where` filter uses Mixpanel expression syntax (e.g., `properties["country"] == "US"`)
+- Maximum date range may be limited depending on your Mixpanel plan
+**When to use**: User wants to break down events by properties for detailed analysis
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="azure-servicebus-ts">
+  <intent>Enterprise messaging with queues, topics, and subscriptions.</intent>
+  <instructions>
+<![CDATA[
+Enterprise messaging with queues, topics, and subscriptions.
+```bash
+npm install @azure/service-bus @azure/identity
+```
+```bash
+SERVICEBUS_NAMESPACE=<namespace>.servicebus.windows.net
+SERVICEBUS_QUEUE_NAME=my-queue
+SERVICEBUS_TOPIC_NAME=my-topic
+SERVICEBUS_SUBSCRIPTION_NAME=my-subscription
+```
+```typescript
+import { ServiceBusClient } from "@azure/service-bus";
+import { DefaultAzureCredential } from "@azure/identity";
+const fullyQualifiedNamespace = process.env.SERVICEBUS_NAMESPACE!;
+const client = new ServiceBusClient(fullyQualifiedNamespace, new DefaultAzureCredential());
+```
+```typescript
+const sender = client.createSender("my-queue");
+// Single message
+await sender.sendMessages({
+body: { orderId: "12345", amount: 99.99 },
+contentType: "application/json",
+});
+// Batch messages
+const batch = await sender.createMessageBatch();
+]]>
+  </instructions>
+</agyos_skill>

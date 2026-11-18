@@ -1,0 +1,32 @@
+<agyos_skill id="azure-ai-agents-persistent-java">
+  <intent>Azure AI Agents Persistent SDK for Java. Low-level SDK for creating and managing AI agents with threads, messages, runs, and tools.</intent>
+  <instructions>
+<![CDATA[
+Low-level SDK for creating and managing persistent AI agents with threads, messages, runs, and tools.
+```xml
+<dependency>
+<groupId>com.azure</groupId>
+<artifactId>azure-ai-agents-persistent</artifactId>
+<version>1.0.0-beta.1</version>
+</dependency>
+```
+```bash
+PROJECT_ENDPOINT=https://<resource>.services.ai.azure.com/api/projects/<project>
+MODEL_DEPLOYMENT_NAME=gpt-4o-mini
+```
+```java
+import com.azure.ai.agents.persistent.PersistentAgentsClient;
+import com.azure.ai.agents.persistent.PersistentAgentsClientBuilder;
+import com.azure.identity.DefaultAzureCredentialBuilder;
+String endpoint = System.getenv("PROJECT_ENDPOINT");
+PersistentAgentsClient client = new PersistentAgentsClientBuilder()
+.endpoint(endpoint)
+.credential(new DefaultAzureCredentialBuilder().build())
+.buildClient();
+```
+The Azure AI Agents Persistent SDK provides a low-level API for managing persistent agents that can be reused across sessions.
+| Client | Purpose |
+|--------|---------|
+]]>
+  </instructions>
+</agyos_skill>

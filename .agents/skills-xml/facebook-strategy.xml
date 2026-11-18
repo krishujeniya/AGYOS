@@ -1,0 +1,32 @@
+<agyos_skill id="facebook-strategy">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **Facebook platform strategy** — play **Reels (discovery) → Feed (depth) → Groups (community)**, not
+a dead Page feed. The agent drafts; **scheduling-and-queue → WoopSocial** schedules **Page** posts/Reels;
+the live community work is human/in-app.
+Page feed broadcasting is over — organic reach sits near **1.65%**. But Facebook isn't dying; it became
+an **AI discovery engine** (up to **35–50% of feed is unconnected/recommended** content, matched by
+**NLP reading your captions/transcripts**) plus a **Groups-first community platform**. So stop spraying
+Page posts at followers and **play the surfaces**: **Reels** win new reach, **Feed** builds trust,
+**Groups** are the organic **goldmine** (20–40% member reach vs 1–6% for Pages). Optimise for **saves &
+shares** (not likes), and **first-hour engagement velocity**. Best for **community/local/B2C/discovery**;
+3B+ users, older-skewing.
+1. **brand-profile** — positioning, audience, non-negotiables.
+2. **voice-builder** — so posts/Reels/Group copy sound like the brand.
+(Depth: `references/the-reach-framework.md`.)
+- **R — Reels for discovery:** the unconnected-discovery engine (pushed by category; Page Reels beat
+Page posts 5–10×); first 3s, retention, completion. All videos are Reels now.
+- **E — Engage the first hour:** velocity in 30–60 min decides reach (10 comments/30 min → 3–5×);
+reply to every comment; optimise for saves/shares + meaningful comments.
+- **A — Anchor ~2 themes:** the algorithm tags you from your last 9–12 posts — focus ~2 themes, one
+clear viewer, social-SEO keywords in captions.
+- **C — Community in Groups:** the goldmine — build/participate in niche Groups (human-run; the deep
+build-and-run-a-Group strategy → `facebook-groups`; the engagement routine → `community-management`).
+- **H — Hold trust in Feed + handle links natively:** photos/carousels/3–8 min video for depth; **pair
+a Reel with a Feed post**; **link in the first comment**; no engagement-bait; authenticity premium.
+Reach numbers, the discovery-engine shift (Andromeda/UTIS), four-step ranking, saves/shares > likes,
+all-videos-are-Reels, Groups goldmine, velocity, thematic consistency, links-in-comment, AI/authenticity,
+]]>
+  </instructions>
+</agyos_skill>

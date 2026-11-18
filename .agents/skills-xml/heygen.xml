@@ -1,0 +1,32 @@
+<agyos_skill id="heygen">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The mini-skill for **avatar / talking-head video** with HeyGen — the counterpart producer to
+**veo-3** (generative scenes) under the **ai-video** router. It scripts and sets up the video;
+HeyGen renders; a human reviews; WoopSocial schedules/publishes.
+Avatars win for **scaled, scripted, multilingual** work — explainers, training, localization, FAQ,
+faceless channels, personalized sales at volume. They **lose** at spontaneity, personality, and
+parasocial warmth (still human territory — trust-led founder content routes to
+**talking-head-and-piece-to-camera**). Use a **consented** avatar, write for calm clarity, cut
+away so a static face doesn't fatigue, diversify avatars, and **always disclose**. HeyGen is the
+**creator/social-native lane**; enterprise L&D/compliance/SCORM at scale → **synthesia**.
+1. **brand-profile** — look, audience, non-negotiables (and the avatar's demeanor).
+2. **voice-builder** — tone, so the script and voice sound like the brand.
+(Depth: `references/the-talk-framework.md`.)
+- **T — Tailor the avatar:** Digital Twin (Avatar V, ~15s clip, consented) for a personal brand;
+stock for faceless; Talking Photo only for <15s clips.
+- **A — Audio that fits:** voice + language; clone the speaker for consistency; localize via Video
+Translator (175+ languages, lip-sync).
+- **L — Lean script:** conversational, one idea, short sentences, no tongue-twisters; open with the point.
+- **K — Keep eyes moving:** cut to B-roll (veo-3), screen-records, text, shot changes; the avatar is
+the spine, not the whole frame.
+Avatar V (highest fidelity, twins, identity-stable over long videos) · Avatar IV (expressive
+default) · stock avatars (no likeness questions) · Talking Photo (<15s only). Localization is
+HeyGen's strongest use case. Full capabilities + API + pricing:
+`references/heygen-2026-capabilities.md`.
+- **Only consented avatars** — your own twin, a consented person, stock, or licensed talent. **Never
+a real non-consenting person** (deepfake). HeyGen requires consent verification; its checks are
+]]>
+  </instructions>
+</agyos_skill>

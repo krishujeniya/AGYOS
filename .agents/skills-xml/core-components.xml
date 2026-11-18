@@ -1,0 +1,32 @@
+<agyos_skill id="core-components">
+  <intent>Core component library and design system patterns. Use when building UI, using design tokens, or working with the component library.</intent>
+  <instructions>
+<![CDATA[
+Use components from your core library instead of raw platform components. This ensures consistent styling and behavior.
+**NEVER hard-code values. Always use design tokens.**
+```tsx
+// CORRECT - Use tokens
+<Box padding="$4" marginBottom="$2" />
+// WRONG - Hard-coded values
+<Box padding={16} marginBottom={8} />
+```
+| Token | Value |
+|-------|-------|
+| `$1` | 4px |
+| `$2` | 8px |
+| `$3` | 12px |
+| `$4` | 16px |
+| `$6` | 24px |
+| `$8` | 32px |
+```tsx
+// CORRECT - Semantic tokens
+<Text color="$textPrimary" />
+<Box backgroundColor="$backgroundSecondary" />
+// WRONG - Hard-coded colors
+<Text color="#333333" />
+<Box backgroundColor="rgb(245, 245, 245)" />
+```
+| Semantic Token | Use For |
+]]>
+  </instructions>
+</agyos_skill>

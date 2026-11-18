@@ -1,0 +1,32 @@
+<agyos_skill id="gitlab-automation">
+  <intent>Automate GitLab project management, issues, merge requests, pipelines, branches, and user operations via Rube MCP (Composio). Always search tools first for current schemas.</intent>
+  <instructions>
+<![CDATA[
+Automate GitLab operations including project management, issue tracking, merge request workflows, CI/CD pipeline monitoring, branch management, and user administration through Composio's GitLab toolkit.
+- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
+- Active GitLab connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `gitlab`
+- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
+2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `gitlab`
+3. If connection is not ACTIVE, follow the returned auth link to complete GitLab OAuth
+4. Confirm connection status shows ACTIVE before running any workflows
+**When to use**: User wants to create, update, list, or search issues in a GitLab project
+**Tool sequence**:
+1. `GITLAB_GET_PROJECTS` - Find the target project and get its ID [Prerequisite]
+2. `GITLAB_LIST_PROJECT_ISSUES` - List and filter issues for a project [Required]
+3. `GITLAB_CREATE_PROJECT_ISSUE` - Create a new issue [Required for create]
+4. `GITLAB_UPDATE_PROJECT_ISSUE` - Update an existing issue (title, labels, state, assignees) [Required for update]
+5. `GITLAB_LIST_PROJECT_USERS` - Find user IDs for assignment [Optional]
+**Key parameters**:
+- `id`: Project ID (integer) or URL-encoded path (e.g., `"my-group/my-project"`)
+- `title`: Issue title (required for creation)
+- `description`: Issue body text (max 1,048,576 characters)
+- `labels`: Comma-separated label names (e.g., `"bug,critical"`)
+- `add_labels` / `remove_labels`: Add or remove labels without replacing all
+- `state`: Filter by `"all"`, `"opened"`, or `"closed"`
+- `state_event`: `"close"` or `"reopen"` to change issue state
+- `assignee_ids`: Array of user IDs; use `[0]` to unassign all
+]]>
+  </instructions>
+</agyos_skill>

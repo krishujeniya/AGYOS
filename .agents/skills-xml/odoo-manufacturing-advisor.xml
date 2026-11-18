@@ -1,0 +1,32 @@
+<agyos_skill id="odoo-manufacturing-advisor">
+  <intent>Expert guide for Odoo Manufacturing: Bills of Materials (BoM), Work Centers, routings, MRP planning, and production order workflows.</intent>
+  <instructions>
+<![CDATA[
+This skill helps you configure and optimize Odoo Manufacturing (MRP). It covers Bills of Materials (BoM), Work Centers, routing operations, production order lifecycle, and Material Requirements Planning (MRP) runs to ensure you never run short of materials.
+- Creating or structuring Bills of Materials for finished goods.
+- Setting up Work Centers with capacity and efficiency settings.
+- Running an MRP to automatically generate purchase and production orders from demand.
+- Troubleshooting production order discrepancies or component availability issues.
+1. **Activate**: Mention `@odoo-manufacturing-advisor` and describe your manufacturing scenario.
+2. **Configure**: Receive step-by-step instructions for BoM setup, routing, and MRP configuration.
+3. **Plan**: Get guidance on running MRP and interpreting procurement messages.
+```text
+Menu: Manufacturing → Products → Bills of Materials → New
+Product: Finished Widget v2
+BoM Type: Manufacture This Product
+Quantity: 1 (produce 1 unit per BoM)
+Components Tab:
+- Raw Plastic Sheet  | Qty: 0.5  | Unit: kg
+- Steel Bolt M6      | Qty: 4    | Unit: Units
+- Rubber Gasket      | Qty: 1    | Unit: Units
+Operations Tab (requires "Work Orders" enabled in MFG Settings):
+- Operation: Injection Molding | Work Center: Press A   | Duration: 30 min
+- Operation: Assembly          | Work Center: Line 1    | Duration: 15 min
+```
+> **BoM Types explained:**
+>
+> - **Manufacture This Product** — standard production BoM, creates a Manufacturing Order
+> - **Kit** — sold as a bundle; components are delivered separately (no MO created)
+]]>
+  </instructions>
+</agyos_skill>

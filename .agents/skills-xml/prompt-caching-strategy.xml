@@ -1,0 +1,32 @@
+<agyos_skill id="prompt-caching-strategy">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+Arrange reusable prompt content to improve cache reuse, then measure input cost
+and latency. Savings depend on model, platform, cache eligibility, writes,
+retention, reuse and output volume. Runtime cache hits and savings for this skill
+are **unmeasured**; the examples below validate arithmetic without provider calls.
+Use for repeated API requests that share authorized instructions, tools or
+reference material. First identify the exact provider endpoint, model, service
+tier and caching mode. Consult its current documentation before selecting rates,
+minimum prefix length or retention. Caching does not reduce context-window use.
+Keep reusable instructions, tool schemas and examples stable; place changing
+questions, timestamps and retrieved results after that content where the API
+allows. Respect the provider's serialization order: Claude uses tools, system,
+then messages. Matching prefixes need identical content, including tool schemas
+and relevant request settings. A changed prefix can prevent reuse from that
+point. A dynamic suffix may itself be cached later if reused unchanged.
+```text
+Reusable prefix: approved tools, instructions, stable examples/reference
+Changing suffix: current question, fresh retrieval results, request metadata
+```
+Choose only relevant context. Padding prompts or broadening access just to meet
+an eligibility threshold needs its own cost and quality justification.
+Authorize content access before cache lookup or reuse. Scope application-managed
+cache handles and accounting keys to the approved user, workspace, provider
+account, model and content revision. Share only material explicitly approved for
+that scope. A cache key is a routing/accounting hint, not an authorization gate
+or a sandbox. Provider cache isolation does not replace application access checks.
+]]>
+  </instructions>
+</agyos_skill>

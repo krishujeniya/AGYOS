@@ -1,0 +1,32 @@
+<agyos_skill id="story-writer">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **ephemeral Stories** content type — interactive frame sequences for Instagram/Facebook's
+relationship surface. The agent drafts the frames + sticker copy; a human adds native interactive
+elements and replies in DMs; **scheduling-and-queue → WoopSocial** publishes the base frames.
+Instagram is explicit — **Stories aren't a discovery/reach surface; they deepen the relationship** with
+your *existing* followers (and those relationship signals lift your Feed/Reels for them). So optimise
+for **completion + interaction (sticker taps, replies, link taps)**, never impressions. Reach goals →
+**reels-script**.
+1. **brand-profile** — look, palette, non-negotiables (frames must be on-brand).
+2. **voice-builder** — so frame copy sounds like the brand.
+(Depth: `references/the-frame-framework.md`.)
+- **F — First frame earns the tap-through:** sound-off hook stating the problem/outcome (most exits
+happen here); 9:16, safe zone, text sparingly.
+- **R — Rhythm: one beat per frame:** a 3–5 frame arc (or multi-day mini-series), each a distinct
+takeaway; keep each beat short (~15s) even though a segment can run to 60s.
+- **A — Activate with a sticker:** poll/quiz/question/slider/countdown — the single most effective
+Stories tool; turns watchers into tappers (+ free audience research).
+- **M — Move to one action:** **one goal per sequence**; link sticker + **"Tap here"** overlay / reply
+prompt / profile visit. Don't ask three things.
+- **E — Evergreen + engage:** **Highlight** proven sequences; **DM every reply** personally; read
+completion/exits/taps natively to learn.
+9:16 (1080×1920), key content in the **safe zone (1080×1420)**, **sound-off legible**; video segments
+run up to **60s** (photos show ~5s) — keep beats ~15s. Post **daily, ~3–7 frames**; mix ~**70% value /
+20% BTS / 10% promo**; use **Close Friends** for insider/VIP drops. Sticker/sequence playbook:
+`references/sequence-and-sticker-recipes.md`; full reality: `references/stories-2026-reality.md`.
+- **Frames vs native stickers:** WoopSocial publishes the **base frames** (IG+FB); **interactive
+]]>
+  </instructions>
+</agyos_skill>

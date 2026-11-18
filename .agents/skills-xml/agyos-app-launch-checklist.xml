@@ -1,0 +1,32 @@
+<agyos_skill id="agyos-app-launch-checklist">
+  <intent>Production pre-launch verification checklist for web and mobile apps. Covers Open Graph previews, Twitter Cards, favicons, meta tags, canonical URLs, error tracking, and release gates.</intent>
+  <instructions>
+<![CDATA[
+A deterministic pre-launch audit checklist to verify frontend assets, metadata, security headers, search indexing, and error monitoring prior to production deployment.
+Ensure app previews render accurately on WhatsApp, Twitter/X, LinkedIn, Discord, and Slack:
+1. Preview Image Specifications:
+- Dimensions: 1200 x 630 px (1.91:1 aspect ratio).
+- Format: PNG or optimized JPG (<1 MB).
+- Path: Hosted on an absolute HTTPS URL (e.g., `https://example.com/og-image.png`).
+2. Next.js App Router Implementation (`app/layout.tsx`):
+```typescript
+export const metadata = {
+title: "Application Name — Core Proposition",
+description: "Direct, technical description of product value and features.",
+metadataBase: new URL("https://example.com"),
+alternates: {
+canonical: "/",
+},
+openGraph: {
+title: "Application Name — Core Proposition",
+description: "Direct, technical description of product value and features.",
+url: "https://example.com",
+siteName: "Application Name",
+images: [
+{
+url: "/og-image.png",
+width: 1200,
+height: 630,
+]]>
+  </instructions>
+</agyos_skill>

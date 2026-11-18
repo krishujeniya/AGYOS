@@ -1,0 +1,32 @@
+<agyos_skill id="markdown-to-html">
+  <intent>Converts Markdown to styled HTML with WeChat-compatible themes. Supports code highlighting, math, PlantUML, footnotes, alerts, infographics, and optional bottom citations for external links. Use when user asks for "markdown to html", "convert md to html", "md 转 html", "微信外链转底部引用", or needs styled HTML output from markdown.</intent>
+  <instructions>
+<![CDATA[
+Converts Markdown files to beautifully styled HTML with inline CSS, optimized for WeChat Official Account and other platforms.
+When this skill prompts the user, follow this tool-selection rule (priority order):
+1. **Prefer built-in user-input tools** exposed by the current agent runtime — e.g., `AskUserQuestion`, `request_user_input`, `clarify`, `ask_user`, or any equivalent.
+2. **Fallback**: if no such tool exists, emit a numbered plain-text message and ask the user to reply with the chosen number/answer for each question.
+3. **Batching**: if the tool supports multiple questions per call, combine all applicable questions into a single call; if only single-question, ask them one at a time in priority order.
+Concrete `AskUserQuestion` references below are examples — substitute the local equivalent in other runtimes.
+**Agent Execution**: Determine this SKILL.md directory as `{baseDir}`. Resolve `${BUN_X}` runtime: if `bun` installed → `bun`; if `npx` available → `npx -y bun`; else suggest installing bun. Replace `{baseDir}` and `${BUN_X}` with actual values.
+| Script | Purpose |
+|--------|---------|
+| `scripts/main.ts` | Main entry point |
+Check EXTEND.md in priority order — the first one found wins:
+| Priority | Path | Scope |
+|----------|------|-------|
+| 1 | `.baoyu-skills/baoyu-markdown-to-html/EXTEND.md` | Project |
+| 2 | `${XDG_CONFIG_HOME:-$HOME/.config}/baoyu-skills/baoyu-markdown-to-html/EXTEND.md` | XDG |
+| 3 | `$HOME/.baoyu-skills/baoyu-markdown-to-html/EXTEND.md` | User home |
+If none found, use defaults.
+**EXTEND.md supports**: default theme, custom CSS variables, code block style.
+**Condition**: Only execute if input file contains Chinese text.
+**Detection**:
+1. Read input markdown file
+2. Check if content contains CJK characters (Chinese/Japanese/Korean)
+3. If no CJK content → skip to Step 1
+**Format Suggestion**:
+If CJK content detected AND `baoyu-format-markdown` skill is available:
+]]>
+  </instructions>
+</agyos_skill>

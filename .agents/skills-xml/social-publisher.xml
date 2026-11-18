@@ -1,0 +1,32 @@
+<agyos_skill id="social-publisher">
+  <intent>Agent-driven scheduling and publishing of social media posts across 13 platforms via SocialClaw. Use when the user wants to publish to X, LinkedIn, Instagram, Facebook Pages, TikTok, Discord, Telegram, YouTube, Reddit, WordPress, or Pinterest — or when managing campaigns, uploading media, or monitoring post delivery status.</intent>
+  <instructions>
+<![CDATA[
+Connects Claude Code to [SocialClaw](https://getsocialclaw.com) for agent-driven social media publishing across 13 platforms through a single workspace API key.
+- publish content to X, LinkedIn, Instagram, TikTok, or other platforms
+- schedule a post campaign across multiple platforms at once
+- upload media for use in social posts
+- validate a post schedule before going live
+- monitor publishing run status and delivery analytics
+```bash
+export SC_API_KEY="<workspace-key>"
+printf 'header = "Authorization: Bearer %s"\n' "$SC_API_KEY" |
+curl -sS -K - https://getsocialclaw.com/v1/keys/validate
+npm install -g socialclaw@0.1.12
+socialclaw login --api-key <workspace-key>
+```
+The CLI takes the key only as the `--api-key` argument and saves it to `~/.socialclaw/config.json`. While the command runs, other local users can see the argument in `ps`, and your shell may keep it in history. Run `socialclaw login` yourself, once, in your own terminal; do not have the agent expand `$SC_API_KEY` into the command line.
+```bash
+socialclaw accounts list --json
+```
+If not connected:
+```bash
+socialclaw accounts connect --provider x --open
+socialclaw accounts connect --provider linkedin --open
+```
+```bash
+socialclaw assets upload --file ./image.png --json
+```
+]]>
+  </instructions>
+</agyos_skill>

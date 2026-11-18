@@ -1,0 +1,32 @@
+<agyos_skill id="cross-platform-repurposing">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+This skill turns one idea into many posts — the single biggest lever for producing content
+sustainably. One blog post becomes a week of social; one strong insight becomes five
+platform-native posts. It's how a small team posts like a big one.
+The principle that makes it work — and the trap that ruins most attempts:
+> **Repurposing is not reposting.** Pasting the same caption onto every platform is the lazy
+> version: it fits none of them natively, it looks like spam to anyone who follows you in two
+> places, and several platforms quietly suppress obviously cross-posted content. The craft is
+> **atomize → adapt**: extract the core idea, then rebuild it natively for each target — a
+> different hook, format, length, and CTA, same truth and voice.
+- Fan one post out across platforms (one → many).
+- Atomize a long piece (blog, video, podcast, newsletter) into many short posts (long → short).
+- Convert one format into others (a written insight → a carousel, a Reel, a thread).
+- Inside `batch-content-plan`, to stretch limited raw material into a full calendar.
+**When NOT to use it:** when content is genuinely platform-specific (an in-joke, a
+platform-native trend, a reply) — forcing it elsewhere reads wrong. And when the audience
+overlaps almost entirely on two platforms, vary the *angle*, don't just relocate the post. Know
+when a piece shouldn't travel.
+Load `brand-profile.md` and `voice.md`. Voice stays constant across platforms; **register
+shifts** per platform (use the voice tone-map — LinkedIn more formal, TikTok looser). Carry
+guardrails everywhere.
+Extract the reusable **atom** from the source — the point, the insight, the story, the stat, the
+moment. For a single post that's usually one atom; for long-form (a blog, a 20-minute video) it's
+**several** atoms, each strong enough to be its own post. Don't summarize a long piece into one
+weak post — pull its best 5–10 atoms. See `references/repurposing-model.md`.
+Decide the **platforms** and the **direction** of the repurpose (one→many, long→short,
+]]>
+  </instructions>
+</agyos_skill>

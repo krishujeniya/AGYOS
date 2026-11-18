@@ -1,0 +1,32 @@
+<agyos_skill id="nestjs-patterns">
+  <intent>NestJS architecture patterns for modules, controllers, providers, DTO validation, guards, interceptors, config, and production-grade TypeScript backends. Use when building or reviewing a NestJS backend — modules, providers, DTO validation, guards, or interceptors.</intent>
+  <instructions>
+<![CDATA[
+Production-grade NestJS patterns for modular TypeScript backends.
+- Building NestJS APIs or services
+- Structuring modules, controllers, and providers
+- Adding DTO validation, guards, interceptors, or exception filters
+- Configuring environment-aware settings and database integrations
+- Testing NestJS units or HTTP endpoints
+```text
+src/
+├── app.module.ts
+├── main.ts
+├── common/
+│   ├── filters/
+│   ├── guards/
+│   ├── interceptors/
+│   └── pipes/
+├── config/
+│   ├── configuration.ts
+│   └── validation.ts
+├── modules/
+│   ├── auth/
+│   │   ├── auth.controller.ts
+│   │   ├── auth.module.ts
+│   │   ├── auth.service.ts
+│   │   ├── dto/
+│   │   ├── guards/
+]]>
+  </instructions>
+</agyos_skill>

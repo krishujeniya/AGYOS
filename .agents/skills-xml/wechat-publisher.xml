@@ -1,0 +1,32 @@
+<agyos_skill id="wechat-publisher">
+  <intent>Posts content to WeChat Official Account (微信公众号) via API or Chrome CDP. Supports article posting (文章) with HTML, markdown, or plain text input, and image-text posting (贴图, formerly 图文) with multiple images. Markdown article workflows default to converting ordinary external links into bottom citations for WeChat-friendly output. Use when user mentions "发布公众号", "post to wechat", "微信公众号", or "贴图/图文/文章".</intent>
+  <instructions>
+<![CDATA[
+When this skill prompts the user, follow this tool-selection rule (priority order):
+1. **Prefer built-in user-input tools** exposed by the current agent runtime — e.g., `AskUserQuestion`, `request_user_input`, `clarify`, `ask_user`, or any equivalent.
+2. **Fallback**: if no such tool exists, emit a numbered plain-text message and ask the user to reply with the chosen number/answer for each question.
+3. **Batching**: if the tool supports multiple questions per call, combine all applicable questions into a single call; if only single-question, ask them one at a time in priority order.
+Concrete `AskUserQuestion` references below are examples — substitute the local equivalent in other runtimes.
+Respond in the user's language. If they write in Chinese, reply in Chinese; if English, English. Keep technical tokens (paths, flags, field names) in English.
+`{baseDir}` = this SKILL.md's directory. Resolve `${BUN_X}`: prefer `bun`; else `npx -y bun`; else suggest `brew install oven-sh/bun/bun`.
+| Script | Purpose |
+|--------|---------|
+| `scripts/wechat-browser.ts` | Image-text posts (图文) |
+| `scripts/wechat-article.ts` | Article posting via browser (文章) |
+| `scripts/wechat-api.ts` | Article posting via API (文章) |
+| `scripts/md-to-wechat.ts` | Markdown → WeChat-ready HTML with image placeholders |
+| `scripts/check-permissions.ts` | Verify environment & permissions |
+Check these paths in order; first hit wins:
+| Path | Scope |
+|------|-------|
+| `.baoyu-skills/baoyu-post-to-wechat/EXTEND.md` | Project |
+| `${XDG_CONFIG_HOME:-$HOME/.config}/baoyu-skills/baoyu-post-to-wechat/EXTEND.md` | XDG |
+| `$HOME/.baoyu-skills/baoyu-post-to-wechat/EXTEND.md` | User home |
+Found → read, parse, apply. Not found → run first-time setup (`references/config/first-time-setup.md`) before anything else.
+**Minimum keys** (case-insensitive, accept `1/0` or `true/false`):
+| Key | Default | Mapping |
+|-----|---------|---------|
+| `default_author` | empty | Fallback for `author` when CLI/frontmatter not provided |
+]]>
+  </instructions>
+</agyos_skill>

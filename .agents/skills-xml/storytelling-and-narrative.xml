@@ -1,0 +1,32 @@
+<agyos_skill id="storytelling-and-narrative">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **narrative-craft layer** — find the real story, structure the arc, anchor it in specifics, land the
+meaning, shape it to the format. A craft layer that **feeds the format writers**; **WoopSocial publishes**;
+serialized arcs map into the **content-calendar.**
+Story-driven content **outperforms purely informational posts** on reach + saves (the brain is wired for
+narrative — stories are remembered ~22× better than facts; clear narrative structure earns ~62% more saves in
+short-form). But 2026 storytelling is **not a long speech or a movie trailer** — it's **getting to the point
+and making it feel real**: a tight micro-arc, a **relatable protagonist** (the audience is the hero, the brand
+is the guide), and **concrete specifics**. The skill is knowing **when** a story earns its arc and **how** to
+build it — then handing the format mechanics to the writers.
+1. **brand-profile** — identity + real proof points.
+2. **voice-builder** — the narrative voice.
+(Depth: `references/the-beats-framework.md`.)
+- **B — Begin with the real story:** find the human truth/tension (transformation, conflict, stakes); not
+every post is a story; **never fabricate** it.
+- **E — Establish the arc:** setup/problem → turning point → payoff; **audience = hero, brand = guide**
+(StoryBrand), or BAB / 3-Act / Hero's Journey. Keep it tight.
+- **A — Anchor in specifics:** concrete sensory detail = believability + resonance; show, don't tell; one real
+detail beats ten generalities.
+- **T — Tune the emotion + meaning:** one emotional goal (comfort/pride/relief/belonging); land the point they
+carry away + see themselves in; authentic, not a trailer.
+- **S — Shape it to the format + serialize:** compress the arc to the format → the **format writers**; the
+hook is the entry → `hook-writer`; serialize big arcs into the `content-calendar`; **measure saves/shares**;
+WoopSocial publishes.
+Story-driven beats informational on reach + saves; stories ~22× more memorable than facts, ~63% recall stories
+vs ~5% stats, ~55% prefer brands with stories (cited research — attribute); TikTok 2025: clear narrative
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="expo-cicd-workflows">
+  <intent>Helps understand and write EAS workflow YAML files for Expo projects. Use this skill when the user asks about CI/CD or workflows in an Expo or EAS context, mentions .eas/workflows/, or wants help with EAS build pipelines or deployment automation.</intent>
+  <instructions>
+<![CDATA[
+Help developers write and edit EAS CI/CD workflow YAML files.
+- You need to create, edit, or validate `.eas/workflows/*.yml` files for an Expo project.
+- The task involves EAS build pipelines, deployment automation, workflow triggers, or Expo CI/CD configuration.
+- You need schema-backed workflow guidance rather than relying on stale memorized syntax.
+Fetch these resources before generating or validating workflow files. Use the fetch script (implemented using Node.js) in this skill's `scripts/` directory; it caches responses using ETags for efficiency:
+```bash
+node {baseDir}/scripts/fetch.js <url>
+```
+1. **JSON Schema** — https://api.expo.dev/v2/workflows/schema
+- It is NECESSARY to fetch this schema
+- Source of truth for validation
+- All job types and their required/optional parameters
+- Trigger types and configurations
+- Runner types, VM images, and all enums
+2. **Syntax Documentation** — https://raw.githubusercontent.com/expo/expo/refs/heads/main/docs/pages/eas/workflows/syntax.mdx
+- Overview of workflow YAML syntax
+- Examples and English explanations
+- Expression syntax and contexts
+3. **Pre-packaged Jobs** — https://raw.githubusercontent.com/expo/expo/refs/heads/main/docs/pages/eas/workflows/pre-packaged-jobs.mdx
+- Documentation for supported pre-packaged job types
+- Job-specific parameters and outputs
+Do not rely on memorized values; these resources evolve as new features are added.
+Workflows live in `.eas/workflows/*.yml` (or `.yaml`).
+A workflow file has these top-level keys:
+- `name` — Display name for the workflow
+]]>
+  </instructions>
+</agyos_skill>

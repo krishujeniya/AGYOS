@@ -1,0 +1,32 @@
+<agyos_skill id="skill-host-compat">
+  <intent>Lint ECC skills for Codex/Cursor-safe frontmatter and Claude-only substitutions before a skill PR.</intent>
+  <instructions>
+<![CDATA[
+Run the same host-compat gate CI uses on `skills/` before opening a skill PR.
+The check is for Codex and Cursor copies, not Claude-only runtime quality.
+- Adding or editing a skill under `skills/`
+- Copying a skill into `.agents/skills/` or `.cursor/skills/`
+- A review asks whether a skill is safe to install into Codex or Cursor
+- CI reports `validate-skill-host-compat.js` findings
+Canonical skills live in `skills/`. Codex loads `.agents/skills/`. Cursor loads a
+smaller `.cursor/skills/` subset. CONTRIBUTING documents that sync as manual.
+`validate-skills.js` only checks that `SKILL.md` exists and that `name` /
+`description` are usable YAML. `tests/ci/codex-skill-surface.test.js` only
+sees `.agents/skills/`. This script is the cross-tree gate:
+1. Claude-only substitutions in executable `bash` / `sh` / `zsh` fences
+in Codex/Cursor projections (`${CLAUDE_SESSION_ID}`, `${CLAUDE_SKILL_DIR}`, `${CLAUDE_PLUGIN_ROOT}`,
+`${CLAUDE_PROJECT_DIR}`, `$ARGUMENTS`) fail. Codex leaves those tokens
+as literal text. In a Codex copy, rewrite `${CLAUDE_PROJECT_DIR}` to
+`$(pwd)` or an explicit path.
+2. A Codex copy may only use `name`, `description`, `metadata`, `license`,
+and `allowed-tools`. `origin: ECC` may stay on the canonical `skills/`
+copy and must be stripped on the Codex copy.
+3. A skill listed in `agents/openai.yaml` that has a `skills/` directory must
+have `.agents/skills/<name>/`. Cursor copies are optional; when present,
+`name:` must match the directory.
+4. CONTRIBUTING checklist items (When to Activate, Anti-Patterns, name
+matches directory, 500/800 line caps) warn. They fail only with
+`--strict-checklist`.
+]]>
+  </instructions>
+</agyos_skill>

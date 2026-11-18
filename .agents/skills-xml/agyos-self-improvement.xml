@@ -1,0 +1,32 @@
+<agyos_skill id="agyos-self-improvement">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+Systematic protocol for keeping every skill in the AGYOS catalog accurate, current, and internally consistent. Triggered whenever a user correction arrives, new industry data surfaces, or a skill change ripples into dependents.
+- A user corrects, refines, or extends any existing AGYOS skill
+- Research reveals new techniques, deprecations, or industry shifts relevant to a skill
+- A skill update creates stale cross-references in dependent skills
+- End-of-session reconciliation of all changes applied during the conversation
+When a user provides a correction, addition, or refinement to any skill, execute every step in order.
+Append an entry to `.agents/state/corrections/CORRECTIONS_LOG.md` with this structure:
+```markdown
+- **Category**: <category>
+- **Section**: <section heading or "frontmatter">
+- **Before**:
+```
+<verbatim text replaced>
+```
+- **After**:
+```
+<verbatim replacement text>
+```
+- **Rationale**: <one-line reason for the change>
+```
+Assign exactly one category per correction entry:
+| Category | Use When |
+|---|---|
+| `factual_fix` | Incorrect information replaced with verified data |
+| `principle_addition` | New principle, pattern, or technique added |
+]]>
+  </instructions>
+</agyos_skill>

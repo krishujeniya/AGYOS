@@ -1,0 +1,32 @@
+<agyos_skill id="nextjs-best-practices">
+  <intent>Next.js App Router principles. Server Components, data fetching, routing patterns.</intent>
+  <instructions>
+<![CDATA[
+> Principles for Next.js App Router development.
+```
+Does it need...?
+│
+├── useState, useEffect, event handlers
+│   └── Client Component ('use client')
+│
+├── Direct data fetching, no interactivity
+│   └── Server Component (default)
+│
+└── Both?
+└── Split: Server parent + Client child
+```
+| Type | Use |
+|------|-----|
+| **Server** | Data fetching, layout, static content |
+| **Client** | Forms, buttons, interactive UI |
+| Pattern | Use |
+|---------|-----|
+| **Default** | Static (cached at build) |
+| **Revalidate** | ISR (time-based refresh) |
+| **No-store** | Dynamic (every request) |
+| Source | Pattern |
+|--------|---------|
+| Database | Server Component fetch |
+]]>
+  </instructions>
+</agyos_skill>

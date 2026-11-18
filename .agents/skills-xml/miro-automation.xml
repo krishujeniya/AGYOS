@@ -1,0 +1,32 @@
+<agyos_skill id="miro-automation">
+  <intent>Automate Miro tasks via Rube MCP (Composio): boards, items, sticky notes, frames, sharing, connectors. Always search tools first for current schemas.</intent>
+  <instructions>
+<![CDATA[
+Automate Miro whiteboard operations through Composio's Miro toolkit via Rube MCP.
+- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
+- Active Miro connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `miro`
+- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
+2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `miro`
+3. If connection is not ACTIVE, follow the returned auth link to complete Miro OAuth
+4. Confirm connection status shows ACTIVE before running any workflows
+**When to use**: User wants to find boards or get board details
+**Tool sequence**:
+1. `MIRO_GET_BOARDS2` - List all accessible boards [Required]
+2. `MIRO_GET_BOARD` - Get detailed info for a specific board [Optional]
+**Key parameters**:
+- `query`: Search term to filter boards by name
+- `sort`: Sort by 'default', 'last_modified', 'last_opened', 'last_created', 'alphabetically'
+- `limit`: Number of results per page (max 50)
+- `offset`: Pagination offset
+- `board_id`: Specific board ID for detailed retrieval
+**Pitfalls**:
+- Pagination uses offset-based approach, not cursor-based
+- Maximum 50 boards per page; iterate with offset for full list
+- Board IDs are long alphanumeric strings; always resolve by search first
+**When to use**: User wants to create a new board or add items to an existing board
+**Tool sequence**:
+]]>
+  </instructions>
+</agyos_skill>

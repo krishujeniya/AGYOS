@@ -1,0 +1,26 @@
+<agyos_skill id="changelog-automation">
+  <intent>Automate changelog generation from commits, PRs, and releases following Keep a Changelog format. Use when setting up release workflows, generating release notes, or standardizing commit conventions.</intent>
+  <instructions>
+<![CDATA[
+Patterns and tools for automating changelog generation, release notes, and version management following industry standards.
+- Setting up automated changelog generation
+- Implementing conventional commits
+- Creating release note workflows
+- Standardizing commit message formats
+- Managing semantic versioning
+- The project has no release process or versioning
+- You only need a one-time manual release note
+- Commit history is unavailable or unreliable
+- Select a changelog format and versioning strategy.
+- Enforce commit conventions or labeling rules.
+- Configure tooling to generate and publish notes.
+- Review output for accuracy, completeness, and wording.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+- Avoid exposing secrets or internal-only details in release notes.
+- `resources/implementation-playbook.md` for detailed patterns, templates, and examples.
+- Use this skill only when the task clearly matches the scope described above.
+- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
+- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+]]>
+  </instructions>
+</agyos_skill>

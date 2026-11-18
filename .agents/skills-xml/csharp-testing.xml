@@ -1,0 +1,14 @@
+<agyos_skill id="csharp-testing">
+  <intent>C# and .NET testing patterns with xUnit, FluentAssertions, mocking, integration tests, and test organization best practices. Use when writing or reviewing xUnit tests, mocks, or integration tests in a C# / .NET project.</intent>
+  <instructions>
+<![CDATA[
+C# and .NET testing patterns with xUnit, FluentAssertions, mocking, integration tests, and test organization best practices. Use when writing or reviewing xUnit tests, mocks, or integration tests in a C# / .NET project.
+1. Confirm the request fits this skill and identify the required inputs and output constraints.
+2. Read the applicable sections in [the full runbook](references/FULL_RUNBOOK.md).
+3. Check version-sensitive instructions against authoritative current documentation; label claims that cannot be verified.
+4. Get any required approval before paid, destructive, external, or user-visible actions not already authorized.
+5. Follow the relevant procedure using the project’s existing tools and conventions. Ask for missing inputs instead of inventing values.
+6. Verify the result with available checks and report what ran, what passed, and any remaining uncertainty.
+]]>
+  </instructions>
+</agyos_skill>

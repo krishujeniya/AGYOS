@@ -1,0 +1,32 @@
+<agyos_skill id="azure-identity-py">
+  <intent>Azure Identity SDK for Python authentication. Use for DefaultAzureCredential, managed identity, service principals, and token caching.</intent>
+  <instructions>
+<![CDATA[
+Authentication library for Azure SDK clients using Microsoft Entra ID (formerly Azure AD).
+```bash
+pip install azure-identity
+```
+```bash
+AZURE_TENANT_ID=<your-tenant-id>
+AZURE_CLIENT_ID=<your-client-id>
+AZURE_CLIENT_SECRET=<your-client-secret>
+AZURE_CLIENT_ID=<managed-identity-client-id>
+```
+The recommended credential for most scenarios. Tries multiple authentication methods in order:
+```python
+from azure.identity import DefaultAzureCredential
+from azure.storage.blob import BlobServiceClient
+credential = DefaultAzureCredential()
+client = BlobServiceClient(
+account_url="https://<account>.blob.core.windows.net",
+credential=credential
+)
+```
+| Order | Credential | Environment |
+|-------|-----------|-------------|
+| 1 | EnvironmentCredential | CI/CD, containers |
+| 2 | WorkloadIdentityCredential | Kubernetes |
+| 3 | ManagedIdentityCredential | Azure VMs, App Service, Functions |
+]]>
+  </instructions>
+</agyos_skill>

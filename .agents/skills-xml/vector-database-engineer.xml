@@ -1,0 +1,32 @@
+<agyos_skill id="vector-database-engineer">
+  <intent>Choose or optimize a vector store and embedding workflow for RAG, semantic search, or recommendations. Use for indexing, chunking, recall, latency, and scale decisions.</intent>
+  <instructions>
+<![CDATA[
+Choose or optimize a vector store and embedding workflow for RAG, semantic search, or recommendations. Use for indexing, chunking, recall, latency, and scale decisions.
+- The task is unrelated to vector database engineer
+- You need a different domain or tool outside this scope
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+- Vector database selection and architecture
+- Embedding model selection and optimization
+- Index configuration (HNSW, IVF, PQ)
+- Hybrid search (vector + keyword) implementation
+- Chunking strategies for documents
+- Metadata filtering and pre/post-filtering
+- Performance tuning and scaling
+- Building RAG (Retrieval Augmented Generation) systems
+- Implementing semantic search over documents
+- Creating recommendation engines
+- Building image/audio similarity search
+- Optimizing vector search latency and recall
+- Scaling vector operations to millions of vectors
+1. Analyze data characteristics and query patterns
+2. Select appropriate embedding model
+3. Design chunking and preprocessing pipeline
+4. Choose vector database and index type
+5. Configure metadata schema for filtering
+]]>
+  </instructions>
+</agyos_skill>

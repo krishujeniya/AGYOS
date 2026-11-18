@@ -1,0 +1,32 @@
+<agyos_skill id="openclaw-persona-forge">
+  <intent>为 OpenClaw AI Agent 锻造完整的龙虾灵魂方案。根据用户偏好或随机抽卡， 输出身份定位、灵魂描述(SOUL.md)、角色化底线规则、名字和头像生图提示词。 如当前环境提供已审核的生图 skill，可自动生成统一风格头像图片。 当用户需要创建、设计或定制 OpenClaw 龙虾灵魂时使用。 不适用于：微调已有 SOUL.md、非 OpenClaw 平台的角色设计、纯工具型无性格 Agent。 触发词：龙虾灵魂、虾魂、OpenClaw 灵魂、养虾灵魂、龙虾角色、龙虾定位、 龙虾剧本杀角色、龙虾游戏角色、龙虾 NPC、龙虾性格、龙虾背景故事、 lobster soul、lobster character、抽卡、随机龙虾、龙虾 SOUL、gacha。 Use when creating, designing, or customizing an OpenClaw lobster persona — identity, SOUL.md, name, or avatar prompt.</intent>
+  <instructions>
+<![CDATA[
+> 不是给你一只工具龙虾，而是帮你锻造一只有灵魂的龙虾。
+- 当用户需要从零创建 OpenClaw 龙虾灵魂、角色设定、SOUL.md 或 IDENTITY.md
+- 当用户想通过引导式问答或抽卡模式快速得到完整 persona 方案
+- 当用户已经有一个粗糙设定，但还缺名字、边界规则、头像提示词或成套输出文件
+- 用户只需微调已有 SOUL.md
+- 目标平台不是 OpenClaw，需要的是其他 Agent 框架专用格式
+- 用户需要纯工具型 Agent，不需要角色化灵魂
+- **必需**：`python3`（运行抽卡引擎 gacha.py）
+- **可选**：已审核的生图 skill（自动生成头像图片，未安装则输出提示词文本）
+**Agent Execution**:
+1. Determine this SKILL.md file's directory path as `SKILL_DIR`
+2. Replace all `${SKILL_DIR}` in this document with the actual path
+- **路径**：`${SKILL_DIR}/gacha.py`
+- **调用**：`python3 ${SKILL_DIR}/gacha.py [次数]`（默认 1 次，最多 5 次）
+- **作用**：从 800 万种组合中真随机生成龙虾灵魂方向
+本 Skill 的核心输出是**文本方案**（SOUL.md + IDENTITY.md + 头像提示词）。
+头像图片生成是**可选增强能力**，由当前环境中**已审核并已安装**的生图 skill 提供。
+**判断逻辑**：
+- 如果当前环境已安装并允许使用的生图 skill → Step 5 中调用它自动生图
+- 如果未安装 → Step 5 输出完整的提示词文本，用户可复制到 Gemini / ChatGPT / Midjourney 手动生成
+**调用方式**（仅在已安装且已审核时）：
+1. 先将龙虾名字规整为安全片段：仅保留字母、数字和连字符，其余字符统一替换为 `-`
+2. 将提示词写入临时文件 `/tmp/openclaw-<safe-name>-prompt.md`
+3. 使用当前环境允许的生图 skill，传入提示词文件和输出路径
+**接口约定**：
+]]>
+  </instructions>
+</agyos_skill>

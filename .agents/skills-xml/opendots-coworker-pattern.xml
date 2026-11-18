@@ -1,0 +1,32 @@
+<agyos_skill id="opendots-coworker-pattern">
+  <intent>Architect and orchestrate persistent AI coworkers (Dots), document workspaces (Spaces &amp; Pages), isolated sandboxes, and human-in-the-loop review gates following OpenDots principles without adding application code.</intent>
+  <instructions>
+<![CDATA[
+This skill applies the architectural principles and operational logics of CopilotKit OpenDots to AGYOS workflows. It instructs agents how to behave as persistent, role-scoped coworkers operating over structured document workspaces with review checkpoints, without introducing foreign application code or dependencies.
+Use this skill when:
+- Designing or operating multi-agent systems where agents must maintain durable identity, context, and background task continuity.
+- Structuring deliverables into living documents (Spaces and Pages) rather than dumping transient responses into chat logs.
+- Enforcing human-in-the-loop review gates for high-risk operations (file writes, database operations, external API calls).
+- Defining isolated compute sandboxes and granular Model Context Protocol (MCP) tool permissions per specialist.
+1. **Persistent Coworkers over Ephemeral Chatbots**: An agent ("Dot") is assigned a clear job role, system instructions, and tool bounds. It retains state across task iterations instead of starting fresh each turn.
+2. **Spaces and Pages Architecture**:
+- **Space**: The bounded problem or repository domain.
+- **Page**: The living document (specifications, architecture designs, audit ledgers, test plans) where deliverables are drafted, refined, and maintained collaboratively.
+3. **Per-Worker Isolated Execution**:
+- Every worker executes within defined sandbox boundaries (dedicated directories, worktrees, or headless browser sessions).
+- Browser interactions use headless engines (such as Obscura headless CDP) without spawning GUI windows.
+4. **Deny-by-Default Review Gates**:
+- Safe operations (read, query, inspect) run autonomously.
+- Modifying actions (file writes, deletions, remote pushes, external API calls) pause at explicit review checkpoints presenting the diff, rationale, and rollback path.
+5. **Least-Privilege MCP Tool Allowlists**:
+- Only attach tools explicitly needed for the worker's role.
+- Reject arbitrary tool access to minimize blast radius.
+Before assigning work, establish the worker's operational specification:
+- **Role Title**: Concise job title (e.g. `Security Auditor`, `Performance Optimizer`).
+- **Scope Boundary**: Files and modules the worker is permitted to inspect or touch.
+- **Allowed Tools**: Explicit list of read/write tools or MCP actions permitted.
+- **Execution Mode**: Autonomous for read/analysis; checkpoint-gated for writes.
+Create or designate the living artifact where the worker's output will be preserved:
+]]>
+  </instructions>
+</agyos_skill>

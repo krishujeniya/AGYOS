@@ -1,0 +1,32 @@
+<agyos_skill id="orchestrate-batch-refactor">
+  <intent>Plan and execute large refactors with dependency-aware work packets and parallel analysis.</intent>
+  <instructions>
+<![CDATA[
+Use this skill to run high-throughput refactors safely.
+Analyze scope in parallel, synthesize a single plan, then execute independent work packets with sub-agents.
+- When a refactor spans many files or subsystems and needs clear work partitioning.
+- When you need dependency-aware planning before parallel implementation.
+- Repo path and target scope (paths, modules, or feature area)
+- Goal type: refactor, rewrite, or hybrid
+- Constraints: behavior parity, API stability, deadlines, test requirements
+- Use this skill for medium/large scope touching many files or subsystems.
+- Skip multi-agent execution for tiny edits or highly coupled single-file work.
+1. Define scope and success criteria.
+- List target paths/modules and non-goals.
+- State behavior constraints (for example: preserve external behavior).
+2. Run parallel analysis first.
+- Split target scope into analysis lanes.
+- Spawn `explorer` sub-agents in parallel to analyze each lane.
+- Ask each agent for: intent map, coupling risks, candidate work packets, required validations.
+3. Build one dependency-aware plan.
+- Merge explorer output into a single work graph.
+- Create work packets with clear file ownership and validation commands.
+- Sequence packets by dependency level; run only independent packets in parallel.
+4. Execute with worker agents.
+- Spawn one `worker` per independent packet.
+- Assign explicit ownership (files/responsibility).
+- Instruct every worker that they are not alone in the codebase and must ignore unrelated edits.
+5. Integrate and verify.
+]]>
+  </instructions>
+</agyos_skill>

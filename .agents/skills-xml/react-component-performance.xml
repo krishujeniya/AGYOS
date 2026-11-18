@@ -1,0 +1,32 @@
+<agyos_skill id="react-component-performance">
+  <intent>Diagnose slow React components and suggest targeted performance fixes.</intent>
+  <instructions>
+<![CDATA[
+Identify render hotspots, isolate expensive updates, and apply targeted optimizations without changing UI behavior.
+- When the user asks to profile or improve a slow React component.
+- When you need to reduce re-renders, list lag, or expensive render work in React UI.
+1. Reproduce or describe the slowdown.
+2. Identify what triggers re-renders (state updates, props churn, effects).
+3. Isolate fast-changing state from heavy subtrees.
+4. Stabilize props and handlers; memoize where it pays off.
+5. Reduce expensive work (computation, DOM size, list length).
+6. **Validate**: open React DevTools Profiler → record the interaction → inspect the Flamegraph for components rendering longer than ~16 ms → compare against a pre-optimization baseline recording.
+- Measure: use React DevTools Profiler or log renders; capture baseline.
+- Find churn: identify state updated on a timer, scroll, input, or animation.
+- Split: move ticking state into a child; keep heavy lists static.
+- Memoize: wrap leaf rows with `memo` only when props are stable.
+- Stabilize props: use `useCallback`/`useMemo` for handlers and derived values.
+- Avoid derived work in render: precompute, or compute inside memoized helpers.
+- Control list size: window/virtualize long lists; avoid rendering hidden items.
+- Keys: ensure stable keys; avoid index when order can change.
+- Effects: verify dependency arrays; avoid effects that re-run on every render.
+- Style/layout: watch for expensive layout thrash or large Markdown/diff renders.
+Move a timer or animation counter into a child so the parent list never re-renders on each tick.
+```tsx
+// ❌ Before – entire parent (and list) re-renders every second
+function Dashboard({ items }: { items: Item[] }) {
+const [tick, setTick] = useState(0);
+useEffect(() => {
+]]>
+  </instructions>
+</agyos_skill>

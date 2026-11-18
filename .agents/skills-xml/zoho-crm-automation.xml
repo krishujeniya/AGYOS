@@ -1,0 +1,32 @@
+<agyos_skill id="zoho-crm-automation">
+  <intent>Automate Zoho CRM tasks via Rube MCP (Composio): create/update records, search contacts, manage leads, and convert leads. Always search tools first for current schemas.</intent>
+  <instructions>
+<![CDATA[
+Automate Zoho CRM operations through Composio's Zoho toolkit via Rube MCP.
+- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
+- Active Zoho CRM connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `zoho`
+- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
+2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `zoho`
+3. If connection is not ACTIVE, follow the returned auth link to complete Zoho OAuth
+4. Confirm connection status shows ACTIVE before running any workflows
+**When to use**: User wants to find specific CRM records by criteria
+**Tool sequence**:
+1. `ZOHO_LIST_MODULES` - List available CRM modules [Prerequisite]
+2. `ZOHO_GET_MODULE_FIELDS` - Get field definitions for a module [Optional]
+3. `ZOHO_SEARCH_ZOHO_RECORDS` - Search records by criteria [Required]
+4. `ZOHO_GET_ZOHO_RECORDS` - Get records from a module [Alternative]
+**Key parameters**:
+- `module`: Module name (e.g., 'Leads', 'Contacts', 'Deals', 'Accounts')
+- `criteria`: Search criteria string (e.g., 'Email:equals:john@example.com')
+- `fields`: Comma-separated list of fields to return
+- `per_page`: Number of records per page
+- `page`: Page number for pagination
+**Pitfalls**:
+- Module names are case-sensitive (e.g., 'Leads' not 'leads')
+- Search criteria uses specific syntax: 'Field:operator:value'
+- Supported operators: equals, starts_with, contains, not_equal, greater_than, less_than
+]]>
+  </instructions>
+</agyos_skill>

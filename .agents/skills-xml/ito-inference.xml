@@ -1,0 +1,32 @@
+<agyos_skill id="ito-inference">
+  <intent>Inspect the availability of model serving on a completed Itô compute booking and, when the canonical backend becomes available, hand off an explicitly confirmed serving manifest. Use after ito-compute has booked GPU nodes and the user asks for an OpenAI-compatible endpoint, ito-serve, hosted Kimi, or self-hosted open-weights inference. ECC implements no serving stack of its own.</intent>
+  <instructions>
+<![CDATA[
+`ito-inference` is the sole canonical ECC skill for inference serving on Itô
+compute. Requests naming `ito-serve` route here; do not create or install a
+second `ito-serve` skill. ECC never SSHes to nodes, downloads weights, launches
+an engine, or exposes an endpoint; it never books, reserves, or spends.
+Managed serving is unavailable today. The ECC bridge exposes only `login`,
+`auth`, `find`, `status`, and explicitly gated `evals`. It has no `serve` verb.
+The canonical runtime documents `inference` only as an unsupported compatibility
+probe; ECC does not invoke or depend on it. The MCP surface exposes only auth,
+find, and status. The locally enforceable guarantee is that ECC rejects `serve`
+before resolving or spawning the credential-bearing canonical client.
+Therefore stop before authentication or any command invocation. Report the
+missing capability and return to the originating agent. Never substitute a
+local runner, SSH helper, browser workflow, purchase endpoint, or any untracked
+local `ito-serve` draft.
+When serving is implemented, its first gate is a server-verified completed
+booking. Harness memory, an RFQ, a quote, node IPs, or SSH access are not proof
+of entitlement. The backend must return fresh serving eligibility bound to the
+authenticated account, booking, GPU topology, region, fabric, term, and model
+policy. Expired, revoked, mismatched, incomplete, or already-released bookings
+fail closed before confirmation.
+The intended command name is `serve`; `inference` may remain only as an
+explicitly deprecated compatibility alias after the production contract lands.
+The future handoff must be equivalent to:
+```sh
+ecc ito serve \
+]]>
+  </instructions>
+</agyos_skill>

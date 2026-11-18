@@ -1,0 +1,32 @@
+<agyos_skill id="seo-content-quality">
+  <intent>Audits content for SEO and AEO performance with scored reports, severity-ranked fix lists, and projected scores after fixes. Activate when the user wants to audit, review, or score content for SEO or AEO compliance.</intent>
+  <instructions>
+<![CDATA[
+Runs a dual SEO + AEO audit on any landing page or blog post. Produces an overall score, SEO score, AEO score, and readability score — each out of 100 — with severity-ranked issue lists (Critical / Warning / Polish), exact fix instructions for every issue, and projected scores after all fixes are applied.
+Part of the [SEO-AEO Engine](https://github.com/mrprewsh/seo-aeo-engine).
+- Use when auditing a landing page or blog post before publishing
+- Use after the blog-writer or landing-page-writer skill outputs content
+- Use when diagnosing why existing content is underperforming in search
+- Use when you need a scored, actionable SEO and AEO report
+Verify keyword density, H1/H2/H3 structure, meta elements, word count, sentence length, and paragraph density. Flag every issue with its severity.
+Check for TL;DR block, definition sentence, FAQ section (minimum 4 entries), bullet and numbered lists, comparison table, and extractable direct answers. Score each signal as found or missing.
+Check passive voice ratio, transition word presence, wall-of-text paragraphs, subheading frequency, and reading level.
+Calculate three scores out of 100. Sort all issues into Critical (fix before publishing), Important (fix soon), and Polish (optional improvements). Generate projected scores after all fixes are applied.
+| Score | Status | Label |
+|-------|--------|-------|
+| 85–100 | ✅ Pass | Strong |
+| 70–84 | ⚠️ Warn | Acceptable |
+| 50–69 | 🔶 Weak | Needs work |
+| 0–49 | ❌ Fail | Do not publish |
+Overall Score:    84/100  ⚠️ Acceptable
+SEO Score:        88/100  ✅ Pass
+AEO Score:        74/100  ⚠️ Acceptable
+Readability:      91/100  ✅ Pass
+Verdict: Strong SEO foundation. AEO needs a TL;DR block
+and one more FAQ entry before publishing.
+🔴 Critical (fix before publishing):
+AEO: No TL;DR block found
+Fix: Add a 2–3 sentence direct-answer block in a
+]]>
+  </instructions>
+</agyos_skill>

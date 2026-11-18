@@ -1,0 +1,32 @@
+<agyos_skill id="gdb-cli">
+  <intent>GDB debugging assistant for AI agents - analyze core dumps, debug live processes, investigate crashes and deadlocks with source code correlation</intent>
+  <instructions>
+<![CDATA[
+A GDB debugging skill designed for AI agents. Combines **source code analysis** with **runtime state inspection** using gdb-cli to provide intelligent debugging assistance for C/C++ programs.
+- Analyze core dumps or crash dumps
+- Debug running processes with GDB attach
+- Investigate crashes, deadlocks, or memory issues
+- Get intelligent debugging assistance with source code context
+- Debug multi-threaded applications
+- The task is unrelated to C/C++ debugging
+- The user needs general-purpose assistance without debugging
+- No GDB is available (GDB 9.0+ with Python support required)
+```bash
+pip install gdb-cli
+pip install git+https://github.com/Cerdore/gdb-cli.git
+gdb -nx -q -batch -ex "python print('OK')"
+```
+**Requirements:**
+- Python 3.6.8+
+- GDB 9.0+ with Python support enabled
+- Linux OS
+**For core dump analysis:**
+```bash
+gdb-cli load --binary <binary_path> --core <core_path> [--gdb-path <gdb_path>]
+```
+**For live process debugging:**
+```bash
+gdb-cli attach --pid <pid> [--binary <binary_path>]
+]]>
+  </instructions>
+</agyos_skill>

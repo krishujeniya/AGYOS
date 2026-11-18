@@ -1,0 +1,32 @@
+<agyos_skill id="googlesheets-automation">
+  <intent>Automate Google Sheets operations (read, write, format, filter, manage spreadsheets) via Rube MCP (Composio). Read/write data, manage tabs, apply formatting, and search rows programmatically.</intent>
+  <instructions>
+<![CDATA[
+Automate Google Sheets workflows including reading/writing data, managing spreadsheets and tabs, formatting cells, filtering rows, and upserting records through Composio's Google Sheets toolkit.
+- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
+- Active Google Sheets connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `googlesheets`
+- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
+2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `googlesheets`
+3. If connection is not ACTIVE, follow the returned auth link to complete Google OAuth
+4. Confirm connection status shows ACTIVE before running any workflows
+**When to use**: User wants to read data from or write data to a Google Sheet
+**Tool sequence**:
+1. `GOOGLESHEETS_SEARCH_SPREADSHEETS` - Find spreadsheet by name if ID unknown [Prerequisite]
+2. `GOOGLESHEETS_GET_SHEET_NAMES` - Enumerate tab names to target the right sheet [Prerequisite]
+3. `GOOGLESHEETS_BATCH_GET` - Read data from one or more ranges [Required]
+4. `GOOGLESHEETS_BATCH_UPDATE` - Write data to a range or append rows [Required]
+5. `GOOGLESHEETS_VALUES_UPDATE` - Update a single specific range [Alternative]
+6. `GOOGLESHEETS_SPREADSHEETS_VALUES_APPEND` - Append rows to end of table [Alternative]
+**Key parameters**:
+- `spreadsheet_id`: Alphanumeric ID from the spreadsheet URL (between '/d/' and '/edit')
+- `ranges`: A1 notation array (e.g., 'Sheet1!A1:Z1000'); always use bounded ranges
+- `sheet_name`: Tab name (case-insensitive matching supported)
+- `values`: 2D array where each inner array is a row
+- `first_cell_location`: Starting cell in A1 notation (omit to append)
+- `valueInputOption`: 'USER_ENTERED' (parsed) or 'RAW' (literal)
+**Pitfalls**:
+]]>
+  </instructions>
+</agyos_skill>

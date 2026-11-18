@@ -1,0 +1,32 @@
+<agyos_skill id="alpha-vantage">
+  <intent>Access 20+ years of global financial data: equities, options, forex, crypto, commodities, economic indicators, and 50+ technical indicators.</intent>
+  <instructions>
+<![CDATA[
+Access 20+ years of global financial data: equities, options, forex, crypto, commodities, economic indicators, and 50+ technical indicators.
+1. Get a free key at https://www.alphavantage.co/support/#api-key (premium plans available for higher rate limits)
+2. Set as environment variable:
+```bash
+export ALPHAVANTAGE_API_KEY="your_key_here"
+```
+```bash
+uv pip install requests pandas
+```
+All requests go to:
+```
+https://www.alphavantage.co/query?function=FUNCTION_NAME&apikey=YOUR_KEY&...params
+```
+```python
+import requests
+import os
+API_KEY = os.environ.get("ALPHAVANTAGE_API_KEY")
+BASE_URL = "https://www.alphavantage.co/query"
+def av_get(function, **params):
+response = requests.get(BASE_URL, params={"function": function, "apikey": API_KEY, **params})
+return response.json()
+```
+```python
+quote = av_get("GLOBAL_QUOTE", symbol="AAPL")
+price = quote["Global Quote"]["05. price"]
+]]>
+  </instructions>
+</agyos_skill>

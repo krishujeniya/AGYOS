@@ -1,0 +1,32 @@
+<agyos_skill id="youtube-long-form">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The growth engine for **YouTube long-form** — the **opposite engine from Shorts**. No swipe feed
+to win; instead a **packaging gate** (the click) and a **retention gate** (do they stay, and watch
+more). It's **decoupled** from Shorts, though the Short→long click-through is now tracked. (Sibling:
+**youtube-shorts** — don't run them as one plan.)
+1. **brand-profile** — niche, positioning, non-negotiables.
+2. **voice-builder** — so the script and packaging sound like the channel (not generic narration).
+- **CTR gets the click; AVD keeps it.** High CTR + low AVD = misleading packaging → demoted;
+low CTR + high AVD = good content, **fix packaging first**.
+- **Session contribution is the dominant 2026 signal** (it replaced absolute watch time). Videos
+that **extend the session** get amplified in Suggested; videos that **end sessions** get buried.
+Build each upload as a link in a chain. (Full mechanics: `references/longform-algorithm-2026.md`.)
+(Depth: `references/the-chain-framework.md`.)
+- **C — Click:** package (title + thumbnail) **before** scripting; clarity > clickbait > clutter;
+A/B test. (ideogram / nano-banana for thumbnails.)
+- **H — Hook:** the first 30s **pays off the promise** — payoff/stakes/question, no logo, no
+"hey guys." (hook-writer.)
+- **A — AVD:** re-hook every 60–90s; one topic; **no padding**; length matched to idea (8–15 min
+when retention holds).
+- **I — Iterate:** diagnose with three numbers — **CTR** (packaging), **30-sec retention** (hook),
+**AVD %** (structure); test one variable at a time.
+- **N — Next:** engineer session contribution — end screens, playlists, series, a deliberate
+"watch next"; bridge from Shorts.
+8–15 min optimal **when retention holds** — total watch time can favor longer, but **padding tanks
+AVD and gets you demoted** (cutting length is often the biggest fix). ~1–2 long-form/week; gaps get
+deprioritized. **Package before you produce.** Output is a **packaging concept + a shootable
+]]>
+  </instructions>
+</agyos_skill>

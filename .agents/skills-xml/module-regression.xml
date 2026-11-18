@@ -1,0 +1,32 @@
+<agyos_skill id="module-regression">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+- The repository has at least three interdependent modules, or a previous change to A has broken B.
+- A change modifies a module's externally observable behavior and must prove both that module and downstream consumers still work.
+- The project already has executable tests or reconciliation commands that should be organized by dependency.
+- Creating a regression ledger for a small repository with no cross-module dependencies.
+- Guessing dependencies manually or treating one scan as permanent truth.
+- Replacing executable acceptance-command exit codes with model review.
+- `test-collaboration`: TEST-IDs, test assets, and defect-regression evidence.
+- `ai-regression-testing`: executable regression tests derived from important defects.
+- `contract-first`: cross-service or cross-client contract verification.
+- `change-impact`: pre- and post-implementation blast-radius analysis.
+In large projects, modules depend on one another. People and agents often verify only the changed module while downstream consumers fail silently. The defect appears days later when an aggregate, export, or external behavior is wrong.
+The remedy is a **regression ledger** (`REGRESSION.md`) plus a deterministic audit: after any relevant change, run the changed module and all affected downstream consumers. Delivery requires every command to pass.
+```markdown
+Downstream consumers: 05-aggregation, 07-final-export
+Dependency evidence: `<repository dependency graph or reproducible scan command>`
+Regression acceptance command: `pytest tests/test_03.py && python scripts/reconcile.py --module 03`
+Propagation rule: external behavior change → run 05 and 07; internal-only change with a green module check → downstream may be exempted
+```
+1. **Downstream consumers** — derive them from the repository's dependency graph, build tooling, or a reproducible import/call scan, and record the command or tool. Extraction differs by ecosystem; this skill does not pretend a universal scanner can parse every language. Mark edges `unverified` when they cannot be established mechanically. An affected unverified edge blocks an all-green verdict until a human confirms its scope or the related module is included in the run.
+2. **Regression acceptance command** — the ledger's core asset. Each module needs an executable command that proves it still works: tests, reconciliation scripts, or golden-sample diffs. Without it, the audit collapses into “the model looked and found no problem.”
+3. **Propagation rule** — state which downstream modules must run after a change and when an exemption is justified.
+`REGRESSION.md` does not maintain business rules or test gaps. It references stable TEST-IDs from the test-registry artifact:
+```markdown
+Related test points: TEST-ORDER-001, TEST-REFUND-003
+```
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="process-project-development">
+  <intent>Master methodology for building LLM-integrated projects or complex data pipelines. Focuses on Pipeline Architecture, File System as State Machine, and Architectural Reduction. Use when designing new system workflows.</intent>
+  <instructions>
+<![CDATA[
+Building reliable LLM-powered applications or complex data workflows requires structural guardrails against non-determinism and over-engineering.
+Before writing ANY automation that touches an LLM:
+- **Validate Fit:** LLMs are for synthesis, judgment, and natural language. They fail at precise computation, sequential hard-logic dependencies, and 100% deterministic requirement matching.
+- **Manual Prototype First:** Test the core prompt manually in a chat interface with a representative example. If it fails manually, automation will only scale the failure.
+Never mix data fetching, LLM processing, and rendering in the same function. Use a staged pipeline where only ONE step is non-deterministic:
+```text
+Acquire → Prepare → Process (LLM) → Parse → Render
+```
+- **Acquire/Prepare:** Fetch data, format prompt (Deterministic).
+- **Process:** LLM Call (Non-deterministic, Expensive, Slow).
+- **Parse/Render:** Extract JSON/Markdown, save to UI (Deterministic).
+By isolating the `Process` step, you can rapidly iterate on your Parsers and UIs without constantly re-running expensive LLM calls.
+For batch processing, code migrations, or multi-step agent workflows, **do not use complex in-memory state or initial databases if avoidable.**
+Use the filesystem to track pipeline state.
+```text
+data/{work_id}/
+├── raw.json         # input acquired
+├── prompt.md        # ready for LLM
+├── response.md      # LLM processing complete
+├── parsed.json      # successfully parsed
+```
+**Why?**
+- Natural idempotency: If `parsed.json` exists, skip the processing step.
+- Trivial debugging: You can literally read the state at any point.
+- Easy retries: Delete `response.md` to force a re-run of the LLM step.
+]]>
+  </instructions>
+</agyos_skill>

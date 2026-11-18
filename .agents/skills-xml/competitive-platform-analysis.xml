@@ -1,0 +1,32 @@
+<agyos_skill id="competitive-platform-analysis">
+  <intent>Use when scoping a competitive landscape — identifying, categorising, and score-filtering a competitor set before any benchmarking begins. Decides who counts as a competitor, which tier they belong to, and which sources to mine. First step in the three-skill competitive pipeline; precedes benchmark-methodology.</intent>
+  <instructions>
+<![CDATA[
+Use this skill to decide **who to benchmark** and **where to find them** before
+any scoring begins. A competitive analysis is only as good as its frame: the
+wrong set makes the client look either unbeatable or doomed. The goal is a
+defensible, decision-relevant set — not an exhaustive census.
+- About to start a competitive benchmarking project and need to define the competitor set first.
+- Unsure which companies belong in Direct / Adjacent / Aspirational tiers.
+- Need a defensible, pruned scope for a market landscape report.
+- Has a positioning brief and wants to identify who contests that position.
+- First step before running benchmark-methodology.
+Before scoping the set, establish the client's positioning brief. If you don't
+already have it, run a short brand-discovery interview to elicit it — do **not**
+invent one and do **not** scope the set blind. The brief supplies:
+- **Identity / aesthetic register** — what kind of studio or company this is and
+how it presents itself.
+- **Offer** — what services or products it delivers.
+- **Target clients** — who it sells to.
+- **Differentiator** — the moat or positioning argument the client believes in.
+- **Scoping consequence** — the implication for how to weight competitors (e.g.,
+prioritize by distinctiveness vs. capability overlap vs. price).
+- **Strategic tension** — the paired axes that define the client's white-space
+(e.g., memorability × hireability).
+**Do not proceed without the positioning brief.** A competitor list scoped
+without the client's lens is noise, not intelligence. The scoping consequence in
+particular determines which competitors are *strong* rivals (those that contest
+the client's moat) vs. merely overlapping on service menu.
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="create-branch">
+  <intent>Create a git branch following Sentry naming conventions. Use when asked to "create a branch", "new branch", "start a branch", "make a branch", "switch to a new branch", or when starting new work on the default branch.</intent>
+  <instructions>
+<![CDATA[
+Create a git branch with the correct type prefix and a descriptive name following Sentry conventions.
+- You need to create a new git branch that follows the repository's naming convention.
+- You are starting a new piece of work from the default branch and need help classifying it as `feat`, `fix`, `docs`, or another branch type.
+- You want the branch name proposed from either the task description or the current local diff.
+Run `gh api user --jq .login` to get the GitHub username.
+If the command fails (e.g. not authenticated), ask the user for their preferred prefix.
+**If `$ARGUMENTS` is provided**, use it as the description of the work.
+**If no arguments**, check for local changes:
+```bash
+git diff
+git diff --cached
+git status --short
+```
+- **Changes exist**: read the diff content to understand what the work is about and generate a description.
+- **No changes**: ask the user what they are about to work on.
+Pick the type from this table based on the description:
+| Type      | Use when                                                              |
+| --------- | --------------------------------------------------------------------- |
+| `feat`    | New user-facing functionality                                         |
+| `fix`     | Broken behavior now works                                             |
+| `ref`     | Same behavior, different structure                                    |
+| `chore`   | Deps, config, version bumps, updating existing tooling — no new logic |
+| `perf`    | Same behavior, faster                                                 |
+| `style`   | CSS, formatting, visual-only                                          |
+| `docs`    | Documentation only                                                    |
+]]>
+  </instructions>
+</agyos_skill>

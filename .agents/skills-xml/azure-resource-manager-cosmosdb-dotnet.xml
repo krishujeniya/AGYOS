@@ -1,0 +1,32 @@
+<agyos_skill id="azure-resource-manager-cosmosdb-dotnet">
+  <intent>Azure Resource Manager SDK for Cosmos DB in .NET.</intent>
+  <instructions>
+<![CDATA[
+Management plane SDK for provisioning and managing Azure Cosmos DB resources via Azure Resource Manager.
+> **⚠️ Management vs Data Plane**
+> - **This SDK (Azure.ResourceManager.CosmosDB)**: Create accounts, databases, containers, configure throughput, manage RBAC
+> - **Data Plane SDK (Microsoft.Azure.Cosmos)**: CRUD operations on documents, queries, stored procedures execution
+```bash
+dotnet add package Azure.ResourceManager.CosmosDB
+dotnet add package Azure.Identity
+```
+**Current Versions**: Stable v1.4.0, Preview v1.4.0-beta.13
+```bash
+AZURE_SUBSCRIPTION_ID=<your-subscription-id>
+AZURE_TENANT_ID=<tenant-id>
+AZURE_CLIENT_ID=<client-id>
+AZURE_CLIENT_SECRET=<client-secret>
+```
+```csharp
+using Azure.Identity;
+using Azure.ResourceManager;
+using Azure.ResourceManager.CosmosDB;
+// Always use DefaultAzureCredential
+var credential = new DefaultAzureCredential();
+var armClient = new ArmClient(credential);
+// Get subscription
+var subscriptionId = Environment.GetEnvironmentVariable("AZURE_SUBSCRIPTION_ID");
+var subscription = armClient.GetSubscriptionResource(
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="evaluation">
+  <intent>This skill should be used when the user asks to "evaluate agent performance", "build test framework", "measure agent quality", "create evaluation rubrics", or mentions LLM-as-judge, multi-dimensional evaluation, agent testing, or quality gates for agent pipelines.</intent>
+  <instructions>
+<![CDATA[
+Evaluate agent systems differently from traditional software because agents make dynamic decisions, are non-deterministic between runs, and often lack single correct answers. Build evaluation frameworks that account for these characteristics, provide actionable feedback, catch regressions, and validate that context engineering choices achieve intended effects.
+Activate this skill when:
+- Testing agent performance systematically
+- Validating context engineering choices
+- Measuring improvements over time
+- Catching regressions before deployment
+- Building quality gates for agent pipelines
+- Comparing different agent configurations
+- Evaluating production systems continuously
+Focus evaluation on outcomes rather than execution paths, because agents may find alternative valid routes to goals. Judge whether the agent achieves the right outcome via a reasonable process, not whether it followed a specific sequence of steps.
+Use multi-dimensional rubrics instead of single scores because one number hides critical failures in specific dimensions. Capture factual accuracy, completeness, citation accuracy, source quality, and tool efficiency as separate dimensions, then weight them for the use case.
+Deploy LLM-as-judge for scalable evaluation across large test sets while supplementing with human review to catch edge cases, hallucinations, and subtle biases that automated evaluation misses.
+**Performance Drivers: The 95% Finding**
+Apply the BrowseComp research finding when designing evaluation budgets: three factors explain 95% of browsing agent performance variance.
+| Factor | Variance Explained | Implication |
+|--------|-------------------|-------------|
+| Token usage | 80% | More tokens = better performance |
+| Number of tool calls | ~10% | More exploration helps |
+| Model choice | ~5% | Better models multiply efficiency |
+Act on these implications when designing evaluations:
+- **Set realistic token budgets**: Evaluate agents with production-realistic token limits, not unlimited resources, because token usage drives 80% of variance.
+- **Prioritize model upgrades over token increases**: Upgrading model versions provides larger gains than doubling token budgets on previous versions because better models use tokens more efficiently.
+- **Validate multi-agent architectures**: The finding supports distributing work across agents with separate context windows, so evaluate multi-agent setups against single-agent baselines.
+**Handle Non-Determinism and Multiple Valid Paths**
+Design evaluations that tolerate path variation because agents may take completely different valid paths to reach goals. One agent might search three sources while another searches ten; both may produce correct answers. Avoid checking for specific steps. Instead, define outcome criteria (correctness, completeness, quality) and score against those, treating the execution path as informational rather than evaluative.
+]]>
+  </instructions>
+</agyos_skill>

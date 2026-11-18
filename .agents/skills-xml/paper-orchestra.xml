@@ -1,0 +1,32 @@
+<agyos_skill id="paper-orchestra">
+  <intent>Automated AI research paper drafting and publication-ready LaTeX manuscript generation using Google Cloud AI Research's PaperOrchestra multi-agent architecture and PaperWritingBench methodology.</intent>
+  <instructions>
+<![CDATA[
+Based on Google Cloud AI Research's PaperOrchestra framework (`google-research/paper-orchestra`), this skill decouples research execution from academic writing. It transforms unstructured, raw pre-writing materials—sparse idea notes, experimental logs, raw metric outputs, and code repositories—into submission-ready LaTeX manuscripts formatted to conference specifications (e.g., CVPR, ICLR, NeurIPS).
+Prior autonomous research systems tightly couple experiment execution with manuscript drafting. PaperOrchestra isolates the manuscript authoring process:
+- Takes human-provided or agent-generated raw materials as read-only inputs.
+- Parses numerical metrics directly from execution logs to prevent metric hallucination in tables.
+- Applies a cooperative sequential multi-agent pipeline of specialized roles.
+All text, data points, and citations in the generated manuscript must belong to one of three verified classes:
+1. `EXPERIMENTAL EVIDENCE`: Directly parsed from execution logs, benchmark evaluation files, or table artifacts.
+2. `GROUNDED CITATION`: Retrieved from verified APIs (arXiv, Semantic Scholar, CrossRef, PubMed) with confirmed DOIs or arXiv identifiers.
+3. `METHODOLOGICAL PROSE`: Technical explanations grounded strictly in the declared problem formulation, algorithms, and architectures.
+```
+[Raw Pre-Writing Materials]
+│
+▼
+1. Outline Agent ─────────────► JSON Section Map + Conference Format (CVPR/ICLR)
+│
+▼
+2. Visual Asset Agent ────────► Matplotlib/Seaborn Plots + Architecture Diagrams
+│
+▼
+3. Literature Review Agent ───► API-Grounded Citation Retrieval (>=90% retention)
+│
+▼
+4. Section Writing Agent ─────► Full LaTeX Draft (Direct log metrics in tables)
+│
+▼
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="threads-growth">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **account-strategy keystone** above `threads-post` — set the conversation-first channel strategy (niche,
+cadence, the reply-more-than-post engine, format mix, the Threads→IG funnel, metrics). The agent
+**strategizes + drafts the original posts + can draft suggested replies**; **WoopSocial publishes the
+original posts**; the **reply flywheel, Communities, DMs, dashboards, and analytics are human/native.**
+Threads (~500M MAU mid-2026; ~141.5M daily mobile, more than X; ~6.25% engagement, far above X) is **neither X nor
+Instagram** — a **conversation-first, positive** platform where dunks and negativity get **throttled.** The
+defining lever is **Mosseri's "reply much more than you post":** replies are weighted heaviest, your **own
+replies count**, and **first-hour engagement velocity is the #1 ranking factor.** It's an **interest graph**
+(For You surfaces new accounts), so small accounts can break out — but growth **compounds over 60–90 days.**
+WoopSocial publishes the original posts; the **reply flywheel is human.**
+1. **brand-profile** — niche/voice.
+2. **goals-and-kpis** — the growth goal + metric.
+(Depth: `references/the-talks-framework.md`.)
+- **T — Talk more than you post:** reply much more than you post; your own replies count; leap into relevant
+conversations fast. *The reply flywheel is run by a human/`community-management`.*
+- **A — Anchor one niche/angle:** one sharp value promise; niche consistency (1–2 areas) → interest-graph
+classification + trust.
+- **L — Land the first hour:** engagement velocity is the #1 factor (50 likes/30 min > 100/24h); post when
+the audience is awake and stay to reply; one topic tag.
+- **K — Keep it original + positive:** original > recycled (recycled demoted); **no engagement-bait**
+(downranked); positive/constructive (negativity throttled); photos +60% / video / links +17% under media;
+one topic tag. (Post craft → `threads-post`.)
+- **S — Sustain + funnel to Instagram:** 3–5/week (not >3/day); compounds over 60–90 days; Threads
+(discovery) → Instagram (conversion), repurpose top posts in 24–72h; track reach, replies ÷ reach,
+follower growth.
+]]>
+  </instructions>
+</agyos_skill>

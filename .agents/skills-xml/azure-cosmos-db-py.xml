@@ -1,0 +1,32 @@
+<agyos_skill id="azure-cosmos-db-py">
+  <intent>Build production-grade Azure Cosmos DB NoSQL services following clean code, security best practices, and TDD principles.</intent>
+  <instructions>
+<![CDATA[
+Build production-grade Azure Cosmos DB NoSQL services following clean code, security best practices, and TDD principles.
+```bash
+pip install azure-cosmos azure-identity
+```
+```bash
+COSMOS_ENDPOINT=https://<account>.documents.azure.com:443/
+COSMOS_DATABASE_NAME=<database-name>
+COSMOS_CONTAINER_ID=<container-id>
+COSMOS_KEY=<emulator-key>
+```
+**DefaultAzureCredential (preferred)**:
+```python
+from azure.cosmos import CosmosClient
+from azure.identity import DefaultAzureCredential
+client = CosmosClient(
+url=os.environ["COSMOS_ENDPOINT"],
+credential=DefaultAzureCredential()
+)
+```
+**Emulator (local development)**:
+```python
+from azure.cosmos import CosmosClient
+client = CosmosClient(
+url="https://localhost:8081",
+credential=os.environ["COSMOS_KEY"],
+]]>
+  </instructions>
+</agyos_skill>

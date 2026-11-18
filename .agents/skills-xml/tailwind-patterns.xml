@@ -1,0 +1,32 @@
+<agyos_skill id="tailwind-patterns">
+  <intent>Tailwind CSS v4 principles. CSS-first configuration, container queries, modern patterns, design token architecture.</intent>
+  <instructions>
+<![CDATA[
+> Modern utility-first CSS with CSS-native configuration.
+Use this skill when configuring Tailwind v4, using CSS-first theme and design tokens, or implementing container queries and modern Tailwind patterns.
+| v3 (Legacy) | v4 (Current) |
+|-------------|--------------|
+| `tailwind.config.js` | CSS-based `@theme` directive |
+| PostCSS plugin | Oxide engine (10x faster) |
+| JIT mode | Native, always-on |
+| Plugin system | CSS-native features |
+| `@apply` directive | Still works, discouraged |
+| Concept | Description |
+|---------|-------------|
+| **CSS-first** | Configuration in CSS, not JavaScript |
+| **Oxide Engine** | Rust-based compiler, much faster |
+| **Native Nesting** | CSS nesting without PostCSS |
+| **CSS Variables** | All tokens exposed as `--*` vars |
+```
+@theme {
+/* Colors - use semantic names */
+--color-primary: oklch(0.7 0.15 250);
+--color-surface: oklch(0.98 0 0);
+--color-surface-dark: oklch(0.15 0 0);
+/* Spacing scale */
+--spacing-xs: 0.25rem;
+--spacing-sm: 0.5rem;
+--spacing-md: 1rem;
+]]>
+  </instructions>
+</agyos_skill>

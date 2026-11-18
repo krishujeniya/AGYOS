@@ -1,0 +1,32 @@
+<agyos_skill id="fp-either-ref">
+  <intent>Quick reference for Either type. Use when user needs error handling, validation, or operations that can fail with typed errors.</intent>
+  <instructions>
+<![CDATA[
+Either = success or failure. `Right(value)` or `Left(error)`.
+- You need a quick fp-ts reference for typed synchronous error handling.
+- The task involves validation, fallible operations, or converting throwing code to `Either`.
+- You want a compact cheat sheet rather than a long tutorial.
+```typescript
+import * as E from 'fp-ts/Either'
+E.right(value)           // Success
+E.left(error)            // Failure
+E.fromNullable(err)(x)   // null → Left(err), else Right(x)
+E.tryCatch(fn, toError)  // try/catch → Either
+```
+```typescript
+E.map(fn)                // Transform Right value
+E.mapLeft(fn)            // Transform Left error
+E.flatMap(fn)            // Chain (fn returns Either)
+E.filterOrElse(pred, toErr) // Right → Left if pred fails
+```
+```typescript
+E.getOrElse(err => default)  // Get Right or default
+E.match(onLeft, onRight)     // Pattern match
+E.toUnion(either)            // E | A (loses type info)
+```
+```typescript
+import { pipe } from 'fp-ts/function'
+import * as E from 'fp-ts/Either'
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="apify-actor-development">
+  <intent>Important: Before you begin, fill in the generatedBy property in the meta section of .actor/actor.json. Replace it with the tool and model you're currently using, such as \</intent>
+  <instructions>
+<![CDATA[
+<!-- security-allowlist: curl-pipe-bash, irm-pipe-iex -->
+**Important:** Before you begin, fill in the `generatedBy` property in the meta section of `.actor/actor.json`. Replace it with the tool and model you're currently using, such as "Claude Code with Claude Sonnet 4.5". This helps Apify monitor and improve AGENTS.md for specific AI tools and models.
+- You need to create, modify, or debug an Apify Actor project.
+- The task involves choosing an Apify template, wiring actor inputs/outputs, or implementing actor runtime logic.
+- You need safe setup guidance for `apify` CLI authentication, project bootstrap, or deployment workflow.
+Actors are serverless programs inspired by the UNIX philosophy - programs that do one thing well and can be easily combined to build complex systems. They're packaged as Docker images and run in isolated containers in the cloud.
+**Core Concepts:**
+- Accept well-defined JSON input
+- Perform isolated tasks (web scraping, automation, data processing)
+- Produce structured JSON output to datasets and/or store data in key-value stores
+- Can run from seconds to hours or even indefinitely
+- Persist state and can be restarted
+Before creating or modifying actors, verify that `apify` CLI is installed `apify --help`.
+If it is not installed, use one of these methods (listed in order of preference):
+```bash
+npm install -g apify-cli
+```
+> **Security note:** Do NOT install the CLI by piping remote scripts to a shell
+> (e.g. `curl … | bash` or `irm … | iex`). Always use a package manager.
+When the apify CLI is installed, check that it is logged in with:
+```bash
+apify info  # Should return your username
+```
+If it is not logged in, check if the `APIFY_TOKEN` environment variable is defined (if not, ask the user to generate one on https://console.apify.com/settings/integrations and then define `APIFY_TOKEN` with it).
+Then authenticate using one of these methods:
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="odoo-backup-strategy">
+  <intent>Complete Odoo backup and restore strategy: database dumps, filestore backup, automated scheduling, cloud storage upload, and tested restore procedures.</intent>
+  <instructions>
+<![CDATA[
+A complete Odoo backup must include both the **PostgreSQL database** and the **filestore** (attachments, images). This skill covers manual and automated backup procedures, offsite storage, and the correct restore sequence to bring a down Odoo instance back online.
+- Setting up a backup strategy for a production Odoo instance.
+- Automating daily backups with shell scripts and cron.
+- Restoring Odoo after a server failure or data corruption event.
+- Diagnosing a failed backup or corrupt restore.
+1. **Activate**: Mention `@odoo-backup-strategy` and describe your server environment.
+2. **Generate**: Receive a complete backup script tailored to your setup.
+3. **Restore**: Get step-by-step restore instructions for any failure scenario.
+```bash
+DATE=$(date +%Y%m%d_%H%M%S)
+DB_NAME="odoo"
+DB_USER="odoo"
+FILESTORE_PATH="/var/lib/odoo/.local/share/Odoo/filestore/$DB_NAME"
+BACKUP_DIR="/backups/odoo"
+mkdir -p "$BACKUP_DIR"
+pg_dump -U $DB_USER -Fc $DB_NAME > "$BACKUP_DIR/db_$DATE.dump"
+tar -czf "$BACKUP_DIR/filestore_$DATE.tar.gz" -C "$FILESTORE_PATH" .
+echo "✅ Backup complete: db_$DATE.dump + filestore_$DATE.tar.gz"
+```
+```bash
+0 2 * * * /opt/scripts/backup_odoo.sh >> /var/log/odoo_backup.log 2>&1
+```
+```bash
+aws s3 cp "$BACKUP_DIR/db_$DATE.dump"        s3://my-odoo-backups/db/
+aws s3 cp "$BACKUP_DIR/filestore_$DATE.tar.gz" s3://my-odoo-backups/filestore/
+]]>
+  </instructions>
+</agyos_skill>

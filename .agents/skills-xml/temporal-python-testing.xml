@@ -1,0 +1,32 @@
+<agyos_skill id="temporal-python-testing">
+  <intent>Comprehensive testing approaches for Temporal workflows using pytest, progressive disclosure resources for specific testing scenarios.</intent>
+  <instructions>
+<![CDATA[
+Comprehensive testing approaches for Temporal workflows using pytest, progressive disclosure resources for specific testing scenarios.
+- The task is unrelated to temporal python testing strategies
+- You need a different domain or tool outside this scope
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+- **Unit testing workflows** - Fast tests with time-skipping
+- **Integration testing** - Workflows with mocked activities
+- **Replay testing** - Validate determinism against production histories
+- **Local development** - Set up Temporal server and pytest
+- **CI/CD integration** - Automated testing pipelines
+- **Coverage strategies** - Achieve ≥80% test coverage
+**Recommended Approach** (Source: docs.temporal.io/develop/python/testing-suite):
+- Write majority as integration tests
+- Use pytest with async fixtures
+- Time-skipping enables fast feedback (month-long workflows → seconds)
+- Mock activities to isolate workflow logic
+- Validate determinism with replay testing
+**Three Test Types**:
+1. **Unit**: Workflows with time-skipping, activities with ActivityEnvironment
+2. **Integration**: Workers with mocked activities
+3. **End-to-end**: Full Temporal server with real activities (use sparingly)
+This skill provides detailed guidance through progressive disclosure. Load specific resources based on your testing needs:
+**File**: `resources/unit-testing.md`
+]]>
+  </instructions>
+</agyos_skill>

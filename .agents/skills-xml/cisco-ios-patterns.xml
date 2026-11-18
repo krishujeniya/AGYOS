@@ -1,0 +1,32 @@
+<agyos_skill id="cisco-ios-patterns">
+  <intent>Cisco IOS and IOS-XE review patterns for show commands, config hierarchy, wildcard masks, ACL placement, interface hygiene, and safe change-window verification. Use when reading, writing, or reviewing Cisco IOS / IOS-XE configuration or planning a change window.</intent>
+  <instructions>
+<![CDATA[
+Use this skill when reviewing Cisco IOS or IOS-XE snippets, building a
+change-window checklist, or explaining how to collect evidence from a router or
+switch without making the incident worse.
+- Reviewing IOS or IOS-XE configuration before a planned change.
+- Choosing read-only `show` commands for troubleshooting.
+- Checking ACL wildcard masks and interface direction.
+- Explaining global, interface, routing process, and line configuration modes.
+- Verifying that a change landed in running config and was saved intentionally.
+Treat IOS examples as patterns, not paste-ready production changes. Confirm the
+platform, interface names, current config, rollback path, and out-of-band access
+before making changes on a real device.
+Prefer this workflow:
+1. Capture current state with read-only commands.
+2. Review the exact candidate config.
+3. Confirm management access cannot be locked out.
+4. Apply the smallest change in a maintenance window.
+5. Re-read state, compare to the baseline, then save only after validation.
+```text
+Router> enable
+Router# show running-config
+Router# configure terminal
+Router(config)# interface GigabitEthernet0/1
+Router(config-if)# description UPLINK-TO-CORE
+Router(config-if)# no shutdown
+Router(config-if)# exit
+]]>
+  </instructions>
+</agyos_skill>

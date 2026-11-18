@@ -1,0 +1,32 @@
+<agyos_skill id="springboot-security">
+  <intent>Spring Security best practices for authn/authz, validation, CSRF, secrets, headers, rate limiting, and dependency security in Java Spring Boot services. Use when reviewing Spring Security authn/authz, validation, CSRF, secrets, headers, or rate limiting.</intent>
+  <instructions>
+<![CDATA[
+Use when adding auth, handling input, creating endpoints, or dealing with secrets.
+- Adding authentication (JWT, OAuth2, session-based)
+- Implementing authorization (@PreAuthorize, role-based access)
+- Validating user input (Bean Validation, custom validators)
+- Configuring CORS, CSRF, or security headers
+- Managing secrets (Vault, environment variables)
+- Adding rate limiting or brute-force protection
+- Scanning dependencies for CVEs
+- Prefer stateless JWT or opaque tokens with revocation list
+- Use `httpOnly`, `Secure`, `SameSite=Strict` cookies for sessions
+- Validate tokens with `OncePerRequestFilter` or resource server
+```java
+@Component
+public class JwtAuthFilter extends OncePerRequestFilter {
+private final JwtService jwtService;
+public JwtAuthFilter(JwtService jwtService) {
+this.jwtService = jwtService;
+}
+@Override
+protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
+FilterChain chain) throws ServletException, IOException {
+String header = request.getHeader(HttpHeaders.AUTHORIZATION);
+if (header != null && header.startsWith("Bearer ")) {
+String token = header.substring(7);
+Authentication auth = jwtService.authenticate(token);
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,8 @@
+<agyos_skill id="fp-pragmatic">
+  <intent>Compatibility ID for practical functional programming and the fp-ts 80/20 approach in TypeScript. Use fp-ts-pragmatic as the canonical runbook.</intent>
+  <instructions>
+<![CDATA[
+Use the canonical [fp-ts-pragmatic runbook](../fp-ts-pragmatic/SKILL.md) for practical TypeScript functional programming guidance. Its applicability includes fp-ts adoption, nullable values, errors, async operations, and refactoring imperative code.
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="investor-materials">
+  <intent>Create and update pitch decks, one-pagers, investor memos, accelerator applications, financial models, and fundraising materials. Use when the user needs investor-facing documents, projections, use-of-funds tables, milestone plans, or materials that must stay internally consistent across multiple fundraising assets.</intent>
+  <instructions>
+<![CDATA[
+Build investor-facing materials that are consistent, credible, and easy to defend.
+- creating or revising a pitch deck
+- writing an investor memo or one-pager
+- building a financial model, milestone plan, or use-of-funds table
+- answering accelerator or incubator application questions
+- aligning multiple fundraising docs around one source of truth
+All investor materials must agree with each other.
+Create or confirm a single source of truth before writing:
+- traction metrics
+- pricing and revenue assumptions
+- raise size and instrument
+- use of funds
+- team bios and titles
+- milestones and timelines
+If conflicting numbers appear, stop and resolve them before drafting.
+1. inventory the canonical facts
+2. identify missing assumptions
+3. choose the asset type
+4. draft the asset with explicit logic
+5. cross-check every number against the source of truth
+Recommended flow:
+1. company + wedge
+2. problem
+3. solution
+4. product / demo
+]]>
+  </instructions>
+</agyos_skill>

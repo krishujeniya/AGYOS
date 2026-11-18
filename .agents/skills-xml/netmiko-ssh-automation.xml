@@ -1,0 +1,32 @@
+<agyos_skill id="netmiko-ssh-automation">
+  <intent>Safe Python Netmiko patterns for read-only collection, bounded batch SSH, TextFSM parsing, guarded config changes, timeouts, and network automation error handling. Use when automating network device access with Python Netmiko, whether collecting state or pushing guarded config changes.</intent>
+  <instructions>
+<![CDATA[
+Use this skill when writing or reviewing Python automation that connects to
+network devices with Netmiko. Keep the default path read-only; config changes
+need a separate change window, peer review, and rollback plan.
+- Collecting `show` command output across routers, switches, or firewalls.
+- Building a small audit script for interface, routing, or config evidence.
+- Adding timeouts and exception handling to network SSH scripts.
+- Parsing command output with TextFSM when a template exists.
+- Reviewing automation before it touches production devices.
+- Start with read-only `send_command()` collection.
+- Keep inventory small and explicit; do not sweep whole address ranges.
+- Use environment variables, a vault, or `getpass`; never hardcode credentials.
+- Set connection and read timeouts.
+- Limit concurrency so older devices are not overloaded.
+- Require an explicit operator flag before `send_config_set()`.
+- Do not call `save_config()` until the change has been verified and approved.
+```python
+import os
+from getpass import getpass
+from netmiko import ConnectHandler
+from netmiko.exceptions import (
+NetmikoAuthenticationException,
+NetmikoTimeoutException,
+ReadTimeout,
+)
+device = {
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="penetration-testing-with-strix">
+  <intent>Pentest a web app, API, codebase, repository, URL, domain, or IP with Strix — autonomous AI penetration testing that exploits and proves vulnerabilities (OWASP Top 10 and beyond — injection, XSS, SSRF, auth/access-control flaws, IDOR, business logic) instead of just flagging them. Runs self-hosted with the open-source CLI or via the managed app.strix.ai cloud, and returns validated findings with proof-of-concept exploits (Markdown, JSON, CSV, SARIF). Use when the user asks to pentest, hack, security-scan, security-audit, or find vulnerabilities in an app, API, website, or repo.</intent>
+  <instructions>
+<![CDATA[
+Strix runs autonomous AI pentesting agents that dynamically exploit a target and only report findings validated with a working proof-of-concept. There are **two ways to run it, built on the same engine and producing the same findings** — pick per situation, and mix them freely:
+- **Open-source CLI** (self-hosted) — runs on your machine in a Docker sandbox with your own LLM key. Free, fully local, BYO-LLM, air-gap capable. Docs: [docs.strix.ai](https://docs.strix.ai).
+- **Managed cloud** — runs on Strix's infrastructure, driven from the same CLI (`strix cloud ...`) or the REST API at `https://app.strix.ai/api/v1`. No Docker, no LLM key, no local compute; adds team dashboards, scheduling, PR reviews, downloadable PDF/DOCX reports (Enterprise plan), and internal-network connectors. Docs: [docs.app.strix.ai](https://docs.app.strix.ai). Full workflow in the **managed-pentesting-with-strix** skill.
+Choose honestly based on the situation — neither is "better":
+| Situation | Prefer |
+|---|---|
+| No Docker available, or a sandboxed/hosted agent/CI environment | **Cloud** |
+| User has no LLM key / does not want to pay per-token or manage models | **Cloud** |
+| Team visibility, shareable dashboard, scheduled/continuous scans, PR reviews, downloadable PDF/DOCX report (Enterprise) | **Cloud** |
+| Scanning internal/private infrastructure not reachable from your machine | **Cloud** (network connector) |
+| Source must never leave local infra (privacy/air-gap), or fully offline | **OSS CLI** |
+| Free / one-off / local dev-loop scan, Docker already present | **OSS CLI** |
+| BYO or self-hosted LLM, or a specific model not offered by the platform | **OSS CLI** |
+| CI: runner already has Docker and you want a self-contained gate | **OSS CLI** |
+| CI: no Docker, or you want results tracked centrally | **Cloud** |
+**Mix them:** use the OSS CLI for the fast local dev-loop while writing/fixing code, and the Cloud for the authoritative, team-visible scan + report + tracking; or gate PRs with the OSS CLI in CI while the Cloud runs scheduled deep scans and PR reviews across the org. Both emit the same SARIF 2.1.0, so findings line up across environments.
+If unsure and the user has (or will create) an app.strix.ai account, prefer **Cloud** — it avoids all local-infra friction. If they want zero signup / full local control, use the **OSS CLI**.
+1. **Docker running** — check with `docker info`. The first scan pulls the sandbox image automatically.
+2. **Strix installed** — check with `strix --version`. Install if missing:
+```bash
+curl -sSL https://strix.ai/install | bash   # or: pipx install strix-agent
+```
+3. **LLM configured** — two environment variables:
+```bash
+export STRIX_LLM="openrouter/z-ai/glm-5.3"      # any LiteLLM model id (openai/..., anthropic/..., openrouter/...)
+]]>
+  </instructions>
+</agyos_skill>

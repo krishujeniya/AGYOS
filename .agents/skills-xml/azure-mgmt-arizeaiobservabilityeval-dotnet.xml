@@ -1,0 +1,32 @@
+<agyos_skill id="azure-mgmt-arizeaiobservabilityeval-dotnet">
+  <intent>Azure Resource Manager SDK for Arize AI Observability and Evaluation (.NET).</intent>
+  <instructions>
+<![CDATA[
+.NET SDK for managing Arize AI Observability and Evaluation resources on Azure.
+```bash
+dotnet add package Azure.ResourceManager.ArizeAIObservabilityEval --version 1.0.0
+```
+| Property | Value |
+|----------|-------|
+| Package | `Azure.ResourceManager.ArizeAIObservabilityEval` |
+| Version | `1.0.0` (GA) |
+| API Version | `2024-10-01` |
+| ARM Type | `ArizeAi.ObservabilityEval/organizations` |
+| Dependencies | `Azure.Core` >= 1.46.2, `Azure.ResourceManager` >= 1.13.1 |
+```bash
+AZURE_SUBSCRIPTION_ID=<your-subscription-id>
+AZURE_TENANT_ID=<your-tenant-id>
+AZURE_CLIENT_ID=<your-client-id>
+AZURE_CLIENT_SECRET=<your-client-secret>
+```
+```csharp
+using Azure.Identity;
+using Azure.ResourceManager;
+using Azure.ResourceManager.ArizeAIObservabilityEval;
+// Always use DefaultAzureCredential
+var credential = new DefaultAzureCredential();
+var armClient = new ArmClient(credential);
+```
+]]>
+  </instructions>
+</agyos_skill>

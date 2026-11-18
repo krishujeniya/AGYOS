@@ -1,0 +1,32 @@
+<agyos_skill id="tiktok-automation">
+  <intent>Automate TikTok tasks via Rube MCP (Composio): upload/publish videos, post photos, manage content, and view user profiles/stats. Always search tools first for current schemas.</intent>
+  <instructions>
+<![CDATA[
+Automate TikTok content creation and profile operations through Composio's TikTok toolkit via Rube MCP.
+- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
+- Active TikTok connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `tiktok`
+- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
+2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `tiktok`
+3. If connection is not ACTIVE, follow the returned auth link to complete TikTok OAuth
+4. Confirm connection status shows ACTIVE before running any workflows
+**When to use**: User wants to upload a video and publish it to TikTok
+**Tool sequence**:
+1. `TIKTOK_UPLOAD_VIDEO` or `TIKTOK_UPLOAD_VIDEOS` - Upload video file(s) [Required]
+2. `TIKTOK_FETCH_PUBLISH_STATUS` - Check upload/processing status [Required]
+3. `TIKTOK_PUBLISH_VIDEO` - Publish the uploaded video [Required]
+**Key parameters for upload**:
+- `video`: Video file object with `s3key`, `mimetype`, `name`
+- `title`: Video title/caption
+**Key parameters for publish**:
+- `publish_id`: ID returned from upload step
+- `title`: Video caption text
+- `privacy_level`: 'PUBLIC_TO_EVERYONE', 'MUTUAL_FOLLOW_FRIENDS', 'FOLLOWER_OF_CREATOR', 'SELF_ONLY'
+- `disable_duet`: Disable duet feature
+- `disable_stitch`: Disable stitch feature
+- `disable_comment`: Disable comments
+**Pitfalls**:
+]]>
+  </instructions>
+</agyos_skill>

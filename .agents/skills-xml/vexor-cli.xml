@@ -1,0 +1,32 @@
+<agyos_skill id="vexor-cli">
+  <intent>Semantic file discovery via `vexor`. Use whenever locating where something is implemented/loaded/defined in a medium or large repo, or when the file location is unclear. Prefer this over manual browsing.</intent>
+  <instructions>
+<![CDATA[
+- You need to locate files by intent rather than exact filename or text match.
+- The repository is large enough that manual browsing or naive grep is too slow or ambiguous.
+- You want semantic discovery of where something is implemented, loaded, defined, or documented.
+Find files by intent (what they do), not exact text.
+- Use `vexor` first for intent-based file discovery.
+- If `vexor` is missing, follow references/install-vexor.md.
+```bash
+vexor "<QUERY>" [--path <ROOT>] [--mode <MODE>] [--ext .py,.md] [--exclude-pattern <PATTERN>] [--top 5] [--format rich|porcelain|porcelain-z]
+```
+- `--path/-p`: root directory (default: current dir)
+- `--mode/-m`: indexing/search strategy
+- `--ext/-e`: limit file extensions (e.g., `.py,.md`)
+- `--exclude-pattern`: exclude paths by gitignore-style pattern (repeatable; `.js` → `**/*.js`)
+- `--top/-k`: number of results
+- `--include-hidden`: include dotfiles
+- `--no-respect-gitignore`: include ignored files
+- `--no-recursive`: only the top directory
+- `--format`: `rich` (default) or `porcelain`/`porcelain-z` for scripts
+- `--no-cache`: in-memory only, do not read/write index cache
+- `auto`: routes by file type (default)
+- `name`: filename-only (fastest)
+- `head`: first lines only (fast)
+- `brief`: keyword summary (good for PRDs)
+- `code`: code-aware chunking for `.py/.js/.ts` (best default for codebases)
+- `outline`: Markdown headings/sections (best for docs)
+]]>
+  </instructions>
+</agyos_skill>

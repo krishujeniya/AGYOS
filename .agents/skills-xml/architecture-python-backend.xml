@@ -1,0 +1,29 @@
+<agyos_skill id="architecture-python-backend">
+  <intent>Master of Python backend architecture. Enforces layered architecture, BFRI risk assessment, and strict error boundaries. Use when designing or reviewing core Python backend services.</intent>
+  <instructions>
+<![CDATA[
+This skill establishes strict architectural guidelines for the Python/FastAPI backend, complementing the technology-specific `fastapi-backend-patterns` skill. It enforces layered design, explicit error boundaries, and feasibility checks before implementation.
+- **Gate 3 (PLAN):** When designing a new backend feature or microservice.
+- **Gate 4 (IMPLEMENT):** When structuring routes, services, and repositories.
+- **Gate 5 (VERIFY):** When reviewing code for architectural violations (layer skipping).
+Before implementing complex backend logic, evaluate BFRI (Score from -10 to +10):
+- **+ (Positive):** Architectural fit, testability.
+- **- (Negative):** Business logic complexity, data risk, operational risk.
+**Rule:** If BFRI < 3, require explicit design validation and extra testing (TDD).
+```text
+Routes -> Controllers (Optional in FastAPI but logical) -> Services -> Repositories -> Database
+```
+- **Routes Only Route:** Routes contain ZERO business logic. They call services.
+- **Services Decide:** Services contain all business rules. They are framework-agnostic and unit-testable.
+- **Repositories Access Data:** Repositories encapsulate raw database queries (asyncpg/Qdrant) and transactions.
+- Never swallow errors silently.
+- Validate all external input strictly using Pydantic v2.
+- Unhandled exceptions must be caught by a global exception handler (e.g., yielding 500s and logging to standard output/error tracking).
+Use this architectural mindset while applying specific coding patterns from `fastapi-backend-patterns.md`.
+- [ ] Does the route avoid business logic?
+- [ ] Is input fully validated via Pydantic?
+- [ ] Are we using dependency injection for services/repositories?
+- [ ] Is error handling centralized?
+]]>
+  </instructions>
+</agyos_skill>

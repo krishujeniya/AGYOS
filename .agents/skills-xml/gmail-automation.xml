@@ -1,0 +1,32 @@
+<agyos_skill id="gmail-automation">
+  <intent>Lightweight Gmail integration with standalone OAuth authentication. No MCP server required.</intent>
+  <instructions>
+<![CDATA[
+Lightweight Gmail integration with standalone OAuth authentication. No MCP server required.
+> **⚠️ Requires Google Workspace account.** Personal Gmail accounts are not supported.
+- You need to search, read, or send Gmail messages from the command line without an MCP server.
+- You are automating inbox workflows for a Google Workspace account.
+- You want a lightweight Gmail integration backed by standalone OAuth scripts.
+Authenticate with Google (opens browser):
+```bash
+python scripts/auth.py login
+```
+Check authentication status:
+```bash
+python scripts/auth.py status
+```
+Logout when needed:
+```bash
+python scripts/auth.py logout
+```
+All operations via `scripts/gmail.py`. Auto-authenticates on first use if not logged in.
+```bash
+python scripts/gmail.py search "from:someone@example.com is:unread"
+python scripts/gmail.py search --limit 20
+python scripts/gmail.py search --label INBOX --limit 10
+python scripts/gmail.py search "subject:important" --include-spam-trash
+```
+```bash
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="wcag-accessibility-compliance">
+  <intent>Audit interface accessibility against applicable WCAG criteria using keyboard, focus, labels, semantics, and contrast checks.</intent>
+  <instructions>
+<![CDATA[
+read."
+- **Focus Management**: Controlling the order and visibility of the keyboard/screen reader cursor.
+- **Labeling & Hints**: Providing context through `aria-label`, `accessibilityLabel`, and `contentDescription`.
+Determine the functional purpose (e.g., Is this a button, a link, or a tab?). Use the most semantic native element available before resorting to custom roles.
+- Ensure text contrast meets **4.5:1** (normal) or **3:1** (large/UI).
+- Add text alternatives for non-text content (images, icons).
+- Implement responsive reflow (up to 400% zoom without loss of function).
+- Ensure a minimum **24x24 CSS pixel** target size (WCAG 2.2 SC 2.5.8).
+- Verify all interactive elements are reachable via keyboard and have a visible focus indicator (SC 2.4.11).
+- Provide single-pointer alternatives for dragging movements.
+- Use consistent navigation patterns.
+- Provide descriptive error messages and suggestions for correction (SC 3.3.3).
+- Implement "Redundant Entry" (SC 3.3.7) to prevent asking for the same data twice.
+- Use correct `Name, Role, Value` patterns.
+- Implement `aria-live` or live regions for dynamic status updates.
+```mermaid
+flowchart TD
+UI["UI Component"] --> Platform{Platform?}
+Platform -->|Web| ARIA["WAI-ARIA + HTML5"]
+Platform -->|iOS| SwiftUI["Accessibility Traits + Labels"]
+Platform -->|Android| Compose["Semantics + ContentDesc"]
+ARIA --> AT["Assistive Technology (Screen Readers, Switches)"]
+SwiftUI --> AT
+Compose --> AT
+```
+]]>
+  </instructions>
+</agyos_skill>

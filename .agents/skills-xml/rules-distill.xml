@@ -1,0 +1,32 @@
+<agyos_skill id="rules-distill">
+  <intent>Scan skills to extract cross-cutting principles and distill them into rules — append, revise, or create new rule files. Use when the same principle keeps recurring across skills and belongs in a rule file instead.</intent>
+  <instructions>
+<![CDATA[
+Scan installed skills, extract cross-cutting principles that appear in multiple skills, and distill them into rules — appending to existing rule files, revising outdated content, or creating new rule files.
+Applies the "deterministic collection + LLM judgment" principle: scripts collect facts exhaustively, then an LLM cross-reads the full context and produces verdicts.
+- Periodic rules maintenance (monthly or after installing new skills)
+- After a skill-stocktake reveals patterns that should be rules
+- When rules feel incomplete relative to the skills being used
+The rules distillation process follows three phases:
+```bash
+bash ~/.claude/skills/rules-distill/scripts/scan-skills.sh
+```
+```bash
+bash ~/.claude/skills/rules-distill/scripts/scan-rules.sh
+```
+```
+Rules Distillation — Phase 1: Inventory
+────────────────────────────────────────
+Skills: {N} files scanned
+Rules:  {M} files ({K} headings indexed)
+Proceeding to cross-read analysis...
+```
+Extraction and matching are unified in a single pass. Rules files are small enough (~800 lines total) that the full text can be provided to the LLM — no grep pre-filtering needed.
+Group skills into **thematic clusters** based on their descriptions. Analyze each cluster in a subagent with the full rules text.
+After all batches complete, merge candidates across batches:
+- Deduplicate candidates with the same or overlapping principles
+- Re-check the "2+ skills" requirement using evidence from **all** batches combined — a principle found in 1 skill per batch but 2+ skills total is valid
+Launch a general-purpose Agent with the following prompt:
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="freelancer-post-delivery">
+  <intent>Use when asking clients for testimonials, designing maintenance and support retainers, identifying upsell or cross-sell opportunities, or offboarding freelance clients.</intent>
+  <instructions>
+<![CDATA[
+Convert one-time projects into long-term relationships through systematic testimonials, maintenance retainers, strategic upsells, and professional offboarding.
+To utilize this skill's retention tactics, support agreements, or offboarding scripts, read the corresponding document in the `references/` directory:
+| File | Focus | Purpose |
+|------|-------|---------|
+| [05A-TESTIMONIALS-REVIEWS.md](references/05A-TESTIMONIALS-REVIEWS.md) | Testimonials & Reviews | Collection strategies, 3-Ask testimonial template, video testimonial script, portfolio display formats |
+| [05B-MAINTENANCE-RETAINERS.md](references/05B-MAINTAINERS-RETAINERS.md) | Maintenance & Retainers | Recurring revenue models, support SLA tiers (Basic, Growth, Authority), uptime and latency terms |
+| [05C-UPSELL-CROSS-SELL.md](references/05C-UPSELL-CROSS-SELL.md) | Upsell & Cross-Sell | Timing matrix, cross-sell services (dashboarding, security audits, scaling, API migration) |
+| [05D-OFFBOARDING.md](references/05D-OFFBOARDING.md) | Offboarding | Asset transfer checklists, final payment collection, relationship close ritual |
+When assisting a freelancer with collecting client feedback:
+- Reference [05A-TESTIMONIALS-REVIEWS.md](references/05A-TESTIMONIALS-REVIEWS.md) to execute the **3-Ask Testimonial Method** (kickoff expectations $\rightarrow$ delivery day prompt $\rightarrow$ 30 days post-live request).
+- Format questions to capture before/after metrics and specific ROI outcomes rather than generic compliments.
+- Guide the client to record a video testimonial using the structured 4-step script.
+When asked to convert a project into a recurring retainer or draft an SLA:
+- Reference [05B-MAINTENANCE-RETAINERS.md](references/05B-MAINTAINERS-RETAINERS.md) to define support tiers (Starter, Growth, Authority).
+- Specify response times (e.g., 24-hour vs 4-hour SLA), server monitoring frequency, bug resolution, and monthly allocation boundaries.
+When identifying revenue expansion opportunities:
+- Reference [05C-UPSELL-CROSS-SELL.md](references/05C-UPSELL-CROSS-SELL.md) to map adjacent needs to completed projects.
+- Pitch value-add services such as: dashboarding, automation syncs, model retraining cycles, security Audits, or scaling systems.
+When managing the final phase of a client relationship:
+- Reference [05D-OFFBOARDING.md](references/05D-OFFBOARDING.md) to guide safe asset transfer (credentials, code repositories, data stores) and secure final invoice payments.
+- Send the offboarding summary email that leaves the door open for future collaboration or referrals.
+| Concept | File | Section | One-Line Summary |
+|---------|------|---------|------------------|
+| 3-Ask Loop | [05A](references/05A-TESTIMONIALS-REVIEWS.md) | 1 | Ask at kickoff, ask on launch day, ask 30 days post-launch |
+| Video Testimonial Script | [05A](references/05A-TESTIMONIALS-REVIEWS.md) | 2 | 4-step blueprint: Prior State $\rightarrow$ Solution $\rightarrow$ Result $\rightarrow$ Recommendation |
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="azure-communication-callingserver-java">
+  <intent>⚠️ DEPRECATED: This SDK has been renamed to Call Automation. For new projects, use azure-communication-callautomation instead. This skill is for maintaining legacy code only.</intent>
+  <instructions>
+<![CDATA[
+> **⚠️ DEPRECATED**: This SDK has been renamed to **Call Automation**. For new projects, use `azure-communication-callautomation` instead. This skill is for maintaining legacy code only.
+```xml
+<!-- OLD (deprecated) -->
+<dependency>
+<groupId>com.azure</groupId>
+<artifactId>azure-communication-callingserver</artifactId>
+<version>1.0.0-beta.5</version>
+</dependency>
+<!-- NEW (use this instead) -->
+<dependency>
+<groupId>com.azure</groupId>
+<artifactId>azure-communication-callautomation</artifactId>
+<version>1.6.0</version>
+</dependency>
+```
+| CallingServer (Old) | Call Automation (New) |
+|---------------------|----------------------|
+| `CallingServerClient` | `CallAutomationClient` |
+| `CallingServerClientBuilder` | `CallAutomationClientBuilder` |
+| `CallConnection` | `CallConnection` (same) |
+| `ServerCall` | Removed - use `CallConnection` |
+```java
+// OLD WAY (deprecated)
+import com.azure.communication.callingserver.CallingServerClient;
+import com.azure.communication.callingserver.CallingServerClientBuilder;
+]]>
+  </instructions>
+</agyos_skill>

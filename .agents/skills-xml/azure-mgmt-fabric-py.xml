@@ -1,0 +1,32 @@
+<agyos_skill id="azure-mgmt-fabric-py">
+  <intent>Azure Fabric Management SDK for Python. Use for managing Microsoft Fabric capacities and resources.</intent>
+  <instructions>
+<![CDATA[
+Manage Microsoft Fabric capacities and resources programmatically.
+```bash
+pip install azure-mgmt-fabric
+pip install azure-identity
+```
+```bash
+AZURE_SUBSCRIPTION_ID=<your-subscription-id>
+AZURE_RESOURCE_GROUP=<your-resource-group>
+```
+```python
+from azure.identity import DefaultAzureCredential
+from azure.mgmt.fabric import FabricMgmtClient
+import os
+credential = DefaultAzureCredential()
+client = FabricMgmtClient(
+credential=credential,
+subscription_id=os.environ["AZURE_SUBSCRIPTION_ID"]
+)
+```
+```python
+from azure.mgmt.fabric import FabricMgmtClient
+from azure.mgmt.fabric.models import FabricCapacity, FabricCapacityProperties, CapacitySku
+from azure.identity import DefaultAzureCredential
+import os
+credential = DefaultAzureCredential()
+]]>
+  </instructions>
+</agyos_skill>

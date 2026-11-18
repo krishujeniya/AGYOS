@@ -1,0 +1,32 @@
+<agyos_skill id="hierarchical-agent-memory">
+  <intent>Scoped CLAUDE.md memory system that reduces context token spend. Creates directory-level context files, tracks savings via dashboard, and routes agents to the right sub-context.</intent>
+  <instructions>
+<![CDATA[
+Scoped memory system that gives AI coding agents a cheat sheet for each directory instead of re-reading your entire project every prompt. Root CLAUDE.md holds global context (~200 tokens), subdirectory CLAUDE.md files hold scoped context (~250 tokens each), and a `.memory/` layer stores decisions, patterns, and an inbox for unconfirmed inferences.
+- Use when you want to reduce input token costs across Claude Code sessions
+- Use when your project has 3+ directories and the agent keeps re-reading the same files
+- Use when you want directory-scoped context instead of one monolithic CLAUDE.md
+- Use when you want a dashboard to visualize token savings, session history, and context health
+- Use when setting up a new project and want structured agent memory from day one
+Auto-detects your project platform and maturity, then generates the memory structure:
+```
+project/
+├── CLAUDE.md              # Root context (~200 tokens)
+├── .memory/
+│   ├── decisions.md       # Architecture Decision Records
+│   ├── patterns.md        # Reusable patterns
+│   ├── inbox.md           # Inferred items awaiting confirmation
+│   └── audit-log.md       # Audit history
+└── src/
+├── api/CLAUDE.md      # Scoped context for api/
+├── components/CLAUDE.md
+└── lib/CLAUDE.md
+```
+The root CLAUDE.md includes a routing section that tells the agent exactly which sub-context to load:
+```markdown
+→ api: src/api/CLAUDE.md
+→ components: src/components/CLAUDE.md
+→ lib: src/lib/CLAUDE.md
+]]>
+  </instructions>
+</agyos_skill>

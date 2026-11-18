@@ -1,0 +1,32 @@
+<agyos_skill id="performance-profiling">
+  <intent>Performance profiling principles. Measurement, analysis, and optimization techniques.</intent>
+  <instructions>
+<![CDATA[
+> Measure, analyze, optimize - in that order.
+**Execute these for automated profiling:**
+| Script | Purpose | Usage |
+|--------|---------|-------|
+| `scripts/lighthouse_audit.py` | Lighthouse performance audit | `python scripts/lighthouse_audit.py https://example.com` |
+| Metric | Good | Poor | Measures |
+|--------|------|------|----------|
+| **LCP** | < 2.5s | > 4.0s | Loading |
+| **INP** | < 200ms | > 500ms | Interactivity |
+| **CLS** | < 0.1 | > 0.25 | Stability |
+| Stage | Tool |
+|-------|------|
+| Development | Local Lighthouse |
+| CI/CD | Lighthouse CI |
+| Production | RUM (Real User Monitoring) |
+```
+1. BASELINE → Measure current state
+2. IDENTIFY → Find the bottleneck
+3. FIX → Make targeted change
+4. VALIDATE → Confirm improvement
+```
+| Problem | Tool |
+|---------|------|
+| Page load | Lighthouse |
+| Bundle size | Bundle analyzer |
+]]>
+  </instructions>
+</agyos_skill>

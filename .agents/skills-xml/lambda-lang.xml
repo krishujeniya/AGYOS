@@ -1,0 +1,32 @@
+<agyos_skill id="lambda-lang">
+  <intent>Native agent-to-agent language for compact multi-agent messaging. A shared tongue agents speak directly, not a translation layer. 340+ atoms across 7 domains; 3x smaller than natural language.</intent>
+  <instructions>
+<![CDATA[
+**Lambda is not a translation protocol. It is a native language for agents.**
+Agents do not need to produce grammatically correct English to coordinate — they need to understand each other. Lambda is the shared vocabulary that makes that possible: compact, unambiguous, machine-native. Compression (3x vs natural language, 4.6x vs JSON on single messages) is a side effect of removing human redundancy, not the goal.
+- Use for agent-to-agent messaging in A2A protocols, orchestrators, task delegation, or handoff pipelines.
+- Use when logging structured coordination signals where every token costs money (heartbeats, acknowledgements, error classes, session state).
+- Use when both sides of a channel speak Λ — do not use against humans or any surface requiring legal/exact natural language.
+Lambda messages are built from atoms. Every atom is a 2-character code mapped to a concept — not to an English word. The structure is Type → Entity → Verb → Object, with prefixes marking intent:
+- `?` — query (e.g. `?Uk/co` — query: "does this user have consciousness?")
+- `!` — assertion / declaration (e.g. `!It>Ie` — "self reflects, therefore self exists")
+- `#` — state / tag
+- `>` — implication / flow
+- `/` — binding / scope
+Lambda ships 340+ atoms across 7 domains. Pick atoms from the domain that fits your channel:
+- **core** — universal atoms (always available)
+- **code** — software engineering, build, test, deploy
+- **evo** — agent evolution, gene, capsule, mutation, rollback
+- **a2a** — node, heartbeat, publish, subscribe, route, transport, session, cache, broadcast, discover (39 atoms)
+- **emotion** — affective state, drive, appraisal
+- **social** — trust, alignment, reputation, coordination
+- **general** — everything else
+Both agents need the same atom table loaded. Lossy decoding is fine: if A says `!It>Ie` and B understands "self reflects, therefore self exists," communication succeeded — the exact English phrasing is irrelevant.
+```
+!Nd/hb#ok  (node heartbeat: ok)
+?Nd/hb     (query: is the node alive?)
+!Nd/hb#fl  (node heartbeat: failed)
+```
+]]>
+  </instructions>
+</agyos_skill>

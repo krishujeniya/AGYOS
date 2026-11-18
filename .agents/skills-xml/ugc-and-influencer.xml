@@ -1,0 +1,32 @@
+<agyos_skill id="ugc-and-influencer">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **brand→creator skill** — source and vet the creators, write the brief, ink the rights, enforce the
+disclosure, and run the UGC pipeline. The agent **advises + drafts + plans**; **WoopSocial publishes the
+brand's own posts** (rights-cleared UGC reshares, campaign posts); **outreach, contracts, payment, ads and
+the creator's post are native/human.**
+An influencer post works because the audience trusts the *creator*, not you. Two failure modes kill that:
+**over-scripting** (a brief that dictates every word produces an ad with worse production values — brief the
+guardrails, let the creator speak in their own voice) and **hiding the deal** (undisclosed sponsorship is
+illegal — FTC in the US, ASA/CMA in the UK — and **gifted product counts**: free stuff is a material
+connection). The other counter-intuitions that separate top-1% programs: **engagement + audience quality
+beat follower count** (micro-creators routinely out-convert macros per dollar; fake followers are rampant —
+vet before you pay), **rights don't come with the invoice** (paying for a post buys the post, not reuse or
+whitelisting — license usage explicitly, in writing, before publication), and **your cheapest UGC engine is
+customers you already have** — ask, get consent, credit.
+1. **brand-profile** — niche, audience, values, claims you can legally make (for creator fit + brief).
+2. **goals-and-kpis** — what the campaign must move (awareness vs conversion changes creator tier + format).
+(Depth: `references/the-brief-framework.md`.)
+- **B — Base the pick on fit + real audience:** vet on niche/values fit, engagement rate, audience
+authenticity (fake-follower red flags) and past brand work — not follower count; choose micro vs macro
+by goal.
+- **R — Run a brief that guides, not scripts:** one page — the goal, the mandatories (key message, disclosure,
+claims/don'ts), hooks that worked, and explicit creative freedom. No word-for-word scripts.
+- **I — Ink rights + whitelisting up front:** usage scope, channels, duration, edits, exclusivity, and
+whitelisting/Spark Ads permission agreed in writing **before** content is made. A tag is not a license.
+- **E — Enforce disclosure, every post:** clear + conspicuous #ad / paid-partnership label on **every** paid
+AND gifted post, upfront not buried. Non-negotiable — undisclosed = decline and correct.
+]]>
+  </instructions>
+</agyos_skill>

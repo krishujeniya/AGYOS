@@ -1,0 +1,32 @@
+<agyos_skill id="image-prompt">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **foundation of the visual cluster.** When a post needs an image, this skill decides **what** image
+(the brief), describes it with **model-agnostic** craft, and routes to the **right tool** — then hands
+off. It sits *above* the tool-specific mini-skills (`nano-banana`, `ideogram`, `flux`,
+`veo-3`), which own their model's specific tricks.
+Think of it as the visual equivalent of `brand-profile`/`content-pillars`: the shared decision layer
+the tool skills assume you've already worked through.
+AI generation is one option, not the default. A **real photo** (your actual product/space/team), a
+**screenshot**, **UGC**, or a **chart** often wins on authenticity and clarity — and AI must never
+fabricate your real people/place. Reach for generation when you need something that doesn't exist, must
+match a brand look, needs legible in-image text, or a consistent series — and no real asset fits. If a
+real asset is better, **say so.** (See `references/the-image-brief.md`.)
+Read `brand-profile.md`, then answer four things: **job/purpose** (hero / explainer / quote graphic /
+product / lifestyle / thumbnail / background / ad), **the one thing it must convey**, **format/aspect
+ratio** for the destination, and the **brand look**. Output a one-line brief. See
+`references/the-image-brief.md`.
+Turn the brief into a **specific, natural-language** prompt — **subject · composition · lighting ·
+colour · style · mood · detail · constraints** — and **drop quality-token spam** ("4k, masterpiece").
+Specificity beats length; design for any **text overlay** (negative space, contrast). See
+`references/prompt-anatomy.md`.
+Pick by the image's **dominant requirement**:
+- **Text / typographic** → `ideogram` or `nano-banana` (both strong — honest pick by tooling).
+- **Photoreal portrait/product** → `nano-banana` or `flux` (Midjourney external). **Surreal/painterly** → Midjourney.
+- **Editing** ("change one thing, keep the rest") → `nano-banana` (conversational) or `flux` (Kontext).
+- **Consistent character/product set** → `nano-banana` (multi-image references) or `flux` (multi-reference).
+- **Search-grounded infographics** → `nano-banana`. **Brand-exact hex / open weights / license control** → `flux`.
+]]>
+  </instructions>
+</agyos_skill>

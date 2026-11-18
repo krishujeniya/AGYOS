@@ -1,0 +1,32 @@
+<agyos_skill id="instagram-reels-publishing">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **Reel publish-mechanics skill** — get a finished Reel **out** the way Instagram displays it (specs, safe
+zone, cover, settings). The agent **specs the publish settings + the cover brief + the specs/safe-zone
+checklist + advises audio/tags**; **WoopSocial publishes postType REEL + video + caption + cover**; **trending
+audio, Share-to-Feed, tags, quality + Insights are native/in-app**, and the video/cover/burned-in captions
+come from other tools.
+Great Reels get squashed/cropped/blurred at the **publish step** — a sizing/settings problem, not a content
+problem. Design for **how Instagram actually displays a Reel**: full **9:16** in the Reels tab, a **4:5** crop
+in the feed, and the **3:4 (1080×1440)** profile-grid crop (the 2025 rectangular-grid change) — so keep critical content **centered**
+and in the **safe zone.** The **cover** is chosen before publish and **can't be edited after.** WoopSocial
+publishes **postType REEL + video + caption + cover**; the trending audio, Share-to-Feed, tags, and quality
+settings are native/in-app, and the video/cover/captions come from other tools.
+1. **brand-profile** — cover/caption style.
+2. the **finished Reel asset** (+ topic).
+(Depth: `references/the-frame-framework.md`.)
+- **F — Frame it 9:16, spec-clean:** 1080×1920, MP4/MOV H.264 30/60fps ≥1080p ≤4GB (~15–20 Mbps); off 0.5625
+→ crops/letterboxes; **remove other-platform watermarks.**
+- **R — Reserve the safe zone:** top ~250px + bottom ~350px are UI; keep **hook text/face/CTA** in the central
+safe zone (survives the **4:5 feed + 3:4 grid crops**).
+- **A — Art the cover for the grid:** choose before publishing; a **custom upload beats a video frame**; key
+elements + bold ≥60px text in the **3:4-grid-safe center**; **can't edit after upload** (→ `ideogram`/
+`nano-banana`).
+- **M — Match caption + audio:** publish the **keyword caption** (← `instagram-seo`); audio beats silent +
+trending audio is pushed (native); the first-3-sec hook (← `reels-script`); burned-in captions in the safe
+zone (← `captions-and-clipping`).
+- **E — Emit on schedule + mind what's native:** WoopSocial publishes **postType REEL + video + caption +
+]]>
+  </instructions>
+</agyos_skill>

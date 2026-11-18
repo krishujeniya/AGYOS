@@ -1,0 +1,32 @@
+<agyos_skill id="taste-distillation">
+  <intent>Measure a set of reference videos into a reusable style pack - colour grade as a 3D LUT, cut rhythm as a shot-length distribution, hero stills, screen-blend overlay plates, and a text spec for a generative model. Use when the user wants to capture the look of reference footage, build a repeatable look, mint assets from references, or reproduce someone's grade and pacing.</intent>
+  <instructions>
+<![CDATA[
+This standalone skill ships its implementation in `scripts/`; use
+`taste-application` for the subsequent generated or local-take edit. Keep each
+named genre in its own pack. Measurements from Flash Ethereal must not be
+silently reused for Fluid Sketch or 3D Cyber Glitch. A measured zero is valid
+data; distinguish it from an absent field.
+Local dependencies are in `scripts/requirements.txt`. Separately authorized
+provider work also needs `scripts/requirements-live.txt`, credentials and
+explicit `TASTE_FORGE_ALLOW_LIVE=1`. `--dry-run` does not read credentials or
+submit jobs. Never infer that a workflow was saved from a local endpoint name;
+use the actual provider-side workflow or request evidence.
+Turn reference videos into a **style pack**: a folder of measurements and assets
+that later stages consume deterministically.
+- "capture the look of these clips" / "distill the vibe" / "make this repeatable"
+- User has reference footage and wants a LUT, a grade, or matching pacing
+- Building a library of looks partitioned by genre
+- Any request where the answer would otherwise be "describe the style in a prompt"
+**Prompting cannot deliver a grade. Measurement can.**
+Measured on real footage: three paid generations with escalating colour direction
+moved midtone a\* from +1.9 → +2.8 → +0.3 against a **+24.9** target, and contrast
+never left ~19 against a **34.7** target. Applying a measured pack to the same
+footage hit chroma MAE **1.88** and contrast **33.7** in one deterministic pass,
+for free.
+So the split is: **the model supplies content, motion and lighting structure; the
+pack supplies the look.** Colour words in a generation prompt are worse than
+useless — they cost money and push the render away from the neutral base the LUT
+]]>
+  </instructions>
+</agyos_skill>

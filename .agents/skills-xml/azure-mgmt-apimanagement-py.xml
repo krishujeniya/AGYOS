@@ -1,0 +1,32 @@
+<agyos_skill id="azure-mgmt-apimanagement-py">
+  <intent>Azure API Management SDK for Python. Use for managing APIM services, APIs, products, subscriptions, and policies.</intent>
+  <instructions>
+<![CDATA[
+Manage Azure API Management services, APIs, products, and policies.
+```bash
+pip install azure-mgmt-apimanagement
+pip install azure-identity
+```
+```bash
+AZURE_SUBSCRIPTION_ID=your-subscription-id
+```
+```python
+from azure.identity import DefaultAzureCredential
+from azure.mgmt.apimanagement import ApiManagementClient
+import os
+client = ApiManagementClient(
+credential=DefaultAzureCredential(),
+subscription_id=os.environ["AZURE_SUBSCRIPTION_ID"]
+)
+```
+```python
+from azure.mgmt.apimanagement.models import (
+ApiManagementServiceResource,
+ApiManagementServiceSkuProperties,
+SkuType
+)
+service = client.api_management_service.begin_create_or_update(
+resource_group_name="my-resource-group",
+]]>
+  </instructions>
+</agyos_skill>

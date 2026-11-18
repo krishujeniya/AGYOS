@@ -1,0 +1,32 @@
+<agyos_skill id="odoo-accounting-setup">
+  <intent>Expert guide for configuring Odoo Accounting: chart of accounts, journals, fiscal positions, taxes, payment terms, and bank reconciliation.</intent>
+  <instructions>
+<![CDATA[
+This skill guides functional consultants and business owners through setting up Odoo Accounting correctly from scratch. It covers chart of accounts configuration, journal setup, tax rules, fiscal positions, payment terms, and the bank statement reconciliation workflow.
+- Setting up a new Odoo instance for a company for the first time.
+- Configuring multi-currency or multi-company accounting.
+- Troubleshooting tax calculation or fiscal position mapping errors.
+- Creating payment terms for installment billing (e.g., Net 30, 50% upfront).
+1. **Activate**: Mention `@odoo-accounting-setup` and describe your accounting scenario.
+2. **Configure**: Receive step-by-step Odoo menu navigation with exact field values.
+3. **Validate**: Get a checklist to verify your setup is complete and correct.
+```text
+Menu: Accounting → Configuration → Payment Terms → New
+Name: Net 30 / 2% Early Pay Discount
+Company: [Your Company]
+Lines:
+Line 1:
+- Due Type: Percent
+- Value: 100%
+- Due: 30 days (full balance due in 30 days)
+Early Payment Discount (Odoo 16+):
+Discount %: 2
+Discount Days: 10
+Balance Sheet Accounts:
+- Gain: 4900 Early Payment Discounts Granted
+- Loss: 5900 Early Payment Discounts Received
+```
+> **Note (v16+):** Use the built-in **Early Payment Discount** field instead of the old split-line workaround. Odoo now posts the discount automatically when the customer pays within the discount window and generates correct accounting entries.
+]]>
+  </instructions>
+</agyos_skill>

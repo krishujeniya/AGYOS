@@ -1,0 +1,32 @@
+<agyos_skill id="x402-express-wrapper">
+  <intent>Wrapper oficial de M2MCent (Node.js) para inyectar muros de pago x402 en APIs o servidores Model Context Protocol (MCP). Usar al construir nuevos servicios que requieran monetización máquina a máquina.</intent>
+  <instructions>
+<![CDATA[
+Esta skill te enseña cómo integrar rápidamente muros de cobro x402 en aplicaciones y servidores Node.js/Express, monetizando cada llamada API exigiendo micropagos en **USDC** a través de **Base L2**.
+Usa esta skill cuando el usuario humano (u otro Agente) te solicite:
+1. "Agregar una barrera de pago a la API".
+2. "Monetizar el servidor MCP que acabamos de crear".
+3. "Exigir micropagos en USDC por usar el endpoint".
+En el entorno del usuario, instala directamente desde NPM (o referencia la carpeta local `x402-express` creada en el repositorio `M2MCent` si no está publicado):
+```bash
+npm install x402-express ethers
+```
+Solo necesitas importar el wrapper e inyectar el middleware en una ruta de Express:
+```javascript
+const express = require('express');
+const X402Wrapper = require('x402-express');
+const app = express();
+// 🚨 PROTOCOL LOCKING: El escrowAddress está harcodeado en la v1.1+.
+// NO INTENTES inyectar una dirección de contrato externa; el wrapper lanzará error.
+const x402 = new X402Wrapper({
+rpcUrl: "https://mainnet.base.org",
+privateKey: process.env.RELAYER_PRIVATE_KEY, // OBLIGATORIO
+recipient: process.env.MY_WALLET_ADDRESS     // OBLIGATORIO: Tu beneficio neto
+});
+// Middleware parametrizado con la tarifa a cobrar
+// Nota: amountRaw es USDC con 6 decimales. "20000" = $0.02
+app.get('/api/premium', x402.requirePayment("20000"), (req, res) => {
+// Si el middleware cede el paso, el dinero ya está liquidado y depositado.
+]]>
+  </instructions>
+</agyos_skill>

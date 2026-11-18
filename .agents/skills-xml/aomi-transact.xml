@@ -1,0 +1,32 @@
+<agyos_skill id="aomi-transact">
+  <intent>Build natural-language crypto/DeFi agents and EVM MCP plugins (Claude Code, Cursor, Codex, Gemini). Aomi turns prompts into wallet-signed txs on Ethereum, Base, Arbitrum, Optimism, Polygon, Linea — non-custodial, fork-simulated. 40+ apps: Uniswap, Aave, Lido, Morpho, GMX, Hyperliquid, Polymarket.</intent>
+  <instructions>
+<![CDATA[
+> **Authorized use only.** This skill signs and broadcasts on-chain transactions on the user's behalf. The user must explicitly request each signing step. The skill will not run `aomi tx sign` without an explicit user request and a corresponding `tx-N` queued by `aomi tx list`.
+>
+> **Signing gate.** Do not include `aomi tx sign` in a copied or runnable multi-command block. Stop after listing or simulating queued transactions, summarize the tx ids, chain, value, recipient, calldata purpose, and simulation result, then ask the user for an explicit signing instruction such as `sign tx-1`. Only run the exact signing command after that separate approval.
+`aomi-transact` is a procedure for driving the Aomi CLI ([`@aomi-labs/client`](https://www.npmjs.com/package/@aomi-labs/client)) from natural-language prompts. The user types something like *"swap 1 ETH for USDC on Uniswap"*; the agent picks the right protocol and contract, stages the approve+swap as a batch, simulates it on a forked chain, and returns a queued wallet request for the user to sign. The wallet only ever sees calldata that already passed simulation.
+The CLI is **account-abstraction-first**: by default it signs through a zero-config Alchemy proxy (no provider credentials needed), using EIP-7702 on Ethereum mainnet and ERC-4337 on L2s. Each `aomi <subcommand>` invocation starts, runs, and exits — there is no long-running process.
+The full skill including references (`account-abstraction.md`, `apps.md`, `examples.md`, `session.md`, `troubleshooting.md`, `drain-vectors.md`), templates (`aomi-workflow.sh`), and per-host metadata (`agents/openai.yaml`) lives upstream at [`aomi-labs/skills`](https://github.com/aomi-labs/skills/tree/main/aomi-transact). This entry is the canonical SKILL.md only — clone the upstream for the full bundle.
+- The user wants to chat with the Aomi agent from the terminal.
+- The user wants balances, prices, routes, quotes, or transaction status.
+- The user wants to build, simulate, confirm, sign, or broadcast wallet requests.
+- The user wants to simulate a batch of pending transactions before signing.
+- The user wants to inspect or switch apps, models, chains, or sessions.
+- The user wants to inspect or change Account Abstraction settings (EIP-7702 / ERC-4337).
+- The user wants to sign EIP-712 typed-data payloads (off-chain agreements, intent fillers).
+```bash
+aomi --prompt "what is the price of ETH?" --new-session
+```
+Returns a quote with no wallet request queued. Use `aomi tx list` to confirm there's nothing pending.
+```bash
+aomi chat "Stake 0.01 ETH with Lido to get stETH" \
+--public-key 0xUserAddress --chain 1 --new-session
+aomi tx list
+```
+`submit(address(0))` on Lido stETH `0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84`, `value = 0.01 ETH`. No approve, single tx. Stop here, show the queued transaction details, and wait for the user's explicit instruction before signing.
+```bash
+aomi chat "swap 1 USDC for WETH on Uniswap V3, send to my wallet" \
+]]>
+  </instructions>
+</agyos_skill>

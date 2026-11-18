@@ -1,0 +1,32 @@
+<agyos_skill id="odoo-project-timesheet">
+  <intent>Expert guide for Odoo Project and Timesheets: task stages, billable time tracking, timesheet approval, budget alerts, and invoicing from timesheets.</intent>
+  <instructions>
+<![CDATA[
+This skill helps you configure Odoo Project and Timesheets for service businesses, agencies, and consulting firms. It covers project setup with budgets, task stage management, employee timesheet logging, approval workflows, and converting approved timesheet hours to customer invoices.
+- Setting up a new project with tasks, deadlines, and team assignments.
+- Configuring billable vs. non-billable time tracking per project.
+- Creating a timesheet approval workflow for managers.
+- Invoicing customers based on logged hours (Time & Materials billing).
+1. **Activate**: Mention `@odoo-project-timesheet` and describe your project or billing scenario.
+2. **Configure**: Receive step-by-step setup instructions.
+3. **Automate**: Get guidance on automatically generating invoices from approved timesheets.
+```text
+Menu: Project → New Project (or the "+" button in Project view)
+Name:     Website Redesign — Acme Corp
+Customer: Acme Corporation
+Billable: YES  (toggle ON)
+Settings tab:
+Billing Type: Based on Timesheets (Time & Materials)
+Service Product: Consulting Hours ($150/hr)
+☑ Timesheets
+☑ Task Dependencies
+☑ Subtasks
+Budget:
+Planned Hours: 120 hours
+Budget Alert: at 80% (96 hrs) → notify project manager
+```
+```text
+Method A — Directly inside the Task (recommended for accuracy):
+]]>
+  </instructions>
+</agyos_skill>

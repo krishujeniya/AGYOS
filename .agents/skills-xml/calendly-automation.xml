@@ -1,0 +1,32 @@
+<agyos_skill id="calendly-automation">
+  <intent>Automate Calendly scheduling, event management, invitee tracking, availability checks, and organization administration via Rube MCP (Composio). Always search tools first for current schemas.</intent>
+  <instructions>
+<![CDATA[
+Automate Calendly operations including event listing, invitee management, scheduling link creation, availability queries, and organization administration through Composio's Calendly toolkit.
+- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
+- Active Calendly connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `calendly`
+- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+- Many operations require the user's Calendly URI, obtained via `CALENDLY_GET_CURRENT_USER`
+**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
+2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `calendly`
+3. If connection is not ACTIVE, follow the returned auth link to complete Calendly OAuth
+4. Confirm connection status shows ACTIVE before running any workflows
+**When to use**: User wants to see their upcoming, past, or filtered Calendly events
+**Tool sequence**:
+1. `CALENDLY_GET_CURRENT_USER` - Get authenticated user URI and organization URI [Prerequisite]
+2. `CALENDLY_LIST_EVENTS` - List events scoped by user, organization, or group [Required]
+3. `CALENDLY_GET_EVENT` - Get detailed info for a specific event by UUID [Optional]
+**Key parameters**:
+- `user`: Full Calendly API URI (e.g., `https://api.calendly.com/users/{uuid}`) - NOT `"me"`
+- `organization`: Full organization URI for org-scoped queries
+- `status`: `"active"` or `"canceled"`
+- `min_start_time` / `max_start_time`: UTC timestamps (e.g., `2024-01-01T00:00:00.000000Z`)
+- `invitee_email`: Filter events by invitee email (filter only, not a scope)
+- `sort`: `"start_time:asc"` or `"start_time:desc"`
+- `count`: Results per page (default 20)
+- `page_token`: Pagination token from previous response
+**Pitfalls**:
+]]>
+  </instructions>
+</agyos_skill>

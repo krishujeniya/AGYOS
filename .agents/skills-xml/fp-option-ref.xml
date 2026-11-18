@@ -1,0 +1,32 @@
+<agyos_skill id="fp-option-ref">
+  <intent>Quick reference for Option type. Use when user needs to handle nullable values, optional data, or wants to avoid null checks.</intent>
+  <instructions>
+<![CDATA[
+Option = value that might not exist. `Some(value)` or `None`.
+- You need a quick fp-ts reference for nullable or optional values.
+- The task involves eliminating null checks, safe property access, or optional chaining with `Option`.
+- You want a short reference card rather than a full migration guide.
+```typescript
+import * as O from 'fp-ts/Option'
+O.some(5)              // Some(5)
+O.none                 // None
+O.fromNullable(x)      // null/undefined → None, else Some(x)
+O.fromPredicate(x > 0)(x) // false → None, true → Some(x)
+```
+```typescript
+O.map(fn)              // Transform inner value
+O.flatMap(fn)          // Chain Options (fn returns Option)
+O.filter(predicate)    // None if predicate false
+```
+```typescript
+O.getOrElse(() => default)  // Get value or default
+O.toNullable(opt)           // Back to T | null
+O.toUndefined(opt)          // Back to T | undefined
+O.match(onNone, onSome)     // Pattern match
+```
+```typescript
+import { pipe } from 'fp-ts/function'
+import * as O from 'fp-ts/Option'
+]]>
+  </instructions>
+</agyos_skill>

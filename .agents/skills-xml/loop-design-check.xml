@@ -1,0 +1,32 @@
+<agyos_skill id="loop-design-check">
+  <intent>Design a goal-oriented agent loop or review one for failure modes: spinning, Goodhart-gaming the verifier, or running a wrong answer to completion. Covers machine-decidable goals, loop types, plan/build/judge skeletons, and runaway prevention; mechanism wiring lives in autonomous-loops. Use when designing, writing, or checking an agent loop. 中文触发：写 loop、设计 loop、做一个 loop、检查 loop 对不对、loop 体检、loop 会不会跑飞、可判定目标、五个崩法、plan build judge。</intent>
+  <instructions>
+<![CDATA[
+> **Premise.** An LLM is a feed-forward system: prompt in → tokens out, with no built-in "steer toward the goal" across turns. To make it *behave* like a goal-oriented system, you wrap a feedback loop around it. This skill helps you **write** that loop correctly and **review** it so it won't run away.
+**Use it when:**
+- You want to hand a repeating task to an agent that runs over and over (write→test, test→fix, fix→verify…).
+- You already have a loop and worry it spins, cheats, or runs a wrong answer to completion.
+**Don't use it for:**
+- A one-off task → just do it; don't wrap a loop around it.
+- A plain timer / poll → use `/loop`; no design needed.
+- *How to wire the loop architecture* (pipelines → DAGs, long-run recovery) → that's the mechanism layer; see `autonomous-loops` / `continuous-agent-loop`. **This skill only covers "is the goal right, and will it run away" — it does not re-explain mechanism.**
+| Level | Who owns it | What it does |
+|---|---|---|
+| **Execution** (low) | machine / agent | Measures "how far from the literal goal" and grinds it to zero. The machine is strong here. |
+| **Judgment** (high) | **human** | Decides "is this goal itself right, should it change, should it stop." The machine can't step outside its own loop to question the goal. |
+> A thermostat can feed back "how far from 26°C," but when you have a fever and want 28°C it can't judge whether 26 is the *right* target — it just grinds toward 26. **"What to set today" is always the human's call.**
+> Handing judgment / sign-off / the last switch to the machine = removing the high-level feedback = it sprints, fast and hard, toward a goal no one questioned → wrong output.
+① the task repeats weekly or more　② verification can be automated　③ the token budget can take it　④ the agent has tools that actually *run and see the result*
+Miss any one → **don't build a loop**; do it by hand or another way.
+> What stops most people isn't "can I write a loop," it's "does my repo deserve one." A repo that deserves a loop has a reconciliation baseline (golden sample / upstream total) + tests + a lint guard. **A repo that doesn't deserve a loop will only have its errors amplified by one.**
+The whole loop rides on the comparator's "is it done yet?" **The comparator can only work if your exit condition can be judged yes/no by a machine.**
+- Bad: Vague ("make it good," "write it sharper") → the comparator can't judge → either it never passes (stuck retrying) or it guesses (passes/blocks at random).
+- Good: Decidable ("all 96 unit tests green AND a change-list is produced," "module-02 fields filled, pytest passes, business logic untouched") → one check settles it; the loop converges cleanly.
+**Five-point goal framework:**
+1. **Done-criterion is machine-verifiable.**
+2. **Boundary conditions defined alongside the done-criterion** ("what it must NOT do") — anti-Goodhart; missing boundaries = a license to cheat.
+3. **Has a failure fallback** — retry cap N + escalate to a human when exceeded.
+4. **Goal is layered.**
+]]>
+  </instructions>
+</agyos_skill>

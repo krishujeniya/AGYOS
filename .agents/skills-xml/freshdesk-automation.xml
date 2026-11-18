@@ -1,0 +1,32 @@
+<agyos_skill id="freshdesk-automation">
+  <intent>Automate Freshdesk helpdesk operations including tickets, contacts, companies, notes, and replies via Rube MCP (Composio). Always search tools first for current schemas.</intent>
+  <instructions>
+<![CDATA[
+Automate Freshdesk customer support workflows including ticket management, contact and company operations, notes, replies, and ticket search through Composio's Freshdesk toolkit.
+- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
+- Active Freshdesk connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `freshdesk`
+- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
+2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `freshdesk`
+3. If connection is not ACTIVE, follow the returned auth link to complete Freshdesk authentication
+4. Confirm connection status shows ACTIVE before running any workflows
+**When to use**: User wants to create a new support ticket, update an existing ticket, or view ticket details.
+**Tool sequence**:
+1. `FRESHDESK_SEARCH_CONTACTS` - Find requester by email to get requester_id [Optional]
+2. `FRESHDESK_LIST_TICKET_FIELDS` - Check available custom fields and statuses [Optional]
+3. `FRESHDESK_CREATE_TICKET` - Create a new ticket with subject, description, requester info [Required]
+4. `FRESHDESK_UPDATE_TICKET` - Modify ticket status, priority, assignee, or other fields [Optional]
+5. `FRESHDESK_VIEW_TICKET` - Retrieve full ticket details by ID [Optional]
+**Key parameters for FRESHDESK_CREATE_TICKET**:
+- `subject`: Ticket subject (required)
+- `description`: HTML content of the ticket (required)
+- `email`: Requester email (at least one requester identifier required)
+- `requester_id`: User ID of requester (alternative to email)
+- `status`: 2=Open, 3=Pending, 4=Resolved, 5=Closed (default 2)
+- `priority`: 1=Low, 2=Medium, 3=High, 4=Urgent (default 1)
+- `source`: 1=Email, 2=Portal, 3=Phone, 7=Chat (default 2)
+- `responder_id`: Agent ID to assign the ticket to
+]]>
+  </instructions>
+</agyos_skill>

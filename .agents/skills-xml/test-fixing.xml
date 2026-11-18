@@ -1,0 +1,32 @@
+<agyos_skill id="test-fixing">
+  <intent>Systematically identify and fix all failing tests using smart grouping strategies. Use when explicitly asks to fix tests (\</intent>
+  <instructions>
+<![CDATA[
+Systematically identify and fix all failing tests using smart grouping strategies.
+- Explicitly asks to fix tests ("fix these tests", "make tests pass")
+- Reports test failures ("tests are failing", "test suite is broken")
+- Completes implementation and wants tests passing
+- Mentions CI/CD failures due to tests
+Run `make test` to identify all failing tests.
+Analyze output for:
+- Total number of failures
+- Error types and patterns
+- Affected modules/files
+Group similar failures by:
+- **Error type**: ImportError, AttributeError, AssertionError, etc.
+- **Module/file**: Same file causing multiple test failure
+- **Root cause**: Missing dependencies, API changes, refactoring impacts
+Prioritize groups by:
+- Number of affected tests (highest impact first)
+- Dependency order (fix infrastructure before functionality)
+For each group (starting with highest impact):
+1. **Identify root cause**
+- Read relevant code
+- Check recent changes with `git diff`
+- Understand the error pattern
+2. **Implement fix**
+- Use Edit tool for code changes
+- Follow project conventions (see CLAUDE.md)
+]]>
+  </instructions>
+</agyos_skill>

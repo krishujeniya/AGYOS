@@ -1,0 +1,32 @@
+<agyos_skill id="news-sentiment-engine">
+  <intent>Multi-source RSS news aggregation with Claude-powered sentiment analysis and structured briefing output</intent>
+  <instructions>
+<![CDATA[
+Collect and analyze AI/tech news from multiple sources with Claude-powered sentiment analysis. Open source lite version.
+- Use when preparing a concise AI or technology news briefing from multiple RSS sources.
+- Use when you need ranked article summaries with sentiment, tags, and impact scoring.
+- Use when monitoring industry changes across product launches, policy moves, and infrastructure shifts.
+- Use when deduplicating overlapping coverage before writing a daily or weekly briefing.
+- Collects news from 4+ RSS feeds (TechCrunch, The Verge, Ars Technica, Hacker News)
+- Deduplicates articles across sources
+- Ranks by importance (industry impact, technology trends, policy changes)
+- Generates structured briefing with sentiment tags
+- Outputs formatted briefing card
+```
+Collect latest AI/tech news from RSS feeds.
+Rank top 5 by importance to the tech industry.
+For each: summary (2-3 sentences), sentiment (positive/negative/neutral),
+impact score (1-5), industry tags, one-sentence commentary.
+Output as a structured briefing card.
+```
+```
+AI/Tech News Briefing — 2026-05-13
+1. OpenAI announces GPT-5 with 2M context window
+Source: TechCrunch | Impact: 5/5
+Tags: #AI #LLM #OpenAI
+Sentiment: Positive
+Summary: OpenAI unveiled GPT-5 with a 2M token context window and
+improved reasoning. Enterprise pricing starts at $0.03/1k tokens.
+]]>
+  </instructions>
+</agyos_skill>

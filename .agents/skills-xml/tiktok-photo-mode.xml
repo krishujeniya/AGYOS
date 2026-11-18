@@ -1,0 +1,32 @@
+<agyos_skill id="tiktok-photo-mode">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+A **format-execution skill** — produce a TikTok-native Photo Mode carousel (craft for completion) **and**
+the exact WoopSocial PHOTO publish config. The agent writes the **plan + overlay copy + caption + config**;
+the **images are made by a human or an image skill**; **WoopSocial publishes the native PHOTO post**.
+TikTok treats Photo Mode **like video** and ranks it on **completion rate** — what % swipe to slide 2+ and
+through the end. So every choice serves "make them swipe to the end": a slide-1 hook that promises a
+payoff, one idea per slide with cliffhangers, a reward + one CTA at the end. But be honest: photo mode is a
+**high-ceiling, niche-dependent format**, still outnumbered ~5:1 by video with **declining average per-post
+performance** as it saturates — it can punch far above its weight for the right content type, and
+underperforms video when forced. **Never promise virality.** Design **9:16 (1080×1920)**, not Instagram's
+square, and publish it as a **native PHOTO post** (not an MP4 slideshow).
+1. **brand-profile** — niche + voice (does a swipeable format fit?).
+2. **goals-and-kpis** — the goal (saves / comments / follows / reach).
+(Depth: `references/the-swipe-framework.md`.)
+- **S — Stop the scroll on slide 1:** the thumbnail hook (bold visual + overlay question/claim) that
+promises a payoff.
+- **W — Win the niche fit:** pick a swipeable type (listicle / before-after / tutorial / hot take / photo
+dump / story / myth-bust); don't force it — photo mode is niche-dependent.
+- **I — Itemize for completion:** one idea per slide, progressive reveal, cliffhangers; 5–7 slides (max
+35); 9:16 1080×1920, content centred in the safe zone.
+- **P — Pay off + prompt:** reward on the final slide + one CTA; question in the caption; don't beg for likes.
+- **E — Equip the publish config:** `postType=PHOTO`, `privacyLevel` (from platform-inputs), `allowComment`,
+`autoAddMusic` (applies to PHOTO), truthful `isYourBrand`/`isBrandedContent`, `DIRECT_POST` vs
+`MEDIA_UPLOAD`; 1–2 hashtags + overlay keywords (TikTok SEO); **validate before publish.**
+The honest performance tension (high-ceiling vs video-dominance + declining averages); completion rate as
+the primary signal; 9:16 1080×1920 + safe zone; 5–7 slides; hook / progressive reveal / cliffhanger /
+]]>
+  </instructions>
+</agyos_skill>

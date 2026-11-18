@@ -1,0 +1,32 @@
+<agyos_skill id="upgrading-expo">
+  <intent>Upgrade Expo SDK versions safely. Use when updating an Expo project and checking breaking changes, package compatibility, native configuration, and platform builds.</intent>
+  <instructions>
+<![CDATA[
+Upgrade Expo SDK versions safely. Use when updating an Expo project and checking breaking changes, package compatibility, native configuration, and platform builds.
+Use this skill when you need to upgrade Expo SDK versions.
+Use this skill when:
+- Upgrading to a new Expo SDK version
+- Handling breaking changes between SDK versions
+- Updating dependencies for compatibility
+- Migrating deprecated APIs to new versions
+- Preparing apps for new Expo features
+This skill guides you through upgrading Expo SDK versions:
+1. **Pre-Upgrade Planning**: Review release notes and breaking changes
+2. **Dependency Updates**: Update packages for SDK compatibility
+3. **Configuration Migration**: Update app.json and configuration files
+4. **Code Updates**: Migrate deprecated APIs to new versions
+5. **Testing**: Verify app functionality after upgrade
+- Review Expo SDK release notes
+- Identify breaking changes affecting your app
+- Check compatibility of third-party packages
+- Backup current project state
+- Create a feature branch for the upgrade
+```bash
+npm install -g expo-cli@latest
+npx expo install expo@latest
+npx expo install --fix
+```
+- Review migration guides for breaking changes
+]]>
+  </instructions>
+</agyos_skill>

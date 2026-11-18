@@ -1,0 +1,32 @@
+<agyos_skill id="spline-3d-integration">
+  <intent>Use when adding interactive 3D scenes from Spline.design to web projects, including React embedding and runtime control API.</intent>
+  <instructions>
+<![CDATA[
+Master guide for embedding interactive 3D scenes from [Spline.design](https://spline.design) into web projects.
+- You need to embed an interactive Spline scene into a web project.
+- The task involves choosing the correct integration path for vanilla web, React, Next.js, Vue, or iframe contexts.
+- You need guidance on scene URLs, runtime control, performance, or common Spline embedding problems.
+| Task                              | Guide                                                          |
+| --------------------------------- | -------------------------------------------------------------- |
+| Vanilla HTML/JS embed             | [guides/VANILLA_INTEGRATION.md](guides/VANILLA_INTEGRATION.md) |
+| React / Next.js / Vue embed       | [guides/REACT_INTEGRATION.md](guides/REACT_INTEGRATION.md)     |
+| Performance & mobile optimization | [guides/PERFORMANCE.md](guides/PERFORMANCE.md)                 |
+| Debugging & common problems       | [guides/COMMON_PROBLEMS.md](guides/COMMON_PROBLEMS.md)         |
+| File                                                                   | What it shows                                            |
+| ---------------------------------------------------------------------- | -------------------------------------------------------- |
+| [examples/vanilla-embed.html](examples/vanilla-embed.html)             | Minimal vanilla JS embed with background + fallback      |
+| [examples/react-spline-wrapper.tsx](examples/react-spline-wrapper.tsx) | Production-ready lazy-loaded React wrapper with fallback |
+| [examples/interactive-scene.tsx](examples/interactive-scene.tsx)       | Full interactive example: events, object control, camera |
+Spline is a browser-based 3D design tool — think Figma, but for 3D. Designers create interactive 3D scenes (objects, materials, animations, physics, events) in the Spline editor, then export them for the web via a hosted `.splinecode` file URL.
+Before writing any code, check the existing project files to determine the framework.
+| Stack                          | Method                                                   |
+| ------------------------------ | -------------------------------------------------------- |
+| Vanilla HTML/JS                | `<spline-viewer>` web component OR `@splinetool/runtime` |
+| React / Vite                   | `@splinetool/react-spline`                               |
+| Next.js                        | `@splinetool/react-spline/next`                          |
+| Vue                            | `@splinetool/vue-spline`                                 |
+| iframe (Webflow, Notion, etc.) | Public URL iframe                                        |
+The user must go to their Spline editor → **Export** → **Code Export** → copy the `prod.spline.design` URL:
+]]>
+  </instructions>
+</agyos_skill>

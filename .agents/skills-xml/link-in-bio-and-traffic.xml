@@ -1,0 +1,32 @@
+<agyos_skill id="link-in-bio-and-traffic">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **conversion bridge** — turn reach into clicks and an **owned audience**. The agent designs the
+strategy and post copy; **scheduling-and-queue → WoopSocial** publishes the driving posts and places
+links where supported; the **hub, landing page, and email tool are external.**
+A platform *rents* you attention and can change the rules tomorrow; your **audience is the thing you
+own.** The bio link's real job is converting reach into an **owned list** (email/SMS/community) that
+survives algorithm shifts — it's a **revenue engine or a leak** (optimized profiles convert ~10–15% of
+visitors). Most accounts waste it on a **homepage or link-graveyard**; the top move is the opposite of
+variety — **one clear action**, a **value-first capture** (lead magnet → email) **before** any sale, and
+the **right link placement per platform** (because several suppress in-post links).
+1. **brand-profile** — positioning/offer.
+2. **goals-and-kpis** — the **conversion goal** the link must serve.
+(Depth: `references/the-click-framework.md`.)
+- **C — Capture an owned audience:** lead magnet → email **before** the sale; the goal is a list you own.
+- **L — Lead to ONE clear action:** focus beats variety; kill the homepage/link-graveyard; match the
+action to the content's intent.
+- **I — Intent-match the destination per platform:** IG → lead magnet; X → one specific page; YouTube →
+more substance; LinkedIn → booking/lead capture.
+- **C — Carry the link correctly per platform:** **X/LinkedIn/Facebook → first comment**; **IG/TikTok →
+bio + Stories sticker + verbal CTA**; **Pinterest → link-out**; **YouTube → description + pinned comment**.
+- **K — Keep it tracked + fresh:** branded short link + **UTM + GA4**; A/B the top hub; rotate weekly,
+audit monthly; **never fabricate** a conversion.
+Rented-vs-owned; revenue-engine-or-leak; the homepage/link-dump mistake; capture-before-sell; the
+per-platform placement table + link suppression; destination-by-intent; branded short links + UTM + GA4;
+the bio link as A/B sandbox; living-document cadence: `references/traffic-2026-reality.md`. Placement +
+destination cheat-sheet, capture funnel, hub structure, UTM scheme + worked examples:
+]]>
+  </instructions>
+</agyos_skill>

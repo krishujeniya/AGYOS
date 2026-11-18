@@ -1,0 +1,32 @@
+<agyos_skill id="odoo-docker-deployment">
+  <intent>Production-ready Docker and docker-compose setup for Odoo with PostgreSQL, persistent volumes, environment-based configuration, and Nginx reverse proxy.</intent>
+  <instructions>
+<![CDATA[
+This skill provides a complete, production-ready Docker setup for Odoo, including PostgreSQL, persistent file storage, environment variable configuration, and an optional Nginx reverse proxy with SSL. It covers both development and production configurations.
+- Spinning up a local Odoo development environment with Docker.
+- Deploying Odoo to a VPS or cloud server (AWS, DigitalOcean, etc.).
+- Troubleshooting Odoo container startup failures or database connection errors.
+- Adding a reverse proxy with SSL to an existing Odoo Docker setup.
+1. **Activate**: Mention `@odoo-docker-deployment` and describe your deployment scenario.
+2. **Generate**: Receive a complete `docker-compose.yml` and `odoo.conf` ready to run.
+3. **Debug**: Describe your container error and get a diagnosis with a fix.
+```yaml
+services:
+db:
+image: postgres:15
+restart: always
+environment:
+POSTGRES_DB: odoo
+POSTGRES_USER: odoo
+POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+volumes:
+- postgres-data:/var/lib/postgresql/data
+networks:
+- odoo-net
+odoo:
+image: odoo:17.0
+restart: always
+depends_on:
+]]>
+  </instructions>
+</agyos_skill>

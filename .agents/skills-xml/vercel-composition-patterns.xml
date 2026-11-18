@@ -1,0 +1,32 @@
+<agyos_skill id="vercel-composition-patterns">
+  <intent>React and Next.js composition patterns that scale. Use when refactoring components with boolean prop proliferation, building flexible component libraries, designing reusable APIs, or applying Next.js/React 19 Server/Client component architecture. Triggers on React tasks, Next.js components, Compound Components, or context providers.</intent>
+  <instructions>
+<![CDATA[
+Composition patterns for building flexible, maintainable React components, tailored for Vercel/Next.js architectures. Avoid boolean prop proliferation by using compound components, lifting state, and composing internals.
+These patterns ensure components scale easily without turning into massive, unmaintainable monoliths filled with `if/else` logic based on dozens of boolean props. It makes the codebase easier for both humans and AI agents to work with.
+- Refactoring UI components with many boolean props (`isLarge`, `hasIcon`, `primary`).
+- Building reusable component libraries (e.g., using HeroUI or Radix).
+- Designing flexible API boundaries between React Server Components (RSC) and Client Components.
+- Working with Context Providers or compound components.
+**Why:** Adding a boolean flag for every new feature creates exponential complexity combinations.
+**Rule:** Don't add boolean props (e.g., `hasHeader`, `showFooter`) to customize structural behavior. Use composition (`children`) instead.
+**❌ Bad:**
+```tsx
+<Modal
+isOpen={true}
+title="Save Changes"
+hasCloseButton={true}
+showFooter={true}
+confirmText="Save"
+/>
+```
+**✅ Good (Composition):**
+```tsx
+<Modal isOpen={true}>
+<ModalHeader>
+<ModalTitle>Save Changes</ModalTitle>
+<ModalCloseButton />
+</ModalHeader>
+]]>
+  </instructions>
+</agyos_skill>

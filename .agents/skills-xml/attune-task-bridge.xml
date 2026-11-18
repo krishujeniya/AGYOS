@@ -1,0 +1,32 @@
+<agyos_skill id="attune-task-bridge">
+  <intent>Check for and notify about pending Attune tasks waiting for implementation. Use when Kimi needs to (1) Check if there are tasks in "In Progress" column, (2) Get notified when new tasks become available, (3) Poll for tasks continuously, (4) View task details before implementation, or (5) Stay synchronized with the Attune Task Board. Integrates with the Attune FastAPI backend Task Board API.</intent>
+  <instructions>
+<![CDATA[
+Bridge between Kimi and the Attune Task Board. Notifies when tasks are moved to "In Progress" and ready for implementation.
+**Option A: Push Notifications (Recommended)**
+```bash
+python3 .agents/skills/attune-task-bridge/scripts/ws_bridge.py
+```
+**Option B: Manual Check**
+```bash
+python3 .agents/skills/attune-task-bridge/scripts/check_tasks.py
+```
+**Option C: Polling Mode**
+```bash
+python3 .agents/skills/attune-task-bridge/scripts/poll_tasks.py
+```
+**Push-based notifications via WebSocket.** Connects to the Attune Task Board and instantly notifies when tasks move to "in_progress".
+**Why use this instead of polling?**
+- ✅ Instant notification (no delay)
+- ✅ No wasted API calls
+- ✅ Shows task move events in real-time
+- ✅ Auto-reconnects on connection loss
+**Usage:**
+```bash
+python3 scripts/ws_bridge.py
+python3 scripts/ws_bridge.py --api-key your-key
+python3 scripts/ws_bridge.py --no-reconnect
+```
+]]>
+  </instructions>
+</agyos_skill>

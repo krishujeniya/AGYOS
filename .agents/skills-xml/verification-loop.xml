@@ -1,0 +1,32 @@
+<agyos_skill id="verification-loop">
+  <intent>Run a six-phase verification of a Claude Code session's work — build, type check, lint, tests with coverage, security grep, and diff review — then produce a PASS/FAIL verification report. Use when verifying work after completing a feature or refactor, before creating a PR, or when quality gates must pass.</intent>
+  <instructions>
+<![CDATA[
+A comprehensive verification system for Claude Code sessions.
+Invoke this skill:
+- After completing a feature or significant code change
+- Before creating a PR
+- When you want to ensure quality gates pass
+- After refactoring
+> [!NOTE]
+> **Local Build Policy:** When instructed or in rapid iterative development, do NOT run full production/static export builds locally (e.g., `npm run build:pages` or slow static exports). Only perform fast type checking (`npm run typecheck` / `npx tsc --noEmit`) and unit tests locally. Leave heavy multi-minute builds to remote CI/CD.
+```bash
+set -o pipefail  # report the build's exit status, not tail's
+npm run build 2>&1 | tail -20
+pnpm build 2>&1 | tail -20
+```
+If build fails, STOP and fix before continuing.
+```bash
+set -o pipefail
+npx --no-install tsc --noEmit 2>&1 | sed -n '1,30p'
+pyright . 2>&1 | sed -n '1,30p'
+```
+Report all type errors. Fix critical ones before continuing.
+Use `sed` to limit displayed output while consuming the whole stream. This keeps a
+successful linter from failing on SIGPIPE when `pipefail` is enabled.
+```bash
+set -o pipefail
+npm run lint 2>&1 | sed -n '1,30p'
+]]>
+  </instructions>
+</agyos_skill>

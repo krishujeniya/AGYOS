@@ -1,0 +1,32 @@
+<agyos_skill id="trend-jacking">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+Riding a trend can earn reach a brand could never buy — or get it dragged. The difference is
+discipline. Trend-jacking works only when a trend is **a fit, safe to touch, and still rising**, and
+most brand failures come from skipping one of those checks: forcing an irrelevant trend, touching a
+sensitive moment, or arriving late.
+So this skill is mostly **judgment**. Before anything gets made, a trend runs three gates:
+1. **FIT** — can you add a genuine angle, or are you just slapping your logo on someone's moment?
+2. **SAFETY** — would a brand inserting itself here look opportunistic, tone-deaf, or exploitative?
+3. **TIMING** — is the trend still on the way up, or already saturated?
+**Any single fail = don't do it.** Fit and safety are checked *before* timing — a fast post on an
+unfit or unsafe trend is just a fast mistake. (Full framework: `references/the-three-gates.md`.)
+> Honest scope: this skill **vets and executes**. It does **not** know what's trending right now —
+> live trends change hourly and can't be recalled from training data. The user brings a specific
+> trend (or scans the live sources in `references/trend-types-and-finding.md`); the skill judges and
+> rides it.
+Load `brand-profile.md`, `voice.md`, and `audience.md` — they decide FIT (does it match the brand +
+audience?), the voice of the remix, and the SAFETY guardrails.
+Is there an **authentic connection** and a **real angle** your audience would enjoy? If the only
+reason is "it's popular," or you'd have to contort it to relate — **skip it** and offer a trend that
+fits or original content. Not every trend is your trend.
+Screen for sensitivity and brand-safety. **Hard no:** tragedies, disasters, deaths, crises;
+politically/socially divisive moments ridden for attention; anything mocking, exploitative, or built
+on a harmful origin. When in doubt, sit it out. (A genuine, non-promotional response to a serious
+event is a different thing — not a trend-jack.) See `references/the-three-gates.md`.
+Where is the trend in its lifecycle (emerging → rising → peak → saturated → dead)? **Rising = go;
+saturated/dead = skip** (late reads as out-of-touch). Once fit and safety pass, move fast — the
+]]>
+  </instructions>
+</agyos_skill>

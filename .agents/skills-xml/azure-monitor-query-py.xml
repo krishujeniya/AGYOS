@@ -1,0 +1,32 @@
+<agyos_skill id="azure-monitor-query-py">
+  <intent>Azure Monitor Query SDK for Python. Use for querying Log Analytics workspaces and Azure Monitor metrics.</intent>
+  <instructions>
+<![CDATA[
+Query logs and metrics from Azure Monitor and Log Analytics workspaces.
+```bash
+pip install azure-monitor-query
+```
+```bash
+AZURE_LOG_ANALYTICS_WORKSPACE_ID=<workspace-id>
+AZURE_METRICS_RESOURCE_URI=/subscriptions/<sub>/resourceGroups/<rg>/providers/<provider>/<type>/<name>
+```
+```python
+from azure.identity import DefaultAzureCredential
+credential = DefaultAzureCredential()
+```
+```python
+from azure.monitor.query import LogsQueryClient
+from datetime import timedelta
+client = LogsQueryClient(credential)
+query = """
+AppRequests
+| where TimeGenerated > ago(1h)
+| summarize count() by bin(TimeGenerated, 5m), ResultCode
+| order by TimeGenerated desc
+"""
+response = client.query_workspace(
+workspace_id=os.environ["AZURE_LOG_ANALYTICS_WORKSPACE_ID"],
+query=query,
+]]>
+  </instructions>
+</agyos_skill>

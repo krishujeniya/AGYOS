@@ -1,0 +1,32 @@
+<agyos_skill id="monte-carlo-prevent">
+  <intent>Surfaces Monte Carlo data observability context (table health, alerts, lineage, blast radius) before SQL/dbt edits.</intent>
+  <instructions>
+<![CDATA[
+This skill brings Monte Carlo's data observability context directly into your editor. When you're modifying a dbt model or SQL pipeline, use it to surface table health, lineage, active alerts, and to generate monitors-as-code without leaving Claude Code.
+Reference files live next to this skill file. **Use the Read tool** (not MCP resources) to access them:
+- Full workflow step-by-step instructions: `references/workflows.md` (relative to this file)
+- MCP parameter details: `references/parameters.md` (relative to this file)
+- Troubleshooting: `references/TROUBLESHOOTING.md` (relative to this file)
+**Do not wait to be asked.** Run the appropriate workflow automatically whenever the user:
+- References or opens a `.sql` file or dbt model (files in `models/`) → run Workflow 1
+- Mentions a table name, dataset, or dbt model name in passing → run Workflow 1
+- Describes a planned change to a model (new column, join update, filter change, refactor) → **STOP — run Workflow 4 before writing any code**
+-
+- Adds a new column, metric, or output expression to an existing
+model → run Workflow 4 first, then ALWAYS offer Workflow 2
+regardless of risk tier — do not skip the monitor offer
+- Asks about data quality, freshness, row counts, or anomalies → run Workflow 1
+- Wants to triage or respond to a data quality alert → run Workflow 3
+Present the results as context the engineer needs before proceeding — not as a response to a question.
+Do not invoke Monte Carlo tools for:
+- Seed files (files in seeds/ directory)
+- Analysis files (files in analyses/ directory)
+- One-off or ad-hoc SQL scripts not part of a dbt project
+- Configuration files (dbt_project.yml, profiles.yml, packages.yml)
+- Test files unless the user is specifically asking about data quality
+If uncertain whether a file is a dbt model, check for {{ ref() }} or {{ source() }}
+Jinja references — if absent, do not activate.
+Macro files (`macros/`) and snapshot files (`snapshots/`) are **not** models, so
+]]>
+  </instructions>
+</agyos_skill>

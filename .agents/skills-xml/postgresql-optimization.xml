@@ -1,0 +1,32 @@
+<agyos_skill id="postgresql-optimization">
+  <intent>PostgreSQL database optimization workflow for query tuning, indexing strategies, performance analysis, and production database management.</intent>
+  <instructions>
+<![CDATA[
+Specialized workflow for PostgreSQL database optimization including query tuning, indexing strategies, performance analysis, vacuum management, and production database administration.
+Use this workflow when:
+- Optimizing slow PostgreSQL queries
+- Designing indexing strategies
+- Analyzing database performance
+- Tuning PostgreSQL configuration
+- Managing production databases
+- `database-optimizer` - Database optimization
+- `postgres-best-practices` - PostgreSQL best practices
+1. Check database version
+2. Review configuration
+3. Analyze slow queries
+4. Check resource usage
+5. Identify bottlenecks
+```
+Use @database-optimizer to assess PostgreSQL performance
+```
+- `sql-optimization-patterns` - SQL optimization
+- `postgres-best-practices` - PostgreSQL patterns
+1. Run EXPLAIN ANALYZE
+2. Identify scan types
+3. Check join strategies
+4. Analyze execution time
+5. Find optimization opportunities
+```
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,27 @@
+<agyos_skill id="auth-implementation-patterns">
+  <intent>Build secure, scalable authentication and authorization systems using industry-standard patterns and modern best practices.</intent>
+  <instructions>
+<![CDATA[
+Build secure, scalable authentication and authorization systems using industry-standard patterns and modern best practices.
+- Implementing user authentication systems
+- Securing REST or GraphQL APIs
+- Adding OAuth2/social login or SSO
+- Designing session management or RBAC
+- Debugging authentication or authorization issues
+- You only need UI copy or login page styling
+- The task is infrastructure-only without identity concerns
+- You cannot change auth policies or credential storage
+- Define users, tenants, flows, and threat model constraints.
+- Choose auth strategy (session, JWT, OIDC) and token lifecycle.
+- Design authorization model and policy enforcement points.
+- Plan secrets storage, rotation, logging, and audit requirements.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+- Never log secrets, tokens, or credentials.
+- Enforce least privilege and secure storage for keys.
+- `resources/implementation-playbook.md` for detailed patterns and examples.
+- Use this skill only when the task clearly matches the scope described above.
+- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
+- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="x-api">
+  <intent>X/Twitter API integration for posting tweets, threads, reading timelines, search, and analytics. Covers OAuth auth patterns, rate limits, and platform-native content posting. Use when the user wants to interact with X programmatically.</intent>
+  <instructions>
+<![CDATA[
+> **Drift-prone skill.** X API endpoints, access tiers, quotas, and write
+> permissions change frequently. Verify current developer docs and account
+> access before quoting rate limits or implementing a posting/search flow.
+Programmatic interaction with X (Twitter) for posting, reading, searching, and analytics.
+- User wants to post tweets or threads programmatically
+- Reading timeline, mentions, or user data from X
+- Searching X for content, trends, or conversations
+- Building X integrations or bots
+- Analytics and engagement tracking
+- User says "post to X", "tweet", "X API", or "Twitter API"
+Best for: read-heavy operations, search, public data.
+```bash
+export X_BEARER_TOKEN="your-bearer-token"
+```
+```python
+import os
+import requests
+bearer = os.environ["X_BEARER_TOKEN"]
+headers = {"Authorization": f"Bearer {bearer}"}
+resp = requests.get(
+"https://api.x.com/2/tweets/search/recent",
+headers=headers,
+params={"query": "claude code", "max_results": 10}
+)
+tweets = resp.json()
+]]>
+  </instructions>
+</agyos_skill>

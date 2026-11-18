@@ -1,0 +1,32 @@
+<agyos_skill id="bash-scripting">
+  <intent>Bash scripting workflow for creating production-ready shell scripts with defensive patterns, error handling, and testing.</intent>
+  <instructions>
+<![CDATA[
+Specialized workflow for creating robust, production-ready bash scripts with defensive programming patterns, comprehensive error handling, and automated testing.
+Use this workflow when:
+- Creating automation scripts
+- Writing system administration tools
+- Building deployment scripts
+- Developing backup solutions
+- Creating CI/CD scripts
+- `bash-pro` - Professional scripting
+- `bash-defensive-patterns` - Defensive patterns
+1. Define script purpose
+2. Identify inputs/outputs
+3. Plan error handling
+4. Design logging strategy
+5. Document requirements
+```
+Use @bash-pro to design production-ready bash script
+```
+- `bash-pro` - Script structure
+- `bash-defensive-patterns` - Safety patterns
+1. Add shebang and strict mode
+2. Create usage function
+3. Implement argument parsing
+4. Set up logging
+5. Add cleanup handlers
+```
+]]>
+  </instructions>
+</agyos_skill>

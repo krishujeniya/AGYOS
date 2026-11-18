@@ -1,0 +1,32 @@
+<agyos_skill id="engagement-routine">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **operating system** for engagement. `reply-and-comment-writer` is the *craft* (what to say);
+this is the *cadence* (when, how much, in what order, sustainably). The growth skills all call for "an
+engagement routine" — this is it.
+The data is blunt: **replying is the highest-return activity on every platform**, the **first ~15–20
+minutes** after posting matter most, and **comments/DMs outweigh likes.** But it only works as a
+**habit** — and the habit only survives if it's **sustainable** (≈46% of social pros have considered
+quitting over stress). So this skill optimizes for **return *and* longevity.**
+Load `brand-profile.md` / `social-strategy.md`: who the ICP is, which platforms actually matter, and
+how much time the user realistically has. Right-size everything to that.
+Design **time-boxed engagement windows** instead of all-day grazing — e.g. **~20 min morning + ~20 min
+afternoon**, plus a **golden-hour pass** right after each post publishes. Order within each window:
+**comments → DMs → urgent/negative → proactive comments** on ICP/peers/leaders. See
+`references/the-daily-and-weekly-routine.md`.
+"No time to engage" is solved by **batching + scheduling content** (→ `batch-content-plan`,
+`scheduling-and-queue`) to reclaim the hours, then spending them engaging. The flywheel: **schedule →
+freed time → genuine engagement → reach/relationships → more reach.** Time posts for windows you can be
+present. See `references/the-scheduling-engagement-flywheel.md`.
+When time is short, do the **highest-return things first** (golden-hour comments → DMs → negative →
+proactive), focus on **the right people (ICP/peers), not vanity volume**, and map the routine to a
+**goal** with 2–3 meaningful signals you can read **natively** (no WoopSocial analytics). See
+`references/triage-priorities-and-goals.md`.
+Build in **boundaries**: notification discipline, **set + communicate response windows**, protect
+off-hours, and prefer a **small repeatable routine you keep** over a heroic one you abandon.
+**Consistency at a holdable pace** beats sprints. See `references/sustainability-and-boundaries.md`.
+- **WoopSocial has no inbox.** It **publishes/schedules** (the flywheel's first half); it
+]]>
+  </instructions>
+</agyos_skill>

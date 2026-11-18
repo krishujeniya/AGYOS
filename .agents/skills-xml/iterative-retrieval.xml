@@ -1,0 +1,32 @@
+<agyos_skill id="iterative-retrieval">
+  <intent>Pattern for progressively refining context retrieval to solve the subagent context problem. Use when a subagent lacks the context it needs and retrieval must be refined across passes.</intent>
+  <instructions>
+<![CDATA[
+Solves the "context problem" in multi-agent workflows where subagents don't know what context they need until they start working.
+- Spawning subagents that need codebase context they cannot predict upfront
+- Building multi-agent workflows where context is progressively refined
+- Encountering "context too large" or "missing context" failures in agent tasks
+- Designing RAG-like retrieval pipelines for code exploration
+- Optimizing token usage in agent orchestration
+Subagents are spawned with limited context. They don't know:
+- Which files contain relevant code
+- What patterns exist in the codebase
+- What terminology the project uses
+Standard approaches fail:
+- **Send everything**: Exceeds context limits
+- **Send nothing**: Agent lacks critical information
+- **Guess what's needed**: Often wrong
+A 4-phase loop that progressively refines context:
+```
+┌─────────────────────────────────────────────┐
+│                                             │
+│   ┌──────────┐      ┌──────────┐            │
+│   │ DISPATCH │─────│ EVALUATE │            │
+│   └──────────┘      └──────────┘            │
+│        ▲                  │                 │
+│        │                  ▼                 │
+│   ┌──────────┐      ┌──────────┐            │
+│   │   LOOP   │─────│  REFINE  │            │
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="seo-blog-writer">
+  <intent>Writes long-form blog posts with TL;DR block, definition sentence, comparison table, and 5-question FAQ for SEO ranking and AEO citation. Activate when the user wants to write a blog post, article, or long-form content piece.</intent>
+  <instructions>
+<![CDATA[
+Writes structured long-form blog posts (800–3000 words) that satisfy both SEO ranking signals and AEO citation requirements. Every post includes a TL;DR direct-answer block, a definition sentence, structured H2/H3 hierarchy, a comparison table where relevant, and exactly 5 FAQ entries written for AI extraction.
+Part of the [SEO-AEO Engine](https://github.com/mrprewsh/seo-aeo-engine).
+- Use when writing a cluster article from a content cluster map
+- Use when creating a long-form guide to build topical authority
+- Use when you need content that can be cited by AI engines like Perplexity or ChatGPT
+- Use when you need a blog post that follows a consistent, auditable structure
+Write a 2–3 sentence direct answer to the article's core question. Place it immediately after the H1 in a blockquote. This is the first block AI engines attempt to extract.
+Set H1, H2s (4–6), and H3s before writing any body content. The first H2 must be a "What Is" section with a clean definition sentence as its opening line.
+Follow the section order: What Is → Why It Matters → How It Works (with H3 sub-concepts) → Practical Steps → Common Mistakes → FAQ → Conclusion.
+Use long-tail and secondary keywords as questions. Each answer must be under 50 words and self-contained — readable without any surrounding context.
+Verify TL;DR presence, definition sentence, FAQ count, keyword placement, and heading structure before outputting.
+How to Manage a Remote Engineering Team
+TL;DR: Managing a remote engineering team requires async
+communication tools, clear documentation standards, and
+timezone-aware sprint planning. Teams that nail these three
+areas ship consistently regardless of where members are located.
+Q: What is the biggest challenge of remote engineering teams?
+A: Async communication. Without shared hours, decisions slow down
+and context gets lost. Teams that document decisions in writing
+and use structured standup tools close this gap fastest.
+Q: How do you run a daily standup with a remote team?
+A: Use async video or text standups posted at the start of each
+member's day. Tools like Loom or Slack threads work well.
+Avoid live calls across more than 2 timezones.
+- ✅ **Do:** Write the TL;DR block before writing anything else — it anchors the article
+]]>
+  </instructions>
+</agyos_skill>

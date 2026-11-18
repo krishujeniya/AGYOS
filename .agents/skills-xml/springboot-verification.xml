@@ -1,0 +1,32 @@
+<agyos_skill id="springboot-verification">
+  <intent>Run the full Spring Boot verification loop — Maven or Gradle build, SpotBugs, PMD, and Checkstyle static analysis, unit and Testcontainers integration tests with JaCoCo coverage, OWASP dependency and secret scans, and diff review — producing a pass/fail readiness report. Use when preparing a Spring Boot pull request, validating coverage thresholds, or running pre-deploy verification.</intent>
+  <instructions>
+<![CDATA[
+Run before PRs, after major changes, and pre-deploy.
+- Before opening a pull request for a Spring Boot service
+- After major refactoring or dependency upgrades
+- Pre-deployment verification for staging or production
+- Running full build → lint → test → security scan pipeline
+- Validating test coverage meets thresholds
+```bash
+mvn -T 4 clean verify -DskipTests
+./gradlew clean assemble -x test
+```
+If build fails, stop and fix.
+Maven (common plugins):
+```bash
+mvn -T 4 spotbugs:check pmd:check checkstyle:check
+```
+Gradle (if configured):
+```bash
+./gradlew checkstyleMain pmdMain spotbugsMain
+```
+```bash
+mvn -T 4 test
+mvn jacoco:report   # verify 80%+ coverage
+./gradlew test jacocoTestReport
+```
+Report:
+]]>
+  </instructions>
+</agyos_skill>

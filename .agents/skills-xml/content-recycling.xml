@@ -1,0 +1,32 @@
+<agyos_skill id="content-recycling">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **time-axis** reuse discipline — turn a *proven evergreen* asset into multiple cycles, **refreshed
+each time** so it's a new asset, not a stale duplicate. The agent drafts the refresh; a human reviews;
+**scheduling-and-queue → WoopSocial** publishes.
+Most accounts treat content as disposable — publish once, never again — and waste their best assets.
+But **~80%+ of your audience misses any given post** (only ~5–10% of a network sees it), and new
+followers never saw it at all. So your proven evergreen winners are **compounding assets.** Recycle
+them — but **refresh, don't duplicate** (identical reposting risks Meta's 2026 originality penalties
+and fatigues the core audience). Recycle **winners from a ranked list, not from memory.**
+1. **brand-profile** — pillars, non-negotiables (so the refresh stays on-brand).
+2. **voice-builder** — so the refreshed version sounds like the brand.
+(Depth: `references/the-reuse-framework.md`.)
+- **R — Resurface the winners:** audit **native analytics** for proven *evergreen* pieces (by goal:
+engagement → saves/shares; traffic → CTR; growth → follows) + strong-but-underseen posts. Keep a
+recycling vault.
+- **E — Earn the slot again:** recycle the insight with a **new hook/angle/format**; change **one
+major variable** per variant; **never repeat the same opening line.** Editing, not duplication.
+- **U — Update for now:** verify facts/stats/dates/prices/links are current; refresh anything stale;
+re-check compliance; **disclose** AI-refreshed media.
+- **S — Schedule the cycle:** space each asset **~90–120 days**; don't dump a backlog; adapt to the
+destination platform's native format.
+- **E — Evaluate & re-queue:** read native analytics per cycle; run one-variable tests; promote
+winners back into the queue, retire the rest.
+**Recycle:** evergreen + proven — tips, frameworks, timeless case studies, product guides, core
+messaging; and strong-but-underseen pieces. **Don't:** events, seasonal promos, dated news,
+trend-jacks. **Constraint:** Meta's 2026 Original Content rules throttle/demonetize duplicate reposts
+]]>
+  </instructions>
+</agyos_skill>

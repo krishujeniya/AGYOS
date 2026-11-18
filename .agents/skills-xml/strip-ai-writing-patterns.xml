@@ -1,0 +1,32 @@
+<agyos_skill id="strip-ai-writing-patterns">
+  <intent>Post-process AI-generated text through the unslop CLI to strip AI writing patterns before publishing</intent>
+  <instructions>
+<![CDATA[
+unslop is a CLI tool that post-processes text to remove AI writing patterns programmatically. Unlike skills that ask the agent to avoid AI-isms, unslop runs as a deterministic pipeline step: pipe text in, get clean text out. Use it as a final pass before committing docs, publishing posts, or sending any AI-generated content to production.
+The `--deterministic` flag makes output reproducible — same input always produces same output. The `--stdin` flag reads from stdin, enabling shell pipeline composition.
+- When you have AI-generated text ready to publish and want a final cleanup pass
+- When working in a shell pipeline where text quality needs to be enforced automatically
+- When writing commit hooks or CI steps that validate content before it ships
+- When you need reproducible text normalization across multiple runs
+Install once:
+```bash
+pipx install unslop
+uv tool install unslop
+```
+Verify:
+```bash
+unslop --version
+```
+Standard cleanup (may vary slightly between runs):
+```bash
+echo "This leverages cutting-edge AI to deliver robust solutions." | unslop --stdin
+```
+Deterministic cleanup (same input → same output every run):
+```bash
+echo "This leverages cutting-edge AI to deliver robust solutions." | unslop --stdin --deterministic
+```
+Pipe the output of any command through unslop:
+```bash
+]]>
+  </instructions>
+</agyos_skill>

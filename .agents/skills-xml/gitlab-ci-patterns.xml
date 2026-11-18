@@ -1,0 +1,32 @@
+<agyos_skill id="gitlab-ci-patterns">
+  <intent>Comprehensive GitLab CI/CD pipeline patterns for automated testing, building, and deployment.</intent>
+  <instructions>
+<![CDATA[
+Comprehensive GitLab CI/CD pipeline patterns for automated testing, building, and deployment.
+- The task is unrelated to gitlab ci patterns
+- You need a different domain or tool outside this scope
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+Create efficient GitLab CI pipelines with proper stage organization, caching, and deployment strategies.
+- Automate GitLab-based CI/CD
+- Implement multi-stage pipelines
+- Configure GitLab Runners
+- Deploy to Kubernetes from GitLab
+- Implement GitOps workflows
+```yaml
+stages:
+- build
+- test
+- deploy
+variables:
+DOCKER_DRIVER: overlay2
+DOCKER_TLS_CERTDIR: "/certs"
+build:
+stage: build
+image: node:20
+script:
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="conventional-git-commit">
+  <intent>Prepare Conventional Commit messages and review staged changes before an explicitly authorized Git commit.</intent>
+  <instructions>
+<![CDATA[
+re on `main` or `master`, you MUST create a feature branch first** — unless the user explicitly asked to commit to main. Do not ask the user whether to create a branch; just proceed with branch creation. The `create-branch` skill will still propose a branch name for the user to confirm.
+Use the `create-branch` skill to create the branch. After `create-branch` completes, verify the current branch has changed before proceeding:
+```bash
+git branch --show-current
+```
+If still on `main` or `master` (e.g., the user aborted branch creation), stop — do not commit.
+```
+<type>(<scope>): <subject>
+<body>
+<footer>
+```
+The header is required. Scope is optional. All lines must stay under 100 characters.
+| Type | Purpose |
+|------|---------|
+| `feat` | New feature |
+| `fix` | Bug fix |
+| `ref` | Refactoring (no behavior change) |
+| `perf` | Performance improvement |
+| `docs` | Documentation only |
+| `test` | Test additions or corrections |
+| `build` | Build system or dependencies |
+| `ci` | CI configuration |
+| `chore` | Maintenance tasks |
+| `style` | Code formatting (no logic change) |
+| `meta` | Repository metadata |
+]]>
+  </instructions>
+</agyos_skill>

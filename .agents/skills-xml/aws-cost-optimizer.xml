@@ -1,0 +1,32 @@
+<agyos_skill id="aws-cost-optimizer">
+  <intent>Comprehensive AWS cost analysis and optimization recommendations using AWS CLI and Cost Explorer</intent>
+  <instructions>
+<![CDATA[
+Analyze AWS spending patterns, identify waste, and provide actionable cost reduction strategies.
+Use this skill when you need to analyze AWS spending, identify cost optimization opportunities, or reduce cloud waste.
+**Cost Analysis**
+- Parse AWS Cost Explorer data for trends and anomalies
+- Break down costs by service, region, and resource tags
+- Identify month-over-month spending increases
+**Resource Optimization**
+- Detect idle EC2 instances (low CPU utilization)
+- Find unattached EBS volumes and old snapshots
+- Identify unused Elastic IPs
+- Locate underutilized RDS instances
+- Find old S3 objects eligible for lifecycle policies
+**Savings Recommendations**
+- Suggest Reserved Instance/Savings Plans opportunities
+- Recommend instance rightsizing based on CloudWatch metrics
+- Identify resources in expensive regions
+- Calculate potential savings with specific actions
+```bash
+aws ce get-cost-and-usage \
+--time-period Start=$(date -d '30 days ago' +%Y-%m-%d),End=$(date +%Y-%m-%d) \
+--granularity MONTHLY \
+--metrics BlendedCost \
+--group-by Type=DIMENSION,Key=SERVICE
+aws ce get-cost-and-usage \
+--time-period Start=$(date +%Y-%m-01),End=$(date +%Y-%m-%d) \
+]]>
+  </instructions>
+</agyos_skill>

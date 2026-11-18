@@ -1,0 +1,8 @@
+<agyos_skill id="fp-react">
+  <intent>Compatibility ID for fp-ts with React hooks, state, forms, and data fetching. Use the fp-ts-react canonical runbook.</intent>
+  <instructions>
+<![CDATA[
+Use the canonical [fp-ts-react runbook](../fp-ts-react/SKILL.md) for React hooks, state, forms, and data fetching. This ID also covers React 18/19 and Next.js 14/15 requests.
+]]>
+  </instructions>
+</agyos_skill>

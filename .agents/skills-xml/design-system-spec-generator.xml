@@ -1,0 +1,32 @@
+<agyos_skill id="design-system-spec-generator">
+  <intent>Analyze Stitch projects and synthesize a semantic design system into DESIGN.md files</intent>
+  <instructions>
+<![CDATA[
+You are an expert Design Systems Lead. Your goal is to analyze the provided technical assets and synthesize a "Semantic Design System" into a file named `DESIGN.md`.
+Use this skill when:
+- Analyzing Stitch projects
+- Creating DESIGN.md files
+- Synthesizing semantic design systems
+- Working with Stitch design language
+- Generating design documentation for Stitch projects
+This skill helps you create `DESIGN.md` files that serve as the "source of truth" for prompting Stitch to generate new screens that align perfectly with existing design language. Stitch interprets design through "Visual Descriptions" supported by specific color values.
+- Access to the Stitch MCP Server
+- A Stitch project with at least one designed screen
+- Access to the Stitch Effective Prompting Guide: https://stitch.withgoogle.com/docs/learn/prompting/
+The `DESIGN.md` file will serve as the "source of truth" for prompting Stitch to generate new screens that align perfectly with the existing design language. Stitch interprets design through "Visual Descriptions" supported by specific color values.
+To analyze a Stitch project, you must retrieve screen metadata and design assets using the Stitch MCP Server tools:
+1. **Namespace discovery**: Run `list_tools` to find the Stitch MCP prefix. Use this prefix (e.g., `mcp_stitch:`) for all subsequent calls.
+2. **Project lookup** (if Project ID is not provided):
+- Call `[prefix]:list_projects` with `filter: "view=owned"` to retrieve all user projects
+- Identify the target project by title or URL pattern
+- Extract the Project ID from the `name` field (e.g., `projects/13534454087919359824`)
+3. **Screen lookup** (if Screen ID is not provided):
+- Call `[prefix]:list_screens` with the `projectId` (just the numeric ID, not the full path)
+- Review screen titles to identify the target screen (e.g., "Home", "Landing Page")
+- Extract the Screen ID from the screen's `name` field
+4. **Metadata fetch**:
+- Call `[prefix]:get_screen` with both `projectId` and `screenId` (both as numeric IDs only)
+- This returns the complete screen object including:
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="odoo-rpc-api">
+  <intent>Expert on Odoo's external JSON-RPC and XML-RPC APIs. Covers authentication, model calls, record CRUD, and real-world integration examples in Python, JavaScript, and curl.</intent>
+  <instructions>
+<![CDATA[
+Odoo exposes a powerful external API via JSON-RPC and XML-RPC, allowing any external application to read, create, update, and delete records. This skill guides you through authenticating, calling models, and building robust integrations.
+- Connecting an external app (e.g., Django, Node.js, a mobile app) to Odoo.
+- Running automated scripts to import/export data from Odoo.
+- Building a middleware layer between Odoo and a third-party platform.
+- Debugging API authentication or permission errors.
+1. **Activate**: Mention `@odoo-rpc-api` and describe the integration you need.
+2. **Generate**: Get copy-paste ready RPC call code in Python, JavaScript, or curl.
+3. **Debug**: Paste an error and get a diagnosis with a corrected call.
+```python
+import xmlrpc.client
+url = 'https://myodoo.example.com'
+db = 'my_database'
+username = 'admin'
+password = 'my_api_key'  # Use API keys, not passwords, in production
+common = xmlrpc.client.ServerProxy(f'{url}/xmlrpc/2/common')
+uid = common.authenticate(db, username, password, {})
+print(f"Authenticated as UID: {uid}")
+models = xmlrpc.client.ServerProxy(f'{url}/xmlrpc/2/object')
+orders = models.execute_kw(db, uid, password,
+'sale.order', 'search_read',
+[[['state', '=', 'sale']]],
+{'fields': ['name', 'partner_id', 'amount_total'], 'limit': 10}
+)
+for order in orders:
+print(order)
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="earllm-build">
+  <intent>Build, maintain, and extend the EarLLM One Android project — a Kotlin/Compose app that connects Bluetooth earbuds to an LLM via voice pipeline.</intent>
+  <instructions>
+<![CDATA[
+Build, maintain, and extend the EarLLM One Android project — a Kotlin/Compose app that connects Bluetooth earbuds to an LLM via voice pipeline.
+- When the user mentions "earllm" or related topics
+- When the user mentions "earbudllm" or related topics
+- When the user mentions "earbud app" or related topics
+- When the user mentions "voice pipeline kotlin" or related topics
+- When the user mentions "bluetooth audio android" or related topics
+- When the user mentions "sco microphone" or related topics
+- The task is unrelated to earllm build
+- A simpler, more specific tool can handle the request
+- The user needs general-purpose assistance without domain expertise
+EarLLM One is a multi-module Android app (Kotlin + Jetpack Compose) that captures voice from Bluetooth earbuds, transcribes it, sends it to an LLM, and speaks the response back.
+`C:\Users\renat\earbudllm`
+```
+app ──→ voice ──→ audio ──→ core-logging
+│       │
+├──→ bluetooth ──→ core-logging
+└──→ llm ──→ core-logging
+```
+| Module | Purpose | Key Files |
+|--------|---------|-----------|
+| **core-logging** | Structured logging, performance tracking | `EarLogger.kt`, `PerformanceTracker.kt` |
+| **bluetooth** | BT discovery, pairing, A2DP/HFP profiles | `BluetoothController.kt`, `BluetoothState.kt`, `BluetoothPermissions.kt` |
+| **audio** | Audio routing (SCO/BLE), capture, headset buttons | `AudioRouteController.kt`, `VoiceCaptureController.kt`, `HeadsetButtonController.kt` |
+| **voice** | STT (SpeechRecognizer + Vosk stub), TTS, pipeline | `SpeechToTextController.kt`, `TextToSpeechController.kt`, `VoicePipeline.kt` |
+| **llm** | LLM interface, stub, OpenAI-compatible client | `LlmClient.kt`, `StubLlmClient.kt`, `RealLlmClient.kt`, `SecureTokenStore.kt` |
+]]>
+  </instructions>
+</agyos_skill>

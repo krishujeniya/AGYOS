@@ -1,0 +1,32 @@
+<agyos_skill id="design-orchestration">
+  <intent>Orchestrates design workflows by routing work through brainstorming, multi-agent review, and execution readiness in the correct order.</intent>
+  <instructions>
+<![CDATA[
+Ensure that **ideas become designs**, **designs are reviewed**, and
+**only validated designs reach implementation**.
+This skill does not generate designs.
+It **controls the flow between other skills**.
+This is a **routing and enforcement skill**, not a creative one.
+It decides:
+- which skill must run next
+- whether escalation is required
+- whether execution is permitted
+This meta-skill coordinates the following:
+- `brainstorming` — design generation
+- `multi-agent-brainstorming` — design validation
+- downstream implementation or planning skills
+Invoke this skill when:
+- a user proposes a new feature, system, or change
+- a design decision carries meaningful risk
+- correctness matters more than speed
+If no validated design exists:
+- Invoke `brainstorming`
+- Require:
+- Understanding Lock
+- Initial Design
+- Decision Log started
+You may NOT proceed without these artifacts.
+After brainstorming completes, classify the design as:
+]]>
+  </instructions>
+</agyos_skill>

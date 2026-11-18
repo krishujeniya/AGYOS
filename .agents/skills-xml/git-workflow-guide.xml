@@ -1,0 +1,32 @@
+<agyos_skill id="git-workflow-guide">
+  <intent>Plan repository work from code review through tests and pull-request readiness. Use when coordinating a multi-step Git workflow and its required checks.</intent>
+  <instructions>
+<![CDATA[
+Plan repository work from code review through tests and pull-request readiness. Use when coordinating a multi-step Git workflow and its required checks.
+[Extended thinking: This workflow coordinates multiple specialized agents to ensure code quality before commits are made. The code-reviewer agent performs initial quality checks, test-automator ensures all tests pass, and deployment-engineer verifies production readiness. By orchestrating these agents sequentially with context passing, we prevent broken code from entering the repository while maintaining high velocity. The workflow supports both trunk-based and feature-branch strategies with configurable options for different team needs.]
+- Working on complete git workflow with multi-agent orchestration tasks or workflows
+- Needing guidance, best practices, or checklists for complete git workflow with multi-agent orchestration
+- The task is unrelated to complete git workflow with multi-agent orchestration
+- You need a different domain or tool outside this scope
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+**Target branch**: $ARGUMENTS (defaults to 'main' if not specified)
+**Supported flags**:
+- `--skip-tests`: Skip automated test execution (use with caution)
+- `--draft-pr`: Create PR as draft for work-in-progress
+- `--no-push`: Perform all checks but don't push to remote
+- `--squash`: Squash commits before pushing
+- `--conventional`: Enforce Conventional Commits format strictly
+- `--trunk-based`: Use trunk-based development workflow
+- `--feature-branch`: Use feature branch workflow (default)
+- Use Task tool with subagent_type="code-reviewer"
+- Prompt: "Review all uncommitted changes for code quality issues. Check for: 1) Code style violations, 2) Security vulnerabilities, 3) Performance concerns, 4) Missing error handling, 5) Incomplete implementations. Generate a detailed report with severity levels (critical/high/medium/low) and provide specific line-by-line feedback. Output format: JSON with {issues: [], summary: {critical: 0, high: 0, medium: 0, low: 0}, recommendations: []}"
+- Expected output: Structured code review report for next phase
+- Use Task tool with subagent_type="code-reviewer"
+- Prompt: "Analyze the changes for: 1) New dependencies or version changes, 2) Breaking API changes, 3) Database schema modifications, 4) Configuration changes, 5) Backward compatibility issues. Context from previous review: [insert issues summary]. Identify any changes that require migration scripts or documentation updates."
+- Context from previous: Code quality issues that might indicate breaking changes
+]]>
+  </instructions>
+</agyos_skill>

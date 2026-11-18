@@ -1,0 +1,32 @@
+<agyos_skill id="apify-trend-analysis">
+  <intent>Discover and track emerging trends across Google Trends, Instagram, Facebook, YouTube, and TikTok to inform content strategy.</intent>
+  <instructions>
+<![CDATA[
+Discover and track emerging trends using Apify Actors to extract data from multiple platforms.
+(No need to check it upfront)
+- `.env` file with `APIFY_TOKEN`
+- Node.js 20.6+ (for native `--env-file` support)
+- `mcpc` CLI tool: `npm install -g @apify/mcpc`
+Copy this checklist and track progress:
+```
+Task Progress:
+- [ ] Step 1: Identify trend type (select Actor)
+- [ ] Step 2: Fetch Actor schema via mcpc
+- [ ] Step 3: Ask user preferences (format, filename)
+- [ ] Step 4: Run the analysis script
+- [ ] Step 5: Summarize findings
+```
+Select the appropriate Actor based on research needs:
+| User Need | Actor ID | Best For |
+|-----------|----------|----------|
+| Search trends | `apify/google-trends-scraper` | Google Trends data |
+| Hashtag tracking | `apify/instagram-hashtag-scraper` | Hashtag content |
+| Hashtag metrics | `apify/instagram-hashtag-stats` | Performance stats |
+| Visual trends | `apify/instagram-post-scraper` | Post analysis |
+| Trending discovery | `apify/instagram-search-scraper` | Search trends |
+| Comprehensive tracking | `apify/instagram-scraper` | Full data |
+| API-based trends | `apify/instagram-api-scraper` | API access |
+| Engagement trends | `apify/export-instagram-comments-posts` | Comment tracking |
+]]>
+  </instructions>
+</agyos_skill>

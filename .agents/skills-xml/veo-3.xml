@@ -1,0 +1,32 @@
+<agyos_skill id="veo-3">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+Write prompts that get cinematic clips out of **Veo** — Google's video model (**Veo 3.1**; Fast/Lite
+tiers for cheap iteration). This is the **prompt-craft** layer of a three-layer setup, and the **video
+counterpart to `nano-banana`**:
+- **Connection/API & Headless Automation**:
+- Direct headless Google Flow execution via `google-flow` skill (`flow_generate_video` MCP tool, `--headless=new`, local video download).
+- Model IDs, async generate-and-poll, and WoopSocial Media integration → `tools/integrations/veo.md`.
+- **Prompt craft** (this skill) → how to direct the right clip well.
+- **In-skill application** → `reels-script`'s veo-prompt-pack.
+> Fast-moving area — re-verify model names/specs quarterly.
+Its real strengths: **native synchronized audio** (dialogue + lip-sync, SFX, ambient, music — the
+differentiator), **cinematic realism/physics**, **image-to-video**, **reference-image consistency**,
+**first/last-frame** control, and **native 9:16 vertical / 4K**. Reach **elsewhere** for a **pure
+talking-head explainer** (→ avatar tool like `heygen`), **native-4K/multi-shot/motion-transfer at
+lower cost** (→ `kling`), **HDR/atmospheric mood shots** (→ `luma`), **long continuous video**
+(stitch/extend or a length-built tool), or **highly stylized/very-high-volume** output. Don't
+default it to every job. (Details: `references/when-and-how-to-prompt.md`.)
+Load `brand-profile.md` (visual style, palette, tone). Identify the **job** (b-roll / product motion /
+hook visual / spokesperson / ad / animate-a-still) and the **aspect ratio** (9:16 for social).
+Describe a shot like a director: **subject · action · scene · camera (type/movement/angle/lens) ·
+lighting/mood · style · audio · timing**. One clear motion per clip. Set **9:16**. Ground in the brand.
+See `references/when-and-how-to-prompt.md`.
+Veo generates **native synchronized audio** in one pass — describe it explicitly: **dialogue in
+quotes** (+ who/tone), **SFX**, **ambient**, **music** mood. Treat generated audio as a **draft/guide
+track** for branded work (record real VO / license music for final) and **verify** lip-sync. Direct
+the **camera/motion** for the cinematic feel. See `references/audio-and-camera.md`.
+]]>
+  </instructions>
+</agyos_skill>

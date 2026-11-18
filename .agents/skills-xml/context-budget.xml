@@ -1,0 +1,32 @@
+<agyos_skill id="context-budget">
+  <intent>Routes live context checks to the native Codex or Claude Code meter without scanning files, and performs a bounded static component audit only when explicitly requested. Use for context-budget requests about remaining capacity or installed context overhead.</intent>
+  <instructions>
+<![CDATA[
+Use the provider's native meter for live session usage. Keep the separate,
+estimated installation audit behind an explicit opt-in.
+Treat an invocation with no audit request as a live-context request. This
+includes requests for the current window, remaining capacity, headroom, token
+usage, or a context breakdown.
+For this default path:
+- Do not call or use tools.
+- Do not scan or read files.
+- Do not run shell commands, provider CLIs, debug logging, or MCP discovery.
+- Reply with only the native command and one short explanation.
+Route by the active harness:
+| Harness | Native command | Guidance |
+| --- | --- | --- |
+| Codex CLI | `/status` | Shows current token usage and remaining context capacity. Use `/statusline` and enable **Context stats** plus **Token counters** for a persistent footer meter. |
+| Codex app | `/status` | Shows current thread context usage and rate limits. |
+| Claude Code | `/context` | Shows the live context breakdown. Use `/context all` for expanded items. |
+| Other or unknown | None verified | State that ECC cannot read live provider state and ask which harness is active. |
+These commands are documented in the [Codex command reference](https://developers.openai.com/codex/cli/slash-commands) and [Claude Code command reference](https://code.claude.com/docs/en/commands).
+A skill cannot invoke a TUI slash command on the user's behalf. Never replace
+the native command with an estimated scan and never infer an audit request from
+phrases such as “context is heavy” or “how much is left.”
+Run an installation/configuration audit only when the user explicitly says
+`--audit`, “audit installed components,” or equivalent unambiguous wording.
+`--verbose` changes report detail; it does not opt into an audit by itself.
+If the audit scope is ambiguous, ask for the harness and installation root
+]]>
+  </instructions>
+</agyos_skill>

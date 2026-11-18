@@ -1,0 +1,32 @@
+<agyos_skill id="network-bgp-diagnostics">
+  <intent>Diagnostics-only BGP troubleshooting patterns for neighbor state, route exchange, prefix policy, AS path inspection, and safe evidence collection. Use when a BGP neighbor is down, routes are missing, or prefix policy and AS path need inspection.</intent>
+  <instructions>
+<![CDATA[
+Use this skill when a BGP session is down, flapping, established with missing
+routes, or advertising unexpected prefixes. The default workflow is read-only
+evidence collection; policy and reset actions belong in a reviewed change
+window.
+- BGP neighbors are stuck in Idle, Connect, Active, OpenSent, or OpenConfirm.
+- A session is Established but expected prefixes are missing.
+- A route-map, prefix-list, max-prefix limit, or AS path policy may be filtering
+routes.
+- You need before/after evidence for a BGP change.
+- You are reviewing automation that parses BGP summary output.
+1. Identify the exact neighbor, address family, VRF, and local/remote ASNs.
+2. Capture summary state and last reset reason.
+3. Prove reachability to the peer source address.
+4. Check route policy references before assuming transport failure.
+5. Compare advertised, received, and installed routes where the platform
+supports those commands.
+```text
+show bgp summary
+show bgp neighbors <peer>
+show ip route <peer>
+show tcp brief | include <peer>|:179
+show logging | include BGP|<peer>
+show running-config | section router bgp
+show ip prefix-list
+show route-map
+]]>
+  </instructions>
+</agyos_skill>

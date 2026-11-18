@@ -1,0 +1,32 @@
+<agyos_skill id="social-strategy">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+This is the top-level plan: which channels, what for, how to win, and at what cadence. It sits
+above `content-pillars` (what themes) and `batch-content-plan` (what posts) and tells them where
+to point. Everything downstream inherits the choices made here.
+The core idea, and what separates strategy from a to-do list:
+> **Strategy is choices and trade-offs — above all, what *not* to do.** "Be on every platform,
+> post consistently, engage your audience" is not a strategy; it's a list of platitudes that
+> spreads a brand thin and wins nowhere. A real strategy picks the few channels where the
+> audience is and the brand can win, deliberately drops the rest, and commits to one clear
+> objective and a differentiated angle.
+- Starting a social presence from scratch, or resetting a scattered one.
+- Deciding which platforms to be on (and which to quit).
+- Before `content-pillars` / `batch-content-plan`, to set the objective and channels they serve.
+**When NOT to use it:** if a current `social-strategy.md` exists and is sound, load it and move
+on unless the user wants to revisit.
+Load `brand-profile.md`, `audience-research` (`audience.md`), and `content-pillars` if present.
+Strategy is downstream of *who you are*, *who you're for*, and *what you talk about* — without
+those it's guesswork. Run the missing ones first where it matters.
+Pick **one** primary objective social must serve right now — awareness, audience growth,
+community, authority/positioning, leads, or sales — chosen from what the **business actually
+needs** (a pre-launch startup needs awareness/audience; an established one needs leads/sales).
+Add at most one secondary. Define a **meaningful metric**, not a vanity one, and be honest about
+measurement (see `references/goals-and-measurement.md`). To cascade the objective into SMART
+targets, per-channel North Stars, and action thresholds, hand off to `goals-and-kpis` — this
+skill names the objective; that one sets the numbers.
+The central decision. Score each candidate platform on four dimensions (see
+]]>
+  </instructions>
+</agyos_skill>

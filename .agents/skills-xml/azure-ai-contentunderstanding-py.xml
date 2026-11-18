@@ -1,0 +1,32 @@
+<agyos_skill id="azure-ai-contentunderstanding-py">
+  <intent>Azure AI Content Understanding SDK for Python. Use for multimodal content extraction from documents, images, audio, and video.</intent>
+  <instructions>
+<![CDATA[
+Multimodal AI service that extracts semantic content from documents, video, audio, and image files for RAG and automated workflows.
+```bash
+pip install azure-ai-contentunderstanding
+```
+```bash
+CONTENTUNDERSTANDING_ENDPOINT=https://<resource>.cognitiveservices.azure.com/
+```
+```python
+import os
+from azure.ai.contentunderstanding import ContentUnderstandingClient
+from azure.identity import DefaultAzureCredential
+endpoint = os.environ["CONTENTUNDERSTANDING_ENDPOINT"]
+credential = DefaultAzureCredential()
+client = ContentUnderstandingClient(endpoint=endpoint, credential=credential)
+```
+Content Understanding operations are asynchronous long-running operations:
+1. **Begin Analysis** — Start the analysis operation with `begin_analyze()` (returns a poller)
+2. **Poll for Results** — Poll until analysis completes (SDK handles this with `.result()`)
+3. **Process Results** — Extract structured results from `AnalyzeResult.contents`
+| Analyzer | Content Type | Purpose |
+|----------|--------------|---------|
+| `prebuilt-documentSearch` | Documents | Extract markdown for RAG applications |
+| `prebuilt-imageSearch` | Images | Extract content from images |
+| `prebuilt-audioSearch` | Audio | Transcribe audio with timing |
+| `prebuilt-videoSearch` | Video | Extract frames, transcripts, summaries |
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="azure-communication-callautomation-java">
+  <intent>Build server-side call automation workflows including IVR systems, call routing, recording, and AI-powered interactions.</intent>
+  <instructions>
+<![CDATA[
+Build server-side call automation workflows including IVR systems, call routing, recording, and AI-powered interactions.
+```xml
+<dependency>
+<groupId>com.azure</groupId>
+<artifactId>azure-communication-callautomation</artifactId>
+<version>1.6.0</version>
+</dependency>
+```
+```java
+import com.azure.communication.callautomation.CallAutomationClient;
+import com.azure.communication.callautomation.CallAutomationClientBuilder;
+import com.azure.identity.DefaultAzureCredentialBuilder;
+// With DefaultAzureCredential
+CallAutomationClient client = new CallAutomationClientBuilder()
+.endpoint("https://<resource>.communication.azure.com")
+.credential(new DefaultAzureCredentialBuilder().build())
+.buildClient();
+// With connection string
+CallAutomationClient client = new CallAutomationClientBuilder()
+.connectionString("<connection-string>")
+.buildClient();
+```
+| Class | Purpose |
+|-------|---------|
+| `CallAutomationClient` | Make calls, answer/reject incoming calls, redirect calls |
+]]>
+  </instructions>
+</agyos_skill>

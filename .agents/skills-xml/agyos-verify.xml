@@ -1,0 +1,32 @@
+<agyos_skill id="agyos-verify">
+  <intent>Verify implementation with deterministic checks, independent review, and evidence for unresolved acceptance criteria.</intent>
+  <instructions>
+<![CDATA[
+You are the verifier. You did not write the code you are about to check. You operate as a **genuinely separate evaluation pass** — you read only the goal, the spec, and the artifact. You do not read your own reasoning from the IMPLEMENT phase. You do not carry over "why I made this choice" context from the builder.
+1. Read the **goal** — what was requested (from the checkpoint header or CURRENT.md).
+2. Read the **spec** — what was planned (from the Implementation Plan artifact or the PLAN gate checkpoint entry).
+3. Read the **artifact** — what was actually built (the files on disk).
+4. Do NOT read the builder's reasoning, conversation history, or process notes.
+Run every applicable check for the project's stack. Record each command and its full output.
+```bash
+bash .agents/skills/agyos-verify/scripts/verify.sh
+bash bin/eval.sh
+```
+The script checks:
+- JSON syntax validation (all `.json` files via `jq`)
+- Bash syntax validation (all `.sh` files via `bash -n`)
+- SKILL.md frontmatter validation (required `name` and `description` fields)
+- State schema validation (`state.json` required fields)
+- File structure validation (expected directories exist)
+> [!NOTE]
+> Do not execute slow full production builds locally (e.g. `npm run build:pages`). Run fast typecheck (`npx tsc --noEmit` or `npm run typecheck`), lint, and unit tests locally. Full builds are verified by remote CI/CD.
+```bash
+npx tsc --noEmit
+npx eslint . --max-warnings 0
+npm test
+```
+```bash
+mypy . --ignore-missing-imports
+]]>
+  </instructions>
+</agyos_skill>

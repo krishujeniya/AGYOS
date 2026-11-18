@@ -1,0 +1,32 @@
+<agyos_skill id="vertical-video-psychology">
+  <intent>Master engineering and editing reference for vertical short-form video (Reels, Shorts, TikTok, clips) codifying 116 empirical psychology principles across openings, framing, audio, cuts, cognitive load, trust, and measurement.</intent>
+  <instructions>
+<![CDATA[
+This skill codifies 116 empirical research principles across cognitive psychology, perception, multimedia learning, and audience telemetry into actionable instructions for editing vertical video (YouTube Shorts, Instagram Reels, TikTok, and extracted clips).
+Activate this skill when:
+- Scripting, storyboarding, or assembling vertical short-form video (9:16 format).
+- Writing opening hooks, framing text overlays, or configuring on-screen safe zones.
+- Synchronizing speech, audio beds, sound effects, and multi-language captions.
+- Editing cuts, pacing event boundaries, or structuring technical tutorials.
+- Reviewing video drafts against cognitive load, retention curves, and empirical metrics.
+All 116 empirical principles are documented in depth with direct study citations, edit directives, and experimental data across three reference volumes:
+1. **The Opening & Decision to Stay (Principles 1–11)**:
+- Covers viewing motives, incidental discovery, goal-directed attention, onset capture, habituation control, information-gap curiosity, calibrated tease specificity, manageable novelty, expectation violation, and self-reference.
+- *Reference*: [references/principles-01-to-34.md](references/principles-01-to-34.md)
+2. **Composition Inside a Vertical Frame (Principles 12–23)**:
+- Covers portrait viewing effort, interface safe-zone clearance, figure-ground contrast, visual crowding mitigation, Gestalt proximity, similarity, common fate tracking, gaze cueing, inattentional blindness prevention, visual signaling, and WCAG redundant contrast coding.
+- *Reference*: [references/principles-01-to-34.md](references/principles-01-to-34.md)
+3. **Voice, Captions, Music, and Timing (Principles 24–34)**:
+- Covers synchronized verbatim captions, language matching, visible speech kinematics in noisy playback, manual gesture framing, prosodic grouping, lyric interference avoidance, temporal expectancy, acoustic credibility, playback speed bounds, and non-visual access.
+- *Reference*: [references/principles-01-to-34.md](references/principles-01-to-34.md)
+4. **Cuts, Excerpts, and Story Structure (Principles 35–45)**:
+- Covers action vector continuity across cuts, event boundary segmentation, situation models in interview excerpts, causal chain coherence, suspense design, retrospective curiosity, contextual juxtaposition (Kuleshov effect), character identification under constraints, and peak-end resolution.
+- *Reference*: [references/principles-35-to-74.md](references/principles-35-to-74.md)
+5. **Comprehension, Learning, and Memory (Principles 46–64)**:
+- Covers working-memory limits, spatial/temporal contiguity, stripping seductive details (e.g. background gameplay), dual coding, pictorial superiority, eliminating redundant verbal walls, pretraining, worked examples, prediction prompts, retrieval practice, and interleaving.
+- *Reference*: [references/principles-35-to-74.md](references/principles-35-to-74.md)
+6. **Emotion, Humor, and Memory Priorities (Principles 65–74)**:
+- Covers physiological arousal in transmission, arousal-biased memory filtering, benign violations in comedy, message-integrated humor, threat-and-efficacy pairing, precise problem framing, and processing fluency without superficiality.
+]]>
+  </instructions>
+</agyos_skill>

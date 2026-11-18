@@ -1,0 +1,32 @@
+<agyos_skill id="filesystem-context">
+  <intent>This skill should be used when the user asks to "offload context to files", "implement dynamic context discovery", "use filesystem for agent memory", "reduce context window bloat", or mentions file-based context management, tool output persistence, agent scratch pads, or just-in-time context loading.</intent>
+  <instructions>
+<![CDATA[
+Use the filesystem as the primary overflow layer for agent context because context windows are limited while tasks often require more information than fits in a single window. Files let agents store, retrieve, and update an effectively unlimited amount of context through a single interface.
+Prefer dynamic context discovery -- pulling relevant context on demand -- over static inclusion, because static context consumes tokens regardless of relevance and crowds out space for task-specific information.
+Activate this skill when:
+- Tool outputs are bloating the context window
+- Agents need to persist state across long trajectories
+- Sub-agents must share information without direct message passing
+- Tasks require more context than fits in the window
+- Building agents that learn and update their own instructions
+- Implementing scratch pads for intermediate results
+- Terminal outputs or logs need to be accessible to agents
+Diagnose context failures against these four modes, because each requires a different filesystem remedy:
+1. **Missing context** -- needed information is absent from the total available context. Fix by persisting tool outputs and intermediate results to files so nothing is lost.
+2. **Under-retrieved context** -- retrieved content fails to encapsulate what the agent needs. Fix by structuring files for targeted retrieval (grep-friendly formats, clear section headers).
+3. **Over-retrieved context** -- retrieved content far exceeds what is needed, wasting tokens and degrading attention. Fix by offloading bulk content to files and returning compact references.
+4. **Buried context** -- niche information is hidden across many files. Fix by combining glob and grep for structural search alongside semantic search for conceptual queries.
+Use the filesystem as the persistent layer that addresses all four: write once, store durably, retrieve selectively.
+Treat static context (system instructions, tool definitions, critical rules) as expensive real estate -- it consumes tokens on every turn regardless of relevance. As agents accumulate capabilities, static context grows and crowds out dynamic information.
+Use dynamic context discovery instead: include only minimal static pointers (names, one-line descriptions, file paths) and load full content with search tools when relevant. This is more token-efficient and often improves response quality by reducing contradictory or irrelevant information in the window.
+Accept the trade-off: dynamic discovery requires the model to recognize when it needs more context. Current frontier models handle this well, but less capable models may fail to trigger loads. When in doubt, err toward including critical safety or correctness constraints statically.
+Redirect large tool outputs to files instead of returning them directly to context, because a single web search or database query can dump thousands of tokens into message history where they persist for the entire conversation.
+Write the output to a scratch file, extract a compact summary, and return a file reference. The agent then uses targeted retrieval (grep for patterns, read with line ranges) to access only what it needs.
+```python
+def handle_tool_output(output: str, threshold: int = 2000) -> str:
+if len(output) < threshold:
+return output
+]]>
+  </instructions>
+</agyos_skill>

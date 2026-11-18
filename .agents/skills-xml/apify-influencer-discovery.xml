@@ -1,0 +1,32 @@
+<agyos_skill id="apify-influencer-discovery">
+  <intent>Find and evaluate influencers for brand partnerships, verify authenticity, and track collaboration performance across Instagram, Facebook, YouTube, and TikTok.</intent>
+  <instructions>
+<![CDATA[
+Discover and analyze influencers across multiple platforms using Apify Actors.
+- You need to discover creators or influencers for outreach, partnerships, or campaign planning.
+- The task is to evaluate authenticity, engagement, niche fit, or audience signals across social platforms.
+- You need Apify-based extraction plus a shortlist or summary of suitable influencer candidates.
+(No need to check it upfront)
+- `.env` file with `APIFY_TOKEN`
+- Node.js 20.6+ (for native `--env-file` support)
+- `mcpc` CLI tool: `npm install -g @apify/mcpc`
+Copy this checklist and track progress:
+```
+Task Progress:
+- [ ] Step 1: Determine discovery source (select Actor)
+- [ ] Step 2: Fetch Actor schema via mcpc
+- [ ] Step 3: Ask user preferences (format, filename)
+- [ ] Step 4: Run the discovery script
+- [ ] Step 5: Summarize results
+```
+Select the appropriate Actor based on user needs:
+| User Need | Actor ID | Best For |
+|-----------|----------|----------|
+| Influencer profiles | `apify/instagram-profile-scraper` | Profile metrics, bio, follower counts |
+| Find by hashtag | `apify/instagram-hashtag-scraper` | Discover influencers using specific hashtags |
+| Reel engagement | `apify/instagram-reel-scraper` | Analyze reel performance and engagement |
+| Discovery by niche | `apify/instagram-search-scraper` | Search for influencers by keyword/niche |
+| Brand mentions | `apify/instagram-tagged-scraper` | Track who tags brands/products |
+]]>
+  </instructions>
+</agyos_skill>

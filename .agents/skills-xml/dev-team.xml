@@ -1,0 +1,32 @@
+<agyos_skill id="dev-team">
+  <intent>Simulate a collaborative dev team session where multiple role-based personas (PM, Architect, Developer, QA) respond to the same problem together in one session. Use when designing a feature, reviewing a proposal, or onboarding a new initiative and you want multi-role perspective without switching agents manually.</intent>
+  <instructions>
+<![CDATA[
+Run a multi-persona session where PM, Architect, Developer, and QA each respond from their own perspective in a single turn.
+This is the **preset four-lens review** for collaborative design and planning. It is not
+adversarial challenge (`council`), and it is not a free-form team composer
+(`team-builder` selects arbitrary agents; `dev-team` always runs the same four roles).
+The user provides a **topic** — a feature description, proposal, story, or question. The skill runs all four personas in parallel as independent subagents, then presents their responses together.
+Use when:
+- Designing a new feature and wanting PM, Architect, Dev, and QA concerns surfaced at once
+- Reviewing a proposal before committing to implementation
+- Onboarding an initiative and wanting each role to define their first concerns
+- User says "what would the team think about this", "give me all perspectives", or "run this by the team"
+- Starting a story and wanting role-specific input before writing a single line of code
+| Condition | Use Instead |
+| --- | --- |
+| Ambiguous go/no-go decision with real tradeoffs | `council` |
+| You want to hand-pick which agents participate | `team-builder` |
+| Single-role deep-dive (e.g. architecture only) | the `architect` agent |
+| Code review | the `code-reviewer` agent or `/code-review` |
+| Structured adversarial challenge | `santa-method` |
+| Role | Name | Lens |
+| --- | --- | --- |
+| Product Manager | PM | user value, scope, prioritization, definition of done |
+| Architect | Arch | system design, scalability, technical risk, integration points |
+| Developer | Dev | implementation complexity, effort, edge cases, technical debt |
+| QA Engineer | QA | testability, acceptance criteria, failure modes, regression risk |
+All personas are **analysis-only**: they read the prompt they are given and answer from
+]]>
+  </instructions>
+</agyos_skill>

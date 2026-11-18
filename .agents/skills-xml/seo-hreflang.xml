@@ -1,0 +1,32 @@
+<agyos_skill id="seo-hreflang">
+  <intent>&gt;</intent>
+  <instructions>
+<![CDATA[
+- Use when validating or generating hreflang for multilingual or multiregional sites.
+- Use when the user mentions international SEO, language tags, x-default, or hreflang issues.
+- Use when auditing locale alternates across HTML, headers, or sitemap implementations.
+Validate existing hreflang implementations or generate correct hreflang tags
+for multi-language and multi-region sites. Supports HTML, HTTP header, and
+XML sitemap implementations.
+- Every page must include an hreflang tag pointing to itself
+- The self-referencing URL must exactly match the page's canonical URL
+- Missing self-referencing tags cause Google to ignore the entire hreflang set
+- If page A links to page B with hreflang, page B must link back to page A
+- Every hreflang relationship must be bidirectional (A→B and B→A)
+- Missing return tags invalidate the hreflang signal for both pages
+- Check all language versions reference each other (full mesh)
+- Required: designates the fallback page for unmatched languages/regions
+- Typically points to the language selector page or English version
+- Only one x-default per set of alternates
+- Must also have return tags from all other language versions
+- Must use ISO 639-1 two-letter codes (e.g., `en`, `fr`, `de`, `ja`)
+- Common errors:
+- `eng` instead of `en` (ISO 639-2, not valid for hreflang)
+- `jp` instead of `ja` (incorrect code for Japanese)
+- `zh` without region qualifier (ambiguous; use `zh-Hans` or `zh-Hant`)
+- Optional region qualifier uses ISO 3166-1 Alpha-2 (e.g., `en-US`, `en-GB`, `pt-BR`)
+- Format: `language-REGION` (lowercase language, uppercase region)
+- Common errors:
+]]>
+  </instructions>
+</agyos_skill>

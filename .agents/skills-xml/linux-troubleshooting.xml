@@ -1,0 +1,32 @@
+<agyos_skill id="linux-troubleshooting">
+  <intent>Linux system troubleshooting workflow for diagnosing and resolving system issues, performance problems, and service failures.</intent>
+  <instructions>
+<![CDATA[
+Specialized workflow for diagnosing and resolving Linux system issues including performance problems, service failures, network issues, and resource constraints.
+Use this workflow when:
+- Diagnosing system performance issues
+- Troubleshooting service failures
+- Investigating network problems
+- Resolving disk space issues
+- Debugging application errors
+- `bash-linux` - Linux commands
+- `devops-troubleshooter` - Troubleshooting
+1. Check system uptime
+2. Review recent changes
+3. Identify symptoms
+4. Gather error messages
+5. Document findings
+```bash
+uptime
+hostnamectl
+cat /etc/os-release
+dmesg | tail -50
+```
+```
+Use @bash-linux to gather system information
+```
+- `bash-linux` - Resource commands
+- `performance-engineer` - Performance analysis
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="agyos-anti-ai-design">
+  <intent>Diagnostic and design guide to eliminate AI-generated UI slop. Replaces generic purple gradients, Inter overuse, emoji icons, uniform 3-card grids, and synthetic floating blobs with production design.</intent>
+  <instructions>
+<![CDATA[
+Engineering guidelines for detecting and eliminating the common visual signatures of generic, automated AI web generation, elevating interfaces to production standards.
+Signature Flaw:
+- Overuse of violet-to-fuchsia or generic indigo gradients (`from-purple-600 to-indigo-600`) as fallback hero backgrounds and button accents.
+Engineering Fix:
+- Implement a disciplined color architecture using CSS variables or Tailwind tokens:
+- High-contrast monochrome: Crisp black/white (`#0a0a0a` / `#fafafa`) with a single deliberate accent (emerald, amber, electric blue, or terracotta).
+- Test contrast ratios against WCAG AAA standards (7:1 for normal text, 4.5:1 for large controls).
+- Use subtle radial gradients with low opacity (3-8%) anchored to structural elements rather than generic full-viewport washes.
+Signature Flaw:
+- Defaulting to Inter or Roboto for all headers, labels, numbers, and body copy without typographic hierarchy.
+Engineering Fix:
+- Pair distinct display and body typefaces:
+- Technical / Modern: Geist Sans (body) + Geist Mono (data/code).
+- Architectural / Product: Plus Jakarta Sans or Cabinet Grotesk (display) + Inter/Public Sans (body).
+- Editorial / High-Trust: Instrument Serif or Playfair (display) + DM Sans (body).
+- Enforce strict optical scaling: `text-xs` (12px), `text-sm` (14px), `text-base` (16px), `text-xl` (20px), `text-3xl` (30px), `text-5xl` (48px).
+Signature Flaw:
+- Using emoji characters (🚀, 💡, ⚡, 🛡️) inside production cards, buttons, and navigation headers.
+Engineering Fix:
+- Use consistent vector icon libraries: Lucide Icons, Phosphor Icons, or Radix Icons.
+- Standardize stroke width (e.g., `stroke-width="1.75"` across all icons) and bounding box sizing (`16px`, `20px`, `24px`).
+- Wrap icons in accessible semantic wrappers (`aria-hidden="true"` on decorative icons, explicit labels on standalone buttons).
+Signature Flaw:
+- Repetitive, identical 3-card horizontal rows (`grid-cols-1 md:grid-cols-3`) with identical padding, centered text, and decorative icons.
+Engineering Fix:
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="service-mesh-expert">
+  <intent>Design or troubleshoot Kubernetes service-mesh traffic, mTLS, policy, and service discovery. Use for zero-trust service communication or mesh connectivity issues.</intent>
+  <instructions>
+<![CDATA[
+Design or troubleshoot Kubernetes service-mesh traffic, mTLS, policy, and service discovery. Use for zero-trust service communication or mesh connectivity issues.
+- The task is unrelated to service mesh expert
+- You need a different domain or tool outside this scope
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+- Istio and Linkerd installation, configuration, and optimization
+- Traffic management: routing, load balancing, circuit breaking, retries
+- mTLS configuration and certificate management
+- Service mesh observability with distributed tracing
+- Multi-cluster and multi-cloud mesh federation
+- Progressive delivery with canary and blue-green deployments
+- Security policies and authorization rules
+- Implementing service-to-service communication in Kubernetes
+- Setting up zero-trust networking with mTLS
+- Configuring traffic splitting for canary deployments
+- Debugging service mesh connectivity issues
+- Implementing rate limiting and circuit breakers
+- Setting up cross-cluster service discovery
+1. Assess current infrastructure and requirements
+2. Design mesh topology and traffic policies
+3. Implement security policies (mTLS, AuthorizationPolicy)
+4. Configure observability (metrics, traces, logs)
+5. Set up traffic management rules
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="content-hash-cache-pattern">
+  <intent>Cache expensive file processing results using SHA-256 content hashes — path-independent, auto-invalidating, with service layer separation. Use when repeated file processing is slow and results should be cached and invalidated by content rather than path.</intent>
+  <instructions>
+<![CDATA[
+Cache expensive file processing results (PDF parsing, text extraction, image analysis) using SHA-256 content hashes as cache keys. Unlike path-based caching, this approach survives file moves/renames and auto-invalidates when content changes.
+- Building file processing pipelines (PDF, images, text extraction)
+- Processing cost is high and same files are processed repeatedly
+- Need a `--cache/--no-cache` CLI option
+- Want to add caching to existing pure functions without modifying them
+Use file content (not path) as the cache key:
+```python
+import hashlib
+from pathlib import Path
+_HASH_CHUNK_SIZE = 65536  # 64KB chunks for large files
+def compute_file_hash(path: Path) -> str:
+"""SHA-256 of file contents (chunked for large files)."""
+if not path.is_file():
+raise FileNotFoundError(f"File not found: {path}")
+sha256 = hashlib.sha256()
+with open(path, "rb") as f:
+while True:
+chunk = f.read(_HASH_CHUNK_SIZE)
+if not chunk:
+break
+sha256.update(chunk)
+return sha256.hexdigest()
+```
+**Why content hash?** File rename/move = cache hit. Content change = automatic invalidation. No index file needed.
+```python
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="apify-ecommerce">
+  <intent>Extract product data, prices, reviews, and seller information from any e-commerce platform using Apify's E-commerce Scraping Tool.</intent>
+  <instructions>
+<![CDATA[
+Extract product data, prices, reviews, and seller information from any e-commerce platform using Apify's E-commerce Scraping Tool.
+- You need product, pricing, review, stock, or seller data from e-commerce sites.
+- The task involves price monitoring, competitor product comparison, MAP enforcement, or review analysis.
+- You need a guided workflow for extracting marketplace data and summarizing findings.
+- `.env` file with `APIFY_TOKEN` (at `~/.claude/.env`)
+- Node.js 20.6+ (for native `--env-file` support)
+| User Need | Workflow | Best For |
+|-----------|----------|----------|
+| Track prices, compare products | Workflow 1: Products & Pricing | Price monitoring, MAP compliance, competitor analysis. Add AI summary for insights. |
+| Analyze reviews (sentiment or quality) | Workflow 2: Reviews | Brand perception, customer sentiment, quality issues, defect patterns |
+| Find sellers across stores | Workflow 3: Sellers | Unauthorized resellers, vendor discovery via Google Shopping |
+```
+Task Progress:
+- [ ] Step 1: Select workflow and determine data source
+- [ ] Step 2: Configure Actor input
+- [ ] Step 3: Ask user preferences (format, filename)
+- [ ] Step 4: Run the extraction script
+- [ ] Step 5: Summarize results
+```
+**Use case:** Extract product data, prices, and stock status. Track competitor prices, detect MAP violations, benchmark products, or research markets.
+**Best for:** Pricing analysts, product managers, market researchers.
+| Input Type | Field | Description |
+|------------|-------|-------------|
+| Product URLs | `detailsUrls` | Direct URLs to product pages (use object format) |
+| Category URLs | `listingUrls` | URLs to category/search result pages |
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="organic-film-de-ai">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+A specialized production runbook for eliminating the visual, temporal, and acoustic hallmarks of generative AI media. Converts sterile, plastic diffusion outputs into authentic, human-crafted cinema using optical physics, photochemical emulsion science, and traditional editing craft.
+| Defect Dimension | AI Generation & Editing Hallmarks | Organic Cinema & Human Craft | Remediation Strategy |
+|---|---|---|---|
+| **Skin & Surface** | Waxy, plastic denoised skin; zero pores; flat uniform surfaces | Physical skin micro-texture; sub-surface scattering; specular highlights | Luminance-weighted 35mm photochemical film grain synthesis |
+| **Highlight Rolloff** | Hard digital clipping at pure white (255); harsh digital edge transitions | Photochemical halation bloom (red-orange glow bleeding into midtones) | Multi-pass FFmpeg halation filter (`lutyuv` -> `gblur` -> `colorbalance` -> `blend=screen`) |
+| **Color Density** | Hyper-saturated primaries; crushed blacks with zero shadow detail | Kodak 2383 / Fuji 3513 print stock density: lifted toe (2-3%), soft shoulder rolloff | Film print S-curve tone-mapping (`curves`), subtractive color saturation |
+| **Lens Physics** | Rectilinear computer-generated geometry; zero distortion; zero optical aberration | Cosine-4th optical vignetting; subtle barrel curvature; micro chromatic aberration | `vignette=PI/4`, `lenscorrection`, subpixel edge channel displacement |
+| **Camera Dynamics** | Uncanny linear "slider on ice" dolly; robotic constant velocity; zero breathing | Handheld camera micro-sway; human respiratory cadence; mechanical inertia damping | Low-frequency sinusoidal/Perlin translation drift injection |
+| **Motion Cadence** | Staccato AI diffusion frame stepping; unnatural warping on fast action | Physical 180-degree shutter angle (1/48s at 24fps) optical motion blur | Frame blending (`tblend=all_mode=average`) and optical flow interpolation |
+| **Editing Rhythms** | Predictable 2.0s clip intervals; frantic uniform jump-cuts; bouncing neon text | Walter Murch's Rule of Six (Emotion 51%, Story 23%, Rhythm 10%); asymmetric shot lengths | L-cuts, J-cuts, motivated cutaways, clean typography without pop animations |
+| **Dialogue & Tone** | Robotic vocoder phase buzz; sterile digital silence between words; flat prosody | Natural chest resonance; proximity effect; human pauses; subtle room tone | Vocal warmth EQ (`highpass=80,lowpass=14000`); gentle analog companding |
+| **Acoustic Space** | Completely dry audio; no physical room boundaries; no environmental physics | Real room tone bed; early acoustic reflections; convolutional room impulse responses | Convolution reverb (`afir` or multi-tap `aecho`); continuous room tone bed mix (`amix`) |
+| **Audio-Visual Mix** | Generic music blasted over dialogue without ducking | Dynamic sidechain ducking (-12dB attenuation during speech); locked Foley transients | `sidechaincompress` audio filtergraph; precise frame-locked Foley |
+| Repository / Project | Primary Function | Command-Line Usage / Integration |
+|---|---|---|
+| **`openfilm/openfilm`** | Agentic multi-track video composition | Browser-based timeline preview and web-stack shot composition (`npx skills add openfilm/openfilm`) |
+| **`FFmpeg` (Native Filtergraphs)** | Photochemical film emulation & mastering | Full-featured command-line filter graphs for halation, film grain, lens distortion, and LUFS mastering |
+| **`sczhou/CodeFormer`** | High-fidelity face texture restoration | Restores realistic eye, iris, and teeth anatomy with `-w 0.9` fidelity lock |
+| **`sczhou/ProPainter` / `SAM 2`** | Flow-guided object removal & inpainting | Dual-domain temporal inpainting to eliminate localized generative errors |
+| **`Rikorose/DeepFilterNet`** | Real-time speech enhancement | Rust CLI (`deep-filter --pf --compensate-delay`) to strip synthetic noise beds |
+| **`facebookresearch/demucs`** | Hybrid Transformer stem separation | Separates dialogue, music, and effects (`demucs --two-stems vocals -n htdemucs_ft`) |
+| **`ggml-org/whisper.cpp`** | Local transcription & subtitle alignment | Generates accurate `.srt` subtitles (`whisper-cli -m models/ggml-base.en.bin -osrt`) |
+| **`Breakthrough/PySceneDetect`** | Automated shot boundary detection | Isolates distinct cuts (`scenedetect -i input.mp4 detect-content split-video`) |
+Real film print stock compresses dynamic range with a gentle S-curve: lifting deepest blacks to a rich dark navy/teal (toe) and rolling off highlights into warm cream (shoulder).
+```bash
+]]>
+  </instructions>
+</agyos_skill>

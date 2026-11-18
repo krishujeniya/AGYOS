@@ -1,0 +1,32 @@
+<agyos_skill id="data-and-original-research">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **original-data content type** — find a question inside a data void, run a sound method, analyse it honestly,
+voice the one finding that travels, and engineer it for citation. A study people *have to cite*; the **format
+writers** turn it into cuts, **WoopSocial publishes**, and recurring studies map into the **content-calendar.**
+Most content is undifferentiated — ~94% of published pages earn zero external links (per Backlinko). Original
+data is the rare exception: publications link to **stories, not products**, and a data finding is a story. It's
+also the **#1 GEO asset** — adding statistics is among the strongest levers for AI-answer visibility (per the
+Princeton/KDD GEO study), and original data is statistics nobody else owns. Brands skip it because it's harder
+than a listicle — which is exactly the moat. The catch: a study is worth **nothing the moment one number is
+wrong.** Rigor isn't pedantry; it's the entire value. So the skill is knowing **what** to study, **how** to get
+real data, and how to make the finding **impossible not to cite** — never inventing it.
+1. **brand-profile** — the proprietary data/angle you actually own.
+2. **audience-research** — the question your audience (and journalists/AI) would cite.
+(Depth: `references/the-prove-framework.md`.)
+- **P — Pick a question inside a data void:** a claim worth proving where good data doesn't exist and people
+would cite the answer; advantage order = proprietary data > recurring niche survey > public-dataset analysis.
+- **R — Run a sound method:** define population, sample frame, target n, recruitment, and neutral (non-leading)
+questions **before** collecting; the agent designs, the human/tool fields it.
+- **O — Observe honestly:** real data only; **never invent or AI-synthesize data points**; no p-hacking or
+cherry-picking; disclose n, dates, method, limitations; small n = directional, not "most people."
+- **V — Voice the one finding that travels:** the surprising-but-defensible headline stat (X% of Y do Z),
+supported and never inflated (38% ≠ "nearly half"); one hero number, 2–3 supporting.
+- **E — Engineer for citation, then distribute:** report page with visible methodology + date + "Last Updated"
+stamp + charts + a **copy-paste stat box with attribution link**; atomize into cuts → the format writers;
+pitch journalists; seed across publications (the citation multiplier); WoopSocial publishes.
+Data-led content is the backbone of digital PR (~94.8% name it their primary tactic; original data ~+41% media
+]]>
+  </instructions>
+</agyos_skill>

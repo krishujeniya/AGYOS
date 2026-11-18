@@ -1,0 +1,32 @@
+<agyos_skill id="ai-video-detection-forensics">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+Technical reference and methodology for verifying whether video media was generated or altered by AI models (specifically Google Flow and Veo), inspecting cryptographic provenance, and conducting digital forensics.
+| Method | Evidence Strength | Description |
+|---|---|---|
+| **Google SynthID Detector** | Strong | Deep-learning embedded digital watermark check across video and audio streams. Identifies Google AI origin. |
+| **Gemini Verification** | Strong | Analyzes media up to 100MB / 90s for Google AI audio/visual generation markers and segment timestamps. |
+| **C2PA Content Credentials** | Strong for recorded claims | Cryptographically signed metadata tracking generation models, edits, and tool history. |
+| **Container & Stream Metadata** | Supporting | Analysis of encoder tags, atom hierarchies, and audio/video stream multiplexing signatures. |
+| **Visual & Physical Heuristics** | Heuristic clue | Analysis of temporal flicker, anatomical consistency, lighting vectors, and motion physics. |
+1. **SynthID Video Detection**: Scan video stream latents for Google's embedded neural watermark.
+2. **SynthID Audio Detection**: Independently inspect audio spectrum for embedded generation watermarks.
+3. **Segment-Level Verification**: Isolate exact start and end timestamps where synthetic signals test positive.
+4. **Visual Watermark Inspection**: Audit corner badges and on-screen generation text indicators.
+5. **Watermark Authenticity**: Differentiate authentic machine verification from easily duplicated or removed visual logos.
+6. **C2PA Manifest Detection**: Scan file containers for signed Content Credentials headers.
+7. **Cryptographic Signature Validation**: Confirm that embedded public-key signatures have not been broken or invalidated.
+8. **Certificate Trust Validation**: Trace the signing certificate authority to a recognized credential trust list.
+9. **Generation Action History**: Verify whether manifest actions record an initial synthetic generation event.
+10. **Editing Action History**: Review documented post-generation edits, crops, and color corrections.
+11. **Source Ingredient Inspection**: Review hash links to base reference images or source clips.
+12. **Claimed Generator Identification**: Read embedded metadata declaring model variant or software engine.
+13. **Original File Acquisition**: Analyze unmodified camera or server downloads rather than recompressed social uploads.
+14. **Source-File Checksum**: Compute and record SHA-256 hashes to establish forensic custody.
+15. **Project Provenance**: Cross-reference asset IDs against Google Flow studio project databases.
+16. **Creator Disclosure**: Audit creator text declarations against platform mandatory disclosure rules.
+17. **Verified Upload History**: Locate the earliest public posting date and initial publisher profile.
+]]>
+  </instructions>
+</agyos_skill>

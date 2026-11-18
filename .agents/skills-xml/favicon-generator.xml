@@ -1,0 +1,32 @@
+<agyos_skill id="favicon-generator">
+  <intent>Generate a complete set of favicons from the source image at `$1` and update the project's HTML with the appropriate link tags.</intent>
+  <instructions>
+<![CDATA[
+Generate a complete set of favicons from the source image at `$1` and update the project's HTML with the appropriate link tags.
+- You need to generate a complete favicon set from a single source image.
+- The task includes placing the assets in the correct framework-specific static directory and updating HTML link tags.
+- You want one workflow that validates the source image, detects the project type, and writes the right favicon outputs.
+First, verify ImageMagick v7+ is installed by running:
+```bash
+which magick
+```
+If not found, stop and instruct the user to install it:
+- **macOS**: `brew install imagemagick`
+- **Linux**: `sudo apt install imagemagick`
+1. Verify the source image exists at the provided path: `$1`
+2. Check the file extension is a supported format (PNG, JPG, JPEG, SVG, WEBP, GIF)
+3. If the file doesn't exist or isn't a valid image format, report the error and stop
+Note whether the source is an SVG file - if so, it will also be copied as `favicon.svg`.
+Detect the project type and determine where static assets should be placed. Check in this order:
+| Framework | Detection | Static Assets Directory |
+|-----------|-----------|------------------------|
+| **Rails** | `config/routes.rb` exists | `public/` |
+| **Next.js** | `next.config.*` exists | `public/` |
+| **Gatsby** | `gatsby-config.*` exists | `static/` |
+| **SvelteKit** | `svelte.config.*` exists | `static/` |
+| **Astro** | `astro.config.*` exists | `public/` |
+| **Hugo** | `hugo.toml` or `config.toml` with Hugo markers | `static/` |
+| **Jekyll** | `_config.yml` with Jekyll markers | Root directory (same as `index.html`) |
+]]>
+  </instructions>
+</agyos_skill>

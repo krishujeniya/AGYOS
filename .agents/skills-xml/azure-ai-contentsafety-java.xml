@@ -1,0 +1,32 @@
+<agyos_skill id="azure-ai-contentsafety-java">
+  <intent>Build content moderation applications using the Azure AI Content Safety SDK for Java.</intent>
+  <instructions>
+<![CDATA[
+Build content moderation applications using the Azure AI Content Safety SDK for Java.
+```xml
+<dependency>
+<groupId>com.azure</groupId>
+<artifactId>azure-ai-contentsafety</artifactId>
+<version>1.1.0-beta.1</version>
+</dependency>
+```
+```java
+import com.azure.ai.contentsafety.ContentSafetyClient;
+import com.azure.ai.contentsafety.ContentSafetyClientBuilder;
+import com.azure.ai.contentsafety.BlocklistClient;
+import com.azure.ai.contentsafety.BlocklistClientBuilder;
+import com.azure.core.credential.KeyCredential;
+String endpoint = System.getenv("CONTENT_SAFETY_ENDPOINT");
+String key = System.getenv("CONTENT_SAFETY_KEY");
+ContentSafetyClient contentSafetyClient = new ContentSafetyClientBuilder()
+.credential(new KeyCredential(key))
+.endpoint(endpoint)
+.buildClient();
+BlocklistClient blocklistClient = new BlocklistClientBuilder()
+.credential(new KeyCredential(key))
+.endpoint(endpoint)
+.buildClient();
+```
+]]>
+  </instructions>
+</agyos_skill>

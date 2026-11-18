@@ -1,0 +1,32 @@
+<agyos_skill id="threads-post">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+A **format-execution skill** — write a Threads-native conversation post (built to earn replies) **and**
+carry the WoopSocial Threads publish facts. The agent writes the **post + topic tag + media direction +
+reply angles**; **WoopSocial publishes/schedules the single post**; the **replying that drives reach is
+human.**
+Threads rewards what most platforms only claim to: **genuine conversation.** **Replies outweigh likes**,
+**conversation depth** and **velocity** (first 30–90 min) drive distribution, and the **For You feed
+surfaces new/smaller accounts** — an open (but tightening, post-ads) window. Mosseri's rule is blunt:
+**"reply much more than you post."** So write a **conversation starter** (question / hot take / opinion),
+keep a **consistent niche** with **one topic tag** (topic-neighbourhoods), put **links inline** (the old
+penalty was reversed), and treat the post as the *smaller half* — the replies win the reach, and that part
+is human.
+1. **brand-profile** — niche + voice (Threads punishes press-release tone).
+2. **goals-and-kpis** — the goal (replies / profile visits / follower growth, not vanity likes).
+(Depth: `references/the-reply-framework.md`.)
+- **R — Reason to reply:** a conversation starter (question/hot take/opinion), not a broadcast; no bait.
+- **E — Engagement velocity first:** the first 30–90 min decide reach — post at a peak window, reply fast.
+- **P — Personality + niche:** authentic/original (not promo); consistent niche + **one topic tag.**
+- **L — Light media + link if it fits:** photos out-engage text-only (~+60%); **links inline** (no
+first-comment tax); stay ≤500 chars.
+- **Y — You reply more than you post:** the post is the smaller half; **WoopSocial publishes it, a human
+(→ community-management) does the replying.**
+Platform stats (text-first, ~400M MAU, passed X in daily mobile, ~6.25% ER, ads global Jan 2026 →
+tightening); conversation-first + Mosseri "reply more than you post"; ranking (replies>likes, depth,
+velocity 30–90 min, For You surfaces new accounts); Mosseri specifics (links rewarded, bait crackdown,
+credibility/originality, Account Status, Dear Algo); topic tags + niche-neighbourhoods; formats (500 chars,
+]]>
+  </instructions>
+</agyos_skill>

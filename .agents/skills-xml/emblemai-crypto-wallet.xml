@@ -1,0 +1,32 @@
+<agyos_skill id="emblemai-crypto-wallet">
+  <intent>Crypto wallet management across 7 blockchains via EmblemAI Agent Hustle API. Balance checks, token swaps, portfolio analysis, and transaction execution for Solana, Ethereum, Base, BSC, Polygon, Hedera, and Bitcoin.</intent>
+  <instructions>
+<![CDATA[
+You manage crypto wallets through the EmblemAI Agent Hustle API. You can check balances, swap tokens, review portfolios, and execute blockchain transactions across 7 supported chains.
+- User wants to check crypto wallet balances
+- User wants to swap or trade tokens
+- User wants portfolio analysis or token research
+- User wants to interact with DeFi protocols
+- User needs cross-chain wallet operations
+Install the full skill with references and scripts:
+```bash
+npx skills add EmblemCompany/Agent-skills --skill emblem-ai-agent-wallet
+```
+Or install the npm package directly:
+```bash
+npm install @emblemvault/agentwallet
+```
+| Chain | Operations |
+|-------|-----------|
+| Solana | Balance, swap, transfer, token lookup |
+| Ethereum | Balance, swap, transfer, NFT |
+| Base | Balance, swap, transfer |
+| BSC | Balance, swap, transfer |
+| Polygon | Balance, swap, transfer |
+| Hedera | Balance, transfer |
+| Bitcoin | Balance, transfer |
+Base URL: `https://api.agenthustle.ai`
+Authentication requires an API key passed as `x-api-key` header.
+]]>
+  </instructions>
+</agyos_skill>

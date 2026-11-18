@@ -1,0 +1,32 @@
+<agyos_skill id="before-after-and-transformation">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **transformation format** — start with a real before, highlight the journey, isolate the variables, frame
+results honestly, and tie it to the viewer. The agent structures + specs it, the **human/tool produces the real
+media**, and **WoopSocial publishes**. (Pairs with `social-proof-and-testimonials` for consent + the FTC rules.)
+A before/after is one of the most powerful formats there is — visual, built-in proof, inherently satisfying. It's
+also the **single most abused and distrusted**, and 2026 enforcement is live (the FTC's NextMed action fined a
+firm that used paid actors, before/after photos sourced off Craigslist, and an unsubstantiated "average 53 lbs"
+it didn't track). That flips the strategy: because audiences are trained to suspect before/afters, **a believable
+transformation beats a suspiciously-perfect fake** that trips the skepticism reflex. Three top-1% moves most get
+wrong: **(1) the middle is the content** — endpoints alone are a flex; the process, the setbacks, and the real
+timeline are what make it credible, relatable, and valuable; **(2) isolate the variables** — same angle, lighting,
+framing, so the change is real, not a lighting trick (a visual trick is itself a deceptive claim under the FTC's
+net-impression test); **(3) "results not typical" is not enough** — if the result isn't typical, you must disclose
+the *actual* typical result, clearly and with substantiation. Never stage a worse before, cherry-pick, or hide the
+timeline/edits/aids.
+1. **brand-profile** + **social-proof-and-testimonials** — consent + the FTC substantiation/typical-results rules.
+2. **short-form-video-script** (if it's a video).
+(Depth: `references/the-shift-framework.md`.)
+- **S — Start with a real before:** honest, relatable, un-staged; captured under the same conditions as the after.
+- **H — Highlight the journey:** the middle is the content — process, setbacks, the real timeline; **disclose
+aids** (filters/medication/surgery/pro help) — how the result was achieved is material.
+- **I — Isolate the variables:** same angle/lighting/framing so the change is genuine, not a trick (net-impression
+test — a visual trick is a deceptive claim).
+- **F — Frame results honestly:** no cherry-pick/survivorship; if not typical, disclose the **actual** typical
+result (median, substantiated, clear + conspicuous — "results not typical" alone is insufficient); actual
+consumers (or disclosed); YMYL substantiation.
+]]>
+  </instructions>
+</agyos_skill>

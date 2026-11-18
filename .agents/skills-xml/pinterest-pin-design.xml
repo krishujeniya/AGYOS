@@ -1,0 +1,32 @@
+<agyos_skill id="pinterest-pin-design">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+A **design-craft skill** — design the pin's concept + composition + overlay, produce the **brief**, and plan
+the **fresh-pin variants**. The agent **designs + briefs + critiques**; a **human or image tool makes the
+raster**; **WoopSocial publishes the finished pin** (image + title + description + board + link).
+A pin is a **search result in a two-column mobile feed**, competing at roughly **half a phone screen wide**
+(~236px in the desktop grid). Its job is the **save and the outbound click**, and it keeps doing that job for
+**months** (~4-month lifespan) — so a pin is an **asset, not a post.** Two rules anchor everything: the
+**visual and the keyword are one unit** (this skill owns the visual; **pinterest-seo** owns the keyword — the
+keyword goes in the **overlay AND the title**), and **fresh beats frequent reposting** — a "fresh pin" is a
+**new image/layout/overlay for the same URL**, not a repin, and fresh designs drive **~90% of Pinterest
+website traffic.** Design **mobile-first at feed size**, always in **2:3 (1000×1500)** — other ratios are
+penalized.
+1. **brand-profile** — palette/fonts/style (pins are a brand surface that must stay recognizable).
+2. the **destination** — the page the pin links to (the visual must promise what the page delivers).
+3. the **keyword** — from **pinterest-seo** (it goes in the overlay and the title).
+(Depth: `references/the-saved-framework.md`.)
+- **S — Stop the scroll on a 2:3 canvas:** 1000×1500, 2:3 mandatory (other ratios penalized/cropped); one
+focal point; vertical composition; lifestyle/in-context imagery beats sterile product-on-white; parseable
+at feed size.
+- **A — Anchor the keyword overlay:** the pinterest-seo keyword rendered large on the image (Pinterest
+OCR-reads it); ≤~6 words, bold, high contrast, readable at ~236px; top-third or center; not a caption
+duplicate.
+- **V — Visual brand system:** a pin template family (from **design-and-templates**) — consistent fonts/
+palette/layout; subtle logo/URL, **never bottom-right** (Pinterest's own icons overlay that corner).
+- **E — Every URL gets fresh variants:** 3–5 **visually distinct** designs per destination (different image
++ layout + overlay angle — not a color swap); each is a new chance to rank.
+]]>
+  </instructions>
+</agyos_skill>

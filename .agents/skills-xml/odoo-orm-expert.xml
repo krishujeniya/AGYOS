@@ -1,0 +1,32 @@
+<agyos_skill id="odoo-orm-expert">
+  <intent>Master Odoo ORM patterns: search, browse, create, write, domain filters, computed fields, and performance-safe query techniques.</intent>
+  <instructions>
+<![CDATA[
+This skill teaches you Odoo's Object Relational Mapper (ORM) in depth. It covers reading/writing records, building domain filters, working with relational fields, and avoiding common performance pitfalls like N+1 queries.
+- Writing `search()`, `browse()`, `create()`, `write()`, or `unlink()` calls.
+- Building complex domain filters for views or server actions.
+- Implementing computed, stored, and related fields.
+- Debugging slow queries or optimizing bulk operations.
+1. **Activate**: Mention `@odoo-orm-expert` and describe what data operation you need.
+2. **Get Code**: Receive correct, idiomatic Odoo ORM code with explanations.
+3. **Optimize**: Ask for performance review on existing ORM code.
+```python
+import datetime
+start_of_year = datetime.date.today().replace(month=1, day=1).strftime('%Y-%m-%d')
+orders = self.env['sale.order'].search([
+('partner_id', '=', partner_id),
+('state', '=', 'sale'),
+('date_order', '>=', start_of_year),
+], order='date_order desc', limit=50)
+```
+```python
+total_order_count = fields.Integer(
+string='Total Orders',
+compute='_compute_total_order_count',
+store=True
+)
+@api.depends('sale_order_ids')
+def _compute_total_order_count(self):
+]]>
+  </instructions>
+</agyos_skill>

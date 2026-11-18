@@ -1,0 +1,32 @@
+<agyos_skill id="notebooklm">
+  <intent>Use this skill to query your Google NotebookLM notebooks directly from Claude Code for source-grounded, citation-backed answers from Gemini. Browser automation, library management, persistent auth. Drastically reduced hallucinations through document-only responses.</intent>
+  <instructions>
+<![CDATA[
+Interact with Google NotebookLM to query documentation with Gemini's source-grounded answers. For programmatic FastMCP and `nlm` CLI automation via `jacob-bd/gemini-notebook-mcp-cli`, see the canonical [gemini-notebook](../gemini-notebook/SKILL.md) skill.
+Trigger when user:
+- Mentions NotebookLM explicitly
+- Shares NotebookLM URL (`https://notebooklm.google.com/notebook/...`)
+- Asks to query their notebooks/documentation
+- Wants to add documentation to NotebookLM library
+- Uses phrases like "ask my NotebookLM", "check my docs", "query my notebook"
+When user wants to add a notebook without providing details:
+**SMART ADD (Recommended)**: Query the notebook first to discover its content:
+```bash
+python scripts/run.py ask_question.py --question "What is the content of this notebook? What topics are covered? Provide a complete overview briefly and concisely" --notebook-url "[URL]"
+python scripts/run.py notebook_manager.py add --url "[URL]" --name "[Based on content]" --description "[Based on content]" --topics "[Based on content]"
+```
+**MANUAL ADD**: If user provides all details:
+- `--url` - The NotebookLM URL
+- `--name` - A descriptive name
+- `--description` - What the notebook contains (REQUIRED!)
+- `--topics` - Comma-separated topics (REQUIRED!)
+NEVER guess or use generic descriptions! If details missing, use Smart Add to discover them.
+**NEVER call scripts directly. ALWAYS use `python scripts/run.py [script]`:**
+```bash
+python scripts/run.py auth_manager.py status
+python scripts/run.py notebook_manager.py list
+python scripts/run.py ask_question.py --question "..."
+python scripts/auth_manager.py status  # Fails without venv!
+]]>
+  </instructions>
+</agyos_skill>

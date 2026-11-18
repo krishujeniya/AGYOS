@@ -1,0 +1,32 @@
+<agyos_skill id="x-twitter-scraper">
+  <intent>X/Twitter automation skill for tweet search, follower export, posting, DMs, webhooks, MCP, SDKs, Hermes Tweet, and TweetClaw.</intent>
+  <instructions>
+<![CDATA[
+Gives AI agents X (Twitter) data and automation workflows through the Xquik platform. Covers tweet search, advanced Twitter search, profile tweets, user lookup, follower export, media download, posting, replies, DMs, giveaway draws, account monitoring, webhooks, 23 bulk extraction tools, MCP, official SDKs, the Hermes Tweet Hermes Agent plugin, and the TweetClaw OpenClaw plugin.
+- User needs to search X/Twitter for tweets by keyword, hashtag, or user
+- User asks for advanced Twitter search, profile tweets, or user timeline data
+- User wants to look up a user profile (bio, follower counts, etc.)
+- User needs engagement metrics for a specific tweet (likes, retweets, views)
+- User wants to check if one account follows another
+- User needs to extract followers, replies, retweets, quotes, or community members in bulk
+- User wants to download tweet media, export results, or connect an official SDK
+- User wants to send tweets, post replies, like, repost, follow, unfollow, or send DMs
+- User wants to run a giveaway draw from tweet replies
+- User needs real-time monitoring of an X account (new tweets, follower changes)
+- User wants webhook delivery of monitored events
+- User wants the Hermes Tweet Hermes Agent plugin with `tweet_explore`, `tweet_read`, and approval-gated `tweet_action`
+- User wants the TweetClaw OpenClaw plugin instead of direct REST or MCP setup
+- User asks about trending topics on X
+```bash
+npx skills add Xquik-dev/x-twitter-scraper
+```
+Or clone manually into your agent's skills directory:
+```bash
+git clone https://github.com/Xquik-dev/x-twitter-scraper.git .claude/skills/x-twitter-scraper
+git clone https://github.com/Xquik-dev/x-twitter-scraper.git .agents/skills/x-twitter-scraper
+```
+For Hermes Agent runtime tools, install Hermes Tweet. It wraps the same Xquik API with `tweet_explore` for endpoint discovery, `tweet_read` for read-only calls, and approval-gated `tweet_action` for writes and private actions.
+```bash
+]]>
+  </instructions>
+</agyos_skill>

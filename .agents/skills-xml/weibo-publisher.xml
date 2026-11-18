@@ -1,0 +1,32 @@
+<agyos_skill id="weibo-publisher">
+  <intent>Posts content to Weibo (微博). Supports regular posts with text, images, and videos, and headline articles (头条文章) with Markdown input via Chrome CDP. Use when user asks to "post to Weibo", "发微博", "发布微博", "publish to Weibo", "share on Weibo", "写微博", or "微博头条文章".</intent>
+  <instructions>
+<![CDATA[
+Posts text, images, videos, and long-form articles to Weibo via real Chrome browser (bypasses anti-bot detection).
+**Important**: All scripts are located in the `scripts/` subdirectory of this skill.
+**Agent Execution Instructions**:
+1. Determine this SKILL.md file's directory path as `{baseDir}`
+2. Script path = `{baseDir}/scripts/<script-name>.ts`
+3. Replace all `{baseDir}` in this document with the actual path
+4. Resolve `${BUN_X}` runtime: if `bun` installed → `bun`; if `npx` available → `npx -y bun`; else suggest installing bun
+**Script Reference**:
+| Script | Purpose |
+|--------|---------|
+| `scripts/weibo-post.ts` | Regular posts (text + images) |
+| `scripts/weibo-article.ts` | Headline article publishing (Markdown) |
+| `scripts/copy-to-clipboard.ts` | Copy content to clipboard |
+| `scripts/paste-from-clipboard.ts` | Send real paste keystroke |
+Check EXTEND.md in priority order — the first one found wins:
+| Priority | Path | Scope |
+|----------|------|-------|
+| 1 | `.baoyu-skills/baoyu-post-to-weibo/EXTEND.md` | Project |
+| 2 | `${XDG_CONFIG_HOME:-$HOME/.config}/baoyu-skills/baoyu-post-to-weibo/EXTEND.md` | XDG |
+| 3 | `$HOME/.baoyu-skills/baoyu-post-to-weibo/EXTEND.md` | User home |
+If none found, use defaults.
+**EXTEND.md supports**: Default Chrome profile
+- Google Chrome or Chromium
+- `bun` runtime
+- First run: log in to Weibo manually (session saved)
+]]>
+  </instructions>
+</agyos_skill>

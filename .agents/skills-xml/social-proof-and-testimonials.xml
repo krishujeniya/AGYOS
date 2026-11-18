@@ -1,0 +1,32 @@
+<agyos_skill id="social-proof-and-testimonials">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **proof content type** — vet real proof, match it to the objection, unearth the specifics, cast the customer
+as the hero, and hand it across formats + placements. The **format writers** turn it into cuts, **WoopSocial
+publishes**, and proof gets placed where doubt is highest.
+Peers out-trust brands by a wide margin (per Nielsen, ~92% trust peer recommendations over advertising), so a
+real customer's words persuade where your copy can't. But most proof content fails two ways: it's **generic**
+("great service!" convinces no one — specifics do), or it's **manufactured**. As of the **FTC's 2024 fake-review
+rule**, fabricated, AI-generated, undisclosed-insider, or sentiment-incentivized testimonials are enforcement
+bait (penalties over $50k/violation) — and a flawless 5.0 wall reads as fake anyway. The counter-intuition that
+separates top-1% work: **honest negatives raise credibility**, and the believable testimonial **names the
+objection and the specific result.** The skill is sourcing real proof, matching it to the doubt, and making it
+specific — never inventing it.
+1. **brand-profile** — the real proof points / results you actually hold.
+2. **audience-research** — the specific objections the proof must dissolve.
+(Depth: `references/the-vouch-framework.md`.)
+- **V — Vet real proof:** source reviews/testimonials/UGC/case studies/results; **consent first** (a tag isn't
+permission; ads need broader rights); **never fabricate or AI-generate**; disclose material connections;
+preserve meaning.
+- **O — Overcome the right objection:** match each proof point to the specific buyer doubt (price → ROI; risk →
+guarantee + "people like me"; fit → a near-identical customer's result); right proof, right stage.
+- **U — Unearth the specifics:** a real number, a before/after, a face + first name (with consent); cut vague
+raves; keep honest mixed/negative notes — specificity and candor = believability.
+- **C — Cast the customer as the hero:** frame it as their transformation (stuck → turning point → result); you're
+the guide (hands to `storytelling-and-narrative`), not bragging.
+- **H — Hand it across formats + placements:** quote/stat card, results carousel, video testimonial, UGC reshare
+(with rights) → the format writers; place at decision points; WoopSocial publishes.
+]]>
+  </instructions>
+</agyos_skill>

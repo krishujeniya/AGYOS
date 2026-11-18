@@ -1,0 +1,32 @@
+<agyos_skill id="click-path-audit">
+  <intent>Trace every user-facing button/touchpoint through its full state change sequence to find bugs where functions individually work but cancel each other out, produce wrong final state, or leave the UI in an inconsistent state. Use when: systematic debugging found no bugs but users report broken buttons, or after any major refactor touching shared state stores.</intent>
+  <instructions>
+<![CDATA[
+Find bugs that static code reading misses: state interaction side effects, race conditions between sequential calls, and handlers that silently undo each other.
+Traditional debugging checks:
+- Does the function exist? (missing wiring)
+- Does it crash? (runtime errors)
+- Does it return the right type? (data flow)
+But it does NOT check:
+- **Does the final UI state match what the button label promises?**
+- **Does function B silently undo what function A just did?**
+- **Does shared state (Zustand/Redux/context) have side effects that cancel the intended action?**
+Real example: A "New Email" button called `setComposeMode(true)` then `selectThread(null)`. Both worked individually. But `selectThread` had a side effect resetting `composeMode: false`. The button did nothing. 54 bugs were found by systematic debugging — this one was missed.
+For EVERY interactive touchpoint in the target area:
+```
+1. IDENTIFY the handler (onClick, onSubmit, onChange, etc.)
+2. TRACE every function call in the handler, IN ORDER
+3. For EACH function call:
+a. What state does it READ?
+b. What state does it WRITE?
+c. Does it have SIDE EFFECTS on shared state?
+d. Does it reset/clear any state as a side effect?
+4. CHECK: Does any later call UNDO a state change from an earlier call?
+5. CHECK: Is the FINAL state what the user expects from the button label?
+6. CHECK: Are there race conditions (async calls that resolve in wrong order)?
+```
+Before auditing any touchpoint, build a side-effect map of every state store action:
+```
+]]>
+  </instructions>
+</agyos_skill>

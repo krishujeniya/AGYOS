@@ -1,0 +1,32 @@
+<agyos_skill id="testing-patterns">
+  <intent>Jest testing patterns, factory functions, mocking strategies, and TDD workflow. Use when writing unit tests, creating test factories, or following TDD red-green-refactor cycle.</intent>
+  <instructions>
+<![CDATA[
+**Test-Driven Development (TDD):**
+- Write failing test FIRST
+- Implement minimal code to pass
+- Refactor after green
+- Never write production code without a failing test
+**Behavior-Driven Testing:**
+- Test behavior, not implementation
+- Focus on public APIs and business requirements
+- Avoid testing implementation details
+- Use descriptive test names that describe behavior
+**Factory Pattern:**
+- Create `getMockX(overrides?: Partial<X>)` functions
+- Provide sensible defaults
+- Allow overriding specific properties
+- Keep tests DRY and maintainable
+Create a custom render that wraps components with required providers:
+```typescript
+// src/utils/testUtils.tsx
+import { render } from '@testing-library/react-native';
+import { ThemeProvider } from './theme';
+export const renderWithTheme = (ui: React.ReactElement) => {
+return render(
+<ThemeProvider>{ui}</ThemeProvider>
+);
+};
+]]>
+  </instructions>
+</agyos_skill>

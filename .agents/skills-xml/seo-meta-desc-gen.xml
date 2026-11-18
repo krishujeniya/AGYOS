@@ -1,0 +1,32 @@
+<agyos_skill id="seo-meta-desc-gen">
+  <intent>Writes 3 title tag variants and 3 meta description variants per page with SERP preview, OG tags, and Twitter Card tags. Activate when the user wants to write meta tags, title tags, or social sharing tags for any page.</intent>
+  <instructions>
+<![CDATA[
+Produces 3 title tag variants and 3 meta description variants for any page, each using a different CTR mechanic (benefit lead, question hook, social proof). Also generates Open Graph and Twitter Card tags. Includes a SERP preview block and a variant comparison table with a recommended selection.
+Part of the [SEO-AEO Engine](https://github.com/mrprewsh/seo-aeo-engine).
+- Use when a page needs a title tag and meta description written or optimised
+- Use when preparing social sharing tags for LinkedIn, X, or WhatsApp
+- Use when A/B testing CTR on search results
+- Use after the landing-page-writer or blog-writer skill completes
+- **V1 Benefit Lead** — leads with the outcome or benefit
+- **V2 Question Hook** — opens with the question the searcher is asking
+- **V3 Social Proof / Specificity** — leads with a number, stat, or specific claim
+- Title tag: 50–60 characters (hard limit: 60)
+- Meta description: 140–155 characters (hard limit: 160)
+- Never end a description mid-sentence near the limit
+- Primary keyword in first 3 words of every title variant
+- Primary keyword in first half of every description variant
+- At least one power word per description
+- Every description ends with a CTA verb
+- Never use "click here", passive openers, or all-caps
+OG and Twitter tags can be more conversational than SERP tags. Write them as distinct copy — not copy-pastes of the meta description.
+Title V1: Remote Project Management Software | Syncro
+(51 chars) — Keyword first, brand at end
+Title V2: Manage Remote Teams Without the Chaos | Syncro
+(54 chars) — Pain-point led with power word
+Description V1 (Benefit Lead):
+Ship faster with your distributed team. Syncro centralises
+tasks, async updates, and sprints in one tool. Start free today.
+]]>
+  </instructions>
+</agyos_skill>

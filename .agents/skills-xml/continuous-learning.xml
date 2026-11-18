@@ -1,0 +1,32 @@
+<agyos_skill id="continuous-learning">
+  <intent>[DEPRECATED - use continuous-learning-v2] Legacy v1 stop-hook skill extractor. v2 is a strict superset with instinct-based, project-scoped, hook-reliable learning. Do not invoke v1: when continuous learning, session learning, or pattern extraction is requested, route to continuous-learning-v2 instead.</intent>
+  <instructions>
+<![CDATA[
+> **DEPRECATED 2026-04-28.** Use `continuous-learning-v2` instead. v2 is a strict superset: stop-hook observation becomes PreToolUse/PostToolUse observation, full skills become atomic instincts with confidence scoring, and global-only storage becomes project-scoped plus global promotion.
+>
+> This file is kept for archival reference and backward compatibility with existing installs.
+Automatically evaluates Claude Code sessions on end to extract reusable patterns that can be saved as learned skills.
+- Setting up automatic pattern extraction from Claude Code sessions
+- Configuring the Stop hook for session evaluation
+- Reviewing or curating learned skills in `~/.claude/skills/learned/`
+- Adjusting extraction thresholds or pattern categories
+- Comparing v1 (this) vs v2 (instinct-based) approaches
+This v1 skill is still supported, but `continuous-learning-v2` is the preferred path for new installs. Keep v1 when you explicitly want the simpler Stop-hook extraction flow or need compatibility with older learned-skill workflows.
+This skill runs as a **Stop hook** at the end of each session:
+1. **Session Evaluation**: Checks if session has enough messages (default: 10+)
+2. **Pattern Detection**: Identifies extractable patterns from the session
+3. **Skill Extraction**: Saves useful patterns to `~/.claude/skills/learned/`
+Edit `config.json` to customize:
+```json
+{
+"min_session_length": 10,
+"extraction_threshold": "medium",
+"auto_approve": false,
+"learned_skills_path": "~/.claude/skills/learned/",
+"patterns_to_detect": [
+"error_resolution",
+"user_corrections",
+"workarounds",
+]]>
+  </instructions>
+</agyos_skill>

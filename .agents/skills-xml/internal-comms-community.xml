@@ -1,0 +1,8 @@
+<agyos_skill id="internal-comms-community">
+  <intent>Compatibility ID for internal newsletters, FAQs, status reports, leadership notes, project updates, and incident reports. Use internal-team-communications as the canonical runbook.</intent>
+  <instructions>
+<![CDATA[
+Use the canonical [internal-team-communications runbook](../internal-team-communications/SKILL.md), which includes the task workflow and local examples.
+]]>
+  </instructions>
+</agyos_skill>

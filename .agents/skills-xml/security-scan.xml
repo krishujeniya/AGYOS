@@ -1,0 +1,32 @@
+<agyos_skill id="security-scan">
+  <intent>Scan your Claude Code configuration (.claude/ directory) for security vulnerabilities, misconfigurations, and injection risks using AgentShield. Checks CLAUDE.md, settings.json, MCP servers, hooks, and agent definitions. Use when auditing a .claude/ directory — CLAUDE.md, settings.json, MCP servers, hooks, or agent definitions.</intent>
+  <instructions>
+<![CDATA[
+Audit your Claude Code configuration for security issues using [AgentShield](https://github.com/krishujeniya/AGYOS).
+- Setting up a new Claude Code project
+- After modifying `.claude/settings.json`, `CLAUDE.md`, or MCP configs
+- Before committing configuration changes
+- When onboarding to a new repository with existing Claude Code configs
+- Periodic security hygiene checks
+| File | Checks |
+|------|--------|
+| `CLAUDE.md` | Hardcoded secrets, auto-run instructions, prompt injection patterns |
+| `settings.json` | Overly permissive allow lists, missing deny lists, dangerous bypass flags |
+| `mcp.json` | Risky MCP servers, hardcoded env secrets, npx supply chain risks |
+| `hooks/` | Command injection via interpolation, data exfiltration, silent error suppression |
+| `agents/*.md` | Unrestricted tool access, prompt injection surface, missing model specs |
+AgentShield must be installed. Check and install if needed:
+```bash
+npx agyos-shield --version
+npm install -g agyos-shield
+npx agyos-shield scan .
+```
+Run against the current project's `.claude/` directory:
+```bash
+npx agyos-shield scan
+npx agyos-shield scan --path /path/to/.claude
+npx agyos-shield scan --min-severity medium
+```
+]]>
+  </instructions>
+</agyos_skill>

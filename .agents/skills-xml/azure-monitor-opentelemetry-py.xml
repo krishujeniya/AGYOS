@@ -1,0 +1,32 @@
+<agyos_skill id="azure-monitor-opentelemetry-py">
+  <intent>Azure Monitor OpenTelemetry Distro for Python. Use for one-line Application Insights setup with auto-instrumentation.</intent>
+  <instructions>
+<![CDATA[
+One-line setup for Application Insights with OpenTelemetry auto-instrumentation.
+```bash
+pip install azure-monitor-opentelemetry
+```
+```bash
+APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=xxx;IngestionEndpoint=https://xxx.in.applicationinsights.azure.com/
+```
+```python
+from azure.monitor.opentelemetry import configure_azure_monitor
+configure_azure_monitor()
+```
+```python
+from azure.monitor.opentelemetry import configure_azure_monitor
+configure_azure_monitor(
+connection_string="InstrumentationKey=xxx;IngestionEndpoint=https://xxx.in.applicationinsights.azure.com/"
+)
+```
+```python
+from flask import Flask
+from azure.monitor.opentelemetry import configure_azure_monitor
+configure_azure_monitor()
+app = Flask(__name__)
+@app.route("/")
+def hello():
+return "Hello, World!"
+]]>
+  </instructions>
+</agyos_skill>

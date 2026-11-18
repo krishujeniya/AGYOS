@@ -1,0 +1,32 @@
+<agyos_skill id="project-skill-audit">
+  <intent>Audit a project and recommend the highest-value skills to add or update.</intent>
+  <instructions>
+<![CDATA[
+Audit the project's real recurring workflows before recommending skills. Prefer evidence from memory, rollout summaries, existing skill folders, and current repo conventions over generic brainstorming.
+Recommend updates before new skills when an existing project skill is already close to the needed behavior.
+- When the user asks what skills a project needs or which existing skills should be updated.
+- When recommendations should be grounded in project history, memory files, and local conventions.
+1. Map the current project surface.
+Identify the repo root and read the most relevant project guidance first, such as `AGENTS.md`, `README.md`, roadmap/ledger files, and local docs that define workflows or validation expectations.
+2. Build the memory/session path first.
+Resolve the memory base as `$CODEX_HOME` when set, otherwise default to `~/.codex`.
+Use these locations:
+- memory index: `$CODEX_HOME/memories/MEMORY.md` or `~/.codex/memories/MEMORY.md`
+- rollout summaries: `$CODEX_HOME/memories/rollout_summaries/`
+- raw sessions: `$CODEX_HOME/sessions/` or `~/.codex/sessions/`
+3. Read project past sessions in this order.
+If the runtime prompt already includes a memory summary, start there.
+Then search `MEMORY.md` for:
+- repo name
+- repo basename
+- current `cwd`
+- important module or file names
+Open only the 1-3 most relevant rollout summaries first.
+Fall back to raw session JSONL only when the summaries are missing the exact evidence you need.
+4. Scan existing project-local skills before suggesting anything new.
+Check these locations relative to the current repo root:
+- `.agents/skills`
+- `.codex/skills`
+]]>
+  </instructions>
+</agyos_skill>

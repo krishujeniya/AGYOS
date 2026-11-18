@@ -1,0 +1,32 @@
+<agyos_skill id="fullstack-development-workflow">
+  <intent>Comprehensive web, mobile, and backend development workflow bundling frontend, backend, full-stack, and mobile development skills for end-to-end application delivery.</intent>
+  <instructions>
+<![CDATA[
+Consolidated workflow for end-to-end software development covering web, mobile, and backend development. This bundle orchestrates skills for building production-ready applications from scaffolding to deployment.
+Use this workflow when:
+- Building new web or mobile applications
+- Adding features to existing applications
+- Refactoring or modernizing legacy code
+- Setting up new projects with best practices
+- Full-stack feature development
+- Cross-platform application development
+- `app-builder` - Main application building orchestrator
+- `senior-fullstack` - Full-stack development guidance
+- `environment-setup-guide` - Development environment setup
+- `concise-planning` - Task planning and breakdown
+1. Determine project type (web, mobile, full-stack)
+2. Select technology stack
+3. Scaffold project structure
+4. Configure development environment
+5. Set up version control and CI/CD
+```
+Use @app-builder to scaffold a new React + Node.js full-stack application
+```
+```
+Use @senior-fullstack to set up a Next.js 14 project with App Router
+```
+```
+Use @environment-setup-guide to configure my development environment
+]]>
+  </instructions>
+</agyos_skill>

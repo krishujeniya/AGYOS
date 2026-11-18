@@ -1,0 +1,32 @@
+<agyos_skill id="azure-eventgrid-py">
+  <intent>Azure Event Grid SDK for Python. Use for publishing events, handling CloudEvents, and event-driven architectures.</intent>
+  <instructions>
+<![CDATA[
+Event routing service for building event-driven applications with pub/sub semantics.
+```bash
+pip install azure-eventgrid azure-identity
+```
+```bash
+EVENTGRID_TOPIC_ENDPOINT=https://<topic-name>.<region>.eventgrid.azure.net/api/events
+EVENTGRID_NAMESPACE_ENDPOINT=https://<namespace>.<region>.eventgrid.azure.net
+```
+```python
+from azure.identity import DefaultAzureCredential
+from azure.eventgrid import EventGridPublisherClient
+credential = DefaultAzureCredential()
+endpoint = "https://<topic-name>.<region>.eventgrid.azure.net/api/events"
+client = EventGridPublisherClient(endpoint, credential)
+```
+| Format | Class | Use Case |
+|--------|-------|----------|
+| Cloud Events 1.0 | `CloudEvent` | Standard, interoperable (recommended) |
+| Event Grid Schema | `EventGridEvent` | Azure-native format |
+```python
+from azure.eventgrid import EventGridPublisherClient, CloudEvent
+from azure.identity import DefaultAzureCredential
+client = EventGridPublisherClient(endpoint, DefaultAzureCredential())
+event = CloudEvent(
+type="MyApp.Events.OrderCreated",
+]]>
+  </instructions>
+</agyos_skill>

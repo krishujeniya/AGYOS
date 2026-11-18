@@ -1,0 +1,32 @@
+<agyos_skill id="azure-data-tables-py">
+  <intent>Azure Tables SDK for Python (Storage and Cosmos DB). Use for NoSQL key-value storage, entity CRUD, and batch operations.</intent>
+  <instructions>
+<![CDATA[
+NoSQL key-value store for structured data (Azure Storage Tables or Cosmos DB Table API).
+```bash
+pip install azure-data-tables azure-identity
+```
+```bash
+AZURE_STORAGE_ACCOUNT_URL=https://<account>.table.core.windows.net
+COSMOS_TABLE_ENDPOINT=https://<account>.table.cosmos.azure.com
+```
+```python
+from azure.identity import DefaultAzureCredential
+from azure.data.tables import TableServiceClient, TableClient
+credential = DefaultAzureCredential()
+endpoint = "https://<account>.table.core.windows.net"
+service_client = TableServiceClient(endpoint=endpoint, credential=credential)
+table_client = TableClient(endpoint=endpoint, table_name="mytable", credential=credential)
+```
+| Client | Purpose |
+|--------|---------|
+| `TableServiceClient` | Create/delete tables, list tables |
+| `TableClient` | Entity CRUD, queries |
+```python
+service_client.create_table("mytable")
+service_client.create_table_if_not_exists("mytable")
+service_client.delete_table("mytable")
+for table in service_client.list_tables():
+]]>
+  </instructions>
+</agyos_skill>

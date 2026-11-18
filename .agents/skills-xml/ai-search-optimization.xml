@@ -1,0 +1,32 @@
+<agyos_skill id="ai-search-optimization">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+Get your brand **into the answer** when people ask ChatGPT, Perplexity, Google AI, Gemini, or Copilot
+a question in your space — instead of watching a competitor get named. This is **GEO** (Generative
+Engine Optimization; also AEO/LLMO): optimizing to be **cited and recommended** by AI engines. It
+supplements search/SEO; it doesn't replace it.
+Four truths shape everything:
+1. **AI answers are built by retrieval + fan-out.** Engines retrieve live from search indexes
+(ChatGPT via OpenAI's own crawler/index, OAI-SearchBot — historically Bing-seeded; Google feeds
+AI Overviews/AI Mode) and split your topic into sub-queries — so **ranking in search feeds AI
+citation**, and you optimize for a constellation of questions.
+2. **AI cites community/social sources most.** Reddit, YouTube, Wikipedia, LinkedIn, listicles and
+review sites dominate citations — **the cited pages are usually not your pages.** Earned mentions
+beat product pages.
+3. **Platforms disagree.** ChatGPT skews Wikipedia, Perplexity skews Reddit, AI Overviews lean on
+E-E-A-T + the community web. Optimizing for one ≠ all.
+4. **Extractable, fresh, well-sourced content gets quoted.** Quotations, statistics, citations, Q&A
+structure, and schema lift citation; stale content gets displaced.
+(Full mechanics: `references/how-ai-engines-cite.md`.)
+Load `brand-profile.md` and `audience.md` (entity clarity + the real questions matter). Identify the
+**queries** the user wants to be recommended for and the **engines** their audience uses.
+Ask the user's **10–30 buyer-intent queries** (plus fan-out sub-questions) across ChatGPT / Perplexity
+/ Gemini in fresh sessions; document **whether the brand appears, how it's described, and which sources
+are cited.** The cited sources *are* the strategy; the gaps are the content list. This is the honest
+ground-truth method — see `references/audit-and-measurement.md`.
+If you can't be found in search, you can't be cited: rank in **Google/Bing** and in platform search →
+`social-seo` (the sibling). Same keyword/question research powers both. And **verify AI retrieval
+]]>
+  </instructions>
+</agyos_skill>

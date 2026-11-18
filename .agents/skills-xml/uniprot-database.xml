@@ -1,0 +1,32 @@
+<agyos_skill id="uniprot-database">
+  <intent>Direct REST API access to UniProt. Protein searches, FASTA retrieval, ID mapping, Swiss-Prot/TrEMBL. For Python workflows with multiple databases, prefer bioservices (unified interface to 40+ services). Use this for direct HTTP/REST work or UniProt-specific control.</intent>
+  <instructions>
+<![CDATA[
+UniProt is the world's leading comprehensive protein sequence and functional information resource. Search proteins by name, gene, or accession, retrieve sequences in FASTA format, perform ID mapping across databases, access Swiss-Prot/TrEMBL annotations via REST API for protein analysis.
+This skill should be used when:
+- Searching for protein entries by name, gene symbol, accession, or organism
+- Retrieving protein sequences in FASTA or other formats
+- Mapping identifiers between UniProt and external databases (Ensembl, RefSeq, PDB, etc.)
+- Accessing protein annotations including GO terms, domains, and functional descriptions
+- Batch retrieving multiple protein entries efficiently
+- Querying reviewed (Swiss-Prot) vs. unreviewed (TrEMBL) protein data
+- Streaming large protein datasets
+- Building custom queries with field-specific search syntax
+Search UniProt using natural language queries or structured search syntax.
+**Common search patterns:**
+```python
+query = "insulin AND organism_name:\"Homo sapiens\""
+query = "gene:BRCA1 AND reviewed:true"
+query = "accession:P12345"
+query = "length:[100 TO 500]"
+query = "taxonomy_id:9606"  # Human proteins
+query = "go:0005515"  # Protein binding
+```
+Use the API search endpoint: `https://rest.uniprot.org/uniprotkb/search?query={query}&format={format}`
+**Supported formats:** JSON, TSV, Excel, XML, FASTA, RDF, TXT
+Retrieve specific protein entries by accession number.
+**Accession number formats:**
+- Classic: P12345, Q1AAA9, O15530 (6 characters: letter + 5 alphanumeric)
+]]>
+  </instructions>
+</agyos_skill>

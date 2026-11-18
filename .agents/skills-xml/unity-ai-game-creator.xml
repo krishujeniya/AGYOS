@@ -1,0 +1,32 @@
+<agyos_skill id="unity-ai-game-creator">
+  <intent>Transform raw game ideas into complete Unity projects with AI-powered asset generation, scene blueprints, music/SFX prompts, and step-by-step development procedures using Unity 6+ and modern AI tools.</intent>
+  <instructions>
+<![CDATA[
+This skill transforms a raw game concept into a fully structured Unity development plan with AI-generated assets, scenes, music, scripts, and deployment-ready builds. It guides the agent through a 5-phase pipeline — from extracting core game dimensions to producing ready-to-use AI prompts for every asset category — using the latest Unity 6+ features and AI tooling ecosystem. Unlike generic Unity reference skills, this skill is workflow-driven: the user provides an idea, and the agent delivers a complete, actionable game development roadmap.
+- Use when a user describes a game idea and wants a complete development plan
+- Use when generating AI prompts for 3D models, textures, music, sound effects, or UI assets
+- Use when setting up a new Unity project from scratch with modern architecture
+- Use when creating Scene Blueprints from a concept description
+- Use when building a Game Design Document (GDD) from a rough idea
+- Use when leveraging Unity AI Assistant, MCP server, or external AI tools in a game workflow
+- Use when planning monetization, performance budgets, or app store deployment
+Execute these phases in order. Each phase produces concrete deliverables before advancing.
+```
+PHASE 1: IDEATION ──▶ PHASE 2: BLUEPRINT ──▶ PHASE 3: GENERATION ──▶ PHASE 4: ASSEMBLY ──▶ PHASE 5: DEPLOYMENT
+Game Brief            GDD + Scenes           AI Prompts + Assets     Project Setup          Build + Store
+Genre Analysis        Architecture           Scripts + Audio         Core Systems           QA + Submit
+Scope Assessment      Scene Blueprints       Voice + UI              Polish + Juice         Analytics
+```
+Extract and clarify these dimensions from the user's game idea. Ask only for what is ambiguous — infer the rest from context.
+| Dimension | What to Extract | If Unclear |
+|-----------|----------------|------------|
+| **Genre** | Primary + secondary genre blend | Suggest 3 genre combinations |
+| **Platform** | Mobile, PC, Console, WebGL, VR/AR | Recommend based on scope |
+| **Perspective** | 2D, 2.5D, 3D, Top-down, Side-scroll, FPS, TPS | Infer from genre |
+| **Art Style** | Realistic, Stylized, Pixel, Low-poly, Anime, Painterly | Suggest 3 options |
+| **Core Loop** | The 30-second repeating gameplay action | Identify from description |
+| **Target Audience** | Age range, gamer profile, platform habits | Recommend based on genre |
+| **Session Length** | Average play session duration | Infer from platform + genre |
+]]>
+  </instructions>
+</agyos_skill>

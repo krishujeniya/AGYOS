@@ -1,0 +1,32 @@
+<agyos_skill id="reels-script">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+Reels are Instagram's **discovery engine**: most Reel reach comes from **non-followers**, decided by
+how viewers respond — not by follower count. But Reels are not TikToks with a different logo:
+1. **The hook window is ~3 seconds** — they decide whether a Reel is pushed wider or throttled.
+Layer it: verbal + on-screen text + visual.
+2. **Watch-through and sends rule.** Watch time is the top signal; **sends-per-reach (DM shares)**
+are weighted roughly 3–5× more than likes for reaching new people. Script for both.
+3. **Write the muted version first.** Most Reels viewers watch on mute — if the on-screen text
+doesn't carry the story, the script fails before the audio matters.
+4. **Eligibility gates come before ranking:** original, **no TikTok/CapCut watermarks**, has audio,
+under the length cap, clear niche. A watermarked reupload is throttled at the gate.
+5. **The Reel also lives on your grid** — plan the cover frame; it can't be edited after publish.
+(Full mechanics in `references/reels-mechanics.md`.)
+Load `brand-profile.md` and `voice.md`. Voice carries into the spoken script, on-screen text, and
+caption. Carry guardrails and compliance rules.
+- **One idea** — a Reel does one thing.
+- **Goal** — reach, sends, saves, follows, or comments (shapes the close/CTA).
+- **Length tier** — ~15–35s is the reach sweet spot; up to ~90s for tutorials/storytelling that
+earns it; up to ~3 min stays recommendation-eligible. Let the idea pick the length; never pad.
+See `references/reels-mechanics.md`.
+**Original audio** (your voice) for most founder/brand content; a **trending audio** where it
+genuinely fits — but Instagram's licensed library is **native-only**: the script names the audio
+direction, the human adds the track in-app (WoopSocial can't attach trending audio). Either way, the
+Reel must work **on mute**. Live trend research → `trend-jacking`. See `references/formats-and-audio.md`.
+Use `hook-writer`. Fire on all three channels at once — verbal + bold on-screen text + a striking
+first frame — with no intro, no logo, no "hey guys." The on-screen text hook must work silently, and
+]]>
+  </instructions>
+</agyos_skill>

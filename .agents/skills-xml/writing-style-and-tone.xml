@@ -1,0 +1,32 @@
+<agyos_skill id="writing-style-and-tone">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **writing craft** — sound like someone, tune tone to the moment, yank the dead weight, let the rhythm
+breathe, and edit against the tells intelligently. The agent drafts and edits in the voice; the **human
+supplies the lived specifics and the final call**; **WoopSocial publishes**. (Craft skill — no tool file.)
+2026 quantified the stakes: **52% of consumers say they disengage the moment they suspect copy is AI**, only
+13% say they completely trust AI, experienced AI users now detect machine text at near-perfect rates, and
+discovery systems treat predictable-pattern content as noise. So the tell taxonomy matters — the delve-class
+vocabulary (44% of PubMed's *all-time* "delve" appearances landed in 2023–24), "It's not X, it's Y," the forced
+rule-of-three, the rigid intro-point-point-conclusion shape, fluff sentences, relentless positivity — but the
+top-1% position holds two truths at once. **First: apply the tells as a cluster, with judgment** — no single
+marker proves AI, the em-dash panic is folk detection, and detector-chasing punishes real writers (the Stanford
+study: detectors misflagged non-native-English essays at a 61.3% average false-positive rate). **Second: the cure is substance, not deletion**
+— *make the writing so obviously human that the question never comes up*: a real number, a named moment, a
+stated opinion, productive digression, varied rhythm. Say what only you could say. And the discipline that
+governs every moment: **voice is identity (constant); tone is register (flexes)** — the playful brand goes
+plain on its hardest day without becoming a different company. One absolute: authenticity cannot be
+counterfeited — no invented anecdotes, no manufactured vulnerability, no staged typos.
+1. **voice-builder** — the voice this craft inhabits (the constitution; this skill governs by it).
+2. **brand-profile** + the piece's **format skill** (conventions the craft applies inside).
+(Depth: `references/the-style-framework.md`.)
+- **S — Sound like someone:** one only-you element per piece (number, moment, opinion); concrete over
+abstract; subjectivity as a feature.
+- **T — Tune tone to the moment:** the tone map (celebration / education / sales / complaint / crisis) with
+voice fingerprints persisting; platform register shifts, identity doesn't (the cover-the-handle test).
+- **Y — Yank the dead weight:** fluff sentences deleted whole; throat-clearing cut; verbs over adjectives;
+one idea per sentence; front-load.
+]]>
+  </instructions>
+</agyos_skill>

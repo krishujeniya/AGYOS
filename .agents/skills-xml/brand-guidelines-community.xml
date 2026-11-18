@@ -1,0 +1,8 @@
+<agyos_skill id="brand-guidelines-community">
+  <intent>Compatibility ID for Anthropic brand guidance. Use for brand colors, typography, and visual identity; the canonical runbook is brand-design-system.</intent>
+  <instructions>
+<![CDATA[
+Use the canonical [brand-design-system runbook](../brand-design-system/SKILL.md) for Anthropic brand colors, typography, and visual identity.
+]]>
+  </instructions>
+</agyos_skill>

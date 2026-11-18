@@ -1,0 +1,32 @@
+<agyos_skill id="azure-monitor-opentelemetry-exporter-java">
+  <intent>Azure Monitor OpenTelemetry Exporter for Java. Export OpenTelemetry traces, metrics, and logs to Azure Monitor/Application Insights.</intent>
+  <instructions>
+<![CDATA[
+> **⚠️ DEPRECATION NOTICE**: This package is deprecated. Migrate to `azure-monitor-opentelemetry-autoconfigure`.
+>
+> See [Migration Guide](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-opentelemetry-exporter/MIGRATION.md) for detailed instructions.
+Export OpenTelemetry telemetry data to Azure Monitor / Application Insights.
+```xml
+<dependency>
+<groupId>com.azure</groupId>
+<artifactId>azure-monitor-opentelemetry-exporter</artifactId>
+<version>1.0.0-beta.x</version>
+</dependency>
+```
+```xml
+<dependency>
+<groupId>com.azure</groupId>
+<artifactId>azure-monitor-opentelemetry-autoconfigure</artifactId>
+<version>LATEST</version>
+</dependency>
+```
+```bash
+APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=xxx;IngestionEndpoint=https://xxx.in.applicationinsights.azure.com/
+```
+```java
+import io.opentelemetry.sdk.autoconfigure.AutoConfiguredOpenTelemetrySdk;
+import io.opentelemetry.sdk.autoconfigure.AutoConfiguredOpenTelemetrySdkBuilder;
+import io.opentelemetry.api.OpenTelemetry;
+]]>
+  </instructions>
+</agyos_skill>

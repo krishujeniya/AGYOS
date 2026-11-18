@@ -1,0 +1,32 @@
+<agyos_skill id="hookify-rules">
+  <intent>Create and configure hookify rules — markdown files with YAML frontmatter that match bash, file, prompt, or stop events by regex or conditions and show warn/block messages to the agent. Use when creating a hookify rule, writing hook rule syntax, configuring hookify, or adding pattern guardrails such as blocking dangerous commands, .env edits, or debug code.</intent>
+  <instructions>
+<![CDATA[
+ECC evaluates project-local Hookify rules with its built-in Node runtime. No
+separate Hookify plugin or Python installation is required when ECC hooks are
+enabled.
+Hookify rules are markdown files with YAML frontmatter that define patterns to watch for and messages to show when those patterns match. Rules are stored in `.claude/hookify.{rule-name}.local.md` files.
+```markdown
+name: rule-identifier
+enabled: true
+event: bash|file|stop|prompt|all
+pattern: regex-pattern-here
+Message to show Claude when this rule triggers.
+Can include markdown formatting, warnings, suggestions, etc.
+```
+| Field | Required | Values | Description |
+|-------|----------|--------|-------------|
+| name | Yes | kebab-case string | Unique identifier (verb-first: warn-*, block-*, require-*) |
+| enabled | Yes | true/false | Toggle without deleting |
+| event | Yes | bash/file/stop/prompt/all | Which hook event triggers this |
+| action | No | warn/block | warn (default) shows message; block prevents operation |
+| pattern | Yes* | regex string | Pattern to match (*or use conditions for complex rules) |
+```markdown
+name: warn-env-api-keys
+enabled: true
+event: file
+conditions:
+- field: file_path
+]]>
+  </instructions>
+</agyos_skill>

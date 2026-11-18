@@ -1,0 +1,31 @@
+<agyos_skill id="deps-upgrade">
+  <intent>Plan safe dependency upgrades, assess breaking changes, and verify compatibility incrementally. Use when updating package versions or preparing a dependency refresh.</intent>
+  <instructions>
+<![CDATA[
+Plan safe dependency upgrades, assess breaking changes, and verify compatibility incrementally. Use when updating package versions or preparing a dependency refresh.
+- Working on dependency upgrade strategy tasks or workflows
+- Needing guidance, best practices, or checklists for dependency upgrade strategy
+- The task is unrelated to dependency upgrade strategy
+- You need a different domain or tool outside this scope
+The user needs to upgrade project dependencies safely, handling breaking changes, ensuring compatibility, and maintaining stability. Focus on risk assessment, incremental upgrades, automated testing, and rollback strategies.
+$ARGUMENTS
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+1. **Upgrade Overview**: Summary of available updates with risk assessment
+2. **Priority Matrix**: Ordered list of updates by importance and safety
+3. **Migration Guides**: Step-by-step guides for each major upgrade
+4. **Compatibility Report**: Dependency compatibility analysis
+5. **Test Strategy**: Automated tests for validating upgrades
+6. **Rollback Plan**: Clear procedures for reverting if needed
+7. **Monitoring Dashboard**: Post-upgrade health metrics
+8. **Timeline**: Realistic schedule for implementing upgrades
+Focus on safe, incremental upgrades that maintain system stability while keeping dependencies current and secure.
+- `resources/implementation-playbook.md` for detailed patterns and examples.
+- Use this skill only when the task clearly matches the scope described above.
+- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
+- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+]]>
+  </instructions>
+</agyos_skill>

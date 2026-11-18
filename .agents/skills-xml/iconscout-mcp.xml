@@ -1,0 +1,32 @@
+<agyos_skill id="iconscout-mcp">
+  <intent>Search, inspect, and download design assets from Iconscout's library of 15M+ icons, vector illustrations, 3D icons, and Lottie animations via its MCP server. Use natural language queries to find style-consistent assets and inject them directly into codebases and design files.</intent>
+  <instructions>
+<![CDATA[
+Access Iconscout's 15M+ asset library — icons, vector illustrations, 3D icons, and Lottie animations — through its hosted MCP server. Search in natural language, inspect specs before committing, download in the right format, and find style-matched siblings to keep UI design consistent.
+**Endpoint:** `https://mcp.iconscout.com/mcp`
+**Auth:** OAuth browser sign-in (no manual API keys). Works with your existing Iconscout account — free and paid plan limits apply to downloads.
+**Clients:** Claude Desktop, Claude Code, Cursor, ChatGPT, Antigravity.
+| Tool | Purpose |
+|------|---------|
+| `search_assets` | Natural language search across all asset types with style/color/license filters |
+| `get_asset_details` | Fetch formats, dimensions, license tier, pack name, and contributor for any asset |
+| `download_assets` | Download a file in SVG, PNG, Lottie JSON, GIF, or MP4 to inject into the project |
+| `find_related_assets` | Find assets from the same visual pack/family for style consistency |
+| `browse_categories` | Navigate the category tree to refine broad concepts before searching |
+| Type | Formats | Best for |
+|------|---------|---------|
+| **Icons** | SVG, PNG | UI controls, navigation, status indicators |
+| **Illustrations** | SVG, PNG | Hero sections, empty states, onboarding flows |
+| **3D Icons** | PNG | Marketing pages, app store screenshots, landing pages |
+| **Lottie Animations** | JSON, GIF, MP4 | Micro-interactions, loading states, success/error feedback |
+1. **Clarify the need** — confirm asset type (icon vs illustration vs Lottie), style (outline / filled / flat / 3D), color palette, and license constraint (free vs premium).
+2. **Browse first if vague** — call `browse_categories` with a broad concept to land in the right classification before searching.
+3. **Search with specifics** — call `search_assets` with a descriptive natural language query. Include style, orientation, and color explicitly:
+- ✅ `"outline style shopping cart icon, blue stroke, free"`
+- ✅ `"flat 3D rocket facing right, premium"`
+- ❌ `"icon"` (too vague)
+4. **Inspect before download** — call `get_asset_details` to confirm format availability and license tier. Never download premium assets without user confirmation they have an active plan.
+5. **Find siblings for consistency** — if the user is building a UI set, call `find_related_assets` on the first chosen asset to pull matching icons from the same pack.
+]]>
+  </instructions>
+</agyos_skill>

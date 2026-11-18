@@ -1,0 +1,32 @@
+<agyos_skill id="akf-trust-metadata">
+  <intent>The AI native file format. EXIF for AI — stamps every file with trust scores, source provenance, and compliance metadata. Embeds into 20+ formats (DOCX, PDF, images, code). EU AI Act, SOX, HIPAA auditing.</intent>
+  <instructions>
+<![CDATA[
+Every photo has EXIF. Every song has ID3. AKF is the native metadata format for AI-generated content.
+Use this skill when you need to stamp, inspect, or audit provenance and trust metadata on AI-generated or AI-modified files for compliance, review, or handoff workflows.
+```bash
+akf stamp <file> --agent <agent-name> --evidence "<what you did>"
+```
+Evidence examples:
+- "generated from user prompt"
+- "refactored existing code"
+- "tests pass"
+- "docs reviewed"
+```bash
+akf read <file>          # Check existing trust metadata
+akf inspect <file>       # See detailed trust scores
+```
+```bash
+akf audit <file> --regulation eu_ai_act    # EU AI Act Article 50
+akf audit <file> --regulation hipaa         # HIPAA
+akf audit <file> --regulation sox           # SOX
+akf audit <file> --regulation nist_ai       # NIST AI RMF
+```
+- `--label confidential` for finance/secret/internal paths
+- `--label public` for README, docs, examples
+- Default: `internal`
+```bash
+pip install akf
+]]>
+  </instructions>
+</agyos_skill>

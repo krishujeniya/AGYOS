@@ -1,0 +1,32 @@
+<agyos_skill id="dmux-workflows">
+  <intent>Multi-agent orchestration using dmux (tmux pane manager for AI agents). Patterns for parallel agent workflows across Claude Code, Codex, OpenCode, and other harnesses. Use when running multiple agent sessions in parallel or coordinating multi-agent development workflows.</intent>
+  <instructions>
+<![CDATA[
+Orchestrate parallel AI agent sessions using dmux, a tmux pane manager for agent harnesses.
+- Running multiple agent sessions in parallel
+- Coordinating work across Claude Code, Codex, and other harnesses
+- Complex tasks that benefit from divide-and-conquer parallelism
+- User says "run in parallel", "split this work", "use dmux", or "multi-agent"
+dmux is a tmux-based orchestration tool that manages AI agent panes:
+- Press `n` to create a new pane with a prompt
+- Press `m` to merge pane output back to the main session
+- Supports: Claude Code, Codex, OpenCode, Cline, Gemini, Qwen
+**Install:** Install dmux from its repository after reviewing the package. See [github.com/standardagents/dmux](https://github.com/standardagents/dmux)
+```bash
+dmux
+```
+Split research and implementation into parallel tracks:
+```
+Pane 1 (Research): "Research best practices for rate limiting in Node.js.
+Check current libraries, compare approaches, and write findings to
+/tmp/rate-limit-research.md"
+Pane 2 (Implement): "Implement rate limiting middleware for our Express API.
+Start with a basic token bucket, we'll refine after research completes."
+```
+Parallelize work across independent files:
+```
+Pane 1: "Create the database schema and migrations for the billing feature"
+Pane 2: "Build the billing API endpoints in src/api/billing/"
+]]>
+  </instructions>
+</agyos_skill>

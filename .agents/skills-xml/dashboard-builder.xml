@@ -1,0 +1,32 @@
+<agyos_skill id="dashboard-builder">
+  <intent>Build monitoring dashboards that answer real operator questions for Grafana, SigNoz, and similar platforms. Use when turning metrics into a working dashboard instead of a vanity board.</intent>
+  <instructions>
+<![CDATA[
+Use this when the task is to build a dashboard people can operate from.
+The goal is not "show every metric." The goal is to answer:
+- is it healthy?
+- where is the bottleneck?
+- what changed?
+- what action should someone take?
+- "Build a Kafka monitoring dashboard"
+- "Create a Grafana dashboard for Elasticsearch"
+- "Make a SigNoz dashboard for this service"
+- "Turn this metrics list into a real operational dashboard"
+- do not start from visual layout; start from operator questions
+- do not include every available metric just because it exists
+- do not mix health, throughput, and resource panels without structure
+- do not ship panels without titles, units, and sane thresholds
+Organize around:
+- health / availability
+- latency / performance
+- throughput / volume
+- saturation / resources
+- service-specific risk
+Inspect existing dashboards first:
+- JSON structure
+- query language
+- variables
+- threshold styling
+]]>
+  </instructions>
+</agyos_skill>

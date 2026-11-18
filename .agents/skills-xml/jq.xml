@@ -1,0 +1,32 @@
+<agyos_skill id="jq">
+  <intent>Expert jq usage for JSON querying, filtering, transformation, and pipeline integration. Practical patterns for real shell workflows.</intent>
+  <instructions>
+<![CDATA[
+`jq` is the standard CLI tool for querying and reshaping JSON. This skill covers practical, expert-level usage: filtering deeply nested data, transforming structures, aggregating values, and composing `jq` into shell pipelines. Every example is copy-paste ready for real workflows.
+- Use when parsing JSON output from APIs, CLI tools (AWS, GitHub, kubectl, docker), or log files
+- Use when transforming JSON structure (rename keys, flatten arrays, group records)
+- Use when the user needs `jq` inside a bash script or one-liner
+- Use when explaining what a complex `jq` expression does
+`jq` takes a filter expression and applies it to JSON input. Filters compose with pipes (`|`), and `jq` handles arrays, objects, strings, numbers, booleans, and `null` natively.
+```bash
+echo '{"name":"alice","age":30}' | jq '.name'
+echo '{"user":{"email":"a@b.com"}}' | jq '.user.email'
+echo '[10, 20, 30]' | jq '.[1]'
+echo '[1,2,3,4,5]' | jq '.[2:4]'
+echo '[{"id":1},{"id":2}]' | jq '.[]'
+```
+```bash
+echo '[{"role":"admin"},{"role":"user"},{"role":"admin"}]' \
+| jq '[.[] | select(.role == "admin")]'
+curl -s https://api.github.com/repos/owner/repo/issues \
+| jq '[.[] | select(.comments > 5)]'
+jq '[.[] | select(.email != null)]'
+jq '[.[] | select(.active == true and .score >= 80)]'
+```
+```bash
+echo '[{"name":"alice","age":30},{"name":"bob","age":25}]' \
+| jq '[.[] | .name]'
+jq 'map(.name)'
+]]>
+  </instructions>
+</agyos_skill>

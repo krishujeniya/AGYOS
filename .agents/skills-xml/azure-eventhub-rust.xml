@@ -1,0 +1,32 @@
+<agyos_skill id="azure-eventhub-rust">
+  <intent>Azure Event Hubs SDK for Rust. Use for sending and receiving events, streaming data ingestion.</intent>
+  <instructions>
+<![CDATA[
+Client library for Azure Event Hubs — big data streaming platform and event ingestion service.
+```sh
+cargo add azure_messaging_eventhubs azure_identity
+```
+```bash
+EVENTHUBS_HOST=<namespace>.servicebus.windows.net
+EVENTHUB_NAME=<eventhub-name>
+```
+- **Namespace** — container for Event Hubs
+- **Event Hub** — stream of events partitioned for parallel processing
+- **Partition** — ordered sequence of events
+- **Producer** — sends events to Event Hub
+- **Consumer** — receives events from partitions
+```rust
+use azure_identity::DeveloperToolsCredential;
+use azure_messaging_eventhubs::ProducerClient;
+let credential = DeveloperToolsCredential::new(None)?;
+let producer = ProducerClient::builder()
+.open("<namespace>.servicebus.windows.net", "eventhub-name", credential.clone())
+.await?;
+```
+```rust
+producer.send_event(vec![1, 2, 3, 4], None).await?;
+```
+```rust
+]]>
+  </instructions>
+</agyos_skill>

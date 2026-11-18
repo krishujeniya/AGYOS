@@ -1,0 +1,32 @@
+<agyos_skill id="azure-keyvault-py">
+  <intent>Azure Key Vault SDK for Python. Use for secrets, keys, and certificates management with secure storage.</intent>
+  <instructions>
+<![CDATA[
+Secure storage and management for secrets, cryptographic keys, and certificates.
+```bash
+pip install azure-keyvault-secrets azure-identity
+pip install azure-keyvault-keys azure-identity
+pip install azure-keyvault-certificates azure-identity
+pip install azure-keyvault-secrets azure-keyvault-keys azure-keyvault-certificates azure-identity
+```
+```bash
+AZURE_KEYVAULT_URL=https://<vault-name>.vault.azure.net/
+```
+```python
+from azure.identity import DefaultAzureCredential
+from azure.keyvault.secrets import SecretClient
+credential = DefaultAzureCredential()
+vault_url = "https://<vault-name>.vault.azure.net/"
+client = SecretClient(vault_url=vault_url, credential=credential)
+```
+```python
+secret = client.set_secret("database-password", "super-secret-value")
+print(f"Created: {secret.name}, version: {secret.properties.version}")
+secret = client.get_secret("database-password")
+print(f"Value: {secret.value}")
+secret = client.get_secret("database-password", version="abc123")
+for secret_properties in client.list_properties_of_secrets():
+print(f"Secret: {secret_properties.name}")
+]]>
+  </instructions>
+</agyos_skill>

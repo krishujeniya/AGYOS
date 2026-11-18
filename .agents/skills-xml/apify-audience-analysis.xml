@@ -1,0 +1,32 @@
+<agyos_skill id="apify-audience-analysis">
+  <intent>Understand audience demographics, preferences, behavior patterns, and engagement quality across Facebook, Instagram, YouTube, and TikTok.</intent>
+  <instructions>
+<![CDATA[
+Analyze and understand your audience using Apify Actors to extract follower demographics, engagement patterns, and behavior data from multiple platforms.
+- You need audience demographics, engagement patterns, or follower behavior from social platforms.
+- The task is to choose and run Apify Actors for audience analysis across Facebook, Instagram, YouTube, or TikTok.
+- You need structured extraction plus a summarized interpretation of audience findings.
+(No need to check it upfront)
+- `.env` file with `APIFY_TOKEN`
+- Node.js 20.6+ (for native `--env-file` support)
+- `mcpc` CLI tool: `npm install -g @apify/mcpc`
+Copy this checklist and track progress:
+```
+Task Progress:
+- [ ] Step 1: Identify audience analysis type (select Actor)
+- [ ] Step 2: Fetch Actor schema via mcpc
+- [ ] Step 3: Ask user preferences (format, filename)
+- [ ] Step 4: Run the analysis script
+- [ ] Step 5: Summarize findings
+```
+Select the appropriate Actor based on analysis needs:
+| User Need | Actor ID | Best For |
+|-----------|----------|----------|
+| Facebook follower demographics | `apify/facebook-followers-following-scraper` | FB followers/following lists |
+| Facebook engagement behavior | `apify/facebook-likes-scraper` | FB post likes analysis |
+| Facebook video audience | `apify/facebook-reels-scraper` | FB Reels viewers |
+| Facebook comment analysis | `apify/facebook-comments-scraper` | FB post/video comments |
+| Facebook content engagement | `apify/facebook-posts-scraper` | FB post engagement metrics |
+]]>
+  </instructions>
+</agyos_skill>

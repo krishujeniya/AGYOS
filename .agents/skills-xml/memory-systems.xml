@@ -1,0 +1,32 @@
+<agyos_skill id="memory-systems">
+  <intent>&gt;</intent>
+  <instructions>
+<![CDATA[
+Memory provides the persistence layer that allows agents to maintain continuity across sessions and reason over accumulated knowledge. Simple agents rely entirely on context for memory, losing all state when sessions end. Sophisticated agents implement layered memory architectures that balance immediate context needs with long-term knowledge retention. The evolution from vector stores to knowledge graphs to temporal knowledge graphs represents increasing investment in structured memory for improved retrieval and reasoning.
+Activate this skill when:
+- Building agents that must persist knowledge across sessions
+- Choosing between memory frameworks (Mem0, Zep/Graphiti, Letta, LangMem, Cognee)
+- Needing to maintain entity consistency across conversations
+- Implementing reasoning over accumulated knowledge
+- Designing memory architectures that scale in production
+- Evaluating memory systems against benchmarks (LoCoMo, LongMemEval, DMR)
+- Building dynamic memory with automatic entity/relationship extraction and self-improving memory (Cognee)
+Think of memory as a spectrum from volatile context window to persistent storage. Default to the simplest layer that meets retrieval needs, because benchmark evidence shows **tool complexity matters less than reliable retrieval** — Letta's filesystem agents scored 74% on LoCoMo using basic file operations, beating Mem0's specialized tools at 68.5%. Add structure (graphs, temporal validity) only when retrieval quality degrades or the agent needs multi-hop reasoning, relationship traversal, or time-travel queries.
+Select a framework based on the dominant retrieval pattern the agent requires. Use this table to narrow the shortlist, then validate with the benchmark data below.
+| Framework | Architecture | Best For | Trade-off |
+|-----------|-------------|----------|-----------|
+| **Mem0** | Vector store + graph memory, pluggable backends | Multi-tenant systems, broad integrations | Less specialized for multi-agent |
+| **Zep/Graphiti** | Temporal knowledge graph, bi-temporal model | Enterprise requiring relationship modeling + temporal reasoning | Advanced features cloud-locked |
+| **Letta** | Self-editing memory with tiered storage (in-context/core/archival) | Full agent introspection, stateful services | Complexity for simple use cases |
+| **Cognee** | Multi-layer semantic graph via customizable ECL pipeline with customizable Tasks | Evolving agent memory that adapts and learns; multi-hop reasoning | Heavier ingest-time processing |
+| **LangMem** | Memory tools for LangGraph workflows | Teams already on LangGraph | Tightly coupled to LangGraph |
+| **File-system** | Plain files with naming conventions | Simple agents, prototyping | No semantic search, no relationships |
+Choose Zep/Graphiti when the agent needs bi-temporal modeling (tracking both when events occurred and when they were ingested) because its three-tier knowledge graph (episode, semantic entity, community subgraphs) excels at temporal queries. Choose Mem0 when the priority is fast time-to-production with managed infrastructure. Choose Letta when the agent needs deep self-introspection through its Agent Development Environment. Choose Cognee when the agent must build dense multi-layer semantic graphs — it layers text chunks and entity types as nodes with detailed relationship edges, and every core piece (ingestion, entity extraction, post-processing, retrieval) is customizable.
+**Benchmark Performance Comparison**
+Consult these benchmarks to set expectations, but treat them as signals for specific retrieval dimensions rather than absolute rankings. No single benchmark is definitive.
+| System | DMR Accuracy | LoCoMo | HotPotQA (multi-hop) | Latency |
+|--------|-------------|--------|---------------------|---------|
+| Cognee | — | — | Highest on EM, F1, Correctness | Variable |
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="captions-and-clipping">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **transform** producer of the video cluster — it turns existing long-form into native short
+clips with sound-off captions, the engine behind the Shorts funnel and cross-platform reach. Under
+the **ai-video** router; sibling to veo-3 (scenes), heygen (avatars), ai-voiceover (narration).
+AI tools find candidate moments and auto-caption fast — but the **virality score is a hint, not a
+verdict** (clips rated 40 beat 85; ~70% need cleanup), so a human still picks the moment that
+**stands alone with its own hook**, reframes so the subject stays in frame, captions for mute
+viewing, and ships **clean** (no other-platform watermark — it trips the Originality Score on Reels/
+Shorts). One long video → ~10–30 native clips, each a real Short.
+1. **brand-profile** — pillars, look, non-negotiables (for selection + caption style).
+2. **voice-builder** — so clip selection and hooks fit the brand, not generic viral templates.
+(Depth: `references/the-clip-framework.md`.)
+- **C — Cut to the moment:** AI moment-detection (Opus Clip ClipAnything) surfaces candidates; a
+human picks complete, hook-first, on-strategy clips.
+- **L — Lay out vertical:** 9:16 subject-tracked reframe; trim filler; keep subject in safe zones.
+- **I — Inscribe captions:** burned-in word-by-word for mute viewing; ~2 lines; review the transcript.
+- **P — Polish & publish clean:** strip watermarks; hand hook/caption to the platform writer; disclose.
+- **Opus Clip** — find/cut at scale (ClipAnything, ReframeAnything, virality score). API gated to Business.
+Deep pipeline (credits, triage, tiers): the **opus-clip** skill.
+- **Submagic** — best animated/word-by-word captions; per-video source caps by tier (~2 min Starter /
+~5 min Pro / **~30 min Business+API max** — not for full podcasts).
+- **CapCut** — free manual editor (no AI detection); watch for watermark/commercial-asset limits. Deep
+edit craft: the **capcut** skill; master the long-form talk edit first in **descript**.
+- Common pattern: **Opus Clip to cut → Submagic to caption → clean export.** Full landscape:
+`references/clipping-tools-2026.md`; selection + recipes: `references/clip-and-caption-recipes.md`.
+Clips are a discovery engine — **bridge each Short back to the source long-form** (the click-through
+]]>
+  </instructions>
+</agyos_skill>

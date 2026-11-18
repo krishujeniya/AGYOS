@@ -1,0 +1,32 @@
+<agyos_skill id="kubernetes-deployment">
+  <intent>Kubernetes deployment workflow for container orchestration, Helm charts, service mesh, and production-ready K8s configurations.</intent>
+  <instructions>
+<![CDATA[
+Specialized workflow for deploying applications to Kubernetes including container orchestration, Helm charts, service mesh configuration, and production-ready K8s patterns.
+Use this workflow when:
+- Deploying to Kubernetes
+- Creating Helm charts
+- Configuring service mesh
+- Setting up K8s networking
+- Implementing K8s security
+- `docker-expert` - Docker containerization
+- `k8s-manifest-generator` - K8s manifests
+1. Create Dockerfile
+2. Build container image
+3. Optimize image size
+4. Push to registry
+5. Test container
+```
+Use @docker-expert to containerize application for K8s
+```
+- `k8s-manifest-generator` - Manifest generation
+- `kubernetes-architect` - K8s architecture
+1. Create Deployment
+2. Configure Service
+3. Set up ConfigMap
+4. Create Secrets
+5. Add Ingress
+```
+]]>
+  </instructions>
+</agyos_skill>

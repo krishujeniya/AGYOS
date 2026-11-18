@@ -1,0 +1,32 @@
+<agyos_skill id="seo-sitemap">
+  <intent>&gt;</intent>
+  <instructions>
+<![CDATA[
+- Use when analyzing an existing XML sitemap or generating a new one.
+- Use when the user mentions sitemap issues, sitemap generation, or sitemap validation.
+- Use when checking URL coverage, sitemap limits, and sitemap quality rules.
+- Valid XML format
+- URL count <50,000 per file (protocol limit)
+- All URLs return HTTP 200
+- `<lastmod>` dates are accurate (not all identical)
+- No deprecated tags: `<priority>` and `<changefreq>` are ignored by Google
+- Sitemap referenced in robots.txt
+- Compare crawled pages vs sitemap; flag missing pages
+- Sitemap index file if >50k URLs
+- Split by content type (pages, posts, images, videos)
+- No non-canonical URLs in sitemap
+- No noindexed URLs in sitemap
+- No redirected URLs in sitemap
+- HTTPS URLs only (no HTTP)
+| Issue | Severity | Fix |
+|-------|----------|-----|
+| >50k URLs in single file | Critical | Split with sitemap index |
+| Non-200 URLs | High | Remove or fix broken URLs |
+| Noindexed URLs included | High | Remove from sitemap |
+| Redirected URLs included | Medium | Update to final URLs |
+| All identical lastmod | Low | Use actual modification dates |
+| Priority/changefreq used | Info | Can remove (ignored by Google) |
+1. Ask for business type (or auto-detect from existing site)
+]]>
+  </instructions>
+</agyos_skill>

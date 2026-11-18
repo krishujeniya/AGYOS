@@ -1,0 +1,32 @@
+<agyos_skill id="hashtag-strategy">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The most valuable thing this skill does is correct an outdated belief. In 2026, **hashtags are not a
+reach hack** — platforms understand content directly (captions, on-screen text, audio, visuals,
+engagement), so tags now mostly **categorize** a post and **aid search**. Instagram even removed
+hashtag-following (2024) and **caps hashtags at 5** (2025), and its own head has said more tags
+don't mean more reach.
+So this skill does two jobs, in order:
+1. **The keyword / social-SEO layer first** — the real discovery lever. Platforms are search
+engines now; they index your caption, on-screen text, and spoken audio.
+2. **A tight, relevant hashtag set** on top — per platform, within caps, niche over generic — plus
+branded/campaign tags where community applies.
+(Full reasoning in `references/the-2026-reality.md`.)
+Load `brand-profile.md` and `audience.md`, and look at the actual content/caption being tagged. Tags
+must match real content and the audience's real searches.
+Pick the **primary keyword** (how the audience actually searches) + a couple of variations, and
+place them where platforms index:
+- **Caption, front-loaded** (the first ~80 chars carry most weight).
+- **On-screen text** (Reels/TikTok/Shorts).
+- **Spoken audio** (video) — say the keyword aloud; on TikTok the "triple mention" (say + show +
+caption) is the core ranking move.
+This does more for discovery than any tag. Don't skip it to jump to hashtags.
+Per `references/platform-playbook.md`: Instagram 3–5 (hard cap 5), TikTok 3–5 as keywords, LinkedIn
+3–5 specific, X 0–2, Threads 1, Pinterest/YouTube keywords-led. Favor **mid-tier/niche tags
+(~10K–500K posts)** over mega-tags; mix topic + niche/community + (sometimes) location/branded. Vet
+each tag on its page before using (see `references/research-and-types.md`).
+For community/UGC/tracking, design a **branded** tag (ongoing) or **campaign** tag (time-bound):
+]]>
+  </instructions>
+</agyos_skill>

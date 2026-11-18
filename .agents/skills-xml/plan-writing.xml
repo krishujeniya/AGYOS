@@ -1,0 +1,32 @@
+<agyos_skill id="plan-writing">
+  <intent>Structured task planning with clear breakdowns, dependencies, and verification criteria. Use when implementing features, refactoring, or any multi-step work.</intent>
+  <instructions>
+<![CDATA[
+> Source: obra/superpowers
+This skill provides a framework for breaking down work into clear, actionable tasks with verification criteria.
+- Each task should take 2-5 minutes
+- One clear outcome per task
+- Independently verifiable
+- How do you know it's done?
+- What can you check/test?
+- What's the expected output?
+- Dependencies identified
+- Parallel work where possible
+- Critical path highlighted
+- **Phase X: Verification is always LAST**
+- Plan files are saved as `{task-slug}.md` in the PROJECT ROOT
+- Name derived from task (e.g., "add auth" → `auth-feature.md`)
+- **NEVER** inside `.claude/`, `docs/`, or temp folders
+> 🔴 **NO fixed templates. Each plan is UNIQUE to the task.**
+| ❌ Wrong | ✅ Right |
+|----------|----------|
+| 50 tasks with sub-sub-tasks | 5-10 clear tasks max |
+| Every micro-step listed | Only actionable items |
+| Verbose descriptions | One-line per task |
+> **Rule:** If plan is longer than 1 page, it's too long. Simplify.
+| ❌ Wrong | ✅ Right |
+|----------|----------|
+| "Set up project" | "Run `npx create-next-app`" |
+]]>
+  </instructions>
+</agyos_skill>

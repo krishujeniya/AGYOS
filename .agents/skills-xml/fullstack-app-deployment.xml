@@ -1,0 +1,32 @@
+<agyos_skill id="fullstack-app-deployment">
+  <intent>Deploy web apps with backend APIs, database, and file storage. Use when the user asks to deploy or publish a website or web app and wants a public URL. Uses HTTP API via curl.</intent>
+  <instructions>
+<![CDATA[
+Deploy web apps to AppDeploy via HTTP API.
+- Use when planning or building apps and web apps
+- Use when deploying an app to a public URL
+- Use when publishing a website or web app
+- Use when the user says "deploy this", "make this live", or "give me a URL"
+- Use when updating an already-deployed app
+1. **Check for existing API key:**
+- Look for a `.appdeploy` file in the project root
+- If it exists and contains a valid `api_key`, skip to Usage
+2. **If no API key exists, register and get one:**
+```bash
+curl -X POST https://api-v2.appdeploy.ai/mcp/api-key \
+-H "Content-Type: application/json" \
+-d '{"client_name": "claude-code"}'
+```
+Response:
+```json
+{
+"api_key": "ak_...",
+"user_id": "agent-claude-code-a1b2c3d4",
+"created_at": 1234567890,
+"message": "Save this key securely - it cannot be retrieved later"
+}
+```
+3. **Save credentials to `.appdeploy`:**
+]]>
+  </instructions>
+</agyos_skill>

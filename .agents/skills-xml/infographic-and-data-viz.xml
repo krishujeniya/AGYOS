@@ -1,0 +1,32 @@
+<agyos_skill id="infographic-and-data-viz">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **honest data-viz craft** — choose the right chart, headline the takeaway, anchor to honest scales, reduce to
+the signal, and tag the source + make it accessible. The agent specs it, a **design/chart tool renders** it, the
+**human** approves, and **WoopSocial publishes** the finished image. (Pairs tightly with `data-and-original-
+research`.)
+A great visualization doesn't add information; it makes the insight that was always in the numbers **impossible to
+miss.** Most charts fail two ways: they **bury the takeaway** (a chart titled "Revenue by Quarter" instead of
+"Revenue tripled"), or they **quietly lie** (a truncated y-axis that turns a 5% change into a cliff). The craft is
+**honest clarity.** Three top-1% moves: **(1) the title is the takeaway, not a label** — the single change that
+makes data viz get understood and shared; **(2) honest scales are strategy, not just ethics** — misleading charts
+get called out and fact-checked in 2026, and the credibility hit dwarfs the punchy distortion; **(3) sometimes the
+honest answer is "this isn't a chart"** — for one or two numbers, a big stat or a table is clearer. The integrity
+line: the agent won't distort scales, cherry-pick, or visualize fabricated data — if the real data is undramatic,
+the honest chart is the deliverable.
+1. **brand-profile** + **design-and-templates** — the brand visual system.
+2. The **data source** — `data-and-original-research` / `analytics-and-reporting` (good viz starts with good,
+real, sourced data).
+(Depth: `references/the-chart-framework.md`.)
+- **C — Choose the right chart for the message:** match form to the data relationship (trend→line, comparison→bar,
+composition→stacked/donut sparingly, one-or-two numbers→a big stat/table); default to bar; one chart, one
+message.
+- **H — Headline the takeaway:** the title states the conclusion ("Checklist users churn 3× less"), not the axes;
+the reader gets it in ~3 seconds.
+- **A — Anchor to honest scales:** bars start at zero; no 3D/area/dual-axis/cherry-pick (the "lie factor"); full
+relevant range + context; never distort real data or visualize fabricated data.
+- **R — Reduce to the signal:** data-ink ratio — strip 3D/shadows/gradients/gridlines; direct-label over a busy
+]]>
+  </instructions>
+</agyos_skill>

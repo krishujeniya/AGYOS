@@ -1,0 +1,32 @@
+<agyos_skill id="linkedin-growth">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **LinkedIn personal-profile growth engine** — the profile as a landing page, what to post and how
+often, strategic commenting on target accounts, the golden hour, newsletters/video, and connections
+vs followers. The agent drafts posts + comment copy and designs the system; a human does the live
+commenting/connecting; **scheduling-and-queue → WoopSocial** publishes the posts. Complements
+**linkedin-post-writer** (the single-post craft) and **linkedin-company-pages** (the page).
+LinkedIn's algorithm rewards **dwell time** (people actually reading) and **early, meaningful
+comments** — likes barely move distribution, and engagement bait is down-ranked. The feed is
+structurally tilted to **people, not logos** (personal profiles get ~65% of feed allocation; pages
+~1–5%), external **links in the body suppress reach** (put them in the first comment), and posts now
+have a **long shelf life** via suggested feeds — a good post travels for days or weeks. The cheapest
+growth lever isn't posting more: it's **thoughtful comments on bigger accounts in your niche**, which
+put your name in front of their audience daily. And in a feed where ~half the long posts are
+AI-written, **a specific, lived, first-person POV is the differentiator** — not volume.
+1. **brand-profile** — positioning, audience, non-negotiables.
+2. **voice-builder** — so posts and comments sound like one credible human.
+(Depth: `references/the-ladder-framework.md`.)
+- **L — Landing-page profile:** headline = value proposition (not job title); About opens with the
+3 visible lines; Featured = the CTA; Follow-primary once inbound outpaces outbound. Every post's
+job ends at a profile visit — the profile converts it. → **profile-optimization**.
+- **A — Author for dwell:** win the "…see more" tap, format for the read, mix text / document
+carousel / native video / newsletter; **link in the first comment**. → **linkedin-post-writer**.
+- **D — Deploy strategic comments:** 5–10 substantive comments/day on target accounts in the niche —
+the afterburner. A comment is content, not a courtesy. → **reply-and-comment-writer**.
+- **D — Drive the golden hour:** first 60–90 min decides reach; post in the audience window, reply
+to every comment, comment around your own post time. Max **1 post/day**, 3–5/week.
+]]>
+  </instructions>
+</agyos_skill>

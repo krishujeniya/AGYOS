@@ -1,0 +1,32 @@
+<agyos_skill id="colab-cloud-execution">
+  <intent>Provision remote Google Colab GPU/TPU/CPU runtimes and execute Python scripts, notebooks, or shell workloads headlessly via the official Google Colab CLI (`colab`).</intent>
+  <instructions>
+<![CDATA[
+This runbook guides running notebooks and heavy computational workloads remotely on Google Colab hardware accelerators (T4, L4, A100, H100 GPUs, v5e1/v6e1 TPUs) using the official Google Colab CLI (`google-colab-cli`).
+The official Google Colab CLI connects your local terminal and agent workflows directly to Colab cloud virtual machines without needing an open browser tab:
+- **Session Lifecycle**: `colab new` provisions a cloud VM; `colab stop` releases it.
+- **Kernel Persistence**: State (imports, defined variables, functions) persists across separate `colab exec` calls within the same session.
+- **Default Directory**: Working directory defaults to `/content`.
+- **Ephemeral Jobs**: `colab run` provisions a fresh accelerator VM, executes a local script, captures output, and tears down the VM automatically.
+The CLI supports two authentication modes:
+```bash
+colab --auth=oauth2 sessions
+```
+Prompts for Google account consent in your default browser on first invocation and caches credentials locally at `~/.config/colab-cli/token.json`.
+For headless environments using `gcloud`:
+```bash
+gcloud auth application-default login \
+--scopes=openid,\
+https://www.googleapis.com/auth/cloud-platform,\
+https://www.googleapis.com/auth/userinfo.email,\
+https://www.googleapis.com/auth/colaboratory
+```
+Verify authentication with:
+```bash
+colab sessions
+```
+```bash
+colab new -s my-session
+]]>
+  </instructions>
+</agyos_skill>

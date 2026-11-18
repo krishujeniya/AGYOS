@@ -1,0 +1,32 @@
+<agyos_skill id="azure-communication-sms-java">
+  <intent>Send SMS messages with Azure Communication Services SMS Java SDK. Use when implementing SMS notifications, alerts, OTP delivery, bulk messaging, or delivery reports.</intent>
+  <instructions>
+<![CDATA[
+Send SMS messages to single or multiple recipients with delivery reporting.
+```xml
+<dependency>
+<groupId>com.azure</groupId>
+<artifactId>azure-communication-sms</artifactId>
+<version>1.2.0</version>
+</dependency>
+```
+```java
+import com.azure.communication.sms.SmsClient;
+import com.azure.communication.sms.SmsClientBuilder;
+import com.azure.identity.DefaultAzureCredentialBuilder;
+// With DefaultAzureCredential (recommended)
+SmsClient smsClient = new SmsClientBuilder()
+.endpoint("https://<resource>.communication.azure.com")
+.credential(new DefaultAzureCredentialBuilder().build())
+.buildClient();
+// With connection string
+SmsClient smsClient = new SmsClientBuilder()
+.connectionString("<connection-string>")
+.buildClient();
+// With AzureKeyCredential
+import com.azure.core.credential.AzureKeyCredential;
+SmsClient smsClient = new SmsClientBuilder()
+.endpoint("https://<resource>.communication.azure.com")
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="scripting-and-storyboarding">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **pre-production system** — start from the spine, write both columns, envision every beat, number the
+shots, and edit on paper first. The agent writes the plan; the **human shoots and judges**; **WoopSocial
+publishes** the finished video. (Craft skill — no tool file.)
+Chaotic shoots and endless edits are a pre-production deficit, not a talent deficit: the plan is "where you
+catch problems before they become expensive fixes on set or in post." Four truths carry this skill. **(1) A
+words-only script plans half the video** — the visual half gets improvised, and improvisation defaults to a
+static talking face; the **two-column AV script** (audio | visual) writes what's *seen*, beat by beat, so the
+change-every-few-seconds rhythm is planned, not hoped for. **(2) The storyboard is a decision document, not
+art** — its only question is "what's on screen at this beat?", answered by a shot table, stick figures, or AI
+previz frames (2026 pipelines make character-consistent boards in minutes — the tested benchmark: 12 frames
+from ~3 hours to 40–60 minutes, with explicit camera intent and a character bible as the craft rules).
+**(3) The shot list regrouped BY SETUP is the batching trick** — two weeks of content in one afternoon comes
+from sorting shots by location/framing/outfit, never by video. **(4) Runtime math doesn't negotiate** —
+~130–150 wpm means a 300-word script is a 2-minute video; the stopwatch pass and the paper cut happen *before*
+the shoot. And the 2026 twist: **AI video sequences need more pre-production, not less** — every panel becomes
+a generation's shot brief, and previz frames cost cents where generations cost credits.
+1. **idea-generation-and-ideation** — the idea being productionized.
+2. **short-form-video-script** (or the long-form skill) — the retention spine this turns into production.
+3. **brand-profile** + **design-and-templates** — visual language, end cards.
+(Depth: `references/the-scene-framework.md`.)
+- **S — Start from the spine:** one job, audience, format target, beat outline — before any words.
+- **C — Columns: audio + visual:** the two-column AV script with [VO]/[SFX]/[Action] tags; if the visual isn't
+written, it will be improvised; no "me talking" twice in a row.
+- **E — Envision every beat:** the cheapest board that answers "what's on screen" — shot table → stick figures
+→ AI previz frames (explicit camera intent, character bible + ref image, micro-beats, directional not
+]]>
+  </instructions>
+</agyos_skill>

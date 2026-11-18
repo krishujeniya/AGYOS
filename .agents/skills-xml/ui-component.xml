@@ -1,0 +1,32 @@
+<agyos_skill id="ui-component">
+  <intent>Generate a new UI component that follows StyleSeed Toss conventions for structure, tokens, accessibility, and component ergonomics.</intent>
+  <instructions>
+<![CDATA[
+Part of [StyleSeed](https://github.com/bitjaru/styleseed), this skill generates components that respect the Toss seed's design language instead of improvising ad hoc markup and styling. It emphasizes semantic tokens, predictable typing, reusable variants, and mobile-friendly accessibility defaults.
+- Use when you need a new UI primitive or composed component inside a StyleSeed-based project
+- Use when you want a component to match the existing Toss seed conventions
+- Use when a component should be reusable, typed, and design-token driven
+- Use when the AI might otherwise invent spacing, colors, or interaction patterns
+Before generating code, inspect the seed's source of truth:
+- `CLAUDE.md` for conventions
+- `css/theme.css` for semantic tokens
+- at least one representative component from `components/ui/`
+If the user already has a better local example, follow the local codebase over a generic template.
+Place the output where it belongs:
+- `src/components/ui/` for primitives and low-level building blocks
+- `src/components/patterns/` for composed sections or multi-part patterns
+Do not create a new primitive if an existing one can be extended safely.
+Use these defaults unless the host project strongly disagrees:
+- function declaration instead of a `const` component
+- `React.ComponentProps<>` or equivalent native prop typing
+- `className` passthrough support
+- `cn()` or the project's standard class merger
+- `data-slot` for component identification
+- CVA or equivalent only when variants are genuinely needed
+Do not hardcode visual values if the design system has a token for them.
+Preferred examples:
+- `bg-card`
+- `text-foreground`
+]]>
+  </instructions>
+</agyos_skill>

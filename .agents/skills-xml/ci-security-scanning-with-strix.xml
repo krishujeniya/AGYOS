@@ -1,0 +1,32 @@
+<agyos_skill id="ci-security-scanning-with-strix">
+  <intent>Add security scanning to CI/CD with Strix — GitHub Actions, GitLab CI, or any pipeline — so every pull request gets a diff-scoped AI pentest that blocks vulnerable code before it merges, with results as PR comments and SARIF uploaded to code scanning. Covers both the self-hosted open-source CLI (runs in your runner) and the managed app.strix.ai platform (GitHub/GitLab app or API, no runner infra). Use when the user asks to add security scanning, SAST/DAST, pentesting, vulnerability checks, or automated security review to their CI pipeline, pre-merge gate, or PR workflow.</intent>
+  <instructions>
+<![CDATA[
+You can gate PRs two ways — pick based on the environment, or combine them:
+- **Managed platform (recommended for most teams)** — connect the GitHub/GitLab/Bitbucket app once and Strix reviews every PR with **no workflow file, no runner, no Docker, and no LLM key**. Results post as PR comments and land in the team dashboard. Best when you want zero CI maintenance, central tracking, or your runners lack Docker. See "Managed platform" below and the **managed-pentesting-with-strix** skill.
+- **Self-hosted OSS CLI in your runner** — run a diff-scoped scan as a pipeline step. Fully in your infra, free (BYO LLM key), no external account. Requires Docker on the runner. Best for air-gapped/self-hosted CI or when you do not want scans leaving your environment.
+Both fail the build on validated findings and both emit SARIF 2.1.0, so you can start with one and add the other later.
+Run a diff-scoped Strix scan on every PR: only changed files are tested, `quick` mode keeps it fast, and exit code `2` fails the build when validated vulnerabilities are found.
+Create `.github/workflows/security.yml`:
+```yaml
+name: Security Scan
+on:
+pull_request:
+jobs:
+strix-scan:
+runs-on: ubuntu-latest
+steps:
+- uses: actions/checkout@v4
+with:
+fetch-depth: 0   # required for diff-scope resolution
+- name: Install Strix
+run: curl -sSL https://strix.ai/install | bash
+- name: Run Security Scan
+env:
+STRIX_LLM: ${{ secrets.STRIX_LLM }}
+LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+run: strix -n -t ./ --scan-mode quick --max-budget 10
+# Don't fail open: a run that hits the hard budget stop exits 0 but leaves
+]]>
+  </instructions>
+</agyos_skill>

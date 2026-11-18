@@ -1,0 +1,32 @@
+<agyos_skill id="m365-agents-dotnet">
+  <intent>Microsoft 365 Agents SDK for .NET. Build multichannel agents for Teams/M365/Copilot Studio with ASP.NET Core hosting, AgentApplication routing, and MSAL-based auth.</intent>
+  <instructions>
+<![CDATA[
+Build enterprise agents for Microsoft 365, Teams, and Copilot Studio using the Microsoft.Agents SDK with ASP.NET Core hosting, agent routing, and MSAL-based authentication.
+- Use the microsoft-docs MCP to verify the latest APIs for AddAgent, AgentApplication, and authentication options.
+- Confirm package versions in NuGet for the Microsoft.Agents.* packages you plan to use.
+```bash
+dotnet add package Microsoft.Agents.Hosting.AspNetCore
+dotnet add package Microsoft.Agents.Authentication.Msal
+dotnet add package Microsoft.Agents.Storage
+dotnet add package Microsoft.Agents.CopilotStudio.Client
+dotnet add package Microsoft.Identity.Client.Extensions.Msal
+```
+```json
+{
+"TokenValidation": {
+"Enabled": true,
+"Audiences": [
+"{{ClientId}}"
+],
+"TenantId": "{{TenantId}}"
+},
+"AgentApplication": {
+"StartTypingTimer": false,
+"RemoveRecipientMention": false,
+"NormalizeMentions": false
+},
+"Connections": {
+]]>
+  </instructions>
+</agyos_skill>

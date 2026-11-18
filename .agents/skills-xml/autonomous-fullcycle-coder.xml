@@ -1,0 +1,32 @@
+<agyos_skill id="autonomous-fullcycle-coder">
+  <intent>Full-cycle AI coding skill: plans, builds, tests, lints, fixes bugs, and writes production-grade docs. Auto-detects project state and adapts its 8-phase pipeline.</intent>
+  <instructions>
+<![CDATA[
+Squirrel is a full-cycle AI coding skill that works across 9 AI coding agents. It auto-detects project state (greenfield, in-progress, or mature) and adapts its 8-phase engineering pipeline accordingly. Instead of a one-size-fits-all workflow, it figures out where the project actually is and jumps in at exactly the right point.
+- Use when starting a new project from scratch (greenfield)
+- Use when improving an existing codebase (in-progress or mature)
+- Use when fixing bugs, adding features, or refactoring
+- Use when adding tests, linting, or CI/CD to a project
+- Use when writing production-grade documentation
+- Use when the user says "build me", "fix this", "squirrel this project", or any multi-step development task
+Squirrel classifies the project directory:
+| Signal | Mode | Entry Point |
+|--------|------|-------------|
+| Empty directory | Greenfield | All 8 phases from scratch |
+| Source files, no tests/docs | In-Progress | Audit first, then improve |
+| Source + tests + CI + README | Mature | Targeted improvements |
+| "fix this bug / add feature" | Targeted | Scoped work only |
+1. **Discover** — Understand the project (audit existing code or gather requirements)
+2. **Plan** — Concrete task list with dependencies and done-criteria
+3. **Build** — Write or modify code (parallel sub-agents when supported)
+4. **Test** — Run existing tests, write new ones, 70%+ coverage target
+5. **Bug Hunt** — Static analysis + manual review
+6. **Polish** — Lint, format, type check, remove dead code
+7. **Document** — README + inline docs (update existing, don't overwrite)
+8. **Ship** — Final checklist: tests green, no secrets, CI configured
+1. **Strike 1:** Fix the specific error. Run tests. Move on.
+2. **Strike 2:** Re-read the code. Try a different approach.
+3. **Strike 3:** STOP. Revert. Document what failed. Ask the user.
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="slack-automation">
+  <intent>Automate Slack workspace operations including messaging, search, channel management, and reaction workflows through Composio's Slack toolkit.</intent>
+  <instructions>
+<![CDATA[
+Automate Slack workspace operations including messaging, search, channel management, and reaction workflows through Composio's Slack toolkit.
+- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
+- Active Slack connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `slack`
+- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
+2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `slack`
+3. If connection is not ACTIVE, follow the returned auth link to complete Slack OAuth
+4. Confirm connection status shows ACTIVE before running any workflows
+**When to use**: User wants to post a message to a Slack channel or DM
+**Tool sequence**:
+1. `SLACK_FIND_CHANNELS` - Resolve channel name to channel ID [Prerequisite]
+2. `SLACK_LIST_ALL_CHANNELS` - Fallback if FIND_CHANNELS returns empty/ambiguous results [Fallback]
+3. `SLACK_FIND_USERS` - Resolve user for DMs or @mentions [Optional]
+4. `SLACK_OPEN_DM` - Open/reuse a DM channel if messaging a user directly [Optional]
+5. `SLACK_SEND_MESSAGE` - Post the message with resolved channel ID [Required]
+6. `SLACK_UPDATES_A_SLACK_MESSAGE` - Edit the posted message if corrections needed [Optional]
+**Key parameters**:
+- `channel`: Channel ID or name (without '#' prefix)
+- `markdown_text`: Preferred field for formatted messages (supports headers, bold, italic, code blocks)
+- `text`: Raw text fallback (deprecated in favor of markdown_text)
+- `thread_ts`: Timestamp of parent message to reply in a thread
+- `blocks`: Block Kit layout blocks (deprecated, use markdown_text)
+**Pitfalls**:
+- `SLACK_FIND_CHANNELS` requires `query` param; missing it errors with "Invalid request data provided"
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="sveltekit">
+  <intent>Build full-stack web applications with SvelteKit — file-based routing, SSR, SSG, API routes, and form actions in one framework.</intent>
+  <instructions>
+<![CDATA[
+SvelteKit is the official full-stack framework built on top of Svelte. It provides file-based routing, server-side rendering (SSR), static site generation (SSG), API routes, and progressive form actions — all with Svelte's compile-time reactivity model that ships zero runtime overhead to the browser. Use this skill when building fast, modern web apps where both DX and performance matter.
+- Use when building a new full-stack web application with Svelte
+- Use when you need SSR or SSG with fine-grained control per route
+- Use when migrating a SPA to a framework with server capabilities
+- Use when working on a project that needs file-based routing and collocated API endpoints
+- Use when the user asks about `+page.svelte`, `+layout.svelte`, `load` functions, or form actions
+```bash
+npm create svelte@latest my-app
+cd my-app
+npm install
+npm run dev
+```
+Choose **Skeleton project** + **TypeScript** + **ESLint/Prettier** when prompted.
+Directory structure after scaffolding:
+```
+src/
+routes/
++page.svelte        ← Root page component
++layout.svelte      ← Root layout (wraps all pages)
++error.svelte       ← Error boundary
+lib/
+server/             ← Server-only code (never bundled to client)
+components/         ← Shared components
+app.html              ← HTML shell
+static/                 ← Static assets
+]]>
+  </instructions>
+</agyos_skill>

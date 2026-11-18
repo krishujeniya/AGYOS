@@ -1,0 +1,30 @@
+<agyos_skill id="billing-automation">
+  <intent>Master automated billing systems including recurring billing, invoice generation, dunning management, proration, and tax calculation.</intent>
+  <instructions>
+<![CDATA[
+Master automated billing systems including recurring billing, invoice generation, dunning management, proration, and tax calculation.
+- Implementing SaaS subscription billing
+- Automating invoice generation and delivery
+- Managing failed payment recovery (dunning)
+- Calculating prorated charges for plan changes
+- Handling sales tax, VAT, and GST
+- Processing usage-based billing
+- Managing billing cycles and renewals
+- You only need a one-off invoice or manual billing
+- The task is unrelated to billing or subscriptions
+- You cannot change pricing, plans, or billing flows
+- Define plans, pricing, billing intervals, and proration rules.
+- Map subscription lifecycle states and renewal/cancellation behavior.
+- Implement invoicing, payments, retries, and dunning workflows.
+- Model taxes and compliance requirements per region.
+- Validate with sandbox payments and reconcile ledger outputs.
+- If detailed templates are required, open `resources/implementation-playbook.md`.
+- Do not charge real customers in testing environments.
+- Verify tax handling and compliance obligations before production rollout.
+- `resources/implementation-playbook.md` for detailed patterns, checklists, and examples.
+- Use this skill only when the task clearly matches the scope described above.
+- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
+- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+]]>
+  </instructions>
+</agyos_skill>

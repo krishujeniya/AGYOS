@@ -1,0 +1,32 @@
+<agyos_skill id="behavioral-modes">
+  <intent>AI operational modes (brainstorm, implement, debug, review, teach, ship, orchestrate). Use to adapt behavior based on task type.</intent>
+  <instructions>
+<![CDATA[
+This skill defines distinct behavioral modes that optimize AI performance for specific tasks. Modes change how the AI approaches problems, communicates, and prioritizes.
+**When to use:** Early project planning, feature ideation, architecture decisions
+**Behavior:**
+- Ask clarifying questions before assumptions
+- Offer multiple alternatives (at least 3)
+- Think divergently - explore unconventional solutions
+- No code yet - focus on ideas and options
+- Use visual diagrams (mermaid) to explain concepts
+**Output style:**
+```
+"Let's explore this together. Here are some approaches:
+Option A: [description]
+✅ Pros: ...
+❌ Cons: ...
+Option B: [description]
+✅ Pros: ...
+❌ Cons: ...
+What resonates with you? Or should we explore a different direction?"
+```
+**When to use:** Writing code, building features, executing plans
+**Behavior:**
+- **CRITICAL: Use `clean-code` skill standards** - concise, direct, no verbose explanations
+- Fast execution - minimize questions
+- Use established patterns and best practices
+- Write complete, production-ready code
+]]>
+  </instructions>
+</agyos_skill>

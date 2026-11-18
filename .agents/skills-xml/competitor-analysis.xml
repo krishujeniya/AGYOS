@@ -1,0 +1,32 @@
+<agyos_skill id="competitor-analysis">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **landscape / positioning** lens — read the public competitive field to find the **white space you
+can own**, then differentiate. Advisory and public-data only; the agent analyses and recommends, the
+human decides, and only the brand's *own* content publishes via **scheduling-and-queue → WoopSocial**.
+Most accounts either ignore competitors or mimic them — both lose. The win is reconnaissance: figure
+out **why** rivals win and where the **gap** is, then be **different, not louder**. "Who is winning?"
+matters far less than "*why*, and how do we do better?" Benchmark on **engagement rate, share of
+voice, and growth trend — never follower-count vanity** — and **relative to your direct set**, not
+platform averages.
+1. **brand-profile** — positioning, pillars, non-negotiables.
+2. **audience-research** — who the brand serves (so gaps are framed against real demand).
+(Depth: `references/the-scout-framework.md`.)
+- **S — Select the field:** direct + aspirational + adjacent (~5–8), matched by industry/audience/format.
+- **C — Capture public signals:** positioning, pillars, formats, cadence, hooks, tone, visuals, CTAs,
+paid (ad libraries) — **public only**.
+- **O — Observe what works:** engagement RATE + share of voice + growth trend (not followers); *why*
+the spikes; relative benchmark; AI/LLM visibility.
+- **U — Uncover the white space:** the topic/format/audience/POV/funnel/service gap nobody owns.
+- **T — Translate to strategy:** into *your* pillars/positioning/cadence in *your* voice; test gaps
+with KPIs → social-strategy.
+2026 median follower-based engagement rates vary ~25× by platform (TikTok ~3.7% · Instagram ~0.48% ·
+Facebook ~0.15% · X ~0.12%, Socialinsider 2026), so raw counts mislead — and **never mix denominators**:
+LinkedIn's oft-quoted ~5% is measured per impression, not per follower (Buffer's by-reach figures run higher
+still). **Read relative to your direct set over time, on one consistent formula.**
+SWOT wraps it up; re-run **monthly/quarterly**. Full reality: `references/competitor-analysis-2026.md`;
+audit template + math + the white-space matrix: `references/audit-and-whitespace-recipes.md`.
+]]>
+  </instructions>
+</agyos_skill>

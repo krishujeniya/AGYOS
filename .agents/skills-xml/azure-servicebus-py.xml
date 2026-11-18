@@ -1,0 +1,32 @@
+<agyos_skill id="azure-servicebus-py">
+  <intent>Azure Service Bus SDK for Python messaging. Use for queues, topics, subscriptions, and enterprise messaging patterns.</intent>
+  <instructions>
+<![CDATA[
+Enterprise messaging for reliable cloud communication with queues and pub/sub topics.
+```bash
+pip install azure-servicebus azure-identity
+```
+```bash
+SERVICEBUS_FULLY_QUALIFIED_NAMESPACE=<namespace>.servicebus.windows.net
+SERVICEBUS_QUEUE_NAME=myqueue
+SERVICEBUS_TOPIC_NAME=mytopic
+SERVICEBUS_SUBSCRIPTION_NAME=mysubscription
+```
+```python
+from azure.identity import DefaultAzureCredential
+from azure.servicebus import ServiceBusClient
+credential = DefaultAzureCredential()
+namespace = "<namespace>.servicebus.windows.net"
+client = ServiceBusClient(
+fully_qualified_namespace=namespace,
+credential=credential
+)
+```
+| Client | Purpose | Get From |
+|--------|---------|----------|
+| `ServiceBusClient` | Connection management | Direct instantiation |
+| `ServiceBusSender` | Send messages | `client.get_queue_sender()` / `get_topic_sender()` |
+| `ServiceBusReceiver` | Receive messages | `client.get_queue_receiver()` / `get_subscription_receiver()` |
+]]>
+  </instructions>
+</agyos_skill>

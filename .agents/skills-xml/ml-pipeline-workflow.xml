@@ -1,0 +1,32 @@
+<agyos_skill id="ml-pipeline-workflow">
+  <intent>Complete end-to-end MLOps pipeline orchestration from data preparation through model deployment.</intent>
+  <instructions>
+<![CDATA[
+Complete end-to-end MLOps pipeline orchestration from data preparation through model deployment.
+- The task is unrelated to ml pipeline workflow
+- You need a different domain or tool outside this scope
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+This skill provides comprehensive guidance for building production ML pipelines that handle the full lifecycle: data ingestion → preparation → training → validation → deployment → monitoring.
+- Building new ML pipelines from scratch
+- Designing workflow orchestration for ML systems
+- Implementing data → model → deployment automation
+- Setting up reproducible training workflows
+- Creating DAG-based ML orchestration
+- Integrating ML components into production systems
+1. **Pipeline Architecture**
+- End-to-end workflow design
+- DAG orchestration patterns (Airflow, Dagster, Kubeflow)
+- Component dependencies and data flow
+- Error handling and retry strategies
+2. **Data Preparation**
+- Data validation and quality checks
+- Feature engineering pipelines
+- Data versioning and lineage
+- Train/validation/test splitting strategies
+3. **Model Training**
+]]>
+  </instructions>
+</agyos_skill>

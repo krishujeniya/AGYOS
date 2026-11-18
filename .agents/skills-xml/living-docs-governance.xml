@@ -1,0 +1,32 @@
+<agyos_skill id="living-docs-governance">
+  <intent>Keep a long-lived project's documentation from rotting by assigning existing project docs clear constitution, map, status, and history roles, then wiring the active agent harness to those canonical sources. Use in the maintain phase when docs drift from code, agents lose context between sessions, or intentional removals keep being recreated. Prefer adopting the repository's current docs structure over creating new root files. 中文触发：文档治理、活文档、项目状态追踪、防文档漂移、项目地图、健康仪表盘、删除区、长期项目治理</intent>
+  <instructions>
+<![CDATA[
+Long-lived projects often rot at the documentation layer first: the README describes an old pipeline, architecture notes describe a refactor that never shipped, and every new session re-derives context that should already be available.
+**Living Docs Governance** assigns four non-overlapping roles to the project's existing documentation, links those roles from the active agent harness, and defines small update rules that keep the sources useful. The roles matter; the filenames do not.
+This is a **maintain-phase** practice. For one-time exploration of an unfamiliar repository, use `codebase-onboarding` first.
+Activate when any of these are true:
+- The repository has grown past a few modules and its docs are drifting from the code.
+- Agents or teammates repeatedly rediscover the same structure and decisions.
+- Nobody can quickly answer what is healthy, blocked, intentionally removed, or currently authoritative.
+- Deleted files or abandoned approaches are recreated because their disposition was not preserved.
+- The project needs a durable governance layer without adopting a large documentation platform.
+Do **not** use this for a throwaway script or create a parallel documentation system when the repository already has one.
+Inspect the repository's current instruction and documentation surfaces first:
+- harness instructions such as `AGENTS.md`, `CLAUDE.md`, `.cursor/rules`, or their equivalent;
+- `README`, architecture docs, ADRs, runbooks, roadmaps, changelogs, status pages, and docs indexes;
+- generated docs and external systems that may already be canonical.
+Map the existing sources to the four roles below. Reuse and link them in place. A small repository may keep more than one role in a single file if the sections are clearly separated and each fact still has one canonical owner.
+Only when a role is genuinely missing:
+1. propose the smallest new section or document;
+2. prefer the repository's established docs directory and naming conventions;
+3. ask before adding a new top-level artifact.
+| Role | One job | Existing sources that may fill it | Must not become |
+|---|---|---|---|
+| **Constitution** | Rules agents and contributors must obey, plus links to canonical detail | Active harness instructions, contribution guide, policy docs | Live status, long explanations, or duplicated policy |
+| **Map** | What exists, where it lives, ownership, and where to look next | Architecture overview, codemap, docs index, module map | Health dashboard or event ledger |
+| **Status** | Current health, blockers, thresholds, and intentional-removal delete-zone | Roadmap, project status, maintenance dashboard | Structural reference or historical narrative |
+| **History** | Durable governance decisions, intentional removals, replacements, and material incidents | ADR index, decision log, changelog, maintenance log | A duplicate of every commit, fix, or Git history |
+]]>
+  </instructions>
+</agyos_skill>

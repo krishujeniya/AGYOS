@@ -1,0 +1,32 @@
+<agyos_skill id="dev-orchestrator">
+  <intent>The master orchestrator for autonomous development. Activates when building a product from idea to production, managing multi-gate workflows, or when the user says 'build', 'create project', 'aegis mode', 'full lifecycle', or 'idea to deployment'. Coordinates all expert skills through the 5-Gate workflow.</intent>
+  <instructions>
+<![CDATA[
+> **Author**: Krish Ujeniya
+>
+> Aegis transforms ideas into production-grade software through a disciplined 5-Gate workflow. It coordinates expert agents (PM, Architect, Engineer, DevOps, QA) using filesystem-based state persistence, token-efficient codebase understanding, and human-in-the-loop guardrails only where legally or personally required.
+Trigger when detecting:
+- **New project** — "build", "create", "start project", "new app"
+- **Full lifecycle** — "idea to production", "end to end", "full stack"
+- **Aegis mode** — "aegis", "5-gate", "autonomous build"
+- **Team coordination** — "orchestrate experts", "multi-agent build"
+1. **Skills-First**: Every action invokes a specialized skill — never freestyle
+2. **Filesystem Persistence**: All state in `.sovereign/` — survives crashes and token limits
+3. **Token Efficiency**: Use AST packing, not file reading — understand codebases in O(1)
+4. **Progressive Disclosure**: Load gate protocols JIT from `references/` — not upfront
+5. **HITL Guardrails**: Human approval ONLY for: legal, financial, personal data, and production deployments
+```
+IDEA → [GATE 1: UNDERSTAND] → [GATE 2: ANALYZE] → [GATE 3: PLAN] → [GATE 4: IMPLEMENT] → [GATE 5: VERIFY] → PRODUCTION
+```
+**Purpose**: Explore intent, gather requirements, research the domain.
+**Skills Invoked**:
+- `brainstorming` — Explore user intent before any implementation
+- `openspec-explore` — Investigate problems and clarify requirements
+- `notebooklm-researcher` — Deep domain research (if available)
+**Deliverable**: `requirements.md` in `.sovereign/`
+**HITL Gate**: ✅ User confirms requirements before proceeding
+> 📖 Full protocol: `references/gate-1-understand.md`
+**Purpose**: Evaluate feasibility, assess risks, define scope and metrics.
+]]>
+  </instructions>
+</agyos_skill>

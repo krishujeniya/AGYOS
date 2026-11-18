@@ -1,0 +1,32 @@
+<agyos_skill id="delivery-gate">
+  <intent>Stop hook that blocks Claude from finishing until quality checks pass. Detects rationalization patterns (surface text heuristics), stale learning logs (filesystem mtime), and low disk space. Complements self-audit by mechanically enforcing learning capture habits. Use when Claude should be mechanically blocked from declaring work finished before quality checks and learning capture actually pass.</intent>
+  <instructions>
+<![CDATA[
+A **Stop hook** that checks three things before Claude can finish a session, using only **deterministic checks** — file modification timestamps, disk usage, and regex patterns on the transcript text. No AI inference.
+This is distinct from reasoning gates (like `self-audit`): delivery-gate checks machine-verifiable facts; self-audit checks output quality across four reasoning dimensions. Together they form defense in depth:
+- **delivery-gate**: "Was the learning library touched today? Is disk space safe?"
+- **self-audit**: "Is the file content correct, complete, and honest?"
+This is the same pattern as CI pipeline gates — automated, deterministic checks that verify machine-readable facts rather than trusting self-reported status.
+| Check | Mechanism | On Hit |
+|-------|-----------|--------|
+| Rationalization patterns | Regex on transcript tail | **Warning only** (never blocks) |
+| Stale learning libraries | mtime on 5 configurable paths | Warning if some stale; **Block** on a complex task if >=3 stale OR growth-log stale |
+| Disk space < 50GB | `shutil.disk_usage` | Reminder |
+| Disk space < 30GB | `shutil.disk_usage` | Warning |
+| Disk space < 15GB | `shutil.disk_usage` | **Block** (exit 2), on every Stop |
+Rationalization detection warns about patterns like "skip tests for now" and "pre-existing bug" — surface signals that thinking may have been cut short. It never blocks on its own, because regex heuristics can false-positive. The blocking conditions are: disk critical (any session), or, on a complex task (>=3 Edit/Write calls), `>=3 learning libs stale` OR `growth-log` specifically stale. If the project memory directory does not exist, the learning-library checks are skipped: the hook only warns that it cannot verify learning capture, and a complex task is not blocked (the disk checks still apply).
+The hook blocks a given Stop at most once. When Claude Code re-runs it with `stop_hook_active: true` (Claude already continued once because of this hook), it exits 0, so a condition the agent cannot fix (such as low disk space) cannot trap the session in an endless loop.
+Claude Code's built-in checks cover code quality (build → type → lint → test). But there's a different failure mode: the agent produces working code while the **session hygiene was neglected** — learning not captured, rationalized shortcuts, disk running out silently.
+Over many sessions of "ship and forget," the human hasn't grown. This hook enforces the habit: complex task → must touch learning libraries.
+From the ECC repository root:
+```bash
+mkdir -p ~/.claude/scripts
+cp skills/delivery-gate/hooks/quality-gate.py ~/.claude/scripts/
+```
+Add to `~/.claude/settings.json`:
+```json
+{
+"hooks": {
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="conductor-setup">
+  <intent>Configure a Rails project to work with Conductor (parallel coding agents)</intent>
+  <instructions>
+<![CDATA[
+Set up this Rails project for Conductor, the Mac app for parallel coding agents.
+- You need to configure a Rails project so it runs correctly inside Conductor workspaces.
+- The project should support parallel coding agents with isolated ports, Redis settings, and shared secrets.
+- You want the standard `conductor.json`, `bin/conductor-setup`, and `script/server` scaffolding for a Rails repo.
+Create `conductor.json` in the project root if it doesn't already exist:
+```json
+{
+"scripts": {
+"setup": "bin/conductor-setup",
+"run": "script/server"
+}
+}
+```
+Create `bin/conductor-setup` if it doesn't already exist:
+```bash
+set -e
+[ -f "$CONDUCTOR_ROOT_PATH/.env" ] && ln -sf "$CONDUCTOR_ROOT_PATH/.env" .env
+[ -f "$CONDUCTOR_ROOT_PATH/config/master.key" ] && ln -sf "$CONDUCTOR_ROOT_PATH/config/master.key" config/master.key
+bundle install
+npm install
+```
+Make it executable with `chmod +x bin/conductor-setup`.
+Create the `script` directory if needed, then create `script/server` if it doesn't already exist:
+```bash
+export PORT=${CONDUCTOR_PORT:-3000}
+]]>
+  </instructions>
+</agyos_skill>

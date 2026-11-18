@@ -1,0 +1,32 @@
+<agyos_skill id="senior-architect">
+  <intent>Complete toolkit for senior architect with modern tools and best practices.</intent>
+  <instructions>
+<![CDATA[
+Complete toolkit for senior architect with modern tools and best practices.
+This skill provides three core capabilities through automated scripts:
+```bash
+python scripts/architecture_diagram_generator.py [options]
+python scripts/project_architect.py [options]
+python scripts/dependency_analyzer.py [options]
+```
+Automated tool for architecture diagram generator tasks.
+**Features:**
+- Automated scaffolding
+- Best practices built-in
+- Configurable templates
+- Quality checks
+**Usage:**
+```bash
+python scripts/architecture_diagram_generator.py <project-path> [options]
+```
+Comprehensive analysis and optimization tool.
+**Features:**
+- Deep analysis
+- Performance metrics
+- Recommendations
+- Automated fixes
+**Usage:**
+```bash
+]]>
+  </instructions>
+</agyos_skill>

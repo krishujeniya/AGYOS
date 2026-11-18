@@ -1,0 +1,32 @@
+<agyos_skill id="reddit-automation">
+  <intent>Automate Reddit tasks via Rube MCP (Composio): search subreddits, create posts, manage comments, and browse top content. Always search tools first for current schemas.</intent>
+  <instructions>
+<![CDATA[
+Automate Reddit operations through Composio's Reddit toolkit via Rube MCP.
+- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
+- Active Reddit connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `reddit`
+- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
+2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `reddit`
+3. If connection is not ACTIVE, follow the returned auth link to complete Reddit OAuth
+4. Confirm connection status shows ACTIVE before running any workflows
+**When to use**: User wants to find posts across subreddits
+**Tool sequence**:
+1. `REDDIT_SEARCH_ACROSS_SUBREDDITS` - Search for posts matching a query [Required]
+**Key parameters**:
+- `query`: Search terms
+- `subreddit`: Limit search to a specific subreddit (optional)
+- `sort`: Sort results by 'relevance', 'hot', 'top', 'new', 'comments'
+- `time_filter`: Time range ('hour', 'day', 'week', 'month', 'year', 'all')
+- `limit`: Number of results to return
+**Pitfalls**:
+- Search results may not include very recent posts due to indexing delay
+- The `time_filter` parameter only works with certain sort options
+- Results are paginated; use after/before tokens for additional pages
+- NSFW content may be filtered based on account settings
+**When to use**: User wants to submit a new post to a subreddit
+**Tool sequence**:
+]]>
+  </instructions>
+</agyos_skill>

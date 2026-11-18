@@ -1,0 +1,32 @@
+<agyos_skill id="platform-specs-and-validation">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **cross-cutting publish-readiness skill** — make a post correct on **every** target (required fields,
+media rules, limits) and run the **validate-before-publish** loop. It's the **keystone the format skills
+point to.** The agent **maps fields + fixes spec violations + validates**; **WoopSocial validates and
+publishes**; **content craft and human-judgment calls stay elsewhere.**
+WoopSocial **validates and publishes atomically** — `POST /posts` checks every target together, and **if
+any one fails, nothing is created.** There's **no update endpoint**, so a post that publishes wrong can't
+be patched (edit = **delete + recreate**). That makes **getting every target's fields right *before*
+publish** the whole game: the right `postType`, the required per-platform fields, the media rules, and
+account-specific values (Pinterest board, TikTok privacy) resolved from `platform-inputs` — then
+`POST /posts/validate` to catch what's left. This skill is where the format skills come to **make sure it
+will actually go through.**
+(Depth: `references/the-check-framework.md`.)
+- **C — Collect the targets + project:** list the social accounts; confirm they're in the **same project**;
+note each platform's field set.
+- **H — Hydrate per-platform required fields:** fill each target's required fields (FB/IG `postType`;
+TikTok's eight; YouTube `title`+`privacy`; Pinterest `pinterestBoardId`); **resolve account values** from
+`GET /social-accounts/{id}/platform-inputs`.
+- **E — Enforce media + content rules:** FB no image+video mix; IG Stories need media; **Pinterest single
+media**; TikTok PHOTO/VIDEO field applicability; use `contentOverride` or separate posts where fan-out
+conflicts; respect text limits.
+- **C — Confirm truthful declarations:** `isBrandedContent`/`isYourBrand`/`madeForKids` are **truthful
+declarations, not validation knobs** — never flip them to clear an error; these stay with the person.
+- **K — Knock it through validation:** `POST /posts/validate` → fix all errors, review warnings → create
+(atomic). **No update** → delete + recreate (only while `NOT_STARTED`).
+Per-platform postType enums + required-field matrices + media rules + the platform-inputs discovery
+]]>
+  </instructions>
+</agyos_skill>

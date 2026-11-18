@@ -1,0 +1,32 @@
+<agyos_skill id="x-to-markdown">
+  <intent>Converts X (Twitter) tweets and articles to markdown with YAML front matter. Uses reverse-engineered API requiring user consent. Use when user mentions "X to markdown", "tweet to markdown", "save tweet", or provides x.com/twitter.com URLs for conversion.</intent>
+  <instructions>
+<![CDATA[
+Converts X content to markdown:
+- Tweets/threads → Markdown with YAML front matter
+- X Articles → Full content extraction
+When this skill prompts the user, follow this tool-selection rule (priority order):
+1. **Prefer built-in user-input tools** exposed by the current agent runtime — e.g., `AskUserQuestion`, `request_user_input`, `clarify`, `ask_user`, or any equivalent.
+2. **Fallback**: if no such tool exists, emit a numbered plain-text message and ask the user to reply with the chosen number/answer for each question.
+3. **Batching**: if the tool supports multiple questions per call, combine all applicable questions into a single call; if only single-question, ask them one at a time in priority order.
+Concrete `AskUserQuestion` references below are examples — substitute the local equivalent in other runtimes.
+Scripts located in `scripts/` subdirectory.
+**Path Resolution**:
+1. `{baseDir}` = this SKILL.md's directory
+2. Script path = `{baseDir}/scripts/main.ts`
+3. Resolve `${BUN_X}` runtime: if `bun` installed → `bun`; if `npx` available → `npx -y bun`; else suggest installing bun
+**Before any conversion**, check and obtain consent.
+**Step 1**: Check consent file
+```bash
+cat ~/Library/Application\ Support/baoyu-skills/x-to-markdown/consent.json
+cat ~/.local/share/baoyu-skills/x-to-markdown/consent.json
+```
+**Step 2**: If `accepted: true` and `disclaimerVersion: "1.0"` → print warning and proceed:
+```
+Warning: Using reverse-engineered X API. Accepted on: <acceptedAt>
+```
+**Step 3**: If missing or version mismatch → display disclaimer:
+```
+]]>
+  </instructions>
+</agyos_skill>

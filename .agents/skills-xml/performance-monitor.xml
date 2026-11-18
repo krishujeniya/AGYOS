@@ -1,0 +1,32 @@
+<agyos_skill id="performance-monitor">
+  <intent>Monitor de performance do Claude Code e sistema local. Diagnostica lentidao, mede CPU/RAM/disco, verifica API latency e gera relatorios de saude do sistema.</intent>
+  <instructions>
+<![CDATA[
+Monitor de performance do Claude Code e sistema local. Diagnostica lentidao, mede CPU/RAM/disco, verifica API latency e gera relatorios de saude do sistema.
+- When the user mentions "lento" or related topics
+- When the user mentions "lentidao" or related topics
+- When the user mentions "lag" or related topics
+- When the user mentions "lagado" or related topics
+- When the user mentions "travando" or related topics
+- When the user mentions "claude lento" or related topics
+- The task is unrelated to claude monitor
+- A simpler, more specific tool can handle the request
+- The user needs general-purpose assistance without domain expertise
+Skill para diagnosticar e resolver problemas de lentidão no Claude Code e no sistema.
+Determina se o gargalo é local (PC) ou remoto (API Claude) e sugere ações corretivas.
+- Usuário reclama que o Claude Code está lento ou travando
+- Troca de sessões de conversa demora para carregar
+- Respostas do Claude demoram muito
+- PC parece lento enquanto usa o Claude Code
+- Qualquer menção a performance, lag, lentidão
+Rode SEMPRE como primeiro passo:
+```bash
+python C:\Users\renat\skills\claude-monitor\scripts\health_check.py
+```
+O script analisa em ~3 segundos:
+- **CPU**: Uso atual e por core. >80% = gargalo provável
+- **RAM**: Total, usada, disponível. >85% = pressão de memória
+- **Browsers**: Processos e RAM por browser. >5GB total = excesso de abas
+]]>
+  </instructions>
+</agyos_skill>

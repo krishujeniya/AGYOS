@@ -1,0 +1,32 @@
+<agyos_skill id="x-growth">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **X/Twitter growth engine** — what to post, when, how to leverage Premium, and how replies compound
+reach. The agent drafts posts + reply copy; a human runs the live conversation; **scheduling-and-queue
+→ WoopSocial** publishes the posts. Complements **thread-writer** (the thread-format craft).
+X's open-sourced algorithm is blunt — **a reply is worth ~27× a like and an author-reply chain ~150×**,
+**first-hour velocity** decides out-of-network reach, bookmarks signal lasting value, and external
+links get throttled. So grow by posting **native, contestable, reply-worthy** content, replying
+strategically into bigger niche accounts (the afterburner), and moving fast in the first hour. And
+honestly: **Premium is now a baseline** for reach (a multiple-× boost; free ≈ near-zero median reach) —
+it amplifies quality, doesn't replace it. X fits **B2B/tech/finance/thought-leadership/real-time**, not
+every brand.
+1. **brand-profile** — positioning, audience, non-negotiables.
+2. **voice-builder** — so posts and replies sound like the brand.
+(Depth: `references/the-spark-framework.md`.)
+- **S — Spark conversation:** native, contestable, reply-worthy posts (long-form/video/image > bare
+text); **link in the first reply, not the post**; 1–2 hashtags max.
+- **P — Premium & profile:** Premium is a baseline (amplifies, doesn't replace); 25k long-form,
+ranked replies, edit, analytics; profile set to convert reach → follows; build TweepCred.
+- **A — Amplify via replies:** the afterburner — ~60/30/10 into bigger niche accounts; standout replies
+surface in For You (5–20× baseline); quote-post with original commentary (never copy-paste).
+- **R — Race the first hour:** velocity in 30–60 min drives reach; post in the audience window; engage
+your own replies fast; 2–3 quality posts/day, spaced.
+- **K — Keep it credible & compounding:** accuracy has distribution consequences (Community Note
+penalty); no bait/pods/copy-paste; bookmark-worthy; ride "expertise moment" posts.
+Engagement weights, the 65 TweepCred threshold, the Premium multiplier range, the long-form-over-threads
+shift, link suppression, the reply split, cadence, monetization concentration, and platform fit:
+]]>
+  </instructions>
+</agyos_skill>

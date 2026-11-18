@@ -1,0 +1,32 @@
+<agyos_skill id="content-audit">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **retrospective bridge** — read how an existing account has performed and turn it into a keep/kill/
+refresh roadmap that feeds the forward plan. It **reads** (via `analytics-and-reporting`) and
+**recommends**; the human and other skills **act**.
+Plenty of accounts look busy — daily reels, carousels, likes trickling in, followers inching up — while
+**nothing actually moves.** A content audit finds the **signal under the busy-ness**: what gets *saved*
+and *shared* (not just liked), which pillars are starved or bloated, where the voice has drifted (or
+where your winners say it should **evolve**), and which profile fundamentals quietly leak followers.
+Strategy is forward-looking; the audit is the **retrospective reality-check** that informs it.
+1. **brand-profile** + **voice-builder** — the voice/brand standard to audit against.
+2. **content-pillars** + **social-strategy** — the intended plan (the audit checks execution of it).
+3. **analytics-and-reporting** — the performance data source (WoopSocial post analytics for TikTok, LinkedIn, Facebook, Instagram, Pinterest, YouTube, and Bluesky; native dashboards otherwise).
+(Depth: `references/the-audit-framework.md`.)
+- **A — Assemble the inventory:** ~90 days of output by platform/format/pillar/time + native metrics; pull
+the plan you're auditing against.
+- **U — Uncover the signal:** score on **saves/shares/replies + the goal-mapped KPI** (not vanity);
+surface top/bottom performers + patterns by format/time/pillar.
+- **D — Diagnose pillars, voice & profile:** pillar whitespace (→ content-pillars); voice drift **both
+ways** (→ voice-builder); profile fundamentals + cadence (→ profile-optimization).
+- **I — Iterate: keep / kill / refresh:** scale winners (→ content-recycling), cut chronic/off-brand/
+non-native, refresh good-but-dated. **Refresh before kill; human approves kills.**
+- **T — Turn into a roadmap:** strengths/weaknesses/opportunities; **quick wins vs long-term**; owners +
+timelines; hand off. **No spreadsheet graveyard.**
+Audit = retrospective (vs forward strategy); signal-over-vanity; keep/kill/refresh; pillar whitespace;
+voice drift both ways; profile fundamentals; ~90-day window; quarterly deep + monthly light; run after
+major changes: `references/content-audit-2026-reality.md`. Triage rules, scorecard + worked examples:
+]]>
+  </instructions>
+</agyos_skill>

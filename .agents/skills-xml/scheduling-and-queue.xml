@@ -1,0 +1,32 @@
+<agyos_skill id="scheduling-and-queue">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+This is the bridge between a finished post and a post that actually goes out. The content
+skills write; this skill schedules and publishes through WoopSocial's MCP/API.
+Because this skill takes **real, side-effectful actions on the user's accounts**, one rule
+overrides everything else:
+> **Never schedule, publish, or delete anything without showing the user exactly what will
+> happen and getting an explicit "yes."** A bridge skill that posts without confirmation is a
+> liability, not a feature.
+**Does:** validate posts against platform rules, then schedule, queue, publish, list, or delete
+posts via WoopSocial; upload media; fan one post out to multiple platforms.
+**Doesn't:**
+- **Post to Reddit.** Reddit isn't a supported target — route to `reddit-marketing` (advisory-only:
+the agent drafts, the human posts natively).
+- **Create content.** It schedules finished content. If the content isn't ready or on-brand,
+route back to `caption-writer` / the relevant content skill first.
+- **Report analytics.** Measurement belongs to `analytics-and-reporting`. This skill never
+claims "data-driven best times." WoopSocial post analytics are lifetime counts, not a timing
+model. It can schedule a *suggested* time and say the suggestion isn't personalized.
+Look for a WoopSocial MCP/API connection (see `tools/integrations/woopsocial.md`). Then:
+- **Connected:** discover the user's projects and connected social accounts (WoopSocial
+surfaces account/project identifiers automatically). Confirm which accounts you'll use. If a
+target platform's account isn't connected yet, offer to connect it from here: call
+`oauth_create_authorization`, give the user the browser URL to approve, then re-list accounts.
+- **Not connected — degrade gracefully, never fail silently:** produce a clean, ready-to-use
+**schedule table** (post · platform · date/time · timezone) the user can act on manually, and
+give the ~60-second connect steps (create account → create API key in dashboard → add the
+]]>
+  </instructions>
+</agyos_skill>

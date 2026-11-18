@@ -1,0 +1,32 @@
+<agyos_skill id="social-seo">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+Make content **findable when people search**, not just visible when the feed happens to show it. In
+2026 every social platform is a search engine, and search is the highest-intent, most **evergreen**
+discovery there is.
+Four truths shape everything:
+1. **All social platforms are search engines** (TikTok/IG/YouTube/Pinterest/LinkedIn) — and people
+search *different* platforms for different intents. If you only optimize for the feed, you're
+invisible to people actively looking.
+2. **Keywords, not hashtags, are the lever.** Write for the search bar first; hashtags are a minor
+category signal → `hashtag-strategy`.
+3. **Search optimization doubles as recommendation optimization** — the keywords that get you found in
+search are the same signals the algorithm uses to categorize you for the right feed/FYP audience.
+4. **SEO turns posts into evergreen assets** — a search-optimized post keeps getting found for months;
+a feed post dies in ~48h.
+(Full model + the AI-search/GEO boundary: `references/why-social-search.md`.)
+Load `brand-profile.md` and `audience.md` (their exact search language matters). Get the **platform(s)**
+and what the user wants to be **found for**.
+Find the terms people actually search via **platform autocomplete**, **"others searched for"**,
+related searches, **comments**, audience language, and the user's **native search analytics** (+ tools
+like TikTok Creative Center / VidIQ). **The agent can't pull live search volumes — never fabricate
+numbers**; give the method and work from intent/specificity. Favor long-tail, intent-rich queries you
+can genuinely answer. See `references/keyword-research-and-technique.md`.
+Each platform indexes different things — optimize the right ones (full per-platform guide in
+`references/platform-seo-surfaces.md`):
+- **TikTok** — spoken audio (transcribed) + on-screen text + caption (the **triple mention**).
+- **Instagram** — caption + the **searchable name/display field** + bio + alt text + captioned Reels.
+]]>
+  </instructions>
+</agyos_skill>

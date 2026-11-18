@@ -1,0 +1,32 @@
+<agyos_skill id="faf-wizard">
+  <intent>Done-for-you .faf generator. One-click AI context for any project - new, legacy, or famous. Auto-detects stack, scores readiness, works everywhere.</intent>
+  <instructions>
+<![CDATA[
+**The pit crew for your projects.** Point it at any codebase and get scored, AI-ready context in 60 seconds.
+Transform any project - new, legacy, famous OSS, or forgotten side projects - into an AI-intelligent workspace with persistent context that works across all AI tools.
+**Even React.js scores 0% AI-readiness.** Famous repositories have no AI context.
+| What Exists | What It Tells AI |
+|-------------|------------------|
+| README.md | "What this does" (for humans) |
+| docs/ | "How to use it" (for humans) |
+| **project.faf** | "How to help build this" (for AI) |
+Documentation tells humans how to use your code. AI context tells AI how to help you build it. **They're completely different things.**
+| Project Type | What FAF Wizard Does |
+|-------------|----------------------|
+| **Brand new** | Perfect AI context from line one |
+| **Legacy nightmare** | AI finally understands the archaeology |
+| **Famous OSS** | Even React doesn't have this |
+| **Side projects** | Stop re-explaining every session |
+| **Client handoffs** | Portable context for any AI tool |
+| **Team projects** | Shared context that everyone can use |
+```
+Before: "This 50k-line PHP codebase from 2015..."
+AI: "I don't understand this architecture"
+After: 60 seconds with FAF Wizard
+AI: "I see this is a Laravel-based e-commerce system with
+payment processing, inventory management, and multi-tenant
+architecture. Here's how I can help..."
+```
+]]>
+  </instructions>
+</agyos_skill>

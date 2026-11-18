@@ -1,0 +1,32 @@
+<agyos_skill id="interactive-scroll-story">
+  <intent>Create an interactive scrolling story with a consistent visual direction, readable content, and reduced-motion support.</intent>
+  <instructions>
+<![CDATA[
+SKILL.md")
+```
+The root `SKILL.md` contains:
+- Brand voice definition ("The Calm Bestie")
+- The 5-phase workflow (Interview → Safety → Design Brief → Code → Post-Build)
+- Hard rules (tech stack, safety, accessibility)
+- 20-point slop-test gate
+**All reference files** are at the workspace root:
+| Phase | File to Load |
+|---|---|
+| Interview | `references/01-interview-flow.md` |
+| Safety Check | `references/02-safety-checklist.md` |
+| Design Brief | `references/03-design-brief-generator.md` |
+| Code Generation | `references/04-scene-templates.md` + `references/05-code-generation-rules.md` |
+| Post-Build | `references/06-deployment-guide.md` + `references/07-post-build-guide.md` |
+**Resource files** for palette/font/song selection:
+| Resource | File to Load |
+|---|---|
+| Color Palettes | `resources/color-palettes.json` |
+| Font Pairings | `resources/font-pairings.json` |
+| Song Suggestions | `resources/song-suggestions.json` |
+**Example output** for quality reference:
+| File | Purpose |
+|---|---|
+| `examples/good-output/index.html` | Reference HTML structure |
+]]>
+  </instructions>
+</agyos_skill>

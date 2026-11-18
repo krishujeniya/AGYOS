@@ -1,0 +1,32 @@
+<agyos_skill id="geo-fundamentals">
+  <intent>Generative Engine Optimization for AI search engines (ChatGPT, Claude, Perplexity).</intent>
+  <instructions>
+<![CDATA[
+> Optimization for AI-powered search engines.
+**GEO** = Generative Engine Optimization
+| Goal | Platform |
+|------|----------|
+| Be cited in AI responses | ChatGPT, Claude, Perplexity, Gemini |
+| Aspect | SEO | GEO |
+|--------|-----|-----|
+| Goal | #1 ranking | AI citations |
+| Platform | Google | AI engines |
+| Metrics | Rankings, CTR | Citation rate |
+| Focus | Keywords | Entities, data |
+| Engine | Citation Style | Opportunity |
+|--------|----------------|-------------|
+| **Perplexity** | Numbered [1][2] | Highest citation rate |
+| **ChatGPT** | Inline/footnotes | Custom GPTs |
+| **Claude** | Contextual | Long-form content |
+| **Gemini** | Sources section | SEO crossover |
+How AI engines select content to cite:
+| Factor | Weight |
+|--------|--------|
+| Semantic relevance | ~40% |
+| Keyword match | ~20% |
+| Authority signals | ~15% |
+| Freshness | ~10% |
+| Source diversity | ~15% |
+]]>
+  </instructions>
+</agyos_skill>

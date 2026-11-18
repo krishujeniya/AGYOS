@@ -1,0 +1,32 @@
+<agyos_skill id="hubspot-automation">
+  <intent>Automate HubSpot CRM operations (contacts, companies, deals, tickets, properties) via Rube MCP using Composio integration.</intent>
+  <instructions>
+<![CDATA[
+Automate HubSpot CRM workflows including contact/company management, deal pipeline tracking, ticket search, and custom property creation through Composio's HubSpot toolkit.
+- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
+- Active HubSpot connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `hubspot`
+- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
+2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `hubspot`
+3. If connection is not ACTIVE, follow the returned auth link to complete HubSpot OAuth
+4. Confirm connection status shows ACTIVE before running any workflows
+**When to use**: User wants to create new contacts or update existing ones in HubSpot CRM
+**Tool sequence**:
+1. `HUBSPOT_GET_ACCOUNT_INFO` - Verify connection and permissions (Prerequisite)
+2. `HUBSPOT_SEARCH_CONTACTS_BY_CRITERIA` - Search for existing contacts to avoid duplicates (Prerequisite)
+3. `HUBSPOT_READ_A_CRM_PROPERTY_BY_NAME` - Check property metadata for constrained values (Optional)
+4. `HUBSPOT_CREATE_CONTACT` - Create a single contact (Required)
+5. `HUBSPOT_CREATE_CONTACTS` - Batch create contacts up to 100 (Alternative)
+**Key parameters**:
+- `HUBSPOT_CREATE_CONTACT`: `properties` object with `email`, `firstname`, `lastname`, `phone`, `company`
+- `HUBSPOT_CREATE_CONTACTS`: `inputs` array of `{properties}` objects, max 100 per batch
+- `HUBSPOT_SEARCH_CONTACTS_BY_CRITERIA`: `filterGroups` array with `{filters: [{propertyName, operator, value}]}`, `properties` array of fields to return
+**Pitfalls**:
+- Max 100 records per batch; chunk larger imports
+- 400 'Property values were not valid' if using incorrect property names or enum values
+- Always search before creating to avoid duplicates
+- Auth errors from GET_ACCOUNT_INFO mean all subsequent calls will fail
+]]>
+  </instructions>
+</agyos_skill>

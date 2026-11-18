@@ -1,0 +1,32 @@
+<agyos_skill id="recursive-decision-ledger">
+  <intent>Run repeated rollouts ("Prime Gauss" style recursive prompting) while keeping an append-only decision ledger of trials, marks, coherence checks, and promotion gates, so recursive confidence never auto-approves live trading, deploy, or destructive actions. Use when the user asks for repeated rollouts, marked decision processes, high-dimensional search, stochastic optimization, local-optima exploration, ensemble comparison, or recursive reasoning with a visible evidence trail.</intent>
+  <instructions>
+<![CDATA[
+Use this skill when the user is trying to force deeper computation through
+repeated rollouts or "Prime Gauss" style recursive prompting. Preserve the useful
+part: repeated trials, prior memory, fresh information, and explicit marks.
+Remove the unsafe part: pretending the loop proves certainty.
+Every rollout should record:
+- rollout id and timestamp;
+- prior accepted winner and prior watchlist;
+- fresh information ingested;
+- search space size;
+- model families or heuristics used;
+- trial count and effective trial count;
+- top candidates;
+- decision marks;
+- coherence marks against the prior ledger;
+- promotion gate result.
+Prefer JSONL for append-only ledgers and Markdown for human summaries.
+1. Load the prior ledger.
+2. Capture new information at time-step zero.
+3. Run the bounded search.
+4. Mark each candidate: accept, watch, reject, decay watch, or needs replay.
+5. Compare winners against prior winners and latest marked rollout.
+6. Downgrade candidates when drift, tail risk, stale data, or failed replay
+invalidates the previous mark.
+7. Append artifacts before summarizing.
+Include a compact coherence mark:
+]]>
+  </instructions>
+</agyos_skill>

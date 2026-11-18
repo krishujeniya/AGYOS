@@ -1,0 +1,32 @@
+<agyos_skill id="seo-content">
+  <intent>&gt;</intent>
+  <instructions>
+<![CDATA[
+- Use when auditing content quality, readability, thin content risk, or E-E-A-T signals.
+- Use when the user wants a content-focused SEO review rather than a full technical audit.
+- Use when checking whether content is structured and trustworthy enough for search and AI citation.
+Read `seo/references/eeat-framework.md` for full criteria.
+- Original research, case studies, before/after results
+- Personal anecdotes, process documentation
+- Unique data, proprietary insights
+- Photos/videos from direct experience
+- Author credentials, certifications, bio
+- Professional background relevant to topic
+- Technical depth appropriate for audience
+- Accurate, well-sourced claims
+- External citations, backlinks from authoritative sources
+- Brand mentions, industry recognition
+- Published in recognized outlets
+- Cited by other experts
+- Contact information, physical address
+- Privacy policy, terms of service
+- Customer testimonials, reviews
+- Date stamps, transparent corrections
+- Secure site (HTTPS)
+Compare against page type minimums:
+| Page Type | Minimum |
+|-----------|---------|
+| Homepage | 500 |
+]]>
+  </instructions>
+</agyos_skill>

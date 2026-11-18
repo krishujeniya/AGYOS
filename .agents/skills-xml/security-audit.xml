@@ -1,0 +1,32 @@
+<agyos_skill id="security-audit">
+  <intent>Comprehensive security auditing workflow covering web application testing, API security, penetration testing, vulnerability scanning, and security hardening.</intent>
+  <instructions>
+<![CDATA[
+Comprehensive security auditing workflow for web applications, APIs, and infrastructure. This bundle orchestrates skills for penetration testing, vulnerability assessment, security scanning, and remediation.
+Use this workflow when:
+- Performing security audits on web applications
+- Testing API security
+- Conducting penetration tests
+- Scanning for vulnerabilities
+- Hardening application security
+- Compliance security assessments
+- `scanning-tools` - Security scanning
+- `shodan-reconnaissance` - Shodan searches
+- `top-web-vulnerabilities` - OWASP Top 10
+1. Identify target scope
+2. Gather intelligence
+3. Map attack surface
+4. Identify technologies
+5. Document findings
+```
+Use @scanning-tools to perform initial reconnaissance
+```
+```
+Use @shodan-reconnaissance to find exposed services
+```
+- `vulnerability-scanner` - Vulnerability analysis
+- `security-scanning-security-sast` - Static analysis
+- `security-scanning-security-dependencies` - Dependency scanning
+]]>
+  </instructions>
+</agyos_skill>

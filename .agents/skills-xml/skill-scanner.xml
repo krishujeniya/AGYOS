@@ -1,0 +1,32 @@
+<agyos_skill id="skill-scanner">
+  <intent>Scan agent skills for security issues before adoption. Detects prompt injection, malicious code, excessive permissions, secret exposure, and supply chain risks.</intent>
+  <instructions>
+<![CDATA[
+Scan agent skills for security issues before adoption. Detects prompt injection, malicious code, excessive permissions, secret exposure, and supply chain risks.
+**Important**: Run all scripts from the repository root using the full path via `${CLAUDE_SKILL_ROOT}`.
+- You need to evaluate a skill for prompt injection, malicious code, over-broad permissions, or supply-chain risk before adopting it.
+- You want a static scan plus manual review workflow for a skill directory.
+- The task is to decide whether a skill is safe enough to trust in an agent environment.
+Static analysis scanner that detects deterministic patterns. Outputs structured JSON.
+```bash
+uv run ${CLAUDE_SKILL_ROOT}/scripts/scan_skill.py <skill-directory>
+```
+Returns JSON with findings, URLs, structure info, and severity counts. The script catches patterns mechanically — your job is to evaluate intent and filter false positives.
+Determine the scan target:
+- If the user provides a skill directory path, use it directly
+- If the user names a skill, look for it under `plugins/*/skills/<name>/` or `.claude/skills/<name>/`
+- If the user says "scan all skills", discover all `*/SKILL.md` files and scan each
+Validate the target contains a `SKILL.md` file. List the skill structure:
+```bash
+ls -la <skill-directory>/
+ls <skill-directory>/references/ 2>/dev/null
+ls <skill-directory>/scripts/ 2>/dev/null
+```
+Run the bundled scanner:
+```bash
+uv run ${CLAUDE_SKILL_ROOT}/scripts/scan_skill.py <skill-directory>
+```
+Parse the JSON output. The script produces findings with severity levels, URL analysis, and structure information. Use these as leads for deeper analysis.
+]]>
+  </instructions>
+</agyos_skill>

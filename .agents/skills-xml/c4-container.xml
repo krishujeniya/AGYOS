@@ -1,0 +1,32 @@
+<agyos_skill id="c4-container">
+  <intent>Expert C4 Container-level documentation specialist.</intent>
+  <instructions>
+<![CDATA[
+- Working on c4 container level: system deployment tasks or workflows
+- Needing guidance, best practices, or checklists for c4 container level: system deployment
+- The task is unrelated to c4 container level: system deployment
+- You need a different domain or tool outside this scope
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+- **Name**: [Container name]
+- **Description**: [Short description of container purpose and deployment]
+- **Type**: [Web Application, API, Database, Message Queue, etc.]
+- **Technology**: [Primary technologies: Node.js, Python, PostgreSQL, Redis, etc.]
+- **Deployment**: [Docker, Kubernetes, Cloud Service, etc.]
+[Detailed description of what this container does and how it's deployed]
+This container deploys the following components:
+- [Component Name]: [Description]
+- Documentation: c4-component-name.md
+- **Protocol**: [REST/GraphQL/gRPC/Events/etc.]
+- **Description**: [What this interface provides]
+- **Specification**: [Link to OpenAPI/Swagger/API Spec file]
+- **Endpoints**:
+- `GET /api/resource` - [Description]
+- `POST /api/resource` - [Description]
+- [Container Name]: [How it's used, communication protocol]
+- [External System]: [How it's used, integration type]
+]]>
+  </instructions>
+</agyos_skill>

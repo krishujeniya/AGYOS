@@ -1,0 +1,32 @@
+<agyos_skill id="azure-appconfiguration-py">
+  <intent>Azure App Configuration SDK for Python. Use for centralized configuration management, feature flags, and dynamic settings.</intent>
+  <instructions>
+<![CDATA[
+Centralized configuration management with feature flags and dynamic settings.
+```bash
+pip install azure-appconfiguration
+```
+```bash
+AZURE_APPCONFIGURATION_CONNECTION_STRING=Endpoint=https://<name>.azconfig.io;Id=...;Secret=...
+AZURE_APPCONFIGURATION_ENDPOINT=https://<name>.azconfig.io
+```
+```python
+from azure.appconfiguration import AzureAppConfigurationClient
+client = AzureAppConfigurationClient.from_connection_string(
+os.environ["AZURE_APPCONFIGURATION_CONNECTION_STRING"]
+)
+```
+```python
+from azure.appconfiguration import AzureAppConfigurationClient
+from azure.identity import DefaultAzureCredential
+client = AzureAppConfigurationClient(
+base_url=os.environ["AZURE_APPCONFIGURATION_ENDPOINT"],
+credential=DefaultAzureCredential()
+)
+```
+```python
+setting = client.get_configuration_setting(key="app:settings:message")
+print(f"{setting.key} = {setting.value}")
+]]>
+  </instructions>
+</agyos_skill>

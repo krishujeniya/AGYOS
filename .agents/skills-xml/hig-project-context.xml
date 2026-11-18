@@ -1,0 +1,32 @@
+<agyos_skill id="hig-project-context">
+  <intent>Create or update a shared Apple design context document that other HIG skills use to tailor guidance.</intent>
+  <instructions>
+<![CDATA[
+Create and maintain `.claude/apple-design-context.md` so other HIG skills can skip redundant questions.
+Check for `.claude/apple-design-context.md` before asking questions. Use existing context and only ask for information not already covered.
+Before asking questions, auto-discover context from:
+1. **README.md** -- Product description, platform targets
+2. **Package.swift / .xcodeproj** -- Supported platforms, minimum OS versions, dependencies
+3. **Info.plist** -- App category, required capabilities, supported orientations
+4. **Existing code** -- Import statements reveal frameworks (SwiftUI vs UIKit, HealthKit, etc.)
+5. **Assets.xcassets** -- Color assets, icon sets, dark mode variants
+6. **Accessibility audit** -- Grep for accessibility modifiers/attributes
+Present findings and ask the user to confirm or correct. Then gather anything still missing:
+- What does the app do? (one sentence)
+- Category (productivity, social, health, game, utility, etc.)
+- Stage (concept, development, shipped, redesign)
+- Which Apple platforms? (iOS, iPadOS, macOS, tvOS, watchOS, visionOS)
+- Minimum OS versions
+- Universal or platform-specific?
+- UI framework: SwiftUI, UIKit, AppKit, or mixed?
+- Architecture: single-window, multi-window, document-based?
+- Apple technologies in use? (HealthKit, CloudKit, ARKit, etc.)
+- System defaults or custom design system?
+- Brand colors, fonts, icon style?
+- Dark mode and Dynamic Type support status
+- Target level (baseline, enhanced, comprehensive)
+- Specific considerations (VoiceOver, Switch Control, etc.)
+- Regulatory requirements (WCAG, Section 508)
+]]>
+  </instructions>
+</agyos_skill>

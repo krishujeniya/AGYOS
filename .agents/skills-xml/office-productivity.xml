@@ -1,0 +1,32 @@
+<agyos_skill id="office-productivity">
+  <intent>Office productivity workflow covering document creation, spreadsheet automation, presentation generation, and integration with LibreOffice and Microsoft Office formats.</intent>
+  <instructions>
+<![CDATA[
+Comprehensive office productivity workflow for document creation, spreadsheet automation, presentation generation, and format conversion using LibreOffice and Microsoft Office tools.
+Use this workflow when:
+- Creating office documents programmatically
+- Automating document workflows
+- Converting between document formats
+- Generating reports
+- Creating presentations from data
+- Processing spreadsheets
+- `libreoffice-writer` - LibreOffice Writer
+- `docx-official` - Microsoft Word
+- `pdf-official` - PDF handling
+1. Design document template
+2. Create document structure
+3. Add content programmatically
+4. Apply formatting
+5. Export to required formats
+```
+Use @libreoffice-writer to create ODT documents
+```
+```
+Use @docx-official to create Word documents
+```
+- `libreoffice-calc` - LibreOffice Calc
+- `xlsx-official` - Excel spreadsheets
+- `googlesheets-automation` - Google Sheets
+]]>
+  </instructions>
+</agyos_skill>

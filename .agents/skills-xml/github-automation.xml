@@ -1,0 +1,32 @@
+<agyos_skill id="github-automation">
+  <intent>Automate GitHub repositories, issues, pull requests, branches, CI/CD, and permissions via Rube MCP (Composio). Manage code workflows, review PRs, search code, and handle deployments programmatically.</intent>
+  <instructions>
+<![CDATA[
+Automate GitHub repository management, issue tracking, pull request workflows, branch operations, and CI/CD through Composio's GitHub toolkit.
+- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
+- Active GitHub connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `github`
+- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
+2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `github`
+3. If connection is not ACTIVE, follow the returned auth link to complete GitHub OAuth
+4. Confirm connection status shows ACTIVE before running any workflows
+**When to use**: User wants to create, list, or manage GitHub issues
+**Tool sequence**:
+1. `GITHUB_LIST_REPOSITORIES_FOR_THE_AUTHENTICATED_USER` - Find target repo if unknown [Prerequisite]
+2. `GITHUB_LIST_REPOSITORY_ISSUES` - List existing issues (includes PRs) [Required]
+3. `GITHUB_CREATE_AN_ISSUE` - Create a new issue [Required]
+4. `GITHUB_CREATE_AN_ISSUE_COMMENT` - Add comments to an issue [Optional]
+5. `GITHUB_SEARCH_ISSUES_AND_PULL_REQUESTS` - Search across repos by keyword [Optional]
+**Key parameters**:
+- `owner`: Repository owner (username or org), case-insensitive
+- `repo`: Repository name without .git extension
+- `title`: Issue title (required for creation)
+- `body`: Issue description (supports Markdown)
+- `labels`: Array of label names
+- `assignees`: Array of GitHub usernames
+- `state`: 'open', 'closed', or 'all' for filtering
+**Pitfalls**:
+]]>
+  </instructions>
+</agyos_skill>

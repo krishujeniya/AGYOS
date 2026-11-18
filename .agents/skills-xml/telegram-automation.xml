@@ -1,0 +1,32 @@
+<agyos_skill id="telegram-automation">
+  <intent>Automate Telegram tasks via Rube MCP (Composio): send messages, manage chats, share photos/documents, and handle bot commands. Always search tools first for current schemas.</intent>
+  <instructions>
+<![CDATA[
+Automate Telegram operations through Composio's Telegram toolkit via Rube MCP.
+- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
+- Active Telegram connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `telegram`
+- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+- Telegram Bot Token required (created via @BotFather)
+**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
+2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `telegram`
+3. If connection is not ACTIVE, follow the returned auth link to configure the Telegram bot
+4. Confirm connection status shows ACTIVE before running any workflows
+**When to use**: User wants to send text messages to a Telegram chat
+**Tool sequence**:
+1. `TELEGRAM_GET_ME` - Verify bot identity and connection [Prerequisite]
+2. `TELEGRAM_GET_CHAT` - Get chat details and verify access [Optional]
+3. `TELEGRAM_SEND_MESSAGE` - Send a text message [Required]
+**Key parameters**:
+- `chat_id`: Numeric chat ID or channel username (e.g., '@channelname')
+- `text`: Message text content
+- `parse_mode`: 'HTML' or 'MarkdownV2' for formatting
+- `disable_notification`: Send silently without notification sound
+- `reply_to_message_id`: Message ID to reply to
+**Pitfalls**:
+- Bot must be a member of the chat/group to send messages
+- MarkdownV2 requires escaping special characters: `_*[]()~>#+-=|{}.!`
+- HTML mode supports limited tags: `<b>`, `<i>`, `<code>`, `<pre>`, `<a>`
+]]>
+  </instructions>
+</agyos_skill>

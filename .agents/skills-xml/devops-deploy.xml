@@ -1,0 +1,32 @@
+<agyos_skill id="devops-deploy">
+  <intent>DevOps e deploy de aplicacoes — Docker, CI/CD com GitHub Actions, AWS Lambda, SAM, Terraform, infraestrutura como codigo e monitoramento.</intent>
+  <instructions>
+<![CDATA[
+DevOps e deploy de aplicacoes — Docker, CI/CD com GitHub Actions, AWS Lambda, SAM, Terraform, infraestrutura como codigo e monitoramento. Ativar para: dockerizar aplicacao, configurar pipeline CI/CD, deploy na AWS, Lambda, ECS, configurar GitHub Actions, Terraform, rollback, blue-green deploy, health checks, alertas.
+- When you need specialized assistance with this domain
+- The task is unrelated to devops deploy
+- A simpler, more specific tool can handle the request
+- The user needs general-purpose assistance without domain expertise
+> "Move fast and don't break things." — Engenharia de elite nao e lenta.
+> E rapida e confiavel ao mesmo tempo.
+```dockerfile
+FROM python:3.11-slim AS builder
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir --user -r requirements.txt
+FROM python:3.11-slim
+WORKDIR /app
+COPY --from=builder /root/.local /root/.local
+COPY . .
+ENV PATH=/root/.local/bin:$PATH
+ENV PYTHONUNBUFFERED=1
+EXPOSE 8000
+HEALTHCHECK --interval=30s --timeout=3s CMD curl -f http://localhost:8000/health || exit 1
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+```
+```yaml
+version: "3.9"
+services:
+]]>
+  </instructions>
+</agyos_skill>

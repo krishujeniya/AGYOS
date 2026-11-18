@@ -1,0 +1,32 @@
+<agyos_skill id="odoo-security-rules">
+  <intent>Expert in Odoo access control: ir.model.access.csv, record rules (ir.rule), groups, and multi-company security patterns.</intent>
+  <instructions>
+<![CDATA[
+Security in Odoo is managed at two levels: **model-level access** (who can read/write which models) and **record-level rules** (which records a user can see). This skill helps you write correct `ir.model.access.csv` entries and `ir.rule` domain-based record rules.
+- Setting up access rights for a new custom module.
+- Restricting records so users only see their own data or their company's data.
+- Debugging "Access Denied" or "You are not allowed to access" errors.
+- Implementing multi-company record visibility rules.
+1. **Activate**: Mention `@odoo-security-rules` and describe the access scenario.
+2. **Generate**: Get correct CSV access lines and XML record rules.
+3. **Debug**: Paste an access error and get a diagnosis with the fix.
+```csv
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hospital_patient_user,hospital.patient.user,model_hospital_patient,base.group_user,1,0,0,0
+access_hospital_patient_manager,hospital.patient.manager,model_hospital_patient,base.group_erp_manager,1,1,1,1
+```
+> **Note:** Use `base.group_erp_manager` for ERP managers, not `base.group_system` — that group is reserved for Odoo's technical superusers. Always create a custom group for module-specific manager roles:
+>
+> ```xml
+> <record id="group_hospital_manager" model="res.groups">
+>     <field name="name">Hospital Manager</field>
+>     <field name="category_id" ref="base.module_category_hidden"/>
+> </record>
+> ```
+```xml
+<record id="rule_hospital_patient_own" model="ir.rule">
+<field name="name">Hospital Patient: Own Records Only</field>
+<field name="model_id" ref="model_hospital_patient"/>
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="oss-hunter">
+  <intent>Automatically hunt for high-impact OSS contribution opportunities in trending repositories.</intent>
+  <instructions>
+<![CDATA[
+A precision skill for agents to find, analyze, and strategize for high-impact Open Source contributions. This skill helps you become a top-tier contributor by identifying the most "mergeable" and influential issues in trending repositories.
+- Use when the user asks to find open source issues to work on.
+- Use when searching for "help wanted" or "good first issue" tasks in specific domains like AI or Web3.
+- Use to generate a "Contribution Dossier" with ready-to-execute strategies for trending projects.
+Ask your agent:
+- "Find me some help-wanted issues in trending AI repositories."
+- "Hunt for bug fixes in langchain-ai/langchain that are suitable for a quick PR."
+- "Generate a contribution dossier for the most recent trending projects on GitHub."
+When hunting for contributions, the agent follows this multi-stage protocol:
+Use `web_search` or `gh api` to find trending repositories.
+Focus on:
+- Stars > 1000
+- Recent activity (pushed within 24 hours)
+- Relevant topics (AI, Agentic, Web3, Tooling)
+Search for specific labels:
+- `help-wanted`
+- `good-first-issue`
+- `bug`
+- `v1` / `roadmap`
+```bash
+gh issue list --repo owner/repo --label "help wanted" --limit 10
+```
+Analyze the issue:
+1. **Reproducibility**: Is there a code snippet to reproduce the bug?
+2. **Impact**: How many users does this affect?
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="llm-trading-agent-security">
+  <intent>Security patterns for autonomous trading agents with wallet or transaction authority. Covers prompt injection, spend limits, pre-send simulation, circuit breakers, MEV protection, and key handling. Use when an autonomous agent holds wallet or transaction authority and its limits, simulation, or key handling need review.</intent>
+  <instructions>
+<![CDATA[
+Autonomous trading agents have a harsher threat model than normal LLM apps: an injection or bad tool path can turn directly into asset loss.
+- Building an AI agent that signs and sends transactions
+- Auditing a trading bot or on-chain execution assistant
+- Designing wallet key management for an agent
+- Giving an LLM access to order placement, swaps, or treasury operations
+Layer the defenses. No single check is enough. Treat prompt hygiene, spend policy, simulation, execution limits, and wallet isolation as independent controls.
+```python
+import re
+INJECTION_PATTERNS = [
+r'ignore (previous|all) instructions',
+r'new (task|directive|instruction)',
+r'system prompt',
+r'send .{0,50} to 0x[0-9a-fA-F]{40}',
+r'transfer .{0,50} to',
+r'approve .{0,50} for',
+]
+def sanitize_onchain_data(text: str) -> str:
+for pattern in INJECTION_PATTERNS:
+if re.search(pattern, text, re.IGNORECASE):
+raise ValueError(f"Potential prompt injection: {text[:100]}")
+return text
+```
+Do not blindly inject token names, pair labels, webhooks, or social feeds into an execution-capable prompt.
+```python
+from decimal import Decimal
+]]>
+  </instructions>
+</agyos_skill>

@@ -1,0 +1,32 @@
+<agyos_skill id="swiftui-architecture">
+  <intent>Structure SwiftUI views and observable state with clear ownership and dependency boundaries.</intent>
+  <instructions>
+<![CDATA[
+t propagate changes — pass nested objects directly; `@Observable` handles nesting fine
+- Extract complex views into separate subviews for better readability and performance
+- Prefer modifiers over conditional views for state changes (maintains view identity)
+- Keep view `body` simple and pure (no side effects or complex logic)
+- Use `@ViewBuilder` functions only for small, simple sections
+- Prefer `@ViewBuilder let content: Content` over closure-based content properties
+- Keep business logic in services and models; views should orchestrate UI flow
+- Action handlers should reference methods, not contain inline logic
+- Views should work in any context (don't assume screen size or presentation style)
+- Pass only needed values to views (avoid large "config" or "context" objects)
+- Eliminate unnecessary dependencies to reduce update fan-out
+- Check for value changes before assigning state in hot paths
+- Avoid redundant state updates in `onReceive`, `onChange`, scroll handlers
+- Minimize work in frequently executed code paths
+- Use `LazyVStack`/`LazyHStack` for large lists
+- Use stable identity for `ForEach` (never `.indices` for dynamic content)
+- Ensure constant number of views per `ForEach` element
+- Avoid inline filtering in `ForEach` (prefilter and cache)
+- Avoid `AnyView` in list rows
+- Consider POD views for fast diffing (or wrap expensive views in POD parents)
+- Suggest image downsampling when `UIImage(data:)` is encountered (as optional optimization)
+- Avoid layout thrash (deep hierarchies, excessive `GeometryReader`)
+- Gate frequent geometry updates by thresholds
+- Use `Self._logChanges()` or `Self._printChanges()` to debug unexpected view updates
+- Use `.animation(_:value:)` with value parameter (deprecated version without value is too broad)
+]]>
+  </instructions>
+</agyos_skill>

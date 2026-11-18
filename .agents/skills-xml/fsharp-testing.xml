@@ -1,0 +1,32 @@
+<agyos_skill id="fsharp-testing">
+  <intent>F# testing patterns with xUnit, FsUnit, Unquote, FsCheck property-based testing, integration tests, and test organization best practices. Use when writing F# tests with xUnit, FsUnit, Unquote, or FsCheck.</intent>
+  <instructions>
+<![CDATA[
+Comprehensive testing patterns for F# applications using xUnit, FsUnit, Unquote, FsCheck, and modern .NET testing practices.
+- Writing new tests for F# code
+- Reviewing test quality and coverage
+- Setting up test infrastructure for F# projects
+- Debugging flaky or slow tests
+| Tool | Purpose |
+|---|---|
+| **xUnit** | Test framework (standard .NET ecosystem choice) |
+| **FsUnit.xUnit** | F#-friendly assertion syntax for xUnit |
+| **Unquote** | Assertion library using F# quotations for clear failure messages |
+| **FsCheck.xUnit** | Property-based testing integrated with xUnit |
+| **NSubstitute** | Mocking .NET dependencies |
+| **Testcontainers** | Real infrastructure in integration tests |
+| **WebApplicationFactory** | ASP.NET Core integration tests |
+```fsharp
+module OrderServiceTests
+open Xunit
+open FsUnit.Xunit
+[<Fact>]
+let ``create sets status to Pending`` () =
+let order = Order.create "cust-1" [ validItem ]
+order.Status |> should equal Pending
+[<Fact>]
+let ``confirm changes status to Confirmed`` () =
+let order = Order.create "cust-1" [ validItem ]
+]]>
+  </instructions>
+</agyos_skill>

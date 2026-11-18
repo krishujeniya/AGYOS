@@ -1,0 +1,8 @@
+<agyos_skill id="fp-errors">
+  <intent>Compatibility ID for type-safe fp-ts error handling with Either and TaskEither. Use fp-ts-errors as the canonical runbook.</intent>
+  <instructions>
+<![CDATA[
+Use the canonical [fp-ts-errors runbook](../fp-ts-errors/SKILL.md) for Either and TaskEither error handling, validation, domain errors, and explicit error contracts.
+]]>
+  </instructions>
+</agyos_skill>

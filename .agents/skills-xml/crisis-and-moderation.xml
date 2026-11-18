@@ -1,0 +1,32 @@
+<agyos_skill id="crisis-and-moderation">
+  <intent>&gt;-</intent>
+  <instructions>
+<![CDATA[
+The **when-things-go-wrong** playbook — and the highest-stakes skill in the library. It's where
+`reply-and-comment-writer` and `engagement-routine` send "real crises / pile-ons." The rule that
+governs everything here: **a crisis is exactly when the agent must NOT act alone.** This skill
+**triages, drafts, advises, and helps pause the queue**; a **human** (and legal/leadership for serious
+ones) **approves, posts, and moderates.**
+Load `brand-profile.md` / `voice.md` (the voice still applies, a touch more serious). Get what actually
+happened from the user — don't act on a half-picture.
+**Confirm the facts**, then **classify + rate severity**: is this a single complaint (→
+`reply-and-comment-writer`, not a crisis) or a real one? **Low** = customer care; **medium** = PR/
+support; **high** = legal + leadership. Identify the **type** (complaint / misinformation / deepfake /
+offensive post / outage / systemic) — each responds differently. See `references/triage-and-severity.md`.
+- **Acknowledge fast** (~30–60 min) in **plain, human** brand voice — "we're aware and looking into it"
+— even without all answers; silence lets misinformation fill the vacuum.
+- **Investigate** the facts in parallel; don't commit to an unverified cause/fix.
+- **Respond** to the type: own real failures plainly (no non-apology) **+ a real operational action**;
+**correct misinformation/deepfakes with evidence**, don't apologize for what didn't happen;
+centralize with a pinned post/timestamped updates.
+- **Follow up** when resolved; debrief.
+The agent **drafts**; a **human approves and posts.** See `references/the-response-playbook.md`.
+**Hide/remove** spam, hate, harassment, threats, doxxing, bot attacks. **Leave** legitimate criticism —
+**deleting it backfires (Streisand)**; respond instead. Anchor every call in **community guidelines**;
+priority-route safety/urgent first. Moderation happens **in-platform, by the human**. See
+`references/moderation.md`.
+- **Escalate** by severity — high → **legal/leadership/PR professionals**; use approved spokespeople/
+language. If unsure, escalate.
+]]>
+  </instructions>
+</agyos_skill>

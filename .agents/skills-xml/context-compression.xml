@@ -1,0 +1,32 @@
+<agyos_skill id="context-compression">
+  <intent>This skill should be used when the user asks to "compress context", "summarize conversation history", "implement compaction", "reduce token usage", or mentions context compression, structured summarization, tokens-per-task optimization, or long-running agent sessions exceeding context limits.</intent>
+  <instructions>
+<![CDATA[
+When agent sessions generate millions of tokens of conversation history, compression becomes mandatory. The naive approach is aggressive compression to minimize tokens per request. The correct optimization target is tokens per task: total tokens consumed to complete a task, including re-fetching costs when compression loses critical information.
+Activate this skill when:
+- Agent sessions exceed context window limits
+- Codebases exceed context windows (5M+ token systems)
+- Designing conversation summarization strategies
+- Debugging cases where agents "forget" what files they modified
+- Building evaluation frameworks for compression quality
+Context compression trades token savings against information loss. Select from three production-ready approaches based on session characteristics:
+1. **Anchored Iterative Summarization**: Implement this for long-running sessions where file tracking matters. Maintain structured, persistent summaries with explicit sections for session intent, file modifications, decisions, and next steps. When compression triggers, summarize only the newly-truncated span and merge with the existing summary rather than regenerating from scratch. This prevents drift that accumulates when summaries are regenerated wholesale — each regeneration risks losing details the model considers low-priority but the task requires. Structure forces preservation because dedicated sections act as checklists the summarizer must populate, catching silent information loss.
+2. **Opaque Compression**: Reserve this for short sessions where re-fetching costs are low and maximum token savings are required. It produces compressed representations optimized for reconstruction fidelity, achieving 99%+ compression ratios but sacrificing interpretability entirely. The tradeoff matters: there is no way to verify what was preserved without running probe-based evaluation, so never use this when debugging or artifact tracking is critical.
+3. **Regenerative Full Summary**: Use this when summary readability is critical and sessions have clear phase boundaries. It generates detailed structured summaries on each compression trigger. The weakness is cumulative detail loss across repeated cycles — each full regeneration is a fresh pass that may deprioritize details preserved in earlier summaries.
+Measure total tokens consumed from task start to completion, not tokens per individual request. When compression drops file paths, error messages, or decision rationale, the agent must re-explore, re-read files, and re-derive conclusions — wasting far more tokens than the compression saved. A strategy saving 0.5% more tokens per request but causing 20% more re-fetching costs more overall. Track re-fetching frequency as the primary quality signal: if the agent repeatedly asks to re-read files it already processed, compression is too aggressive.
+Artifact trail integrity is the weakest dimension across all compression methods, scoring only 2.2-2.5 out of 5.0 in evaluations. Address this proactively because general summarization cannot reliably maintain it.
+Preserve these categories explicitly in every compression cycle:
+- Which files were created (full paths)
+- Which files were modified and what changed (include function names, not just file names)
+- Which files were read but not changed
+- Specific identifiers: function names, variable names, error messages, error codes
+Implement a separate artifact index or explicit file-state tracking in agent scaffolding rather than relying on the summarizer to capture these details. Even structured summarization with dedicated file sections struggles with completeness over long sessions.
+Build structured summaries with explicit sections that prevent silent information loss. Each section acts as a checklist the summarizer must populate, making omissions visible rather than silent.
+```markdown
+[What the user is trying to accomplish]
+- auth.controller.ts: Fixed JWT token generation
+- config/redis.ts: Updated connection pooling
+- tests/auth.test.ts: Added mock setup for new config
+]]>
+  </instructions>
+</agyos_skill>

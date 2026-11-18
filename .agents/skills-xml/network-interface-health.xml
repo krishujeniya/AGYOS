@@ -1,0 +1,32 @@
+<agyos_skill id="network-interface-health">
+  <intent>Diagnose interface errors, drops, CRCs, duplex mismatches, flapping, speed negotiation issues, and counter trends on routers, switches, and Linux hosts. Use when an interface shows errors, drops, CRCs, flapping, or a duplex or speed mismatch.</intent>
+  <instructions>
+<![CDATA[
+Use this skill when a network symptom might be caused by a physical link, switch
+port, cable, transceiver, duplex setting, or congested interface.
+- A host or VLAN has packet loss, latency spikes, or intermittent reachability.
+- A switch or router interface shows CRCs, runts, giants, drops, resets, or flaps.
+- You need to compare both ends of a link before replacing hardware.
+- A change window needs before/after interface counter evidence.
+- Monitoring reports rising `ifInErrors`, `ifOutErrors`, or `ifOutDiscards`.
+Interface counters are evidence, but the trend matters more than the absolute
+number. Capture a baseline, wait a measurement interval, capture again, then
+compare increments.
+```text
+show interfaces <interface>
+show interfaces <interface> status
+show logging | include <interface>|changed state|line protocol
+```
+On Linux hosts:
+```text
+ip -s link show <interface>
+ethtool <interface>
+ethtool -S <interface>
+```
+| Counter | Meaning | Common cause |
+| --- | --- | --- |
+| CRC | Received frame checksum failed | Bad cable, dirty fiber, bad optic, duplex mismatch |
+| input errors | Aggregate receive-side errors | Check sub-counters before concluding |
+]]>
+  </instructions>
+</agyos_skill>

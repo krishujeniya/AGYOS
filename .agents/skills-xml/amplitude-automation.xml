@@ -1,0 +1,32 @@
+<agyos_skill id="amplitude-automation">
+  <intent>Automate Amplitude tasks via Rube MCP (Composio): events, user activity, cohorts, user identification. Always search tools first for current schemas.</intent>
+  <instructions>
+<![CDATA[
+Automate Amplitude product analytics through Composio's Amplitude toolkit via Rube MCP.
+- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
+- Active Amplitude connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `amplitude`
+- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
+2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `amplitude`
+3. If connection is not ACTIVE, follow the returned auth link to complete Amplitude authentication
+4. Confirm connection status shows ACTIVE before running any workflows
+**When to use**: User wants to track events or send event data to Amplitude
+**Tool sequence**:
+1. `AMPLITUDE_SEND_EVENTS` - Send one or more events to Amplitude [Required]
+**Key parameters**:
+- `events`: Array of event objects, each containing:
+- `event_type`: Name of the event (e.g., 'page_view', 'purchase')
+- `user_id`: Unique user identifier (required if no `device_id`)
+- `device_id`: Device identifier (required if no `user_id`)
+- `event_properties`: Object with custom event properties
+- `user_properties`: Object with user properties to set
+- `time`: Event timestamp in milliseconds since epoch
+**Pitfalls**:
+- At least one of `user_id` or `device_id` is required per event
+- `event_type` is required for every event; cannot be empty
+- `time` must be in milliseconds (13-digit epoch), not seconds
+- Batch limit applies; check schema for maximum events per request
+]]>
+  </instructions>
+</agyos_skill>

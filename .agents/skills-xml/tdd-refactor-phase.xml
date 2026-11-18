@@ -1,0 +1,32 @@
+<agyos_skill id="tdd-refactor-phase">
+  <intent>Use when working with tdd workflows tdd refactor</intent>
+  <instructions>
+<![CDATA[
+- Working on tdd workflows tdd refactor tasks or workflows
+- Needing guidance, best practices, or checklists for tdd workflows tdd refactor
+- The task is unrelated to tdd workflows tdd refactor
+- You need a different domain or tool outside this scope
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
+Refactor code with confidence using comprehensive test safety net:
+[Extended thinking: This tool uses the tdd-orchestrator agent (opus model) for sophisticated refactoring while maintaining all tests green. It applies design patterns, improves code quality, and optimizes performance with the safety of comprehensive test coverage.]
+Use Task tool with subagent_type="tdd-orchestrator" to perform safe refactoring.
+Prompt: "Refactor this code while keeping all tests green: $ARGUMENTS. Apply TDD refactor phase:
+**1. Pre-Assessment**
+- Run tests to establish green baseline
+- Analyze code smells and test coverage
+- Document current performance metrics
+- Create incremental refactoring plan
+**2. Code Smell Detection**
+- Duplicated code → Extract methods/classes
+- Long methods → Decompose into focused functions
+- Large classes → Split responsibilities
+- Long parameter lists → Parameter objects
+- Feature Envy → Move methods to appropriate classes
+- Primitive Obsession → Value objects
+- Switch statements → Polymorphism
+]]>
+  </instructions>
+</agyos_skill>

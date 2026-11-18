@@ -1,0 +1,32 @@
+<agyos_skill id="azure-keyvault-keys-ts">
+  <intent>Manage cryptographic keys using Azure Key Vault Keys SDK for JavaScript (@azure/keyvault-keys). Use when creating, encrypting/decrypting, signing, or rotating keys.</intent>
+  <instructions>
+<![CDATA[
+Manage cryptographic keys with Azure Key Vault.
+```bash
+npm install @azure/keyvault-keys @azure/identity
+```
+```bash
+KEY_VAULT_URL=https://<vault-name>.vault.azure.net
+AZURE_KEYVAULT_NAME=<vault-name>
+```
+```typescript
+import { DefaultAzureCredential } from "@azure/identity";
+import { KeyClient, CryptographyClient } from "@azure/keyvault-keys";
+const credential = new DefaultAzureCredential();
+const vaultUrl = `https://${process.env.AZURE_KEYVAULT_NAME}.vault.azure.net`;
+const keyClient = new KeyClient(vaultUrl, credential);
+```
+For secret storage and retrieval, use the [Azure Key Vault Secrets skill](../azure-keyvault-secrets-ts/SKILL.md).
+```typescript
+// Generic key
+const key = await keyClient.createKey("MyKey", "RSA");
+// RSA key with size
+const rsaKey = await keyClient.createRsaKey("MyRsaKey", { keySize: 2048 });
+// Elliptic Curve key
+const ecKey = await keyClient.createEcKey("MyEcKey", { curve: "P-256" });
+// With attributes
+const keyWithAttrs = await keyClient.createKey("MyKey", "RSA", {
+]]>
+  </instructions>
+</agyos_skill>

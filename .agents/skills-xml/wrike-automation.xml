@@ -1,0 +1,32 @@
+<agyos_skill id="wrike-automation">
+  <intent>Automate Wrike project management via Rube MCP (Composio): create tasks/folders, manage projects, assign work, and track progress. Always search tools first for current schemas.</intent>
+  <instructions>
+<![CDATA[
+Automate Wrike project management operations through Composio's Wrike toolkit via Rube MCP.
+- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
+- Active Wrike connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `wrike`
+- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
+**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
+1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
+2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `wrike`
+3. If connection is not ACTIVE, follow the returned auth link to complete Wrike OAuth
+4. Confirm connection status shows ACTIVE before running any workflows
+**When to use**: User wants to create, assign, or update tasks in Wrike
+**Tool sequence**:
+1. `WRIKE_GET_FOLDERS` - Find the target folder/project [Prerequisite]
+2. `WRIKE_GET_ALL_CUSTOM_FIELDS` - Get custom field IDs if needed [Optional]
+3. `WRIKE_CREATE_TASK` - Create a new task [Required]
+4. `WRIKE_MODIFY_TASK` - Update task properties [Optional]
+**Key parameters**:
+- `folderId`: Parent folder ID where the task will be created
+- `title`: Task title
+- `description`: Task description (supports HTML)
+- `responsibles`: Array of user IDs to assign
+- `status`: 'Active', 'Completed', 'Deferred', 'Cancelled'
+- `importance`: 'High', 'Normal', 'Low'
+- `customFields`: Array of {id, value} objects
+- `dates`: Object with type, start, due, duration
+**Pitfalls**:
+]]>
+  </instructions>
+</agyos_skill>

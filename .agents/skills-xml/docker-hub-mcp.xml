@@ -1,0 +1,32 @@
+<agyos_skill id="docker-hub-mcp">
+  <intent>Discover container images, inspect repository metadata and tags, verify image architectures, create repositories, and query Docker Hardened Images using the official Docker Hub MCP server (docker/hub-mcp).</intent>
+  <instructions>
+<![CDATA[
+Bridge Docker Hub directly into AI agent workflows using the official Docker Hub Model Context Protocol server (`docker/hub-mcp`). Enables agents to search public and private repositories, verify tag existence and multi-architecture platform variants, manage repository descriptions, and query certified Docker Hardened Images.
+The server supports both anonymous access (public repository discovery) and authenticated access (full repository management and private content inspection).
+The launcher script [`docker-hub-mcp.sh`](file:///home/ai/Documents/projects/Freelance/AGYOS/mcp/docker-hub-mcp.sh) resolves credentials in this order:
+- **Personal Access Token (PAT):**
+1. `HUB_PAT_TOKEN`, `DOCKERHUB_PAT`, or `DOCKER_HUB_PAT` environment variable
+2. `~/.config/docker-hub-mcp/token` (file permission `600`)
+- **Docker Hub Username:**
+1. `DOCKER_HUB_USERNAME` or `DOCKERHUB_USERNAME` environment variable
+2. `~/.config/docker-hub-mcp/username` (plain text)
+To store credentials securely:
+```bash
+mkdir -p ~/.config/docker-hub-mcp
+echo -n "dckr_pat_your_token_here" > ~/.config/docker-hub-mcp/token
+chmod 600 ~/.config/docker-hub-mcp/token
+echo -n "your_docker_username" > ~/.config/docker-hub-mcp/username
+```
+The server runs via either:
+1. Containerized execution using the official Docker Hub image `mcp/dockerhub` (`docker run -i --rm mcp/dockerhub --transport=stdio`).
+2. Local compiled Node.js build (`node integrations/hub-mcp/dist/index.js --transport=stdio`).
+| Tool | Purpose | Read/Write | Parameters |
+| :--- | :--- | :--- | :--- |
+| `search` | Search repositories on Docker Hub by keyword, filter by operating system and architecture | Read | `query` (string), `page` (number), `page_size` (number) |
+| `checkRepository` | Verify whether a specific repository exists in a namespace | Read | `namespace` (string), `repository` (string) |
+| `checkRepositoryTag` | Verify whether a specific tag exists for a repository | Read | `namespace` (string), `repository` (string), `tag` (string) |
+| `getRepositoryInfo` | Retrieve repository metadata, description, pull count, and star count | Read | `namespace` (string), `repository` (string) |
+]]>
+  </instructions>
+</agyos_skill>

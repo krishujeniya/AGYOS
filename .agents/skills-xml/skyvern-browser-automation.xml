@@ -1,0 +1,32 @@
+<agyos_skill id="skyvern-browser-automation">
+  <intent>AI-powered browser automation — navigate sites, fill forms, extract structured data, log in with stored credentials, and build reusable workflows.</intent>
+  <instructions>
+<![CDATA[
+Skyvern uses AI to navigate and interact with websites. Every command below is a runnable `skyvern <command>` invocation.
+- Use when you need AI-assisted browser automation for navigation, extraction, form filling, login flows, or reusable website workflows.
+- Use when deterministic selectors are unavailable and Skyvern's visual/a11y reasoning can identify page controls.
+- Use when a one-off browser task should become a repeatable workflow with run history and verification.
+| Classification | Signal | CLI Command | Cost | What Happens |
+|---|---|---|---|---|
+| Quick check (yes/no) | "is the user logged in?" | `skyvern browser validate` | 1 LLM + screenshots | Lightweight validation (2 steps max), returns boolean. Cheapest AI option. |
+| Quick inspection | "what does the page show?" | `skyvern browser extract` | 1 LLM + screenshots | Dedicated extraction LLM + schema validation + caching. |
+| Single action (known target) | "click #submit" | `skyvern browser click/type` | 0 LLM | Deterministic Playwright. No AI. Fastest. |
+| Single action (unknown target) | "click the submit button" | `skyvern browser act` | 2-3 LLM, no screenshots | No screenshots in reasoning. Economy a11y tree. For visual targets, use hybrid mode (selector + intent). |
+| Same-page multi-step | "fill the form and submit" | `skyvern browser act` or primitive chain | 2-3 LLM or 0 LLM | Use `act` when labels are clear. Use click/type/select directly when you know selectors. |
+| Throwaway autonomous trial | "try this once", "see if this works" | `skyvern browser run-task` | Higher | One-off autonomous agent for exploration. Do not use for recurring or multi-page production automations. |
+| Multi-page or reusable automation | "navigate a multi-page wizard", "set this up", "automate this weekly" | `skyvern workflow create` + `run` | N LLM + screenshots | Build a workflow with one block per step. Each block gets visual reasoning, verification, and reusable run history. |
+**MCP note:** if you are using the Skyvern MCP instead of the CLI, prefer `observe + execute` for same-page multi-step UI work. The CLI does not expose that pair directly.
+1. If the prompt includes a selector, id, XPath, or exact field target, use browser primitives -- not `act`.
+2. If you only need a yes/no answer, use `validate` -- not `extract` or `act`.
+3. If the work stays on one page and labels are clear, use `act` or a primitive chain.
+4. If the user says `try this once`, `see if this works`, or clearly wants a one-off exploratory trial, use `run-task`.
+5. If the task spans multiple pages and is meant to be reusable, scheduled, repeatable, or explicitly `set up` as automation, use `workflow create`.
+6. Never type passwords. Always use stored credentials with `skyvern browser login`.
+Every browser command needs a session. Create one first:
+```bash
+skyvern browser session create --timeout 30
+skyvern browser session create --local --timeout 30
+skyvern browser session connect --cdp "ws://localhost:9222"
+]]>
+  </instructions>
+</agyos_skill>

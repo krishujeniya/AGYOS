@@ -1,0 +1,32 @@
+<agyos_skill id="stability-ai">
+  <intent>Geracao de imagens via Stability AI (SD3.5, Ultra, Core). Text-to-image, img2img, inpainting, upscale, remove-bg, search-replace. 15 estilos artisticos.</intent>
+  <instructions>
+<![CDATA[
+Geracao de imagens via Stability AI (SD3.5, Ultra, Core). Text-to-image, img2img, inpainting, upscale, remove-bg, search-replace. 15 estilos artisticos.
+- When the user mentions "stability ai" or related topics
+- When the user mentions "stable diffusion" or related topics
+- When the user mentions "sd3.5" or related topics
+- When the user mentions "gerar arte" or related topics
+- When the user mentions "gerar ilustracao" or related topics
+- When the user mentions "image to image" or related topics
+- The task is unrelated to stability ai
+- A simpler, more specific tool can handle the request
+- The user needs general-purpose assistance without domain expertise
+Skill para gerar imagens artisticas e fotorrealistas usando a Stability AI API.
+**Gratuito** com Community License (sem limite para uso pessoal/pequenas empresas).
+| Cenario | Skill recomendada |
+|---------|-------------------|
+| Foto humanizada para Instagram/redes sociais | ai-studio-image |
+| Arte digital, ilustracao, concept art | **stability-ai** |
+| Foto com camera de celular (realismo casual) | ai-studio-image |
+| Fotorrealismo cinematografico (8K, detalhado) | **stability-ai** |
+| Material educacional com visual profissional | ai-studio-image |
+| Poster, wallpaper, book cover, game asset | **stability-ai** |
+| Inpainting (editar parte de uma imagem) | **stability-ai** |
+| Upscale (aumentar resolucao) | **stability-ai** |
+| Remover fundo de imagem | **stability-ai** |
+| Search & Replace (trocar objeto em imagem) | **stability-ai** |
+| Apagar elemento de uma imagem | **stability-ai** |
+]]>
+  </instructions>
+</agyos_skill>
