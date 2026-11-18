@@ -185,10 +185,10 @@ class TaskContract:
             d["seniority"] = self.seniority
         return d
 
-    def to_xml(self) -> str:
+    def to_xml(self, compact: bool = False) -> str:
         """Compile this contract into a token-budgeted <agyos_task> XML envelope."""
         from .xml_compiler import compile_task_to_xml
-        return compile_task_to_xml(self)
+        return compile_task_to_xml(self, compact=compact)
 
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> TaskContract:

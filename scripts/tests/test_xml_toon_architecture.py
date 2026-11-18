@@ -24,9 +24,11 @@ if str(ROOT) not in sys.path:
 from agyos_decision.toon_codec import encode_toon, decode_toon
 from agyos_decision.xml_compiler import (
     prune_conversational_filler,
+    minify_xml,
     compile_skill_to_xml,
     compile_agent_to_xml,
     compile_task_to_xml,
+    compile_cached_prompt,
 )
 from agyos_decision.contracts import TaskContract
 from agyos_decision.graph import build_skills_roles_graph, get_role_subgraph
@@ -86,6 +88,20 @@ class TestToonCodec(unittest.TestCase):
         savings_ratio = (json_len - toon_len) / json_len
         self.assertGreater(savings_ratio, 0.35, f"Expected >35% reduction, got {savings_ratio:.2%}")
 
+    def test_compact_toon_encoding_and_batch_decoding(self):
+        records = [
+            {"name": f"skill-{i}", "tier": "1", "domain": "engineering"}
+            for i in range(100)
+        ]
+        compact_encoded = encode_toon(records, key_name="skills", compact=True)
+        self.assertIn("skills[100]:", compact_encoded)
+        self.assertIn("- name, tier, domain", compact_encoded)
+
+        decoded = decode_toon(compact_encoded)
+        self.assertEqual(len(decoded), 100)
+        self.assertEqual(decoded[0]["name"], "skill-0")
+        self.assertEqual(decoded[99]["name"], "skill-99")
+
 
 class TestXmlCompiler(unittest.TestCase):
     def test_prune_conversational_filler(self):
@@ -142,6 +158,47 @@ class TestXmlCompiler(unittest.TestCase):
         root = ET.fromstring(xml_str)
         self.assertEqual(root.tag, "agyos_task")
         self.assertEqual(root.attrib.get("id"), "tsk_test_xml_001")
+
+    def test_minify_xml_token_savings(self):
+        raw_xml = compile_agent_to_xml("role-swe", compact=False)
+        minified = minify_xml(raw_xml)
+
+        self.assertLess(len(minified), len(raw_xml))
+        root = ET.fromstring(minified)
+        self.assertEqual(root.tag, "agyos_agent")
+        self.assertEqual(root.attrib.get("id"), "role-swe")
+
+        cdata_text = root.find("skills_workspace").text.strip()
+        decoded = decode_toon(cdata_text)
+        self.assertGreater(len(decoded), 0)
+
+    def test_compile_cached_prompt(self):
+        contract = TaskContract(
+            task_id="tsk_test_cache_001",
+            run_id="run_cache",
+            parent_task_id=None,
+            tenant_id="tenant_default",
+            requester_id="user_admin",
+            depth=0,
+            pod="pod-build",
+            objective="Build caching proxy gateway",
+            risk="R1",
+            role_id="role-swe",
+        )
+        cached = compile_cached_prompt(contract, compact=True)
+        self.assertIn("static_prefix", cached)
+        self.assertIn("dynamic_suffix", cached)
+        self.assertIn("full_prompt", cached)
+
+        self.assertIn("<agyos_agent", cached["static_prefix"])
+        self.assertIn("<defense_invariants>", cached["static_prefix"])
+        self.assertIn("<agyos_task", cached["dynamic_suffix"])
+        self.assertIn("Build caching proxy gateway", cached["dynamic_suffix"])
+
+        agent_elem = ET.fromstring(cached["static_prefix"])
+        task_elem = ET.fromstring(cached["dynamic_suffix"])
+        self.assertEqual(agent_elem.tag, "agyos_agent")
+        self.assertEqual(task_elem.tag, "agyos_task")
 
 
 class TestPrecompiledArtifacts(unittest.TestCase):
@@ -212,6 +269,14 @@ class TestPrecompiledArtifacts(unittest.TestCase):
         primary_skills = root.find("primary_skills")
         self.assertIsNotNone(primary_skills)
         self.assertGreater(len(primary_skills.findall("skill")), 0)
+
+    def test_subgraph_depth_two(self):
+        subgraph_xml = get_role_subgraph("role-swe", depth=2)
+        root = ET.fromstring(subgraph_xml)
+        self.assertEqual(root.tag, "subgraph")
+        peers = root.find("cross_functional_peers")
+        self.assertIsNotNone(peers)
+        self.assertGreater(len(peers.findall("peer")), 0)
 
 
 if __name__ == "__main__":

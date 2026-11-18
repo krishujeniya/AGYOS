@@ -7,6 +7,7 @@ explicit XML Directed Acyclic Graph (DAG).
 
 from __future__ import annotations
 
+import functools
 import json
 from pathlib import Path
 from typing import Any, Dict, List, Optional
@@ -84,7 +85,8 @@ def build_skills_roles_graph() -> str:
     return graph_xml
 
 
-def get_role_subgraph(role_id: str, depth: int = 1) -> str:
+@functools.lru_cache(maxsize=128)
+def get_role_subgraph(role_id: str, depth: int = 1, compact: bool = False) -> str:
     """Extract a lightweight 1-hop or 2-hop sub-graph for a given role to inject into prompt context."""
     role = get_role(role_id)
     if not role:
@@ -98,5 +100,17 @@ def get_role_subgraph(role_id: str, depth: int = 1) -> str:
     for s in primary_skills:
         xml_lines.append(f'    <skill id="{s}" tier="1" />')
     xml_lines.append('  </primary_skills>')
+
+    if depth >= 2:
+        peers = [r.role_id for r in list_roles() if r.governing_pod == role.governing_pod and r.role_id != role.role_id][:5]
+        xml_lines.append(f'  <cross_functional_peers count="{len(peers)}">')
+        for p in peers:
+            xml_lines.append(f'    <peer id="{p}" />')
+        xml_lines.append('  </cross_functional_peers>')
+
     xml_lines.append('</subgraph>')
-    return "\n".join(xml_lines)
+    raw_xml = "\n".join(xml_lines)
+    if compact:
+        from .xml_compiler import minify_xml
+        return minify_xml(raw_xml)
+    return raw_xml

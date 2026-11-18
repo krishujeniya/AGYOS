@@ -2,10 +2,12 @@
 
 Compiles roles, task contracts, and skill runbooks into high-fidelity,
 token-budgeted XML representations tailored for Gemini Flash and low-latency LLMs.
+Includes KV-cache prompt alignment and zero-overhead whitespace minification.
 """
 
 from __future__ import annotations
 
+import functools
 import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -31,8 +33,34 @@ def prune_conversational_filler(text: str) -> str:
     return cleaned.strip()
 
 
-def compile_skill_to_xml(skill_name: str, max_instruction_lines: int = 25) -> str:
+def minify_xml(xml_text: str) -> str:
+    """Strip inter-tag indentation and newlines outside CDATA sections to minimize token overhead."""
+    cdata_blocks: List[str] = []
+
+    def _store_cdata(match: re.Match[str]) -> str:
+        cdata_blocks.append(match.group(0))
+        return f"__AGYOS_CDATA_{len(cdata_blocks) - 1}__"
+
+    protected = re.sub(r"<!\[CDATA\[[\s\S]*?\]\]>", _store_cdata, xml_text)
+    minified_lines = [line.strip() for line in protected.splitlines() if line.strip()]
+    compacted = "".join(minified_lines)
+
+    for i, cdata in enumerate(cdata_blocks):
+        compacted = compacted.replace(f"__AGYOS_CDATA_{i}__", cdata)
+
+    return compacted
+
+
+@functools.lru_cache(maxsize=1024)
+def compile_skill_to_xml(skill_name: str, max_instruction_lines: int = 25, compact: bool = False) -> str:
     """Compile a raw physical skill runbook into a compact <agyos_skill> XML card."""
+    # Fast path: Read from precompiled XML directory if available at default line limit
+    if max_instruction_lines == 25:
+        precompiled_file = REPO_ROOT / ".agents" / "skills-xml" / f"{skill_name}.xml"
+        if precompiled_file.is_file():
+            content = precompiled_file.read_text(encoding="utf-8")
+            return minify_xml(content) if compact else content
+
     skill_file = REPO_ROOT / ".agents" / "skills" / skill_name / "SKILL.md"
     if not skill_file.is_file():
         return f'<agyos_skill id="{skill_name}" status="not_found" />'
@@ -72,10 +100,12 @@ def compile_skill_to_xml(skill_name: str, max_instruction_lines: int = 25) -> st
         f'  </instructions>',
         f'</agyos_skill>'
     ]
-    return "\n".join(xml_lines)
+    raw_xml = "\n".join(xml_lines)
+    return minify_xml(raw_xml) if compact else raw_xml
 
 
-def compile_agent_to_xml(role_id: str) -> str:
+@functools.lru_cache(maxsize=256)
+def compile_agent_to_xml(role_id: str, compact: bool = False) -> str:
     """Compile an enterprise role into an <agyos_agent> XML definition with TOON skill catalog."""
     role = get_role(role_id)
     if not role:
@@ -95,7 +125,7 @@ def compile_agent_to_xml(role_id: str) -> str:
         }
         for s in primary_skills
     ]
-    toon_skills = encode_toon(skill_records, key_name="skills")
+    toon_skills = encode_toon(skill_records, key_name="skills", compact=compact)
 
     psychology_tags = "\n".join(
         f'    <principle name="{p}">'
@@ -132,10 +162,11 @@ def compile_agent_to_xml(role_id: str) -> str:
         f'  </operational_invariants>',
         f'</agyos_agent>'
     ]
-    return "\n".join(xml_lines)
+    raw_xml = "\n".join(xml_lines)
+    return minify_xml(raw_xml) if compact else raw_xml
 
 
-def compile_task_to_xml(contract: Any) -> str:
+def compile_task_to_xml(contract: Any, compact: bool = False) -> str:
     """Compile a TaskContract into a token-budgeted <agyos_task> XML envelope."""
     role = get_role(contract.role_id) if getattr(contract, "role_id", None) else None
     role_id = contract.role_id if getattr(contract, "role_id", None) else "role-swe"
@@ -155,7 +186,7 @@ def compile_task_to_xml(contract: Any) -> str:
     # Active skills in TOON
     active_skills = getattr(contract, "active_skills", []) or (role.primary_skills[:3] if role else ["clean-code"])
     skill_records = [{"name": s, "tier": "1", "domain": dept} for s in active_skills]
-    toon_active = encode_toon(skill_records, key_name="active_skills")
+    toon_active = encode_toon(skill_records, key_name="active_skills", compact=compact)
 
     rollback_cmd = f"bin/agyos rollback {contract.task_id}"
     if hasattr(contract, "compensation") and hasattr(contract.compensation, "rollback_cmd"):
@@ -197,4 +228,26 @@ def compile_task_to_xml(contract: Any) -> str:
         f'  </guardrails>',
         f'</agyos_task>'
     ]
-    return "\n".join(xml_lines)
+    raw_xml = "\n".join(xml_lines)
+    return minify_xml(raw_xml) if compact else raw_xml
+
+
+def compile_cached_prompt(contract: Any, compact: bool = False) -> Dict[str, str]:
+    """Compile prompt into static prefix and dynamic suffix to maximize LLM KV-cache hits.
+
+    Returns:
+        dict with keys:
+          - 'static_prefix': Stable agent definition, defense invariants, psychology levers,
+                             and TOON skills workspace (100% cache-hit on repeat calls).
+          - 'dynamic_suffix': Dynamic task contract, budgets, outcome, and specific input.
+          - 'full_prompt': Complete combined XML document.
+    """
+    role_id = getattr(contract, "role_id", "role-swe") or "role-swe"
+    static_prefix = compile_agent_to_xml(role_id, compact=compact)
+    dynamic_suffix = compile_task_to_xml(contract, compact=compact)
+    full = f"{static_prefix}\n{dynamic_suffix}" if not compact else f"{static_prefix}{dynamic_suffix}"
+    return {
+        "static_prefix": static_prefix,
+        "dynamic_suffix": dynamic_suffix,
+        "full_prompt": full,
+    }
