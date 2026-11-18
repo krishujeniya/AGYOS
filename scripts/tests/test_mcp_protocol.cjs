@@ -7,8 +7,8 @@ const path = require('node:path');
 
 const server = path.join(__dirname, '..', '..', 'mcp', 'state-server.cjs');
 
-function rpc(input) {
-  const result = spawnSync(process.execPath, [server], {
+function rpc(input, entrypoint = server) {
+  const result = spawnSync(process.execPath, [entrypoint], {
     input: typeof input === 'string' ? input : JSON.stringify(input) + '\n',
     encoding: 'utf8', timeout: 20000,
   });
@@ -143,4 +143,14 @@ test('Obscura tools handle execution headlessly and safely', () => {
   assert.equal(evalRes.id, 5);
   const evalJson = JSON.parse(evalRes.result.content[0].text);
   assert.equal(evalJson.result, 2);
+});
+
+test('both state server entry points expose the same tools and state', () => {
+  const legacy = path.join(path.dirname(server), 'agyos-state-server.cjs');
+  for (const request of [
+    { jsonrpc: '2.0', method: 'tools/list', id: 1 },
+    { jsonrpc: '2.0', method: 'tools/call', id: 2, params: { name: 'agyos_state' } },
+  ]) {
+    assert.deepEqual(rpc(request, legacy), rpc(request));
+  }
 });

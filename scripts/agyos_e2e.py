@@ -224,6 +224,7 @@ def init_milestone(plan: Dict[str, Any], root_dir: Path = ROOT) -> Dict[str, Any
             advance("UNDERSTAND")
             advance("ANALYZE")
             state = json.loads(staged.read_text(encoding="utf-8"))
+            state.pop("verification", None)
             state.update(
                 current_milestone=milestone_id,
                 complexity_score=plan["complexity_score"],

@@ -140,7 +140,7 @@ const TOOLS = [
   },
   {
     name: "agyos_pipeline",
-    description: "Execute the AGYOS end-to-end autonomous pipeline: plan, initialize milestone gates, verify statically, or run full lifecycle without manual commands.",
+    description: "Plan a milestone or invoke the AGYOS lifecycle. The init, verify, and full actions can write local milestone state. Delivery is blocked.",
     inputSchema: {
       type: "object",
       properties: {
@@ -155,11 +155,11 @@ const TOOLS = [
         },
         auto_push: {
           type: "boolean",
-          description: "Automatically push committed changes to origin main upon delivery"
+          description: "Legacy option. Delivery remains blocked."
         },
         watch_ci: {
           type: "boolean",
-          description: "Track the triggered GitHub Actions CI run"
+          description: "Legacy option. The pipeline does not dispatch CI."
         }
       },
       required: ["prompt"]
@@ -169,17 +169,26 @@ const TOOLS = [
 
 const MEMORY_FILE = path.join(STATE_DIR, "memory.json");
 
-function getSysInfo() {
-  const stateFile = path.join(STATE_DIR, "state.json");
-  let state = {};
-  if (fs.existsSync(stateFile)) {
-    try { state = JSON.parse(fs.readFileSync(stateFile, "utf8")); } catch (e) {}
+function readMilestoneState() {
+  try {
+    const state = JSON.parse(fs.readFileSync(path.join(STATE_DIR, "state.json"), "utf8"));
+    if (state && typeof state === "object" && !Array.isArray(state) &&
+        ["IDLE", "UNDERSTAND", "ANALYZE", "PLAN", "IMPLEMENT", "VERIFY"].includes(state.current_gate)) {
+      return state;
+    }
+  } catch {
+    // Missing, unreadable, and corrupt state all require operator recovery.
   }
+  return null;
+}
+
+function getSysInfo() {
+  const state = readMilestoneState() || {};
   const skills = loadSkills();
   return {
     os: "AGYOS v3.1 (Hierarchical Cognitive OS)",
     runtime: "Antigravity CLI (agy)",
-    active_gate: state.current_gate || "IDLE",
+    active_gate: state.current_gate || "STATE_UNAVAILABLE",
     active_milestone: state.current_milestone || "none",
     complexity_score: state.complexity_score || 1,
     skills_loaded: skills.length,
@@ -337,9 +346,11 @@ function formatSkillSearchResults(matches, query) {
 
 function handleToolCall(name, args) {
   if (name === "agyos_state" || name === "anchor_state") {
-    const file = path.join(STATE_DIR, "state.json");
-    const text = fs.existsSync(file) ? fs.readFileSync(file, "utf8") : JSON.stringify({ error: "state.json not found" }, null, 2);
-    return { content: [{ type: "text", text }] };
+    const state = readMilestoneState();
+    if (!state) {
+      return { isError: true, content: [{ type: "text", text: '{"error":"STATE_UNAVAILABLE"}' }] };
+    }
+    return { content: [{ type: "text", text: JSON.stringify(state) }] };
   }
   if (name === "agyos_current" || name === "anchor_current") {
     const file = path.join(STATE_DIR, "CURRENT.md");
@@ -375,8 +386,8 @@ function handleToolCall(name, args) {
       if (args.include_runbook === true) argv.push("--runbook");
       const stdout = execFileSync("python3", argv, { cwd: PROJECT_ROOT, encoding: "utf8", maxBuffer: 4 * 1024 * 1024, timeout: 15000 });
       return { content: [{ type: "text", text: stdout.trim() }] };
-    } catch (err) {
-      return { isError: true, content: [{ type: "text", text: JSON.stringify({ error: String(err) }) }] };
+    } catch {
+      return { isError: true, content: [{ type: "text", text: '{"error":"SUBPROCESS_FAILED"}' }] };
     }
   }
   if (name === "agyos_sys_info") {
@@ -405,8 +416,8 @@ function handleToolCall(name, args) {
         timeout: 30000
       });
       return { content: [{ type: "text", text: stdout.trim() }] };
-    } catch (err) {
-      return { isError: true, content: [{ type: "text", text: JSON.stringify({ error: String(err) }) }] };
+    } catch {
+      return { isError: true, content: [{ type: "text", text: '{"error":"SUBPROCESS_FAILED"}' }] };
     }
   }
   if (name === "agyos_memory") {
