@@ -201,7 +201,7 @@ jobs:
         run: |
           test_dir="$RUNNER_TEMP/test-leak-probe"
           mkdir -p "$test_dir"
-          echo 'TOKEN="ghp_012345678901234567890123456789012345"' > "$test_dir/secret.txt"
+          printf 'TOKEN="g%sp_%s"\n' 'h' '012345678901234567890123456789012345' > "$test_dir/secret.txt"
           if "$RUNNER_TEMP/gitleaks" detect --source="$test_dir" --no-git --no-banner; then
             echo "Error: Gitleaks failed negative control (expected leak detection to exit non-zero)" >&2
             exit 1
