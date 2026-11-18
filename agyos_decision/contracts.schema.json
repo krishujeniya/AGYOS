@@ -245,6 +245,19 @@
         }
       },
       "additionalProperties": false
+    },
+    "role_id": {
+      "type": ["string", "null"],
+      "description": "Assigned CompanyRole identifier (e.g. role-swe, role-cto)"
+    },
+    "department": {
+      "type": ["string", "null"],
+      "description": "CompanyDepartment value for the assigned role"
+    },
+    "seniority": {
+      "type": ["string", "null"],
+      "enum": ["L8", "L7", "L6", "L5", "L4", null],
+      "description": "Seniority tier for the assigned role"
     }
   }
 }

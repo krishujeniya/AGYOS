@@ -22,6 +22,9 @@ Commands:
   sysinfo     Display system architecture, memory tiers, and health
   mem <tier>  Read hierarchical memory (tier0: core, tier1: recall, tier2: archival)
   intent <prompt> Compile natural language intent to TaskContract and EVPI decision
+  roles [--dept <d>] [--seniority <s>] List enterprise roles from 104-role matrix
+  role <role-id> Display profile, mandate, psychology levers, and skills for a role
+  client-interview <query> Run Amazon Working Backwards discovery interview for a project
   benchmark   Run A/B benchmark evaluation across Single, Flat, and Adaptive architectures
   canary      Run pre-release canary launch gate and audit receipt generator
   rollback    Safely abort and revert the active milestone
@@ -76,6 +79,7 @@ decision = evaluate_evpi(prompt, contract)
 
 print('=== AGYOS TaskContract ===')
 print(json.dumps(contract.to_dict(), indent=2))
+print(f'Assigned Role:         {contract.role_id} ({contract.department}, {contract.seniority})')
 print('=== EVPI Clarification Decision ===')
 print(f'Should Ask Question:  {decision.should_ask_question}')
 print(f'Question:              {decision.question}')
@@ -83,6 +87,92 @@ print(f'Outbox Status:         {decision.outbox_status}')
 print(f'Proceed Immediately:   {decision.proceed_immediately}')
 if decision.assumptions_applied:
     print(decision.format_assumptions_header())
+" "$query"
+    ;;
+  roles)
+    dept=""
+    seniority=""
+    while [[ $# -gt 0 ]]; do
+      case "$1" in
+        --dept|--department)
+          dept="$2"
+          shift 2
+          ;;
+        --seniority)
+          seniority="$2"
+          shift 2
+          ;;
+        *)
+          shift
+          ;;
+      esac
+    done
+    python3 -c "
+import sys
+sys.path.insert(0, '.')
+from agyos_decision.roles import list_roles
+
+dept = sys.argv[1] if len(sys.argv) > 1 and sys.argv[1] else None
+sen = sys.argv[2] if len(sys.argv) > 2 and sys.argv[2] else None
+roles = list_roles(department=dept, seniority=sen)
+
+print(f'Total Roles Matching: {len(roles)}')
+print(f'{\"ROLE ID\":<32} {\"TIER\":<6} {\"DEPARTMENT\":<18} {\"TITLE\"}')
+print('-' * 80)
+for r in sorted(roles, key=lambda x: (x.department, x.seniority, x.role_id)):
+    print(f'{r.role_id:<32} {r.seniority:<6} {r.department:<18} {r.title}')
+" "$dept" "$seniority"
+    ;;
+  role)
+    target_role="${1:-}"
+    if [ -z "$target_role" ]; then
+      echo "Usage: agyos role <role-id>" >&2
+      exit 1
+    fi
+    python3 -c "
+import sys
+sys.path.insert(0, '.')
+from agyos_decision.roles import get_role
+
+role_id = sys.argv[1]
+role = get_role(role_id)
+if not role:
+    print(f'Role not found: {role_id}', file=sys.stderr)
+    sys.exit(1)
+
+print(f'=== Role Profile: {role.title} ({role.role_id}) ===')
+print(f'Department:      {role.department}')
+print(f'Seniority Tier:  {role.seniority}')
+print(f'Governing Pod:   {role.governing_pod}')
+print(f'Default Risk:    {role.default_risk}')
+print(f'Mandate:         {role.mandate}')
+print(f'Psychology:      {\", \".join(role.psychology_principles)}')
+print(f'Primary Skills:  {\", \".join(role.primary_skills)}')
+print(f'Keywords:        {\", \".join(role.keywords[:10])}...')
+" "$target_role"
+    ;;
+  client-interview)
+    query="$*"
+    if [ -z "$query" ]; then
+      echo "Usage: agyos client-interview <project-query>" >&2
+      exit 1
+    fi
+    python3 -c "
+import sys
+sys.path.insert(0, '.')
+from agyos_decision.sdlc import ClientInterviewSession
+
+query = sys.argv[1]
+session = ClientInterviewSession.from_query(query)
+print(f'=== Client Working Backwards Discovery: {session.role.title} ===')
+print(f'Assigned Lead Role: {session.role.title} ({session.role.role_id})')
+print(f'Department:         {session.role.department} [{session.role.seniority}]')
+print(f'Governing Pod:      {session.role.governing_pod}')
+print('\n--- Socratic Discovery Questions (Amazon Working Backwards) ---')
+for q in session.discovery_questions():
+    print(f'\n{q}')
+print('\n--- 7-Phase Delivery Plan ---')
+print(session.phase_plan())
 " "$query"
     ;;
   state|status)

@@ -137,9 +137,13 @@ class TaskContract:
         default_factory=lambda: Compensation("noop", "none", "true", "snap_0")
     )
     result: TaskResult = field(default_factory=TaskResult)
+    # Role-based routing fields (optional — not in JSON schema required array)
+    role_id: Optional[str] = None
+    department: Optional[str] = None
+    seniority: Optional[str] = None
 
     def to_dict(self) -> Dict[str, Any]:
-        return {
+        d = {
             "task_id": self.task_id,
             "run_id": self.run_id,
             "parent_task_id": self.parent_task_id,
@@ -172,6 +176,14 @@ class TaskContract:
             ),
             "result": self.result.to_dict() if isinstance(self.result, TaskResult) else self.result,
         }
+        # Include optional role fields only when set, to stay schema-compliant
+        if self.role_id is not None:
+            d["role_id"] = self.role_id
+        if self.department is not None:
+            d["department"] = self.department
+        if self.seniority is not None:
+            d["seniority"] = self.seniority
+        return d
 
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> TaskContract:
@@ -230,6 +242,9 @@ class TaskContract:
             postconditions=postconditions,
             compensation=compensation,
             result=result,
+            role_id=data.get("role_id"),
+            department=data.get("department"),
+            seniority=data.get("seniority"),
         )
 
 

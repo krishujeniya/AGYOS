@@ -229,20 +229,37 @@ AGYOS is fully unified and self-contained within `.agents/`, `bin/`, `mcp/`, and
 
 ## 9. FAANG / MANGO Virtual Corporate Staff Execution Model
 
-AGYOS operationalizes the software development lifecycle and organizational operational models of Meta, Apple, Amazon, Netflix, Google (FAANG) and Microsoft, Apple, Nvidia, Google, OpenAI (MANGO) without requiring the operator to manually assign personas or roles:
+AGYOS operationalizes the software development lifecycle and organizational operational models of Meta, Apple, Amazon, Netflix, Google (FAANG) and Microsoft, Apple, Nvidia, Google, OpenAI (MANGO) without requiring the operator to manually assign personas or roles. The operator acts as the Founder, CEO, and Company Owner; the OS autonomously executes every departmental function across a 104-role enterprise matrix:
 
-### 9.1 The 9 Autonomous Corporate Roles
-1. **Product VP / Staff PM** (Gate 1: UNDERSTAND): Synthesizes user intent, generates PRD/specifications, defines acceptance criteria and scope boundaries.
-2. **Principal Systems Architect** (Gate 3: PLAN): Authors Architecture Decision Records (ADRs), C4 architecture models, API contracts, and limits failure blast radius.
-3. **Staff Software Engineer / Senior Maker** (Gate 4: IMPLEMENT): High-velocity TDD Red-Green-Refactor, immutability, clean polyglot patterns, functions <50 lines.
-4. **Principal Security Engineer** (Gate 5: VERIFY): Threat modeling (STRIDE), OWASP Top 10 defenses, zero-secret leaks (Gitleaks), boundary validation.
-5. **Staff QA & Verification Lead** (Gate 4-5: TEST RATIO): Assured offline test generation (Meta TestGen-LLM pattern), mutation testing, test ratchet monotonicity enforcement.
-6. **Site Reliability Engineer (SRE)** (Gate 5: ORR): Operational Readiness Reviews (Amazon ORR pattern), canary analysis (Netflix Kayenta pattern), automated zero-touch rollback triggers.
-7. **Principal ML / Data Engineer**: Enforces strict data contracts, feature pipeline integrity, split leakage prevention, and reproducible training benchmarks.
-8. **Legal & Compliance Counsel**: Verifies open-source license compatibility (MIT/Apache vs GPL copyleft), data privacy boundaries (GDPR/HIPAA), and cryptographic audit trails.
-9. **BizOps & FinOps Director**: Optimizes model routing economics (Gemini Flash vs Claude Thinking / Pro) and enforces token budget constraints.
+### 9.1 The 104-Role Enterprise Matrix & 12 Departments
+All 104 roles are registered in `agyos_decision/roles.py` across 5 seniority tiers (L4–L8) and mapped to 5 governing operational pods:
+1. **Executive (8 roles, L8)**: CEO, CTO, COO, CPO, CMO, CSO, CFO, VP Engineering.
+2. **Product (8 roles, L4-L7)**: Product Director, Senior PM, PM, Scrum/Agile Coach, UX Researcher, Growth PM, Product Analyst, Technical PM.
+3. **Engineering (16 roles, L5-L7)**: Staff SWE, Senior SWE, SWE, Frontend Engineer, Backend Engineer, Mobile Engineer, DevOps/Platform Engineer, Site Reliability Engineer, Security Engineer, QA/Test Engineer, Web3/Blockchain Engineer, Desktop App Engineer, Network Infra Engineer, DB Reliability Engineer, Incident Commander, Agentic Workflow Architect.
+4. **Data & AI (10 roles, L4-L7)**: Data Scientist, ML Engineer, Data Engineer, AI Product Engineer, Data Analyst, Research Scientist, Privacy Engineer, Computer Vision Engineer, Speech & Audio AI Engineer, MLOps Engineer.
+5. **Design (8 roles, L4-L7)**: Design Director, UX/UI Designer, Product Designer, Brand Designer, Motion Designer, 3D Visual Designer, Design System Engineer, UX Copywriter.
+6. **Marketing (10 roles, L4-L5)**: Content Strategist, SEO Specialist, Performance Marketer, Social Media Manager, Brand Copywriter, Conversion Rate Optimizer, Email & Lifecycle Marketer, PR & Comms Manager, Partnership & BD Manager, Community Manager.
+7. **Sales & BD (8 roles, L4-L8)**: VP Sales, Account Executive, Sales Development Rep, Solutions Engineer, Customer Success Manager, Revenue Operations Analyst, Enterprise AE, Freelancer BD.
+8. **Customer Success (6 roles, L4-L6)**: Support Engineer, Onboarding Specialist, Implementation Consultant, Technical Account Manager, Churn Analyst, Technical Writer.
+9. **Finance (8 roles, L4-L7)**: Corporate Controller, FP&A Analyst, Tax Specialist, Billing & Payments Engineer, Treasury Specialist, Accounts Manager, Startup CFO Advisor, Cost Optimization Analyst.
+10. **Legal & Compliance (6 roles, L5-L8)**: General Counsel, IP & Patent Attorney, Contract Manager, Compliance Officer, Data Protection Officer, Risk Manager.
+11. **People & Ops (10 roles, L4-L8)**: VP People, Talent Recruiter, HR Business Partner, HR Ops Specialist, L&D Specialist, Procurement & Vendor Manager, Facilities Manager, Executive Assistant, Solopreneur Operator, Chief of Staff.
+12. **IT & Platform (6 roles, L4-L7)**: IT Systems Administrator, Cloud Architect, Platform Engineer, Cybersecurity Analyst, Observability Engineer, FinOps Engineer.
 
-### 9.2 Enterprise Gate Invariants
+### 9.2 The 7-Phase Client Working Backwards SDLC Pipeline (`agyos_decision/sdlc.py`)
+Embeds Amazon "Working Backwards" and behavioral psychology (Kahneman System 1/2, Cialdini's 7 Levers, Hick's Law, Loss Aversion):
+```
+[DISCOVERY] ➔ [PRD] ➔ [ARCHITECTURE] ➔ [TDD_MANUFACTURING] ➔ [VERIFICATION] ➔ [RELEASE] ➔ [HANDOVER]
+```
+- **Phase 1: DISCOVERY**: Socratic discovery questions, annotated press release + FAQ, Job-To-Be-Done canvas, risk register.
+- **Phase 2: PRD**: User stories, acceptance criteria, non-functional requirements, out-of-scope boundaries.
+- **Phase 3: ARCHITECTURE**: C4 Container model, ADRs committed to `docs/adr/`, data schemas, API contracts.
+- **Phase 4: TDD_MANUFACTURING**: Red (failing test) ➔ Green (minimal code) ➔ Refactor with 80%+ test coverage.
+- **Phase 5: VERIFICATION**: Static analysis, security scan, benchmark evidence, acceptance criteria proof.
+- **Phase 6: RELEASE**: Deployment runbook, feature flags, SLO breach monitors, rollback verification.
+- **Phase 7: HANDOVER**: `AI_HANDOFF.md` update, runbooks, retrospective insight report, client sign-off.
+
+### 9.3 Enterprise Gate Invariants
 - **Google Critique / DIDACT Invariant**: Review suggestions must maintain a 90%+ true-positive rate. Stylistic and automated fixes resolve autonomously before human review.
 - **Meta TestGen-LLM Invariant**: Offline candidate tests must compile cleanly, pass deterministically, and strictly increase coverage (Δcov > 0) before being presented to the operator.
 - **Amazon ORR & Netflix Kayenta Invariant**: No production release occurs without documented blast radius containment, circuit breaker fallbacks, and automated rollback triggers.

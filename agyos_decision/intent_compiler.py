@@ -26,6 +26,7 @@ from .contracts import (
     TaskResult,
     validate_contract,
 )
+from .roles import classify_role_for_task
 
 # 11 Company functions mapped to the 5 Merged Pods
 FUNCTION_TO_POD: Dict[str, str] = {
@@ -281,6 +282,12 @@ def compile_intent(
         compensation=compensation,
         result=TaskResult(status="pending"),
     )
+
+    # Auto-assign role context (non-blocking — does not affect pod or risk)
+    role = classify_role_for_task(prompt)
+    contract.role_id = role.role_id
+    contract.department = role.department
+    contract.seniority = role.seniority
 
     # Validate against JSON schema
     validate_contract(contract)

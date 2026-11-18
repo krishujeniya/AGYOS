@@ -19,6 +19,7 @@ from pathlib import Path
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, REPO_ROOT)
 from agyos_decision.catalog import read_metadata
+from agyos_decision.roles import classify_role_for_task
 DOCS_DIR = os.path.join(REPO_ROOT, "docs")
 SKILLS_DIR = os.path.join(REPO_ROOT, ".agents", "skills")
 MANIFEST_PATH = os.path.join(REPO_ROOT, ".agents", "skills-manifest.json")
@@ -81,6 +82,21 @@ def extract_frontmatter(skill_dir: Path):
     metadata = read_metadata(skill_dir / "SKILL.md")
     return metadata["name"], metadata["description"].strip()
 
+DEPT_TO_MODULE_CATEGORY = {
+    "executive": ("Executive Strategy", "Executive & Strategy"),
+    "product": ("Product Management", "Product & Delivery"),
+    "engineering": ("Software Engineering", "Engineering & Systems"),
+    "data_ai": ("Data Science & AI", "Data & Applied AI"),
+    "design": ("UI/UX & Creative", "Design & Creative"),
+    "marketing": ("Growth Marketing", "Marketing & Growth"),
+    "sales_bd": ("Sales & Business Development", "Sales & BD"),
+    "customer_success": ("Customer Operations", "Customer Success"),
+    "finance": ("Finance & Accounting", "Finance & Operations"),
+    "legal_compliance": ("Legal & Compliance", "Legal & Regulatory"),
+    "people_ops": ("People & Operations", "People & Talent"),
+    "it_infra": ("IT & Cloud Platform", "IT & Infrastructure"),
+}
+
 def classify_skill(sid: str, name: str, desc: str):
     """Classify a skill into an AGYOS module and category."""
     sid_lower = sid.lower()
@@ -118,7 +134,13 @@ def classify_skill(sid: str, name: str, desc: str):
         return "Security & Defense", "Security"
     if sid_lower.startswith(("python-", "rust-", "golang-", "go-", "typescript-", "react-", "vue-", "angular-", "django-", "fastapi-", "postgres-", "docker-", "k8s-", "git-", "c-", "haskell-", "julia-", "ruby-")):
         return "AGYOS Polyglot Engineering", "Languages & Runtimes"
-    return "Domain & Research Extensions", "Specialized"
+
+    # Role-based fallback partition (eliminates the unrouted "Specialized" bucket)
+    matched_role = classify_role_for_task(f"{sid} {name} {desc}")
+    return DEPT_TO_MODULE_CATEGORY.get(
+        matched_role.department,
+        ("Software Engineering", "Engineering & Systems")
+    )
 
 def load_manifest_lookup():
     """Load existing manifest for tier lookup if available."""
@@ -145,11 +167,15 @@ def compile_all_skills():
                     entry = m["name"]
                     clean_desc = unslop(m.get("description", "") or f"{entry} skill for AGYOS.")
                     module, category = classify_skill(entry, entry, clean_desc)
+                    matched_role = classify_role_for_task(f"{entry} {clean_desc}")
                     skills.append({
                         "id": entry,
                         "name": entry.replace("-", " ").title(),
                         "module": module,
                         "category": category,
+                        "role": matched_role.role_id,
+                        "department": matched_role.department,
+                        "seniority": matched_role.seniority,
                         "tier": m.get("tier", 2),
                         "runtime": ["AGY CLI", "Gemini", "Claude Code", "Codex"],
                         "command": f"bin/agyos skill {entry}",
@@ -176,6 +202,7 @@ def compile_all_skills():
         raw_name, raw_desc = extract_frontmatter(Path(entry_path))
         clean_desc = unslop(raw_desc or f"{entry} skill for AGYOS.")
         module, category = classify_skill(entry, raw_name, clean_desc)
+        matched_role = classify_role_for_task(f"{entry} {raw_name} {clean_desc}")
         tier = manifest_tiers.get(entry, 1 if module in ("AGYOS Governance", "Agent Council", "UI/UX & Motion", "Verification & Testing", "Security & Defense") else 2)
 
         skill_obj = {
@@ -183,6 +210,9 @@ def compile_all_skills():
             "name": raw_name.replace("-", " ").title() if raw_name == entry else raw_name,
             "module": module,
             "category": category,
+            "role": matched_role.role_id,
+            "department": matched_role.department,
+            "seniority": matched_role.seniority,
             "tier": tier,
             "runtime": ["AGY CLI", "Gemini", "Claude Code", "Codex"],
             "command": f"bin/agyos skill {entry}",

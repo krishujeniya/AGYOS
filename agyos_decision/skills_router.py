@@ -14,8 +14,11 @@ from typing import Any, Dict, List, Optional, Tuple
 
 from .catalog import canonical_entry, physical_catalog
 from .integrations.source_registry import match_sources
+from .roles import classify_role_for_task, get_skills_for_role
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
+# Role-aware skill boost when skill appears in the matched role's primary_skills list
+ROLE_SKILL_BOOST = 30.0
 DOCS_DATA = REPO_ROOT / "docs" / "skills-data.json"
 MANIFEST_DATA = REPO_ROOT / ".agents" / "skills-manifest.json"
 
@@ -643,8 +646,17 @@ def select_best_skills(query: str, catalog: Optional[List[Dict[str, Any]]] = Non
 
     scored: List[Tuple[float, Dict[str, Any]]] = []
 
+    # Role-aware boost: compute matched role's skill set once per call
+    try:
+        active_role = classify_role_for_task(query)
+        role_skill_set = set(get_skills_for_role(active_role.role_id))
+    except Exception:
+        role_skill_set = set()
+
     for s in catalog:
         fit = score_skill_fit(s, query, domain, context=context)
+        if fit > 0 and s.get("name") in role_skill_set:
+            fit += ROLE_SKILL_BOOST
         if fit > 0:
             scored.append((fit, s))
 
@@ -753,3 +765,29 @@ def decide_skill(query: str) -> Dict[str, Any]:
         "integration_sources": integration_matches,
         "integration_status": "native_skill_routed_not_executed" if integration_matches else "none",
     }
+
+
+def select_best_skills_for_role(role_id: str, limit: int = 20) -> List[Dict[str, Any]]:
+    """Return the top catalog entries for a given role_id using its primary_skills list.
+
+    Skills are matched directly against the catalog; unrecognized names are skipped.
+    """
+    role_skills = get_skills_for_role(role_id)
+    if not role_skills:
+        return []
+    catalog = load_catalog()
+    catalog_by_name = {s["name"]: s for s in catalog}
+    results = []
+    for rank, skill_name in enumerate(role_skills[:limit], start=1):
+        entry = catalog_by_name.get(skill_name)
+        if entry:
+            results.append({
+                "rank": rank,
+                "name": skill_name,
+                "score": ROLE_SKILL_BOOST,
+                "confidence": 0.80,
+                "tier": entry.get("tier", 1),
+                "description": entry.get("description", ""),
+                "path": entry.get("path", f".agents/skills/{skill_name}"),
+            })
+    return results

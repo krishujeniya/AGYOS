@@ -77,29 +77,58 @@ Implements the deterministic Standard Operating Procedure (SOP) paradigm proven 
 - **Gate Transitions**: Programmatically locked and validated under `bin/state.sh` and `bin/workspace-state.cjs`.
 - **Fast-Path Router**: Complexity $\le 2$ bypasses Gates 1–3, avoiding bureaucracy for minor edits.
 
-### Layer 4: Adaptive Hierarchy & 5-Pod Operational Topology
-Synthesizes company-wide operations across all 11 business functions into 5 merged operational pods with bounded tree depth (L0 Coordinator -> L1 Pod -> L2 Leaf Worker), eliminating O(N^2) horizontal chatter:
+### Layer 4: Adaptive Hierarchy & 104-Role Enterprise Matrix
+Synthesizes company-wide operations across all 12 corporate departments and 104 specialized roles into 5 merged operational pods with bounded tree depth (L0 Coordinator -> L1 Pod -> L2 Leaf Worker), eliminating O(N^2) horizontal chatter:
 
+#### 1. The 5 Governing Operational Pods
 1. **`pod-growth` (`.agents/agents/pod-growth.md` & `.agents/skills/sop-growth/`)**:
-   - Covers: Marketing, Lead Generation, and Sales.
-   - Deliverables: Audience segmentation, lawful prospect lists, non-binding quote drafts.
+   - Covers: Marketing, Lead Generation, Sales & BD, Partnerships.
+   - Deliverables: Audience segmentation, lawful prospect lists, proposals, ad campaigns.
    - Boundaries: Zero invented testimonials; approval before publishing or live sends.
 2. **`pod-customer` (`.agents/agents/pod-customer.md` & `.agents/skills/sop-customer/`)**:
-   - Covers: Customer Onboarding and Technical Support.
-   - Deliverables: Setup checklists, diagnostic reports, policy-adherent customer replies.
+   - Covers: Customer Onboarding, Technical Support, Success & Retention, Documentation.
+   - Deliverables: Setup checklists, diagnostic reports, policy-adherent customer replies, API docs.
    - Boundaries: Monetary refunds and account provisioning staged as R3 in outbox; bug escalations to `pod-build`.
 3. **`pod-build` (`.agents/agents/pod-build.md` & `.agents/skills/sop-build/`)**:
-   - Covers: Product Management and Software Engineering.
+   - Covers: Executive CTO/VP, Product Management, Software Engineering, Data & AI, Design, IT & Platform.
    - Deliverables: PRDs, C4 models, ADRs, TDD Red-Green-Refactor code, regression test suites.
    - Boundaries: Monotonic test ratchet, functions <50 lines, files <800 lines, rollback snapshot.
 4. **`pod-gna` (`.agents/agents/pod-gna.md` & `.agents/skills/sop-gna/`)**:
-   - Covers: Finance, Legal, and Operations.
+   - Covers: Executive CEO/CFO/CSO/COO, Finance, Legal & Compliance, Procurement & Facilities.
    - Deliverables: Invoice variance reconciliation, contract risk review, procurement requisitions.
    - Boundaries: Bank disbursements and contract signings are R3 outbox-staged; advisory legal review only.
 5. **`pod-people` (`.agents/agents/pod-people.md` & `.agents/skills/sop-people/`)**:
-   - Covers: Hiring and People Operations.
+   - Covers: Hiring, HR Operations, People Strategy, Learning & Development.
    - Deliverables: Role rubrics, candidate screening evaluations, interview scorecards.
    - Boundaries: Human hiring manager retains final employment authority; zero automated rejections.
+
+#### 2. The 104-Role FAANG/MANGO Enterprise Matrix
+AGYOS registers 104 operational roles across 12 departments and 5 seniority tiers (L4–L8) in `agyos_decision/roles.py`:
+- **Executive (8 roles, L8)**: CEO, CTO, COO, CPO, CMO, CSO, CFO, VP Engineering.
+- **Product (8 roles, L4-L7)**: Product Director, Senior PM, PM, Scrum/Agile Coach, UX Researcher, Growth PM, Product Analyst, Technical PM.
+- **Engineering (16 roles, L5-L7)**: Staff SWE, Senior SWE, SWE, Frontend, Backend, Mobile, DevOps, SRE, Security, QA, Web3, Desktop, Network, DB Reliability, Incident Commander, Agentic Architect.
+- **Data & AI (10 roles, L4-L7)**: Data Scientist, ML Engineer, Data Engineer, AI Product Engineer, Data Analyst, Research Scientist, Privacy Engineer, Computer Vision, Speech/Audio AI, MLOps.
+- **Design (8 roles, L4-L7)**: Design Director, UX/UI, Product Designer, Brand Designer, Motion Designer, 3D Visual Designer, Design System Engineer, UX Copywriter.
+- **Marketing (10 roles, L4-L5)**: Content Strategist, SEO Specialist, Performance Marketer, Social Media Manager, Brand Copywriter, CRO Specialist, Email Lifecycle Marketer, PR & Comms, Partnership/BD, Community Manager.
+- **Sales & BD (8 roles, L4-L8)**: VP Sales, Account Executive, SDR, Solutions Engineer, Customer Success Manager, RevOps Analyst, Enterprise AE, Freelancer BD.
+- **Customer Success (6 roles, L4-L6)**: Support Engineer, Onboarding Specialist, Implementation Consultant, TAM, Churn Analyst, Technical Writer.
+- **Finance (8 roles, L4-L7)**: Corporate Controller, FP&A Analyst, Tax Specialist, Billing/Payments Engineer, Treasury Specialist, Accounts Manager, Startup CFO Advisor, Cost Optimization Analyst.
+- **Legal & Compliance (6 roles, L5-L8)**: General Counsel, IP/Patent Attorney, Contract Manager, Compliance Officer, Data Protection Officer, Risk Manager.
+- **People & Ops (10 roles, L4-L8)**: VP People, Recruiter, HRBP, HR Ops, L&D Specialist, Procurement Manager, Facilities Manager, Executive Assistant, Solopreneur Operator, Chief of Staff.
+- **IT & Platform (6 roles, L4-L7)**: IT Sysadmin, Cloud Architect, Platform Engineer, Cybersecurity Analyst, Observability Engineer, FinOps Engineer.
+
+#### 3. 7-Phase Client Working Backwards SDLC Pipeline (`agyos_decision/sdlc.py`)
+Embeds Amazon "Working Backwards" and behavioral psychology (Kahneman System 1/2, Cialdini's 7 Levers, Hick's Law, Loss Aversion):
+```
+[DISCOVERY] ➔ [PRD] ➔ [ARCHITECTURE] ➔ [TDD_MANUFACTURING] ➔ [VERIFICATION] ➔ [RELEASE] ➔ [HANDOVER]
+```
+- **Phase 1: DISCOVERY**: Annotated press release + FAQ, Job-To-Be-Done canvas, risk register.
+- **Phase 2: PRD**: User stories, acceptance criteria, non-functional requirements, out-of-scope boundaries.
+- **Phase 3: ARCHITECTURE**: C4 Container model, ADRs committed to `docs/adr/`, data schemas, API contracts.
+- **Phase 4: TDD_MANUFACTURING**: Red (failing test) ➔ Green (minimal code) ➔ Refactor with 80%+ coverage.
+- **Phase 5: VERIFICATION**: Static analysis, security scan, benchmark evidence, acceptance criteria proof.
+- **Phase 6: RELEASE**: Deployment runbook, feature flags, SLO breach monitors, rollback verification.
+- **Phase 7: HANDOVER**: `AI_HANDOFF.md` update, runbooks, retrospective insight report, client sign-off.
 
 ### Layer 5: Policy Envelopes, EVPI Gate & Recovery Subsystem
 - **Typed TaskContracts (`agyos_decision/contracts.schema.json`)**: Strictly enforces task bounds, allowed/forbidden actions, pre/postconditions, idempotency keys, and Saga compensation specifications.
