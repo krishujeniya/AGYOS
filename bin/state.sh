@@ -44,6 +44,10 @@ anchor_state_set() {
   
   (
     flock -x 200
+    if ! jq empty "$STATE_FILE" 2>/dev/null; then
+      echo "Error: corrupted state in $STATE_FILE." >&2
+      exit 1
+    fi
     if [ "$type" = "number" ]; then
       jq --arg k "$key" --argjson v "$val" '.[$k] = $v' "$STATE_FILE" > "${STATE_FILE}.tmp" && mv "${STATE_FILE}.tmp" "$STATE_FILE"
     else
@@ -70,6 +74,10 @@ anchor_gate_transition() {
 
   (
     flock -x 200
+    if ! jq empty "$STATE_FILE" 2>/dev/null; then
+      echo "Error: corrupted state in $STATE_FILE." >&2
+      exit 1
+    fi
     current=$(jq -r '.current_gate // "IDLE"' "$STATE_FILE")
     complexity=$(jq -r '.complexity_score // empty' "$STATE_FILE")
     allowed=0

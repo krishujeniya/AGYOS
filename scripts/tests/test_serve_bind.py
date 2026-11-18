@@ -19,3 +19,10 @@ class BindHostTests(unittest.TestCase):
                 _resolve_bind_host()
             os.environ["ROXX_API_KEY"] = "test-key"
             self.assertEqual(_resolve_bind_host(), "0.0.0.0")
+
+    def test_create_app_enforces_bind_host_for_asgi_startup(self):
+        from agyos_decision.serve import create_app
+
+        with patch.dict(os.environ, {"ROXX_HOST": "0.0.0.0"}, clear=True):
+            with self.assertRaises(ValueError):
+                create_app(router=object())

@@ -249,6 +249,7 @@ def build_router():
 def create_app(router: Optional[Any] = None):
     """Build the FastAPI app. Pass a Router to inject one (tests); otherwise one
     is built from the environment (and preloaded) at app-creation time."""
+    _resolve_bind_host()
     import asyncio
     from concurrent.futures import ThreadPoolExecutor
 

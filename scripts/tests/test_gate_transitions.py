@@ -83,6 +83,43 @@ class GateTransitionTests(unittest.TestCase):
             self.assertNotEqual(rejected.returncode, 0)
             self.assertEqual(json.loads(state.read_text())["current_gate"], "IDLE")
 
+    def test_corrupted_state_rejected_without_mutation(self):
+        temp, project, state = self.project()
+        with temp:
+            corrupt_payload = '{"current_gate": "IDLE", invalid json...'
+            state.write_text(corrupt_payload)
+            result = self.run_cli(project, state, "gate", "UNDERSTAND")
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("corrupted state", result.stderr.lower())
+            self.assertEqual(state.read_text(), corrupt_payload)
+
+    def test_invalid_intermediate_gate_transitions_rejected(self):
+        invalid_jumps = [
+            ("IDLE", "PLAN"),
+            ("IDLE", "IMPLEMENT"),
+            ("IDLE", "VERIFY"),
+            ("UNDERSTAND", "PLAN"),
+            ("UNDERSTAND", "IMPLEMENT"),
+            ("UNDERSTAND", "VERIFY"),
+            ("ANALYZE", "VERIFY"),
+            ("ANALYZE", "IDLE"),
+            ("PLAN", "VERIFY"),
+            ("PLAN", "IDLE"),
+            ("PLAN", "UNDERSTAND"),
+            ("IMPLEMENT", "IDLE"),
+            ("IMPLEMENT", "UNDERSTAND"),
+            ("IMPLEMENT", "PLAN"),
+            ("VERIFY", "UNDERSTAND"),
+            ("VERIFY", "ANALYZE"),
+            ("VERIFY", "IMPLEMENT"),
+        ]
+        for current, invalid_target in invalid_jumps:
+            temp, project, state = self.project(current=current, complexity=3)
+            with temp:
+                res = self.run_cli(project, state, "gate", invalid_target)
+                self.assertNotEqual(res.returncode, 0, f"Expected {current} -> {invalid_target} to fail")
+                self.assertEqual(json.loads(state.read_text())["current_gate"], current)
+
 
 if __name__ == "__main__":
     unittest.main()
