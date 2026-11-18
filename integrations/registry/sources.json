@@ -327,55 +327,6 @@
           "requires_approval": false
         }
       ]
-    },
-    {
-      "id": "gemini-notebook-mcp-cli",
-      "repo": "jacob-bd/gemini-notebook-mcp-cli",
-      "commit": "520736d6de26359cb79de0c59b8e196989cefabb",
-      "license": "MIT",
-      "disposition": "ENHANCE",
-      "primary_skill": "gemini-notebook",
-      "pod": "pod-build",
-      "status": "active_mcp_integration",
-      "routes": [
-        [
-          "gemini notebook",
-          "query"
-        ],
-        [
-          "notebooklm",
-          "research"
-        ],
-        [
-          "notebooklm",
-          "studio audio"
-        ],
-        [
-          "notebooklm",
-          "sources"
-        ]
-      ],
-      "evidence": [
-        "README.md",
-        "pyproject.toml",
-        "AGENTS.md",
-        "LICENSE"
-      ],
-      "limitations": "Requires Google account session cookies; operations that delete resources or generate studio artifacts require explicit confirmation.",
-      "capabilities": [
-        {
-          "id": "gemini-notebook-mcp",
-          "method": "MCP_FAST_DAEMON",
-          "read_only": false,
-          "requires_approval": true
-        },
-        {
-          "id": "nlm-cli",
-          "method": "CLI",
-          "read_only": false,
-          "requires_approval": false
-        }
-      ]
     }
   ]
 }

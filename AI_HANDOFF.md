@@ -10,7 +10,6 @@
   - `scripts/agy_ondemand.py`: added `notebooklm_`, `gemini_notebook_`, and `nlm_` tool prefix routes.
   - `agyos_decision/skills_router.py`: added `gemini_notebook` domain with keyword patterns routing to `gemini-notebook`.
   - `bin/agyos`: registered `gemini-notebook`, `notebooklm`, and `nlm` subcommands routing directly to `mcp/gemini-notebook-mcp.sh`.
-  - `integrations/registry/sources.json`: registered upstream repository `jacob-bd/gemini-notebook-mcp-cli` under `pod-build` with `ENHANCE` disposition.
   - `scripts/build_tiered_skills_manifest.py`: added `gemini-notebook` to Tier 1 core engineering manifest.
   - `.agents/skills/gemini-notebook/`: added comprehensive operational skill (`SKILL.md`) and references (`AUTHENTICATION.md`, `CLI_GUIDE.md`, `MCP_TOOLS_REFERENCE.md`).
   - `.agents/skills/notebooklm-researcher/SKILL.md` and `.agents/skills/notebooklm/SKILL.md`: cross-referenced canonical `gemini-notebook` skill.
