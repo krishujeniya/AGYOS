@@ -50,7 +50,7 @@ jobs:
           python scripts/build_tiered_skills_manifest.py
           python scripts/build_docs_data.py
       - name: Upload generated skill catalog for CI-only updates
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: agyos-skill-catalog-generated
           path: |
@@ -67,7 +67,7 @@ jobs:
         run: python scripts/benchmark_decision.py --repeats 30 --output "$RUNNER_TEMP/routing.json"
       - name: Upload routing measurements
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: offline-routing-benchmark
           path: ${{ runner.temp }}/routing.json
@@ -84,7 +84,7 @@ jobs:
           --summary "$RUNNER_TEMP/prompt-principles-summary.json"
       - name: Upload prompt principles audit
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: prompt-principles-ledger
           path: |
@@ -128,7 +128,7 @@ jobs:
       - name: Record public file digests
         run: |
           (cd _site && find . -type f -print0 | sort -z | xargs -0 sha256sum) > pages-sha256.txt
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: pages-candidate
           path: |
@@ -157,7 +157,7 @@ jobs:
         run: |
           docker save agyos-docs-ci -o documentation-image.tar
           sha256sum documentation-image.tar > documentation-image.sha256
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: documentation-image-candidate
           path: |
@@ -196,7 +196,7 @@ jobs:
           test -s "$RUNNER_TEMP/gitleaks.sarif"
       - name: Upload redacted scan report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: gitleaks-report
           path: ${{ runner.temp }}/gitleaks.sarif

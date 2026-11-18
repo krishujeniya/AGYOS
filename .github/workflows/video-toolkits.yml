@@ -115,7 +115,7 @@ jobs:
         run: bash tools/video/faceless-shorts/scripts/selftest.sh --no-voice stick-story
       - name: Upload rendered small videos
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: rendered-shorts-videos
           path: |
