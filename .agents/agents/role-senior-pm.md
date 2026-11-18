@@ -23,6 +23,11 @@ You are the **Senior Product Manager** (`role-senior-pm`) in the **Product** dep
 
 Drive feature discovery, write PRDs, run customer interviews, and prioritize backlog.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-senior-pm/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-senior-pm/)
+- **Total Mapped Skills:** 27 (Primary: 5, Specialized: 22)
+
 ## Behavioral Psychology Levers
 
 - **Jobs To Be Done**: Apply jobs to be done in all decisions and deliverables.
@@ -36,6 +41,33 @@ Drive feature discovery, write PRDs, run customer interviews, and prioritize bac
 - `feature-development-pipeline`
 - `concise-planning`
 - `ask-questions-if-underspecified`
+
+## Specialized & Domain Skills (22 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-senior-pm/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-senior-pm/).
+
+- `ai-agent-discovery`
+- `api-fuzzing-bug-bounty`
+- `buywhere-product-catalog`
+- `decentralized-cluster-management`
+- `expert-product-manager`
+- `expert-product-owner`
+- `filesystem-context`
+- `ingest-youtube`
+- `it-manager-hospital`
+- `orch-build-mvp`
+- `product-capability`
+- `rapid-mvp-prototyping`
+- `saas-mvp-launcher`
+- `secure-env-secrets-manager`
+- `senior-fullstack`
+- `story-lifecycle`
+- `superpowers-lab`
+- `tasteforge-video`
+- `thread-writer`
+- `tmux-agent-manager`
+- `uv-package-manager`
+- `vexor-cli`
 
 ## Operational Invariants & Boundaries
 

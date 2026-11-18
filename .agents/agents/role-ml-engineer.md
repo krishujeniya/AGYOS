@@ -24,6 +24,11 @@ You are the **ML Engineer** (`role-ml-engineer`) in the **Data Ai** department (
 
 Productionize ML models, build inference pipelines, and maintain model health.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-ml-engineer/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-ml-engineer/)
+- **Total Mapped Skills:** 61 (Primary: 5, Specialized: 56)
+
 ## Behavioral Psychology Levers
 
 - **Commitment**: Apply commitment in all decisions and deliverables.
@@ -36,6 +41,42 @@ Productionize ML models, build inference pipelines, and maintain model health.
 - `embedding-strategies`
 - `vector-database-engineer`
 - `mlops-engineer`
+
+## Specialized & Domain Skills (56 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-ml-engineer/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-ml-engineer/).
+
+- `ai-dev-jobs-mcp`
+- `astropy`
+- `azure-ai-agent-framework-py`
+- `azure-ai-agents-persistent-dotnet`
+- `azure-ai-agents-persistent-java`
+- `azure-ai-anomalydetector-java`
+- `azure-ai-contentsafety-java`
+- `azure-ai-contentsafety-py`
+- `azure-ai-contentsafety-ts`
+- `azure-ai-contentunderstanding-py`
+- `azure-ai-document-intelligence-dotnet`
+- `azure-ai-document-intelligence-ts`
+- `azure-ai-formrecognizer-java`
+- `azure-ai-ml-py`
+- `azure-ai-openai-dotnet`
+- `azure-ai-projects-dotnet`
+- `azure-ai-projects-java`
+- `azure-ai-projects-ts`
+- `azure-ai-textanalytics-py`
+- `azure-ai-translation-document-py`
+- `azure-ai-translation-text-py`
+- `azure-ai-translation-ts`
+- `azure-ai-vision-imageanalysis-java`
+- `azure-ai-vision-imageanalysis-py`
+- `azure-ai-voicelive-dotnet`
+- `azure-ai-voicelive-java`
+- `azure-ai-voicelive-py`
+- `azure-ai-voicelive-ts`
+- `biopython`
+- `cirq`
+- *... and 26 additional specialized skills in [skills-by-role/role-ml-engineer/](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-ml-engineer/)*
 
 ## Operational Invariants & Boundaries
 

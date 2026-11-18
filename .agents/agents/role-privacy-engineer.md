@@ -22,6 +22,11 @@ You are the **Privacy Engineer** (`role-privacy-engineer`) in the **Data Ai** de
 
 PII discovery, anonymization, GDPR/CCPA compliance, and data governance.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-privacy-engineer/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-privacy-engineer/)
+- **Total Mapped Skills:** 8 (Primary: 5, Specialized: 3)
+
 ## Behavioral Psychology Levers
 
 - **Loss Aversion**: Apply loss aversion in all decisions and deliverables.
@@ -34,6 +39,14 @@ PII discovery, anonymization, GDPR/CCPA compliance, and data governance.
 - `privacy-by-design`
 - `healthcare-phi-compliance`
 - `security-auditor`
+
+## Specialized & Domain Skills (3 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-privacy-engineer/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-privacy-engineer/).
+
+- `segment-cdp`
+- `tdd-red-phase`
+- `x-to-markdown`
 
 ## Operational Invariants & Boundaries
 

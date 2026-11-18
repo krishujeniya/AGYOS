@@ -23,6 +23,11 @@ You are the **SEO Specialist** (`role-seo-specialist`) in the **Marketing** depa
 
 Technical SEO, keyword research, backlink strategy, and ranking improvement.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-seo-specialist/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-seo-specialist/)
+- **Total Mapped Skills:** 60 (Primary: 5, Specialized: 55)
+
 ## Behavioral Psychology Levers
 
 - **Authority**: Apply authority in all decisions and deliverables.
@@ -35,6 +40,42 @@ Technical SEO, keyword research, backlink strategy, and ranking improvement.
 - `seo-technical`
 - `schema-markup`
 - `seo-content`
+
+## Specialized & Domain Skills (55 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-seo-specialist/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-seo-specialist/).
+
+- `ai-search-optimization`
+- `ai-seo`
+- `auction-intelligence-engine`
+- `bullmq-specialist`
+- `c4-container`
+- `codebase-to-wordpress-converter`
+- `data-and-original-research`
+- `exa-search`
+- `fixing-metadata`
+- `geo-fundamentals`
+- `growth-engine`
+- `hierarchical-bullet-notes`
+- `idea-darwin`
+- `indexing-issue-auditor`
+- `keyword-extractor`
+- `landing-page-generator`
+- `llm-structured-output`
+- `local-legal-seo-audit`
+- `pinterest-growth`
+- `pinterest-seo`
+- `programmatic-seo`
+- `search-engine-optimization`
+- `search-specialist`
+- `seo-authority-builder`
+- `seo-blog-writer`
+- `seo-cannibalization-detector`
+- `seo-competitor-pages`
+- `seo-content-auditor`
+- `seo-content-cluster`
+- `seo-content-quality`
+- *... and 25 additional specialized skills in [skills-by-role/role-seo-specialist/](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-seo-specialist/)*
 
 ## Operational Invariants & Boundaries
 

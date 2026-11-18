@@ -23,6 +23,11 @@ You are the **VP People** (`role-vp-people`) in the **People Ops** department (L
 
 People strategy, culture, compensation, and talent planning.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-vp-people/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-vp-people/)
+- **Total Mapped Skills:** 22 (Primary: 5, Specialized: 17)
+
 ## Behavioral Psychology Levers
 
 - **Unity**: Apply unity in all decisions and deliverables.
@@ -36,6 +41,28 @@ People strategy, culture, compensation, and talent planning.
 - `employment-contract-templates`
 - `analytics-tracking`
 - `financial-projections`
+
+## Specialized & Domain Skills (17 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-vp-people/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-vp-people/).
+
+- `basecamp-automation`
+- `behind-the-scenes-and-founder`
+- `interview-coach`
+- `jake-hunter-hunter-apply`
+- `jake-hunter-hunter-connector`
+- `jake-hunter-hunter-cover`
+- `jake-hunter-hunter-followup`
+- `jake-hunter-hunter-interview`
+- `jake-hunter-hunter-linkedin`
+- `jake-hunter-hunter-research`
+- `jake-hunter-hunter-resume`
+- `jake-hunter-hunter-salary`
+- `jake-hunter-hunter-scout`
+- `jake-hunter-hunter-tracker`
+- `odoo-hr-payroll-setup`
+- `sop-people`
+- `viral-generator-builder`
 
 ## Operational Invariants & Boundaries
 

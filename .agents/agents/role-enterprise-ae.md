@@ -23,6 +23,11 @@ You are the **Enterprise Account Executive** (`role-enterprise-ae`) in the **Sal
 
 Navigate complex enterprise buying cycles, MSA negotiation, and champion development.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-enterprise-ae/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-enterprise-ae/)
+- **Total Mapped Skills:** 38 (Primary: 5, Specialized: 33)
+
 ## Behavioral Psychology Levers
 
 - **Authority**: Apply authority in all decisions and deliverables.
@@ -37,6 +42,42 @@ Navigate complex enterprise buying cycles, MSA negotiation, and champion develop
 - `pitch-psychologist`
 - `master-agreement-generator`
 - `hubspot-integration`
+
+## Specialized & Domain Skills (33 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-enterprise-ae/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-enterprise-ae/).
+
+- `address-github-comments`
+- `ai-code-review`
+- `auri-core`
+- `bazel-build-optimization`
+- `code-review-checklist`
+- `code-review-excellence`
+- `conventional-git-commit`
+- `credential-manager`
+- `dotnet-architect`
+- `dotnet-backend-patterns`
+- `enterprise-software-scaling-strategy`
+- `find-bugs`
+- `gha-security-review`
+- `graphql-architect`
+- `jake-whale-case-study`
+- `jake-whale-demo-builder`
+- `jake-whale-follow-up`
+- `jake-whale-launch-planner`
+- `jake-whale-market-researcher`
+- `jake-whale-objection-handler`
+- `jake-whale-offer-builder`
+- `jake-whale-pre-sale`
+- `jake-whale-pricing`
+- `jake-whale-requirements`
+- `jake-whale-whale-hunter`
+- `logic-lens`
+- `playwright-java`
+- `secret-agent-007`
+- `security-review`
+- `sop-gna`
+- *... and 3 additional specialized skills in [skills-by-role/role-enterprise-ae/](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-enterprise-ae/)*
 
 ## Operational Invariants & Boundaries
 

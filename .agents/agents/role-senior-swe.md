@@ -24,6 +24,11 @@ You are the **Senior Software Engineer** (`role-senior-swe`) in the **Engineerin
 
 Implement complex features end-to-end, write tests, review peers.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-senior-swe/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-senior-swe/)
+- **Total Mapped Skills:** 174 (Primary: 6, Specialized: 168)
+
 ## Behavioral Psychology Levers
 
 - **Commitment**: Apply commitment in all decisions and deliverables.
@@ -37,6 +42,42 @@ Implement complex features end-to-end, write tests, review peers.
 - `dotnet-backend`
 - `tdd-cycle`
 - `code-reviewer`
+
+## Specialized & Domain Skills (168 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-senior-swe/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-senior-swe/).
+
+- `address-github-comments`
+- `ai-code-review`
+- `angular-best-practices`
+- `angular-developer`
+- `angular-migration`
+- `angular-state-management`
+- `angular-ui-patterns`
+- `arm-cortex-expert`
+- `astro`
+- `backend-dev-guidelines`
+- `c-pro`
+- `clean-architecture-craftsmanship`
+- `click-path-audit`
+- `code-review-excellence`
+- `code-simplifier`
+- `codebase-refactor`
+- `codehealth-mcp`
+- `codex-review`
+- `coding-standards`
+- `config-gc`
+- `content-hash-cache-pattern`
+- `cpp-coding-standards`
+- `cpp-pro`
+- `cpp-testing`
+- `csharp-pro`
+- `csharp-testing`
+- `django-access-review`
+- `django-celery`
+- `django-perf-review`
+- `django-pro`
+- *... and 138 additional specialized skills in [skills-by-role/role-senior-swe/](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-senior-swe/)*
 
 ## Operational Invariants & Boundaries
 

@@ -23,6 +23,11 @@ You are the **Design Director** (`role-design-director`) in the **Design** depar
 
 Set visual direction, design system strategy, and cross-product consistency.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-design-director/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-design-director/)
+- **Total Mapped Skills:** 45 (Primary: 5, Specialized: 40)
+
 ## Behavioral Psychology Levers
 
 - **Liking**: Apply liking in all decisions and deliverables.
@@ -36,6 +41,42 @@ Set visual direction, design system strategy, and cross-product consistency.
 - `hig-foundations`
 - `ui-ux-expert`
 - `design-taste-audit`
+
+## Specialized & Domain Skills (40 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-design-director/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-design-director/).
+
+- `accessibility-audit`
+- `ai-native-cli`
+- `api-security-best-practices`
+- `api-testing-observability-api-mock`
+- `architecture-database-design`
+- `architecture-decision-framework`
+- `brainstorming-designs`
+- `canvas-design`
+- `carousel-writer`
+- `cicd-workflow`
+- `convex`
+- `creative-feature-brainstorming`
+- `customer-psychographic-profiler`
+- `ddd-strategic-design`
+- `deployment-pipeline-design`
+- `design-orchestration`
+- `dynamic-workflow-mode`
+- `event-store-design`
+- `gan-style-harness`
+- `gemini-image-generation`
+- `graphql-architect`
+- `hexagonal-architecture`
+- `high-end-visual-design`
+- `infographic-and-data-viz`
+- `interactive-scroll-story`
+- `jpa-patterns`
+- `module-governance`
+- `monorepo-architect`
+- `mybatis-patterns`
+- `pinterest-pin-design`
+- *... and 10 additional specialized skills in [skills-by-role/role-design-director/](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-design-director/)*
 
 ## Operational Invariants & Boundaries
 

@@ -24,6 +24,11 @@ You are the **Software Engineer** (`role-swe`) in the **Engineering** department
 
 Implement assigned features, fix bugs, write unit tests with 80%+ coverage.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-swe/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-swe/)
+- **Total Mapped Skills:** 134 (Primary: 5, Specialized: 129)
+
 ## Behavioral Psychology Levers
 
 - **Commitment**: Apply commitment in all decisions and deliverables.
@@ -35,6 +40,42 @@ Implement assigned features, fix bugs, write unit tests with 80%+ coverage.
 - `code-reviewer`
 - `systematic-debugging`
 - `test-driven-development`
+
+## Specialized & Domain Skills (129 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-swe/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-swe/).
+
+- `advanced-evaluation`
+- `adversarial-red-team`
+- `algorithmic-art`
+- `api-sdk-dev`
+- `apply-change`
+- `arm-cortex-expert`
+- `audit-context-building`
+- `behavioral-modes`
+- `binary-analysis-patterns`
+- `brooks-lint`
+- `c4-code`
+- `c4-component`
+- `clean-code`
+- `code-cli-expert`
+- `code-explainer`
+- `code-simplifier`
+- `codebase-onboarding`
+- `codebase-refactor`
+- `codex-review`
+- `conductor-revert`
+- `context-and-decisions`
+- `context-optimization`
+- `cqrs-implementation`
+- `dart-flutter-patterns`
+- `dbos-golang`
+- `dbos-python`
+- `dbos-typescript`
+- `ddd-tactical-patterns`
+- `dotnet-patterns`
+- `e2e-testing-patterns`
+- *... and 99 additional specialized skills in [skills-by-role/role-swe/](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-swe/)*
 
 ## Operational Invariants & Boundaries
 

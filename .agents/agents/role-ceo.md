@@ -24,6 +24,11 @@ You are the **Chief Executive Officer** (`role-ceo`) in the **Executive** depart
 
 Set vision, allocate capital, approve R3 actions, embody company identity.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-ceo/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-ceo/)
+- **Total Mapped Skills:** 37 (Primary: 5, Specialized: 32)
+
 ## Behavioral Psychology Levers
 
 - **Authority**: Apply authority in all decisions and deliverables.
@@ -38,6 +43,42 @@ Set vision, allocate capital, approve R3 actions, embody company identity.
 - `pitch-psychologist`
 - `startup-analyst`
 - `product-manager-toolkit`
+
+## Specialized & Domain Skills (32 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-ceo/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-ceo/).
+
+- `andruia-niche-intel`
+- `auction-property-appraisal`
+- `auri-core`
+- `business-case-analysis`
+- `emergency-card`
+- `goal-analyzer`
+- `hypergrowth-startup-strategy`
+- `jake-founder-founder-board`
+- `jake-founder-founder-brand`
+- `jake-founder-founder-cfo`
+- `jake-founder-founder-competitors`
+- `jake-founder-founder-consumer`
+- `jake-founder-founder-launch`
+- `jake-founder-founder-marketing`
+- `jake-founder-founder-offer`
+- `jake-founder-founder-ops`
+- `jake-founder-founder-plan`
+- `jake-founder-founder-pricing`
+- `jake-seed-seed-closer`
+- `jake-seed-seed-coach`
+- `jake-seed-seed-dataroom`
+- `jake-seed-seed-deck`
+- `jake-seed-seed-investors`
+- `jake-seed-seed-market`
+- `jake-seed-seed-model`
+- `jake-seed-seed-plan`
+- `jake-seed-seed-scout`
+- `jake-seed-seed-terms`
+- `jake-seed-seed-updates`
+- `rich-elicitation`
+- *... and 2 additional specialized skills in [skills-by-role/role-ceo/](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-ceo/)*
 
 ## Operational Invariants & Boundaries
 

@@ -92,6 +92,7 @@ if decision.assumptions_applied:
   roles)
     dept=""
     seniority=""
+    show_skills=0
     while [[ $# -gt 0 ]]; do
       case "$1" in
         --dept|--department)
@@ -102,6 +103,10 @@ if decision.assumptions_applied:
           seniority="$2"
           shift 2
           ;;
+        --skills)
+          show_skills=1
+          shift
+          ;;
         *)
           shift
           ;;
@@ -110,46 +115,77 @@ if decision.assumptions_applied:
     python3 -c "
 import sys
 sys.path.insert(0, '.')
-from agyos_decision.roles import list_roles
+from agyos_decision.roles import list_roles, get_all_skills_for_role
 
 dept = sys.argv[1] if len(sys.argv) > 1 and sys.argv[1] else None
 sen = sys.argv[2] if len(sys.argv) > 2 and sys.argv[2] else None
+show_skills = sys.argv[3] == '1' if len(sys.argv) > 3 else False
 roles = list_roles(department=dept, seniority=sen)
 
 print(f'Total Roles Matching: {len(roles)}')
-print(f'{\"ROLE ID\":<32} {\"TIER\":<6} {\"DEPARTMENT\":<18} {\"TITLE\"}')
-print('-' * 80)
-for r in sorted(roles, key=lambda x: (x.department, x.seniority, x.role_id)):
-    print(f'{r.role_id:<32} {r.seniority:<6} {r.department:<18} {r.title}')
-" "$dept" "$seniority"
+if show_skills:
+    print(f'{\"ROLE ID\":<32} {\"TIER\":<6} {\"DEPARTMENT\":<18} {\"SKILLS\":<8} {\"TITLE\"}')
+    print('-' * 88)
+    for r in sorted(roles, key=lambda x: (x.department, x.seniority, x.role_id)):
+        skills = get_all_skills_for_role(r.role_id)
+        print(f'{r.role_id:<32} {r.seniority:<6} {r.department:<18} {len(skills):<8} {r.title}')
+else:
+    print(f'{\"ROLE ID\":<32} {\"TIER\":<6} {\"DEPARTMENT\":<18} {\"TITLE\"}')
+    print('-' * 80)
+    for r in sorted(roles, key=lambda x: (x.department, x.seniority, x.role_id)):
+        print(f'{r.role_id:<32} {r.seniority:<6} {r.department:<18} {r.title}')
+" "$dept" "$seniority" "$show_skills"
     ;;
   role)
     target_role="${1:-}"
+    shift || true
+    show_skills=0
+    while [[ $# -gt 0 ]]; do
+      case "$1" in
+        --skills)
+          show_skills=1
+          shift
+          ;;
+        *)
+          shift
+          ;;
+      esac
+    done
     if [ -z "$target_role" ]; then
-      echo "Usage: agyos role <role-id>" >&2
+      echo "Usage: agyos role <role-id> [--skills]" >&2
       exit 1
     fi
     python3 -c "
 import sys
 sys.path.insert(0, '.')
-from agyos_decision.roles import get_role
+from agyos_decision.roles import get_role, get_all_skills_for_role
 
 role_id = sys.argv[1]
+show_skills = sys.argv[2] == '1' if len(sys.argv) > 2 else False
 role = get_role(role_id)
 if not role:
     print(f'Role not found: {role_id}', file=sys.stderr)
     sys.exit(1)
 
+all_skills = get_all_skills_for_role(role_id)
 print(f'=== Role Profile: {role.title} ({role.role_id}) ===')
 print(f'Department:      {role.department}')
 print(f'Seniority Tier:  {role.seniority}')
 print(f'Governing Pod:   {role.governing_pod}')
 print(f'Default Risk:    {role.default_risk}')
 print(f'Mandate:         {role.mandate}')
-print(f'Psychology:      {\", \".join(role.psychology_principles)}')
+print(f'Skills Workspace: skills-by-role/{role.role_id}/')
+print(f'Total Skills:    {len(all_skills)} (Primary: {len(role.primary_skills)}, Specialized: {len(all_skills) - len(role.primary_skills)})')
 print(f'Primary Skills:  {\", \".join(role.primary_skills)}')
+print(f'Psychology:      {\", \".join(role.psychology_principles)}')
 print(f'Keywords:        {\", \".join(role.keywords[:10])}...')
-" "$target_role"
+
+if show_skills:
+    print('\n--- All Mapped Skills ---')
+    for s in all_skills:
+        marker = ' (PRIMARY)' if s in role.primary_skills else ''
+        print(f'  - {s}{marker}')
+" "$target_role" "$show_skills"
     ;;
   client-interview)
     query="$*"

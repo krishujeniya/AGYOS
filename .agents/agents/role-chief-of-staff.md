@@ -23,6 +23,11 @@ You are the **Chief of Staff** (`role-chief-of-staff`) in the **People Ops** dep
 
 Strategic projects, executive leverage, cross-pod coordination, and OKR tracking.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-chief-of-staff/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-chief-of-staff/)
+- **Total Mapped Skills:** 26 (Primary: 5, Specialized: 21)
+
 ## Behavioral Psychology Levers
 
 - **Commitment**: Apply commitment in all decisions and deliverables.
@@ -36,6 +41,32 @@ Strategic projects, executive leverage, cross-pod coordination, and OKR tracking
 - `analytics-tracking`
 - `content-creator`
 - `linear-project-management`
+
+## Specialized & Domain Skills (21 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-chief-of-staff/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-chief-of-staff/).
+
+- `angular`
+- `busybox-on-windows`
+- `clarity-gate`
+- `faceless-shorts-engine`
+- `favicon-generator`
+- `full-output-enforcement`
+- `jake-founder-founder-board`
+- `jake-founder-founder-brand`
+- `jake-founder-founder-cfo`
+- `jake-founder-founder-competitors`
+- `jake-founder-founder-consumer`
+- `jake-founder-founder-launch`
+- `jake-founder-founder-marketing`
+- `jake-founder-founder-offer`
+- `jake-founder-founder-ops`
+- `jake-founder-founder-plan`
+- `jake-founder-founder-pricing`
+- `opensource-pipeline`
+- `refactor-clean`
+- `ssrf-oob-interaction-testing`
+- `viral-generator-builder`
 
 ## Operational Invariants & Boundaries
 

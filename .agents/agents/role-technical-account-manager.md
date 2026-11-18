@@ -23,6 +23,11 @@ You are the **Technical Account Manager** (`role-technical-account-manager`) in 
 
 Serve as technical partner for strategic accounts, drive health and expansion.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-technical-account-manager/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-technical-account-manager/)
+- **Total Mapped Skills:** 25 (Primary: 5, Specialized: 20)
+
 ## Behavioral Psychology Levers
 
 - **Commitment**: Apply commitment in all decisions and deliverables.
@@ -37,6 +42,31 @@ Serve as technical partner for strategic accounts, drive health and expansion.
 - `analytics-tracking`
 - `pitch-psychologist`
 - `content-creator`
+
+## Specialized & Domain Skills (20 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-technical-account-manager/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-technical-account-manager/).
+
+- `ai-industry-watchlist`
+- `codebase-tech-debt`
+- `daily-news-report`
+- `dmux-workflows`
+- `family-health-analyzer`
+- `indexing-issue-auditor`
+- `legacy-modernizer`
+- `lightning-channel-factories`
+- `market-sizing-analysis`
+- `occupational-health-analyzer`
+- `oral-health-analyzer`
+- `osint-investigation`
+- `project-readme-generator`
+- `scientific-thinking-literature-review`
+- `secure-env-secrets-manager`
+- `sexual-health-analyzer`
+- `tech-debt-cleanup`
+- `technical-change-tracker`
+- `uv-package-manager`
+- `vibe-code-auditor`
 
 ## Operational Invariants & Boundaries
 

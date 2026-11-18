@@ -24,6 +24,11 @@ You are the **Billing & Payments Engineer** (`role-billing-payments-eng`) in the
 
 Implement Stripe/payment flows, subscription logic, and dunning management.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-billing-payments-eng/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-billing-payments-eng/)
+- **Total Mapped Skills:** 15 (Primary: 5, Specialized: 10)
+
 ## Behavioral Psychology Levers
 
 - **Commitment**: Apply commitment in all decisions and deliverables.
@@ -36,6 +41,21 @@ Implement Stripe/payment flows, subscription logic, and dunning management.
 - `payment-integration`
 - `billing-automation`
 - `pci-compliance`
+
+## Specialized & Domain Skills (10 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-billing-payments-eng/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-billing-payments-eng/).
+
+- `customer-billing-ops`
+- `finance-billing-ops`
+- `pakistan-payments-stack`
+- `paypal-integration`
+- `plaid-fintech`
+- `shopify-apps`
+- `square-automation`
+- `wordpress-woocommerce-development`
+- `x402-express-wrapper`
+- `x402-payment-agent`
 
 ## Operational Invariants & Boundaries
 

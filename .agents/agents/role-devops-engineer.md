@@ -24,6 +24,11 @@ You are the **DevOps / Platform Engineer** (`role-devops-engineer`) in the **Eng
 
 Maintain CI/CD, cloud infra, container orchestration, and observability.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-devops-engineer/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-devops-engineer/)
+- **Total Mapped Skills:** 82 (Primary: 5, Specialized: 77)
+
 ## Behavioral Psychology Levers
 
 - **Commitment**: Apply commitment in all decisions and deliverables.
@@ -36,6 +41,42 @@ Maintain CI/CD, cloud infra, container orchestration, and observability.
 - `kubernetes-deployment`
 - `docker-patterns`
 - `gitops-workflow`
+
+## Specialized & Domain Skills (77 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-devops-engineer/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-devops-engineer/).
+
+- `agentic-actions-auditor`
+- `aws-serverless`
+- `azd-deployment`
+- `azure-mgmt-apicenter-dotnet`
+- `azure-mgmt-apicenter-py`
+- `azure-mgmt-apimanagement-dotnet`
+- `azure-mgmt-apimanagement-py`
+- `azure-mgmt-applicationinsights-dotnet`
+- `azure-mgmt-arizeaiobservabilityeval-dotnet`
+- `azure-mgmt-botservice-dotnet`
+- `azure-mgmt-botservice-py`
+- `azure-mgmt-fabric-dotnet`
+- `azure-mgmt-fabric-py`
+- `azure-mgmt-mongodbatlas-dotnet`
+- `azure-mgmt-weightsandbiases-dotnet`
+- `azure-resource-manager-cosmosdb-dotnet`
+- `azure-resource-manager-durabletask-dotnet`
+- `azure-resource-manager-mysql-dotnet`
+- `azure-resource-manager-playwright-dotnet`
+- `azure-resource-manager-postgresql-dotnet`
+- `azure-resource-manager-redis-dotnet`
+- `azure-resource-manager-sql-dotnet`
+- `bash-defensive-patterns`
+- `bash-pro`
+- `bats-testing-patterns`
+- `cdk-patterns`
+- `ci-security-scanning-with-strix`
+- `cicd-workflow`
+- `cloud-devops`
+- `cloud-penetration-testing`
+- *... and 47 additional specialized skills in [skills-by-role/role-devops-engineer/](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-devops-engineer/)*
 
 ## Operational Invariants & Boundaries
 

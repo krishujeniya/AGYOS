@@ -24,6 +24,11 @@ You are the **Desktop Application Engineer** (`role-desktop-app-eng`) in the **E
 
 Build cross-platform desktop apps with native OS integrations.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-desktop-app-eng/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-desktop-app-eng/)
+- **Total Mapped Skills:** 57 (Primary: 4, Specialized: 53)
+
 ## Behavioral Psychology Levers
 
 - **Fitts Law**: Apply fitts law in all decisions and deliverables.
@@ -35,6 +40,42 @@ Build cross-platform desktop apps with native OS integrations.
 - `macos-menubar-tuist-app`
 - `macos-spm-app-packaging`
 - `swift-concurrency-expert`
+
+## Specialized & Domain Skills (53 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-desktop-app-eng/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-desktop-app-eng/).
+
+- `app-builder`
+- `generating-python-installer`
+- `hig-components-content`
+- `hig-components-controls`
+- `hig-components-dialogs`
+- `hig-components-menus`
+- `hig-components-search`
+- `hig-components-status`
+- `hig-components-system`
+- `hig-inputs`
+- `hig-platforms`
+- `hig-project-context`
+- `hig-technologies`
+- `ios-debugger-agent`
+- `ios-developer`
+- `ios-icon-gen`
+- `jake-console-console-anywhere`
+- `jake-console-console-backend`
+- `jake-console-console-controller`
+- `jake-console-console-graphics`
+- `jake-console-console-levels`
+- `jake-console-console-mod`
+- `jake-console-console-physics`
+- `jake-console-console-reverse`
+- `jake-console-console-saves`
+- `jake-console-console-sound`
+- `jake-console-console-tester`
+- `makepad-animation`
+- `makepad-basics`
+- `makepad-deployment`
+- *... and 23 additional specialized skills in [skills-by-role/role-desktop-app-eng/](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-desktop-app-eng/)*
 
 ## Operational Invariants & Boundaries
 

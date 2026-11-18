@@ -9,10 +9,12 @@ public API (classify_role_for_task, list_roles, get_role, get_skills_for_role).
 
 from __future__ import annotations
 
+import json
 import re
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Dict, List, Optional
+from pathlib import Path
+from typing import Any, Dict, List, Optional
 
 # ---------------------------------------------------------------------------
 # Enums & constants
@@ -1794,12 +1796,53 @@ def list_roles(
     return roles
 
 
-def get_skills_for_role(role_id: str) -> List[str]:
-    """Return primary skill names for a given role_id."""
+_ROLES_SKILLS_MATRIX: Optional[Dict[str, Any]] = None
+
+
+def _get_matrix() -> Dict[str, Any]:
+    global _ROLES_SKILLS_MATRIX
+    if _ROLES_SKILLS_MATRIX is None:
+        matrix_path = Path(__file__).resolve().parent.parent / ".agents" / "skills-by-role" / "roles-skills-matrix.json"
+        if matrix_path.is_file():
+            try:
+                with open(matrix_path, "r", encoding="utf-8") as f:
+                    _ROLES_SKILLS_MATRIX = json.load(f)
+            except Exception:
+                _ROLES_SKILLS_MATRIX = {}
+        else:
+            _ROLES_SKILLS_MATRIX = {}
+    return _ROLES_SKILLS_MATRIX
+
+
+def get_skills_for_role(role_id: str, all_skills: bool = False) -> List[str]:
+    """Return skill names for a given role_id.
+
+    If all_skills is False (default), returns role.primary_skills.
+    If all_skills is True, returns all skills mapped to this role in skills-by-role.
+    """
     role = _REGISTRY.get(role_id)
     if role is None:
         return []
+    if not all_skills:
+        return list(role.primary_skills)
+
+    matrix = _get_matrix()
+    by_role = matrix.get("by_role", {})
+    if role_id in by_role:
+        return list(by_role[role_id].get("skills", role.primary_skills))
     return list(role.primary_skills)
+
+
+def get_all_skills_for_role(role_id: str) -> List[str]:
+    """Return the complete list of mapped skills (core + specialized) for a given role_id."""
+    return get_skills_for_role(role_id, all_skills=True)
+
+
+def get_role_for_skill(skill_name: str) -> Optional[Dict[str, Any]]:
+    """Look up which role(s) own a given skill."""
+    matrix = _get_matrix()
+    by_skill = matrix.get("by_skill", {})
+    return by_skill.get(skill_name)
 
 
 def classify_role_for_task(query: str) -> CompanyRole:

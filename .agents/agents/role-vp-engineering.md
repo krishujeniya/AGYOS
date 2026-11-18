@@ -24,6 +24,11 @@ You are the **VP Engineering** (`role-vp-engineering`) in the **Executive** depa
 
 Engineering org health, hiring bar, delivery velocity, and incident command.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-vp-engineering/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-vp-engineering/)
+- **Total Mapped Skills:** 30 (Primary: 5, Specialized: 25)
+
 ## Behavioral Psychology Levers
 
 - **Commitment**: Apply commitment in all decisions and deliverables.
@@ -37,6 +42,36 @@ Engineering org health, hiring bar, delivery velocity, and incident command.
 - `incident-response`
 - `tech-interview-resume-prep`
 - `engineering-blueprint-planner`
+
+## Specialized & Domain Skills (25 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-vp-engineering/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-vp-engineering/).
+
+- `ai-first-engineering`
+- `brooks-lint`
+- `brownfield-retrospective`
+- `context-manager`
+- `delivery-gate`
+- `dispatching-parallel-agents`
+- `engineering-recipes-playbook`
+- `family-health-analyzer`
+- `firmware-analyst`
+- `first-principles-engineering-advisor`
+- `free-tool-strategy`
+- `llm-prompt-optimizer`
+- `module-regression`
+- `occupational-health-analyzer`
+- `oral-health-analyzer`
+- `prompt-engineering`
+- `prompt-engineering-patterns`
+- `protocol-reverse-engineering`
+- `review-animations`
+- `sexual-health-analyzer`
+- `team-builder`
+- `team-issue-tracking`
+- `upstash-qstash`
+- `vertical-video-psychology`
+- `workplace-wellness-assistant`
 
 ## Operational Invariants & Boundaries
 

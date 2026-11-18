@@ -23,6 +23,11 @@ You are the **Email & Lifecycle Marketer** (`role-email-lifecycle-marketer`) in 
 
 Build drip sequences, re-engagement flows, and lifecycle triggers.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-email-lifecycle-marketer/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-email-lifecycle-marketer/)
+- **Total Mapped Skills:** 49 (Primary: 5, Specialized: 44)
+
 ## Behavioral Psychology Levers
 
 - **Commitment**: Apply commitment in all decisions and deliverables.
@@ -37,6 +42,42 @@ Build drip sequences, re-engagement flows, and lifecycle triggers.
 - `mailchimp-automation`
 - `klaviyo-automation`
 - `email-ops`
+
+## Specialized & Domain Skills (44 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-email-lifecycle-marketer/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-email-lifecycle-marketer/).
+
+- `activecampaign-automation`
+- `airtable-automation`
+- `amplitude-automation`
+- `asana-automation`
+- `cal-com-automation`
+- `changelog-automation`
+- `coda-automation`
+- `conductor-manage`
+- `configure-system`
+- `control-plane`
+- `convertkit-automation`
+- `creator-monetization`
+- `docusign-automation`
+- `elite-skill-architect`
+- `email-and-newsletter`
+- `email-systems`
+- `emotional-arc-designer`
+- `esign-field-placement`
+- `git-hooks-automation`
+- `google-docs-automation`
+- `google-drive-automation`
+- `google-sheets-automation`
+- `google-slides-automation`
+- `headline-psychologist`
+- `jira-automation`
+- `mailtrap-email-integration`
+- `microsoft-teams-automation`
+- `miro-automation`
+- `monday-automation`
+- `notion-automation`
+- *... and 14 additional specialized skills in [skills-by-role/role-email-lifecycle-marketer/](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-email-lifecycle-marketer/)*
 
 ## Operational Invariants & Boundaries
 

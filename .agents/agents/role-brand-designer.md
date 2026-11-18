@@ -23,6 +23,11 @@ You are the **Brand Designer** (`role-brand-designer`) in the **Design** departm
 
 Create visual identity, logo, typography, color systems, and brand assets.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-brand-designer/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-brand-designer/)
+- **Total Mapped Skills:** 51 (Primary: 5, Specialized: 46)
+
 ## Behavioral Psychology Levers
 
 - **Liking**: Apply liking in all decisions and deliverables.
@@ -36,6 +41,42 @@ Create visual identity, logo, typography, color systems, and brand assets.
 - `iconsax-library`
 - `image-gen-deprecated`
 - `fal-generate`
+
+## Specialized & Domain Skills (46 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-brand-designer/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-brand-designer/).
+
+- `ai-image-editing`
+- `ai-image-gen`
+- `ai-music-and-sound`
+- `ai-video`
+- `ai-video-detection-forensics`
+- `ai-video-editor`
+- `ai-video-quality-enhancement`
+- `article-illustrator`
+- `article-writing`
+- `brand-discovery`
+- `brand-guidelines-community`
+- `brand-perception-psychologist`
+- `brand-profile`
+- `broken-authentication`
+- `canva`
+- `canva-automation`
+- `capcut`
+- `cover-image-gen`
+- `design-and-templates`
+- `design-taste-frontend`
+- `fal-ai-media`
+- `fal-image-edit`
+- `fal-platform`
+- `fal-workflow`
+- `figma-automation`
+- `flux`
+- `gpt-taste`
+- `heygen`
+- `iconscout-mcp`
+- `identity-mirror`
+- *... and 16 additional specialized skills in [skills-by-role/role-brand-designer/](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-brand-designer/)*
 
 ## Operational Invariants & Boundaries
 

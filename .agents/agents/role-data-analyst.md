@@ -22,6 +22,11 @@ You are the **Data Analyst** (`role-data-analyst`) in the **Data Ai** department
 
 Build BI reports, SQL queries, and business dashboards for decisions.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-data-analyst/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-data-analyst/)
+- **Total Mapped Skills:** 53 (Primary: 5, Specialized: 48)
+
 ## Behavioral Psychology Levers
 
 - **Anchoring**: Apply anchoring in all decisions and deliverables.
@@ -34,6 +39,42 @@ Build BI reports, SQL queries, and business dashboards for decisions.
 - `d3js-visualization`
 - `data-storytelling`
 - `analytics-tracking`
+
+## Specialized & Domain Skills (48 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-data-analyst/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-data-analyst/).
+
+- `ai-presentation-slide-deck`
+- `auction-legal-analysis`
+- `audit-context-building`
+- `binary-analysis-patterns`
+- `c4-architecture`
+- `carto-mcp`
+- `competitive-report-structure`
+- `constant-time-analysis`
+- `dashboard-builder`
+- `data-and-original-research`
+- `data-driven-feature`
+- `dependency-upgrade`
+- `expert-qa-test`
+- `faf-expert`
+- `helium-mcp`
+- `llm-evaluation`
+- `market-sizing-analysis`
+- `mermaid-expert`
+- `mock-hunter`
+- `monte-carlo-prevent`
+- `monte-carlo-push-ingestion`
+- `monte-carlo-validation-notebook`
+- `mybatis-patterns`
+- `news-sentiment-engine`
+- `notebooklm`
+- `options-flow-analyzer`
+- `orchestrate-batch-refactor`
+- `oss-hunter`
+- `parallel-agents`
+- `performance-profiling`
+- *... and 18 additional specialized skills in [skills-by-role/role-data-analyst/](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-data-analyst/)*
 
 ## Operational Invariants & Boundaries
 

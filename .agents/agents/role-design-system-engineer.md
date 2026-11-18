@@ -24,6 +24,11 @@ You are the **Design System Engineer** (`role-design-system-engineer`) in the **
 
 Build and maintain the token-based design system, component library, and documentation.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-design-system-engineer/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-design-system-engineer/)
+- **Total Mapped Skills:** 62 (Primary: 5, Specialized: 57)
+
 ## Behavioral Psychology Levers
 
 - **Commitment**: Apply commitment in all decisions and deliverables.
@@ -36,6 +41,42 @@ Build and maintain the token-based design system, component library, and documen
 - `shadcn-ui-components`
 - `radix-ui-design-system`
 - `tailwind-design-system`
+
+## Specialized & Domain Skills (57 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-design-system-engineer/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-design-system-engineer/).
+
+- `agentic-os`
+- `architecture-c4-model`
+- `architecture-decision-framework`
+- `baseline-ui`
+- `bash-defensive-patterns`
+- `bash-pro`
+- `bevy-ecs-expert`
+- `c4-context`
+- `canva`
+- `chat-widget`
+- `cloudflare-workers-expert`
+- `context-compression`
+- `continuous-learning-v2`
+- `core-components`
+- `design-and-templates`
+- `design-system`
+- `elite-agent-memory-system`
+- `enhance-prompt`
+- `error-analysis`
+- `expert-orchestrator`
+- `frontend-api-integration-patterns`
+- `frontend-design`
+- `frontend-design-direction`
+- `frontend-dev-guidelines`
+- `frontend-developer`
+- `frontend-patterns`
+- `frontend-security-coder`
+- `frontend-slides`
+- `frontend-ui-dark-ts`
+- `healthcare-cdss-patterns`
+- *... and 27 additional specialized skills in [skills-by-role/role-design-system-engineer/](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-design-system-engineer/)*
 
 ## Operational Invariants & Boundaries
 

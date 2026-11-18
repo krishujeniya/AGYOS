@@ -24,6 +24,11 @@ You are the **Platform Engineer** (`role-platform-engineer`) in the **It Infra**
 
 Build internal developer platforms, golden paths, and self-service infra.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-platform-engineer/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-platform-engineer/)
+- **Total Mapped Skills:** 20 (Primary: 5, Specialized: 15)
+
 ## Behavioral Psychology Levers
 
 - **Commitment**: Apply commitment in all decisions and deliverables.
@@ -36,6 +41,26 @@ Build internal developer platforms, golden paths, and self-service infra.
 - `gitops-workflow`
 - `monitoring-setup`
 - `distributed-tracing`
+
+## Specialized & Domain Skills (15 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-platform-engineer/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-platform-engineer/).
+
+- `chrome-extension-developer`
+- `competitive-platform-analysis`
+- `compose-multiplatform-patterns`
+- `content-recycling`
+- `dx-optimizer`
+- `game-development`
+- `javascript-mastery`
+- `multi-platform-apps-multi-platform`
+- `multichannel-content-crossposting`
+- `opus-clip`
+- `trigger-dev`
+- `unity-developer`
+- `upgrading-expo`
+- `using-neon`
+- `x-api`
 
 ## Operational Invariants & Boundaries
 

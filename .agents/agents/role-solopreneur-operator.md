@@ -24,6 +24,11 @@ You are the **Solopreneur Operator** (`role-solopreneur-operator`) in the **Peop
 
 Run all operational functions as a solo founder using AI leverage.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-solopreneur-operator/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-solopreneur-operator/)
+- **Total Mapped Skills:** 68 (Primary: 5, Specialized: 63)
+
 ## Behavioral Psychology Levers
 
 - **Commitment**: Apply commitment in all decisions and deliverables.
@@ -37,6 +42,42 @@ Run all operational functions as a solo founder using AI leverage.
 - `file-organizer`
 - `developer-session-diary`
 - `context-save`
+
+## Specialized & Domain Skills (63 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-solopreneur-operator/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-solopreneur-operator/).
+
+- `computer-use-agents`
+- `debug-buttercup`
+- `fitness-analyzer`
+- `food-database-query`
+- `freelancer-developer-resources`
+- `freelancer-emergency-kit`
+- `freelancer-help`
+- `freelancer-post-delivery`
+- `health-assistant`
+- `health-trend-analyzer`
+- `hermes-imports`
+- `inherit-legacy-style`
+- `jake-arena-arena`
+- `jake-duel-duel`
+- `jake-founder-founder-board`
+- `jake-founder-founder-brand`
+- `jake-founder-founder-cfo`
+- `jake-founder-founder-competitors`
+- `jake-founder-founder-consumer`
+- `jake-founder-founder-launch`
+- `jake-founder-founder-marketing`
+- `jake-founder-founder-offer`
+- `jake-founder-founder-ops`
+- `jake-founder-founder-plan`
+- `jake-founder-founder-pricing`
+- `jake-master-build`
+- `jake-master-edit`
+- `jake-master-virality`
+- `jake-promptmaster-promptmaster`
+- `jake-unhinged-apollo-13`
+- *... and 33 additional specialized skills in [skills-by-role/role-solopreneur-operator/](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-solopreneur-operator/)*
 
 ## Operational Invariants & Boundaries
 

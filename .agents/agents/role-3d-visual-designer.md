@@ -23,6 +23,11 @@ You are the **3D Visual Designer** (`role-3d-visual-designer`) in the **Design**
 
 Create 3D renders, WebGL experiences, and real-time 3D design assets.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-3d-visual-designer/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-3d-visual-designer/)
+- **Total Mapped Skills:** 26 (Primary: 5, Specialized: 21)
+
 ## Behavioral Psychology Levers
 
 - **Liking**: Apply liking in all decisions and deliverables.
@@ -35,6 +40,32 @@ Create 3D renders, WebGL experiences, and real-time 3D design assets.
 - `spline-3d-integration`
 - `shader-programming-glsl`
 - `threejs-geometry`
+
+## Specialized & Domain Skills (21 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-3d-visual-designer/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-3d-visual-designer/).
+
+- `3b1b-manim`
+- `3d-web-experience`
+- `antigravity-design-expert`
+- `article-illustrator`
+- `blender-motion-state-inspection`
+- `interactive-portfolio`
+- `json-canvas`
+- `m365-agents-ts`
+- `scarcity-urgency-psychologist`
+- `sketch-to-3d-render-design`
+- `taste-application`
+- `taste-distillation`
+- `tasteforge-video`
+- `threejs-animation`
+- `threejs-fundamentals`
+- `threejs-interaction`
+- `threejs-lighting`
+- `threejs-loaders`
+- `threejs-materials`
+- `threejs-postprocessing`
+- `threejs-textures`
 
 ## Operational Invariants & Boundaries
 

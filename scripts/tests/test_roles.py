@@ -15,7 +15,9 @@ from agyos_decision.roles import (
     CompanyDepartment,
     SeniorityLevel,
     classify_role_for_task,
+    get_all_skills_for_role,
     get_role,
+    get_role_for_skill,
     get_skills_for_role,
     list_roles,
 )
@@ -326,6 +328,69 @@ class TestAgentDefinitionsOnDisk(unittest.TestCase):
             content = agent_file.read_text(encoding="utf-8")
             self.assertTrue(content.startswith("---"))
             self.assertIn(f"name: {role.role_id}", content)
+
+
+class TestSkillsByRoleOnDisk(unittest.TestCase):
+    """Verify role-wise skills directory (.agents/skills-by-role/) and matrix indexes."""
+
+    def setUp(self):
+        from pathlib import Path
+        self.repo_root = Path(__file__).resolve().parent.parent.parent
+        self.skills_by_role_dir = self.repo_root / ".agents" / "skills-by-role"
+        self.matrix_file = self.skills_by_role_dir / "roles-skills-matrix.json"
+
+    def test_skills_by_role_directory_exists(self):
+        self.assertTrue(self.skills_by_role_dir.is_dir())
+
+    def test_matrix_file_exists_and_valid(self):
+        import json
+        self.assertTrue(self.matrix_file.is_file())
+        with open(self.matrix_file, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        self.assertIn("by_role", data)
+        self.assertIn("by_skill", data)
+        self.assertEqual(len(data["by_role"]), 104)
+        self.assertGreaterEqual(len(data["by_skill"]), 2000)
+
+    def test_all_roles_have_skills_directory(self):
+        for role in list_roles():
+            role_dir = self.skills_by_role_dir / role.role_id
+            self.assertTrue(
+                role_dir.is_dir(),
+                f"Missing skills-by-role directory for {role.role_id}",
+            )
+
+    def test_symlinks_resolve_to_valid_skill_md(self):
+        checked = 0
+        for role in list_roles():
+            role_dir = self.skills_by_role_dir / role.role_id
+            for link in role_dir.iterdir():
+                skill_md = link / "SKILL.md"
+                self.assertTrue(
+                    skill_md.is_file(),
+                    f"Broken skill symlink: {link} -> {skill_md}",
+                )
+                checked += 1
+        self.assertGreater(checked, 2000)
+
+    def test_get_all_skills_for_role_returns_mapped_skills(self):
+        for role in list_roles():
+            all_skills = get_all_skills_for_role(role.role_id)
+            self.assertGreater(
+                len(all_skills), 0,
+                f"Role {role.role_id} returned empty mapped skills",
+            )
+            # Ensure primary skills are subset of all skills
+            for p in role.primary_skills:
+                self.assertIn(
+                    p, all_skills,
+                    f"Primary skill {p} missing from all_skills of {role.role_id}",
+                )
+
+    def test_get_role_for_skill_resolves(self):
+        res = get_role_for_skill("react-best-practices")
+        self.assertIsNotNone(res)
+        self.assertEqual(res["primary_role"], "role-frontend-engineer")
 
 
 if __name__ == "__main__":

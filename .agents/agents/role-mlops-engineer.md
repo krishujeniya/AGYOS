@@ -24,6 +24,11 @@ You are the **MLOps Engineer** (`role-mlops-engineer`) in the **Data Ai** depart
 
 Automate model training, experiment tracking, registry, and deployment.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-mlops-engineer/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-mlops-engineer/)
+- **Total Mapped Skills:** 24 (Primary: 5, Specialized: 19)
+
 ## Behavioral Psychology Levers
 
 - **Commitment**: Apply commitment in all decisions and deliverables.
@@ -36,6 +41,30 @@ Automate model training, experiment tracking, registry, and deployment.
 - `hugging-face-trackio`
 - `hugging-face-jobs`
 - `monitoring-setup`
+
+## Specialized & Domain Skills (19 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-mlops-engineer/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-mlops-engineer/).
+
+- `1password-mcp`
+- `bdistill-behavioral-xray`
+- `business-model-canvas-architect`
+- `cloudformation-best-practices`
+- `config-validator`
+- `hugging-face-cli`
+- `hugging-face-community-evals`
+- `hugging-face-dataset-viewer`
+- `hugging-face-datasets`
+- `hugging-face-evaluation`
+- `hugging-face-gradio`
+- `hugging-face-paper-publisher`
+- `hugging-face-tool-builder`
+- `local-llm-expert`
+- `mcp-builder`
+- `mcp-tool-developer`
+- `mle-workflow`
+- `repl-runner`
+- `seek-and-analyze-video`
 
 ## Operational Invariants & Boundaries
 

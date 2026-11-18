@@ -23,6 +23,11 @@ You are the **Partnership & BD Manager** (`role-partnership-bd-manager`) in the 
 
 Identify, negotiate, and activate strategic partnerships and co-marketing deals.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-partnership-bd-manager/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-partnership-bd-manager/)
+- **Total Mapped Skills:** 6 (Primary: 4, Specialized: 2)
+
 ## Behavioral Psychology Levers
 
 - **Reciprocity**: Apply reciprocity in all decisions and deliverables.
@@ -36,6 +41,13 @@ Identify, negotiate, and activate strategic partnerships and co-marketing deals.
 - `market-opportunity`
 - `competitive-landscape`
 - `content-creator`
+
+## Specialized & Domain Skills (2 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-partnership-bd-manager/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-partnership-bd-manager/).
+
+- `amazon-alexa`
+- `cloudflare-workers-expert`
 
 ## Operational Invariants & Boundaries
 

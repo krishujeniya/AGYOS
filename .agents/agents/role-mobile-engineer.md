@@ -24,6 +24,11 @@ You are the **Mobile Engineer** (`role-mobile-engineer`) in the **Engineering** 
 
 Ship iOS and Android apps with platform-native UX patterns.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-mobile-engineer/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-mobile-engineer/)
+- **Total Mapped Skills:** 97 (Primary: 5, Specialized: 92)
+
 ## Behavioral Psychology Levers
 
 - **Fitts Law**: Apply fitts law in all decisions and deliverables.
@@ -36,6 +41,42 @@ Ship iOS and Android apps with platform-native UX patterns.
 - `expo-deployment`
 - `swift-concurrency-expert`
 - `kotlin-coroutines-expert`
+
+## Specialized & Domain Skills (92 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-mobile-engineer/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-mobile-engineer/).
+
+- `ai-dashboad-e2e-testing`
+- `android-clean-architecture`
+- `android-jetpack-compose-expert`
+- `android_ui_verification`
+- `animate-expo`
+- `app-store-optimization`
+- `avalonia-viewmodels-zafiro`
+- `building-native-ui`
+- `dart-flutter-patterns`
+- `debugging-strategies`
+- `earllm-build`
+- `expo-api-routes`
+- `expo-cicd-workflows`
+- `expo-dev-client`
+- `expo-tailwind-setup`
+- `expo-ui-jetpack-compose`
+- `expo-ui-swift-ui`
+- `flutter-dart-code-review`
+- `foundation-models-on-device`
+- `hig-components-content`
+- `hig-components-controls`
+- `hig-components-dialogs`
+- `hig-components-menus`
+- `hig-components-search`
+- `hig-components-status`
+- `hig-components-system`
+- `hig-inputs`
+- `hig-platforms`
+- `hig-project-context`
+- `hig-technologies`
+- *... and 62 additional specialized skills in [skills-by-role/role-mobile-engineer/](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-mobile-engineer/)*
 
 ## Operational Invariants & Boundaries
 

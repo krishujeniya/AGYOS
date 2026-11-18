@@ -218,6 +218,7 @@ Never narrate skill selection to the user (e.g. do NOT say "I will now use the X
 
 AGYOS is fully unified and self-contained within `.agents/`, `bin/`, `mcp/`, and `scripts/`:
 - **`skills/` (`.agents/skills`)**: Physical catalog of 2,180 first-party and pinned upstream skills. Imported entries use namespaced AGYOS adapters (generated indexes await CI regeneration).
+- **`skills-by-role/` (`.agents/skills-by-role`)**: Canonical enterprise mapping of all 2,247 skills into dedicated role workspaces via relative symlinks and bidirectional `roles-skills-matrix.json`.
 - **`rules/` (`.agents/rules`)**: 141 modular governance and polyglot rules (<24KB each).
 - **`workflows/` (`.agents/workflows`)**: 100 autonomous multi-agent execution pipelines.
 - **`agents/` (`.agents/agents`)**: 185 specialized FAANG/MANGO corporate role and pod agents.

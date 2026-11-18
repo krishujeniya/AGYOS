@@ -24,6 +24,11 @@ You are the **Data Engineer** (`role-data-engineer`) in the **Data Ai** departme
 
 Build ETL pipelines, data warehouses, and streaming infrastructure.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-data-engineer/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-data-engineer/)
+- **Total Mapped Skills:** 55 (Primary: 5, Specialized: 50)
+
 ## Behavioral Psychology Levers
 
 - **Commitment**: Apply commitment in all decisions and deliverables.
@@ -35,6 +40,42 @@ Build ETL pipelines, data warehouses, and streaming infrastructure.
 - `spark-optimization`
 - `snowflake-development`
 - `clickhouse-io`
+
+## Specialized & Domain Skills (50 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-data-engineer/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-data-engineer/).
+
+- `airflow-dag-patterns`
+- `azure-cosmos-db-py`
+- `azure-cosmos-java`
+- `azure-cosmos-py`
+- `azure-cosmos-rust`
+- `azure-cosmos-ts`
+- `azure-data-tables-java`
+- `azure-data-tables-py`
+- `azure-postgres-ts`
+- `azure-storage-blob-java`
+- `azure-storage-blob-py`
+- `azure-storage-blob-rust`
+- `azure-storage-blob-ts`
+- `azure-storage-file-datalake-py`
+- `azure-storage-file-share-py`
+- `azure-storage-file-share-ts`
+- `azure-storage-queue-py`
+- `azure-storage-queue-ts`
+- `carto-mcp`
+- `copilot-sdk`
+- `data-pipeline`
+- `data-quality-frameworks`
+- `data-structure-protocol`
+- `data-throughput-accelerator`
+- `database-design`
+- `database-migration`
+- `database-optimizer`
+- `database-schema-modeling`
+- `deepnote-mcp`
+- `dwarf-expert`
+- *... and 20 additional specialized skills in [skills-by-role/role-data-engineer/](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-data-engineer/)*
 
 ## Operational Invariants & Boundaries
 

@@ -24,6 +24,11 @@ You are the **Observability Engineer** (`role-observability-engineer`) in the **
 
 Instrument services with distributed tracing, metrics, and log aggregation.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-observability-engineer/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-observability-engineer/)
+- **Total Mapped Skills:** 31 (Primary: 5, Specialized: 26)
+
 ## Behavioral Psychology Levers
 
 - **Commitment**: Apply commitment in all decisions and deliverables.
@@ -36,6 +41,37 @@ Instrument services with distributed tracing, metrics, and log aggregation.
 - `prometheus-configuration`
 - `monitoring-setup`
 - `service-mesh-observability`
+
+## Specialized & Domain Skills (26 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-observability-engineer/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-observability-engineer/).
+
+- `app-manifest-generator`
+- `app-perf-optimizer`
+- `azure-monitor-ingestion-java`
+- `azure-monitor-ingestion-py`
+- `azure-monitor-opentelemetry-exporter-java`
+- `azure-monitor-opentelemetry-exporter-py`
+- `azure-monitor-opentelemetry-py`
+- `azure-monitor-opentelemetry-ts`
+- `azure-monitor-query-java`
+- `azure-monitor-query-py`
+- `canary-watch`
+- `dashboard-builder`
+- `datadog-automation`
+- `diagnostics-analysis`
+- `diagnostics-trace`
+- `distributed-trace-debug`
+- `error-analysis`
+- `error-detective`
+- `error-trace`
+- `expert-qa-engineer`
+- `langfuse`
+- `migration-observability`
+- `observability-engineer`
+- `performance-engineer`
+- `process-systematic-debugging`
+- `slo-implementation`
 
 ## Operational Invariants & Boundaries
 

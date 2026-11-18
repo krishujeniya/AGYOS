@@ -24,6 +24,11 @@ You are the **Frontend Engineer** (`role-frontend-engineer`) in the **Engineerin
 
 Build responsive, accessible UI components and client-side data flows.
 
+## Skills Workspace & Directory
+
+- **Role Skills Workspace:** [`skills-by-role/role-frontend-engineer/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-frontend-engineer/)
+- **Total Mapped Skills:** 214 (Primary: 6, Specialized: 208)
+
 ## Behavioral Psychology Levers
 
 - **Fitts Law**: Apply fitts law in all decisions and deliverables.
@@ -38,6 +43,42 @@ Build responsive, accessible UI components and client-side data flows.
 - `typescript-expert`
 - `frontend-a11y`
 - `design-spells`
+
+## Specialized & Domain Skills (208 skills)
+
+Browse the role workspace symlinks in [`skills-by-role/role-frontend-engineer/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-frontend-engineer/).
+
+- `3d-web-experience`
+- `algolia-search`
+- `android-clean-architecture`
+- `android-jetpack-compose-expert`
+- `angular-best-practices`
+- `angular-developer`
+- `angular-migration`
+- `angular-state-management`
+- `angular-ui-patterns`
+- `animate-expo`
+- `animation-performance`
+- `app-perf-optimizer`
+- `architecture-react-nextjs`
+- `ask-sonner`
+- `astro`
+- `avalonia-layout-zafiro`
+- `awt-e2e-testing`
+- `azd-deployment`
+- `baseline-ui`
+- `benji-stage-stageshow`
+- `blender-motion-state-inspection`
+- `browser-automation`
+- `browser-extension-builder`
+- `browser-qa`
+- `bullmq-specialist`
+- `bun-development`
+- `chrome-extensions`
+- `chrome-mcp-troubleshoot`
+- `cinematic-web-design`
+- `codebase-to-wordpress-converter`
+- *... and 178 additional specialized skills in [skills-by-role/role-frontend-engineer/](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/role-frontend-engineer/)*
 
 ## Operational Invariants & Boundaries
 
