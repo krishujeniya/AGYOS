@@ -623,7 +623,12 @@ def score_skill_fit(skill: Dict[str, Any], query: str, domain: str, context: Opt
     return score
 
 
-def select_best_skills(query: str, catalog: Optional[List[Dict[str, Any]]] = None, limit: int = 5) -> List[Dict[str, Any]]:
+def select_best_skills(
+    query: str,
+    catalog: Optional[List[Dict[str, Any]]] = None,
+    limit: int = 5,
+    role_id: Optional[str] = None,
+) -> List[Dict[str, Any]]:
     """Rank catalog skills against the query and domain."""
     if limit <= 0:
         return []
@@ -646,11 +651,10 @@ def select_best_skills(query: str, catalog: Optional[List[Dict[str, Any]]] = Non
 
     scored: List[Tuple[float, Dict[str, Any]]] = []
 
-    # Role-aware boost: compute matched role's skill set once per call
-    try:
-        active_role = classify_role_for_task(query)
-        role_skill_set = set(get_skills_for_role(active_role.role_id))
-    except Exception:
+    # Role-aware boost: applied when role_id is provided
+    if role_id:
+        role_skill_set = set(get_skills_for_role(role_id))
+    else:
         role_skill_set = set()
 
     for s in catalog:

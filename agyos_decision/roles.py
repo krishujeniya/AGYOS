@@ -734,7 +734,7 @@ _r(CompanyRole(
     default_risk="R1",
     keywords=["speech", "audio", "tts", "stt", "voice", "whisper", "asr",
                "text to speech", "speech recognition", "voicebot", "audio model"],
-    primary_skills=["voice-agents", "fal-audio", "ai-voiceover",
+    primary_skills=["audio-transcriber", "voice-agents", "fal-audio", "ai-voiceover",
                     "azure-ai-transcription-py", "voice-ai-development"],
 ))
 
@@ -1805,7 +1805,7 @@ def get_skills_for_role(role_id: str) -> List[str]:
 def classify_role_for_task(query: str) -> CompanyRole:
     """Match a natural language query to the best-fit CompanyRole.
 
-    Scoring: keyword match weight (phrase length bonus) × seniority multiplier.
+    Scoring: keyword match weight (phrase length bonus) with word-boundary enforcement.
     Falls back to role-swe (safe default) when no keywords match.
     """
     lower = query.lower()
@@ -1815,8 +1815,8 @@ def classify_role_for_task(query: str) -> CompanyRole:
     for role in _REGISTRY.values():
         score = 0
         for kw in role.keywords:
-            if kw in lower:
-                score += len(kw.split()) + 2  # longer phrases score higher
+            if re.search(r"\b" + re.escape(kw) + r"\b", lower):
+                score += len(kw.split()) * 3 + 2  # longer phrases score much higher
         if score > best_score:
             best_score = score
             best_role = role
