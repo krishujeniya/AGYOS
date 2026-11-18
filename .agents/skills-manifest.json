@@ -1,7 +1,7 @@
 {
   "version": "3.1.0",
-  "total_skills": 2246,
-  "tier1_count": 414,
+  "total_skills": 2247,
+  "tier1_count": 415,
   "tier2_count": 1832,
   "skills": [
     {
@@ -5103,6 +5103,12 @@
       "tier": 2,
       "description": "AI image generation skill powered by Google Gemini, enabling seamless visual content creation for UI placeholders, documentation, and design assets.",
       "path": ".agents/skills/gemini-image-generation"
+    },
+    {
+      "name": "gemini-notebook",
+      "tier": 1,
+      "description": "Comprehensive operational runbook for Google Gemini Notebook (formerly NotebookLM) programmatic access via CLI (nlm) and MCP server (gemini-notebook-mcp), based on jacob-bd/gemini-notebook-mcp-cli. Source-grounded queries, multi-format sources, automated research, studio audio/video artifacts, and Google Workspace exports.",
+      "path": ".agents/skills/gemini-notebook"
     },
     {
       "name": "gemini-web-api",

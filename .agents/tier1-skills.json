@@ -1087,6 +1087,12 @@
       "path": ".agents/skills/gcp-cloud-run"
     },
     {
+      "name": "gemini-notebook",
+      "tier": 1,
+      "description": "Comprehensive operational runbook for Google Gemini Notebook (formerly NotebookLM) programmatic access via CLI (nlm) and MCP server (gemini-notebook-mcp), based on jacob-bd/gemini-notebook-mcp-cli. Source-grounded queries, multi-format sources, automated research, studio audio/video artifacts, and Google Workspace exports.",
+      "path": ".agents/skills/gemini-notebook"
+    },
+    {
       "name": "geo-fundamentals",
       "tier": 1,
       "description": "Generative Engine Optimization for AI search engines (ChatGPT, Claude, Perplexity).",
