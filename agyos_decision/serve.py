@@ -14,7 +14,7 @@ serves a laptop dev run and a systemd unit:
 ======================  ============================================  =========
 env var                 meaning                                        default
 ======================  ============================================  =========
-``ROXX_HOST``           bind address                                   0.0.0.0
+``ROXX_HOST``           bind address                                   127.0.0.1
 ``ROXX_PORT``           bind port                                      8000
 ``ROXX_DEVICE``         torch device for every checkpoint              (auto)
 ``ROXX_PRELOAD``        build the checkpoints at startup, not lazily   1
@@ -39,6 +39,7 @@ and touches no GPU -- which is what keeps the Nix ``pythonImportsCheck`` honest.
 """
 import collections
 import hmac
+import ipaddress
 import json
 import math
 import os
@@ -489,12 +490,26 @@ def create_app(router: Optional[Any] = None):
     return app
 
 
+def _resolve_bind_host() -> str:
+    host = os.environ.get("ROXX_HOST", "127.0.0.1")
+    try:
+        loopback = ipaddress.ip_address(host).is_loopback
+    except ValueError:
+        loopback = host == "localhost"
+    if not loopback and (
+        os.environ.get("ROXX_ALLOW_REMOTE") != "1"
+        or not os.environ.get("ROXX_API_KEY", "").strip()
+    ):
+        raise ValueError("Remote binding requires ROXX_ALLOW_REMOTE=1 and ROXX_API_KEY")
+    return host
+
+
 def main() -> None:
     import uvicorn
 
     uvicorn.run(
         create_app(),
-        host=os.environ.get("ROXX_HOST", "0.0.0.0"),
+        host=_resolve_bind_host(),
         port=_resolve_port(),
         log_level=os.environ.get("ROXX_LOG_LEVEL", "info"),
     )
