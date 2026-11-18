@@ -21,6 +21,7 @@ Commands:
   skill <name> Display instructions and documentation for a skill
   sysinfo     Display system architecture, memory tiers, and health
   mem <tier>  Read hierarchical memory (tier0: core, tier1: recall, tier2: archival)
+  query [--compact] [--json] [--xml] <p> Optimize query end-to-end (role, skills, EVPI, model, KV-cache XML)
   intent [--xml] [--compact] <prompt> Compile natural language intent to TaskContract and EVPI decision
   xml-agent <role-id> [--compact] Compile role definition into FAANG-grade XML with TOON skills
   xml-skill <skill> [--compact]   Compile skill runbook into compact XML card
@@ -64,6 +65,73 @@ case "$cmd" in
     ;;
   canary)
     python3 scripts/canary_launch_gate.py "$@"
+    ;;
+  query|optimize-query)
+    use_compact=0
+    use_json=0
+    use_xml=0
+    args=()
+    for arg in "$@"; do
+      if [ "$arg" = "--compact" ]; then
+        use_compact=1
+      elif [ "$arg" = "--json" ]; then
+        use_json=1
+      elif [ "$arg" = "--xml" ]; then
+        use_xml=1
+      else
+        args+=("$arg")
+      fi
+    done
+    q_str="${args[*]:-}"
+    if [ -z "$q_str" ]; then
+      echo "Usage: agyos query [--compact] [--json] [--xml] <prompt>" >&2
+      exit 1
+    fi
+    python3 -c "
+import json, sys
+sys.path.insert(0, '.')
+from agyos_decision.query_optimizer import optimize_query
+
+query = sys.argv[1]
+compact = sys.argv[2] == '1' if len(sys.argv) > 2 else False
+as_json = sys.argv[3] == '1' if len(sys.argv) > 3 else False
+as_xml = sys.argv[4] == '1' if len(sys.argv) > 4 else False
+
+plan = optimize_query(query, compact=compact)
+
+if as_json:
+    print(json.dumps(plan.to_dict(), indent=2))
+elif as_xml:
+    print(plan.to_xml(compact=compact))
+else:
+    print('============================================================')
+    print('AGYOS Unified Query Optimizer')
+    print('============================================================')
+    print(f'Query:              {plan.query}')
+    print(f'Assigned Lead Role: {plan.role_title} ({plan.role_id})')
+    print(f'Department / Tier:  {plan.department} [{plan.seniority}]')
+    print(f'Governing Pod:      {plan.governing_pod}')
+    print(f'Risk Tier:          {plan.risk} (Complexity: {plan.complexity}/5 — {plan.complexity_reason})')
+    print(f'Primary Skill:      {plan.primary_skill}')
+    if plan.candidate_skills:
+        print(f'Specialist Skills:  {\", \".join(plan.candidate_skills)}')
+    print(f'Recommended Model:  {plan.model_id} ({plan.model_provider}) [Thinking: {plan.thinking_level or \"none\"}]')
+    print(f'Error Budget:       {plan.token_budget} tokens | \${plan.cost_ceiling_usd:.2f}')
+    print('------------------------------------------------------------')
+    print('Amazon Working Backwards & EVPI Clarification:')
+    if plan.evpi_should_ask:
+        print(f'  [Action Required] Discovery Question for Client:')
+        print(f'  >> {plan.evpi_question}')
+    else:
+        print('  [Proceed Immediately] Safe default assumptions applied:')
+        for a in plan.assumptions:
+            print(f'  - {a}')
+    print('------------------------------------------------------------')
+    print(f'KV-Cache Prompt Structure:')
+    print(f'  - Static Prefix:  {len(plan.static_prefix_xml)} chars (~{len(plan.static_prefix_xml)//4} tokens) [Eligible for 90% cache discount]')
+    print(f'  - Dynamic Suffix: {len(plan.dynamic_suffix_xml)} chars (~{len(plan.dynamic_suffix_xml)//4} tokens) [Per-task delta]')
+    print('============================================================')
+" "$q_str" "$use_compact" "$use_json" "$use_xml"
     ;;
   intent)
     use_xml=0
