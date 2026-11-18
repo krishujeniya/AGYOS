@@ -163,7 +163,7 @@ def optimize_query(
     assumptions = list(evpi_decision.assumptions_applied) or list(contract.assumptions)
 
     # 5. Model Routing & Token Economics
-    model_decision = route_model(clean_query, sensitivity=sensitivity)
+    model_decision = route_model(clean_query, complexity=complexity, sensitivity=sensitivity)
     model_id = model_decision.model_id
     model_provider = model_decision.provider.value
     thinking_level = model_decision.thinking_level

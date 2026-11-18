@@ -300,3 +300,21 @@ class ModelRouter:
                 privacy_boundary=flash_spec.privacy_boundary,
                 compaction_threshold=budget["compaction_trigger"],
             )
+
+
+_DEFAULT_ROUTER = ModelRouter()
+
+
+def route_model(
+    task: str,
+    complexity: int = 2,
+    sensitivity: DataSensitivity = DataSensitivity.INTERNAL,
+    user_override_model: Optional[str] = None,
+) -> RoutingPolicyDecision:
+    """Convenience helper to route a task using the default model registry and policy."""
+    return _DEFAULT_ROUTER.route(
+        task=task,
+        complexity=complexity,
+        sensitivity=sensitivity,
+        user_override_model=user_override_model,
+    )
