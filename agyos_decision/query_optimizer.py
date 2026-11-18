@@ -1,7 +1,7 @@
 """AGYOS Query Optimization Engine — Unified Intent, Role, Skill & Context Synthesis.
 
 Translates any natural language prompt into a fully-optimized execution plan:
-1. Matches optimal FAANG role from the 104-role enterprise matrix.
+1. Matches optimal FAANG role from the 104-role enterprise matrix aligned with the pod.
 2. Selects specialist skills from the 2,247 catalog and maps DAG relations.
 3. Applies Amazon Working Backwards EVPI clarification and safe default assumptions.
 4. Generates KV-cache aligned Tri-Format prompt envelopes (static prefix + dynamic suffix).
@@ -12,13 +12,14 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 import json
+import re
 from typing import Any, Dict, List, Optional
 from xml.sax.saxutils import escape as xml_escape
 
 from .contracts import TaskContract
 from .intent_compiler import compile_intent
 from .evpi_clarify import evaluate_evpi
-from .roles import get_role, classify_role_for_task, CompanyRole
+from .roles import get_role, classify_role_for_task, list_roles, CompanyRole
 from .skills_router import decide_skill
 from .model_router import route_model, DataSensitivity
 from .graph import get_role_subgraph
@@ -106,10 +107,10 @@ class OptimizedQueryPlan:
         xml_lines.append(f'  </clarification>')
         xml_lines.append(f'  <prompt_envelope format="xml_toon">')
         xml_lines.append(f'    <static_prefix format="xml_kv_cache">')
-        xml_lines.append(f'<![CDATA[\n{self.static_prefix_xml}\n]]>')
+        xml_lines.append(f'{self.static_prefix_xml}')
         xml_lines.append(f'    </static_prefix>')
         xml_lines.append(f'    <dynamic_suffix format="xml_task">')
-        xml_lines.append(f'<![CDATA[\n{self.dynamic_suffix_xml}\n]]>')
+        xml_lines.append(f'{self.dynamic_suffix_xml}')
         xml_lines.append(f'    </dynamic_suffix>')
         xml_lines.append(f'  </prompt_envelope>')
         xml_lines.append(f'</agyos_optimized_query>')
@@ -134,17 +135,34 @@ def optimize_query(
     # 1. Intent Compilation & Risk Classification
     contract = compile_intent(clean_query)
     risk = contract.risk
+    governing_pod = contract.pod
 
-    # 2. Role Resolution
+    # 2. Role Resolution (ensuring alignment with the assigned pod)
     matched_role = get_role(contract.role_id) if contract.role_id else None
     if not matched_role:
         matched_role = classify_role_for_task(clean_query)
+
+    if matched_role.governing_pod != governing_pod:
+        # Align role with the assigned pod
+        pod_roles = [r for r in list_roles() if r.governing_pod == governing_pod]
+        best_pod_role: Optional[CompanyRole] = None
+        best_score = -1
+        lower = clean_query.lower()
+        for r in pod_roles:
+            score = 0
+            for kw in r.keywords:
+                if re.search(r"\b" + re.escape(kw) + r"\b", lower):
+                    score += len(kw.split()) * 3 + 2
+            if score > best_score:
+                best_score = score
+                best_pod_role = r
+        if best_pod_role and best_score > 0:
+            matched_role = best_pod_role
 
     role_id = matched_role.role_id
     role_title = matched_role.title
     department = matched_role.department
     seniority = matched_role.seniority
-    governing_pod = matched_role.governing_pod
 
     # 3. Specialist Skill Discovery
     skill_result = decide_skill(clean_query)
