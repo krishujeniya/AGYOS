@@ -2,15 +2,15 @@
 
 - Task: Verify master plan status, complete M0 baseline containment gates (B01 synthetic negative control, B02 corrupt state handling and multi-stage rejections, B03 private sentinel checks, B04 direct ASGI bind containment), and track `plan.md`.
 - Branch: `main`.
-- Revisions: baseline `df7eda23`, checkpoint `b3193ab0`, converged on `main` with single-branch invariant.
+- Revisions: baseline `df7eda23`, checkpoint `2c13259d`, converged on `main` with single-branch invariant.
 - Delivered changes:
   - `.github/workflows/ci.yml`: added synthetic negative control probe for Gitleaks secret detection, added private sentinel and internal state isolation checks for documentation pages and container candidate images.
   - `bin/state.sh`: added explicit preflight verification against corrupt JSON state before acquiring locks and performing mutations; prevents malformed state mutation.
   - `agyos_decision/serve.py`: enforced `_resolve_bind_host()` in `create_app()` factory, preventing unauthenticated remote binding during direct ASGI startup.
   - `scripts/tests/test_gate_transitions.py`: added test coverage for corrupt state rejection without file mutation and full matrix of invalid intermediate gate jumps.
   - `scripts/tests/test_serve_bind.py`: added test coverage verifying `create_app` rejects unauthenticated remote hosts.
-  - `plan.md`: tracked master plan, updated implementation checkpoint to `b3193ab0`, and updated acceptance status for B01–B04.
-- Verification evidence: static read-only inspection and `git diff --check` verified clean; zero local builds/tests run; CI verification via GitHub Actions.
+  - `plan.md`: tracked master plan, updated implementation checkpoint to `2c13259d`, and updated acceptance status for B01–B04.
+- Verification evidence: static read-only inspection and `git diff --check` verified clean; zero local builds/tests run; CI run 44237803206 passed all 5 jobs on GitHub Actions.
 - Exact next command: `gh run list --limit 5`
 
 ---

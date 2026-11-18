@@ -1,6 +1,6 @@
 # AGYOS production engineering master plan
 
-Planning baseline: `df7eda23942d3ab8b5718e5ac34d426e8c46fad0`. The latest verified implementation checkpoint recorded here is `b3193ab0cc8d43e52ec9d47ef96cbc325328d5a1`. Progress labels reflect the evidence at those revisions.
+Planning baseline: `df7eda23942d3ab8b5718e5ac34d426e8c46fad0`. The latest verified implementation checkpoint recorded here is `2c13259dd18bf5d705c7438ea28172828b031448`. Progress labels reflect the evidence at those revisions.
 
 ## 1. Executive assessment
 
@@ -8,7 +8,7 @@ Ship AGYOS first as a local planning, skill-discovery, and recoverable workflow 
 
 The baseline CI passed, with the installed-host test skipped because the AGY CLI was absent. Pages deployed. The baseline Strix run printed a successful verdict from a fallback that performed no scan. The initializer could ignore a rejected transition, overwrite milestone state, and emit success. Publication was independently triggered by matching pushes. These findings establish the release order: contain incorrect outcomes, make state recoverable, then qualify publication and optional execution. [Baseline CI](https://github.com/krishujeniya/AGYOS/actions/runs/44095380216) · [Baseline Pages](https://github.com/krishujeniya/AGYOS/actions/runs/44095380338) · [Baseline Strix](https://github.com/krishujeniya/AGYOS/actions/runs/44095380352)
 
-**Implementation checkpoint.** All five jobs passed on `1387d10d` and subsequent dependabot upload-artifact v7 convergence (`b3193ab0`). M0 containment is complete: synthetic Gitleaks negative controls and non-empty SARIF assertions landed; corrupted state rejection and multi-stage gate transition validation landed; private sentinel isolation checks landed in documentation pages and container build; and ASGI factory bind containment landed in `create_app`. Production promotion and recovery drills remain the focus for subsequent operational cycles.
+**Implementation checkpoint.** All five jobs passed on `2c13259d` ([CI run 44237803206](https://github.com/krishujeniya/AGYOS/actions/runs/44237803206)). Dependabot `upload-artifact` v7 was squashed and merged into `main` with secondary branch pruned. M0 containment is verified: synthetic Gitleaks negative controls and non-empty SARIF assertions landed; corrupted state rejection and multi-stage gate transition validation landed; private sentinel isolation checks landed in documentation pages and container build; and ASGI factory bind containment landed in `create_app`. Production promotion and recovery drills remain the focus for subsequent operational cycles.
 
 ## 2. Evidence-based repository audit
 
