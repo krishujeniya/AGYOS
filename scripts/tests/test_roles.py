@@ -309,5 +309,24 @@ class TestGetSkillsForRole(unittest.TestCase):
                 self.assertIsInstance(skill, str, f"Non-string skill in {role.role_id!r}: {skill!r}")
 
 
+class TestAgentDefinitionsOnDisk(unittest.TestCase):
+    """Verify that all registered roles have physical .agents/agents/<role-id>.md definition files."""
+
+    def test_all_104_roles_have_agent_file(self):
+        from pathlib import Path
+        repo_root = Path(__file__).resolve().parent.parent.parent
+        agents_dir = repo_root / ".agents" / "agents"
+        self.assertTrue(agents_dir.is_dir())
+        for role in list_roles():
+            agent_file = agents_dir / f"{role.role_id}.md"
+            self.assertTrue(
+                agent_file.is_file(),
+                f"Missing agent file for role: {role.role_id} at {agent_file}",
+            )
+            content = agent_file.read_text(encoding="utf-8")
+            self.assertTrue(content.startswith("---"))
+            self.assertIn(f"name: {role.role_id}", content)
+
+
 if __name__ == "__main__":
     unittest.main()
