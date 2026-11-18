@@ -156,3 +156,18 @@ Before tagging or pushing any release to `origin/main`:
    ```bash
    bash bin/gate-check.sh
    ```
+
+## Documentation release candidates
+
+A successful push-triggered CI run produces `pages-candidate` and
+`documentation-image-candidate`. Record the run URL and full commit SHA.
+The candidates are retained for 14 days. Dispatch the corresponding
+publication workflow on `main` only after approving that revision for the
+destination. The workflow verifies the candidate's checksums before publishing.
+If the candidate has expired, generate and verify a new candidate.
+
+Verify the expected Pages route and container digest after publication. Record
+the previously approved image digest before moving `latest`. If a release
+must be rolled back, restore the previous approved image digest and use
+the retained, verified Pages bundle through an authorized publication job.
+Keep publication paused if the previous artifact cannot be verified.
