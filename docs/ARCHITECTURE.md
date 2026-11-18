@@ -59,6 +59,7 @@ Inspired by the virtual memory paging architectures of MemGPT and Letta:
   - `agyos_checkpoint`: Audit ledger entries for specific milestones.
   - `agyos_find_skill`: Deterministic keyword and phrase search over the generated skill index; the current checkout has 2,180 physical runbooks pending CI index regeneration.
   - `agyos_sys_info`: Comprehensive OS runtime diagnostics, loaded drivers, and subsystem health.
+  - `agyos_workspace_state`: Transactional workspace status, latest revision, and operation audit log from SQLite store.
   - `agyos_memory`: Virtual memory read, write, and list operations across tiers.
 
 ### Layer 3: AGYOS 5-Gate SOP Engine (`Code = SOP(Team)`)
@@ -70,7 +71,10 @@ Implements the deterministic Standard Operating Procedure (SOP) paradigm proven 
                                  │
                                  └───► [FAST-PATH: IMPLEMENT ➔ VERIFY]
 ```
-- **Gate Transitions**: Programmatically locked in `.agents/state/state.json`.
+- **Dual-Layer State Engine**:
+  - **Primary Authoritative Store**: ACID SQLite database (`.agents/state/agyos_state.sqlite`) with schema migrations, monotonically increasing revision numbers, compare-and-swap (CAS) conflict rejection, and idempotent operation replay.
+  - **Projections**: Read-only human/tool summaries (`.agents/state/state.json`, `.agents/state/CURRENT.md`) reconstructed from the authoritative SQLite tables.
+- **Gate Transitions**: Programmatically locked and validated under `bin/state.sh` and `bin/workspace-state.cjs`.
 - **Fast-Path Router**: Complexity $\le 2$ bypasses Gates 1–3, avoiding bureaucracy for minor edits.
 
 ### Layer 4: Adaptive Hierarchy & 5-Pod Operational Topology

@@ -78,7 +78,10 @@ The repository instructions require human approval at defined gate boundaries. C
 | `.agents/agents/`, `.agents/workflows/`, `.agents/plugins/` | Agent definitions, workflow descriptions, and host plugin configuration. |
 | `agyos_decision/` | Skill catalog loading, intent routing, task contracts, and state-ledger code. |
 | `bin/agyos`, `bin/state.sh` | CLI entry point and gate/state operations. |
-| `scripts/agyos-runtime/`, `scripts/hooks/` | Runtime lifecycle code, host hooks, and stateful integrations. Hook effectiveness depends on host registration and behavior. |
+| `scripts/agyos-runtime/`, `scripts/hooks/` | Runtime lifecycle code, state store migrations, host hooks, and stateful integrations. Hook effectiveness depends on host registration and behavior. |
+| `scripts/export_diagnostics.py` | Redacted diagnostics and system state exporter with token/path scrubbing. |
+| `scripts/generate_sbom.py` | Software Bill of Materials (SBOM) and license compliance auditor. |
+| `.agents/state/agyos_state.sqlite` | Primary ACID transactional store tracking workspace milestones, CAS revisions, and operations. |
 | `scripts/council/` | Optional multi-agent deliberation CLI and tests. |
 | `mcp/` | Local stdio MCP state server and optional service launchers. |
 | `integrations/` | Optional adapters; external services may require separate installation, credentials, and authorization. |
@@ -107,8 +110,10 @@ AGYOS includes five pod definitions and corresponding SOP runbooks. They organiz
 | `bin/agyos find "<query>"` | Search the local skill catalog. |
 | `bin/agyos skill <id>` | Print a skill's `SKILL.md`. |
 | `bin/agyos intent "<task>"` | Produce a task contract and clarification decision. |
-| `bin/agyos state` | Read the current workflow state. |
+| `bin/agyos state` | Read current workflow state, active milestone, and next safe action. |
 | `bin/agyos gate <name>` | Request a state transition; this changes workspace state. |
+| `bin/agyos workspace <action>` | Transactional workspace operations (`status`, `transact`, `project`, `restore`, `replay`). |
+| `bin/agyos diagnostics` | Export redacted diagnostic bundle scrubbing tokens, home paths, and sentinels. |
 
 The CLI also has setup, verification, security, model-routing, and Council commands. Use `bin/agyos help` and inspect the relevant implementation before relying on a command's side effects.
 
@@ -144,6 +149,8 @@ When catalog source changes, review and sync the generated artifact from the mat
 | Repository rules and approval boundaries | [`AGENTS.md`](AGENTS.md) |
 | Skill routing behavior, fallbacks, and limits | [`docs/SKILL_ROUTING.md`](docs/SKILL_ROUTING.md) |
 | Architecture model and component notes | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) |
+| SRE operations, disaster recovery, and restore drill | [`docs/OPERATIONS_RUNBOOK.md`](docs/OPERATIONS_RUNBOOK.md) |
+| Host compatibility and capability matrix | [`docs/HOST_COMPATIBILITY.md`](docs/HOST_COMPATIBILITY.md) |
 | State-machine repair inventory | [`docs/STATE_MACHINE_REPAIR.md`](docs/STATE_MACHINE_REPAIR.md) |
 | Security risks and residual limits | [`docs/security/THREAT_MODEL.md`](docs/security/THREAT_MODEL.md), [`docs/security/END_TO_END_ENCRYPTION.md`](docs/security/END_TO_END_ENCRYPTION.md) |
 | Optional integrations and capability boundaries | [`docs/integrations/CAPABILITY_MATRIX.md`](docs/integrations/CAPABILITY_MATRIX.md) |
