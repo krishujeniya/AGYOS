@@ -2,7 +2,7 @@
 
 - Task: Execute master plan through Milestone 0 (containment gates B01-B04) and Milestone 1 (recoverable workspace B05), verify single-writer CAS revision checks, idempotent replay, and state projections.
 - Branch: `main`.
-- Revisions: baseline `df7eda23`, checkpoint `95f350c9`, converged on `main` with single-branch invariant.
+- Revisions: baseline `df7eda23`, checkpoint `f260f824`, converged on `main` with single-branch invariant.
 - Delivered changes:
   - `.github/workflows/ci.yml`: added synthetic negative control probe for Gitleaks secret detection, added private sentinel and internal state isolation checks for documentation pages and container candidate images, and added `test_workspace_state.cjs` to state verification.
   - `bin/state.sh`: added explicit preflight verification against corrupt JSON state before acquiring locks and performing mutations.
@@ -15,7 +15,7 @@
   - `scripts/tests/test_gate_transitions.py`: added test coverage for corrupt state rejection without file mutation and full matrix of invalid intermediate gate jumps.
   - `scripts/tests/test_serve_bind.py`: added test coverage verifying `create_app` rejects unauthenticated remote hosts.
   - `plan.md`: tracked master plan, updated implementation checkpoint, and updated acceptance status for B01–B05 and M1.
-- Verification evidence: static read-only inspection and `git diff --check` verified clean; zero local builds/tests run; full test suites run strictly in GitHub Actions.
+- Verification evidence: static read-only inspection and `git diff --check` verified clean; zero local builds/tests run; CI run 44239200935 passed all 5 jobs on GitHub Actions.
 - Exact next command: `gh run list --limit 5`
 
 ---
