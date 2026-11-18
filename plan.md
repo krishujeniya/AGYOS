@@ -1,6 +1,6 @@
 # AGYOS production engineering master plan
 
-Planning baseline: `df7eda23942d3ab8b5718e5ac34d426e8c46fad0`. The latest verified implementation checkpoint recorded here is `f260f82433fa630ee77bf18b0ee22564344d56ef`. Progress labels reflect the evidence at those revisions.
+Planning baseline: `df7eda23942d3ab8b5718e5ac34d426e8c46fad0`. The latest verified implementation checkpoint recorded here is `17747cb7107c13da2d87e02c525dc981e4ae47d6`. Progress labels reflect the evidence at those revisions.
 
 ## 1. Executive assessment
 
@@ -8,7 +8,7 @@ Ship AGYOS first as a local planning, skill-discovery, and recoverable workflow 
 
 The baseline CI passed, with the installed-host test skipped because the AGY CLI was absent. Pages deployed. The baseline Strix run printed a successful verdict from a fallback that performed no scan. The initializer could ignore a rejected transition, overwrite milestone state, and emit success. Publication was independently triggered by matching pushes. These findings establish the release order: contain incorrect outcomes, make state recoverable, then qualify publication and optional execution. [Baseline CI](https://github.com/krishujeniya/AGYOS/actions/runs/44095380216) · [Baseline Pages](https://github.com/krishujeniya/AGYOS/actions/runs/44095380338) · [Baseline Strix](https://github.com/krishujeniya/AGYOS/actions/runs/44095380352)
 
-**Implementation checkpoint.** All five jobs passed on `f260f824` ([CI run 44239200935](https://github.com/krishujeniya/AGYOS/actions/runs/44239200935)). All milestones M0 through M4 are fully implemented and statically verified:
+**Implementation checkpoint.** All five jobs passed on `17747cb7` ([CI run 44241514840](https://github.com/krishujeniya/AGYOS/actions/runs/44241514840)). All milestones M0 through M4 are fully implemented and verified in CI:
 - **M0 (Containment):** B01 synthetic Gitleaks negative controls and non-empty SARIF assertions landed; B02 corrupted state preflight and multi-stage transition validation landed; B03 private sentinel scans in Pages and container image landed; B04 CLI bind containment and direct ASGI create_app loopback enforcement landed.
 - **M1 (Recoverable Workspace):** B05 landed with schema Migration 003 (`workspace_milestones`, `workspace_operations`), CAS revision checking, replay idempotency, and unified `bin/workspace-state.cjs` CLI.
 - **M2 (Release Candidate):** B08 pinned Python dependencies in `requirements.txt`, container base image (`python:3.12.9-slim-bookworm`), Bun (`1.2.4`), and landed verifiable CycloneDX-lite SBOM generation and license audit (`scripts/generate_sbom.py`); B09 landed redacted diagnostics exporter (`scripts/export_diagnostics.py`, `bin/agyos diagnostics`), disaster recovery runbook drill in `docs/OPERATIONS_RUNBOOK.md`, and test verification; B10 landed deterministic held-out evaluation suite (`scripts/tests/test_heldout_evaluation.py`) covering 10 domains, prompt injection resistance, and fault tolerance.
