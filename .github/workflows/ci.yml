@@ -201,13 +201,8 @@ jobs:
         run: |
           test_dir="$RUNNER_TEMP/test-leak-probe"
           mkdir -p "$test_dir"
-          git -C "$test_dir" init -b main
-          git -C "$test_dir" config user.name "Test Committer"
-          git -C "$test_dir" config user.email "test@example.com"
           echo 'AWS_KEY="AKIAIOSFODNN7EXAMPLE"' > "$test_dir/secret.txt"
-          git -C "$test_dir" add secret.txt
-          git -C "$test_dir" commit -m "synthetic leak probe"
-          if "$RUNNER_TEMP/gitleaks" git --no-banner --log-opts="HEAD" "$test_dir" 2>/dev/null; then
+          if "$RUNNER_TEMP/gitleaks" detect --source="$test_dir" --no-git --no-banner 2>/dev/null; then
             echo "Error: Gitleaks failed negative control (expected leak detection to exit non-zero)" >&2
             exit 1
           fi
