@@ -134,9 +134,9 @@ class TestXmlCompiler(unittest.TestCase):
         )
         xml_str = contract.to_xml()
         self.assertIn('<agyos_task id="tsk_test_xml_001"', xml_str)
-        self.assertIn('<mandate>Build microservice authentication gateway</mandate>', xml_str)
-        self.assertIn('<budget tokens="12000"', xml_str)
-        self.assertIn('<active_skills format="toon">', xml_str)
+        self.assertIn('<customer_outcome>Build microservice authentication gateway</customer_outcome>', xml_str)
+        self.assertIn('<token_budget total="12000"', xml_str)
+        self.assertIn('<skills_context format="toon">', xml_str)
 
         # Ensure valid XML syntax
         root = ET.fromstring(xml_str)
