@@ -283,8 +283,8 @@ def compile_intent(
         result=TaskResult(status="pending"),
     )
 
-    # Auto-assign role context (non-blocking — does not affect pod or risk)
-    role = classify_role_for_task(prompt)
+    # Auto-assign role context (scoped to the classified pod)
+    role = classify_role_for_task(prompt, pod=pod)
     contract.role_id = role.role_id
     contract.department = role.department
     contract.seniority = role.seniority

@@ -150,7 +150,8 @@ _r(CompanyRole(
     allowed_tools=["read_file", "edit_file", "write_file"],
     default_risk="R1",
     keywords=["cmo", "brand strategy", "demand generation", "marketing strategy",
-               "content strategy", "growth", "brand identity", "market positioning"],
+               "content strategy", "growth", "brand identity", "market positioning",
+               "marketing", "marketing campaign", "launch"],
     primary_skills=["content-strategy", "brand-guidelines", "market-opportunity",
                     "analytics-tracking", "seo-audit"],
 ))
@@ -297,7 +298,7 @@ _r(CompanyRole(
     allowed_tools=["read_file", "edit_file", "write_file"],
     default_risk="R1",
     keywords=["growth pm", "activation", "retention", "a/b test", "experiment",
-               "funnel", "conversion", "north star metric", "growth loop"],
+               "funnel", "conversion", "north star metric", "growth loop", "campaign", "launch"],
     primary_skills=["ab-test-setup", "analytics-tracking", "page-cro", "posthog-automation",
                     "mixpanel-automation"],
 ))
@@ -901,7 +902,8 @@ _r(CompanyRole(
     allowed_tools=["read_file", "edit_file", "write_file"],
     default_risk="R1",
     keywords=["content strategy", "content pillars", "editorial", "content calendar",
-               "blog", "article", "thought leadership", "content marketing"],
+               "blog", "article", "thought leadership", "content marketing",
+               "launch announcement", "announcement"],
     primary_skills=["content-strategy", "content-creator", "seo-content-planner",
                     "data-storytelling", "batch-content-plan"],
 ))
@@ -965,7 +967,8 @@ _r(CompanyRole(
     allowed_tools=["read_file", "edit_file", "write_file"],
     default_risk="R1",
     keywords=["copywriting", "copy", "brand copy", "ad copy", "landing page copy",
-               "headline", "value proposition", "tagline", "marketing copy"],
+               "headline", "value proposition", "tagline", "marketing copy",
+               "social marketing", "marketing campaign", "campaign"],
     primary_skills=["conversion-copywriting", "content-creator", "hook-writer",
                     "avoid-ai-writing", "brand-voice"],
 ))
@@ -1845,17 +1848,29 @@ def get_role_for_skill(skill_name: str) -> Optional[Dict[str, Any]]:
     return by_skill.get(skill_name)
 
 
-def classify_role_for_task(query: str) -> CompanyRole:
+POD_DEFAULT_ROLES: Dict[str, str] = {
+    "pod-build": "role-swe",
+    "pod-growth": "role-growth-pm",
+    "pod-customer": "role-support-engineer",
+    "pod-gna": "role-coo",
+    "pod-people": "role-recruiter",
+}
+
+
+def classify_role_for_task(query: str, pod: Optional[str] = None) -> CompanyRole:
     """Match a natural language query to the best-fit CompanyRole.
 
     Scoring: keyword match weight (phrase length bonus) with word-boundary enforcement.
-    Falls back to role-swe (safe default) when no keywords match.
+    If pod is specified, filters candidate roles to those in that governing pod.
+    Falls back to safe default role for that pod (or role-swe) when no keywords match.
     """
     lower = query.lower()
     best_role: Optional[CompanyRole] = None
     best_score = -1
 
-    for role in _REGISTRY.values():
+    candidates = [r for r in _REGISTRY.values() if pod is None or r.governing_pod == pod]
+
+    for role in candidates:
         score = 0
         for kw in role.keywords:
             if re.search(r"\b" + re.escape(kw) + r"\b", lower):
@@ -1864,7 +1879,8 @@ def classify_role_for_task(query: str) -> CompanyRole:
             best_score = score
             best_role = role
 
-    # Always return a role — swe is the safe code-task fallback
+    # Always return a role — use pod default or swe safe fallback
     if best_role is None or best_score == 0:
-        return _REGISTRY["role-swe"]
+        fallback_id = POD_DEFAULT_ROLES.get(pod, "role-swe") if pod else "role-swe"
+        return _REGISTRY.get(fallback_id, _REGISTRY["role-swe"])
     return best_role

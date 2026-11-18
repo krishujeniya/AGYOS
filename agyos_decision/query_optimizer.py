@@ -19,7 +19,7 @@ from xml.sax.saxutils import escape as xml_escape
 from .contracts import TaskContract
 from .intent_compiler import compile_intent
 from .evpi_clarify import evaluate_evpi
-from .roles import get_role, classify_role_for_task, list_roles, CompanyRole
+from .roles import get_role, classify_role_for_task, list_roles, CompanyRole, POD_DEFAULT_ROLES
 from .skills_router import decide_skill
 from .model_router import route_model, DataSensitivity
 from .graph import get_role_subgraph
@@ -139,25 +139,12 @@ def optimize_query(
 
     # 2. Role Resolution (ensuring alignment with the assigned pod)
     matched_role = get_role(contract.role_id) if contract.role_id else None
-    if not matched_role:
-        matched_role = classify_role_for_task(clean_query)
+    if not matched_role or matched_role.governing_pod != governing_pod:
+        matched_role = classify_role_for_task(clean_query, pod=governing_pod)
 
     if matched_role.governing_pod != governing_pod:
-        # Align role with the assigned pod
-        pod_roles = [r for r in list_roles() if r.governing_pod == governing_pod]
-        best_pod_role: Optional[CompanyRole] = None
-        best_score = -1
-        lower = clean_query.lower()
-        for r in pod_roles:
-            score = 0
-            for kw in r.keywords:
-                if re.search(r"\b" + re.escape(kw) + r"\b", lower):
-                    score += len(kw.split()) * 3 + 2
-            if score > best_score:
-                best_score = score
-                best_pod_role = r
-        if best_pod_role and best_score > 0:
-            matched_role = best_pod_role
+        default_role_id = POD_DEFAULT_ROLES.get(governing_pod, "role-swe")
+        matched_role = get_role(default_role_id) or matched_role
 
     role_id = matched_role.role_id
     role_title = matched_role.title
