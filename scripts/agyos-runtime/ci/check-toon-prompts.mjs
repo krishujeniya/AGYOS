@@ -14,3 +14,18 @@ assert.equal(prompt.output.maximum_tokens, 1000)
 assert.deepEqual(decode(encode(prompt)), prompt)
 assert.equal(manifest.slice(manifest.indexOf('\n---\n', 4) + 5), source)
 assert.equal(execFileSync('bash', ['bin/agyos', 'skill', prompt.skill], {encoding: 'utf8'}), source)
+
+const files = execFileSync('git', ['ls-files', '-z', '--', '.agents/skills/*/SKILL.md'], { encoding: 'utf8', maxBuffer: 8 << 20 }).split('\0').filter(Boolean)
+let unavailable = 0
+for (const file of files) {
+  const host = readFileSync(file, 'utf8')
+  const end = host.indexOf('\n---\n', 4)
+  assert.ok(end >= 0 && host.slice(0, end).includes('\nprompt-source: prompt.toon'), file)
+  const text = readFileSync(file.replace(/SKILL\.md$/, 'prompt.toon'), 'utf8')
+  assert.equal(host.slice(end + 5), text, file)
+  const record = decode(text, { strict: true })
+  assert.equal(record.skill, file.split('/').at(-2), file)
+  assert.deepEqual(decode(encode(record)), record, file)
+  if (record.status === 'unavailable') unavailable++
+}
+console.log(`Validated ${files.length} skill prompts, including ${unavailable} unavailable records.`)

@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from agyos_decision.catalog import read_metadata
+from agyos_decision.skill_prompts import migrate_skill
 
 MANIFEST = ROOT / ".agents/skill-sources/UPSTREAM_SKILL_SOURCES.json"
 SKILLS_DIR = ROOT / ".agents/skills"
@@ -115,10 +116,14 @@ def main():
     problems = []
     for name, content in entries.items():
         target = SKILLS_DIR / name / "SKILL.md"
+        content, source = migrate_skill(target, content)
+        prompt = target.with_name("prompt.toon")
         if args.write:
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_text(content, encoding="utf-8")
-        elif not target.is_file() or target.read_text(encoding="utf-8") != content:
+            prompt.write_text(source, encoding="utf-8")
+        elif not all(path.is_file() and path.read_text(encoding="utf-8") == value
+                     for path, value in ((target, content), (prompt, source))):
             problems.append(name)
     if problems:
         print(f"Upstream skill adapters need regeneration: {', '.join(problems)}", file=sys.stderr)
