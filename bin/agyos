@@ -23,8 +23,10 @@ Commands:
   mem <tier>  Read hierarchical memory (tier0: core, tier1: recall, tier2: archival)
   query [--compact] [--json] [--xml] <p> Optimize query end-to-end (role, skills, EVPI, model, KV-cache XML)
   intent [--xml] [--compact] <prompt> Compile natural language intent to TaskContract and EVPI decision
-  xml-agent <role-id> [--compact] Compile role definition into FAANG-grade XML with TOON skills
-  xml-skill <skill> [--compact]   Compile skill runbook into compact XML card
+  toon-agent <role-id> [--compact] Compile role definition into pure TOON with tabular skills
+  toon-skill <skill> [--compact]   Compile skill runbook into compact TOON card
+  xml-agent <role-id> [--compact] (Alias for toon-agent)
+  xml-skill <skill> [--compact]   (Alias for toon-skill)
   toon-skills <role>  Serialize role skills into compact TOON tabular format
   cached-prompt [--compact] <p>   Generate KV-cache-aligned static prefix and dynamic suffix prompt
   roles [--dept <d>] [--seniority <s>] List enterprise roles from 104-role matrix
@@ -179,34 +181,34 @@ else:
         print(decision.format_assumptions_header())
 " "$query" "$use_xml" "$use_compact"
     ;;
-  xml-agent)
+  toon-agent|xml-agent|xml_agent)
     role_id="${1:-}"
     compact_flag="${2:-}"
     if [ -z "$role_id" ]; then
-      echo "Usage: agyos xml-agent <role-id> [--compact]" >&2
+      echo "Usage: agyos toon-agent <role-id> [--compact]" >&2
       exit 1
     fi
     python3 -c "
 import sys
 sys.path.insert(0, '.')
-from agyos_decision.xml_compiler import compile_agent_to_xml
+from agyos_decision.toon_compiler import compile_agent_to_toon
 compact = sys.argv[2] == '--compact' if len(sys.argv) > 2 else False
-print(compile_agent_to_xml(sys.argv[1], compact=compact))
+print(compile_agent_to_toon(sys.argv[1], compact=compact))
 " "$role_id" "$compact_flag"
     ;;
-  xml-skill)
+  toon-skill|xml-skill|xml_skill)
     skill_name="${1:-}"
     compact_flag="${2:-}"
     if [ -z "$skill_name" ]; then
-      echo "Usage: agyos xml-skill <skill-name> [--compact]" >&2
+      echo "Usage: agyos toon-skill <skill-name> [--compact]" >&2
       exit 1
     fi
     python3 -c "
 import sys
 sys.path.insert(0, '.')
-from agyos_decision.xml_compiler import compile_skill_to_xml
+from agyos_decision.toon_compiler import compile_skill_to_toon
 compact = sys.argv[2] == '--compact' if len(sys.argv) > 2 else False
-print(compile_skill_to_xml(sys.argv[1], compact=compact))
+print(compile_skill_to_toon(sys.argv[1], compact=compact))
 " "$skill_name" "$compact_flag"
     ;;
   cached-prompt)
@@ -228,12 +230,12 @@ print(compile_skill_to_xml(sys.argv[1], compact=compact))
 import sys
 sys.path.insert(0, '.')
 from agyos_decision.intent_compiler import compile_intent
-from agyos_decision.xml_compiler import compile_cached_prompt
+from agyos_decision.toon_compiler import compile_cached_toon_prompt
 
 prompt = sys.argv[1]
 compact = sys.argv[2] == '1' if len(sys.argv) > 2 else False
 contract = compile_intent(prompt)
-parts = compile_cached_prompt(contract, compact=compact)
+parts = compile_cached_toon_prompt(contract, compact=compact)
 
 print('=== AGYOS KV-Cache Optimized Prompt Split ===')
 print('--- [STATIC PREFIX: Cache-Hit Candidate] ---')
@@ -269,6 +271,50 @@ records = [
 ]
 print(encode_toon(records, key_name=f'{role_id}_skills'))
 " "$role_id" "$all_flag"
+    ;;
+  toon)
+    if [ $# -eq 0 ]; then
+      echo "Usage: agyos toon <encode|decode|minify> [args]" >&2
+      exit 1
+    fi
+    toon_subcmd="$1"
+    shift
+    if [ -x "crates/toon-codec/target/release/toon" ]; then
+      crates/toon-codec/target/release/toon "$toon_subcmd" "$@"
+    else
+      uv run python -c "
+import sys, json
+from pathlib import Path
+from agyos_decision.toon_codec import encode_toon, decode_toon
+from agyos_decision.toon_compiler import minify_toon
+
+subcmd = sys.argv[1]
+args = sys.argv[2:]
+
+if subcmd == 'encode':
+    fpath = args[0] if args else '-'
+    content = Path(fpath).read_text(encoding='utf-8') if fpath != '-' else sys.stdin.read()
+    data = json.loads(content)
+    key = 'items'
+    if '--key' in args:
+        idx = args.index('--key')
+        if idx + 1 < len(args):
+            key = args[idx + 1]
+    print(encode_toon(data, key_name=key))
+elif subcmd == 'decode':
+    fpath = args[0] if args else '-'
+    content = Path(fpath).read_text(encoding='utf-8') if fpath != '-' else sys.stdin.read()
+    records = decode_toon(content)
+    print(json.dumps(records, indent=2))
+elif subcmd == 'minify':
+    fpath = args[0] if args else '-'
+    content = Path(fpath).read_text(encoding='utf-8') if fpath != '-' else sys.stdin.read()
+    print(minify_toon(content))
+else:
+    print(f'Unknown toon subcmd: {subcmd}', file=sys.stderr)
+    sys.exit(1)
+" "$toon_subcmd" "$@"
+    fi
     ;;
   roles)
     dept=""

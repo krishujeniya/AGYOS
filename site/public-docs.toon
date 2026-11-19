@@ -1,0 +1,14 @@
+site: AGYOS
+base: /AGYOS/
+documents[8]:
+  - source, slug, title, category, description
+  - README.md, overview, Project overview, Start here, "What AGYOS is, how it works, and where to begin."
+  - docs/public/quickstart.md, quickstart, Quickstart, Start here, Install AGYOS and check a local workspace.
+  - docs/ARCHITECTURE.md, architecture, System architecture, Core concepts, "The six-layer architecture, governance, memory, and execution."
+  - docs/SKILL_ROUTING.md, skill-routing, Skill routing, Core concepts, How runbooks are discovered and selected.
+  - docs/RULES.md, rules, Rules and standards, Core concepts, Common and language-specific rule installation.
+  - docs/NATIVE_WORKFLOWS.md, native-workflows, Native workflows, Guides, Review workflow pilot and its limitations.
+  - docs/adr/0001-skill-routing.md, decisions/skill-routing, Skill routing ADR, Guides, The decision behind shared skill discovery metadata.
+  - SECURITY.md, security, Security policy, Project, Supported versions and responsible disclosure.
+public_root: docs/public
+exclude[11]: AGENTS.md, GEMINI.md, TRACKER.md, AI_HANDOFF.md, docs/RESEARCH_PLAN.md, docs/prompts.md, docs/references/, .agents/, skills/, .env, .agents/state/

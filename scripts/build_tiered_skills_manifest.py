@@ -13,9 +13,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from agyos_decision.catalog import read_metadata
+from agyos_decision.toon_config import dump_toon_manifest
 SKILLS_DIR = ROOT / ".agents" / "skills"
 OUT_MANIFEST = ROOT / ".agents" / "skills-manifest.json"
+OUT_MANIFEST_TOON = ROOT / ".agents" / "skills-manifest.toon"
 OUT_TIER1 = ROOT / ".agents" / "tier1-skills.json"
+OUT_TIER1_TOON = ROOT / ".agents" / "tier1-skills.toon"
 
 TIER1_CORE_PREFIXES = (
     "agyos-", "council-", "freelancer-", "emil-", "animate", "apple-design",
@@ -88,7 +91,16 @@ def build_manifest():
     
     OUT_MANIFEST.write_text(json.dumps(manifest_data, indent=2), encoding="utf-8")
     OUT_TIER1.write_text(json.dumps({"tier1_skills": tier1_list}, indent=2), encoding="utf-8")
-    print(f"Successfully wrote {OUT_MANIFEST} and {OUT_TIER1}")
+
+    manifest_metadata = {
+        "version": manifest_data["version"],
+        "total_skills": manifest_data["total_skills"],
+        "tier1_count": manifest_data["tier1_count"],
+        "tier2_count": manifest_data["tier2_count"],
+    }
+    dump_toon_manifest(skills, OUT_MANIFEST_TOON, key_name="skills", metadata=manifest_metadata)
+    dump_toon_manifest(tier1_list, OUT_TIER1_TOON, key_name="tier1_skills")
+    print(f"Successfully wrote {OUT_MANIFEST}, {OUT_MANIFEST_TOON}, {OUT_TIER1}, and {OUT_TIER1_TOON}")
 
 if __name__ == "__main__":
     build_manifest()

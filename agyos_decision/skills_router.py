@@ -19,7 +19,9 @@ from .roles import classify_role_for_task, get_skills_for_role
 REPO_ROOT = Path(__file__).resolve().parent.parent
 # Role-aware skill boost when skill appears in the matched role's primary_skills list
 ROLE_SKILL_BOOST = 30.0
+DOCS_DATA_TOON = REPO_ROOT / "docs" / "skills-data.toon"
 DOCS_DATA = REPO_ROOT / "docs" / "skills-data.json"
+MANIFEST_DATA_TOON = REPO_ROOT / ".agents" / "skills-manifest.toon"
 MANIFEST_DATA = REPO_ROOT / ".agents" / "skills-manifest.json"
 
 # Domain taxonomy with domain keywords and curated specialist fallbacks
@@ -471,10 +473,16 @@ LANGUAGE_FRAMEWORK_MAP = {
 def load_catalog() -> List[Dict[str, Any]]:
     """Prefer the runtime manifest; recover from stale or missing generated data."""
     entries_list = None
-    for source in (MANIFEST_DATA, DOCS_DATA):
+    for source in (MANIFEST_DATA_TOON, MANIFEST_DATA, DOCS_DATA_TOON, DOCS_DATA):
+        if not source.is_file():
+            continue
         try:
-            raw = json.loads(source.read_text(encoding="utf-8"))
-            entries = raw.get("skills", []) if isinstance(raw, dict) else raw
+            if source.suffix == ".toon":
+                from .toon_config import load_toon_manifest
+                entries = load_toon_manifest(source)
+            else:
+                raw = json.loads(source.read_text(encoding="utf-8"))
+                entries = raw.get("skills", []) if isinstance(raw, dict) else raw
             if not isinstance(entries, list):
                 continue
             valid = [item for entry in entries if (item := canonical_entry(entry))]

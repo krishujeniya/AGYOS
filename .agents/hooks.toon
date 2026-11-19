@@ -1,0 +1,18 @@
+agyos-guard:
+  enabled: true
+  PreToolUse[1]:
+    - matcher, hooks
+    - *, "{'type': 'command', 'command': 'python3 scripts/hooks/authorizer.py PreToolUse', 'timeout': 15}|{'type': 'command', 'command': 'python3 scripts/hooks/agy_os_hook.py PreToolUse', 'timeout': 15}"
+  PostToolUse[1]:
+    - matcher, hooks
+    - *, "{'type': 'command', 'command': 'python3 scripts/hooks/agy_os_hook.py PostToolUse', 'timeout': 15}"
+  PreInvocation[1]:
+    - type, command, timeout
+    - command, python3 scripts/hooks/agy_os_hook.py PreInvocation, 15
+  PostInvocation[1]:
+    - type, command, timeout
+    - command, python3 scripts/hooks/agy_os_hook.py PostInvocation, 15
+  Stop[2]:
+    - type, command, timeout
+    - command, python3 scripts/hooks/authorizer.py Stop, 15
+    - command, python3 scripts/hooks/agy_os_hook.py Stop, 15

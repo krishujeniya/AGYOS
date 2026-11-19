@@ -19,8 +19,10 @@ from pathlib import Path
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, REPO_ROOT)
 from agyos_decision.catalog import read_metadata
+from agyos_decision.toon_config import dump_toon_config, dump_toon_manifest
 DOCS_DIR = os.path.join(REPO_ROOT, "docs")
 SKILLS_DIR = os.path.join(REPO_ROOT, ".agents", "skills")
+MANIFEST_PATH_TOON = os.path.join(REPO_ROOT, ".agents", "skills-manifest.toon")
 MANIFEST_PATH = os.path.join(REPO_ROOT, ".agents", "skills-manifest.json")
 
 AI_WORDS_MAP = {
@@ -197,12 +199,16 @@ def compile_all_skills():
     return skills
 
 def write_json_files(skills):
-    """Write skills-data.json and ai-catalog.json."""
+    """Write skills-data.json, skills-data.toon, ai-catalog.json, and ai-catalog.toon."""
     os.makedirs(DOCS_DIR, exist_ok=True)
     data_out = os.path.join(DOCS_DIR, "skills-data.json")
     with open(data_out, "w", encoding="utf-8") as f:
         json.dump(skills, f, indent=2)
     print(f"Saved: {data_out}")
+
+    data_toon_out = os.path.join(DOCS_DIR, "skills-data.toon")
+    dump_toon_manifest(skills, data_toon_out)
+    print(f"Saved: {data_toon_out}")
 
     catalog_out = os.path.join(DOCS_DIR, "ai-catalog.json")
     catalog_data = {
@@ -227,6 +233,10 @@ def write_json_files(skills):
     with open(catalog_out, "w", encoding="utf-8") as f:
         json.dump(catalog_data, f, indent=2)
     print(f"Saved: {catalog_out}")
+
+    catalog_toon_out = os.path.join(DOCS_DIR, "ai-catalog.toon")
+    dump_toon_config(catalog_data, catalog_toon_out)
+    print(f"Saved: {catalog_toon_out}")
 
 def write_seo_files(skills):
     """Write sitemap.xml, robots.txt, and llms.txt."""

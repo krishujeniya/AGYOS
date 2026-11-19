@@ -23,7 +23,10 @@ from .roles import get_role, classify_role_for_task, list_roles, CompanyRole, PO
 from .skills_router import decide_skill
 from .model_router import route_model, DataSensitivity
 from .graph import get_role_subgraph
-from .xml_compiler import compile_cached_prompt, minify_xml
+from .toon_compiler import compile_cached_toon_prompt, minify_toon
+
+compile_cached_prompt = compile_cached_toon_prompt
+minify_xml = minify_toon
 
 
 @dataclass(frozen=True)
@@ -86,6 +89,38 @@ class OptimizedQueryPlan:
                 "full_prompt_length": len(self.full_prompt_xml),
             },
         }
+
+    def to_toon(self, compact: bool = False) -> str:
+        """Render the complete optimized execution plan as a pure TOON envelope."""
+        candidate_count = len(self.candidate_skills)
+        assumptions_count = len(self.assumptions)
+        lines = [
+            f'optimized_query risk="{self.risk}" pod="{self.governing_pod}" model="{self.model_id}":',
+            "assignment:",
+            f'  role: "{self.role_id}"',
+            f'  title: "{self.role_title}"',
+            f'  department: "{self.department}"',
+            f'  seniority: "{self.seniority}"',
+            f'  primary_skill: "{self.primary_skill}"',
+            f'  candidate_skills[{candidate_count}]: {",".join(self.candidate_skills)}',
+            "clarification:",
+            f'  should_ask: {str(self.evpi_should_ask).lower()}',
+        ]
+        if self.evpi_question:
+            lines.append(f'  question: "{self.evpi_question}"')
+        lines.append(f'  assumptions[{assumptions_count}]:')
+        for a in self.assumptions:
+            lines.append(f'    - "{a}"')
+        lines.append('prompt_envelope format="toon":')
+        lines.append('  static_prefix format="kv_cache":')
+        for sp_line in self.static_prefix_xml.splitlines():
+            lines.append(f'    {sp_line}')
+        lines.append('  dynamic_suffix format="task":')
+        for ds_line in self.dynamic_suffix_xml.splitlines():
+            lines.append(f'    {ds_line}')
+
+        raw = "\n".join(lines)
+        return minify_toon(raw) if compact else raw
 
     def to_xml(self, compact: bool = False) -> str:
         """Render the complete optimized execution plan as a FAANG XML envelope."""

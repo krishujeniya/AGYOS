@@ -185,10 +185,14 @@ class TaskContract:
             d["seniority"] = self.seniority
         return d
 
+    def to_toon(self, compact: bool = False) -> str:
+        """Compile this contract into a token-budgeted TOON task envelope."""
+        from .toon_compiler import compile_task_to_toon
+        return compile_task_to_toon(self, compact=compact)
+
     def to_xml(self, compact: bool = False) -> str:
-        """Compile this contract into a token-budgeted <agyos_task> XML envelope."""
-        from .xml_compiler import compile_task_to_xml
-        return compile_task_to_xml(self, compact=compact)
+        """Deprecated: Compile contract to TOON representation."""
+        return self.to_toon(compact=compact)
 
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> TaskContract:

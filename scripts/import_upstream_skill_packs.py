@@ -109,7 +109,7 @@ def expected_adapters():
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     mode = parser.add_mutually_exclusive_group(required=True)
-    mode.add_argument("--write", action="store_true", help="write adapter SKILL.md files")
+    mode.add_argument("--write", action="store_true", help="write TOON adapter sources and their host views")
     mode.add_argument("--check", action="store_true", help="check adapters without writing")
     args = parser.parse_args()
     entries = expected_adapters()
@@ -118,12 +118,18 @@ def main():
         target = SKILLS_DIR / name / "SKILL.md"
         content, source = migrate_skill(target, content)
         prompt = target.with_name("prompt.toon")
+        header = json.dumps(content.removesuffix(source), ensure_ascii=False)
+        outputs = (
+            (target.with_name("SKILL.md.toon"), f'mode: "100644"\nheader: {header}\n'),
+            (prompt, source),
+            (target, content),
+        )
         if args.write:
             target.parent.mkdir(parents=True, exist_ok=True)
-            target.write_text(content, encoding="utf-8")
-            prompt.write_text(source, encoding="utf-8")
+            for path, value in outputs:
+                path.write_text(value, encoding="utf-8")
         elif not all(path.is_file() and path.read_text(encoding="utf-8") == value
-                     for path, value in ((target, content), (prompt, source))):
+                     for path, value in outputs):
             problems.append(name)
     if problems:
         print(f"Upstream skill adapters need regeneration: {', '.join(problems)}", file=sys.stderr)

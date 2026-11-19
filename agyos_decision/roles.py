@@ -1805,10 +1805,40 @@ _ROLES_SKILLS_MATRIX: Optional[Dict[str, Any]] = None
 def _get_matrix() -> Dict[str, Any]:
     global _ROLES_SKILLS_MATRIX
     if _ROLES_SKILLS_MATRIX is None:
-        matrix_path = Path(__file__).resolve().parent.parent / ".agents" / "skills-by-role" / "roles-skills-matrix.json"
-        if matrix_path.is_file():
+        parent_dir = Path(__file__).resolve().parent.parent / ".agents" / "skills-by-role"
+        matrix_path_toon = parent_dir / "roles-skills-matrix.toon"
+        matrix_path_json = parent_dir / "roles-skills-matrix.json"
+
+        if matrix_path_toon.is_file():
             try:
-                with open(matrix_path, "r", encoding="utf-8") as f:
+                from .toon_codec import decode_toon
+                records = decode_toon(matrix_path_toon.read_text(encoding="utf-8"))
+                by_role: Dict[str, Any] = {}
+                by_skill: Dict[str, Any] = {}
+                for r in records:
+                    r_id = r.get("role_id", "")
+                    skills = [s for s in r.get("skills", "").split("|") if s]
+                    primary = [s for s in r.get("primary_skills", "").split("|") if s]
+                    by_role[r_id] = {
+                        "role_id": r_id,
+                        "title": r.get("title", ""),
+                        "department": r.get("department", ""),
+                        "seniority": r.get("seniority", ""),
+                        "governing_pod": r.get("governing_pod", ""),
+                        "primary_skills": primary,
+                        "skills": skills,
+                    }
+                    for s in skills:
+                        if s not in by_skill:
+                            by_skill[s] = {"primary_role": r_id, "roles": [r_id]}
+                        elif r_id not in by_skill[s]["roles"]:
+                            by_skill[s]["roles"].append(r_id)
+                _ROLES_SKILLS_MATRIX = {"by_role": by_role, "by_skill": by_skill}
+            except Exception:
+                _ROLES_SKILLS_MATRIX = {}
+        elif matrix_path_json.is_file():
+            try:
+                with open(matrix_path_json, "r", encoding="utf-8") as f:
                     _ROLES_SKILLS_MATRIX = json.load(f)
             except Exception:
                 _ROLES_SKILLS_MATRIX = {}

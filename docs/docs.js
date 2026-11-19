@@ -599,9 +599,60 @@
   }
 
   // ============================================================
-  // LOAD SKILLS DATA + BOOT
+  // LOAD SKILLS DATA + BOOT (TOON Native with JSON Fallback)
   // ============================================================
+  function parseToon(text) {
+    const lines = text.trim().split(/\r?\n/).filter(l => l.trim().length > 0);
+    if (lines.length < 2) return [];
+    const rows = lines.filter(l => l.trim().startsWith('-')).map(l => l.replace(/^[\s-]+\s*/, ''));
+    if (rows.length < 2) return [];
+
+    function parseCsvRow(row) {
+      const result = [];
+      let current = '';
+      let inQuotes = false;
+      for (let i = 0; i < row.length; i++) {
+        const char = row[i];
+        if (char === '"') {
+          if (inQuotes && row[i + 1] === '"') {
+            current += '"';
+            i++;
+          } else {
+            inQuotes = !inQuotes;
+          }
+        } else if (char === ',' && !inQuotes) {
+          result.push(current.trim());
+          current = '';
+        } else {
+          current += char;
+        }
+      }
+      result.push(current.trim());
+      return result;
+    }
+
+    const headers = parseCsvRow(rows[0]);
+    const items = [];
+    for (let i = 1; i < rows.length; i++) {
+      const vals = parseCsvRow(rows[i]);
+      const obj = {};
+      for (let j = 0; j < headers.length; j++) {
+        obj[headers[j]] = vals[j] || '';
+      }
+      items.push(obj);
+    }
+    return items;
+  }
+
   async function loadData() {
+    try {
+      const res = await fetch('./skills-data.toon');
+      if (res.ok) {
+        const text = await res.text();
+        const parsed = parseToon(text);
+        if (parsed.length > 0) return parsed;
+      }
+    } catch {}
     try {
       const res = await fetch('./skills-data.json');
       const data = await res.json();

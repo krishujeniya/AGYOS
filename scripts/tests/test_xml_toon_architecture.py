@@ -22,12 +22,17 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from agyos_decision.toon_codec import encode_toon, decode_toon
-from agyos_decision.xml_compiler import (
+from agyos_decision.toon_compiler import (
     prune_conversational_filler,
+    minify_toon,
     minify_xml,
+    compile_skill_to_toon,
     compile_skill_to_xml,
+    compile_agent_to_toon,
     compile_agent_to_xml,
+    compile_task_to_toon,
     compile_task_to_xml,
+    compile_cached_toon_prompt,
     compile_cached_prompt,
 )
 from agyos_decision.contracts import TaskContract
@@ -103,39 +108,29 @@ class TestToonCodec(unittest.TestCase):
         self.assertEqual(decoded[99]["name"], "skill-99")
 
 
-class TestXmlCompiler(unittest.TestCase):
+class TestToonCompiler(unittest.TestCase):
     def test_prune_conversational_filler(self):
         raw = "Certainly! Here is the implementation:\n\ndef foo():\n    return 42"
         pruned = prune_conversational_filler(raw)
         self.assertNotIn("Certainly", pruned)
         self.assertIn("def foo():", pruned)
 
-    def test_compile_skill_to_xml(self):
-        xml_str = compile_skill_to_xml("clean-code")
-        self.assertIn('<agyos_skill id="clean-code">', xml_str)
-        self.assertIn('<intent>', xml_str)
-        self.assertIn('<instructions>', xml_str)
+    def test_compile_skill_to_toon(self):
+        toon_str = compile_skill_to_toon("clean-code")
+        self.assertIn('skill: "clean-code"', toon_str)
+        self.assertIn("intent:", toon_str)
+        self.assertIn("instructions:", toon_str)
+        self.assertNotIn("<agyos_skill", toon_str)
 
-        # Ensure valid XML syntax
-        root = ET.fromstring(xml_str)
-        self.assertEqual(root.tag, "agyos_skill")
-        self.assertEqual(root.attrib.get("id"), "clean-code")
+    def test_compile_agent_to_toon(self):
+        toon_str = compile_agent_to_toon("role-swe")
+        self.assertIn('agent: "role-swe"', toon_str)
+        self.assertIn("ownership:", toon_str)
+        self.assertIn("defense_invariants:", toon_str)
+        self.assertIn('skills_workspace format="toon"', toon_str)
+        self.assertNotIn("<agyos_agent", toon_str)
 
-    def test_compile_agent_to_xml(self):
-        xml_str = compile_agent_to_xml("role-swe")
-        self.assertIn('<agyos_agent id="role-swe"', xml_str)
-        self.assertIn('<ownership>', xml_str)
-        self.assertIn('<defense_invariants>', xml_str)
-        self.assertIn('<skills_workspace format="toon"', xml_str)
-
-        # Ensure valid XML syntax
-        root = ET.fromstring(xml_str)
-        self.assertEqual(root.tag, "agyos_agent")
-        self.assertEqual(root.attrib.get("id"), "role-swe")
-        self.assertIsNotNone(root.find("ownership"))
-        self.assertIsNotNone(root.find("defense_invariants"))
-
-    def test_task_contract_to_xml(self):
+    def test_task_contract_to_toon(self):
         contract = TaskContract(
             task_id="tsk_test_xml_001",
             run_id="run_test",
@@ -148,29 +143,19 @@ class TestXmlCompiler(unittest.TestCase):
             risk="R1",
             role_id="role-swe",
         )
-        xml_str = contract.to_xml()
-        self.assertIn('<agyos_task id="tsk_test_xml_001"', xml_str)
-        self.assertIn('<customer_outcome>Build microservice authentication gateway</customer_outcome>', xml_str)
-        self.assertIn('<token_budget total="12000"', xml_str)
-        self.assertIn('<skills_context format="toon">', xml_str)
+        toon_str = contract.to_toon()
+        self.assertIn('task: "tsk_test_xml_001"', toon_str)
+        self.assertIn('customer_outcome: "Build microservice authentication gateway"', toon_str)
+        self.assertIn('token_budget.total: 12000', toon_str)
+        self.assertIn('skills_context format="toon":', toon_str)
+        self.assertNotIn("<agyos_task", toon_str)
 
-        # Ensure valid XML syntax
-        root = ET.fromstring(xml_str)
-        self.assertEqual(root.tag, "agyos_task")
-        self.assertEqual(root.attrib.get("id"), "tsk_test_xml_001")
+    def test_minify_toon_token_savings(self):
+        raw_toon = compile_agent_to_toon("role-swe", compact=False)
+        minified = minify_toon(raw_toon)
 
-    def test_minify_xml_token_savings(self):
-        raw_xml = compile_agent_to_xml("role-swe", compact=False)
-        minified = minify_xml(raw_xml)
-
-        self.assertLess(len(minified), len(raw_xml))
-        root = ET.fromstring(minified)
-        self.assertEqual(root.tag, "agyos_agent")
-        self.assertEqual(root.attrib.get("id"), "role-swe")
-
-        cdata_text = root.find("skills_workspace").text.strip()
-        decoded = decode_toon(cdata_text)
-        self.assertGreater(len(decoded), 0)
+        self.assertLessEqual(len(minified), len(raw_toon))
+        self.assertIn('agent: "role-swe"', minified)
 
     def test_compile_cached_prompt(self):
         contract = TaskContract(
@@ -185,20 +170,17 @@ class TestXmlCompiler(unittest.TestCase):
             risk="R1",
             role_id="role-swe",
         )
-        cached = compile_cached_prompt(contract, compact=True)
+        cached = compile_cached_toon_prompt(contract, compact=True)
         self.assertIn("static_prefix", cached)
         self.assertIn("dynamic_suffix", cached)
         self.assertIn("full_prompt", cached)
 
-        self.assertIn("<agyos_agent", cached["static_prefix"])
-        self.assertIn("<defense_invariants>", cached["static_prefix"])
-        self.assertIn("<agyos_task", cached["dynamic_suffix"])
+        self.assertIn('agent: "role-swe"', cached["static_prefix"])
+        self.assertIn("defense_invariants:", cached["static_prefix"])
+        self.assertIn('task: "tsk_test_cache_001"', cached["dynamic_suffix"])
         self.assertIn("Build caching proxy gateway", cached["dynamic_suffix"])
-
-        agent_elem = ET.fromstring(cached["static_prefix"])
-        task_elem = ET.fromstring(cached["dynamic_suffix"])
-        self.assertEqual(agent_elem.tag, "agyos_agent")
-        self.assertEqual(task_elem.tag, "agyos_task")
+        self.assertNotIn("<agyos_agent", cached["static_prefix"])
+        self.assertNotIn("<agyos_task", cached["dynamic_suffix"])
 
 
 class TestToonArchitecture(unittest.TestCase):

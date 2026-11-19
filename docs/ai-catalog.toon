@@ -1,0 +1,7 @@
+name: AGYOS
+description: The Autonomous Cognitive Operating System for AGY CLI.
+url: "https://krishujeniya.github.io/AGYOS/"
+version: 3.1.0
+total_skills: 2247
+modules[9]: AGYOS Governance, Agent Council, UI/UX & Motion, Technical SEO, Freelance Suite, AGYOS Polyglot Engineering, Verification & Testing, Security & Defense, Domain & Research Extensions
+runtimes_supported[5]: AGY CLI, Gemini, Claude Code, Codex, Bun

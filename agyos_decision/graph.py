@@ -17,7 +17,9 @@ from .roles import list_roles, get_role, get_skills_for_role, get_all_skills_for
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 STATE_DIR = REPO_ROOT / ".agents" / "state"
+GRAPH_FILE_TOON = STATE_DIR / "skills-roles-graph.toon"
 GRAPH_FILE = STATE_DIR / "skills-roles-graph.xml"
+MANIFEST_FILE_TOON = REPO_ROOT / ".agents" / "skills-manifest.toon"
 MANIFEST_FILE = REPO_ROOT / ".agents" / "skills-manifest.json"
 
 
@@ -27,7 +29,13 @@ def build_skills_roles_graph() -> str:
     roles = list_roles()
 
     skills_data = []
-    if MANIFEST_FILE.is_file():
+    if MANIFEST_FILE_TOON.is_file():
+        try:
+            from .toon_config import load_toon_manifest
+            skills_data = load_toon_manifest(MANIFEST_FILE_TOON)
+        except Exception:
+            skills_data = []
+    elif MANIFEST_FILE.is_file():
         try:
             with open(MANIFEST_FILE, "r", encoding="utf-8") as f:
                 skills_data = json.load(f).get("skills", [])
@@ -82,7 +90,62 @@ def build_skills_roles_graph() -> str:
 
     graph_xml = "\n".join(xml_lines)
     GRAPH_FILE.write_text(graph_xml, encoding="utf-8")
+
+    # Also emit canonical TOON representation
+    toon_lines = [
+        f"total_departments: {len(departments)}",
+        f"total_pods: {len(pods)}",
+        f"total_roles: {len(roles)}",
+        f"total_skills: {len(skills_data)}",
+        f"departments[{len(departments)}]: {', '.join(departments)}",
+        f"pods[{len(pods)}]: {', '.join(pods)}",
+        f"roles[{len(roles)}]{{id, title, department, pod, seniority, risk, mapped_skills}}:",
+    ]
+    for r in roles:
+        all_s = get_all_skills_for_role(r.role_id)
+        title_json = json.dumps(r.title)
+        toon_lines.append(
+            f"  - {r.role_id}, {title_json}, {r.department}, {r.governing_pod}, {r.seniority}, {r.default_risk}, {len(all_s)}"
+        )
+    toon_lines.append(f"skills[{len(skills_data)}]{{id, tier}}:")
+    for s in skills_data:
+        toon_lines.append(f"  - {s['name']}, {s.get('tier', 2)}")
+    toon_lines.append(f"edges[{len(roles) * 10}]{{from, to, type}}:")
+    edge_count = 0
+    for r in roles:
+        primary_set = set(r.primary_skills)
+        all_s = get_all_skills_for_role(r.role_id)
+        for s in all_s:
+            edge_type = "primary_skill" if s in primary_set else "specialized_skill"
+            toon_lines.append(f"  - {r.role_id}, {s}, {edge_type}")
+            edge_count += 1
+    # Patch exact edge count header
+    toon_lines[-edge_count - 1] = f"edges[{edge_count}]{{from, to, type}}:"
+    GRAPH_FILE_TOON.write_text("\n".join(toon_lines) + "\n", encoding="utf-8")
+
     return graph_xml
+
+
+@functools.lru_cache(maxsize=128)
+def get_role_subgraph_toon(role_id: str, depth: int = 1) -> str:
+    """Extract a lightweight sub-graph for a given role in TOON format."""
+    role = get_role(role_id)
+    if not role:
+        return f"subgraph:\n  role_id: {role_id}\n  status: not_found"
+
+    primary_skills = get_skills_for_role(role_id, all_skills=False)
+    lines = [
+        "subgraph:",
+        f"  role_id: {role.role_id}",
+        f"  department: {role.department}",
+        f"  pod: {role.governing_pod}",
+        f"  seniority: {role.seniority}",
+        f"  primary_skills[{len(primary_skills)}]: {', '.join(primary_skills)}",
+    ]
+    if depth >= 2:
+        peers = [r.role_id for r in list_roles() if r.governing_pod == role.governing_pod and r.role_id != role.role_id][:5]
+        lines.append(f"  cross_functional_peers[{len(peers)}]: {', '.join(peers)}")
+    return "\n".join(lines)
 
 
 @functools.lru_cache(maxsize=128)
@@ -111,6 +174,6 @@ def get_role_subgraph(role_id: str, depth: int = 1, compact: bool = False) -> st
     xml_lines.append('</subgraph>')
     raw_xml = "\n".join(xml_lines)
     if compact:
-        from .xml_compiler import minify_xml
-        return minify_xml(raw_xml)
+        from .toon_compiler import minify_toon
+        return minify_toon(raw_xml)
     return raw_xml

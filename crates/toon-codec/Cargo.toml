@@ -1,0 +1,21 @@
+[package]
+name = "toon-codec"
+version = "0.1.0"
+edition = "2021"
+authors = ["Krish Ujeniya <100012208+krishujeniya@users.noreply.github.com>"]
+description = "Token-Oriented Object Notation (TOON) high-performance encoder, decoder, and CLI in Rust"
+license = "MIT"
+repository = "https://github.com/krishujeniya/AGYOS"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+[[bin]]
+name = "toon"
+path = "src/main.rs"
+
+[lib]
+name = "toon_codec"
+path = "src/lib.rs"
+crate-type = ["rlib", "cdylib"]

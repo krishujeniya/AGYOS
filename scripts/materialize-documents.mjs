@@ -115,7 +115,11 @@ export function materialize(root = process.cwd()) {
     const filename = safePath(root, relative)
     const expected = signature(doc.mode, doc.bytes)
     const before = current(filename)
-    if (before !== expected) {
+    // An unchanged source leaves local edits in place. Retain its original
+    // digest so a later source update detects the three-way conflict.
+    const locallyEdited = before !== null && !before.startsWith('120000:') &&
+      doc.mode !== '120000' && previous.get(relative) === expected
+    if (before !== expected && !locallyEdited) {
       if (before !== null && before !== previous.get(relative)) throw new Error(`Preserve modified document: ${relative}`)
       replace(filename, doc.mode, doc.bytes, before)
       changes++
