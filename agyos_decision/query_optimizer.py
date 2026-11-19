@@ -23,10 +23,12 @@ from .roles import get_role, classify_role_for_task, list_roles, CompanyRole, PO
 from .skills_router import decide_skill
 from .model_router import route_model, DataSensitivity
 from .graph import get_role_subgraph
-from .toon_compiler import compile_cached_toon_prompt, minify_toon
-
-compile_cached_prompt = compile_cached_toon_prompt
-minify_xml = minify_toon
+from .toon_compiler import (
+    compile_cached_prompt,
+    compile_cached_toon_prompt,
+    minify_xml,
+    minify_toon,
+)
 
 
 @dataclass(frozen=True)

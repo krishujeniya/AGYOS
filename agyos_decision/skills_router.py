@@ -473,7 +473,9 @@ LANGUAGE_FRAMEWORK_MAP = {
 def load_catalog() -> List[Dict[str, Any]]:
     """Prefer the runtime manifest; recover from stale or missing generated data."""
     entries_list = None
-    for source in (MANIFEST_DATA_TOON, MANIFEST_DATA, DOCS_DATA_TOON, DOCS_DATA):
+    manifest_toon = MANIFEST_DATA.with_suffix(".toon")
+    docs_toon = DOCS_DATA.with_suffix(".toon")
+    for source in (manifest_toon, MANIFEST_DATA, docs_toon, DOCS_DATA):
         if not source.is_file():
             continue
         try:
