@@ -15,6 +15,7 @@ import json
 import os
 import re
 import sys
+import xml.etree.ElementTree as ET
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any, Dict, List, Set, Tuple
@@ -23,6 +24,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
 from agyos_decision.roles import CompanyRole, list_roles, get_role
+from agyos_decision.toon_compiler import compile_agent_to_xml
 
 MANIFEST_PATH = REPO_ROOT / ".agents" / "skills-manifest.json"
 SKILLS_DIR = REPO_ROOT / ".agents" / "skills"
@@ -441,29 +443,19 @@ def update_agent_definition_files(matrix: Dict[str, Any]):
         if not role:
             continue
 
-        primary_list = rdata["primary_skills"]
-        all_skills = rdata["skills"]
-        specialized = [s for s in all_skills if s not in primary_list]
-
         tools_yaml = "\n".join(f"  - {t}" for t in role.allowed_tools)
         model = "pro" if role.seniority in ("L8", "L7") else "inherit"
-        psychology_bullets = "\n".join(
-            f"- **{p.replace('_', ' ').title()}**: Apply {p.replace('_', ' ')} in all decisions and deliverables."
-            for p in role.psychology_principles
+        xml_block = compile_agent_to_xml(
+            role.role_id,
+            primary_skills=rdata["primary_skills"],
+            all_skills=rdata["skills"],
         )
-        primary_bullets = "\n".join(f"- `{s}`" for s in primary_list)
 
-        specialized_bullets = ""
-        if specialized:
-            spec_items = "\n".join(f"- `{s}`" for s in specialized[:30])
-            remainder_note = f"\n- *... and {len(specialized) - 30} additional specialized skills in [skills-by-role/{role.role_id}/](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/{role.role_id}/)*" if len(specialized) > 30 else ""
-            specialized_bullets = f"""
-
-## Specialized & Domain Skills ({len(specialized)} skills)
-
-Browse the role workspace symlinks in [`skills-by-role/{role.role_id}/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/{role.role_id}/).
-
-{spec_items}{remainder_note}"""
+        try:
+            root = ET.fromstring(xml_block)
+            assert root.tag == "agyos_agent"
+        except Exception as e:
+            raise ValueError(f"Invalid XML syntax for role {role_id}: {e}")
 
         content = f"""---
 name: {role.role_id}
@@ -475,32 +467,7 @@ model: {model}
 
 {PROMPT_DEFENSE}
 
-You are the **{role.title}** (`{role.role_id}`) in the **{role.department.replace('_', ' ').title()}** department ({role.seniority}), governed by operational pod **`{role.governing_pod}`**.
-
-## Mandate & Scope
-
-{role.mandate}
-
-## Skills Workspace & Directory
-
-- **Role Skills Workspace:** [`skills-by-role/{role.role_id}/`](file:///home/ai/Documents/projects/Freelance/AGYOS/skills-by-role/{role.role_id}/)
-- **Total Mapped Skills:** {len(all_skills)} (Primary: {len(primary_list)}, Specialized: {len(specialized)})
-
-## Behavioral Psychology Levers
-
-{psychology_bullets}
-
-## Primary Assigned Skills
-
-{primary_bullets}{specialized_bullets}
-
-## Operational Invariants & Boundaries
-
-1. **Default Risk Tier**: `{role.default_risk}` — operations at R2/R3 require explicit verification or outbox hold.
-2. **Deterministic Evidence**: Never mark tasks complete without fresh compiler, linter, or test suite proof.
-3. **Code Quality Ceilings**: Functions <50 lines, files <800 lines, immutability, and 80%+ test coverage.
-4. **Governing Pod**: Reports to `{role.governing_pod}` for cross-functional routing and task contract boundaries.
-5. **Authentic Prose**: Use clear, direct human engineering language without robotic fillers or AI buzzwords.
+{xml_block}
 """
         envelope = f'mode: "100644"\ntext: {json.dumps(content, ensure_ascii=False)}\n'
         agent_toon_file.write_text(envelope, encoding="utf-8")

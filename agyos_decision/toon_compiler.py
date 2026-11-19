@@ -313,15 +313,21 @@ def compile_skill_to_xml(skill_name: str, max_instruction_lines: int = 25, compa
     return minify_xml(raw_xml) if compact else raw_xml
 
 
-@functools.lru_cache(maxsize=256)
-def compile_agent_to_xml(role_id: str, compact: bool = False) -> str:
+def compile_agent_to_xml(
+    role_id: str,
+    compact: bool = False,
+    primary_skills: Optional[List[str]] = None,
+    all_skills: Optional[List[str]] = None,
+) -> str:
     """Compile an enterprise role into an <agyos_agent> XML definition with TOON skill catalog."""
     role = get_role(role_id)
     if not role:
         return f'<agyos_agent id="{role_id}" status="not_found" />'
 
-    primary_skills = get_skills_for_role(role_id, all_skills=False)
-    all_skills = get_all_skills_for_role(role_id)
+    if primary_skills is None:
+        primary_skills = get_skills_for_role(role_id, all_skills=False)
+    if all_skills is None:
+        all_skills = get_all_skills_for_role(role_id)
     specialized_count = max(0, len(all_skills) - len(primary_skills))
 
     skill_records = [
@@ -364,9 +370,9 @@ def compile_agent_to_xml(role_id: str, compact: bool = False) -> str:
         f']]>',
         f'  </skills_workspace>',
         f'  <operational_invariants>',
-        f'    <invariant type="zero_local_builds">Zero local builds or test executions; verify solely in GitHub Actions CI.</invariant>',
-        f'    <invariant type="maintainability">Functions &lt;50 lines, files &lt;800 lines, immutability, 80%+ test coverage.</invariant>',
-        f'    <invariant type="atomic_precision">Direct human technical engineering prose; zero conversational fluff.</invariant>',
+        f'    <invariant id="zero_local_builds" type="zero_local_builds">Zero local execution of heavy tests/builds; GitHub Actions CI only.</invariant>',
+        f'    <invariant id="maintainability" type="maintainability">Functions &lt;50 lines, files &lt;800 lines, immutability, 80%+ test coverage.</invariant>',
+        f'    <invariant id="atomic_precision" type="atomic_precision">Direct human technical engineering prose; zero conversational fluff.</invariant>',
         f'  </operational_invariants>',
         f'</agyos_agent>'
     ]
