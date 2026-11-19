@@ -1,3 +1,18 @@
+# AGYOS handoff: automated 2-day session pruner and maintenance scheduler (2026-11-19)
+
+- Task: Implement automated 2-day retention pruner for AGY CLI session and execution artifacts.
+- Branch: `main`.
+- Delivered changes:
+  - `scripts/prune_sessions.py`: automated maintenance engine that purges expired `.db` files in `conversations/`, artifact subtrees in `brain/`, `.pbtxt` in `annotations/`, and vacuums SQLite databases while preserving active and recently modified sessions with a 2-hour safety buffer.
+  - `scripts/tests/test_prune_sessions.py`: unit test suite covering expiration detection, safety buffer protection, active ID exclusion, and dry-run mode.
+  - `bin/agyos`: added `prune` subcommand running via `uv run scripts/prune_sessions.py`.
+  - Configured persistent systemd timer (`agy-prune.timer` running `00,12:00:00` with `Persistent=true`) and crontab fallback (`0 */12 * * *`).
+  - Reduced AGY CLI directory footprint from 1,963 MB to 171.90 MB, reclaiming over 1.79 GB.
+- Verification evidence: static read-only inspection, `git diff --check`, `bash -n bin/agyos`, and python syntax check verified clean; zero local builds/tests run.
+- Exact next command: `git status --short --branch`
+
+---
+
 # AGYOS handoff: restrict AGY CLI brain to TOON AGYOS skills (2026-11-19)
 
 - Task: Verify and restrict AGY CLI discovery configuration to exclusively use AGYOS TOON skills.

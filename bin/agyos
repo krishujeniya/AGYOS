@@ -46,6 +46,7 @@ Commands:
   diagnostics Export redacted system diagnostics, state, and environment metrics
   ondemand    Manage on-demand MCP servers and plugins (startup, status, activate, reset)
   use <name>  Activate an MCP server or plugin on-demand
+  prune       Prune historical AGY CLI sessions and execution buffers older than 2 days
   help        Show this help message
 EOF
 }
@@ -595,6 +596,9 @@ print(json.dumps(output, indent=2))
     ;;
   use)
     exec python3 scripts/agy_ondemand.py activate "$@"
+    ;;
+  prune)
+    exec uv run scripts/prune_sessions.py "$@"
     ;;
   help|--help|-h)
     usage
