@@ -2,12 +2,6 @@
   "entries": [
     {
       "path": ".agents/skills"
-    },
-    {
-      "path": "~/.gemini/antigravity-cli/skills"
-    },
-    {
-      "path": "~/.gemini/skills"
     }
   ]
 }

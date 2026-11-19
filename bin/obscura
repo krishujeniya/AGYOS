@@ -149,7 +149,7 @@ case "$cmd" in
     else
       echo "Binary: Node.js / Docker fallback runtime active"
     fi
-    echo "Ready for AGY and Codex integration: YES"
+    echo "Ready for AGY integration: YES"
     echo "=================================================="
     ;;
 

@@ -39,8 +39,6 @@ jobs:
           pip install -r requirements.txt
       - name: Verify full TOON skill catalog and scout delivery
         run: node scripts/agyos-runtime/ci/check-toon-prompts.mjs
-      - name: Capture Claw TOON delivery
-        run: node scripts/agyos-runtime/ci/check-claw-delivery.mjs
       - name: Generate and audit SBOM license compliance
         run: python scripts/generate_sbom.py --check --output "$RUNNER_TEMP/sbom.json"
       - name: Upload Software Bill of Materials (SBOM)

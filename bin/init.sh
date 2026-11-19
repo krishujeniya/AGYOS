@@ -122,44 +122,13 @@ fi
 touch "${AGENTS_DIR}/state/telemetry.jsonl"
 echo "  - Reset telemetry.jsonl"
 
-# 7. Auto-link AGENTS.md
-for file in GEMINI.md CLAUDE.md; do
-  if [ ! -f "${PROJECT_ROOT}/${file}" ]; then
-    echo "See AGENTS.md for standing engineering rules — do not override its gates." > "${PROJECT_ROOT}/${file}"
-  else
-    if ! grep -q "AGENTS.md" "${PROJECT_ROOT}/${file}"; then
-      echo -e "\nSee AGENTS.md for standing engineering rules — do not override its gates." >> "${PROJECT_ROOT}/${file}"
-    fi
-  fi
-done
-echo "  - Auto-linked GEMINI.md and CLAUDE.md"
-
-# 7.5 Portability Bridges
-mkdir -p "${PROJECT_ROOT}/.cursor/rules"
-cat << 'EOF' > "${PROJECT_ROOT}/.cursor/rules/anchor.mdc"
----
-description: Enforce ANCHOR framework rules
-globs: *
----
-# ANCHOR Framework
-You must strictly follow the rules in `AGENTS.md` in the root of this workspace.
-Never skip the 5-Gate Workflow (UNDERSTAND, ANALYZE, PLAN, IMPLEMENT, VERIFY).
-Do not assume a task is complete until `bin/eval.sh` or deterministic tests pass.
-EOF
-echo "  - Created Cursor bridge (.cursor/rules/anchor.mdc)"
-
-cat << 'EOF' > "${PROJECT_ROOT}/.claude.json"
-{
-  "customTools": [
-    {
-      "name": "anchor_gate_check",
-      "description": "Run ANCHOR gate checks",
-      "command": "bash bin/gate-check.sh"
-    }
-  ]
-}
-EOF
-echo "  - Created Claude Code bridge (.claude.json)"
+# 7. Link AGY's instructions to the repository policy.
+agy_rules="${PROJECT_ROOT}/GEMINI.md"
+if [ ! -e "$agy_rules" ]; then
+  ln -s AGENTS.md "$agy_rules"
+elif ! grep -q 'AGENTS.md' "$agy_rules" && ! [ "$agy_rules" -ef "${PROJECT_ROOT}/AGENTS.md" ]; then
+  echo 'See AGENTS.md for standing engineering rules.' >> "$agy_rules"
+fi
 
 # 8. Validate state
 echo "  - Validating initialized state..."

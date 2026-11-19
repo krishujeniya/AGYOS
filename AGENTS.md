@@ -16,6 +16,10 @@
 - **GitHub Actions Mandatory**: All testing, building, linting, and validation MUST run strictly in GitHub Actions CI/CD workflows. Trigger the workflow, push to branch, or dispatch via GitHub CLI (`gh workflow run`), then inspect the run results (`gh run watch` / `gh run view`).
 - **Allowed Local Operations**: Only read-only static inspection (grep, AST read, file inspection) and `git diff --check` are permitted locally.
 - **Prevent Pollution**: Keep temporary build caches, rendered artifacts, model checkpoints, virtual environments, and intermediate files completely off local disk and out of Git.
+## STRICT PYTHON INVARIANT: MANDATORY UV EXCLUSIVELY (ZERO PYTHON/PIP WITHOUT UV)
+- **Always Use UV for All Python Operations**: For ANY and ALL Python tasks, package management, virtual environment handling, script execution, and tooling, `uv` MUST strictly and exclusively be used (`uv run`, `uv pip`, `uv venv`, `uv init`, `uv add`, `uv remove`, `uv lock`, `uv tool`, `uvx`).
+- **Zero Python/Pip Execution Without UV**: NEVER invoke raw `python`, `python3`, `pip`, `pip3`, `virtualenv`, or `poetry` directly without `uv`. All Python execution and CLI commands MUST run through `uv` (e.g. `uv run <script.py>`, `uv run python -m ...`, `uvx <tool>`).
+- **Standardized Lockfile & Determinism**: Always maintain and enforce `uv.lock` and `pyproject.toml` standards for deterministic and reproducible environments across all Python projects.
 
 > **Governing System**: AGYOS v3.1 (Unified Cognitive Operating System for Antigravity CLI)  
 > **Integrated Subsystems**: AGYOS 5-Gate Governance, AGYOS Polyglot Architecture, AGYOS Core SDLC Standards, Agent Council Deliberation, and FastMCP State Daemon  

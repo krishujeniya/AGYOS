@@ -36,6 +36,12 @@ class Point(NamedTuple):
 - **isort** for import sorting
 - **ruff** for linting
 
+## Tooling & Package Management
+
+- **Mandatory UV Exclusively**: ALWAYS use `uv` for all Python operations, dependency management, virtual environments, scripts, and tooling (`uv run`, `uv pip`, `uv venv`, `uv add`, `uv tool`, `uvx`).
+- **Zero Python/Pip Without UV**: NEVER invoke raw `python`, `python3`, `pip`, `pip3`, or `virtualenv` directly without `uv`.
+- **Standards**: Enforce `pyproject.toml` and `uv.lock` for deterministic dependency trees.
+
 ## Reference
 
 See skill: `python-patterns` for comprehensive Python idioms and patterns.
