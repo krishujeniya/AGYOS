@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
-# ANCHOR Context Compactor (COMPACT gate)
-# Generates a fresh CURRENT.md skeleton for the agent to populate before IMPLEMENT.
+# AGYOS Context Compactor (COMPACT gate)
+# Generates a fresh CURRENT.toon skeleton for the agent to populate before IMPLEMENT.
 
 set -euo pipefail
 
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 STATE_DIR="${PROJECT_ROOT}/.agents/state"
-CURRENT_FILE="${STATE_DIR}/CURRENT.md"
+CURRENT_FILE="${STATE_DIR}/CURRENT.toon"
 GRAPH_FILE="${STATE_DIR}/context-graph.json"
 
 mkdir -p "$STATE_DIR"
@@ -24,8 +24,7 @@ else
     fi
 fi
 
-cat <<EOF > "$CURRENT_FILE"
-# CURRENT.md (Structured Handoff)
+TEXT="# CURRENT (Structured Handoff)
 
 ## 1. Goal
 *(Agent: Summarize the current approved implementation plan goal here)*
@@ -43,7 +42,19 @@ $NODES
 
 ## 5. Next Action
 *(Agent: The immediate next command or step to take in IMPLEMENT)*
+"
 
+if command -v jq >/dev/null 2>&1; then
+  ENCODED=$(printf '%s' "$TEXT" | jq -Rs .)
+  cat <<EOF > "$CURRENT_FILE"
+mode: "100644"
+text: $ENCODED
 EOF
+else
+  cat <<EOF > "$CURRENT_FILE"
+mode: "100644"
+text: "$TEXT"
+EOF
+fi
 
 echo "Generated compact skeleton at $CURRENT_FILE"
