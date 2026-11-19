@@ -1,0 +1,24 @@
+name: Prepare verified TOON sources
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci --prefix scripts/agyos-runtime --ignore-scripts --no-audit --no-fund
+      - run: node scripts/agyos-runtime/ci/migrate-documents.mjs
+      - name: Package verified source files
+        run: |
+          jq -j '.[] | .destination, "\u0000"' "$RUNNER_TEMP/conversion.json" |
+            tar --null -T - -czf "$RUNNER_TEMP/sources.tar.gz"
+      - uses: actions/upload-artifact@v7
+        with:
+          name: verified-toon-sources
+          path: |
+            ${{ runner.temp }}/sources.tar.gz
+            ${{ runner.temp }}/conversion.json
