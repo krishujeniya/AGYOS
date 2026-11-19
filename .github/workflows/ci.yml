@@ -25,6 +25,8 @@ jobs:
           node-version: '22'
       - name: Install pinned state-store runtime dependencies
         run: npm ci --prefix scripts/agyos-runtime --ignore-scripts --no-audit --no-fund
+      - name: Verify TOON scout source and delivery
+        run: node scripts/agyos-runtime/ci/check-toon-prompts.mjs
       - name: Verify state-store migration and persistence
         run: |
           node --test scripts/tests/test_state_store_persistence.cjs
