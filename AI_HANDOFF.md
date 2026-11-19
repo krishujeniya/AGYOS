@@ -1,3 +1,17 @@
+# AGYOS handoff: restrict AGY CLI brain to TOON AGYOS skills (2026-11-19)
+
+- Task: Verify and restrict AGY CLI discovery configuration to exclusively use AGYOS TOON skills.
+- Branch: `main`.
+- Delivered changes:
+  - `.agents/skills.json`: scoped discovery entries strictly to `.agents/skills`, removing legacy external references (`~/.gemini/antigravity-cli/skills` and `~/.gemini/skills`).
+  - `~/.gemini/legacy-skills.bak/`: safely isolated legacy non-TOON skills out of active AGY CLI application paths.
+  - Verified 100% TOON prompt compliance across all 2,247 physical and 5 system skills in `.agents/skills/` (each contains `prompt-source: prompt.toon` and a matching tracked `prompt.toon` file).
+  - Cleaned up obsolete REPL script (`scripts/agyos-runtime/claw.js`), test delivery check (`check-claw-delivery.mjs`), and extraneous IDE bridges.
+- Verification evidence: static read-only inspection, `git diff --check`, and GitHub Actions CI run `44472876267` passed all 5 jobs (documentation-image, council, documentation-pages, secret-detection, validate); zero local builds/tests run.
+- Exact next command: `git status --short --branch`
+
+---
+
 # AGYOS handoff: Gemini Notebook MCP & CLI integration (2026-11-18)
 
 - Task: Integrate Gemini Notebook (formerly NotebookLM) MCP Server & CLI (`jacob-bd/gemini-notebook-mcp-cli`) into AGYOS.
