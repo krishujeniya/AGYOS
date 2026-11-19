@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: protect-mcp-governance\ndescription: \"Agent governance skill for MCP tool calls — Cedar policy authoring, shadow-to-enforce rollout, and Ed25519 receipt verification.\"\nrisk: safe\nsource: community\nsource_repo: scopeblind/scopeblind-gateway\nsource_type: official\ndate_added: \"2026-04-05\"\nprompt-source: prompt.toon\n---\n"

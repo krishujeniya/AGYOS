@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: twitter-article-publisher\ndescription: \"Prepare a Markdown article for X Articles and save a reviewed browser draft. Use when the publishing extension is available; obtain separate explicit approval before any public post.\"\nrisk: safe\nsource: https://github.com/wshuyi/x-article-publisher-skill\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

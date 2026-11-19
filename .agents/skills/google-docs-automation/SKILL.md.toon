@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: google-docs-automation\ndescription: \"Lightweight Google Docs integration with standalone OAuth authentication. No MCP server required.\"\nlicense: Apache-2.0\nrisk: critical\nsource: community\nmetadata:\n  author: sanjay3290\n  version: \"1.0\"\nprompt-source: prompt.toon\n---\n"

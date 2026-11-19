@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: deployment-patterns\ndescription: Deployment workflows, CI/CD pipeline patterns, Docker containerization, health checks, rollback strategies, and production readiness checklists for web applications. Use when setting up CI/CD, containerizing an app, or checking production readiness before a release.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

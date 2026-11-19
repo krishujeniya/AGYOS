@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: graphql-architect\ndescription: Master modern GraphQL with federation, performance optimization, and enterprise security. Build scalable schemas, implement advanced caching, and design real-time systems.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

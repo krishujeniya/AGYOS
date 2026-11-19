@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: remotion-best-practices\ndescription: \"Compatibility ID for Remotion video work in React. Use remotion-video-creation as the canonical guide for animations, audio, captions, charts, transitions, and 3D.\"\nrisk: safe\nsource: community\ntags: \"remotion, video, react, animation, composition\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

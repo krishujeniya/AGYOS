@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: api-security-testing\ndescription: \"API security testing workflow for REST and GraphQL APIs covering authentication, authorization, rate limiting, input validation, and security best practices.\"\ncategory: granular-workflow-bundle\nrisk: safe\nsource: personal\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

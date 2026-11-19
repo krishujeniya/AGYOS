@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: odoo-project-timesheet\ndescription: \"Expert guide for Odoo Project and Timesheets: task stages, billable time tracking, timesheet approval, budget alerts, and invoicing from timesheets.\"\nrisk: safe\nsource: \"self\"\nprompt-source: prompt.toon\n---\n"

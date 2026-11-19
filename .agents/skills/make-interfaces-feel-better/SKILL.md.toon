@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: make-interfaces-feel-better\ndescription: Apply concrete design-engineering details that make interfaces feel polished. Use when reviewing or improving UI spacing, typography, borders, shadows, motion, hit areas, icons, text wrapping, and interaction states.\nmetadata:\n  origin: community\nprompt-source: prompt.toon\n---\n"

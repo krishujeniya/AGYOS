@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: address-github-comments\ndescription: \"Use when you need to address review or issue comments on an open GitHub Pull Request using the gh CLI.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

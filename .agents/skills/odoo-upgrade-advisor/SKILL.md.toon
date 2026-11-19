@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: odoo-upgrade-advisor\ndescription: \"Step-by-step Odoo version upgrade advisor: pre-upgrade checklist, community vs enterprise upgrade path, OCA module compatibility, and post-upgrade validation.\"\nrisk: safe\nsource: \"self\"\nprompt-source: prompt.toon\n---\n"

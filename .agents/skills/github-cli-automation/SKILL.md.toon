@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: github-cli-automation\ndescription: Use the `gh` CLI for issues, pull requests, Actions runs, and GitHub API queries.\nrisk: safe\nsource: Dimillian/Skills (MIT)\ndate_added: '2026-03-25'\nprompt-source: prompt.toon\n---\n"

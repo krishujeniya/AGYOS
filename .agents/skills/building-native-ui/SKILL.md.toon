@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: building-native-ui\ndescription: Complete guide for building beautiful apps with Expo Router. Covers fundamentals, styling, components, navigation, animations, patterns, and native tabs.\nrisk: unknown\nsource: community\nversion: 1.0.1\nlicense: MIT\nprompt-source: prompt.toon\n---\n"

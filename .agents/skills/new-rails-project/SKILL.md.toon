@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: new-rails-project\nargument-hint: [project name]\ndescription: Create a new Rails project\nallowed-tools: Bash(rails *), Bash(bundle *), Bash(bin/*), Bash(npm *), Bash(yarn *)\ncontext: fork\nrisk: unknown\nsource: community\nmetadata:\n  author: Shpigford\n  version: \"1.0\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: typescript-pro\ndescription: Master TypeScript with advanced types, generics, and strict type safety. Handles complex type systems, decorators, and enterprise-grade patterns.\nrisk: safe\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

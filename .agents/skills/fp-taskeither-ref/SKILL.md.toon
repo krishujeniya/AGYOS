@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: fp-taskeither-ref\ndescription: Quick reference for TaskEither. Use when user needs async error handling, API calls, or Promise-based operations that can fail.\nrisk: unknown\nsource: community\nversion: 1.0.0\ntags: [fp-ts, taskeither, async, promise, error-handling, quick-reference]\nprompt-source: prompt.toon\n---\n"

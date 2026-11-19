@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: credential-manager\ndescription: \"CISO operacional enterprise para gestao total de credenciais e segredos.\"\nrisk: critical\nsource: community\ndate_added: '2026-03-06'\nauthor: \"Krish Ujeniya\"\ntags:\n- credentials\n- secrets\n- security\n- api-keys\n- vault\ntools:\n- claude-code\n- antigravity\n- cursor\n- gemini-cli\n- codex-cli\nprompt-source: prompt.toon\n---\n"

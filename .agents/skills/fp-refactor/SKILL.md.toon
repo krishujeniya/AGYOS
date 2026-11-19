@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: fp-refactor\ndescription: Comprehensive guide for refactoring imperative TypeScript code to fp-ts functional patterns\nrisk: unknown\nsource: community\nversion: 1.0.0\nauthor: \"Krish Ujeniya\"\ntags:\n  - fp-ts\n  - refactoring\n  - functional-programming\n  - typescript\n  - migration\n  - either\n  - option\n  - task\n  - reader\nprompt-source: prompt.toon\n---\n"

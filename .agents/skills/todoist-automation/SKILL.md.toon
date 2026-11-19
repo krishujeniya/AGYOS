@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: todoist-automation\ndescription: \"Automate Todoist task management, projects, sections, filtering, and bulk operations via Rube MCP (Composio). Always search tools first for current schemas.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

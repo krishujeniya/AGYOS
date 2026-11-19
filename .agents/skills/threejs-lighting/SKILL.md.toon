@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: threejs-lighting\ndescription: Three.js lighting - light types, shadows, environment lighting. Use when adding lights, configuring shadows, setting up IBL, or optimizing lighting performance.\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

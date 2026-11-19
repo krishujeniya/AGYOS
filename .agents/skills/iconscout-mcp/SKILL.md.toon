@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: iconscout-mcp\ndescription: Search, inspect, and download design assets from Iconscout's library of 15M+ icons, vector illustrations, 3D icons, and Lottie animations via its MCP server. Use natural language queries to find style-consistent assets and inject them directly into codebases and design files.\nrisk: low\nsource: official (iconscout.com/mcp)\ndate_added: 2026-11-13\nprompt-source: prompt.toon\n---\n"

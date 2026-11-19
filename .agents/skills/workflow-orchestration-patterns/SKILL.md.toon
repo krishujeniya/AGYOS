@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: workflow-orchestration-patterns\ndescription: \"Master workflow orchestration architecture with Temporal, covering fundamental design decisions, resilience patterns, and best practices for building reliable distributed systems.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

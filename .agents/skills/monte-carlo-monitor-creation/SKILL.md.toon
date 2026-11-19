@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: monte-carlo-monitor-creation\ndescription: \"Guides creation of Monte Carlo monitors via MCP tools, producing monitors-as-code YAML for CI/CD deployment.\"\ncategory: data\nrisk: safe\nsource: community\nsource_repo: monte-carlo-data/mc-agent-toolkit\nsource_type: community\ndate_added: \"2026-04-08\"\nauthor: \"Krish Ujeniya\"\ntags: [data-observability, monitoring, monte-carlo, monitors-as-code]\ntools: [claude, cursor, codex]\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: analytics-product\ndescription: \"Analytics de produto — PostHog, Mixpanel, eventos, funnels, cohorts, retencao, north star metric, OKRs e dashboards de produto.\"\nrisk: none\nsource: community\ndate_added: '2026-03-06'\nauthor: \"Krish Ujeniya\"\ntags:\n- analytics\n- product\n- metrics\n- posthog\n- mixpanel\ntools:\n- claude-code\n- antigravity\n- cursor\n- gemini-cli\n- codex-cli\nprompt-source: prompt.toon\n---\n"

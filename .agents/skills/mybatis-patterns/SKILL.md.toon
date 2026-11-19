@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: mybatis-patterns\ndescription: MyBatis and MyBatis-Spring patterns for mapper design, XML and annotation SQL, result mapping, dynamic SQL safety, transactions, batching, pagination, and query performance. Use when building or reviewing Java persistence code with MyBatis, Spring Boot, MyBatis-Spring, or MyBatis-based legacy applications.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

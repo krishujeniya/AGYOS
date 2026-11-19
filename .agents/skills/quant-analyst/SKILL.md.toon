@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: quant-analyst\ndescription: Build financial models, backtest trading strategies, and analyze market data. Implements risk metrics, portfolio optimization, and statistical arbitrage.\nrisk: safe\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

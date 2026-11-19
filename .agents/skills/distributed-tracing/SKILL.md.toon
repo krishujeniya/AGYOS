@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: distributed-tracing\ndescription: \"Implement distributed tracing with Jaeger and Tempo for request flow visibility across microservices.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: supply-chain-risk-auditor\ndescription: \"Identifies dependencies at heightened risk of exploitation or takeover. Use when assessing supply chain attack surface, evaluating dependency health, or scoping security engagements.\"\nallowed-tools:\n  - Read\n  - Write\n  - Bash\n  - Glob\n  - Grep\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

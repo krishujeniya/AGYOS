@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: env-variable-security\ndescription: Secure-by-default environment variable management for Claude Code sessions.\nrisk: critical\nsource: https://github.com/dmno-dev/varlock\nversion: 1.0.0\nprompt-source: prompt.toon\n---\n"

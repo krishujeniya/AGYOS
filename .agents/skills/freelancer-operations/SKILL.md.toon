@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: freelancer-operations\ndescription: Use when setting up freelance financial tracking, invoicing, international payment routes, drafting legal contracts (NDAs, master service agreements), configuring CRM/automation stacks, managing developer time, or designing scaling models.\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: backend-feature-dev\ndescription: \"Orchestrate end-to-end backend feature development from requirements to deployment. Use when coordinating multi-phase feature delivery across teams and services.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

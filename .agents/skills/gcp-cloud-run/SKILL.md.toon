@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: gcp-cloud-run\ndescription: Specialized skill for building production-ready serverless\n  applications on GCP. Covers Cloud Run services (containerized), Cloud Run\n  Functions (event-driven), cold start optimization, and event-driven\n  architecture with Pub/Sub.\nrisk: unknown\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

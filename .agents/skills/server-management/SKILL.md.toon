@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: server-management\ndescription: \"Server management principles and decision-making. Process management, monitoring strategy, and scaling decisions. Teaches thinking, not commands.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

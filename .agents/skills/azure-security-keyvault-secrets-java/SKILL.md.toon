@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-security-keyvault-secrets-java\ndescription: \"Azure Key Vault Secrets Java SDK for secret management. Use when storing, retrieving, or managing passwords, API keys, connection strings, or other sensitive configuration data.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

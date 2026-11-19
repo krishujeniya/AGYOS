@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: convertkit-automation\ndescription: \"Automate ConvertKit (Kit) tasks via Rube MCP (Composio): manage subscribers, tags, broadcasts, and broadcast stats. Always search tools first for current schemas.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

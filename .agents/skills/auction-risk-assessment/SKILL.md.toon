@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: auction-risk-assessment\ndescription: Analise de risco em leiloes de imoveis. Score 36 pontos, riscos juridicos/financeiros/operacionais, stress test 4 cenarios e ROI ponderado por risco.\nauthor: Krish Ujeniya\ntags:\n- risk-analysis\n- scoring\n- stress-test\n- brazilian\ntools:\n- claude-code\n- antigravity\n- cursor\n- gemini-cli\n- codex-cli\nprompt-source: prompt.toon\n---\n"

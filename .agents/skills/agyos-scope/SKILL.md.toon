@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agyos-scope\ndescription: Assess task complexity and define the file, command, and network permissions needed for a milestone.\nallowed-tools:\n- view_file\n- grep_search\nprompt-source: prompt.toon\n---\n"

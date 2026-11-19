@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: tdd-workflow\ndescription: \"Test-driven development workflow: write a failing test first, watch it fail, implement the smallest change to green, then refactor with 80%+ coverage across unit, integration, and E2E tests. Use when writing a new feature, fixing a bug, refactoring, or when told to write failing tests first.\"\nargument-hint: <path/to/*.plan.md>\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

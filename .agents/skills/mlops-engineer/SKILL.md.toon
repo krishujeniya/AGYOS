@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: mlops-engineer\ndescription: Build comprehensive ML pipelines, experiment tracking, and model registries with MLflow, Kubeflow, and modern MLOps tools.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

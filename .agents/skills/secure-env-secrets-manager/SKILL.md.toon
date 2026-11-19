@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: secure-env-secrets-manager\ndescription: \"Handle project environment variables with secret-safe inspection and execution. Use when reviewing .env wiring or running commands that need credentials; never print secret values into the session.\"\nrisk: safe\nsource: https://github.com/wrsmith108/varlock-claude-skill\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

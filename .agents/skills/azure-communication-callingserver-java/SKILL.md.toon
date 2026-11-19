@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-communication-callingserver-java\ndescription: \"⚠️ DEPRECATED: This SDK has been renamed to Call Automation. For new projects, use azure-communication-callautomation instead. This skill is for maintaining legacy code only.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+text: "---\ntrigger: glob\nglobs: \"**/*.py,**/*.pyi\"\n---\n# Python Security\n\n> This file extends [common/security.md](common-security.md) with Python specific content.\n\n## Secret Management\n\n```python\nimport os\nfrom dotenv import load_dotenv\n\nload_dotenv()\n\napi_key = os.environ[\"OPENAI_API_KEY\"]  # Raises KeyError if missing\n```\n\n## Security Scanning\n\n- Use **bandit** for static security analysis:\n  ```bash\n  bandit -r src/\n  ```\n\n## Reference\n\nSee skill: `django-security` for Django-specific security guidelines (if applicable).\n"

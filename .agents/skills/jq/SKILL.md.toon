@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: jq\ndescription: \"Expert jq usage for JSON querying, filtering, transformation, and pipeline integration. Practical patterns for real shell workflows.\"\ncategory: development\nrisk: safe\nsource: community\ndate_added: \"2026-03-28\"\nauthor: \"Krish Ujeniya\"\ntags: [jq, json, shell, cli, data-transformation, bash]\ntools: [claude, cursor, gemini]\nprompt-source: prompt.toon\n---\n"

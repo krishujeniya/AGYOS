@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: python-development-python-scaffold\ndescription: \"Scaffold a Python project with a clear package structure, dependency management, typing, tests, and standard tooling. Use when starting a Python application or library.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

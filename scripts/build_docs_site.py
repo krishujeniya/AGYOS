@@ -128,6 +128,8 @@ class Renderer(mistune.HTMLRenderer):
         # Source files that are not approved remain on GitHub and are not republished.
         if full.startswith(('http:', 'https:')):
             return '#'
+        if full.lower().endswith('.md'):
+            return GITHUB + quote(full + '.toon', safe='/')
         suffix = ('#' + quote(p.fragment)) if p.fragment else ''
         return GITHUB + quote(full, safe='/') + suffix
 
@@ -205,6 +207,7 @@ def build(out: Path, base: str) -> dict:
     inventory = []
     for i, doc in enumerate(docs):
         source = ROOT / doc['source']
+        tracked_source = doc['source'] + ('.toon' if source.suffix.lower() == '.md' else '')
         raw = source_text(source)
         renderer = Renderer(doc['source'], routes, base)
         md = mistune.create_markdown(renderer=renderer, plugins=['table', 'strikethrough', 'url', 'task_lists'])
@@ -220,7 +223,7 @@ def build(out: Path, base: str) -> dict:
             + f'<aside class="docs-sidebar" id="docs-sidebar" aria-label="Documentation navigation"><div class="sidebar-head">Documentation <span>{len(docs)} guides</span></div>{pages_sidebar(docs,doc["slug"],base)}</aside>'
             + f'<main id="main" class="docs-article"><div class="doc-breadcrumb"><a href="{base}docs/overview/">Documentation</a><span>/</span><span>{html.escape(doc["category"])}</span></div>'
             + f'<div class="doc-heading"><p class="eyebrow">{html.escape(doc["category"])}</p><h1>{html.escape(doc["title"])}</h1><p>{html.escape(doc["description"])}</p></div>'
-            + f'<article class="prose" id="doc-content">{rendered}</article>{pager}<div class="source-link"><a href="{GITHUB+quote(doc["source"],safe="/")}" target="_blank" rel="noopener noreferrer">View source on GitHub ↗</a></div></main>'
+            + f'<article class="prose" id="doc-content">{rendered}</article>{pager}<div class="source-link"><a href="{GITHUB+quote(tracked_source,safe="/")}" target="_blank" rel="noopener noreferrer">View source on GitHub ↗</a></div></main>'
             + f'<aside class="docs-toc" aria-label="On this page"><div class="toc-title">On this page</div>{toc or "<p>No subsections</p>"}</aside></div>' + footer(base) + search_dialog(base))
         dest = out / 'docs' / doc['slug'] / 'index.html'
         dest.parent.mkdir(parents=True, exist_ok=True)

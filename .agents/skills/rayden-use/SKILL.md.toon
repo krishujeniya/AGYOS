@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: rayden-use\ndescription: Build and maintain Rayden UI components and screens in Figma via Figma MCP with full design token enforcement\ncategory: design\nrisk: safe\nsource: https://github.com/playbookTV/rayden-ui-design-skill\nsource_type: community\ndate_added: 2026-04-10\nauthor: \"Krish Ujeniya\"\ntags: figma, design-system, ui, components, mcp, rayden, rayna-ui\ntools: mcp__claude_ai_Figma__use_figma, mcp__claude_ai_Figma__get_screenshot, mcp__claude_ai_Figma__whoami, Read\nprompt-source: prompt.toon\n---\n"

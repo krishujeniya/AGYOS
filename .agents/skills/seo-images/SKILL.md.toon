@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: seo-images\ndescription: >\n  Image optimization analysis for SEO and performance. Checks alt text, file\n  sizes, formats, responsive images, lazy loading, and CLS prevention. Use when\n  user says \"image optimization\", \"alt text\", \"image SEO\", \"image size\",\n  or \"image audit\".\nrisk: safe\nsource: \"https://github.com/AgriciDaniel/claude-seo\"\ndate_added: \"2026-03-21\"\nuser-invokable: true\nargument-hint: \"[url]\"\nallowed-tools:\n  - Read\n  - Grep\n  - Glob\n  - Bash\n  - WebFetch\nprompt-source: prompt.toon\n---\n"

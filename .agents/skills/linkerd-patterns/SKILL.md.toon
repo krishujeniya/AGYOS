@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: linkerd-patterns\ndescription: \"Production patterns for Linkerd service mesh - the lightweight, security-first service mesh for Kubernetes.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

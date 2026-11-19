@@ -78,3 +78,7 @@ integrations/google-flow-mcp/
 # Archived legacy material (never upload to GitHub)
 OLD/
 OLD
+
+# Markdown compatibility views come from their tracked .toon documents.
+*.[mM][dD]
+/.agyos-documents-state.json

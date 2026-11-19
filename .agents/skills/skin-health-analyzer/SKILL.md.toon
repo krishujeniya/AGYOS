@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: skin-health-analyzer\ndescription: Analyze skin health data, identify skin problem patterns, assess skin health status. Supports correlation analysis with nutrition, chronic diseases, and medication data.\nrisk: safe\nsource: community\nprompt-source: prompt.toon\n---\n"

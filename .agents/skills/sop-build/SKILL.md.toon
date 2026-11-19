@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: sop-build\ndescription: Standard Operating Procedure for Build Pod (Product and Engineering). Governs PRD authoring, Test-Driven Development (TDD) red-green-refactor loops, code quality, and regression verification.\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: minimalist-ui\ndescription: \"Use when creating clean editorial interfaces with warm monochrome palettes, crisp borders, restrained motion, and flat bento layouts.\"\ncategory: frontend\nrisk: safe\nsource: community\nsource_repo: Leonxlnx/taste-skill\nsource_type: community\ndate_added: \"2026-04-17\"\nauthor: \"Krish Ujeniya\"\ntags: [frontend, design, minimalism, ui]\ntools: [claude, cursor, codex, antigravity]\nprompt-source: prompt.toon\n---\n"

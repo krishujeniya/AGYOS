@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-monitor-opentelemetry-exporter-py\ndescription: Azure Monitor OpenTelemetry Exporter for Python. Use for low-level OpenTelemetry export to Application Insights.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

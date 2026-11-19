@@ -1,0 +1,2 @@
+mode: "100644"
+text: "# Multi-Model Deliberation Standard\n- When evaluating architectural decisions, collect independent opinions and synthesize consensus.\n- Reconcile divergent recommendations transparently based on trade-offs."

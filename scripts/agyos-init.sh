@@ -14,7 +14,7 @@ echo "============================================================"
 
 # 1. Dependency checks
 echo "Checking core runtimes..."
-for cmd in agy bun node python3 git jq; do
+for cmd in agy bun node uv git jq; do
   if ! command -v "$cmd" &>/dev/null; then
     echo "❌ Missing required command: $cmd"
     exit 1
@@ -22,12 +22,8 @@ for cmd in agy bun node python3 git jq; do
   echo "  ✓ $cmd found"
 done
 
-# 2. Constitution & Rules
-echo "Linking AGENTS.md and GEMINI.md..."
-if [ ! -L "GEMINI.md" ] && [ ! -f "GEMINI.md" ]; then
-  ln -s AGENTS.md GEMINI.md
-fi
-echo "  ✓ Constitution active"
+# 2. Materialize AGY host manifests before discovery or packaging.
+node scripts/materialize-documents.mjs
 
 # 3. State & Governance initialization
 echo "Validating Anchor State Machine..."
@@ -47,7 +43,7 @@ echo "  ✓ Anchor MCP server ready"
 
 # 6. Packaging & Validating 8 AGYOS Plugins
 echo "Validating AGYOS Plugins..."
-python3 scripts/package_agyos_plugins.py
+uv run --no-project scripts/package_agyos_plugins.py
 for p in .agents/plugins/*; do
   agy plugin validate "$p" >/dev/null
 done
@@ -55,7 +51,7 @@ echo "  ✓ All 8 AGYOS plugins verified"
 
 # 7. Sync Skills & Catalog
 echo "Compiling skills catalog..."
-python3 scripts/build_docs_data.py >/dev/null
+uv run --no-project scripts/build_docs_data.py >/dev/null
 echo "  ✓ Skills database compiled"
 
 echo ""

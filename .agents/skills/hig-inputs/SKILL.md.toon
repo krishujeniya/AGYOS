@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: hig-inputs\ndescription: \"Design or review Apple platform input methods such as touch, keyboard, pointer, Pencil, voice, and focus navigation. Read existing Apple design context first.\"\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

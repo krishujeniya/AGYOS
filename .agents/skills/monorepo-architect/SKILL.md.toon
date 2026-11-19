@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: monorepo-architect\ndescription: \"Design or troubleshoot a monorepo using Nx, Turborepo, Bazel, or Lerna. Use for workspace boundaries, builds, dependency constraints, or task caching.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

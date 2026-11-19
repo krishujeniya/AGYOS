@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: odoo-xml-views-builder\ndescription: \"Expert at building Odoo XML views: Form, List, Kanban, Search, Calendar, and Graph. Generates correct XML for Odoo 14-17 with proper visibility syntax.\"\nrisk: safe\nsource: \"self\"\nprompt-source: prompt.toon\n---\n"

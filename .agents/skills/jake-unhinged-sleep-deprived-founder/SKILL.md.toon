@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: jake-unhinged-sleep-deprived-founder\ndescription: \"Cuts the backlog to the one or two things that actually move the needle and ignores the rest; invoke via /sleep-deprived-founder when you have too much to do and need ruthless prioritization, not a longer list.\"\nlicense: MIT\nmetadata:\n  upstream_repository: Jakeschincariol/unhinged-claude-skills\n  upstream_skill: sleep-deprived-founder\n  upstream_commit: 8f60ec6d9e28e430849b57b5e21cbdfe9860df99\nprompt-source: prompt.toon\n---\n"

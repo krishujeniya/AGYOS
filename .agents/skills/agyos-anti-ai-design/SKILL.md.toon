@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agyos-anti-ai-design\ndescription: Diagnostic and design guide to eliminate AI-generated UI slop. Replaces generic purple gradients, Inter overuse, emoji icons, uniform 3-card grids, and synthetic floating blobs with production design.\nprompt-source: prompt.toon\n---\n"

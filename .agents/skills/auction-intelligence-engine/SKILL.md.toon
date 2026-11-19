@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: auction-intelligence-engine\ndescription: Especialista em leiloes judiciais e extrajudiciais de imoveis. Analise juridica, pericial e de mercado integrada. Orquestra os 5 modulos especializados.\nauthor: Krish Ujeniya\ntags:\n- auction\n- ai-analysis\n- real-estate\n- brazilian\ntools:\n- claude-code\n- antigravity\n- cursor\n- gemini-cli\n- codex-cli\nprompt-source: prompt.toon\n---\n"

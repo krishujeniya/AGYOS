@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: terraform-aws-modules\ndescription: \"Terraform module creation for AWS — reusable modules, state management, and HCL best practices. Use when building or reviewing Terraform AWS infrastructure.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

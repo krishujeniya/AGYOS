@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: expo-ui-swift-ui\ndescription: Use when integrating SwiftUI views or modifiers into an Expo app with `@expo/ui/swift-ui`.\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

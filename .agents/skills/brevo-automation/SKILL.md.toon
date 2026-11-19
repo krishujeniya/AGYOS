@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: brevo-automation\ndescription: \"Automate Brevo (formerly Sendinblue) email marketing operations through Composio's Brevo toolkit via Rube MCP.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

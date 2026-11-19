@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: scriptwriting-principles\ndescription: >-\n  The 440-principle master reference for professional scriptwriting spanning feature films,\n  YouTube long-form, social micro-formats, documentaries, advertising, educational tutorials,\n  and AI-assisted screenwriting. Companion to video-editing-principles. Incorporates classical\n  dramatic theory, Craig Mazin's belief-transformation model, and platform retention engineering.\nmetadata:\n  version: 1.0.0\nlicense: MIT\nprompt-source: prompt.toon\n---\n"

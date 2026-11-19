@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: executing-plans\ndescription: Use when you have a written implementation plan to execute in a separate session with review checkpoints\nprompt-source: prompt.toon\n---\n"

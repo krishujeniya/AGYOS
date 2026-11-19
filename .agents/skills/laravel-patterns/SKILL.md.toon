@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: laravel-patterns\ndescription: Laravel architecture patterns, routing/controllers, Eloquent ORM, service layers, queues, events, caching, and API resources for production apps. Use when building or reviewing Laravel apps — controllers, Eloquent, service layers, queues, or API resources.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

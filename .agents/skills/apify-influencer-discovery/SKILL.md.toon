@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: apify-influencer-discovery\ndescription: Find and evaluate influencers for brand partnerships, verify authenticity, and track collaboration performance across Instagram, Facebook, YouTube, and TikTok.\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

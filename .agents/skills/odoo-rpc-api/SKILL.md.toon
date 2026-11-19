@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: odoo-rpc-api\ndescription: \"Expert on Odoo's external JSON-RPC and XML-RPC APIs. Covers authentication, model calls, record CRUD, and real-world integration examples in Python, JavaScript, and curl.\"\nrisk: safe\nsource: \"self\"\nprompt-source: prompt.toon\n---\n"

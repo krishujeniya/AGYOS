@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: vector-semantic-file-search\ndescription: \"Find files by meaning with the Vexor semantic-search CLI. Use when installed and configured; inspect the embedding provider and data boundary before indexing source files.\"\nrisk: safe\nsource: https://github.com/scarletkc/vexor\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

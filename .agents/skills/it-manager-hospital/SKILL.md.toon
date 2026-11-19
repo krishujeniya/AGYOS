@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: it-manager-hospital\ndescription: World-class Hospital IT Management Advisor specializing in clinical safety, digital maturity (HIMSS/ONA/JCI), and HIS/PEP ecosystems.\nrisk: safe\nsource: community\ndate_added: \"2026-04-18\"\ntriggers:\n  - \"it manager hospital\"\n  - \"gestão ti hospitalar\"\n  - \"ti hospitalar\"\n  - \"himss stage 7 roadmap\"\n  - \"ona accreditation it\"\n  - \"his integration advice\"\n  - \"pep mv soul tasy\"\n  - \"hl7 fhir standards\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: firmware-analyst\ndescription: Expert firmware analyst specializing in embedded systems, IoT security, and hardware reverse engineering.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

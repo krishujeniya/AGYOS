@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: rsvp-speed-reader\ndescription: Present text in a word-by-word reading view with adjustable speed, pause controls, and readable typography.\nprompt-source: prompt.toon\n---\n"

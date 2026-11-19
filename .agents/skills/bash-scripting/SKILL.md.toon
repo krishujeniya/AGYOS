@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: bash-scripting\ndescription: \"Bash scripting workflow for creating production-ready shell scripts with defensive patterns, error handling, and testing.\"\ncategory: granular-workflow-bundle\nrisk: safe\nsource: personal\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-ai-formrecognizer-java\ndescription: \"Build document analysis applications using the Azure AI Document Intelligence SDK for Java.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

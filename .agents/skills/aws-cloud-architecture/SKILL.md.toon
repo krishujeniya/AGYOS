@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: aws-cloud-architecture\ndescription: AWS development with infrastructure automation and cloud architecture patterns\nrisk: safe\nsource: https://github.com/zxkane/aws-skills\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

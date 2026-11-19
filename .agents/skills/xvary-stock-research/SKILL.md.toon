@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: xvary-stock-research\ndescription: \"Thesis-driven equity analysis from public SEC EDGAR and market data; /analyze, /score, /compare workflows with bundled Python tools (Claude Code, Cursor, Codex).\"\nrisk: safe\nsource: community\ndate_added: \"2026-03-23\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: analyze-project\ndescription: Forensic root cause analyzer for Antigravity sessions. Classifies scope deltas, rework patterns, root causes, hotspots, and auto-improves prompts/health.\nrisk: unknown\nsource: community\nversion: \"1.0\"\ntags: [analysis, diagnostics, meta, root-cause, project-health, session-review]\nprompt-source: prompt.toon\n---\n"

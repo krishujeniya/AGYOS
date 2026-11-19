@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: earllm-build\ndescription: \"Build, maintain, and extend the EarLLM One Android project — a Kotlin/Compose app that connects Bluetooth earbuds to an LLM via voice pipeline.\"\nrisk: safe\nsource: community\ndate_added: '2026-03-06'\nauthor: \"Krish Ujeniya\"\ntags:\n- android\n- kotlin\n- bluetooth\n- llm\n- voice\ntools:\n- claude-code\n- antigravity\n- cursor\n- gemini-cli\n- codex-cli\nprompt-source: prompt.toon\n---\n"

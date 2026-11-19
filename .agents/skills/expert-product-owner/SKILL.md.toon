@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: expert-product-owner\ndescription: \"Product Owner Expert for user stories, acceptance criteria, backlog prioritization, and stakeholder communication. Triggers: user story, acceptance criteria, prioritize, backlog, feature request, stakeholder, requirement, MoSCoW, sprint planning, product vision\"\ncategory: domain\nrisk: safe\ntags: \"[product-owner, agile, requirements, user-stories, acceptance-criteria, prioritization]\"\nversion: \"1.0.0\"\nprompt-source: prompt.toon\n---\n"

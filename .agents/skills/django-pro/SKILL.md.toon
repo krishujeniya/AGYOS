@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: django-pro\ndescription: Master Django 5.x with async views, DRF, Celery, and Django Channels. Build scalable web applications with proper architecture, testing, and deployment.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

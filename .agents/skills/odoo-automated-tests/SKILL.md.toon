@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: odoo-automated-tests\ndescription: \"Write and run Odoo automated tests using TransactionCase, HttpCase, and browser tour tests. Covers test data setup, mocking, and CI integration.\"\nrisk: safe\nsource: \"self\"\nprompt-source: prompt.toon\n---\n"

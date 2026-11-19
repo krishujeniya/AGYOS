@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: avoid-ai-writing\ndescription: \"Audit and rewrite content to remove 21 categories of AI writing patterns with a 43-entry replacement table\"\nrisk: none\nsource: https://github.com/conorbronsdon/avoid-ai-writing\ndate_added: \"2026-03-06\"\nprompt-source: prompt.toon\n---\n"

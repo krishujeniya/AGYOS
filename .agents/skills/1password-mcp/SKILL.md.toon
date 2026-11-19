@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: 1password-mcp\ndescription: Manage and inject secrets, list vaults, search vault items, and resolve op:// secret reference URIs programmatically using the 1Password CLI and 1Password Model Context Protocol (MCP) server.\nrisk: medium\nsource: official (developer.1password.com)\ndate_added: 2026-11-14\nprompt-source: prompt.toon\n---\n"

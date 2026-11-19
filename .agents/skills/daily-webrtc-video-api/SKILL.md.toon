@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: daily-webrtc-video-api\ndescription: Build and debug real-time audio, video, and multimodal applications using Daily and Pipecat service pipelines.\nrisk: safe\nsource: community\ndate_added: '2026-03-07'\nprompt-source: prompt.toon\n---\n"

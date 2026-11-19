@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: fullstack-feature\ndescription: \"Use when working with full stack orchestration full stack feature\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

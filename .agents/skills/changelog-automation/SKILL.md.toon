@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: changelog-automation\ndescription: \"Automate changelog generation from commits, PRs, and releases following Keep a Changelog format. Use when setting up release workflows, generating release notes, or standardizing commit conventions.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

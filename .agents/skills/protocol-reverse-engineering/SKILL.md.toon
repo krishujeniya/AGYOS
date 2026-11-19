@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: protocol-reverse-engineering\ndescription: \"Comprehensive techniques for capturing, analyzing, and documenting network protocols for security research, interoperability, and debugging.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

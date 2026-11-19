@@ -11,6 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Verify Markdown sources have moved to TOON
+        run: |
+          if git ls-files -- ':(icase)*.md' | grep .; then
+            exit 1
+          fi
+      - name: Materialize AGY compatibility documents
+        run: node scripts/materialize-documents.mjs
+      - name: Test compatibility document materialization
+        run: node --test scripts/tests/test_materialize_documents.mjs
       - name: Check out pinned prompt principles source
         uses: actions/checkout@v4
         with:
@@ -130,6 +139,8 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
+      - name: Materialize documentation sources
+        run: node scripts/materialize-documents.mjs
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'

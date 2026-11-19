@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: videodb-media-processing\ndescription: Upload, stream, search, edit, transcribe, and generate AI video and audio using the VideoDB SDK.\ncategory: media\nrisk: safe\nsource: community\ntags: '[video, editing, transcription, subtitles, search, streaming, ai-generation, media]'\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

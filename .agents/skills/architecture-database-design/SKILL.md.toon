@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: architecture-database-design\ndescription: \"Master of PostgreSQL schema design, optimization, and safe migrations. Enforces strict conventions for IDs, indexes, JSONB, and transactional DDL. Use whenever modifying the data layer.\"\ncategory: architecture\nrisk: safe\ntags: \"[postgres, database, sql, schema, migration, optimization, indexing]\"\nversion: \"1.0.0\"\nprompt-source: prompt.toon\n---\n"

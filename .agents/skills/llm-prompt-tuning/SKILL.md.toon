@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: llm-prompt-tuning\ndescription: \"Improve a prompt for a defined task by setting output criteria, testing representative cases, and comparing results. Measure quality on that task; do not assume fixed gains.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

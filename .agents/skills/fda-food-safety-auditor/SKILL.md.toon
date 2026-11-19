@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: fda-food-safety-auditor\ndescription: \"Expert AI auditor for FDA Food Safety (FSMA), HACCP, and PCQI compliance. Reviews food facility records and preventive controls.\"\nrisk: safe\nsource: community\nprompt-source: prompt.toon\n---\n"

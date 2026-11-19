@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: coding-standards\ndescription: Baseline cross-project coding conventions for naming, readability, immutability, and code-quality review. Use detailed frontend or backend skills for framework-specific patterns. Use when reviewing code quality or naming with no framework-specific skill that applies.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

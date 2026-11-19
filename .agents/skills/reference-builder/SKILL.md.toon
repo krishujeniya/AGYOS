@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: reference-builder\ndescription: Creates exhaustive technical references and API documentation. Generates comprehensive parameter listings, configuration guides, and searchable reference materials.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: opendots-coworker-pattern\ndescription: Architect and orchestrate persistent AI coworkers (Dots), document workspaces (Spaces & Pages), isolated sandboxes, and human-in-the-loop review gates following OpenDots principles without adding application code.\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: database-schema-modeling\ndescription: Database development and operations workflow covering SQL, NoSQL, database design, migrations, optimization, and data engineering.\ncategory: workflow-bundle\nrisk: safe\nsource: personal\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

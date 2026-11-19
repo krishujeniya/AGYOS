@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: lambda-lang\ndescription: \"Native agent-to-agent language for compact multi-agent messaging. A shared tongue agents speak directly, not a translation layer. 340+ atoms across 7 domains; 3x smaller than natural language.\"\ncategory: ai-agents\nrisk: safe\nsource: community\nsource_repo: voidborne-d/lambda-lang\nsource_type: community\ndate_added: \"2026-04-24\"\nauthor: \"Krish Ujeniya\"\ntags:\n  - agent-to-agent\n  - communication\n  - protocol\n  - compression\n  - multi-agent\ntools:\n  - claude\nprompt-source: prompt.toon\n---\n"

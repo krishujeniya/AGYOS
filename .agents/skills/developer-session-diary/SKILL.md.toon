@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: developer-session-diary\ndescription: 'Unified Diary System: A context-preserving automated logger for multi-project development.'\nrisk: safe\nsource: self\nprompt-source: prompt.toon\n---\n"

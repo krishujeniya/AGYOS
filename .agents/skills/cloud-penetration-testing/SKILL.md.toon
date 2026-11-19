@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: cloud-penetration-testing\ndescription: \"Conduct comprehensive security assessments of cloud infrastructure across Microsoft Azure, Amazon Web Services (AWS), and Google Cloud Platform (GCP).\"\nrisk: offensive\nsource: community\nauthor: \"Krish Ujeniya\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

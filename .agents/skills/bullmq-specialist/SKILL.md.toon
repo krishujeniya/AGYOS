@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: bullmq-specialist\ndescription: BullMQ expert for Redis-backed job queues, background processing,\n  and reliable async execution in Node.js/TypeScript applications.\nrisk: none\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

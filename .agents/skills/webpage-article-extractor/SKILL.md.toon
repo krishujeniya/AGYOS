@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: webpage-article-extractor\ndescription: Extract the main article from a webpage, preserve its title and source attribution, and verify the extracted text against the page.\nprompt-source: prompt.toon\n---\n"

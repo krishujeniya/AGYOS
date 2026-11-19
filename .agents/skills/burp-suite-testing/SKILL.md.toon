@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: burp-suite-testing\ndescription: \"Execute comprehensive web application security testing using Burp Suite's integrated toolset, including HTTP traffic interception and modification, request analysis and replay, automated vulnerability scanning, and manual testing workflows.\"\nrisk: offensive\nsource: community\nauthor: \"Krish Ujeniya\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

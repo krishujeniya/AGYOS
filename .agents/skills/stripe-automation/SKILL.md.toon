@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: stripe-automation\ndescription: \"Automate Stripe tasks via Rube MCP (Composio): customers, charges, subscriptions, invoices, products, refunds. Always search tools first for current schemas.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

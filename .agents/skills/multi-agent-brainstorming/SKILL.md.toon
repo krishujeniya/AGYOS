@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: multi-agent-brainstorming\ndescription: \"Simulate a structured peer-review process using multiple specialized agents to validate designs, surface hidden assumptions, and identify failure modes before implementation.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

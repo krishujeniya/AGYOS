@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: oss-hunter\ndescription: \"Automatically hunt for high-impact OSS contribution opportunities in trending repositories.\"\nrisk: safe\nsource: \"https://github.com/jackjin1997/ClawForge\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

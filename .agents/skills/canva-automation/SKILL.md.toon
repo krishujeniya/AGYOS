@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: canva-automation\ndescription: \"Automate Canva tasks via Rube MCP (Composio): designs, exports, folders, brand templates, autofill. Always search tools first for current schemas.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

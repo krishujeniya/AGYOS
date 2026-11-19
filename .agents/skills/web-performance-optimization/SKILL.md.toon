@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: web-performance-optimization\ndescription: \"Optimize website and web application performance including loading speed, Core Web Vitals, bundle size, caching strategies, and runtime performance\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

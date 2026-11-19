@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: idor-testing\ndescription: \"Provide systematic methodologies for identifying and exploiting Insecure Direct Object Reference (IDOR) vulnerabilities in web applications.\"\nrisk: offensive\nsource: community\nauthor: \"Krish Ujeniya\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

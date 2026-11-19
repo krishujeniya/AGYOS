@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: pc-games\ndescription: \"PC and console game development principles. Engine selection, platform features, optimization strategies.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

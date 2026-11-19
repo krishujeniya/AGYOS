@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: design-system-architect\ndescription: \"Master of creating Semantic Design Systems into DESIGN.md files based on references or mockups. Useful for UI/UX standardization.\"\nprompt-source: prompt.toon\n---\n"

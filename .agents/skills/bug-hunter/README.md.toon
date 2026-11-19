@@ -1,0 +1,2 @@
+mode: "100644"
+text: "# Bug Hunter\n\nSystematically debugs and fixes a bug using standard debugging techniques.\n\n## What It Does\n\n- Reproduces the bug\n- Traces execution flow\n- Identifies the root cause\n- Fixes the bug\n- Adds tests to prevent regression\n- Documents the bug\n\n## Usage\n\n```\nUse @bug-hunter to fix the login timeout issue\n```\n\nThe skill will systematically debug and fix the problem.\n"

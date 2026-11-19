@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: smtp-penetration-testing\ndescription: \"Conduct comprehensive security assessments of SMTP (Simple Mail Transfer Protocol) servers to identify vulnerabilities including open relays, user enumeration, weak authentication, and misconfiguration.\"\nrisk: offensive\nsource: community\nauthor: \"Krish Ujeniya\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

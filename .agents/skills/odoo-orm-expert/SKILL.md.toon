@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: odoo-orm-expert\ndescription: \"Master Odoo ORM patterns: search, browse, create, write, domain filters, computed fields, and performance-safe query techniques.\"\nrisk: safe\nsource: \"self\"\nprompt-source: prompt.toon\n---\n"

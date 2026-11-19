@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: hierarchical-agent-memory\ndescription: \"Scoped CLAUDE.md memory system that reduces context token spend. Creates directory-level context files, tracks savings via dashboard, and routes agents to the right sub-context.\"\nrisk: safe\nsource: \"https://github.com/kromahlusenii-ops/ham\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

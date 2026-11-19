@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: on-call-handoff-patterns\ndescription: \"Effective patterns for on-call shift transitions, ensuring continuity, context transfer, and reliable incident response across shifts.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

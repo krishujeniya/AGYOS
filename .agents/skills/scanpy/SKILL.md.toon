@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: scanpy\ndescription: \"Scanpy is a scalable Python toolkit for analyzing single-cell RNA-seq data, built on AnnData. Apply this skill for complete single-cell workflows including quality control, normalization, dimensionality reduction, clustering, marker gene identification, visualization, and trajectory analysis.\"\nlicense: SD-3-Clause license\nmetadata:\n    skill-author: K-Dense Inc.\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

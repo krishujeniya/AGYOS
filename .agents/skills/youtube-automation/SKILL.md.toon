@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: youtube-automation\ndescription: \"Automate YouTube tasks via Rube MCP (Composio): upload videos, manage playlists, search content, get analytics, and handle comments. Always search tools first for current schemas.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

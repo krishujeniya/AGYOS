@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-ai-textanalytics-py\ndescription: Azure AI Text Analytics SDK for sentiment analysis, entity recognition, key phrases, language detection, PII, and healthcare NLP. Use for natural language processing on text.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

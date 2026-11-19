@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: istio-traffic-management\ndescription: \"Comprehensive guide to Istio traffic management for production service mesh deployments.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

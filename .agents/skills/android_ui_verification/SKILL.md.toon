@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: android_ui_verification\ndescription: Automated end-to-end UI testing and verification on an Android Emulator using ADB.\nrisk: safe\nsource: community\ndate_added: \"2026-02-28\"\nprompt-source: prompt.toon\n---\n"

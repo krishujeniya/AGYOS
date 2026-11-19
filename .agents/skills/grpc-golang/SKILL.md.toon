@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: grpc-golang\ndescription: \"Build production-ready gRPC services in Go with mTLS, streaming, and observability. Use when designing Protobuf contracts with Buf or implementing secure service-to-service transport.\"\nrisk: safe\nsource: self\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

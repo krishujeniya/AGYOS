@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: stability-ai\ndescription: Geracao de imagens via Stability AI (SD3.5, Ultra, Core). Text-to-image, img2img, inpainting, upscale, remove-bg, search-replace. 15 estilos artisticos.\nrisk: safe\nsource: community\ndate_added: '2026-03-06'\nauthor: \"Krish Ujeniya\"\ntags:\n- image-generation\n- stable-diffusion\n- ai-art\n- api\ntools:\n- claude-code\n- antigravity\n- cursor\n- gemini-cli\n- codex-cli\nprompt-source: prompt.toon\n---\n"

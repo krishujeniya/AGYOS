@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: mcp-dependency-review\ndescription: Statically review MCP configuration for mutable package references before approval or CI, without executing discovered MCP servers. Use when reviewing .mcp.json, Cursor, VS Code, Claude, Windsurf, or other repo-scoped MCP config.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

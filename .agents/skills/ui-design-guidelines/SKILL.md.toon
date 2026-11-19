@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ui-design-guidelines\ndescription: \"Browse or apply design-engineering guidance from the UI Skills collection. Use when the task needs a specific interface-design guide; preserve the project's existing design system and accessibility requirements.\"\nrisk: safe\nsource: https://github.com/ibelick/ui-skills\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

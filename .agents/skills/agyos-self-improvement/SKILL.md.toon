@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agyos-self-improvement\ndescription: >-\n  Use when maintaining the AGYOS skill catalog or improving a skill's correctness, discovery, references, or quality gates. Captures corrections, source checks, cross-skill dependencies, and test ratchets.\nmetadata:\n  version: 1.0.1\nlicense: MIT\nprompt-source: prompt.toon\n---\n"

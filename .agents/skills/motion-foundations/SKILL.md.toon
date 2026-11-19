@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: motion-foundations\ndescription: Motion tokens, spring presets, performance rules, device adaptation, accessibility enforcement, and SSR safety for React / Next.js using motion/react. Foundation layer — all other motion skills depend on this. Use when setting up motion tokens, spring presets, reduced-motion handling, or SSR-safe animation in React or Next.js.\ntags: [motion, animation, performance, accessibility]\ncategory: frontend\nauthor: jeff\nmetadata:\n  version: 1.0.0\nprompt-source: prompt.toon\n---\n"

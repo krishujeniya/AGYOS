@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: apify-competitor-intelligence\ndescription: Analyze competitor strategies, content, pricing, ads, and market positioning across Google Maps, Booking.com, Facebook, Instagram, YouTube, and TikTok.\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

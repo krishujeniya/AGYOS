@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: error-handling\ndescription: Patterns for robust error handling across TypeScript, Python, and Go. Covers typed errors, error boundaries, retries, circuit breakers, and user-facing error messages. Use when designing error types, retries, circuit breakers, or user-facing failure messages in TypeScript, Python, or Go.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

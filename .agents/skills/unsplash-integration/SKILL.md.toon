@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: unsplash-integration\ndescription: Integration skill for searching and fetching high-quality, free-to-use professional photography from Unsplash.\nrisk: safe\nsource: community\ndate_added: '2026-03-07'\nprompt-source: prompt.toon\n---\n"

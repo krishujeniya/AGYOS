@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: windows-shell-reliability\ndescription: \"Reliable command execution on Windows: paths, encoding, and common binary pitfalls.\"\nrisk: safe\nsource: community\ndate_added: \"2026-03-19\"\nprompt-source: prompt.toon\n---\n"

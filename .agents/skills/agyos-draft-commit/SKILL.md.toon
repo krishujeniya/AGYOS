@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agyos-draft-commit\ndescription: Prepare a scoped commit from verified changes, review the staged diff, and preserve the test ratchet.\nallowed-tools:\n- write_to_file\n- replace_file_content\nprompt-source: prompt.toon\n---\n"

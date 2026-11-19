@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: temporal-golang-pro\ndescription: \"Use when building durable distributed systems with Temporal Go SDK. Covers deterministic workflow rules, mTLS worker configs, and advanced patterns.\"\nrisk: safe\nsource: self\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nsource: \"https://github.com/huggingface/skills/tree/main/skills/huggingface-vision-trainer\"\nname: hugging-face-vision-trainer\ndescription: Train or fine-tune vision models on Hugging Face Jobs for detection, classification, and SAM or SAM2 segmentation.\nrisk: unknown\nprompt-source: prompt.toon\n---\n"

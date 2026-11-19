@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: sankhya-dashboard-html-jsp-custom-best-pratices\ndescription: \"This skill should be used when the user asks for patterns, best practices, creation, or fixing of Sankhya dashboards using HTML, JSP, Java, and SQL.\"\ncategory: code\nrisk: safe\nsource: community\ntags: [sankhya, dashboard, jsp, html, sql, best-practices]\ndate_added: \"2026-03-10\"\nprompt-source: prompt.toon\n---\n"

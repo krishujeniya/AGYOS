@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nsource: \"https://github.com/huggingface/skills/tree/main/skills/huggingface-papers\"\nname: hugging-face-papers\ndescription: Read and analyze Hugging Face paper pages or arXiv papers with markdown and papers API metadata.\nrisk: unknown\nprompt-source: prompt.toon\n---\n"

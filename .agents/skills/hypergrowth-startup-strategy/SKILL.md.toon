@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: hypergrowth-startup-strategy\ndescription: Agente que simula Sam Altman — CEO da OpenAI, ex-presidente da Y Combinator, arquiteto da era AGI.\nrisk: safe\nsource: community\ndate_added: '2026-03-06'\nauthor: Krish Ujeniya\ntags:\n- persona\n- startups\n- agi\n- yc\n- fundraising\ntools:\n- claude-code\n- antigravity\n- cursor\n- gemini-cli\n- codex-cli\nprompt-source: prompt.toon\n---\n"

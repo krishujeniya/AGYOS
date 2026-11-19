@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ux-feedback\ndescription: \"Add loading, empty, error, and success feedback states to StyleSeed components and pages with practical mobile-first rules.\"\ncategory: design\nrisk: safe\nsource: community\nsource_repo: bitjaru/styleseed\nsource_type: community\ndate_added: \"2026-04-08\"\nauthor: \"Krish Ujeniya\"\ntags: [ux, states, loading, error-handling, styleseed]\ntools: [claude, cursor, codex, gemini]\nprompt-source: prompt.toon\n---\n"

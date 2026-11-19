@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: pdf-document-processing\ndescription: Extract text and inspect pages in PDF documents; validate page counts and preserve the original document.\nprompt-source: prompt.toon\n---\n"

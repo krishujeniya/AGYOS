@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: react-component-performance\ndescription: Diagnose slow React components and suggest targeted performance fixes.\nrisk: safe\nsource: \"Dimillian/Skills (MIT)\"\ndate_added: \"2026-03-25\"\nprompt-source: prompt.toon\n---\n"

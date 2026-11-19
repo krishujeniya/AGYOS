@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: devops-career-roadmap\ndescription: Turn the supplied 30-week DevOps Roadmap by belikeanu into a paced learning plan, project sequence, or portfolio checklist. Use for DevOps beginner roadmaps covering Linux, networking, Git, scripting, Docker, CI/CD, AWS, Terraform, Ansible, Kubernetes, Argo CD, monitoring, logging, security, and job preparation.\nmetadata:\n  origin: user-supplied-reference\nprompt-source: prompt.toon\n---\n"

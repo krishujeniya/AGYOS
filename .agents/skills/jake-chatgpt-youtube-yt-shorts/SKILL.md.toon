@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: jake-chatgpt-youtube-yt-shorts\ndescription: \"Find the Shorts hiding inside a long video and write them, using the transcript to pick self-contained moments. Use for \\\"cut this into shorts\\\", \\\"clip this\\\", \\\"repurpose this video\\\", \\\"what should I clip\\\".\"\nlicense: MIT\nmetadata:\n  upstream_repository: Jakeschincariol/chatgpt-youtube-agent-skill\n  upstream_skill: yt-shorts\n  upstream_commit: 6314d3c17dfa1e5960966542048e8a09e28cdfd74\nprompt-source: prompt.toon\n---\n"

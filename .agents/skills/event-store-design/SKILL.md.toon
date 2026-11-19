@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: event-store-design\ndescription: \"Design and implement event stores for event-sourced systems. Use when building event sourcing infrastructure, choosing event store technologies, or implementing event persistence patterns.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

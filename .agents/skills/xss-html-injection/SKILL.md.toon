@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: xss-html-injection\ndescription: \"Execute comprehensive client-side injection vulnerability assessments on web applications to identify XSS and HTML injection flaws, demonstrate exploitation techniques for session hijacking and credential theft, and validate input sanitization and output encoding mechanisms.\"\nrisk: offensive\nsource: community\nauthor: \"Krish Ujeniya\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

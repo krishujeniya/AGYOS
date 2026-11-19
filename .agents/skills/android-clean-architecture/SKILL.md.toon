@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: android-clean-architecture\ndescription: Clean Architecture patterns for Android and Kotlin Multiplatform projects — module structure, dependency rules, UseCases, Repositories, and data layer patterns. Use when structuring modules, layers, or data flow in an Android or KMP project.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: devsecops-guardrails\ndescription: \"Autonomous DevSecOps & FinOps Guardrails. Orchestrates Gemini 3 Flash to audit Linux Kernel patches, Terraform cost drifts, and K8s compliance.\"\nrisk: safe\nsource: community\nauthor: \"Krish Ujeniya\"\ndate_added: \"2026-03-24\"\nprompt-source: prompt.toon\n---\n"

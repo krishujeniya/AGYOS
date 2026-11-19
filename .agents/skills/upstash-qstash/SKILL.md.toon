@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: upstash-qstash\ndescription: Upstash QStash expert for serverless message queues, scheduled\n  jobs, and reliable HTTP-based task delivery without managing infrastructure.\nrisk: unknown\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

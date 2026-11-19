@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: incident-runbook-templates\ndescription: \"Production-ready templates for incident response runbooks covering detection, triage, mitigation, resolution, and communication.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

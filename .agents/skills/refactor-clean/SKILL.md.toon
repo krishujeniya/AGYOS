@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: refactor-clean\ndescription: \"Clean up a focused module or small group of files for readability and testability. Use for contained refactors; use codebase-refactor for wider structural work.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agent-email-infrastructure\ndescription: Set up and inspect email infrastructure for agent applications; check provider configuration, delivery, and reputation before authorized sending.\nprompt-source: prompt.toon\n---\n"

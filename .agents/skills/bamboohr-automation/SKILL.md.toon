@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: bamboohr-automation\ndescription: \"Automate BambooHR tasks via Rube MCP (Composio): employees, time-off, benefits, dependents, employee updates. Always search tools first for current schemas.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

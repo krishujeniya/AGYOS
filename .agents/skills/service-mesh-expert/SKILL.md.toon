@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: service-mesh-expert\ndescription: \"Design or troubleshoot Kubernetes service-mesh traffic, mTLS, policy, and service discovery. Use for zero-trust service communication or mesh connectivity issues.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

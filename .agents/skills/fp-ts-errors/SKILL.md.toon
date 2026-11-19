@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: fp-ts-errors\ndescription: \"Handle errors as values using fp-ts Either and TaskEither for cleaner, more predictable TypeScript code. Use when implementing error handling patterns with fp-ts.\"\nrisk: safe\nsource: \"https://github.com/whatiskadudoing/fp-ts-skills\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

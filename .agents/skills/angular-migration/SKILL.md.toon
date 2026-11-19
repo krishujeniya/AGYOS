@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: angular-migration\ndescription: \"Master AngularJS to Angular migration, including hybrid apps, component conversion, dependency injection changes, and routing migration.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

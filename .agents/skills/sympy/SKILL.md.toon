@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: sympy\ndescription: \"SymPy is a Python library for symbolic mathematics that enables exact computation using mathematical symbols rather than numerical approximations.\"\nlicense: https://github.com/sympy/sympy/blob/master/LICENSE\nmetadata:\n    skill-author: K-Dense Inc.\nrisk: unknown\nsource: \"https://github.com/sympy/sympy\"\nprompt-source: prompt.toon\n---\n"

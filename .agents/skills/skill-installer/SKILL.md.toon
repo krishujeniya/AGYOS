@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: skill-installer\ndescription: Instala, valida, registra e verifica novas skills no ecossistema. 10 checks de seguranca, copia, registro no orchestrator e verificacao pos-instalacao.\nrisk: safe\nsource: community\ndate_added: '2026-03-06'\nauthor: \"Krish Ujeniya\"\ntags:\n- skill-management\n- deployment\n- validation\n- installation\ntools:\n- claude-code\n- antigravity\n- cursor\n- gemini-cli\n- codex-cli\nprompt-source: prompt.toon\n---\n"

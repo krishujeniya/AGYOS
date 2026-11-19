@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: keyword-extractor\ndescription: >\n  Extracts up to 50 highly relevant SEO keywords from text. Use when user wants to generate or extract keywords for given text.\nrisk: safe\nsource: original\ndate_added: \"2026-03-11\"\nprompt-source: prompt.toon\n---\n"

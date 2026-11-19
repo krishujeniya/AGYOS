@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: first-500-paying-users\ndescription: Build an organic customer-research and creator-content experiment from the supplied First 500 Paying Users Playbook. Use when finding creators, grouping public audience complaints, planning useful short videos, checking a product offer, or measuring which content leads to paid users.\nmetadata:\n  origin: user-supplied-reference\nprompt-source: prompt.toon\n---\n"

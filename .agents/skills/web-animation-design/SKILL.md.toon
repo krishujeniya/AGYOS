@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: web-animation-design\ndescription: Design web animations using interaction frequency, reduced-motion preferences, and compositor-friendly transforms and opacity.\nprompt-source: prompt.toon\n---\n"

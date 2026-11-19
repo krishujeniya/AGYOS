@@ -1,0 +1,2 @@
+mode: "100755"
+header: "---\nname: elite-devops-architect\ndescription: Docker, K8s, CI/CD, and Terraform. Use when deploying infrastructure, pipelines, or containerization.\nprompt-source: prompt.toon\n---\n"

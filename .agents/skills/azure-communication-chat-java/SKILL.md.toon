@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-communication-chat-java\ndescription: \"Build real-time chat applications with thread management, messaging, participants, and read receipts.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

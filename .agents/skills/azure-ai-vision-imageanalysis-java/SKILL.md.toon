@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-ai-vision-imageanalysis-java\ndescription: \"Build image analysis applications with Azure AI Vision SDK for Java. Use when implementing image captioning, OCR text extraction, object detection, tagging, or smart cropping.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

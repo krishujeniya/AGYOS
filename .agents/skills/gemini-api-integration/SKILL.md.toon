@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: gemini-api-integration\ndescription: \"Use when integrating Google Gemini API into projects. Covers model selection, multimodal inputs, streaming, function calling, and production best practices.\"\nrisk: safe\nsource: community\ndate_added: \"2026-03-04\"\nprompt-source: prompt.toon\n---\n"

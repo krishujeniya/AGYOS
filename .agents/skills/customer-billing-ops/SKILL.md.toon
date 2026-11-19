@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: customer-billing-ops\ndescription: Operate customer billing workflows such as subscriptions, refunds, churn triage, billing-portal recovery, and plan analysis using connected billing tools like Stripe. Use when the user needs to help a customer, inspect subscription state, or manage revenue-impacting billing operations.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

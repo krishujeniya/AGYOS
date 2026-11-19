@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: auctioneer-registry-lookup\ndescription: Coleta e consulta dados de leiloeiros oficiais de todas as 27 Juntas Comerciais do Brasil. Scraper multi-UF, banco SQLite, API FastAPI e exportacao CSV/JSON.\nauthor: Krish Ujeniya\ntags:\n- scraping\n- brazilian-data\n- auctioneers\n- api\ntools:\n- claude-code\n- antigravity\n- cursor\n- gemini-cli\n- codex-cli\nprompt-source: prompt.toon\n---\n"

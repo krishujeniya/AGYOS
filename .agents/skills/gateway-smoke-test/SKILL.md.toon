@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: gateway-smoke-test\ndescription: Verify a local agent API, temporary gateway tunnel, and remote sandbox callback with a tool-free task, then restore the original app connection.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

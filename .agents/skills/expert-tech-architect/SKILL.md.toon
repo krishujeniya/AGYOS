@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: expert-tech-architect\ndescription: \"Tech Architect Expert for system design, technology decisions, ADRs, API design, and database architecture. Triggers: architecture, system design, tech stack, ADR, pattern, schema design, API design, microservices, database architecture, technology choice\"\ncategory: domain\nrisk: moderate\ntags: \"[architecture, system-design, tech-stack, ADR, patterns, API-design, database]\"\nversion: \"1.0.0\"\nprompt-source: prompt.toon\n---\n"

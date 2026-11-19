@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: plaid-fintech\ndescription: Expert patterns for Plaid API integration including Link token\n  flows, transactions sync, identity verification, Auth for ACH, balance checks,\n  webhook handling, and fintech compliance best practices.\nrisk: unknown\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

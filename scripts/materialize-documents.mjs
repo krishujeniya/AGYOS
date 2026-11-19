@@ -1,0 +1,150 @@
+// Restore AGY host files from the two-field TOON document format used by this repository.
+import { createHash, randomUUID } from 'node:crypto'
+import { execFileSync } from 'node:child_process'
+import fs from 'node:fs'
+import path from 'node:path'
+import { pathToFileURL } from 'node:url'
+
+const stateName = '.agyos-documents-state.json'
+const excluded = new Set(['.git', 'OLD', 'node_modules', '.venv', '__pycache__'])
+const sourcePattern = /\.md\.toon$/i
+const utf8 = new TextDecoder('utf-8', { fatal: true, ignoreBOM: true })
+
+function sources(root) {
+  if (fs.existsSync(path.join(root, '.git'))) {
+    const names = execFileSync('git', ['ls-files', '-z'], { cwd: root, maxBuffer: 32 << 20 })
+    return utf8.decode(names).split('\0').filter(name => sourcePattern.test(name))
+  }
+  function walk(directory) {
+    return fs.readdirSync(directory, { withFileTypes: true }).flatMap(entry => {
+      const filename = path.join(directory, entry.name)
+      if (entry.isDirectory() && !excluded.has(entry.name)) return walk(filename)
+      return entry.isFile() && sourcePattern.test(entry.name) ? [path.relative(root, filename)] : []
+    })
+  }
+  return walk(root)
+}
+
+function safePath(root, relative) {
+  const parts = relative.split(/[\\/]/)
+  if (parts.some(p => !p || p === '.' || p === '..' || excluded.has(p)) || path.isAbsolute(relative)) {
+    throw new Error(`Unsafe document path: ${relative}`)
+  }
+  const filename = path.join(root, relative)
+  // Reject symlinked ancestors, including aliases that resolve back inside the tree.
+  if (fs.realpathSync(path.dirname(filename)) !== path.dirname(filename)) {
+    throw new Error(`Indirect document path: ${relative}`)
+  }
+  return filename
+}
+
+function readRegular(filename) {
+  if (!fs.lstatSync(filename).isFile()) throw new Error(`Expected a regular file: ${filename}`)
+  const fd = fs.openSync(filename, fs.constants.O_RDONLY | (fs.constants.O_NOFOLLOW || 0) | (fs.constants.O_NONBLOCK || 0))
+  try {
+    if (!fs.fstatSync(fd).isFile() || fs.lstatSync(filename).isSymbolicLink()) {
+      throw new Error(`Expected a regular file: ${filename}`)
+    }
+    return fs.readFileSync(fd)
+  } finally {
+    fs.closeSync(fd)
+  }
+}
+
+function document(root, relative) {
+  const filename = safePath(root, relative)
+  const input = utf8.decode(readRegular(filename))
+  const fields = /^mode: "(100644|100755|120000)"\r?\n(text|header|target|archive): ("[^\r\n]*")\r?\n?$/.exec(input)
+  if (!fields || fields[0].length !== input.length) throw new Error(`Invalid document: ${relative}`)
+  const [, mode, field, encoded] = fields
+  const value = JSON.parse(encoded)
+  if (field === 'archive') return null
+  if ((mode === '120000') !== (field === 'target')) throw new Error(`Invalid target mode: ${relative}`)
+  if (field === 'target' && (relative !== 'GEMINI.md.toon' || value !== 'AGENTS.md')) {
+    throw new Error(`Unsupported document symlink: ${relative}`)
+  }
+  let bytes = Buffer.from(value)
+  if (field === 'header') {
+    if (path.basename(relative) !== 'SKILL.md.toon' || !/^---\r?\n[\s\S]*?\r?\n---\r?\n$/.test(value)) {
+      throw new Error(`Invalid discovery header: ${relative}`)
+    }
+    bytes = Buffer.concat([bytes, readRegular(path.join(path.dirname(filename), 'prompt.toon'))])
+  }
+  return { mode, bytes }
+}
+
+function signature(mode, bytes) {
+  return mode + ':' + createHash('sha256').update(bytes).digest('hex')
+}
+
+function current(filename) {
+  const stat = fs.lstatSync(filename, { throwIfNoEntry: false })
+  if (!stat) return null
+  if (stat.isSymbolicLink()) return signature('120000', fs.readlinkSync(filename, { encoding: 'buffer' }))
+  if (!stat.isFile()) throw new Error(`Expected a document: ${filename}`)
+  return signature(stat.mode & 0o111 ? '100755' : '100644', readRegular(filename))
+}
+
+function replace(filename, mode, bytes, before) {
+  const temporary = path.join(path.dirname(filename), '.agyos-document-' + randomUUID())
+  try {
+    if (mode === '120000') fs.symlinkSync(bytes.toString(), temporary)
+    else {
+      fs.writeFileSync(temporary, bytes, { flag: 'wx', mode: 0o600 })
+      fs.chmodSync(temporary, mode === '100755' ? 0o755 : 0o644)
+    }
+    if (current(filename) !== before) throw new Error(`Document changed during installation: ${filename}`)
+    if (before === null) fs.linkSync(temporary, filename)
+    else fs.renameSync(temporary, filename)
+  } finally {
+    fs.rmSync(temporary, { force: true })
+  }
+}
+
+export function materialize(root = process.cwd()) {
+  root = fs.realpathSync(root)
+  const statePath = path.join(root, stateName)
+  const previousState = current(statePath)
+  const previous = new Map(previousState === null ? [] : JSON.parse(readRegular(statePath)))
+  const next = new Map()
+  let changes = 0
+  for (const source of sources(root).sort()) {
+    const doc = document(root, source)
+    if (!doc) continue
+    const relative = source.slice(0, -'.toon'.length)
+    const filename = safePath(root, relative)
+    const expected = signature(doc.mode, doc.bytes)
+    const before = current(filename)
+    if (before !== expected) {
+      if (before !== null && before !== previous.get(relative)) throw new Error(`Preserve modified document: ${relative}`)
+      replace(filename, doc.mode, doc.bytes, before)
+      changes++
+    }
+    next.set(relative, expected)
+  }
+  for (const [relative, digest] of previous) {
+    if (next.has(relative)) continue
+    if (!/\.md$/i.test(relative)) throw new Error(`Invalid state entry: ${relative}`)
+    const filename = path.resolve(root, relative)
+    if (!fs.existsSync(path.dirname(filename))) continue
+    safePath(root, relative)
+    const before = current(filename)
+    if (before === null) continue
+    if (before !== digest) throw new Error(`Preserve modified retired document: ${relative}`)
+    fs.unlinkSync(filename)
+    changes++
+  }
+  const state = Buffer.from(JSON.stringify([...next]) + '\n')
+  if (previousState !== signature('100644', state)) replace(statePath, '100644', state, previousState)
+  return { count: next.size, changes }
+}
+
+if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
+  try {
+    const result = materialize()
+    console.log(`Materialized ${result.count} documents (${result.changes} changed).`)
+  } catch (error) {
+    console.error(error.message)
+    process.exitCode = 1
+  }
+}

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: indexing-issue-auditor\ndescription: \"High-level technical SEO and site architecture auditor. Invoke to scan local or live environments for indexing, crawl budget, and structural errors.\"\ncategory: growth\nrisk: safe\nsource: self\nsource_type: self\ndate_added: \"2026-04-13\"\nauthor: \"Krish Ujeniya\"\ntags: [seo, architecture, indexing, crawler, sitemap]\ntools: [claude, cursor, gemini, antigravity]\nprompt-source: prompt.toon\n---\n"

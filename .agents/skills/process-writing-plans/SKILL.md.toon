@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: process-writing-plans\ndescription: \"Master of creating detailed, bite-sized implementation plans. Enforces TDD, specific file paths, and strict task granularity. Use before touching code when solving complex problems or implementing new features.\"\ncategory: process\nrisk: safe\ntags: \"[planning, tdd, implementation, architecture, steps, tasks, process]\"\nversion: \"1.0.0\"\nprompt-source: prompt.toon\n---\n"

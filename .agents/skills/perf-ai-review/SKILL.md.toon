@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: perf-ai-review\ndescription: \"Use this compatibility route for performance-focused code reviews. Inspect the changed code for latency, throughput, allocation, and resource risks; use benchmark-optimization-loop for measured optimization.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

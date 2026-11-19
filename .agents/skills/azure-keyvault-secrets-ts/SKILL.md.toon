@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-keyvault-secrets-ts\ndescription: \"Manage secrets using Azure Key Vault Secrets SDK for JavaScript (@azure/keyvault-secrets). Use when storing and retrieving application secrets or configuration values.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: awareness-stage-mapper\ndescription: Use when diagnosing audience awareness before writing an offer or choosing stage-specific campaign messaging.\nrisk: safe\nsource: community\ndate_added: \"2026-04-04\"\nprompt-source: prompt.toon\n---\n"

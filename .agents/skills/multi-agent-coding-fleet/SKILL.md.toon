@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: multi-agent-coding-fleet\ndescription: Plan dependent coding missions and coordinate isolated agent work with explicit scope, collected results, and verification.\nprompt-source: prompt.toon\n---\n"

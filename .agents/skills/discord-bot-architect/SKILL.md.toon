@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: discord-bot-architect\ndescription: Specialized skill for building production-ready Discord bots.\n  Covers Discord.js (JavaScript) and Pycord (Python), gateway intents, slash\n  commands, interactive components, rate limiting, and sharding.\nrisk: unknown\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

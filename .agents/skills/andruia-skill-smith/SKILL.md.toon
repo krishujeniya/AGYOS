@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nid: 10-andruia-skill-smith\nname: andruia-skill-smith\ndescription: \"Ingeniero de Sistemas de Andru.ia. Diseña, redacta y despliega nuevas habilidades (skills) dentro del repositorio siguiendo el Estándar de Diamante.\"\ncategory: andruia\nrisk: safe\nsource: personal\ndate_added: \"2026-02-25\"\nprompt-source: prompt.toon\n---\n"

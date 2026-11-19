@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: email-ops\ndescription: Evidence-first mailbox triage, drafting, send verification, and sent-mail-safe follow-up workflow for ECC. Use when the user wants to organize email, draft or send through the real mail surface, or prove what landed in Sent.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

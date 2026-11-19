@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: codebase-audit-pre-push\ndescription: \"Deep audit before GitHub push: removes junk files, dead code, security holes, and optimization issues. Checks every file line-by-line for production readiness.\"\ncategory: development\nrisk: safe\nsource: community\ndate_added: \"2026-03-05\"\nprompt-source: prompt.toon\n---\n"

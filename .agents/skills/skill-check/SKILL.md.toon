@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: skill-check\ndescription: \"Validate Claude Code skills against the agentskills specification. Catches structural, semantic, and naming issues before users do.\"\ncategory: development\nrisk: safe\nsource: https://github.com/olgasafonova/SkillCheck-Free\ndate_added: \"2026-03-11\"\nauthor: \"Krish Ujeniya\"\ntags: [validation, linter, agentskills, skill-authoring, code-quality]\ntools: [claude, cursor, windsurf, codex-cli]\nlicense: MIT\nallowed-tools: Read Glob\ncompatibility: claude-code\nprompt-source: prompt.toon\n---\n"

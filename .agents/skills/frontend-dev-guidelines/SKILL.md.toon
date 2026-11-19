@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: frontend-dev-guidelines\ndescription: \"You are a senior frontend engineer operating under strict architectural and performance standards. Use when creating components or pages, adding new features, or fetching or mutating data.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

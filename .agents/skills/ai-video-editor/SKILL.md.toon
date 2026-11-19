@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ai-video-editor\ndescription: >-\n  Use when someone provides a local talking-head recording and wants transcript-guided pause or\n  retake cuts, optional captions, or code-drawn motion graphics rendered into an edited video.\nmetadata:\n  version: 1.0.0\n  tier: 2\n  domain: video\n  origin: user-supplied ai-video-editor toolkit\nprompt-source: prompt.toon\n---\n"

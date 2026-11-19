@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: sql-optimization-patterns\ndescription: \"Transform slow database queries into lightning-fast operations through systematic optimization, proper indexing, and query plan analysis.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

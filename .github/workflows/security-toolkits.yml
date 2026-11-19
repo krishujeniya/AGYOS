@@ -40,6 +40,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Materialize AGY catalog manifests
+        run: node scripts/materialize-documents.mjs
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'

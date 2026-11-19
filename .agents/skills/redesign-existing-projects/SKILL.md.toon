@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: redesign-existing-projects\ndescription: \"Use when upgrading existing websites or apps by auditing generic UI patterns and applying premium design fixes without rewrites.\"\ncategory: frontend\nrisk: safe\nsource: community\nsource_repo: Leonxlnx/taste-skill\nsource_type: community\ndate_added: \"2026-04-17\"\nauthor: \"Krish Ujeniya\"\ntags: [frontend, redesign, design-audit, ui]\ntools: [claude, cursor, codex, antigravity]\nprompt-source: prompt.toon\n---\n"

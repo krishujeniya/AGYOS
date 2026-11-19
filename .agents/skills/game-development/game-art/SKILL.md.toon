@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: game-art\ndescription: \"Game art principles. Visual style selection, asset pipeline, animation workflow.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

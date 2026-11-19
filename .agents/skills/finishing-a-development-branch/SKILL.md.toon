@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: finishing-a-development-branch\ndescription: \"Use after implementation and required checks are complete to choose among merging, opening a pull request, or cleaning up a branch. Take an integration action only when authorized.\"\nprompt-source: prompt.toon\n---\n"

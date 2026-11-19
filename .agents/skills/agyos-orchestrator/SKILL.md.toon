@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agyos-orchestrator\ndescription: Coordinate multi-step development through UNDERSTAND, ANALYZE, PLAN, IMPLEMENT, and VERIFY with scoped work and recorded checks.\nlicense: MIT\nmetadata:\n  version: 1.1.0\nallowed-tools:\n- run_command\n- view_file\n- write_to_file\nprompt-source: prompt.toon\n---\n"

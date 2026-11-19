@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: makepad-ui-framework\ndescription: 'Makepad UI development skills for Rust apps: setup, patterns, shaders, packaging, and troubleshooting.'\nrisk: safe\nsource: https://github.com/ZhangHanDong/makepad-skills\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

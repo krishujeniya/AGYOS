@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: automation-audit-ops\ndescription: Evidence-first automation inventory and overlap audit workflow for ECC. Use when the user wants to know which jobs, hooks, connectors, MCP servers, or wrappers are live, broken, redundant, or missing before fixing anything.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

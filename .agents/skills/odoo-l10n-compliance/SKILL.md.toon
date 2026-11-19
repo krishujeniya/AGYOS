@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: odoo-l10n-compliance\ndescription: \"Country-specific Odoo localization: tax configuration, e-invoicing (CFDI, FatturaPA, SAF-T), fiscal reporting, and country chart of accounts setup.\"\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

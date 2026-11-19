@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: article-writing\ndescription: Write articles, guides, blog posts, tutorials, newsletter issues, and other long-form content in a distinctive voice derived from supplied examples or brand guidance. Use when the user wants polished written content longer than a paragraph, especially when voice consistency, structure, and credibility matter.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: sop-customer\ndescription: Standard Operating Procedure for Customer Pod (Onboarding and Support). Governs client onboarding checklists, ticket diagnosis, policy-adherent response drafting, and defect escalation.\nprompt-source: prompt.toon\n---\n"

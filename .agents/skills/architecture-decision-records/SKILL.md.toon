@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: architecture-decision-records\ndescription: Capture architectural decisions as numbered ADR markdown files in docs/adr/ with context, alternatives considered, consequences, and an index README. Use when the user says 'record this decision' or 'ADR this', chooses between frameworks or databases, discusses trade-offs, or asks why the codebase is shaped this way.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

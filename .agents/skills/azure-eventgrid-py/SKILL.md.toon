@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-eventgrid-py\ndescription: Azure Event Grid SDK for Python. Use for publishing events, handling CloudEvents, and event-driven architectures.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

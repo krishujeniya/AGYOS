@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ai-industry-watchlist\ndescription: Maintain a useful, source-checked watchlist of AI companies, labs, researchers, and leaders from the supplied AI Accounts to Follow reference. Use when organizing AI news sources, building a daily reading list, checking official social profiles, or refreshing the supplied 79-account directory.\nmetadata:\n  origin: user-supplied-reference\nprompt-source: prompt.toon\n---\n"

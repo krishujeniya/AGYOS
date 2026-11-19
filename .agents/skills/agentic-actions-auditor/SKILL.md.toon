@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agentic-actions-auditor\ndescription: >\n  Audits GitHub Actions workflows for security\n  vulnerabilities in AI agent integrations \n  including Claude Code Action, \n  Gemini CLI, OpenAI Codex, and GitHub AI \n  Inference. \n  Detects attack vectors where attacker-controlled \n  input reaches.\n  AI agents running in CI/CD pipelines.\nrisk: safe\nsource: community\ndate_added: 2026-03-18\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: video-editing-principles\ndescription: >-\n  The 440-principle master reference for professional video editing across Hollywood films, premium\n  advertising, YouTube long-form, social formats, and documentary production. Incorporates Walter\n  Murch's Rule of Six, cinematic techniques, sound and color engineering, AI-assisted workflows, and\n  an autonomous self-improvement protocol for continuous evolution.\nmetadata:\n  version: 1.0.0\nlicense: MIT\nprompt-source: prompt.toon\n---\n"

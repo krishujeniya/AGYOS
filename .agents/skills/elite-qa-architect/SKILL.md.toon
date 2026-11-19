@@ -1,0 +1,2 @@
+mode: "100755"
+header: "---\nname: elite-qa-architect\ndescription: Master of TDD, E2E (Playwright/Cypress), Integration testing, and Bug hunting.\nprompt-source: prompt.toon\n---\n"

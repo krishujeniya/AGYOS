@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: basecamp-automation\ndescription: \"Automate Basecamp project management, to-dos, messages, people, and to-do list organization via Rube MCP (Composio). Always search tools first for current schemas.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

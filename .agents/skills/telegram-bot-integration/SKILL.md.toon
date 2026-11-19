@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: telegram-bot-integration\ndescription: Integracao completa com Telegram Bot API. Setup com BotFather, mensagens, webhooks, inline keyboards, grupos, canais. Boilerplates Node.js e Python.\nauthor: Krish Ujeniya\ntags:\n- messaging\n- telegram\n- bots\n- webhooks\ntools:\n- claude-code\n- antigravity\n- cursor\n- gemini-cli\n- codex-cli\nprompt-source: prompt.toon\n---\n"

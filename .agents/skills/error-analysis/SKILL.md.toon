@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: error-analysis\ndescription: \"Compatibility ID for application errors, distributed-system incidents, and observability investigations. Use diagnostics-analysis as the canonical runbook.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

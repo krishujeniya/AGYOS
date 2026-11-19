@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: incident-response\ndescription: \"Use when working with incident response incident response\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

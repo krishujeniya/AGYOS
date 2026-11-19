@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: conductor-setup\ndescription: Configure a Rails project to work with Conductor (parallel coding agents)\nallowed-tools: Bash(chmod *), Bash(bundle *), Bash(npm *), Bash(script/server)\ncontext: fork\nrisk: unknown\nsource: community\nmetadata:\n  author: Shpigford\n  version: \"1.0\"\nprompt-source: prompt.toon\n---\n"

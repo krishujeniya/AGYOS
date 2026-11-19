@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: not-human-search-mcp\ndescription: \"Search AI-ready websites, inspect indexed site details, verify MCP endpoints, and discover tools and APIs using the Not Human Search MCP server\"\ncategory: mcp\nrisk: safe\nsource: \"https://nothumansearch.ai\"\nsource_type: community\ndate_added: \"2026-04-16\"\nauthor: \"Krish Ujeniya\"\ntags: [mcp, search, ai-discovery, api-discovery, mcp-verification, agent-tools]\ntools: [claude, cursor, gemini]\nprompt-source: prompt.toon\n---\n"

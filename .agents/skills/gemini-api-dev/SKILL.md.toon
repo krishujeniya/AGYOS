@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: gemini-api-dev\ndescription: \"The Gemini API provides access to Google's most advanced AI models. Key capabilities include:\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

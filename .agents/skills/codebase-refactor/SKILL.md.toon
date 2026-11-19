@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: codebase-refactor\ndescription: \"Plan behavior-preserving refactors across a codebase to reduce duplication, complexity, or code smells. Use for structural cleanup before feature work.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

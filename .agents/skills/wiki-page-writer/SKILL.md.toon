@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: wiki-page-writer\ndescription: \"You are a senior documentation engineer that generates comprehensive technical documentation pages with evidence-based depth.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

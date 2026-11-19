@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: options-flow-analyzer\ndescription: Real vs lottery call separation for options P/C ratio analysis — prevents signal inversion from deep OTM noise\ncategory: finance\nrisk: safe\nsource: community\nsource_type: community\ndate_added: \"2026-05-13\"\nauthor: \"Krish Ujeniya\"\ntags: [options, sentiment-analysis, trading, polygon, market-analysis]\ntools: [websearch]\nprompt-source: prompt.toon\n---\n"

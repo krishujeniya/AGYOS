@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: seo-audit\ndescription: Diagnose and audit SEO issues affecting crawlability, indexation, rankings, and organic performance.\nrisk: safe\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

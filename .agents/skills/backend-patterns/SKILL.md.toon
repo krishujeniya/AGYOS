@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: backend-patterns\ndescription: Backend architecture patterns, API design, database optimization, and server-side best practices for Node.js, Express, and Next.js API routes. Use when building or reviewing Node.js, Express, or Next.js API routes and their data access.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

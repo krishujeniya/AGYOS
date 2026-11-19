@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: camber-cloud\ndescription: Interact with the Camber data science and agentic platform via its MCP server. Create, discover, and chat with Camber agents; manage team and personal workspaces; and orchestrate multi-agent data workflows.\nrisk: low\nsource: official (cambercloud.com)\ndate_added: 2026-11-13\nprompt-source: prompt.toon\n---\n"

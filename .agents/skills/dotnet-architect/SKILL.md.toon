@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: dotnet-architect\ndescription: Expert .NET backend architect specializing in C#, ASP.NET Core, Entity Framework, Dapper, and enterprise application patterns.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

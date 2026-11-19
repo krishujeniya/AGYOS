@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-monitor-opentelemetry-py\ndescription: Azure Monitor OpenTelemetry Distro for Python. Use for one-line Application Insights setup with auto-instrumentation.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ddd-tactical-patterns\ndescription: \"Apply DDD tactical patterns in code using entities, value objects, aggregates, repositories, and domain events with explicit invariants.\"\nrisk: safe\nsource: self\ntags: \"[ddd, tactical, aggregates, value-objects, domain-events]\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

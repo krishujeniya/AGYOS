@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: mle-workflow\ndescription: Production machine-learning engineering workflow for data contracts, reproducible training, model evaluation, deployment, monitoring, and rollback. Use when building, reviewing, or hardening ML systems beyond one-off notebooks.\nlicense: MIT\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

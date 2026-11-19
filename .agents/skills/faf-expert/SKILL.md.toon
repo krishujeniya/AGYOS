@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: faf-expert\ndescription: \"Advanced .faf (Foundational AI-context Format) specialist. IANA-registered format, MCP server config, championship scoring, bi-directional sync.\"\ncategory: coding\nrisk: safe\nsource: community\nsource_repo: Wolfe-Jam/faf-skills\nsource_type: community\ndate_added: \"2026-04-07\"\nauthor: \"Krish Ujeniya\"\ntags: [faf, ai-context, project-management, mcp, iana]\ntools: [claude, cursor, gemini, windsurf]\nprompt-source: prompt.toon\n---\n"

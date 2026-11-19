@@ -1,0 +1,2 @@
+mode: "100755"
+header: "---\nname: writing-clearly-and-concisely\ndescription: Write with clarity and force. Covers Strunk's Elements of Style and avoids common AI writing patterns (\"puffery\", \"delve\", \"leverage\"). Use when writing documentation, commits, UI copy, or any prose for humans.\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: makepad-widgets\ndescription: \"Version: makepad-widgets (dev branch) | Last Updated: 2026-01-19 > > Check for updates: https://crates.io/crates/makepad-widgets\"\nrisk: safe\nsource: community\nprompt-source: prompt.toon\n---\n"

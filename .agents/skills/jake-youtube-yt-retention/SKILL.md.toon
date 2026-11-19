@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: jake-youtube-yt-retention\ndescription: \"Read a YouTube Studio audience-retention export and find where viewers actually leave, then say what to change. Use for \\\"why do people stop watching\\\", \\\"my retention is bad\\\", a pasted retention chart or CSV, or \\\"fix my pacing\\\".\"\nlicense: MIT\nmetadata:\n  upstream_repository: Jakeschincariol/youtube-agent-skill\n  upstream_skill: yt-retention\n  upstream_commit: a2feb2104981a375ffd4f87ee04f4f5344ac43c6\nprompt-source: prompt.toon\n---\n"

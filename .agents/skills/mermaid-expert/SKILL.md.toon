@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: mermaid-expert\ndescription: Create Mermaid diagrams for flowcharts, sequences, ERDs, and architectures. Masters syntax for all diagram types and styling.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: figma-automation\ndescription: \"Automate Figma tasks via Rube MCP (Composio): files, components, design tokens, comments, exports. Always search tools first for current schemas.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: conductor-status\ndescription: \"Display project status, active tracks, and next actions\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

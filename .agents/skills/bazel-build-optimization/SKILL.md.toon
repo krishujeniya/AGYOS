@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: bazel-build-optimization\ndescription: \"Optimize Bazel builds for large-scale monorepos. Use when configuring Bazel, implementing remote execution, or optimizing build performance for enterprise codebases.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

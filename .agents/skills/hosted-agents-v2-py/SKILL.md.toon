@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: hosted-agents-v2-py\ndescription: \"Create container-based Microsoft Foundry hosted agents with the Azure AI Projects Python SDK. Use when configuring or deploying hosted agents; verify the installed SDK version and current documentation.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

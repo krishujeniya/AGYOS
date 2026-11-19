@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: family-health-analyzer\ndescription: 分析家族病史、评估遗传风险、识别家庭健康模式、提供个性化预防建议\nallowed-tools: Read, Write, Grep, Glob\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

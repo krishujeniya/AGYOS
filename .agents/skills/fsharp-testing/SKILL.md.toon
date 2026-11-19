@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: fsharp-testing\ndescription: F# testing patterns with xUnit, FsUnit, Unquote, FsCheck property-based testing, integration tests, and test organization best practices. Use when writing F# tests with xUnit, FsUnit, Unquote, or FsCheck.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

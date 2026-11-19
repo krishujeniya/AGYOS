@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: multi-cloud-architecture\ndescription: \"Decision framework and patterns for architecting applications across AWS, Azure, and GCP.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

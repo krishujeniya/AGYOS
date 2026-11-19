@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: council-revisit\ndescription: |\n  Revisit a past Agent Council decision with current codebase context.\n  Re-runs the same question through the council and shows a side-by-side\n  comparison of what changed. Use for living decisions.\nallowed-tools:\n  - Bash\n  - Read\n  - Write\nprompt-source: prompt.toon\n---\n"

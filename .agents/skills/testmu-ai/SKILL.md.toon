@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: testmu-ai\ndescription: Run cross-browser automation, diagnose test failures, perform SmartUI visual regression audits, conduct WCAG accessibility evaluations, and orchestrate tests via HyperExecute on TestMu AI (formerly LambdaTest).\nrisk: low\nsource: official (testmuai.com/support/docs/testmu-mcp-server)\ndate_added: 2026-11-13\nprompt-source: prompt.toon\n---\n"

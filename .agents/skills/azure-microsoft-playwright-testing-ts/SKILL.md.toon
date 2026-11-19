@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-microsoft-playwright-testing-ts\ndescription: \"Run Playwright tests at scale with cloud-hosted browsers and integrated Azure portal reporting.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

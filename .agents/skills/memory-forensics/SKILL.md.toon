@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: memory-forensics\ndescription: \"Comprehensive techniques for acquiring, analyzing, and extracting artifacts from memory dumps for incident response and malware analysis.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

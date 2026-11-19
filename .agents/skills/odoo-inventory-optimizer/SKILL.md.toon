@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: odoo-inventory-optimizer\ndescription: \"Expert guide for Odoo Inventory: stock valuation (FIFO/AVCO), reordering rules, putaway strategies, routes, and multi-warehouse configuration.\"\nrisk: safe\nsource: \"self\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: scientific-db-uspto-database\ndescription: USPTO patent and trademark data workflow for official record lookup, PatentSearch queries, TSDR checks, assignment data, and reproducible IP research logs. Use when a task needs official United States patent or trademark records from USPTO systems.\nmetadata:\n  origin: community\nprompt-source: prompt.toon\n---\n"

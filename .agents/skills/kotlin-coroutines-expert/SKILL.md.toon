@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: kotlin-coroutines-expert\ndescription: \"Expert patterns for Kotlin Coroutines and Flow, covering structured concurrency, error handling, and testing.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

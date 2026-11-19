@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: expert-dev\ndescription: \"Dev Expert for code implementation, refactoring, code reviews, debugging, and feature development. Triggers: implement, code, refactor, debug, feature, function, class, module, component, bugfix, optimize, clean code\"\ncategory: domain\nrisk: safe\ntags: \"[development, coding, implementation, refactoring, debugging, feature]\"\nversion: \"1.0.0\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: refactor-context-restore\ndescription: \"Resume an approved refactoring task by reconciling its plan, changed files, decisions, dependencies, and next safe step. Use before continuing an interrupted refactor.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

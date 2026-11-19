@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: safety-governance-verification\ndescription: \"6-layer AI governance: safety gates, evidence-based debugging, anti-slack detection, and machine-enforced hooks. Makes AI safe, thorough, and honest.\"\nrisk: safe\nsource: community\ndate_added: \"2026-03-11\"\nprompt-source: prompt.toon\n---\n"

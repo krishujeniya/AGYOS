@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-ai-document-intelligence-dotnet\ndescription: Azure AI Document Intelligence SDK for .NET. Extract text, tables, and structured data from documents using prebuilt and custom models.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

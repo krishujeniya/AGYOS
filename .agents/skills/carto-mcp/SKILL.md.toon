@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: carto-mcp\ndescription: Execute spatial SQL queries, analyze geospatial data across cloud data warehouses (Snowflake, BigQuery, Redshift, PostgreSQL), create and publish CARTO Builder maps, and orchestrate spatial analytics workflows via CARTO MCP.\nrisk: medium\nsource: official (docs.carto.com/carto-for-agents/mcp-server)\ndate_added: 2026-11-13\nprompt-source: prompt.toon\n---\n"

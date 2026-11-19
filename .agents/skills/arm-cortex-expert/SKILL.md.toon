@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: arm-cortex-expert\ndescription: Senior embedded software engineer specializing in firmware and driver development for ARM Cortex-M microcontrollers (Teensy, STM32, nRF52, SAMD).\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

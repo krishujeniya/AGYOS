@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: tdd-red-phase\ndescription: \"Generate failing tests for the TDD red phase to define expected behavior and edge cases.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

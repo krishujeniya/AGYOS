@@ -1,0 +1,2 @@
+mode: "100644"
+text: "# API Documentation Principles\n\n> Good docs = happy developers = API adoption.\n\n## OpenAPI/Swagger Essentials\n\n```\nInclude:\n├── All endpoints with examples\n├── Request/response schemas\n├── Authentication requirements\n├── Error response formats\n└── Rate limiting info\n```\n\n## Good Documentation Has\n\n```\nEssentials:\n├── Quick start / Getting started\n├── Authentication guide\n├── Complete API reference\n├── Error handling guide\n├── Code examples (multiple languages)\n└── Changelog\n```\n"

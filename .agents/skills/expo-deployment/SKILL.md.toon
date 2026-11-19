@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: expo-deployment\ndescription: \"Deploy Expo apps to production\"\nrisk: safe\nsource: \"https://github.com/expo/skills/tree/main/plugins/expo-deployment\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

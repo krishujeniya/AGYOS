@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-storage-file-share-py\ndescription: Azure Storage File Share SDK for Python. Use for SMB file shares, directories, and file operations in the cloud.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

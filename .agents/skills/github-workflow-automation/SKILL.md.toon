@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: github-workflow-automation\ndescription: \"Patterns for automating GitHub workflows with AI assistance, inspired by [Gemini CLI](https://github.com/google-gemini/gemini-cli) and modern DevOps practices.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

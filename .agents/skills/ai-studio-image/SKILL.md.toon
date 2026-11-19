@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ai-studio-image\ndescription: Geracao de imagens humanizadas via Google AI Studio (Gemini). Fotos realistas estilo influencer ou educacional com iluminacao natural e imperfeicoes sutis.\nrisk: safe\nsource: community\ndate_added: '2026-03-06'\nauthor: \"Krish Ujeniya\"\ntags:\n- image-generation\n- ai-studio\n- google\n- photography\ntools:\n- claude-code\n- antigravity\n- cursor\n- gemini-cli\n- codex-cli\nprompt-source: prompt.toon\n---\n"

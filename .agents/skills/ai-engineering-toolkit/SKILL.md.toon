@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ai-engineering-toolkit\ndescription: \"6 production-ready AI engineering workflows: prompt evaluation (8-dimension scoring), context budget planning, RAG pipeline design, agent security audit (65-point checklist), eval harness building, and product sense coaching.\"\ncategory: data-ai\nrisk: offensive\nsource: community\ndate_added: \"2026-03-15\"\nauthor: \"Krish Ujeniya\"\ntags: [prompt-engineering, rag, security, evaluation, ai-engineering, llm]\ntools: [claude, cursor, gemini, copilot]\nprompt-source: prompt.toon\n---\n"

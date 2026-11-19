@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ui-design-engineering-standards\ndescription: s philosophy on UI polish, component design, animation decisions, and the invisible details that make software feel great.\nprompt-source: prompt.toon\n---\n"

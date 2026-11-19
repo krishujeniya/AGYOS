@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agents-spec-generator\ndescription: create AGENTS.md\", \"update AGENTS.md\", \"maintain agent docs\", \"set up CLAUDE.md\", or needs to keep agent instructions concise. Enforces research-backed best practices for minimal, high-signal agent documentation.\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

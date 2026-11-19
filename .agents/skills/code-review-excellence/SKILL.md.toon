@@ -1,0 +1,2 @@
+mode: "100755"
+header: "---\nname: code-review-excellence\ndescription: \"Master effective code review practices to provide constructive feedback and catch bugs early. Use this skill when reviewing pull requests, auditing code for security, or evaluating architectural choices. Relevant keywords: code review, audit, pr, pull request, evaluate, feedback, architecture review.\"\ncategory: process\nrisk: safe\ntags: \"[code-review, best-practices, mentoring, auditing]\"\nversion: \"1.0.0\"\nprompt-source: prompt.toon\n---\n"

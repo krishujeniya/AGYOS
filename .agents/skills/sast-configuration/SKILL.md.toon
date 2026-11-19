@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: sast-configuration\ndescription: \"Static Application Security Testing (SAST) tool setup, configuration, and custom rule creation for comprehensive security scanning across multiple programming languages.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

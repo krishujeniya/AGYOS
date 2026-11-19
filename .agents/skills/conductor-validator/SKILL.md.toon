@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: conductor-validator\ndescription: 'Validates Conductor project artifacts for completeness,\n\n  consistency, and correctness. Use after setup, when diagnosing issues, or\n\n  before implementation to verify project context.\n\n  '\nrisk: safe\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

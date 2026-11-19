@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: defi-amm-security\ndescription: Security checklist for Solidity AMM contracts, liquidity pools, and swap flows. Covers reentrancy, CEI ordering, donation or inflation attacks, oracle manipulation, slippage, admin controls, and integer math. Use when auditing or writing Solidity AMM, liquidity pool, or swap code.\nmetadata:\n  version: \"1.0.0\"\n  origin: ECC direct-port adaptation\nprompt-source: prompt.toon\n---\n"

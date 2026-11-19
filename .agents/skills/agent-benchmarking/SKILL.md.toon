@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agent-benchmarking\ndescription: \"Evaluate LLM agent behavior, capabilities, reliability, and production performance with task-specific benchmarks. Use when comparing agents or validating an agent workflow.\"\nrisk: safe\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

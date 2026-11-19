@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: orch-refine-code\ndescription: Orchestrate a behavior-preserving refactor — confirm tests are green, restructure without changing behavior, keep tests green, review, and gated commit. Use when the structure should improve but behavior must not change.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: kubernetes-patterns\ndescription: Kubernetes workload patterns, resource management, RBAC, probes, autoscaling, ConfigMap/Secret handling, and kubectl debugging for production-grade deployments. Use when writing or reviewing Kubernetes manifests, or debugging probes, RBAC, autoscaling, or resource limits.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

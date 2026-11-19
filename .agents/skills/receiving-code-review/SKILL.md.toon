@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: receiving-code-review\ndescription: Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation\nprompt-source: prompt.toon\n---\n"

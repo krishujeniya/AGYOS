@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: stripe-integration\ndescription: \"Master Stripe payment processing integration for robust, PCI-compliant payment flows including checkout, subscriptions, webhooks, and refunds.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

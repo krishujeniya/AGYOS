@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: odoo-docker-deployment\ndescription: \"Production-ready Docker and docker-compose setup for Odoo with PostgreSQL, persistent volumes, environment-based configuration, and Nginx reverse proxy.\"\nrisk: safe\nsource: \"self\"\nprompt-source: prompt.toon\n---\n"

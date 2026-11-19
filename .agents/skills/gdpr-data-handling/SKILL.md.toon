@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: gdpr-data-handling\ndescription: \"Practical implementation guide for GDPR-compliant data processing, consent management, and privacy controls.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: interview-coach\ndescription: \"Full job search coaching system — JD decoding, resume, storybank, mock interviews, transcript analysis, comp negotiation. 23 commands, persistent state.\"\ncategory: productivity\nrisk: safe\nsource: community\ndate_added: \"2026-03-11\"\nauthor: \"Krish Ujeniya\"\ntags: [interview, job-search, coaching, career, storybank, negotiation]\ntools: [claude]\nprompt-source: prompt.toon\n---\n"

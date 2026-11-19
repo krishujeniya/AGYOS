@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-storage-file-datalake-py\ndescription: Azure Data Lake Storage Gen2 SDK for Python. Use for hierarchical file systems, big data analytics, and file/directory operations.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

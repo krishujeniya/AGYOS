@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: multichannel-content-crossposting\ndescription: Adapt existing content for multiple channels and prepare platform-specific drafts for authorized publication.\nprompt-source: prompt.toon\n---\n"

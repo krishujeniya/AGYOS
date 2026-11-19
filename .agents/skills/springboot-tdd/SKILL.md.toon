@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: springboot-tdd\ndescription: Test-driven development for Spring Boot using JUnit 5, Mockito, MockMvc, Testcontainers, and JaCoCo. Use when adding features, fixing bugs, or refactoring.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

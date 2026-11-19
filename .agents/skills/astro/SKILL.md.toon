@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: astro\ndescription: \"Build content-focused websites with Astro — zero JS by default, islands architecture, multi-framework components, and Markdown/MDX support.\"\ncategory: frontend\nrisk: safe\nsource: community\ndate_added: \"2026-03-18\"\nauthor: \"Krish Ujeniya\"\ntags: [astro, ssg, ssr, islands, content, markdown, mdx, performance]\ntools: [claude, cursor, gemini]\nprompt-source: prompt.toon\n---\n"

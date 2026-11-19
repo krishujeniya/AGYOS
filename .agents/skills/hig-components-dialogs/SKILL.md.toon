@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: hig-components-dialogs\ndescription: Apple HIG guidance for presentation components including alerts, action sheets, popovers, sheets, and digit entry views.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

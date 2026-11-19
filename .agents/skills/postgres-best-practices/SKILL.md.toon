@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: postgres-best-practices\ndescription: \"Review or optimize Postgres queries, schemas, indexes, connection pooling, or row-level security using the Supabase Postgres guidance.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

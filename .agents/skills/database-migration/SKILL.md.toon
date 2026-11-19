@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: database-migration\ndescription: \"Master database schema and data migrations across ORMs (Sequelize, TypeORM, Prisma), including rollback strategies and zero-downtime deployments.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: security-review\ndescription: Use this skill when adding authentication, handling user input, working with secrets, creating API endpoints, or implementing payment/sensitive features. Provides comprehensive security checklist and patterns.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

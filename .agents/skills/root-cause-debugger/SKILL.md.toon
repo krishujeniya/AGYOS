@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: root-cause-debugger\ndescription: Diagnose errors, test failures, and unexpected behavior by reproducing the issue and isolating its root cause.\nrisk: safe\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

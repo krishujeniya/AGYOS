@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: council-replay\ndescription: |\n  Replay a past Agent Council session in the terminal. Shows the full\n  deliberation: question, each agent's opinion, and the chairman's synthesis.\nallowed-tools:\n  - Bash\nprompt-source: prompt.toon\n---\n"

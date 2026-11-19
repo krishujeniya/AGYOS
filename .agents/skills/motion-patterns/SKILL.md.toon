@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: motion-patterns\ndescription: Production-ready animation patterns for React / Next.js — button, modal, toast, stagger, page transitions, exit animations, scroll, and layout — built on motion-foundations tokens and springs. Use when animating a specific UI element in React or Next.js — button, modal, toast, stagger, page transition, or scroll.\ntags: [motion, animation, ui-patterns]\ncategory: frontend\nauthor: jeff\nmetadata:\n  version: 1.0.0\nprompt-source: prompt.toon\n---\n"

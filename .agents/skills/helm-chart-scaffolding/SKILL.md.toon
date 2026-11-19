@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: helm-chart-scaffolding\ndescription: \"Comprehensive guidance for creating, organizing, and managing Helm charts for packaging and deploying Kubernetes applications.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: deployment-procedures\ndescription: \"Production deployment principles and decision-making. Safe deployment workflows, rollback strategies, and verification. Teaches thinking, not scripts.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

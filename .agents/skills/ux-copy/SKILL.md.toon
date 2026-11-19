@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ux-copy\ndescription: \"Generate UX microcopy in StyleSeed's Toss-inspired voice for buttons, empty states, errors, toasts, confirmations, and form guidance.\"\ncategory: design\nrisk: safe\nsource: community\nsource_repo: bitjaru/styleseed\nsource_type: community\ndate_added: \"2026-04-08\"\nauthor: \"Krish Ujeniya\"\ntags: [ux, copywriting, microcopy, frontend, styleseed]\ntools: [claude, cursor, codex, gemini]\nprompt-source: prompt.toon\n---\n"

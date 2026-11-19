@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: devops-deploy\ndescription: \"DevOps e deploy de aplicacoes — Docker, CI/CD com GitHub Actions, AWS Lambda, SAM, Terraform, infraestrutura como codigo e monitoramento.\"\nrisk: critical\nsource: community\ndate_added: '2026-03-06'\nauthor: \"Krish Ujeniya\"\ntags:\n- devops\n- docker\n- ci-cd\n- aws\n- terraform\n- github-actions\ntools:\n- claude-code\n- antigravity\n- cursor\n- gemini-cli\n- codex-cli\nprompt-source: prompt.toon\n---\n"

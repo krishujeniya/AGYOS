@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-resource-manager-redis-dotnet\ndescription: Azure Resource Manager SDK for Redis in .NET.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

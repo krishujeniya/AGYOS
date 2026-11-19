@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-ai-openai-dotnet\ndescription: Azure OpenAI SDK for .NET. Client library for Azure OpenAI and OpenAI services. Use for chat completions, embeddings, image generation, audio transcription, and assistants.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

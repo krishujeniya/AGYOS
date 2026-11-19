@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: typescript-expert\ndescription: TypeScript and JavaScript expert with deep knowledge of type-level programming, performance optimization, monorepo management, migration strategies, and modern tooling.\ncategory: framework\nrisk: critical\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

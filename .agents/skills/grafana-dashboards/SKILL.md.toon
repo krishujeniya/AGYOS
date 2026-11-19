@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: grafana-dashboards\ndescription: \"Create and manage production-ready Grafana dashboards for comprehensive system observability.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: file-uploads\ndescription: Expert at handling file uploads and cloud storage. Covers S3,\n  Cloudflare R2, presigned URLs, multipart uploads, and image optimization.\n  Knows how to handle large files without blocking.\nrisk: none\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

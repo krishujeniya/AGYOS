@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: doc-generator\ndescription: \"Generate or update API documentation, architecture diagrams, user guides, and technical references from an inspected codebase. Use when creating maintainable project documentation.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

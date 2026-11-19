@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: swiftui-architecture\ndescription: Structure SwiftUI views and observable state with clear ownership and dependency boundaries.\nprompt-source: prompt.toon\n---\n"

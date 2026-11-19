@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: clerk-agent-toolkit\ndescription: Integrate Clerk user management, organizations, sessions, and invitations directly into AI agent workflows using @clerk/agent-toolkit. Covers the local MCP server, Vercel AI SDK integration, LangChain integration, session context injection, and scoped tool helpers for multi-tenant agentic apps.\nrisk: medium\nsource: official (clerk.com/changelog/2025-03-7-clerk-agent-toolkit)\ndate_added: 2026-11-13\nprompt-source: prompt.toon\n---\n"

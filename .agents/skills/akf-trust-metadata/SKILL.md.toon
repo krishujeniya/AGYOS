@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: akf-trust-metadata\ndescription: \"The AI native file format. EXIF for AI — stamps every file with trust scores, source provenance, and compliance metadata. Embeds into 20+ formats (DOCX, PDF, images, code). EU AI Act, SOX, HIPAA auditing.\"\nrisk: safe\nsource: community\ndate_added: \"2026-03-27\"\nauthor: \"Krish Ujeniya\"\ntags:\n- trust\n- metadata\n- provenance\n- compliance\n- file-format\n- ai-native\nprompt-source: prompt.toon\n---\n"

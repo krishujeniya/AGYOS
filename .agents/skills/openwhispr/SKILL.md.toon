@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: openwhispr\ndescription: >-\n  Set up, use, troubleshoot, or integrate OpenWhispr desktop voice dictation,\n  meeting transcription, notes, local/cloud speech models, or its MCP server.\n  Use whenever the user mentions OpenWhispr, its desktop app, or connecting its\n  notes and transcripts to an AI assistant.\nsource: https://github.com/OpenWhispr/openwhispr\nlicense: MIT\nmetadata:\n  version: 1.0.2\nprompt-source: prompt.toon\n---\n"

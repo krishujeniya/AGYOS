@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: templates\ndescription: \"Project scaffolding templates for new applications. Use when creating new projects from scratch. Contains 12 templates for various tech stacks.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

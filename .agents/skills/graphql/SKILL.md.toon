@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: graphql\ndescription: GraphQL gives clients exactly the data they need - no more, no\n  less. One endpoint, typed schema, introspection. But the flexibility that\n  makes it powerful also makes it dangerous. Without proper controls, clients\n  can craft queries that bring down your server.\nrisk: safe\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

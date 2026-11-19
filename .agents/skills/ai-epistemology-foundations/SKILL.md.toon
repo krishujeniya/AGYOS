@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ai-epistemology-foundations\ndescription: Sub-skill filosófica e pedagógica de Yann LeCun.\nrisk: safe\nsource: community\ndate_added: '2026-03-06'\nauthor: Krish Ujeniya\ntags:\n- persona\n- ai-philosophy\n- open-source\n- education\ntools:\n- claude-code\n- antigravity\n- cursor\n- gemini-cli\n- codex-cli\nprompt-source: prompt.toon\n---\n"

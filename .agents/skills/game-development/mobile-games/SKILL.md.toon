@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: mobile-games\ndescription: \"Mobile game development principles. Touch input, battery, performance, app stores.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

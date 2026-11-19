@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: autonomous-agents\ndescription: Autonomous agents are AI systems that can independently decompose\n  goals, plan actions, execute tools, and self-correct without constant human\n  guidance. The challenge isn't making them capable - it's making them reliable.\n  Every extra decision multiplies failure probability.\nrisk: unknown\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

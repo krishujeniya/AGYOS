@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: shodan-reconnaissance\ndescription: \"Provide systematic methodologies for leveraging Shodan as a reconnaissance tool during penetration testing engagements.\"\nrisk: unknown\nsource: community\nauthor: \"Krish Ujeniya\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

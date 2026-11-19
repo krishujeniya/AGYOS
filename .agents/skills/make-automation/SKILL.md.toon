@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: make-automation\ndescription: \"Automate Make (Integromat) tasks via Rube MCP (Composio): operations, enums, language and timezone lookups. Always search tools first for current schemas.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

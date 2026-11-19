@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: vercel-deployment\ndescription: Expert knowledge for deploying to Vercel with Next.js\nrisk: safe\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: process-systematic-debugging\ndescription: \"Master rule for debugging and fixing issues. Enforces the 4-phase root cause analysis process, backward tracing, defense-in-depth validation, and condition-based waiting for flaky tests. Prevents guessing and 'quick fixes'.\"\ncategory: process\nrisk: safe\ntags: \"[debugging, bugfix, root cause, testing, process, flaky tests]\"\nversion: \"1.0.0\"\nprompt-source: prompt.toon\n---\n"

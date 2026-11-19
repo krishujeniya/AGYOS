@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: notebooklm-researcher\ndescription: \"Provides methodologies for using the NotebookLM MCP integration for project research, literature reviews, and deep domain analysis.\"\nprompt-source: prompt.toon\n---\n"

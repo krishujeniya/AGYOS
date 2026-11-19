@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agyos-startup-distribution\ndescription: Playbook for launching, distributing, and syndicating software products. Covers 100+ directory submissions, Product Hunt launches, Show HN guidelines, and early user acquisition.\nprompt-source: prompt.toon\n---\n"

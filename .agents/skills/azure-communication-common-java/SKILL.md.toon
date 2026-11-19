@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-communication-common-java\ndescription: \"Azure Communication Services common utilities for Java. Use when working with CommunicationTokenCredential, user identifiers, token refresh, or shared authentication across ACS services.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-eventgrid-java\ndescription: \"Build event-driven applications with Azure Event Grid SDK for Java. Use when publishing events, implementing pub/sub patterns, or integrating with Azure services via events.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

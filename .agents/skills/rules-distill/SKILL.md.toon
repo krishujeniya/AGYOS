@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: rules-distill\ndescription: \"Scan skills to extract cross-cutting principles and distill them into rules — append, revise, or create new rule files. Use when the same principle keeps recurring across skills and belongs in a rule file instead.\"\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

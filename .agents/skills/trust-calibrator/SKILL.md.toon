@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: trust-calibrator\ndescription: Use when calibrating claims and proof for a skeptical audience and reducing overclaiming or weak credibility signals.\nrisk: safe\nsource: community\ndate_added: \"2026-04-04\"\nprompt-source: prompt.toon\n---\n"

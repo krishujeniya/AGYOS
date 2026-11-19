@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: architecture-c4-model\ndescription: \"Generate comprehensive C4 architecture documentation for a system. Focuses on Context, Container, and Component levels.\"\nprompt-source: prompt.toon\n---\n"

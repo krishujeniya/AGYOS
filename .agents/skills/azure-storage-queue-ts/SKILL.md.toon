@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-storage-queue-ts\ndescription: Azure Queue Storage JavaScript/TypeScript SDK (@azure/storage-queue) for message queue operations. Use for sending, receiving, peeking, and deleting messages in queues.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

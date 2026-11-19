@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: wordpress-theme-development\ndescription: \"WordPress theme development workflow covering theme architecture, template hierarchy, custom post types, block editor support, responsive design, and WordPress 7.0 features: DataViews, Pattern Editing, Navigation Overlays, and admin refresh.\"\ncategory: granular-workflow-bundle\nrisk: safe\nsource: personal\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

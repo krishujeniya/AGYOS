@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: orch-change-feature\ndescription: Orchestrate altering an existing, working feature to new desired behavior — update its tests to the new spec, change the implementation to match, review, and gated commit. Use when behavior is not broken but should be different.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ffmpeg-video-editor\ndescription: >-\n  Automated, programmatic video and audio editing using local FFmpeg. Covers silence detection,\n  audio ducking with sidechain compression, YouTube loudness normalization (-14 LUFS), B-roll overlay\n  cutaways, dynamic zoom punch-ins, SRT caption styling, and multi-clip concatenation with transitions.\nmetadata:\n  version: 1.0.0\nlicense: MIT\nprompt-source: prompt.toon\n---\n"

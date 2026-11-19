@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: terminal-ops\ndescription: Evidence-first repo execution workflow for ECC. Use when the user wants a command run, a repo checked, a CI failure debugged, or a narrow fix pushed with exact proof of what was executed and verified.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

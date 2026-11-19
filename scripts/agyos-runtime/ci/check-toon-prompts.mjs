@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import { execFileSync } from 'node:child_process'
-import { readFileSync } from 'node:fs'
+import { lstatSync, readFileSync, readlinkSync } from 'node:fs'
+import { dirname, join } from 'node:path'
 import { decode, encode } from '@toon-format/toon'
 
 // Reference spec revision 009074d934289553a61763d70c50ee5160e60110.
@@ -15,7 +16,7 @@ assert.deepEqual(decode(encode(prompt)), prompt)
 assert.equal(manifest.slice(manifest.indexOf('\n---\n', 4) + 5), source)
 assert.equal(execFileSync('bash', ['bin/agyos', 'skill', prompt.skill], {encoding: 'utf8'}), source)
 
-const files = execFileSync('git', ['ls-files', '-z', '--', '.agents/skills/*/SKILL.md'], { encoding: 'utf8', maxBuffer: 8 << 20 }).split('\0').filter(Boolean)
+const files = execFileSync('git', ['ls-files', '-z', '--', '.agents/skills/*/SKILL.md.toon'], { encoding: 'utf8', maxBuffer: 8 << 20 }).split('\0').filter(Boolean).map(file => file.slice(0, -'.toon'.length))
 const sources = new Set(execFileSync('git', ['ls-files', '-z', '--', '.agents/skills/*/prompt.toon'], { encoding: 'utf8' }).split('\0').filter(Boolean))
 assert.equal(sources.size, files.length, 'Each manifest needs a tracked source')
 let unavailable = 0
@@ -39,3 +40,37 @@ for (const file of files) {
   }
 }
 console.log(`Validated ${files.length} skill prompts, including ${unavailable} unavailable records.`)
+
+const documents = execFileSync('git', ['ls-files', '-z', '--', ':(icase)*.md.toon'], {
+  encoding: 'utf8', maxBuffer: 8 << 20
+}).split('\0').filter(Boolean)
+assert.ok(documents.length > 0, 'Expected tracked TOON document sources')
+const counts = { text: 0, header: 0, target: 0, archive: 0 }
+for (const document of documents) {
+  const record = decode(readFileSync(document, 'utf8'), { strict: true })
+  const fields = Object.keys(record).filter(field => field !== 'mode')
+  assert.equal(fields.length, 1, document)
+  const [kind] = fields
+  assert.ok(Object.hasOwn(counts, kind), document)
+  assert.equal(typeof record[kind], 'string', document)
+  counts[kind]++
+  const output = document.slice(0, -'.toon'.length)
+  if (kind === 'target') {
+    assert.equal(record.mode, '120000', document)
+    assert.equal(readlinkSync(output), record.target, document)
+    continue
+  }
+  assert.ok(['100644', '100755'].includes(record.mode), document)
+  if (kind === 'archive') {
+    assert.equal(Buffer.from(record.archive, 'base64').toString('base64'), record.archive, document)
+    continue
+  }
+  const expected = kind === 'header'
+    ? record.header + readFileSync(join(dirname(output), 'prompt.toon'), 'utf8')
+    : record.text
+  const status = lstatSync(output)
+  assert.ok(status.isFile(), document)
+  assert.equal(status.mode & 0o111, record.mode === '100755' ? 0o111 : 0, document)
+  assert.ok(readFileSync(output).equals(Buffer.from(expected)), document)
+}
+console.log(`Validated ${documents.length} tracked document sources: ${JSON.stringify(counts)}`)

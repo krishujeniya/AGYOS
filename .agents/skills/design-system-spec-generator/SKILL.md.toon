@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: design-system-spec-generator\ndescription: Analyze Stitch projects and synthesize a semantic design system into DESIGN.md files\nrisk: safe\nsource: https://github.com/google-labs-code/stitch-skills/tree/main/skills/design-md\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

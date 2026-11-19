@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: seo-content\ndescription: >\n  Content quality and E-E-A-T analysis with AI citation readiness assessment.\n  Use when user says \"content quality\", \"E-E-A-T\", \"content analysis\",\n  \"readability check\", \"thin content\", or \"content audit\".\nrisk: unknown\nsource: \"https://github.com/AgriciDaniel/claude-seo\"\ndate_added: \"2026-03-21\"\nuser-invokable: true\nargument-hint: \"[url]\"\nallowed-tools:\n  - Read\n  - Grep\n  - Glob\n  - Bash\n  - WebFetch\nprompt-source: prompt.toon\n---\n"

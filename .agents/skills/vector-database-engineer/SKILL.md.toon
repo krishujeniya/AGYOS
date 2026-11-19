@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: vector-database-engineer\ndescription: \"Choose or optimize a vector store and embedding workflow for RAG, semantic search, or recommendations. Use for indexing, chunking, recall, latency, and scale decisions.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

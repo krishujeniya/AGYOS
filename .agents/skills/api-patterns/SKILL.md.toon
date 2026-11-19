@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: api-patterns\ndescription: \"API design principles and decision-making. REST vs GraphQL vs tRPC selection, response formats, versioning, pagination.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

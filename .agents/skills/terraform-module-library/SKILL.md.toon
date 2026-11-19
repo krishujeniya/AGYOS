@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: terraform-module-library\ndescription: \"Production-ready Terraform module patterns for AWS, Azure, and GCP infrastructure.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

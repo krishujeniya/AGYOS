@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: workflow-patterns\ndescription: Use this skill when implementing tasks according to Conductor's TDD workflow, handling phase checkpoints, managing git commits for tasks, or understanding the verification protocol.\nrisk: safe\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

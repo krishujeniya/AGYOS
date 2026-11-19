@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: risk-manager\ndescription: Monitor portfolio risk, R-multiples, and position limits. Creates hedging strategies, calculates expectancy, and implements stop-losses.\nrisk: safe\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

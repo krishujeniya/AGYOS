@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: sast-scan\ndescription: 'Static Application Security Testing (SAST) for code vulnerability\n\n  analysis across multiple languages and frameworks\n\n  '\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

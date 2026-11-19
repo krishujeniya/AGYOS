@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: seo-content-refresher\ndescription: Identifies outdated elements in provided content and suggests updates to maintain freshness. Finds statistics, dates, and examples that need updating. Use PROACTIVELY for older content.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

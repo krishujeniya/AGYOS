@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: pentagi-orchestrator\ndescription: \"Autonomous multi-agent penetration testing orchestrator. Coordinates target reconnaissance, vulnerability analysis, exploit planning, and remediation reporting.\"\nrisk: offensive\nsource: community\nauthor: \"Krish Ujeniya\"\nprompt-source: prompt.toon\n---\n"

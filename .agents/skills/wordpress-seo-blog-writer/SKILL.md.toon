@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: wordpress-seo-blog-writer\ndescription: Create long-form, high-quality, SEO-optimized blog posts ready for WordPress with truth boxes and FAQ schema.\ncategory: content\nrisk: safe\nsource: self\nsource_type: self\ndate_added: '2026-04-12'\nauthor: Krish Ujeniya\ntags:\n- writing\n- blog\n- seo\n- content\n- wordpress\ntools:\n- claude\n- cursor\n- gemini\nversion: 1.0.3\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: deepnote-mcp\ndescription: Interact with Deepnote collaborative notebooks via its MCP server. Create, edit, and execute Python and SQL notebooks; manage projects, folders, integrations (Snowflake, BigQuery, Postgres), Streamlit apps, and compute machines programmatically from any AI agent or coding assistant.\nrisk: medium\nsource: official (deepnote.com/docs/deepnote-mcp)\ndate_added: 2026-11-13\nprompt-source: prompt.toon\n---\n"

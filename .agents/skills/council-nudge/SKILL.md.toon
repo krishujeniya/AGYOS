@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: council-nudge\ndescription: |\n  Nudge a specific agent to reconsider its opinion based on a corrected assumption.\n  Sends the original question + response + correction to one agent and saves the\n  updated opinion alongside the original for comparison.\nallowed-tools:\n  - Bash\nprompt-source: prompt.toon\n---\n"

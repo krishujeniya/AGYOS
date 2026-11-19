@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: wcag-accessibility-compliance\ndescription: Audit interface accessibility against applicable WCAG criteria using keyboard, focus, labels, semantics, and contrast checks.\nprompt-source: prompt.toon\n---\n"

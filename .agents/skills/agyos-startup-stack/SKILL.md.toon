@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agyos-startup-stack\ndescription: The 9-tool operational stack for solo founders and technical builders using AGYOS. Coordinates agent orchestration, literature research, zero-cost infra, automated lead generation, launch distribution, binary inspection, code protection, and release verification.\nprompt-source: prompt.toon\n---\n"

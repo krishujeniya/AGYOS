@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: intercom-automation\ndescription: \"Automate Intercom tasks via Rube MCP (Composio): conversations, contacts, companies, segments, admins. Always search tools first for current schemas.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

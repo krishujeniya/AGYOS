@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: django-access-review\ndescription: Use when reviewing Django or DRF code for IDOR, object-level authorization, or user-to-user data access gaps.\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

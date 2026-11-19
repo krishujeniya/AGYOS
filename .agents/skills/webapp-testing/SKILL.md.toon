@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: webapp-testing\ndescription: Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs.\nlicense: Complete terms in LICENSE.txt\nprompt-source: prompt.toon\n---\n"

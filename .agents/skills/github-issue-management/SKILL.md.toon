@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: github-issue-management\ndescription: Interact with GitHub issues - create, list, and view issues.\nprompt-source: prompt.toon\n---\n"

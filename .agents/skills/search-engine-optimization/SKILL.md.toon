@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: search-engine-optimization\ndescription: Inspect search visibility, metadata, crawlability, and eligible structured data using the rendered page and primary evidence.\nprompt-source: prompt.toon\n---\n"

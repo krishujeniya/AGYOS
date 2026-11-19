@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: config-validator\ndescription: \"Validate application configuration against schemas and environment constraints. Use when adding configuration checks, preventing invalid deployments, or diagnosing configuration drift.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

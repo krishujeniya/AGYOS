@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ddd-strategic-design\ndescription: \"Design DDD strategic artifacts including subdomains, bounded contexts, and ubiquitous language for complex business domains.\"\nrisk: safe\nsource: self\ntags: \"[ddd, strategic-design, bounded-context, ubiquitous-language]\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

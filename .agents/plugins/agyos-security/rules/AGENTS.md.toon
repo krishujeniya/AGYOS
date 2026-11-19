@@ -1,0 +1,2 @@
+mode: "100644"
+text: "# Security & Defense Invariants\n- Never store API keys, tokens, or private credentials in repository files.\n- Validate and sanitize all external inputs at the system boundary."

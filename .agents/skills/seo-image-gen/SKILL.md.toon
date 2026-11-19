@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: seo-image-gen\ndescription: \"Generate SEO-focused images such as OG cards, hero images, schema assets, product visuals, and infographics. Use when image generation is part of an SEO workflow or content publishing task.\"\nrisk: unknown\nsource: \"https://github.com/AgriciDaniel/claude-seo\"\ndate_added: \"2026-03-21\"\nargument-hint: \"[og|hero|product|infographic|custom|batch] <description>\"\nuser-invokable: true\nallowed-tools:\n  - Read\n  - Grep\n  - Glob\n  - Bash\n  - WebFetch\n  - Write\nprompt-source: prompt.toon\n---\n"

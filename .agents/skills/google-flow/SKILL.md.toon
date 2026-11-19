@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: google-flow\ndescription: >-\n  Headless video generation and media retrieval using Google Flow and Veo 3.1. Enforces zero visible\n  browser windows (--headless=new), automatic local downloads, machine-verified media integrity,\n  and mandatory skill-first research routing before crafting prompts.\nmetadata:\n  version: 1.0.0\nlicense: MIT\nprompt-source: prompt.toon\n---\n"

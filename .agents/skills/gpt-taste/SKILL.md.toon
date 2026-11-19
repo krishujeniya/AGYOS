@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: gpt-taste\ndescription: \"Use when generating elite GSAP-heavy frontend pages with strict AIDA structure, wide hero typography, and gapless bento grids.\"\ncategory: frontend\nrisk: safe\nsource: community\nsource_repo: Leonxlnx/taste-skill\nsource_type: community\ndate_added: \"2026-04-17\"\nauthor: \"Krish Ujeniya\"\ntags: [frontend, design, gsap, motion]\ntools: [claude, cursor, codex, antigravity]\nprompt-source: prompt.toon\n---\n"

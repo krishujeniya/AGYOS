@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: odoo-manufacturing-advisor\ndescription: \"Expert guide for Odoo Manufacturing: Bills of Materials (BoM), Work Centers, routings, MRP planning, and production order workflows.\"\nrisk: safe\nsource: \"self\"\nprompt-source: prompt.toon\n---\n"

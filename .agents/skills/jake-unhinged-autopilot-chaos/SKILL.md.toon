@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: jake-unhinged-autopilot-chaos\ndescription: \"Takes the whole task and runs it end to end without stopping to ask, leaving the user to review at the finish line; invoke via /autopilot-chaos when you want a fully autonomous run and will inspect the result once it's done.\"\nlicense: MIT\nmetadata:\n  upstream_repository: Jakeschincariol/unhinged-claude-skills\n  upstream_skill: autopilot-chaos\n  upstream_commit: 8f60ec6d9e28e430849b57b5e21cbdfe9860df99\nprompt-source: prompt.toon\n---\n"

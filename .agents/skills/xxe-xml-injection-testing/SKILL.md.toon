@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: xxe-xml-injection-testing\ndescription: \"XML External Entity (XXE) vulnerability testing and mitigation. Identifies file disclosure, blind XXE, and SSRF via XML parsers.\"\nrisk: offensive\nsource: community\nauthor: \"Krish Ujeniya\"\nprompt-source: prompt.toon\n---\n"
