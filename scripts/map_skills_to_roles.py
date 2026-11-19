@@ -436,7 +436,7 @@ def update_agent_definition_files(matrix: Dict[str, Any]):
     updated = 0
 
     for role_id, rdata in by_role.items():
-        agent_file = AGENTS_DIR / f"{role_id}.md"
+        agent_toon_file = AGENTS_DIR / f"{role_id}.toon"
         role = get_role(role_id)
         if not role:
             continue
@@ -502,7 +502,14 @@ You are the **{role.title}** (`{role.role_id}`) in the **{role.department.replac
 4. **Governing Pod**: Reports to `{role.governing_pod}` for cross-functional routing and task contract boundaries.
 5. **Authentic Prose**: Use clear, direct human engineering language without robotic fillers or AI buzzwords.
 """
-        agent_file.write_text(content, encoding="utf-8")
+        envelope = f'mode: "100644"\ntext: {json.dumps(content, ensure_ascii=False)}\n'
+        agent_toon_file.write_text(envelope, encoding="utf-8")
+
+        # Clean up stale .md file if present
+        stale_md = AGENTS_DIR / f"{role_id}.md"
+        if stale_md.exists():
+            stale_md.unlink()
+
         updated += 1
 
     print(f"Updated {updated} agent definition files in {AGENTS_DIR}.")
