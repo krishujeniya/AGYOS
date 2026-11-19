@@ -5,9 +5,7 @@
   "description": "Pinned runtime dependencies for AGYOS persistent state storage",
   "dependencies": {
     "ajv": "8.20.0",
-    "sql.js": "1.16.0"
-  },
-  "devDependencies": {
+    "sql.js": "1.16.0",
     "@toon-format/toon": "4.4.0"
   }
 }

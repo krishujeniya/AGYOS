@@ -2,7 +2,7 @@
 /**
  * NanoClaw v2 — Barebones Agent REPL for ECC
  *
- * Zero external dependencies. Session-aware REPL around `claude -p`.
+ * Session-aware REPL with TOON input around `claude -p`.
  */
 
 'use strict';
@@ -12,6 +12,7 @@ const path = require('path');
 const os = require('os');
 const { spawnSync } = require('child_process');
 const readline = require('readline');
+const { decode, encode } = require('@toon-format/toon');
 
 const SESSION_NAME_RE = /^[a-zA-Z0-9][-a-zA-Z0-9]*$/;
 const DEFAULT_MODEL = process.env.CLAW_MODEL || 'sonnet';
@@ -64,27 +65,25 @@ function normalizeSkillList(raw) {
 
 function loadECCContext(skillList) {
   const requested = normalizeSkillList(skillList !== undefined ? skillList : process.env.CLAW_SKILLS || '');
-  if (requested.length === 0) return '';
-
-  const chunks = [];
-  for (const name of requested) {
-    const skillPath = path.join(process.cwd(), 'skills', name, 'SKILL.md');
-    try {
-      chunks.push(fs.readFileSync(skillPath, 'utf8'));
-    } catch {
-      // Skip missing skills silently to keep REPL usable.
+  return requested.map(name => {
+    if (!/^(?:\.system\/)?[a-z0-9][a-z0-9_-]*(?:\/[a-z0-9][a-z0-9_-]*)*$/.test(name)) {
+      throw new Error(`Invalid skill name: ${name}`);
     }
-  }
-
-  return chunks.join('\n\n');
+    const root = fs.realpathSync(path.join(process.cwd(), 'skills'));
+    const file = fs.realpathSync(path.join(root, name, 'prompt.toon'));
+    if (!file.startsWith(root + path.sep)) throw new Error(`Skill outside catalog: ${name}`);
+    const skill = decode(fs.readFileSync(file, 'utf8'), { strict: true });
+    if (skill?.skill !== path.basename(name)) throw new Error(`Invalid skill identity: ${name}`);
+    if (skill.status === 'unavailable') throw new Error(`Skill unavailable: ${name}`);
+    return skill;
+  });
 }
 
 function buildPrompt(systemPrompt, history, userMessage) {
-  const parts = [];
-  if (systemPrompt) parts.push(`=== SYSTEM CONTEXT ===\n${systemPrompt}\n`);
-  if (history) parts.push(`=== CONVERSATION HISTORY ===\n${history}\n`);
-  parts.push(`=== USER MESSAGE ===\n${userMessage}`);
-  return parts.join('\n');
+  const input = { user_message: userMessage };
+  if (systemPrompt?.length) input.skill_context = systemPrompt;
+  if (history) input.conversation_history = history;
+  return encode(input);
 }
 
 function askClaude(systemPrompt, history, userMessage, model) {
@@ -279,11 +278,6 @@ function branchSession(currentSessionPath, newSessionName, targetDir = getClawDi
   return { ok: true, path: target, session: newSessionName };
 }
 
-function skillExists(skillName) {
-  const p = path.join(process.cwd(), 'skills', skillName, 'SKILL.md');
-  return fs.existsSync(p);
-}
-
 function handleClear(sessionPath) {
   fs.mkdirSync(path.dirname(sessionPath), { recursive: true });
   fs.writeFileSync(sessionPath, '', 'utf8');
@@ -344,9 +338,16 @@ function main() {
     skills: normalizeSkillList(process.env.CLAW_SKILLS || '')
   };
 
-  let eccContext = loadECCContext(state.skills);
+  let eccContext;
+  try {
+    eccContext = loadECCContext(state.skills);
+  } catch (error) {
+    console.error(error.message);
+    process.exitCode = 1;
+    return;
+  }
 
-  const loadedCount = state.skills.filter(skillExists).length;
+  const loadedCount = eccContext.length;
 
   console.log(`NanoClaw v2 — Session: ${state.sessionName}`);
   console.log(`Model: ${state.model}`);
@@ -405,15 +406,14 @@ function main() {
           console.log('Usage: /load <skill-name>');
           return prompt();
         }
-        if (!skillExists(skill)) {
-          console.log(`Skill not found: ${skill}`);
+        const nextSkills = [...new Set([...state.skills, skill])];
+        try {
+          eccContext = loadECCContext(nextSkills);
+          state.skills = nextSkills;
+        } catch (error) {
+          console.log(error.message);
           return prompt();
         }
-
-        if (!state.skills.includes(skill)) {
-          state.skills.push(skill);
-        }
-        eccContext = loadECCContext(state.skills);
         console.log(`Loaded skill: ${skill}`);
         return prompt();
       }
