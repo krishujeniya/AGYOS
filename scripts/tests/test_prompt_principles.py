@@ -241,13 +241,18 @@ class PromptSurfaceRegressionTests(unittest.TestCase):
             ROOT / ".agents/skills/prompt-engineering-patterns/references/system-prompts.md",
             ROOT / ".agents/skills/prompt-engineering-patterns/references/prompt-templates.md",
             ROOT / ".agents/skills/prompt-engineering-patterns/assets/prompt-template-library.md",
-            ROOT / ".agents/skills/prompt-engineering-patterns/assets/few-shot-examples.json",
+            ROOT / ".agents/skills/prompt-engineering-patterns/assets/few-shot-examples.toon",
             ROOT / ".agents/skills/prompt-engineering-patterns/scripts/optimize-prompt.py",
         )
         unrelated_identity = re.compile(r"\b(?:Grok|xAI|FAANG|MANGO|DeepMind)\b", re.IGNORECASE)
-        for path in paths:
-            with self.subTest(path=path.relative_to(ROOT)):
-                self.assertIsNone(unrelated_identity.search(path.read_text(encoding="utf-8")))
+        for p in paths:
+            target_path = p
+            if not target_path.is_file() and target_path.with_suffix(".toon").is_file():
+                target_path = target_path.with_suffix(".toon")
+            elif not target_path.is_file() and target_path.with_suffix(".json").is_file():
+                target_path = target_path.with_suffix(".json")
+            with self.subTest(path=target_path.relative_to(ROOT)):
+                self.assertIsNone(unrelated_identity.search(target_path.read_text(encoding="utf-8")))
 
     def test_removed_unsupported_chain_of_thought_claims(self):
         paths = (
