@@ -5,8 +5,9 @@ risk: safe
 source: community
 tags: "remotion, video, react, animation, composition"
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Remotion best-practices compatibility ID
-
-Use the canonical [remotion-video-creation runbook](../remotion-video-creation/SKILL.md). Its rule files contain the current shared guidance. This directory's rules paths remain in place for compatibility with existing links.
+skill: "remotion-best-practices"
+sections[2]:
+  - "\n"
+  - "# Remotion best-practices compatibility ID\n\nUse the canonical [remotion-video-creation runbook](../remotion-video-creation/SKILL.md). Its rule files contain the current shared guidance. This directory's rules paths remain in place for compatibility with existing links.\n"

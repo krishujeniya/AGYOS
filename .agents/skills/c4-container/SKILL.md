@@ -4,170 +4,28 @@ description: Expert C4 Container-level documentation specialist.
 risk: unknown
 source: community
 date_added: '2026-02-27'
+prompt-source: prompt.toon
 ---
-
-# C4 Container Level: System Deployment
-
-## Use this skill when
-
-- Working on c4 container level: system deployment tasks or workflows
-- Needing guidance, best practices, or checklists for c4 container level: system deployment
-
-## Do not use this skill when
-
-- The task is unrelated to c4 container level: system deployment
-- You need a different domain or tool outside this scope
-
-## Instructions
-
-- Clarify goals, constraints, and required inputs.
-- Apply relevant best practices and validate outcomes.
-- Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
-
-## Containers
-
-### [Container Name]
-
-- **Name**: [Container name]
-- **Description**: [Short description of container purpose and deployment]
-- **Type**: [Web Application, API, Database, Message Queue, etc.]
-- **Technology**: [Primary technologies: Node.js, Python, PostgreSQL, Redis, etc.]
-- **Deployment**: [Docker, Kubernetes, Cloud Service, etc.]
-
-## Purpose
-
-[Detailed description of what this container does and how it's deployed]
-
-## Components
-
-This container deploys the following components:
-
-- [Component Name]: [Description]
-  - Documentation: c4-component-name.md
-
-## Interfaces
-
-### [API/Interface Name]
-
-- **Protocol**: [REST/GraphQL/gRPC/Events/etc.]
-- **Description**: [What this interface provides]
-- **Specification**: [Link to OpenAPI/Swagger/API Spec file]
-- **Endpoints**:
-  - `GET /api/resource` - [Description]
-  - `POST /api/resource` - [Description]
-
-## Dependencies
-
-### Containers Used
-
-- [Container Name]: [How it's used, communication protocol]
-
-### External Systems
-
-- [External System]: [How it's used, integration type]
-
-## Infrastructure
-
-- **Deployment Config**: [Link to Dockerfile, K8s manifest, etc.]
-- **Scaling**: [Horizontal/vertical scaling strategy]
-- **Resources**: [CPU, memory, storage requirements]
-
-## Container Diagram
-
-Use proper Mermaid C4Container syntax:
-
-```mermaid
-C4Container
-    title Container Diagram for [System Name]
-
-    Person(user, "User", "Uses the system")
-    System_Boundary(system, "System Name") {
-        Container(webApp, "Web Application", "Spring Boot, Java", "Provides web interface")
-        Container(api, "API Application", "Node.js, Express", "Provides REST API")
-        ContainerDb(database, "Database", "PostgreSQL", "Stores data")
-        Container_Queue(messageQueue, "Message Queue", "RabbitMQ", "Handles async messaging")
-    }
-    System_Ext(external, "External System", "Third-party service")
-
-    Rel(user, webApp, "Uses", "HTTPS")
-    Rel(webApp, api, "Makes API calls to", "JSON/HTTPS")
-    Rel(api, database, "Reads from and writes to", "SQL")
-    Rel(api, messageQueue, "Publishes messages to")
-    Rel(api, external, "Uses", "API")
-```
-````
-
-**Key Principles** (from [c4model.com](https://c4model.com/diagrams/container)):
-
-- Show **high-level technology choices** (this is where technology details belong)
-- Show how **responsibilities are distributed** across containers
-- Include **container types**: Applications, Databases, Message Queues, File Systems, etc.
-- Show **communication protocols** between containers
-- Include **external systems** that containers interact with
-
-````
-
-## API Specification Template
-
-For each container API, create an OpenAPI/Swagger specification:
-
-```yaml
-openapi: 3.1.0
-info:
-  title: [Container Name] API
-  description: [API description]
-  version: 1.0.0
-servers:
-  - url: https://api.example.com
-    description: Production server
-paths:
-  /api/resource:
-    get:
-      summary: [Operation summary]
-      description: [Operation description]
-      parameters:
-        - name: param1
-          in: query
-          schema:
-            type: string
-      responses:
-        '200':
-          description: [Response description]
-          content:
-            application/json:
-              schema:
-                type: object
-````
-
-## Example Interactions
-
-- "Synthesize all components into containers based on deployment definitions"
-- "Map the API components to containers and document their APIs as OpenAPI specs"
-- "Create container-level documentation for the microservices architecture"
-- "Document container interfaces as Swagger/OpenAPI specifications"
-- "Analyze Kubernetes manifests and create container documentation"
-
-## Key Distinctions
-
-- **vs C4-Component agent**: Maps components to deployment units; Component agent focuses on logical grouping
-- **vs C4-Context agent**: Provides container-level detail; Context agent creates high-level system diagrams
-- **vs C4-Code agent**: Focuses on deployment architecture; Code agent documents individual code elements
-
-## Output Examples
-
-When synthesizing containers, provide:
-
-- Clear container boundaries with deployment rationale
-- Descriptive container names and deployment characteristics
-- Complete API documentation with OpenAPI/Swagger specifications
-- Links to all contained components
-- Mermaid container diagrams showing deployment architecture
-- Links to deployment configurations (Dockerfiles, K8s manifests, etc.)
-- Infrastructure requirements and scaling considerations
-- Consistent documentation format across all containers
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "c4-container"
+sections[21]:
+  - "\n"
+  - "# C4 Container Level: System Deployment\n\n"
+  - "## Use this skill when\n\n- Working on c4 container level: system deployment tasks or workflows\n- Needing guidance, best practices, or checklists for c4 container level: system deployment\n\n"
+  - "## Do not use this skill when\n\n- The task is unrelated to c4 container level: system deployment\n- You need a different domain or tool outside this scope\n\n"
+  - "## Instructions\n\n- Clarify goals, constraints, and required inputs.\n- Apply relevant best practices and validate outcomes.\n- Provide actionable steps and verification.\n- If detailed examples are required, open `resources/implementation-playbook.md`.\n\n"
+  - "## Containers\n\n"
+  - "### [Container Name]\n\n- **Name**: [Container name]\n- **Description**: [Short description of container purpose and deployment]\n- **Type**: [Web Application, API, Database, Message Queue, etc.]\n- **Technology**: [Primary technologies: Node.js, Python, PostgreSQL, Redis, etc.]\n- **Deployment**: [Docker, Kubernetes, Cloud Service, etc.]\n\n"
+  - "## Purpose\n\n[Detailed description of what this container does and how it's deployed]\n\n"
+  - "## Components\n\nThis container deploys the following components:\n\n- [Component Name]: [Description]\n  - Documentation: c4-component-name.md\n\n"
+  - "## Interfaces\n\n"
+  - "### [API/Interface Name]\n\n- **Protocol**: [REST/GraphQL/gRPC/Events/etc.]\n- **Description**: [What this interface provides]\n- **Specification**: [Link to OpenAPI/Swagger/API Spec file]\n- **Endpoints**:\n  - `GET /api/resource` - [Description]\n  - `POST /api/resource` - [Description]\n\n"
+  - "## Dependencies\n\n"
+  - "### Containers Used\n\n- [Container Name]: [How it's used, communication protocol]\n\n"
+  - "### External Systems\n\n- [External System]: [How it's used, integration type]\n\n"
+  - "## Infrastructure\n\n- **Deployment Config**: [Link to Dockerfile, K8s manifest, etc.]\n- **Scaling**: [Horizontal/vertical scaling strategy]\n- **Resources**: [CPU, memory, storage requirements]\n\n"
+  - "## Container Diagram\n\nUse proper Mermaid C4Container syntax:\n\n```mermaid\nC4Container\n    title Container Diagram for [System Name]\n\n    Person(user, \"User\", \"Uses the system\")\n    System_Boundary(system, \"System Name\") {\n        Container(webApp, \"Web Application\", \"Spring Boot, Java\", \"Provides web interface\")\n        Container(api, \"API Application\", \"Node.js, Express\", \"Provides REST API\")\n        ContainerDb(database, \"Database\", \"PostgreSQL\", \"Stores data\")\n        Container_Queue(messageQueue, \"Message Queue\", \"RabbitMQ\", \"Handles async messaging\")\n    }\n    System_Ext(external, \"External System\", \"Third-party service\")\n\n    Rel(user, webApp, \"Uses\", \"HTTPS\")\n    Rel(webApp, api, \"Makes API calls to\", \"JSON/HTTPS\")\n    Rel(api, database, \"Reads from and writes to\", \"SQL\")\n    Rel(api, messageQueue, \"Publishes messages to\")\n    Rel(api, external, \"Uses\", \"API\")\n```\n````\n\n**Key Principles** (from [c4model.com](https://c4model.com/diagrams/container)):\n\n- Show **high-level technology choices** (this is where technology details belong)\n- Show how **responsibilities are distributed** across containers\n- Include **container types**: Applications, Databases, Message Queues, File Systems, etc.\n- Show **communication protocols** between containers\n- Include **external systems** that containers interact with\n\n````\n\n"
+  - "## API Specification Template\n\nFor each container API, create an OpenAPI/Swagger specification:\n\n```yaml\nopenapi: 3.1.0\ninfo:\n  title: [Container Name] API\n  description: [API description]\n  version: 1.0.0\nservers:\n  - url: https://api.example.com\n    description: Production server\npaths:\n  /api/resource:\n    get:\n      summary: [Operation summary]\n      description: [Operation description]\n      parameters:\n        - name: param1\n          in: query\n          schema:\n            type: string\n      responses:\n        '200':\n          description: [Response description]\n          content:\n            application/json:\n              schema:\n                type: object\n````\n\n"
+  - "## Example Interactions\n\n- \"Synthesize all components into containers based on deployment definitions\"\n- \"Map the API components to containers and document their APIs as OpenAPI specs\"\n- \"Create container-level documentation for the microservices architecture\"\n- \"Document container interfaces as Swagger/OpenAPI specifications\"\n- \"Analyze Kubernetes manifests and create container documentation\"\n\n"
+  - "## Key Distinctions\n\n- **vs C4-Component agent**: Maps components to deployment units; Component agent focuses on logical grouping\n- **vs C4-Context agent**: Provides container-level detail; Context agent creates high-level system diagrams\n- **vs C4-Code agent**: Focuses on deployment architecture; Code agent documents individual code elements\n\n"
+  - "## Output Examples\n\nWhen synthesizing containers, provide:\n\n- Clear container boundaries with deployment rationale\n- Descriptive container names and deployment characteristics\n- Complete API documentation with OpenAPI/Swagger specifications\n- Links to all contained components\n- Mermaid container diagrams showing deployment architecture\n- Links to deployment configurations (Dockerfiles, K8s manifests, etc.)\n- Infrastructure requirements and scaling considerations\n- Consistent documentation format across all containers\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

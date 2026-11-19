@@ -8,167 +8,23 @@ description: |
   makepad 跨平台, makepad 平台支持
 risk: unknown
 source: community
+prompt-source: prompt.toon
 ---
-
-# Makepad Platform Skill
-
-> **Version:** makepad-widgets (dev branch) | **Last Updated:** 2026-01-19
->
-> Check for updates: https://crates.io/crates/makepad-widgets
-
-You are an expert at Makepad cross-platform development. Help users by:
-- **Understanding platforms**: Explain supported platforms and backends
-- **Platform-specific code**: Help with conditional compilation and platform APIs
-
-## When to Use
-- You need to understand or target specific platforms and graphics backends in Makepad.
-- The task involves platform compatibility, conditional compilation, or OS-specific behavior across desktop, mobile, or web.
-- You need guidance on backend differences such as Metal, D3D11, OpenGL, WebGL, or platform modules.
-
-## Documentation
-
-Refer to the local files for detailed documentation:
-- `./references/platform-support.md` - Platform details and OsType
-
-## IMPORTANT: Documentation Completeness Check
-
-**Before answering questions, Claude MUST:**
-
-1. Read the relevant reference file(s) listed above
-2. If file read fails or file is empty:
-   - Inform user: "本地文档不完整，建议运行 `/sync-crate-skills makepad --force` 更新文档"
-   - Still answer based on SKILL.md patterns + built-in knowledge
-3. If reference file exists, incorporate its content into the answer
-
-## Supported Platforms
-
-| Platform | Graphics Backend | OS Module |
-|----------|------------------|-----------|
-| macOS | Metal | `apple/metal_*.rs`, `apple/cocoa_*.rs` |
-| iOS | Metal | `apple/metal_*.rs`, `apple/ios_*.rs` |
-| Windows | D3D11 | `mswindows/d3d11_*.rs`, `mswindows/win32_*.rs` |
-| Linux | OpenGL | `linux/opengl_*.rs`, `linux/x11*.rs`, `linux/wayland*.rs` |
-| Web | WebGL2 | `web/*.rs`, `web_browser/*.rs` |
-| Android | OpenGL ES | `android/*.rs` |
-| OpenHarmony | OHOS | `open_harmony/*.rs` |
-| OpenXR | VR/AR | `open_xr/*.rs` |
-
-## OsType Enum
-
-```rust
-pub enum OsType {
-    Unknown,
-    Windows,
-    Macos,
-    Linux { custom_window_chrome: bool },
-    Ios,
-    Android(AndroidParams),
-    OpenHarmony,
-    Web(WebParams),
-    OpenXR,
-}
-
-// Check platform in code
-fn handle_event(&mut self, cx: &mut Cx, event: &Event) {
-    match cx.os_type() {
-        OsType::Macos => { /* macOS-specific */ }
-        OsType::Windows => { /* Windows-specific */ }
-        OsType::Web(_) => { /* Web-specific */ }
-        _ => {}
-    }
-}
-```
-
-## Platform Detection
-
-```rust
-// In Cx
-impl Cx {
-    pub fn os_type(&self) -> OsType;
-    pub fn gpu_info(&self) -> &GpuInfo;
-    pub fn xr_capabilities(&self) -> &XrCapabilities;
-    pub fn cpu_cores(&self) -> usize;
-}
-```
-
-## Conditional Compilation
-
-```rust
-// Compile-time platform detection
-#[cfg(target_os = "macos")]
-fn macos_only() { }
-
-#[cfg(target_os = "windows")]
-fn windows_only() { }
-
-#[cfg(target_os = "linux")]
-fn linux_only() { }
-
-#[cfg(target_arch = "wasm32")]
-fn web_only() { }
-
-#[cfg(target_os = "android")]
-fn android_only() { }
-
-#[cfg(target_os = "ios")]
-fn ios_only() { }
-```
-
-## Platform-Specific Features
-
-### Desktop (macOS/Windows/Linux)
-- Window management (resize, minimize, maximize)
-- File dialogs
-- System menu
-- Drag and drop
-- Multiple monitors
-
-### Mobile (iOS/Android)
-- Touch input
-- Virtual keyboard
-- Screen orientation
-- App lifecycle (foreground/background)
-
-### Web (WebGL2)
-- DOM integration
-- Browser events
-- Local storage
-- HTTP requests
-
-## Entry Point
-
-```rust
-// App entry macro
-app_main!(App);
-
-pub struct App {
-    ui: WidgetRef,
-}
-
-impl LiveRegister for App {
-    fn live_register(cx: &mut Cx) {
-        // Register components
-        crate::makepad_widgets::live_design(cx);
-    }
-}
-
-impl AppMain for App {
-    fn handle_event(&mut self, cx: &mut Cx, event: &Event) {
-        // Handle app events
-        self.ui.handle_event(cx, event, &mut Scope::empty());
-    }
-}
-```
-
-## When Answering Questions
-
-1. Makepad compiles to native code for each platform (no runtime interpreter)
-2. Shaders are compiled at build time for each graphics backend
-3. Platform-specific code is in `platform/src/os/` directory
-4. Use `cx.os_type()` for runtime platform detection
-5. Use `#[cfg(target_os = "...")]` for compile-time platform detection
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "makepad-platform"
+sections[16]:
+  - "\n"
+  - "# Makepad Platform Skill\n\n> **Version:** makepad-widgets (dev branch) | **Last Updated:** 2026-01-19\n>\n> Check for updates: https://crates.io/crates/makepad-widgets\n\nYou are an expert at Makepad cross-platform development. Help users by:\n- **Understanding platforms**: Explain supported platforms and backends\n- **Platform-specific code**: Help with conditional compilation and platform APIs\n\n"
+  - "## When to Use\n- You need to understand or target specific platforms and graphics backends in Makepad.\n- The task involves platform compatibility, conditional compilation, or OS-specific behavior across desktop, mobile, or web.\n- You need guidance on backend differences such as Metal, D3D11, OpenGL, WebGL, or platform modules.\n\n"
+  - "## Documentation\n\nRefer to the local files for detailed documentation:\n- `./references/platform-support.md` - Platform details and OsType\n\n"
+  - "## IMPORTANT: Documentation Completeness Check\n\n**Before answering questions, Claude MUST:**\n\n1. Read the relevant reference file(s) listed above\n2. If file read fails or file is empty:\n   - Inform user: \"本地文档不完整，建议运行 `/sync-crate-skills makepad --force` 更新文档\"\n   - Still answer based on SKILL.md patterns + built-in knowledge\n3. If reference file exists, incorporate its content into the answer\n\n"
+  - "## Supported Platforms\n\n| Platform | Graphics Backend | OS Module |\n|----------|------------------|-----------|\n| macOS | Metal | `apple/metal_*.rs`, `apple/cocoa_*.rs` |\n| iOS | Metal | `apple/metal_*.rs`, `apple/ios_*.rs` |\n| Windows | D3D11 | `mswindows/d3d11_*.rs`, `mswindows/win32_*.rs` |\n| Linux | OpenGL | `linux/opengl_*.rs`, `linux/x11*.rs`, `linux/wayland*.rs` |\n| Web | WebGL2 | `web/*.rs`, `web_browser/*.rs` |\n| Android | OpenGL ES | `android/*.rs` |\n| OpenHarmony | OHOS | `open_harmony/*.rs` |\n| OpenXR | VR/AR | `open_xr/*.rs` |\n\n"
+  - "## OsType Enum\n\n```rust\npub enum OsType {\n    Unknown,\n    Windows,\n    Macos,\n    Linux { custom_window_chrome: bool },\n    Ios,\n    Android(AndroidParams),\n    OpenHarmony,\n    Web(WebParams),\n    OpenXR,\n}\n\n// Check platform in code\nfn handle_event(&mut self, cx: &mut Cx, event: &Event) {\n    match cx.os_type() {\n        OsType::Macos => { /* macOS-specific */ }\n        OsType::Windows => { /* Windows-specific */ }\n        OsType::Web(_) => { /* Web-specific */ }\n        _ => {}\n    }\n}\n```\n\n"
+  - "## Platform Detection\n\n```rust\n// In Cx\nimpl Cx {\n    pub fn os_type(&self) -> OsType;\n    pub fn gpu_info(&self) -> &GpuInfo;\n    pub fn xr_capabilities(&self) -> &XrCapabilities;\n    pub fn cpu_cores(&self) -> usize;\n}\n```\n\n"
+  - "## Conditional Compilation\n\n```rust\n// Compile-time platform detection\n#[cfg(target_os = \"macos\")]\nfn macos_only() { }\n\n#[cfg(target_os = \"windows\")]\nfn windows_only() { }\n\n#[cfg(target_os = \"linux\")]\nfn linux_only() { }\n\n#[cfg(target_arch = \"wasm32\")]\nfn web_only() { }\n\n#[cfg(target_os = \"android\")]\nfn android_only() { }\n\n#[cfg(target_os = \"ios\")]\nfn ios_only() { }\n```\n\n"
+  - "## Platform-Specific Features\n\n"
+  - "### Desktop (macOS/Windows/Linux)\n- Window management (resize, minimize, maximize)\n- File dialogs\n- System menu\n- Drag and drop\n- Multiple monitors\n\n"
+  - "### Mobile (iOS/Android)\n- Touch input\n- Virtual keyboard\n- Screen orientation\n- App lifecycle (foreground/background)\n\n"
+  - "### Web (WebGL2)\n- DOM integration\n- Browser events\n- Local storage\n- HTTP requests\n\n"
+  - "## Entry Point\n\n```rust\n// App entry macro\napp_main!(App);\n\npub struct App {\n    ui: WidgetRef,\n}\n\nimpl LiveRegister for App {\n    fn live_register(cx: &mut Cx) {\n        // Register components\n        crate::makepad_widgets::live_design(cx);\n    }\n}\n\nimpl AppMain for App {\n    fn handle_event(&mut self, cx: &mut Cx, event: &Event) {\n        // Handle app events\n        self.ui.handle_event(cx, event, &mut Scope::empty());\n    }\n}\n```\n\n"
+  - "## When Answering Questions\n\n1. Makepad compiles to native code for each platform (no runtime interpreter)\n2. Shaders are compiled at build time for each graphics backend\n3. Platform-specific code is in `platform/src/os/` directory\n4. Use `cx.os_type()` for runtime platform detection\n5. Use `#[cfg(target_os = \"...\")]` for compile-time platform detection\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

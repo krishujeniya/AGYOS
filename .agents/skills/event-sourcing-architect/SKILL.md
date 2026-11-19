@@ -4,68 +4,17 @@ description: "Expert in event sourcing, CQRS, and event-driven architecture patt
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Event Sourcing Architect
-
-Expert in event sourcing, CQRS, and event-driven architecture patterns. Masters event store design, projection building, saga orchestration, and eventual consistency patterns. Use PROACTIVELY for event-sourced systems, audit trail requirements, or complex domain modeling with temporal queries.
-
-## Capabilities
-
-- Event store design and implementation
-- CQRS (Command Query Responsibility Segregation) patterns
-- Projection building and read model optimization
-- Saga and process manager orchestration
-- Event versioning and schema evolution
-- Snapshotting strategies for performance
-- Eventual consistency handling
-
-## Use this skill when
-
-- Building systems requiring complete audit trails
-- Implementing complex business workflows with compensating actions
-- Designing systems needing temporal queries ("what was state at time X")
-- Separating read and write models for performance
-- Building event-driven microservices architectures
-- Implementing undo/redo or time-travel debugging
-
-## Do not use this skill when
-
-- The domain is simple and CRUD is sufficient
-- You cannot support event store operations or projections
-- Strong immediate consistency is required everywhere
-
-## Instructions
-
-1. Identify aggregate boundaries and event streams
-2. Design events as immutable facts
-3. Implement command handlers and event application
-4. Build projections for query requirements
-5. Design saga/process managers for cross-aggregate workflows
-6. Implement snapshotting for long-lived aggregates
-7. Set up event versioning strategy
-
-## Safety
-
-- Never mutate or delete committed events in production.
-- Rebuild projections in staging before running in production.
-
-## Best Practices
-
-- Events are facts - never delete or modify them
-- Keep events small and focused
-- Version events from day one
-- Design for eventual consistency
-- Use correlation IDs for tracing
-- Implement idempotent event handlers
-- Plan for projection rebuilding
-- Use durable execution for process managers and sagas — frameworks like DBOS persist workflow state automatically, making cross-aggregate orchestration resilient to crashes
-
-## Related Skills
-
-Works well with: `saga-orchestration`, `architecture-patterns`, `dbos-*`
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "event-sourcing-architect"
+sections[10]:
+  - "\n"
+  - "# Event Sourcing Architect\n\nExpert in event sourcing, CQRS, and event-driven architecture patterns. Masters event store design, projection building, saga orchestration, and eventual consistency patterns. Use PROACTIVELY for event-sourced systems, audit trail requirements, or complex domain modeling with temporal queries.\n\n"
+  - "## Capabilities\n\n- Event store design and implementation\n- CQRS (Command Query Responsibility Segregation) patterns\n- Projection building and read model optimization\n- Saga and process manager orchestration\n- Event versioning and schema evolution\n- Snapshotting strategies for performance\n- Eventual consistency handling\n\n"
+  - "## Use this skill when\n\n- Building systems requiring complete audit trails\n- Implementing complex business workflows with compensating actions\n- Designing systems needing temporal queries (\"what was state at time X\")\n- Separating read and write models for performance\n- Building event-driven microservices architectures\n- Implementing undo/redo or time-travel debugging\n\n"
+  - "## Do not use this skill when\n\n- The domain is simple and CRUD is sufficient\n- You cannot support event store operations or projections\n- Strong immediate consistency is required everywhere\n\n"
+  - "## Instructions\n\n1. Identify aggregate boundaries and event streams\n2. Design events as immutable facts\n3. Implement command handlers and event application\n4. Build projections for query requirements\n5. Design saga/process managers for cross-aggregate workflows\n6. Implement snapshotting for long-lived aggregates\n7. Set up event versioning strategy\n\n"
+  - "## Safety\n\n- Never mutate or delete committed events in production.\n- Rebuild projections in staging before running in production.\n\n"
+  - "## Best Practices\n\n- Events are facts - never delete or modify them\n- Keep events small and focused\n- Version events from day one\n- Design for eventual consistency\n- Use correlation IDs for tracing\n- Implement idempotent event handlers\n- Plan for projection rebuilding\n- Use durable execution for process managers and sagas — frameworks like DBOS persist workflow state automatically, making cross-aggregate orchestration resilient to crashes\n\n"
+  - "## Related Skills\n\nWorks well with: `saga-orchestration`, `architecture-patterns`, `dbos-*`\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

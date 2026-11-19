@@ -4,42 +4,18 @@ description: "Professional code review with auto CHANGELOG generation, integrate
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# codex-review
-
-## Overview
-Professional code review with auto CHANGELOG generation, integrated with Codex AI
-
-## When to Use
-- When you want professional code review before commits
-- When you need automatic CHANGELOG generation
-- When reviewing large-scale refactoring
-
-## Installation
-```bash
-npx skills add -g BenedictKing/codex-review
-```
-
-## Step-by-Step Guide
-1. Install the skill using the command above
-2. Ensure Codex CLI is installed
-3. Use `/codex-review` or natural language triggers
-
-## Examples
-See [GitHub Repository](https://github.com/BenedictKing/codex-review) for examples.
-
-## Best Practices
-- Keep CHANGELOG.md in your project root
-- Use conventional commit messages
-
-## Troubleshooting
-See the GitHub repository for troubleshooting guides.
-
-## Related Skills
-- context7-auto-research, tavily-web, exa-search, firecrawl-scraper
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "codex-review"
+sections[11]:
+  - "\n"
+  - "# codex-review\n\n"
+  - "## Overview\nProfessional code review with auto CHANGELOG generation, integrated with Codex AI\n\n"
+  - "## When to Use\n- When you want professional code review before commits\n- When you need automatic CHANGELOG generation\n- When reviewing large-scale refactoring\n\n"
+  - "## Installation\n```bash\nnpx skills add -g BenedictKing/codex-review\n```\n\n"
+  - "## Step-by-Step Guide\n1. Install the skill using the command above\n2. Ensure Codex CLI is installed\n3. Use `/codex-review` or natural language triggers\n\n"
+  - "## Examples\nSee [GitHub Repository](https://github.com/BenedictKing/codex-review) for examples.\n\n"
+  - "## Best Practices\n- Keep CHANGELOG.md in your project root\n- Use conventional commit messages\n\n"
+  - "## Troubleshooting\nSee the GitHub repository for troubleshooting guides.\n\n"
+  - "## Related Skills\n- context7-auto-research, tavily-web, exa-search, firecrawl-scraper\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

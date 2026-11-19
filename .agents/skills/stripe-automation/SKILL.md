@@ -4,203 +4,25 @@ description: "Automate Stripe tasks via Rube MCP (Composio): customers, charges,
 risk: critical
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Stripe Automation via Rube MCP
-
-Automate Stripe payment operations through Composio's Stripe toolkit via Rube MCP.
-
-## Prerequisites
-
-- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
-- Active Stripe connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `stripe`
-- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
-
-## Setup
-
-**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
-
-1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
-2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `stripe`
-3. If connection is not ACTIVE, follow the returned auth link to complete Stripe connection
-4. Confirm connection status shows ACTIVE before running any workflows
-
-## Core Workflows
-
-### 1. Manage Customers
-
-**When to use**: User wants to create, update, search, or list Stripe customers
-
-**Tool sequence**:
-1. `STRIPE_SEARCH_CUSTOMERS` - Search customers by email/name [Optional]
-2. `STRIPE_LIST_CUSTOMERS` - List all customers [Optional]
-3. `STRIPE_CREATE_CUSTOMER` - Create a new customer [Optional]
-4. `STRIPE_POST_CUSTOMERS_CUSTOMER` - Update a customer [Optional]
-
-**Key parameters**:
-- `email`: Customer email
-- `name`: Customer name
-- `description`: Customer description
-- `metadata`: Key-value metadata pairs
-- `customer`: Customer ID for updates (e.g., 'cus_xxx')
-
-**Pitfalls**:
-- Stripe allows duplicate customers with the same email; search first to avoid duplicates
-- Customer IDs start with 'cus_'
-
-### 2. Manage Charges and Payments
-
-**When to use**: User wants to create charges, payment intents, or view charge history
-
-**Tool sequence**:
-1. `STRIPE_LIST_CHARGES` - List charges with filters [Optional]
-2. `STRIPE_CREATE_PAYMENT_INTENT` - Create a payment intent [Optional]
-3. `STRIPE_CONFIRM_PAYMENT_INTENT` - Confirm a payment intent [Optional]
-4. `STRIPE_POST_CHARGES` - Create a direct charge [Optional]
-5. `STRIPE_CAPTURE_CHARGE` - Capture an authorized charge [Optional]
-
-**Key parameters**:
-- `amount`: Amount in smallest currency unit (e.g., cents for USD)
-- `currency`: Three-letter ISO currency code (e.g., 'usd')
-- `customer`: Customer ID
-- `payment_method`: Payment method ID
-- `description`: Charge description
-
-**Pitfalls**:
-- Amounts are in smallest currency unit (100 = $1.00 for USD)
-- Currency codes must be lowercase (e.g., 'usd' not 'USD')
-- Payment intents are the recommended flow over direct charges
-
-### 3. Manage Subscriptions
-
-**When to use**: User wants to create, list, update, or cancel subscriptions
-
-**Tool sequence**:
-1. `STRIPE_LIST_SUBSCRIPTIONS` - List subscriptions [Optional]
-2. `STRIPE_POST_CUSTOMERS_CUSTOMER_SUBSCRIPTIONS` - Create subscription [Optional]
-3. `STRIPE_RETRIEVE_SUBSCRIPTION` - Get subscription details [Optional]
-4. `STRIPE_UPDATE_SUBSCRIPTION` - Modify subscription [Optional]
-
-**Key parameters**:
-- `customer`: Customer ID
-- `items`: Array of price items (price_id and quantity)
-- `subscription`: Subscription ID for retrieval/update (e.g., 'sub_xxx')
-
-**Pitfalls**:
-- Subscriptions require a valid customer with a payment method
-- Price IDs (not product IDs) are used for subscription items
-- Cancellation can be immediate or at period end
-
-### 4. Manage Invoices
-
-**When to use**: User wants to create, list, or search invoices
-
-**Tool sequence**:
-1. `STRIPE_LIST_INVOICES` - List invoices [Optional]
-2. `STRIPE_SEARCH_INVOICES` - Search invoices [Optional]
-3. `STRIPE_CREATE_INVOICE` - Create an invoice [Optional]
-
-**Key parameters**:
-- `customer`: Customer ID for invoice
-- `collection_method`: 'charge_automatically' or 'send_invoice'
-- `days_until_due`: Days until invoice is due
-
-**Pitfalls**:
-- Invoices auto-finalize by default; use `auto_advance: false` for draft invoices
-
-### 5. Manage Products and Prices
-
-**When to use**: User wants to list or search products and their pricing
-
-**Tool sequence**:
-1. `STRIPE_LIST_PRODUCTS` - List products [Optional]
-2. `STRIPE_SEARCH_PRODUCTS` - Search products [Optional]
-3. `STRIPE_LIST_PRICES` - List prices [Optional]
-4. `STRIPE_GET_PRICES_SEARCH` - Search prices [Optional]
-
-**Key parameters**:
-- `active`: Filter by active/inactive status
-- `query`: Search query for search endpoints
-
-**Pitfalls**:
-- Products and prices are separate objects; a product can have multiple prices
-- Price IDs (e.g., 'price_xxx') are used for subscriptions and checkout
-
-### 6. Handle Refunds
-
-**When to use**: User wants to issue refunds on charges
-
-**Tool sequence**:
-1. `STRIPE_LIST_REFUNDS` - List refunds [Optional]
-2. `STRIPE_POST_CHARGES_CHARGE_REFUNDS` - Create a refund [Optional]
-3. `STRIPE_CREATE_REFUND` - Create refund via payment intent [Optional]
-
-**Key parameters**:
-- `charge`: Charge ID for refund
-- `amount`: Partial refund amount (omit for full refund)
-- `reason`: Refund reason ('duplicate', 'fraudulent', 'requested_by_customer')
-
-**Pitfalls**:
-- Refunds can take 5-10 business days to appear on customer statements
-- Amount is in smallest currency unit
-
-## Common Patterns
-
-### Amount Formatting
-
-Stripe uses smallest currency unit:
-- USD: $10.50 = 1050 cents
-- EUR: 10.50 = 1050 cents
-- JPY: 1000 = 1000 (no decimals)
-
-### Pagination
-
-- Use `limit` parameter (max 100)
-- Check `has_more` in response
-- Pass `starting_after` with last object ID for next page
-- Continue until `has_more` is false
-
-## Known Pitfalls
-
-**Amount Units**:
-- Always use smallest currency unit (cents for USD/EUR)
-- Zero-decimal currencies (JPY, KRW) use the amount directly
-
-**ID Prefixes**:
-- Customers: `cus_`, Charges: `ch_`, Subscriptions: `sub_`
-- Invoices: `in_`, Products: `prod_`, Prices: `price_`
-- Payment Intents: `pi_`, Refunds: `re_`
-
-## Quick Reference
-
-| Task | Tool Slug | Key Params |
-|------|-----------|------------|
-| Create customer | STRIPE_CREATE_CUSTOMER | email, name |
-| Search customers | STRIPE_SEARCH_CUSTOMERS | query |
-| Update customer | STRIPE_POST_CUSTOMERS_CUSTOMER | customer, fields |
-| List charges | STRIPE_LIST_CHARGES | customer, limit |
-| Create payment intent | STRIPE_CREATE_PAYMENT_INTENT | amount, currency |
-| Confirm payment | STRIPE_CONFIRM_PAYMENT_INTENT | payment_intent |
-| List subscriptions | STRIPE_LIST_SUBSCRIPTIONS | customer |
-| Create subscription | STRIPE_POST_CUSTOMERS_CUSTOMER_SUBSCRIPTIONS | customer, items |
-| Update subscription | STRIPE_UPDATE_SUBSCRIPTION | subscription, fields |
-| List invoices | STRIPE_LIST_INVOICES | customer |
-| Create invoice | STRIPE_CREATE_INVOICE | customer |
-| Search invoices | STRIPE_SEARCH_INVOICES | query |
-| List products | STRIPE_LIST_PRODUCTS | active |
-| Search products | STRIPE_SEARCH_PRODUCTS | query |
-| List prices | STRIPE_LIST_PRICES | product |
-| Search prices | STRIPE_GET_PRICES_SEARCH | query |
-| List refunds | STRIPE_LIST_REFUNDS | charge |
-| Create refund | STRIPE_CREATE_REFUND | charge, amount |
-| Payment methods | STRIPE_LIST_CUSTOMER_PAYMENT_METHODS | customer |
-| Checkout session | STRIPE_CREATE_CHECKOUT_SESSION | line_items |
-| List payment intents | STRIPE_LIST_PAYMENT_INTENTS | customer |
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "stripe-automation"
+sections[18]:
+  - "\n"
+  - "# Stripe Automation via Rube MCP\n\nAutomate Stripe payment operations through Composio's Stripe toolkit via Rube MCP.\n\n"
+  - "## Prerequisites\n\n- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)\n- Active Stripe connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `stripe`\n- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas\n\n"
+  - "## Setup\n\n**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.\n\n1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds\n2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `stripe`\n3. If connection is not ACTIVE, follow the returned auth link to complete Stripe connection\n4. Confirm connection status shows ACTIVE before running any workflows\n\n"
+  - "## Core Workflows\n\n"
+  - "### 1. Manage Customers\n\n**When to use**: User wants to create, update, search, or list Stripe customers\n\n**Tool sequence**:\n1. `STRIPE_SEARCH_CUSTOMERS` - Search customers by email/name [Optional]\n2. `STRIPE_LIST_CUSTOMERS` - List all customers [Optional]\n3. `STRIPE_CREATE_CUSTOMER` - Create a new customer [Optional]\n4. `STRIPE_POST_CUSTOMERS_CUSTOMER` - Update a customer [Optional]\n\n**Key parameters**:\n- `email`: Customer email\n- `name`: Customer name\n- `description`: Customer description\n- `metadata`: Key-value metadata pairs\n- `customer`: Customer ID for updates (e.g., 'cus_xxx')\n\n**Pitfalls**:\n- Stripe allows duplicate customers with the same email; search first to avoid duplicates\n- Customer IDs start with 'cus_'\n\n"
+  - "### 2. Manage Charges and Payments\n\n**When to use**: User wants to create charges, payment intents, or view charge history\n\n**Tool sequence**:\n1. `STRIPE_LIST_CHARGES` - List charges with filters [Optional]\n2. `STRIPE_CREATE_PAYMENT_INTENT` - Create a payment intent [Optional]\n3. `STRIPE_CONFIRM_PAYMENT_INTENT` - Confirm a payment intent [Optional]\n4. `STRIPE_POST_CHARGES` - Create a direct charge [Optional]\n5. `STRIPE_CAPTURE_CHARGE` - Capture an authorized charge [Optional]\n\n**Key parameters**:\n- `amount`: Amount in smallest currency unit (e.g., cents for USD)\n- `currency`: Three-letter ISO currency code (e.g., 'usd')\n- `customer`: Customer ID\n- `payment_method`: Payment method ID\n- `description`: Charge description\n\n**Pitfalls**:\n- Amounts are in smallest currency unit (100 = $1.00 for USD)\n- Currency codes must be lowercase (e.g., 'usd' not 'USD')\n- Payment intents are the recommended flow over direct charges\n\n"
+  - "### 3. Manage Subscriptions\n\n**When to use**: User wants to create, list, update, or cancel subscriptions\n\n**Tool sequence**:\n1. `STRIPE_LIST_SUBSCRIPTIONS` - List subscriptions [Optional]\n2. `STRIPE_POST_CUSTOMERS_CUSTOMER_SUBSCRIPTIONS` - Create subscription [Optional]\n3. `STRIPE_RETRIEVE_SUBSCRIPTION` - Get subscription details [Optional]\n4. `STRIPE_UPDATE_SUBSCRIPTION` - Modify subscription [Optional]\n\n**Key parameters**:\n- `customer`: Customer ID\n- `items`: Array of price items (price_id and quantity)\n- `subscription`: Subscription ID for retrieval/update (e.g., 'sub_xxx')\n\n**Pitfalls**:\n- Subscriptions require a valid customer with a payment method\n- Price IDs (not product IDs) are used for subscription items\n- Cancellation can be immediate or at period end\n\n"
+  - "### 4. Manage Invoices\n\n**When to use**: User wants to create, list, or search invoices\n\n**Tool sequence**:\n1. `STRIPE_LIST_INVOICES` - List invoices [Optional]\n2. `STRIPE_SEARCH_INVOICES` - Search invoices [Optional]\n3. `STRIPE_CREATE_INVOICE` - Create an invoice [Optional]\n\n**Key parameters**:\n- `customer`: Customer ID for invoice\n- `collection_method`: 'charge_automatically' or 'send_invoice'\n- `days_until_due`: Days until invoice is due\n\n**Pitfalls**:\n- Invoices auto-finalize by default; use `auto_advance: false` for draft invoices\n\n"
+  - "### 5. Manage Products and Prices\n\n**When to use**: User wants to list or search products and their pricing\n\n**Tool sequence**:\n1. `STRIPE_LIST_PRODUCTS` - List products [Optional]\n2. `STRIPE_SEARCH_PRODUCTS` - Search products [Optional]\n3. `STRIPE_LIST_PRICES` - List prices [Optional]\n4. `STRIPE_GET_PRICES_SEARCH` - Search prices [Optional]\n\n**Key parameters**:\n- `active`: Filter by active/inactive status\n- `query`: Search query for search endpoints\n\n**Pitfalls**:\n- Products and prices are separate objects; a product can have multiple prices\n- Price IDs (e.g., 'price_xxx') are used for subscriptions and checkout\n\n"
+  - "### 6. Handle Refunds\n\n**When to use**: User wants to issue refunds on charges\n\n**Tool sequence**:\n1. `STRIPE_LIST_REFUNDS` - List refunds [Optional]\n2. `STRIPE_POST_CHARGES_CHARGE_REFUNDS` - Create a refund [Optional]\n3. `STRIPE_CREATE_REFUND` - Create refund via payment intent [Optional]\n\n**Key parameters**:\n- `charge`: Charge ID for refund\n- `amount`: Partial refund amount (omit for full refund)\n- `reason`: Refund reason ('duplicate', 'fraudulent', 'requested_by_customer')\n\n**Pitfalls**:\n- Refunds can take 5-10 business days to appear on customer statements\n- Amount is in smallest currency unit\n\n"
+  - "## Common Patterns\n\n"
+  - "### Amount Formatting\n\nStripe uses smallest currency unit:\n- USD: $10.50 = 1050 cents\n- EUR: 10.50 = 1050 cents\n- JPY: 1000 = 1000 (no decimals)\n\n"
+  - "### Pagination\n\n- Use `limit` parameter (max 100)\n- Check `has_more` in response\n- Pass `starting_after` with last object ID for next page\n- Continue until `has_more` is false\n\n"
+  - "## Known Pitfalls\n\n**Amount Units**:\n- Always use smallest currency unit (cents for USD/EUR)\n- Zero-decimal currencies (JPY, KRW) use the amount directly\n\n**ID Prefixes**:\n- Customers: `cus_`, Charges: `ch_`, Subscriptions: `sub_`\n- Invoices: `in_`, Products: `prod_`, Prices: `price_`\n- Payment Intents: `pi_`, Refunds: `re_`\n\n"
+  - "## Quick Reference\n\n| Task | Tool Slug | Key Params |\n|------|-----------|------------|\n| Create customer | STRIPE_CREATE_CUSTOMER | email, name |\n| Search customers | STRIPE_SEARCH_CUSTOMERS | query |\n| Update customer | STRIPE_POST_CUSTOMERS_CUSTOMER | customer, fields |\n| List charges | STRIPE_LIST_CHARGES | customer, limit |\n| Create payment intent | STRIPE_CREATE_PAYMENT_INTENT | amount, currency |\n| Confirm payment | STRIPE_CONFIRM_PAYMENT_INTENT | payment_intent |\n| List subscriptions | STRIPE_LIST_SUBSCRIPTIONS | customer |\n| Create subscription | STRIPE_POST_CUSTOMERS_CUSTOMER_SUBSCRIPTIONS | customer, items |\n| Update subscription | STRIPE_UPDATE_SUBSCRIPTION | subscription, fields |\n| List invoices | STRIPE_LIST_INVOICES | customer |\n| Create invoice | STRIPE_CREATE_INVOICE | customer |\n| Search invoices | STRIPE_SEARCH_INVOICES | query |\n| List products | STRIPE_LIST_PRODUCTS | active |\n| Search products | STRIPE_SEARCH_PRODUCTS | query |\n| List prices | STRIPE_LIST_PRICES | product |\n| Search prices | STRIPE_GET_PRICES_SEARCH | query |\n| List refunds | STRIPE_LIST_REFUNDS | charge |\n| Create refund | STRIPE_CREATE_REFUND | charge, amount |\n| Payment methods | STRIPE_LIST_CUSTOMER_PAYMENT_METHODS | customer |\n| Checkout session | STRIPE_CREATE_CHECKOUT_SESSION | line_items |\n| List payment intents | STRIPE_LIST_PAYMENT_INTENTS | customer |\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

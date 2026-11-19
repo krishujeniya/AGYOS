@@ -12,75 +12,17 @@ description: >-
   dark patterns. Distinct from link-in-bio-and-traffic / social-selling-and-dm (the capture paths)
   and email-and-newsletter (the owned channel).
 version: 1.0.0
+prompt-source: prompt.toon
 ---
-
-# lead-magnets-and-funnels
-
-The **offer-design layer** of the monetization cluster — design the magnet the capture paths deliver and
-the whole **social→capture→nurture** funnel that ties the cluster together. The agent designs + drafts;
-**WoopSocial has no landing/form/email/quiz builder** — it publishes the **promo posts**; capture/delivery/
-nurture run in **external tools**.
-
-## The POV: a faster, more personal win — and the whole funnel
-The 2018 gated-PDF play is fading — **AI assistants now answer what PDFs used to**, and ad-blockers/email
-apathy kill form-fills, so a "12-page Ultimate Guide" underperforms by 3–5×. What wins in 2026 is a
-**faster, more personal win**: **one audience, one problem, one quick win**, delivered as an **instant,
-interactive result** (quiz/calculator/assessment/generator/specific template — ~4× a static PDF), with a
-**short form**, a magnet **tied to your paid offer**, and — the most-missed part — the **whole funnel
-designed**, not just the magnet (landing → form → success page → delivery → a behavior-branched 3–5 email
-nurture). Nurtured leads are 50% more sales-ready at 33% less cost; 79% never convert without follow-up.
-
-## Read these first
-1. **brand-profile** — audience/pain + the paid offer the magnet connects to.
-2. **goals-and-kpis** — the conversion goal the funnel serves.
-
-## The framework: MAGNET
-(Depth: `references/the-magnet-framework.md`.)
-- **M — Match to one audience + one problem** (one quick win; broad = converts no one).
-- **A — Anchor to the paid offer + the stage** (top = quiz/calculator; mid = template/benchmark; bottom =
-  case study/ROI calc — so it qualifies, not just collects).
-- **G — Give an instant, interactive result** (on-the-spot beats "check your inbox"; ~4× a PDF).
-- **N — Name it for the outcome** (specific, outcome-focused title).
-- **E — Engineer the whole funnel** (benefit-first landing → short form [email/+first name] → success page
-  → delivery → nurture; each extra field −5–10%).
-- **T — Tend the nurture** (deliver → quick win → proof → soft next step; **branch on behavior**, not just
-  drip; don't pitch early).
-
-## The reality (verify-quarterly)
-The dead PDF play; interactive/instant magnets (~4×; 11.4% vs 4.7%); one-audience/one-problem/one-win;
-stage-matched magnets; design-the-whole-funnel; short forms; value-first behavior-branched nurture;
-lead-magnet economics + tools: `references/lead-magnets-2026-reality.md`. Stage-matched magnet menu, funnel
-architecture, nurture template + worked examples: `references/magnet-menu-and-recipes.md`.
-
-## Honest scope (never violate)
-- **WoopSocial has no landing/form/quiz/email-automation builder** — those run in **external tools**
-  (builders + an ESP), human-set-up. The agent **designs the magnet + funnel** and **drafts** the nurture,
-  landing copy, and promo posts; **WoopSocial publishes the promo/trigger posts.**
-- **Metrics from the external tools + GA4** — **never fabricate** numbers or social proof.
-- **Real value, no dark patterns** — no bait-and-switch, **no fake/resetting urgency**, **visible
-  unsubscribe**, **clear consent** (**GDPR/CAN-SPAM/FTC**); value-first, don't pitch early.
-- **Connect the magnet to the paid offer** (no offer yet → audience-building, kept light). **No bought lists.**
-  (Scope, distinctions + connections: `references/scope-and-connections.md`.)
-
-## Distinct from its siblings (route correctly)
-**lead-magnets-and-funnels (this)** = designs the magnet + the social→capture→nurture funnel ·
-**link-in-bio-and-traffic** / **social-selling-and-dm** = the capture PATHS that deliver the magnet ·
-**email-and-newsletter** = the owned channel / ongoing nurture the funnel feeds · **goals-and-kpis** =
-sets the target · **campaign-and-launch-planning** = schedules the promo push.
-
-## Where this connects
-Reads first: **brand-profile**, **goals-and-kpis**. Magnet creative: **image-prompt**/**ideogram**/**nano-banana**,
-**carousel-writer**, **caption-writer**/**hook-writer**, **story-writer**. Capture paths:
-**link-in-bio-and-traffic**, **social-selling-and-dm**. Nurture/owned channel: **email-and-newsletter** (the
-3–5 sequence runs in the ESP). Promote/publish: **content-calendar**, **campaign-and-launch-planning**,
-**scheduling-and-queue → WoopSocial** (promo posts only). Measure/test: **analytics-and-reporting**
-(external-tool/GA4), **experimentation** (A/B magnet/landing/subjects).
-
-## Definition of done
-A magnet for one audience/one problem/one quick win, instant + interactive where it fits, stage-matched and
-connected to the paid offer, with an outcome-focused title; the WHOLE funnel designed (benefit-first landing
-→ short form → success page → delivery → a value-first, behavior-branched 3–5 email nurture) tied to the KPI;
-promo posts drafted for WoopSocial to publish and the capture path named (link-in-bio / DM); the funnel built
-in external tools by a human with metrics from those + GA4 (never fabricated); real value with visible
-unsubscribe + clear consent and no dark patterns; correctly distinguished from the capture-path siblings and
-email-and-newsletter.
+skill: "lead-magnets-and-funnels"
+sections[10]:
+  - "\n"
+  - "# lead-magnets-and-funnels\n\nThe **offer-design layer** of the monetization cluster — design the magnet the capture paths deliver and\nthe whole **social→capture→nurture** funnel that ties the cluster together. The agent designs + drafts;\n**WoopSocial has no landing/form/email/quiz builder** — it publishes the **promo posts**; capture/delivery/\nnurture run in **external tools**.\n\n"
+  - "## The POV: a faster, more personal win — and the whole funnel\nThe 2018 gated-PDF play is fading — **AI assistants now answer what PDFs used to**, and ad-blockers/email\napathy kill form-fills, so a \"12-page Ultimate Guide\" underperforms by 3–5×. What wins in 2026 is a\n**faster, more personal win**: **one audience, one problem, one quick win**, delivered as an **instant,\ninteractive result** (quiz/calculator/assessment/generator/specific template — ~4× a static PDF), with a\n**short form**, a magnet **tied to your paid offer**, and — the most-missed part — the **whole funnel\ndesigned**, not just the magnet (landing → form → success page → delivery → a behavior-branched 3–5 email\nnurture). Nurtured leads are 50% more sales-ready at 33% less cost; 79% never convert without follow-up.\n\n"
+  - "## Read these first\n1. **brand-profile** — audience/pain + the paid offer the magnet connects to.\n2. **goals-and-kpis** — the conversion goal the funnel serves.\n\n"
+  - "## The framework: MAGNET\n(Depth: `references/the-magnet-framework.md`.)\n- **M — Match to one audience + one problem** (one quick win; broad = converts no one).\n- **A — Anchor to the paid offer + the stage** (top = quiz/calculator; mid = template/benchmark; bottom =\n  case study/ROI calc — so it qualifies, not just collects).\n- **G — Give an instant, interactive result** (on-the-spot beats \"check your inbox\"; ~4× a PDF).\n- **N — Name it for the outcome** (specific, outcome-focused title).\n- **E — Engineer the whole funnel** (benefit-first landing → short form [email/+first name] → success page\n  → delivery → nurture; each extra field −5–10%).\n- **T — Tend the nurture** (deliver → quick win → proof → soft next step; **branch on behavior**, not just\n  drip; don't pitch early).\n\n"
+  - "## The reality (verify-quarterly)\nThe dead PDF play; interactive/instant magnets (~4×; 11.4% vs 4.7%); one-audience/one-problem/one-win;\nstage-matched magnets; design-the-whole-funnel; short forms; value-first behavior-branched nurture;\nlead-magnet economics + tools: `references/lead-magnets-2026-reality.md`. Stage-matched magnet menu, funnel\narchitecture, nurture template + worked examples: `references/magnet-menu-and-recipes.md`.\n\n"
+  - "## Honest scope (never violate)\n- **WoopSocial has no landing/form/quiz/email-automation builder** — those run in **external tools**\n  (builders + an ESP), human-set-up. The agent **designs the magnet + funnel** and **drafts** the nurture,\n  landing copy, and promo posts; **WoopSocial publishes the promo/trigger posts.**\n- **Metrics from the external tools + GA4** — **never fabricate** numbers or social proof.\n- **Real value, no dark patterns** — no bait-and-switch, **no fake/resetting urgency**, **visible\n  unsubscribe**, **clear consent** (**GDPR/CAN-SPAM/FTC**); value-first, don't pitch early.\n- **Connect the magnet to the paid offer** (no offer yet → audience-building, kept light). **No bought lists.**\n  (Scope, distinctions + connections: `references/scope-and-connections.md`.)\n\n"
+  - "## Distinct from its siblings (route correctly)\n**lead-magnets-and-funnels (this)** = designs the magnet + the social→capture→nurture funnel ·\n**link-in-bio-and-traffic** / **social-selling-and-dm** = the capture PATHS that deliver the magnet ·\n**email-and-newsletter** = the owned channel / ongoing nurture the funnel feeds · **goals-and-kpis** =\nsets the target · **campaign-and-launch-planning** = schedules the promo push.\n\n"
+  - "## Where this connects\nReads first: **brand-profile**, **goals-and-kpis**. Magnet creative: **image-prompt**/**ideogram**/**nano-banana**,\n**carousel-writer**, **caption-writer**/**hook-writer**, **story-writer**. Capture paths:\n**link-in-bio-and-traffic**, **social-selling-and-dm**. Nurture/owned channel: **email-and-newsletter** (the\n3–5 sequence runs in the ESP). Promote/publish: **content-calendar**, **campaign-and-launch-planning**,\n**scheduling-and-queue → WoopSocial** (promo posts only). Measure/test: **analytics-and-reporting**\n(external-tool/GA4), **experimentation** (A/B magnet/landing/subjects).\n\n"
+  - "## Definition of done\nA magnet for one audience/one problem/one quick win, instant + interactive where it fits, stage-matched and\nconnected to the paid offer, with an outcome-focused title; the WHOLE funnel designed (benefit-first landing\n→ short form → success page → delivery → a value-first, behavior-branched 3–5 email nurture) tied to the KPI;\npromo posts drafted for WoopSocial to publish and the capture path named (link-in-bio / DM); the funnel built\nin external tools by a human with metrics from those + GA4 (never fabricated); real value with visible\nunsubscribe + clear consent and no dark patterns; correctly distinguished from the capture-path siblings and\nemail-and-newsletter.\n"

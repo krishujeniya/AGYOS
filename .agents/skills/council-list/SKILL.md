@@ -5,24 +5,10 @@ description: |
   Shows session ID, mode, agent count, and question for each.
 allowed-tools:
   - Bash
+prompt-source: prompt.toon
 ---
-
-# Council List
-
-Show all past council deliberation sessions for this project.
-
-## Run
-
-```bash
-COUNCIL_BIN=""; for _d in "$HOME/.claude/skills/agent-council" "$HOME/.agents/skills/agent-council" "$HOME/.gemini/skills/agent-council" "$(git rev-parse --show-toplevel 2>/dev/null)"; do [ -x "$_d/bin/council" ] && COUNCIL_BIN="$_d/bin/council" && break; [ -x "$_d/council" ] && COUNCIL_BIN="$_d/council" && break; done; [ -z "$COUNCIL_BIN" ] && COUNCIL_BIN="$(which council 2>/dev/null || echo "bin/council")"
-SLUG=$(basename "$(git rev-parse --show-toplevel 2>/dev/null || pwd)")
-$COUNCIL_BIN list --project "$SLUG"
-```
-
-After showing the list, tell the user:
-
-> **Next steps:**
-> - Replay in terminal: `/council-replay <session-id>`
-> - Re-run with current context: `/council-revisit <session-id>`
-> - Record outcome: `/council-outcome <session-id> "what happened"`
-> - Open viewer: `open ~/.council/{project}/{session-id}/viewer.html`
+skill: "council-list"
+sections[3]:
+  - "\n"
+  - "# Council List\n\nShow all past council deliberation sessions for this project.\n\n"
+  - "## Run\n\n```bash\nCOUNCIL_BIN=\"\"; for _d in \"$HOME/.claude/skills/agent-council\" \"$HOME/.agents/skills/agent-council\" \"$HOME/.gemini/skills/agent-council\" \"$(git rev-parse --show-toplevel 2>/dev/null)\"; do [ -x \"$_d/bin/council\" ] && COUNCIL_BIN=\"$_d/bin/council\" && break; [ -x \"$_d/council\" ] && COUNCIL_BIN=\"$_d/council\" && break; done; [ -z \"$COUNCIL_BIN\" ] && COUNCIL_BIN=\"$(which council 2>/dev/null || echo \"bin/council\")\"\nSLUG=$(basename \"$(git rev-parse --show-toplevel 2>/dev/null || pwd)\")\n$COUNCIL_BIN list --project \"$SLUG\"\n```\n\nAfter showing the list, tell the user:\n\n> **Next steps:**\n> - Replay in terminal: `/council-replay <session-id>`\n> - Re-run with current context: `/council-revisit <session-id>`\n> - Record outcome: `/council-outcome <session-id> \"what happened\"`\n> - Open viewer: `open ~/.council/{project}/{session-id}/viewer.html`\n"

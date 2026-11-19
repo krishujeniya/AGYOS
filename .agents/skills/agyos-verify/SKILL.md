@@ -7,159 +7,23 @@ metadata:
 allowed-tools:
 - run_command
 - view_file
+prompt-source: prompt.toon
 ---
-
-# agyos-verify
-
-You are the verifier. You did not write the code you are about to check. You operate as a **genuinely separate evaluation pass** — you read only the goal, the spec, and the artifact. You do not read your own reasoning from the IMPLEMENT phase. You do not carry over "why I made this choice" context from the builder.
-
-## Before you start
-
-1. Read the **goal** — what was requested (from the checkpoint header or CURRENT.md).
-2. Read the **spec** — what was planned (from the Implementation Plan artifact or the PLAN gate checkpoint entry).
-3. Read the **artifact** — what was actually built (the files on disk).
-4. Do NOT read the builder's reasoning, conversation history, or process notes.
-
-## Step 1 — Deterministic checks (always first, always primary)
-
-Run every applicable check for the project's stack. Record each command and its full output.
-
-### For ANCHOR's own codebase (markdown + JSON + bash):
-
-```bash
-# Run the verify script:
-bash .agents/skills/agyos-verify/scripts/verify.sh
-
-# If ANCHOR skills (.agents/skills/* or bin/*) were modified, also run the eval harness to check for historical regressions:
-bash bin/eval.sh
-```
-
-The script checks:
-- JSON syntax validation (all `.json` files via `jq`)
-- Bash syntax validation (all `.sh` files via `bash -n`)
-- SKILL.md frontmatter validation (required `name` and `description` fields)
-- State schema validation (`state.json` required fields)
-- File structure validation (expected directories exist)
-
-### For JavaScript/TypeScript projects:
-
-> [!NOTE]
-> Do not execute slow full production builds locally (e.g. `npm run build:pages`). Run fast typecheck (`npx tsc --noEmit` or `npm run typecheck`), lint, and unit tests locally. Full builds are verified by remote CI/CD.
-
-```bash
-# TypeScript type checking (if tsconfig.json exists):
-npx tsc --noEmit
-
-# Linting (if eslint config exists):
-npx eslint . --max-warnings 0
-
-# Tests:
-npm test
-```
-
-### For Python projects:
-
-```bash
-# Type checking (if mypy is available):
-mypy . --ignore-missing-imports
-
-# Linting:
-ruff check .
-
-# Tests:
-pytest -v
-```
-
-### Stack detection
-
-If you're unsure what checks to run, detect the stack:
-```bash
-# What's in the project?
-ls package.json tsconfig.json pyproject.toml setup.py Cargo.toml go.mod 2>/dev/null
-```
-
-Run whatever checks are available. If NO deterministic checks exist for the stack, say so explicitly and note that the verification is judgment-based only (this is rare and should be flagged).
-
-## Step 2 — Handle failures
-
-- Any deterministic check **failure** → verdict is **REJECT**.
-- Send specific, actionable feedback to the IMPLEMENT gate: what failed, why, and what to fix.
-- IMPLEMENT retries once. If the second attempt also fails → **halt and surface to human**.
-
-## Step 3 — Invariant check
-
-If `context-graph.json` has invariants, check each one:
-
-```bash
-# Example: "rules/ files never reference specific frameworks"
-grep -rn "React\|Angular\|Vue\|Express\|Django" .agents/rules/ 2>/dev/null
-# Expected: no output. Any output = invariant violation.
-```
-
-Record each invariant checked and its result.
-
-## Step 4 — Browser verification (UI work only)
-
-Only if:
-- The milestone involves user-visible UI changes, AND
-- No deterministic check covers the visual requirement.
-
-Then invoke Antigravity's browser subagent to:
-1. Navigate to the relevant page.
-2. Take a screenshot.
-3. Record a short interaction video.
-4. Produce a Browser Recording artifact.
-
-**Label this as judgment-based verification.** Browser verification APPROVE is provisional — it does not stand alone for production deployment (AGENTS.md rule 4).
-
-## Step 5 — Quiz-me gate
-
-Generate exactly **three** questions based strictly on the spec, directed at the **Maker agent** (not the human):
-
-1. **Design decision**: "Why was X chosen over Y?" — tests that the Maker understands the architectural choice.
-2. **Edge case**: "What happens when Z?" — tests awareness of boundary conditions, failure modes, or unusual inputs.
-3. **Change impact**: "What else in the codebase does this affect?" — tests understanding of ripple effects beyond the immediate change.
-
-Present all three questions to the Maker. The Maker must answer them based *only* on the artifact and spec (without generating new code).
-Then, present the Maker's answers to the human for a **spot-check**.
-
-### Evaluating answers
-
-- Human approves the Maker's answers → proceed to verdict.
-- Human rejects one or more answers, or the Maker cannot answer → verdict is **UNCERTAIN**. The milestone stays open. Record which question(s) failed and why.
-- A failed answer is a valid signal that the PLAN gate was underspecified or the IMPLEMENT was flawed — feed that back.
-
-## Step 6 — Record verdict
-
-Append a verify block to the checkpoint:
-
-```markdown
-## verify · <timestamp>
-- deterministic checks:
-  - <check-name>: PASS | FAIL (command: `...`, output: `...`)
-  - <check-name>: PASS | FAIL (command: `...`, output: `...`)
-- invariant checks:
-  - "<invariant text>": PASS | FAIL
-- browser verification: N/A | PASS | FAIL (provisional)
-- quiz-me:
-  - Q1 (design decision): <question> → <answer>
-  - Q2 (edge case): <question> → <answer>
-  - Q3 (change impact): <question> → <answer>
-- verdict: APPROVE | REJECT | UNCERTAIN
-- rationale: <one-line explanation>
-```
-
-## Verdict meanings
-
-| Verdict | What happens next |
-|---------|-------------------|
-| **APPROVE** | Milestone is marked complete. Walkthrough artifact is generated. |
-| **REJECT** | Returns to IMPLEMENT with specific feedback. One retry allowed. |
-| **UNCERTAIN** | Milestone stays open. Human must resolve the open question(s) before re-running VERIFY. |
-
-## Rules
-
-1. **You are not the builder.** Do not defend the implementation. Do not explain why choices were made. Evaluate the artifact against the spec.
-2. **Deterministic checks are not optional.** If they exist for the stack, they run. Skipping a deterministic check to get to a "pass" is itself a failure.
-3. **Record everything.** Every command, every output, every verdict reasoning. An unrecorded check is an unrun check (AGENTS.md rule 1).
-4. **Never approve what you haven't checked.** "Looks good to me" is not a verify result. It is a verify skip.
+skill: "agyos-verify"
+sections[16]:
+  - "\n"
+  - "# agyos-verify\n\nYou are the verifier. You did not write the code you are about to check. You operate as a **genuinely separate evaluation pass** — you read only the goal, the spec, and the artifact. You do not read your own reasoning from the IMPLEMENT phase. You do not carry over \"why I made this choice\" context from the builder.\n\n"
+  - "## Before you start\n\n1. Read the **goal** — what was requested (from the checkpoint header or CURRENT.md).\n2. Read the **spec** — what was planned (from the Implementation Plan artifact or the PLAN gate checkpoint entry).\n3. Read the **artifact** — what was actually built (the files on disk).\n4. Do NOT read the builder's reasoning, conversation history, or process notes.\n\n"
+  - "## Step 1 — Deterministic checks (always first, always primary)\n\nRun every applicable check for the project's stack. Record each command and its full output.\n\n"
+  - "### For ANCHOR's own codebase (markdown + JSON + bash):\n\n```bash\n# Run the verify script:\nbash .agents/skills/agyos-verify/scripts/verify.sh\n\n# If ANCHOR skills (.agents/skills/* or bin/*) were modified, also run the eval harness to check for historical regressions:\nbash bin/eval.sh\n```\n\nThe script checks:\n- JSON syntax validation (all `.json` files via `jq`)\n- Bash syntax validation (all `.sh` files via `bash -n`)\n- SKILL.md frontmatter validation (required `name` and `description` fields)\n- State schema validation (`state.json` required fields)\n- File structure validation (expected directories exist)\n\n"
+  - "### For JavaScript/TypeScript projects:\n\n> [!NOTE]\n> Do not execute slow full production builds locally (e.g. `npm run build:pages`). Run fast typecheck (`npx tsc --noEmit` or `npm run typecheck`), lint, and unit tests locally. Full builds are verified by remote CI/CD.\n\n```bash\n# TypeScript type checking (if tsconfig.json exists):\nnpx tsc --noEmit\n\n# Linting (if eslint config exists):\nnpx eslint . --max-warnings 0\n\n# Tests:\nnpm test\n```\n\n"
+  - "### For Python projects:\n\n```bash\n# Type checking (if mypy is available):\nmypy . --ignore-missing-imports\n\n# Linting:\nruff check .\n\n# Tests:\npytest -v\n```\n\n"
+  - "### Stack detection\n\nIf you're unsure what checks to run, detect the stack:\n```bash\n# What's in the project?\nls package.json tsconfig.json pyproject.toml setup.py Cargo.toml go.mod 2>/dev/null\n```\n\nRun whatever checks are available. If NO deterministic checks exist for the stack, say so explicitly and note that the verification is judgment-based only (this is rare and should be flagged).\n\n"
+  - "## Step 2 — Handle failures\n\n- Any deterministic check **failure** → verdict is **REJECT**.\n- Send specific, actionable feedback to the IMPLEMENT gate: what failed, why, and what to fix.\n- IMPLEMENT retries once. If the second attempt also fails → **halt and surface to human**.\n\n"
+  - "## Step 3 — Invariant check\n\nIf `context-graph.json` has invariants, check each one:\n\n```bash\n# Example: \"rules/ files never reference specific frameworks\"\ngrep -rn \"React\\|Angular\\|Vue\\|Express\\|Django\" .agents/rules/ 2>/dev/null\n# Expected: no output. Any output = invariant violation.\n```\n\nRecord each invariant checked and its result.\n\n"
+  - "## Step 4 — Browser verification (UI work only)\n\nOnly if:\n- The milestone involves user-visible UI changes, AND\n- No deterministic check covers the visual requirement.\n\nThen invoke Antigravity's browser subagent to:\n1. Navigate to the relevant page.\n2. Take a screenshot.\n3. Record a short interaction video.\n4. Produce a Browser Recording artifact.\n\n**Label this as judgment-based verification.** Browser verification APPROVE is provisional — it does not stand alone for production deployment (AGENTS.md rule 4).\n\n"
+  - "## Step 5 — Quiz-me gate\n\nGenerate exactly **three** questions based strictly on the spec, directed at the **Maker agent** (not the human):\n\n1. **Design decision**: \"Why was X chosen over Y?\" — tests that the Maker understands the architectural choice.\n2. **Edge case**: \"What happens when Z?\" — tests awareness of boundary conditions, failure modes, or unusual inputs.\n3. **Change impact**: \"What else in the codebase does this affect?\" — tests understanding of ripple effects beyond the immediate change.\n\nPresent all three questions to the Maker. The Maker must answer them based *only* on the artifact and spec (without generating new code).\nThen, present the Maker's answers to the human for a **spot-check**.\n\n"
+  - "### Evaluating answers\n\n- Human approves the Maker's answers → proceed to verdict.\n- Human rejects one or more answers, or the Maker cannot answer → verdict is **UNCERTAIN**. The milestone stays open. Record which question(s) failed and why.\n- A failed answer is a valid signal that the PLAN gate was underspecified or the IMPLEMENT was flawed — feed that back.\n\n"
+  - "## Step 6 — Record verdict\n\nAppend a verify block to the checkpoint:\n\n```markdown\n## verify · <timestamp>\n- deterministic checks:\n  - <check-name>: PASS | FAIL (command: `...`, output: `...`)\n  - <check-name>: PASS | FAIL (command: `...`, output: `...`)\n- invariant checks:\n  - \"<invariant text>\": PASS | FAIL\n- browser verification: N/A | PASS | FAIL (provisional)\n- quiz-me:\n  - Q1 (design decision): <question> → <answer>\n  - Q2 (edge case): <question> → <answer>\n  - Q3 (change impact): <question> → <answer>\n- verdict: APPROVE | REJECT | UNCERTAIN\n- rationale: <one-line explanation>\n```\n\n"
+  - "## Verdict meanings\n\n| Verdict | What happens next |\n|---------|-------------------|\n| **APPROVE** | Milestone is marked complete. Walkthrough artifact is generated. |\n| **REJECT** | Returns to IMPLEMENT with specific feedback. One retry allowed. |\n| **UNCERTAIN** | Milestone stays open. Human must resolve the open question(s) before re-running VERIFY. |\n\n"
+  - "## Rules\n\n1. **You are not the builder.** Do not defend the implementation. Do not explain why choices were made. Evaluate the artifact against the spec.\n2. **Deterministic checks are not optional.** If they exist for the stack, they run. Skipping a deterministic check to get to a \"pass\" is itself a failure.\n3. **Record everything.** Every command, every output, every verdict reasoning. An unrecorded check is an unrun check (AGENTS.md rule 1).\n4. **Never approve what you haven't checked.** \"Looks good to me\" is not a verify result. It is a verify skip.\n"

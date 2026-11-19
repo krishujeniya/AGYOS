@@ -7,85 +7,15 @@ source: community
 metadata:
   author: sanjay3290
   version: "1.0"
+prompt-source: prompt.toon
 ---
-
-# Google Docs
-
-Lightweight Google Docs integration with standalone OAuth authentication. No MCP server required.
-
-> **⚠️ Requires Google Workspace account.** Personal Gmail accounts are not supported.
-
-## When to Use
-- You need to create, search, read, or edit Google Docs from local automation scripts.
-- The task involves document text extraction, append/insert operations, or content replacement in Workspace docs.
-- You want direct Docs automation without relying on an MCP server.
-
-## First-Time Setup
-
-Authenticate with Google (opens browser):
-```bash
-python scripts/auth.py login
-```
-
-Check authentication status:
-```bash
-python scripts/auth.py status
-```
-
-Logout when needed:
-```bash
-python scripts/auth.py logout
-```
-
-## Commands
-
-All operations via `scripts/docs.py`. Auto-authenticates on first use if not logged in.
-
-```bash
-# Create a new document
-python scripts/docs.py create "Meeting Notes"
-
-# Create a document with initial content
-python scripts/docs.py create "Project Plan" --content "# Overview\n\nThis is the project plan."
-
-# Find documents by title
-python scripts/docs.py find "meeting" --limit 10
-
-# Get text content of a document
-python scripts/docs.py get-text 1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms
-
-# Get text using a full URL
-python scripts/docs.py get-text "https://docs.google.com/document/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit"
-
-# Append text to end of document
-python scripts/docs.py append-text 1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms "New paragraph at the end."
-
-# Insert text at beginning of document
-python scripts/docs.py insert-text 1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms "Text at the beginning.\n\n"
-
-# Replace text in document
-python scripts/docs.py replace-text 1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms "old text" "new text"
-```
-
-## Document ID Format
-
-Google Docs uses document IDs like `1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms`. You can:
-- Use the full URL (the ID will be extracted automatically)
-- Use just the document ID
-- Get document IDs from the `find` command results
-
-## Token Management
-
-Tokens stored securely using the system keyring:
-- **macOS**: Keychain
-- **Windows**: Windows Credential Locker
-- **Linux**: Secret Service API (GNOME Keyring, KDE Wallet, etc.)
-
-Service name: `google-docs-skill-oauth`
-
-Access tokens are automatically refreshed when expired using Google's cloud function.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "google-docs-automation"
+sections[8]:
+  - "\n"
+  - "# Google Docs\n\nLightweight Google Docs integration with standalone OAuth authentication. No MCP server required.\n\n> **⚠️ Requires Google Workspace account.** Personal Gmail accounts are not supported.\n\n"
+  - "## When to Use\n- You need to create, search, read, or edit Google Docs from local automation scripts.\n- The task involves document text extraction, append/insert operations, or content replacement in Workspace docs.\n- You want direct Docs automation without relying on an MCP server.\n\n"
+  - "## First-Time Setup\n\nAuthenticate with Google (opens browser):\n```bash\npython scripts/auth.py login\n```\n\nCheck authentication status:\n```bash\npython scripts/auth.py status\n```\n\nLogout when needed:\n```bash\npython scripts/auth.py logout\n```\n\n"
+  - "## Commands\n\nAll operations via `scripts/docs.py`. Auto-authenticates on first use if not logged in.\n\n```bash\n# Create a new document\npython scripts/docs.py create \"Meeting Notes\"\n\n# Create a document with initial content\npython scripts/docs.py create \"Project Plan\" --content \"# Overview\\n\\nThis is the project plan.\"\n\n# Find documents by title\npython scripts/docs.py find \"meeting\" --limit 10\n\n# Get text content of a document\npython scripts/docs.py get-text 1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms\n\n# Get text using a full URL\npython scripts/docs.py get-text \"https://docs.google.com/document/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit\"\n\n# Append text to end of document\npython scripts/docs.py append-text 1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms \"New paragraph at the end.\"\n\n# Insert text at beginning of document\npython scripts/docs.py insert-text 1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms \"Text at the beginning.\\n\\n\"\n\n# Replace text in document\npython scripts/docs.py replace-text 1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms \"old text\" \"new text\"\n```\n\n"
+  - "## Document ID Format\n\nGoogle Docs uses document IDs like `1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms`. You can:\n- Use the full URL (the ID will be extracted automatically)\n- Use just the document ID\n- Get document IDs from the `find` command results\n\n"
+  - "## Token Management\n\nTokens stored securely using the system keyring:\n- **macOS**: Keychain\n- **Windows**: Windows Credential Locker\n- **Linux**: Secret Service API (GNOME Keyring, KDE Wallet, etc.)\n\nService name: `google-docs-skill-oauth`\n\nAccess tokens are automatically refreshed when expired using Google's cloud function.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

@@ -4,41 +4,18 @@ description: "Web search, content extraction, crawling, and research capabilitie
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# tavily-web
-
-## Overview
-Web search, content extraction, crawling, and research capabilities using Tavily API
-
-## When to Use
-- When you need to search the web for current information
-- When extracting content from URLs
-- When crawling websites
-
-## Installation
-```bash
-npx skills add -g BenedictKing/tavily-web
-```
-
-## Step-by-Step Guide
-1. Install the skill using the command above
-2. Configure Tavily API key
-3. Use naturally in Claude Code conversations
-
-## Examples
-See [GitHub Repository](https://github.com/BenedictKing/tavily-web) for examples.
-
-## Best Practices
-- Configure API keys via environment variables
-
-## Troubleshooting
-See the GitHub repository for troubleshooting guides.
-
-## Related Skills
-- context7-auto-research, exa-search, firecrawl-scraper, codex-review
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "tavily-web"
+sections[11]:
+  - "\n"
+  - "# tavily-web\n\n"
+  - "## Overview\nWeb search, content extraction, crawling, and research capabilities using Tavily API\n\n"
+  - "## When to Use\n- When you need to search the web for current information\n- When extracting content from URLs\n- When crawling websites\n\n"
+  - "## Installation\n```bash\nnpx skills add -g BenedictKing/tavily-web\n```\n\n"
+  - "## Step-by-Step Guide\n1. Install the skill using the command above\n2. Configure Tavily API key\n3. Use naturally in Claude Code conversations\n\n"
+  - "## Examples\nSee [GitHub Repository](https://github.com/BenedictKing/tavily-web) for examples.\n\n"
+  - "## Best Practices\n- Configure API keys via environment variables\n\n"
+  - "## Troubleshooting\nSee the GitHub repository for troubleshooting guides.\n\n"
+  - "## Related Skills\n- context7-auto-research, exa-search, firecrawl-scraper, codex-review\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

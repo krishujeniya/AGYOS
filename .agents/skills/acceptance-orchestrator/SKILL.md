@@ -4,113 +4,19 @@ description: Use when a coding task should be driven end-to-end from issue intak
 risk: safe
 source: community
 date_added: "2026-03-12"
+prompt-source: prompt.toon
 ---
-
-# Acceptance Orchestrator
-
-## Overview
-
-Orchestrate coding work as a state machine that ends only when acceptance criteria are verified with evidence or the task is explicitly escalated.
-
-Core rule: **do not optimize for "code changed"; optimize for "DoD proven".**
-
-## When to Use
-- The task already has an issue or clear acceptance criteria and should run end-to-end with minimal human re-intervention.
-- You need structured handoff across implementation, review, deployment, and final verification.
-- You want explicit stop conditions and escalation instead of silent partial completion.
-
-## Required Sub-Skills
-
-- `create-issue-gate`
-- `closed-loop-delivery`
-- `verification-before-completion`
-
-Optional supporting skills:
-- `deploy-dev`
-- `pr-watch`
-- `pr-review-autopilot`
-- `git-ship`
-
-## Inputs
-
-Require these inputs:
-- issue id or issue body
-- issue status
-- acceptance criteria (DoD)
-- target environment (`dev` default)
-
-Fixed defaults:
-- max iteration rounds = `2`
-- PR review polling = `3m -> 6m -> 10m`
-
-## State Machine
-
-- `intake`
-- `issue-gated`
-- `executing`
-- `review-loop`
-- `deploy-verify`
-- `accepted`
-- `escalated`
-
-## Workflow
-
-1. **Intake**
-   - Read issue and extract task goal + DoD.
-
-2. **Issue gate**
-   - Use `create-issue-gate` logic.
-   - If issue is not `ready` or execution gate is not `allowed`, stop immediately.
-   - Do not implement anything while issue remains `draft`.
-
-3. **Execute**
-   - Hand off to `closed-loop-delivery` for implementation and local verification.
-
-4. **Review loop**
-   - If PR feedback is relevant, batch polling windows as:
-     - wait `3m`
-     - then `6m`
-     - then `10m`
-   - After the `10m` round, stop waiting and process all visible comments together.
-
-5. **Deploy and runtime verification**
-   - If DoD depends on runtime behavior, deploy only to `dev` by default.
-   - Verify with real logs/API/Lambda behavior, not assumptions.
-
-6. **Completion gate**
-   - Before any claim of completion, require `verification-before-completion`.
-   - No success claim without fresh evidence.
-
-## Stop Conditions
-
-Move to `accepted` only when every acceptance criterion has matching evidence.
-
-Move to `escalated` when any of these happen:
-- DoD still fails after `2` full rounds
-- missing secrets/permissions/external dependency blocks progress
-- task needs production action or destructive operation approval
-- review instructions conflict and cannot both be satisfied
-
-## Human Gates
-
-Always stop for human confirmation on:
-- prod/stage deploys beyond agreed scope
-- destructive git/data operations
-- billing or security posture changes
-- missing user-provided acceptance criteria
-
-## Output Contract
-
-When reporting status, always include:
-- `Status`: intake / executing / accepted / escalated
-- `Acceptance Criteria`: pass/fail checklist
-- `Evidence`: commands, logs, API results, or runtime proof
-- `Open Risks`: anything still uncertain
-- `Need Human Input`: smallest next decision, if blocked
-
-Do not report "done" unless status is `accepted`.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "acceptance-orchestrator"
+sections[12]:
+  - "\n"
+  - "# Acceptance Orchestrator\n\n"
+  - "## Overview\n\nOrchestrate coding work as a state machine that ends only when acceptance criteria are verified with evidence or the task is explicitly escalated.\n\nCore rule: **do not optimize for \"code changed\"; optimize for \"DoD proven\".**\n\n"
+  - "## When to Use\n- The task already has an issue or clear acceptance criteria and should run end-to-end with minimal human re-intervention.\n- You need structured handoff across implementation, review, deployment, and final verification.\n- You want explicit stop conditions and escalation instead of silent partial completion.\n\n"
+  - "## Required Sub-Skills\n\n- `create-issue-gate`\n- `closed-loop-delivery`\n- `verification-before-completion`\n\nOptional supporting skills:\n- `deploy-dev`\n- `pr-watch`\n- `pr-review-autopilot`\n- `git-ship`\n\n"
+  - "## Inputs\n\nRequire these inputs:\n- issue id or issue body\n- issue status\n- acceptance criteria (DoD)\n- target environment (`dev` default)\n\nFixed defaults:\n- max iteration rounds = `2`\n- PR review polling = `3m -> 6m -> 10m`\n\n"
+  - "## State Machine\n\n- `intake`\n- `issue-gated`\n- `executing`\n- `review-loop`\n- `deploy-verify`\n- `accepted`\n- `escalated`\n\n"
+  - "## Workflow\n\n1. **Intake**\n   - Read issue and extract task goal + DoD.\n\n2. **Issue gate**\n   - Use `create-issue-gate` logic.\n   - If issue is not `ready` or execution gate is not `allowed`, stop immediately.\n   - Do not implement anything while issue remains `draft`.\n\n3. **Execute**\n   - Hand off to `closed-loop-delivery` for implementation and local verification.\n\n4. **Review loop**\n   - If PR feedback is relevant, batch polling windows as:\n     - wait `3m`\n     - then `6m`\n     - then `10m`\n   - After the `10m` round, stop waiting and process all visible comments together.\n\n5. **Deploy and runtime verification**\n   - If DoD depends on runtime behavior, deploy only to `dev` by default.\n   - Verify with real logs/API/Lambda behavior, not assumptions.\n\n6. **Completion gate**\n   - Before any claim of completion, require `verification-before-completion`.\n   - No success claim without fresh evidence.\n\n"
+  - "## Stop Conditions\n\nMove to `accepted` only when every acceptance criterion has matching evidence.\n\nMove to `escalated` when any of these happen:\n- DoD still fails after `2` full rounds\n- missing secrets/permissions/external dependency blocks progress\n- task needs production action or destructive operation approval\n- review instructions conflict and cannot both be satisfied\n\n"
+  - "## Human Gates\n\nAlways stop for human confirmation on:\n- prod/stage deploys beyond agreed scope\n- destructive git/data operations\n- billing or security posture changes\n- missing user-provided acceptance criteria\n\n"
+  - "## Output Contract\n\nWhen reporting status, always include:\n- `Status`: intake / executing / accepted / escalated\n- `Acceptance Criteria`: pass/fail checklist\n- `Evidence`: commands, logs, API results, or runtime proof\n- `Open Risks`: anything still uncertain\n- `Need Human Input`: smallest next decision, if blocked\n\nDo not report \"done\" unless status is `accepted`.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

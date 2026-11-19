@@ -4,53 +4,17 @@ description: "Plan and execute migrations between frameworks, language versions,
 risk: safe
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Code Migration Assistant
-
-Plan and execute migrations between frameworks, language versions, or platforms. Use when moving or upgrading a codebase while preserving behavior and defining compatibility and rollback checks.
-
-## Use this skill when
-
-- Working on code migration assistant tasks or workflows
-- Needing guidance, best practices, or checklists for code migration assistant
-
-## Do not use this skill when
-
-- The task is unrelated to code migration assistant
-- You need a different domain or tool outside this scope
-
-## Context
-The user needs to migrate code from one technology stack to another, upgrade to newer versions, or transition between platforms. Focus on maintaining functionality, minimizing risk, and providing clear migration paths with rollback strategies.
-
-## Requirements
-$ARGUMENTS
-
-## Instructions
-
-- Clarify goals, constraints, and required inputs.
-- Apply relevant best practices and validate outcomes.
-- Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
-
-## Output Format
-
-1. **Migration Analysis**: Comprehensive analysis of source codebase
-2. **Risk Assessment**: Identified risks with mitigation strategies
-3. **Migration Plan**: Phased approach with timeline and milestones
-4. **Code Examples**: Automated migration scripts and transformations
-5. **Testing Strategy**: Comparison tests and validation approach
-6. **Rollback Plan**: Detailed procedures for safe rollback
-7. **Progress Tracking**: Real-time migration monitoring
-8. **Documentation**: Migration guide and runbooks
-
-Focus on minimizing disruption, maintaining functionality, and providing clear paths for successful code migration with comprehensive testing and rollback strategies.
-
-## Resources
-
-- `resources/implementation-playbook.md` for detailed patterns and examples.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "code-migration"
+sections[10]:
+  - "\n"
+  - "# Code Migration Assistant\n\nPlan and execute migrations between frameworks, language versions, or platforms. Use when moving or upgrading a codebase while preserving behavior and defining compatibility and rollback checks.\n\n"
+  - "## Use this skill when\n\n- Working on code migration assistant tasks or workflows\n- Needing guidance, best practices, or checklists for code migration assistant\n\n"
+  - "## Do not use this skill when\n\n- The task is unrelated to code migration assistant\n- You need a different domain or tool outside this scope\n\n"
+  - "## Context\nThe user needs to migrate code from one technology stack to another, upgrade to newer versions, or transition between platforms. Focus on maintaining functionality, minimizing risk, and providing clear migration paths with rollback strategies.\n\n"
+  - "## Requirements\n$ARGUMENTS\n\n"
+  - "## Instructions\n\n- Clarify goals, constraints, and required inputs.\n- Apply relevant best practices and validate outcomes.\n- Provide actionable steps and verification.\n- If detailed examples are required, open `resources/implementation-playbook.md`.\n\n"
+  - "## Output Format\n\n1. **Migration Analysis**: Comprehensive analysis of source codebase\n2. **Risk Assessment**: Identified risks with mitigation strategies\n3. **Migration Plan**: Phased approach with timeline and milestones\n4. **Code Examples**: Automated migration scripts and transformations\n5. **Testing Strategy**: Comparison tests and validation approach\n6. **Rollback Plan**: Detailed procedures for safe rollback\n7. **Progress Tracking**: Real-time migration monitoring\n8. **Documentation**: Migration guide and runbooks\n\nFocus on minimizing disruption, maintaining functionality, and providing clear paths for successful code migration with comprehensive testing and rollback strategies.\n\n"
+  - "## Resources\n\n- `resources/implementation-playbook.md` for detailed patterns and examples.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

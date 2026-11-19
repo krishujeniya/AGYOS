@@ -5,70 +5,17 @@ risk: safe
 source: self
 tags: "[ddd, domain, bounded-context, architecture]"
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Domain-Driven Design
-
-## Use this skill when
-
-- You need to model a complex business domain with explicit boundaries.
-- You want to decide whether full DDD is worth the added complexity.
-- You need to connect strategic design decisions to implementation patterns.
-- You are planning CQRS, event sourcing, sagas, or projections from domain needs.
-
-## Do not use this skill when
-
-- The problem is simple CRUD with low business complexity.
-- You only need localized bug fixes.
-- There is no access to domain knowledge and no proxy product expert.
-
-## Instructions
-
-1. Run a viability check before committing to full DDD.
-2. Produce strategic artifacts first: subdomains, bounded contexts, language glossary.
-3. Route to specialized skills based on current task.
-4. Define success criteria and evidence for each stage.
-
-### Viability check
-
-Use full DDD only when at least two of these are true:
-
-- Business rules are complex or fast-changing.
-- Multiple teams are causing model collisions.
-- Integration contracts are unstable.
-- Auditability and explicit invariants are critical.
-
-### Routing map
-
-- Strategic model and boundaries: `@ddd-strategic-design`
-- Cross-context integrations and translation: `@ddd-context-mapping`
-- Tactical code modeling: `@ddd-tactical-patterns`
-- Read/write separation: `@cqrs-implementation`
-- Event history as source of truth: `@event-sourcing-architect` and `@event-store-design`
-- Long-running workflows: `@saga-orchestration`
-- Read models: `@projection-patterns`
-- Decision log: `@architecture-decision-records`
-
-If templates are needed, open `references/ddd-deliverables.md`.
-
-## Output requirements
-
-Always return:
-
-- Scope and assumptions
-- Current stage (strategic, tactical, or evented)
-- Explicit artifacts produced
-- Open risks and next step recommendation
-
-## Examples
-
-```text
-Use @domain-driven-design to assess if this billing platform should adopt full DDD.
-Then route to the right next skill and list artifacts we must produce this week.
-```
-
-## Limitations
-
-- This skill does not replace direct workshops with domain experts.
-- It does not provide framework-specific code generation.
-- It should not be used as a justification to over-engineer simple systems.
+skill: "domain-driven-design"
+sections[10]:
+  - "\n"
+  - "# Domain-Driven Design\n\n"
+  - "## Use this skill when\n\n- You need to model a complex business domain with explicit boundaries.\n- You want to decide whether full DDD is worth the added complexity.\n- You need to connect strategic design decisions to implementation patterns.\n- You are planning CQRS, event sourcing, sagas, or projections from domain needs.\n\n"
+  - "## Do not use this skill when\n\n- The problem is simple CRUD with low business complexity.\n- You only need localized bug fixes.\n- There is no access to domain knowledge and no proxy product expert.\n\n"
+  - "## Instructions\n\n1. Run a viability check before committing to full DDD.\n2. Produce strategic artifacts first: subdomains, bounded contexts, language glossary.\n3. Route to specialized skills based on current task.\n4. Define success criteria and evidence for each stage.\n\n"
+  - "### Viability check\n\nUse full DDD only when at least two of these are true:\n\n- Business rules are complex or fast-changing.\n- Multiple teams are causing model collisions.\n- Integration contracts are unstable.\n- Auditability and explicit invariants are critical.\n\n"
+  - "### Routing map\n\n- Strategic model and boundaries: `@ddd-strategic-design`\n- Cross-context integrations and translation: `@ddd-context-mapping`\n- Tactical code modeling: `@ddd-tactical-patterns`\n- Read/write separation: `@cqrs-implementation`\n- Event history as source of truth: `@event-sourcing-architect` and `@event-store-design`\n- Long-running workflows: `@saga-orchestration`\n- Read models: `@projection-patterns`\n- Decision log: `@architecture-decision-records`\n\nIf templates are needed, open `references/ddd-deliverables.md`.\n\n"
+  - "## Output requirements\n\nAlways return:\n\n- Scope and assumptions\n- Current stage (strategic, tactical, or evented)\n- Explicit artifacts produced\n- Open risks and next step recommendation\n\n"
+  - "## Examples\n\n```text\nUse @domain-driven-design to assess if this billing platform should adopt full DDD.\nThen route to the right next skill and list artifacts we must produce this week.\n```\n\n"
+  - "## Limitations\n\n- This skill does not replace direct workshops with domain experts.\n- It does not provide framework-specific code generation.\n- It should not be used as a justification to over-engineer simple systems.\n"

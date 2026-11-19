@@ -5,229 +5,48 @@ category: granular-workflow-bundle
 risk: safe
 source: personal
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# React/Next.js Development Workflow
-
-## Overview
-
-Specialized workflow for building React and Next.js 14+ applications with modern patterns including App Router, Server Components, TypeScript, and Tailwind CSS.
-
-## When to Use This Workflow
-
-Use this workflow when:
-- Building new React applications
-- Creating Next.js 14+ projects with App Router
-- Implementing Server Components
-- Setting up TypeScript with React
-- Styling with Tailwind CSS
-- Building full-stack Next.js applications
-
-## Workflow Phases
-
-### Phase 1: Project Setup
-
-#### Skills to Invoke
-- `app-builder` - Application scaffolding
-- `senior-fullstack` - Full-stack guidance
-- `nextjs-app-router-patterns` - Next.js 14+ patterns
-- `typescript-pro` - TypeScript setup
-
-#### Actions
-1. Choose project type (React SPA, Next.js app)
-2. Select build tool (Vite, Next.js, Create React App)
-3. Scaffold project structure
-4. Configure TypeScript
-5. Set up ESLint and Prettier
-
-#### Copy-Paste Prompts
-```
-Use @app-builder to scaffold a new Next.js 14 project with App Router
-```
-
-```
-Use @nextjs-app-router-patterns to set up Server Components
-```
-
-### Phase 2: Component Architecture
-
-#### Skills to Invoke
-- `frontend-developer` - Component development
-- `react-patterns` - React patterns
-- `react-state-management` - State management
-- `react-ui-patterns` - UI patterns
-
-#### Actions
-1. Design component hierarchy
-2. Create base components
-3. Implement layout components
-4. Set up state management
-5. Create custom hooks
-
-#### Copy-Paste Prompts
-```
-Use @frontend-developer to create reusable React components
-```
-
-```
-Use @react-patterns to implement proper component composition
-```
-
-```
-Use @react-state-management to set up Zustand store
-```
-
-### Phase 3: Styling and Design
-
-#### Skills to Invoke
-- `frontend-design` - UI design
-- `tailwind-patterns` - Tailwind CSS
-- `tailwind-design-system` - Design system
-- `core-components` - Component library
-
-#### Actions
-1. Set up Tailwind CSS
-2. Configure design tokens
-3. Create utility classes
-4. Build component styles
-5. Implement responsive design
-
-#### Copy-Paste Prompts
-```
-Use @tailwind-patterns to style components with Tailwind CSS v4
-```
-
-```
-Use @frontend-design to create a modern dashboard UI
-```
-
-### Phase 4: Data Fetching
-
-#### Skills to Invoke
-- `nextjs-app-router-patterns` - Server Components
-- `react-state-management` - React Query
-- `api-patterns` - API integration
-
-#### Actions
-1. Implement Server Components
-2. Set up React Query/SWR
-3. Create API client
-4. Handle loading states
-5. Implement error boundaries
-
-#### Copy-Paste Prompts
-```
-Use @nextjs-app-router-patterns to implement Server Components data fetching
-```
-
-### Phase 5: Routing and Navigation
-
-#### Skills to Invoke
-- `nextjs-app-router-patterns` - App Router
-- `nextjs-best-practices` - Next.js patterns
-
-#### Actions
-1. Set up file-based routing
-2. Create dynamic routes
-3. Implement nested routes
-4. Add route guards
-5. Configure redirects
-
-#### Copy-Paste Prompts
-```
-Use @nextjs-app-router-patterns to set up parallel routes and intercepting routes
-```
-
-### Phase 6: Forms and Validation
-
-#### Skills to Invoke
-- `frontend-developer` - Form development
-- `typescript-advanced-types` - Type validation
-- `react-ui-patterns` - Form patterns
-
-#### Actions
-1. Choose form library (React Hook Form, Formik)
-2. Set up validation (Zod, Yup)
-3. Create form components
-4. Handle submissions
-5. Implement error handling
-
-#### Copy-Paste Prompts
-```
-Use @frontend-developer to create forms with React Hook Form and Zod
-```
-
-### Phase 7: Testing
-
-#### Skills to Invoke
-- `javascript-testing-patterns` - Jest/Vitest
-- `playwright-skill` - E2E testing
-- `e2e-testing-patterns` - E2E patterns
-
-#### Actions
-1. Set up testing framework
-2. Write unit tests
-3. Create component tests
-4. Implement E2E tests
-5. Configure CI integration
-
-#### Copy-Paste Prompts
-```
-Use @javascript-testing-patterns to write Vitest tests
-```
-
-```
-Use @playwright-skill to create E2E tests for critical flows
-```
-
-### Phase 8: Build and Deployment
-
-#### Skills to Invoke
-- `vercel-deployment` - Vercel deployment
-- `vercel-deploy-claimable` - Vercel deployment
-- `web-performance-optimization` - Performance
-
-#### Actions
-1. Configure build settings
-2. Optimize bundle size
-3. Set up environment variables
-4. Deploy to Vercel
-5. Configure preview deployments
-
-#### Copy-Paste Prompts
-```
-Use @vercel-deployment to deploy Next.js app to production
-```
-
-## Technology Stack
-
-| Category | Technology |
-|----------|------------|
-| Framework | Next.js 14+, React 18+ |
-| Language | TypeScript 5+ |
-| Styling | Tailwind CSS v4 |
-| State | Zustand, React Query |
-| Forms | React Hook Form, Zod |
-| Testing | Vitest, Playwright |
-| Deployment | Vercel |
-
-## Quality Gates
-
-- [ ] TypeScript compiles without errors
-- [ ] All tests passing
-- [ ] Linting clean
-- [ ] Performance metrics met (LCP, CLS, FID)
-- [ ] Accessibility checked (WCAG 2.1)
-- [ ] Responsive design verified
-
-## Related Workflow Bundles
-
-- `development` - General development
-- `testing-qa` - Testing workflow
-- `documentation` - Documentation
-- `typescript-development` - TypeScript patterns
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "react-nextjs-development"
+sections[41]:
+  - "\n"
+  - "# React/Next.js Development Workflow\n\n"
+  - "## Overview\n\nSpecialized workflow for building React and Next.js 14+ applications with modern patterns including App Router, Server Components, TypeScript, and Tailwind CSS.\n\n"
+  - "## When to Use This Workflow\n\nUse this workflow when:\n- Building new React applications\n- Creating Next.js 14+ projects with App Router\n- Implementing Server Components\n- Setting up TypeScript with React\n- Styling with Tailwind CSS\n- Building full-stack Next.js applications\n\n"
+  - "## Workflow Phases\n\n"
+  - "### Phase 1: Project Setup\n\n"
+  - "#### Skills to Invoke\n- `app-builder` - Application scaffolding\n- `senior-fullstack` - Full-stack guidance\n- `nextjs-app-router-patterns` - Next.js 14+ patterns\n- `typescript-pro` - TypeScript setup\n\n"
+  - "#### Actions\n1. Choose project type (React SPA, Next.js app)\n2. Select build tool (Vite, Next.js, Create React App)\n3. Scaffold project structure\n4. Configure TypeScript\n5. Set up ESLint and Prettier\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @app-builder to scaffold a new Next.js 14 project with App Router\n```\n\n```\nUse @nextjs-app-router-patterns to set up Server Components\n```\n\n"
+  - "### Phase 2: Component Architecture\n\n"
+  - "#### Skills to Invoke\n- `frontend-developer` - Component development\n- `react-patterns` - React patterns\n- `react-state-management` - State management\n- `react-ui-patterns` - UI patterns\n\n"
+  - "#### Actions\n1. Design component hierarchy\n2. Create base components\n3. Implement layout components\n4. Set up state management\n5. Create custom hooks\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @frontend-developer to create reusable React components\n```\n\n```\nUse @react-patterns to implement proper component composition\n```\n\n```\nUse @react-state-management to set up Zustand store\n```\n\n"
+  - "### Phase 3: Styling and Design\n\n"
+  - "#### Skills to Invoke\n- `frontend-design` - UI design\n- `tailwind-patterns` - Tailwind CSS\n- `tailwind-design-system` - Design system\n- `core-components` - Component library\n\n"
+  - "#### Actions\n1. Set up Tailwind CSS\n2. Configure design tokens\n3. Create utility classes\n4. Build component styles\n5. Implement responsive design\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @tailwind-patterns to style components with Tailwind CSS v4\n```\n\n```\nUse @frontend-design to create a modern dashboard UI\n```\n\n"
+  - "### Phase 4: Data Fetching\n\n"
+  - "#### Skills to Invoke\n- `nextjs-app-router-patterns` - Server Components\n- `react-state-management` - React Query\n- `api-patterns` - API integration\n\n"
+  - "#### Actions\n1. Implement Server Components\n2. Set up React Query/SWR\n3. Create API client\n4. Handle loading states\n5. Implement error boundaries\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @nextjs-app-router-patterns to implement Server Components data fetching\n```\n\n"
+  - "### Phase 5: Routing and Navigation\n\n"
+  - "#### Skills to Invoke\n- `nextjs-app-router-patterns` - App Router\n- `nextjs-best-practices` - Next.js patterns\n\n"
+  - "#### Actions\n1. Set up file-based routing\n2. Create dynamic routes\n3. Implement nested routes\n4. Add route guards\n5. Configure redirects\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @nextjs-app-router-patterns to set up parallel routes and intercepting routes\n```\n\n"
+  - "### Phase 6: Forms and Validation\n\n"
+  - "#### Skills to Invoke\n- `frontend-developer` - Form development\n- `typescript-advanced-types` - Type validation\n- `react-ui-patterns` - Form patterns\n\n"
+  - "#### Actions\n1. Choose form library (React Hook Form, Formik)\n2. Set up validation (Zod, Yup)\n3. Create form components\n4. Handle submissions\n5. Implement error handling\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @frontend-developer to create forms with React Hook Form and Zod\n```\n\n"
+  - "### Phase 7: Testing\n\n"
+  - "#### Skills to Invoke\n- `javascript-testing-patterns` - Jest/Vitest\n- `playwright-skill` - E2E testing\n- `e2e-testing-patterns` - E2E patterns\n\n"
+  - "#### Actions\n1. Set up testing framework\n2. Write unit tests\n3. Create component tests\n4. Implement E2E tests\n5. Configure CI integration\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @javascript-testing-patterns to write Vitest tests\n```\n\n```\nUse @playwright-skill to create E2E tests for critical flows\n```\n\n"
+  - "### Phase 8: Build and Deployment\n\n"
+  - "#### Skills to Invoke\n- `vercel-deployment` - Vercel deployment\n- `vercel-deploy-claimable` - Vercel deployment\n- `web-performance-optimization` - Performance\n\n"
+  - "#### Actions\n1. Configure build settings\n2. Optimize bundle size\n3. Set up environment variables\n4. Deploy to Vercel\n5. Configure preview deployments\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @vercel-deployment to deploy Next.js app to production\n```\n\n"
+  - "## Technology Stack\n\n| Category | Technology |\n|----------|------------|\n| Framework | Next.js 14+, React 18+ |\n| Language | TypeScript 5+ |\n| Styling | Tailwind CSS v4 |\n| State | Zustand, React Query |\n| Forms | React Hook Form, Zod |\n| Testing | Vitest, Playwright |\n| Deployment | Vercel |\n\n"
+  - "## Quality Gates\n\n- [ ] TypeScript compiles without errors\n- [ ] All tests passing\n- [ ] Linting clean\n- [ ] Performance metrics met (LCP, CLS, FID)\n- [ ] Accessibility checked (WCAG 2.1)\n- [ ] Responsive design verified\n\n"
+  - "## Related Workflow Bundles\n\n- `development` - General development\n- `testing-qa` - Testing workflow\n- `documentation` - Documentation\n- `typescript-development` - TypeScript patterns\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

@@ -1,0 +1,4 @@
+skill: "fp-errors"
+sections[2]:
+  - "\n"
+  - "# fp-ts error handling compatibility ID\n\nUse the canonical [fp-ts-errors runbook](../fp-ts-errors/SKILL.md) for Either and TaskEither error handling, validation, domain errors, and explicit error contracts.\n"

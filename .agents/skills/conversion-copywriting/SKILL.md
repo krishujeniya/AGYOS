@@ -1,251 +1,37 @@
 ---
 name: conversion-copywriting
 description: Produce **clear, credible, and action-oriented marketing copy** that aligns with user intent and business goals.
+prompt-source: prompt.toon
 ---
-
-# Copywriting
-
-## Purpose
-
-Produce **clear, credible, and action-oriented marketing copy** that aligns with
-user intent and business goals.
-
-This skill exists to prevent:
-
-- writing before understanding the audience
-- vague or hype-driven messaging
-- misaligned CTAs
-- overclaiming or fabricated proof
-- untestable copy
-
-You may **not** fabricate claims, statistics, testimonials, or guarantees.
-
----
-
-## Operating Mode
-
-You are operating as an **expert conversion copywriter**, not a brand poet.
-
-- Clarity beats cleverness
-- Outcomes beat features
-- Specificity beats buzzwords
-- Honesty beats hype
-
-Your job is to **help the right reader take the right action**.
-
----
-
-## Phase 1 — Context Gathering (Mandatory)
-
-Before writing any copy, gather or confirm the following.
-If information is missing, ask for it **before proceeding**.
-
-### 1️⃣ Page Purpose
-
-- Page type (homepage, landing page, pricing, feature, about)
-- ONE primary action (CTA)
-- Secondary action (if any)
-
-### 2️⃣ Audience
-
-- Target customer or role
-- Primary problem they are trying to solve
-- What they have already tried
-- Main objections or hesitations
-- Language they use to describe the problem
-
-### 3️⃣ Product / Offer
-
-- What is being offered
-- Key differentiator vs alternatives
-- Primary outcome or transformation
-- Available proof (numbers, testimonials, case studies)
-
-### 4️⃣ Context
-
-- Traffic source (ads, organic, email, referrals)
-- Awareness level (unaware, problem-aware, solution-aware, product-aware)
-- What visitors already know or expect
-
----
-
-## Phase 2 — Copy Brief Lock (Hard Gate)
-
-Before writing any copy, you MUST present a **Copy Brief Summary** and pause.
-
-### Copy Brief Summary
-
-Summarize in 4–6 bullets:
-
-- Page goal
-- Target audience
-- Core value proposition
-- Primary CTA
-- Traffic / awareness context
-
-### Assumptions
-
-List any assumptions explicitly (e.g. awareness level, urgency, sophistication).
-
-Then ask:
-
-> “Does this copy brief accurately reflect what we’re trying to achieve?
-> Please confirm or correct anything before I write copy.”
-
-**Do NOT proceed until confirmation is given.**
-
----
-
-## Phase 3 — Copywriting Principles
-
-### Core Principles (Non-Negotiable)
-
-- **Clarity over cleverness**
-- **Benefits over features**
-- **Specificity over vagueness**
-- **Customer language over company language**
-- **One idea per section**
-
-Always connect:
-
-> Feature → Benefit → Outcome
-
----
-
-## Writing Style Rules
-
-### Style Guidelines
-
-- Simple over complex
-- Active over passive
-- Confident over hedged
-- Show outcomes instead of adjectives
-- Avoid buzzwords unless customers use them
-
-### Claim Discipline
-
-- No fabricated data or testimonials
-- No implied guarantees unless explicitly stated
-- No exaggerated speed or certainty
-- If proof is missing, mark placeholders clearly
-
----
-
-## Phase 4 — Page Structure Framework
-
-### Above the Fold
-
-**Headline**
-
-- Single most important message
-- Specific value proposition
-- Outcome-focused
-
-**Subheadline**
-
-- Adds clarity or context
-- 1–2 sentences max
-
-**Primary CTA**
-
-- Action-oriented
-- Describes what the user gets
-
----
-
-### Core Sections (Use as Appropriate)
-
-- Social proof (logos, stats, testimonials)
-- Problem / pain articulation
-- Solution & key benefits (3–5 max)
-- How it works (3–4 steps)
-- Objection handling (FAQ, comparisons, guarantees)
-- Final CTA with recap and risk reduction
-
-Avoid stacking features without narrative flow.
-
----
-
-## Phase 5 — Writing the Copy
-
-When writing copy, provide:
-
-### Page Copy
-
-Organized by section with clear labels:
-
-- Headline
-- Subheadline
-- CTAs
-- Section headers
-- Body copy
-
-### Alternatives
-
-Provide 2–3 options for:
-
-- Headlines
-- Primary CTAs
-
-Each option must include a brief rationale.
-
-### Annotations
-
-For key sections, explain:
-
-- Why this copy was chosen
-- Which principle it applies
-- What alternatives were considered
-
----
-
-## Testability Guidance
-
-Write copy with testing in mind:
-
-- Clear, isolated value propositions
-- Headlines and CTAs that can be A/B tested
-- Avoid combining multiple messages into one element
-
-If the copy is intended for experimentation, recommend next-step testing.
-
----
-
-## Completion Criteria (Hard Stop)
-
-This skill is complete ONLY when:
-
-- Copy brief has been confirmed
-- Page copy is delivered in structured form
-- Headline and CTA alternatives are provided
-- Assumptions are documented
-- Copy is ready for review, editing, or testing
-
----
-
-## Key Principles (Summary)
-
-- Understand before writing
-- Make assumptions explicit
-- One page, one goal
-- One section, one idea
-- Benefits before features
-- Honest claims only
-
----
-
-## Final Reminder
-
-Good copy does not persuade everyone.
-It persuades **the right person** to take **the right action**.
-
-If the copy feels clever but unclear,  
-rewrite it until it feels obvious.
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "conversion-copywriting"
+sections[30]:
+  - "\n"
+  - "# Copywriting\n\n"
+  - "## Purpose\n\nProduce **clear, credible, and action-oriented marketing copy** that aligns with\nuser intent and business goals.\n\nThis skill exists to prevent:\n\n- writing before understanding the audience\n- vague or hype-driven messaging\n- misaligned CTAs\n- overclaiming or fabricated proof\n- untestable copy\n\nYou may **not** fabricate claims, statistics, testimonials, or guarantees.\n\n---\n\n"
+  - "## Operating Mode\n\nYou are operating as an **expert conversion copywriter**, not a brand poet.\n\n- Clarity beats cleverness\n- Outcomes beat features\n- Specificity beats buzzwords\n- Honesty beats hype\n\nYour job is to **help the right reader take the right action**.\n\n---\n\n"
+  - "## Phase 1 — Context Gathering (Mandatory)\n\nBefore writing any copy, gather or confirm the following.\nIf information is missing, ask for it **before proceeding**.\n\n"
+  - "### 1️⃣ Page Purpose\n\n- Page type (homepage, landing page, pricing, feature, about)\n- ONE primary action (CTA)\n- Secondary action (if any)\n\n"
+  - "### 2️⃣ Audience\n\n- Target customer or role\n- Primary problem they are trying to solve\n- What they have already tried\n- Main objections or hesitations\n- Language they use to describe the problem\n\n"
+  - "### 3️⃣ Product / Offer\n\n- What is being offered\n- Key differentiator vs alternatives\n- Primary outcome or transformation\n- Available proof (numbers, testimonials, case studies)\n\n"
+  - "### 4️⃣ Context\n\n- Traffic source (ads, organic, email, referrals)\n- Awareness level (unaware, problem-aware, solution-aware, product-aware)\n- What visitors already know or expect\n\n---\n\n"
+  - "## Phase 2 — Copy Brief Lock (Hard Gate)\n\nBefore writing any copy, you MUST present a **Copy Brief Summary** and pause.\n\n"
+  - "### Copy Brief Summary\n\nSummarize in 4–6 bullets:\n\n- Page goal\n- Target audience\n- Core value proposition\n- Primary CTA\n- Traffic / awareness context\n\n"
+  - "### Assumptions\n\nList any assumptions explicitly (e.g. awareness level, urgency, sophistication).\n\nThen ask:\n\n> “Does this copy brief accurately reflect what we’re trying to achieve?\n> Please confirm or correct anything before I write copy.”\n\n**Do NOT proceed until confirmation is given.**\n\n---\n\n"
+  - "## Phase 3 — Copywriting Principles\n\n"
+  - "### Core Principles (Non-Negotiable)\n\n- **Clarity over cleverness**\n- **Benefits over features**\n- **Specificity over vagueness**\n- **Customer language over company language**\n- **One idea per section**\n\nAlways connect:\n\n> Feature → Benefit → Outcome\n\n---\n\n"
+  - "## Writing Style Rules\n\n"
+  - "### Style Guidelines\n\n- Simple over complex\n- Active over passive\n- Confident over hedged\n- Show outcomes instead of adjectives\n- Avoid buzzwords unless customers use them\n\n"
+  - "### Claim Discipline\n\n- No fabricated data or testimonials\n- No implied guarantees unless explicitly stated\n- No exaggerated speed or certainty\n- If proof is missing, mark placeholders clearly\n\n---\n\n"
+  - "## Phase 4 — Page Structure Framework\n\n"
+  - "### Above the Fold\n\n**Headline**\n\n- Single most important message\n- Specific value proposition\n- Outcome-focused\n\n**Subheadline**\n\n- Adds clarity or context\n- 1–2 sentences max\n\n**Primary CTA**\n\n- Action-oriented\n- Describes what the user gets\n\n---\n\n"
+  - "### Core Sections (Use as Appropriate)\n\n- Social proof (logos, stats, testimonials)\n- Problem / pain articulation\n- Solution & key benefits (3–5 max)\n- How it works (3–4 steps)\n- Objection handling (FAQ, comparisons, guarantees)\n- Final CTA with recap and risk reduction\n\nAvoid stacking features without narrative flow.\n\n---\n\n"
+  - "## Phase 5 — Writing the Copy\n\nWhen writing copy, provide:\n\n"
+  - "### Page Copy\n\nOrganized by section with clear labels:\n\n- Headline\n- Subheadline\n- CTAs\n- Section headers\n- Body copy\n\n"
+  - "### Alternatives\n\nProvide 2–3 options for:\n\n- Headlines\n- Primary CTAs\n\nEach option must include a brief rationale.\n\n"
+  - "### Annotations\n\nFor key sections, explain:\n\n- Why this copy was chosen\n- Which principle it applies\n- What alternatives were considered\n\n---\n\n"
+  - "## Testability Guidance\n\nWrite copy with testing in mind:\n\n- Clear, isolated value propositions\n- Headlines and CTAs that can be A/B tested\n- Avoid combining multiple messages into one element\n\nIf the copy is intended for experimentation, recommend next-step testing.\n\n---\n\n"
+  - "## Completion Criteria (Hard Stop)\n\nThis skill is complete ONLY when:\n\n- Copy brief has been confirmed\n- Page copy is delivered in structured form\n- Headline and CTA alternatives are provided\n- Assumptions are documented\n- Copy is ready for review, editing, or testing\n\n---\n\n"
+  - "## Key Principles (Summary)\n\n- Understand before writing\n- Make assumptions explicit\n- One page, one goal\n- One section, one idea\n- Benefits before features\n- Honest claims only\n\n---\n\n"
+  - "## Final Reminder\n\nGood copy does not persuade everyone.\nIt persuades **the right person** to take **the right action**.\n\nIf the copy feels clever but unclear,  \nrewrite it until it feels obvious.\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

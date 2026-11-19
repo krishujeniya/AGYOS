@@ -4,201 +4,25 @@ description: "Documentation templates and structure guidelines. README, API docs
 risk: safe
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Documentation Templates
-
-> Templates and structure guidelines for common documentation types.
-
----
-
-## 1. README Structure
-
-### Essential Sections (Priority Order)
-
-| Section | Purpose |
-|---------|---------|
-| **Title + One-liner** | What is this? |
-| **Quick Start** | Running in <5 min |
-| **Features** | What can I do? |
-| **Configuration** | How to customize |
-| **API Reference** | Link to detailed docs |
-| **Contributing** | How to help |
-| **License** | Legal |
-
-### README Template
-
-```markdown
-# Project Name
-
-Brief one-line description.
-
-## Quick Start
-
-[Minimum steps to run]
-
-## Features
-
-- Feature 1
-- Feature 2
-
-## Configuration
-
-| Variable | Description | Default |
-|----------|-------------|---------|
-| PORT | Server port | 3000 |
-
-## Documentation
-
-- API Reference
-- Architecture
-
-## License
-
-MIT
-```
-
----
-
-## 2. API Documentation Structure
-
-### Per-Endpoint Template
-
-```markdown
-## GET /users/:id
-
-Get a user by ID.
-
-**Parameters:**
-| Name | Type | Required | Description |
-|------|------|----------|-------------|
-| id | string | Yes | User ID |
-
-**Response:**
-- 200: User object
-- 404: User not found
-
-**Example:**
-[Request and response example]
-```
-
----
-
-## 3. Code Comment Guidelines
-
-### JSDoc/TSDoc Template
-
-```typescript
-/**
- * Brief description of what the function does.
- * 
- * @param paramName - Description of parameter
- * @returns Description of return value
- * @throws ErrorType - When this error occurs
- * 
- * @example
- * const result = functionName(input);
- */
-```
-
-### When to Comment
-
-| ✅ Comment | ❌ Don't Comment |
-|-----------|-----------------|
-| Why (business logic) | What (obvious) |
-| Complex algorithms | Every line |
-| Non-obvious behavior | Self-explanatory code |
-| API contracts | Implementation details |
-
----
-
-## 4. Changelog Template (Keep a Changelog)
-
-```markdown
-# Changelog
-
-## [Unreleased]
-### Added
-- New feature
-
-## [1.0.0] - 2025-01-01
-### Added
-- Initial release
-### Changed
-- Updated dependency
-### Fixed
-- Bug fix
-```
-
----
-
-## 5. Architecture Decision Record (ADR)
-
-```markdown
-# ADR-001: [Title]
-
-## Status
-Accepted / Deprecated / Superseded
-
-## Context
-Why are we making this decision?
-
-## Decision
-What did we decide?
-
-## Consequences
-What are the trade-offs?
-```
-
----
-
-## 6. AI-Friendly Documentation (2025)
-
-### llms.txt Template
-
-For AI crawlers and agents:
-
-```markdown
-# Project Name
-> One-line objective.
-
-## Core Files
-- [src/index.ts]: Main entry
-- [src/api/]: API routes
-- [docs/]: Documentation
-
-## Key Concepts
-- Concept 1: Brief explanation
-- Concept 2: Brief explanation
-```
-
-### MCP-Ready Documentation
-
-For RAG indexing:
-- Clear H1-H3 hierarchy
-- JSON/YAML examples for data structures
-- Mermaid diagrams for flows
-- Self-contained sections
-
----
-
-## 7. Structure Principles
-
-| Principle | Why |
-|-----------|-----|
-| **Scannable** | Headers, lists, tables |
-| **Examples first** | Show, don't just tell |
-| **Progressive detail** | Simple → Complex |
-| **Up to date** | Outdated = misleading |
-
----
-
-> **Remember:** Templates are starting points. Adapt to your project's needs.
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "documentation-templates"
+sections[18]:
+  - "\n"
+  - "# Documentation Templates\n\n> Templates and structure guidelines for common documentation types.\n\n---\n\n"
+  - "## 1. README Structure\n\n"
+  - "### Essential Sections (Priority Order)\n\n| Section | Purpose |\n|---------|---------|\n| **Title + One-liner** | What is this? |\n| **Quick Start** | Running in <5 min |\n| **Features** | What can I do? |\n| **Configuration** | How to customize |\n| **API Reference** | Link to detailed docs |\n| **Contributing** | How to help |\n| **License** | Legal |\n\n"
+  - "### README Template\n\n```markdown\n# Project Name\n\nBrief one-line description.\n\n## Quick Start\n\n[Minimum steps to run]\n\n## Features\n\n- Feature 1\n- Feature 2\n\n## Configuration\n\n| Variable | Description | Default |\n|----------|-------------|---------|\n| PORT | Server port | 3000 |\n\n## Documentation\n\n- API Reference\n- Architecture\n\n## License\n\nMIT\n```\n\n---\n\n"
+  - "## 2. API Documentation Structure\n\n"
+  - "### Per-Endpoint Template\n\n```markdown\n## GET /users/:id\n\nGet a user by ID.\n\n**Parameters:**\n| Name | Type | Required | Description |\n|------|------|----------|-------------|\n| id | string | Yes | User ID |\n\n**Response:**\n- 200: User object\n- 404: User not found\n\n**Example:**\n[Request and response example]\n```\n\n---\n\n"
+  - "## 3. Code Comment Guidelines\n\n"
+  - "### JSDoc/TSDoc Template\n\n```typescript\n/**\n * Brief description of what the function does.\n * \n * @param paramName - Description of parameter\n * @returns Description of return value\n * @throws ErrorType - When this error occurs\n * \n * @example\n * const result = functionName(input);\n */\n```\n\n"
+  - "### When to Comment\n\n| ✅ Comment | ❌ Don't Comment |\n|-----------|-----------------|\n| Why (business logic) | What (obvious) |\n| Complex algorithms | Every line |\n| Non-obvious behavior | Self-explanatory code |\n| API contracts | Implementation details |\n\n---\n\n"
+  - "## 4. Changelog Template (Keep a Changelog)\n\n```markdown\n# Changelog\n\n## [Unreleased]\n### Added\n- New feature\n\n## [1.0.0] - 2025-01-01\n### Added\n- Initial release\n### Changed\n- Updated dependency\n### Fixed\n- Bug fix\n```\n\n---\n\n"
+  - "## 5. Architecture Decision Record (ADR)\n\n```markdown\n# ADR-001: [Title]\n\n## Status\nAccepted / Deprecated / Superseded\n\n## Context\nWhy are we making this decision?\n\n## Decision\nWhat did we decide?\n\n## Consequences\nWhat are the trade-offs?\n```\n\n---\n\n"
+  - "## 6. AI-Friendly Documentation (2025)\n\n"
+  - "### llms.txt Template\n\nFor AI crawlers and agents:\n\n```markdown\n# Project Name\n> One-line objective.\n\n## Core Files\n- [src/index.ts]: Main entry\n- [src/api/]: API routes\n- [docs/]: Documentation\n\n## Key Concepts\n- Concept 1: Brief explanation\n- Concept 2: Brief explanation\n```\n\n"
+  - "### MCP-Ready Documentation\n\nFor RAG indexing:\n- Clear H1-H3 hierarchy\n- JSON/YAML examples for data structures\n- Mermaid diagrams for flows\n- Self-contained sections\n\n---\n\n"
+  - "## 7. Structure Principles\n\n| Principle | Why |\n|-----------|-----|\n| **Scannable** | Headers, lists, tables |\n| **Examples first** | Show, don't just tell |\n| **Progressive detail** | Simple → Complex |\n| **Up to date** | Outdated = misleading |\n\n---\n\n> **Remember:** Templates are starting points. Adapt to your project's needs.\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

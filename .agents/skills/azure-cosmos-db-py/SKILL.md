@@ -4,246 +4,31 @@ description: "Build production-grade Azure Cosmos DB NoSQL services following cl
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Cosmos DB Service Implementation
-
-Build production-grade Azure Cosmos DB NoSQL services following clean code, security best practices, and TDD principles.
-
-## Installation
-
-```bash
-pip install azure-cosmos azure-identity
-```
-
-## Environment Variables
-
-```bash
-COSMOS_ENDPOINT=https://<account>.documents.azure.com:443/
-COSMOS_DATABASE_NAME=<database-name>
-COSMOS_CONTAINER_ID=<container-id>
-# For emulator only (not production)
-COSMOS_KEY=<emulator-key>
-```
-
-## Authentication
-
-**DefaultAzureCredential (preferred)**:
-```python
-from azure.cosmos import CosmosClient
-from azure.identity import DefaultAzureCredential
-
-client = CosmosClient(
-    url=os.environ["COSMOS_ENDPOINT"],
-    credential=DefaultAzureCredential()
-)
-```
-
-**Emulator (local development)**:
-```python
-from azure.cosmos import CosmosClient
-
-client = CosmosClient(
-    url="https://localhost:8081",
-    credential=os.environ["COSMOS_KEY"],
-    connection_verify=False
-)
-```
-
-## Architecture Overview
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                         FastAPI Router                          │
-│  - Auth dependencies (get_current_user, get_current_user_required)
-│  - HTTP error responses (HTTPException)                         │
-└──────────────────────────────┬──────────────────────────────────┘
-                               │
-┌──────────────────────────────▼──────────────────────────────────┐
-│                        Service Layer                            │
-│  - Business logic and validation                                │
-│  - Document ↔ Model conversion                                  │
-│  - Graceful degradation when Cosmos unavailable                 │
-└──────────────────────────────┬──────────────────────────────────┘
-                               │
-┌──────────────────────────────▼──────────────────────────────────┐
-│                     Cosmos DB Client Module                     │
-│  - Singleton container initialization                           │
-│  - Dual auth: DefaultAzureCredential (Azure) / Key (emulator)   │
-│  - Async wrapper via run_in_threadpool                          │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-## Quick Start
-
-### 1. Client Module Setup
-
-Create a singleton Cosmos client with dual authentication:
-
-```python
-# db/cosmos.py
-from azure.cosmos import CosmosClient
-from azure.identity import DefaultAzureCredential
-from starlette.concurrency import run_in_threadpool
-
-_cosmos_container = None
-
-def _is_emulator_endpoint(endpoint: str) -> bool:
-    return "localhost" in endpoint or "127.0.0.1" in endpoint
-
-async def get_container():
-    global _cosmos_container
-    if _cosmos_container is None:
-        if _is_emulator_endpoint(settings.cosmos_endpoint):
-            client = CosmosClient(
-                url=settings.cosmos_endpoint,
-                credential=settings.cosmos_key,
-                connection_verify=False
-            )
-        else:
-            client = CosmosClient(
-                url=settings.cosmos_endpoint,
-                credential=DefaultAzureCredential()
-            )
-        db = client.get_database_client(settings.cosmos_database_name)
-        _cosmos_container = db.get_container_client(settings.cosmos_container_id)
-    return _cosmos_container
-```
-
-**Full implementation**: See references/client-setup.md
-
-### 2. Pydantic Model Hierarchy
-
-Use five-tier model pattern for clean separation:
-
-```python
-class ProjectBase(BaseModel):           # Shared fields
-    name: str = Field(..., min_length=1, max_length=200)
-
-class ProjectCreate(ProjectBase):       # Creation request
-    workspace_id: str = Field(..., alias="workspaceId")
-
-class ProjectUpdate(BaseModel):         # Partial updates (all optional)
-    name: Optional[str] = Field(None, min_length=1)
-
-class Project(ProjectBase):             # API response
-    id: str
-    created_at: datetime = Field(..., alias="createdAt")
-
-class ProjectInDB(Project):             # Internal with docType
-    doc_type: str = "project"
-```
-
-### 3. Service Layer Pattern
-
-```python
-class ProjectService:
-    def _use_cosmos(self) -> bool:
-        return get_container() is not None
-    
-    async def get_by_id(self, project_id: str, workspace_id: str) -> Project | None:
-        if not self._use_cosmos():
-            return None
-        doc = await get_document(project_id, partition_key=workspace_id)
-        if doc is None:
-            return None
-        return self._doc_to_model(doc)
-```
-
-**Full patterns**: See references/service-layer.md
-
-## Core Principles
-
-### Security Requirements
-
-1. **RBAC Authentication**: Use `DefaultAzureCredential` in Azure — never store keys in code
-2. **Emulator-Only Keys**: Hardcode the well-known emulator key only for local development
-3. **Parameterized Queries**: Always use `@parameter` syntax — never string concatenation
-4. **Partition Key Validation**: Validate partition key access matches user authorization
-
-### Clean Code Conventions
-
-1. **Single Responsibility**: Client module handles connection; services handle business logic
-2. **Graceful Degradation**: Services return `None`/`[]` when Cosmos unavailable
-3. **Consistent Naming**: `_doc_to_model()`, `_model_to_doc()`, `_use_cosmos()`
-4. **Type Hints**: Full typing on all public methods
-5. **CamelCase Aliases**: Use `Field(alias="camelCase")` for JSON serialization
-
-### TDD Requirements
-
-Write tests BEFORE implementation using these patterns:
-
-```python
-@pytest.fixture
-def mock_cosmos_container(mocker):
-    container = mocker.MagicMock()
-    mocker.patch("app.db.cosmos.get_container", return_value=container)
-    return container
-
-@pytest.mark.asyncio
-async def test_get_project_by_id_returns_project(mock_cosmos_container):
-    # Arrange
-    mock_cosmos_container.read_item.return_value = {"id": "123", "name": "Test"}
-    
-    # Act
-    result = await project_service.get_by_id("123", "workspace-1")
-    
-    # Assert
-    assert result.id == "123"
-    assert result.name == "Test"
-```
-
-**Full testing guide**: See references/testing.md
-
-## Reference Files
-
-| File | When to Read |
-|------|--------------|
-| references/client-setup.md | Setting up Cosmos client with dual auth, SSL config, singleton pattern |
-| references/service-layer.md | Implementing full service class with CRUD, conversions, graceful degradation |
-| references/testing.md | Writing pytest tests, mocking Cosmos, integration test setup |
-| references/partitioning.md | Choosing partition keys, cross-partition queries, move operations |
-| references/error-handling.md | Handling CosmosResourceNotFoundError, logging, HTTP error mapping |
-
-## Template Files
-
-| File | Purpose |
-|------|---------|
-| assets/cosmos_client_template.py | Ready-to-use client module |
-| assets/service_template.py | Service class skeleton |
-| assets/conftest_template.py | pytest fixtures for Cosmos mocking |
-
-## Quality Attributes (NFRs)
-
-### Reliability
-- Graceful degradation when Cosmos unavailable
-- Retry logic with exponential backoff for transient failures
-- Connection pooling via singleton pattern
-
-### Security
-- Zero secrets in code (RBAC via DefaultAzureCredential)
-- Parameterized queries prevent injection
-- Partition key isolation enforces data boundaries
-
-### Maintainability
-- Five-tier model pattern enables schema evolution
-- Service layer decouples business logic from storage
-- Consistent patterns across all entity services
-
-### Testability
-- Dependency injection via `get_container()`
-- Easy mocking with module-level globals
-- Clear separation enables unit testing without Cosmos
-
-### Performance
-- Partition key queries avoid cross-partition scans
-- Async wrapping prevents blocking FastAPI event loop
-- Minimal document conversion overhead
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "azure-cosmos-db-py"
+sections[24]:
+  - "\n"
+  - "# Cosmos DB Service Implementation\n\nBuild production-grade Azure Cosmos DB NoSQL services following clean code, security best practices, and TDD principles.\n\n"
+  - "## Installation\n\n```bash\npip install azure-cosmos azure-identity\n```\n\n"
+  - "## Environment Variables\n\n```bash\nCOSMOS_ENDPOINT=https://<account>.documents.azure.com:443/\nCOSMOS_DATABASE_NAME=<database-name>\nCOSMOS_CONTAINER_ID=<container-id>\n# For emulator only (not production)\nCOSMOS_KEY=<emulator-key>\n```\n\n"
+  - "## Authentication\n\n**DefaultAzureCredential (preferred)**:\n```python\nfrom azure.cosmos import CosmosClient\nfrom azure.identity import DefaultAzureCredential\n\nclient = CosmosClient(\n    url=os.environ[\"COSMOS_ENDPOINT\"],\n    credential=DefaultAzureCredential()\n)\n```\n\n**Emulator (local development)**:\n```python\nfrom azure.cosmos import CosmosClient\n\nclient = CosmosClient(\n    url=\"https://localhost:8081\",\n    credential=os.environ[\"COSMOS_KEY\"],\n    connection_verify=False\n)\n```\n\n"
+  - "## Architecture Overview\n\n```\n┌─────────────────────────────────────────────────────────────────┐\n│                         FastAPI Router                          │\n│  - Auth dependencies (get_current_user, get_current_user_required)\n│  - HTTP error responses (HTTPException)                         │\n└──────────────────────────────┬──────────────────────────────────┘\n                               │\n┌──────────────────────────────▼──────────────────────────────────┐\n│                        Service Layer                            │\n│  - Business logic and validation                                │\n│  - Document ↔ Model conversion                                  │\n│  - Graceful degradation when Cosmos unavailable                 │\n└──────────────────────────────┬──────────────────────────────────┘\n                               │\n┌──────────────────────────────▼──────────────────────────────────┐\n│                     Cosmos DB Client Module                     │\n│  - Singleton container initialization                           │\n│  - Dual auth: DefaultAzureCredential (Azure) / Key (emulator)   │\n│  - Async wrapper via run_in_threadpool                          │\n└─────────────────────────────────────────────────────────────────┘\n```\n\n"
+  - "## Quick Start\n\n"
+  - "### 1. Client Module Setup\n\nCreate a singleton Cosmos client with dual authentication:\n\n```python\n# db/cosmos.py\nfrom azure.cosmos import CosmosClient\nfrom azure.identity import DefaultAzureCredential\nfrom starlette.concurrency import run_in_threadpool\n\n_cosmos_container = None\n\ndef _is_emulator_endpoint(endpoint: str) -> bool:\n    return \"localhost\" in endpoint or \"127.0.0.1\" in endpoint\n\nasync def get_container():\n    global _cosmos_container\n    if _cosmos_container is None:\n        if _is_emulator_endpoint(settings.cosmos_endpoint):\n            client = CosmosClient(\n                url=settings.cosmos_endpoint,\n                credential=settings.cosmos_key,\n                connection_verify=False\n            )\n        else:\n            client = CosmosClient(\n                url=settings.cosmos_endpoint,\n                credential=DefaultAzureCredential()\n            )\n        db = client.get_database_client(settings.cosmos_database_name)\n        _cosmos_container = db.get_container_client(settings.cosmos_container_id)\n    return _cosmos_container\n```\n\n**Full implementation**: See references/client-setup.md\n\n"
+  - "### 2. Pydantic Model Hierarchy\n\nUse five-tier model pattern for clean separation:\n\n```python\nclass ProjectBase(BaseModel):           # Shared fields\n    name: str = Field(..., min_length=1, max_length=200)\n\nclass ProjectCreate(ProjectBase):       # Creation request\n    workspace_id: str = Field(..., alias=\"workspaceId\")\n\nclass ProjectUpdate(BaseModel):         # Partial updates (all optional)\n    name: Optional[str] = Field(None, min_length=1)\n\nclass Project(ProjectBase):             # API response\n    id: str\n    created_at: datetime = Field(..., alias=\"createdAt\")\n\nclass ProjectInDB(Project):             # Internal with docType\n    doc_type: str = \"project\"\n```\n\n"
+  - "### 3. Service Layer Pattern\n\n```python\nclass ProjectService:\n    def _use_cosmos(self) -> bool:\n        return get_container() is not None\n    \n    async def get_by_id(self, project_id: str, workspace_id: str) -> Project | None:\n        if not self._use_cosmos():\n            return None\n        doc = await get_document(project_id, partition_key=workspace_id)\n        if doc is None:\n            return None\n        return self._doc_to_model(doc)\n```\n\n**Full patterns**: See references/service-layer.md\n\n"
+  - "## Core Principles\n\n"
+  - "### Security Requirements\n\n1. **RBAC Authentication**: Use `DefaultAzureCredential` in Azure — never store keys in code\n2. **Emulator-Only Keys**: Hardcode the well-known emulator key only for local development\n3. **Parameterized Queries**: Always use `@parameter` syntax — never string concatenation\n4. **Partition Key Validation**: Validate partition key access matches user authorization\n\n"
+  - "### Clean Code Conventions\n\n1. **Single Responsibility**: Client module handles connection; services handle business logic\n2. **Graceful Degradation**: Services return `None`/`[]` when Cosmos unavailable\n3. **Consistent Naming**: `_doc_to_model()`, `_model_to_doc()`, `_use_cosmos()`\n4. **Type Hints**: Full typing on all public methods\n5. **CamelCase Aliases**: Use `Field(alias=\"camelCase\")` for JSON serialization\n\n"
+  - "### TDD Requirements\n\nWrite tests BEFORE implementation using these patterns:\n\n```python\n@pytest.fixture\ndef mock_cosmos_container(mocker):\n    container = mocker.MagicMock()\n    mocker.patch(\"app.db.cosmos.get_container\", return_value=container)\n    return container\n\n@pytest.mark.asyncio\nasync def test_get_project_by_id_returns_project(mock_cosmos_container):\n    # Arrange\n    mock_cosmos_container.read_item.return_value = {\"id\": \"123\", \"name\": \"Test\"}\n    \n    # Act\n    result = await project_service.get_by_id(\"123\", \"workspace-1\")\n    \n    # Assert\n    assert result.id == \"123\"\n    assert result.name == \"Test\"\n```\n\n**Full testing guide**: See references/testing.md\n\n"
+  - "## Reference Files\n\n| File | When to Read |\n|------|--------------|\n| references/client-setup.md | Setting up Cosmos client with dual auth, SSL config, singleton pattern |\n| references/service-layer.md | Implementing full service class with CRUD, conversions, graceful degradation |\n| references/testing.md | Writing pytest tests, mocking Cosmos, integration test setup |\n| references/partitioning.md | Choosing partition keys, cross-partition queries, move operations |\n| references/error-handling.md | Handling CosmosResourceNotFoundError, logging, HTTP error mapping |\n\n"
+  - "## Template Files\n\n| File | Purpose |\n|------|---------|\n| assets/cosmos_client_template.py | Ready-to-use client module |\n| assets/service_template.py | Service class skeleton |\n| assets/conftest_template.py | pytest fixtures for Cosmos mocking |\n\n"
+  - "## Quality Attributes (NFRs)\n\n"
+  - "### Reliability\n- Graceful degradation when Cosmos unavailable\n- Retry logic with exponential backoff for transient failures\n- Connection pooling via singleton pattern\n\n"
+  - "### Security\n- Zero secrets in code (RBAC via DefaultAzureCredential)\n- Parameterized queries prevent injection\n- Partition key isolation enforces data boundaries\n\n"
+  - "### Maintainability\n- Five-tier model pattern enables schema evolution\n- Service layer decouples business logic from storage\n- Consistent patterns across all entity services\n\n"
+  - "### Testability\n- Dependency injection via `get_container()`\n- Easy mocking with module-level globals\n- Clear separation enables unit testing without Cosmos\n\n"
+  - "### Performance\n- Partition key queries avoid cross-partition scans\n- Async wrapping prevents blocking FastAPI event loop\n- Minimal document conversion overhead\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

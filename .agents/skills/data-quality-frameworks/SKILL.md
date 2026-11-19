@@ -4,45 +4,15 @@ description: "Implement data quality validation with Great Expectations, dbt tes
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Data Quality Frameworks
-
-Production patterns for implementing data quality with Great Expectations, dbt tests, and data contracts to ensure reliable data pipelines.
-
-## Use this skill when
-
-- Implementing data quality checks in pipelines
-- Setting up Great Expectations validation
-- Building comprehensive dbt test suites
-- Establishing data contracts between teams
-- Monitoring data quality metrics
-- Automating data validation in CI/CD
-
-## Do not use this skill when
-
-- The data sources are undefined or unavailable
-- You cannot modify validation rules or schemas
-- The task is unrelated to data quality or contracts
-
-## Instructions
-
-- Identify critical datasets and quality dimensions.
-- Define expectations/tests and contract rules.
-- Automate validation in CI/CD and schedule checks.
-- Set alerting, ownership, and remediation steps.
-- If detailed patterns are required, open `resources/implementation-playbook.md`.
-
-## Safety
-
-- Avoid blocking critical pipelines without a fallback plan.
-- Handle sensitive data securely in validation outputs.
-
-## Resources
-
-- `resources/implementation-playbook.md` for detailed frameworks, templates, and examples.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "data-quality-frameworks"
+sections[8]:
+  - "\n"
+  - "# Data Quality Frameworks\n\nProduction patterns for implementing data quality with Great Expectations, dbt tests, and data contracts to ensure reliable data pipelines.\n\n"
+  - "## Use this skill when\n\n- Implementing data quality checks in pipelines\n- Setting up Great Expectations validation\n- Building comprehensive dbt test suites\n- Establishing data contracts between teams\n- Monitoring data quality metrics\n- Automating data validation in CI/CD\n\n"
+  - "## Do not use this skill when\n\n- The data sources are undefined or unavailable\n- You cannot modify validation rules or schemas\n- The task is unrelated to data quality or contracts\n\n"
+  - "## Instructions\n\n- Identify critical datasets and quality dimensions.\n- Define expectations/tests and contract rules.\n- Automate validation in CI/CD and schedule checks.\n- Set alerting, ownership, and remediation steps.\n- If detailed patterns are required, open `resources/implementation-playbook.md`.\n\n"
+  - "## Safety\n\n- Avoid blocking critical pipelines without a fallback plan.\n- Handle sensitive data securely in validation outputs.\n\n"
+  - "## Resources\n\n- `resources/implementation-playbook.md` for detailed frameworks, templates, and examples.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

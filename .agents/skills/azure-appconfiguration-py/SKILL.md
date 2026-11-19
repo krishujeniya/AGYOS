@@ -4,254 +4,36 @@ description: Azure App Configuration SDK for Python. Use for centralized configu
 risk: unknown
 source: community
 date_added: '2026-02-27'
+prompt-source: prompt.toon
 ---
-
-# Azure App Configuration SDK for Python
-
-Centralized configuration management with feature flags and dynamic settings.
-
-## Installation
-
-```bash
-pip install azure-appconfiguration
-```
-
-## Environment Variables
-
-```bash
-AZURE_APPCONFIGURATION_CONNECTION_STRING=Endpoint=https://<name>.azconfig.io;Id=...;Secret=...
-# Or for Entra ID:
-AZURE_APPCONFIGURATION_ENDPOINT=https://<name>.azconfig.io
-```
-
-## Authentication
-
-### Connection String
-
-```python
-from azure.appconfiguration import AzureAppConfigurationClient
-
-client = AzureAppConfigurationClient.from_connection_string(
-    os.environ["AZURE_APPCONFIGURATION_CONNECTION_STRING"]
-)
-```
-
-### Entra ID
-
-```python
-from azure.appconfiguration import AzureAppConfigurationClient
-from azure.identity import DefaultAzureCredential
-
-client = AzureAppConfigurationClient(
-    base_url=os.environ["AZURE_APPCONFIGURATION_ENDPOINT"],
-    credential=DefaultAzureCredential()
-)
-```
-
-## Configuration Settings
-
-### Get Setting
-
-```python
-setting = client.get_configuration_setting(key="app:settings:message")
-print(f"{setting.key} = {setting.value}")
-```
-
-### Get with Label
-
-```python
-# Labels allow environment-specific values
-setting = client.get_configuration_setting(
-    key="app:settings:message",
-    label="production"
-)
-```
-
-### Set Setting
-
-```python
-from azure.appconfiguration import ConfigurationSetting
-
-setting = ConfigurationSetting(
-    key="app:settings:message",
-    value="Hello, World!",
-    label="development",
-    content_type="text/plain",
-    tags={"environment": "dev"}
-)
-
-client.set_configuration_setting(setting)
-```
-
-### Delete Setting
-
-```python
-client.delete_configuration_setting(
-    key="app:settings:message",
-    label="development"
-)
-```
-
-## List Settings
-
-### All Settings
-
-```python
-settings = client.list_configuration_settings()
-for setting in settings:
-    print(f"{setting.key} [{setting.label}] = {setting.value}")
-```
-
-### Filter by Key Prefix
-
-```python
-settings = client.list_configuration_settings(
-    key_filter="app:settings:*"
-)
-```
-
-### Filter by Label
-
-```python
-settings = client.list_configuration_settings(
-    label_filter="production"
-)
-```
-
-## Feature Flags
-
-### Set Feature Flag
-
-```python
-from azure.appconfiguration import ConfigurationSetting
-import json
-
-feature_flag = ConfigurationSetting(
-    key=".appconfig.featureflag/beta-feature",
-    value=json.dumps({
-        "id": "beta-feature",
-        "enabled": True,
-        "conditions": {
-            "client_filters": []
-        }
-    }),
-    content_type="application/vnd.microsoft.appconfig.ff+json;charset=utf-8"
-)
-
-client.set_configuration_setting(feature_flag)
-```
-
-### Get Feature Flag
-
-```python
-setting = client.get_configuration_setting(
-    key=".appconfig.featureflag/beta-feature"
-)
-flag_data = json.loads(setting.value)
-print(f"Feature enabled: {flag_data['enabled']}")
-```
-
-### List Feature Flags
-
-```python
-flags = client.list_configuration_settings(
-    key_filter=".appconfig.featureflag/*"
-)
-for flag in flags:
-    data = json.loads(flag.value)
-    print(f"{data['id']}: {'enabled' if data['enabled'] else 'disabled'}")
-```
-
-## Read-Only Settings
-
-```python
-# Make setting read-only
-client.set_read_only(
-    configuration_setting=setting,
-    read_only=True
-)
-
-# Remove read-only
-client.set_read_only(
-    configuration_setting=setting,
-    read_only=False
-)
-```
-
-## Snapshots
-
-### Create Snapshot
-
-```python
-from azure.appconfiguration import ConfigurationSnapshot, ConfigurationSettingFilter
-
-snapshot = ConfigurationSnapshot(
-    name="v1-snapshot",
-    filters=[
-        ConfigurationSettingFilter(key="app:*", label="production")
-    ]
-)
-
-created = client.begin_create_snapshot(
-    name="v1-snapshot",
-    snapshot=snapshot
-).result()
-```
-
-### List Snapshot Settings
-
-```python
-settings = client.list_configuration_settings(
-    snapshot_name="v1-snapshot"
-)
-```
-
-## Async Client
-
-```python
-from azure.appconfiguration.aio import AzureAppConfigurationClient
-from azure.identity.aio import DefaultAzureCredential
-
-async def main():
-    credential = DefaultAzureCredential()
-    client = AzureAppConfigurationClient(
-        base_url=endpoint,
-        credential=credential
-    )
-    
-    setting = await client.get_configuration_setting(key="app:message")
-    print(setting.value)
-    
-    await client.close()
-    await credential.close()
-```
-
-## Client Operations
-
-| Operation | Description |
-|-----------|-------------|
-| `get_configuration_setting` | Get single setting |
-| `set_configuration_setting` | Create or update setting |
-| `delete_configuration_setting` | Delete setting |
-| `list_configuration_settings` | List with filters |
-| `set_read_only` | Lock/unlock setting |
-| `begin_create_snapshot` | Create point-in-time snapshot |
-| `list_snapshots` | List all snapshots |
-
-## Best Practices
-
-1. **Use labels** for environment separation (dev, staging, prod)
-2. **Use key prefixes** for logical grouping (app:database:*, app:cache:*)
-3. **Make production settings read-only** to prevent accidental changes
-4. **Create snapshots** before deployments for rollback capability
-5. **Use Entra ID** instead of connection strings in production
-6. **Refresh settings periodically** in long-running applications
-7. **Use feature flags** for gradual rollouts and A/B testing
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "azure-appconfiguration-py"
+sections[29]:
+  - "\n"
+  - "# Azure App Configuration SDK for Python\n\nCentralized configuration management with feature flags and dynamic settings.\n\n"
+  - "## Installation\n\n```bash\npip install azure-appconfiguration\n```\n\n"
+  - "## Environment Variables\n\n```bash\nAZURE_APPCONFIGURATION_CONNECTION_STRING=Endpoint=https://<name>.azconfig.io;Id=...;Secret=...\n# Or for Entra ID:\nAZURE_APPCONFIGURATION_ENDPOINT=https://<name>.azconfig.io\n```\n\n"
+  - "## Authentication\n\n"
+  - "### Connection String\n\n```python\nfrom azure.appconfiguration import AzureAppConfigurationClient\n\nclient = AzureAppConfigurationClient.from_connection_string(\n    os.environ[\"AZURE_APPCONFIGURATION_CONNECTION_STRING\"]\n)\n```\n\n"
+  - "### Entra ID\n\n```python\nfrom azure.appconfiguration import AzureAppConfigurationClient\nfrom azure.identity import DefaultAzureCredential\n\nclient = AzureAppConfigurationClient(\n    base_url=os.environ[\"AZURE_APPCONFIGURATION_ENDPOINT\"],\n    credential=DefaultAzureCredential()\n)\n```\n\n"
+  - "## Configuration Settings\n\n"
+  - "### Get Setting\n\n```python\nsetting = client.get_configuration_setting(key=\"app:settings:message\")\nprint(f\"{setting.key} = {setting.value}\")\n```\n\n"
+  - "### Get with Label\n\n```python\n# Labels allow environment-specific values\nsetting = client.get_configuration_setting(\n    key=\"app:settings:message\",\n    label=\"production\"\n)\n```\n\n"
+  - "### Set Setting\n\n```python\nfrom azure.appconfiguration import ConfigurationSetting\n\nsetting = ConfigurationSetting(\n    key=\"app:settings:message\",\n    value=\"Hello, World!\",\n    label=\"development\",\n    content_type=\"text/plain\",\n    tags={\"environment\": \"dev\"}\n)\n\nclient.set_configuration_setting(setting)\n```\n\n"
+  - "### Delete Setting\n\n```python\nclient.delete_configuration_setting(\n    key=\"app:settings:message\",\n    label=\"development\"\n)\n```\n\n"
+  - "## List Settings\n\n"
+  - "### All Settings\n\n```python\nsettings = client.list_configuration_settings()\nfor setting in settings:\n    print(f\"{setting.key} [{setting.label}] = {setting.value}\")\n```\n\n"
+  - "### Filter by Key Prefix\n\n```python\nsettings = client.list_configuration_settings(\n    key_filter=\"app:settings:*\"\n)\n```\n\n"
+  - "### Filter by Label\n\n```python\nsettings = client.list_configuration_settings(\n    label_filter=\"production\"\n)\n```\n\n"
+  - "## Feature Flags\n\n"
+  - "### Set Feature Flag\n\n```python\nfrom azure.appconfiguration import ConfigurationSetting\nimport json\n\nfeature_flag = ConfigurationSetting(\n    key=\".appconfig.featureflag/beta-feature\",\n    value=json.dumps({\n        \"id\": \"beta-feature\",\n        \"enabled\": True,\n        \"conditions\": {\n            \"client_filters\": []\n        }\n    }),\n    content_type=\"application/vnd.microsoft.appconfig.ff+json;charset=utf-8\"\n)\n\nclient.set_configuration_setting(feature_flag)\n```\n\n"
+  - "### Get Feature Flag\n\n```python\nsetting = client.get_configuration_setting(\n    key=\".appconfig.featureflag/beta-feature\"\n)\nflag_data = json.loads(setting.value)\nprint(f\"Feature enabled: {flag_data['enabled']}\")\n```\n\n"
+  - "### List Feature Flags\n\n```python\nflags = client.list_configuration_settings(\n    key_filter=\".appconfig.featureflag/*\"\n)\nfor flag in flags:\n    data = json.loads(flag.value)\n    print(f\"{data['id']}: {'enabled' if data['enabled'] else 'disabled'}\")\n```\n\n"
+  - "## Read-Only Settings\n\n```python\n# Make setting read-only\nclient.set_read_only(\n    configuration_setting=setting,\n    read_only=True\n)\n\n# Remove read-only\nclient.set_read_only(\n    configuration_setting=setting,\n    read_only=False\n)\n```\n\n"
+  - "## Snapshots\n\n"
+  - "### Create Snapshot\n\n```python\nfrom azure.appconfiguration import ConfigurationSnapshot, ConfigurationSettingFilter\n\nsnapshot = ConfigurationSnapshot(\n    name=\"v1-snapshot\",\n    filters=[\n        ConfigurationSettingFilter(key=\"app:*\", label=\"production\")\n    ]\n)\n\ncreated = client.begin_create_snapshot(\n    name=\"v1-snapshot\",\n    snapshot=snapshot\n).result()\n```\n\n"
+  - "### List Snapshot Settings\n\n```python\nsettings = client.list_configuration_settings(\n    snapshot_name=\"v1-snapshot\"\n)\n```\n\n"
+  - "## Async Client\n\n```python\nfrom azure.appconfiguration.aio import AzureAppConfigurationClient\nfrom azure.identity.aio import DefaultAzureCredential\n\nasync def main():\n    credential = DefaultAzureCredential()\n    client = AzureAppConfigurationClient(\n        base_url=endpoint,\n        credential=credential\n    )\n    \n    setting = await client.get_configuration_setting(key=\"app:message\")\n    print(setting.value)\n    \n    await client.close()\n    await credential.close()\n```\n\n"
+  - "## Client Operations\n\n| Operation | Description |\n|-----------|-------------|\n| `get_configuration_setting` | Get single setting |\n| `set_configuration_setting` | Create or update setting |\n| `delete_configuration_setting` | Delete setting |\n| `list_configuration_settings` | List with filters |\n| `set_read_only` | Lock/unlock setting |\n| `begin_create_snapshot` | Create point-in-time snapshot |\n| `list_snapshots` | List all snapshots |\n\n"
+  - "## Best Practices\n\n1. **Use labels** for environment separation (dev, staging, prod)\n2. **Use key prefixes** for logical grouping (app:database:*, app:cache:*)\n3. **Make production settings read-only** to prevent accidental changes\n4. **Create snapshots** before deployments for rollback capability\n5. **Use Entra ID** instead of connection strings in production\n6. **Refresh settings periodically** in long-running applications\n7. **Use feature flags** for gradual rollouts and A/B testing\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

@@ -37,15 +37,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: Prepare skill migration patch
-        run: |
-          python scripts/migrate_skill_prompts.py
-          git add -N -- .agents/skills
-          git diff --binary -- .agents/skills > "$RUNNER_TEMP/skills.patch"
-      - uses: actions/upload-artifact@v7
-        with:
-          name: toon-migration
-          path: ${{ runner.temp }}/skills.patch
       - name: Verify full TOON skill catalog and scout delivery
         run: node scripts/agyos-runtime/ci/check-toon-prompts.mjs
       - name: Generate and audit SBOM license compliance

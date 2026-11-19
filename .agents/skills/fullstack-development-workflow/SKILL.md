@@ -5,263 +5,49 @@ category: workflow-bundle
 risk: safe
 source: personal
 date_added: '2026-02-27'
+prompt-source: prompt.toon
 ---
-
-# Development Workflow Bundle
-
-## Overview
-
-Consolidated workflow for end-to-end software development covering web, mobile, and backend development. This bundle orchestrates skills for building production-ready applications from scaffolding to deployment.
-
-## When to Use This Workflow
-
-Use this workflow when:
-- Building new web or mobile applications
-- Adding features to existing applications
-- Refactoring or modernizing legacy code
-- Setting up new projects with best practices
-- Full-stack feature development
-- Cross-platform application development
-
-## Workflow Phases
-
-### Phase 1: Project Setup and Scaffolding
-
-#### Skills to Invoke
-- `app-builder` - Main application building orchestrator
-- `senior-fullstack` - Full-stack development guidance
-- `environment-setup-guide` - Development environment setup
-- `concise-planning` - Task planning and breakdown
-
-#### Actions
-1. Determine project type (web, mobile, full-stack)
-2. Select technology stack
-3. Scaffold project structure
-4. Configure development environment
-5. Set up version control and CI/CD
-
-#### Copy-Paste Prompts
-```
-Use @app-builder to scaffold a new React + Node.js full-stack application
-```
-
-```
-Use @senior-fullstack to set up a Next.js 14 project with App Router
-```
-
-```
-Use @environment-setup-guide to configure my development environment
-```
-
-### Phase 2: Frontend Development
-
-#### Skills to Invoke
-- `frontend-developer` - React/Next.js component development
-- `frontend-design` - UI/UX design implementation
-- `react-patterns` - Modern React patterns
-- `typescript-pro` - TypeScript best practices
-- `tailwind-patterns` - Tailwind CSS styling
-- `nextjs-app-router-patterns` - Next.js 14+ patterns
-
-#### Actions
-1. Design component architecture
-2. Implement UI components
-3. Set up state management
-4. Configure routing
-5. Apply styling and theming
-6. Implement responsive design
-
-#### Copy-Paste Prompts
-```
-Use @frontend-developer to create a dashboard component with React and TypeScript
-```
-
-```
-Use @react-patterns to implement proper state management with Zustand
-```
-
-```
-Use @tailwind-patterns to style components with a consistent design system
-```
-
-### Phase 3: Backend Development
-
-#### Skills to Invoke
-- `backend-architect` - Backend architecture design
-- `backend-dev-guidelines` - Backend development standards
-- `nodejs-backend-patterns` - Node.js/Express patterns
-- `fastapi-pro` - FastAPI development
-- `api-design-principles` - REST/GraphQL API design
-- `auth-implementation-patterns` - Authentication implementation
-
-#### Actions
-1. Design API architecture
-2. Implement REST/GraphQL endpoints
-3. Set up database connections
-4. Implement authentication/authorization
-5. Configure middleware
-6. Set up error handling
-
-#### Copy-Paste Prompts
-```
-Use @backend-architect to design a microservices architecture for my application
-```
-
-```
-Use @nodejs-backend-patterns to create Express.js API endpoints
-```
-
-```
-Use @auth-implementation-patterns to implement JWT authentication
-```
-
-### Phase 4: Database Development
-
-#### Skills to Invoke
-- `database-architect` - Database design
-- `database-design` - Schema design principles
-- `prisma-expert` - Prisma ORM
-- `postgresql` - PostgreSQL optimization
-- `neon-postgres` - Serverless Postgres
-
-#### Actions
-1. Design database schema
-2. Create migrations
-3. Set up ORM
-4. Optimize queries
-5. Configure connection pooling
-
-#### Copy-Paste Prompts
-```
-Use @database-architect to design a normalized schema for an e-commerce platform
-```
-
-```
-Use @prisma-expert to set up Prisma ORM with TypeScript
-```
-
-### Phase 5: Testing
-
-#### Skills to Invoke
-- `test-driven-development` - TDD workflow
-- `javascript-testing-patterns` - Jest/Vitest testing
-- `python-testing-patterns` - pytest testing
-- `e2e-testing-patterns` - Playwright/Cypress E2E
-- `playwright-skill` - Browser automation testing
-
-#### Actions
-1. Write unit tests
-2. Create integration tests
-3. Set up E2E tests
-4. Configure CI test runners
-5. Achieve coverage targets
-
-#### Copy-Paste Prompts
-```
-Use @test-driven-development to implement features with TDD
-```
-
-```
-Use @playwright-skill to create E2E tests for critical user flows
-```
-
-### Phase 6: Code Quality and Review
-
-#### Skills to Invoke
-- `code-reviewer` - AI-powered code review
-- `clean-code` - Clean code principles
-- `lint-and-validate` - Linting and validation
-- `security-scanning-security-sast` - Static security analysis
-
-#### Actions
-1. Run linters and formatters
-2. Perform code review
-3. Fix code quality issues
-4. Run security scans
-5. Address vulnerabilities
-
-#### Copy-Paste Prompts
-```
-Use @code-reviewer to review my pull request
-```
-
-```
-Use @lint-and-validate to check code quality
-```
-
-### Phase 7: Build and Deployment
-
-#### Skills to Invoke
-- `deployment-engineer` - Deployment orchestration
-- `docker-expert` - Containerization
-- `vercel-deployment` - Vercel deployment
-- `github-actions-templates` - CI/CD workflows
-- `cicd-automation-workflow-automate` - CI/CD automation
-
-#### Actions
-1. Create Dockerfiles
-2. Configure build pipelines
-3. Set up deployment workflows
-4. Configure environment variables
-5. Deploy to production
-
-#### Copy-Paste Prompts
-```
-Use @docker-expert to containerize my application
-```
-
-```
-Use @vercel-deployment to deploy my Next.js app to production
-```
-
-```
-Use @github-actions-templates to set up CI/CD pipeline
-```
-
-## Technology-Specific Workflows
-
-### React/Next.js Development
-```
-Skills: frontend-developer, react-patterns, nextjs-app-router-patterns, typescript-pro, tailwind-patterns
-```
-
-### Python/FastAPI Development
-```
-Skills: fastapi-pro, python-pro, python-patterns, pydantic-models-py
-```
-
-### Node.js/Express Development
-```
-Skills: nodejs-backend-patterns, javascript-pro, typescript-pro, express (via nodejs-backend-patterns)
-```
-
-### Full-Stack Development
-```
-Skills: senior-fullstack, app-builder, frontend-developer, backend-architect, database-architect
-```
-
-### Mobile Development
-```
-Skills: mobile-developer, react-native-architecture, flutter-expert, ios-developer
-```
-
-## Quality Gates
-
-Before moving to next phase, verify:
-- [ ] All tests passing
-- [ ] Code review completed
-- [ ] Security scan passed
-- [ ] Linting/formatting clean
-- [ ] Documentation updated
-
-## Related Workflow Bundles
-
-- `wordpress` - WordPress-specific development
-- `security-audit` - Security testing workflow
-- `testing-qa` - Comprehensive testing workflow
-- `documentation` - Documentation generation workflow
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "fullstack-development-workflow"
+sections[42]:
+  - "\n"
+  - "# Development Workflow Bundle\n\n"
+  - "## Overview\n\nConsolidated workflow for end-to-end software development covering web, mobile, and backend development. This bundle orchestrates skills for building production-ready applications from scaffolding to deployment.\n\n"
+  - "## When to Use This Workflow\n\nUse this workflow when:\n- Building new web or mobile applications\n- Adding features to existing applications\n- Refactoring or modernizing legacy code\n- Setting up new projects with best practices\n- Full-stack feature development\n- Cross-platform application development\n\n"
+  - "## Workflow Phases\n\n"
+  - "### Phase 1: Project Setup and Scaffolding\n\n"
+  - "#### Skills to Invoke\n- `app-builder` - Main application building orchestrator\n- `senior-fullstack` - Full-stack development guidance\n- `environment-setup-guide` - Development environment setup\n- `concise-planning` - Task planning and breakdown\n\n"
+  - "#### Actions\n1. Determine project type (web, mobile, full-stack)\n2. Select technology stack\n3. Scaffold project structure\n4. Configure development environment\n5. Set up version control and CI/CD\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @app-builder to scaffold a new React + Node.js full-stack application\n```\n\n```\nUse @senior-fullstack to set up a Next.js 14 project with App Router\n```\n\n```\nUse @environment-setup-guide to configure my development environment\n```\n\n"
+  - "### Phase 2: Frontend Development\n\n"
+  - "#### Skills to Invoke\n- `frontend-developer` - React/Next.js component development\n- `frontend-design` - UI/UX design implementation\n- `react-patterns` - Modern React patterns\n- `typescript-pro` - TypeScript best practices\n- `tailwind-patterns` - Tailwind CSS styling\n- `nextjs-app-router-patterns` - Next.js 14+ patterns\n\n"
+  - "#### Actions\n1. Design component architecture\n2. Implement UI components\n3. Set up state management\n4. Configure routing\n5. Apply styling and theming\n6. Implement responsive design\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @frontend-developer to create a dashboard component with React and TypeScript\n```\n\n```\nUse @react-patterns to implement proper state management with Zustand\n```\n\n```\nUse @tailwind-patterns to style components with a consistent design system\n```\n\n"
+  - "### Phase 3: Backend Development\n\n"
+  - "#### Skills to Invoke\n- `backend-architect` - Backend architecture design\n- `backend-dev-guidelines` - Backend development standards\n- `nodejs-backend-patterns` - Node.js/Express patterns\n- `fastapi-pro` - FastAPI development\n- `api-design-principles` - REST/GraphQL API design\n- `auth-implementation-patterns` - Authentication implementation\n\n"
+  - "#### Actions\n1. Design API architecture\n2. Implement REST/GraphQL endpoints\n3. Set up database connections\n4. Implement authentication/authorization\n5. Configure middleware\n6. Set up error handling\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @backend-architect to design a microservices architecture for my application\n```\n\n```\nUse @nodejs-backend-patterns to create Express.js API endpoints\n```\n\n```\nUse @auth-implementation-patterns to implement JWT authentication\n```\n\n"
+  - "### Phase 4: Database Development\n\n"
+  - "#### Skills to Invoke\n- `database-architect` - Database design\n- `database-design` - Schema design principles\n- `prisma-expert` - Prisma ORM\n- `postgresql` - PostgreSQL optimization\n- `neon-postgres` - Serverless Postgres\n\n"
+  - "#### Actions\n1. Design database schema\n2. Create migrations\n3. Set up ORM\n4. Optimize queries\n5. Configure connection pooling\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @database-architect to design a normalized schema for an e-commerce platform\n```\n\n```\nUse @prisma-expert to set up Prisma ORM with TypeScript\n```\n\n"
+  - "### Phase 5: Testing\n\n"
+  - "#### Skills to Invoke\n- `test-driven-development` - TDD workflow\n- `javascript-testing-patterns` - Jest/Vitest testing\n- `python-testing-patterns` - pytest testing\n- `e2e-testing-patterns` - Playwright/Cypress E2E\n- `playwright-skill` - Browser automation testing\n\n"
+  - "#### Actions\n1. Write unit tests\n2. Create integration tests\n3. Set up E2E tests\n4. Configure CI test runners\n5. Achieve coverage targets\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @test-driven-development to implement features with TDD\n```\n\n```\nUse @playwright-skill to create E2E tests for critical user flows\n```\n\n"
+  - "### Phase 6: Code Quality and Review\n\n"
+  - "#### Skills to Invoke\n- `code-reviewer` - AI-powered code review\n- `clean-code` - Clean code principles\n- `lint-and-validate` - Linting and validation\n- `security-scanning-security-sast` - Static security analysis\n\n"
+  - "#### Actions\n1. Run linters and formatters\n2. Perform code review\n3. Fix code quality issues\n4. Run security scans\n5. Address vulnerabilities\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @code-reviewer to review my pull request\n```\n\n```\nUse @lint-and-validate to check code quality\n```\n\n"
+  - "### Phase 7: Build and Deployment\n\n"
+  - "#### Skills to Invoke\n- `deployment-engineer` - Deployment orchestration\n- `docker-expert` - Containerization\n- `vercel-deployment` - Vercel deployment\n- `github-actions-templates` - CI/CD workflows\n- `cicd-automation-workflow-automate` - CI/CD automation\n\n"
+  - "#### Actions\n1. Create Dockerfiles\n2. Configure build pipelines\n3. Set up deployment workflows\n4. Configure environment variables\n5. Deploy to production\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @docker-expert to containerize my application\n```\n\n```\nUse @vercel-deployment to deploy my Next.js app to production\n```\n\n```\nUse @github-actions-templates to set up CI/CD pipeline\n```\n\n"
+  - "## Technology-Specific Workflows\n\n"
+  - "### React/Next.js Development\n```\nSkills: frontend-developer, react-patterns, nextjs-app-router-patterns, typescript-pro, tailwind-patterns\n```\n\n"
+  - "### Python/FastAPI Development\n```\nSkills: fastapi-pro, python-pro, python-patterns, pydantic-models-py\n```\n\n"
+  - "### Node.js/Express Development\n```\nSkills: nodejs-backend-patterns, javascript-pro, typescript-pro, express (via nodejs-backend-patterns)\n```\n\n"
+  - "### Full-Stack Development\n```\nSkills: senior-fullstack, app-builder, frontend-developer, backend-architect, database-architect\n```\n\n"
+  - "### Mobile Development\n```\nSkills: mobile-developer, react-native-architecture, flutter-expert, ios-developer\n```\n\n"
+  - "## Quality Gates\n\nBefore moving to next phase, verify:\n- [ ] All tests passing\n- [ ] Code review completed\n- [ ] Security scan passed\n- [ ] Linting/formatting clean\n- [ ] Documentation updated\n\n"
+  - "## Related Workflow Bundles\n\n- `wordpress` - WordPress-specific development\n- `security-audit` - Security testing workflow\n- `testing-qa` - Comprehensive testing workflow\n- `documentation` - Documentation generation workflow\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

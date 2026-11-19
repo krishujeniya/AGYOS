@@ -8,181 +8,25 @@ description: |
   makepad 布局, makepad 宽度, makepad 对齐, makepad 居中
 risk: safe
 source: community
+prompt-source: prompt.toon
 ---
-
-# Makepad Layout Skill
-
-> **Version:** makepad-widgets (dev branch) | **Last Updated:** 2026-01-19
->
-> Check for updates: https://crates.io/crates/makepad-widgets
-
-You are an expert at Makepad layout system. Help users by:
-- **Writing code**: Generate layout code following the patterns below
-- **Answering questions**: Explain layout concepts, sizing, flow directions
-
-## When to Use
-- You need to size, align, or position widgets in a Makepad UI.
-- The task involves `Walk`, `Align`, `Fit`, `Fill`, padding, spacing, or container flow configuration.
-- You want Makepad-specific layout solutions for centering, responsiveness, or composition.
-
-## Documentation
-
-Refer to the local files for detailed documentation:
-- `./references/layout-system.md` - Complete layout reference
-- `./references/core-types.md` - Walk, Align, Margin, Padding types
-
-## IMPORTANT: Documentation Completeness Check
-
-**Before answering questions, Claude MUST:**
-
-1. Read the relevant reference file(s) listed above
-2. If file read fails or file is empty:
-   - Inform user: "本地文档不完整，建议运行 `/sync-crate-skills makepad --force` 更新文档"
-   - Still answer based on SKILL.md patterns + built-in knowledge
-3. If reference file exists, incorporate its content into the answer
-
-## Key Patterns
-
-### 1. Basic Layout Container
-
-```rust
-<View> {
-    width: Fill
-    height: Fill
-    flow: Down
-    padding: 16.0
-    spacing: 8.0
-
-    <Label> { text: "Item 1" }
-    <Label> { text: "Item 2" }
-}
-```
-
-### 2. Centering Content
-
-```rust
-<View> {
-    width: Fill
-    height: Fill
-    align: { x: 0.5, y: 0.5 }
-
-    <Label> { text: "Centered" }
-}
-```
-
-### 3. Horizontal Row Layout
-
-```rust
-<View> {
-    width: Fill
-    height: Fit
-    flow: Right
-    spacing: 10.0
-    align: { y: 0.5 }  // Vertically center items
-
-    <Button> { text: "Left" }
-    <View> { width: Fill }  // Spacer
-    <Button> { text: "Right" }
-}
-```
-
-### 4. Fixed + Flexible Layout
-
-```rust
-<View> {
-    width: Fill
-    height: Fill
-    flow: Down
-
-    // Fixed header
-    <View> {
-        width: Fill
-        height: 60.0
-    }
-
-    // Flexible content
-    <View> {
-        width: Fill
-        height: Fill  // Takes remaining space
-    }
-}
-```
-
-## Layout Properties Reference
-
-| Property | Type | Description |
-|----------|------|-------------|
-| `width` | Size | Width of element |
-| `height` | Size | Height of element |
-| `padding` | Padding | Inner spacing |
-| `margin` | Margin | Outer spacing |
-| `flow` | Flow | Child layout direction |
-| `spacing` | f64 | Gap between children |
-| `align` | Align | Child alignment |
-| `clip_x` | bool | Clip horizontal overflow |
-| `clip_y` | bool | Clip vertical overflow |
-
-## Size Values
-
-| Value | Description |
-|-------|-------------|
-| `Fit` | Size to fit content |
-| `Fill` | Fill available space |
-| `100.0` | Fixed size in pixels |
-| `Fixed(100.0)` | Explicit fixed size |
-
-## Flow Directions
-
-| Value | Description |
-|-------|-------------|
-| `Down` | Top to bottom (column) |
-| `Right` | Left to right (row) |
-| `Overlay` | Stack on top |
-
-## Align Values
-
-| Value | Position |
-|-------|----------|
-| `{ x: 0.0, y: 0.0 }` | Top-left |
-| `{ x: 0.5, y: 0.0 }` | Top-center |
-| `{ x: 1.0, y: 0.0 }` | Top-right |
-| `{ x: 0.0, y: 0.5 }` | Middle-left |
-| `{ x: 0.5, y: 0.5 }` | Center |
-| `{ x: 1.0, y: 0.5 }` | Middle-right |
-| `{ x: 0.0, y: 1.0 }` | Bottom-left |
-| `{ x: 0.5, y: 1.0 }` | Bottom-center |
-| `{ x: 1.0, y: 1.0 }` | Bottom-right |
-
-## Box Model
-
-```
-+---------------------------+
-|         margin            |
-|  +---------------------+  |
-|  |      padding        |  |
-|  |  +---------------+  |  |
-|  |  |   content     |  |  |
-|  |  +---------------+  |  |
-|  +---------------------+  |
-+---------------------------+
-```
-
-## When Writing Code
-
-1. Use `Fill` for flexible containers, `Fit` for content-sized elements
-2. Set `flow: Down` for vertical, `flow: Right` for horizontal
-3. Use empty `<View> { width: Fill }` as spacer in row layouts
-4. Always set explicit dimensions on fixed-size elements
-5. Use `align` to position children within container
-
-## When Answering Questions
-
-1. Makepad uses a "turtle" layout model - elements laid out sequentially
-2. `Fill` takes all available space, `Fit` shrinks to content
-3. Unlike CSS flexbox, there's no flex-grow/shrink - use Fill/Fit
-4. Alignment applies to children, not the element itself
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "makepad-layout"
+sections[18]:
+  - "\n"
+  - "# Makepad Layout Skill\n\n> **Version:** makepad-widgets (dev branch) | **Last Updated:** 2026-01-19\n>\n> Check for updates: https://crates.io/crates/makepad-widgets\n\nYou are an expert at Makepad layout system. Help users by:\n- **Writing code**: Generate layout code following the patterns below\n- **Answering questions**: Explain layout concepts, sizing, flow directions\n\n"
+  - "## When to Use\n- You need to size, align, or position widgets in a Makepad UI.\n- The task involves `Walk`, `Align`, `Fit`, `Fill`, padding, spacing, or container flow configuration.\n- You want Makepad-specific layout solutions for centering, responsiveness, or composition.\n\n"
+  - "## Documentation\n\nRefer to the local files for detailed documentation:\n- `./references/layout-system.md` - Complete layout reference\n- `./references/core-types.md` - Walk, Align, Margin, Padding types\n\n"
+  - "## IMPORTANT: Documentation Completeness Check\n\n**Before answering questions, Claude MUST:**\n\n1. Read the relevant reference file(s) listed above\n2. If file read fails or file is empty:\n   - Inform user: \"本地文档不完整，建议运行 `/sync-crate-skills makepad --force` 更新文档\"\n   - Still answer based on SKILL.md patterns + built-in knowledge\n3. If reference file exists, incorporate its content into the answer\n\n"
+  - "## Key Patterns\n\n"
+  - "### 1. Basic Layout Container\n\n```rust\n<View> {\n    width: Fill\n    height: Fill\n    flow: Down\n    padding: 16.0\n    spacing: 8.0\n\n    <Label> { text: \"Item 1\" }\n    <Label> { text: \"Item 2\" }\n}\n```\n\n"
+  - "### 2. Centering Content\n\n```rust\n<View> {\n    width: Fill\n    height: Fill\n    align: { x: 0.5, y: 0.5 }\n\n    <Label> { text: \"Centered\" }\n}\n```\n\n"
+  - "### 3. Horizontal Row Layout\n\n```rust\n<View> {\n    width: Fill\n    height: Fit\n    flow: Right\n    spacing: 10.0\n    align: { y: 0.5 }  // Vertically center items\n\n    <Button> { text: \"Left\" }\n    <View> { width: Fill }  // Spacer\n    <Button> { text: \"Right\" }\n}\n```\n\n"
+  - "### 4. Fixed + Flexible Layout\n\n```rust\n<View> {\n    width: Fill\n    height: Fill\n    flow: Down\n\n    // Fixed header\n    <View> {\n        width: Fill\n        height: 60.0\n    }\n\n    // Flexible content\n    <View> {\n        width: Fill\n        height: Fill  // Takes remaining space\n    }\n}\n```\n\n"
+  - "## Layout Properties Reference\n\n| Property | Type | Description |\n|----------|------|-------------|\n| `width` | Size | Width of element |\n| `height` | Size | Height of element |\n| `padding` | Padding | Inner spacing |\n| `margin` | Margin | Outer spacing |\n| `flow` | Flow | Child layout direction |\n| `spacing` | f64 | Gap between children |\n| `align` | Align | Child alignment |\n| `clip_x` | bool | Clip horizontal overflow |\n| `clip_y` | bool | Clip vertical overflow |\n\n"
+  - "## Size Values\n\n| Value | Description |\n|-------|-------------|\n| `Fit` | Size to fit content |\n| `Fill` | Fill available space |\n| `100.0` | Fixed size in pixels |\n| `Fixed(100.0)` | Explicit fixed size |\n\n"
+  - "## Flow Directions\n\n| Value | Description |\n|-------|-------------|\n| `Down` | Top to bottom (column) |\n| `Right` | Left to right (row) |\n| `Overlay` | Stack on top |\n\n"
+  - "## Align Values\n\n| Value | Position |\n|-------|----------|\n| `{ x: 0.0, y: 0.0 }` | Top-left |\n| `{ x: 0.5, y: 0.0 }` | Top-center |\n| `{ x: 1.0, y: 0.0 }` | Top-right |\n| `{ x: 0.0, y: 0.5 }` | Middle-left |\n| `{ x: 0.5, y: 0.5 }` | Center |\n| `{ x: 1.0, y: 0.5 }` | Middle-right |\n| `{ x: 0.0, y: 1.0 }` | Bottom-left |\n| `{ x: 0.5, y: 1.0 }` | Bottom-center |\n| `{ x: 1.0, y: 1.0 }` | Bottom-right |\n\n"
+  - "## Box Model\n\n```\n+---------------------------+\n|         margin            |\n|  +---------------------+  |\n|  |      padding        |  |\n|  |  +---------------+  |  |\n|  |  |   content     |  |  |\n|  |  +---------------+  |  |\n|  +---------------------+  |\n+---------------------------+\n```\n\n"
+  - "## When Writing Code\n\n1. Use `Fill` for flexible containers, `Fit` for content-sized elements\n2. Set `flow: Down` for vertical, `flow: Right` for horizontal\n3. Use empty `<View> { width: Fill }` as spacer in row layouts\n4. Always set explicit dimensions on fixed-size elements\n5. Use `align` to position children within container\n\n"
+  - "## When Answering Questions\n\n1. Makepad uses a \"turtle\" layout model - elements laid out sequentially\n2. `Fill` takes all available space, `Fit` shrinks to content\n3. Unlike CSS flexbox, there's no flex-grow/shrink - use Fill/Fit\n4. Alignment applies to children, not the element itself\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

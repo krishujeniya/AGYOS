@@ -4,171 +4,27 @@ description: "Game development orchestrator. Routes to platform-specific skills 
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Game Development
-
-> **Orchestrator skill** that provides core principles and routes to specialized sub-skills.
-
----
-
-## When to Use This Skill
-
-You are working on a game development project. This skill teaches the PRINCIPLES of game development and directs you to the right sub-skill based on context.
-
----
-
-## Sub-Skill Routing
-
-### Platform Selection
-
-| If the game targets... | Use Sub-Skill |
-|------------------------|---------------|
-| Web browsers (HTML5, WebGL) | `game-development/web-games` |
-| Mobile (iOS, Android) | `game-development/mobile-games` |
-| PC (Steam, Desktop) | `game-development/pc-games` |
-| VR/AR headsets | `game-development/vr-ar` |
-
-### Dimension Selection
-
-| If the game is... | Use Sub-Skill |
-|-------------------|---------------|
-| 2D (sprites, tilemaps) | `game-development/2d-games` |
-| 3D (meshes, shaders) | `game-development/3d-games` |
-
-### Specialty Areas
-
-| If you need... | Use Sub-Skill |
-|----------------|---------------|
-| GDD, balancing, player psychology | `game-development/game-design` |
-| Multiplayer, networking | `game-development/multiplayer` |
-| Visual style, asset pipeline, animation | `game-development/game-art` |
-| Sound design, music, adaptive audio | `game-development/game-audio` |
-
----
-
-## Core Principles (All Platforms)
-
-### 1. The Game Loop
-
-Every game, regardless of platform, follows this pattern:
-
-```
-INPUT  → Read player actions
-UPDATE → Process game logic (fixed timestep)
-RENDER → Draw the frame (interpolated)
-```
-
-**Fixed Timestep Rule:**
-- Physics/logic: Fixed rate (e.g., 50Hz)
-- Rendering: As fast as possible
-- Interpolate between states for smooth visuals
-
----
-
-### 2. Pattern Selection Matrix
-
-| Pattern | Use When | Example |
-|---------|----------|---------|
-| **State Machine** | 3-5 discrete states | Player: Idle→Walk→Jump |
-| **Object Pooling** | Frequent spawn/destroy | Bullets, particles |
-| **Observer/Events** | Cross-system communication | Health→UI updates |
-| **ECS** | Thousands of similar entities | RTS units, particles |
-| **Command** | Undo, replay, networking | Input recording |
-| **Behavior Tree** | Complex AI decisions | Enemy AI |
-
-**Decision Rule:** Start with State Machine. Add ECS only when performance demands.
-
----
-
-### 3. Input Abstraction
-
-Abstract input into ACTIONS, not raw keys:
-
-```
-"jump"  → Space, Gamepad A, Touch tap
-"move"  → WASD, Left stick, Virtual joystick
-```
-
-**Why:** Enables multi-platform, rebindable controls.
-
----
-
-### 4. Performance Budget (60 FPS = 16.67ms)
-
-| System | Budget |
-|--------|--------|
-| Input | 1ms |
-| Physics | 3ms |
-| AI | 2ms |
-| Game Logic | 4ms |
-| Rendering | 5ms |
-| Buffer | 1.67ms |
-
-**Optimization Priority:**
-1. Algorithm (O(n²) → O(n log n))
-2. Batching (reduce draw calls)
-3. Pooling (avoid GC spikes)
-4. LOD (detail by distance)
-5. Culling (skip invisible)
-
----
-
-### 5. AI Selection by Complexity
-
-| AI Type | Complexity | Use When |
-|---------|------------|----------|
-| **FSM** | Simple | 3-5 states, predictable behavior |
-| **Behavior Tree** | Medium | Modular, designer-friendly |
-| **GOAP** | High | Emergent, planning-based |
-| **Utility AI** | High | Scoring-based decisions |
-
----
-
-### 6. Collision Strategy
-
-| Type | Best For |
-|------|----------|
-| **AABB** | Rectangles, fast checks |
-| **Circle** | Round objects, cheap |
-| **Spatial Hash** | Many similar-sized objects |
-| **Quadtree** | Large worlds, varying sizes |
-
----
-
-## Anti-Patterns (Universal)
-
-| Don't | Do |
-|-------|-----|
-| Update everything every frame | Use events, dirty flags |
-| Create objects in hot loops | Object pooling |
-| Cache nothing | Cache references |
-| Optimize without profiling | Profile first |
-| Mix input with logic | Abstract input layer |
-
----
-
-## Routing Examples
-
-### Example 1: "I want to make a browser-based 2D platformer"
-→ Start with `game-development/web-games` for framework selection
-→ Then `game-development/2d-games` for sprite/tilemap patterns
-→ Reference `game-development/game-design` for level design
-
-### Example 2: "Mobile puzzle game for iOS and Android"
-→ Start with `game-development/mobile-games` for touch input and stores
-→ Use `game-development/game-design` for puzzle balancing
-
-### Example 3: "Multiplayer VR shooter"
-→ `game-development/vr-ar` for comfort and immersion
-→ `game-development/3d-games` for rendering
-→ `game-development/multiplayer` for networking
-
----
-
-> **Remember:** Great games come from iteration, not perfection. Prototype fast, then polish.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "game-development"
+sections[20]:
+  - "\n"
+  - "# Game Development\n\n> **Orchestrator skill** that provides core principles and routes to specialized sub-skills.\n\n---\n\n"
+  - "## When to Use This Skill\n\nYou are working on a game development project. This skill teaches the PRINCIPLES of game development and directs you to the right sub-skill based on context.\n\n---\n\n"
+  - "## Sub-Skill Routing\n\n"
+  - "### Platform Selection\n\n| If the game targets... | Use Sub-Skill |\n|------------------------|---------------|\n| Web browsers (HTML5, WebGL) | `game-development/web-games` |\n| Mobile (iOS, Android) | `game-development/mobile-games` |\n| PC (Steam, Desktop) | `game-development/pc-games` |\n| VR/AR headsets | `game-development/vr-ar` |\n\n"
+  - "### Dimension Selection\n\n| If the game is... | Use Sub-Skill |\n|-------------------|---------------|\n| 2D (sprites, tilemaps) | `game-development/2d-games` |\n| 3D (meshes, shaders) | `game-development/3d-games` |\n\n"
+  - "### Specialty Areas\n\n| If you need... | Use Sub-Skill |\n|----------------|---------------|\n| GDD, balancing, player psychology | `game-development/game-design` |\n| Multiplayer, networking | `game-development/multiplayer` |\n| Visual style, asset pipeline, animation | `game-development/game-art` |\n| Sound design, music, adaptive audio | `game-development/game-audio` |\n\n---\n\n"
+  - "## Core Principles (All Platforms)\n\n"
+  - "### 1. The Game Loop\n\nEvery game, regardless of platform, follows this pattern:\n\n```\nINPUT  → Read player actions\nUPDATE → Process game logic (fixed timestep)\nRENDER → Draw the frame (interpolated)\n```\n\n**Fixed Timestep Rule:**\n- Physics/logic: Fixed rate (e.g., 50Hz)\n- Rendering: As fast as possible\n- Interpolate between states for smooth visuals\n\n---\n\n"
+  - "### 2. Pattern Selection Matrix\n\n| Pattern | Use When | Example |\n|---------|----------|---------|\n| **State Machine** | 3-5 discrete states | Player: Idle→Walk→Jump |\n| **Object Pooling** | Frequent spawn/destroy | Bullets, particles |\n| **Observer/Events** | Cross-system communication | Health→UI updates |\n| **ECS** | Thousands of similar entities | RTS units, particles |\n| **Command** | Undo, replay, networking | Input recording |\n| **Behavior Tree** | Complex AI decisions | Enemy AI |\n\n**Decision Rule:** Start with State Machine. Add ECS only when performance demands.\n\n---\n\n"
+  - "### 3. Input Abstraction\n\nAbstract input into ACTIONS, not raw keys:\n\n```\n\"jump\"  → Space, Gamepad A, Touch tap\n\"move\"  → WASD, Left stick, Virtual joystick\n```\n\n**Why:** Enables multi-platform, rebindable controls.\n\n---\n\n"
+  - "### 4. Performance Budget (60 FPS = 16.67ms)\n\n| System | Budget |\n|--------|--------|\n| Input | 1ms |\n| Physics | 3ms |\n| AI | 2ms |\n| Game Logic | 4ms |\n| Rendering | 5ms |\n| Buffer | 1.67ms |\n\n**Optimization Priority:**\n1. Algorithm (O(n²) → O(n log n))\n2. Batching (reduce draw calls)\n3. Pooling (avoid GC spikes)\n4. LOD (detail by distance)\n5. Culling (skip invisible)\n\n---\n\n"
+  - "### 5. AI Selection by Complexity\n\n| AI Type | Complexity | Use When |\n|---------|------------|----------|\n| **FSM** | Simple | 3-5 states, predictable behavior |\n| **Behavior Tree** | Medium | Modular, designer-friendly |\n| **GOAP** | High | Emergent, planning-based |\n| **Utility AI** | High | Scoring-based decisions |\n\n---\n\n"
+  - "### 6. Collision Strategy\n\n| Type | Best For |\n|------|----------|\n| **AABB** | Rectangles, fast checks |\n| **Circle** | Round objects, cheap |\n| **Spatial Hash** | Many similar-sized objects |\n| **Quadtree** | Large worlds, varying sizes |\n\n---\n\n"
+  - "## Anti-Patterns (Universal)\n\n| Don't | Do |\n|-------|-----|\n| Update everything every frame | Use events, dirty flags |\n| Create objects in hot loops | Object pooling |\n| Cache nothing | Cache references |\n| Optimize without profiling | Profile first |\n| Mix input with logic | Abstract input layer |\n\n---\n\n"
+  - "## Routing Examples\n\n"
+  - "### Example 1: \"I want to make a browser-based 2D platformer\"\n→ Start with `game-development/web-games` for framework selection\n→ Then `game-development/2d-games` for sprite/tilemap patterns\n→ Reference `game-development/game-design` for level design\n\n"
+  - "### Example 2: \"Mobile puzzle game for iOS and Android\"\n→ Start with `game-development/mobile-games` for touch input and stores\n→ Use `game-development/game-design` for puzzle balancing\n\n"
+  - "### Example 3: \"Multiplayer VR shooter\"\n→ `game-development/vr-ar` for comfort and immersion\n→ `game-development/3d-games` for rendering\n→ `game-development/multiplayer` for networking\n\n---\n\n> **Remember:** Great games come from iteration, not perfection. Prototype fast, then polish.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

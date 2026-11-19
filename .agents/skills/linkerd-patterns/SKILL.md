@@ -4,16 +4,9 @@ description: "Production patterns for Linkerd service mesh - the lightweight, se
 risk: critical
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-# Linkerd Patterns
-
-Production patterns for Linkerd service mesh - the lightweight, security-first service mesh for Kubernetes.
-
-## Workflow
-
-1. Confirm the request fits this skill and identify the required inputs and output constraints.
-2. Read the applicable sections in [the full runbook](references/FULL_RUNBOOK.md).
-3. Check version-sensitive instructions against authoritative current documentation; label claims that cannot be verified.
-4. Get any required approval before paid, destructive, external, or user-visible actions not already authorized.
-5. Follow the relevant procedure using the project’s existing tools and conventions. Ask for missing inputs instead of inventing values.
-6. Verify the result with available checks and report what ran, what passed, and any remaining uncertainty.
+skill: "linkerd-patterns"
+sections[2]:
+  - "# Linkerd Patterns\n\nProduction patterns for Linkerd service mesh - the lightweight, security-first service mesh for Kubernetes.\n\n"
+  - "## Workflow\n\n1. Confirm the request fits this skill and identify the required inputs and output constraints.\n2. Read the applicable sections in [the full runbook](references/FULL_RUNBOOK.md).\n3. Check version-sensitive instructions against authoritative current documentation; label claims that cannot be verified.\n4. Get any required approval before paid, destructive, external, or user-visible actions not already authorized.\n5. Follow the relevant procedure using the project’s existing tools and conventions. Ask for missing inputs instead of inventing values.\n6. Verify the result with available checks and report what ran, what passed, and any remaining uncertainty.\n"

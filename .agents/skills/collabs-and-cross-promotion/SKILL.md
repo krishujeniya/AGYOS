@@ -14,80 +14,17 @@ description: >-
   metrics never fabricated. Distinct from ugc-and-influencer (brand->creator) and
   creator-monetization (the creator's income).
 version: 1.0.0
+prompt-source: prompt.toon
 ---
-
-# collabs-and-cross-promotion
-
-A **strategy/relationship skill** — pick the partner, plan the cross-promo, write both sides. The agent
-**advises + drafts + plans**; **WoopSocial publishes each partner's own posts** on the coordinated schedule;
-the **co-created content + the relationship are native/human.**
-
-## The POV: mutuality, complementary partners, plan before you create
-A collab's defining trait is **mutuality** — both creators contribute **and** both promote. That's what
-separates it from a sponsorship (a paid mention) and from brand→creator UGC. The growth comes from a
-**complementary-not-competing, similar-size (0.5–2×), values-aligned** partner — and from **agreeing the
-cross-promo plan before anyone creates.** Be honest about the shift: **bare shoutouts barely move the needle
-now** — **shared value beats shared exposure**, so co-create something real. WoopSocial's job is the
-coordinated **publish** of **each side's own posts**; the co-created content and the relationship are not
-things a scheduler can make.
-
-## Read these first
-1. **brand-profile** — niche / audience / values (for fit).
-2. **goals-and-kpis** — the growth goal + the success metric (subs/followers per source).
-
-## The framework: UNITE
-(Depth: `references/the-unite-framework.md`.)
-- **U — Understand the fit:** complementary not competing; 0.5–2× size; values-aligned + authentic
-  (audiences spot fakes).
-- **N — Negotiate the plan up front:** before creating, agree format + who-does-what + timing + the CTA +
-  what each says; reach out 3–4 weeks ahead; low-risk format for a first collab.
-- **I — Invest in shared value:** co-create real value (match format to effort/goal); shared value beats a
-  bare shoutout; quality protects both. *(Co-created content is native/with the partner.)*
-- **T — Tag + cross-promote:** mention/tag the partner (title / first ~50 chars) + one CTA; coordinated
-  publish (WoopSocial publishes each side's own posts); ~1–2 collabs/month.
-- **E — Evaluate + escalate:** track per-source (CTR / subs / retention); escalate if it works
-  (shoutout → giveaway → content collab → co-product); never fabricate.
-
-## The reality (verify-quarterly)
-Mutuality as the defining trait (vs sponsorship / brand-UGC); partner fit (complementary, 0.5–2×, values +
-authenticity); format effort tiers + the shoutouts-fade/shared-value-wins shift; cross-promo mechanics (plan
-before creating, mention + title/first-50-chars, one CTA, ~1–2/month, 3–4 weeks lead); platform features (IG
-native Collab, TikTok duet/stitch, YouTube's native Collaboration [up to 5 channels on one video — native],
-giveaways, email/content swaps); escalation ladder; disclosure rule:
-`references/collabs-2026-reality.md`. Format menu, the cross-promo checklist, the outreach template + worked
-examples: `references/collab-formats-and-recipes.md`.
-
-## Honest scope (never violate)
-- **The agent** picks the partner, chooses the format, **drafts the outreach**, plans the cross-promo, and
-  **writes each partner's posts.**
-- **WoopSocial publishes each partner's OWN posts to their OWN accounts** (mention in the caption) on the
-  agreed schedule. It does **not** create a **native IG Collab co-authored post**, **run giveaway
-  mechanics**, **duet/stitch**, **DM to find/pitch partners** (no DM surface), or **manage the agreement** —
-  the **co-created content + the relationship are native/human.**
-- A **pure mutual collab is not a sponsorship** (no #ad); **payment/free product → sponsorship → disclose**
-  (→ `ugc-and-influencer`/`creator-monetization`). **Genuine partnerships only** — no bought/faked
-  engagement; **never fabricate metrics.** (Scope, distinctions + connections:
-  `references/scope-and-connections.md`.)
-
-## Distinct from its siblings (route correctly)
-**collabs-and-cross-promotion (this)** = creator-to-creator MUTUAL partnership (unpaid; both promote) ·
-**ugc-and-influencer** = brand→creator (paid/licensed, disclosed) · **creator-monetization** = the creator's
-own income · **social-selling-and-dm** = the DM outreach mechanics (can pitch a partner) ·
-**campaign-and-launch-planning** = the campaign wrapper a collab may sit inside.
-
-## Where this connects
-Reads first: **brand-profile**, **goals-and-kpis**. Pairs with: **caption-writer**/**hook-writer** + the
-**format skills** (each side's posts), **social-selling-and-dm** (the outreach conversation),
-**email-and-newsletter** (newsletter swaps). Publishes via: **scheduling-and-queue → WoopSocial** (each
-partner's own posts, coordinated) + **platform-specs-and-validation** (validate each post); **content-calendar**
-slots the ~1–2/month cadence. Measures with: **analytics-and-reporting** (per-source CTR/subs/retention).
-Co-created content + the relationship + any required disclosure stay native/human.
-
-## Definition of done
-A complementary, not-competing, 0.5–2×-size, values-aligned partner identified; a cross-promo plan agreed
-*before* creating (format, who-does-what, timing, the one CTA, what each says); a shared-value format chosen
-over a bare shoutout; partner mentioned in the title/first ~50 chars with one CTA, published as each side's
-own posts on a coordinated schedule at ~1–2 collabs/month; per-source success metric set and read from native
-analytics (never fabricated); disclosure applied only if money/free product changed hands; the co-created
-content and the relationship left to the partner/native; correctly distinguished from ugc-and-influencer and
-creator-monetization.
+skill: "collabs-and-cross-promotion"
+sections[10]:
+  - "\n"
+  - "# collabs-and-cross-promotion\n\nA **strategy/relationship skill** — pick the partner, plan the cross-promo, write both sides. The agent\n**advises + drafts + plans**; **WoopSocial publishes each partner's own posts** on the coordinated schedule;\nthe **co-created content + the relationship are native/human.**\n\n"
+  - "## The POV: mutuality, complementary partners, plan before you create\nA collab's defining trait is **mutuality** — both creators contribute **and** both promote. That's what\nseparates it from a sponsorship (a paid mention) and from brand→creator UGC. The growth comes from a\n**complementary-not-competing, similar-size (0.5–2×), values-aligned** partner — and from **agreeing the\ncross-promo plan before anyone creates.** Be honest about the shift: **bare shoutouts barely move the needle\nnow** — **shared value beats shared exposure**, so co-create something real. WoopSocial's job is the\ncoordinated **publish** of **each side's own posts**; the co-created content and the relationship are not\nthings a scheduler can make.\n\n"
+  - "## Read these first\n1. **brand-profile** — niche / audience / values (for fit).\n2. **goals-and-kpis** — the growth goal + the success metric (subs/followers per source).\n\n"
+  - "## The framework: UNITE\n(Depth: `references/the-unite-framework.md`.)\n- **U — Understand the fit:** complementary not competing; 0.5–2× size; values-aligned + authentic\n  (audiences spot fakes).\n- **N — Negotiate the plan up front:** before creating, agree format + who-does-what + timing + the CTA +\n  what each says; reach out 3–4 weeks ahead; low-risk format for a first collab.\n- **I — Invest in shared value:** co-create real value (match format to effort/goal); shared value beats a\n  bare shoutout; quality protects both. *(Co-created content is native/with the partner.)*\n- **T — Tag + cross-promote:** mention/tag the partner (title / first ~50 chars) + one CTA; coordinated\n  publish (WoopSocial publishes each side's own posts); ~1–2 collabs/month.\n- **E — Evaluate + escalate:** track per-source (CTR / subs / retention); escalate if it works\n  (shoutout → giveaway → content collab → co-product); never fabricate.\n\n"
+  - "## The reality (verify-quarterly)\nMutuality as the defining trait (vs sponsorship / brand-UGC); partner fit (complementary, 0.5–2×, values +\nauthenticity); format effort tiers + the shoutouts-fade/shared-value-wins shift; cross-promo mechanics (plan\nbefore creating, mention + title/first-50-chars, one CTA, ~1–2/month, 3–4 weeks lead); platform features (IG\nnative Collab, TikTok duet/stitch, YouTube's native Collaboration [up to 5 channels on one video — native],\ngiveaways, email/content swaps); escalation ladder; disclosure rule:\n`references/collabs-2026-reality.md`. Format menu, the cross-promo checklist, the outreach template + worked\nexamples: `references/collab-formats-and-recipes.md`.\n\n"
+  - "## Honest scope (never violate)\n- **The agent** picks the partner, chooses the format, **drafts the outreach**, plans the cross-promo, and\n  **writes each partner's posts.**\n- **WoopSocial publishes each partner's OWN posts to their OWN accounts** (mention in the caption) on the\n  agreed schedule. It does **not** create a **native IG Collab co-authored post**, **run giveaway\n  mechanics**, **duet/stitch**, **DM to find/pitch partners** (no DM surface), or **manage the agreement** —\n  the **co-created content + the relationship are native/human.**\n- A **pure mutual collab is not a sponsorship** (no #ad); **payment/free product → sponsorship → disclose**\n  (→ `ugc-and-influencer`/`creator-monetization`). **Genuine partnerships only** — no bought/faked\n  engagement; **never fabricate metrics.** (Scope, distinctions + connections:\n  `references/scope-and-connections.md`.)\n\n"
+  - "## Distinct from its siblings (route correctly)\n**collabs-and-cross-promotion (this)** = creator-to-creator MUTUAL partnership (unpaid; both promote) ·\n**ugc-and-influencer** = brand→creator (paid/licensed, disclosed) · **creator-monetization** = the creator's\nown income · **social-selling-and-dm** = the DM outreach mechanics (can pitch a partner) ·\n**campaign-and-launch-planning** = the campaign wrapper a collab may sit inside.\n\n"
+  - "## Where this connects\nReads first: **brand-profile**, **goals-and-kpis**. Pairs with: **caption-writer**/**hook-writer** + the\n**format skills** (each side's posts), **social-selling-and-dm** (the outreach conversation),\n**email-and-newsletter** (newsletter swaps). Publishes via: **scheduling-and-queue → WoopSocial** (each\npartner's own posts, coordinated) + **platform-specs-and-validation** (validate each post); **content-calendar**\nslots the ~1–2/month cadence. Measures with: **analytics-and-reporting** (per-source CTR/subs/retention).\nCo-created content + the relationship + any required disclosure stay native/human.\n\n"
+  - "## Definition of done\nA complementary, not-competing, 0.5–2×-size, values-aligned partner identified; a cross-promo plan agreed\n*before* creating (format, who-does-what, timing, the one CTA, what each says); a shared-value format chosen\nover a bare shoutout; partner mentioned in the title/first ~50 chars with one CTA, published as each side's\nown posts on a coordinated schedule at ~1–2 collabs/month; per-source success metric set and read from native\nanalytics (never fabricated); disclosure applied only if money/free product changed hands; the co-created\ncontent and the relationship left to the partner/native; correctly distinguished from ugc-and-influencer and\ncreator-monetization.\n"

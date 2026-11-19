@@ -4,209 +4,25 @@ description: "Automate Cal.com tasks via Rube MCP (Composio): manage bookings, c
 risk: critical
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Cal.com Automation via Rube MCP
-
-Automate Cal.com scheduling operations through Composio's Cal toolkit via Rube MCP.
-
-## Prerequisites
-
-- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
-- Active Cal.com connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `cal`
-- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
-
-## Setup
-
-**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
-
-
-1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
-2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `cal`
-3. If connection is not ACTIVE, follow the returned auth link to complete Cal.com authentication
-4. Confirm connection status shows ACTIVE before running any workflows
-
-## Core Workflows
-
-### 1. Manage Bookings
-
-**When to use**: User wants to list, create, or review bookings
-
-**Tool sequence**:
-1. `CAL_FETCH_ALL_BOOKINGS` - List all bookings with filters [Required]
-2. `CAL_POST_NEW_BOOKING_REQUEST` - Create a new booking [Optional]
-
-**Key parameters for listing**:
-- `status`: Filter by booking status ('upcoming', 'recurring', 'past', 'cancelled', 'unconfirmed')
-- `afterStart`: Filter bookings after this date (ISO 8601)
-- `beforeEnd`: Filter bookings before this date (ISO 8601)
-
-**Key parameters for creation**:
-- `eventTypeId`: Event type ID for the booking
-- `start`: Booking start time (ISO 8601)
-- `end`: Booking end time (ISO 8601)
-- `name`: Attendee name
-- `email`: Attendee email
-- `timeZone`: Attendee timezone (IANA format)
-- `language`: Attendee language code
-- `metadata`: Additional metadata object
-
-**Pitfalls**:
-- Date filters use ISO 8601 format with timezone (e.g., '2024-01-15T09:00:00Z')
-- `eventTypeId` must reference a valid, active event type
-- Booking creation requires matching an available slot; check availability first
-- Time zone must be a valid IANA timezone string (e.g., 'America/New_York')
-- Status filter values are specific strings; invalid values return empty results
-
-### 2. Check Availability
-
-**When to use**: User wants to find free/busy times or available booking slots
-
-**Tool sequence**:
-1. `CAL_RETRIEVE_CALENDAR_BUSY_TIMES` - Get busy time blocks [Required]
-2. `CAL_GET_AVAILABLE_SLOTS_INFO` - Get specific available slots [Required]
-
-**Key parameters**:
-- `dateFrom`: Start date for availability check (YYYY-MM-DD)
-- `dateTo`: End date for availability check (YYYY-MM-DD)
-- `eventTypeId`: Event type to check slots for
-- `timeZone`: Timezone for the availability response
-- `loggedInUsersTz`: Timezone of the requesting user
-
-**Pitfalls**:
-- Busy times show when the user is NOT available
-- Available slots are specific to an event type's duration and configuration
-- Date range should be reasonable (not months in advance) to get accurate results
-- Timezone affects how slots are displayed; always specify explicitly
-- Availability reflects calendar integrations (Google Calendar, Outlook, etc.)
-
-### 3. Configure Webhooks
-
-**When to use**: User wants to set up or manage webhook notifications for booking events
-
-**Tool sequence**:
-1. `CAL_RETRIEVE_WEBHOOKS_LIST` - List existing webhooks [Required]
-2. `CAL_GET_WEBHOOK_BY_ID` - Get specific webhook details [Optional]
-3. `CAL_UPDATE_WEBHOOK_BY_ID` - Update webhook configuration [Optional]
-4. `CAL_DELETE_WEBHOOK_BY_ID` - Remove a webhook [Optional]
-
-**Key parameters**:
-- `id`: Webhook ID for GET/UPDATE/DELETE operations
-- `subscriberUrl`: Webhook endpoint URL
-- `eventTriggers`: Array of event types to trigger on
-- `active`: Whether the webhook is active
-- `secret`: Webhook signing secret
-
-**Pitfalls**:
-- Webhook URLs must be publicly accessible HTTPS endpoints
-- Event triggers include: 'BOOKING_CREATED', 'BOOKING_RESCHEDULED', 'BOOKING_CANCELLED', etc.
-- Inactive webhooks do not fire; toggle `active` to enable/disable
-- Webhook secrets are used for payload signature verification
-
-### 4. Manage Teams
-
-**When to use**: User wants to create, view, or manage teams and team event types
-
-**Tool sequence**:
-1. `CAL_GET_TEAMS_LIST` - List all teams [Required]
-2. `CAL_GET_TEAM_INFORMATION_BY_TEAM_ID` - Get specific team details [Optional]
-3. `CAL_CREATE_TEAM_IN_ORGANIZATION` - Create a new team [Optional]
-4. `CAL_RETRIEVE_TEAM_EVENT_TYPES` - List event types for a team [Optional]
-
-**Key parameters**:
-- `teamId`: Team identifier
-- `name`: Team name (for creation)
-- `slug`: URL-friendly team identifier
-
-**Pitfalls**:
-- Team creation may require organization-level permissions
-- Team event types are separate from personal event types
-- Team slugs must be URL-safe and unique within the organization
-
-### 5. Organization Management
-
-**When to use**: User wants to view organization details
-
-**Tool sequence**:
-1. `CAL_GET_ORGANIZATION_ID` - Get the organization ID [Required]
-
-**Key parameters**: (none required)
-
-**Pitfalls**:
-- Organization ID is needed for team creation and org-level operations
-- Not all Cal.com accounts have organizations; personal plans may return errors
-
-## Common Patterns
-
-### Booking Creation Flow
-
-```
-1. Call CAL_GET_AVAILABLE_SLOTS_INFO to find open slots
-2. Present available times to the user
-3. Call CAL_POST_NEW_BOOKING_REQUEST with selected slot
-4. Confirm booking creation response
-```
-
-### ID Resolution
-
-**Team name -> Team ID**:
-```
-1. Call CAL_GET_TEAMS_LIST
-2. Find team by name in response
-3. Extract id field
-```
-
-### Webhook Setup
-
-```
-1. Call CAL_RETRIEVE_WEBHOOKS_LIST to check existing hooks
-2. Create or update webhook with desired triggers
-3. Verify webhook fires on test booking
-```
-
-## Known Pitfalls
-
-**Date/Time Formats**:
-- Booking times: ISO 8601 with timezone (e.g., '2024-01-15T09:00:00Z')
-- Availability dates: YYYY-MM-DD format
-- Always specify timezone explicitly to avoid confusion
-
-**Event Types**:
-- Event type IDs are numeric integers
-- Event types define duration, location, and booking rules
-- Disabled event types cannot accept new bookings
-
-**Permissions**:
-- Team operations require team membership or admin access
-- Organization operations require org-level permissions
-- Webhook management requires appropriate access level
-
-**Rate Limits**:
-- Cal.com API has rate limits per API key
-- Implement backoff on 429 responses
-
-## Quick Reference
-
-| Task | Tool Slug | Key Params |
-|------|-----------|------------|
-| List bookings | CAL_FETCH_ALL_BOOKINGS | status, afterStart, beforeEnd |
-| Create booking | CAL_POST_NEW_BOOKING_REQUEST | eventTypeId, start, end, name, email |
-| Get busy times | CAL_RETRIEVE_CALENDAR_BUSY_TIMES | dateFrom, dateTo |
-| Get available slots | CAL_GET_AVAILABLE_SLOTS_INFO | eventTypeId, dateFrom, dateTo |
-| List webhooks | CAL_RETRIEVE_WEBHOOKS_LIST | (none) |
-| Get webhook | CAL_GET_WEBHOOK_BY_ID | id |
-| Update webhook | CAL_UPDATE_WEBHOOK_BY_ID | id, subscriberUrl, eventTriggers |
-| Delete webhook | CAL_DELETE_WEBHOOK_BY_ID | id |
-| List teams | CAL_GET_TEAMS_LIST | (none) |
-| Get team | CAL_GET_TEAM_INFORMATION_BY_TEAM_ID | teamId |
-| Create team | CAL_CREATE_TEAM_IN_ORGANIZATION | name, slug |
-| Team event types | CAL_RETRIEVE_TEAM_EVENT_TYPES | teamId |
-| Get org ID | CAL_GET_ORGANIZATION_ID | (none) |
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "cal-com-automation"
+sections[18]:
+  - "\n"
+  - "# Cal.com Automation via Rube MCP\n\nAutomate Cal.com scheduling operations through Composio's Cal toolkit via Rube MCP.\n\n"
+  - "## Prerequisites\n\n- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)\n- Active Cal.com connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `cal`\n- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas\n\n"
+  - "## Setup\n\n**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.\n\n\n1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds\n2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `cal`\n3. If connection is not ACTIVE, follow the returned auth link to complete Cal.com authentication\n4. Confirm connection status shows ACTIVE before running any workflows\n\n"
+  - "## Core Workflows\n\n"
+  - "### 1. Manage Bookings\n\n**When to use**: User wants to list, create, or review bookings\n\n**Tool sequence**:\n1. `CAL_FETCH_ALL_BOOKINGS` - List all bookings with filters [Required]\n2. `CAL_POST_NEW_BOOKING_REQUEST` - Create a new booking [Optional]\n\n**Key parameters for listing**:\n- `status`: Filter by booking status ('upcoming', 'recurring', 'past', 'cancelled', 'unconfirmed')\n- `afterStart`: Filter bookings after this date (ISO 8601)\n- `beforeEnd`: Filter bookings before this date (ISO 8601)\n\n**Key parameters for creation**:\n- `eventTypeId`: Event type ID for the booking\n- `start`: Booking start time (ISO 8601)\n- `end`: Booking end time (ISO 8601)\n- `name`: Attendee name\n- `email`: Attendee email\n- `timeZone`: Attendee timezone (IANA format)\n- `language`: Attendee language code\n- `metadata`: Additional metadata object\n\n**Pitfalls**:\n- Date filters use ISO 8601 format with timezone (e.g., '2024-01-15T09:00:00Z')\n- `eventTypeId` must reference a valid, active event type\n- Booking creation requires matching an available slot; check availability first\n- Time zone must be a valid IANA timezone string (e.g., 'America/New_York')\n- Status filter values are specific strings; invalid values return empty results\n\n"
+  - "### 2. Check Availability\n\n**When to use**: User wants to find free/busy times or available booking slots\n\n**Tool sequence**:\n1. `CAL_RETRIEVE_CALENDAR_BUSY_TIMES` - Get busy time blocks [Required]\n2. `CAL_GET_AVAILABLE_SLOTS_INFO` - Get specific available slots [Required]\n\n**Key parameters**:\n- `dateFrom`: Start date for availability check (YYYY-MM-DD)\n- `dateTo`: End date for availability check (YYYY-MM-DD)\n- `eventTypeId`: Event type to check slots for\n- `timeZone`: Timezone for the availability response\n- `loggedInUsersTz`: Timezone of the requesting user\n\n**Pitfalls**:\n- Busy times show when the user is NOT available\n- Available slots are specific to an event type's duration and configuration\n- Date range should be reasonable (not months in advance) to get accurate results\n- Timezone affects how slots are displayed; always specify explicitly\n- Availability reflects calendar integrations (Google Calendar, Outlook, etc.)\n\n"
+  - "### 3. Configure Webhooks\n\n**When to use**: User wants to set up or manage webhook notifications for booking events\n\n**Tool sequence**:\n1. `CAL_RETRIEVE_WEBHOOKS_LIST` - List existing webhooks [Required]\n2. `CAL_GET_WEBHOOK_BY_ID` - Get specific webhook details [Optional]\n3. `CAL_UPDATE_WEBHOOK_BY_ID` - Update webhook configuration [Optional]\n4. `CAL_DELETE_WEBHOOK_BY_ID` - Remove a webhook [Optional]\n\n**Key parameters**:\n- `id`: Webhook ID for GET/UPDATE/DELETE operations\n- `subscriberUrl`: Webhook endpoint URL\n- `eventTriggers`: Array of event types to trigger on\n- `active`: Whether the webhook is active\n- `secret`: Webhook signing secret\n\n**Pitfalls**:\n- Webhook URLs must be publicly accessible HTTPS endpoints\n- Event triggers include: 'BOOKING_CREATED', 'BOOKING_RESCHEDULED', 'BOOKING_CANCELLED', etc.\n- Inactive webhooks do not fire; toggle `active` to enable/disable\n- Webhook secrets are used for payload signature verification\n\n"
+  - "### 4. Manage Teams\n\n**When to use**: User wants to create, view, or manage teams and team event types\n\n**Tool sequence**:\n1. `CAL_GET_TEAMS_LIST` - List all teams [Required]\n2. `CAL_GET_TEAM_INFORMATION_BY_TEAM_ID` - Get specific team details [Optional]\n3. `CAL_CREATE_TEAM_IN_ORGANIZATION` - Create a new team [Optional]\n4. `CAL_RETRIEVE_TEAM_EVENT_TYPES` - List event types for a team [Optional]\n\n**Key parameters**:\n- `teamId`: Team identifier\n- `name`: Team name (for creation)\n- `slug`: URL-friendly team identifier\n\n**Pitfalls**:\n- Team creation may require organization-level permissions\n- Team event types are separate from personal event types\n- Team slugs must be URL-safe and unique within the organization\n\n"
+  - "### 5. Organization Management\n\n**When to use**: User wants to view organization details\n\n**Tool sequence**:\n1. `CAL_GET_ORGANIZATION_ID` - Get the organization ID [Required]\n\n**Key parameters**: (none required)\n\n**Pitfalls**:\n- Organization ID is needed for team creation and org-level operations\n- Not all Cal.com accounts have organizations; personal plans may return errors\n\n"
+  - "## Common Patterns\n\n"
+  - "### Booking Creation Flow\n\n```\n1. Call CAL_GET_AVAILABLE_SLOTS_INFO to find open slots\n2. Present available times to the user\n3. Call CAL_POST_NEW_BOOKING_REQUEST with selected slot\n4. Confirm booking creation response\n```\n\n"
+  - "### ID Resolution\n\n**Team name -> Team ID**:\n```\n1. Call CAL_GET_TEAMS_LIST\n2. Find team by name in response\n3. Extract id field\n```\n\n"
+  - "### Webhook Setup\n\n```\n1. Call CAL_RETRIEVE_WEBHOOKS_LIST to check existing hooks\n2. Create or update webhook with desired triggers\n3. Verify webhook fires on test booking\n```\n\n"
+  - "## Known Pitfalls\n\n**Date/Time Formats**:\n- Booking times: ISO 8601 with timezone (e.g., '2024-01-15T09:00:00Z')\n- Availability dates: YYYY-MM-DD format\n- Always specify timezone explicitly to avoid confusion\n\n**Event Types**:\n- Event type IDs are numeric integers\n- Event types define duration, location, and booking rules\n- Disabled event types cannot accept new bookings\n\n**Permissions**:\n- Team operations require team membership or admin access\n- Organization operations require org-level permissions\n- Webhook management requires appropriate access level\n\n**Rate Limits**:\n- Cal.com API has rate limits per API key\n- Implement backoff on 429 responses\n\n"
+  - "## Quick Reference\n\n| Task | Tool Slug | Key Params |\n|------|-----------|------------|\n| List bookings | CAL_FETCH_ALL_BOOKINGS | status, afterStart, beforeEnd |\n| Create booking | CAL_POST_NEW_BOOKING_REQUEST | eventTypeId, start, end, name, email |\n| Get busy times | CAL_RETRIEVE_CALENDAR_BUSY_TIMES | dateFrom, dateTo |\n| Get available slots | CAL_GET_AVAILABLE_SLOTS_INFO | eventTypeId, dateFrom, dateTo |\n| List webhooks | CAL_RETRIEVE_WEBHOOKS_LIST | (none) |\n| Get webhook | CAL_GET_WEBHOOK_BY_ID | id |\n| Update webhook | CAL_UPDATE_WEBHOOK_BY_ID | id, subscriberUrl, eventTriggers |\n| Delete webhook | CAL_DELETE_WEBHOOK_BY_ID | id |\n| List teams | CAL_GET_TEAMS_LIST | (none) |\n| Get team | CAL_GET_TEAM_INFORMATION_BY_TEAM_ID | teamId |\n| Create team | CAL_CREATE_TEAM_IN_ORGANIZATION | name, slug |\n| Team event types | CAL_RETRIEVE_TEAM_EVENT_TYPES | teamId |\n| Get org ID | CAL_GET_ORGANIZATION_ID | (none) |\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

@@ -4,100 +4,19 @@ description: Prevent Ethereum hashing bugs in JavaScript and TypeScript. Node's 
 metadata:
   version: "1.0.0"
   origin: ECC direct-port adaptation
+prompt-source: prompt.toon
 ---
-
-# Node.js Keccak-256
-
-Ethereum uses Keccak-256, not the NIST-standardized SHA3 variant exposed by Node's `crypto.createHash('sha3-256')`.
-
-## When to Use
-
-- Computing Ethereum function selectors or event topics
-- Building EIP-712, signature, Merkle, or storage-slot helpers in JS/TS
-- Reviewing any code that hashes Ethereum data with Node crypto directly
-
-## How It Works
-
-The two algorithms produce different outputs for the same input, and Node will not warn you.
-
-```javascript
-import crypto from 'crypto';
-import { keccak256, toUtf8Bytes } from 'ethers';
-
-const data = 'hello';
-const nistSha3 = crypto.createHash('sha3-256').update(data).digest('hex');
-const keccak = keccak256(toUtf8Bytes(data)).slice(2);
-
-console.log(nistSha3 === keccak); // false
-```
-
-## Examples
-
-### ethers v6
-
-```typescript
-import { keccak256, toUtf8Bytes, solidityPackedKeccak256, id } from 'ethers';
-
-const hash = keccak256(new Uint8Array([0x01, 0x02]));
-const hash2 = keccak256(toUtf8Bytes('hello'));
-const topic = id('Transfer(address,address,uint256)');
-const packed = solidityPackedKeccak256(
-  ['address', 'uint256'],
-  ['0x742d35Cc6634C0532925a3b8D4C9B569890FaC1c', 100n],
-);
-```
-
-### viem
-
-```typescript
-import { keccak256, toBytes } from 'viem';
-
-const hash = keccak256(toBytes('hello'));
-```
-
-### web3.js
-
-```javascript
-const hash = web3.utils.keccak256('hello');
-const packed = web3.utils.soliditySha3(
-  { type: 'address', value: '0x742d35Cc6634C0532925a3b8D4C9B569890FaC1c' },
-  { type: 'uint256', value: '100' },
-);
-```
-
-### Common patterns
-
-```typescript
-import { id, keccak256, AbiCoder } from 'ethers';
-
-const selector = id('transfer(address,uint256)').slice(0, 10);
-const typeHash = keccak256(toUtf8Bytes('Transfer(address from,address to,uint256 value)'));
-
-function getMappingSlot(key: string, mappingSlot: number): string {
-  return keccak256(
-    AbiCoder.defaultAbiCoder().encode(['address', 'uint256'], [key, mappingSlot]),
-  );
-}
-```
-
-### Address from public key
-
-```typescript
-import { keccak256 } from 'ethers';
-
-function pubkeyToAddress(pubkeyBytes: Uint8Array): string {
-  const hash = keccak256(pubkeyBytes.slice(1));
-  return '0x' + hash.slice(-40);
-}
-```
-
-### Audit your codebase
-
-```bash
-grep -rn "createHash.*sha3" --include="*.ts" --include="*.js" --exclude-dir=node_modules .
-grep -rn "keccak256" --include="*.ts" --include="*.js" . | grep -v node_modules
-```
-
-## Rule
-
-For Ethereum contexts, never use `crypto.createHash('sha3-256')`. Use Keccak-aware helpers from `ethers`, `viem`, `web3`, or another explicit Keccak implementation.
+skill: "nodejs-keccak256"
+sections[12]:
+  - "\n"
+  - "# Node.js Keccak-256\n\nEthereum uses Keccak-256, not the NIST-standardized SHA3 variant exposed by Node's `crypto.createHash('sha3-256')`.\n\n"
+  - "## When to Use\n\n- Computing Ethereum function selectors or event topics\n- Building EIP-712, signature, Merkle, or storage-slot helpers in JS/TS\n- Reviewing any code that hashes Ethereum data with Node crypto directly\n\n"
+  - "## How It Works\n\nThe two algorithms produce different outputs for the same input, and Node will not warn you.\n\n```javascript\nimport crypto from 'crypto';\nimport { keccak256, toUtf8Bytes } from 'ethers';\n\nconst data = 'hello';\nconst nistSha3 = crypto.createHash('sha3-256').update(data).digest('hex');\nconst keccak = keccak256(toUtf8Bytes(data)).slice(2);\n\nconsole.log(nistSha3 === keccak); // false\n```\n\n"
+  - "## Examples\n\n"
+  - "### ethers v6\n\n```typescript\nimport { keccak256, toUtf8Bytes, solidityPackedKeccak256, id } from 'ethers';\n\nconst hash = keccak256(new Uint8Array([0x01, 0x02]));\nconst hash2 = keccak256(toUtf8Bytes('hello'));\nconst topic = id('Transfer(address,address,uint256)');\nconst packed = solidityPackedKeccak256(\n  ['address', 'uint256'],\n  ['0x742d35Cc6634C0532925a3b8D4C9B569890FaC1c', 100n],\n);\n```\n\n"
+  - "### viem\n\n```typescript\nimport { keccak256, toBytes } from 'viem';\n\nconst hash = keccak256(toBytes('hello'));\n```\n\n"
+  - "### web3.js\n\n```javascript\nconst hash = web3.utils.keccak256('hello');\nconst packed = web3.utils.soliditySha3(\n  { type: 'address', value: '0x742d35Cc6634C0532925a3b8D4C9B569890FaC1c' },\n  { type: 'uint256', value: '100' },\n);\n```\n\n"
+  - "### Common patterns\n\n```typescript\nimport { id, keccak256, AbiCoder } from 'ethers';\n\nconst selector = id('transfer(address,uint256)').slice(0, 10);\nconst typeHash = keccak256(toUtf8Bytes('Transfer(address from,address to,uint256 value)'));\n\nfunction getMappingSlot(key: string, mappingSlot: number): string {\n  return keccak256(\n    AbiCoder.defaultAbiCoder().encode(['address', 'uint256'], [key, mappingSlot]),\n  );\n}\n```\n\n"
+  - "### Address from public key\n\n```typescript\nimport { keccak256 } from 'ethers';\n\nfunction pubkeyToAddress(pubkeyBytes: Uint8Array): string {\n  const hash = keccak256(pubkeyBytes.slice(1));\n  return '0x' + hash.slice(-40);\n}\n```\n\n"
+  - "### Audit your codebase\n\n```bash\ngrep -rn \"createHash.*sha3\" --include=\"*.ts\" --include=\"*.js\" --exclude-dir=node_modules .\ngrep -rn \"keccak256\" --include=\"*.ts\" --include=\"*.js\" . | grep -v node_modules\n```\n\n"
+  - "## Rule\n\nFor Ethereum contexts, never use `crypto.createHash('sha3-256')`. Use Keccak-aware helpers from `ethers`, `viem`, `web3`, or another explicit Keccak implementation.\n"

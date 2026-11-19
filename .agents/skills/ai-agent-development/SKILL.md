@@ -5,174 +5,44 @@ category: granular-workflow-bundle
 risk: safe
 source: personal
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# AI Agent Development Workflow
-
-## Overview
-
-Specialized workflow for building AI agents including single autonomous agents, multi-agent systems, agent orchestration, tool integration, and human-in-the-loop patterns.
-
-## When to Use This Workflow
-
-Use this workflow when:
-- Building autonomous AI agents
-- Creating multi-agent systems
-- Implementing agent orchestration
-- Adding tool integration to agents
-- Setting up agent memory
-
-## Workflow Phases
-
-### Phase 1: Agent Design
-
-#### Skills to Invoke
-- `ai-agents-architect` - Agent architecture
-- `autonomous-agents` - Autonomous patterns
-
-#### Actions
-1. Define agent purpose
-2. Design agent capabilities
-3. Plan tool integration
-4. Design memory system
-5. Define success metrics
-
-#### Copy-Paste Prompts
-```
-Use @ai-agents-architect to design AI agent architecture
-```
-
-### Phase 2: Single Agent Implementation
-
-#### Skills to Invoke
-- `autonomous-agent-patterns` - Agent patterns
-- `autonomous-agents` - Autonomous agents
-
-#### Actions
-1. Choose agent framework
-2. Implement agent logic
-3. Add tool integration
-4. Configure memory
-5. Test agent behavior
-
-#### Copy-Paste Prompts
-```
-Use @autonomous-agent-patterns to implement single agent
-```
-
-### Phase 3: Multi-Agent System
-
-#### Skills to Invoke
-- `crewai` - CrewAI framework
-- `multi-agent-patterns` - Multi-agent patterns
-
-#### Actions
-1. Define agent roles
-2. Set up agent communication
-3. Configure orchestration
-4. Implement task delegation
-5. Test coordination
-
-#### Copy-Paste Prompts
-```
-Use @crewai to build multi-agent system with roles
-```
-
-### Phase 4: Agent Orchestration
-
-#### Skills to Invoke
-- `langgraph` - LangGraph orchestration
-- `workflow-orchestration-patterns` - Orchestration
-
-#### Actions
-1. Design workflow graph
-2. Implement state management
-3. Add conditional branches
-4. Configure persistence
-5. Test workflows
-
-#### Copy-Paste Prompts
-```
-Use @langgraph to create stateful agent workflows
-```
-
-### Phase 5: Tool Integration
-
-#### Skills to Invoke
-- `agent-tool-builder` - Tool building
-- `tool-design` - Tool design
-
-#### Actions
-1. Identify tool needs
-2. Design tool interfaces
-3. Implement tools
-4. Add error handling
-5. Test tool usage
-
-#### Copy-Paste Prompts
-```
-Use @agent-tool-builder to create agent tools
-```
-
-### Phase 6: Memory Systems
-
-#### Skills to Invoke
-- `agent-memory-systems` - Memory architecture
-- `conversation-memory` - Conversation memory
-
-#### Actions
-1. Design memory structure
-2. Implement short-term memory
-3. Set up long-term memory
-4. Add entity memory
-5. Test memory retrieval
-
-#### Copy-Paste Prompts
-```
-Use @agent-memory-systems to implement agent memory
-```
-
-### Phase 7: Evaluation
-
-#### Skills to Invoke
-- `agent-evaluation` - Agent evaluation
-- `evaluation` - AI evaluation
-
-#### Actions
-1. Define evaluation criteria
-2. Create test scenarios
-3. Measure agent performance
-4. Test edge cases
-5. Iterate improvements
-
-#### Copy-Paste Prompts
-```
-Use @agent-evaluation to evaluate agent performance
-```
-
-## Agent Architecture
-
-```
-User Input -> Planner -> Agent -> Tools -> Memory -> Response
-              |          |        |        |
-         Decompose   LLM Core  Actions  Short/Long-term
-```
-
-## Quality Gates
-
-- [ ] Agent logic working
-- [ ] Tools integrated
-- [ ] Memory functional
-- [ ] Orchestration tested
-- [ ] Evaluation passing
-
-## Related Workflow Bundles
-
-- `ai-ml` - AI/ML development
-- `rag-implementation` - RAG systems
-- `workflow-automation` - Workflow patterns
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "ai-agent-development"
+sections[37]:
+  - "\n"
+  - "# AI Agent Development Workflow\n\n"
+  - "## Overview\n\nSpecialized workflow for building AI agents including single autonomous agents, multi-agent systems, agent orchestration, tool integration, and human-in-the-loop patterns.\n\n"
+  - "## When to Use This Workflow\n\nUse this workflow when:\n- Building autonomous AI agents\n- Creating multi-agent systems\n- Implementing agent orchestration\n- Adding tool integration to agents\n- Setting up agent memory\n\n"
+  - "## Workflow Phases\n\n"
+  - "### Phase 1: Agent Design\n\n"
+  - "#### Skills to Invoke\n- `ai-agents-architect` - Agent architecture\n- `autonomous-agents` - Autonomous patterns\n\n"
+  - "#### Actions\n1. Define agent purpose\n2. Design agent capabilities\n3. Plan tool integration\n4. Design memory system\n5. Define success metrics\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @ai-agents-architect to design AI agent architecture\n```\n\n"
+  - "### Phase 2: Single Agent Implementation\n\n"
+  - "#### Skills to Invoke\n- `autonomous-agent-patterns` - Agent patterns\n- `autonomous-agents` - Autonomous agents\n\n"
+  - "#### Actions\n1. Choose agent framework\n2. Implement agent logic\n3. Add tool integration\n4. Configure memory\n5. Test agent behavior\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @autonomous-agent-patterns to implement single agent\n```\n\n"
+  - "### Phase 3: Multi-Agent System\n\n"
+  - "#### Skills to Invoke\n- `crewai` - CrewAI framework\n- `multi-agent-patterns` - Multi-agent patterns\n\n"
+  - "#### Actions\n1. Define agent roles\n2. Set up agent communication\n3. Configure orchestration\n4. Implement task delegation\n5. Test coordination\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @crewai to build multi-agent system with roles\n```\n\n"
+  - "### Phase 4: Agent Orchestration\n\n"
+  - "#### Skills to Invoke\n- `langgraph` - LangGraph orchestration\n- `workflow-orchestration-patterns` - Orchestration\n\n"
+  - "#### Actions\n1. Design workflow graph\n2. Implement state management\n3. Add conditional branches\n4. Configure persistence\n5. Test workflows\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @langgraph to create stateful agent workflows\n```\n\n"
+  - "### Phase 5: Tool Integration\n\n"
+  - "#### Skills to Invoke\n- `agent-tool-builder` - Tool building\n- `tool-design` - Tool design\n\n"
+  - "#### Actions\n1. Identify tool needs\n2. Design tool interfaces\n3. Implement tools\n4. Add error handling\n5. Test tool usage\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @agent-tool-builder to create agent tools\n```\n\n"
+  - "### Phase 6: Memory Systems\n\n"
+  - "#### Skills to Invoke\n- `agent-memory-systems` - Memory architecture\n- `conversation-memory` - Conversation memory\n\n"
+  - "#### Actions\n1. Design memory structure\n2. Implement short-term memory\n3. Set up long-term memory\n4. Add entity memory\n5. Test memory retrieval\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @agent-memory-systems to implement agent memory\n```\n\n"
+  - "### Phase 7: Evaluation\n\n"
+  - "#### Skills to Invoke\n- `agent-evaluation` - Agent evaluation\n- `evaluation` - AI evaluation\n\n"
+  - "#### Actions\n1. Define evaluation criteria\n2. Create test scenarios\n3. Measure agent performance\n4. Test edge cases\n5. Iterate improvements\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @agent-evaluation to evaluate agent performance\n```\n\n"
+  - "## Agent Architecture\n\n```\nUser Input -> Planner -> Agent -> Tools -> Memory -> Response\n              |          |        |        |\n         Decompose   LLM Core  Actions  Short/Long-term\n```\n\n"
+  - "## Quality Gates\n\n- [ ] Agent logic working\n- [ ] Tools integrated\n- [ ] Memory functional\n- [ ] Orchestration tested\n- [ ] Evaluation passing\n\n"
+  - "## Related Workflow Bundles\n\n- `ai-ml` - AI/ML development\n- `rag-implementation` - RAG systems\n- `workflow-automation` - Workflow patterns\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

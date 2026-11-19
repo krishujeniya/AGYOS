@@ -3,159 +3,24 @@ name: scientific-thinking-scholar-evaluation
 description: Structured scholarly-work evaluation for papers, proposals, literature reviews, methods sections, evidence quality, citation support, and research-writing feedback. Use when evaluating academic or scientific work — papers, proposals, methods sections, or evidence quality — against a repeatable rubric.
 metadata:
   origin: community
+prompt-source: prompt.toon
 ---
-
-# Scholar Evaluation
-
-Use this skill to evaluate academic or scientific work with a repeatable rubric.
-
-## When to Use
-
-- Reviewing a research paper, proposal, thesis chapter, or literature review.
-- Checking whether claims are supported by cited evidence.
-- Evaluating methodology, study design, analysis, or limitations.
-- Comparing two or more papers for quality or relevance.
-- Producing structured feedback for revision.
-
-## Evaluation Scope
-
-Start by identifying the artifact:
-
-- empirical research paper
-- theoretical paper
-- technical report
-- systematic or narrative literature review
-- research proposal
-- thesis or dissertation chapter
-- conference abstract or short paper
-
-Then choose scope:
-
-- **comprehensive**: all rubric dimensions
-- **targeted**: one or two dimensions, such as method or citations
-- **comparative**: rank multiple works against the same rubric
-
-## Rubric
-
-Score each applicable dimension from 1 to 5:
-
-- 5: excellent; clear, rigorous, and publication-ready
-- 4: good; minor improvements needed
-- 3: adequate; meaningful gaps but usable
-- 2: weak; substantial revision needed
-- 1: poor; major validity or clarity problems
-
-Use `N/A` for dimensions that do not apply.
-
-### 1. Problem and Research Question
-
-- Is the problem clear and specific?
-- Is the contribution meaningful?
-- Are scope and assumptions explicit?
-- Does the question match the claimed contribution?
-
-### 2. Literature and Context
-
-- Is relevant prior work covered?
-- Does the work synthesize rather than merely list sources?
-- Are gaps accurately identified?
-- Are recent and foundational sources balanced?
-
-### 3. Methodology
-
-- Does the method answer the research question?
-- Are design choices justified?
-- Are variables, datasets, participants, or materials described clearly?
-- Could another researcher reproduce the work?
-- Are ethical and practical constraints acknowledged?
-
-### 4. Data and Evidence
-
-- Are data sources credible and appropriate?
-- Is sample size or corpus coverage adequate?
-- Are inclusion, exclusion, and preprocessing decisions documented?
-- Are missing data and bias risks discussed?
-
-### 5. Analysis
-
-- Are statistical, qualitative, or computational methods appropriate?
-- Are baselines and controls fair?
-- Are uncertainty, sensitivity, or robustness checks included when needed?
-- Are alternative explanations considered?
-
-### 6. Results and Interpretation
-
-- Are results clearly presented?
-- Do claims stay within the evidence?
-- Are figures, tables, and metrics understandable?
-- Are negative or null results handled honestly?
-
-### 7. Limitations and Threats to Validity
-
-- Are limitations specific rather than generic?
-- Are internal, external, construct, and conclusion-validity risks addressed?
-- Does the paper distinguish speculation from demonstrated results?
-
-### 8. Writing and Structure
-
-- Is the argument easy to follow?
-- Are sections organized around the research question?
-- Are definitions and notation clear?
-- Is the tone precise and scholarly?
-
-### 9. Citations
-
-- Do cited papers support the claims attached to them?
-- Are primary sources used where possible?
-- Are reviews labeled as reviews?
-- Are preprints labeled as preprints?
-- Are citation metadata and links correct?
-
-## Review Process
-
-1. Read the abstract, introduction, figures, and conclusion for claimed
-   contribution.
-2. Read methods and results for evidence quality.
-3. Check the strongest claims against cited sources.
-4. Score each applicable dimension.
-5. Separate critical blockers from revision suggestions.
-6. End with concrete next edits.
-
-## Output Template
-
-```markdown
-# Scholar Evaluation: <Artifact>
-
-## Overall Assessment
-
-- Overall score: <1-5 or N/A>
-- Confidence: <high | medium | low>
-- Summary: <3-5 sentences>
-
-## Dimension Scores
-
-| Dimension | Score | Evidence | Revision priority |
-| --- | ---: | --- | --- |
-| Problem and question |  |  |  |
-| Literature and context |  |  |  |
-| Methodology |  |  |  |
-| Data and evidence |  |  |  |
-| Analysis |  |  |  |
-| Results and interpretation |  |  |  |
-| Limitations |  |  |  |
-| Writing and structure |  |  |  |
-| Citations |  |  |  |
-
-## Critical Issues
-
-## Recommended Revisions
-
-## Evidence Checks Needed
-```
-
-## Pitfalls
-
-- Do not use the score as a substitute for concrete feedback.
-- Do not penalize a paper for omitting a dimension outside its scope.
-- Do not treat citation count, venue, or author reputation as proof of quality.
-- Do not accept unsupported claims just because they appear in the abstract.
+skill: "scientific-thinking-scholar-evaluation"
+sections[17]:
+  - "\n"
+  - "# Scholar Evaluation\n\nUse this skill to evaluate academic or scientific work with a repeatable rubric.\n\n"
+  - "## When to Use\n\n- Reviewing a research paper, proposal, thesis chapter, or literature review.\n- Checking whether claims are supported by cited evidence.\n- Evaluating methodology, study design, analysis, or limitations.\n- Comparing two or more papers for quality or relevance.\n- Producing structured feedback for revision.\n\n"
+  - "## Evaluation Scope\n\nStart by identifying the artifact:\n\n- empirical research paper\n- theoretical paper\n- technical report\n- systematic or narrative literature review\n- research proposal\n- thesis or dissertation chapter\n- conference abstract or short paper\n\nThen choose scope:\n\n- **comprehensive**: all rubric dimensions\n- **targeted**: one or two dimensions, such as method or citations\n- **comparative**: rank multiple works against the same rubric\n\n"
+  - "## Rubric\n\nScore each applicable dimension from 1 to 5:\n\n- 5: excellent; clear, rigorous, and publication-ready\n- 4: good; minor improvements needed\n- 3: adequate; meaningful gaps but usable\n- 2: weak; substantial revision needed\n- 1: poor; major validity or clarity problems\n\nUse `N/A` for dimensions that do not apply.\n\n"
+  - "### 1. Problem and Research Question\n\n- Is the problem clear and specific?\n- Is the contribution meaningful?\n- Are scope and assumptions explicit?\n- Does the question match the claimed contribution?\n\n"
+  - "### 2. Literature and Context\n\n- Is relevant prior work covered?\n- Does the work synthesize rather than merely list sources?\n- Are gaps accurately identified?\n- Are recent and foundational sources balanced?\n\n"
+  - "### 3. Methodology\n\n- Does the method answer the research question?\n- Are design choices justified?\n- Are variables, datasets, participants, or materials described clearly?\n- Could another researcher reproduce the work?\n- Are ethical and practical constraints acknowledged?\n\n"
+  - "### 4. Data and Evidence\n\n- Are data sources credible and appropriate?\n- Is sample size or corpus coverage adequate?\n- Are inclusion, exclusion, and preprocessing decisions documented?\n- Are missing data and bias risks discussed?\n\n"
+  - "### 5. Analysis\n\n- Are statistical, qualitative, or computational methods appropriate?\n- Are baselines and controls fair?\n- Are uncertainty, sensitivity, or robustness checks included when needed?\n- Are alternative explanations considered?\n\n"
+  - "### 6. Results and Interpretation\n\n- Are results clearly presented?\n- Do claims stay within the evidence?\n- Are figures, tables, and metrics understandable?\n- Are negative or null results handled honestly?\n\n"
+  - "### 7. Limitations and Threats to Validity\n\n- Are limitations specific rather than generic?\n- Are internal, external, construct, and conclusion-validity risks addressed?\n- Does the paper distinguish speculation from demonstrated results?\n\n"
+  - "### 8. Writing and Structure\n\n- Is the argument easy to follow?\n- Are sections organized around the research question?\n- Are definitions and notation clear?\n- Is the tone precise and scholarly?\n\n"
+  - "### 9. Citations\n\n- Do cited papers support the claims attached to them?\n- Are primary sources used where possible?\n- Are reviews labeled as reviews?\n- Are preprints labeled as preprints?\n- Are citation metadata and links correct?\n\n"
+  - "## Review Process\n\n1. Read the abstract, introduction, figures, and conclusion for claimed\n   contribution.\n2. Read methods and results for evidence quality.\n3. Check the strongest claims against cited sources.\n4. Score each applicable dimension.\n5. Separate critical blockers from revision suggestions.\n6. End with concrete next edits.\n\n"
+  - "## Output Template\n\n```markdown\n# Scholar Evaluation: <Artifact>\n\n## Overall Assessment\n\n- Overall score: <1-5 or N/A>\n- Confidence: <high | medium | low>\n- Summary: <3-5 sentences>\n\n## Dimension Scores\n\n| Dimension | Score | Evidence | Revision priority |\n| --- | ---: | --- | --- |\n| Problem and question |  |  |  |\n| Literature and context |  |  |  |\n| Methodology |  |  |  |\n| Data and evidence |  |  |  |\n| Analysis |  |  |  |\n| Results and interpretation |  |  |  |\n| Limitations |  |  |  |\n| Writing and structure |  |  |  |\n| Citations |  |  |  |\n\n## Critical Issues\n\n## Recommended Revisions\n\n## Evidence Checks Needed\n```\n\n"
+  - "## Pitfalls\n\n- Do not use the score as a substitute for concrete feedback.\n- Do not penalize a paper for omitting a dimension outside its scope.\n- Do not treat citation count, venue, or author reputation as proof of quality.\n- Do not accept unsupported claims just because they appear in the abstract.\n"

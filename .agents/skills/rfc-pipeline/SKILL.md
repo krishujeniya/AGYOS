@@ -3,66 +3,16 @@ name: rfc-pipeline
 description: Split an RFC into a multi-agent execution DAG — decompose into work units with dependencies and acceptance tests, run research, plan, implement, test, and review per unit, then merge through a queue with re-based branches and final system verification. Use when a feature is too large for a single agent pass, orchestrating RFC-driven multi-agent execution, or managing merge queues across agent-built units.
 metadata:
   origin: ECC
+prompt-source: prompt.toon
 ---
-
-# Ralphinho RFC Pipeline
-
-Inspired by [humanplane](https://github.com/humanplane) style RFC decomposition patterns and multi-unit orchestration workflows.
-
-Use this skill when a feature is too large for a single agent pass and must be split into independently verifiable work units.
-
-## Pipeline Stages
-
-1. RFC intake
-2. DAG decomposition
-3. Unit assignment
-4. Unit implementation
-5. Unit validation
-6. Merge queue and integration
-7. Final system verification
-
-## Unit Spec Template
-
-Each work unit should include:
-- `id`
-- `depends_on`
-- `scope`
-- `acceptance_tests`
-- `risk_level`
-- `rollback_plan`
-
-## Complexity Tiers
-
-- Tier 1: isolated file edits, deterministic tests
-- Tier 2: multi-file behavior changes, moderate integration risk
-- Tier 3: schema/auth/perf/security changes
-
-## Quality Pipeline per Unit
-
-1. research
-2. implementation plan
-3. implementation
-4. tests
-5. review
-6. merge-ready report
-
-## Merge Queue Rules
-
-- Never merge a unit with unresolved dependency failures.
-- Always rebase unit branches on latest integration branch.
-- Re-run integration tests after each queued merge.
-
-## Recovery
-
-If a unit stalls:
-- evict from active queue
-- snapshot findings
-- regenerate narrowed unit scope
-- retry with updated constraints
-
-## Outputs
-
-- RFC execution log
-- unit scorecards
-- dependency graph snapshot
-- integration risk summary
+skill: "rfc-pipeline"
+sections[9]:
+  - "\n"
+  - "# Ralphinho RFC Pipeline\n\nInspired by [humanplane](https://github.com/humanplane) style RFC decomposition patterns and multi-unit orchestration workflows.\n\nUse this skill when a feature is too large for a single agent pass and must be split into independently verifiable work units.\n\n"
+  - "## Pipeline Stages\n\n1. RFC intake\n2. DAG decomposition\n3. Unit assignment\n4. Unit implementation\n5. Unit validation\n6. Merge queue and integration\n7. Final system verification\n\n"
+  - "## Unit Spec Template\n\nEach work unit should include:\n- `id`\n- `depends_on`\n- `scope`\n- `acceptance_tests`\n- `risk_level`\n- `rollback_plan`\n\n"
+  - "## Complexity Tiers\n\n- Tier 1: isolated file edits, deterministic tests\n- Tier 2: multi-file behavior changes, moderate integration risk\n- Tier 3: schema/auth/perf/security changes\n\n"
+  - "## Quality Pipeline per Unit\n\n1. research\n2. implementation plan\n3. implementation\n4. tests\n5. review\n6. merge-ready report\n\n"
+  - "## Merge Queue Rules\n\n- Never merge a unit with unresolved dependency failures.\n- Always rebase unit branches on latest integration branch.\n- Re-run integration tests after each queued merge.\n\n"
+  - "## Recovery\n\nIf a unit stalls:\n- evict from active queue\n- snapshot findings\n- regenerate narrowed unit scope\n- retry with updated constraints\n\n"
+  - "## Outputs\n\n- RFC execution log\n- unit scorecards\n- dependency graph snapshot\n- integration risk summary\n"

@@ -3,157 +3,20 @@ name: springboot-tdd
 description: Test-driven development for Spring Boot using JUnit 5, Mockito, MockMvc, Testcontainers, and JaCoCo. Use when adding features, fixing bugs, or refactoring.
 metadata:
   origin: ECC
+prompt-source: prompt.toon
 ---
-
-# Spring Boot TDD Workflow
-
-TDD guidance for Spring Boot services with 80%+ coverage (unit + integration).
-
-## When to Use
-
-- New features or endpoints
-- Bug fixes or refactors
-- Adding data access logic or security rules
-
-## Workflow
-
-1) Write tests first (they should fail)
-2) Implement minimal code to pass
-3) Refactor with tests green
-4) Enforce coverage (JaCoCo)
-
-## Unit Tests (JUnit 5 + Mockito)
-
-```java
-@ExtendWith(MockitoExtension.class)
-class MarketServiceTest {
-  @Mock MarketRepository repo;
-  @InjectMocks MarketService service;
-
-  @Test
-  void createsMarket() {
-    CreateMarketRequest req = new CreateMarketRequest("name", "desc", Instant.now(), List.of("cat"));
-    when(repo.save(any())).thenAnswer(inv -> inv.getArgument(0));
-
-    Market result = service.create(req);
-
-    assertThat(result.name()).isEqualTo("name");
-    verify(repo).save(any());
-  }
-}
-```
-
-Patterns:
-- Arrange-Act-Assert
-- Avoid partial mocks; prefer explicit stubbing
-- Use `@ParameterizedTest` for variants
-
-## Web Layer Tests (MockMvc)
-
-```java
-@WebMvcTest(MarketController.class)
-class MarketControllerTest {
-  @Autowired MockMvc mockMvc;
-  @MockBean MarketService marketService;
-
-  @Test
-  void returnsMarkets() throws Exception {
-    when(marketService.list(any())).thenReturn(Page.empty());
-
-    mockMvc.perform(get("/api/markets"))
-        .andExpect(status().isOk())
-        .andExpect(jsonPath("$.content").isArray());
-  }
-}
-```
-
-## Integration Tests (SpringBootTest)
-
-```java
-@SpringBootTest
-@AutoConfigureMockMvc
-@ActiveProfiles("test")
-class MarketIntegrationTest {
-  @Autowired MockMvc mockMvc;
-
-  @Test
-  void createsMarket() throws Exception {
-    mockMvc.perform(post("/api/markets")
-        .contentType(MediaType.APPLICATION_JSON)
-        .content("""
-          {"name":"Test","description":"Desc","endDate":"2030-01-01T00:00:00Z","categories":["general"]}
-        """))
-      .andExpect(status().isCreated());
-  }
-}
-```
-
-## Persistence Tests (DataJpaTest)
-
-```java
-@DataJpaTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@Import(TestContainersConfig.class)
-class MarketRepositoryTest {
-  @Autowired MarketRepository repo;
-
-  @Test
-  void savesAndFinds() {
-    MarketEntity entity = new MarketEntity();
-    entity.setName("Test");
-    repo.save(entity);
-
-    Optional<MarketEntity> found = repo.findByName("Test");
-    assertThat(found).isPresent();
-  }
-}
-```
-
-## Testcontainers
-
-- Use reusable containers for Postgres/Redis to mirror production
-- Wire via `@DynamicPropertySource` to inject JDBC URLs into Spring context
-
-## Coverage (JaCoCo)
-
-Maven snippet:
-```xml
-<plugin>
-  <groupId>org.jacoco</groupId>
-  <artifactId>jacoco-maven-plugin</artifactId>
-  <version>0.8.14</version>
-  <executions>
-    <execution>
-      <goals><goal>prepare-agent</goal></goals>
-    </execution>
-    <execution>
-      <id>report</id>
-      <phase>verify</phase>
-      <goals><goal>report</goal></goals>
-    </execution>
-  </executions>
-</plugin>
-```
-
-## Assertions
-
-- Prefer AssertJ (`assertThat`) for readability
-- For JSON responses, use `jsonPath`
-- For exceptions: `assertThatThrownBy(...)`
-
-## Test Data Builders
-
-```java
-class MarketBuilder {
-  private String name = "Test";
-  MarketBuilder withName(String name) { this.name = name; return this; }
-  Market build() { return new Market(null, name, MarketStatus.ACTIVE); }
-}
-```
-
-## CI Commands
-
-- Maven: `mvn -T 4 test` or `mvn verify`
-- Gradle: `./gradlew test jacocoTestReport`
-
-**Remember**: Keep tests fast, isolated, and deterministic. Test behavior, not implementation details.
+skill: "springboot-tdd"
+sections[13]:
+  - "\n"
+  - "# Spring Boot TDD Workflow\n\nTDD guidance for Spring Boot services with 80%+ coverage (unit + integration).\n\n"
+  - "## When to Use\n\n- New features or endpoints\n- Bug fixes or refactors\n- Adding data access logic or security rules\n\n"
+  - "## Workflow\n\n1) Write tests first (they should fail)\n2) Implement minimal code to pass\n3) Refactor with tests green\n4) Enforce coverage (JaCoCo)\n\n"
+  - "## Unit Tests (JUnit 5 + Mockito)\n\n```java\n@ExtendWith(MockitoExtension.class)\nclass MarketServiceTest {\n  @Mock MarketRepository repo;\n  @InjectMocks MarketService service;\n\n  @Test\n  void createsMarket() {\n    CreateMarketRequest req = new CreateMarketRequest(\"name\", \"desc\", Instant.now(), List.of(\"cat\"));\n    when(repo.save(any())).thenAnswer(inv -> inv.getArgument(0));\n\n    Market result = service.create(req);\n\n    assertThat(result.name()).isEqualTo(\"name\");\n    verify(repo).save(any());\n  }\n}\n```\n\nPatterns:\n- Arrange-Act-Assert\n- Avoid partial mocks; prefer explicit stubbing\n- Use `@ParameterizedTest` for variants\n\n"
+  - "## Web Layer Tests (MockMvc)\n\n```java\n@WebMvcTest(MarketController.class)\nclass MarketControllerTest {\n  @Autowired MockMvc mockMvc;\n  @MockBean MarketService marketService;\n\n  @Test\n  void returnsMarkets() throws Exception {\n    when(marketService.list(any())).thenReturn(Page.empty());\n\n    mockMvc.perform(get(\"/api/markets\"))\n        .andExpect(status().isOk())\n        .andExpect(jsonPath(\"$.content\").isArray());\n  }\n}\n```\n\n"
+  - "## Integration Tests (SpringBootTest)\n\n```java\n@SpringBootTest\n@AutoConfigureMockMvc\n@ActiveProfiles(\"test\")\nclass MarketIntegrationTest {\n  @Autowired MockMvc mockMvc;\n\n  @Test\n  void createsMarket() throws Exception {\n    mockMvc.perform(post(\"/api/markets\")\n        .contentType(MediaType.APPLICATION_JSON)\n        .content(\"\"\"\n          {\"name\":\"Test\",\"description\":\"Desc\",\"endDate\":\"2030-01-01T00:00:00Z\",\"categories\":[\"general\"]}\n        \"\"\"))\n      .andExpect(status().isCreated());\n  }\n}\n```\n\n"
+  - "## Persistence Tests (DataJpaTest)\n\n```java\n@DataJpaTest\n@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)\n@Import(TestContainersConfig.class)\nclass MarketRepositoryTest {\n  @Autowired MarketRepository repo;\n\n  @Test\n  void savesAndFinds() {\n    MarketEntity entity = new MarketEntity();\n    entity.setName(\"Test\");\n    repo.save(entity);\n\n    Optional<MarketEntity> found = repo.findByName(\"Test\");\n    assertThat(found).isPresent();\n  }\n}\n```\n\n"
+  - "## Testcontainers\n\n- Use reusable containers for Postgres/Redis to mirror production\n- Wire via `@DynamicPropertySource` to inject JDBC URLs into Spring context\n\n"
+  - "## Coverage (JaCoCo)\n\nMaven snippet:\n```xml\n<plugin>\n  <groupId>org.jacoco</groupId>\n  <artifactId>jacoco-maven-plugin</artifactId>\n  <version>0.8.14</version>\n  <executions>\n    <execution>\n      <goals><goal>prepare-agent</goal></goals>\n    </execution>\n    <execution>\n      <id>report</id>\n      <phase>verify</phase>\n      <goals><goal>report</goal></goals>\n    </execution>\n  </executions>\n</plugin>\n```\n\n"
+  - "## Assertions\n\n- Prefer AssertJ (`assertThat`) for readability\n- For JSON responses, use `jsonPath`\n- For exceptions: `assertThatThrownBy(...)`\n\n"
+  - "## Test Data Builders\n\n```java\nclass MarketBuilder {\n  private String name = \"Test\";\n  MarketBuilder withName(String name) { this.name = name; return this; }\n  Market build() { return new Market(null, name, MarketStatus.ACTIVE); }\n}\n```\n\n"
+  - "## CI Commands\n\n- Maven: `mvn -T 4 test` or `mvn verify`\n- Gradle: `./gradlew test jacocoTestReport`\n\n**Remember**: Keep tests fast, isolated, and deterministic. Test behavior, not implementation details.\n"

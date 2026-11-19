@@ -4,65 +4,16 @@ description: "Choose or optimize a vector store and embedding workflow for RAG, 
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Vector Database Engineer
-
-Choose or optimize a vector store and embedding workflow for RAG, semantic search, or recommendations. Use for indexing, chunking, recall, latency, and scale decisions.
-
-## Do not use this skill when
-
-- The task is unrelated to vector database engineer
-- You need a different domain or tool outside this scope
-
-## Instructions
-
-- Clarify goals, constraints, and required inputs.
-- Apply relevant best practices and validate outcomes.
-- Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
-
-## Capabilities
-
-- Vector database selection and architecture
-- Embedding model selection and optimization
-- Index configuration (HNSW, IVF, PQ)
-- Hybrid search (vector + keyword) implementation
-- Chunking strategies for documents
-- Metadata filtering and pre/post-filtering
-- Performance tuning and scaling
-
-## Use this skill when
-
-- Building RAG (Retrieval Augmented Generation) systems
-- Implementing semantic search over documents
-- Creating recommendation engines
-- Building image/audio similarity search
-- Optimizing vector search latency and recall
-- Scaling vector operations to millions of vectors
-
-## Workflow
-
-1. Analyze data characteristics and query patterns
-2. Select appropriate embedding model
-3. Design chunking and preprocessing pipeline
-4. Choose vector database and index type
-5. Configure metadata schema for filtering
-6. Implement hybrid search if needed
-7. Optimize for latency/recall tradeoffs
-8. Set up monitoring and reindexing strategies
-
-## Best Practices
-
-- Choose embedding dimensions based on use case (384-1536)
-- Implement proper chunking with overlap
-- Use metadata filtering to reduce search space
-- Monitor embedding drift over time
-- Plan for index rebuilding
-- Cache frequent queries
-- Test recall vs latency tradeoffs
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "vector-database-engineer"
+sections[9]:
+  - "\n"
+  - "# Vector Database Engineer\n\nChoose or optimize a vector store and embedding workflow for RAG, semantic search, or recommendations. Use for indexing, chunking, recall, latency, and scale decisions.\n\n"
+  - "## Do not use this skill when\n\n- The task is unrelated to vector database engineer\n- You need a different domain or tool outside this scope\n\n"
+  - "## Instructions\n\n- Clarify goals, constraints, and required inputs.\n- Apply relevant best practices and validate outcomes.\n- Provide actionable steps and verification.\n- If detailed examples are required, open `resources/implementation-playbook.md`.\n\n"
+  - "## Capabilities\n\n- Vector database selection and architecture\n- Embedding model selection and optimization\n- Index configuration (HNSW, IVF, PQ)\n- Hybrid search (vector + keyword) implementation\n- Chunking strategies for documents\n- Metadata filtering and pre/post-filtering\n- Performance tuning and scaling\n\n"
+  - "## Use this skill when\n\n- Building RAG (Retrieval Augmented Generation) systems\n- Implementing semantic search over documents\n- Creating recommendation engines\n- Building image/audio similarity search\n- Optimizing vector search latency and recall\n- Scaling vector operations to millions of vectors\n\n"
+  - "## Workflow\n\n1. Analyze data characteristics and query patterns\n2. Select appropriate embedding model\n3. Design chunking and preprocessing pipeline\n4. Choose vector database and index type\n5. Configure metadata schema for filtering\n6. Implement hybrid search if needed\n7. Optimize for latency/recall tradeoffs\n8. Set up monitoring and reindexing strategies\n\n"
+  - "## Best Practices\n\n- Choose embedding dimensions based on use case (384-1536)\n- Implement proper chunking with overlap\n- Use metadata filtering to reduce search space\n- Monitor embedding drift over time\n- Plan for index rebuilding\n- Cache frequent queries\n- Test recall vs latency tradeoffs\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

@@ -5,71 +5,14 @@ license: MIT
 metadata:
   origin: ECC
 tools: Read, Write, Edit, Bash, Grep, Glob
+prompt-source: prompt.toon
 ---
-
-# Latency Critical Systems
-
-Use this skill when the user cares about realtime behavior, hot paths, streaming
-freshness, or execution speed. This includes HFT-like infrastructure, but the
-skill is engineering-focused. It does not authorize live trading or financial
-advice.
-
-## Split The Metrics
-
-Do not collapse everything into "fast." Track:
-
-- p50, p95, and p99 latency;
-- throughput;
-- freshness age;
-- queue depth;
-- cache hit rate;
-- provider/API response time;
-- browser render time;
-- correctness under load;
-- failure and retry behavior.
-
-## Map The Hot Path
-
-Write the path from user/event to final visible state:
-
-```text
-source event -> provider API -> ingest worker -> queue -> cache -> edge route
--> client stream -> browser render -> user-visible state
-```
-
-Then measure each segment separately.
-
-## Optimization Order
-
-1. Remove unnecessary round trips.
-2. Cache stable reads with freshness metadata.
-3. Batch small calls and writes.
-4. Move compute closer to the data or the user.
-5. Split hot and cold paths.
-6. Apply backpressure before queues grow unbounded.
-7. Use streaming only when it improves freshness or user experience.
-8. Add canaries for stale data, degraded providers, and bad cache state.
-
-## Verification
-
-Use live readbacks when a deployed surface exists:
-
-- HTTP timing and response headers;
-- provider freshness timestamp;
-- queue or job state;
-- edge/cache state;
-- browser verification for actual UI freshness;
-- logs around retries and degraded mode.
-
-For market-data or execution-adjacent paths, also verify orderbook age, VWAP
-assumptions, provider status, and kill-switch behavior before calling the path
-ready.
-
-## Guardrails
-
-- Do not optimize latency by dropping required validation.
-- Do not hide stale data behind fast cache hits.
-- Do not claim millisecond behavior from client labels without measurement.
-- Do not run live orders, destructive migrations, or customer-impacting deploys
-  without an explicit approval gate.
-- Keep secrets and private payloads out of logs and benchmark artifacts.
+skill: "latency-critical-systems"
+sections[7]:
+  - "\n"
+  - "# Latency Critical Systems\n\nUse this skill when the user cares about realtime behavior, hot paths, streaming\nfreshness, or execution speed. This includes HFT-like infrastructure, but the\nskill is engineering-focused. It does not authorize live trading or financial\nadvice.\n\n"
+  - "## Split The Metrics\n\nDo not collapse everything into \"fast.\" Track:\n\n- p50, p95, and p99 latency;\n- throughput;\n- freshness age;\n- queue depth;\n- cache hit rate;\n- provider/API response time;\n- browser render time;\n- correctness under load;\n- failure and retry behavior.\n\n"
+  - "## Map The Hot Path\n\nWrite the path from user/event to final visible state:\n\n```text\nsource event -> provider API -> ingest worker -> queue -> cache -> edge route\n-> client stream -> browser render -> user-visible state\n```\n\nThen measure each segment separately.\n\n"
+  - "## Optimization Order\n\n1. Remove unnecessary round trips.\n2. Cache stable reads with freshness metadata.\n3. Batch small calls and writes.\n4. Move compute closer to the data or the user.\n5. Split hot and cold paths.\n6. Apply backpressure before queues grow unbounded.\n7. Use streaming only when it improves freshness or user experience.\n8. Add canaries for stale data, degraded providers, and bad cache state.\n\n"
+  - "## Verification\n\nUse live readbacks when a deployed surface exists:\n\n- HTTP timing and response headers;\n- provider freshness timestamp;\n- queue or job state;\n- edge/cache state;\n- browser verification for actual UI freshness;\n- logs around retries and degraded mode.\n\nFor market-data or execution-adjacent paths, also verify orderbook age, VWAP\nassumptions, provider status, and kill-switch behavior before calling the path\nready.\n\n"
+  - "## Guardrails\n\n- Do not optimize latency by dropping required validation.\n- Do not hide stale data behind fast cache hits.\n- Do not claim millisecond behavior from client labels without measurement.\n- Do not run live orders, destructive migrations, or customer-impacting deploys\n  without an explicit approval gate.\n- Keep secrets and private payloads out of logs and benchmark artifacts.\n"

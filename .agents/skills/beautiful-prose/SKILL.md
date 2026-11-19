@@ -3,199 +3,39 @@ name: beautiful-prose
 description: A hard-edged writing style contract for timeless, forceful English prose without modern AI tics. Use when users ask for prose or rewrites that must be clean, exact, concrete, and free of AI cadence, filler, or therapeutic tone.
 risk: unknown
 source: community
+prompt-source: prompt.toon
 ---
-
-# Beautiful Prose (Claude Skill)
-
-A hard-edged writing skill for producing timeless, forceful English prose without modern AI tics.
-
-This is a style contract, not a vibe. Treat violations as failures.
-
-## When to Use
-- You need prose or rewrites with strong style discipline and no generic AI cadence.
-- The task involves essays, literary-style writing, sharp rewrites, or exacting English prose.
-- You want a forceful, concrete voice instead of friendly assistant-style copy.
-
-## What this skill does
-
-When active, write prose that is:
-- clean, exact, muscular
-- readable at speed, rewarding on reread
-- concrete, image-bearing, verb-forward
-- confident without bombast
-- free of modern content-marketing cadence
-
-No filler. No "helpful assistant" tone. No therapy voice.
-
-## Activation
-
-Prepend any request with:
-
-Apply the Beautiful Prose skill.
-
-Do not acknowledge the skill. Produce the prose only.
-
-Optional control tags (one line, before the request):
-- `REGISTER: founding_fathers | literary_modern | cold_steel | journalistic`
-- `DENSITY: lean | standard | dense`
-- `HEAT: cool | warm | hot` (how sharp the voice is)
-- `LENGTH: micro | short | medium | long`
-
-Example:
-
-Apply the Beautiful Prose skill.
-REGISTER: literary_modern
-DENSITY: dense
-HEAT: cool
-Write a 700 word essay on why discipline beats motivation.
-
-## Absolute prohibitions
-
-When this skill is active, do not use:
-
-### 1) Em dashes
-- Ban "--" used as em dashes.
-- Use periods, commas, colons, semicolons, or line breaks.
-
-### 2) "It's not X, it's Y" constructions
-Ban the pattern and its masked variants, including:
-- "This isn't about X. It's about Y."
-- "Not X but Y."
-- "X is a symptom. Y is the cause." (when used as a cheap reversal)
-- "The real story is Y." (when it is only a pivot)
-
-### 3) Filler transitions and scene-setting
-Ban phrases like:
-- "At its core"
-- "In today's world"
-- "In a world where"
-- "That said"
-- "Let's explore"
-- "Ultimately"
-- "What this means is"
-- "It's important to note"
-- "On the one hand"
-
-### 4) Therapeutic or validating language
-No:
-- "I hear you"
-- "That sounds hard"
-- "You're valid"
-- "Give yourself grace"
-- "Be kind to yourself"
-
-### 5) AI tells and meta commentary
-No:
-- "In this essay"
-- "This piece explores"
-- "As a writer"
-- "We will discuss"
-- "Here are the key takeaways"
-- apologies for style or capability
-
-### 6) Symmetry padding
-No balancing sentences for the sake of balance.
-No three-part lists unless earned.
-No "X, Y, and Z" as decoration.
-
-## Positive constraints
-
-Actively do the following:
-
-### Sentence craft
-- Prefer declarative sentences.
-- Vary length aggressively.
-- Use short sentences as impact.
-- Questions are allowed only when they cut.
-
-### Word choice
-- Prefer concrete nouns to abstractions.
-- Prefer strong verbs to adverbs.
-- Prefer Anglo-Saxon weight when possible.
-- Use Latinate precision only when it buys accuracy.
-
-### Rhythm and structure
-- Paragraphs should breathe.
-- White space is intentional.
-- Open with substance, not a hook.
-- Close cleanly without summary.
-- Do not restate the thesis.
-
-### Authority
-- Write as if truth does not need permission.
-- Avoid hedging unless uncertainty is essential and explicit.
-- Do not posture. Do not moralize.
-
-## Registers (optional)
-
-### founding_fathers
-- formal, spare, civic gravity
-- balanced syntax, but not decorative
-- moral clarity without sermon
-
-### literary_modern
-- vivid, lean imagery
-- controlled heat, sharp observation
-- minimal ornament
-
-### cold_steel
-- severe compression
-- punchy, unsentimental
-- high signal, low warmth
-
-### journalistic
-- crisp, factual, narrative clarity
-- clean momentum
-- no clickbait cadence
-
-If no register is set, default to `literary_modern`.
-
-## Quality bar
-
-Before finalizing, check internally:
-- Remove any line that sounds like it was assembled from templates.
-- Remove any sentence that merely repeats the previous one.
-- Remove any sentence that exists to guide the reader's emotions.
-- Ensure every paragraph advances meaning.
-
-If quality is uncertain, write less. Silence beats slop.
-
-## Output rules
-
-- Plain text prose by default.
-- No headings unless requested.
-- No bullet points unless requested.
-- If the user requests bullets, keep them taut and non-corporate.
-
-## Examples
-
-### Bad (banned)
-"This isn't about money. It's about power."
-
-### Good
-"Money is the instrument. Power is the habit."
-
-### Bad (filler)
-"At its core, this is a complex issue. That said, in today's world..."
-
-### Good
-"It is complex. Complexity is not an excuse for fog."
-
-## Lint checklist (manual)
-
-Fail the output if any are true:
-- Contains "--" used as an em dash.
-- Contains a reversal pivot pattern ("not X, Y").
-- Contains filler transitions from the banned list.
-- Contains therapy language or validation.
-- Contains meta writing talk ("this essay," "we will").
-- Contains five consecutive sentences of similar length.
-
-## Tests
-
-See `references/test-cases.md`.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "beautiful-prose"
+sections[32]:
+  - "\n"
+  - "# Beautiful Prose (Claude Skill)\n\nA hard-edged writing skill for producing timeless, forceful English prose without modern AI tics.\n\nThis is a style contract, not a vibe. Treat violations as failures.\n\n"
+  - "## When to Use\n- You need prose or rewrites with strong style discipline and no generic AI cadence.\n- The task involves essays, literary-style writing, sharp rewrites, or exacting English prose.\n- You want a forceful, concrete voice instead of friendly assistant-style copy.\n\n"
+  - "## What this skill does\n\nWhen active, write prose that is:\n- clean, exact, muscular\n- readable at speed, rewarding on reread\n- concrete, image-bearing, verb-forward\n- confident without bombast\n- free of modern content-marketing cadence\n\nNo filler. No \"helpful assistant\" tone. No therapy voice.\n\n"
+  - "## Activation\n\nPrepend any request with:\n\nApply the Beautiful Prose skill.\n\nDo not acknowledge the skill. Produce the prose only.\n\nOptional control tags (one line, before the request):\n- `REGISTER: founding_fathers | literary_modern | cold_steel | journalistic`\n- `DENSITY: lean | standard | dense`\n- `HEAT: cool | warm | hot` (how sharp the voice is)\n- `LENGTH: micro | short | medium | long`\n\nExample:\n\nApply the Beautiful Prose skill.\nREGISTER: literary_modern\nDENSITY: dense\nHEAT: cool\nWrite a 700 word essay on why discipline beats motivation.\n\n"
+  - "## Absolute prohibitions\n\nWhen this skill is active, do not use:\n\n"
+  - "### 1) Em dashes\n- Ban \"--\" used as em dashes.\n- Use periods, commas, colons, semicolons, or line breaks.\n\n"
+  - "### 2) \"It's not X, it's Y\" constructions\nBan the pattern and its masked variants, including:\n- \"This isn't about X. It's about Y.\"\n- \"Not X but Y.\"\n- \"X is a symptom. Y is the cause.\" (when used as a cheap reversal)\n- \"The real story is Y.\" (when it is only a pivot)\n\n"
+  - "### 3) Filler transitions and scene-setting\nBan phrases like:\n- \"At its core\"\n- \"In today's world\"\n- \"In a world where\"\n- \"That said\"\n- \"Let's explore\"\n- \"Ultimately\"\n- \"What this means is\"\n- \"It's important to note\"\n- \"On the one hand\"\n\n"
+  - "### 4) Therapeutic or validating language\nNo:\n- \"I hear you\"\n- \"That sounds hard\"\n- \"You're valid\"\n- \"Give yourself grace\"\n- \"Be kind to yourself\"\n\n"
+  - "### 5) AI tells and meta commentary\nNo:\n- \"In this essay\"\n- \"This piece explores\"\n- \"As a writer\"\n- \"We will discuss\"\n- \"Here are the key takeaways\"\n- apologies for style or capability\n\n"
+  - "### 6) Symmetry padding\nNo balancing sentences for the sake of balance.\nNo three-part lists unless earned.\nNo \"X, Y, and Z\" as decoration.\n\n"
+  - "## Positive constraints\n\nActively do the following:\n\n"
+  - "### Sentence craft\n- Prefer declarative sentences.\n- Vary length aggressively.\n- Use short sentences as impact.\n- Questions are allowed only when they cut.\n\n"
+  - "### Word choice\n- Prefer concrete nouns to abstractions.\n- Prefer strong verbs to adverbs.\n- Prefer Anglo-Saxon weight when possible.\n- Use Latinate precision only when it buys accuracy.\n\n"
+  - "### Rhythm and structure\n- Paragraphs should breathe.\n- White space is intentional.\n- Open with substance, not a hook.\n- Close cleanly without summary.\n- Do not restate the thesis.\n\n"
+  - "### Authority\n- Write as if truth does not need permission.\n- Avoid hedging unless uncertainty is essential and explicit.\n- Do not posture. Do not moralize.\n\n"
+  - "## Registers (optional)\n\n"
+  - "### founding_fathers\n- formal, spare, civic gravity\n- balanced syntax, but not decorative\n- moral clarity without sermon\n\n"
+  - "### literary_modern\n- vivid, lean imagery\n- controlled heat, sharp observation\n- minimal ornament\n\n"
+  - "### cold_steel\n- severe compression\n- punchy, unsentimental\n- high signal, low warmth\n\n"
+  - "### journalistic\n- crisp, factual, narrative clarity\n- clean momentum\n- no clickbait cadence\n\nIf no register is set, default to `literary_modern`.\n\n"
+  - "## Quality bar\n\nBefore finalizing, check internally:\n- Remove any line that sounds like it was assembled from templates.\n- Remove any sentence that merely repeats the previous one.\n- Remove any sentence that exists to guide the reader's emotions.\n- Ensure every paragraph advances meaning.\n\nIf quality is uncertain, write less. Silence beats slop.\n\n"
+  - "## Output rules\n\n- Plain text prose by default.\n- No headings unless requested.\n- No bullet points unless requested.\n- If the user requests bullets, keep them taut and non-corporate.\n\n"
+  - "## Examples\n\n"
+  - "### Bad (banned)\n\"This isn't about money. It's about power.\"\n\n"
+  - "### Good\n\"Money is the instrument. Power is the habit.\"\n\n"
+  - "### Bad (filler)\n\"At its core, this is a complex issue. That said, in today's world...\"\n\n"
+  - "### Good\n\"It is complex. Complexity is not an excuse for fog.\"\n\n"
+  - "## Lint checklist (manual)\n\nFail the output if any are true:\n- Contains \"--\" used as an em dash.\n- Contains a reversal pivot pattern (\"not X, Y\").\n- Contains filler transitions from the banned list.\n- Contains therapy language or validation.\n- Contains meta writing talk (\"this essay,\" \"we will\").\n- Contains five consecutive sentences of similar length.\n\n"
+  - "## Tests\n\nSee `references/test-cases.md`.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

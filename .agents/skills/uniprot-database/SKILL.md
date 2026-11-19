@@ -6,194 +6,25 @@ metadata:
     skill-author: K-Dense Inc.
 risk: safe
 source: community
+prompt-source: prompt.toon
 ---
-
-# UniProt Database
-
-## Overview
-
-UniProt is the world's leading comprehensive protein sequence and functional information resource. Search proteins by name, gene, or accession, retrieve sequences in FASTA format, perform ID mapping across databases, access Swiss-Prot/TrEMBL annotations via REST API for protein analysis.
-
-## When to Use This Skill
-
-This skill should be used when:
-- Searching for protein entries by name, gene symbol, accession, or organism
-- Retrieving protein sequences in FASTA or other formats
-- Mapping identifiers between UniProt and external databases (Ensembl, RefSeq, PDB, etc.)
-- Accessing protein annotations including GO terms, domains, and functional descriptions
-- Batch retrieving multiple protein entries efficiently
-- Querying reviewed (Swiss-Prot) vs. unreviewed (TrEMBL) protein data
-- Streaming large protein datasets
-- Building custom queries with field-specific search syntax
-
-## Core Capabilities
-
-### 1. Searching for Proteins
-
-Search UniProt using natural language queries or structured search syntax.
-
-**Common search patterns:**
-```python
-# Search by protein name
-query = "insulin AND organism_name:\"Homo sapiens\""
-
-# Search by gene name
-query = "gene:BRCA1 AND reviewed:true"
-
-# Search by accession
-query = "accession:P12345"
-
-# Search by sequence length
-query = "length:[100 TO 500]"
-
-# Search by taxonomy
-query = "taxonomy_id:9606"  # Human proteins
-
-# Search by GO term
-query = "go:0005515"  # Protein binding
-```
-
-Use the API search endpoint: `https://rest.uniprot.org/uniprotkb/search?query={query}&format={format}`
-
-**Supported formats:** JSON, TSV, Excel, XML, FASTA, RDF, TXT
-
-### 2. Retrieving Individual Protein Entries
-
-Retrieve specific protein entries by accession number.
-
-**Accession number formats:**
-- Classic: P12345, Q1AAA9, O15530 (6 characters: letter + 5 alphanumeric)
-- Extended: A0A022YWF9 (10 characters for newer entries)
-
-**Retrieve endpoint:** `https://rest.uniprot.org/uniprotkb/{accession}.{format}`
-
-Example: `https://rest.uniprot.org/uniprotkb/P12345.fasta`
-
-### 3. Batch Retrieval and ID Mapping
-
-Map protein identifiers between different database systems and retrieve multiple entries efficiently.
-
-**ID Mapping workflow:**
-1. Submit mapping job to: `https://rest.uniprot.org/idmapping/run`
-2. Check job status: `https://rest.uniprot.org/idmapping/status/{jobId}`
-3. Retrieve results: `https://rest.uniprot.org/idmapping/results/{jobId}`
-
-**Supported databases for mapping:**
-- UniProtKB AC/ID
-- Gene names
-- Ensembl, RefSeq, EMBL
-- PDB, AlphaFoldDB
-- KEGG, GO terms
-- And many more (see `/references/id_mapping_databases.md`)
-
-**Limitations:**
-- Maximum 100,000 IDs per job
-- Results stored for 7 days
-
-### 4. Streaming Large Result Sets
-
-For large queries that exceed pagination limits, use the stream endpoint:
-
-`https://rest.uniprot.org/uniprotkb/stream?query={query}&format={format}`
-
-The stream endpoint returns all results without pagination, suitable for downloading complete datasets.
-
-### 5. Customizing Retrieved Fields
-
-Specify exactly which fields to retrieve for efficient data transfer.
-
-**Common fields:**
-- `accession` - UniProt accession number
-- `id` - Entry name
-- `gene_names` - Gene name(s)
-- `organism_name` - Organism
-- `protein_name` - Protein names
-- `sequence` - Amino acid sequence
-- `length` - Sequence length
-- `go_*` - Gene Ontology annotations
-- `cc_*` - Comment fields (function, interaction, etc.)
-- `ft_*` - Feature annotations (domains, sites, etc.)
-
-**Example:** `https://rest.uniprot.org/uniprotkb/search?query=insulin&fields=accession,gene_names,organism_name,length,sequence&format=tsv`
-
-See `/references/api_fields.md` for complete field list.
-
-## Python Implementation
-
-For programmatic access, use the provided helper script `scripts/uniprot_client.py` which implements:
-
-- `search_proteins(query, format)` - Search UniProt with any query
-- `get_protein(accession, format)` - Retrieve single protein entry
-- `map_ids(ids, from_db, to_db)` - Map between identifier types
-- `batch_retrieve(accessions, format)` - Retrieve multiple entries
-- `stream_results(query, format)` - Stream large result sets
-
-**Alternative Python packages:**
-- **Unipressed**: Modern, typed Python client for UniProt REST API
-- **bioservices**: Comprehensive bioinformatics web services client
-
-## Query Syntax Examples
-
-**Boolean operators:**
-```
-kinase AND organism_name:human
-(diabetes OR insulin) AND reviewed:true
-cancer NOT lung
-```
-
-**Field-specific searches:**
-```
-gene:BRCA1
-accession:P12345
-organism_id:9606
-taxonomy_name:"Homo sapiens"
-annotation:(type:signal)
-```
-
-**Range queries:**
-```
-length:[100 TO 500]
-mass:[50000 TO 100000]
-```
-
-**Wildcards:**
-```
-gene:BRCA*
-protein_name:kinase*
-```
-
-See `/references/query_syntax.md` for comprehensive syntax documentation.
-
-## Best Practices
-
-1. **Use reviewed entries when possible**: Filter with `reviewed:true` for Swiss-Prot (manually curated) entries
-2. **Specify format explicitly**: Choose the most appropriate format (FASTA for sequences, TSV for tabular data, JSON for programmatic parsing)
-3. **Use field selection**: Only request fields you need to reduce bandwidth and processing time
-4. **Handle pagination**: For large result sets, implement proper pagination or use the stream endpoint
-5. **Cache results**: Store frequently accessed data locally to minimize API calls
-6. **Rate limiting**: Be respectful of API resources; implement delays for large batch operations
-7. **Check data quality**: TrEMBL entries are computational predictions; Swiss-Prot entries are manually reviewed
-
-## Resources
-
-### scripts/
-`uniprot_client.py` - Python client with helper functions for common UniProt operations including search, retrieval, ID mapping, and streaming.
-
-### references/
-- `api_fields.md` - Complete list of available fields for customizing queries
-- `id_mapping_databases.md` - Supported databases for ID mapping operations
-- `query_syntax.md` - Comprehensive query syntax with advanced examples
-- `api_examples.md` - Code examples in multiple languages (Python, curl, R)
-
-## Additional Resources
-
-- **API Documentation**: https://www.uniprot.org/help/api
-- **Interactive API Explorer**: https://www.uniprot.org/api-documentation
-- **REST Tutorial**: https://www.uniprot.org/help/uniprot_rest_tutorial
-- **Query Syntax Help**: https://www.uniprot.org/help/query-fields
-- **SPARQL Endpoint**: https://sparql.uniprot.org/ (for advanced graph queries)
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "uniprot-database"
+sections[18]:
+  - "\n"
+  - "# UniProt Database\n\n"
+  - "## Overview\n\nUniProt is the world's leading comprehensive protein sequence and functional information resource. Search proteins by name, gene, or accession, retrieve sequences in FASTA format, perform ID mapping across databases, access Swiss-Prot/TrEMBL annotations via REST API for protein analysis.\n\n"
+  - "## When to Use This Skill\n\nThis skill should be used when:\n- Searching for protein entries by name, gene symbol, accession, or organism\n- Retrieving protein sequences in FASTA or other formats\n- Mapping identifiers between UniProt and external databases (Ensembl, RefSeq, PDB, etc.)\n- Accessing protein annotations including GO terms, domains, and functional descriptions\n- Batch retrieving multiple protein entries efficiently\n- Querying reviewed (Swiss-Prot) vs. unreviewed (TrEMBL) protein data\n- Streaming large protein datasets\n- Building custom queries with field-specific search syntax\n\n"
+  - "## Core Capabilities\n\n"
+  - "### 1. Searching for Proteins\n\nSearch UniProt using natural language queries or structured search syntax.\n\n**Common search patterns:**\n```python\n# Search by protein name\nquery = \"insulin AND organism_name:\\\"Homo sapiens\\\"\"\n\n# Search by gene name\nquery = \"gene:BRCA1 AND reviewed:true\"\n\n# Search by accession\nquery = \"accession:P12345\"\n\n# Search by sequence length\nquery = \"length:[100 TO 500]\"\n\n# Search by taxonomy\nquery = \"taxonomy_id:9606\"  # Human proteins\n\n# Search by GO term\nquery = \"go:0005515\"  # Protein binding\n```\n\nUse the API search endpoint: `https://rest.uniprot.org/uniprotkb/search?query={query}&format={format}`\n\n**Supported formats:** JSON, TSV, Excel, XML, FASTA, RDF, TXT\n\n"
+  - "### 2. Retrieving Individual Protein Entries\n\nRetrieve specific protein entries by accession number.\n\n**Accession number formats:**\n- Classic: P12345, Q1AAA9, O15530 (6 characters: letter + 5 alphanumeric)\n- Extended: A0A022YWF9 (10 characters for newer entries)\n\n**Retrieve endpoint:** `https://rest.uniprot.org/uniprotkb/{accession}.{format}`\n\nExample: `https://rest.uniprot.org/uniprotkb/P12345.fasta`\n\n"
+  - "### 3. Batch Retrieval and ID Mapping\n\nMap protein identifiers between different database systems and retrieve multiple entries efficiently.\n\n**ID Mapping workflow:**\n1. Submit mapping job to: `https://rest.uniprot.org/idmapping/run`\n2. Check job status: `https://rest.uniprot.org/idmapping/status/{jobId}`\n3. Retrieve results: `https://rest.uniprot.org/idmapping/results/{jobId}`\n\n**Supported databases for mapping:**\n- UniProtKB AC/ID\n- Gene names\n- Ensembl, RefSeq, EMBL\n- PDB, AlphaFoldDB\n- KEGG, GO terms\n- And many more (see `/references/id_mapping_databases.md`)\n\n**Limitations:**\n- Maximum 100,000 IDs per job\n- Results stored for 7 days\n\n"
+  - "### 4. Streaming Large Result Sets\n\nFor large queries that exceed pagination limits, use the stream endpoint:\n\n`https://rest.uniprot.org/uniprotkb/stream?query={query}&format={format}`\n\nThe stream endpoint returns all results without pagination, suitable for downloading complete datasets.\n\n"
+  - "### 5. Customizing Retrieved Fields\n\nSpecify exactly which fields to retrieve for efficient data transfer.\n\n**Common fields:**\n- `accession` - UniProt accession number\n- `id` - Entry name\n- `gene_names` - Gene name(s)\n- `organism_name` - Organism\n- `protein_name` - Protein names\n- `sequence` - Amino acid sequence\n- `length` - Sequence length\n- `go_*` - Gene Ontology annotations\n- `cc_*` - Comment fields (function, interaction, etc.)\n- `ft_*` - Feature annotations (domains, sites, etc.)\n\n**Example:** `https://rest.uniprot.org/uniprotkb/search?query=insulin&fields=accession,gene_names,organism_name,length,sequence&format=tsv`\n\nSee `/references/api_fields.md` for complete field list.\n\n"
+  - "## Python Implementation\n\nFor programmatic access, use the provided helper script `scripts/uniprot_client.py` which implements:\n\n- `search_proteins(query, format)` - Search UniProt with any query\n- `get_protein(accession, format)` - Retrieve single protein entry\n- `map_ids(ids, from_db, to_db)` - Map between identifier types\n- `batch_retrieve(accessions, format)` - Retrieve multiple entries\n- `stream_results(query, format)` - Stream large result sets\n\n**Alternative Python packages:**\n- **Unipressed**: Modern, typed Python client for UniProt REST API\n- **bioservices**: Comprehensive bioinformatics web services client\n\n"
+  - "## Query Syntax Examples\n\n**Boolean operators:**\n```\nkinase AND organism_name:human\n(diabetes OR insulin) AND reviewed:true\ncancer NOT lung\n```\n\n**Field-specific searches:**\n```\ngene:BRCA1\naccession:P12345\norganism_id:9606\ntaxonomy_name:\"Homo sapiens\"\nannotation:(type:signal)\n```\n\n**Range queries:**\n```\nlength:[100 TO 500]\nmass:[50000 TO 100000]\n```\n\n**Wildcards:**\n```\ngene:BRCA*\nprotein_name:kinase*\n```\n\nSee `/references/query_syntax.md` for comprehensive syntax documentation.\n\n"
+  - "## Best Practices\n\n1. **Use reviewed entries when possible**: Filter with `reviewed:true` for Swiss-Prot (manually curated) entries\n2. **Specify format explicitly**: Choose the most appropriate format (FASTA for sequences, TSV for tabular data, JSON for programmatic parsing)\n3. **Use field selection**: Only request fields you need to reduce bandwidth and processing time\n4. **Handle pagination**: For large result sets, implement proper pagination or use the stream endpoint\n5. **Cache results**: Store frequently accessed data locally to minimize API calls\n6. **Rate limiting**: Be respectful of API resources; implement delays for large batch operations\n7. **Check data quality**: TrEMBL entries are computational predictions; Swiss-Prot entries are manually reviewed\n\n"
+  - "## Resources\n\n"
+  - "### scripts/\n`uniprot_client.py` - Python client with helper functions for common UniProt operations including search, retrieval, ID mapping, and streaming.\n\n"
+  - "### references/\n- `api_fields.md` - Complete list of available fields for customizing queries\n- `id_mapping_databases.md` - Supported databases for ID mapping operations\n- `query_syntax.md` - Comprehensive query syntax with advanced examples\n- `api_examples.md` - Code examples in multiple languages (Python, curl, R)\n\n"
+  - "## Additional Resources\n\n- **API Documentation**: https://www.uniprot.org/help/api\n- **Interactive API Explorer**: https://www.uniprot.org/api-documentation\n- **REST Tutorial**: https://www.uniprot.org/help/uniprot_rest_tutorial\n- **Query Syntax Help**: https://www.uniprot.org/help/query-fields\n- **SPARQL Endpoint**: https://sparql.uniprot.org/ (for advanced graph queries)\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

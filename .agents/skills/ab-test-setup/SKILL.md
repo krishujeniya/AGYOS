@@ -4,240 +4,33 @@ description: "Structured guide for setting up A/B tests with mandatory gates for
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# A/B Test Setup
-
-## 1️⃣ Purpose & Scope
-
-Ensure every A/B test is **valid, rigorous, and safe** before a single line of code is written.
-
-- Prevents "peeking"
-- Enforces statistical power
-- Blocks invalid hypotheses
-
----
-
-## 2️⃣ Pre-Requisites
-
-You must have:
-
-- A clear user problem
-- Access to an analytics source
-- Roughly estimated traffic volume
-
-### Hypothesis Quality Checklist
-
-A valid hypothesis includes:
-
-- Observation or evidence
-- Single, specific change
-- Directional expectation
-- Defined audience
-- Measurable success criteria
-
----
-
-### 3️⃣ Hypothesis Lock (Hard Gate)
-
-Before designing variants or metrics, you MUST:
-
-- Present the **final hypothesis**
-- Specify:
-  - Target audience
-  - Primary metric
-  - Expected direction of effect
-  - Minimum Detectable Effect (MDE)
-
-Ask explicitly:
-
-> “Is this the final hypothesis we are committing to for this test?”
-
-**Do NOT proceed until confirmed.**
-
----
-
-### 4️⃣ Assumptions & Validity Check (Mandatory)
-
-Explicitly list assumptions about:
-
-- Traffic stability
-- User independence
-- Metric reliability
-- Randomization quality
-- External factors (seasonality, campaigns, releases)
-
-If assumptions are weak or violated:
-
-- Warn the user
-- Recommend delaying or redesigning the test
-
----
-
-### 5️⃣ Test Type Selection
-
-Choose the simplest valid test:
-
-- **A/B Test** – single change, two variants
-- **A/B/n Test** – multiple variants, higher traffic required
-- **Multivariate Test (MVT)** – interaction effects, very high traffic
-- **Split URL Test** – major structural changes
-
-Default to **A/B** unless there is a clear reason otherwise.
-
----
-
-### 6️⃣ Metrics Definition
-
-#### Primary Metric (Mandatory)
-
-- Single metric used to evaluate success
-- Directly tied to the hypothesis
-- Pre-defined and frozen before launch
-
-#### Secondary Metrics
-
-- Provide context
-- Explain _why_ results occurred
-- Must not override the primary metric
-
-#### Guardrail Metrics
-
-- Metrics that must not degrade
-- Used to prevent harmful wins
-- Trigger test stop if significantly negative
-
----
-
-### 7️⃣ Sample Size & Duration
-
-Define upfront:
-
-- Baseline rate
-- MDE
-- Significance level (typically 95%)
-- Statistical power (typically 80%)
-
-Estimate:
-
-- Required sample size per variant
-- Expected test duration
-
-**Do NOT proceed without a realistic sample size estimate.**
-
----
-
-### 8️⃣ Execution Readiness Gate (Hard Stop)
-
-You may proceed to implementation **only if all are true**:
-
-- Hypothesis is locked
-- Primary metric is frozen
-- Sample size is calculated
-- Test duration is defined
-- Guardrails are set
-- Tracking is verified
-
-If any item is missing, stop and resolve it.
-
----
-
-## Running the Test
-
-### During the Test
-
-**DO:**
-
-- Monitor technical health
-- Document external factors
-
-**DO NOT:**
-
-- Stop early due to “good-looking” results
-- Change variants mid-test
-- Add new traffic sources
-- Redefine success criteria
-
----
-
-## Analyzing Results
-
-### Analysis Discipline
-
-When interpreting results:
-
-- Do NOT generalize beyond the tested population
-- Do NOT claim causality beyond the tested change
-- Do NOT override guardrail failures
-- Separate statistical significance from business judgment
-
-### Interpretation Outcomes
-
-| Result               | Action                                 |
-| -------------------- | -------------------------------------- |
-| Significant positive | Consider rollout                       |
-| Significant negative | Reject variant, document learning      |
-| Inconclusive         | Consider more traffic or bolder change |
-| Guardrail failure    | Do not ship, even if primary wins      |
-
----
-
-## Documentation & Learning
-
-### Test Record (Mandatory)
-
-Document:
-
-- Hypothesis
-- Variants
-- Metrics
-- Sample size vs achieved
-- Results
-- Decision
-- Learnings
-- Follow-up ideas
-
-Store records in a shared, searchable location to avoid repeated failures.
-
----
-
-## Refusal Conditions (Safety)
-
-Refuse to proceed if:
-
-- Baseline rate is unknown and cannot be estimated
-- Traffic is insufficient to detect the MDE
-- Primary metric is undefined
-- Multiple variables are changed without proper design
-- Hypothesis cannot be clearly stated
-
-Explain why and recommend next steps.
-
----
-
-## Key Principles (Non-Negotiable)
-
-- One hypothesis per test
-- One primary metric
-- Commit before launch
-- No peeking
-- Learning over winning
-- Statistical rigor first
-
----
-
-## Final Reminder
-
-A/B testing is not about proving ideas right.
-It is about **learning the truth with confidence**.
-
-If you feel tempted to rush, simplify, or “just try it” —
-that is the signal to **slow down and re-check the design**.
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "ab-test-setup"
+sections[26]:
+  - "\n"
+  - "# A/B Test Setup\n\n"
+  - "## 1️⃣ Purpose & Scope\n\nEnsure every A/B test is **valid, rigorous, and safe** before a single line of code is written.\n\n- Prevents \"peeking\"\n- Enforces statistical power\n- Blocks invalid hypotheses\n\n---\n\n"
+  - "## 2️⃣ Pre-Requisites\n\nYou must have:\n\n- A clear user problem\n- Access to an analytics source\n- Roughly estimated traffic volume\n\n"
+  - "### Hypothesis Quality Checklist\n\nA valid hypothesis includes:\n\n- Observation or evidence\n- Single, specific change\n- Directional expectation\n- Defined audience\n- Measurable success criteria\n\n---\n\n"
+  - "### 3️⃣ Hypothesis Lock (Hard Gate)\n\nBefore designing variants or metrics, you MUST:\n\n- Present the **final hypothesis**\n- Specify:\n  - Target audience\n  - Primary metric\n  - Expected direction of effect\n  - Minimum Detectable Effect (MDE)\n\nAsk explicitly:\n\n> “Is this the final hypothesis we are committing to for this test?”\n\n**Do NOT proceed until confirmed.**\n\n---\n\n"
+  - "### 4️⃣ Assumptions & Validity Check (Mandatory)\n\nExplicitly list assumptions about:\n\n- Traffic stability\n- User independence\n- Metric reliability\n- Randomization quality\n- External factors (seasonality, campaigns, releases)\n\nIf assumptions are weak or violated:\n\n- Warn the user\n- Recommend delaying or redesigning the test\n\n---\n\n"
+  - "### 5️⃣ Test Type Selection\n\nChoose the simplest valid test:\n\n- **A/B Test** – single change, two variants\n- **A/B/n Test** – multiple variants, higher traffic required\n- **Multivariate Test (MVT)** – interaction effects, very high traffic\n- **Split URL Test** – major structural changes\n\nDefault to **A/B** unless there is a clear reason otherwise.\n\n---\n\n"
+  - "### 6️⃣ Metrics Definition\n\n"
+  - "#### Primary Metric (Mandatory)\n\n- Single metric used to evaluate success\n- Directly tied to the hypothesis\n- Pre-defined and frozen before launch\n\n"
+  - "#### Secondary Metrics\n\n- Provide context\n- Explain _why_ results occurred\n- Must not override the primary metric\n\n"
+  - "#### Guardrail Metrics\n\n- Metrics that must not degrade\n- Used to prevent harmful wins\n- Trigger test stop if significantly negative\n\n---\n\n"
+  - "### 7️⃣ Sample Size & Duration\n\nDefine upfront:\n\n- Baseline rate\n- MDE\n- Significance level (typically 95%)\n- Statistical power (typically 80%)\n\nEstimate:\n\n- Required sample size per variant\n- Expected test duration\n\n**Do NOT proceed without a realistic sample size estimate.**\n\n---\n\n"
+  - "### 8️⃣ Execution Readiness Gate (Hard Stop)\n\nYou may proceed to implementation **only if all are true**:\n\n- Hypothesis is locked\n- Primary metric is frozen\n- Sample size is calculated\n- Test duration is defined\n- Guardrails are set\n- Tracking is verified\n\nIf any item is missing, stop and resolve it.\n\n---\n\n"
+  - "## Running the Test\n\n"
+  - "### During the Test\n\n**DO:**\n\n- Monitor technical health\n- Document external factors\n\n**DO NOT:**\n\n- Stop early due to “good-looking” results\n- Change variants mid-test\n- Add new traffic sources\n- Redefine success criteria\n\n---\n\n"
+  - "## Analyzing Results\n\n"
+  - "### Analysis Discipline\n\nWhen interpreting results:\n\n- Do NOT generalize beyond the tested population\n- Do NOT claim causality beyond the tested change\n- Do NOT override guardrail failures\n- Separate statistical significance from business judgment\n\n"
+  - "### Interpretation Outcomes\n\n| Result               | Action                                 |\n| -------------------- | -------------------------------------- |\n| Significant positive | Consider rollout                       |\n| Significant negative | Reject variant, document learning      |\n| Inconclusive         | Consider more traffic or bolder change |\n| Guardrail failure    | Do not ship, even if primary wins      |\n\n---\n\n"
+  - "## Documentation & Learning\n\n"
+  - "### Test Record (Mandatory)\n\nDocument:\n\n- Hypothesis\n- Variants\n- Metrics\n- Sample size vs achieved\n- Results\n- Decision\n- Learnings\n- Follow-up ideas\n\nStore records in a shared, searchable location to avoid repeated failures.\n\n---\n\n"
+  - "## Refusal Conditions (Safety)\n\nRefuse to proceed if:\n\n- Baseline rate is unknown and cannot be estimated\n- Traffic is insufficient to detect the MDE\n- Primary metric is undefined\n- Multiple variables are changed without proper design\n- Hypothesis cannot be clearly stated\n\nExplain why and recommend next steps.\n\n---\n\n"
+  - "## Key Principles (Non-Negotiable)\n\n- One hypothesis per test\n- One primary metric\n- Commit before launch\n- No peeking\n- Learning over winning\n- Statistical rigor first\n\n---\n\n"
+  - "## Final Reminder\n\nA/B testing is not about proving ideas right.\nIt is about **learning the truth with confidence**.\n\nIf you feel tempted to rush, simplify, or “just try it” —\nthat is the signal to **slow down and re-check the design**.\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

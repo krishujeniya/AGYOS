@@ -7,16 +7,9 @@ description: No-code automation democratizes workflow building. Zapier and Make
 risk: unknown
 source: vibeship-spawner-skills (Apache 2.0)
 date_added: 2026-02-27
+prompt-source: prompt.toon
 ---
-# Zapier & Make Patterns
-
-No-code automation democratizes workflow building. Zapier and Make (formerly Integromat) let non-developers automate business processes without writing code. But no-code doesn't mean no-complexity - these platforms have their own patterns, pitfalls, and breaking points.
-
-## Workflow
-
-1. Confirm the request fits this skill and identify the required inputs and output constraints.
-2. Read the applicable sections in [the full runbook](references/FULL_RUNBOOK.md).
-3. Check version-sensitive instructions against authoritative current documentation; label claims that cannot be verified.
-4. Get any required approval before paid, destructive, external, or user-visible actions not already authorized.
-5. Follow the relevant procedure using the project’s existing tools and conventions. Ask for missing inputs instead of inventing values.
-6. Verify the result with available checks and report what ran, what passed, and any remaining uncertainty.
+skill: "zapier-make-patterns"
+sections[2]:
+  - "# Zapier & Make Patterns\n\nNo-code automation democratizes workflow building. Zapier and Make (formerly Integromat) let non-developers automate business processes without writing code. But no-code doesn't mean no-complexity - these platforms have their own patterns, pitfalls, and breaking points.\n\n"
+  - "## Workflow\n\n1. Confirm the request fits this skill and identify the required inputs and output constraints.\n2. Read the applicable sections in [the full runbook](references/FULL_RUNBOOK.md).\n3. Check version-sensitive instructions against authoritative current documentation; label claims that cannot be verified.\n4. Get any required approval before paid, destructive, external, or user-visible actions not already authorized.\n5. Follow the relevant procedure using the project’s existing tools and conventions. Ask for missing inputs instead of inventing values.\n6. Verify the result with available checks and report what ran, what passed, and any remaining uncertainty.\n"

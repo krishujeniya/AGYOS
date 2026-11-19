@@ -3,130 +3,19 @@ name: apify-brand-reputation-monitoring
 description: "Scrape reviews, ratings, and brand mentions from multiple platforms using Apify Actors."
 risk: unknown
 source: community
+prompt-source: prompt.toon
 ---
-
-# Brand Reputation Monitoring
-
-Scrape reviews, ratings, and brand mentions from multiple platforms using Apify Actors.
-
-## When to Use
-- You need to monitor reviews, ratings, or brand mentions across social, travel, or map platforms.
-- The task is to select and run an Apify Actor for brand sentiment or reputation tracking.
-- You need exported monitoring results and a summary of reputation signals.
-
-## Prerequisites
-(No need to check it upfront)
-
-- `.env` file with `APIFY_TOKEN`
-- Node.js 20.6+ (for native `--env-file` support)
-- `mcpc` CLI tool: `npm install -g @apify/mcpc`
-
-## Workflow
-
-Copy this checklist and track progress:
-
-```
-Task Progress:
-- [ ] Step 1: Determine data source (select Actor)
-- [ ] Step 2: Fetch Actor schema via mcpc
-- [ ] Step 3: Ask user preferences (format, filename)
-- [ ] Step 4: Run the monitoring script
-- [ ] Step 5: Summarize results
-```
-
-### Step 1: Determine Data Source
-
-Select the appropriate Actor based on user needs:
-
-| User Need | Actor ID | Best For |
-|-----------|----------|----------|
-| Google Maps reviews | `compass/crawler-google-places` | Business reviews, ratings |
-| Google Maps review export | `compass/Google-Maps-Reviews-Scraper` | Dedicated review scraping |
-| Booking.com hotels | `voyager/booking-scraper` | Hotel data, scores |
-| Booking.com reviews | `voyager/booking-reviews-scraper` | Detailed hotel reviews |
-| TripAdvisor reviews | `maxcopell/tripadvisor-reviews` | Attraction/restaurant reviews |
-| Facebook reviews | `apify/facebook-reviews-scraper` | Page reviews |
-| Facebook comments | `apify/facebook-comments-scraper` | Post comment monitoring |
-| Facebook page metrics | `apify/facebook-pages-scraper` | Page ratings overview |
-| Facebook reactions | `apify/facebook-likes-scraper` | Reaction type analysis |
-| Instagram comments | `apify/instagram-comment-scraper` | Comment sentiment |
-| Instagram hashtags | `apify/instagram-hashtag-scraper` | Brand hashtag monitoring |
-| Instagram search | `apify/instagram-search-scraper` | Brand mention discovery |
-| Instagram tagged posts | `apify/instagram-tagged-scraper` | Brand tag tracking |
-| Instagram export | `apify/export-instagram-comments-posts` | Bulk comment export |
-| Instagram comprehensive | `apify/instagram-scraper` | Full Instagram monitoring |
-| Instagram API | `apify/instagram-api-scraper` | API-based monitoring |
-| YouTube comments | `streamers/youtube-comments-scraper` | Video comment sentiment |
-| TikTok comments | `clockworks/tiktok-comments-scraper` | TikTok sentiment |
-
-### Step 2: Fetch Actor Schema
-
-Fetch the Actor's input schema and details dynamically using mcpc:
-
-```bash
-export $(grep APIFY_TOKEN .env | xargs) && mcpc --json mcp.apify.com --header "Authorization: Bearer $APIFY_TOKEN" tools-call fetch-actor-details actor:="ACTOR_ID" | jq -r ".content"
-```
-
-Replace `ACTOR_ID` with the selected Actor (e.g., `compass/crawler-google-places`).
-
-This returns:
-- Actor description and README
-- Required and optional input parameters
-- Output fields (if available)
-
-### Step 3: Ask User Preferences
-
-Before running, ask:
-1. **Output format**:
-   - **Quick answer** - Display top few results in chat (no file saved)
-   - **CSV** - Full export with all fields
-   - **JSON** - Full export in JSON format
-2. **Number of results**: Based on character of use case
-
-### Step 4: Run the Script
-
-**Quick answer (display in chat, no file):**
-```bash
-node --env-file=.env ${CLAUDE_PLUGIN_ROOT}/reference/scripts/run_actor.js \
-  --actor "ACTOR_ID" \
-  --input 'JSON_INPUT'
-```
-
-**CSV:**
-```bash
-node --env-file=.env ${CLAUDE_PLUGIN_ROOT}/reference/scripts/run_actor.js \
-  --actor "ACTOR_ID" \
-  --input 'JSON_INPUT' \
-  --output YYYY-MM-DD_OUTPUT_FILE.csv \
-  --format csv
-```
-
-**JSON:**
-```bash
-node --env-file=.env ${CLAUDE_PLUGIN_ROOT}/reference/scripts/run_actor.js \
-  --actor "ACTOR_ID" \
-  --input 'JSON_INPUT' \
-  --output YYYY-MM-DD_OUTPUT_FILE.json \
-  --format json
-```
-
-### Step 5: Summarize Results
-
-After completion, report:
-- Number of reviews/mentions found
-- File location and name
-- Key fields available
-- Suggested next steps (sentiment analysis, filtering)
-
-## Error Handling
-
-`APIFY_TOKEN not found` - Ask user to create `.env` with `APIFY_TOKEN=your_token`
-`mcpc not found` - Ask user to install `npm install -g @apify/mcpc`
-`Actor not found` - Check Actor ID spelling
-`Run FAILED` - Ask user to check Apify console link in error output
-`Timeout` - Reduce input size or increase `--timeout`
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "apify-brand-reputation-monitoring"
+sections[12]:
+  - "\n"
+  - "# Brand Reputation Monitoring\n\nScrape reviews, ratings, and brand mentions from multiple platforms using Apify Actors.\n\n"
+  - "## When to Use\n- You need to monitor reviews, ratings, or brand mentions across social, travel, or map platforms.\n- The task is to select and run an Apify Actor for brand sentiment or reputation tracking.\n- You need exported monitoring results and a summary of reputation signals.\n\n"
+  - "## Prerequisites\n(No need to check it upfront)\n\n- `.env` file with `APIFY_TOKEN`\n- Node.js 20.6+ (for native `--env-file` support)\n- `mcpc` CLI tool: `npm install -g @apify/mcpc`\n\n"
+  - "## Workflow\n\nCopy this checklist and track progress:\n\n```\nTask Progress:\n- [ ] Step 1: Determine data source (select Actor)\n- [ ] Step 2: Fetch Actor schema via mcpc\n- [ ] Step 3: Ask user preferences (format, filename)\n- [ ] Step 4: Run the monitoring script\n- [ ] Step 5: Summarize results\n```\n\n"
+  - "### Step 1: Determine Data Source\n\nSelect the appropriate Actor based on user needs:\n\n| User Need | Actor ID | Best For |\n|-----------|----------|----------|\n| Google Maps reviews | `compass/crawler-google-places` | Business reviews, ratings |\n| Google Maps review export | `compass/Google-Maps-Reviews-Scraper` | Dedicated review scraping |\n| Booking.com hotels | `voyager/booking-scraper` | Hotel data, scores |\n| Booking.com reviews | `voyager/booking-reviews-scraper` | Detailed hotel reviews |\n| TripAdvisor reviews | `maxcopell/tripadvisor-reviews` | Attraction/restaurant reviews |\n| Facebook reviews | `apify/facebook-reviews-scraper` | Page reviews |\n| Facebook comments | `apify/facebook-comments-scraper` | Post comment monitoring |\n| Facebook page metrics | `apify/facebook-pages-scraper` | Page ratings overview |\n| Facebook reactions | `apify/facebook-likes-scraper` | Reaction type analysis |\n| Instagram comments | `apify/instagram-comment-scraper` | Comment sentiment |\n| Instagram hashtags | `apify/instagram-hashtag-scraper` | Brand hashtag monitoring |\n| Instagram search | `apify/instagram-search-scraper` | Brand mention discovery |\n| Instagram tagged posts | `apify/instagram-tagged-scraper` | Brand tag tracking |\n| Instagram export | `apify/export-instagram-comments-posts` | Bulk comment export |\n| Instagram comprehensive | `apify/instagram-scraper` | Full Instagram monitoring |\n| Instagram API | `apify/instagram-api-scraper` | API-based monitoring |\n| YouTube comments | `streamers/youtube-comments-scraper` | Video comment sentiment |\n| TikTok comments | `clockworks/tiktok-comments-scraper` | TikTok sentiment |\n\n"
+  - "### Step 2: Fetch Actor Schema\n\nFetch the Actor's input schema and details dynamically using mcpc:\n\n```bash\nexport $(grep APIFY_TOKEN .env | xargs) && mcpc --json mcp.apify.com --header \"Authorization: Bearer $APIFY_TOKEN\" tools-call fetch-actor-details actor:=\"ACTOR_ID\" | jq -r \".content\"\n```\n\nReplace `ACTOR_ID` with the selected Actor (e.g., `compass/crawler-google-places`).\n\nThis returns:\n- Actor description and README\n- Required and optional input parameters\n- Output fields (if available)\n\n"
+  - "### Step 3: Ask User Preferences\n\nBefore running, ask:\n1. **Output format**:\n   - **Quick answer** - Display top few results in chat (no file saved)\n   - **CSV** - Full export with all fields\n   - **JSON** - Full export in JSON format\n2. **Number of results**: Based on character of use case\n\n"
+  - "### Step 4: Run the Script\n\n**Quick answer (display in chat, no file):**\n```bash\nnode --env-file=.env ${CLAUDE_PLUGIN_ROOT}/reference/scripts/run_actor.js \\\n  --actor \"ACTOR_ID\" \\\n  --input 'JSON_INPUT'\n```\n\n**CSV:**\n```bash\nnode --env-file=.env ${CLAUDE_PLUGIN_ROOT}/reference/scripts/run_actor.js \\\n  --actor \"ACTOR_ID\" \\\n  --input 'JSON_INPUT' \\\n  --output YYYY-MM-DD_OUTPUT_FILE.csv \\\n  --format csv\n```\n\n**JSON:**\n```bash\nnode --env-file=.env ${CLAUDE_PLUGIN_ROOT}/reference/scripts/run_actor.js \\\n  --actor \"ACTOR_ID\" \\\n  --input 'JSON_INPUT' \\\n  --output YYYY-MM-DD_OUTPUT_FILE.json \\\n  --format json\n```\n\n"
+  - "### Step 5: Summarize Results\n\nAfter completion, report:\n- Number of reviews/mentions found\n- File location and name\n- Key fields available\n- Suggested next steps (sentiment analysis, filtering)\n\n"
+  - "## Error Handling\n\n`APIFY_TOKEN not found` - Ask user to create `.env` with `APIFY_TOKEN=your_token`\n`mcpc not found` - Ask user to install `npm install -g @apify/mcpc`\n`Actor not found` - Check Actor ID spelling\n`Run FAILED` - Ask user to check Apify console link in error output\n`Timeout` - Reduce input size or increase `--timeout`\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

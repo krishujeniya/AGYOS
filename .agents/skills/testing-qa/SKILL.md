@@ -5,231 +5,45 @@ category: workflow-bundle
 risk: safe
 source: personal
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Testing/QA Workflow Bundle
-
-## Overview
-
-Comprehensive testing and quality assurance workflow covering unit tests, integration tests, E2E tests, browser automation, and quality gates for production-ready software.
-
-## When to Use This Workflow
-
-Use this workflow when:
-- Setting up testing infrastructure
-- Writing unit and integration tests
-- Implementing E2E tests
-- Automating browser testing
-- Establishing quality gates
-- Performing code review
-
-## Workflow Phases
-
-### Phase 1: Test Strategy
-
-#### Skills to Invoke
-- `test-automator` - Test automation
-- `test-driven-development` - TDD
-
-#### Actions
-1. Define testing strategy
-2. Choose testing frameworks
-3. Plan test coverage
-4. Set up test infrastructure
-5. Configure CI integration
-
-#### Copy-Paste Prompts
-```
-Use @test-automator to design testing strategy
-```
-
-```
-Use @test-driven-development to implement TDD workflow
-```
-
-### Phase 2: Unit Testing
-
-#### Skills to Invoke
-- `javascript-testing-patterns` - Jest/Vitest
-- `python-testing-patterns` - pytest
-- `unit-testing-test-generate` - Test generation
-- `tdd-orchestrator` - TDD orchestration
-
-#### Actions
-1. Write unit tests
-2. Set up test fixtures
-3. Configure mocking
-4. Measure coverage
-5. Integrate with CI
-
-#### Copy-Paste Prompts
-```
-Use @javascript-testing-patterns to write Jest tests
-```
-
-```
-Use @python-testing-patterns to write pytest tests
-```
-
-```
-Use @unit-testing-test-generate to generate unit tests
-```
-
-### Phase 3: Integration Testing
-
-#### Skills to Invoke
-- `api-testing-observability-api-mock` - API testing
-- `e2e-testing-patterns` - Integration patterns
-
-#### Actions
-1. Design integration tests
-2. Set up test databases
-3. Configure API mocks
-4. Test service interactions
-5. Verify data flows
-
-#### Copy-Paste Prompts
-```
-Use @api-testing-observability-api-mock to test APIs
-```
-
-### Phase 4: E2E Testing
-
-#### Skills to Invoke
-- `playwright-skill` - Playwright testing
-- `e2e-testing-patterns` - E2E patterns
-- `webapp-testing` - Web app testing
-
-#### Actions
-1. Design E2E scenarios
-2. Write test scripts
-3. Configure test data
-4. Set up parallel execution
-5. Implement visual regression
-
-#### Copy-Paste Prompts
-```
-Use @playwright-skill to create E2E tests
-```
-
-```
-Use @e2e-testing-patterns to design E2E strategy
-```
-
-### Phase 5: Browser Automation
-
-#### Skills to Invoke
-- `browser-automation` - Browser automation
-- `webapp-testing` - Browser testing
-- `screenshots` - Screenshot automation
-
-#### Actions
-1. Set up browser automation
-2. Configure headless testing
-3. Implement visual testing
-4. Capture screenshots
-5. Test responsive design
-
-#### Copy-Paste Prompts
-```
-Use @browser-automation to automate browser tasks
-```
-
-```
-Use @screenshots to capture marketing screenshots
-```
-
-### Phase 6: Performance Testing
-
-#### Skills to Invoke
-- `performance-engineer` - Performance engineering
-- `performance-profiling` - Performance profiling
-- `web-performance-optimization` - Web performance
-
-#### Actions
-1. Design performance tests
-2. Set up load testing
-3. Measure response times
-4. Identify bottlenecks
-5. Optimize performance
-
-#### Copy-Paste Prompts
-```
-Use @performance-engineer to test application performance
-```
-
-### Phase 7: Code Review
-
-#### Skills to Invoke
-- `code-reviewer` - AI code review
-- `code-review-excellence` - Review best practices
-- `find-bugs` - Bug detection
-- `security-scanning-security-sast` - Security scanning
-
-#### Actions
-1. Configure review tools
-2. Run automated reviews
-3. Check for bugs
-4. Verify security
-5. Approve changes
-
-#### Copy-Paste Prompts
-```
-Use @code-reviewer to review pull requests
-```
-
-```
-Use @find-bugs to detect bugs in code
-```
-
-### Phase 8: Quality Gates
-
-#### Skills to Invoke
-- `lint-and-validate` - Linting
-- `verification-before-completion` - Verification
-
-#### Actions
-1. Configure linters
-2. Set up formatters
-3. Define quality metrics
-4. Implement gates
-5. Monitor compliance
-
-#### Copy-Paste Prompts
-```
-Use @lint-and-validate to check code quality
-```
-
-```
-Use @verification-before-completion to verify changes
-```
-
-## Testing Pyramid
-
-```
-        /       /  \    E2E Tests (10%)
-      /----     /      \  Integration Tests (20%)
-    /--------   /          \ Unit Tests (70%)
-  /------------```
-
-## Quality Gates Checklist
-
-- [ ] Unit test coverage > 80%
-- [ ] All tests passing
-- [ ] E2E tests for critical paths
-- [ ] Performance benchmarks met
-- [ ] Security scan passed
-- [ ] Code review approved
-- [ ] Linting clean
-
-## Related Workflow Bundles
-
-- `development` - Development workflow
-- `security-audit` - Security testing
-- `cloud-devops` - CI/CD integration
-- `ai-ml` - AI testing
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "testing-qa"
+sections[38]:
+  - "\n"
+  - "# Testing/QA Workflow Bundle\n\n"
+  - "## Overview\n\nComprehensive testing and quality assurance workflow covering unit tests, integration tests, E2E tests, browser automation, and quality gates for production-ready software.\n\n"
+  - "## When to Use This Workflow\n\nUse this workflow when:\n- Setting up testing infrastructure\n- Writing unit and integration tests\n- Implementing E2E tests\n- Automating browser testing\n- Establishing quality gates\n- Performing code review\n\n"
+  - "## Workflow Phases\n\n"
+  - "### Phase 1: Test Strategy\n\n"
+  - "#### Skills to Invoke\n- `test-automator` - Test automation\n- `test-driven-development` - TDD\n\n"
+  - "#### Actions\n1. Define testing strategy\n2. Choose testing frameworks\n3. Plan test coverage\n4. Set up test infrastructure\n5. Configure CI integration\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @test-automator to design testing strategy\n```\n\n```\nUse @test-driven-development to implement TDD workflow\n```\n\n"
+  - "### Phase 2: Unit Testing\n\n"
+  - "#### Skills to Invoke\n- `javascript-testing-patterns` - Jest/Vitest\n- `python-testing-patterns` - pytest\n- `unit-testing-test-generate` - Test generation\n- `tdd-orchestrator` - TDD orchestration\n\n"
+  - "#### Actions\n1. Write unit tests\n2. Set up test fixtures\n3. Configure mocking\n4. Measure coverage\n5. Integrate with CI\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @javascript-testing-patterns to write Jest tests\n```\n\n```\nUse @python-testing-patterns to write pytest tests\n```\n\n```\nUse @unit-testing-test-generate to generate unit tests\n```\n\n"
+  - "### Phase 3: Integration Testing\n\n"
+  - "#### Skills to Invoke\n- `api-testing-observability-api-mock` - API testing\n- `e2e-testing-patterns` - Integration patterns\n\n"
+  - "#### Actions\n1. Design integration tests\n2. Set up test databases\n3. Configure API mocks\n4. Test service interactions\n5. Verify data flows\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @api-testing-observability-api-mock to test APIs\n```\n\n"
+  - "### Phase 4: E2E Testing\n\n"
+  - "#### Skills to Invoke\n- `playwright-skill` - Playwright testing\n- `e2e-testing-patterns` - E2E patterns\n- `webapp-testing` - Web app testing\n\n"
+  - "#### Actions\n1. Design E2E scenarios\n2. Write test scripts\n3. Configure test data\n4. Set up parallel execution\n5. Implement visual regression\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @playwright-skill to create E2E tests\n```\n\n```\nUse @e2e-testing-patterns to design E2E strategy\n```\n\n"
+  - "### Phase 5: Browser Automation\n\n"
+  - "#### Skills to Invoke\n- `browser-automation` - Browser automation\n- `webapp-testing` - Browser testing\n- `screenshots` - Screenshot automation\n\n"
+  - "#### Actions\n1. Set up browser automation\n2. Configure headless testing\n3. Implement visual testing\n4. Capture screenshots\n5. Test responsive design\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @browser-automation to automate browser tasks\n```\n\n```\nUse @screenshots to capture marketing screenshots\n```\n\n"
+  - "### Phase 6: Performance Testing\n\n"
+  - "#### Skills to Invoke\n- `performance-engineer` - Performance engineering\n- `performance-profiling` - Performance profiling\n- `web-performance-optimization` - Web performance\n\n"
+  - "#### Actions\n1. Design performance tests\n2. Set up load testing\n3. Measure response times\n4. Identify bottlenecks\n5. Optimize performance\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @performance-engineer to test application performance\n```\n\n"
+  - "### Phase 7: Code Review\n\n"
+  - "#### Skills to Invoke\n- `code-reviewer` - AI code review\n- `code-review-excellence` - Review best practices\n- `find-bugs` - Bug detection\n- `security-scanning-security-sast` - Security scanning\n\n"
+  - "#### Actions\n1. Configure review tools\n2. Run automated reviews\n3. Check for bugs\n4. Verify security\n5. Approve changes\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @code-reviewer to review pull requests\n```\n\n```\nUse @find-bugs to detect bugs in code\n```\n\n"
+  - "### Phase 8: Quality Gates\n\n"
+  - "#### Skills to Invoke\n- `lint-and-validate` - Linting\n- `verification-before-completion` - Verification\n\n"
+  - "#### Actions\n1. Configure linters\n2. Set up formatters\n3. Define quality metrics\n4. Implement gates\n5. Monitor compliance\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @lint-and-validate to check code quality\n```\n\n```\nUse @verification-before-completion to verify changes\n```\n\n"
+  - "## Testing Pyramid\n\n```\n        /       /  \\    E2E Tests (10%)\n      /----     /      \\  Integration Tests (20%)\n    /--------   /          \\ Unit Tests (70%)\n  /------------```\n\n## Quality Gates Checklist\n\n- [ ] Unit test coverage > 80%\n- [ ] All tests passing\n- [ ] E2E tests for critical paths\n- [ ] Performance benchmarks met\n- [ ] Security scan passed\n- [ ] Code review approved\n- [ ] Linting clean\n\n## Related Workflow Bundles\n\n- `development` - Development workflow\n- `security-audit` - Security testing\n- `cloud-devops` - CI/CD integration\n- `ai-ml` - AI testing\n\n## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

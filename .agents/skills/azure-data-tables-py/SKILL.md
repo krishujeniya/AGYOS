@@ -4,248 +4,30 @@ description: Azure Tables SDK for Python (Storage and Cosmos DB). Use for NoSQL 
 risk: unknown
 source: community
 date_added: '2026-02-27'
+prompt-source: prompt.toon
 ---
-
-# Azure Tables SDK for Python
-
-NoSQL key-value store for structured data (Azure Storage Tables or Cosmos DB Table API).
-
-## Installation
-
-```bash
-pip install azure-data-tables azure-identity
-```
-
-## Environment Variables
-
-```bash
-# Azure Storage Tables
-AZURE_STORAGE_ACCOUNT_URL=https://<account>.table.core.windows.net
-
-# Cosmos DB Table API
-COSMOS_TABLE_ENDPOINT=https://<account>.table.cosmos.azure.com
-```
-
-## Authentication
-
-```python
-from azure.identity import DefaultAzureCredential
-from azure.data.tables import TableServiceClient, TableClient
-
-credential = DefaultAzureCredential()
-endpoint = "https://<account>.table.core.windows.net"
-
-# Service client (manage tables)
-service_client = TableServiceClient(endpoint=endpoint, credential=credential)
-
-# Table client (work with entities)
-table_client = TableClient(endpoint=endpoint, table_name="mytable", credential=credential)
-```
-
-## Client Types
-
-| Client | Purpose |
-|--------|---------|
-| `TableServiceClient` | Create/delete tables, list tables |
-| `TableClient` | Entity CRUD, queries |
-
-## Table Operations
-
-```python
-# Create table
-service_client.create_table("mytable")
-
-# Create if not exists
-service_client.create_table_if_not_exists("mytable")
-
-# Delete table
-service_client.delete_table("mytable")
-
-# List tables
-for table in service_client.list_tables():
-    print(table.name)
-
-# Get table client
-table_client = service_client.get_table_client("mytable")
-```
-
-## Entity Operations
-
-**Important**: Every entity requires `PartitionKey` and `RowKey` (together form unique ID).
-
-### Create Entity
-
-```python
-entity = {
-    "PartitionKey": "sales",
-    "RowKey": "order-001",
-    "product": "Widget",
-    "quantity": 5,
-    "price": 9.99,
-    "shipped": False
-}
-
-# Create (fails if exists)
-table_client.create_entity(entity=entity)
-
-# Upsert (create or replace)
-table_client.upsert_entity(entity=entity)
-```
-
-### Get Entity
-
-```python
-# Get by key (fastest)
-entity = table_client.get_entity(
-    partition_key="sales",
-    row_key="order-001"
-)
-print(f"Product: {entity['product']}")
-```
-
-### Update Entity
-
-```python
-# Replace entire entity
-entity["quantity"] = 10
-table_client.update_entity(entity=entity, mode="replace")
-
-# Merge (update specific fields only)
-update = {
-    "PartitionKey": "sales",
-    "RowKey": "order-001",
-    "shipped": True
-}
-table_client.update_entity(entity=update, mode="merge")
-```
-
-### Delete Entity
-
-```python
-table_client.delete_entity(
-    partition_key="sales",
-    row_key="order-001"
-)
-```
-
-## Query Entities
-
-### Query Within Partition
-
-```python
-# Query by partition (efficient)
-entities = table_client.query_entities(
-    query_filter="PartitionKey eq 'sales'"
-)
-for entity in entities:
-    print(entity)
-```
-
-### Query with Filters
-
-```python
-# Filter by properties
-entities = table_client.query_entities(
-    query_filter="PartitionKey eq 'sales' and quantity gt 3"
-)
-
-# With parameters (safer)
-entities = table_client.query_entities(
-    query_filter="PartitionKey eq @pk and price lt @max_price",
-    parameters={"pk": "sales", "max_price": 50.0}
-)
-```
-
-### Select Specific Properties
-
-```python
-entities = table_client.query_entities(
-    query_filter="PartitionKey eq 'sales'",
-    select=["RowKey", "product", "price"]
-)
-```
-
-### List All Entities
-
-```python
-# List all (cross-partition - use sparingly)
-for entity in table_client.list_entities():
-    print(entity)
-```
-
-## Batch Operations
-
-```python
-from azure.data.tables import TableTransactionError
-
-# Batch operations (same partition only!)
-operations = [
-    ("create", {"PartitionKey": "batch", "RowKey": "1", "data": "first"}),
-    ("create", {"PartitionKey": "batch", "RowKey": "2", "data": "second"}),
-    ("upsert", {"PartitionKey": "batch", "RowKey": "3", "data": "third"}),
-]
-
-try:
-    table_client.submit_transaction(operations)
-except TableTransactionError as e:
-    print(f"Transaction failed: {e}")
-```
-
-## Async Client
-
-```python
-from azure.data.tables.aio import TableServiceClient, TableClient
-from azure.identity.aio import DefaultAzureCredential
-
-async def table_operations():
-    credential = DefaultAzureCredential()
-    
-    async with TableClient(
-        endpoint="https://<account>.table.core.windows.net",
-        table_name="mytable",
-        credential=credential
-    ) as client:
-        # Create
-        await client.create_entity(entity={
-            "PartitionKey": "async",
-            "RowKey": "1",
-            "data": "test"
-        })
-        
-        # Query
-        async for entity in client.query_entities("PartitionKey eq 'async'"):
-            print(entity)
-
-import asyncio
-asyncio.run(table_operations())
-```
-
-## Data Types
-
-| Python Type | Table Storage Type |
-|-------------|-------------------|
-| `str` | String |
-| `int` | Int64 |
-| `float` | Double |
-| `bool` | Boolean |
-| `datetime` | DateTime |
-| `bytes` | Binary |
-| `UUID` | Guid |
-
-## Best Practices
-
-1. **Design partition keys** for query patterns and even distribution
-2. **Query within partitions** whenever possible (cross-partition is expensive)
-3. **Use batch operations** for multiple entities in same partition
-4. **Use `upsert_entity`** for idempotent writes
-5. **Use parameterized queries** to prevent injection
-6. **Keep entities small** — max 1MB per entity
-7. **Use async client** for high-throughput scenarios
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "azure-data-tables-py"
+sections[23]:
+  - "\n"
+  - "# Azure Tables SDK for Python\n\nNoSQL key-value store for structured data (Azure Storage Tables or Cosmos DB Table API).\n\n"
+  - "## Installation\n\n```bash\npip install azure-data-tables azure-identity\n```\n\n"
+  - "## Environment Variables\n\n```bash\n# Azure Storage Tables\nAZURE_STORAGE_ACCOUNT_URL=https://<account>.table.core.windows.net\n\n# Cosmos DB Table API\nCOSMOS_TABLE_ENDPOINT=https://<account>.table.cosmos.azure.com\n```\n\n"
+  - "## Authentication\n\n```python\nfrom azure.identity import DefaultAzureCredential\nfrom azure.data.tables import TableServiceClient, TableClient\n\ncredential = DefaultAzureCredential()\nendpoint = \"https://<account>.table.core.windows.net\"\n\n# Service client (manage tables)\nservice_client = TableServiceClient(endpoint=endpoint, credential=credential)\n\n# Table client (work with entities)\ntable_client = TableClient(endpoint=endpoint, table_name=\"mytable\", credential=credential)\n```\n\n"
+  - "## Client Types\n\n| Client | Purpose |\n|--------|---------|\n| `TableServiceClient` | Create/delete tables, list tables |\n| `TableClient` | Entity CRUD, queries |\n\n"
+  - "## Table Operations\n\n```python\n# Create table\nservice_client.create_table(\"mytable\")\n\n# Create if not exists\nservice_client.create_table_if_not_exists(\"mytable\")\n\n# Delete table\nservice_client.delete_table(\"mytable\")\n\n# List tables\nfor table in service_client.list_tables():\n    print(table.name)\n\n# Get table client\ntable_client = service_client.get_table_client(\"mytable\")\n```\n\n"
+  - "## Entity Operations\n\n**Important**: Every entity requires `PartitionKey` and `RowKey` (together form unique ID).\n\n"
+  - "### Create Entity\n\n```python\nentity = {\n    \"PartitionKey\": \"sales\",\n    \"RowKey\": \"order-001\",\n    \"product\": \"Widget\",\n    \"quantity\": 5,\n    \"price\": 9.99,\n    \"shipped\": False\n}\n\n# Create (fails if exists)\ntable_client.create_entity(entity=entity)\n\n# Upsert (create or replace)\ntable_client.upsert_entity(entity=entity)\n```\n\n"
+  - "### Get Entity\n\n```python\n# Get by key (fastest)\nentity = table_client.get_entity(\n    partition_key=\"sales\",\n    row_key=\"order-001\"\n)\nprint(f\"Product: {entity['product']}\")\n```\n\n"
+  - "### Update Entity\n\n```python\n# Replace entire entity\nentity[\"quantity\"] = 10\ntable_client.update_entity(entity=entity, mode=\"replace\")\n\n# Merge (update specific fields only)\nupdate = {\n    \"PartitionKey\": \"sales\",\n    \"RowKey\": \"order-001\",\n    \"shipped\": True\n}\ntable_client.update_entity(entity=update, mode=\"merge\")\n```\n\n"
+  - "### Delete Entity\n\n```python\ntable_client.delete_entity(\n    partition_key=\"sales\",\n    row_key=\"order-001\"\n)\n```\n\n"
+  - "## Query Entities\n\n"
+  - "### Query Within Partition\n\n```python\n# Query by partition (efficient)\nentities = table_client.query_entities(\n    query_filter=\"PartitionKey eq 'sales'\"\n)\nfor entity in entities:\n    print(entity)\n```\n\n"
+  - "### Query with Filters\n\n```python\n# Filter by properties\nentities = table_client.query_entities(\n    query_filter=\"PartitionKey eq 'sales' and quantity gt 3\"\n)\n\n# With parameters (safer)\nentities = table_client.query_entities(\n    query_filter=\"PartitionKey eq @pk and price lt @max_price\",\n    parameters={\"pk\": \"sales\", \"max_price\": 50.0}\n)\n```\n\n"
+  - "### Select Specific Properties\n\n```python\nentities = table_client.query_entities(\n    query_filter=\"PartitionKey eq 'sales'\",\n    select=[\"RowKey\", \"product\", \"price\"]\n)\n```\n\n"
+  - "### List All Entities\n\n```python\n# List all (cross-partition - use sparingly)\nfor entity in table_client.list_entities():\n    print(entity)\n```\n\n"
+  - "## Batch Operations\n\n```python\nfrom azure.data.tables import TableTransactionError\n\n# Batch operations (same partition only!)\noperations = [\n    (\"create\", {\"PartitionKey\": \"batch\", \"RowKey\": \"1\", \"data\": \"first\"}),\n    (\"create\", {\"PartitionKey\": \"batch\", \"RowKey\": \"2\", \"data\": \"second\"}),\n    (\"upsert\", {\"PartitionKey\": \"batch\", \"RowKey\": \"3\", \"data\": \"third\"}),\n]\n\ntry:\n    table_client.submit_transaction(operations)\nexcept TableTransactionError as e:\n    print(f\"Transaction failed: {e}\")\n```\n\n"
+  - "## Async Client\n\n```python\nfrom azure.data.tables.aio import TableServiceClient, TableClient\nfrom azure.identity.aio import DefaultAzureCredential\n\nasync def table_operations():\n    credential = DefaultAzureCredential()\n    \n    async with TableClient(\n        endpoint=\"https://<account>.table.core.windows.net\",\n        table_name=\"mytable\",\n        credential=credential\n    ) as client:\n        # Create\n        await client.create_entity(entity={\n            \"PartitionKey\": \"async\",\n            \"RowKey\": \"1\",\n            \"data\": \"test\"\n        })\n        \n        # Query\n        async for entity in client.query_entities(\"PartitionKey eq 'async'\"):\n            print(entity)\n\nimport asyncio\nasyncio.run(table_operations())\n```\n\n"
+  - "## Data Types\n\n| Python Type | Table Storage Type |\n|-------------|-------------------|\n| `str` | String |\n| `int` | Int64 |\n| `float` | Double |\n| `bool` | Boolean |\n| `datetime` | DateTime |\n| `bytes` | Binary |\n| `UUID` | Guid |\n\n"
+  - "## Best Practices\n\n1. **Design partition keys** for query patterns and even distribution\n2. **Query within partitions** whenever possible (cross-partition is expensive)\n3. **Use batch operations** for multiple entities in same partition\n4. **Use `upsert_entity`** for idempotent writes\n5. **Use parameterized queries** to prevent injection\n6. **Keep entities small** — max 1MB per entity\n7. **Use async client** for high-throughput scenarios\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

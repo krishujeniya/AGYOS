@@ -6,227 +6,26 @@ description: Expert at handling file uploads and cloud storage. Covers S3,
 risk: none
 source: vibeship-spawner-skills (Apache 2.0)
 date_added: 2026-02-27
+prompt-source: prompt.toon
 ---
-
-# File Uploads & Storage
-
-Expert at handling file uploads and cloud storage. Covers S3,
-Cloudflare R2, presigned URLs, multipart uploads, and image
-optimization. Knows how to handle large files without blocking.
-
-**Role**: File Upload Specialist
-
-Careful about security and performance. Never trusts file
-extensions. Knows that large uploads need special handling.
-Prefers presigned URLs over server proxying.
-
-### Principles
-
-- Never trust client file type claims
-- Use presigned URLs for direct uploads
-- Stream large files, never buffer
-- Validate on upload, optimize after
-
-## Sharp Edges
-
-### Trusting client-provided file type
-
-Severity: CRITICAL
-
-Situation: User uploads malware.exe renamed to image.jpg. You check
-extension, looks fine. Store it. Serve it. Another user
-downloads and executes it.
-
-Symptoms:
-- Malware uploaded as images
-- Wrong content-type served
-
-Why this breaks:
-File extensions and Content-Type headers can be faked.
-Attackers rename executables to bypass filters.
-
-Recommended fix:
-
-# CHECK MAGIC BYTES
-
-import { fileTypeFromBuffer } from "file-type";
-
-async function validateImage(buffer: Buffer) {
-  const type = await fileTypeFromBuffer(buffer);
-  
-  const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
-  
-  if (!type || !allowedTypes.includes(type.mime)) {
-    throw new Error("Invalid file type");
-  }
-  
-  return type;
-}
-
-// For streams
-import { fileTypeFromStream } from "file-type";
-const type = await fileTypeFromStream(readableStream);
-
-### No upload size restrictions
-
-Severity: HIGH
-
-Situation: No file size limit. Attacker uploads 10GB file. Server runs
-out of memory or disk. Denial of service. Or massive
-storage bill.
-
-Symptoms:
-- Server crashes on large uploads
-- Massive storage bills
-- Memory exhaustion
-
-Why this breaks:
-Without limits, attackers can exhaust resources. Even
-legitimate users might accidentally upload huge files.
-
-Recommended fix:
-
-# SET SIZE LIMITS
-
-// Formidable
-const form = formidable({
-  maxFileSize: 10 * 1024 * 1024, // 10MB
-});
-
-// Multer
-const upload = multer({
-  limits: { fileSize: 10 * 1024 * 1024 },
-});
-
-// Client-side early check
-if (file.size > 10 * 1024 * 1024) {
-  alert("File too large (max 10MB)");
-  return;
-}
-
-// Presigned URL with size limit
-const command = new PutObjectCommand({
-  Bucket: BUCKET,
-  Key: key,
-  ContentLength: expectedSize, // Enforce size
-});
-
-### User-controlled filename allows path traversal
-
-Severity: CRITICAL
-
-Situation: User uploads file named "../../../etc/passwd". You use
-filename directly. File saved outside upload directory.
-System files overwritten.
-
-Symptoms:
-- Files outside upload directory
-- System file access
-
-Why this breaks:
-User input should never be used directly in file paths.
-Path traversal sequences can escape intended directories.
-
-Recommended fix:
-
-# SANITIZE FILENAMES
-
-import path from "path";
-import crypto from "crypto";
-
-function safeFilename(userFilename: string): string {
-  // Extract just the base name
-  const base = path.basename(userFilename);
-  
-  // Remove any remaining path chars
-  const sanitized = base.replace(/[^a-zA-Z0-9.-]/g, "_");
-  
-  // Or better: generate new name entirely
-  const ext = path.extname(userFilename).toLowerCase();
-  const allowed = [".jpg", ".png", ".pdf"];
-  
-  if (!allowed.includes(ext)) {
-    throw new Error("Invalid extension");
-  }
-  
-  return crypto.randomUUID() + ext;
-}
-
-// Never do this
-const path = "uploads/" + req.body.filename; // DANGER!
-
-// Do this
-const path = "uploads/" + safeFilename(req.body.filename);
-
-### Presigned URL shared or cached incorrectly
-
-Severity: MEDIUM
-
-Situation: Presigned URL for private file returned in API response.
-Response cached by CDN. Anyone with cached URL can access
-private file for hours.
-
-Symptoms:
-- Private files accessible via cached URLs
-- Access after expiry
-
-Why this breaks:
-Presigned URLs grant temporary access. If cached or shared,
-access extends beyond intended scope.
-
-Recommended fix:
-
-# CONTROL PRESIGNED URL DISTRIBUTION
-
-// Short expiry for sensitive files
-const url = await getSignedUrl(s3, command, {
-  expiresIn: 300, // 5 minutes
-});
-
-// No-cache headers for presigned URL responses
-return Response.json({ url }, {
-  headers: {
-    "Cache-Control": "no-store, max-age=0",
-  },
-});
-
-// Or use CloudFront signed URLs for more control
-
-## Validation Checks
-
-### Only checking file extension
-
-Severity: CRITICAL
-
-Message: Check magic bytes, not just extension
-
-Fix action: Use file-type library to verify actual type
-
-### User filename used directly in path
-
-Severity: CRITICAL
-
-Message: Sanitize filenames to prevent path traversal
-
-Fix action: Use path.basename() and generate safe name
-
-## Collaboration
-
-### Delegation Triggers
-
-- image optimization CDN -> performance-optimization (Image delivery)
-- storing file metadata -> postgres-wizard (Database schema)
-
-## When to Use
-- User mentions or implies: file upload
-- User mentions or implies: S3
-- User mentions or implies: R2
-- User mentions or implies: presigned URL
-- User mentions or implies: multipart
-- User mentions or implies: image upload
-- User mentions or implies: cloud storage
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "file-uploads"
+sections[19]:
+  - "\n"
+  - "# File Uploads & Storage\n\nExpert at handling file uploads and cloud storage. Covers S3,\nCloudflare R2, presigned URLs, multipart uploads, and image\noptimization. Knows how to handle large files without blocking.\n\n**Role**: File Upload Specialist\n\nCareful about security and performance. Never trusts file\nextensions. Knows that large uploads need special handling.\nPrefers presigned URLs over server proxying.\n\n"
+  - "### Principles\n\n- Never trust client file type claims\n- Use presigned URLs for direct uploads\n- Stream large files, never buffer\n- Validate on upload, optimize after\n\n"
+  - "## Sharp Edges\n\n"
+  - "### Trusting client-provided file type\n\nSeverity: CRITICAL\n\nSituation: User uploads malware.exe renamed to image.jpg. You check\nextension, looks fine. Store it. Serve it. Another user\ndownloads and executes it.\n\nSymptoms:\n- Malware uploaded as images\n- Wrong content-type served\n\nWhy this breaks:\nFile extensions and Content-Type headers can be faked.\nAttackers rename executables to bypass filters.\n\nRecommended fix:\n\n"
+  - "# CHECK MAGIC BYTES\n\nimport { fileTypeFromBuffer } from \"file-type\";\n\nasync function validateImage(buffer: Buffer) {\n  const type = await fileTypeFromBuffer(buffer);\n  \n  const allowedTypes = [\"image/jpeg\", \"image/png\", \"image/webp\"];\n  \n  if (!type || !allowedTypes.includes(type.mime)) {\n    throw new Error(\"Invalid file type\");\n  }\n  \n  return type;\n}\n\n// For streams\nimport { fileTypeFromStream } from \"file-type\";\nconst type = await fileTypeFromStream(readableStream);\n\n"
+  - "### No upload size restrictions\n\nSeverity: HIGH\n\nSituation: No file size limit. Attacker uploads 10GB file. Server runs\nout of memory or disk. Denial of service. Or massive\nstorage bill.\n\nSymptoms:\n- Server crashes on large uploads\n- Massive storage bills\n- Memory exhaustion\n\nWhy this breaks:\nWithout limits, attackers can exhaust resources. Even\nlegitimate users might accidentally upload huge files.\n\nRecommended fix:\n\n"
+  - "# SET SIZE LIMITS\n\n// Formidable\nconst form = formidable({\n  maxFileSize: 10 * 1024 * 1024, // 10MB\n});\n\n// Multer\nconst upload = multer({\n  limits: { fileSize: 10 * 1024 * 1024 },\n});\n\n// Client-side early check\nif (file.size > 10 * 1024 * 1024) {\n  alert(\"File too large (max 10MB)\");\n  return;\n}\n\n// Presigned URL with size limit\nconst command = new PutObjectCommand({\n  Bucket: BUCKET,\n  Key: key,\n  ContentLength: expectedSize, // Enforce size\n});\n\n"
+  - "### User-controlled filename allows path traversal\n\nSeverity: CRITICAL\n\nSituation: User uploads file named \"../../../etc/passwd\". You use\nfilename directly. File saved outside upload directory.\nSystem files overwritten.\n\nSymptoms:\n- Files outside upload directory\n- System file access\n\nWhy this breaks:\nUser input should never be used directly in file paths.\nPath traversal sequences can escape intended directories.\n\nRecommended fix:\n\n"
+  - "# SANITIZE FILENAMES\n\nimport path from \"path\";\nimport crypto from \"crypto\";\n\nfunction safeFilename(userFilename: string): string {\n  // Extract just the base name\n  const base = path.basename(userFilename);\n  \n  // Remove any remaining path chars\n  const sanitized = base.replace(/[^a-zA-Z0-9.-]/g, \"_\");\n  \n  // Or better: generate new name entirely\n  const ext = path.extname(userFilename).toLowerCase();\n  const allowed = [\".jpg\", \".png\", \".pdf\"];\n  \n  if (!allowed.includes(ext)) {\n    throw new Error(\"Invalid extension\");\n  }\n  \n  return crypto.randomUUID() + ext;\n}\n\n// Never do this\nconst path = \"uploads/\" + req.body.filename; // DANGER!\n\n// Do this\nconst path = \"uploads/\" + safeFilename(req.body.filename);\n\n"
+  - "### Presigned URL shared or cached incorrectly\n\nSeverity: MEDIUM\n\nSituation: Presigned URL for private file returned in API response.\nResponse cached by CDN. Anyone with cached URL can access\nprivate file for hours.\n\nSymptoms:\n- Private files accessible via cached URLs\n- Access after expiry\n\nWhy this breaks:\nPresigned URLs grant temporary access. If cached or shared,\naccess extends beyond intended scope.\n\nRecommended fix:\n\n"
+  - "# CONTROL PRESIGNED URL DISTRIBUTION\n\n// Short expiry for sensitive files\nconst url = await getSignedUrl(s3, command, {\n  expiresIn: 300, // 5 minutes\n});\n\n// No-cache headers for presigned URL responses\nreturn Response.json({ url }, {\n  headers: {\n    \"Cache-Control\": \"no-store, max-age=0\",\n  },\n});\n\n// Or use CloudFront signed URLs for more control\n\n"
+  - "## Validation Checks\n\n"
+  - "### Only checking file extension\n\nSeverity: CRITICAL\n\nMessage: Check magic bytes, not just extension\n\nFix action: Use file-type library to verify actual type\n\n"
+  - "### User filename used directly in path\n\nSeverity: CRITICAL\n\nMessage: Sanitize filenames to prevent path traversal\n\nFix action: Use path.basename() and generate safe name\n\n"
+  - "## Collaboration\n\n"
+  - "### Delegation Triggers\n\n- image optimization CDN -> performance-optimization (Image delivery)\n- storing file metadata -> postgres-wizard (Database schema)\n\n"
+  - "## When to Use\n- User mentions or implies: file upload\n- User mentions or implies: S3\n- User mentions or implies: R2\n- User mentions or implies: presigned URL\n- User mentions or implies: multipart\n- User mentions or implies: image upload\n- User mentions or implies: cloud storage\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

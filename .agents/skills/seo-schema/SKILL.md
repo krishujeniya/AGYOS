@@ -16,167 +16,27 @@ allowed-tools:
   - Bash
   - WebFetch
   - Write
+prompt-source: prompt.toon
 ---
-
-# Schema Markup Analysis & Generation
-
-## When to Use
-- Use when detecting, validating, or generating Schema.org structured data.
-- Use when the user asks about JSON-LD, rich results, or markup opportunities.
-- Use when schema validation is the main task, rather than a broader SEO audit.
-
-## Detection
-
-1. Scan page source for JSON-LD `<script type="application/ld+json">`
-2. Check for Microdata (`itemscope`, `itemprop`)
-3. Check for RDFa (`typeof`, `property`)
-4. Always recommend JSON-LD as primary format (Google's stated preference)
-
-## Validation
-
-- Check required properties per schema type
-- Validate against Google's supported rich result types
-- Test for common errors:
-  - Missing @context
-  - Invalid @type
-  - Wrong data types
-  - Placeholder text
-  - Relative URLs (should be absolute)
-  - Invalid date formats
-- Flag deprecated types (see below)
-
-## Schema Type Status (as of Feb 2026)
-
-Read `references/schema-types.md` for the full list. Key rules:
-
-### ACTIVE (recommend freely):
-Organization, LocalBusiness, SoftwareApplication, WebApplication, Product (with Certification markup as of April 2025), ProductGroup, Offer, Service, Article, BlogPosting, NewsArticle, Review, AggregateRating, BreadcrumbList, WebSite, WebPage, Person, ProfilePage, ContactPage, VideoObject, ImageObject, Event, JobPosting, Course, DiscussionForumPosting
-
-### VIDEO & SPECIALIZED (recommend freely):
-BroadcastEvent, Clip, SeekToAction, SoftwareSourceCode
-
-See `schema/templates.json` for ready-to-use JSON-LD templates for these types.
-
-> **JSON-LD and JavaScript rendering:** Per Google's December 2025 JS SEO guidance, structured data injected via JavaScript may face delayed processing. For time-sensitive markup (especially Product, Offer), include JSON-LD in the initial server-rendered HTML.
-
-### RESTRICTED (only for specific sites):
-- **FAQ**: ONLY for government and healthcare authority sites (restricted Aug 2023)
-
-### DEPRECATED (never recommend):
-- **HowTo**: Rich results removed September 2023
-- **SpecialAnnouncement**: Deprecated July 31, 2025
-- **CourseInfo, EstimatedSalary, LearningVideo**: Retired June 2025
-- **ClaimReview**: Retired from rich results June 2025
-- **VehicleListing**: Retired from rich results June 2025
-- **Practice Problem**: Retired from rich results late 2025
-- **Dataset**: Retired from rich results late 2025
-- **Book Actions**: Deprecated then reversed, still functional as of Feb 2026 (historical note)
-
-## Generation
-
-When generating schema for a page:
-1. Identify page type from content analysis
-2. Select appropriate schema type(s)
-3. Generate valid JSON-LD with all required + recommended properties
-4. Include only truthful, verifiable data. Use placeholders clearly marked for user to fill
-5. Validate output before presenting
-
-## Common Schema Templates
-
-### Organization
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "[Company Name]",
-  "url": "[Website URL]",
-  "logo": "[Logo URL]",
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "[Phone]",
-    "contactType": "customer service"
-  },
-  "sameAs": [
-    "[Facebook URL]",
-    "[LinkedIn URL]",
-    "[Twitter URL]"
-  ]
-}
-```
-
-### LocalBusiness
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "[Business Name]",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "[Street]",
-    "addressLocality": "[City]",
-    "addressRegion": "[State]",
-    "postalCode": "[ZIP]",
-    "addressCountry": "US"
-  },
-  "telephone": "[Phone]",
-  "openingHours": "Mo-Fr 09:00-17:00",
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": "[Lat]",
-    "longitude": "[Long]"
-  }
-}
-```
-
-### Article/BlogPosting
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "[Title]",
-  "author": {
-    "@type": "Person",
-    "name": "[Author Name]"
-  },
-  "datePublished": "[YYYY-MM-DD]",
-  "dateModified": "[YYYY-MM-DD]",
-  "image": "[Image URL]",
-  "publisher": {
-    "@type": "Organization",
-    "name": "[Publisher]",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "[Logo URL]"
-    }
-  }
-}
-```
-
-## Output
-
-- `SCHEMA-REPORT.md`: detection and validation results
-- `generated-schema.json`: ready-to-use JSON-LD snippets
-
-### Validation Results
-| Schema | Type | Status | Issues |
-|--------|------|--------|--------|
-| ... | ... | ✅/⚠️/❌ | ... |
-
-### Recommendations
-- Missing schema opportunities
-- Validation fixes needed
-- Generated code for implementation
-
-## Error Handling
-
-| Scenario | Action |
-|----------|--------|
-| URL unreachable | Report connection error with status code. Suggest verifying URL and checking if the page requires authentication. |
-| No schema markup found | Report that no JSON-LD, Microdata, or RDFa was detected. Recommend appropriate schema types based on page content analysis. |
-| Invalid JSON-LD syntax | Parse and report specific syntax errors (missing brackets, trailing commas, unquoted keys). Provide corrected JSON-LD output. |
-| Deprecated schema type detected | Flag the deprecated type with its retirement date. Recommend the current replacement type or advise removal if no replacement exists. |
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "seo-schema"
+sections[20]:
+  - "\n"
+  - "# Schema Markup Analysis & Generation\n\n"
+  - "## When to Use\n- Use when detecting, validating, or generating Schema.org structured data.\n- Use when the user asks about JSON-LD, rich results, or markup opportunities.\n- Use when schema validation is the main task, rather than a broader SEO audit.\n\n"
+  - "## Detection\n\n1. Scan page source for JSON-LD `<script type=\"application/ld+json\">`\n2. Check for Microdata (`itemscope`, `itemprop`)\n3. Check for RDFa (`typeof`, `property`)\n4. Always recommend JSON-LD as primary format (Google's stated preference)\n\n"
+  - "## Validation\n\n- Check required properties per schema type\n- Validate against Google's supported rich result types\n- Test for common errors:\n  - Missing @context\n  - Invalid @type\n  - Wrong data types\n  - Placeholder text\n  - Relative URLs (should be absolute)\n  - Invalid date formats\n- Flag deprecated types (see below)\n\n"
+  - "## Schema Type Status (as of Feb 2026)\n\nRead `references/schema-types.md` for the full list. Key rules:\n\n"
+  - "### ACTIVE (recommend freely):\nOrganization, LocalBusiness, SoftwareApplication, WebApplication, Product (with Certification markup as of April 2025), ProductGroup, Offer, Service, Article, BlogPosting, NewsArticle, Review, AggregateRating, BreadcrumbList, WebSite, WebPage, Person, ProfilePage, ContactPage, VideoObject, ImageObject, Event, JobPosting, Course, DiscussionForumPosting\n\n"
+  - "### VIDEO & SPECIALIZED (recommend freely):\nBroadcastEvent, Clip, SeekToAction, SoftwareSourceCode\n\nSee `schema/templates.json` for ready-to-use JSON-LD templates for these types.\n\n> **JSON-LD and JavaScript rendering:** Per Google's December 2025 JS SEO guidance, structured data injected via JavaScript may face delayed processing. For time-sensitive markup (especially Product, Offer), include JSON-LD in the initial server-rendered HTML.\n\n"
+  - "### RESTRICTED (only for specific sites):\n- **FAQ**: ONLY for government and healthcare authority sites (restricted Aug 2023)\n\n"
+  - "### DEPRECATED (never recommend):\n- **HowTo**: Rich results removed September 2023\n- **SpecialAnnouncement**: Deprecated July 31, 2025\n- **CourseInfo, EstimatedSalary, LearningVideo**: Retired June 2025\n- **ClaimReview**: Retired from rich results June 2025\n- **VehicleListing**: Retired from rich results June 2025\n- **Practice Problem**: Retired from rich results late 2025\n- **Dataset**: Retired from rich results late 2025\n- **Book Actions**: Deprecated then reversed, still functional as of Feb 2026 (historical note)\n\n"
+  - "## Generation\n\nWhen generating schema for a page:\n1. Identify page type from content analysis\n2. Select appropriate schema type(s)\n3. Generate valid JSON-LD with all required + recommended properties\n4. Include only truthful, verifiable data. Use placeholders clearly marked for user to fill\n5. Validate output before presenting\n\n"
+  - "## Common Schema Templates\n\n"
+  - "### Organization\n```json\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"[Company Name]\",\n  \"url\": \"[Website URL]\",\n  \"logo\": \"[Logo URL]\",\n  \"contactPoint\": {\n    \"@type\": \"ContactPoint\",\n    \"telephone\": \"[Phone]\",\n    \"contactType\": \"customer service\"\n  },\n  \"sameAs\": [\n    \"[Facebook URL]\",\n    \"[LinkedIn URL]\",\n    \"[Twitter URL]\"\n  ]\n}\n```\n\n"
+  - "### LocalBusiness\n```json\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"LocalBusiness\",\n  \"name\": \"[Business Name]\",\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"[Street]\",\n    \"addressLocality\": \"[City]\",\n    \"addressRegion\": \"[State]\",\n    \"postalCode\": \"[ZIP]\",\n    \"addressCountry\": \"US\"\n  },\n  \"telephone\": \"[Phone]\",\n  \"openingHours\": \"Mo-Fr 09:00-17:00\",\n  \"geo\": {\n    \"@type\": \"GeoCoordinates\",\n    \"latitude\": \"[Lat]\",\n    \"longitude\": \"[Long]\"\n  }\n}\n```\n\n"
+  - "### Article/BlogPosting\n```json\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Article\",\n  \"headline\": \"[Title]\",\n  \"author\": {\n    \"@type\": \"Person\",\n    \"name\": \"[Author Name]\"\n  },\n  \"datePublished\": \"[YYYY-MM-DD]\",\n  \"dateModified\": \"[YYYY-MM-DD]\",\n  \"image\": \"[Image URL]\",\n  \"publisher\": {\n    \"@type\": \"Organization\",\n    \"name\": \"[Publisher]\",\n    \"logo\": {\n      \"@type\": \"ImageObject\",\n      \"url\": \"[Logo URL]\"\n    }\n  }\n}\n```\n\n"
+  - "## Output\n\n- `SCHEMA-REPORT.md`: detection and validation results\n- `generated-schema.json`: ready-to-use JSON-LD snippets\n\n"
+  - "### Validation Results\n| Schema | Type | Status | Issues |\n|--------|------|--------|--------|\n| ... | ... | ✅/⚠️/❌ | ... |\n\n"
+  - "### Recommendations\n- Missing schema opportunities\n- Validation fixes needed\n- Generated code for implementation\n\n"
+  - "## Error Handling\n\n| Scenario | Action |\n|----------|--------|\n| URL unreachable | Report connection error with status code. Suggest verifying URL and checking if the page requires authentication. |\n| No schema markup found | Report that no JSON-LD, Microdata, or RDFa was detected. Recommend appropriate schema types based on page content analysis. |\n| Invalid JSON-LD syntax | Parse and report specific syntax errors (missing brackets, trailing commas, unquoted keys). Provide corrected JSON-LD output. |\n| Deprecated schema type detected | Flag the deprecated type with its retirement date. Recommend the current replacement type or advise removal if no replacement exists. |\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

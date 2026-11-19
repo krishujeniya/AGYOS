@@ -4,194 +4,31 @@ description: "Manage cryptographic keys using Azure Key Vault Keys SDK for JavaS
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Azure Key Vault Keys SDK for TypeScript
-
-Manage cryptographic keys with Azure Key Vault.
-
-## Installation
-
-```bash
-# Keys SDK
-npm install @azure/keyvault-keys @azure/identity
-```
-
-## Environment Variables
-
-```bash
-KEY_VAULT_URL=https://<vault-name>.vault.azure.net
-# Or
-AZURE_KEYVAULT_NAME=<vault-name>
-```
-
-## Authentication
-
-```typescript
-import { DefaultAzureCredential } from "@azure/identity";
-import { KeyClient, CryptographyClient } from "@azure/keyvault-keys";
-
-const credential = new DefaultAzureCredential();
-const vaultUrl = `https://${process.env.AZURE_KEYVAULT_NAME}.vault.azure.net`;
-
-const keyClient = new KeyClient(vaultUrl, credential);
-```
-
-## Secret management
-
-For secret storage and retrieval, use the [Azure Key Vault Secrets skill](../azure-keyvault-secrets-ts/SKILL.md).
-
-## Keys Operations
-
-### Create Keys
-
-```typescript
-// Generic key
-const key = await keyClient.createKey("MyKey", "RSA");
-
-// RSA key with size
-const rsaKey = await keyClient.createRsaKey("MyRsaKey", { keySize: 2048 });
-
-// Elliptic Curve key
-const ecKey = await keyClient.createEcKey("MyEcKey", { curve: "P-256" });
-
-// With attributes
-const keyWithAttrs = await keyClient.createKey("MyKey", "RSA", {
-  enabled: true,
-  expiresOn: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
-  tags: { purpose: "encryption" },
-  keyOps: ["encrypt", "decrypt", "sign", "verify"]
-});
-```
-
-### Get Key
-
-```typescript
-const key = await keyClient.getKey("MyKey");
-console.log(key.name, key.keyType);
-```
-
-### List Keys
-
-```typescript
-for await (const keyProperties of keyClient.listPropertiesOfKeys()) {
-  console.log(keyProperties.name);
-}
-```
-
-### Rotate Key
-
-```typescript
-// Manual rotation
-const rotatedKey = await keyClient.rotateKey("MyKey");
-
-// Set rotation policy
-await keyClient.updateKeyRotationPolicy("MyKey", {
-  lifetimeActions: [{ action: "Rotate", timeBeforeExpiry: "P30D" }],
-  expiresIn: "P90D"
-});
-```
-
-### Delete Key
-
-```typescript
-const deletePoller = await keyClient.beginDeleteKey("MyKey");
-await deletePoller.pollUntilDone();
-
-// Purge
-await keyClient.purgeDeletedKey("MyKey");
-```
-
-## Cryptographic Operations
-
-### Create CryptographyClient
-
-```typescript
-import { CryptographyClient } from "@azure/keyvault-keys";
-
-// From key object
-const cryptoClient = new CryptographyClient(key, credential);
-
-// From key ID
-const cryptoClient = new CryptographyClient(key.id!, credential);
-```
-
-### Encrypt/Decrypt
-
-```typescript
-// Encrypt
-const encryptResult = await cryptoClient.encrypt({
-  algorithm: "RSA-OAEP",
-  plaintext: Buffer.from("My secret message")
-});
-
-// Decrypt
-const decryptResult = await cryptoClient.decrypt({
-  algorithm: "RSA-OAEP",
-  ciphertext: encryptResult.result
-});
-
-console.log(decryptResult.result.toString());
-```
-
-### Sign/Verify
-
-```typescript
-import { createHash } from "node:crypto";
-
-// Create digest
-const hash = createHash("sha256").update("My message").digest();
-
-// Sign
-const signResult = await cryptoClient.sign("RS256", hash);
-
-// Verify
-const verifyResult = await cryptoClient.verify("RS256", hash, signResult.result);
-console.log("Valid:", verifyResult.result);
-```
-
-### Wrap/Unwrap Keys
-
-```typescript
-// Wrap a key (encrypt it for storage)
-const wrapResult = await cryptoClient.wrapKey("RSA-OAEP", Buffer.from("key-material"));
-
-// Unwrap
-const unwrapResult = await cryptoClient.unwrapKey("RSA-OAEP", wrapResult.result);
-```
-
-## Backup and Restore
-
-```typescript
-const keyBackup = await keyClient.backupKey("MyKey");
-const restoredKey = await keyClient.restoreKeyBackup(keyBackup!);
-```
-
-## Key Types
-
-Use the key and cryptography types exported by `@azure/keyvault-keys`; check the installed package declarations before adding a type import.
-
-## Error Handling
-
-Catch SDK errors at the operation boundary, log only safe diagnostic fields, and rethrow errors the caller cannot handle. Check the installed SDK documentation for error codes before branching on them.
-
-## Official SDK reference
-
-See the [Microsoft Key Vault Keys JavaScript SDK documentation](https://learn.microsoft.com/en-us/javascript/api/overview/azure/keyvault-keys-readme?view=azure-node-latest) for the installed package version.
-
-## Best Practices
-
-1. **Use DefaultAzureCredential** - Works across dev and production
-2. **Enable soft-delete** - Required for production vaults
-3. **Set expiration dates** - On both keys and secrets
-4. **Use key rotation policies** - Automate key rotation
-5. **Limit key operations** - Only grant needed operations (encrypt, sign, etc.)
-6. **Browser not supported** - These SDKs are Node.js only
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "azure-keyvault-keys-ts"
+sections[24]:
+  - "\n"
+  - "# Azure Key Vault Keys SDK for TypeScript\n\nManage cryptographic keys with Azure Key Vault.\n\n"
+  - "## Installation\n\n```bash\n# Keys SDK\nnpm install @azure/keyvault-keys @azure/identity\n```\n\n"
+  - "## Environment Variables\n\n```bash\nKEY_VAULT_URL=https://<vault-name>.vault.azure.net\n# Or\nAZURE_KEYVAULT_NAME=<vault-name>\n```\n\n"
+  - "## Authentication\n\n```typescript\nimport { DefaultAzureCredential } from \"@azure/identity\";\nimport { KeyClient, CryptographyClient } from \"@azure/keyvault-keys\";\n\nconst credential = new DefaultAzureCredential();\nconst vaultUrl = `https://${process.env.AZURE_KEYVAULT_NAME}.vault.azure.net`;\n\nconst keyClient = new KeyClient(vaultUrl, credential);\n```\n\n"
+  - "## Secret management\n\nFor secret storage and retrieval, use the [Azure Key Vault Secrets skill](../azure-keyvault-secrets-ts/SKILL.md).\n\n"
+  - "## Keys Operations\n\n"
+  - "### Create Keys\n\n```typescript\n// Generic key\nconst key = await keyClient.createKey(\"MyKey\", \"RSA\");\n\n// RSA key with size\nconst rsaKey = await keyClient.createRsaKey(\"MyRsaKey\", { keySize: 2048 });\n\n// Elliptic Curve key\nconst ecKey = await keyClient.createEcKey(\"MyEcKey\", { curve: \"P-256\" });\n\n// With attributes\nconst keyWithAttrs = await keyClient.createKey(\"MyKey\", \"RSA\", {\n  enabled: true,\n  expiresOn: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),\n  tags: { purpose: \"encryption\" },\n  keyOps: [\"encrypt\", \"decrypt\", \"sign\", \"verify\"]\n});\n```\n\n"
+  - "### Get Key\n\n```typescript\nconst key = await keyClient.getKey(\"MyKey\");\nconsole.log(key.name, key.keyType);\n```\n\n"
+  - "### List Keys\n\n```typescript\nfor await (const keyProperties of keyClient.listPropertiesOfKeys()) {\n  console.log(keyProperties.name);\n}\n```\n\n"
+  - "### Rotate Key\n\n```typescript\n// Manual rotation\nconst rotatedKey = await keyClient.rotateKey(\"MyKey\");\n\n// Set rotation policy\nawait keyClient.updateKeyRotationPolicy(\"MyKey\", {\n  lifetimeActions: [{ action: \"Rotate\", timeBeforeExpiry: \"P30D\" }],\n  expiresIn: \"P90D\"\n});\n```\n\n"
+  - "### Delete Key\n\n```typescript\nconst deletePoller = await keyClient.beginDeleteKey(\"MyKey\");\nawait deletePoller.pollUntilDone();\n\n// Purge\nawait keyClient.purgeDeletedKey(\"MyKey\");\n```\n\n"
+  - "## Cryptographic Operations\n\n"
+  - "### Create CryptographyClient\n\n```typescript\nimport { CryptographyClient } from \"@azure/keyvault-keys\";\n\n// From key object\nconst cryptoClient = new CryptographyClient(key, credential);\n\n// From key ID\nconst cryptoClient = new CryptographyClient(key.id!, credential);\n```\n\n"
+  - "### Encrypt/Decrypt\n\n```typescript\n// Encrypt\nconst encryptResult = await cryptoClient.encrypt({\n  algorithm: \"RSA-OAEP\",\n  plaintext: Buffer.from(\"My secret message\")\n});\n\n// Decrypt\nconst decryptResult = await cryptoClient.decrypt({\n  algorithm: \"RSA-OAEP\",\n  ciphertext: encryptResult.result\n});\n\nconsole.log(decryptResult.result.toString());\n```\n\n"
+  - "### Sign/Verify\n\n```typescript\nimport { createHash } from \"node:crypto\";\n\n// Create digest\nconst hash = createHash(\"sha256\").update(\"My message\").digest();\n\n// Sign\nconst signResult = await cryptoClient.sign(\"RS256\", hash);\n\n// Verify\nconst verifyResult = await cryptoClient.verify(\"RS256\", hash, signResult.result);\nconsole.log(\"Valid:\", verifyResult.result);\n```\n\n"
+  - "### Wrap/Unwrap Keys\n\n```typescript\n// Wrap a key (encrypt it for storage)\nconst wrapResult = await cryptoClient.wrapKey(\"RSA-OAEP\", Buffer.from(\"key-material\"));\n\n// Unwrap\nconst unwrapResult = await cryptoClient.unwrapKey(\"RSA-OAEP\", wrapResult.result);\n```\n\n"
+  - "## Backup and Restore\n\n```typescript\nconst keyBackup = await keyClient.backupKey(\"MyKey\");\nconst restoredKey = await keyClient.restoreKeyBackup(keyBackup!);\n```\n\n"
+  - "## Key Types\n\nUse the key and cryptography types exported by `@azure/keyvault-keys`; check the installed package declarations before adding a type import.\n\n"
+  - "## Error Handling\n\nCatch SDK errors at the operation boundary, log only safe diagnostic fields, and rethrow errors the caller cannot handle. Check the installed SDK documentation for error codes before branching on them.\n\n"
+  - "## Official SDK reference\n\nSee the [Microsoft Key Vault Keys JavaScript SDK documentation](https://learn.microsoft.com/en-us/javascript/api/overview/azure/keyvault-keys-readme?view=azure-node-latest) for the installed package version.\n\n"
+  - "## Best Practices\n\n1. **Use DefaultAzureCredential** - Works across dev and production\n2. **Enable soft-delete** - Required for production vaults\n3. **Set expiration dates** - On both keys and secrets\n4. **Use key rotation policies** - Automate key rotation\n5. **Limit key operations** - Only grant needed operations (encrypt, sign, etc.)\n6. **Browser not supported** - These SDKs are Node.js only\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

@@ -4,150 +4,21 @@ description: Run a six-phase verification of a Claude Code session's work — bu
 license: MIT
 metadata:
   origin: ECC
+prompt-source: prompt.toon
 ---
-
-# Verification Loop Skill
-
-A comprehensive verification system for Claude Code sessions.
-
-## When to Use
-
-Invoke this skill:
-- After completing a feature or significant code change
-- Before creating a PR
-- When you want to ensure quality gates pass
-- After refactoring
-
-## Verification Phases
-
-### Phase 1: Build Verification
-> [!NOTE]
-> **Local Build Policy:** When instructed or in rapid iterative development, do NOT run full production/static export builds locally (e.g., `npm run build:pages` or slow static exports). Only perform fast type checking (`npm run typecheck` / `npx tsc --noEmit`) and unit tests locally. Leave heavy multi-minute builds to remote CI/CD.
-
-```bash
-set -o pipefail  # report the build's exit status, not tail's
-# Check if project builds (skip if local build is disabled in favor of typecheck-only)
-npm run build 2>&1 | tail -20
-# OR
-pnpm build 2>&1 | tail -20
-```
-
-If build fails, STOP and fix before continuing.
-
-### Phase 2: Type Check
-```bash
-set -o pipefail
-# TypeScript projects
-npx --no-install tsc --noEmit 2>&1 | sed -n '1,30p'
-
-# Python projects
-pyright . 2>&1 | sed -n '1,30p'
-```
-
-Report all type errors. Fix critical ones before continuing.
-
-### Phase 3: Lint Check
-
-Use `sed` to limit displayed output while consuming the whole stream. This keeps a
-successful linter from failing on SIGPIPE when `pipefail` is enabled.
-```bash
-set -o pipefail
-# JavaScript/TypeScript
-npm run lint 2>&1 | sed -n '1,30p'
-
-# Python
-ruff check . 2>&1 | sed -n '1,30p'
-```
-
-### Phase 4: Test Suite
-```bash
-set -o pipefail
-# Run tests with coverage
-npm run test -- --coverage 2>&1 | tail -50
-
-# Check coverage threshold
-# Target: 80% minimum
-```
-
-Report:
-- Total tests: X
-- Passed: X
-- Failed: X
-- Coverage: X%
-
-### Phase 5: Security Scan
-```bash
-# Check for secrets
-grep -rn "sk-" --include="*.ts" --include="*.js" . 2>/dev/null | head -10
-grep -rn "api_key" --include="*.ts" --include="*.js" . 2>/dev/null | head -10
-
-# Check for console.log
-grep -rn "console.log" --include="*.ts" --include="*.tsx" src/ 2>/dev/null | head -10
-```
-
-### Phase 6: Diff Review
-```bash
-# Show what changed
-git diff --stat
-git diff HEAD~1 --name-only
-```
-
-Review each changed file for:
-- Unintended changes
-- Missing error handling
-- Potential edge cases
-
-## Target Acceptance
-
-When the requested outcome requires deployment or target-environment verification,
-report target acceptance separately from local checks. Record the environment and
-installed version when known, the evidence, and the next permitted check or precise
-access dependency. Passing local checks, review, merge, or release does not establish
-target acceptance. Report VERIFIED or FAILED for an executed target check, with its evidence.
-Do not access production or make external changes without authorization. For
-local-only tasks, mark target acceptance as not applicable.
-
-For example: local checks PASS; staging verification NOT PERFORMED (no access);
-next step: an authorized maintainer runs the staging smoke test.
-
-## Output Format
-
-After running all phases, produce a verification report:
-
-```
-VERIFICATION REPORT
-==================
-
-Build:     [PASS/FAIL]
-Types:     [PASS/FAIL] (X errors)
-Lint:      [PASS/FAIL] (X warnings)
-Tests:     [PASS/FAIL] (X/Y passed, Z% coverage)
-Security:  [PASS/FAIL] (X issues)
-Diff:      [X files changed]
-
-Overall:   [READY/NOT READY] for PR
-Target:    [VERIFIED/FAILED/NOT PERFORMED/NOT APPLICABLE] (environment/version, evidence)
-Next permitted step: [check or access dependency; none if complete/not applicable]
-
-Issues to Fix:
-1. ...
-2. ...
-```
-
-## Continuous Mode
-
-For long sessions, run verification every 15 minutes or after major changes:
-
-```markdown
-Set a mental checkpoint:
-- After completing each function
-- After finishing a component
-- Before moving to next task
-
-Run: /verify
-```
-
-## Integration with Hooks
-
-This skill complements PostToolUse hooks but provides deeper verification.
-Hooks catch issues immediately; this skill provides comprehensive review.
+skill: "verification-loop"
+sections[14]:
+  - "\n"
+  - "# Verification Loop Skill\n\nA comprehensive verification system for Claude Code sessions.\n\n"
+  - "## When to Use\n\nInvoke this skill:\n- After completing a feature or significant code change\n- Before creating a PR\n- When you want to ensure quality gates pass\n- After refactoring\n\n"
+  - "## Verification Phases\n\n"
+  - "### Phase 1: Build Verification\n> [!NOTE]\n> **Local Build Policy:** When instructed or in rapid iterative development, do NOT run full production/static export builds locally (e.g., `npm run build:pages` or slow static exports). Only perform fast type checking (`npm run typecheck` / `npx tsc --noEmit`) and unit tests locally. Leave heavy multi-minute builds to remote CI/CD.\n\n```bash\nset -o pipefail  # report the build's exit status, not tail's\n# Check if project builds (skip if local build is disabled in favor of typecheck-only)\nnpm run build 2>&1 | tail -20\n# OR\npnpm build 2>&1 | tail -20\n```\n\nIf build fails, STOP and fix before continuing.\n\n"
+  - "### Phase 2: Type Check\n```bash\nset -o pipefail\n# TypeScript projects\nnpx --no-install tsc --noEmit 2>&1 | sed -n '1,30p'\n\n# Python projects\npyright . 2>&1 | sed -n '1,30p'\n```\n\nReport all type errors. Fix critical ones before continuing.\n\n"
+  - "### Phase 3: Lint Check\n\nUse `sed` to limit displayed output while consuming the whole stream. This keeps a\nsuccessful linter from failing on SIGPIPE when `pipefail` is enabled.\n```bash\nset -o pipefail\n# JavaScript/TypeScript\nnpm run lint 2>&1 | sed -n '1,30p'\n\n# Python\nruff check . 2>&1 | sed -n '1,30p'\n```\n\n"
+  - "### Phase 4: Test Suite\n```bash\nset -o pipefail\n# Run tests with coverage\nnpm run test -- --coverage 2>&1 | tail -50\n\n# Check coverage threshold\n# Target: 80% minimum\n```\n\nReport:\n- Total tests: X\n- Passed: X\n- Failed: X\n- Coverage: X%\n\n"
+  - "### Phase 5: Security Scan\n```bash\n# Check for secrets\ngrep -rn \"sk-\" --include=\"*.ts\" --include=\"*.js\" . 2>/dev/null | head -10\ngrep -rn \"api_key\" --include=\"*.ts\" --include=\"*.js\" . 2>/dev/null | head -10\n\n# Check for console.log\ngrep -rn \"console.log\" --include=\"*.ts\" --include=\"*.tsx\" src/ 2>/dev/null | head -10\n```\n\n"
+  - "### Phase 6: Diff Review\n```bash\n# Show what changed\ngit diff --stat\ngit diff HEAD~1 --name-only\n```\n\nReview each changed file for:\n- Unintended changes\n- Missing error handling\n- Potential edge cases\n\n"
+  - "## Target Acceptance\n\nWhen the requested outcome requires deployment or target-environment verification,\nreport target acceptance separately from local checks. Record the environment and\ninstalled version when known, the evidence, and the next permitted check or precise\naccess dependency. Passing local checks, review, merge, or release does not establish\ntarget acceptance. Report VERIFIED or FAILED for an executed target check, with its evidence.\nDo not access production or make external changes without authorization. For\nlocal-only tasks, mark target acceptance as not applicable.\n\nFor example: local checks PASS; staging verification NOT PERFORMED (no access);\nnext step: an authorized maintainer runs the staging smoke test.\n\n"
+  - "## Output Format\n\nAfter running all phases, produce a verification report:\n\n```\nVERIFICATION REPORT\n==================\n\nBuild:     [PASS/FAIL]\nTypes:     [PASS/FAIL] (X errors)\nLint:      [PASS/FAIL] (X warnings)\nTests:     [PASS/FAIL] (X/Y passed, Z% coverage)\nSecurity:  [PASS/FAIL] (X issues)\nDiff:      [X files changed]\n\nOverall:   [READY/NOT READY] for PR\nTarget:    [VERIFIED/FAILED/NOT PERFORMED/NOT APPLICABLE] (environment/version, evidence)\nNext permitted step: [check or access dependency; none if complete/not applicable]\n\nIssues to Fix:\n1. ...\n2. ...\n```\n\n"
+  - "## Continuous Mode\n\nFor long sessions, run verification every 15 minutes or after major changes:\n\n```markdown\nSet a mental checkpoint:\n- After completing each function\n- After finishing a component\n- Before moving to next task\n\nRun: /verify\n```\n\n"
+  - "## Integration with Hooks\n\nThis skill complements PostToolUse hooks but provides deeper verification.\nHooks catch issues immediately; this skill provides comprehensive review.\n"

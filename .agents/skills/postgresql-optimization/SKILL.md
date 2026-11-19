@@ -5,175 +5,44 @@ category: granular-workflow-bundle
 risk: safe
 source: personal
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# PostgreSQL Optimization Workflow
-
-## Overview
-
-Specialized workflow for PostgreSQL database optimization including query tuning, indexing strategies, performance analysis, vacuum management, and production database administration.
-
-## When to Use This Workflow
-
-Use this workflow when:
-- Optimizing slow PostgreSQL queries
-- Designing indexing strategies
-- Analyzing database performance
-- Tuning PostgreSQL configuration
-- Managing production databases
-
-## Workflow Phases
-
-### Phase 1: Performance Assessment
-
-#### Skills to Invoke
-- `database-optimizer` - Database optimization
-- `postgres-best-practices` - PostgreSQL best practices
-
-#### Actions
-1. Check database version
-2. Review configuration
-3. Analyze slow queries
-4. Check resource usage
-5. Identify bottlenecks
-
-#### Copy-Paste Prompts
-```
-Use @database-optimizer to assess PostgreSQL performance
-```
-
-### Phase 2: Query Analysis
-
-#### Skills to Invoke
-- `sql-optimization-patterns` - SQL optimization
-- `postgres-best-practices` - PostgreSQL patterns
-
-#### Actions
-1. Run EXPLAIN ANALYZE
-2. Identify scan types
-3. Check join strategies
-4. Analyze execution time
-5. Find optimization opportunities
-
-#### Copy-Paste Prompts
-```
-Use @sql-optimization-patterns to analyze and optimize queries
-```
-
-### Phase 3: Indexing Strategy
-
-#### Skills to Invoke
-- `database-design` - Index design
-- `postgresql` - PostgreSQL indexing
-
-#### Actions
-1. Identify missing indexes
-2. Create B-tree indexes
-3. Add composite indexes
-4. Consider partial indexes
-5. Review index usage
-
-#### Copy-Paste Prompts
-```
-Use @database-design to design PostgreSQL indexing strategy
-```
-
-### Phase 4: Query Optimization
-
-#### Skills to Invoke
-- `sql-optimization-patterns` - Query tuning
-- `sql-pro` - SQL expertise
-
-#### Actions
-1. Rewrite inefficient queries
-2. Optimize joins
-3. Add CTEs where helpful
-4. Implement pagination
-5. Test improvements
-
-#### Copy-Paste Prompts
-```
-Use @sql-optimization-patterns to optimize SQL queries
-```
-
-### Phase 5: Configuration Tuning
-
-#### Skills to Invoke
-- `postgres-best-practices` - Configuration
-- `database-admin` - Database administration
-
-#### Actions
-1. Tune shared_buffers
-2. Configure work_mem
-3. Set effective_cache_size
-4. Adjust checkpoint settings
-5. Configure autovacuum
-
-#### Copy-Paste Prompts
-```
-Use @postgres-best-practices to tune PostgreSQL configuration
-```
-
-### Phase 6: Maintenance
-
-#### Skills to Invoke
-- `database-admin` - Database maintenance
-- `postgresql` - PostgreSQL maintenance
-
-#### Actions
-1. Schedule VACUUM
-2. Run ANALYZE
-3. Check table bloat
-4. Monitor autovacuum
-5. Review statistics
-
-#### Copy-Paste Prompts
-```
-Use @database-admin to schedule PostgreSQL maintenance
-```
-
-### Phase 7: Monitoring
-
-#### Skills to Invoke
-- `grafana-dashboards` - Monitoring dashboards
-- `prometheus-configuration` - Metrics collection
-
-#### Actions
-1. Set up monitoring
-2. Create dashboards
-3. Configure alerts
-4. Track key metrics
-5. Review trends
-
-#### Copy-Paste Prompts
-```
-Use @grafana-dashboards to create PostgreSQL monitoring
-```
-
-## Optimization Checklist
-
-- [ ] Slow queries identified
-- [ ] Indexes optimized
-- [ ] Configuration tuned
-- [ ] Maintenance scheduled
-- [ ] Monitoring active
-- [ ] Performance improved
-
-## Quality Gates
-
-- [ ] Query performance improved
-- [ ] Indexes effective
-- [ ] Configuration optimized
-- [ ] Maintenance automated
-- [ ] Monitoring in place
-
-## Related Workflow Bundles
-
-- `database` - Database operations
-- `cloud-devops` - Infrastructure
-- `performance-optimization` - Performance
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "postgresql-optimization"
+sections[37]:
+  - "\n"
+  - "# PostgreSQL Optimization Workflow\n\n"
+  - "## Overview\n\nSpecialized workflow for PostgreSQL database optimization including query tuning, indexing strategies, performance analysis, vacuum management, and production database administration.\n\n"
+  - "## When to Use This Workflow\n\nUse this workflow when:\n- Optimizing slow PostgreSQL queries\n- Designing indexing strategies\n- Analyzing database performance\n- Tuning PostgreSQL configuration\n- Managing production databases\n\n"
+  - "## Workflow Phases\n\n"
+  - "### Phase 1: Performance Assessment\n\n"
+  - "#### Skills to Invoke\n- `database-optimizer` - Database optimization\n- `postgres-best-practices` - PostgreSQL best practices\n\n"
+  - "#### Actions\n1. Check database version\n2. Review configuration\n3. Analyze slow queries\n4. Check resource usage\n5. Identify bottlenecks\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @database-optimizer to assess PostgreSQL performance\n```\n\n"
+  - "### Phase 2: Query Analysis\n\n"
+  - "#### Skills to Invoke\n- `sql-optimization-patterns` - SQL optimization\n- `postgres-best-practices` - PostgreSQL patterns\n\n"
+  - "#### Actions\n1. Run EXPLAIN ANALYZE\n2. Identify scan types\n3. Check join strategies\n4. Analyze execution time\n5. Find optimization opportunities\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @sql-optimization-patterns to analyze and optimize queries\n```\n\n"
+  - "### Phase 3: Indexing Strategy\n\n"
+  - "#### Skills to Invoke\n- `database-design` - Index design\n- `postgresql` - PostgreSQL indexing\n\n"
+  - "#### Actions\n1. Identify missing indexes\n2. Create B-tree indexes\n3. Add composite indexes\n4. Consider partial indexes\n5. Review index usage\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @database-design to design PostgreSQL indexing strategy\n```\n\n"
+  - "### Phase 4: Query Optimization\n\n"
+  - "#### Skills to Invoke\n- `sql-optimization-patterns` - Query tuning\n- `sql-pro` - SQL expertise\n\n"
+  - "#### Actions\n1. Rewrite inefficient queries\n2. Optimize joins\n3. Add CTEs where helpful\n4. Implement pagination\n5. Test improvements\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @sql-optimization-patterns to optimize SQL queries\n```\n\n"
+  - "### Phase 5: Configuration Tuning\n\n"
+  - "#### Skills to Invoke\n- `postgres-best-practices` - Configuration\n- `database-admin` - Database administration\n\n"
+  - "#### Actions\n1. Tune shared_buffers\n2. Configure work_mem\n3. Set effective_cache_size\n4. Adjust checkpoint settings\n5. Configure autovacuum\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @postgres-best-practices to tune PostgreSQL configuration\n```\n\n"
+  - "### Phase 6: Maintenance\n\n"
+  - "#### Skills to Invoke\n- `database-admin` - Database maintenance\n- `postgresql` - PostgreSQL maintenance\n\n"
+  - "#### Actions\n1. Schedule VACUUM\n2. Run ANALYZE\n3. Check table bloat\n4. Monitor autovacuum\n5. Review statistics\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @database-admin to schedule PostgreSQL maintenance\n```\n\n"
+  - "### Phase 7: Monitoring\n\n"
+  - "#### Skills to Invoke\n- `grafana-dashboards` - Monitoring dashboards\n- `prometheus-configuration` - Metrics collection\n\n"
+  - "#### Actions\n1. Set up monitoring\n2. Create dashboards\n3. Configure alerts\n4. Track key metrics\n5. Review trends\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @grafana-dashboards to create PostgreSQL monitoring\n```\n\n"
+  - "## Optimization Checklist\n\n- [ ] Slow queries identified\n- [ ] Indexes optimized\n- [ ] Configuration tuned\n- [ ] Maintenance scheduled\n- [ ] Monitoring active\n- [ ] Performance improved\n\n"
+  - "## Quality Gates\n\n- [ ] Query performance improved\n- [ ] Indexes effective\n- [ ] Configuration optimized\n- [ ] Maintenance automated\n- [ ] Monitoring in place\n\n"
+  - "## Related Workflow Bundles\n\n- `database` - Database operations\n- `cloud-devops` - Infrastructure\n- `performance-optimization` - Performance\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

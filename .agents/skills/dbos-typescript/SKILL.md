@@ -4,106 +4,19 @@ description: "Guide for building reliable, fault-tolerant TypeScript application
 risk: safe
 source: "https://docs.dbos.dev/"
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# DBOS TypeScript Best Practices
-
-Guide for building reliable, fault-tolerant TypeScript applications with DBOS durable workflows.
-
-## When to Use
-Reference these guidelines when:
-- Adding DBOS to existing TypeScript code
-- Creating workflows and steps
-- Using queues for concurrency control
-- Implementing workflow communication (events, messages, streams)
-- Configuring and launching DBOS applications
-- Using DBOSClient from external applications
-- Testing DBOS applications
-
-## Rule Categories by Priority
-
-| Priority | Category | Impact | Prefix |
-|----------|----------|--------|--------|
-| 1 | Lifecycle | CRITICAL | `lifecycle-` |
-| 2 | Workflow | CRITICAL | `workflow-` |
-| 3 | Step | HIGH | `step-` |
-| 4 | Queue | HIGH | `queue-` |
-| 5 | Communication | MEDIUM | `comm-` |
-| 6 | Pattern | MEDIUM | `pattern-` |
-| 7 | Testing | LOW-MEDIUM | `test-` |
-| 8 | Client | MEDIUM | `client-` |
-| 9 | Advanced | LOW | `advanced-` |
-
-## Critical Rules
-
-### Installation
-
-Always install the latest version of DBOS:
-
-```bash
-npm install @dbos-inc/dbos-sdk@latest
-```
-
-### DBOS Configuration and Launch
-
-A DBOS application MUST configure and launch DBOS before running any workflows:
-
-```typescript
-import { DBOS } from "@dbos-inc/dbos-sdk";
-
-async function main() {
-  DBOS.setConfig({
-    name: "my-app",
-    systemDatabaseUrl: process.env.DBOS_SYSTEM_DATABASE_URL,
-  });
-  await DBOS.launch();
-  await myWorkflow();
-}
-
-main().catch(console.log);
-```
-
-### Workflow and Step Structure
-
-Workflows are comprised of steps. Any function performing complex operations or accessing external services must be run as a step using `DBOS.runStep`:
-
-```typescript
-import { DBOS } from "@dbos-inc/dbos-sdk";
-
-async function fetchData() {
-  return await fetch("https://api.example.com").then(r => r.json());
-}
-
-async function myWorkflowFn() {
-  const result = await DBOS.runStep(fetchData, { name: "fetchData" });
-  return result;
-}
-const myWorkflow = DBOS.registerWorkflow(myWorkflowFn);
-```
-
-### Key Constraints
-
-- Do NOT call, start, or enqueue workflows from within steps
-- Do NOT use threads or uncontrolled concurrency to start workflows - use `DBOS.startWorkflow` or queues
-- Workflows MUST be deterministic - non-deterministic operations go in steps
-- Do NOT modify global variables from workflows or steps
-
-## How to Use
-
-Read individual rule files for detailed explanations and examples:
-
-```
-references/lifecycle-config.md
-references/workflow-determinism.md
-references/queue-concurrency.md
-```
-
-## References
-
-- https://docs.dbos.dev/
-- https://github.com/dbos-inc/dbos-transact-ts
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "dbos-typescript"
+sections[12]:
+  - "\n"
+  - "# DBOS TypeScript Best Practices\n\nGuide for building reliable, fault-tolerant TypeScript applications with DBOS durable workflows.\n\n"
+  - "## When to Use\nReference these guidelines when:\n- Adding DBOS to existing TypeScript code\n- Creating workflows and steps\n- Using queues for concurrency control\n- Implementing workflow communication (events, messages, streams)\n- Configuring and launching DBOS applications\n- Using DBOSClient from external applications\n- Testing DBOS applications\n\n"
+  - "## Rule Categories by Priority\n\n| Priority | Category | Impact | Prefix |\n|----------|----------|--------|--------|\n| 1 | Lifecycle | CRITICAL | `lifecycle-` |\n| 2 | Workflow | CRITICAL | `workflow-` |\n| 3 | Step | HIGH | `step-` |\n| 4 | Queue | HIGH | `queue-` |\n| 5 | Communication | MEDIUM | `comm-` |\n| 6 | Pattern | MEDIUM | `pattern-` |\n| 7 | Testing | LOW-MEDIUM | `test-` |\n| 8 | Client | MEDIUM | `client-` |\n| 9 | Advanced | LOW | `advanced-` |\n\n"
+  - "## Critical Rules\n\n"
+  - "### Installation\n\nAlways install the latest version of DBOS:\n\n```bash\nnpm install @dbos-inc/dbos-sdk@latest\n```\n\n"
+  - "### DBOS Configuration and Launch\n\nA DBOS application MUST configure and launch DBOS before running any workflows:\n\n```typescript\nimport { DBOS } from \"@dbos-inc/dbos-sdk\";\n\nasync function main() {\n  DBOS.setConfig({\n    name: \"my-app\",\n    systemDatabaseUrl: process.env.DBOS_SYSTEM_DATABASE_URL,\n  });\n  await DBOS.launch();\n  await myWorkflow();\n}\n\nmain().catch(console.log);\n```\n\n"
+  - "### Workflow and Step Structure\n\nWorkflows are comprised of steps. Any function performing complex operations or accessing external services must be run as a step using `DBOS.runStep`:\n\n```typescript\nimport { DBOS } from \"@dbos-inc/dbos-sdk\";\n\nasync function fetchData() {\n  return await fetch(\"https://api.example.com\").then(r => r.json());\n}\n\nasync function myWorkflowFn() {\n  const result = await DBOS.runStep(fetchData, { name: \"fetchData\" });\n  return result;\n}\nconst myWorkflow = DBOS.registerWorkflow(myWorkflowFn);\n```\n\n"
+  - "### Key Constraints\n\n- Do NOT call, start, or enqueue workflows from within steps\n- Do NOT use threads or uncontrolled concurrency to start workflows - use `DBOS.startWorkflow` or queues\n- Workflows MUST be deterministic - non-deterministic operations go in steps\n- Do NOT modify global variables from workflows or steps\n\n"
+  - "## How to Use\n\nRead individual rule files for detailed explanations and examples:\n\n```\nreferences/lifecycle-config.md\nreferences/workflow-determinism.md\nreferences/queue-concurrency.md\n```\n\n"
+  - "## References\n\n- https://docs.dbos.dev/\n- https://github.com/dbos-inc/dbos-transact-ts\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

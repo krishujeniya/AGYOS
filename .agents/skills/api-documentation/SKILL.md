@@ -5,164 +5,43 @@ category: granular-workflow-bundle
 risk: safe
 source: personal
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# API Documentation Workflow
-
-## Overview
-
-Specialized workflow for creating comprehensive API documentation including OpenAPI/Swagger specs, developer guides, code examples, and interactive documentation.
-
-## When to Use This Workflow
-
-Use this workflow when:
-- Creating API documentation
-- Generating OpenAPI specs
-- Writing developer guides
-- Adding code examples
-- Setting up API portals
-
-## Workflow Phases
-
-### Phase 1: API Discovery
-
-#### Skills to Invoke
-- `api-documenter` - API documentation
-- `api-design-principles` - API design
-
-#### Actions
-1. Inventory endpoints
-2. Document request/response
-3. Identify authentication
-4. Map error codes
-5. Note rate limits
-
-#### Copy-Paste Prompts
-```
-Use @api-documenter to discover and document API endpoints
-```
-
-### Phase 2: OpenAPI Specification
-
-#### Skills to Invoke
-- `openapi-spec-generation` - OpenAPI
-- `api-documenter` - API specs
-
-#### Actions
-1. Create OpenAPI schema
-2. Define paths
-3. Add schemas
-4. Configure security
-5. Add examples
-
-#### Copy-Paste Prompts
-```
-Use @openapi-spec-generation to create OpenAPI specification
-```
-
-### Phase 3: Developer Guide
-
-#### Skills to Invoke
-- `api-documentation-generator` - Documentation
-- `documentation-templates` - Templates
-
-#### Actions
-1. Create getting started
-2. Write authentication guide
-3. Document common patterns
-4. Add troubleshooting
-5. Create FAQ
-
-#### Copy-Paste Prompts
-```
-Use @api-documentation-generator to create developer guide
-```
-
-### Phase 4: Code Examples
-
-#### Skills to Invoke
-- `api-documenter` - Code examples
-- `tutorial-engineer` - Tutorials
-
-#### Actions
-1. Create example requests
-2. Write SDK examples
-3. Add curl examples
-4. Create tutorials
-5. Test examples
-
-#### Copy-Paste Prompts
-```
-Use @api-documenter to generate code examples
-```
-
-### Phase 5: Interactive Docs
-
-#### Skills to Invoke
-- `api-documenter` - Interactive docs
-
-#### Actions
-1. Set up Swagger UI
-2. Configure Redoc
-3. Add try-it functionality
-4. Test interactivity
-5. Deploy docs
-
-#### Copy-Paste Prompts
-```
-Use @api-documenter to set up interactive documentation
-```
-
-### Phase 6: Documentation Site
-
-#### Skills to Invoke
-- `docs-architect` - Documentation architecture
-- `wiki-page-writer` - Documentation
-
-#### Actions
-1. Choose platform
-2. Design structure
-3. Create pages
-4. Add navigation
-5. Configure search
-
-#### Copy-Paste Prompts
-```
-Use @docs-architect to design API documentation site
-```
-
-### Phase 7: Maintenance
-
-#### Skills to Invoke
-- `api-documenter` - Doc maintenance
-
-#### Actions
-1. Set up auto-generation
-2. Configure validation
-3. Add review process
-4. Schedule updates
-5. Monitor feedback
-
-#### Copy-Paste Prompts
-```
-Use @api-documenter to set up automated doc generation
-```
-
-## Quality Gates
-
-- [ ] OpenAPI spec complete
-- [ ] Developer guide written
-- [ ] Code examples working
-- [ ] Interactive docs functional
-- [ ] Documentation deployed
-
-## Related Workflow Bundles
-
-- `documentation` - Documentation
-- `api-development` - API development
-- `development` - Development
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "api-documentation"
+sections[36]:
+  - "\n"
+  - "# API Documentation Workflow\n\n"
+  - "## Overview\n\nSpecialized workflow for creating comprehensive API documentation including OpenAPI/Swagger specs, developer guides, code examples, and interactive documentation.\n\n"
+  - "## When to Use This Workflow\n\nUse this workflow when:\n- Creating API documentation\n- Generating OpenAPI specs\n- Writing developer guides\n- Adding code examples\n- Setting up API portals\n\n"
+  - "## Workflow Phases\n\n"
+  - "### Phase 1: API Discovery\n\n"
+  - "#### Skills to Invoke\n- `api-documenter` - API documentation\n- `api-design-principles` - API design\n\n"
+  - "#### Actions\n1. Inventory endpoints\n2. Document request/response\n3. Identify authentication\n4. Map error codes\n5. Note rate limits\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @api-documenter to discover and document API endpoints\n```\n\n"
+  - "### Phase 2: OpenAPI Specification\n\n"
+  - "#### Skills to Invoke\n- `openapi-spec-generation` - OpenAPI\n- `api-documenter` - API specs\n\n"
+  - "#### Actions\n1. Create OpenAPI schema\n2. Define paths\n3. Add schemas\n4. Configure security\n5. Add examples\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @openapi-spec-generation to create OpenAPI specification\n```\n\n"
+  - "### Phase 3: Developer Guide\n\n"
+  - "#### Skills to Invoke\n- `api-documentation-generator` - Documentation\n- `documentation-templates` - Templates\n\n"
+  - "#### Actions\n1. Create getting started\n2. Write authentication guide\n3. Document common patterns\n4. Add troubleshooting\n5. Create FAQ\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @api-documentation-generator to create developer guide\n```\n\n"
+  - "### Phase 4: Code Examples\n\n"
+  - "#### Skills to Invoke\n- `api-documenter` - Code examples\n- `tutorial-engineer` - Tutorials\n\n"
+  - "#### Actions\n1. Create example requests\n2. Write SDK examples\n3. Add curl examples\n4. Create tutorials\n5. Test examples\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @api-documenter to generate code examples\n```\n\n"
+  - "### Phase 5: Interactive Docs\n\n"
+  - "#### Skills to Invoke\n- `api-documenter` - Interactive docs\n\n"
+  - "#### Actions\n1. Set up Swagger UI\n2. Configure Redoc\n3. Add try-it functionality\n4. Test interactivity\n5. Deploy docs\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @api-documenter to set up interactive documentation\n```\n\n"
+  - "### Phase 6: Documentation Site\n\n"
+  - "#### Skills to Invoke\n- `docs-architect` - Documentation architecture\n- `wiki-page-writer` - Documentation\n\n"
+  - "#### Actions\n1. Choose platform\n2. Design structure\n3. Create pages\n4. Add navigation\n5. Configure search\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @docs-architect to design API documentation site\n```\n\n"
+  - "### Phase 7: Maintenance\n\n"
+  - "#### Skills to Invoke\n- `api-documenter` - Doc maintenance\n\n"
+  - "#### Actions\n1. Set up auto-generation\n2. Configure validation\n3. Add review process\n4. Schedule updates\n5. Monitor feedback\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @api-documenter to set up automated doc generation\n```\n\n"
+  - "## Quality Gates\n\n- [ ] OpenAPI spec complete\n- [ ] Developer guide written\n- [ ] Code examples working\n- [ ] Interactive docs functional\n- [ ] Documentation deployed\n\n"
+  - "## Related Workflow Bundles\n\n- `documentation` - Documentation\n- `api-development` - API development\n- `development` - Development\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

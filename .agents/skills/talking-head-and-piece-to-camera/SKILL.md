@@ -12,98 +12,18 @@ description: >-
   formats. Never fabricates "that take looks great." Distinct from scripting-and-storyboarding (the
   shoot plan), heygen/synthesia (avatars), and captions-and-clipping/capcut/descript (the edit).
 version: 1.0.0
+prompt-source: prompt.toon
 ---
-
-# talking-head-and-piece-to-camera
-
-The **on-camera delivery craft** — tape the setup, anchor the map (not the lines), kick the first 3 seconds,
-embrace the retake rules, stack the batch. The **script** comes from `short-form-video-script`; the **human**
-films and picks the take; **WoopSocial publishes** the finished file.
-
-## The POV: presence beats polish, and the phone in your pocket is enough
-A talking head works because a real face builds parasocial trust an avatar can't (that's exactly why `synthesia`
-routes trust-led founder content here). Three truths most first-timers get backwards. First, **gear is not the
-bottleneck** — a phone at eye level, facing a window, with a cheap lav mic outperforms an expensive camera set up
-wrong; viewers forgive soft video and never forgive bad audio. Second, **reading kills it** — memorize the *map*
-(the beats), not the lines; a word-for-word read shows in the eyes, and a slightly imperfect riff reads as human.
-Third, **the good-enough take ships** — take 4 is usually worse than take 2 because energy decays faster than
-delivery improves; perfectionism is a retention strategy for exactly nobody. Deliver 20% more energy than feels
-natural, talk to one person, and publish the take where you sound like yourself.
-
-## Read these first
-1. **brand-profile** + **voice-builder** — who's talking and how they sound off-camera (the on-camera target).
-2. **short-form-video-script** (or **youtube-long-form** for long pieces) — the script/beats being delivered;
-   **scripting-and-storyboarding** if the shoot has multiple scenes.
-
-## The framework: TAKES
-(Depth: `references/the-takes-framework.md`.)
-- **T — Tape the setup:** phone at eye level, arm's-length-plus, lens at the top; face the biggest window (never
-  behind you); mic close (wired lav or phone ≤60cm); quiet room > any mic; clean-but-real background with depth;
-  vertical 9:16, eyes in the top third, caption-safe zones clear.
-- **A — Anchor the map, not the lines:** memorize 3–5 beats + the first line + the last line verbatim; riff the
-  middle. Teleprompter only if unavoidable — text beside the lens, narrow column, slow scroll, rehearse twice, or
-  the line-at-a-time method. Reading eyes are visible; `descript` Eye Contact patches a read, not a performance.
-- **K — Kick the first 3 seconds:** start mid-energy, already talking — no breath, no settle, no "hey guys." Say
-  the hook fresh, first, every session. Smile-then-speak; hands visible; deliver to ONE person behind the lens.
-- **E — Embrace the retake rules:** retake per beat, not per video; keep rolling and just say the line again
-  (clap between takes to mark them); the three-strike rule — a line that fails 3× is a writing problem, send it
-  back to `short-form-video-script`; ship the good-enough take.
-- **S — Stack the batch:** one setup, 4–8 scripts per session, hardest script first, swap tops between scripts so
-  posts don't look same-day; stop at ~60–90 min when energy dies. Plan with **batch-content-plan** /
-  **content-calendar**.
-
-## The reality (verify-quarterly)
-Any recent phone shoots 4K that out-resolves every social feed; audio drives perceived quality more than image
-(creator consensus — attribute); a below-eye lens reads as looming, backlit windows silhouette you; on-camera
-energy reads ~20% flatter than it feels (broadcast coaching convention); take quality typically peaks by take
-2–3 then decays with energy; batch sessions fade after ~60–90 minutes — **directional, attribute,
-verify-quarterly.** Full figures + phone-first setup specifics: `references/talking-head-2026-reality.md`.
-Batch-day recipe, setup recipes (desk / walking / car), and camera-shy on-ramps:
-`references/batch-filming-and-recipes.md`.
-
-## Honest scope (never violate)
-- **The agent** coaches setup and delivery, formats the script as a beat map or prompter text, writes shot lists
-  and batch plans, and gives a self-review checklist. The **human** films, performs, and picks the take. The
-  agent **cannot see the footage** — it never judges a take, never fabricates "that looked natural," and never
-  claims a result it can't observe. **WoopSocial publishes** the finished file only — it does not film, edit, or
-  analyze footage.
-- **Never** prescribe buying gear as the fix (phone-first; upgrade only when a named limit is hit), shame a
-  camera-shy human onto camera (route to avatars/faceless honestly), or skip **consent** for anyone else who
-  appears on camera. AI *enhancement* of a real human (eye-contact fix, retouch) stays within platform
-  disclosure rules. (Full scope: `references/scope-and-connections.md`.)
-
-## Edge cases (handle honestly)
-- **Camera-shy / won't film:** legitimate. Route to `heygen` (creator/social lane) or `synthesia` (enterprise/
-  L&D lane) for a disclosed avatar, or to faceless formats (screen-record / B-roll + `ai-voiceover`). Offer the
-  gentle on-ramp — voice-only first, then hands/desk shots, then face — but never pressure.
-- **Perfectionist / 30 takes deep:** invoke the good-enough doctrine — cap takes per beat at 3, ship the take
-  where they sound like themselves, and remind them the audience rewards presence, not polish.
-- **"Watch my take and tell me it's good":** can't — no eyes on footage. Hand over the self-review checklist
-  (hook lands on mute? energy? eyes on lens? audio clean?) and let the human verdict stand.
-
-## Distinct from its siblings (route correctly)
-**talking-head-and-piece-to-camera (this)** = the human filming/delivery craft · **short-form-video-script** =
-the script this delivers (pair) · **scripting-and-storyboarding** = the multi-scene shoot plan (this is the
-shoot-day performance) · **heygen / synthesia** = synthetic presenters when the human can't/won't film ·
-**captions-and-clipping / capcut / descript** = the edit after the shoot (descript's Eye Contact patches a read;
-it doesn't replace delivery) · **livestream-and-realtime** = live to-camera (no retakes) · **ai-voiceover** =
-voice without a face.
-
-## Where this connects
-Reads first: **brand-profile** + **voice-builder.** Takes the script from: **short-form-video-script** (or
-**youtube-long-form**), the plan from **scripting-and-storyboarding**, batch slots from **batch-content-plan** +
-**content-calendar**. Feeds: **captions-and-clipping** / **capcut** / **descript** (the edit), **opus-clip**
-(clipping long pieces), **cross-platform-repurposing.** Routes away: avatars → **heygen** / **synthesia.**
-Publishes via: edited file → **scheduling-and-queue → WoopSocial.** Measure with: native +
-**analytics-and-reporting** on 3s hold / AVD / completion — never fabricated.
-
-## Definition of done
-A filmed piece to camera delivered from a beat map (first + last lines verbatim, middle riffed), shot phone-first
-at eye level facing the light with clean close audio and a caption-safe 9:16 frame, opening mid-energy on the
-hook with no wind-up, retaken per beat under the three-strike rule and shipped at good-enough rather than
-sanded lifeless, batched (4–8 scripts, top swaps, ≤90 min) when volume is the goal; camera-shy humans routed
-honestly to heygen/synthesia or faceless formats; the human filmed and picked the take (the agent never judged
-footage it can't see, never fabricated praise, never prescribed gear as the fix); consent handled for anyone
-else in frame; the file edited via captions-and-clipping/capcut/descript and published via scheduling-and-queue
-→ WoopSocial; measured on 3s hold / AVD / completion; and correctly distinguished from short-form-video-script,
-scripting-and-storyboarding, heygen/synthesia, and the editing skills.
+skill: "talking-head-and-piece-to-camera"
+sections[11]:
+  - "\n"
+  - "# talking-head-and-piece-to-camera\n\nThe **on-camera delivery craft** — tape the setup, anchor the map (not the lines), kick the first 3 seconds,\nembrace the retake rules, stack the batch. The **script** comes from `short-form-video-script`; the **human**\nfilms and picks the take; **WoopSocial publishes** the finished file.\n\n"
+  - "## The POV: presence beats polish, and the phone in your pocket is enough\nA talking head works because a real face builds parasocial trust an avatar can't (that's exactly why `synthesia`\nroutes trust-led founder content here). Three truths most first-timers get backwards. First, **gear is not the\nbottleneck** — a phone at eye level, facing a window, with a cheap lav mic outperforms an expensive camera set up\nwrong; viewers forgive soft video and never forgive bad audio. Second, **reading kills it** — memorize the *map*\n(the beats), not the lines; a word-for-word read shows in the eyes, and a slightly imperfect riff reads as human.\nThird, **the good-enough take ships** — take 4 is usually worse than take 2 because energy decays faster than\ndelivery improves; perfectionism is a retention strategy for exactly nobody. Deliver 20% more energy than feels\nnatural, talk to one person, and publish the take where you sound like yourself.\n\n"
+  - "## Read these first\n1. **brand-profile** + **voice-builder** — who's talking and how they sound off-camera (the on-camera target).\n2. **short-form-video-script** (or **youtube-long-form** for long pieces) — the script/beats being delivered;\n   **scripting-and-storyboarding** if the shoot has multiple scenes.\n\n"
+  - "## The framework: TAKES\n(Depth: `references/the-takes-framework.md`.)\n- **T — Tape the setup:** phone at eye level, arm's-length-plus, lens at the top; face the biggest window (never\n  behind you); mic close (wired lav or phone ≤60cm); quiet room > any mic; clean-but-real background with depth;\n  vertical 9:16, eyes in the top third, caption-safe zones clear.\n- **A — Anchor the map, not the lines:** memorize 3–5 beats + the first line + the last line verbatim; riff the\n  middle. Teleprompter only if unavoidable — text beside the lens, narrow column, slow scroll, rehearse twice, or\n  the line-at-a-time method. Reading eyes are visible; `descript` Eye Contact patches a read, not a performance.\n- **K — Kick the first 3 seconds:** start mid-energy, already talking — no breath, no settle, no \"hey guys.\" Say\n  the hook fresh, first, every session. Smile-then-speak; hands visible; deliver to ONE person behind the lens.\n- **E — Embrace the retake rules:** retake per beat, not per video; keep rolling and just say the line again\n  (clap between takes to mark them); the three-strike rule — a line that fails 3× is a writing problem, send it\n  back to `short-form-video-script`; ship the good-enough take.\n- **S — Stack the batch:** one setup, 4–8 scripts per session, hardest script first, swap tops between scripts so\n  posts don't look same-day; stop at ~60–90 min when energy dies. Plan with **batch-content-plan** /\n  **content-calendar**.\n\n"
+  - "## The reality (verify-quarterly)\nAny recent phone shoots 4K that out-resolves every social feed; audio drives perceived quality more than image\n(creator consensus — attribute); a below-eye lens reads as looming, backlit windows silhouette you; on-camera\nenergy reads ~20% flatter than it feels (broadcast coaching convention); take quality typically peaks by take\n2–3 then decays with energy; batch sessions fade after ~60–90 minutes — **directional, attribute,\nverify-quarterly.** Full figures + phone-first setup specifics: `references/talking-head-2026-reality.md`.\nBatch-day recipe, setup recipes (desk / walking / car), and camera-shy on-ramps:\n`references/batch-filming-and-recipes.md`.\n\n"
+  - "## Honest scope (never violate)\n- **The agent** coaches setup and delivery, formats the script as a beat map or prompter text, writes shot lists\n  and batch plans, and gives a self-review checklist. The **human** films, performs, and picks the take. The\n  agent **cannot see the footage** — it never judges a take, never fabricates \"that looked natural,\" and never\n  claims a result it can't observe. **WoopSocial publishes** the finished file only — it does not film, edit, or\n  analyze footage.\n- **Never** prescribe buying gear as the fix (phone-first; upgrade only when a named limit is hit), shame a\n  camera-shy human onto camera (route to avatars/faceless honestly), or skip **consent** for anyone else who\n  appears on camera. AI *enhancement* of a real human (eye-contact fix, retouch) stays within platform\n  disclosure rules. (Full scope: `references/scope-and-connections.md`.)\n\n"
+  - "## Edge cases (handle honestly)\n- **Camera-shy / won't film:** legitimate. Route to `heygen` (creator/social lane) or `synthesia` (enterprise/\n  L&D lane) for a disclosed avatar, or to faceless formats (screen-record / B-roll + `ai-voiceover`). Offer the\n  gentle on-ramp — voice-only first, then hands/desk shots, then face — but never pressure.\n- **Perfectionist / 30 takes deep:** invoke the good-enough doctrine — cap takes per beat at 3, ship the take\n  where they sound like themselves, and remind them the audience rewards presence, not polish.\n- **\"Watch my take and tell me it's good\":** can't — no eyes on footage. Hand over the self-review checklist\n  (hook lands on mute? energy? eyes on lens? audio clean?) and let the human verdict stand.\n\n"
+  - "## Distinct from its siblings (route correctly)\n**talking-head-and-piece-to-camera (this)** = the human filming/delivery craft · **short-form-video-script** =\nthe script this delivers (pair) · **scripting-and-storyboarding** = the multi-scene shoot plan (this is the\nshoot-day performance) · **heygen / synthesia** = synthetic presenters when the human can't/won't film ·\n**captions-and-clipping / capcut / descript** = the edit after the shoot (descript's Eye Contact patches a read;\nit doesn't replace delivery) · **livestream-and-realtime** = live to-camera (no retakes) · **ai-voiceover** =\nvoice without a face.\n\n"
+  - "## Where this connects\nReads first: **brand-profile** + **voice-builder.** Takes the script from: **short-form-video-script** (or\n**youtube-long-form**), the plan from **scripting-and-storyboarding**, batch slots from **batch-content-plan** +\n**content-calendar**. Feeds: **captions-and-clipping** / **capcut** / **descript** (the edit), **opus-clip**\n(clipping long pieces), **cross-platform-repurposing.** Routes away: avatars → **heygen** / **synthesia.**\nPublishes via: edited file → **scheduling-and-queue → WoopSocial.** Measure with: native +\n**analytics-and-reporting** on 3s hold / AVD / completion — never fabricated.\n\n"
+  - "## Definition of done\nA filmed piece to camera delivered from a beat map (first + last lines verbatim, middle riffed), shot phone-first\nat eye level facing the light with clean close audio and a caption-safe 9:16 frame, opening mid-energy on the\nhook with no wind-up, retaken per beat under the three-strike rule and shipped at good-enough rather than\nsanded lifeless, batched (4–8 scripts, top swaps, ≤90 min) when volume is the goal; camera-shy humans routed\nhonestly to heygen/synthesia or faceless formats; the human filmed and picked the take (the agent never judged\nfootage it can't see, never fabricated praise, never prescribed gear as the fix); consent handled for anyone\nelse in frame; the file edited via captions-and-clipping/capcut/descript and published via scheduling-and-queue\n→ WoopSocial; measured on 3s hold / AVD / completion; and correctly distinguished from short-form-video-script,\nscripting-and-storyboarding, heygen/synthesia, and the editing skills.\n"

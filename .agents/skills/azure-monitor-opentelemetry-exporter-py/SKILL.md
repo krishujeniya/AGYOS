@@ -4,208 +4,25 @@ description: Azure Monitor OpenTelemetry Exporter for Python. Use for low-level 
 risk: unknown
 source: community
 date_added: '2026-02-27'
+prompt-source: prompt.toon
 ---
-
-# Azure Monitor OpenTelemetry Exporter for Python
-
-Low-level exporter for sending OpenTelemetry traces, metrics, and logs to Application Insights.
-
-## Installation
-
-```bash
-pip install azure-monitor-opentelemetry-exporter
-```
-
-## Environment Variables
-
-```bash
-APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=xxx;IngestionEndpoint=https://xxx.in.applicationinsights.azure.com/
-```
-
-## When to Use
-| Scenario | Use |
-|----------|-----|
-| Quick setup, auto-instrumentation | `azure-monitor-opentelemetry` (distro) |
-| Custom OpenTelemetry pipeline | `azure-monitor-opentelemetry-exporter` (this) |
-| Fine-grained control over telemetry | `azure-monitor-opentelemetry-exporter` (this) |
-
-## Trace Exporter
-
-```python
-from opentelemetry import trace
-from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.sdk.trace.export import BatchSpanProcessor
-from azure.monitor.opentelemetry.exporter import AzureMonitorTraceExporter
-
-# Create exporter
-exporter = AzureMonitorTraceExporter(
-    connection_string="InstrumentationKey=xxx;..."
-)
-
-# Configure tracer provider
-trace.set_tracer_provider(TracerProvider())
-trace.get_tracer_provider().add_span_processor(
-    BatchSpanProcessor(exporter)
-)
-
-# Use tracer
-tracer = trace.get_tracer(__name__)
-with tracer.start_as_current_span("my-span"):
-    print("Hello, World!")
-```
-
-## Metric Exporter
-
-```python
-from opentelemetry import metrics
-from opentelemetry.sdk.metrics import MeterProvider
-from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
-from azure.monitor.opentelemetry.exporter import AzureMonitorMetricExporter
-
-# Create exporter
-exporter = AzureMonitorMetricExporter(
-    connection_string="InstrumentationKey=xxx;..."
-)
-
-# Configure meter provider
-reader = PeriodicExportingMetricReader(exporter, export_interval_millis=60000)
-metrics.set_meter_provider(MeterProvider(metric_readers=[reader]))
-
-# Use meter
-meter = metrics.get_meter(__name__)
-counter = meter.create_counter("requests_total")
-counter.add(1, {"route": "/api/users"})
-```
-
-## Log Exporter
-
-```python
-import logging
-from opentelemetry._logs import set_logger_provider
-from opentelemetry.sdk._logs import LoggerProvider, LoggingHandler
-from opentelemetry.sdk._logs.export import BatchLogRecordProcessor
-from azure.monitor.opentelemetry.exporter import AzureMonitorLogExporter
-
-# Create exporter
-exporter = AzureMonitorLogExporter(
-    connection_string="InstrumentationKey=xxx;..."
-)
-
-# Configure logger provider
-logger_provider = LoggerProvider()
-logger_provider.add_log_record_processor(BatchLogRecordProcessor(exporter))
-set_logger_provider(logger_provider)
-
-# Add handler to Python logging
-handler = LoggingHandler(level=logging.INFO, logger_provider=logger_provider)
-logging.getLogger().addHandler(handler)
-
-# Use logging
-logger = logging.getLogger(__name__)
-logger.info("This will be sent to Application Insights")
-```
-
-## From Environment Variable
-
-Exporters read `APPLICATIONINSIGHTS_CONNECTION_STRING` automatically:
-
-```python
-from azure.monitor.opentelemetry.exporter import AzureMonitorTraceExporter
-
-# Connection string from environment
-exporter = AzureMonitorTraceExporter()
-```
-
-## Azure AD Authentication
-
-```python
-from azure.identity import DefaultAzureCredential
-from azure.monitor.opentelemetry.exporter import AzureMonitorTraceExporter
-
-exporter = AzureMonitorTraceExporter(
-    credential=DefaultAzureCredential()
-)
-```
-
-## Sampling
-
-Use `ApplicationInsightsSampler` for consistent sampling:
-
-```python
-from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.sdk.trace.sampling import ParentBasedTraceIdRatio
-from azure.monitor.opentelemetry.exporter import ApplicationInsightsSampler
-
-# Sample 10% of traces
-sampler = ApplicationInsightsSampler(sampling_ratio=0.1)
-
-trace.set_tracer_provider(TracerProvider(sampler=sampler))
-```
-
-## Offline Storage
-
-Configure offline storage for retry:
-
-```python
-from azure.monitor.opentelemetry.exporter import AzureMonitorTraceExporter
-
-exporter = AzureMonitorTraceExporter(
-    connection_string="...",
-    storage_directory="/path/to/storage",  # Custom storage path
-    disable_offline_storage=False  # Enable retry (default)
-)
-```
-
-## Disable Offline Storage
-
-```python
-exporter = AzureMonitorTraceExporter(
-    connection_string="...",
-    disable_offline_storage=True  # No retry on failure
-)
-```
-
-## Sovereign Clouds
-
-```python
-from azure.identity import AzureAuthorityHosts, DefaultAzureCredential
-from azure.monitor.opentelemetry.exporter import AzureMonitorTraceExporter
-
-# Azure Government
-credential = DefaultAzureCredential(authority=AzureAuthorityHosts.AZURE_GOVERNMENT)
-exporter = AzureMonitorTraceExporter(
-    connection_string="InstrumentationKey=xxx;IngestionEndpoint=https://xxx.in.applicationinsights.azure.us/",
-    credential=credential
-)
-```
-
-## Exporter Types
-
-| Exporter | Telemetry Type | Application Insights Table |
-|----------|---------------|---------------------------|
-| `AzureMonitorTraceExporter` | Traces/Spans | requests, dependencies, exceptions |
-| `AzureMonitorMetricExporter` | Metrics | customMetrics, performanceCounters |
-| `AzureMonitorLogExporter` | Logs | traces, customEvents |
-
-## Configuration Options
-
-| Parameter | Description | Default |
-|-----------|-------------|---------|
-| `connection_string` | Application Insights connection string | From env var |
-| `credential` | Azure credential for AAD auth | None |
-| `disable_offline_storage` | Disable retry storage | False |
-| `storage_directory` | Custom storage path | Temp directory |
-
-## Best Practices
-
-1. **Use BatchSpanProcessor** for production (not SimpleSpanProcessor)
-2. **Use ApplicationInsightsSampler** for consistent sampling across services
-3. **Enable offline storage** for reliability in production
-4. **Use AAD authentication** instead of instrumentation keys
-5. **Set export intervals** appropriate for your workload
-6. **Use the distro** (`azure-monitor-opentelemetry`) unless you need custom pipelines
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "azure-monitor-opentelemetry-exporter-py"
+sections[18]:
+  - "\n"
+  - "# Azure Monitor OpenTelemetry Exporter for Python\n\nLow-level exporter for sending OpenTelemetry traces, metrics, and logs to Application Insights.\n\n"
+  - "## Installation\n\n```bash\npip install azure-monitor-opentelemetry-exporter\n```\n\n"
+  - "## Environment Variables\n\n```bash\nAPPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=xxx;IngestionEndpoint=https://xxx.in.applicationinsights.azure.com/\n```\n\n"
+  - "## When to Use\n| Scenario | Use |\n|----------|-----|\n| Quick setup, auto-instrumentation | `azure-monitor-opentelemetry` (distro) |\n| Custom OpenTelemetry pipeline | `azure-monitor-opentelemetry-exporter` (this) |\n| Fine-grained control over telemetry | `azure-monitor-opentelemetry-exporter` (this) |\n\n"
+  - "## Trace Exporter\n\n```python\nfrom opentelemetry import trace\nfrom opentelemetry.sdk.trace import TracerProvider\nfrom opentelemetry.sdk.trace.export import BatchSpanProcessor\nfrom azure.monitor.opentelemetry.exporter import AzureMonitorTraceExporter\n\n# Create exporter\nexporter = AzureMonitorTraceExporter(\n    connection_string=\"InstrumentationKey=xxx;...\"\n)\n\n# Configure tracer provider\ntrace.set_tracer_provider(TracerProvider())\ntrace.get_tracer_provider().add_span_processor(\n    BatchSpanProcessor(exporter)\n)\n\n# Use tracer\ntracer = trace.get_tracer(__name__)\nwith tracer.start_as_current_span(\"my-span\"):\n    print(\"Hello, World!\")\n```\n\n"
+  - "## Metric Exporter\n\n```python\nfrom opentelemetry import metrics\nfrom opentelemetry.sdk.metrics import MeterProvider\nfrom opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader\nfrom azure.monitor.opentelemetry.exporter import AzureMonitorMetricExporter\n\n# Create exporter\nexporter = AzureMonitorMetricExporter(\n    connection_string=\"InstrumentationKey=xxx;...\"\n)\n\n# Configure meter provider\nreader = PeriodicExportingMetricReader(exporter, export_interval_millis=60000)\nmetrics.set_meter_provider(MeterProvider(metric_readers=[reader]))\n\n# Use meter\nmeter = metrics.get_meter(__name__)\ncounter = meter.create_counter(\"requests_total\")\ncounter.add(1, {\"route\": \"/api/users\"})\n```\n\n"
+  - "## Log Exporter\n\n```python\nimport logging\nfrom opentelemetry._logs import set_logger_provider\nfrom opentelemetry.sdk._logs import LoggerProvider, LoggingHandler\nfrom opentelemetry.sdk._logs.export import BatchLogRecordProcessor\nfrom azure.monitor.opentelemetry.exporter import AzureMonitorLogExporter\n\n# Create exporter\nexporter = AzureMonitorLogExporter(\n    connection_string=\"InstrumentationKey=xxx;...\"\n)\n\n# Configure logger provider\nlogger_provider = LoggerProvider()\nlogger_provider.add_log_record_processor(BatchLogRecordProcessor(exporter))\nset_logger_provider(logger_provider)\n\n# Add handler to Python logging\nhandler = LoggingHandler(level=logging.INFO, logger_provider=logger_provider)\nlogging.getLogger().addHandler(handler)\n\n# Use logging\nlogger = logging.getLogger(__name__)\nlogger.info(\"This will be sent to Application Insights\")\n```\n\n"
+  - "## From Environment Variable\n\nExporters read `APPLICATIONINSIGHTS_CONNECTION_STRING` automatically:\n\n```python\nfrom azure.monitor.opentelemetry.exporter import AzureMonitorTraceExporter\n\n# Connection string from environment\nexporter = AzureMonitorTraceExporter()\n```\n\n"
+  - "## Azure AD Authentication\n\n```python\nfrom azure.identity import DefaultAzureCredential\nfrom azure.monitor.opentelemetry.exporter import AzureMonitorTraceExporter\n\nexporter = AzureMonitorTraceExporter(\n    credential=DefaultAzureCredential()\n)\n```\n\n"
+  - "## Sampling\n\nUse `ApplicationInsightsSampler` for consistent sampling:\n\n```python\nfrom opentelemetry.sdk.trace import TracerProvider\nfrom opentelemetry.sdk.trace.sampling import ParentBasedTraceIdRatio\nfrom azure.monitor.opentelemetry.exporter import ApplicationInsightsSampler\n\n# Sample 10% of traces\nsampler = ApplicationInsightsSampler(sampling_ratio=0.1)\n\ntrace.set_tracer_provider(TracerProvider(sampler=sampler))\n```\n\n"
+  - "## Offline Storage\n\nConfigure offline storage for retry:\n\n```python\nfrom azure.monitor.opentelemetry.exporter import AzureMonitorTraceExporter\n\nexporter = AzureMonitorTraceExporter(\n    connection_string=\"...\",\n    storage_directory=\"/path/to/storage\",  # Custom storage path\n    disable_offline_storage=False  # Enable retry (default)\n)\n```\n\n"
+  - "## Disable Offline Storage\n\n```python\nexporter = AzureMonitorTraceExporter(\n    connection_string=\"...\",\n    disable_offline_storage=True  # No retry on failure\n)\n```\n\n"
+  - "## Sovereign Clouds\n\n```python\nfrom azure.identity import AzureAuthorityHosts, DefaultAzureCredential\nfrom azure.monitor.opentelemetry.exporter import AzureMonitorTraceExporter\n\n# Azure Government\ncredential = DefaultAzureCredential(authority=AzureAuthorityHosts.AZURE_GOVERNMENT)\nexporter = AzureMonitorTraceExporter(\n    connection_string=\"InstrumentationKey=xxx;IngestionEndpoint=https://xxx.in.applicationinsights.azure.us/\",\n    credential=credential\n)\n```\n\n"
+  - "## Exporter Types\n\n| Exporter | Telemetry Type | Application Insights Table |\n|----------|---------------|---------------------------|\n| `AzureMonitorTraceExporter` | Traces/Spans | requests, dependencies, exceptions |\n| `AzureMonitorMetricExporter` | Metrics | customMetrics, performanceCounters |\n| `AzureMonitorLogExporter` | Logs | traces, customEvents |\n\n"
+  - "## Configuration Options\n\n| Parameter | Description | Default |\n|-----------|-------------|---------|\n| `connection_string` | Application Insights connection string | From env var |\n| `credential` | Azure credential for AAD auth | None |\n| `disable_offline_storage` | Disable retry storage | False |\n| `storage_directory` | Custom storage path | Temp directory |\n\n"
+  - "## Best Practices\n\n1. **Use BatchSpanProcessor** for production (not SimpleSpanProcessor)\n2. **Use ApplicationInsightsSampler** for consistent sampling across services\n3. **Enable offline storage** for reliability in production\n4. **Use AAD authentication** instead of instrumentation keys\n5. **Set export intervals** appropriate for your workload\n6. **Use the distro** (`azure-monitor-opentelemetry`) unless you need custom pipelines\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

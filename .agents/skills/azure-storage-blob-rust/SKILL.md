@@ -4,137 +4,24 @@ description: Azure Blob Storage SDK for Rust. Use for uploading, downloading, an
 risk: unknown
 source: community
 date_added: '2026-02-27'
+prompt-source: prompt.toon
 ---
-
-# Azure Blob Storage SDK for Rust
-
-Client library for Azure Blob Storage — Microsoft's object storage solution for the cloud.
-
-## Installation
-
-```sh
-cargo add azure_storage_blob azure_identity
-```
-
-## Environment Variables
-
-```bash
-AZURE_STORAGE_ACCOUNT_NAME=<storage-account-name>
-# Endpoint: https://<account>.blob.core.windows.net/
-```
-
-## Authentication
-
-```rust
-use azure_identity::DeveloperToolsCredential;
-use azure_storage_blob::{BlobClient, BlobClientOptions};
-
-let credential = DeveloperToolsCredential::new(None)?;
-let blob_client = BlobClient::new(
-    "https://<account>.blob.core.windows.net/",
-    "container-name",
-    "blob-name",
-    Some(credential),
-    Some(BlobClientOptions::default()),
-)?;
-```
-
-## Client Types
-
-| Client | Purpose |
-|--------|---------|
-| `BlobServiceClient` | Account-level operations, list containers |
-| `BlobContainerClient` | Container operations, list blobs |
-| `BlobClient` | Individual blob operations |
-
-## Core Operations
-
-### Upload Blob
-
-```rust
-use azure_core::http::RequestContent;
-
-let data = b"hello world";
-blob_client
-    .upload(
-        RequestContent::from(data.to_vec()),
-        false,  // overwrite
-        u64::try_from(data.len())?,
-        None,
-    )
-    .await?;
-```
-
-### Download Blob
-
-```rust
-let response = blob_client.download(None).await?;
-let content = response.into_body().collect_bytes().await?;
-println!("Content: {:?}", content);
-```
-
-### Get Blob Properties
-
-```rust
-let properties = blob_client.get_properties(None).await?;
-println!("Content-Length: {:?}", properties.content_length);
-```
-
-### Delete Blob
-
-```rust
-blob_client.delete(None).await?;
-```
-
-## Container Operations
-
-```rust
-use azure_storage_blob::BlobContainerClient;
-
-let container_client = BlobContainerClient::new(
-    "https://<account>.blob.core.windows.net/",
-    "container-name",
-    Some(credential),
-    None,
-)?;
-
-// Create container
-container_client.create(None).await?;
-
-// List blobs
-let mut pager = container_client.list_blobs(None)?;
-while let Some(blob) = pager.try_next().await? {
-    println!("Blob: {}", blob.name);
-}
-```
-
-## Best Practices
-
-1. **Use Entra ID auth** — `DeveloperToolsCredential` for dev, `ManagedIdentityCredential` for production
-2. **Specify content length** — required for uploads
-3. **Use `RequestContent::from()`** — to wrap upload data
-4. **Handle async operations** — use `tokio` runtime
-5. **Check RBAC permissions** — ensure "Storage Blob Data Contributor" role
-
-## RBAC Permissions
-
-For Entra ID auth, assign one of these roles:
-- `Storage Blob Data Reader` — read-only
-- `Storage Blob Data Contributor` — read/write
-- `Storage Blob Data Owner` — full access including RBAC
-
-## Reference Links
-
-| Resource | Link |
-|----------|------|
-| API Reference | https://docs.rs/azure_storage_blob |
-| Source Code | https://github.com/Azure/azure-sdk-for-rust/tree/main/sdk/storage/azure_storage_blob |
-| crates.io | https://crates.io/crates/azure_storage_blob |
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "azure-storage-blob-rust"
+sections[17]:
+  - "\n"
+  - "# Azure Blob Storage SDK for Rust\n\nClient library for Azure Blob Storage — Microsoft's object storage solution for the cloud.\n\n"
+  - "## Installation\n\n```sh\ncargo add azure_storage_blob azure_identity\n```\n\n"
+  - "## Environment Variables\n\n```bash\nAZURE_STORAGE_ACCOUNT_NAME=<storage-account-name>\n# Endpoint: https://<account>.blob.core.windows.net/\n```\n\n"
+  - "## Authentication\n\n```rust\nuse azure_identity::DeveloperToolsCredential;\nuse azure_storage_blob::{BlobClient, BlobClientOptions};\n\nlet credential = DeveloperToolsCredential::new(None)?;\nlet blob_client = BlobClient::new(\n    \"https://<account>.blob.core.windows.net/\",\n    \"container-name\",\n    \"blob-name\",\n    Some(credential),\n    Some(BlobClientOptions::default()),\n)?;\n```\n\n"
+  - "## Client Types\n\n| Client | Purpose |\n|--------|---------|\n| `BlobServiceClient` | Account-level operations, list containers |\n| `BlobContainerClient` | Container operations, list blobs |\n| `BlobClient` | Individual blob operations |\n\n"
+  - "## Core Operations\n\n"
+  - "### Upload Blob\n\n```rust\nuse azure_core::http::RequestContent;\n\nlet data = b\"hello world\";\nblob_client\n    .upload(\n        RequestContent::from(data.to_vec()),\n        false,  // overwrite\n        u64::try_from(data.len())?,\n        None,\n    )\n    .await?;\n```\n\n"
+  - "### Download Blob\n\n```rust\nlet response = blob_client.download(None).await?;\nlet content = response.into_body().collect_bytes().await?;\nprintln!(\"Content: {:?}\", content);\n```\n\n"
+  - "### Get Blob Properties\n\n```rust\nlet properties = blob_client.get_properties(None).await?;\nprintln!(\"Content-Length: {:?}\", properties.content_length);\n```\n\n"
+  - "### Delete Blob\n\n```rust\nblob_client.delete(None).await?;\n```\n\n"
+  - "## Container Operations\n\n```rust\nuse azure_storage_blob::BlobContainerClient;\n\nlet container_client = BlobContainerClient::new(\n    \"https://<account>.blob.core.windows.net/\",\n    \"container-name\",\n    Some(credential),\n    None,\n)?;\n\n// Create container\ncontainer_client.create(None).await?;\n\n// List blobs\nlet mut pager = container_client.list_blobs(None)?;\nwhile let Some(blob) = pager.try_next().await? {\n    println!(\"Blob: {}\", blob.name);\n}\n```\n\n"
+  - "## Best Practices\n\n1. **Use Entra ID auth** — `DeveloperToolsCredential` for dev, `ManagedIdentityCredential` for production\n2. **Specify content length** — required for uploads\n3. **Use `RequestContent::from()`** — to wrap upload data\n4. **Handle async operations** — use `tokio` runtime\n5. **Check RBAC permissions** — ensure \"Storage Blob Data Contributor\" role\n\n"
+  - "## RBAC Permissions\n\nFor Entra ID auth, assign one of these roles:\n- `Storage Blob Data Reader` — read-only\n- `Storage Blob Data Contributor` — read/write\n- `Storage Blob Data Owner` — full access including RBAC\n\n"
+  - "## Reference Links\n\n| Resource | Link |\n|----------|------|\n| API Reference | https://docs.rs/azure_storage_blob |\n| Source Code | https://github.com/Azure/azure-sdk-for-rust/tree/main/sdk/storage/azure_storage_blob |\n| crates.io | https://crates.io/crates/azure_storage_blob |\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

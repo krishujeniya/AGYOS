@@ -5,77 +5,14 @@ license: MIT
 metadata:
   origin: ECC
 tools: Read, Write, Edit, Bash, Grep, Glob
+prompt-source: prompt.toon
 ---
-
-# Recursive Decision Ledger
-
-Use this skill when the user is trying to force deeper computation through
-repeated rollouts or "Prime Gauss" style recursive prompting. Preserve the useful
-part: repeated trials, prior memory, fresh information, and explicit marks.
-Remove the unsafe part: pretending the loop proves certainty.
-
-## Ledger Contract
-
-Every rollout should record:
-
-- rollout id and timestamp;
-- prior accepted winner and prior watchlist;
-- fresh information ingested;
-- search space size;
-- model families or heuristics used;
-- trial count and effective trial count;
-- top candidates;
-- decision marks;
-- coherence marks against the prior ledger;
-- promotion gate result.
-
-Prefer JSONL for append-only ledgers and Markdown for human summaries.
-
-## Rollout Loop
-
-1. Load the prior ledger.
-2. Capture new information at time-step zero.
-3. Run the bounded search.
-4. Mark each candidate: accept, watch, reject, decay watch, or needs replay.
-5. Compare winners against prior winners and latest marked rollout.
-6. Downgrade candidates when drift, tail risk, stale data, or failed replay
-   invalidates the previous mark.
-7. Append artifacts before summarizing.
-
-## Coherence Mark
-
-Include a compact coherence mark:
-
-```text
-Ensemble matches prior winner: true
-Recursive matches prior winner: false
-Latest rollout match: true
-Live promotion allowed: false
-Reason: replay and freshness gates not satisfied
-```
-
-## Promotion Rules
-
-For trading, capital allocation, production deploys, migrations, or destructive
-ops, recursive confidence is not approval.
-
-Default to paper, dry-run, read-only, preview, or staged mode unless the user
-explicitly approves the live action and the repo/service gate supports it.
-
-Promote only when:
-
-- the candidate beats the prior accepted winner on the chosen metric;
-- correctness and replay checks pass;
-- risk limits are explicit;
-- the evidence is durable;
-- the user has approved the live step when needed.
-
-## Summary Shape
-
-Lead with the decision, not the drama:
-
-```text
-Rollout 15 complete. The prior winner still holds, but edge deteriorated 17%.
-Status: watch, not live. Next gate: 20 replay fills with fresh orderbook age
-below threshold.
-```
+skill: "recursive-decision-ledger"
+sections[7]:
+  - "\n"
+  - "# Recursive Decision Ledger\n\nUse this skill when the user is trying to force deeper computation through\nrepeated rollouts or \"Prime Gauss\" style recursive prompting. Preserve the useful\npart: repeated trials, prior memory, fresh information, and explicit marks.\nRemove the unsafe part: pretending the loop proves certainty.\n\n"
+  - "## Ledger Contract\n\nEvery rollout should record:\n\n- rollout id and timestamp;\n- prior accepted winner and prior watchlist;\n- fresh information ingested;\n- search space size;\n- model families or heuristics used;\n- trial count and effective trial count;\n- top candidates;\n- decision marks;\n- coherence marks against the prior ledger;\n- promotion gate result.\n\nPrefer JSONL for append-only ledgers and Markdown for human summaries.\n\n"
+  - "## Rollout Loop\n\n1. Load the prior ledger.\n2. Capture new information at time-step zero.\n3. Run the bounded search.\n4. Mark each candidate: accept, watch, reject, decay watch, or needs replay.\n5. Compare winners against prior winners and latest marked rollout.\n6. Downgrade candidates when drift, tail risk, stale data, or failed replay\n   invalidates the previous mark.\n7. Append artifacts before summarizing.\n\n"
+  - "## Coherence Mark\n\nInclude a compact coherence mark:\n\n```text\nEnsemble matches prior winner: true\nRecursive matches prior winner: false\nLatest rollout match: true\nLive promotion allowed: false\nReason: replay and freshness gates not satisfied\n```\n\n"
+  - "## Promotion Rules\n\nFor trading, capital allocation, production deploys, migrations, or destructive\nops, recursive confidence is not approval.\n\nDefault to paper, dry-run, read-only, preview, or staged mode unless the user\nexplicitly approves the live action and the repo/service gate supports it.\n\nPromote only when:\n\n- the candidate beats the prior accepted winner on the chosen metric;\n- correctness and replay checks pass;\n- risk limits are explicit;\n- the evidence is durable;\n- the user has approved the live step when needed.\n\n"
+  - "## Summary Shape\n\nLead with the decision, not the drama:\n\n```text\nRollout 15 complete. The prior winner still holds, but edge deteriorated 17%.\nStatus: watch, not live. Next gate: 20 replay fills with fresh orderbook age\nbelow threshold.\n```\n"

@@ -31,16 +31,9 @@ outputs:
     extension: .cgd.md
     spec: docs/CLARITY_GATE_FORMAT_SPEC.md
 spec_version: "2.1"
+prompt-source: prompt.toon
 ---
-# Clarity Gate v2.1
-
-Pre-ingestion verification for epistemic quality in RAG systems. Ensures documents are properly qualified before entering knowledge bases. Produces CGD (Clarity-Gated Documents) and validates SOT (Source of Truth) files.
-
-## Workflow
-
-1. Confirm the request fits this skill and identify the required inputs and output constraints.
-2. Read the applicable sections in [the full runbook](references/FULL_RUNBOOK.md).
-3. Check version-sensitive instructions against authoritative current documentation; label claims that cannot be verified.
-4. Get any required approval before paid, destructive, external, or user-visible actions not already authorized.
-5. Follow the relevant procedure using the project’s existing tools and conventions. Ask for missing inputs instead of inventing values.
-6. Verify the result with available checks and report what ran, what passed, and any remaining uncertainty.
+skill: "clarity-gate"
+sections[2]:
+  - "# Clarity Gate v2.1\n\nPre-ingestion verification for epistemic quality in RAG systems. Ensures documents are properly qualified before entering knowledge bases. Produces CGD (Clarity-Gated Documents) and validates SOT (Source of Truth) files.\n\n"
+  - "## Workflow\n\n1. Confirm the request fits this skill and identify the required inputs and output constraints.\n2. Read the applicable sections in [the full runbook](references/FULL_RUNBOOK.md).\n3. Check version-sensitive instructions against authoritative current documentation; label claims that cannot be verified.\n4. Get any required approval before paid, destructive, external, or user-visible actions not already authorized.\n5. Follow the relevant procedure using the project’s existing tools and conventions. Ask for missing inputs instead of inventing values.\n6. Verify the result with available checks and report what ran, what passed, and any remaining uncertainty.\n"

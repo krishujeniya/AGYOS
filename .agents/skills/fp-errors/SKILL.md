@@ -10,8 +10,9 @@ tags:
   - error-handling
   - either
   - task-either
+prompt-source: prompt.toon
 ---
-
-# fp-ts error handling compatibility ID
-
-Use the canonical [fp-ts-errors runbook](../fp-ts-errors/SKILL.md) for Either and TaskEither error handling, validation, domain errors, and explicit error contracts.
+skill: "fp-errors"
+sections[2]:
+  - "\n"
+  - "# fp-ts error handling compatibility ID\n\nUse the canonical [fp-ts-errors runbook](../fp-ts-errors/SKILL.md) for Either and TaskEither error handling, validation, domain errors, and explicit error contracts.\n"

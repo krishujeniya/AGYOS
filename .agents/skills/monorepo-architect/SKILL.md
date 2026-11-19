@@ -4,66 +4,16 @@ description: "Design or troubleshoot a monorepo using Nx, Turborepo, Bazel, or L
 risk: safe
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Monorepo Architect
-
-Design or troubleshoot a monorepo using Nx, Turborepo, Bazel, or Lerna. Use for workspace boundaries, builds, dependency constraints, or task caching.
-
-## Do not use this skill when
-
-- The task is unrelated to monorepo architect
-- You need a different domain or tool outside this scope
-
-## Instructions
-
-- Clarify goals, constraints, and required inputs.
-- Apply relevant best practices and validate outcomes.
-- Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
-
-## Capabilities
-
-- Monorepo tool selection (Nx, Turborepo, Bazel, Lerna)
-- Workspace configuration and project structure
-- Build caching (local and remote)
-- Dependency graph management
-- Affected/changed detection for CI optimization
-- Code sharing and library extraction
-- Task orchestration and parallelization
-
-## Use this skill when
-
-- Setting up a new monorepo from scratch
-- Migrating from polyrepo to monorepo
-- Optimizing slow CI/CD pipelines
-- Sharing code between multiple applications
-- Managing dependencies across projects
-- Implementing consistent tooling across teams
-
-## Workflow
-
-1. Assess codebase size and team structure
-2. Select appropriate monorepo tooling
-3. Design workspace and project structure
-4. Configure build caching strategy
-5. Set up affected/changed detection
-6. Implement task pipelines
-7. Configure remote caching for CI
-8. Document conventions and workflows
-
-## Best Practices
-
-- Start with clear project boundaries
-- Use consistent naming conventions
-- Implement remote caching early
-- Keep shared libraries focused
-- Use tags for dependency constraints
-- Automate dependency updates
-- Document the dependency graph
-- Set up code ownership rules
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "monorepo-architect"
+sections[9]:
+  - "\n"
+  - "# Monorepo Architect\n\nDesign or troubleshoot a monorepo using Nx, Turborepo, Bazel, or Lerna. Use for workspace boundaries, builds, dependency constraints, or task caching.\n\n"
+  - "## Do not use this skill when\n\n- The task is unrelated to monorepo architect\n- You need a different domain or tool outside this scope\n\n"
+  - "## Instructions\n\n- Clarify goals, constraints, and required inputs.\n- Apply relevant best practices and validate outcomes.\n- Provide actionable steps and verification.\n- If detailed examples are required, open `resources/implementation-playbook.md`.\n\n"
+  - "## Capabilities\n\n- Monorepo tool selection (Nx, Turborepo, Bazel, Lerna)\n- Workspace configuration and project structure\n- Build caching (local and remote)\n- Dependency graph management\n- Affected/changed detection for CI optimization\n- Code sharing and library extraction\n- Task orchestration and parallelization\n\n"
+  - "## Use this skill when\n\n- Setting up a new monorepo from scratch\n- Migrating from polyrepo to monorepo\n- Optimizing slow CI/CD pipelines\n- Sharing code between multiple applications\n- Managing dependencies across projects\n- Implementing consistent tooling across teams\n\n"
+  - "## Workflow\n\n1. Assess codebase size and team structure\n2. Select appropriate monorepo tooling\n3. Design workspace and project structure\n4. Configure build caching strategy\n5. Set up affected/changed detection\n6. Implement task pipelines\n7. Configure remote caching for CI\n8. Document conventions and workflows\n\n"
+  - "## Best Practices\n\n- Start with clear project boundaries\n- Use consistent naming conventions\n- Implement remote caching early\n- Keep shared libraries focused\n- Use tags for dependency constraints\n- Automate dependency updates\n- Document the dependency graph\n- Set up code ownership rules\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

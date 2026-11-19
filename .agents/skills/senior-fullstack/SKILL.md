@@ -4,217 +4,36 @@ description: "Complete toolkit for senior fullstack with modern tools and best p
 risk: critical
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Senior Fullstack
-
-Complete toolkit for senior fullstack with modern tools and best practices.
-
-## Quick Start
-
-### Main Capabilities
-
-This skill provides three core capabilities through automated scripts:
-
-```bash
-# Script 1: Fullstack Scaffolder
-python scripts/fullstack_scaffolder.py [options]
-
-# Script 2: Project Scaffolder
-python scripts/project_scaffolder.py [options]
-
-# Script 3: Code Quality Analyzer
-python scripts/code_quality_analyzer.py [options]
-```
-
-## Core Capabilities
-
-### 1. Fullstack Scaffolder
-
-Automated tool for fullstack scaffolder tasks.
-
-**Features:**
-- Automated scaffolding
-- Best practices built-in
-- Configurable templates
-- Quality checks
-
-**Usage:**
-```bash
-python scripts/fullstack_scaffolder.py <project-path> [options]
-```
-
-### 2. Project Scaffolder
-
-Comprehensive analysis and optimization tool.
-
-**Features:**
-- Deep analysis
-- Performance metrics
-- Recommendations
-- Automated fixes
-
-**Usage:**
-```bash
-python scripts/project_scaffolder.py <target-path> [--verbose]
-```
-
-### 3. Code Quality Analyzer
-
-Advanced tooling for specialized tasks.
-
-**Features:**
-- Expert-level automation
-- Custom configurations
-- Integration ready
-- Production-grade output
-
-**Usage:**
-```bash
-python scripts/code_quality_analyzer.py [arguments] [options]
-```
-
-## Reference Documentation
-
-### Tech Stack Guide
-
-Comprehensive guide available in `references/tech_stack_guide.md`:
-
-- Detailed patterns and practices
-- Code examples
-- Best practices
-- Anti-patterns to avoid
-- Real-world scenarios
-
-### Architecture Patterns
-
-Complete workflow documentation in `references/architecture_patterns.md`:
-
-- Step-by-step processes
-- Optimization strategies
-- Tool integrations
-- Performance tuning
-- Troubleshooting guide
-
-### Development Workflows
-
-Technical reference guide in `references/development_workflows.md`:
-
-- Technology stack details
-- Configuration examples
-- Integration patterns
-- Security considerations
-- Scalability guidelines
-
-## Tech Stack
-
-**Languages:** TypeScript, JavaScript, Python, Go, Swift, Kotlin
-**Frontend:** React, Next.js, React Native, Flutter
-**Backend:** Node.js, Express, GraphQL, REST APIs
-**Database:** PostgreSQL, Prisma, NeonDB, Supabase
-**DevOps:** Docker, Kubernetes, Terraform, GitHub Actions, CircleCI
-**Cloud:** AWS, GCP, Azure
-
-## Development Workflow
-
-### 1. Setup and Configuration
-
-```bash
-# Install dependencies
-npm install
-# or
-pip install -r requirements.txt
-
-# Configure environment
-cp .env.example .env
-```
-
-### 2. Run Quality Checks
-
-```bash
-# Use the analyzer script
-python scripts/project_scaffolder.py .
-
-# Review recommendations
-# Apply fixes
-```
-
-### 3. Implement Best Practices
-
-Follow the patterns and practices documented in:
-- `references/tech_stack_guide.md`
-- `references/architecture_patterns.md`
-- `references/development_workflows.md`
-
-## Best Practices Summary
-
-### Code Quality
-- Follow established patterns
-- Write comprehensive tests
-- Document decisions
-- Review regularly
-
-### Performance
-- Measure before optimizing
-- Use appropriate caching
-- Optimize critical paths
-- Monitor in production
-
-### Security
-- Validate all inputs
-- Use parameterized queries
-- Implement proper authentication
-- Keep dependencies updated
-
-### Maintainability
-- Write clear code
-- Use consistent naming
-- Add helpful comments
-- Keep it simple
-
-## Common Commands
-
-```bash
-# Development
-npm run dev
-npm run build
-npm run test
-npm run lint
-
-# Analysis
-python scripts/project_scaffolder.py .
-python scripts/code_quality_analyzer.py --analyze
-
-# Deployment
-docker build -t app:latest .
-docker-compose up -d
-kubectl apply -f k8s/
-```
-
-## Troubleshooting
-
-### Common Issues
-
-Check the comprehensive troubleshooting section in `references/development_workflows.md`.
-
-### Getting Help
-
-- Review reference documentation
-- Check script output messages
-- Consult tech stack documentation
-- Review error logs
-
-## Resources
-
-- Pattern Reference: `references/tech_stack_guide.md`
-- Workflow Guide: `references/architecture_patterns.md`
-- Technical Guide: `references/development_workflows.md`
-- Tool Scripts: `scripts/` directory
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "senior-fullstack"
+sections[29]:
+  - "\n"
+  - "# Senior Fullstack\n\nComplete toolkit for senior fullstack with modern tools and best practices.\n\n"
+  - "## Quick Start\n\n"
+  - "### Main Capabilities\n\nThis skill provides three core capabilities through automated scripts:\n\n```bash\n# Script 1: Fullstack Scaffolder\npython scripts/fullstack_scaffolder.py [options]\n\n# Script 2: Project Scaffolder\npython scripts/project_scaffolder.py [options]\n\n# Script 3: Code Quality Analyzer\npython scripts/code_quality_analyzer.py [options]\n```\n\n"
+  - "## Core Capabilities\n\n"
+  - "### 1. Fullstack Scaffolder\n\nAutomated tool for fullstack scaffolder tasks.\n\n**Features:**\n- Automated scaffolding\n- Best practices built-in\n- Configurable templates\n- Quality checks\n\n**Usage:**\n```bash\npython scripts/fullstack_scaffolder.py <project-path> [options]\n```\n\n"
+  - "### 2. Project Scaffolder\n\nComprehensive analysis and optimization tool.\n\n**Features:**\n- Deep analysis\n- Performance metrics\n- Recommendations\n- Automated fixes\n\n**Usage:**\n```bash\npython scripts/project_scaffolder.py <target-path> [--verbose]\n```\n\n"
+  - "### 3. Code Quality Analyzer\n\nAdvanced tooling for specialized tasks.\n\n**Features:**\n- Expert-level automation\n- Custom configurations\n- Integration ready\n- Production-grade output\n\n**Usage:**\n```bash\npython scripts/code_quality_analyzer.py [arguments] [options]\n```\n\n"
+  - "## Reference Documentation\n\n"
+  - "### Tech Stack Guide\n\nComprehensive guide available in `references/tech_stack_guide.md`:\n\n- Detailed patterns and practices\n- Code examples\n- Best practices\n- Anti-patterns to avoid\n- Real-world scenarios\n\n"
+  - "### Architecture Patterns\n\nComplete workflow documentation in `references/architecture_patterns.md`:\n\n- Step-by-step processes\n- Optimization strategies\n- Tool integrations\n- Performance tuning\n- Troubleshooting guide\n\n"
+  - "### Development Workflows\n\nTechnical reference guide in `references/development_workflows.md`:\n\n- Technology stack details\n- Configuration examples\n- Integration patterns\n- Security considerations\n- Scalability guidelines\n\n"
+  - "## Tech Stack\n\n**Languages:** TypeScript, JavaScript, Python, Go, Swift, Kotlin\n**Frontend:** React, Next.js, React Native, Flutter\n**Backend:** Node.js, Express, GraphQL, REST APIs\n**Database:** PostgreSQL, Prisma, NeonDB, Supabase\n**DevOps:** Docker, Kubernetes, Terraform, GitHub Actions, CircleCI\n**Cloud:** AWS, GCP, Azure\n\n"
+  - "## Development Workflow\n\n"
+  - "### 1. Setup and Configuration\n\n```bash\n# Install dependencies\nnpm install\n# or\npip install -r requirements.txt\n\n# Configure environment\ncp .env.example .env\n```\n\n"
+  - "### 2. Run Quality Checks\n\n```bash\n# Use the analyzer script\npython scripts/project_scaffolder.py .\n\n# Review recommendations\n# Apply fixes\n```\n\n"
+  - "### 3. Implement Best Practices\n\nFollow the patterns and practices documented in:\n- `references/tech_stack_guide.md`\n- `references/architecture_patterns.md`\n- `references/development_workflows.md`\n\n"
+  - "## Best Practices Summary\n\n"
+  - "### Code Quality\n- Follow established patterns\n- Write comprehensive tests\n- Document decisions\n- Review regularly\n\n"
+  - "### Performance\n- Measure before optimizing\n- Use appropriate caching\n- Optimize critical paths\n- Monitor in production\n\n"
+  - "### Security\n- Validate all inputs\n- Use parameterized queries\n- Implement proper authentication\n- Keep dependencies updated\n\n"
+  - "### Maintainability\n- Write clear code\n- Use consistent naming\n- Add helpful comments\n- Keep it simple\n\n"
+  - "## Common Commands\n\n```bash\n# Development\nnpm run dev\nnpm run build\nnpm run test\nnpm run lint\n\n# Analysis\npython scripts/project_scaffolder.py .\npython scripts/code_quality_analyzer.py --analyze\n\n# Deployment\ndocker build -t app:latest .\ndocker-compose up -d\nkubectl apply -f k8s/\n```\n\n"
+  - "## Troubleshooting\n\n"
+  - "### Common Issues\n\nCheck the comprehensive troubleshooting section in `references/development_workflows.md`.\n\n"
+  - "### Getting Help\n\n- Review reference documentation\n- Check script output messages\n- Consult tech stack documentation\n- Review error logs\n\n"
+  - "## Resources\n\n- Pattern Reference: `references/tech_stack_guide.md`\n- Workflow Guide: `references/architecture_patterns.md`\n- Technical Guide: `references/development_workflows.md`\n- Tool Scripts: `scripts/` directory\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

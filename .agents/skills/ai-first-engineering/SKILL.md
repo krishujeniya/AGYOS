@@ -3,50 +3,14 @@ name: ai-first-engineering
 description: Engineering operating model for teams where AI agents generate a large share of implementation output. Use when setting team process, review gates, or ownership rules for a codebase largely written by agents.
 metadata:
   origin: ECC
+prompt-source: prompt.toon
 ---
-
-# AI-First Engineering
-
-Use this skill when designing process, reviews, and architecture for teams shipping with AI-assisted code generation.
-
-## Process Shifts
-
-1. Planning quality matters more than typing speed.
-2. Eval coverage matters more than anecdotal confidence.
-3. Review focus shifts from syntax to system behavior.
-
-## Architecture Requirements
-
-Prefer architectures that are agent-friendly:
-- explicit boundaries
-- stable contracts
-- typed interfaces
-- deterministic tests
-
-Avoid implicit behavior spread across hidden conventions.
-
-## Code Review in AI-First Teams
-
-Review for:
-- behavior regressions
-- security assumptions
-- data integrity
-- failure handling
-- rollout safety
-
-Minimize time spent on style issues already covered by automation.
-
-## Hiring and Evaluation Signals
-
-Strong AI-first engineers:
-- decompose ambiguous work cleanly
-- define measurable acceptance criteria
-- produce high-signal prompts and evals
-- enforce risk controls under delivery pressure
-
-## Testing Standard
-
-Raise testing bar for generated code:
-- required regression coverage for touched domains
-- explicit edge-case assertions
-- integration checks for interface boundaries
+skill: "ai-first-engineering"
+sections[7]:
+  - "\n"
+  - "# AI-First Engineering\n\nUse this skill when designing process, reviews, and architecture for teams shipping with AI-assisted code generation.\n\n"
+  - "## Process Shifts\n\n1. Planning quality matters more than typing speed.\n2. Eval coverage matters more than anecdotal confidence.\n3. Review focus shifts from syntax to system behavior.\n\n"
+  - "## Architecture Requirements\n\nPrefer architectures that are agent-friendly:\n- explicit boundaries\n- stable contracts\n- typed interfaces\n- deterministic tests\n\nAvoid implicit behavior spread across hidden conventions.\n\n"
+  - "## Code Review in AI-First Teams\n\nReview for:\n- behavior regressions\n- security assumptions\n- data integrity\n- failure handling\n- rollout safety\n\nMinimize time spent on style issues already covered by automation.\n\n"
+  - "## Hiring and Evaluation Signals\n\nStrong AI-first engineers:\n- decompose ambiguous work cleanly\n- define measurable acceptance criteria\n- produce high-signal prompts and evals\n- enforce risk controls under delivery pressure\n\n"
+  - "## Testing Standard\n\nRaise testing bar for generated code:\n- required regression coverage for touched domains\n- explicit edge-case assertions\n- integration checks for interface boundaries\n"

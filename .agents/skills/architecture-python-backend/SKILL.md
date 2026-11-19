@@ -5,44 +5,17 @@ category: architecture
 risk: safe
 tags: "[python, backend, architecture, fastapi, guidelines, patterns, layers]"
 version: "1.0.0"
+prompt-source: prompt.toon
 ---
-
-# Architecture: Python Backend
-
-## Purpose
-This skill establishes strict architectural guidelines for the Python/FastAPI backend, complementing the technology-specific `fastapi-backend-patterns` skill. It enforces layered design, explicit error boundaries, and feasibility checks before implementation.
-
-## When to Use
-- **Gate 3 (PLAN):** When designing a new backend feature or microservice.
-- **Gate 4 (IMPLEMENT):** When structuring routes, services, and repositories.
-- **Gate 5 (VERIFY):** When reviewing code for architectural violations (layer skipping).
-
-## Core Architecture Doctrine (Non-Negotiable)
-
-### 1. Backend Feasibility & Risk Index (BFRI)
-Before implementing complex backend logic, evaluate BFRI (Score from -10 to +10):
-- **+ (Positive):** Architectural fit, testability.
-- **- (Negative):** Business logic complexity, data risk, operational risk.
-**Rule:** If BFRI < 3, require explicit design validation and extra testing (TDD).
-
-### 2. Strict Layered Architecture
-```text
-Routes -> Controllers (Optional in FastAPI but logical) -> Services -> Repositories -> Database
-```
-- **Routes Only Route:** Routes contain ZERO business logic. They call services.
-- **Services Decide:** Services contain all business rules. They are framework-agnostic and unit-testable.
-- **Repositories Access Data:** Repositories encapsulate raw database queries (asyncpg/Qdrant) and transactions.
-
-### 3. Error Boundaries
-- Never swallow errors silently.
-- Validate all external input strictly using Pydantic v2.
-- Unhandled exceptions must be caught by a global exception handler (e.g., yielding 500s and logging to standard output/error tracking).
-
-## Integration with Stack
-Use this architectural mindset while applying specific coding patterns from `fastapi-backend-patterns.md`.
-
-## Operator Checklist (PRE-ACT)
-- [ ] Does the route avoid business logic?
-- [ ] Is input fully validated via Pydantic?
-- [ ] Are we using dependency injection for services/repositories?
-- [ ] Is error handling centralized?
+skill: "architecture-python-backend"
+sections[10]:
+  - "\n"
+  - "# Architecture: Python Backend\n\n"
+  - "## Purpose\nThis skill establishes strict architectural guidelines for the Python/FastAPI backend, complementing the technology-specific `fastapi-backend-patterns` skill. It enforces layered design, explicit error boundaries, and feasibility checks before implementation.\n\n"
+  - "## When to Use\n- **Gate 3 (PLAN):** When designing a new backend feature or microservice.\n- **Gate 4 (IMPLEMENT):** When structuring routes, services, and repositories.\n- **Gate 5 (VERIFY):** When reviewing code for architectural violations (layer skipping).\n\n"
+  - "## Core Architecture Doctrine (Non-Negotiable)\n\n"
+  - "### 1. Backend Feasibility & Risk Index (BFRI)\nBefore implementing complex backend logic, evaluate BFRI (Score from -10 to +10):\n- **+ (Positive):** Architectural fit, testability.\n- **- (Negative):** Business logic complexity, data risk, operational risk.\n**Rule:** If BFRI < 3, require explicit design validation and extra testing (TDD).\n\n"
+  - "### 2. Strict Layered Architecture\n```text\nRoutes -> Controllers (Optional in FastAPI but logical) -> Services -> Repositories -> Database\n```\n- **Routes Only Route:** Routes contain ZERO business logic. They call services.\n- **Services Decide:** Services contain all business rules. They are framework-agnostic and unit-testable.\n- **Repositories Access Data:** Repositories encapsulate raw database queries (asyncpg/Qdrant) and transactions.\n\n"
+  - "### 3. Error Boundaries\n- Never swallow errors silently.\n- Validate all external input strictly using Pydantic v2.\n- Unhandled exceptions must be caught by a global exception handler (e.g., yielding 500s and logging to standard output/error tracking).\n\n"
+  - "## Integration with Stack\nUse this architectural mindset while applying specific coding patterns from `fastapi-backend-patterns.md`.\n\n"
+  - "## Operator Checklist (PRE-ACT)\n- [ ] Does the route avoid business logic?\n- [ ] Is input fully validated via Pydantic?\n- [ ] Are we using dependency injection for services/repositories?\n- [ ] Is error handling centralized?\n"

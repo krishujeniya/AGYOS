@@ -8,57 +8,13 @@ metadata:
   organization: Supabase
   date: January 2026
   abstract: Comprehensive Postgres performance optimization guide for developers using Supabase and Postgres. Contains performance rules across 8 categories, prioritized by impact from critical (query performance, connection management) to incremental (advanced features). Each rule includes detailed explanations, incorrect vs. correct SQL examples, query plan analysis, and specific performance metrics to guide automated optimization and code generation.
+prompt-source: prompt.toon
 ---
-
-# Supabase Postgres Best Practices
-
-Comprehensive performance optimization guide for Postgres, maintained by Supabase. Contains rules across 8 categories, prioritized by impact to guide automated query optimization and schema design.
-
-## When to Apply
-
-Reference these guidelines when:
-- Writing SQL queries or designing schemas
-- Implementing indexes or query optimization
-- Reviewing database performance issues
-- Configuring connection pooling or scaling
-- Optimizing for Postgres-specific features
-- Working with Row-Level Security (RLS)
-
-## Rule Categories by Priority
-
-| Priority | Category | Impact | Prefix |
-|----------|----------|--------|--------|
-| 1 | Query Performance | CRITICAL | `query-` |
-| 2 | Connection Management | CRITICAL | `conn-` |
-| 3 | Security & RLS | CRITICAL | `security-` |
-| 4 | Schema Design | HIGH | `schema-` |
-| 5 | Concurrency & Locking | MEDIUM-HIGH | `lock-` |
-| 6 | Data Access Patterns | MEDIUM | `data-` |
-| 7 | Monitoring & Diagnostics | LOW-MEDIUM | `monitor-` |
-| 8 | Advanced Features | LOW | `advanced-` |
-
-## How to Use
-
-Read individual rule files for detailed explanations and SQL examples:
-
-```
-references/query-missing-indexes.md
-references/query-partial-indexes.md
-references/_sections.md
-```
-
-Each rule file contains:
-- Brief explanation of why it matters
-- Incorrect SQL example with explanation
-- Correct SQL example with explanation
-- Optional EXPLAIN output or metrics
-- Additional context and references
-- Supabase-specific notes (when applicable)
-
-## References
-
-- https://www.postgresql.org/docs/current/
-- https://supabase.com/docs
-- https://wiki.postgresql.org/wiki/Performance_Optimization
-- https://supabase.com/docs/guides/database/overview
-- https://supabase.com/docs/guides/auth/row-level-security
+skill: "supabase-postgres-best-practices"
+sections[6]:
+  - "\n"
+  - "# Supabase Postgres Best Practices\n\nComprehensive performance optimization guide for Postgres, maintained by Supabase. Contains rules across 8 categories, prioritized by impact to guide automated query optimization and schema design.\n\n"
+  - "## When to Apply\n\nReference these guidelines when:\n- Writing SQL queries or designing schemas\n- Implementing indexes or query optimization\n- Reviewing database performance issues\n- Configuring connection pooling or scaling\n- Optimizing for Postgres-specific features\n- Working with Row-Level Security (RLS)\n\n"
+  - "## Rule Categories by Priority\n\n| Priority | Category | Impact | Prefix |\n|----------|----------|--------|--------|\n| 1 | Query Performance | CRITICAL | `query-` |\n| 2 | Connection Management | CRITICAL | `conn-` |\n| 3 | Security & RLS | CRITICAL | `security-` |\n| 4 | Schema Design | HIGH | `schema-` |\n| 5 | Concurrency & Locking | MEDIUM-HIGH | `lock-` |\n| 6 | Data Access Patterns | MEDIUM | `data-` |\n| 7 | Monitoring & Diagnostics | LOW-MEDIUM | `monitor-` |\n| 8 | Advanced Features | LOW | `advanced-` |\n\n"
+  - "## How to Use\n\nRead individual rule files for detailed explanations and SQL examples:\n\n```\nreferences/query-missing-indexes.md\nreferences/query-partial-indexes.md\nreferences/_sections.md\n```\n\nEach rule file contains:\n- Brief explanation of why it matters\n- Incorrect SQL example with explanation\n- Correct SQL example with explanation\n- Optional EXPLAIN output or metrics\n- Additional context and references\n- Supabase-specific notes (when applicable)\n\n"
+  - "## References\n\n- https://www.postgresql.org/docs/current/\n- https://supabase.com/docs\n- https://wiki.postgresql.org/wiki/Performance_Optimization\n- https://supabase.com/docs/guides/database/overview\n- https://supabase.com/docs/guides/auth/row-level-security\n"

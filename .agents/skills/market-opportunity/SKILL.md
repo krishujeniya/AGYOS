@@ -8,243 +8,28 @@ description: 'Generate comprehensive market opportunity analysis with TAM/SAM/SO
 risk: unknown
 source: community
 date_added: '2026-02-27'
+prompt-source: prompt.toon
 ---
-
-# Market Opportunity Analysis
-
-Generate a comprehensive market opportunity analysis for a startup, including Total Addressable Market (TAM), Serviceable Available Market (SAM), and Serviceable Obtainable Market (SOM) calculations using both bottom-up and top-down methodologies.
-
-## Use this skill when
-
-- Working on market opportunity analysis tasks or workflows
-- Needing guidance, best practices, or checklists for market opportunity analysis
-
-## Do not use this skill when
-
-- The task is unrelated to market opportunity analysis
-- You need a different domain or tool outside this scope
-
-## Instructions
-
-- Clarify goals, constraints, and required inputs.
-- Apply relevant best practices and validate outcomes.
-- Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
-
-## What This Command Does
-
-This command guides through an interactive market sizing process to:
-1. Define the target market and customer segments
-2. Gather relevant market data
-3. Calculate TAM using bottom-up methodology
-4. Validate with top-down analysis
-5. Narrow to SAM with appropriate filters
-6. Estimate realistic SOM (3-5 year opportunity)
-7. Present findings in a formatted report
-
-## Instructions for Claude
-
-When this command is invoked, follow these steps:
-
-### Step 1: Gather Context
-
-Ask the user for essential information:
-- **Product/Service Description:** What problem is being solved?
-- **Target Customers:** Who is the ideal customer? (industry, size, geography)
-- **Business Model:** How does pricing work? (subscription, transaction, etc.)
-- **Stage:** What stage is the company? (pre-launch, seed, Series A)
-- **Geography:** Initial target market (US, North America, Global)
-
-### Step 2: Activate market-sizing-analysis Skill
-
-The market-sizing-analysis skill provides comprehensive methodologies. Reference it for:
-- Bottom-up calculation frameworks
-- Top-down validation approaches
-- Industry-specific templates
-- Data source recommendations
-
-### Step 3: Conduct Bottom-Up Analysis
-
-**For B2B/SaaS:**
-1. Define customer segments (company size, industry, use case)
-2. Estimate number of companies in each segment
-3. Determine average contract value (ACV) per segment
-4. Calculate TAM: Σ (Segment Size × ACV)
-
-**For Consumer/Marketplace:**
-1. Define target user demographics
-2. Estimate total addressable users
-3. Determine average revenue per user (ARPU)
-4. Calculate TAM: Total Users × ARPU × Frequency
-
-**For Transactions/E-commerce:**
-1. Estimate total transaction volume (GMV)
-2. Determine take rate or margin
-3. Calculate TAM: Total GMV × Take Rate
-
-### Step 4: Gather Market Data
-
-Use available tools to research:
-- **WebSearch:** Find industry reports, market size estimates, public company data
-- **Cite all sources** with URLs and publication dates
-- **Document assumptions** clearly
-
-Recommended data sources (from skill):
-- Government data (Census, BLS)
-- Industry reports (Gartner, Forrester, Statista)
-- Public company filings (10-K reports)
-- Trade associations
-- Academic research
-
-### Step 5: Top-Down Validation
-
-Validate bottom-up calculation:
-1. Find total market category size from research
-2. Apply geographic filters
-3. Apply segment/product filters
-4. Compare to bottom-up TAM (should be within 30%)
-
-If variance > 30%, investigate and explain differences.
-
-### Step 6: Calculate SAM
-
-Apply realistic filters to narrow TAM:
-- **Geographic:** Regions actually serviceable
-- **Product Capability:** Features needed to serve
-- **Market Readiness:** Customers ready to adopt
-- **Addressable Switching:** Can reach and convert
-
-Formula:
-```
-SAM = TAM × Geographic % × Product Fit % × Market Readiness %
-```
-
-### Step 7: Estimate SOM
-
-Calculate realistic obtainable market share:
-
-**Conservative Approach (Recommended):**
-- Year 3: 2-3% of SAM
-- Year 5: 4-6% of SAM
-
-**Consider:**
-- Competitive intensity
-- Available resources (funding, team)
-- Go-to-market effectiveness
-- Differentiation strength
-
-### Step 8: Create Market Sizing Report
-
-Generate a comprehensive markdown report with:
-
-**Section 1: Executive Summary**
-- Market opportunity in one paragraph
-- TAM/SAM/SOM headline numbers
-
-**Section 2: Market Definition**
-- Problem being solved
-- Target customer profile
-- Geographic scope
-- Time horizon
-
-**Section 3: Bottom-Up Analysis**
-- Customer segment breakdown
-- Segment sizing with sources
-- TAM calculation with formula
-- Assumptions documented
-
-**Section 4: Top-Down Validation**
-- Industry category and size
-- Filter application
-- Validated TAM
-- Comparison to bottom-up
-
-**Section 5: SAM Calculation**
-- Filters applied with rationale
-- SAM formula and result
-- Segment-level breakdown
-
-**Section 6: SOM Projection**
-- Market share assumptions
-- Year 3 and Year 5 estimates
-- Customer count implications
-- Revenue projections
-
-**Section 7: Market Growth**
-- Industry growth rate (CAGR)
-- Key growth drivers
-- 5-year market evolution
-
-**Section 8: Validation and Sanity Checks**
-- Public company comparisons
-- Customer count validation
-- Competitive context
-
-**Section 9: Investment Thesis**
-- Market opportunity assessment
-- Key positives and risks
-- Venture-scale potential
-- Next steps
-
-### Step 9: Save Report
-
-Offer to save the report as a markdown file:
-- Suggest filename: `market-opportunity-analysis-YYYY-MM-DD.md`
-- Use Write tool to create file
-- Confirm file location with user
-
-## Tips for Best Results
-
-**Do:**
-- Start with bottom-up (most credible)
-- Always triangulate with top-down
-- Cite all data sources
-- Document every assumption
-- Be conservative on SOM
-- Compare to public company benchmarks
-- Explain any data gaps or limitations
-
-**Don't:**
-- Rely solely on top-down
-- Cherry-pick optimistic data
-- Claim >10% SOM without strong justification
-- Mix methodologies inappropriately
-- Ignore competitive context
-- Skip validation steps
-
-## Example Usage
-
-```
-User: /market-opportunity
-
-Claude: I'll help you create a comprehensive market opportunity analysis. Let me start by gathering some context.
-
-What product or service are you analyzing?
-→ "AI-powered email marketing for e-commerce companies"
-
-Who are your target customers?
-→ "E-commerce companies with $1M+ annual revenue in North America"
-
-What's your pricing model?
-→ "Subscription: $50-500/month based on email volume, average $300/month"
-
-[Claude proceeds with analysis, gathering data, calculating TAM/SAM/SOM, and generating report]
-```
-
-## Integration with Other Commands
-
-This command pairs well with:
-- `/financial-projections` - Use SOM to build revenue model
-- `/business-case` - Include market sizing in business case
-
-## Notes
-
-- Market sizing typically takes 30-60 minutes for thorough analysis
-- Quality depends on data availability - explain limitations
-- Update annually as market evolves
-- Conservative estimates build credibility with investors
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "market-opportunity"
+sections[21]:
+  - "\n"
+  - "# Market Opportunity Analysis\n\nGenerate a comprehensive market opportunity analysis for a startup, including Total Addressable Market (TAM), Serviceable Available Market (SAM), and Serviceable Obtainable Market (SOM) calculations using both bottom-up and top-down methodologies.\n\n"
+  - "## Use this skill when\n\n- Working on market opportunity analysis tasks or workflows\n- Needing guidance, best practices, or checklists for market opportunity analysis\n\n"
+  - "## Do not use this skill when\n\n- The task is unrelated to market opportunity analysis\n- You need a different domain or tool outside this scope\n\n"
+  - "## Instructions\n\n- Clarify goals, constraints, and required inputs.\n- Apply relevant best practices and validate outcomes.\n- Provide actionable steps and verification.\n- If detailed examples are required, open `resources/implementation-playbook.md`.\n\n"
+  - "## What This Command Does\n\nThis command guides through an interactive market sizing process to:\n1. Define the target market and customer segments\n2. Gather relevant market data\n3. Calculate TAM using bottom-up methodology\n4. Validate with top-down analysis\n5. Narrow to SAM with appropriate filters\n6. Estimate realistic SOM (3-5 year opportunity)\n7. Present findings in a formatted report\n\n"
+  - "## Instructions for Claude\n\nWhen this command is invoked, follow these steps:\n\n"
+  - "### Step 1: Gather Context\n\nAsk the user for essential information:\n- **Product/Service Description:** What problem is being solved?\n- **Target Customers:** Who is the ideal customer? (industry, size, geography)\n- **Business Model:** How does pricing work? (subscription, transaction, etc.)\n- **Stage:** What stage is the company? (pre-launch, seed, Series A)\n- **Geography:** Initial target market (US, North America, Global)\n\n"
+  - "### Step 2: Activate market-sizing-analysis Skill\n\nThe market-sizing-analysis skill provides comprehensive methodologies. Reference it for:\n- Bottom-up calculation frameworks\n- Top-down validation approaches\n- Industry-specific templates\n- Data source recommendations\n\n"
+  - "### Step 3: Conduct Bottom-Up Analysis\n\n**For B2B/SaaS:**\n1. Define customer segments (company size, industry, use case)\n2. Estimate number of companies in each segment\n3. Determine average contract value (ACV) per segment\n4. Calculate TAM: Σ (Segment Size × ACV)\n\n**For Consumer/Marketplace:**\n1. Define target user demographics\n2. Estimate total addressable users\n3. Determine average revenue per user (ARPU)\n4. Calculate TAM: Total Users × ARPU × Frequency\n\n**For Transactions/E-commerce:**\n1. Estimate total transaction volume (GMV)\n2. Determine take rate or margin\n3. Calculate TAM: Total GMV × Take Rate\n\n"
+  - "### Step 4: Gather Market Data\n\nUse available tools to research:\n- **WebSearch:** Find industry reports, market size estimates, public company data\n- **Cite all sources** with URLs and publication dates\n- **Document assumptions** clearly\n\nRecommended data sources (from skill):\n- Government data (Census, BLS)\n- Industry reports (Gartner, Forrester, Statista)\n- Public company filings (10-K reports)\n- Trade associations\n- Academic research\n\n"
+  - "### Step 5: Top-Down Validation\n\nValidate bottom-up calculation:\n1. Find total market category size from research\n2. Apply geographic filters\n3. Apply segment/product filters\n4. Compare to bottom-up TAM (should be within 30%)\n\nIf variance > 30%, investigate and explain differences.\n\n"
+  - "### Step 6: Calculate SAM\n\nApply realistic filters to narrow TAM:\n- **Geographic:** Regions actually serviceable\n- **Product Capability:** Features needed to serve\n- **Market Readiness:** Customers ready to adopt\n- **Addressable Switching:** Can reach and convert\n\nFormula:\n```\nSAM = TAM × Geographic % × Product Fit % × Market Readiness %\n```\n\n"
+  - "### Step 7: Estimate SOM\n\nCalculate realistic obtainable market share:\n\n**Conservative Approach (Recommended):**\n- Year 3: 2-3% of SAM\n- Year 5: 4-6% of SAM\n\n**Consider:**\n- Competitive intensity\n- Available resources (funding, team)\n- Go-to-market effectiveness\n- Differentiation strength\n\n"
+  - "### Step 8: Create Market Sizing Report\n\nGenerate a comprehensive markdown report with:\n\n**Section 1: Executive Summary**\n- Market opportunity in one paragraph\n- TAM/SAM/SOM headline numbers\n\n**Section 2: Market Definition**\n- Problem being solved\n- Target customer profile\n- Geographic scope\n- Time horizon\n\n**Section 3: Bottom-Up Analysis**\n- Customer segment breakdown\n- Segment sizing with sources\n- TAM calculation with formula\n- Assumptions documented\n\n**Section 4: Top-Down Validation**\n- Industry category and size\n- Filter application\n- Validated TAM\n- Comparison to bottom-up\n\n**Section 5: SAM Calculation**\n- Filters applied with rationale\n- SAM formula and result\n- Segment-level breakdown\n\n**Section 6: SOM Projection**\n- Market share assumptions\n- Year 3 and Year 5 estimates\n- Customer count implications\n- Revenue projections\n\n**Section 7: Market Growth**\n- Industry growth rate (CAGR)\n- Key growth drivers\n- 5-year market evolution\n\n**Section 8: Validation and Sanity Checks**\n- Public company comparisons\n- Customer count validation\n- Competitive context\n\n**Section 9: Investment Thesis**\n- Market opportunity assessment\n- Key positives and risks\n- Venture-scale potential\n- Next steps\n\n"
+  - "### Step 9: Save Report\n\nOffer to save the report as a markdown file:\n- Suggest filename: `market-opportunity-analysis-YYYY-MM-DD.md`\n- Use Write tool to create file\n- Confirm file location with user\n\n"
+  - "## Tips for Best Results\n\n**Do:**\n- Start with bottom-up (most credible)\n- Always triangulate with top-down\n- Cite all data sources\n- Document every assumption\n- Be conservative on SOM\n- Compare to public company benchmarks\n- Explain any data gaps or limitations\n\n**Don't:**\n- Rely solely on top-down\n- Cherry-pick optimistic data\n- Claim >10% SOM without strong justification\n- Mix methodologies inappropriately\n- Ignore competitive context\n- Skip validation steps\n\n"
+  - "## Example Usage\n\n```\nUser: /market-opportunity\n\nClaude: I'll help you create a comprehensive market opportunity analysis. Let me start by gathering some context.\n\nWhat product or service are you analyzing?\n→ \"AI-powered email marketing for e-commerce companies\"\n\nWho are your target customers?\n→ \"E-commerce companies with $1M+ annual revenue in North America\"\n\nWhat's your pricing model?\n→ \"Subscription: $50-500/month based on email volume, average $300/month\"\n\n[Claude proceeds with analysis, gathering data, calculating TAM/SAM/SOM, and generating report]\n```\n\n"
+  - "## Integration with Other Commands\n\nThis command pairs well with:\n- `/financial-projections` - Use SOM to build revenue model\n- `/business-case` - Include market sizing in business case\n\n"
+  - "## Notes\n\n- Market sizing typically takes 30-60 minutes for thorough analysis\n- Quality depends on data availability - explain limitations\n- Update annually as market evolves\n- Conservative estimates build credibility with investors\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

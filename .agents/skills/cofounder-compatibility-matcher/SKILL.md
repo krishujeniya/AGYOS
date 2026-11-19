@@ -18,62 +18,20 @@ tools:
 - codex
 - gemini
 - windsurf
+prompt-source: prompt.toon
 ---
-
-# Viboscope
-
-## Overview
-
-Viboscope helps find compatible people — cofounders, project partners, friends, romantic partners — through deep psychological compatibility matching. It builds a profile across 10 validated dimensions and calculates mathematical compatibility with other users.
-
-## When to Use This Skill
-
-- Use when looking for a cofounder or project collaborator
-- Use when wanting to find people with compatible work style and values
-- Use when checking compatibility with a specific person via invite link
-
-## How It Works
-
-### Step 1: Install
-
-```bash
-curl -fsS https://viboscope.com/api/v1/skill -o viboscope.md
-```
-
-Save to your platform's skills directory.
-
-### Step 2: Build Profile
-
-The skill guides a 5-minute onboarding that builds a psychological profile using:
-- AI assistant portrait (fastest — 2 min for 90%+ profile)
-- 5 validated questionnaires (Big Five, Values, Attachment, Conflict, Work Style)
-- Context scan from workspace files
-
-### Step 3: Search
-
-Search across 7 contexts: business, romantic, friendship, professional, intellectual, hobby, general. Results include percentage scores and human-readable explanations of why you match.
-
-## Examples
-
-### Example 1: Find a Cofounder
-
-Tell your AI agent: "Install Viboscope and find me a cofounder"
-
-The agent will guide you through profiling, then search for business-compatible matches with aligned values and complementary work styles.
-
-### Example 2: Check Compatibility
-
-Share your invite link: `viboscope.com/match/@your_nick`
-
-When someone opens it with their AI agent, both see a compatibility breakdown.
-
-## Links
-
-- Website: https://viboscope.com
-- GitHub: https://github.com/ivankoriako/viboscope
-- API: https://viboscope.com/api/v1
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "cofounder-compatibility-matcher"
+sections[13]:
+  - "\n"
+  - "# Viboscope\n\n"
+  - "## Overview\n\nViboscope helps find compatible people — cofounders, project partners, friends, romantic partners — through deep psychological compatibility matching. It builds a profile across 10 validated dimensions and calculates mathematical compatibility with other users.\n\n"
+  - "## When to Use This Skill\n\n- Use when looking for a cofounder or project collaborator\n- Use when wanting to find people with compatible work style and values\n- Use when checking compatibility with a specific person via invite link\n\n"
+  - "## How It Works\n\n"
+  - "### Step 1: Install\n\n```bash\ncurl -fsS https://viboscope.com/api/v1/skill -o viboscope.md\n```\n\nSave to your platform's skills directory.\n\n"
+  - "### Step 2: Build Profile\n\nThe skill guides a 5-minute onboarding that builds a psychological profile using:\n- AI assistant portrait (fastest — 2 min for 90%+ profile)\n- 5 validated questionnaires (Big Five, Values, Attachment, Conflict, Work Style)\n- Context scan from workspace files\n\n"
+  - "### Step 3: Search\n\nSearch across 7 contexts: business, romantic, friendship, professional, intellectual, hobby, general. Results include percentage scores and human-readable explanations of why you match.\n\n"
+  - "## Examples\n\n"
+  - "### Example 1: Find a Cofounder\n\nTell your AI agent: \"Install Viboscope and find me a cofounder\"\n\nThe agent will guide you through profiling, then search for business-compatible matches with aligned values and complementary work styles.\n\n"
+  - "### Example 2: Check Compatibility\n\nShare your invite link: `viboscope.com/match/@your_nick`\n\nWhen someone opens it with their AI agent, both see a compatibility breakdown.\n\n"
+  - "## Links\n\n- Website: https://viboscope.com\n- GitHub: https://github.com/ivankoriako/viboscope\n- API: https://viboscope.com/api/v1\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

@@ -1,16 +1,9 @@
 ---
 name: ui-design-engineering-standards
 description: s philosophy on UI polish, component design, animation decisions, and the invisible details that make software feel great.
+prompt-source: prompt.toon
 ---
-# Design Engineering
-
-s philosophy on UI polish, component design, animation decisions, and the invisible details that make software feel great.
-
-## Workflow
-
-1. Confirm the request fits this skill and identify the required inputs and output constraints.
-2. Read the applicable sections in [the full runbook](references/FULL_RUNBOOK.md).
-3. Check version-sensitive instructions against authoritative current documentation; label claims that cannot be verified.
-4. Get any required approval before paid, destructive, external, or user-visible actions not already authorized.
-5. Follow the relevant procedure using the project’s existing tools and conventions. Ask for missing inputs instead of inventing values.
-6. Verify the result with available checks and report what ran, what passed, and any remaining uncertainty.
+skill: "ui-design-engineering-standards"
+sections[2]:
+  - "# Design Engineering\n\ns philosophy on UI polish, component design, animation decisions, and the invisible details that make software feel great.\n\n"
+  - "## Workflow\n\n1. Confirm the request fits this skill and identify the required inputs and output constraints.\n2. Read the applicable sections in [the full runbook](references/FULL_RUNBOOK.md).\n3. Check version-sensitive instructions against authoritative current documentation; label claims that cannot be verified.\n4. Get any required approval before paid, destructive, external, or user-visible actions not already authorized.\n5. Follow the relevant procedure using the project’s existing tools and conventions. Ask for missing inputs instead of inventing values.\n6. Verify the result with available checks and report what ran, what passed, and any remaining uncertainty.\n"

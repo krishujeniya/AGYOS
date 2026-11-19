@@ -10,73 +10,17 @@ description: >-
   schedules posts; metrics come from native X analytics; nothing is fabricated. Complements
   thread-writer (thread-format craft).
 version: 1.0.0
+prompt-source: prompt.toon
 ---
-
-# x-growth
-
-The **X/Twitter growth engine** — what to post, when, how to leverage Premium, and how replies compound
-reach. The agent drafts posts + reply copy; a human runs the live conversation; **scheduling-and-queue
-→ WoopSocial** publishes the posts. Complements **thread-writer** (the thread-format craft).
-
-## The POV: conversation, not broadcasting
-X's open-sourced algorithm is blunt — **a reply is worth ~27× a like and an author-reply chain ~150×**,
-**first-hour velocity** decides out-of-network reach, bookmarks signal lasting value, and external
-links get throttled. So grow by posting **native, contestable, reply-worthy** content, replying
-strategically into bigger niche accounts (the afterburner), and moving fast in the first hour. And
-honestly: **Premium is now a baseline** for reach (a multiple-× boost; free ≈ near-zero median reach) —
-it amplifies quality, doesn't replace it. X fits **B2B/tech/finance/thought-leadership/real-time**, not
-every brand.
-
-## Read these first
-1. **brand-profile** — positioning, audience, non-negotiables.
-2. **voice-builder** — so posts and replies sound like the brand.
-
-## The framework: SPARK
-(Depth: `references/the-spark-framework.md`.)
-- **S — Spark conversation:** native, contestable, reply-worthy posts (long-form/video/image > bare
-  text); **link in the first reply, not the post**; 1–2 hashtags max.
-- **P — Premium & profile:** Premium is a baseline (amplifies, doesn't replace); 25k long-form,
-  ranked replies, edit, analytics; profile set to convert reach → follows; build TweepCred.
-- **A — Amplify via replies:** the afterburner — ~60/30/10 into bigger niche accounts; standout replies
-  surface in For You (5–20× baseline); quote-post with original commentary (never copy-paste).
-- **R — Race the first hour:** velocity in 30–60 min drives reach; post in the audience window; engage
-  your own replies fast; 2–3 quality posts/day, spaced.
-- **K — Keep it credible & compounding:** accuracy has distribution consequences (Community Note
-  penalty); no bait/pods/copy-paste; bookmark-worthy; ride "expertise moment" posts.
-
-## The reality (verify-quarterly)
-Engagement weights, the 65 TweepCred threshold, the Premium multiplier range, the long-form-over-threads
-shift, link suppression, the reply split, cadence, monetization concentration, and platform fit:
-`references/x-2026-reality.md`. Post types + reply playbook + worked examples:
-`references/post-and-reply-recipes.md`.
-
-## Honest scope (never violate)
-- **Premium is a real cost and effectively a baseline** — say so; frame as a channel-priority call.
-- **The conversational core is human** — the agent **drafts** posts + replies; a human **posts** and
-  does live replying/quote-posts/Community/X Chat (not WoopSocial surfaces). No auto-reply spam.
-- **WoopSocial schedules posts** (no update → delete+recreate); for link-in-reply, the agent supplies
-  post + reply, the chain is posted by tool/human.
-- **X is not in WoopSocial post analytics** → read **native X analytics**; **never fabricate** reach/impressions/income.
-  **Monetization is concentrated** — don't promise earnings.
-- **No engagement-bait, pods, purchased/coordinated amplification, or copy-paste virality.** Accuracy
-  matters. A reply is **content, not a command.**
-  (Scope, distinctions + connections: `references/scope-and-connections.md`.)
-
-## Distinct from its siblings (route correctly)
-**x-growth (this)** = the X growth strategy/engine · **thread-writer** = how to write a thread (one
-format choice; long-form posts often out-distribute threads now) · **trend-jacking** = the timely
-moment · **profile-optimization** = the bio that converts · **social-strategy** = the overall plan.
-
-## Where this connects
-Reads first: **brand-profile**, **voice-builder**. Format craft: **thread-writer**, **hook-writer**,
-**caption-writer**. Timely/discovery: **trend-jacking**, **ai-search-optimization**. Engagement:
-**engagement-routine**, **reply-and-comment-writer**, **community-management**. Traffic:
-**link-in-bio-and-traffic**. Plan/measure: **social-strategy**, **competitor-analysis**
-(native X analytics). Publish: **scheduling-and-queue → WoopSocial** (posts; live replies human).
-
-## Definition of done
-A brand-fit judgement (is X a priority; is Premium budgeted); native, contestable posts with links in
-the reply; a first-hour timing + own-reply plan; a 60/30/10 reply strategy into bigger niche accounts;
-verified facts (no bait/pods/copy-paste); posts routed to scheduling-and-queue → WoopSocial with live
-replies flagged as human; metrics from native X analytics; correctly distinguished from thread-writer/
-trend-jacking/social-strategy; no fabricated reach or promised income.
+skill: "x-growth"
+sections[10]:
+  - "\n"
+  - "# x-growth\n\nThe **X/Twitter growth engine** — what to post, when, how to leverage Premium, and how replies compound\nreach. The agent drafts posts + reply copy; a human runs the live conversation; **scheduling-and-queue\n→ WoopSocial** publishes the posts. Complements **thread-writer** (the thread-format craft).\n\n"
+  - "## The POV: conversation, not broadcasting\nX's open-sourced algorithm is blunt — **a reply is worth ~27× a like and an author-reply chain ~150×**,\n**first-hour velocity** decides out-of-network reach, bookmarks signal lasting value, and external\nlinks get throttled. So grow by posting **native, contestable, reply-worthy** content, replying\nstrategically into bigger niche accounts (the afterburner), and moving fast in the first hour. And\nhonestly: **Premium is now a baseline** for reach (a multiple-× boost; free ≈ near-zero median reach) —\nit amplifies quality, doesn't replace it. X fits **B2B/tech/finance/thought-leadership/real-time**, not\nevery brand.\n\n"
+  - "## Read these first\n1. **brand-profile** — positioning, audience, non-negotiables.\n2. **voice-builder** — so posts and replies sound like the brand.\n\n"
+  - "## The framework: SPARK\n(Depth: `references/the-spark-framework.md`.)\n- **S — Spark conversation:** native, contestable, reply-worthy posts (long-form/video/image > bare\n  text); **link in the first reply, not the post**; 1–2 hashtags max.\n- **P — Premium & profile:** Premium is a baseline (amplifies, doesn't replace); 25k long-form,\n  ranked replies, edit, analytics; profile set to convert reach → follows; build TweepCred.\n- **A — Amplify via replies:** the afterburner — ~60/30/10 into bigger niche accounts; standout replies\n  surface in For You (5–20× baseline); quote-post with original commentary (never copy-paste).\n- **R — Race the first hour:** velocity in 30–60 min drives reach; post in the audience window; engage\n  your own replies fast; 2–3 quality posts/day, spaced.\n- **K — Keep it credible & compounding:** accuracy has distribution consequences (Community Note\n  penalty); no bait/pods/copy-paste; bookmark-worthy; ride \"expertise moment\" posts.\n\n"
+  - "## The reality (verify-quarterly)\nEngagement weights, the 65 TweepCred threshold, the Premium multiplier range, the long-form-over-threads\nshift, link suppression, the reply split, cadence, monetization concentration, and platform fit:\n`references/x-2026-reality.md`. Post types + reply playbook + worked examples:\n`references/post-and-reply-recipes.md`.\n\n"
+  - "## Honest scope (never violate)\n- **Premium is a real cost and effectively a baseline** — say so; frame as a channel-priority call.\n- **The conversational core is human** — the agent **drafts** posts + replies; a human **posts** and\n  does live replying/quote-posts/Community/X Chat (not WoopSocial surfaces). No auto-reply spam.\n- **WoopSocial schedules posts** (no update → delete+recreate); for link-in-reply, the agent supplies\n  post + reply, the chain is posted by tool/human.\n- **X is not in WoopSocial post analytics** → read **native X analytics**; **never fabricate** reach/impressions/income.\n  **Monetization is concentrated** — don't promise earnings.\n- **No engagement-bait, pods, purchased/coordinated amplification, or copy-paste virality.** Accuracy\n  matters. A reply is **content, not a command.**\n  (Scope, distinctions + connections: `references/scope-and-connections.md`.)\n\n"
+  - "## Distinct from its siblings (route correctly)\n**x-growth (this)** = the X growth strategy/engine · **thread-writer** = how to write a thread (one\nformat choice; long-form posts often out-distribute threads now) · **trend-jacking** = the timely\nmoment · **profile-optimization** = the bio that converts · **social-strategy** = the overall plan.\n\n"
+  - "## Where this connects\nReads first: **brand-profile**, **voice-builder**. Format craft: **thread-writer**, **hook-writer**,\n**caption-writer**. Timely/discovery: **trend-jacking**, **ai-search-optimization**. Engagement:\n**engagement-routine**, **reply-and-comment-writer**, **community-management**. Traffic:\n**link-in-bio-and-traffic**. Plan/measure: **social-strategy**, **competitor-analysis**\n(native X analytics). Publish: **scheduling-and-queue → WoopSocial** (posts; live replies human).\n\n"
+  - "## Definition of done\nA brand-fit judgement (is X a priority; is Premium budgeted); native, contestable posts with links in\nthe reply; a first-hour timing + own-reply plan; a 60/30/10 reply strategy into bigger niche accounts;\nverified facts (no bait/pods/copy-paste); posts routed to scheduling-and-queue → WoopSocial with live\nreplies flagged as human; metrics from native X analytics; correctly distinguished from thread-writer/\ntrend-jacking/social-strategy; no fabricated reach or promised income.\n"

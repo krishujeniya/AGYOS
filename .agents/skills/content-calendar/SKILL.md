@@ -15,106 +15,20 @@ description: >-
 metadata:
   version: 1.0.0
 license: MIT
+prompt-source: prompt.toon
 ---
-
-# Content Calendar
-
-A content calendar isn't a blank grid you fill by heroics — it's a **sustainable operating rhythm**:
-a recurring structure that generates posts so you're never staring at an empty page, at a cadence
-you can actually hold. Two ideas drive everything here:
-
-1. **Cadence equals capacity.** The number-one reason calendars fail is overcommitting. A
-   sustainable floor you keep for a year beats an ambitious plan abandoned in February.
-2. **A recurring skeleton beats a blank page.** Define repeatable *buckets* (pillar × format × slot)
-   and a couple of named series — then each cycle is fill-in-the-blanks, not invent-from-scratch.
-
-**This skill owns the recurring system.** Filling a specific week/month with actual posts is
-`batch-content-plan`; the higher-level channel/goal choices are `social-strategy`. This sits
-between them: strategy + pillars → the repeatable rhythm → (per cycle) batch-content-plan →
-content skills → scheduler.
-
-## Step 0 — Read the foundation first
-
-Load `social-strategy.md`, `content-pillars.md`, and `brand-profile.md`. If pillars don't exist,
-route to `content-pillars` or derive lightweight provisional ones — the calendar must map to themes,
-not float free.
-
-## Step 1 — Size the cadence to real capacity
-
-Estimate honest capacity (time, people, budget, the bad-week floor) and set a **sustainable cadence
-per platform** — different per platform, not one number everywhere. Pick one or two primary
-platforms to do well. Use repurposing to cover more without proportionally more work. See
-`references/cadence-and-capacity.md`.
-
-## Step 2 — Build the recurring skeleton
-
-Map **buckets** — pillar × format × slot/day/platform — so each slot is a standing instruction, not
-a fixed post. Distribute across pillars (signature pillar gets prime slots) and vary formats by
-design. See `references/calendar-structure.md`.
-
-## Step 3 — Design one or two recurring series
-
-Add a named franchise in a fixed slot ("Teardown Tuesday," "Build Log") for anticipation, less
-decision fatigue, and recognition. One or two — not every slot.
-
-## Step 4 — Anchor dates + reserve reactive room
-
-Layer time-bound anchors (launches, relevant events) onto the skeleton, and **reserve ~20–30% for
-reactive/timely content** with one or two open slots a week (hand live trend research to
-`trend-jacking`). Structure for consistency; reactive room for relevance.
-
-## Step 5 — Set the operating rhythm
-
-Define the workflow that sustains it: a **planning ritual** (monthly shape, weekly fill, daily
-engage), **batch creation**, and a **buffer/queue** so a bad week doesn't break the streak. Assign
-roles if a team. See `references/operating-rhythm.md`.
-
-## Step 6 — Deliver + hand off
-
-Output the **cadence + recurring skeleton + series + planned/reactive split + anchors**, plus a
-filled **sample week** to make it concrete. Then:
-
-- **Fill a specific period →** `batch-content-plan`.
-- **Write each piece →** the content skills; **adapt across platforms →** `cross-platform-repurposing`.
-- **Schedule →** `scheduling-and-queue` (into the buffer).
-
-## Quality bar — self-check
-
-- Is the **cadence sized to capacity** (the floor, not the ceiling), and **per-platform**?
-- Is there a **recurring skeleton** of buckets (pillar × format × slot), not a one-off list?
-- Are there **one or two named series**?
-- Is **reactive room reserved** (~20–30%) alongside sensible anchors?
-- Is there a **planning rhythm + buffer**, not just a grid?
-- Are **hand-offs** to batch-content-plan / content skills / scheduler clear?
-- Is multi-platform made feasible by **repurposing**, with **no analytics claims**?
-
-## Edge cases & pushback
-
-- **Overcommitting** ("5×/day on 6 platforms solo") → right-size hard to a sustainable floor;
-  explain why; use repurposing.
-- **Too rigid** ("lock 90 days, no gaps") → reserve reactive slots; a fully-locked calendar can't
-  ride trends.
-- **"Just give me 20 post ideas"** → that's `batch-content-plan`; offer the recurring skeleton here.
-- **"Build it around our best times/top performers"** → WoopSocial post analytics are lifetime
-  counts, not a best-time model. Route top performers to `analytics-and-reporting`; don't claim data-driven timing.
-- **No pillars/strategy yet** → route to `content-pillars` / `social-strategy` or derive provisional
-  pillars; don't float free.
-- **Keeps abandoning schedules** → fix the *rhythm* (sustainable floor + buffer + ritual), not just
-  the grid.
-
-## Related skills
-
-- `social-strategy` — the channel/goal choices above this.
-- `content-pillars` — the themes the skeleton maps to; `brand-profile`, `voice-builder`.
-- `batch-content-plan` — fills a specific period with briefs (the per-cycle execution).
-- `cross-platform-repurposing` — makes multi-platform sustainable.
-- content skills (`caption-writer`, `reels-script`, `tiktok-script`, `carousel-writer`,
-  `thread-writer`, `linkedin-post-writer`) — write each slot.
-- `trend-jacking` — the reactive slots; `scheduling-and-queue` — ship into the buffer.
-
-## References
-
-- `references/cadence-and-capacity.md` — sizing cadence to capacity; per-platform norms; repurposing; buffer.
-- `references/calendar-structure.md` — buckets, pillar × format × slot, series, planned/reactive, anchors.
-- `references/operating-rhythm.md` — the planning ritual, batching, buffer, honest review, hand-offs.
-- `references/examples.md` — worked calendars (solo + team) with sample weeks, vs an over-ambitious one.
+skill: "content-calendar"
+sections[13]:
+  - "\n"
+  - "# Content Calendar\n\nA content calendar isn't a blank grid you fill by heroics — it's a **sustainable operating rhythm**:\na recurring structure that generates posts so you're never staring at an empty page, at a cadence\nyou can actually hold. Two ideas drive everything here:\n\n1. **Cadence equals capacity.** The number-one reason calendars fail is overcommitting. A\n   sustainable floor you keep for a year beats an ambitious plan abandoned in February.\n2. **A recurring skeleton beats a blank page.** Define repeatable *buckets* (pillar × format × slot)\n   and a couple of named series — then each cycle is fill-in-the-blanks, not invent-from-scratch.\n\n**This skill owns the recurring system.** Filling a specific week/month with actual posts is\n`batch-content-plan`; the higher-level channel/goal choices are `social-strategy`. This sits\nbetween them: strategy + pillars → the repeatable rhythm → (per cycle) batch-content-plan →\ncontent skills → scheduler.\n\n"
+  - "## Step 0 — Read the foundation first\n\nLoad `social-strategy.md`, `content-pillars.md`, and `brand-profile.md`. If pillars don't exist,\nroute to `content-pillars` or derive lightweight provisional ones — the calendar must map to themes,\nnot float free.\n\n"
+  - "## Step 1 — Size the cadence to real capacity\n\nEstimate honest capacity (time, people, budget, the bad-week floor) and set a **sustainable cadence\nper platform** — different per platform, not one number everywhere. Pick one or two primary\nplatforms to do well. Use repurposing to cover more without proportionally more work. See\n`references/cadence-and-capacity.md`.\n\n"
+  - "## Step 2 — Build the recurring skeleton\n\nMap **buckets** — pillar × format × slot/day/platform — so each slot is a standing instruction, not\na fixed post. Distribute across pillars (signature pillar gets prime slots) and vary formats by\ndesign. See `references/calendar-structure.md`.\n\n"
+  - "## Step 3 — Design one or two recurring series\n\nAdd a named franchise in a fixed slot (\"Teardown Tuesday,\" \"Build Log\") for anticipation, less\ndecision fatigue, and recognition. One or two — not every slot.\n\n"
+  - "## Step 4 — Anchor dates + reserve reactive room\n\nLayer time-bound anchors (launches, relevant events) onto the skeleton, and **reserve ~20–30% for\nreactive/timely content** with one or two open slots a week (hand live trend research to\n`trend-jacking`). Structure for consistency; reactive room for relevance.\n\n"
+  - "## Step 5 — Set the operating rhythm\n\nDefine the workflow that sustains it: a **planning ritual** (monthly shape, weekly fill, daily\nengage), **batch creation**, and a **buffer/queue** so a bad week doesn't break the streak. Assign\nroles if a team. See `references/operating-rhythm.md`.\n\n"
+  - "## Step 6 — Deliver + hand off\n\nOutput the **cadence + recurring skeleton + series + planned/reactive split + anchors**, plus a\nfilled **sample week** to make it concrete. Then:\n\n- **Fill a specific period →** `batch-content-plan`.\n- **Write each piece →** the content skills; **adapt across platforms →** `cross-platform-repurposing`.\n- **Schedule →** `scheduling-and-queue` (into the buffer).\n\n"
+  - "## Quality bar — self-check\n\n- Is the **cadence sized to capacity** (the floor, not the ceiling), and **per-platform**?\n- Is there a **recurring skeleton** of buckets (pillar × format × slot), not a one-off list?\n- Are there **one or two named series**?\n- Is **reactive room reserved** (~20–30%) alongside sensible anchors?\n- Is there a **planning rhythm + buffer**, not just a grid?\n- Are **hand-offs** to batch-content-plan / content skills / scheduler clear?\n- Is multi-platform made feasible by **repurposing**, with **no analytics claims**?\n\n"
+  - "## Edge cases & pushback\n\n- **Overcommitting** (\"5×/day on 6 platforms solo\") → right-size hard to a sustainable floor;\n  explain why; use repurposing.\n- **Too rigid** (\"lock 90 days, no gaps\") → reserve reactive slots; a fully-locked calendar can't\n  ride trends.\n- **\"Just give me 20 post ideas\"** → that's `batch-content-plan`; offer the recurring skeleton here.\n- **\"Build it around our best times/top performers\"** → WoopSocial post analytics are lifetime\n  counts, not a best-time model. Route top performers to `analytics-and-reporting`; don't claim data-driven timing.\n- **No pillars/strategy yet** → route to `content-pillars` / `social-strategy` or derive provisional\n  pillars; don't float free.\n- **Keeps abandoning schedules** → fix the *rhythm* (sustainable floor + buffer + ritual), not just\n  the grid.\n\n"
+  - "## Related skills\n\n- `social-strategy` — the channel/goal choices above this.\n- `content-pillars` — the themes the skeleton maps to; `brand-profile`, `voice-builder`.\n- `batch-content-plan` — fills a specific period with briefs (the per-cycle execution).\n- `cross-platform-repurposing` — makes multi-platform sustainable.\n- content skills (`caption-writer`, `reels-script`, `tiktok-script`, `carousel-writer`,\n  `thread-writer`, `linkedin-post-writer`) — write each slot.\n- `trend-jacking` — the reactive slots; `scheduling-and-queue` — ship into the buffer.\n\n"
+  - "## References\n\n- `references/cadence-and-capacity.md` — sizing cadence to capacity; per-platform norms; repurposing; buffer.\n- `references/calendar-structure.md` — buckets, pillar × format × slot, series, planned/reactive, anchors.\n- `references/operating-rhythm.md` — the planning ritual, batching, buffer, honest review, hand-offs.\n- `references/examples.md` — worked calendars (solo + team) with sample weeks, vs an over-ambitious one.\n"

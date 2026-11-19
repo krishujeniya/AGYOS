@@ -4,187 +4,24 @@ description: "Automate Render tasks via Rube MCP (Composio): services, deploymen
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Render Automation via Rube MCP
-
-Automate Render cloud platform operations through Composio's Render toolkit via Rube MCP.
-
-## Prerequisites
-
-- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
-- Active Render connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `render`
-- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
-
-## Setup
-
-**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
-
-
-1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
-2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `render`
-3. If connection is not ACTIVE, follow the returned auth link to complete Render authentication
-4. Confirm connection status shows ACTIVE before running any workflows
-
-## Core Workflows
-
-### 1. List and Browse Services
-
-**When to use**: User wants to find or inspect Render services (web services, static sites, workers, cron jobs)
-
-**Tool sequence**:
-1. `RENDER_LIST_SERVICES` - List all services with optional filters [Required]
-
-**Key parameters**:
-- `name`: Filter services by name substring
-- `type`: Filter by service type ('web_service', 'static_site', 'private_service', 'background_worker', 'cron_job')
-- `limit`: Maximum results per page (default 20, max 100)
-- `cursor`: Pagination cursor from previous response
-
-**Pitfalls**:
-- Service types must match exact enum values: 'web_service', 'static_site', 'private_service', 'background_worker', 'cron_job'
-- Pagination uses cursor-based approach; follow `cursor` until absent
-- Name filter is substring-based, not exact match
-- Service IDs follow the format 'srv-xxxxxxxxxxxx'
-- Default limit is 20; set higher for comprehensive listing
-
-### 2. Trigger Deployments
-
-**When to use**: User wants to manually deploy or redeploy a service
-
-**Tool sequence**:
-1. `RENDER_LIST_SERVICES` - Find the service to deploy [Prerequisite]
-2. `RENDER_TRIGGER_DEPLOY` - Trigger a new deployment [Required]
-3. `RENDER_RETRIEVE_DEPLOY` - Monitor deployment progress [Optional]
-
-**Key parameters**:
-- For TRIGGER_DEPLOY:
-  - `serviceId`: Service ID to deploy (required, format: 'srv-xxxxxxxxxxxx')
-  - `clearCache`: Set `true` to clear build cache before deploying
-- For RETRIEVE_DEPLOY:
-  - `serviceId`: Service ID
-  - `deployId`: Deploy ID from trigger response (format: 'dep-xxxxxxxxxxxx')
-
-**Pitfalls**:
-- `serviceId` is required; resolve via LIST_SERVICES first
-- Service IDs start with 'srv-' prefix
-- Deploy IDs start with 'dep-' prefix
-- `clearCache: true` forces a clean build; takes longer but resolves cache-related issues
-- Deployment is asynchronous; use RETRIEVE_DEPLOY to poll status
-- Triggering a deploy while another is in progress may queue the new one
-
-### 3. Monitor Deployment Status
-
-**When to use**: User wants to check the progress or result of a deployment
-
-**Tool sequence**:
-1. `RENDER_RETRIEVE_DEPLOY` - Get deployment details and status [Required]
-
-**Key parameters**:
-- `serviceId`: Service ID (required)
-- `deployId`: Deployment ID (required)
-- Response includes `status`, `createdAt`, `updatedAt`, `finishedAt`, `commit`
-
-**Pitfalls**:
-- Both `serviceId` and `deployId` are required
-- Deploy statuses include: 'created', 'build_in_progress', 'update_in_progress', 'live', 'deactivated', 'build_failed', 'update_failed', 'canceled'
-- 'live' indicates successful deployment
-- 'build_failed' or 'update_failed' indicate deployment errors
-- Poll at reasonable intervals (10-30 seconds) to avoid rate limits
-
-### 4. Manage Projects
-
-**When to use**: User wants to list and organize Render projects
-
-**Tool sequence**:
-1. `RENDER_LIST_PROJECTS` - List all projects [Required]
-
-**Key parameters**:
-- `limit`: Maximum results per page (max 100)
-- `cursor`: Pagination cursor from previous response
-
-**Pitfalls**:
-- Projects group related services together
-- Pagination uses cursor-based approach
-- Project IDs are used for organizational purposes
-- Not all services may be assigned to a project
-
-## Common Patterns
-
-### ID Resolution
-
-**Service name -> Service ID**:
-```
-1. Call RENDER_LIST_SERVICES with name=service_name
-2. Find service by name in results
-3. Extract id (format: 'srv-xxxxxxxxxxxx')
-```
-
-**Deployment lookup**:
-```
-1. Store deployId from RENDER_TRIGGER_DEPLOY response
-2. Call RENDER_RETRIEVE_DEPLOY with serviceId and deployId
-3. Check status for completion
-```
-
-### Deploy and Monitor Pattern
-
-```
-1. RENDER_LIST_SERVICES -> find service by name -> get serviceId
-2. RENDER_TRIGGER_DEPLOY with serviceId -> get deployId
-3. Loop: RENDER_RETRIEVE_DEPLOY with serviceId + deployId
-4. Check status: 'live' = success, 'build_failed'/'update_failed' = error
-5. Continue polling until terminal state reached
-```
-
-### Pagination
-
-- Use `cursor` from response for next page
-- Continue until `cursor` is absent or results are empty
-- Both LIST_SERVICES and LIST_PROJECTS use cursor-based pagination
-- Set `limit` to max (100) for fewer pagination rounds
-
-## Known Pitfalls
-
-**Service IDs**:
-- Always prefixed with 'srv-' (e.g., 'srv-abcd1234efgh')
-- Deploy IDs prefixed with 'dep-' (e.g., 'dep-d2mqkf9r0fns73bham1g')
-- Always resolve service names to IDs via LIST_SERVICES
-
-**Service Types**:
-- Must use exact enum values when filtering
-- Available types: web_service, static_site, private_service, background_worker, cron_job
-- Different service types have different deployment behaviors
-
-**Deployment Behavior**:
-- Deployments are asynchronous; always poll for completion
-- Clear cache deploys take longer but resolve stale cache issues
-- Failed deploys do not roll back automatically; the previous version stays live
-- Concurrent deploy triggers may be queued
-
-**Rate Limits**:
-- Render API has rate limits
-- Avoid rapid polling; use 10-30 second intervals
-- Bulk operations should be throttled
-
-**Response Parsing**:
-- Response data may be nested under `data` key
-- Timestamps use ISO 8601 format
-- Parse defensively with fallbacks for optional fields
-
-## Quick Reference
-
-| Task | Tool Slug | Key Params |
-|------|-----------|------------|
-| List services | RENDER_LIST_SERVICES | name, type, limit, cursor |
-| Trigger deploy | RENDER_TRIGGER_DEPLOY | serviceId, clearCache |
-| Get deploy status | RENDER_RETRIEVE_DEPLOY | serviceId, deployId |
-| List projects | RENDER_LIST_PROJECTS | limit, cursor |
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "render-automation"
+sections[17]:
+  - "\n"
+  - "# Render Automation via Rube MCP\n\nAutomate Render cloud platform operations through Composio's Render toolkit via Rube MCP.\n\n"
+  - "## Prerequisites\n\n- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)\n- Active Render connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `render`\n- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas\n\n"
+  - "## Setup\n\n**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.\n\n\n1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds\n2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `render`\n3. If connection is not ACTIVE, follow the returned auth link to complete Render authentication\n4. Confirm connection status shows ACTIVE before running any workflows\n\n"
+  - "## Core Workflows\n\n"
+  - "### 1. List and Browse Services\n\n**When to use**: User wants to find or inspect Render services (web services, static sites, workers, cron jobs)\n\n**Tool sequence**:\n1. `RENDER_LIST_SERVICES` - List all services with optional filters [Required]\n\n**Key parameters**:\n- `name`: Filter services by name substring\n- `type`: Filter by service type ('web_service', 'static_site', 'private_service', 'background_worker', 'cron_job')\n- `limit`: Maximum results per page (default 20, max 100)\n- `cursor`: Pagination cursor from previous response\n\n**Pitfalls**:\n- Service types must match exact enum values: 'web_service', 'static_site', 'private_service', 'background_worker', 'cron_job'\n- Pagination uses cursor-based approach; follow `cursor` until absent\n- Name filter is substring-based, not exact match\n- Service IDs follow the format 'srv-xxxxxxxxxxxx'\n- Default limit is 20; set higher for comprehensive listing\n\n"
+  - "### 2. Trigger Deployments\n\n**When to use**: User wants to manually deploy or redeploy a service\n\n**Tool sequence**:\n1. `RENDER_LIST_SERVICES` - Find the service to deploy [Prerequisite]\n2. `RENDER_TRIGGER_DEPLOY` - Trigger a new deployment [Required]\n3. `RENDER_RETRIEVE_DEPLOY` - Monitor deployment progress [Optional]\n\n**Key parameters**:\n- For TRIGGER_DEPLOY:\n  - `serviceId`: Service ID to deploy (required, format: 'srv-xxxxxxxxxxxx')\n  - `clearCache`: Set `true` to clear build cache before deploying\n- For RETRIEVE_DEPLOY:\n  - `serviceId`: Service ID\n  - `deployId`: Deploy ID from trigger response (format: 'dep-xxxxxxxxxxxx')\n\n**Pitfalls**:\n- `serviceId` is required; resolve via LIST_SERVICES first\n- Service IDs start with 'srv-' prefix\n- Deploy IDs start with 'dep-' prefix\n- `clearCache: true` forces a clean build; takes longer but resolves cache-related issues\n- Deployment is asynchronous; use RETRIEVE_DEPLOY to poll status\n- Triggering a deploy while another is in progress may queue the new one\n\n"
+  - "### 3. Monitor Deployment Status\n\n**When to use**: User wants to check the progress or result of a deployment\n\n**Tool sequence**:\n1. `RENDER_RETRIEVE_DEPLOY` - Get deployment details and status [Required]\n\n**Key parameters**:\n- `serviceId`: Service ID (required)\n- `deployId`: Deployment ID (required)\n- Response includes `status`, `createdAt`, `updatedAt`, `finishedAt`, `commit`\n\n**Pitfalls**:\n- Both `serviceId` and `deployId` are required\n- Deploy statuses include: 'created', 'build_in_progress', 'update_in_progress', 'live', 'deactivated', 'build_failed', 'update_failed', 'canceled'\n- 'live' indicates successful deployment\n- 'build_failed' or 'update_failed' indicate deployment errors\n- Poll at reasonable intervals (10-30 seconds) to avoid rate limits\n\n"
+  - "### 4. Manage Projects\n\n**When to use**: User wants to list and organize Render projects\n\n**Tool sequence**:\n1. `RENDER_LIST_PROJECTS` - List all projects [Required]\n\n**Key parameters**:\n- `limit`: Maximum results per page (max 100)\n- `cursor`: Pagination cursor from previous response\n\n**Pitfalls**:\n- Projects group related services together\n- Pagination uses cursor-based approach\n- Project IDs are used for organizational purposes\n- Not all services may be assigned to a project\n\n"
+  - "## Common Patterns\n\n"
+  - "### ID Resolution\n\n**Service name -> Service ID**:\n```\n1. Call RENDER_LIST_SERVICES with name=service_name\n2. Find service by name in results\n3. Extract id (format: 'srv-xxxxxxxxxxxx')\n```\n\n**Deployment lookup**:\n```\n1. Store deployId from RENDER_TRIGGER_DEPLOY response\n2. Call RENDER_RETRIEVE_DEPLOY with serviceId and deployId\n3. Check status for completion\n```\n\n"
+  - "### Deploy and Monitor Pattern\n\n```\n1. RENDER_LIST_SERVICES -> find service by name -> get serviceId\n2. RENDER_TRIGGER_DEPLOY with serviceId -> get deployId\n3. Loop: RENDER_RETRIEVE_DEPLOY with serviceId + deployId\n4. Check status: 'live' = success, 'build_failed'/'update_failed' = error\n5. Continue polling until terminal state reached\n```\n\n"
+  - "### Pagination\n\n- Use `cursor` from response for next page\n- Continue until `cursor` is absent or results are empty\n- Both LIST_SERVICES and LIST_PROJECTS use cursor-based pagination\n- Set `limit` to max (100) for fewer pagination rounds\n\n"
+  - "## Known Pitfalls\n\n**Service IDs**:\n- Always prefixed with 'srv-' (e.g., 'srv-abcd1234efgh')\n- Deploy IDs prefixed with 'dep-' (e.g., 'dep-d2mqkf9r0fns73bham1g')\n- Always resolve service names to IDs via LIST_SERVICES\n\n**Service Types**:\n- Must use exact enum values when filtering\n- Available types: web_service, static_site, private_service, background_worker, cron_job\n- Different service types have different deployment behaviors\n\n**Deployment Behavior**:\n- Deployments are asynchronous; always poll for completion\n- Clear cache deploys take longer but resolve stale cache issues\n- Failed deploys do not roll back automatically; the previous version stays live\n- Concurrent deploy triggers may be queued\n\n**Rate Limits**:\n- Render API has rate limits\n- Avoid rapid polling; use 10-30 second intervals\n- Bulk operations should be throttled\n\n**Response Parsing**:\n- Response data may be nested under `data` key\n- Timestamps use ISO 8601 format\n- Parse defensively with fallbacks for optional fields\n\n"
+  - "## Quick Reference\n\n| Task | Tool Slug | Key Params |\n|------|-----------|------------|\n| List services | RENDER_LIST_SERVICES | name, type, limit, cursor |\n| Trigger deploy | RENDER_TRIGGER_DEPLOY | serviceId, clearCache |\n| Get deploy status | RENDER_RETRIEVE_DEPLOY | serviceId, deployId |\n| List projects | RENDER_LIST_PROJECTS | limit, cursor |\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

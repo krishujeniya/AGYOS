@@ -12,139 +12,23 @@ tags:
   - academic
   - style-transfer
 date_added: "2026-04-03"
+prompt-source: prompt.toon
 ---
-
-# Humanize Chinese
-
-Use this skill when you need to detect AI-like Chinese writing, rewrite it to feel less synthetic, reduce AIGC signals in academic prose, or convert the text into a more specific Chinese writing style.
-
-## When to Use
-- Use when the user says `去AI味`, `降AIGC`, `去除AI痕迹`, `让文字更自然`, `改成人话`, or `降低AI率`
-- Use when the user wants a Chinese text checked for AI-writing patterns or suspicious phrasing
-- Use when the user wants academic-paper-specific AIGC reduction for CNKI, VIP, or Wanfang-style checks
-- Use when the user wants Chinese text rewritten into a different style such as `zhihu`, `xiaohongshu`, `wechat`, `weibo`, `literary`, or `academic`
-
-## Core Workflow
-
-### 1. Detect Before Rewriting
-
-Start by identifying the most obvious AI markers instead of rewriting blindly:
-
-- rigid `first/second/finally` structures
-- mechanical connectors such as `综上所述`, `值得注意的是`, `由此可见`
-- abstract grandiose wording with low information density
-- repeated sentence rhythm and paragraph length
-- academic prose that sounds too complete, too certain, or too template-driven
-
-If the user provides a short sample, call out the suspicious phrases directly before rewriting.
-
-### 2. Rewrite in the Smallest Useful Pass
-
-Prefer targeted rewrites over total regeneration:
-
-- remove formulaic connectors rather than paraphrasing every sentence
-- vary sentence length and paragraph rhythm
-- replace repeated verbs and noun phrases
-- swap abstract summaries for concrete observations where possible
-- keep the original claims, facts, citations, and terminology intact
-
-### 3. Validate the Result
-
-After rewriting, verify that the text:
-
-- still says the same thing
-- sounds less templated
-- uses more natural rhythm
-- does not introduce factual drift
-- stays in the correct register for the target audience
-
-For academic text, preserve a scholarly tone. Do not over-casualize.
-
-## Optional CLI Flow
-
-If the user has a local clone of the source toolkit, these examples are useful:
-
-```bash
-python3 scripts/detect_cn.py text.txt -v
-python3 scripts/compare_cn.py text.txt -a -o clean.txt
-python3 scripts/academic_cn.py paper.txt -o clean.txt --compare
-python3 scripts/style_cn.py text.txt --style xiaohongshu -o out.txt
-```
-
-Use this CLI sequence when available:
-
-1. detect and inspect suspicious sentences
-2. rewrite or compare
-3. rerun detection on the cleaned file
-4. optionally convert into a target style
-
-## Manual Rewrite Playbook
-
-If the scripts are unavailable, use this manual process.
-
-### Common AI Markers
-
-- numbered or mirrored structures that feel too symmetrical
-- filler transitions that add no meaning
-- repeated stock phrases
-- overly even sentence length
-- conclusions that sound final, polished, and risk-free
-
-### Rewrite Moves
-
-- delete weak transitions first
-- collapse repetitive phrases into one stronger sentence
-- split sentences at natural turns instead of forcing long balanced structures
-- merge choppy sentences when they feel robotic
-- replace generic abstractions with concrete wording
-- introduce light variation in cadence so the prose does not march at a constant tempo
-
-## Academic AIGC Reduction
-
-For papers, reports, or theses:
-
-- keep discipline-specific terminology unchanged
-- replace AI-academic stock phrases with more grounded scholarly phrasing
-- reduce absolute certainty with measured hedging where appropriate
-- vary paragraph structure so each section does not read like the same template
-- add limitations or uncertainty if the conclusion feels unnaturally complete
-
-Examples of safer direction changes:
-
-- `本文旨在` -> `本文尝试` or `本研究关注`
-- `具有重要意义` -> `值得关注` or `有一定参考价值`
-- `研究表明` -> `前人研究发现` or `已有文献显示`
-
-Do not invent citations, evidence, or data.
-
-## Style Conversion
-
-Use style conversion only after the base text is readable and natural.
-
-Supported style directions from the source workflow:
-
-- `casual`
-- `zhihu`
-- `xiaohongshu`
-- `wechat`
-- `academic`
-- `literary`
-- `weibo`
-
-When switching style, keep the user's meaning stable and change only tone, structure, and surface wording.
-
-## Output Rules
-
-- Show the main AI-like patterns you found
-- Explain the rewrite strategy in 1-3 short bullets
-- Return the rewritten Chinese text
-- If helpful, include a short note on remaining weak spots
-
-## Source
-
-Adapted from the `voidborne-d/humanize-chinese` project and its CLI/script workflow for Chinese AI-text detection and rewriting.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "humanize-chinese"
+sections[16]:
+  - "\n"
+  - "# Humanize Chinese\n\nUse this skill when you need to detect AI-like Chinese writing, rewrite it to feel less synthetic, reduce AIGC signals in academic prose, or convert the text into a more specific Chinese writing style.\n\n"
+  - "## When to Use\n- Use when the user says `去AI味`, `降AIGC`, `去除AI痕迹`, `让文字更自然`, `改成人话`, or `降低AI率`\n- Use when the user wants a Chinese text checked for AI-writing patterns or suspicious phrasing\n- Use when the user wants academic-paper-specific AIGC reduction for CNKI, VIP, or Wanfang-style checks\n- Use when the user wants Chinese text rewritten into a different style such as `zhihu`, `xiaohongshu`, `wechat`, `weibo`, `literary`, or `academic`\n\n"
+  - "## Core Workflow\n\n"
+  - "### 1. Detect Before Rewriting\n\nStart by identifying the most obvious AI markers instead of rewriting blindly:\n\n- rigid `first/second/finally` structures\n- mechanical connectors such as `综上所述`, `值得注意的是`, `由此可见`\n- abstract grandiose wording with low information density\n- repeated sentence rhythm and paragraph length\n- academic prose that sounds too complete, too certain, or too template-driven\n\nIf the user provides a short sample, call out the suspicious phrases directly before rewriting.\n\n"
+  - "### 2. Rewrite in the Smallest Useful Pass\n\nPrefer targeted rewrites over total regeneration:\n\n- remove formulaic connectors rather than paraphrasing every sentence\n- vary sentence length and paragraph rhythm\n- replace repeated verbs and noun phrases\n- swap abstract summaries for concrete observations where possible\n- keep the original claims, facts, citations, and terminology intact\n\n"
+  - "### 3. Validate the Result\n\nAfter rewriting, verify that the text:\n\n- still says the same thing\n- sounds less templated\n- uses more natural rhythm\n- does not introduce factual drift\n- stays in the correct register for the target audience\n\nFor academic text, preserve a scholarly tone. Do not over-casualize.\n\n"
+  - "## Optional CLI Flow\n\nIf the user has a local clone of the source toolkit, these examples are useful:\n\n```bash\npython3 scripts/detect_cn.py text.txt -v\npython3 scripts/compare_cn.py text.txt -a -o clean.txt\npython3 scripts/academic_cn.py paper.txt -o clean.txt --compare\npython3 scripts/style_cn.py text.txt --style xiaohongshu -o out.txt\n```\n\nUse this CLI sequence when available:\n\n1. detect and inspect suspicious sentences\n2. rewrite or compare\n3. rerun detection on the cleaned file\n4. optionally convert into a target style\n\n"
+  - "## Manual Rewrite Playbook\n\nIf the scripts are unavailable, use this manual process.\n\n"
+  - "### Common AI Markers\n\n- numbered or mirrored structures that feel too symmetrical\n- filler transitions that add no meaning\n- repeated stock phrases\n- overly even sentence length\n- conclusions that sound final, polished, and risk-free\n\n"
+  - "### Rewrite Moves\n\n- delete weak transitions first\n- collapse repetitive phrases into one stronger sentence\n- split sentences at natural turns instead of forcing long balanced structures\n- merge choppy sentences when they feel robotic\n- replace generic abstractions with concrete wording\n- introduce light variation in cadence so the prose does not march at a constant tempo\n\n"
+  - "## Academic AIGC Reduction\n\nFor papers, reports, or theses:\n\n- keep discipline-specific terminology unchanged\n- replace AI-academic stock phrases with more grounded scholarly phrasing\n- reduce absolute certainty with measured hedging where appropriate\n- vary paragraph structure so each section does not read like the same template\n- add limitations or uncertainty if the conclusion feels unnaturally complete\n\nExamples of safer direction changes:\n\n- `本文旨在` -> `本文尝试` or `本研究关注`\n- `具有重要意义` -> `值得关注` or `有一定参考价值`\n- `研究表明` -> `前人研究发现` or `已有文献显示`\n\nDo not invent citations, evidence, or data.\n\n"
+  - "## Style Conversion\n\nUse style conversion only after the base text is readable and natural.\n\nSupported style directions from the source workflow:\n\n- `casual`\n- `zhihu`\n- `xiaohongshu`\n- `wechat`\n- `academic`\n- `literary`\n- `weibo`\n\nWhen switching style, keep the user's meaning stable and change only tone, structure, and surface wording.\n\n"
+  - "## Output Rules\n\n- Show the main AI-like patterns you found\n- Explain the rewrite strategy in 1-3 short bullets\n- Return the rewritten Chinese text\n- If helpful, include a short note on remaining weak spots\n\n"
+  - "## Source\n\nAdapted from the `voidborne-d/humanize-chinese` project and its CLI/script workflow for Chinese AI-text detection and rewriting.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

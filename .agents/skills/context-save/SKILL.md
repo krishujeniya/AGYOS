@@ -4,177 +4,34 @@ description: "Use when working with context management context save"
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Context Save Tool: Intelligent Context Management Specialist
-
-## Use this skill when
-
-- Working on context save tool: intelligent context management specialist tasks or workflows
-- Needing guidance, best practices, or checklists for context save tool: intelligent context management specialist
-
-## Do not use this skill when
-
-- The task is unrelated to context save tool: intelligent context management specialist
-- You need a different domain or tool outside this scope
-
-## Instructions
-
-- Clarify goals, constraints, and required inputs.
-- Apply relevant best practices and validate outcomes.
-- Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
-
-## Role and Purpose
-An elite context engineering specialist focused on comprehensive, semantic, and dynamically adaptable context preservation across AI workflows. This tool orchestrates advanced context capture, serialization, and retrieval strategies to maintain institutional knowledge and enable seamless multi-session collaboration.
-
-## Context Management Overview
-The Context Save Tool is a sophisticated context engineering solution designed to:
-- Capture comprehensive project state and knowledge
-- Enable semantic context retrieval
-- Support multi-agent workflow coordination
-- Preserve architectural decisions and project evolution
-- Facilitate intelligent knowledge transfer
-
-## Requirements and Argument Handling
-
-### Input Parameters
-- `$PROJECT_ROOT`: Absolute path to project root
-- `$CONTEXT_TYPE`: Granularity of context capture (minimal, standard, comprehensive)
-- `$STORAGE_FORMAT`: Preferred storage format (json, markdown, vector)
-- `$TAGS`: Optional semantic tags for context categorization
-
-## Context Extraction Strategies
-
-### 1. Semantic Information Identification
-- Extract high-level architectural patterns
-- Capture decision-making rationales
-- Identify cross-cutting concerns and dependencies
-- Map implicit knowledge structures
-
-### 2. State Serialization Patterns
-- Use JSON Schema for structured representation
-- Support nested, hierarchical context models
-- Implement type-safe serialization
-- Enable lossless context reconstruction
-
-### 3. Multi-Session Context Management
-- Generate unique context fingerprints
-- Support version control for context artifacts
-- Implement context drift detection
-- Create semantic diff capabilities
-
-### 4. Context Compression Techniques
-- Use advanced compression algorithms
-- Support lossy and lossless compression modes
-- Implement semantic token reduction
-- Optimize storage efficiency
-
-### 5. Vector Database Integration
-Supported Vector Databases:
-- Pinecone
-- Weaviate
-- Qdrant
-
-Integration Features:
-- Semantic embedding generation
-- Vector index construction
-- Similarity-based context retrieval
-- Multi-dimensional knowledge mapping
-
-### 6. Knowledge Graph Construction
-- Extract relational metadata
-- Create ontological representations
-- Support cross-domain knowledge linking
-- Enable inference-based context expansion
-
-### 7. Storage Format Selection
-Supported Formats:
-- Structured JSON
-- Markdown with frontmatter
-- Protocol Buffers
-- MessagePack
-- YAML with semantic annotations
-
-## Code Examples
-
-### 1. Context Extraction
-```python
-def extract_project_context(project_root, context_type='standard'):
-    context = {
-        'project_metadata': extract_project_metadata(project_root),
-        'architectural_decisions': analyze_architecture(project_root),
-        'dependency_graph': build_dependency_graph(project_root),
-        'semantic_tags': generate_semantic_tags(project_root)
-    }
-    return context
-```
-
-### 2. State Serialization Schema
-```json
-{
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "type": "object",
-  "properties": {
-    "project_name": {"type": "string"},
-    "version": {"type": "string"},
-    "context_fingerprint": {"type": "string"},
-    "captured_at": {"type": "string", "format": "date-time"},
-    "architectural_decisions": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "decision_type": {"type": "string"},
-          "rationale": {"type": "string"},
-          "impact_score": {"type": "number"}
-        }
-      }
-    }
-  }
-}
-```
-
-### 3. Context Compression Algorithm
-```python
-def compress_context(context, compression_level='standard'):
-    strategies = {
-        'minimal': remove_redundant_tokens,
-        'standard': semantic_compression,
-        'comprehensive': advanced_vector_compression
-    }
-    compressor = strategies.get(compression_level, semantic_compression)
-    return compressor(context)
-```
-
-## Reference Workflows
-
-### Workflow 1: Project Onboarding Context Capture
-1. Analyze project structure
-2. Extract architectural decisions
-3. Generate semantic embeddings
-4. Store in vector database
-5. Create markdown summary
-
-### Workflow 2: Long-Running Session Context Management
-1. Periodically capture context snapshots
-2. Detect significant architectural changes
-3. Version and archive context
-4. Enable selective context restoration
-
-## Advanced Integration Capabilities
-- Real-time context synchronization
-- Cross-platform context portability
-- Compliance with enterprise knowledge management standards
-- Support for multi-modal context representation
-
-## Limitations and Considerations
-- Sensitive information must be explicitly excluded
-- Context capture has computational overhead
-- Requires careful configuration for optimal performance
-
-## Future Roadmap
-- Improved ML-driven context compression
-- Enhanced cross-domain knowledge transfer
-- Real-time collaborative context editing
-- Predictive context recommendation systems
+skill: "context-save"
+sections[27]:
+  - "\n"
+  - "# Context Save Tool: Intelligent Context Management Specialist\n\n"
+  - "## Use this skill when\n\n- Working on context save tool: intelligent context management specialist tasks or workflows\n- Needing guidance, best practices, or checklists for context save tool: intelligent context management specialist\n\n"
+  - "## Do not use this skill when\n\n- The task is unrelated to context save tool: intelligent context management specialist\n- You need a different domain or tool outside this scope\n\n"
+  - "## Instructions\n\n- Clarify goals, constraints, and required inputs.\n- Apply relevant best practices and validate outcomes.\n- Provide actionable steps and verification.\n- If detailed examples are required, open `resources/implementation-playbook.md`.\n\n"
+  - "## Role and Purpose\nAn elite context engineering specialist focused on comprehensive, semantic, and dynamically adaptable context preservation across AI workflows. This tool orchestrates advanced context capture, serialization, and retrieval strategies to maintain institutional knowledge and enable seamless multi-session collaboration.\n\n"
+  - "## Context Management Overview\nThe Context Save Tool is a sophisticated context engineering solution designed to:\n- Capture comprehensive project state and knowledge\n- Enable semantic context retrieval\n- Support multi-agent workflow coordination\n- Preserve architectural decisions and project evolution\n- Facilitate intelligent knowledge transfer\n\n"
+  - "## Requirements and Argument Handling\n\n"
+  - "### Input Parameters\n- `$PROJECT_ROOT`: Absolute path to project root\n- `$CONTEXT_TYPE`: Granularity of context capture (minimal, standard, comprehensive)\n- `$STORAGE_FORMAT`: Preferred storage format (json, markdown, vector)\n- `$TAGS`: Optional semantic tags for context categorization\n\n"
+  - "## Context Extraction Strategies\n\n"
+  - "### 1. Semantic Information Identification\n- Extract high-level architectural patterns\n- Capture decision-making rationales\n- Identify cross-cutting concerns and dependencies\n- Map implicit knowledge structures\n\n"
+  - "### 2. State Serialization Patterns\n- Use JSON Schema for structured representation\n- Support nested, hierarchical context models\n- Implement type-safe serialization\n- Enable lossless context reconstruction\n\n"
+  - "### 3. Multi-Session Context Management\n- Generate unique context fingerprints\n- Support version control for context artifacts\n- Implement context drift detection\n- Create semantic diff capabilities\n\n"
+  - "### 4. Context Compression Techniques\n- Use advanced compression algorithms\n- Support lossy and lossless compression modes\n- Implement semantic token reduction\n- Optimize storage efficiency\n\n"
+  - "### 5. Vector Database Integration\nSupported Vector Databases:\n- Pinecone\n- Weaviate\n- Qdrant\n\nIntegration Features:\n- Semantic embedding generation\n- Vector index construction\n- Similarity-based context retrieval\n- Multi-dimensional knowledge mapping\n\n"
+  - "### 6. Knowledge Graph Construction\n- Extract relational metadata\n- Create ontological representations\n- Support cross-domain knowledge linking\n- Enable inference-based context expansion\n\n"
+  - "### 7. Storage Format Selection\nSupported Formats:\n- Structured JSON\n- Markdown with frontmatter\n- Protocol Buffers\n- MessagePack\n- YAML with semantic annotations\n\n"
+  - "## Code Examples\n\n"
+  - "### 1. Context Extraction\n```python\ndef extract_project_context(project_root, context_type='standard'):\n    context = {\n        'project_metadata': extract_project_metadata(project_root),\n        'architectural_decisions': analyze_architecture(project_root),\n        'dependency_graph': build_dependency_graph(project_root),\n        'semantic_tags': generate_semantic_tags(project_root)\n    }\n    return context\n```\n\n"
+  - "### 2. State Serialization Schema\n```json\n{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"project_name\": {\"type\": \"string\"},\n    \"version\": {\"type\": \"string\"},\n    \"context_fingerprint\": {\"type\": \"string\"},\n    \"captured_at\": {\"type\": \"string\", \"format\": \"date-time\"},\n    \"architectural_decisions\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"decision_type\": {\"type\": \"string\"},\n          \"rationale\": {\"type\": \"string\"},\n          \"impact_score\": {\"type\": \"number\"}\n        }\n      }\n    }\n  }\n}\n```\n\n"
+  - "### 3. Context Compression Algorithm\n```python\ndef compress_context(context, compression_level='standard'):\n    strategies = {\n        'minimal': remove_redundant_tokens,\n        'standard': semantic_compression,\n        'comprehensive': advanced_vector_compression\n    }\n    compressor = strategies.get(compression_level, semantic_compression)\n    return compressor(context)\n```\n\n"
+  - "## Reference Workflows\n\n"
+  - "### Workflow 1: Project Onboarding Context Capture\n1. Analyze project structure\n2. Extract architectural decisions\n3. Generate semantic embeddings\n4. Store in vector database\n5. Create markdown summary\n\n"
+  - "### Workflow 2: Long-Running Session Context Management\n1. Periodically capture context snapshots\n2. Detect significant architectural changes\n3. Version and archive context\n4. Enable selective context restoration\n\n"
+  - "## Advanced Integration Capabilities\n- Real-time context synchronization\n- Cross-platform context portability\n- Compliance with enterprise knowledge management standards\n- Support for multi-modal context representation\n\n"
+  - "## Limitations and Considerations\n- Sensitive information must be explicitly excluded\n- Context capture has computational overhead\n- Requires careful configuration for optimal performance\n\n"
+  - "## Future Roadmap\n- Improved ML-driven context compression\n- Enhanced cross-domain knowledge transfer\n- Real-time collaborative context editing\n- Predictive context recommendation systems\n"

@@ -4,76 +4,21 @@ description: Generate user-facing App Store release notes from git history since
 risk: safe
 source: "Dimillian/Skills (MIT)"
 date_added: "2026-03-25"
+prompt-source: prompt.toon
 ---
-
-# App Store Changelog
-
-## Overview
-Generate a comprehensive, user-facing changelog from git history since the last tag, then translate commits into clear App Store release notes.
-
-## When to Use
-- When the user asks for App Store "What's New" text or release notes from git history.
-- When you need to turn raw commits into concise, user-facing release bullets.
-
-## Workflow
-
-### 1) Collect changes
-- Run `scripts/collect_release_changes.sh` from the repo root to gather commits and touched files.
-- If needed, pass a specific tag or ref: `scripts/collect_release_changes.sh v1.2.3 HEAD`.
-- If no tags exist, the script falls back to full history.
-
-### 2) Triage for user impact
-- Scan commits and files to identify user-visible changes.
-- Group changes by theme (New, Improved, Fixed) and deduplicate overlaps.
-- Drop internal-only work (build scripts, refactors, dependency bumps, CI).
-
-### 3) Draft App Store notes
-- Write short, benefit-focused bullets for each user-facing change.
-- Use clear verbs and plain language; avoid internal jargon.
-- Prefer 5 to 10 bullets unless the user requests a different length.
-
-### 4) Validate
-- Ensure every bullet maps back to a real change in the range.
-- Check for duplicates and overly technical wording.
-- Ask for clarification if any change is ambiguous or possibly internal-only.
-
-## Commit-to-Bullet Examples
-
-The following shows how raw commits are translated into App Store bullets:
-
-| Raw commit message | App Store bullet |
-|---|---|
-| `fix(auth): resolve token refresh race condition on iOS 17` | • Fixed a login issue that could leave some users unexpectedly signed out. |
-| `feat(search): add voice input to search bar` | • Search your library hands-free with the new voice input option. |
-| `perf(timeline): lazy-load images to reduce scroll jank` | • Scrolling through your timeline is now smoother and faster. |
-
-Internal-only commits that are **dropped** (no user impact):
-- `chore: upgrade fastlane to 2.219`
-- `refactor(network): extract URLSession wrapper into module`
-- `ci: add nightly build job`
-
-## Example Output
-
-```
-What's New in Version 3.4
-
-• Search your library hands-free with the new voice input option.
-• Scrolling through your timeline is now smoother and faster.
-• Fixed a login issue that could leave some users unexpectedly signed out.
-• Added dark-mode support to the settings screen.
-• Improved load times when opening large photo albums.
-```
-
-## Output Format
-- Title (optional): "What's New" or product name + version.
-- Bullet list only; one sentence per bullet.
-- Stick to storefront limits if the user provides one.
-
-## Resources
-- `scripts/collect_release_changes.sh`: Collect commits and touched files since last tag.
-- `references/release-notes-guidelines.md`: Language, filtering, and QA rules for App Store notes.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "app-store-changelog"
+sections[14]:
+  - "\n"
+  - "# App Store Changelog\n\n"
+  - "## Overview\nGenerate a comprehensive, user-facing changelog from git history since the last tag, then translate commits into clear App Store release notes.\n\n"
+  - "## When to Use\n- When the user asks for App Store \"What's New\" text or release notes from git history.\n- When you need to turn raw commits into concise, user-facing release bullets.\n\n"
+  - "## Workflow\n\n"
+  - "### 1) Collect changes\n- Run `scripts/collect_release_changes.sh` from the repo root to gather commits and touched files.\n- If needed, pass a specific tag or ref: `scripts/collect_release_changes.sh v1.2.3 HEAD`.\n- If no tags exist, the script falls back to full history.\n\n"
+  - "### 2) Triage for user impact\n- Scan commits and files to identify user-visible changes.\n- Group changes by theme (New, Improved, Fixed) and deduplicate overlaps.\n- Drop internal-only work (build scripts, refactors, dependency bumps, CI).\n\n"
+  - "### 3) Draft App Store notes\n- Write short, benefit-focused bullets for each user-facing change.\n- Use clear verbs and plain language; avoid internal jargon.\n- Prefer 5 to 10 bullets unless the user requests a different length.\n\n"
+  - "### 4) Validate\n- Ensure every bullet maps back to a real change in the range.\n- Check for duplicates and overly technical wording.\n- Ask for clarification if any change is ambiguous or possibly internal-only.\n\n"
+  - "## Commit-to-Bullet Examples\n\nThe following shows how raw commits are translated into App Store bullets:\n\n| Raw commit message | App Store bullet |\n|---|---|\n| `fix(auth): resolve token refresh race condition on iOS 17` | • Fixed a login issue that could leave some users unexpectedly signed out. |\n| `feat(search): add voice input to search bar` | • Search your library hands-free with the new voice input option. |\n| `perf(timeline): lazy-load images to reduce scroll jank` | • Scrolling through your timeline is now smoother and faster. |\n\nInternal-only commits that are **dropped** (no user impact):\n- `chore: upgrade fastlane to 2.219`\n- `refactor(network): extract URLSession wrapper into module`\n- `ci: add nightly build job`\n\n"
+  - "## Example Output\n\n```\nWhat's New in Version 3.4\n\n• Search your library hands-free with the new voice input option.\n• Scrolling through your timeline is now smoother and faster.\n• Fixed a login issue that could leave some users unexpectedly signed out.\n• Added dark-mode support to the settings screen.\n• Improved load times when opening large photo albums.\n```\n\n"
+  - "## Output Format\n- Title (optional): \"What's New\" or product name + version.\n- Bullet list only; one sentence per bullet.\n- Stick to storefront limits if the user provides one.\n\n"
+  - "## Resources\n- `scripts/collect_release_changes.sh`: Collect commits and touched files since last tag.\n- `references/release-notes-guidelines.md`: Language, filtering, and QA rules for App Store notes.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

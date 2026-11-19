@@ -7,144 +7,21 @@ source: community
 metadata:
   author: sanjay3290
   version: "1.0"
+prompt-source: prompt.toon
 ---
-
-# Google Slides
-
-Lightweight Google Slides integration with standalone OAuth authentication. No MCP server required. Full read/write access.
-
-> **Requires Google Workspace account.** Personal Gmail accounts are not supported.
-
-## When to Use
-- You need to create, inspect, or modify Google Slides presentations from local automation.
-- The task involves reading slide text, adding/removing slides, or batch updating presentation content.
-- You want Slides automation for Workspace documents without using an MCP server.
-
-## First-Time Setup
-
-Authenticate with Google (opens browser):
-```bash
-python scripts/auth.py login
-```
-
-Check authentication status:
-```bash
-python scripts/auth.py status
-```
-
-Logout when needed:
-```bash
-python scripts/auth.py logout
-```
-
-## Read Commands
-
-All operations via `scripts/slides.py`. Auto-authenticates on first use if not logged in.
-
-```bash
-# Get all text content from a presentation
-python scripts/slides.py get-text "1abc123xyz789"
-python scripts/slides.py get-text "https://docs.google.com/presentation/d/1abc123xyz789/edit"
-
-# Find presentations by search query
-python scripts/slides.py find "quarterly report"
-python scripts/slides.py find "project proposal" --limit 5
-
-# Get presentation metadata (title, slide count, slide object IDs)
-python scripts/slides.py get-metadata "1abc123xyz789"
-```
-
-## Write Commands
-
-```bash
-# Create a new empty presentation
-python scripts/slides.py create "Q4 Sales Report"
-
-# Add a blank slide to the end
-python scripts/slides.py add-slide "1abc123xyz789"
-
-# Add a slide with a specific layout
-python scripts/slides.py add-slide "1abc123xyz789" --layout TITLE_AND_BODY
-
-# Add a slide at a specific position (0-based index)
-python scripts/slides.py add-slide "1abc123xyz789" --layout TITLE --at 0
-
-# Find and replace text across all slides
-python scripts/slides.py replace-text "1abc123xyz789" "old text" "new text"
-python scripts/slides.py replace-text "1abc123xyz789" "Draft" "Final" --match-case
-
-# Delete a slide by object ID (use get-metadata to find IDs)
-python scripts/slides.py delete-slide "1abc123xyz789" "g123abc456"
-
-# Batch update (advanced - for formatting, inserting shapes, images, etc.)
-python scripts/slides.py batch-update "1abc123xyz789" '[{"replaceAllText":{"containsText":{"text":"foo"},"replaceText":"bar"}}]'
-```
-
-## Slide Layouts
-
-Available layouts for `add-slide --layout`:
-- `BLANK` - Empty slide (default)
-- `TITLE` - Title slide
-- `TITLE_AND_BODY` - Title with body text
-- `TITLE_AND_TWO_COLUMNS` - Title with two text columns
-- `TITLE_ONLY` - Title bar only
-- `SECTION_HEADER` - Section divider
-- `ONE_COLUMN_TEXT` - Single column text
-- `MAIN_POINT` - Main point highlight
-- `BIG_NUMBER` - Large number display
-
-## Presentation ID Format
-
-You can use either:
-- Direct presentation ID: `1abc123xyz789`
-- Full Google Slides URL: `https://docs.google.com/presentation/d/1abc123xyz789/edit`
-
-The scripts automatically extract the ID from URLs.
-
-## Output Format
-
-### get-text
-Returns extracted text from all slides, including:
-- Presentation title
-- Text from shapes/text boxes on each slide
-- Table data with cell contents
-
-### find
-Returns list of matching presentations:
-```json
-{
-  "presentations": [
-    {"id": "1abc...", "name": "Q4 Report", "modifiedTime": "2024-01-15T..."}
-  ],
-  "nextPageToken": "..."
-}
-```
-
-### get-metadata
-Returns presentation details:
-```json
-{
-  "presentationId": "1abc...",
-  "title": "My Presentation",
-  "slideCount": 15,
-  "pageSize": {"width": {...}, "height": {...}},
-  "hasMasters": true,
-  "hasLayouts": true
-}
-```
-
-## Token Management
-
-Tokens stored securely using the system keyring:
-- **macOS**: Keychain
-- **Windows**: Windows Credential Locker
-- **Linux**: Secret Service API (GNOME Keyring, KDE Wallet, etc.)
-
-Service name: `google-slides-skill-oauth`
-
-Automatically refreshes expired tokens using Google's cloud function.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "google-slides-automation"
+sections[14]:
+  - "\n"
+  - "# Google Slides\n\nLightweight Google Slides integration with standalone OAuth authentication. No MCP server required. Full read/write access.\n\n> **Requires Google Workspace account.** Personal Gmail accounts are not supported.\n\n"
+  - "## When to Use\n- You need to create, inspect, or modify Google Slides presentations from local automation.\n- The task involves reading slide text, adding/removing slides, or batch updating presentation content.\n- You want Slides automation for Workspace documents without using an MCP server.\n\n"
+  - "## First-Time Setup\n\nAuthenticate with Google (opens browser):\n```bash\npython scripts/auth.py login\n```\n\nCheck authentication status:\n```bash\npython scripts/auth.py status\n```\n\nLogout when needed:\n```bash\npython scripts/auth.py logout\n```\n\n"
+  - "## Read Commands\n\nAll operations via `scripts/slides.py`. Auto-authenticates on first use if not logged in.\n\n```bash\n# Get all text content from a presentation\npython scripts/slides.py get-text \"1abc123xyz789\"\npython scripts/slides.py get-text \"https://docs.google.com/presentation/d/1abc123xyz789/edit\"\n\n# Find presentations by search query\npython scripts/slides.py find \"quarterly report\"\npython scripts/slides.py find \"project proposal\" --limit 5\n\n# Get presentation metadata (title, slide count, slide object IDs)\npython scripts/slides.py get-metadata \"1abc123xyz789\"\n```\n\n"
+  - "## Write Commands\n\n```bash\n# Create a new empty presentation\npython scripts/slides.py create \"Q4 Sales Report\"\n\n# Add a blank slide to the end\npython scripts/slides.py add-slide \"1abc123xyz789\"\n\n# Add a slide with a specific layout\npython scripts/slides.py add-slide \"1abc123xyz789\" --layout TITLE_AND_BODY\n\n# Add a slide at a specific position (0-based index)\npython scripts/slides.py add-slide \"1abc123xyz789\" --layout TITLE --at 0\n\n# Find and replace text across all slides\npython scripts/slides.py replace-text \"1abc123xyz789\" \"old text\" \"new text\"\npython scripts/slides.py replace-text \"1abc123xyz789\" \"Draft\" \"Final\" --match-case\n\n# Delete a slide by object ID (use get-metadata to find IDs)\npython scripts/slides.py delete-slide \"1abc123xyz789\" \"g123abc456\"\n\n# Batch update (advanced - for formatting, inserting shapes, images, etc.)\npython scripts/slides.py batch-update \"1abc123xyz789\" '[{\"replaceAllText\":{\"containsText\":{\"text\":\"foo\"},\"replaceText\":\"bar\"}}]'\n```\n\n"
+  - "## Slide Layouts\n\nAvailable layouts for `add-slide --layout`:\n- `BLANK` - Empty slide (default)\n- `TITLE` - Title slide\n- `TITLE_AND_BODY` - Title with body text\n- `TITLE_AND_TWO_COLUMNS` - Title with two text columns\n- `TITLE_ONLY` - Title bar only\n- `SECTION_HEADER` - Section divider\n- `ONE_COLUMN_TEXT` - Single column text\n- `MAIN_POINT` - Main point highlight\n- `BIG_NUMBER` - Large number display\n\n"
+  - "## Presentation ID Format\n\nYou can use either:\n- Direct presentation ID: `1abc123xyz789`\n- Full Google Slides URL: `https://docs.google.com/presentation/d/1abc123xyz789/edit`\n\nThe scripts automatically extract the ID from URLs.\n\n"
+  - "## Output Format\n\n"
+  - "### get-text\nReturns extracted text from all slides, including:\n- Presentation title\n- Text from shapes/text boxes on each slide\n- Table data with cell contents\n\n"
+  - "### find\nReturns list of matching presentations:\n```json\n{\n  \"presentations\": [\n    {\"id\": \"1abc...\", \"name\": \"Q4 Report\", \"modifiedTime\": \"2024-01-15T...\"}\n  ],\n  \"nextPageToken\": \"...\"\n}\n```\n\n"
+  - "### get-metadata\nReturns presentation details:\n```json\n{\n  \"presentationId\": \"1abc...\",\n  \"title\": \"My Presentation\",\n  \"slideCount\": 15,\n  \"pageSize\": {\"width\": {...}, \"height\": {...}},\n  \"hasMasters\": true,\n  \"hasLayouts\": true\n}\n```\n\n"
+  - "## Token Management\n\nTokens stored securely using the system keyring:\n- **macOS**: Keychain\n- **Windows**: Windows Credential Locker\n- **Linux**: Secret Service API (GNOME Keyring, KDE Wallet, etc.)\n\nService name: `google-slides-skill-oauth`\n\nAutomatically refreshes expired tokens using Google's cloud function.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

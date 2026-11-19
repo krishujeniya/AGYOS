@@ -3,109 +3,19 @@ name: odoo-inventory-optimizer
 description: "Expert guide for Odoo Inventory: stock valuation (FIFO/AVCO), reordering rules, putaway strategies, routes, and multi-warehouse configuration."
 risk: safe
 source: "self"
+prompt-source: prompt.toon
 ---
-
-# Odoo Inventory Optimizer
-
-## Overview
-
-This skill helps you configure and optimize Odoo Inventory for accuracy, efficiency, and traceability. It covers stock valuation methods, reordering rules, putaway strategies, warehouse routes, and multi-step flows (receive → quality → store).
-
-## When to Use This Skill
-
-- Choosing and configuring FIFO vs AVCO stock valuation.
-- Setting up minimum stock reordering rules to avoid stockouts.
-- Designing a multi-step warehouse flow (2-step receipt, 3-step delivery).
-- Configuring putaway rules to direct products to specific storage locations.
-- Troubleshooting negative stock, incorrect valuation, or missing moves.
-
-## How It Works
-
-1. **Activate**: Mention `@odoo-inventory-optimizer` and describe your warehouse scenario.
-2. **Configure**: Receive step-by-step configuration instructions with exact Odoo menu paths.
-3. **Optimize**: Get recommendations for reordering rules and stock accuracy improvements.
-
-## Examples
-
-### Example 1: Enable FIFO Stock Valuation
-
-```text
-Menu: Inventory → Configuration → Settings
-
-Enable: Storage Locations
-Enable: Multi-Step Routes
-Costing Method: (set per Product Category, not globally)
-
-Menu: Inventory → Configuration → Product Categories → Edit
-
-  Category: All / Physical Goods
-  Costing Method: First In First Out (FIFO)
-  Inventory Valuation: Automated
-  Account Stock Valuation: [Balance Sheet inventory account]
-  Account Stock Input:   [Stock Received Not Billed]
-  Account Stock Output:  [Stock Delivered Not Invoiced]
-```
-
-### Example 2: Set Up a Min/Max Reordering Rule
-
-```text
-Menu: Inventory → Operations → Replenishment → New
-
-Product: Office Paper A4
-Location: WH/Stock
-Min Qty: 100   (trigger reorder when stock falls below this)
-Max Qty: 500   (purchase up to this quantity)
-Multiple Qty: 50  (always order in multiples of 50)
-Route: Buy    (triggers a Purchase Order automatically)
-       or Manufacture (triggers a Manufacturing Order)
-```
-
-### Example 3: Configure Putaway Rules
-
-```text
-Menu: Inventory → Configuration → Putaway Rules → New
-
-Purpose: Direct products from WH/Input to specific bin locations
-
-Rules:
-  Product Category: Refrigerated Goods
-    → Location: WH/Stock/Cold Storage
-
-  Product: Laptop Model X
-    → Location: WH/Stock/Electronics/Shelf A
-
-  (leave Product blank to apply the rule to an entire category)
-
-Result: When a receipt is validated, Odoo automatically suggests
-the correct destination location per product or category.
-```
-
-### Example 4: Configure 3-Step Warehouse Delivery
-
-```text
-Menu: Inventory → Configuration → Warehouses → [Your Warehouse]
-
-Outgoing Shipments: Pick + Pack + Ship (3 steps)
-
-Operations created automatically:
-  PICK  — Move goods from storage shelf to packing area
-  PACK  — Package items and print shipping label
-  OUT   — Hand off to carrier / mark as shipped
-```
-
-## Best Practices
-
-- ✅ **Do:** Use **Lots/Serial Numbers** for high-value or regulated items (medical devices, electronics).
-- ✅ **Do:** Run a **physical inventory adjustment** at least quarterly (Inventory → Operations → Physical Inventory) to correct drift.
-- ✅ **Do:** Set reordering rules on fast-moving items so purchase orders are generated automatically.
-- ✅ **Do:** Enable **Putaway Rules** on warehouses with multiple storage zones — it eliminates manual location selection errors.
-- ❌ **Don't:** Switch stock valuation method (FIFO ↔ AVCO) after recording transactions — it produces incorrect historical cost data.
-- ❌ **Don't:** Use "Update Quantity" to fix stock errors — always use Inventory Adjustments to maintain a proper audit trail.
-- ❌ **Don't:** Mix product categories with different costing methods in the same storage location without understanding the valuation impact.
-
-## Limitations
-
-- **Serial number tracking** at the individual unit level (SN per line) adds significant UI overhead; test performance with large volumes before enabling.
-- Does not cover **landed costs** (import duties, freight allocation to product cost) — that requires the `stock_landed_costs` module.
-- **Cross-warehouse stock transfers** have routing complexities (transit locations, intercompany invoicing) not fully covered here.
-- Automated inventory valuation requires the **Accounting** module; Community Edition installations without it cannot post stock journal entries.
+skill: "odoo-inventory-optimizer"
+sections[12]:
+  - "\n"
+  - "# Odoo Inventory Optimizer\n\n"
+  - "## Overview\n\nThis skill helps you configure and optimize Odoo Inventory for accuracy, efficiency, and traceability. It covers stock valuation methods, reordering rules, putaway strategies, warehouse routes, and multi-step flows (receive → quality → store).\n\n"
+  - "## When to Use This Skill\n\n- Choosing and configuring FIFO vs AVCO stock valuation.\n- Setting up minimum stock reordering rules to avoid stockouts.\n- Designing a multi-step warehouse flow (2-step receipt, 3-step delivery).\n- Configuring putaway rules to direct products to specific storage locations.\n- Troubleshooting negative stock, incorrect valuation, or missing moves.\n\n"
+  - "## How It Works\n\n1. **Activate**: Mention `@odoo-inventory-optimizer` and describe your warehouse scenario.\n2. **Configure**: Receive step-by-step configuration instructions with exact Odoo menu paths.\n3. **Optimize**: Get recommendations for reordering rules and stock accuracy improvements.\n\n"
+  - "## Examples\n\n"
+  - "### Example 1: Enable FIFO Stock Valuation\n\n```text\nMenu: Inventory → Configuration → Settings\n\nEnable: Storage Locations\nEnable: Multi-Step Routes\nCosting Method: (set per Product Category, not globally)\n\nMenu: Inventory → Configuration → Product Categories → Edit\n\n  Category: All / Physical Goods\n  Costing Method: First In First Out (FIFO)\n  Inventory Valuation: Automated\n  Account Stock Valuation: [Balance Sheet inventory account]\n  Account Stock Input:   [Stock Received Not Billed]\n  Account Stock Output:  [Stock Delivered Not Invoiced]\n```\n\n"
+  - "### Example 2: Set Up a Min/Max Reordering Rule\n\n```text\nMenu: Inventory → Operations → Replenishment → New\n\nProduct: Office Paper A4\nLocation: WH/Stock\nMin Qty: 100   (trigger reorder when stock falls below this)\nMax Qty: 500   (purchase up to this quantity)\nMultiple Qty: 50  (always order in multiples of 50)\nRoute: Buy    (triggers a Purchase Order automatically)\n       or Manufacture (triggers a Manufacturing Order)\n```\n\n"
+  - "### Example 3: Configure Putaway Rules\n\n```text\nMenu: Inventory → Configuration → Putaway Rules → New\n\nPurpose: Direct products from WH/Input to specific bin locations\n\nRules:\n  Product Category: Refrigerated Goods\n    → Location: WH/Stock/Cold Storage\n\n  Product: Laptop Model X\n    → Location: WH/Stock/Electronics/Shelf A\n\n  (leave Product blank to apply the rule to an entire category)\n\nResult: When a receipt is validated, Odoo automatically suggests\nthe correct destination location per product or category.\n```\n\n"
+  - "### Example 4: Configure 3-Step Warehouse Delivery\n\n```text\nMenu: Inventory → Configuration → Warehouses → [Your Warehouse]\n\nOutgoing Shipments: Pick + Pack + Ship (3 steps)\n\nOperations created automatically:\n  PICK  — Move goods from storage shelf to packing area\n  PACK  — Package items and print shipping label\n  OUT   — Hand off to carrier / mark as shipped\n```\n\n"
+  - "## Best Practices\n\n- ✅ **Do:** Use **Lots/Serial Numbers** for high-value or regulated items (medical devices, electronics).\n- ✅ **Do:** Run a **physical inventory adjustment** at least quarterly (Inventory → Operations → Physical Inventory) to correct drift.\n- ✅ **Do:** Set reordering rules on fast-moving items so purchase orders are generated automatically.\n- ✅ **Do:** Enable **Putaway Rules** on warehouses with multiple storage zones — it eliminates manual location selection errors.\n- ❌ **Don't:** Switch stock valuation method (FIFO ↔ AVCO) after recording transactions — it produces incorrect historical cost data.\n- ❌ **Don't:** Use \"Update Quantity\" to fix stock errors — always use Inventory Adjustments to maintain a proper audit trail.\n- ❌ **Don't:** Mix product categories with different costing methods in the same storage location without understanding the valuation impact.\n\n"
+  - "## Limitations\n\n- **Serial number tracking** at the individual unit level (SN per line) adds significant UI overhead; test performance with large volumes before enabling.\n- Does not cover **landed costs** (import duties, freight allocation to product cost) — that requires the `stock_landed_costs` module.\n- **Cross-warehouse stock transfers** have routing complexities (transit locations, intercompany invoicing) not fully covered here.\n- Automated inventory valuation requires the **Accounting** module; Community Edition installations without it cannot post stock journal entries.\n"

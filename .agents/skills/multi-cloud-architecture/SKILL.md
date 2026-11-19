@@ -4,194 +4,37 @@ description: "Decision framework and patterns for architecting applications acro
 risk: safe
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Multi-Cloud Architecture
-
-Decision framework and patterns for architecting applications across AWS, Azure, and GCP.
-
-## Do not use this skill when
-
-- The task is unrelated to multi-cloud architecture
-- You need a different domain or tool outside this scope
-
-## Instructions
-
-- Clarify goals, constraints, and required inputs.
-- Apply relevant best practices and validate outcomes.
-- Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
-
-## Purpose
-
-Design cloud-agnostic architectures and make informed decisions about service selection across cloud providers.
-
-## Use this skill when
-
-- Design multi-cloud strategies
-- Migrate between cloud providers
-- Select cloud services for specific workloads
-- Implement cloud-agnostic architectures
-- Optimize costs across providers
-
-## Cloud Service Comparison
-
-### Compute Services
-
-| AWS | Azure | GCP | Use Case |
-|-----|-------|-----|----------|
-| EC2 | Virtual Machines | Compute Engine | IaaS VMs |
-| ECS | Container Instances | Cloud Run | Containers |
-| EKS | AKS | GKE | Kubernetes |
-| Lambda | Functions | Cloud Functions | Serverless |
-| Fargate | Container Apps | Cloud Run | Managed containers |
-
-### Storage Services
-
-| AWS | Azure | GCP | Use Case |
-|-----|-------|-----|----------|
-| S3 | Blob Storage | Cloud Storage | Object storage |
-| EBS | Managed Disks | Persistent Disk | Block storage |
-| EFS | Azure Files | Filestore | File storage |
-| Glacier | Archive Storage | Archive Storage | Cold storage |
-
-### Database Services
-
-| AWS | Azure | GCP | Use Case |
-|-----|-------|-----|----------|
-| RDS | SQL Database | Cloud SQL | Managed SQL |
-| DynamoDB | Cosmos DB | Firestore | NoSQL |
-| Aurora | PostgreSQL/MySQL | Cloud Spanner | Distributed SQL |
-| ElastiCache | Cache for Redis | Memorystore | Caching |
-
-**Reference:** See `references/service-comparison.md` for complete comparison
-
-## Multi-Cloud Patterns
-
-### Pattern 1: Single Provider with DR
-
-- Primary workload in one cloud
-- Disaster recovery in another
-- Database replication across clouds
-- Automated failover
-
-### Pattern 2: Best-of-Breed
-
-- Use best service from each provider
-- AI/ML on GCP
-- Enterprise apps on Azure
-- General compute on AWS
-
-### Pattern 3: Geographic Distribution
-
-- Serve users from nearest cloud region
-- Data sovereignty compliance
-- Global load balancing
-- Regional failover
-
-### Pattern 4: Cloud-Agnostic Abstraction
-
-- Kubernetes for compute
-- PostgreSQL for database
-- S3-compatible storage (MinIO)
-- Open source tools
-
-## Cloud-Agnostic Architecture
-
-### Use Cloud-Native Alternatives
-
-- **Compute:** Kubernetes (EKS/AKS/GKE)
-- **Database:** PostgreSQL/MySQL (RDS/SQL Database/Cloud SQL)
-- **Message Queue:** Apache Kafka (MSK/Event Hubs/Confluent)
-- **Cache:** Redis (ElastiCache/Azure Cache/Memorystore)
-- **Object Storage:** S3-compatible API
-- **Monitoring:** Prometheus/Grafana
-- **Service Mesh:** Istio/Linkerd
-
-### Abstraction Layers
-
-```
-Application Layer
-    ↓
-Infrastructure Abstraction (Terraform)
-    ↓
-Cloud Provider APIs
-    ↓
-AWS / Azure / GCP
-```
-
-## Cost Comparison
-
-### Compute Pricing Factors
-
-- **AWS:** On-demand, Reserved, Spot, Savings Plans
-- **Azure:** Pay-as-you-go, Reserved, Spot
-- **GCP:** On-demand, Committed use, Preemptible
-
-### Cost Optimization Strategies
-
-1. Use reserved/committed capacity (30-70% savings)
-2. Leverage spot/preemptible instances
-3. Right-size resources
-4. Use serverless for variable workloads
-5. Optimize data transfer costs
-6. Implement lifecycle policies
-7. Use cost allocation tags
-8. Monitor with cloud cost tools
-
-**Reference:** See `references/multi-cloud-patterns.md`
-
-## Migration Strategy
-
-### Phase 1: Assessment
-- Inventory current infrastructure
-- Identify dependencies
-- Assess cloud compatibility
-- Estimate costs
-
-### Phase 2: Pilot
-- Select pilot workload
-- Implement in target cloud
-- Test thoroughly
-- Document learnings
-
-### Phase 3: Migration
-- Migrate workloads incrementally
-- Maintain dual-run period
-- Monitor performance
-- Validate functionality
-
-### Phase 4: Optimization
-- Right-size resources
-- Implement cloud-native services
-- Optimize costs
-- Enhance security
-
-## Best Practices
-
-1. **Use infrastructure as code** (Terraform/OpenTofu)
-2. **Implement CI/CD pipelines** for deployments
-3. **Design for failure** across clouds
-4. **Use managed services** when possible
-5. **Implement comprehensive monitoring**
-6. **Automate cost optimization**
-7. **Follow security best practices**
-8. **Document cloud-specific configurations**
-9. **Test disaster recovery** procedures
-10. **Train teams** on multiple clouds
-
-## Reference Files
-
-- `references/service-comparison.md` - Complete service comparison
-- `references/multi-cloud-patterns.md` - Architecture patterns
-
-## Related Skills
-
-- `terraform-module-library` - For IaC implementation
-- `cost-optimization` - For cost management
-- `hybrid-cloud-networking` - For connectivity
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "multi-cloud-architecture"
+sections[30]:
+  - "\n"
+  - "# Multi-Cloud Architecture\n\nDecision framework and patterns for architecting applications across AWS, Azure, and GCP.\n\n"
+  - "## Do not use this skill when\n\n- The task is unrelated to multi-cloud architecture\n- You need a different domain or tool outside this scope\n\n"
+  - "## Instructions\n\n- Clarify goals, constraints, and required inputs.\n- Apply relevant best practices and validate outcomes.\n- Provide actionable steps and verification.\n- If detailed examples are required, open `resources/implementation-playbook.md`.\n\n"
+  - "## Purpose\n\nDesign cloud-agnostic architectures and make informed decisions about service selection across cloud providers.\n\n"
+  - "## Use this skill when\n\n- Design multi-cloud strategies\n- Migrate between cloud providers\n- Select cloud services for specific workloads\n- Implement cloud-agnostic architectures\n- Optimize costs across providers\n\n"
+  - "## Cloud Service Comparison\n\n"
+  - "### Compute Services\n\n| AWS | Azure | GCP | Use Case |\n|-----|-------|-----|----------|\n| EC2 | Virtual Machines | Compute Engine | IaaS VMs |\n| ECS | Container Instances | Cloud Run | Containers |\n| EKS | AKS | GKE | Kubernetes |\n| Lambda | Functions | Cloud Functions | Serverless |\n| Fargate | Container Apps | Cloud Run | Managed containers |\n\n"
+  - "### Storage Services\n\n| AWS | Azure | GCP | Use Case |\n|-----|-------|-----|----------|\n| S3 | Blob Storage | Cloud Storage | Object storage |\n| EBS | Managed Disks | Persistent Disk | Block storage |\n| EFS | Azure Files | Filestore | File storage |\n| Glacier | Archive Storage | Archive Storage | Cold storage |\n\n"
+  - "### Database Services\n\n| AWS | Azure | GCP | Use Case |\n|-----|-------|-----|----------|\n| RDS | SQL Database | Cloud SQL | Managed SQL |\n| DynamoDB | Cosmos DB | Firestore | NoSQL |\n| Aurora | PostgreSQL/MySQL | Cloud Spanner | Distributed SQL |\n| ElastiCache | Cache for Redis | Memorystore | Caching |\n\n**Reference:** See `references/service-comparison.md` for complete comparison\n\n"
+  - "## Multi-Cloud Patterns\n\n"
+  - "### Pattern 1: Single Provider with DR\n\n- Primary workload in one cloud\n- Disaster recovery in another\n- Database replication across clouds\n- Automated failover\n\n"
+  - "### Pattern 2: Best-of-Breed\n\n- Use best service from each provider\n- AI/ML on GCP\n- Enterprise apps on Azure\n- General compute on AWS\n\n"
+  - "### Pattern 3: Geographic Distribution\n\n- Serve users from nearest cloud region\n- Data sovereignty compliance\n- Global load balancing\n- Regional failover\n\n"
+  - "### Pattern 4: Cloud-Agnostic Abstraction\n\n- Kubernetes for compute\n- PostgreSQL for database\n- S3-compatible storage (MinIO)\n- Open source tools\n\n"
+  - "## Cloud-Agnostic Architecture\n\n"
+  - "### Use Cloud-Native Alternatives\n\n- **Compute:** Kubernetes (EKS/AKS/GKE)\n- **Database:** PostgreSQL/MySQL (RDS/SQL Database/Cloud SQL)\n- **Message Queue:** Apache Kafka (MSK/Event Hubs/Confluent)\n- **Cache:** Redis (ElastiCache/Azure Cache/Memorystore)\n- **Object Storage:** S3-compatible API\n- **Monitoring:** Prometheus/Grafana\n- **Service Mesh:** Istio/Linkerd\n\n"
+  - "### Abstraction Layers\n\n```\nApplication Layer\n    ↓\nInfrastructure Abstraction (Terraform)\n    ↓\nCloud Provider APIs\n    ↓\nAWS / Azure / GCP\n```\n\n"
+  - "## Cost Comparison\n\n"
+  - "### Compute Pricing Factors\n\n- **AWS:** On-demand, Reserved, Spot, Savings Plans\n- **Azure:** Pay-as-you-go, Reserved, Spot\n- **GCP:** On-demand, Committed use, Preemptible\n\n"
+  - "### Cost Optimization Strategies\n\n1. Use reserved/committed capacity (30-70% savings)\n2. Leverage spot/preemptible instances\n3. Right-size resources\n4. Use serverless for variable workloads\n5. Optimize data transfer costs\n6. Implement lifecycle policies\n7. Use cost allocation tags\n8. Monitor with cloud cost tools\n\n**Reference:** See `references/multi-cloud-patterns.md`\n\n"
+  - "## Migration Strategy\n\n"
+  - "### Phase 1: Assessment\n- Inventory current infrastructure\n- Identify dependencies\n- Assess cloud compatibility\n- Estimate costs\n\n"
+  - "### Phase 2: Pilot\n- Select pilot workload\n- Implement in target cloud\n- Test thoroughly\n- Document learnings\n\n"
+  - "### Phase 3: Migration\n- Migrate workloads incrementally\n- Maintain dual-run period\n- Monitor performance\n- Validate functionality\n\n"
+  - "### Phase 4: Optimization\n- Right-size resources\n- Implement cloud-native services\n- Optimize costs\n- Enhance security\n\n"
+  - "## Best Practices\n\n1. **Use infrastructure as code** (Terraform/OpenTofu)\n2. **Implement CI/CD pipelines** for deployments\n3. **Design for failure** across clouds\n4. **Use managed services** when possible\n5. **Implement comprehensive monitoring**\n6. **Automate cost optimization**\n7. **Follow security best practices**\n8. **Document cloud-specific configurations**\n9. **Test disaster recovery** procedures\n10. **Train teams** on multiple clouds\n\n"
+  - "## Reference Files\n\n- `references/service-comparison.md` - Complete service comparison\n- `references/multi-cloud-patterns.md` - Architecture patterns\n\n"
+  - "## Related Skills\n\n- `terraform-module-library` - For IaC implementation\n- `cost-optimization` - For cost management\n- `hybrid-cloud-networking` - For connectivity\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

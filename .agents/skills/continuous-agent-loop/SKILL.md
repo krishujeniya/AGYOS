@@ -3,44 +3,13 @@ name: continuous-agent-loop
 description: Patterns for continuous autonomous agent loops with quality gates, evals, and recovery controls. Use when running an agent loop that must self-check, gate on evals, and recover from failures.
 metadata:
   origin: ECC
+prompt-source: prompt.toon
 ---
-
-# Continuous Agent Loop
-
-This is the v1.8+ canonical loop skill name. It supersedes `autonomous-loops` while keeping compatibility for one release.
-
-## Loop Selection Flow
-
-```text
-Start
-  |
-  +-- Need strict CI/PR control? -- yes --> continuous-pr
-  |
-  +-- Need RFC decomposition? -- yes --> rfc-dag
-  |
-  +-- Need exploratory parallel generation? -- yes --> infinite
-  |
-  +-- default --> sequential
-```
-
-## Combined Pattern
-
-Recommended production stack:
-1. RFC decomposition (`ralphinho-rfc-pipeline`)
-2. quality gates (`plankton-code-quality` + `/quality-gate`)
-3. eval loop (`eval-harness`)
-4. session persistence (`nanoclaw-repl`)
-
-## Failure Modes
-
-- loop churn without measurable progress
-- repeated retries with same root cause
-- merge queue stalls
-- cost drift from unbounded escalation
-
-## Recovery
-
-- freeze loop
-- run `/harness-audit`
-- reduce scope to failing unit
-- replay with explicit acceptance criteria
+skill: "continuous-agent-loop"
+sections[6]:
+  - "\n"
+  - "# Continuous Agent Loop\n\nThis is the v1.8+ canonical loop skill name. It supersedes `autonomous-loops` while keeping compatibility for one release.\n\n"
+  - "## Loop Selection Flow\n\n```text\nStart\n  |\n  +-- Need strict CI/PR control? -- yes --> continuous-pr\n  |\n  +-- Need RFC decomposition? -- yes --> rfc-dag\n  |\n  +-- Need exploratory parallel generation? -- yes --> infinite\n  |\n  +-- default --> sequential\n```\n\n"
+  - "## Combined Pattern\n\nRecommended production stack:\n1. RFC decomposition (`ralphinho-rfc-pipeline`)\n2. quality gates (`plankton-code-quality` + `/quality-gate`)\n3. eval loop (`eval-harness`)\n4. session persistence (`nanoclaw-repl`)\n\n"
+  - "## Failure Modes\n\n- loop churn without measurable progress\n- repeated retries with same root cause\n- merge queue stalls\n- cost drift from unbounded escalation\n\n"
+  - "## Recovery\n\n- freeze loop\n- run `/harness-audit`\n- reduce scope to failing unit\n- replay with explicit acceptance criteria\n"

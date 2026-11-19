@@ -1,113 +1,22 @@
 ---
 name: react-native-mobile-development
 description: Comprehensive best practices for React Native and Expo applications. Contains rules across multiple categories covering performance, animations, UI patterns, and platform-specific optimizations.
+prompt-source: prompt.toon
 ---
-
-# React Native Skills
-
-Comprehensive best practices for React Native and Expo applications. Contains
-rules across multiple categories covering performance, animations, UI patterns,
-and platform-specific optimizations.
-
-## When to Apply
-
-Reference these guidelines when:
-
-- Building React Native or Expo apps
-- Optimizing list and scroll performance
-- Implementing animations with Reanimated
-- Working with images and media
-- Configuring native modules or fonts
-- Structuring monorepo projects with native dependencies
-
-## Rule Categories by Priority
-
-| Priority | Category         | Impact   | Prefix               |
-| -------- | ---------------- | -------- | -------------------- |
-| 1        | List Performance | CRITICAL | `list-performance-`  |
-| 2        | Animation        | HIGH     | `animation-`         |
-| 3        | Navigation       | HIGH     | `navigation-`        |
-| 4        | UI Patterns      | HIGH     | `ui-`                |
-| 5        | State Management | MEDIUM   | `react-state-`       |
-| 6        | Rendering        | MEDIUM   | `rendering-`         |
-| 7        | Monorepo         | MEDIUM   | `monorepo-`          |
-| 8        | Configuration    | LOW      | `fonts-`, `imports-` |
-
-## Quick Reference
-
-### 1. List Performance (CRITICAL)
-
-- `list-performance-virtualize` - Use FlashList for large lists
-- `list-performance-item-memo` - Memoize list item components
-- `list-performance-callbacks` - Stabilize callback references
-- `list-performance-inline-objects` - Avoid inline style objects
-- `list-performance-function-references` - Extract functions outside render
-- `list-performance-images` - Optimize images in lists
-- `list-performance-item-expensive` - Move expensive work outside items
-- `list-performance-item-types` - Use item types for heterogeneous lists
-
-### 2. Animation (HIGH)
-
-- `animation-gpu-properties` - Animate only transform and opacity
-- `animation-derived-value` - Use useDerivedValue for computed animations
-- `animation-gesture-detector-press` - Use Gesture.Tap instead of Pressable
-
-### 3. Navigation (HIGH)
-
-- `navigation-native-navigators` - Use native stack and native tabs over JS navigators
-
-### 4. UI Patterns (HIGH)
-
-- `ui-expo-image` - Use expo-image for all images
-- `ui-image-gallery` - Use Galeria for image lightboxes
-- `ui-pressable` - Use Pressable over TouchableOpacity
-- `ui-safe-area-scroll` - Handle safe areas in ScrollViews
-- `ui-scrollview-content-inset` - Use contentInset for headers
-- `ui-menus` - Use native context menus
-- `ui-native-modals` - Use native modals when possible
-- `ui-measure-views` - Use onLayout, not measure()
-- `ui-styling` - Use StyleSheet.create or Nativewind
-
-### 5. State Management (MEDIUM)
-
-- `react-state-minimize` - Minimize state subscriptions
-- `react-state-dispatcher` - Use dispatcher pattern for callbacks
-- `react-state-fallback` - Show fallback on first render
-- `react-compiler-destructure-functions` - Destructure for React Compiler
-- `react-compiler-reanimated-shared-values` - Handle shared values with compiler
-
-### 6. Rendering (MEDIUM)
-
-- `rendering-text-in-text-component` - Wrap text in Text components
-- `rendering-no-falsy-and` - Avoid falsy && for conditional rendering
-
-### 7. Monorepo (MEDIUM)
-
-- `monorepo-native-deps-in-app` - Keep native dependencies in app package
-- `monorepo-single-dependency-versions` - Use single versions across packages
-
-### 8. Configuration (LOW)
-
-- `fonts-config-plugin` - Use config plugins for custom fonts
-- `imports-design-system-folder` - Organize design system imports
-- `js-hoist-intl` - Hoist Intl object creation
-
-## How to Use
-
-Read individual rule files for detailed explanations and code examples:
-
-```
-rules/list-performance-virtualize.md
-rules/animation-gpu-properties.md
-```
-
-Each rule file contains:
-
-- Brief explanation of why it matters
-- Incorrect code example with explanation
-- Correct code example with explanation
-- Additional context and references
-
-## Full Compiled Document
-
-For the complete guide with all rules expanded: `AGENTS.md`
+skill: "react-native-mobile-development"
+sections[15]:
+  - "\n"
+  - "# React Native Skills\n\nComprehensive best practices for React Native and Expo applications. Contains\nrules across multiple categories covering performance, animations, UI patterns,\nand platform-specific optimizations.\n\n"
+  - "## When to Apply\n\nReference these guidelines when:\n\n- Building React Native or Expo apps\n- Optimizing list and scroll performance\n- Implementing animations with Reanimated\n- Working with images and media\n- Configuring native modules or fonts\n- Structuring monorepo projects with native dependencies\n\n"
+  - "## Rule Categories by Priority\n\n| Priority | Category         | Impact   | Prefix               |\n| -------- | ---------------- | -------- | -------------------- |\n| 1        | List Performance | CRITICAL | `list-performance-`  |\n| 2        | Animation        | HIGH     | `animation-`         |\n| 3        | Navigation       | HIGH     | `navigation-`        |\n| 4        | UI Patterns      | HIGH     | `ui-`                |\n| 5        | State Management | MEDIUM   | `react-state-`       |\n| 6        | Rendering        | MEDIUM   | `rendering-`         |\n| 7        | Monorepo         | MEDIUM   | `monorepo-`          |\n| 8        | Configuration    | LOW      | `fonts-`, `imports-` |\n\n"
+  - "## Quick Reference\n\n"
+  - "### 1. List Performance (CRITICAL)\n\n- `list-performance-virtualize` - Use FlashList for large lists\n- `list-performance-item-memo` - Memoize list item components\n- `list-performance-callbacks` - Stabilize callback references\n- `list-performance-inline-objects` - Avoid inline style objects\n- `list-performance-function-references` - Extract functions outside render\n- `list-performance-images` - Optimize images in lists\n- `list-performance-item-expensive` - Move expensive work outside items\n- `list-performance-item-types` - Use item types for heterogeneous lists\n\n"
+  - "### 2. Animation (HIGH)\n\n- `animation-gpu-properties` - Animate only transform and opacity\n- `animation-derived-value` - Use useDerivedValue for computed animations\n- `animation-gesture-detector-press` - Use Gesture.Tap instead of Pressable\n\n"
+  - "### 3. Navigation (HIGH)\n\n- `navigation-native-navigators` - Use native stack and native tabs over JS navigators\n\n"
+  - "### 4. UI Patterns (HIGH)\n\n- `ui-expo-image` - Use expo-image for all images\n- `ui-image-gallery` - Use Galeria for image lightboxes\n- `ui-pressable` - Use Pressable over TouchableOpacity\n- `ui-safe-area-scroll` - Handle safe areas in ScrollViews\n- `ui-scrollview-content-inset` - Use contentInset for headers\n- `ui-menus` - Use native context menus\n- `ui-native-modals` - Use native modals when possible\n- `ui-measure-views` - Use onLayout, not measure()\n- `ui-styling` - Use StyleSheet.create or Nativewind\n\n"
+  - "### 5. State Management (MEDIUM)\n\n- `react-state-minimize` - Minimize state subscriptions\n- `react-state-dispatcher` - Use dispatcher pattern for callbacks\n- `react-state-fallback` - Show fallback on first render\n- `react-compiler-destructure-functions` - Destructure for React Compiler\n- `react-compiler-reanimated-shared-values` - Handle shared values with compiler\n\n"
+  - "### 6. Rendering (MEDIUM)\n\n- `rendering-text-in-text-component` - Wrap text in Text components\n- `rendering-no-falsy-and` - Avoid falsy && for conditional rendering\n\n"
+  - "### 7. Monorepo (MEDIUM)\n\n- `monorepo-native-deps-in-app` - Keep native dependencies in app package\n- `monorepo-single-dependency-versions` - Use single versions across packages\n\n"
+  - "### 8. Configuration (LOW)\n\n- `fonts-config-plugin` - Use config plugins for custom fonts\n- `imports-design-system-folder` - Organize design system imports\n- `js-hoist-intl` - Hoist Intl object creation\n\n"
+  - "## How to Use\n\nRead individual rule files for detailed explanations and code examples:\n\n```\nrules/list-performance-virtualize.md\nrules/animation-gpu-properties.md\n```\n\nEach rule file contains:\n\n- Brief explanation of why it matters\n- Incorrect code example with explanation\n- Correct code example with explanation\n- Additional context and references\n\n"
+  - "## Full Compiled Document\n\nFor the complete guide with all rules expanded: `AGENTS.md`\n"

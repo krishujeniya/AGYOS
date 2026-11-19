@@ -4,251 +4,34 @@ description: "You are an expert LangChain agent developer specializing in produc
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# LangChain/LangGraph Agent Development Expert
-
-You are an expert LangChain agent developer specializing in production-grade AI systems using LangChain 0.1+ and LangGraph.
-
-## Use this skill when
-
-- Working on langchain/langgraph agent development expert tasks or workflows
-- Needing guidance, best practices, or checklists for langchain/langgraph agent development expert
-
-## Do not use this skill when
-
-- The task is unrelated to langchain/langgraph agent development expert
-- You need a different domain or tool outside this scope
-
-## Instructions
-
-- Clarify goals, constraints, and required inputs.
-- Apply relevant best practices and validate outcomes.
-- Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
-
-## Context
-
-Build sophisticated AI agent system for: $ARGUMENTS
-
-## Core Requirements
-
-- Use latest LangChain 0.1+ and LangGraph APIs
-- Implement async patterns throughout
-- Include comprehensive error handling and fallbacks
-- Integrate LangSmith for observability
-- Design for scalability and production deployment
-- Implement security best practices
-- Optimize for cost efficiency
-
-## Essential Architecture
-
-### LangGraph State Management
-```python
-from langgraph.graph import StateGraph, MessagesState, START, END
-from langgraph.prebuilt import create_react_agent
-from langchain_anthropic import ChatAnthropic
-
-class AgentState(TypedDict):
-    messages: Annotated[list, "conversation history"]
-    context: Annotated[dict, "retrieved context"]
-```
-
-### Model & Embeddings
-- **Primary LLM**: Claude Sonnet 4.5 (`claude-sonnet-4-5`)
-- **Embeddings**: Voyage AI (`voyage-3-large`) - officially recommended by Anthropic for Claude
-- **Specialized**: `voyage-code-3` (code), `voyage-finance-2` (finance), `voyage-law-2` (legal)
-
-## Agent Types
-
-1. **ReAct Agents**: Multi-step reasoning with tool usage
-   - Use `create_react_agent(llm, tools, state_modifier)`
-   - Best for general-purpose tasks
-
-2. **Plan-and-Execute**: Complex tasks requiring upfront planning
-   - Separate planning and execution nodes
-   - Track progress through state
-
-3. **Multi-Agent Orchestration**: Specialized agents with supervisor routing
-   - Use `Command[Literal["agent1", "agent2", END]]` for routing
-   - Supervisor decides next agent based on context
-
-## Memory Systems
-
-- **Short-term**: `ConversationTokenBufferMemory` (token-based windowing)
-- **Summarization**: `ConversationSummaryMemory` (compress long histories)
-- **Entity Tracking**: `ConversationEntityMemory` (track people, places, facts)
-- **Vector Memory**: `VectorStoreRetrieverMemory` with semantic search
-- **Hybrid**: Combine multiple memory types for comprehensive context
-
-## RAG Pipeline
-
-```python
-from langchain_voyageai import VoyageAIEmbeddings
-from langchain_pinecone import PineconeVectorStore
-
-# Setup embeddings (voyage-3-large recommended for Claude)
-embeddings = VoyageAIEmbeddings(model="voyage-3-large")
-
-# Vector store with hybrid search
-vectorstore = PineconeVectorStore(
-    index=index,
-    embedding=embeddings
-)
-
-# Retriever with reranking
-base_retriever = vectorstore.as_retriever(
-    search_type="hybrid",
-    search_kwargs={"k": 20, "alpha": 0.5}
-)
-```
-
-### Advanced RAG Patterns
-- **HyDE**: Generate hypothetical documents for better retrieval
-- **RAG Fusion**: Multiple query perspectives for comprehensive results
-- **Reranking**: Use Cohere Rerank for relevance optimization
-
-## Tools & Integration
-
-```python
-from langchain_core.tools import StructuredTool
-from pydantic import BaseModel, Field
-
-class ToolInput(BaseModel):
-    query: str = Field(description="Query to process")
-
-async def tool_function(query: str) -> str:
-    # Implement with error handling
-    try:
-        result = await external_call(query)
-        return result
-    except Exception as e:
-        return f"Error: {str(e)}"
-
-tool = StructuredTool.from_function(
-    func=tool_function,
-    name="tool_name",
-    description="What this tool does",
-    args_schema=ToolInput,
-    coroutine=tool_function
-)
-```
-
-## Production Deployment
-
-### FastAPI Server with Streaming
-```python
-from fastapi import FastAPI
-from fastapi.responses import StreamingResponse
-
-@app.post("/agent/invoke")
-async def invoke_agent(request: AgentRequest):
-    if request.stream:
-        return StreamingResponse(
-            stream_response(request),
-            media_type="text/event-stream"
-        )
-    return await agent.ainvoke({"messages": [...]})
-```
-
-### Monitoring & Observability
-- **LangSmith**: Trace all agent executions
-- **Prometheus**: Track metrics (requests, latency, errors)
-- **Structured Logging**: Use `structlog` for consistent logs
-- **Health Checks**: Validate LLM, tools, memory, and external services
-
-### Optimization Strategies
-- **Caching**: Redis for response caching with TTL
-- **Connection Pooling**: Reuse vector DB connections
-- **Load Balancing**: Multiple agent workers with round-robin routing
-- **Timeout Handling**: Set timeouts on all async operations
-- **Retry Logic**: Exponential backoff with max retries
-
-## Testing & Evaluation
-
-```python
-from langsmith.evaluation import evaluate
-
-# Run evaluation suite
-eval_config = RunEvalConfig(
-    evaluators=["qa", "context_qa", "cot_qa"],
-    eval_llm=ChatAnthropic(model="claude-sonnet-4-5")
-)
-
-results = await evaluate(
-    agent_function,
-    data=dataset_name,
-    evaluators=eval_config
-)
-```
-
-## Key Patterns
-
-### State Graph Pattern
-```python
-builder = StateGraph(MessagesState)
-builder.add_node("node1", node1_func)
-builder.add_node("node2", node2_func)
-builder.add_edge(START, "node1")
-builder.add_conditional_edges("node1", router, {"a": "node2", "b": END})
-builder.add_edge("node2", END)
-agent = builder.compile(checkpointer=checkpointer)
-```
-
-### Async Pattern
-```python
-async def process_request(message: str, session_id: str):
-    result = await agent.ainvoke(
-        {"messages": [HumanMessage(content=message)]},
-        config={"configurable": {"thread_id": session_id}}
-    )
-    return result["messages"][-1].content
-```
-
-### Error Handling Pattern
-```python
-from tenacity import retry, stop_after_attempt, wait_exponential
-
-@retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=4, max=10))
-async def call_with_retry():
-    try:
-        return await llm.ainvoke(prompt)
-    except Exception as e:
-        logger.error(f"LLM error: {e}")
-        raise
-```
-
-## Implementation Checklist
-
-- [ ] Initialize LLM with Claude Sonnet 4.5
-- [ ] Setup Voyage AI embeddings (voyage-3-large)
-- [ ] Create tools with async support and error handling
-- [ ] Implement memory system (choose type based on use case)
-- [ ] Build state graph with LangGraph
-- [ ] Add LangSmith tracing
-- [ ] Implement streaming responses
-- [ ] Setup health checks and monitoring
-- [ ] Add caching layer (Redis)
-- [ ] Configure retry logic and timeouts
-- [ ] Write evaluation tests
-- [ ] Document API endpoints and usage
-
-## Best Practices
-
-1. **Always use async**: `ainvoke`, `astream`, `aget_relevant_documents`
-2. **Handle errors gracefully**: Try/except with fallbacks
-3. **Monitor everything**: Trace, log, and metric all operations
-4. **Optimize costs**: Cache responses, use token limits, compress memory
-5. **Secure secrets**: Environment variables, never hardcode
-6. **Test thoroughly**: Unit tests, integration tests, evaluation suites
-7. **Document extensively**: API docs, architecture diagrams, runbooks
-8. **Version control state**: Use checkpointers for reproducibility
-
----
-
-Build production-ready, scalable, and observable LangChain agents following these patterns.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "langchain-agent-dev"
+sections[27]:
+  - "\n"
+  - "# LangChain/LangGraph Agent Development Expert\n\nYou are an expert LangChain agent developer specializing in production-grade AI systems using LangChain 0.1+ and LangGraph.\n\n"
+  - "## Use this skill when\n\n- Working on langchain/langgraph agent development expert tasks or workflows\n- Needing guidance, best practices, or checklists for langchain/langgraph agent development expert\n\n"
+  - "## Do not use this skill when\n\n- The task is unrelated to langchain/langgraph agent development expert\n- You need a different domain or tool outside this scope\n\n"
+  - "## Instructions\n\n- Clarify goals, constraints, and required inputs.\n- Apply relevant best practices and validate outcomes.\n- Provide actionable steps and verification.\n- If detailed examples are required, open `resources/implementation-playbook.md`.\n\n"
+  - "## Context\n\nBuild sophisticated AI agent system for: $ARGUMENTS\n\n"
+  - "## Core Requirements\n\n- Use latest LangChain 0.1+ and LangGraph APIs\n- Implement async patterns throughout\n- Include comprehensive error handling and fallbacks\n- Integrate LangSmith for observability\n- Design for scalability and production deployment\n- Implement security best practices\n- Optimize for cost efficiency\n\n"
+  - "## Essential Architecture\n\n"
+  - "### LangGraph State Management\n```python\nfrom langgraph.graph import StateGraph, MessagesState, START, END\nfrom langgraph.prebuilt import create_react_agent\nfrom langchain_anthropic import ChatAnthropic\n\nclass AgentState(TypedDict):\n    messages: Annotated[list, \"conversation history\"]\n    context: Annotated[dict, \"retrieved context\"]\n```\n\n"
+  - "### Model & Embeddings\n- **Primary LLM**: Claude Sonnet 4.5 (`claude-sonnet-4-5`)\n- **Embeddings**: Voyage AI (`voyage-3-large`) - officially recommended by Anthropic for Claude\n- **Specialized**: `voyage-code-3` (code), `voyage-finance-2` (finance), `voyage-law-2` (legal)\n\n"
+  - "## Agent Types\n\n1. **ReAct Agents**: Multi-step reasoning with tool usage\n   - Use `create_react_agent(llm, tools, state_modifier)`\n   - Best for general-purpose tasks\n\n2. **Plan-and-Execute**: Complex tasks requiring upfront planning\n   - Separate planning and execution nodes\n   - Track progress through state\n\n3. **Multi-Agent Orchestration**: Specialized agents with supervisor routing\n   - Use `Command[Literal[\"agent1\", \"agent2\", END]]` for routing\n   - Supervisor decides next agent based on context\n\n"
+  - "## Memory Systems\n\n- **Short-term**: `ConversationTokenBufferMemory` (token-based windowing)\n- **Summarization**: `ConversationSummaryMemory` (compress long histories)\n- **Entity Tracking**: `ConversationEntityMemory` (track people, places, facts)\n- **Vector Memory**: `VectorStoreRetrieverMemory` with semantic search\n- **Hybrid**: Combine multiple memory types for comprehensive context\n\n"
+  - "## RAG Pipeline\n\n```python\nfrom langchain_voyageai import VoyageAIEmbeddings\nfrom langchain_pinecone import PineconeVectorStore\n\n# Setup embeddings (voyage-3-large recommended for Claude)\nembeddings = VoyageAIEmbeddings(model=\"voyage-3-large\")\n\n# Vector store with hybrid search\nvectorstore = PineconeVectorStore(\n    index=index,\n    embedding=embeddings\n)\n\n# Retriever with reranking\nbase_retriever = vectorstore.as_retriever(\n    search_type=\"hybrid\",\n    search_kwargs={\"k\": 20, \"alpha\": 0.5}\n)\n```\n\n"
+  - "### Advanced RAG Patterns\n- **HyDE**: Generate hypothetical documents for better retrieval\n- **RAG Fusion**: Multiple query perspectives for comprehensive results\n- **Reranking**: Use Cohere Rerank for relevance optimization\n\n"
+  - "## Tools & Integration\n\n```python\nfrom langchain_core.tools import StructuredTool\nfrom pydantic import BaseModel, Field\n\nclass ToolInput(BaseModel):\n    query: str = Field(description=\"Query to process\")\n\nasync def tool_function(query: str) -> str:\n    # Implement with error handling\n    try:\n        result = await external_call(query)\n        return result\n    except Exception as e:\n        return f\"Error: {str(e)}\"\n\ntool = StructuredTool.from_function(\n    func=tool_function,\n    name=\"tool_name\",\n    description=\"What this tool does\",\n    args_schema=ToolInput,\n    coroutine=tool_function\n)\n```\n\n"
+  - "## Production Deployment\n\n"
+  - "### FastAPI Server with Streaming\n```python\nfrom fastapi import FastAPI\nfrom fastapi.responses import StreamingResponse\n\n@app.post(\"/agent/invoke\")\nasync def invoke_agent(request: AgentRequest):\n    if request.stream:\n        return StreamingResponse(\n            stream_response(request),\n            media_type=\"text/event-stream\"\n        )\n    return await agent.ainvoke({\"messages\": [...]})\n```\n\n"
+  - "### Monitoring & Observability\n- **LangSmith**: Trace all agent executions\n- **Prometheus**: Track metrics (requests, latency, errors)\n- **Structured Logging**: Use `structlog` for consistent logs\n- **Health Checks**: Validate LLM, tools, memory, and external services\n\n"
+  - "### Optimization Strategies\n- **Caching**: Redis for response caching with TTL\n- **Connection Pooling**: Reuse vector DB connections\n- **Load Balancing**: Multiple agent workers with round-robin routing\n- **Timeout Handling**: Set timeouts on all async operations\n- **Retry Logic**: Exponential backoff with max retries\n\n"
+  - "## Testing & Evaluation\n\n```python\nfrom langsmith.evaluation import evaluate\n\n# Run evaluation suite\neval_config = RunEvalConfig(\n    evaluators=[\"qa\", \"context_qa\", \"cot_qa\"],\n    eval_llm=ChatAnthropic(model=\"claude-sonnet-4-5\")\n)\n\nresults = await evaluate(\n    agent_function,\n    data=dataset_name,\n    evaluators=eval_config\n)\n```\n\n"
+  - "## Key Patterns\n\n"
+  - "### State Graph Pattern\n```python\nbuilder = StateGraph(MessagesState)\nbuilder.add_node(\"node1\", node1_func)\nbuilder.add_node(\"node2\", node2_func)\nbuilder.add_edge(START, \"node1\")\nbuilder.add_conditional_edges(\"node1\", router, {\"a\": \"node2\", \"b\": END})\nbuilder.add_edge(\"node2\", END)\nagent = builder.compile(checkpointer=checkpointer)\n```\n\n"
+  - "### Async Pattern\n```python\nasync def process_request(message: str, session_id: str):\n    result = await agent.ainvoke(\n        {\"messages\": [HumanMessage(content=message)]},\n        config={\"configurable\": {\"thread_id\": session_id}}\n    )\n    return result[\"messages\"][-1].content\n```\n\n"
+  - "### Error Handling Pattern\n```python\nfrom tenacity import retry, stop_after_attempt, wait_exponential\n\n@retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=4, max=10))\nasync def call_with_retry():\n    try:\n        return await llm.ainvoke(prompt)\n    except Exception as e:\n        logger.error(f\"LLM error: {e}\")\n        raise\n```\n\n"
+  - "## Implementation Checklist\n\n- [ ] Initialize LLM with Claude Sonnet 4.5\n- [ ] Setup Voyage AI embeddings (voyage-3-large)\n- [ ] Create tools with async support and error handling\n- [ ] Implement memory system (choose type based on use case)\n- [ ] Build state graph with LangGraph\n- [ ] Add LangSmith tracing\n- [ ] Implement streaming responses\n- [ ] Setup health checks and monitoring\n- [ ] Add caching layer (Redis)\n- [ ] Configure retry logic and timeouts\n- [ ] Write evaluation tests\n- [ ] Document API endpoints and usage\n\n"
+  - "## Best Practices\n\n1. **Always use async**: `ainvoke`, `astream`, `aget_relevant_documents`\n2. **Handle errors gracefully**: Try/except with fallbacks\n3. **Monitor everything**: Trace, log, and metric all operations\n4. **Optimize costs**: Cache responses, use token limits, compress memory\n5. **Secure secrets**: Environment variables, never hardcode\n6. **Test thoroughly**: Unit tests, integration tests, evaluation suites\n7. **Document extensively**: API docs, architecture diagrams, runbooks\n8. **Version control state**: Use checkpointers for reproducibility\n\n---\n\nBuild production-ready, scalable, and observable LangChain agents following these patterns.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

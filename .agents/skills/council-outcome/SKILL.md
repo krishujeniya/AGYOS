@@ -5,29 +5,11 @@ description: |
   Builds calibration data over time to learn which models are best at what.
 allowed-tools:
   - Bash
+prompt-source: prompt.toon
 ---
-
-# Council Outcome
-
-Record whether a past council decision turned out to be correct.
-
-## Usage
-
-The user invokes `/council-outcome <session-id> "description of what happened"`.
-
-If the user doesn't provide a session ID, run `/council-list` first to show available sessions.
-
-## Run
-
-Replace `{SESSION_ID}` and `{RESULT}` with the user's values.
-
-```bash
-COUNCIL_BIN=""; for _d in "$HOME/.claude/skills/agent-council" "$HOME/.agents/skills/agent-council" "$HOME/.gemini/skills/agent-council" "$(git rev-parse --show-toplevel 2>/dev/null)"; do [ -x "$_d/bin/council" ] && COUNCIL_BIN="$_d/bin/council" && break; [ -x "$_d/council" ] && COUNCIL_BIN="$_d/council" && break; done; [ -z "$COUNCIL_BIN" ] && COUNCIL_BIN="$(which council 2>/dev/null || echo "bin/council")"
-SLUG=$(basename "$(git rev-parse --show-toplevel 2>/dev/null || pwd)")
-$COUNCIL_BIN outcome {SESSION_ID} --result "{RESULT}" --project "$SLUG"
-```
-
-After recording, tell the user:
-- The outcome has been saved to the session's meta.json
-- The viewer has been updated with an outcome banner
-- They can open the viewer to see the annotation
+skill: "council-outcome"
+sections[4]:
+  - "\n"
+  - "# Council Outcome\n\nRecord whether a past council decision turned out to be correct.\n\n"
+  - "## Usage\n\nThe user invokes `/council-outcome <session-id> \"description of what happened\"`.\n\nIf the user doesn't provide a session ID, run `/council-list` first to show available sessions.\n\n"
+  - "## Run\n\nReplace `{SESSION_ID}` and `{RESULT}` with the user's values.\n\n```bash\nCOUNCIL_BIN=\"\"; for _d in \"$HOME/.claude/skills/agent-council\" \"$HOME/.agents/skills/agent-council\" \"$HOME/.gemini/skills/agent-council\" \"$(git rev-parse --show-toplevel 2>/dev/null)\"; do [ -x \"$_d/bin/council\" ] && COUNCIL_BIN=\"$_d/bin/council\" && break; [ -x \"$_d/council\" ] && COUNCIL_BIN=\"$_d/council\" && break; done; [ -z \"$COUNCIL_BIN\" ] && COUNCIL_BIN=\"$(which council 2>/dev/null || echo \"bin/council\")\"\nSLUG=$(basename \"$(git rev-parse --show-toplevel 2>/dev/null || pwd)\")\n$COUNCIL_BIN outcome {SESSION_ID} --result \"{RESULT}\" --project \"$SLUG\"\n```\n\nAfter recording, tell the user:\n- The outcome has been saved to the session's meta.json\n- The viewer has been updated with an outcome banner\n- They can open the viewer to see the annotation\n"

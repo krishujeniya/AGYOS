@@ -19,50 +19,16 @@ tags:
 - conversation
 tools:
 - claude
+prompt-source: prompt.toon
 ---
-
-# Satori
-
-## Overview
-
-Satori is a clinically informed AI wisdom companion built as a Claude skill. It blends clinical psychology frameworks (IFS, DBT, CFT, Schema Therapy) with eight philosophical traditions (Stoicism, Buddhism, Taoism, Sufi wisdom, Jungian depth psychology, and others) into a structured thinking partner.
-
-## When to Use This Skill
-
-- When seeking a structured philosophical or psychological conversation partner
-- When exploring internal conflicts through IFS or Jungian frameworks
-- When working through difficult emotions using DBT-informed approaches
-- When needing presence-based support during periods of deep despair (Dark Night protocol)
-
-## How It Works
-
-Satori operates as a SKILL.md-based Claude skill with 211k+ characters of structured reference architecture. It provides:
-
-1. **Guided onboarding** that establishes the relationship framework
-2. **Multiple therapeutic modalities** (IFS, DBT, CFT, Schema Therapy)
-3. **Eight wisdom traditions** for philosophical depth
-4. **Specialized protocols** for specific situations
-
-## Examples
-
-- "I'd like to explore a recurring pattern in my relationships" → IFS-informed parts work
-- "I'm feeling deep existential despair" → Dark Night protocol (presence-only mode)
-- "Help me understand my shadow" → Jungian Shadow Work (5-session arc)
-
-## Best Practices
-
-- Satori is a thinking partner, not a therapy replacement
-- Allow the onboarding sequence to complete for best results
-- Engage honestly — the system responds to authentic engagement
-
-## Security & Safety Notes
-
-- No data collection or external API calls
-- All processing happens within the Claude conversation
-- Explicitly not a clinical tool — includes appropriate disclaimers
-- Safe for general use
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "cognitive-thinking-partner"
+sections[9]:
+  - "\n"
+  - "# Satori\n\n"
+  - "## Overview\n\nSatori is a clinically informed AI wisdom companion built as a Claude skill. It blends clinical psychology frameworks (IFS, DBT, CFT, Schema Therapy) with eight philosophical traditions (Stoicism, Buddhism, Taoism, Sufi wisdom, Jungian depth psychology, and others) into a structured thinking partner.\n\n"
+  - "## When to Use This Skill\n\n- When seeking a structured philosophical or psychological conversation partner\n- When exploring internal conflicts through IFS or Jungian frameworks\n- When working through difficult emotions using DBT-informed approaches\n- When needing presence-based support during periods of deep despair (Dark Night protocol)\n\n"
+  - "## How It Works\n\nSatori operates as a SKILL.md-based Claude skill with 211k+ characters of structured reference architecture. It provides:\n\n1. **Guided onboarding** that establishes the relationship framework\n2. **Multiple therapeutic modalities** (IFS, DBT, CFT, Schema Therapy)\n3. **Eight wisdom traditions** for philosophical depth\n4. **Specialized protocols** for specific situations\n\n"
+  - "## Examples\n\n- \"I'd like to explore a recurring pattern in my relationships\" → IFS-informed parts work\n- \"I'm feeling deep existential despair\" → Dark Night protocol (presence-only mode)\n- \"Help me understand my shadow\" → Jungian Shadow Work (5-session arc)\n\n"
+  - "## Best Practices\n\n- Satori is a thinking partner, not a therapy replacement\n- Allow the onboarding sequence to complete for best results\n- Engage honestly — the system responds to authentic engagement\n\n"
+  - "## Security & Safety Notes\n\n- No data collection or external API calls\n- All processing happens within the Claude conversation\n- Explicitly not a clinical tool — includes appropriate disclaimers\n- Safe for general use\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

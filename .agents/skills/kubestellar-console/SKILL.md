@@ -17,89 +17,19 @@ plugin:
     type: manual
     summary: "Requires kc-agent binary (brew tap kubestellar/tap && brew install kc-agent)"
     docs: "https://github.com/kubestellar/console#quick-start"
+prompt-source: prompt.toon
 ---
-
-# KubeStellar Console
-
-## Overview
-
-KubeStellar Console is an open-source multi-cluster Kubernetes dashboard (CNCF project) with AI-powered operations. It ships with `kc-agent`, an MCP server that bridges coding agents to kubeconfig and Kubernetes APIs, plus 10+ built-in agent skills for development, testing, and operations.
-
-## When to Use This Skill
-
-- Use when managing multiple Kubernetes clusters across edge and cloud
-- Use when you need AI-assisted Kubernetes troubleshooting and debugging
-- Use when running performance tests, cache compliance checks, or CI debugging on a Kubernetes dashboard
-- Use when integrating with CNCF projects (Argo, Kyverno, Istio, and 20+ others)
-
-## How It Works
-
-### Step 1: Install kc-agent
-
-```bash
-brew tap kubestellar/tap && brew install kc-agent
-```
-
-### Step 2: Start the MCP server
-
-```bash
-kc-agent
-```
-
-This bridges the active kubeconfig context to any MCP-compatible coding agent. Do not start it from a cluster-admin or write-capable context unless the user explicitly accepts that risk.
-
-### Step 3: Use built-in agent skills
-
-The project ships with agent skills accessible via `CLAUDE.md` and `AGENTS.md`:
-
-- **@perf-test** — Dashboard performance testing and TTFI analysis
-- **@cache-test** — Card cache compliance testing (IndexedDB warm return)
-- **@nav-test** — Navigation performance testing
-- **@ui-compliance-test** — Card loading compliance (8 criteria, 150+ cards)
-- **@ci-status** — CI pipeline monitoring and status checks
-- **@rca** — Root cause analysis for CI/test failures
-- **@tdd** — Test-driven development workflow
-- **@k8s-debug** — Kubernetes debugging and troubleshooting
-
-## Key Features
-
-- Multi-cluster management across edge and cloud
-- Real-time streaming observability
-- 20+ CNCF project integrations (Argo, Kyverno, Istio, etc.)
-- GitHub OAuth authentication
-- Supply chain security (SBOM, SLSA)
-- SQLite WASM caching with stale-while-revalidate pattern
-- 15+ themes with dark/light mode
-
-## Security & Safety Notes
-
-- **Critical risk:** `kc-agent` bridges your active kubeconfig context to MCP-compatible agents. If that context carries cluster-admin, write permissions, or secret read access, agents inherit those capabilities.
-- **Do not rely on RBAC objects alone:** creating a ServiceAccount or ClusterRoleBinding does not change the credentials `kc-agent` uses. Start `kc-agent` only after switching `KUBECONFIG`/context to dedicated least-privilege credentials and verifying them.
-- **Recommended read-only scope:** avoid `resources='*'`, because it includes sensitive objects such as Secrets. Prefer an explicit non-secret resource list and verify access before starting the MCP server:
-  ```bash
-  kubectl create serviceaccount kc-agent -n default
-  kubectl create clusterrole kc-agent-readonly \
-    --verb=get,list,watch \
-    --resource=pods,services,deployments.apps,replicasets.apps,statefulsets.apps,daemonsets.apps,namespaces,nodes,events,configmaps
-  kubectl create clusterrolebinding kc-agent-readonly \
-    --clusterrole=kc-agent-readonly \
-    --serviceaccount=default:kc-agent
-  kubectl auth can-i get secrets --as=system:serviceaccount:default:kc-agent
-  kubectl auth can-i list pods --as=system:serviceaccount:default:kc-agent
-  ```
-- The first `can-i` command must return `no`; the second should return `yes`. Then create or select a kubeconfig that actually authenticates as that ServiceAccount before running `kc-agent`.
-- Do not expose `kc-agent` on a public network without authentication.
-- Review [SECURITY-AI.md](https://github.com/kubestellar/console/blob/main/docs/security/SECURITY-AI.md) for prompt injection and agent drift mitigations.
-
-## Limitations
-
-- This skill requires an external binary (`kc-agent`) installed separately via Homebrew.
-- Do not treat agent output as a substitute for environment-specific validation or expert review.
-- Stop and ask for clarification if required permissions or safety boundaries are unclear.
-
-## Links
-
-- [GitHub](https://github.com/kubestellar/console)
-- [Website](https://console.kubestellar.io)
-- [CLAUDE.md](https://github.com/kubestellar/console/blob/main/CLAUDE.md)
-- [AGENTS.md](https://github.com/kubestellar/console/blob/main/AGENTS.md)
+skill: "kubestellar-console"
+sections[12]:
+  - "\n"
+  - "# KubeStellar Console\n\n"
+  - "## Overview\n\nKubeStellar Console is an open-source multi-cluster Kubernetes dashboard (CNCF project) with AI-powered operations. It ships with `kc-agent`, an MCP server that bridges coding agents to kubeconfig and Kubernetes APIs, plus 10+ built-in agent skills for development, testing, and operations.\n\n"
+  - "## When to Use This Skill\n\n- Use when managing multiple Kubernetes clusters across edge and cloud\n- Use when you need AI-assisted Kubernetes troubleshooting and debugging\n- Use when running performance tests, cache compliance checks, or CI debugging on a Kubernetes dashboard\n- Use when integrating with CNCF projects (Argo, Kyverno, Istio, and 20+ others)\n\n"
+  - "## How It Works\n\n"
+  - "### Step 1: Install kc-agent\n\n```bash\nbrew tap kubestellar/tap && brew install kc-agent\n```\n\n"
+  - "### Step 2: Start the MCP server\n\n```bash\nkc-agent\n```\n\nThis bridges the active kubeconfig context to any MCP-compatible coding agent. Do not start it from a cluster-admin or write-capable context unless the user explicitly accepts that risk.\n\n"
+  - "### Step 3: Use built-in agent skills\n\nThe project ships with agent skills accessible via `CLAUDE.md` and `AGENTS.md`:\n\n- **@perf-test** — Dashboard performance testing and TTFI analysis\n- **@cache-test** — Card cache compliance testing (IndexedDB warm return)\n- **@nav-test** — Navigation performance testing\n- **@ui-compliance-test** — Card loading compliance (8 criteria, 150+ cards)\n- **@ci-status** — CI pipeline monitoring and status checks\n- **@rca** — Root cause analysis for CI/test failures\n- **@tdd** — Test-driven development workflow\n- **@k8s-debug** — Kubernetes debugging and troubleshooting\n\n"
+  - "## Key Features\n\n- Multi-cluster management across edge and cloud\n- Real-time streaming observability\n- 20+ CNCF project integrations (Argo, Kyverno, Istio, etc.)\n- GitHub OAuth authentication\n- Supply chain security (SBOM, SLSA)\n- SQLite WASM caching with stale-while-revalidate pattern\n- 15+ themes with dark/light mode\n\n"
+  - "## Security & Safety Notes\n\n- **Critical risk:** `kc-agent` bridges your active kubeconfig context to MCP-compatible agents. If that context carries cluster-admin, write permissions, or secret read access, agents inherit those capabilities.\n- **Do not rely on RBAC objects alone:** creating a ServiceAccount or ClusterRoleBinding does not change the credentials `kc-agent` uses. Start `kc-agent` only after switching `KUBECONFIG`/context to dedicated least-privilege credentials and verifying them.\n- **Recommended read-only scope:** avoid `resources='*'`, because it includes sensitive objects such as Secrets. Prefer an explicit non-secret resource list and verify access before starting the MCP server:\n  ```bash\n  kubectl create serviceaccount kc-agent -n default\n  kubectl create clusterrole kc-agent-readonly \\\n    --verb=get,list,watch \\\n    --resource=pods,services,deployments.apps,replicasets.apps,statefulsets.apps,daemonsets.apps,namespaces,nodes,events,configmaps\n  kubectl create clusterrolebinding kc-agent-readonly \\\n    --clusterrole=kc-agent-readonly \\\n    --serviceaccount=default:kc-agent\n  kubectl auth can-i get secrets --as=system:serviceaccount:default:kc-agent\n  kubectl auth can-i list pods --as=system:serviceaccount:default:kc-agent\n  ```\n- The first `can-i` command must return `no`; the second should return `yes`. Then create or select a kubeconfig that actually authenticates as that ServiceAccount before running `kc-agent`.\n- Do not expose `kc-agent` on a public network without authentication.\n- Review [SECURITY-AI.md](https://github.com/kubestellar/console/blob/main/docs/security/SECURITY-AI.md) for prompt injection and agent drift mitigations.\n\n"
+  - "## Limitations\n\n- This skill requires an external binary (`kc-agent`) installed separately via Homebrew.\n- Do not treat agent output as a substitute for environment-specific validation or expert review.\n- Stop and ask for clarification if required permissions or safety boundaries are unclear.\n\n"
+  - "## Links\n\n- [GitHub](https://github.com/kubestellar/console)\n- [Website](https://console.kubestellar.io)\n- [CLAUDE.md](https://github.com/kubestellar/console/blob/main/CLAUDE.md)\n- [AGENTS.md](https://github.com/kubestellar/console/blob/main/AGENTS.md)\n"

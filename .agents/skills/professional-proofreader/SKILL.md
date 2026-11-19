@@ -5,106 +5,24 @@ description: >
 risk: safe
 source: original
 date_added: "2026-03-04"
+prompt-source: prompt.toon
 ---
-
-# Professional Proofreader
-
-## Overview
-
-This skill transforms flawed writing — whether pasted text or uploaded documents — into publication-ready prose without altering the author’s intent.
-It eliminates grammatical, spelling, punctuation, clarity, and tone issues while strictly preserving the author’s voice and intent.
-Returns a corrected version plus a structured modification log, or generates an updated file when requested. Not for code editing or technical refactoring.
-
----
-
-## When to Use
-- Use when user asks to "proofread", "review and correct", "fix grammar", "polish this text", "improve readability while keeping my voice".
-- Use when user asks to proofread a document file (like .docx, .pdf, .txt) and save the updated version as new file with 'UPDATED_' prefix.
-
----
-
-# WORKFLOW MODES
-
-This skill operates in two modes:
-1. Inline Text Mode
-2. File Processing Mode
-
-### MODE 1: Inline Text
-
-Refer [markdown](references/inline-text-mode.md) for complete inline text mode.
-
-### MODE 2: File Processing
-
-Trigger when user says:
-
-- "Proofread [filename].[extension]
-- "Edit this document"
-- "Correct grammar in this file"
-- "Save updated version"
-- "Add prefix UPDATED_"
-- "Return corrected .[extension]"
-
-Refer [markdown](references/file-processing-mode.md) for complete file processing mode.
-
----
-
-## Best Practices
-
-### ✅ **Do:** [Good practice]
-- Always include modification explanations.
-- Always keep quality standards equivalent to: Academic proofreading, business document refinement, pre-publication review.
-- Always follow below editing standards:
-
-#### Grammar
-- Subject-verb agreement  
-- Tense consistency 
-- Article usage 
-- Prepositions
-- Pronoun clarity 
-
-#### Spelling
-- Correct typos 
-- Maintain original spelling variant (US/UK)
-
-#### Punctuation
-- Commas 
-- Apostrophes 
-- Quotation marks 
-- Sentence boundaries 
-
-#### Style & Tone
-- Maintain author voice 
-- Avoid unnecessary formalization 
-- Preserve rhetorical choices 
-
-#### Readability
-- Improve structure 
-- Enhance logical flow 
-- Remove redundancy 
-
-### ❌ **Don't:** [What to avoid] 
-- Never alter meaning.
-- Never drop formatting intentionally.
-- Never change file name logic beyond request.
-- Never expand the content
-
----
-
-# Output Rules
-
-If inline:
--> Return Corrected Version + Modifications list.
-
-If file rewrite:
--> Save updated file.
--> Confirm filename.
--> Provide modifications list unless suppressed.
-
-Give friendly message to user in the end.
-
----
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "professional-proofreader"
+sections[17]:
+  - "\n"
+  - "# Professional Proofreader\n\n"
+  - "## Overview\n\nThis skill transforms flawed writing — whether pasted text or uploaded documents — into publication-ready prose without altering the author’s intent.\nIt eliminates grammatical, spelling, punctuation, clarity, and tone issues while strictly preserving the author’s voice and intent.\nReturns a corrected version plus a structured modification log, or generates an updated file when requested. Not for code editing or technical refactoring.\n\n---\n\n"
+  - "## When to Use\n- Use when user asks to \"proofread\", \"review and correct\", \"fix grammar\", \"polish this text\", \"improve readability while keeping my voice\".\n- Use when user asks to proofread a document file (like .docx, .pdf, .txt) and save the updated version as new file with 'UPDATED_' prefix.\n\n---\n\n"
+  - "# WORKFLOW MODES\n\nThis skill operates in two modes:\n1. Inline Text Mode\n2. File Processing Mode\n\n"
+  - "### MODE 1: Inline Text\n\nRefer [markdown](references/inline-text-mode.md) for complete inline text mode.\n\n"
+  - "### MODE 2: File Processing\n\nTrigger when user says:\n\n- \"Proofread [filename].[extension]\n- \"Edit this document\"\n- \"Correct grammar in this file\"\n- \"Save updated version\"\n- \"Add prefix UPDATED_\"\n- \"Return corrected .[extension]\"\n\nRefer [markdown](references/file-processing-mode.md) for complete file processing mode.\n\n---\n\n"
+  - "## Best Practices\n\n"
+  - "### ✅ **Do:** [Good practice]\n- Always include modification explanations.\n- Always keep quality standards equivalent to: Academic proofreading, business document refinement, pre-publication review.\n- Always follow below editing standards:\n\n"
+  - "#### Grammar\n- Subject-verb agreement  \n- Tense consistency \n- Article usage \n- Prepositions\n- Pronoun clarity \n\n"
+  - "#### Spelling\n- Correct typos \n- Maintain original spelling variant (US/UK)\n\n"
+  - "#### Punctuation\n- Commas \n- Apostrophes \n- Quotation marks \n- Sentence boundaries \n\n"
+  - "#### Style & Tone\n- Maintain author voice \n- Avoid unnecessary formalization \n- Preserve rhetorical choices \n\n"
+  - "#### Readability\n- Improve structure \n- Enhance logical flow \n- Remove redundancy \n\n"
+  - "### ❌ **Don't:** [What to avoid] \n- Never alter meaning.\n- Never drop formatting intentionally.\n- Never change file name logic beyond request.\n- Never expand the content\n\n---\n\n"
+  - "# Output Rules\n\nIf inline:\n-> Return Corrected Version + Modifications list.\n\nIf file rewrite:\n-> Save updated file.\n-> Confirm filename.\n-> Provide modifications list unless suppressed.\n\nGive friendly message to user in the end.\n\n---\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

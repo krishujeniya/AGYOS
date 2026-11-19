@@ -5,91 +5,16 @@ risk: unknown
 source: community
 version: 1.0.0
 tags: [fp-ts, either, error-handling, validation, quick-reference]
+prompt-source: prompt.toon
 ---
-
-# Either Quick Reference
-
-Either = success or failure. `Right(value)` or `Left(error)`.
-
-## When to Use
-- You need a quick fp-ts reference for typed synchronous error handling.
-- The task involves validation, fallible operations, or converting throwing code to `Either`.
-- You want a compact cheat sheet rather than a long tutorial.
-
-## Create
-
-```typescript
-import * as E from 'fp-ts/Either'
-
-E.right(value)           // Success
-E.left(error)            // Failure
-E.fromNullable(err)(x)   // null → Left(err), else Right(x)
-E.tryCatch(fn, toError)  // try/catch → Either
-```
-
-## Transform
-
-```typescript
-E.map(fn)                // Transform Right value
-E.mapLeft(fn)            // Transform Left error
-E.flatMap(fn)            // Chain (fn returns Either)
-E.filterOrElse(pred, toErr) // Right → Left if pred fails
-```
-
-## Extract
-
-```typescript
-E.getOrElse(err => default)  // Get Right or default
-E.match(onLeft, onRight)     // Pattern match
-E.toUnion(either)            // E | A (loses type info)
-```
-
-## Common Patterns
-
-```typescript
-import { pipe } from 'fp-ts/function'
-import * as E from 'fp-ts/Either'
-
-// Validation
-const validateEmail = (s: string): E.Either<string, string> =>
-  s.includes('@') ? E.right(s) : E.left('Invalid email')
-
-// Chain validations (stops at first error)
-pipe(
-  E.right({ email: 'test@example.com', age: 25 }),
-  E.flatMap(d => pipe(validateEmail(d.email), E.map(() => d))),
-  E.flatMap(d => d.age >= 18 ? E.right(d) : E.left('Must be 18+'))
-)
-
-// Convert throwing code
-const parseJson = (s: string) => E.tryCatch(
-  () => JSON.parse(s),
-  (e) => `Parse error: ${e}`
-)
-```
-
-## vs try/catch
-
-```typescript
-// ❌ try/catch - errors not in types
-try {
-  const data = JSON.parse(input)
-  process(data)
-} catch (e) {
-  handleError(e)
-}
-
-// ✅ Either - errors explicit in types
-pipe(
-  E.tryCatch(() => JSON.parse(input), String),
-  E.map(process),
-  E.match(handleError, identity)
-)
-```
-
-Use Either when **error type matters** and you want to chain operations.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "fp-either-ref"
+sections[9]:
+  - "\n"
+  - "# Either Quick Reference\n\nEither = success or failure. `Right(value)` or `Left(error)`.\n\n"
+  - "## When to Use\n- You need a quick fp-ts reference for typed synchronous error handling.\n- The task involves validation, fallible operations, or converting throwing code to `Either`.\n- You want a compact cheat sheet rather than a long tutorial.\n\n"
+  - "## Create\n\n```typescript\nimport * as E from 'fp-ts/Either'\n\nE.right(value)           // Success\nE.left(error)            // Failure\nE.fromNullable(err)(x)   // null → Left(err), else Right(x)\nE.tryCatch(fn, toError)  // try/catch → Either\n```\n\n"
+  - "## Transform\n\n```typescript\nE.map(fn)                // Transform Right value\nE.mapLeft(fn)            // Transform Left error\nE.flatMap(fn)            // Chain (fn returns Either)\nE.filterOrElse(pred, toErr) // Right → Left if pred fails\n```\n\n"
+  - "## Extract\n\n```typescript\nE.getOrElse(err => default)  // Get Right or default\nE.match(onLeft, onRight)     // Pattern match\nE.toUnion(either)            // E | A (loses type info)\n```\n\n"
+  - "## Common Patterns\n\n```typescript\nimport { pipe } from 'fp-ts/function'\nimport * as E from 'fp-ts/Either'\n\n// Validation\nconst validateEmail = (s: string): E.Either<string, string> =>\n  s.includes('@') ? E.right(s) : E.left('Invalid email')\n\n// Chain validations (stops at first error)\npipe(\n  E.right({ email: 'test@example.com', age: 25 }),\n  E.flatMap(d => pipe(validateEmail(d.email), E.map(() => d))),\n  E.flatMap(d => d.age >= 18 ? E.right(d) : E.left('Must be 18+'))\n)\n\n// Convert throwing code\nconst parseJson = (s: string) => E.tryCatch(\n  () => JSON.parse(s),\n  (e) => `Parse error: ${e}`\n)\n```\n\n"
+  - "## vs try/catch\n\n```typescript\n// ❌ try/catch - errors not in types\ntry {\n  const data = JSON.parse(input)\n  process(data)\n} catch (e) {\n  handleError(e)\n}\n\n// ✅ Either - errors explicit in types\npipe(\n  E.tryCatch(() => JSON.parse(input), String),\n  E.map(process),\n  E.match(handleError, identity)\n)\n```\n\nUse Either when **error type matters** and you want to chain operations.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

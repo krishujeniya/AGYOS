@@ -4,118 +4,22 @@ description: Build a new API connector or provider by matching the target repo's
 metadata:
   version: "1.0.0"
   origin: ECC direct-port adaptation
+prompt-source: prompt.toon
 ---
-
-# API Connector Builder
-
-Use this when the job is to add a repo-native integration surface, not just a generic HTTP client.
-
-The point is to match the host repository's pattern:
-
-- connector layout
-- config schema
-- auth model
-- error handling
-- test style
-- registration/discovery wiring
-
-## When to Use
-
-- "Build a Jira connector for this project"
-- "Add a Slack provider following the existing pattern"
-- "Create a new integration for this API"
-- "Build a plugin that matches the repo's connector style"
-
-## Guardrails
-
-- do not invent a new integration architecture when the repo already has one
-- do not start from vendor docs alone; start from existing in-repo connectors first
-- do not stop at transport code if the repo expects registry wiring, tests, and docs
-- do not cargo-cult old connectors if the repo has a newer current pattern
-
-## Workflow
-
-### 1. Learn the house style
-
-Inspect at least 2 existing connectors/providers and map:
-
-- file layout
-- abstraction boundaries
-- config model
-- retry / pagination conventions
-- registry hooks
-- test fixtures and naming
-
-### 2. Narrow the target integration
-
-Define only the surface the repo actually needs:
-
-- auth flow
-- key entities
-- core read/write operations
-- pagination and rate limits
-- webhook or polling model
-
-### 3. Build in repo-native layers
-
-Typical slices:
-
-- config/schema
-- client/transport
-- mapping layer
-- connector/provider entrypoint
-- registration
-- tests
-
-### 4. Validate against the source pattern
-
-The new connector should look obvious in the codebase, not imported from a different ecosystem.
-
-## Reference Shapes
-
-### Provider-style
-
-```text
-providers/
-  existing_provider/
-    __init__.py
-    provider.py
-    config.py
-```
-
-### Connector-style
-
-```text
-integrations/
-  existing/
-    client.py
-    models.py
-    connector.py
-```
-
-### TypeScript plugin-style
-
-```text
-src/integrations/
-  existing/
-    index.ts
-    client.ts
-    types.ts
-    test.ts
-```
-
-## Quality Checklist
-
-- [ ] matches an existing in-repo integration pattern
-- [ ] config validation exists
-- [ ] auth and error handling are explicit
-- [ ] pagination/retry behavior follows repo norms
-- [ ] registry/discovery wiring is complete
-- [ ] tests mirror the host repo's style
-- [ ] docs/examples are updated if expected by the repo
-
-## Related Skills
-
-- `backend-patterns`
-- `mcp-server-patterns`
-- `github-ops`
+skill: "api-connector-builder"
+sections[15]:
+  - "\n"
+  - "# API Connector Builder\n\nUse this when the job is to add a repo-native integration surface, not just a generic HTTP client.\n\nThe point is to match the host repository's pattern:\n\n- connector layout\n- config schema\n- auth model\n- error handling\n- test style\n- registration/discovery wiring\n\n"
+  - "## When to Use\n\n- \"Build a Jira connector for this project\"\n- \"Add a Slack provider following the existing pattern\"\n- \"Create a new integration for this API\"\n- \"Build a plugin that matches the repo's connector style\"\n\n"
+  - "## Guardrails\n\n- do not invent a new integration architecture when the repo already has one\n- do not start from vendor docs alone; start from existing in-repo connectors first\n- do not stop at transport code if the repo expects registry wiring, tests, and docs\n- do not cargo-cult old connectors if the repo has a newer current pattern\n\n"
+  - "## Workflow\n\n"
+  - "### 1. Learn the house style\n\nInspect at least 2 existing connectors/providers and map:\n\n- file layout\n- abstraction boundaries\n- config model\n- retry / pagination conventions\n- registry hooks\n- test fixtures and naming\n\n"
+  - "### 2. Narrow the target integration\n\nDefine only the surface the repo actually needs:\n\n- auth flow\n- key entities\n- core read/write operations\n- pagination and rate limits\n- webhook or polling model\n\n"
+  - "### 3. Build in repo-native layers\n\nTypical slices:\n\n- config/schema\n- client/transport\n- mapping layer\n- connector/provider entrypoint\n- registration\n- tests\n\n"
+  - "### 4. Validate against the source pattern\n\nThe new connector should look obvious in the codebase, not imported from a different ecosystem.\n\n"
+  - "## Reference Shapes\n\n"
+  - "### Provider-style\n\n```text\nproviders/\n  existing_provider/\n    __init__.py\n    provider.py\n    config.py\n```\n\n"
+  - "### Connector-style\n\n```text\nintegrations/\n  existing/\n    client.py\n    models.py\n    connector.py\n```\n\n"
+  - "### TypeScript plugin-style\n\n```text\nsrc/integrations/\n  existing/\n    index.ts\n    client.ts\n    types.ts\n    test.ts\n```\n\n"
+  - "## Quality Checklist\n\n- [ ] matches an existing in-repo integration pattern\n- [ ] config validation exists\n- [ ] auth and error handling are explicit\n- [ ] pagination/retry behavior follows repo norms\n- [ ] registry/discovery wiring is complete\n- [ ] tests mirror the host repo's style\n- [ ] docs/examples are updated if expected by the repo\n\n"
+  - "## Related Skills\n\n- `backend-patterns`\n- `mcp-server-patterns`\n- `github-ops`\n"

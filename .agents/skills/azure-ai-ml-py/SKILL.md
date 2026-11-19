@@ -4,276 +4,38 @@ description: Azure Machine Learning SDK v2 for Python. Use for ML workspaces, jo
 risk: unknown
 source: community
 date_added: '2026-02-27'
+prompt-source: prompt.toon
 ---
-
-# Azure Machine Learning SDK v2 for Python
-
-Client library for managing Azure ML resources: workspaces, jobs, models, data, and compute.
-
-## Installation
-
-```bash
-pip install azure-ai-ml
-```
-
-## Environment Variables
-
-```bash
-AZURE_SUBSCRIPTION_ID=<your-subscription-id>
-AZURE_RESOURCE_GROUP=<your-resource-group>
-AZURE_ML_WORKSPACE_NAME=<your-workspace-name>
-```
-
-## Authentication
-
-```python
-from azure.ai.ml import MLClient
-from azure.identity import DefaultAzureCredential
-
-ml_client = MLClient(
-    credential=DefaultAzureCredential(),
-    subscription_id=os.environ["AZURE_SUBSCRIPTION_ID"],
-    resource_group_name=os.environ["AZURE_RESOURCE_GROUP"],
-    workspace_name=os.environ["AZURE_ML_WORKSPACE_NAME"]
-)
-```
-
-### From Config File
-
-```python
-from azure.ai.ml import MLClient
-from azure.identity import DefaultAzureCredential
-
-# Uses config.json in current directory or parent
-ml_client = MLClient.from_config(
-    credential=DefaultAzureCredential()
-)
-```
-
-## Workspace Management
-
-### Create Workspace
-
-```python
-from azure.ai.ml.entities import Workspace
-
-ws = Workspace(
-    name="my-workspace",
-    location="eastus",
-    display_name="My Workspace",
-    description="ML workspace for experiments",
-    tags={"purpose": "demo"}
-)
-
-ml_client.workspaces.begin_create(ws).result()
-```
-
-### List Workspaces
-
-```python
-for ws in ml_client.workspaces.list():
-    print(f"{ws.name}: {ws.location}")
-```
-
-## Data Assets
-
-### Register Data
-
-```python
-from azure.ai.ml.entities import Data
-from azure.ai.ml.constants import AssetTypes
-
-# Register a file
-my_data = Data(
-    name="my-dataset",
-    version="1",
-    path="azureml://datastores/workspaceblobstore/paths/data/train.csv",
-    type=AssetTypes.URI_FILE,
-    description="Training data"
-)
-
-ml_client.data.create_or_update(my_data)
-```
-
-### Register Folder
-
-```python
-my_data = Data(
-    name="my-folder-dataset",
-    version="1",
-    path="azureml://datastores/workspaceblobstore/paths/data/",
-    type=AssetTypes.URI_FOLDER
-)
-
-ml_client.data.create_or_update(my_data)
-```
-
-## Model Registry
-
-### Register Model
-
-```python
-from azure.ai.ml.entities import Model
-from azure.ai.ml.constants import AssetTypes
-
-model = Model(
-    name="my-model",
-    version="1",
-    path="./model/",
-    type=AssetTypes.CUSTOM_MODEL,
-    description="My trained model"
-)
-
-ml_client.models.create_or_update(model)
-```
-
-### List Models
-
-```python
-for model in ml_client.models.list(name="my-model"):
-    print(f"{model.name} v{model.version}")
-```
-
-## Compute
-
-### Create Compute Cluster
-
-```python
-from azure.ai.ml.entities import AmlCompute
-
-cluster = AmlCompute(
-    name="cpu-cluster",
-    type="amlcompute",
-    size="Standard_DS3_v2",
-    min_instances=0,
-    max_instances=4,
-    idle_time_before_scale_down=120
-)
-
-ml_client.compute.begin_create_or_update(cluster).result()
-```
-
-### List Compute
-
-```python
-for compute in ml_client.compute.list():
-    print(f"{compute.name}: {compute.type}")
-```
-
-## Jobs
-
-### Command Job
-
-```python
-from azure.ai.ml import command, Input
-
-job = command(
-    code="./src",
-    command="python train.py --data ${{inputs.data}} --lr ${{inputs.learning_rate}}",
-    inputs={
-        "data": Input(type="uri_folder", path="azureml:my-dataset:1"),
-        "learning_rate": 0.01
-    },
-    environment="AzureML-sklearn-1.0-ubuntu20.04-py38-cpu@latest",
-    compute="cpu-cluster",
-    display_name="training-job"
-)
-
-returned_job = ml_client.jobs.create_or_update(job)
-print(f"Job URL: {returned_job.studio_url}")
-```
-
-### Monitor Job
-
-```python
-ml_client.jobs.stream(returned_job.name)
-```
-
-## Pipelines
-
-```python
-from azure.ai.ml import dsl, Input, Output
-from azure.ai.ml.entities import Pipeline
-
-@dsl.pipeline(
-    compute="cpu-cluster",
-    description="Training pipeline"
-)
-def training_pipeline(data_input):
-    prep_step = prep_component(data=data_input)
-    train_step = train_component(
-        data=prep_step.outputs.output_data,
-        learning_rate=0.01
-    )
-    return {"model": train_step.outputs.model}
-
-pipeline = training_pipeline(
-    data_input=Input(type="uri_folder", path="azureml:my-dataset:1")
-)
-
-pipeline_job = ml_client.jobs.create_or_update(pipeline)
-```
-
-## Environments
-
-### Create Custom Environment
-
-```python
-from azure.ai.ml.entities import Environment
-
-env = Environment(
-    name="my-env",
-    version="1",
-    image="mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04",
-    conda_file="./environment.yml"
-)
-
-ml_client.environments.create_or_update(env)
-```
-
-## Datastores
-
-### List Datastores
-
-```python
-for ds in ml_client.datastores.list():
-    print(f"{ds.name}: {ds.type}")
-```
-
-### Get Default Datastore
-
-```python
-default_ds = ml_client.datastores.get_default()
-print(f"Default: {default_ds.name}")
-```
-
-## MLClient Operations
-
-| Property | Operations |
-|----------|------------|
-| `workspaces` | create, get, list, delete |
-| `jobs` | create_or_update, get, list, stream, cancel |
-| `models` | create_or_update, get, list, archive |
-| `data` | create_or_update, get, list |
-| `compute` | begin_create_or_update, get, list, delete |
-| `environments` | create_or_update, get, list |
-| `datastores` | create_or_update, get, list, get_default |
-| `components` | create_or_update, get, list |
-
-## Best Practices
-
-1. **Use versioning** for data, models, and environments
-2. **Configure idle scale-down** to reduce compute costs
-3. **Use environments** for reproducible training
-4. **Stream job logs** to monitor progress
-5. **Register models** after successful training jobs
-6. **Use pipelines** for multi-step workflows
-7. **Tag resources** for organization and cost tracking
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "azure-ai-ml-py"
+sections[31]:
+  - "\n"
+  - "# Azure Machine Learning SDK v2 for Python\n\nClient library for managing Azure ML resources: workspaces, jobs, models, data, and compute.\n\n"
+  - "## Installation\n\n```bash\npip install azure-ai-ml\n```\n\n"
+  - "## Environment Variables\n\n```bash\nAZURE_SUBSCRIPTION_ID=<your-subscription-id>\nAZURE_RESOURCE_GROUP=<your-resource-group>\nAZURE_ML_WORKSPACE_NAME=<your-workspace-name>\n```\n\n"
+  - "## Authentication\n\n```python\nfrom azure.ai.ml import MLClient\nfrom azure.identity import DefaultAzureCredential\n\nml_client = MLClient(\n    credential=DefaultAzureCredential(),\n    subscription_id=os.environ[\"AZURE_SUBSCRIPTION_ID\"],\n    resource_group_name=os.environ[\"AZURE_RESOURCE_GROUP\"],\n    workspace_name=os.environ[\"AZURE_ML_WORKSPACE_NAME\"]\n)\n```\n\n"
+  - "### From Config File\n\n```python\nfrom azure.ai.ml import MLClient\nfrom azure.identity import DefaultAzureCredential\n\n# Uses config.json in current directory or parent\nml_client = MLClient.from_config(\n    credential=DefaultAzureCredential()\n)\n```\n\n"
+  - "## Workspace Management\n\n"
+  - "### Create Workspace\n\n```python\nfrom azure.ai.ml.entities import Workspace\n\nws = Workspace(\n    name=\"my-workspace\",\n    location=\"eastus\",\n    display_name=\"My Workspace\",\n    description=\"ML workspace for experiments\",\n    tags={\"purpose\": \"demo\"}\n)\n\nml_client.workspaces.begin_create(ws).result()\n```\n\n"
+  - "### List Workspaces\n\n```python\nfor ws in ml_client.workspaces.list():\n    print(f\"{ws.name}: {ws.location}\")\n```\n\n"
+  - "## Data Assets\n\n"
+  - "### Register Data\n\n```python\nfrom azure.ai.ml.entities import Data\nfrom azure.ai.ml.constants import AssetTypes\n\n# Register a file\nmy_data = Data(\n    name=\"my-dataset\",\n    version=\"1\",\n    path=\"azureml://datastores/workspaceblobstore/paths/data/train.csv\",\n    type=AssetTypes.URI_FILE,\n    description=\"Training data\"\n)\n\nml_client.data.create_or_update(my_data)\n```\n\n"
+  - "### Register Folder\n\n```python\nmy_data = Data(\n    name=\"my-folder-dataset\",\n    version=\"1\",\n    path=\"azureml://datastores/workspaceblobstore/paths/data/\",\n    type=AssetTypes.URI_FOLDER\n)\n\nml_client.data.create_or_update(my_data)\n```\n\n"
+  - "## Model Registry\n\n"
+  - "### Register Model\n\n```python\nfrom azure.ai.ml.entities import Model\nfrom azure.ai.ml.constants import AssetTypes\n\nmodel = Model(\n    name=\"my-model\",\n    version=\"1\",\n    path=\"./model/\",\n    type=AssetTypes.CUSTOM_MODEL,\n    description=\"My trained model\"\n)\n\nml_client.models.create_or_update(model)\n```\n\n"
+  - "### List Models\n\n```python\nfor model in ml_client.models.list(name=\"my-model\"):\n    print(f\"{model.name} v{model.version}\")\n```\n\n"
+  - "## Compute\n\n"
+  - "### Create Compute Cluster\n\n```python\nfrom azure.ai.ml.entities import AmlCompute\n\ncluster = AmlCompute(\n    name=\"cpu-cluster\",\n    type=\"amlcompute\",\n    size=\"Standard_DS3_v2\",\n    min_instances=0,\n    max_instances=4,\n    idle_time_before_scale_down=120\n)\n\nml_client.compute.begin_create_or_update(cluster).result()\n```\n\n"
+  - "### List Compute\n\n```python\nfor compute in ml_client.compute.list():\n    print(f\"{compute.name}: {compute.type}\")\n```\n\n"
+  - "## Jobs\n\n"
+  - "### Command Job\n\n```python\nfrom azure.ai.ml import command, Input\n\njob = command(\n    code=\"./src\",\n    command=\"python train.py --data ${{inputs.data}} --lr ${{inputs.learning_rate}}\",\n    inputs={\n        \"data\": Input(type=\"uri_folder\", path=\"azureml:my-dataset:1\"),\n        \"learning_rate\": 0.01\n    },\n    environment=\"AzureML-sklearn-1.0-ubuntu20.04-py38-cpu@latest\",\n    compute=\"cpu-cluster\",\n    display_name=\"training-job\"\n)\n\nreturned_job = ml_client.jobs.create_or_update(job)\nprint(f\"Job URL: {returned_job.studio_url}\")\n```\n\n"
+  - "### Monitor Job\n\n```python\nml_client.jobs.stream(returned_job.name)\n```\n\n"
+  - "## Pipelines\n\n```python\nfrom azure.ai.ml import dsl, Input, Output\nfrom azure.ai.ml.entities import Pipeline\n\n@dsl.pipeline(\n    compute=\"cpu-cluster\",\n    description=\"Training pipeline\"\n)\ndef training_pipeline(data_input):\n    prep_step = prep_component(data=data_input)\n    train_step = train_component(\n        data=prep_step.outputs.output_data,\n        learning_rate=0.01\n    )\n    return {\"model\": train_step.outputs.model}\n\npipeline = training_pipeline(\n    data_input=Input(type=\"uri_folder\", path=\"azureml:my-dataset:1\")\n)\n\npipeline_job = ml_client.jobs.create_or_update(pipeline)\n```\n\n"
+  - "## Environments\n\n"
+  - "### Create Custom Environment\n\n```python\nfrom azure.ai.ml.entities import Environment\n\nenv = Environment(\n    name=\"my-env\",\n    version=\"1\",\n    image=\"mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04\",\n    conda_file=\"./environment.yml\"\n)\n\nml_client.environments.create_or_update(env)\n```\n\n"
+  - "## Datastores\n\n"
+  - "### List Datastores\n\n```python\nfor ds in ml_client.datastores.list():\n    print(f\"{ds.name}: {ds.type}\")\n```\n\n"
+  - "### Get Default Datastore\n\n```python\ndefault_ds = ml_client.datastores.get_default()\nprint(f\"Default: {default_ds.name}\")\n```\n\n"
+  - "## MLClient Operations\n\n| Property | Operations |\n|----------|------------|\n| `workspaces` | create, get, list, delete |\n| `jobs` | create_or_update, get, list, stream, cancel |\n| `models` | create_or_update, get, list, archive |\n| `data` | create_or_update, get, list |\n| `compute` | begin_create_or_update, get, list, delete |\n| `environments` | create_or_update, get, list |\n| `datastores` | create_or_update, get, list, get_default |\n| `components` | create_or_update, get, list |\n\n"
+  - "## Best Practices\n\n1. **Use versioning** for data, models, and environments\n2. **Configure idle scale-down** to reduce compute costs\n3. **Use environments** for reproducible training\n4. **Stream job logs** to monitor progress\n5. **Register models** after successful training jobs\n6. **Use pipelines** for multi-step workflows\n7. **Tag resources** for organization and cost tracking\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

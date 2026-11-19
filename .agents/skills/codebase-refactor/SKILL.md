@@ -4,56 +4,18 @@ description: "Plan behavior-preserving refactors across a codebase to reduce dup
 risk: safe
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Refactor and Clean Code
-
-Plan behavior-preserving refactors across a codebase to reduce duplication, complexity, or code smells. Use for structural cleanup before feature work.
-
-## Use this skill when
-
-- Cleaning up large codebases with accumulated debt
-- Removing duplication and simplifying modules
-- Preparing a codebase for new feature work
-- Aligning implementation with clean code standards
-
-## Do not use this skill when
-
-- You only need a tiny targeted fix
-- Refactoring is blocked by policy or deadlines
-- The request is documentation-only
-
-## Context
-The user needs help refactoring code to make it cleaner, more maintainable, and aligned with best practices. Focus on practical improvements that enhance code quality without over-engineering.
-
-## Requirements
-$ARGUMENTS
-
-## Instructions
-
-- Identify high-impact refactor candidates and risks.
-- Break work into small, testable steps.
-- Apply changes with a focus on readability and stability.
-- Validate with tests and targeted regression checks.
-- If detailed patterns are required, open `resources/implementation-playbook.md`.
-
-## Safety
-
-- Avoid large rewrites without agreement on scope.
-- Keep changes reviewable and reversible.
-
-## Output Format
-
-- Cleanup plan with prioritized steps
-- Key refactor targets and rationale
-- Expected impact and risk notes
-- Test/verification plan
-
-## Resources
-
-- `resources/implementation-playbook.md` for detailed patterns and examples.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "codebase-refactor"
+sections[11]:
+  - "\n"
+  - "# Refactor and Clean Code\n\nPlan behavior-preserving refactors across a codebase to reduce duplication, complexity, or code smells. Use for structural cleanup before feature work.\n\n"
+  - "## Use this skill when\n\n- Cleaning up large codebases with accumulated debt\n- Removing duplication and simplifying modules\n- Preparing a codebase for new feature work\n- Aligning implementation with clean code standards\n\n"
+  - "## Do not use this skill when\n\n- You only need a tiny targeted fix\n- Refactoring is blocked by policy or deadlines\n- The request is documentation-only\n\n"
+  - "## Context\nThe user needs help refactoring code to make it cleaner, more maintainable, and aligned with best practices. Focus on practical improvements that enhance code quality without over-engineering.\n\n"
+  - "## Requirements\n$ARGUMENTS\n\n"
+  - "## Instructions\n\n- Identify high-impact refactor candidates and risks.\n- Break work into small, testable steps.\n- Apply changes with a focus on readability and stability.\n- Validate with tests and targeted regression checks.\n- If detailed patterns are required, open `resources/implementation-playbook.md`.\n\n"
+  - "## Safety\n\n- Avoid large rewrites without agreement on scope.\n- Keep changes reviewable and reversible.\n\n"
+  - "## Output Format\n\n- Cleanup plan with prioritized steps\n- Key refactor targets and rationale\n- Expected impact and risk notes\n- Test/verification plan\n\n"
+  - "## Resources\n\n- `resources/implementation-playbook.md` for detailed patterns and examples.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

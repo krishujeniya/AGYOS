@@ -5,236 +5,47 @@ category: workflow-bundle
 risk: safe
 source: personal
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Cloud/DevOps Workflow Bundle
-
-## Overview
-
-Comprehensive cloud and DevOps workflow for infrastructure provisioning, container orchestration, CI/CD pipelines, monitoring, and cloud-native application development.
-
-## When to Use This Workflow
-
-Use this workflow when:
-- Setting up cloud infrastructure
-- Implementing CI/CD pipelines
-- Deploying Kubernetes applications
-- Configuring monitoring and observability
-- Managing cloud costs
-- Implementing DevOps practices
-
-## Workflow Phases
-
-### Phase 1: Cloud Infrastructure Setup
-
-#### Skills to Invoke
-- `cloud-architect` - Cloud architecture
-- `aws-skills` - AWS development
-- `azure-functions` - Azure development
-- `gcp-cloud-run` - GCP development
-- `terraform-skill` - Terraform IaC
-- `terraform-specialist` - Advanced Terraform
-
-#### Actions
-1. Design cloud architecture
-2. Set up accounts and billing
-3. Configure networking
-4. Provision resources
-5. Set up IAM
-
-#### Copy-Paste Prompts
-```
-Use @cloud-architect to design multi-cloud architecture
-```
-
-```
-Use @terraform-skill to provision AWS infrastructure
-```
-
-### Phase 2: Container Orchestration
-
-#### Skills to Invoke
-- `kubernetes-architect` - Kubernetes architecture
-- `docker-expert` - Docker containerization
-- `helm-chart-scaffolding` - Helm charts
-- `k8s-manifest-generator` - K8s manifests
-- `k8s-security-policies` - K8s security
-
-#### Actions
-1. Design container architecture
-2. Create Dockerfiles
-3. Build container images
-4. Write K8s manifests
-5. Deploy to cluster
-6. Configure networking
-
-#### Copy-Paste Prompts
-```
-Use @kubernetes-architect to design K8s architecture
-```
-
-```
-Use @docker-expert to containerize application
-```
-
-```
-Use @helm-chart-scaffolding to create Helm chart
-```
-
-### Phase 3: CI/CD Implementation
-
-#### Skills to Invoke
-- `deployment-engineer` - Deployment engineering
-- `cicd-automation-workflow-automate` - CI/CD automation
-- `github-actions-templates` - GitHub Actions
-- `gitlab-ci-patterns` - GitLab CI
-- `deployment-pipeline-design` - Pipeline design
-
-#### Actions
-1. Design deployment pipeline
-2. Configure build automation
-3. Set up test automation
-4. Configure deployment stages
-5. Implement rollback strategies
-6. Set up notifications
-
-#### Copy-Paste Prompts
-```
-Use @cicd-automation-workflow-automate to set up CI/CD pipeline
-```
-
-```
-Use @github-actions-templates to create GitHub Actions workflow
-```
-
-### Phase 4: Monitoring and Observability
-
-#### Skills to Invoke
-- `observability-engineer` - Observability engineering
-- `grafana-dashboards` - Grafana dashboards
-- `prometheus-configuration` - Prometheus setup
-- `datadog-automation` - Datadog integration
-- `sentry-automation` - Sentry error tracking
-
-#### Actions
-1. Design monitoring strategy
-2. Set up metrics collection
-3. Configure log aggregation
-4. Implement distributed tracing
-5. Create dashboards
-6. Set up alerts
-
-#### Copy-Paste Prompts
-```
-Use @observability-engineer to set up observability stack
-```
-
-```
-Use @grafana-dashboards to create monitoring dashboards
-```
-
-### Phase 5: Cloud Security
-
-#### Skills to Invoke
-- `cloud-penetration-testing` - Cloud pentesting
-- `aws-penetration-testing` - AWS security
-- `k8s-security-policies` - K8s security
-- `secrets-management` - Secrets management
-- `mtls-configuration` - mTLS setup
-
-#### Actions
-1. Assess cloud security
-2. Configure security groups
-3. Set up secrets management
-4. Implement network policies
-5. Configure encryption
-6. Set up audit logging
-
-#### Copy-Paste Prompts
-```
-Use @cloud-penetration-testing to assess cloud security
-```
-
-```
-Use @secrets-management to configure secrets
-```
-
-### Phase 6: Cost Optimization
-
-#### Skills to Invoke
-- `cost-optimization` - Cloud cost optimization
-- `database-cloud-optimization-cost-optimize` - Database cost optimization
-
-#### Actions
-1. Analyze cloud spending
-2. Identify optimization opportunities
-3. Right-size resources
-4. Implement auto-scaling
-5. Use reserved instances
-6. Set up cost alerts
-
-#### Copy-Paste Prompts
-```
-Use @cost-optimization to reduce cloud costs
-```
-
-### Phase 7: Disaster Recovery
-
-#### Skills to Invoke
-- `incident-responder` - Incident response
-- `incident-runbook-templates` - Runbook creation
-- `postmortem-writing` - Postmortem documentation
-
-#### Actions
-1. Design DR strategy
-2. Set up backups
-3. Create runbooks
-4. Test failover
-5. Document procedures
-6. Train team
-
-#### Copy-Paste Prompts
-```
-Use @incident-runbook-templates to create runbooks
-```
-
-## Cloud Provider Workflows
-
-### AWS
-```
-Skills: aws-skills, aws-serverless, aws-penetration-testing
-Services: EC2, Lambda, S3, RDS, ECS, EKS
-```
-
-### Azure
-```
-Skills: azure-functions, azure-ai-projects-py, azure-monitor-opentelemetry-py
-Services: Functions, App Service, AKS, Cosmos DB
-```
-
-### GCP
-```
-Skills: gcp-cloud-run
-Services: Cloud Run, GKE, Cloud Functions, BigQuery
-```
-
-## Quality Gates
-
-- [ ] Infrastructure provisioned
-- [ ] CI/CD pipeline working
-- [ ] Monitoring configured
-- [ ] Security measures in place
-- [ ] Cost optimization applied
-- [ ] DR procedures documented
-
-## Related Workflow Bundles
-
-- `development` - Application development
-- `security-audit` - Security testing
-- `database` - Database operations
-- `testing-qa` - Testing workflows
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "cloud-devops"
+sections[40]:
+  - "\n"
+  - "# Cloud/DevOps Workflow Bundle\n\n"
+  - "## Overview\n\nComprehensive cloud and DevOps workflow for infrastructure provisioning, container orchestration, CI/CD pipelines, monitoring, and cloud-native application development.\n\n"
+  - "## When to Use This Workflow\n\nUse this workflow when:\n- Setting up cloud infrastructure\n- Implementing CI/CD pipelines\n- Deploying Kubernetes applications\n- Configuring monitoring and observability\n- Managing cloud costs\n- Implementing DevOps practices\n\n"
+  - "## Workflow Phases\n\n"
+  - "### Phase 1: Cloud Infrastructure Setup\n\n"
+  - "#### Skills to Invoke\n- `cloud-architect` - Cloud architecture\n- `aws-skills` - AWS development\n- `azure-functions` - Azure development\n- `gcp-cloud-run` - GCP development\n- `terraform-skill` - Terraform IaC\n- `terraform-specialist` - Advanced Terraform\n\n"
+  - "#### Actions\n1. Design cloud architecture\n2. Set up accounts and billing\n3. Configure networking\n4. Provision resources\n5. Set up IAM\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @cloud-architect to design multi-cloud architecture\n```\n\n```\nUse @terraform-skill to provision AWS infrastructure\n```\n\n"
+  - "### Phase 2: Container Orchestration\n\n"
+  - "#### Skills to Invoke\n- `kubernetes-architect` - Kubernetes architecture\n- `docker-expert` - Docker containerization\n- `helm-chart-scaffolding` - Helm charts\n- `k8s-manifest-generator` - K8s manifests\n- `k8s-security-policies` - K8s security\n\n"
+  - "#### Actions\n1. Design container architecture\n2. Create Dockerfiles\n3. Build container images\n4. Write K8s manifests\n5. Deploy to cluster\n6. Configure networking\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @kubernetes-architect to design K8s architecture\n```\n\n```\nUse @docker-expert to containerize application\n```\n\n```\nUse @helm-chart-scaffolding to create Helm chart\n```\n\n"
+  - "### Phase 3: CI/CD Implementation\n\n"
+  - "#### Skills to Invoke\n- `deployment-engineer` - Deployment engineering\n- `cicd-automation-workflow-automate` - CI/CD automation\n- `github-actions-templates` - GitHub Actions\n- `gitlab-ci-patterns` - GitLab CI\n- `deployment-pipeline-design` - Pipeline design\n\n"
+  - "#### Actions\n1. Design deployment pipeline\n2. Configure build automation\n3. Set up test automation\n4. Configure deployment stages\n5. Implement rollback strategies\n6. Set up notifications\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @cicd-automation-workflow-automate to set up CI/CD pipeline\n```\n\n```\nUse @github-actions-templates to create GitHub Actions workflow\n```\n\n"
+  - "### Phase 4: Monitoring and Observability\n\n"
+  - "#### Skills to Invoke\n- `observability-engineer` - Observability engineering\n- `grafana-dashboards` - Grafana dashboards\n- `prometheus-configuration` - Prometheus setup\n- `datadog-automation` - Datadog integration\n- `sentry-automation` - Sentry error tracking\n\n"
+  - "#### Actions\n1. Design monitoring strategy\n2. Set up metrics collection\n3. Configure log aggregation\n4. Implement distributed tracing\n5. Create dashboards\n6. Set up alerts\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @observability-engineer to set up observability stack\n```\n\n```\nUse @grafana-dashboards to create monitoring dashboards\n```\n\n"
+  - "### Phase 5: Cloud Security\n\n"
+  - "#### Skills to Invoke\n- `cloud-penetration-testing` - Cloud pentesting\n- `aws-penetration-testing` - AWS security\n- `k8s-security-policies` - K8s security\n- `secrets-management` - Secrets management\n- `mtls-configuration` - mTLS setup\n\n"
+  - "#### Actions\n1. Assess cloud security\n2. Configure security groups\n3. Set up secrets management\n4. Implement network policies\n5. Configure encryption\n6. Set up audit logging\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @cloud-penetration-testing to assess cloud security\n```\n\n```\nUse @secrets-management to configure secrets\n```\n\n"
+  - "### Phase 6: Cost Optimization\n\n"
+  - "#### Skills to Invoke\n- `cost-optimization` - Cloud cost optimization\n- `database-cloud-optimization-cost-optimize` - Database cost optimization\n\n"
+  - "#### Actions\n1. Analyze cloud spending\n2. Identify optimization opportunities\n3. Right-size resources\n4. Implement auto-scaling\n5. Use reserved instances\n6. Set up cost alerts\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @cost-optimization to reduce cloud costs\n```\n\n"
+  - "### Phase 7: Disaster Recovery\n\n"
+  - "#### Skills to Invoke\n- `incident-responder` - Incident response\n- `incident-runbook-templates` - Runbook creation\n- `postmortem-writing` - Postmortem documentation\n\n"
+  - "#### Actions\n1. Design DR strategy\n2. Set up backups\n3. Create runbooks\n4. Test failover\n5. Document procedures\n6. Train team\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @incident-runbook-templates to create runbooks\n```\n\n"
+  - "## Cloud Provider Workflows\n\n"
+  - "### AWS\n```\nSkills: aws-skills, aws-serverless, aws-penetration-testing\nServices: EC2, Lambda, S3, RDS, ECS, EKS\n```\n\n"
+  - "### Azure\n```\nSkills: azure-functions, azure-ai-projects-py, azure-monitor-opentelemetry-py\nServices: Functions, App Service, AKS, Cosmos DB\n```\n\n"
+  - "### GCP\n```\nSkills: gcp-cloud-run\nServices: Cloud Run, GKE, Cloud Functions, BigQuery\n```\n\n"
+  - "## Quality Gates\n\n- [ ] Infrastructure provisioned\n- [ ] CI/CD pipeline working\n- [ ] Monitoring configured\n- [ ] Security measures in place\n- [ ] Cost optimization applied\n- [ ] DR procedures documented\n\n"
+  - "## Related Workflow Bundles\n\n- `development` - Application development\n- `security-audit` - Security testing\n- `database` - Database operations\n- `testing-qa` - Testing workflows\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

@@ -3,139 +3,22 @@ name: skill-scout
 description: Search existing local, marketplace, GitHub, and web skill sources before creating a new skill. Use when the user wants to create, build, fork, or find a skill for a workflow.
 metadata:
   origin: community
+prompt-source: prompt.toon
 ---
-
-# Skill Scout
-
-Use this skill before creating a new skill. The goal is to avoid duplicating
-existing community or marketplace work, while still vetting anything external
-before adoption.
-
-Source: salvaged from stale community PR #1232 by `redminwang`.
-
-## When to Use
-
-- The user says "create a skill", "build a skill", "make a skill", or "new
-  skill".
-- The user asks "is there a skill for X?" or "does a skill exist that does Y?"
-- The user describes a workflow and you are about to suggest creating a new
-  skill.
-- The user wants to fork or extend an existing skill.
-
-If the user explicitly says to skip search or create from scratch, acknowledge
-that and proceed with the requested creation workflow.
-
-## How It Works
-
-### Step 1 - Capture Intent
-
-Extract:
-
-- The task the skill should perform.
-- The trigger conditions for using it.
-- The domain, tools, frameworks, or data sources involved.
-- Three to five search keywords plus useful synonyms.
-
-### Step 2 - Search Local Sources
-
-Search installed and marketplace skill names first. Local sources are preferred
-because they are already part of the user's environment.
-
-```bash
-find ~/.claude/skills -maxdepth 2 -name SKILL.md 2>/dev/null | grep -iE "keyword|synonym"
-find ~/.claude/plugins/marketplaces -path '*/skills/*/SKILL.md' 2>/dev/null | grep -iE "keyword|synonym"
-```
-
-Then search frontmatter descriptions:
-
-```bash
-grep -RilE "keyword|synonym" ~/.claude/skills ~/.claude/plugins/marketplaces 2>/dev/null
-```
-
-### Step 3 - Search Remote Sources
-
-Use available GitHub and web search tools. Prefer concise queries:
-
-```bash
-gh search repos "claude code skill keyword" --limit 10 --sort stars
-gh search code "name: keyword" --filename SKILL.md --limit 10
-```
-
-For web search, use at most three targeted queries such as:
-
-```text
-"claude code skill" keyword
-"SKILL.md" keyword
-"krishujeniya/AGYOS" keyword
-```
-
-### Step 4 - Vet External Matches
-
-Before recommending any external skill for adoption or forking:
-
-- Read the `SKILL.md` frontmatter and instructions.
-- Look for unexpected shell commands, file writes, network calls, credential
-  handling, or package installs.
-- Check whether the repository appears maintained.
-- Prefer copying into a fresh local branch and reviewing the diff over editing
-  marketplace originals.
-
-### Step 5 - Rank Results
-
-Rank candidates by:
-
-1. Exact keyword match in the skill name.
-2. Keyword or synonym match in description.
-3. Local installed or marketplace source.
-4. Maintained GitHub source with recent activity.
-5. Web-only mention.
-
-Cap the final list at 10 results.
-
-### Step 6 - Present Decision Options
-
-Give the user a short table:
-
-| Option | Meaning |
-| --- | --- |
-| Use existing | Invoke or install a matching skill as-is. |
-| Fork or extend | Copy the closest skill and modify it. |
-| Create fresh | Build a new skill after confirming no close match exists. |
-
-Only create a new skill after the user chooses that path or after the search
-finds no close match.
-
-## Examples
-
-### Result Table
-
-```markdown
-| # | Skill | Source | Why it matches | Gap |
-| --- | --- | --- | --- | --- |
-| 1 | article-writing | Local ECC | Drafts articles and guides | Not focused on release notes |
-| 2 | content-engine | Local ECC | Multi-format content workflow | Heavier than needed |
-| 3 | blog-writer | GitHub | Blog writing skill with recent commits | Needs security review |
-```
-
-### User-Facing Summary
-
-```markdown
-I found two close local matches and one external candidate. The closest fit is
-`article-writing`; it covers drafting and revision, but it does not include the
-release-note checklist you asked for. I can either use it as-is, fork it into a
-release-note variant, or create a fresh skill.
-```
-
-## Anti-Patterns
-
-- Do not jump directly to new skill creation when a search is reasonable.
-- Do not install external skills without reading them first.
-- Do not present a long unranked list of weak matches.
-- Do not treat web-only mentions as trusted sources.
-- Do not edit installed marketplace originals in place.
-
-## Related
-
-- `search-first` - General search-before-building workflow.
-- `skill-stocktake` - Audit installed skills for health, duplicates, and gaps.
-- `agent-sort` - Categorize and organize existing agents and skills.
+skill: "skill-scout"
+sections[15]:
+  - "\n"
+  - "# Skill Scout\n\nUse this skill before creating a new skill. The goal is to avoid duplicating\nexisting community or marketplace work, while still vetting anything external\nbefore adoption.\n\nSource: salvaged from stale community PR #1232 by `redminwang`.\n\n"
+  - "## When to Use\n\n- The user says \"create a skill\", \"build a skill\", \"make a skill\", or \"new\n  skill\".\n- The user asks \"is there a skill for X?\" or \"does a skill exist that does Y?\"\n- The user describes a workflow and you are about to suggest creating a new\n  skill.\n- The user wants to fork or extend an existing skill.\n\nIf the user explicitly says to skip search or create from scratch, acknowledge\nthat and proceed with the requested creation workflow.\n\n"
+  - "## How It Works\n\n"
+  - "### Step 1 - Capture Intent\n\nExtract:\n\n- The task the skill should perform.\n- The trigger conditions for using it.\n- The domain, tools, frameworks, or data sources involved.\n- Three to five search keywords plus useful synonyms.\n\n"
+  - "### Step 2 - Search Local Sources\n\nSearch installed and marketplace skill names first. Local sources are preferred\nbecause they are already part of the user's environment.\n\n```bash\nfind ~/.claude/skills -maxdepth 2 -name SKILL.md 2>/dev/null | grep -iE \"keyword|synonym\"\nfind ~/.claude/plugins/marketplaces -path '*/skills/*/SKILL.md' 2>/dev/null | grep -iE \"keyword|synonym\"\n```\n\nThen search frontmatter descriptions:\n\n```bash\ngrep -RilE \"keyword|synonym\" ~/.claude/skills ~/.claude/plugins/marketplaces 2>/dev/null\n```\n\n"
+  - "### Step 3 - Search Remote Sources\n\nUse available GitHub and web search tools. Prefer concise queries:\n\n```bash\ngh search repos \"claude code skill keyword\" --limit 10 --sort stars\ngh search code \"name: keyword\" --filename SKILL.md --limit 10\n```\n\nFor web search, use at most three targeted queries such as:\n\n```text\n\"claude code skill\" keyword\n\"SKILL.md\" keyword\n\"krishujeniya/AGYOS\" keyword\n```\n\n"
+  - "### Step 4 - Vet External Matches\n\nBefore recommending any external skill for adoption or forking:\n\n- Read the `SKILL.md` frontmatter and instructions.\n- Look for unexpected shell commands, file writes, network calls, credential\n  handling, or package installs.\n- Check whether the repository appears maintained.\n- Prefer copying into a fresh local branch and reviewing the diff over editing\n  marketplace originals.\n\n"
+  - "### Step 5 - Rank Results\n\nRank candidates by:\n\n1. Exact keyword match in the skill name.\n2. Keyword or synonym match in description.\n3. Local installed or marketplace source.\n4. Maintained GitHub source with recent activity.\n5. Web-only mention.\n\nCap the final list at 10 results.\n\n"
+  - "### Step 6 - Present Decision Options\n\nGive the user a short table:\n\n| Option | Meaning |\n| --- | --- |\n| Use existing | Invoke or install a matching skill as-is. |\n| Fork or extend | Copy the closest skill and modify it. |\n| Create fresh | Build a new skill after confirming no close match exists. |\n\nOnly create a new skill after the user chooses that path or after the search\nfinds no close match.\n\n"
+  - "## Examples\n\n"
+  - "### Result Table\n\n```markdown\n| # | Skill | Source | Why it matches | Gap |\n| --- | --- | --- | --- | --- |\n| 1 | article-writing | Local ECC | Drafts articles and guides | Not focused on release notes |\n| 2 | content-engine | Local ECC | Multi-format content workflow | Heavier than needed |\n| 3 | blog-writer | GitHub | Blog writing skill with recent commits | Needs security review |\n```\n\n"
+  - "### User-Facing Summary\n\n```markdown\nI found two close local matches and one external candidate. The closest fit is\n`article-writing`; it covers drafting and revision, but it does not include the\nrelease-note checklist you asked for. I can either use it as-is, fork it into a\nrelease-note variant, or create a fresh skill.\n```\n\n"
+  - "## Anti-Patterns\n\n- Do not jump directly to new skill creation when a search is reasonable.\n- Do not install external skills without reading them first.\n- Do not present a long unranked list of weak matches.\n- Do not treat web-only mentions as trusted sources.\n- Do not edit installed marketplace originals in place.\n\n"
+  - "## Related\n\n- `search-first` - General search-before-building workflow.\n- `skill-stocktake` - Audit installed skills for health, duplicates, and gaps.\n- `agent-sort` - Categorize and organize existing agents and skills.\n"

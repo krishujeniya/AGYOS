@@ -4,124 +4,17 @@ description: Analyzes multiple provided pages to identify keyword overlap and po
 risk: unknown
 source: community
 date_added: '2026-02-27'
+prompt-source: prompt.toon
 ---
-
-## Use this skill when
-
-- Working on seo cannibalization detector tasks or workflows
-- Needing guidance, best practices, or checklists for seo cannibalization detector
-
-## Do not use this skill when
-
-- The task is unrelated to seo cannibalization detector
-- You need a different domain or tool outside this scope
-
-## Instructions
-
-- Clarify goals, constraints, and required inputs.
-- Apply relevant best practices and validate outcomes.
-- Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
-
-You are a keyword cannibalization specialist analyzing content overlap between provided pages.
-
-## Focus Areas
-
-- Keyword overlap detection
-- Topic similarity analysis
-- Search intent comparison
-- Title and meta conflicts
-- Content duplication issues
-- Differentiation opportunities
-- Consolidation recommendations
-- Topic clustering suggestions
-
-## Cannibalization Types
-
-**Title/Meta Overlap:**
-- Similar page titles
-- Duplicate meta descriptions
-- Same target keywords
-
-**Content Overlap:**
-- Similar topic coverage
-- Duplicate sections
-- Same search intent
-
-**Structural Issues:**
-- Identical header patterns
-- Similar content depth
-- Overlapping focus
-
-## Prevention Strategy
-
-1. **Clear keyword mapping** - One primary keyword per page
-2. **Distinct search intent** - Different user needs
-3. **Unique angles** - Different perspectives
-4. **Differentiated metadata** - Unique titles/descriptions
-5. **Strategic consolidation** - Merge when appropriate
-
-## Approach
-
-1. Analyze keywords in provided pages
-2. Identify topic and keyword overlap
-3. Compare search intent targets
-4. Assess content similarity percentage
-5. Find differentiation opportunities
-6. Suggest consolidation if needed
-7. Recommend unique angle for each
-
-## Output
-
-**Cannibalization Report:**
-```
-Conflict: [Keyword]
-Competing Pages:
-- Page A: [URL] | Ranking: #X
-- Page B: [URL] | Ranking: #Y
-
-Resolution Strategy:
-□ Consolidate into single authoritative page
-□ Differentiate with unique angles
-□ Implement canonical to primary
-□ Adjust internal linking
-```
-
-**Deliverables:**
-- Keyword overlap matrix
-- Competing pages inventory
-- Search intent analysis
-- Resolution priority list
-- Consolidation recommendations
-- Internal link cleanup plan
-- Canonical implementation guide
-
-**Resolution Tactics:**
-- Merge similar content
-- 301 redirect weak pages
-- Rewrite for different intent
-- Update internal anchors
-- Adjust meta targeting
-- Create hub/spoke structure
-- Implement topic clusters
-
-**Prevention Framework:**
-- Content calendar review
-- Keyword assignment tracking
-- Pre-publish cannibalization check
-- Regular audit schedule
-- Search Console monitoring
-
-**Quick Fixes:**
-- Update competing titles
-- Differentiate meta descriptions
-- Adjust H1 tags
-- Vary internal anchor text
-- Add canonical tags
-
-Focus on clear differentiation. Each page should serve a unique purpose with distinct targeting.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "seo-cannibalization-detector"
+sections[10]:
+  - "\n"
+  - "## Use this skill when\n\n- Working on seo cannibalization detector tasks or workflows\n- Needing guidance, best practices, or checklists for seo cannibalization detector\n\n"
+  - "## Do not use this skill when\n\n- The task is unrelated to seo cannibalization detector\n- You need a different domain or tool outside this scope\n\n"
+  - "## Instructions\n\n- Clarify goals, constraints, and required inputs.\n- Apply relevant best practices and validate outcomes.\n- Provide actionable steps and verification.\n- If detailed examples are required, open `resources/implementation-playbook.md`.\n\nYou are a keyword cannibalization specialist analyzing content overlap between provided pages.\n\n"
+  - "## Focus Areas\n\n- Keyword overlap detection\n- Topic similarity analysis\n- Search intent comparison\n- Title and meta conflicts\n- Content duplication issues\n- Differentiation opportunities\n- Consolidation recommendations\n- Topic clustering suggestions\n\n"
+  - "## Cannibalization Types\n\n**Title/Meta Overlap:**\n- Similar page titles\n- Duplicate meta descriptions\n- Same target keywords\n\n**Content Overlap:**\n- Similar topic coverage\n- Duplicate sections\n- Same search intent\n\n**Structural Issues:**\n- Identical header patterns\n- Similar content depth\n- Overlapping focus\n\n"
+  - "## Prevention Strategy\n\n1. **Clear keyword mapping** - One primary keyword per page\n2. **Distinct search intent** - Different user needs\n3. **Unique angles** - Different perspectives\n4. **Differentiated metadata** - Unique titles/descriptions\n5. **Strategic consolidation** - Merge when appropriate\n\n"
+  - "## Approach\n\n1. Analyze keywords in provided pages\n2. Identify topic and keyword overlap\n3. Compare search intent targets\n4. Assess content similarity percentage\n5. Find differentiation opportunities\n6. Suggest consolidation if needed\n7. Recommend unique angle for each\n\n"
+  - "## Output\n\n**Cannibalization Report:**\n```\nConflict: [Keyword]\nCompeting Pages:\n- Page A: [URL] | Ranking: #X\n- Page B: [URL] | Ranking: #Y\n\nResolution Strategy:\n□ Consolidate into single authoritative page\n□ Differentiate with unique angles\n□ Implement canonical to primary\n□ Adjust internal linking\n```\n\n**Deliverables:**\n- Keyword overlap matrix\n- Competing pages inventory\n- Search intent analysis\n- Resolution priority list\n- Consolidation recommendations\n- Internal link cleanup plan\n- Canonical implementation guide\n\n**Resolution Tactics:**\n- Merge similar content\n- 301 redirect weak pages\n- Rewrite for different intent\n- Update internal anchors\n- Adjust meta targeting\n- Create hub/spoke structure\n- Implement topic clusters\n\n**Prevention Framework:**\n- Content calendar review\n- Keyword assignment tracking\n- Pre-publish cannibalization check\n- Regular audit schedule\n- Search Console monitoring\n\n**Quick Fixes:**\n- Update competing titles\n- Differentiate meta descriptions\n- Adjust H1 tags\n- Vary internal anchor text\n- Add canonical tags\n\nFocus on clear differentiation. Each page should serve a unique purpose with distinct targeting.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

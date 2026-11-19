@@ -9,103 +9,24 @@ date_added: "2026-04-06"
 author: "Krish Ujeniya"
 tags: [python, powerpoint, python-pptx, presentations, slide-decks]
 tools: [claude, cursor, gemini, codex]
+prompt-source: prompt.toon
 ---
-
-# Python PPTX Generator
-
-## Overview
-
-Use this skill when the user wants a ready-to-run Python script that creates a PowerPoint presentation with `python-pptx`.
-It focuses on turning a topic brief into a complete slide deck script with real slide content, sensible structure, and a working save step.
-
-## When to Use This Skill
-
-- Use when the user wants a Python script that generates a `.pptx` file automatically
-- Use when the user needs slide content drafted and encoded directly into `python-pptx`
-- Use when the user wants a quick presentation generator for demos, classes, or internal briefings
-
-## How It Works
-
-### Step 1: Collect the Deck Brief
-
-Ask for the topic, audience, tone, and target number of slides if the request does not already include them.
-If constraints are missing, pick conservative defaults and state them in the generated script comments.
-
-### Step 2: Plan the Narrative Arc
-
-Outline the deck before writing code:
-
-1. Title slide
-2. Agenda or context
-3. Core teaching or business points
-4. Summary or next steps
-
-Keep the slide count realistic for the requested audience and avoid filler slides.
-
-### Step 3: Generate the Python Script
-
-Write a complete script that:
-
-- imports `Presentation` from `python-pptx`
-- creates the deck
-- selects appropriate built-in layouts
-- writes real titles and bullet points
-- saves the file with a clear filename
-- prints a success message after saving
-
-### Step 4: Keep the Output Runnable
-
-The final answer should be a Python code block that can run after installing `python-pptx`.
-Avoid pseudocode, placeholders, or missing imports.
-
-## Examples
-
-### Example 1: Educational Deck
-
-```text
-User: Create a 5-slide presentation on the basics of machine learning for a high school class.
-Output: A complete Python script that creates a title slide, overview, core concepts, examples, and recap.
-```
-
-### Example 2: Business Briefing
-
-```text
-User: Generate a 7-slide deck for sales leadership on Q2 pipeline risks and mitigation options.
-Output: A python-pptx script with executive-friendly slide titles, concise bullets, and a final recommendations slide.
-```
-
-## Best Practices
-
-- ✅ Use standard `python-pptx` layouts unless the user asks for custom positioning
-- ✅ Write audience-appropriate bullet points instead of placeholders
-- ✅ Save the output file explicitly in the script, for example `output.pptx`
-- ✅ Keep slide titles short and the bullet hierarchy readable
-- ❌ Do not return partial snippets that require the user to assemble the rest
-- ❌ Do not invent unsupported styling APIs without checking `python-pptx` capabilities
-
-## Security & Safety Notes
-
-- Install `python-pptx` only in an environment you control, for example a local virtual environment
-- If the user will run the script on a shared machine, choose a safe output path and avoid overwriting existing presentations without confirmation
-- If the request includes proprietary or sensitive presentation content, keep it out of public examples and sample filenames
-
-## Common Pitfalls
-
-- **Problem:** The generated script uses placeholder text instead of real content  
-  **Solution:** Draft the narrative first, then turn each slide into specific titles and bullets
-
-- **Problem:** The deck uses too many slides for the requested audience  
-  **Solution:** Compress the outline to the most important 4 to 8 slides unless the user explicitly wants a longer deck
-
-- **Problem:** The script forgets to save or print a completion message  
-  **Solution:** Always end with `prs.save(...)` and a short success print
-
-## Related Skills
-
-- `@pptx-official` - Use when the task is about inspecting or editing existing PowerPoint files
-- `@docx-official` - Use when the requested output should be a document instead of a slide deck
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "python-pptx-generator"
+sections[17]:
+  - "\n"
+  - "# Python PPTX Generator\n\n"
+  - "## Overview\n\nUse this skill when the user wants a ready-to-run Python script that creates a PowerPoint presentation with `python-pptx`.\nIt focuses on turning a topic brief into a complete slide deck script with real slide content, sensible structure, and a working save step.\n\n"
+  - "## When to Use This Skill\n\n- Use when the user wants a Python script that generates a `.pptx` file automatically\n- Use when the user needs slide content drafted and encoded directly into `python-pptx`\n- Use when the user wants a quick presentation generator for demos, classes, or internal briefings\n\n"
+  - "## How It Works\n\n"
+  - "### Step 1: Collect the Deck Brief\n\nAsk for the topic, audience, tone, and target number of slides if the request does not already include them.\nIf constraints are missing, pick conservative defaults and state them in the generated script comments.\n\n"
+  - "### Step 2: Plan the Narrative Arc\n\nOutline the deck before writing code:\n\n1. Title slide\n2. Agenda or context\n3. Core teaching or business points\n4. Summary or next steps\n\nKeep the slide count realistic for the requested audience and avoid filler slides.\n\n"
+  - "### Step 3: Generate the Python Script\n\nWrite a complete script that:\n\n- imports `Presentation` from `python-pptx`\n- creates the deck\n- selects appropriate built-in layouts\n- writes real titles and bullet points\n- saves the file with a clear filename\n- prints a success message after saving\n\n"
+  - "### Step 4: Keep the Output Runnable\n\nThe final answer should be a Python code block that can run after installing `python-pptx`.\nAvoid pseudocode, placeholders, or missing imports.\n\n"
+  - "## Examples\n\n"
+  - "### Example 1: Educational Deck\n\n```text\nUser: Create a 5-slide presentation on the basics of machine learning for a high school class.\nOutput: A complete Python script that creates a title slide, overview, core concepts, examples, and recap.\n```\n\n"
+  - "### Example 2: Business Briefing\n\n```text\nUser: Generate a 7-slide deck for sales leadership on Q2 pipeline risks and mitigation options.\nOutput: A python-pptx script with executive-friendly slide titles, concise bullets, and a final recommendations slide.\n```\n\n"
+  - "## Best Practices\n\n- ✅ Use standard `python-pptx` layouts unless the user asks for custom positioning\n- ✅ Write audience-appropriate bullet points instead of placeholders\n- ✅ Save the output file explicitly in the script, for example `output.pptx`\n- ✅ Keep slide titles short and the bullet hierarchy readable\n- ❌ Do not return partial snippets that require the user to assemble the rest\n- ❌ Do not invent unsupported styling APIs without checking `python-pptx` capabilities\n\n"
+  - "## Security & Safety Notes\n\n- Install `python-pptx` only in an environment you control, for example a local virtual environment\n- If the user will run the script on a shared machine, choose a safe output path and avoid overwriting existing presentations without confirmation\n- If the request includes proprietary or sensitive presentation content, keep it out of public examples and sample filenames\n\n"
+  - "## Common Pitfalls\n\n- **Problem:** The generated script uses placeholder text instead of real content  \n  **Solution:** Draft the narrative first, then turn each slide into specific titles and bullets\n\n- **Problem:** The deck uses too many slides for the requested audience  \n  **Solution:** Compress the outline to the most important 4 to 8 slides unless the user explicitly wants a longer deck\n\n- **Problem:** The script forgets to save or print a completion message  \n  **Solution:** Always end with `prs.save(...)` and a short success print\n\n"
+  - "## Related Skills\n\n- `@pptx-official` - Use when the task is about inspecting or editing existing PowerPoint files\n- `@docx-official` - Use when the requested output should be a document instead of a slide deck\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

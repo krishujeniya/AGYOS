@@ -4,129 +4,20 @@ description: "Generate real audio narratives from text content using Azure OpenA
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Podcast Generation with GPT Realtime Mini
-
-Generate real audio narratives from text content using Azure OpenAI's Realtime API.
-
-## Quick Start
-
-1. Configure environment variables for Realtime API
-2. Connect via WebSocket to Azure OpenAI Realtime endpoint
-3. Send text prompt, collect PCM audio chunks + transcript
-4. Convert PCM to WAV format
-5. Return base64-encoded audio to frontend for playback
-
-## Environment Configuration
-
-```env
-AZURE_OPENAI_AUDIO_API_KEY=your_realtime_api_key
-AZURE_OPENAI_AUDIO_ENDPOINT=https://your-resource.cognitiveservices.azure.com
-AZURE_OPENAI_AUDIO_DEPLOYMENT=gpt-realtime-mini
-```
-
-**Note**: Endpoint should NOT include `/openai/v1/` - just the base URL.
-
-## Core Workflow
-
-### Backend Audio Generation
-
-```python
-from openai import AsyncOpenAI
-import base64
-
-# Convert HTTPS endpoint to WebSocket URL
-ws_url = endpoint.replace("https://", "wss://") + "/openai/v1"
-
-client = AsyncOpenAI(
-    websocket_base_url=ws_url,
-    api_key=api_key
-)
-
-audio_chunks = []
-transcript_parts = []
-
-async with client.realtime.connect(model="gpt-realtime-mini") as conn:
-    # Configure for audio-only output
-    await conn.session.update(session={
-        "output_modalities": ["audio"],
-        "instructions": "You are a narrator. Speak naturally."
-    })
-    
-    # Send text to narrate
-    await conn.conversation.item.create(item={
-        "type": "message",
-        "role": "user",
-        "content": [{"type": "input_text", "text": prompt}]
-    })
-    
-    await conn.response.create()
-    
-    # Collect streaming events
-    async for event in conn:
-        if event.type == "response.output_audio.delta":
-            audio_chunks.append(base64.b64decode(event.delta))
-        elif event.type == "response.output_audio_transcript.delta":
-            transcript_parts.append(event.delta)
-        elif event.type == "response.done":
-            break
-
-# Convert PCM to WAV (see scripts/pcm_to_wav.py)
-pcm_audio = b''.join(audio_chunks)
-wav_audio = pcm_to_wav(pcm_audio, sample_rate=24000)
-```
-
-### Frontend Audio Playback
-
-```javascript
-// Convert base64 WAV to playable blob
-const base64ToBlob = (base64, mimeType) => {
-  const bytes = atob(base64);
-  const arr = new Uint8Array(bytes.length);
-  for (let i = 0; i < bytes.length; i++) arr[i] = bytes.charCodeAt(i);
-  return new Blob([arr], { type: mimeType });
-};
-
-const audioBlob = base64ToBlob(response.audio_data, 'audio/wav');
-const audioUrl = URL.createObjectURL(audioBlob);
-new Audio(audioUrl).play();
-```
-
-## Voice Options
-
-| Voice | Character |
-|-------|-----------|
-| alloy | Neutral |
-| echo | Warm |
-| fable | Expressive |
-| onyx | Deep |
-| nova | Friendly |
-| shimmer | Clear |
-
-## Realtime API Events
-
-- `response.output_audio.delta` - Base64 audio chunk
-- `response.output_audio_transcript.delta` - Transcript text
-- `response.done` - Generation complete
-- `error` - Handle with `event.error.message`
-
-## Audio Format
-
-- **Input**: Text prompt
-- **Output**: PCM audio (24kHz, 16-bit, mono)
-- **Storage**: Base64-encoded WAV
-
-## References
-
-- **Full architecture**: See references/architecture.md for complete stack design
-- **Code examples**: See references/code-examples.md for production patterns
-- **PCM conversion**: Use scripts/pcm_to_wav.py for audio format conversion
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "podcast-generation"
+sections[13]:
+  - "\n"
+  - "# Podcast Generation with GPT Realtime Mini\n\nGenerate real audio narratives from text content using Azure OpenAI's Realtime API.\n\n"
+  - "## Quick Start\n\n1. Configure environment variables for Realtime API\n2. Connect via WebSocket to Azure OpenAI Realtime endpoint\n3. Send text prompt, collect PCM audio chunks + transcript\n4. Convert PCM to WAV format\n5. Return base64-encoded audio to frontend for playback\n\n"
+  - "## Environment Configuration\n\n```env\nAZURE_OPENAI_AUDIO_API_KEY=your_realtime_api_key\nAZURE_OPENAI_AUDIO_ENDPOINT=https://your-resource.cognitiveservices.azure.com\nAZURE_OPENAI_AUDIO_DEPLOYMENT=gpt-realtime-mini\n```\n\n**Note**: Endpoint should NOT include `/openai/v1/` - just the base URL.\n\n"
+  - "## Core Workflow\n\n"
+  - "### Backend Audio Generation\n\n```python\nfrom openai import AsyncOpenAI\nimport base64\n\n# Convert HTTPS endpoint to WebSocket URL\nws_url = endpoint.replace(\"https://\", \"wss://\") + \"/openai/v1\"\n\nclient = AsyncOpenAI(\n    websocket_base_url=ws_url,\n    api_key=api_key\n)\n\naudio_chunks = []\ntranscript_parts = []\n\nasync with client.realtime.connect(model=\"gpt-realtime-mini\") as conn:\n    # Configure for audio-only output\n    await conn.session.update(session={\n        \"output_modalities\": [\"audio\"],\n        \"instructions\": \"You are a narrator. Speak naturally.\"\n    })\n    \n    # Send text to narrate\n    await conn.conversation.item.create(item={\n        \"type\": \"message\",\n        \"role\": \"user\",\n        \"content\": [{\"type\": \"input_text\", \"text\": prompt}]\n    })\n    \n    await conn.response.create()\n    \n    # Collect streaming events\n    async for event in conn:\n        if event.type == \"response.output_audio.delta\":\n            audio_chunks.append(base64.b64decode(event.delta))\n        elif event.type == \"response.output_audio_transcript.delta\":\n            transcript_parts.append(event.delta)\n        elif event.type == \"response.done\":\n            break\n\n# Convert PCM to WAV (see scripts/pcm_to_wav.py)\npcm_audio = b''.join(audio_chunks)\nwav_audio = pcm_to_wav(pcm_audio, sample_rate=24000)\n```\n\n"
+  - "### Frontend Audio Playback\n\n```javascript\n// Convert base64 WAV to playable blob\nconst base64ToBlob = (base64, mimeType) => {\n  const bytes = atob(base64);\n  const arr = new Uint8Array(bytes.length);\n  for (let i = 0; i < bytes.length; i++) arr[i] = bytes.charCodeAt(i);\n  return new Blob([arr], { type: mimeType });\n};\n\nconst audioBlob = base64ToBlob(response.audio_data, 'audio/wav');\nconst audioUrl = URL.createObjectURL(audioBlob);\nnew Audio(audioUrl).play();\n```\n\n"
+  - "## Voice Options\n\n| Voice | Character |\n|-------|-----------|\n| alloy | Neutral |\n| echo | Warm |\n| fable | Expressive |\n| onyx | Deep |\n| nova | Friendly |\n| shimmer | Clear |\n\n"
+  - "## Realtime API Events\n\n- `response.output_audio.delta` - Base64 audio chunk\n- `response.output_audio_transcript.delta` - Transcript text\n- `response.done` - Generation complete\n- `error` - Handle with `event.error.message`\n\n"
+  - "## Audio Format\n\n- **Input**: Text prompt\n- **Output**: PCM audio (24kHz, 16-bit, mono)\n- **Storage**: Base64-encoded WAV\n\n"
+  - "## References\n\n- **Full architecture**: See references/architecture.md for complete stack design\n- **Code examples**: See references/code-examples.md for production patterns\n- **PCM conversion**: Use scripts/pcm_to_wav.py for audio format conversion\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

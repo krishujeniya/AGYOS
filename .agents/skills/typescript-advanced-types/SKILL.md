@@ -4,40 +4,14 @@ description: "Comprehensive guidance for mastering TypeScript's advanced type sy
 risk: safe
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# TypeScript Advanced Types
-
-Comprehensive guidance for mastering TypeScript's advanced type system including generics, conditional types, mapped types, template literal types, and utility types for building robust, type-safe applications.
-
-## Use this skill when
-
-- Building type-safe libraries or frameworks
-- Creating reusable generic components
-- Implementing complex type inference logic
-- Designing type-safe API clients
-- Building form validation systems
-- Creating strongly-typed configuration objects
-- Implementing type-safe state management
-- Migrating JavaScript codebases to TypeScript
-
-## Do not use this skill when
-
-- The task is unrelated to typescript advanced types
-- You need a different domain or tool outside this scope
-
-## Instructions
-
-- Clarify goals, constraints, and required inputs.
-- Apply relevant best practices and validate outcomes.
-- Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
-
-## Resources
-
-- `resources/implementation-playbook.md` for detailed patterns and examples.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "typescript-advanced-types"
+sections[7]:
+  - "\n"
+  - "# TypeScript Advanced Types\n\nComprehensive guidance for mastering TypeScript's advanced type system including generics, conditional types, mapped types, template literal types, and utility types for building robust, type-safe applications.\n\n"
+  - "## Use this skill when\n\n- Building type-safe libraries or frameworks\n- Creating reusable generic components\n- Implementing complex type inference logic\n- Designing type-safe API clients\n- Building form validation systems\n- Creating strongly-typed configuration objects\n- Implementing type-safe state management\n- Migrating JavaScript codebases to TypeScript\n\n"
+  - "## Do not use this skill when\n\n- The task is unrelated to typescript advanced types\n- You need a different domain or tool outside this scope\n\n"
+  - "## Instructions\n\n- Clarify goals, constraints, and required inputs.\n- Apply relevant best practices and validate outcomes.\n- Provide actionable steps and verification.\n- If detailed examples are required, open `resources/implementation-playbook.md`.\n\n"
+  - "## Resources\n\n- `resources/implementation-playbook.md` for detailed patterns and examples.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

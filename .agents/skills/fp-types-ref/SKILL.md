@@ -5,74 +5,15 @@ risk: safe
 source: community
 version: 1.0.0
 tags: [fp-ts, typescript, quick-reference, option, either, task]
+prompt-source: prompt.toon
 ---
-
-# fp-ts Quick Reference
-
-## When to Use
-- You need help choosing between `Option`, `Either`, `Task`, `TaskEither`, or related fp-ts types.
-- The task is about imports, decision guidance, or selecting the right abstraction for a TypeScript flow.
-- You want a compact reference for common fp-ts type choices and patterns.
-
-## Which Type Should I Use?
-
-```
-Is the operation async?
-├─ NO: Does it involve errors?
-│   ├─ YES → Either<Error, Value>
-│   └─ NO: Might value be missing?
-│       ├─ YES → Option<Value>
-│       └─ NO → Just use the value
-└─ YES: Does it involve errors?
-    ├─ YES → TaskEither<Error, Value>
-    └─ NO: Might value be missing?
-        ├─ YES → TaskOption<Value>
-        └─ NO → Task<Value>
-```
-
-## Common Imports
-
-```typescript
-// Core
-import { pipe, flow } from 'fp-ts/function'
-
-// Types
-import * as O from 'fp-ts/Option'      // Maybe exists
-import * as E from 'fp-ts/Either'      // Success or failure
-import * as TE from 'fp-ts/TaskEither' // Async + failure
-import * as T from 'fp-ts/Task'        // Async (no failure)
-import * as A from 'fp-ts/Array'       // Array utilities
-```
-
-## One-Line Patterns
-
-| Need | Code |
-|------|------|
-| Wrap nullable | `O.fromNullable(value)` |
-| Default value | `O.getOrElse(() => default)` |
-| Transform if exists | `O.map(fn)` |
-| Chain optionals | `O.flatMap(fn)` |
-| Wrap try/catch | `E.tryCatch(() => risky(), toError)` |
-| Wrap async | `TE.tryCatch(() => fetch(url), toError)` |
-| Run pipe | `pipe(value, fn1, fn2, fn3)` |
-
-## Pattern Match
-
-```typescript
-// Option
-pipe(maybe, O.match(
-  () => 'nothing',
-  (val) => `got ${val}`
-))
-
-// Either
-pipe(result, E.match(
-  (err) => `error: ${err}`,
-  (val) => `success: ${val}`
-))
-```
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "fp-types-ref"
+sections[8]:
+  - "\n"
+  - "# fp-ts Quick Reference\n\n"
+  - "## When to Use\n- You need help choosing between `Option`, `Either`, `Task`, `TaskEither`, or related fp-ts types.\n- The task is about imports, decision guidance, or selecting the right abstraction for a TypeScript flow.\n- You want a compact reference for common fp-ts type choices and patterns.\n\n"
+  - "## Which Type Should I Use?\n\n```\nIs the operation async?\n├─ NO: Does it involve errors?\n│   ├─ YES → Either<Error, Value>\n│   └─ NO: Might value be missing?\n│       ├─ YES → Option<Value>\n│       └─ NO → Just use the value\n└─ YES: Does it involve errors?\n    ├─ YES → TaskEither<Error, Value>\n    └─ NO: Might value be missing?\n        ├─ YES → TaskOption<Value>\n        └─ NO → Task<Value>\n```\n\n"
+  - "## Common Imports\n\n```typescript\n// Core\nimport { pipe, flow } from 'fp-ts/function'\n\n// Types\nimport * as O from 'fp-ts/Option'      // Maybe exists\nimport * as E from 'fp-ts/Either'      // Success or failure\nimport * as TE from 'fp-ts/TaskEither' // Async + failure\nimport * as T from 'fp-ts/Task'        // Async (no failure)\nimport * as A from 'fp-ts/Array'       // Array utilities\n```\n\n"
+  - "## One-Line Patterns\n\n| Need | Code |\n|------|------|\n| Wrap nullable | `O.fromNullable(value)` |\n| Default value | `O.getOrElse(() => default)` |\n| Transform if exists | `O.map(fn)` |\n| Chain optionals | `O.flatMap(fn)` |\n| Wrap try/catch | `E.tryCatch(() => risky(), toError)` |\n| Wrap async | `TE.tryCatch(() => fetch(url), toError)` |\n| Run pipe | `pipe(value, fn1, fn2, fn3)` |\n\n"
+  - "## Pattern Match\n\n```typescript\n// Option\npipe(maybe, O.match(\n  () => 'nothing',\n  (val) => `got ${val}`\n))\n\n// Either\npipe(result, E.match(\n  (err) => `error: ${err}`,\n  (val) => `success: ${val}`\n))\n```\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

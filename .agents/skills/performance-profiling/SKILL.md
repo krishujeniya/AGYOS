@@ -4,150 +4,28 @@ description: "Performance profiling principles. Measurement, analysis, and optim
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Performance Profiling
-
-> Measure, analyze, optimize - in that order.
-
-## 🔧 Runtime Scripts
-
-**Execute these for automated profiling:**
-
-| Script | Purpose | Usage |
-|--------|---------|-------|
-| `scripts/lighthouse_audit.py` | Lighthouse performance audit | `python scripts/lighthouse_audit.py https://example.com` |
-
----
-
-## 1. Core Web Vitals
-
-### Targets
-
-| Metric | Good | Poor | Measures |
-|--------|------|------|----------|
-| **LCP** | < 2.5s | > 4.0s | Loading |
-| **INP** | < 200ms | > 500ms | Interactivity |
-| **CLS** | < 0.1 | > 0.25 | Stability |
-
-### When to Measure
-
-| Stage | Tool |
-|-------|------|
-| Development | Local Lighthouse |
-| CI/CD | Lighthouse CI |
-| Production | RUM (Real User Monitoring) |
-
----
-
-## 2. Profiling Workflow
-
-### The 4-Step Process
-
-```
-1. BASELINE → Measure current state
-2. IDENTIFY → Find the bottleneck
-3. FIX → Make targeted change
-4. VALIDATE → Confirm improvement
-```
-
-### Profiling Tool Selection
-
-| Problem | Tool |
-|---------|------|
-| Page load | Lighthouse |
-| Bundle size | Bundle analyzer |
-| Runtime | DevTools Performance |
-| Memory | DevTools Memory |
-| Network | DevTools Network |
-
----
-
-## 3. Bundle Analysis
-
-### What to Look For
-
-| Issue | Indicator |
-|-------|-----------|
-| Large dependencies | Top of bundle |
-| Duplicate code | Multiple chunks |
-| Unused code | Low coverage |
-| Missing splits | Single large chunk |
-
-### Optimization Actions
-
-| Finding | Action |
-|---------|--------|
-| Big library | Import specific modules |
-| Duplicate deps | Dedupe, update versions |
-| Route in main | Code split |
-| Unused exports | Tree shake |
-
----
-
-## 4. Runtime Profiling
-
-### Performance Tab Analysis
-
-| Pattern | Meaning |
-|---------|---------|
-| Long tasks (>50ms) | UI blocking |
-| Many small tasks | Possible batching opportunity |
-| Layout/paint | Rendering bottleneck |
-| Script | JavaScript execution |
-
-### Memory Tab Analysis
-
-| Pattern | Meaning |
-|---------|---------|
-| Growing heap | Possible leak |
-| Large retained | Check references |
-| Detached DOM | Not cleaned up |
-
----
-
-## 5. Common Bottlenecks
-
-### By Symptom
-
-| Symptom | Likely Cause |
-|---------|--------------|
-| Slow initial load | Large JS, render blocking |
-| Slow interactions | Heavy event handlers |
-| Jank during scroll | Layout thrashing |
-| Growing memory | Leaks, retained refs |
-
----
-
-## 6. Quick Win Priorities
-
-| Priority | Action | Impact |
-|----------|--------|--------|
-| 1 | Enable compression | High |
-| 2 | Lazy load images | High |
-| 3 | Code split routes | High |
-| 4 | Cache static assets | Medium |
-| 5 | Optimize images | Medium |
-
----
-
-## 7. Anti-Patterns
-
-| ❌ Don't | ✅ Do |
-|----------|-------|
-| Guess at problems | Profile first |
-| Micro-optimize | Fix biggest issue |
-| Optimize early | Optimize when needed |
-| Ignore real users | Use RUM data |
-
----
-
-> **Remember:** The fastest code is code that doesn't run. Remove before optimizing.
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "performance-profiling"
+sections[21]:
+  - "\n"
+  - "# Performance Profiling\n\n> Measure, analyze, optimize - in that order.\n\n"
+  - "## 🔧 Runtime Scripts\n\n**Execute these for automated profiling:**\n\n| Script | Purpose | Usage |\n|--------|---------|-------|\n| `scripts/lighthouse_audit.py` | Lighthouse performance audit | `python scripts/lighthouse_audit.py https://example.com` |\n\n---\n\n"
+  - "## 1. Core Web Vitals\n\n"
+  - "### Targets\n\n| Metric | Good | Poor | Measures |\n|--------|------|------|----------|\n| **LCP** | < 2.5s | > 4.0s | Loading |\n| **INP** | < 200ms | > 500ms | Interactivity |\n| **CLS** | < 0.1 | > 0.25 | Stability |\n\n"
+  - "### When to Measure\n\n| Stage | Tool |\n|-------|------|\n| Development | Local Lighthouse |\n| CI/CD | Lighthouse CI |\n| Production | RUM (Real User Monitoring) |\n\n---\n\n"
+  - "## 2. Profiling Workflow\n\n"
+  - "### The 4-Step Process\n\n```\n1. BASELINE → Measure current state\n2. IDENTIFY → Find the bottleneck\n3. FIX → Make targeted change\n4. VALIDATE → Confirm improvement\n```\n\n"
+  - "### Profiling Tool Selection\n\n| Problem | Tool |\n|---------|------|\n| Page load | Lighthouse |\n| Bundle size | Bundle analyzer |\n| Runtime | DevTools Performance |\n| Memory | DevTools Memory |\n| Network | DevTools Network |\n\n---\n\n"
+  - "## 3. Bundle Analysis\n\n"
+  - "### What to Look For\n\n| Issue | Indicator |\n|-------|-----------|\n| Large dependencies | Top of bundle |\n| Duplicate code | Multiple chunks |\n| Unused code | Low coverage |\n| Missing splits | Single large chunk |\n\n"
+  - "### Optimization Actions\n\n| Finding | Action |\n|---------|--------|\n| Big library | Import specific modules |\n| Duplicate deps | Dedupe, update versions |\n| Route in main | Code split |\n| Unused exports | Tree shake |\n\n---\n\n"
+  - "## 4. Runtime Profiling\n\n"
+  - "### Performance Tab Analysis\n\n| Pattern | Meaning |\n|---------|---------|\n| Long tasks (>50ms) | UI blocking |\n| Many small tasks | Possible batching opportunity |\n| Layout/paint | Rendering bottleneck |\n| Script | JavaScript execution |\n\n"
+  - "### Memory Tab Analysis\n\n| Pattern | Meaning |\n|---------|---------|\n| Growing heap | Possible leak |\n| Large retained | Check references |\n| Detached DOM | Not cleaned up |\n\n---\n\n"
+  - "## 5. Common Bottlenecks\n\n"
+  - "### By Symptom\n\n| Symptom | Likely Cause |\n|---------|--------------|\n| Slow initial load | Large JS, render blocking |\n| Slow interactions | Heavy event handlers |\n| Jank during scroll | Layout thrashing |\n| Growing memory | Leaks, retained refs |\n\n---\n\n"
+  - "## 6. Quick Win Priorities\n\n| Priority | Action | Impact |\n|----------|--------|--------|\n| 1 | Enable compression | High |\n| 2 | Lazy load images | High |\n| 3 | Code split routes | High |\n| 4 | Cache static assets | Medium |\n| 5 | Optimize images | Medium |\n\n---\n\n"
+  - "## 7. Anti-Patterns\n\n| ❌ Don't | ✅ Do |\n|----------|-------|\n| Guess at problems | Profile first |\n| Micro-optimize | Fix biggest issue |\n| Optimize early | Optimize when needed |\n| Ignore real users | Use RUM data |\n\n---\n\n> **Remember:** The fastest code is code that doesn't run. Remove before optimizing.\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

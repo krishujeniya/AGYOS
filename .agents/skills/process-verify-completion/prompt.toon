@@ -1,0 +1,9 @@
+skill: "process-verify-completion"
+sections[7]:
+  - "\n"
+  - "# Process: Verification Before Completion\n\n"
+  - "## The Absolute Rule\n**NO COMPLETION CLAIMS WITHOUT FRESH VERIFICATION EVIDENCE.**\n\nClaiming work is complete, tests pass, or bugs are fixed without executing the actual verification command and reading its output is dishonest.\n\n"
+  - "## When to Use\nALWAYS before:\n- Saying \"Great!\", \"Done!\", \"Fixed!\", or \"Ready!\"\n- Deciding a task in `task.md` is complete (checking a box).\n- Creating a Git commit.\n- Transitioning from EXECUTION to VERIFICATION mode, or back to the user.\n\n"
+  - "## The Verification Gate\nBefore making any claim of success, you MUST follow this sequence:\n\n1. **IDENTIFY:** What exact command proves this claim? (e.g., `pytest`, `npm run build`, `npm run lint`).\n2. **RUN:** Execute the FULL command. Do not rely on previous runs or assumptions.\n3. **READ:** Read the full output. Do not assume `exit 0` means full success if the linter output shows warnings that violate our architecture rules.\n4. **VERIFY:** Does the output confirm the claim?\n5. **CLAIM:** Only make the claim *after* the evidence is secured.\n\n"
+  - "## Kill These Rationalizations Immediately (Red Flags)\n- ❌ *\"I just added a simple console.log, it should work.\"* (RUN THE ENTIRE BUILD/TEST).\n- ❌ *\"The linter passed, so the code is fine.\"* (Linter ≠ Compiler ≠ Tests).\n- ❌ *\"I'll assume the agent did it correctly.\"* (Verify the agent's work with `git diff` and tests).\n- ❌ *\"I wrote a regression test.\"* (Did you see it fail FIRST before the fix? If not, you didn't verify the test works).\n\n"
+  - "## Operator Checklist (PRE-ACT)\n- [ ] Is there empirical evidence (terminal output) in this immediate context proving the code works?\n- [ ] Was the regression test verified with a Red-Green cycle?\n- [ ] Have all related unit/integration tests been run and passed 100%?\n"

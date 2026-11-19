@@ -3,47 +3,13 @@ name: orch-build-mvp
 description: Orchestrate bootstrapping a working MVP from a design or spec document — ingest the SDD/PRD, plan thin vertical slices, scaffold the first end-to-end slice, then drive a generator-evaluator build loop with review and gated feat commits. Use when a design or spec document must become a running MVP through planned vertical slices.
 metadata:
   origin: ECC
+prompt-source: prompt.toon
 ---
-
-# orch-build-mvp
-
-Actor · action · target: **orch · build · mvp**. Thin wrapper over the shared
-engine in [`orch-pipeline`](../orch-pipeline/SKILL.md).
-
-## When to Use
-
-- The user has a **design / spec document** (SDD, PRD, system_design) and wants a
-  working vertical slice bootstrapped from it.
-- Takes a doc path as its argument, e.g. `civicpulse/docs/SDD-v0.6.md`.
-
-## Operation settings
-
-- **Default size floor:** large — this is the full pipeline including Scaffold.
-- **Phase mask:** 0 (read the spec) → 1 → 2 (heavy) → 3 (scaffold) → 4 → 5 → 6.
-- **First move (phase 0 → 2):** read the doc; extract scope, locked decisions,
-  and the feature list; order it into **thin vertical slices** (one end-to-end
-  path first, not all-models-then-all-views). Phase 3 stands up that first slice.
-
-## How It Works
-
-1. Run the `orch-pipeline` engine with the settings above.
-2. **Reuse the existing GAN harness** instead of hand-rolling an iterate loop:
-   - Translate the SDD into `gan-harness/spec.md` + `gan-harness/eval-rubric.md`
-     (this stands in for what `gan-planner` would generate — you already have the spec).
-   - Drive the build with `/gan-build "<one-line brief>" --skip-planner`
-     (defaults: `--max-iterations 15`, `--pass-threshold 7.0`,
-     `--eval-mode playwright`; use `--eval-mode code-only` for non-UI slices).
-   - That command runs the `gan-generator` → `gan-evaluator` loop and writes
-     `gan-harness/feedback/feedback-NNN.md` until the score passes or plateaus.
-3. Stop at **Gate 1** (slice plan) and **Gate 2** (pre-commit). Commit the
-   scaffold and each slice as separate `feat:` commits.
-4. Add `security-reviewer` for any slice touching a security trigger.
-
-## Example
-
-```
-orch-build-mvp: civicpulse/docs/SDD-v0.6.md
-→ read SDD → slice list (vertical) → scaffold slice 1  [GATE 1: approve]
-→ /gan-build --skip-planner (generator → evaluator loop) scores vs spec → review
-→ commit feat:  [GATE 2: confirm] → next slice
-```
+skill: "orch-build-mvp"
+sections[6]:
+  - "\n"
+  - "# orch-build-mvp\n\nActor · action · target: **orch · build · mvp**. Thin wrapper over the shared\nengine in [`orch-pipeline`](../orch-pipeline/SKILL.md).\n\n"
+  - "## When to Use\n\n- The user has a **design / spec document** (SDD, PRD, system_design) and wants a\n  working vertical slice bootstrapped from it.\n- Takes a doc path as its argument, e.g. `civicpulse/docs/SDD-v0.6.md`.\n\n"
+  - "## Operation settings\n\n- **Default size floor:** large — this is the full pipeline including Scaffold.\n- **Phase mask:** 0 (read the spec) → 1 → 2 (heavy) → 3 (scaffold) → 4 → 5 → 6.\n- **First move (phase 0 → 2):** read the doc; extract scope, locked decisions,\n  and the feature list; order it into **thin vertical slices** (one end-to-end\n  path first, not all-models-then-all-views). Phase 3 stands up that first slice.\n\n"
+  - "## How It Works\n\n1. Run the `orch-pipeline` engine with the settings above.\n2. **Reuse the existing GAN harness** instead of hand-rolling an iterate loop:\n   - Translate the SDD into `gan-harness/spec.md` + `gan-harness/eval-rubric.md`\n     (this stands in for what `gan-planner` would generate — you already have the spec).\n   - Drive the build with `/gan-build \"<one-line brief>\" --skip-planner`\n     (defaults: `--max-iterations 15`, `--pass-threshold 7.0`,\n     `--eval-mode playwright`; use `--eval-mode code-only` for non-UI slices).\n   - That command runs the `gan-generator` → `gan-evaluator` loop and writes\n     `gan-harness/feedback/feedback-NNN.md` until the score passes or plateaus.\n3. Stop at **Gate 1** (slice plan) and **Gate 2** (pre-commit). Commit the\n   scaffold and each slice as separate `feat:` commits.\n4. Add `security-reviewer` for any slice touching a security trigger.\n\n"
+  - "## Example\n\n```\norch-build-mvp: civicpulse/docs/SDD-v0.6.md\n→ read SDD → slice list (vertical) → scaffold slice 1  [GATE 1: approve]\n→ /gan-build --skip-planner (generator → evaluator loop) scores vs spec → review\n→ commit feat:  [GATE 2: confirm] → next slice\n```\n"

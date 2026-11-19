@@ -4,197 +4,33 @@ description: "Game audio principles. Sound design, music integration, adaptive a
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Game Audio Principles
-
-> Sound design and music integration for immersive game experiences.
-
----
-
-## 1. Audio Category System
-
-### Category Definitions
-
-| Category | Behavior | Examples |
-|----------|----------|----------|
-| **Music** | Looping, crossfade, ducking | BGM, combat music |
-| **SFX** | One-shot, 3D positioned | Footsteps, impacts |
-| **Ambient** | Looping, background layer | Wind, crowd, forest |
-| **UI** | Immediate, non-3D | Button clicks, notifications |
-| **Voice** | Priority, ducking trigger | Dialogue, announcer |
-
-### Priority Hierarchy
-
-```
-When sounds compete for channels:
-
-1. Voice (highest - always audible)
-2. Player SFX (feedback critical)
-3. Enemy SFX (gameplay important)
-4. Music (mood, but duckable)
-5. Ambient (lowest - can drop)
-```
-
----
-
-## 2. Sound Design Decisions
-
-### SFX Creation Approach
-
-| Approach | When to Use | Trade-offs |
-|----------|-------------|------------|
-| **Recording** | Realistic needs | High quality, time intensive |
-| **Synthesis** | Sci-fi, retro, UI | Unique, requires skill |
-| **Library samples** | Fast production | Common sounds, licensing |
-| **Layering** | Complex sounds | Best results, more work |
-
-### Layering Structure
-
-| Layer | Purpose | Example: Gunshot |
-|-------|---------|------------------|
-| **Attack** | Initial transient | Click, snap |
-| **Body** | Main character | Boom, blast |
-| **Tail** | Decay, room | Reverb, echo |
-| **Sweetener** | Special sauce | Shell casing, mechanical |
-
----
-
-## 3. Music Integration
-
-### Music State System
-
-```
-Game State → Music Response
-│
-├── Menu → Calm, loopable theme
-├── Exploration → Ambient, atmospheric
-├── Combat detected → Transition to tension
-├── Combat engaged → Full battle music
-├── Victory → Stinger + calm transition
-├── Defeat → Somber stinger
-└── Boss → Unique, multi-phase track
-```
-
-### Transition Techniques
-
-| Technique | Use When | Feel |
-|-----------|----------|------|
-| **Crossfade** | Smooth mood shift | Gradual |
-| **Stinger** | Immediate event | Dramatic |
-| **Stem mixing** | Dynamic intensity | Seamless |
-| **Beat-synced** | Rhythmic gameplay | Musical |
-| **Queue point** | Next natural break | Clean |
-
----
-
-## 4. Adaptive Audio Decisions
-
-### Intensity Parameters
-
-| Parameter | Affects | Example |
-|-----------|---------|---------|
-| **Threat level** | Music intensity | Enemy count |
-| **Health** | Filter, reverb | Low health = muffled |
-| **Speed** | Tempo, energy | Racing speed |
-| **Environment** | Reverb, EQ | Cave vs outdoor |
-| **Time of day** | Mood, volume | Night = quieter |
-
-### Vertical vs Horizontal
-
-| System | What Changes | Best For |
-|--------|--------------|----------|
-| **Vertical (layers)** | Add/remove instrument layers | Intensity scaling |
-| **Horizontal (segments)** | Different music sections | State changes |
-| **Combined** | Both | AAA adaptive scores |
-
----
-
-## 5. 3D Audio Decisions
-
-### Spatialization
-
-| Element | 3D Positioned? | Reason |
-|---------|----------------|--------|
-| Player footsteps | No (or subtle) | Always audible |
-| Enemy footsteps | Yes | Directional awareness |
-| Gunfire | Yes | Combat awareness |
-| Music | No | Mood, non-diegetic |
-| Ambient zone | Yes (area) | Environmental |
-| UI sounds | No | Interface feedback |
-
-### Distance Behavior
-
-| Distance | Sound Behavior |
-|----------|----------------|
-| **Near** | Full volume, full frequency |
-| **Medium** | Volume falloff, high-freq rolloff |
-| **Far** | Low volume, low-pass filter |
-| **Max** | Silent or ambient hint |
-
----
-
-## 6. Platform Considerations
-
-### Format Selection
-
-| Platform | Recommended Format | Reason |
-|----------|-------------------|--------|
-| PC | OGG Vorbis, WAV | Quality, no licensing |
-| Console | Platform-specific | Certification |
-| Mobile | MP3, AAC | Size, compatibility |
-| Web | WebM/Opus, MP3 fallback | Browser support |
-
-### Memory Budget
-
-| Game Type | Audio Budget | Strategy |
-|-----------|--------------|----------|
-| Mobile casual | 10-50 MB | Compressed, fewer variants |
-| PC indie | 100-500 MB | Quality focus |
-| AAA | 1+ GB | Full quality, many variants |
-
----
-
-## 7. Mix Hierarchy
-
-### Volume Balance Reference
-
-| Category | Relative Level | Notes |
-|----------|----------------|-------|
-| **Voice** | 0 dB (reference) | Always clear |
-| **Player SFX** | -3 to -6 dB | Prominent but not harsh |
-| **Music** | -6 to -12 dB | Foundation, ducks for voice |
-| **Enemy SFX** | -6 to -9 dB | Important but not dominant |
-| **Ambient** | -12 to -18 dB | Subtle background |
-
-### Ducking Rules
-
-| When | Duck What | Amount |
-|------|-----------|--------|
-| Voice plays | Music, Ambient | -6 to -9 dB |
-| Explosion | All except explosion | Brief duck |
-| Menu open | Gameplay audio | -3 to -6 dB |
-
----
-
-## 8. Anti-Patterns
-
-| Don't | Do |
-|-------|-----|
-| Play same sound repeatedly | Use variations (3-5 per sound) |
-| Max volume everything | Use proper mix hierarchy |
-| Ignore silence | Silence creates contrast |
-| One music track loops forever | Provide variety, transitions |
-| Skip audio in prototype | Placeholder audio matters |
-
----
-
-> **Remember:** 50% of the game experience is audio. A muted game loses half its soul.
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "game-audio"
+sections[26]:
+  - "\n"
+  - "# Game Audio Principles\n\n> Sound design and music integration for immersive game experiences.\n\n---\n\n"
+  - "## 1. Audio Category System\n\n"
+  - "### Category Definitions\n\n| Category | Behavior | Examples |\n|----------|----------|----------|\n| **Music** | Looping, crossfade, ducking | BGM, combat music |\n| **SFX** | One-shot, 3D positioned | Footsteps, impacts |\n| **Ambient** | Looping, background layer | Wind, crowd, forest |\n| **UI** | Immediate, non-3D | Button clicks, notifications |\n| **Voice** | Priority, ducking trigger | Dialogue, announcer |\n\n"
+  - "### Priority Hierarchy\n\n```\nWhen sounds compete for channels:\n\n1. Voice (highest - always audible)\n2. Player SFX (feedback critical)\n3. Enemy SFX (gameplay important)\n4. Music (mood, but duckable)\n5. Ambient (lowest - can drop)\n```\n\n---\n\n"
+  - "## 2. Sound Design Decisions\n\n"
+  - "### SFX Creation Approach\n\n| Approach | When to Use | Trade-offs |\n|----------|-------------|------------|\n| **Recording** | Realistic needs | High quality, time intensive |\n| **Synthesis** | Sci-fi, retro, UI | Unique, requires skill |\n| **Library samples** | Fast production | Common sounds, licensing |\n| **Layering** | Complex sounds | Best results, more work |\n\n"
+  - "### Layering Structure\n\n| Layer | Purpose | Example: Gunshot |\n|-------|---------|------------------|\n| **Attack** | Initial transient | Click, snap |\n| **Body** | Main character | Boom, blast |\n| **Tail** | Decay, room | Reverb, echo |\n| **Sweetener** | Special sauce | Shell casing, mechanical |\n\n---\n\n"
+  - "## 3. Music Integration\n\n"
+  - "### Music State System\n\n```\nGame State → Music Response\n│\n├── Menu → Calm, loopable theme\n├── Exploration → Ambient, atmospheric\n├── Combat detected → Transition to tension\n├── Combat engaged → Full battle music\n├── Victory → Stinger + calm transition\n├── Defeat → Somber stinger\n└── Boss → Unique, multi-phase track\n```\n\n"
+  - "### Transition Techniques\n\n| Technique | Use When | Feel |\n|-----------|----------|------|\n| **Crossfade** | Smooth mood shift | Gradual |\n| **Stinger** | Immediate event | Dramatic |\n| **Stem mixing** | Dynamic intensity | Seamless |\n| **Beat-synced** | Rhythmic gameplay | Musical |\n| **Queue point** | Next natural break | Clean |\n\n---\n\n"
+  - "## 4. Adaptive Audio Decisions\n\n"
+  - "### Intensity Parameters\n\n| Parameter | Affects | Example |\n|-----------|---------|---------|\n| **Threat level** | Music intensity | Enemy count |\n| **Health** | Filter, reverb | Low health = muffled |\n| **Speed** | Tempo, energy | Racing speed |\n| **Environment** | Reverb, EQ | Cave vs outdoor |\n| **Time of day** | Mood, volume | Night = quieter |\n\n"
+  - "### Vertical vs Horizontal\n\n| System | What Changes | Best For |\n|--------|--------------|----------|\n| **Vertical (layers)** | Add/remove instrument layers | Intensity scaling |\n| **Horizontal (segments)** | Different music sections | State changes |\n| **Combined** | Both | AAA adaptive scores |\n\n---\n\n"
+  - "## 5. 3D Audio Decisions\n\n"
+  - "### Spatialization\n\n| Element | 3D Positioned? | Reason |\n|---------|----------------|--------|\n| Player footsteps | No (or subtle) | Always audible |\n| Enemy footsteps | Yes | Directional awareness |\n| Gunfire | Yes | Combat awareness |\n| Music | No | Mood, non-diegetic |\n| Ambient zone | Yes (area) | Environmental |\n| UI sounds | No | Interface feedback |\n\n"
+  - "### Distance Behavior\n\n| Distance | Sound Behavior |\n|----------|----------------|\n| **Near** | Full volume, full frequency |\n| **Medium** | Volume falloff, high-freq rolloff |\n| **Far** | Low volume, low-pass filter |\n| **Max** | Silent or ambient hint |\n\n---\n\n"
+  - "## 6. Platform Considerations\n\n"
+  - "### Format Selection\n\n| Platform | Recommended Format | Reason |\n|----------|-------------------|--------|\n| PC | OGG Vorbis, WAV | Quality, no licensing |\n| Console | Platform-specific | Certification |\n| Mobile | MP3, AAC | Size, compatibility |\n| Web | WebM/Opus, MP3 fallback | Browser support |\n\n"
+  - "### Memory Budget\n\n| Game Type | Audio Budget | Strategy |\n|-----------|--------------|----------|\n| Mobile casual | 10-50 MB | Compressed, fewer variants |\n| PC indie | 100-500 MB | Quality focus |\n| AAA | 1+ GB | Full quality, many variants |\n\n---\n\n"
+  - "## 7. Mix Hierarchy\n\n"
+  - "### Volume Balance Reference\n\n| Category | Relative Level | Notes |\n|----------|----------------|-------|\n| **Voice** | 0 dB (reference) | Always clear |\n| **Player SFX** | -3 to -6 dB | Prominent but not harsh |\n| **Music** | -6 to -12 dB | Foundation, ducks for voice |\n| **Enemy SFX** | -6 to -9 dB | Important but not dominant |\n| **Ambient** | -12 to -18 dB | Subtle background |\n\n"
+  - "### Ducking Rules\n\n| When | Duck What | Amount |\n|------|-----------|--------|\n| Voice plays | Music, Ambient | -6 to -9 dB |\n| Explosion | All except explosion | Brief duck |\n| Menu open | Gameplay audio | -3 to -6 dB |\n\n---\n\n"
+  - "## 8. Anti-Patterns\n\n| Don't | Do |\n|-------|-----|\n| Play same sound repeatedly | Use variations (3-5 per sound) |\n| Max volume everything | Use proper mix hierarchy |\n| Ignore silence | Silence creates contrast |\n| One music track loops forever | Provide variety, transitions |\n| Skip audio in prototype | Placeholder audio matters |\n\n---\n\n> **Remember:** 50% of the game experience is audio. A muted game loses half its soul.\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

@@ -3,94 +3,18 @@ name: google-workspace-ops
 description: Operate across Google Drive, Docs, Sheets, and Slides as one workflow surface for plans, trackers, decks, and shared documents. Use when the user needs to find, summarize, edit, migrate, or clean up Google Workspace assets without dropping to raw tool calls.
 metadata:
   origin: ECC
+prompt-source: prompt.toon
 ---
-
-# Google Workspace Ops
-
-This skill is for operating shared docs, spreadsheets, and decks as working systems, not just editing one file in isolation.
-
-## When to Use
-
-- User needs to find a doc, sheet, or deck and update it in place
-- Consolidating plans, trackers, notes, or customer lists stored in Google Drive
-- Cleaning or restructuring a shared spreadsheet
-- Importing, repairing, or reformatting a Google Slides deck
-- Producing summaries from Docs, Sheets, or Slides for decision-making
-
-## Preferred Tool Surface
-
-Use Google Drive as the entry point, then switch to the right specialist:
-
-- Google Docs for text-heavy docs
-- Google Sheets for tabular work, formulas, and charts
-- Google Slides for decks, imports, template migration, and cleanup
-
-Do not guess structure from filenames alone. Inspect first.
-
-## Workflow
-
-### 1. Find the asset
-
-Start with the Drive search surface to locate:
-
-- the exact file
-- sibling assets
-- likely duplicates
-- recently modified versions
-
-If several documents look similar, confirm by title, owner, modified time, or folder.
-
-### 2. Inspect before editing
-
-Before making changes:
-
-- summarize current structure
-- identify tabs, headings, or slide count
-- detect whether the task is local cleanup or structural surgery
-
-Pick the smallest tool that can safely perform the work.
-
-### 3. Edit with precision
-
-- For Docs: use index-aware edits, not vague rewrites
-- For Sheets: operate on explicit tabs and ranges
-- For Slides: distinguish content edits from visual cleanup or template migration
-
-If the requested work is visual or layout-sensitive, iterate with inspection and verification instead of one giant blind update.
-
-### 4. Keep the working system clean
-
-When the file is part of a larger workflow, also surface:
-
-- duplicate trackers
-- outdated decks
-- stale docs vs canonical docs
-- whether the asset should be archived, merged, or renamed
-
-## Output Format
-
-Use:
-
-```text
-ASSET
-- file name
-- type
-- why this is the right file
-
-CURRENT STATE
-- structure summary
-- key problems or blockers
-
-ACTION
-- edits made or recommended
-
-FOLLOW-UPS
-- archive / merge / duplicate cleanup / next file to update
-```
-
-## Good Use Cases
-
-- "Find the active planning doc and condense it"
-- "Clean up this customer spreadsheet and show me the churn-risk rows"
-- "Import this deck into Slides and make it presentable"
-- "Find the current tracker, not the stale duplicate"
+skill: "google-workspace-ops"
+sections[11]:
+  - "\n"
+  - "# Google Workspace Ops\n\nThis skill is for operating shared docs, spreadsheets, and decks as working systems, not just editing one file in isolation.\n\n"
+  - "## When to Use\n\n- User needs to find a doc, sheet, or deck and update it in place\n- Consolidating plans, trackers, notes, or customer lists stored in Google Drive\n- Cleaning or restructuring a shared spreadsheet\n- Importing, repairing, or reformatting a Google Slides deck\n- Producing summaries from Docs, Sheets, or Slides for decision-making\n\n"
+  - "## Preferred Tool Surface\n\nUse Google Drive as the entry point, then switch to the right specialist:\n\n- Google Docs for text-heavy docs\n- Google Sheets for tabular work, formulas, and charts\n- Google Slides for decks, imports, template migration, and cleanup\n\nDo not guess structure from filenames alone. Inspect first.\n\n"
+  - "## Workflow\n\n"
+  - "### 1. Find the asset\n\nStart with the Drive search surface to locate:\n\n- the exact file\n- sibling assets\n- likely duplicates\n- recently modified versions\n\nIf several documents look similar, confirm by title, owner, modified time, or folder.\n\n"
+  - "### 2. Inspect before editing\n\nBefore making changes:\n\n- summarize current structure\n- identify tabs, headings, or slide count\n- detect whether the task is local cleanup or structural surgery\n\nPick the smallest tool that can safely perform the work.\n\n"
+  - "### 3. Edit with precision\n\n- For Docs: use index-aware edits, not vague rewrites\n- For Sheets: operate on explicit tabs and ranges\n- For Slides: distinguish content edits from visual cleanup or template migration\n\nIf the requested work is visual or layout-sensitive, iterate with inspection and verification instead of one giant blind update.\n\n"
+  - "### 4. Keep the working system clean\n\nWhen the file is part of a larger workflow, also surface:\n\n- duplicate trackers\n- outdated decks\n- stale docs vs canonical docs\n- whether the asset should be archived, merged, or renamed\n\n"
+  - "## Output Format\n\nUse:\n\n```text\nASSET\n- file name\n- type\n- why this is the right file\n\nCURRENT STATE\n- structure summary\n- key problems or blockers\n\nACTION\n- edits made or recommended\n\nFOLLOW-UPS\n- archive / merge / duplicate cleanup / next file to update\n```\n\n"
+  - "## Good Use Cases\n\n- \"Find the active planning doc and condense it\"\n- \"Clean up this customer spreadsheet and show me the churn-risk rows\"\n- \"Import this deck into Slides and make it presentable\"\n- \"Find the current tracker, not the stale duplicate\"\n"

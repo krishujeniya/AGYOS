@@ -4,136 +4,27 @@ description: "Game design principles. GDD structure, balancing, player psycholog
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Game Design Principles
-
-> Design thinking for engaging games.
-
----
-
-## 1. Core Loop Design
-
-### The 30-Second Test
-
-```
-Every game needs a fun 30-second loop:
-1. ACTION → Player does something
-2. FEEDBACK → Game responds
-3. REWARD → Player feels good
-4. REPEAT
-```
-
-### Loop Examples
-
-| Genre | Core Loop |
-|-------|-----------|
-| Platformer | Run → Jump → Land → Collect |
-| Shooter | Aim → Shoot → Kill → Loot |
-| Puzzle | Observe → Think → Solve → Advance |
-| RPG | Explore → Fight → Level → Gear |
-
----
-
-## 2. Game Design Document (GDD)
-
-### Essential Sections
-
-| Section | Content |
-|---------|---------|
-| **Pitch** | One-sentence description |
-| **Core Loop** | 30-second gameplay |
-| **Mechanics** | How systems work |
-| **Progression** | How player advances |
-| **Art Style** | Visual direction |
-| **Audio** | Sound direction |
-
-### Principles
-
-- Keep it living (update regularly)
-- Visuals help communicate
-- Less is more (start small)
-
----
-
-## 3. Player Psychology
-
-### Motivation Types
-
-| Type | Driven By |
-|------|-----------|
-| **Achiever** | Goals, completion |
-| **Explorer** | Discovery, secrets |
-| **Socializer** | Interaction, community |
-| **Killer** | Competition, dominance |
-
-### Reward Schedules
-
-| Schedule | Effect | Use |
-|----------|--------|-----|
-| **Fixed** | Predictable | Milestone rewards |
-| **Variable** | Addictive | Loot drops |
-| **Ratio** | Effort-based | Grind games |
-
----
-
-## 4. Difficulty Balancing
-
-### Flow State
-
-```
-Too Hard → Frustration → Quit
-Too Easy → Boredom → Quit
-Just Right → Flow → Engagement
-```
-
-### Balancing Strategies
-
-| Strategy | How |
-|----------|-----|
-| **Dynamic** | Adjust to player skill |
-| **Selection** | Let player choose |
-| **Accessibility** | Options for all |
-
----
-
-## 5. Progression Design
-
-### Progression Types
-
-| Type | Example |
-|------|---------|
-| **Skill** | Player gets better |
-| **Power** | Character gets stronger |
-| **Content** | New areas unlock |
-| **Story** | Narrative advances |
-
-### Pacing Principles
-
-- Early wins (hook quickly)
-- Gradually increase challenge
-- Rest beats between intensity
-- Meaningful choices
-
----
-
-## 6. Anti-Patterns
-
-| ❌ Don't | ✅ Do |
-|----------|-------|
-| Design in isolation | Playtest constantly |
-| Polish before fun | Prototype first |
-| Force one way to play | Allow player expression |
-| Punish excessively | Reward progress |
-
----
-
-> **Remember:** Fun is discovered through iteration, not designed on paper.
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "game-design"
+sections[20]:
+  - "\n"
+  - "# Game Design Principles\n\n> Design thinking for engaging games.\n\n---\n\n"
+  - "## 1. Core Loop Design\n\n"
+  - "### The 30-Second Test\n\n```\nEvery game needs a fun 30-second loop:\n1. ACTION → Player does something\n2. FEEDBACK → Game responds\n3. REWARD → Player feels good\n4. REPEAT\n```\n\n"
+  - "### Loop Examples\n\n| Genre | Core Loop |\n|-------|-----------|\n| Platformer | Run → Jump → Land → Collect |\n| Shooter | Aim → Shoot → Kill → Loot |\n| Puzzle | Observe → Think → Solve → Advance |\n| RPG | Explore → Fight → Level → Gear |\n\n---\n\n"
+  - "## 2. Game Design Document (GDD)\n\n"
+  - "### Essential Sections\n\n| Section | Content |\n|---------|---------|\n| **Pitch** | One-sentence description |\n| **Core Loop** | 30-second gameplay |\n| **Mechanics** | How systems work |\n| **Progression** | How player advances |\n| **Art Style** | Visual direction |\n| **Audio** | Sound direction |\n\n"
+  - "### Principles\n\n- Keep it living (update regularly)\n- Visuals help communicate\n- Less is more (start small)\n\n---\n\n"
+  - "## 3. Player Psychology\n\n"
+  - "### Motivation Types\n\n| Type | Driven By |\n|------|-----------|\n| **Achiever** | Goals, completion |\n| **Explorer** | Discovery, secrets |\n| **Socializer** | Interaction, community |\n| **Killer** | Competition, dominance |\n\n"
+  - "### Reward Schedules\n\n| Schedule | Effect | Use |\n|----------|--------|-----|\n| **Fixed** | Predictable | Milestone rewards |\n| **Variable** | Addictive | Loot drops |\n| **Ratio** | Effort-based | Grind games |\n\n---\n\n"
+  - "## 4. Difficulty Balancing\n\n"
+  - "### Flow State\n\n```\nToo Hard → Frustration → Quit\nToo Easy → Boredom → Quit\nJust Right → Flow → Engagement\n```\n\n"
+  - "### Balancing Strategies\n\n| Strategy | How |\n|----------|-----|\n| **Dynamic** | Adjust to player skill |\n| **Selection** | Let player choose |\n| **Accessibility** | Options for all |\n\n---\n\n"
+  - "## 5. Progression Design\n\n"
+  - "### Progression Types\n\n| Type | Example |\n|------|---------|\n| **Skill** | Player gets better |\n| **Power** | Character gets stronger |\n| **Content** | New areas unlock |\n| **Story** | Narrative advances |\n\n"
+  - "### Pacing Principles\n\n- Early wins (hook quickly)\n- Gradually increase challenge\n- Rest beats between intensity\n- Meaningful choices\n\n---\n\n"
+  - "## 6. Anti-Patterns\n\n| ❌ Don't | ✅ Do |\n|----------|-------|\n| Design in isolation | Playtest constantly |\n| Polish before fun | Prototype first |\n| Force one way to play | Allow player expression |\n| Punish excessively | Reward progress |\n\n---\n\n> **Remember:** Fun is discovered through iteration, not designed on paper.\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

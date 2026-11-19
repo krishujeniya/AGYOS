@@ -4,206 +4,30 @@ description: "Bash/Linux terminal patterns. Critical commands, piping, error han
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Bash Linux Patterns
-
-> Essential patterns for Bash on Linux/macOS.
-
----
-
-## 1. Operator Syntax
-
-### Chaining Commands
-
-| Operator | Meaning | Example |
-|----------|---------|---------|
-| `;` | Run sequentially | `cmd1; cmd2` |
-| `&&` | Run if previous succeeded | `npm install && npm run dev` |
-| `\|\|` | Run if previous failed | `npm test \|\| echo "Tests failed"` |
-| `\|` | Pipe output | `ls \| grep ".js"` |
-
----
-
-## 2. File Operations
-
-### Essential Commands
-
-| Task | Command |
-|------|---------|
-| List all | `ls -la` |
-| Find files | `find . -name "*.js" -type f` |
-| File content | `cat file.txt` |
-| First N lines | `head -n 20 file.txt` |
-| Last N lines | `tail -n 20 file.txt` |
-| Follow log | `tail -f log.txt` |
-| Search in files | `grep -r "pattern" --include="*.js"` |
-| File size | `du -sh *` |
-| Disk usage | `df -h` |
-
----
-
-## 3. Process Management
-
-| Task | Command |
-|------|---------|
-| List processes | `ps aux` |
-| Find by name | `ps aux \| grep node` |
-| Kill by PID | `kill -9 <PID>` |
-| Find port user | `lsof -i :3000` |
-| Kill port | `kill -9 $(lsof -t -i :3000)` |
-| Background | `npm run dev &` |
-| Jobs | `jobs -l` |
-| Bring to front | `fg %1` |
-
----
-
-## 4. Text Processing
-
-### Core Tools
-
-| Tool | Purpose | Example |
-|------|---------|---------|
-| `grep` | Search | `grep -rn "TODO" src/` |
-| `sed` | Replace | `sed -i 's/old/new/g' file.txt` |
-| `awk` | Extract columns | `awk '{print $1}' file.txt` |
-| `cut` | Cut fields | `cut -d',' -f1 data.csv` |
-| `sort` | Sort lines | `sort -u file.txt` |
-| `uniq` | Unique lines | `sort file.txt \| uniq -c` |
-| `wc` | Count | `wc -l file.txt` |
-
----
-
-## 5. Environment Variables
-
-| Task | Command |
-|------|---------|
-| View all | `env` or `printenv` |
-| View one | `echo $PATH` |
-| Set temporary | `export VAR="value"` |
-| Set in script | `VAR="value" command` |
-| Add to PATH | `export PATH="$PATH:/new/path"` |
-
----
-
-## 6. Network
-
-| Task | Command |
-|------|---------|
-| Download | `curl -O https://example.com/file` |
-| API request | `curl -X GET https://api.example.com` |
-| POST JSON | `curl -X POST -H "Content-Type: application/json" -d '{"key":"value"}' URL` |
-| Check port | `nc -zv localhost 3000` |
-| Network info | `ifconfig` or `ip addr` |
-
----
-
-## 7. Script Template
-
-```bash
-#!/bin/bash
-set -euo pipefail  # Exit on error, undefined var, pipe fail
-
-# Colors (optional)
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-NC='\033[0m'
-
-# Script directory
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-# Functions
-log_info() { echo -e "${GREEN}[INFO]${NC} $1"; }
-log_error() { echo -e "${RED}[ERROR]${NC} $1" >&2; }
-
-# Main
-main() {
-    log_info "Starting..."
-    # Your logic here
-    log_info "Done!"
-}
-
-main "$@"
-```
-
----
-
-## 8. Common Patterns
-
-### Check if command exists
-
-```bash
-if command -v node &> /dev/null; then
-    echo "Node is installed"
-fi
-```
-
-### Default variable value
-
-```bash
-NAME=${1:-"default_value"}
-```
-
-### Read file line by line
-
-```bash
-while IFS= read -r line; do
-    echo "$line"
-done < file.txt
-```
-
-### Loop over files
-
-```bash
-for file in *.js; do
-    echo "Processing $file"
-done
-```
-
----
-
-## 9. Differences from PowerShell
-
-| Task | PowerShell | Bash |
-|------|------------|------|
-| List files | `Get-ChildItem` | `ls -la` |
-| Find files | `Get-ChildItem -Recurse` | `find . -type f` |
-| Environment | `$env:VAR` | `$VAR` |
-| String concat | `"$a$b"` | `"$a$b"` (same) |
-| Null check | `if ($x)` | `if [ -n "$x" ]` |
-| Pipeline | Object-based | Text-based |
-
----
-
-## 10. Error Handling
-
-### Set options
-
-```bash
-set -e          # Exit on error
-set -u          # Exit on undefined variable
-set -o pipefail # Exit on pipe failure
-set -x          # Debug: print commands
-```
-
-### Trap for cleanup
-
-```bash
-cleanup() {
-    echo "Cleaning up..."
-    rm -f /tmp/tempfile
-}
-trap cleanup EXIT
-```
-
----
-
-> **Remember:** Bash is text-based. Use `&&` for success chains, `set -e` for safety, and quote your variables!
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "bash-linux"
+sections[23]:
+  - "\n"
+  - "# Bash Linux Patterns\n\n> Essential patterns for Bash on Linux/macOS.\n\n---\n\n"
+  - "## 1. Operator Syntax\n\n"
+  - "### Chaining Commands\n\n| Operator | Meaning | Example |\n|----------|---------|---------|\n| `;` | Run sequentially | `cmd1; cmd2` |\n| `&&` | Run if previous succeeded | `npm install && npm run dev` |\n| `\\|\\|` | Run if previous failed | `npm test \\|\\| echo \"Tests failed\"` |\n| `\\|` | Pipe output | `ls \\| grep \".js\"` |\n\n---\n\n"
+  - "## 2. File Operations\n\n"
+  - "### Essential Commands\n\n| Task | Command |\n|------|---------|\n| List all | `ls -la` |\n| Find files | `find . -name \"*.js\" -type f` |\n| File content | `cat file.txt` |\n| First N lines | `head -n 20 file.txt` |\n| Last N lines | `tail -n 20 file.txt` |\n| Follow log | `tail -f log.txt` |\n| Search in files | `grep -r \"pattern\" --include=\"*.js\"` |\n| File size | `du -sh *` |\n| Disk usage | `df -h` |\n\n---\n\n"
+  - "## 3. Process Management\n\n| Task | Command |\n|------|---------|\n| List processes | `ps aux` |\n| Find by name | `ps aux \\| grep node` |\n| Kill by PID | `kill -9 <PID>` |\n| Find port user | `lsof -i :3000` |\n| Kill port | `kill -9 $(lsof -t -i :3000)` |\n| Background | `npm run dev &` |\n| Jobs | `jobs -l` |\n| Bring to front | `fg %1` |\n\n---\n\n"
+  - "## 4. Text Processing\n\n"
+  - "### Core Tools\n\n| Tool | Purpose | Example |\n|------|---------|---------|\n| `grep` | Search | `grep -rn \"TODO\" src/` |\n| `sed` | Replace | `sed -i 's/old/new/g' file.txt` |\n| `awk` | Extract columns | `awk '{print $1}' file.txt` |\n| `cut` | Cut fields | `cut -d',' -f1 data.csv` |\n| `sort` | Sort lines | `sort -u file.txt` |\n| `uniq` | Unique lines | `sort file.txt \\| uniq -c` |\n| `wc` | Count | `wc -l file.txt` |\n\n---\n\n"
+  - "## 5. Environment Variables\n\n| Task | Command |\n|------|---------|\n| View all | `env` or `printenv` |\n| View one | `echo $PATH` |\n| Set temporary | `export VAR=\"value\"` |\n| Set in script | `VAR=\"value\" command` |\n| Add to PATH | `export PATH=\"$PATH:/new/path\"` |\n\n---\n\n"
+  - "## 6. Network\n\n| Task | Command |\n|------|---------|\n| Download | `curl -O https://example.com/file` |\n| API request | `curl -X GET https://api.example.com` |\n| POST JSON | `curl -X POST -H \"Content-Type: application/json\" -d '{\"key\":\"value\"}' URL` |\n| Check port | `nc -zv localhost 3000` |\n| Network info | `ifconfig` or `ip addr` |\n\n---\n\n"
+  - "## 7. Script Template\n\n```bash\n#!/bin/bash\nset -euo pipefail  # Exit on error, undefined var, pipe fail\n\n# Colors (optional)\nRED='\\033[0;31m'\nGREEN='\\033[0;32m'\nNC='\\033[0m'\n\n# Script directory\nSCRIPT_DIR=\"$(cd \"$(dirname \"${BASH_SOURCE[0]}\")\" && pwd)\"\n\n# Functions\nlog_info() { echo -e \"${GREEN}[INFO]${NC} $1\"; }\nlog_error() { echo -e \"${RED}[ERROR]${NC} $1\" >&2; }\n\n# Main\nmain() {\n    log_info \"Starting...\"\n    # Your logic here\n    log_info \"Done!\"\n}\n\nmain \"$@\"\n```\n\n---\n\n"
+  - "## 8. Common Patterns\n\n"
+  - "### Check if command exists\n\n```bash\nif command -v node &> /dev/null; then\n    echo \"Node is installed\"\nfi\n```\n\n"
+  - "### Default variable value\n\n```bash\nNAME=${1:-\"default_value\"}\n```\n\n"
+  - "### Read file line by line\n\n```bash\nwhile IFS= read -r line; do\n    echo \"$line\"\ndone < file.txt\n```\n\n"
+  - "### Loop over files\n\n```bash\nfor file in *.js; do\n    echo \"Processing $file\"\ndone\n```\n\n---\n\n"
+  - "## 9. Differences from PowerShell\n\n| Task | PowerShell | Bash |\n|------|------------|------|\n| List files | `Get-ChildItem` | `ls -la` |\n| Find files | `Get-ChildItem -Recurse` | `find . -type f` |\n| Environment | `$env:VAR` | `$VAR` |\n| String concat | `\"$a$b\"` | `\"$a$b\"` (same) |\n| Null check | `if ($x)` | `if [ -n \"$x\" ]` |\n| Pipeline | Object-based | Text-based |\n\n---\n\n"
+  - "## 10. Error Handling\n\n"
+  - "### Set options\n\n```bash\nset -e          # Exit on error\nset -u          # Exit on undefined variable\nset -o pipefail # Exit on pipe failure\nset -x          # Debug: print commands\n```\n\n"
+  - "### Trap for cleanup\n\n```bash\ncleanup() {\n    echo \"Cleaning up...\"\n    rm -f /tmp/tempfile\n}\ntrap cleanup EXIT\n```\n\n---\n\n> **Remember:** Bash is text-based. Use `&&` for success chains, `set -e` for safety, and quote your variables!\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

@@ -4,96 +4,17 @@ description: Use when starting a new implementation task and an issue must be cr
 risk: safe
 source: community
 date_added: "2026-03-12"
+prompt-source: prompt.toon
 ---
-
-# Create Issue Gate
-
-## Overview
-
-Create GitHub issues as the single tracking entrypoint for tasks, with a hard gate on acceptance criteria.
-
-Core rule: **no explicit, testable acceptance criteria from user => issue stays `draft` and execution is blocked.**
-
-## When to Use
-- You are starting a new implementation task and want a GitHub issue to be the required tracking entrypoint.
-- The work must be blocked until the user provides explicit, testable acceptance criteria.
-- You need to distinguish between `draft`, `ready`, and `blocked` work before execution begins.
-
-## Required Fields
-
-Every issue must include these sections:
-- Problem
-- Goal
-- Scope
-- Non-Goals
-- Acceptance Criteria
-- Dependencies/Blockers
-- Status (`draft` | `ready` | `blocked` | `done`)
-
-## Acceptance Criteria Gate
-
-Acceptance criteria are valid only when they are testable and pass/fail checkable.
-
-Examples:
-- valid: "CreateCheckoutLambda-dev returns an openable third-party payment checkout URL"
-- invalid: "fix checkout" / "improve UX" / "make it better"
-
-If criteria are missing or non-testable:
-- still create the issue
-- set `Status: draft`
-- add `Execution Gate: blocked (missing valid acceptance criteria)`
-- do not move task to execution
-
-## Issue Creation Mode
-
-Default mode is direct GitHub creation using `gh issue create`.
-
-Use a body template like:
-
-```md
-## Problem
-<what is broken or missing>
-
-## Goal
-<what outcome is expected>
-
-## Scope
-- <in scope item>
-
-## Non-Goals
-- <out of scope item>
-
-## Acceptance Criteria
-- <explicit, testable criterion 1>
-
-## Dependencies/Blockers
-- <dependency or none>
-
-## Status
-draft|ready|blocked|done
-
-## Execution Gate
-allowed|blocked (<reason>)
-```
-
-## Status Rules
-
-- `draft`: missing/weak acceptance criteria or incomplete task definition
-- `ready`: acceptance criteria are explicit and testable
-- `blocked`: external dependency prevents progress
-- `done`: acceptance criteria verified with evidence
-
-Never mark an issue `ready` without valid acceptance criteria.
-
-## Handoff to Execution
-
-Execution workflows (for example `closed-loop-delivery`) may start only when:
-- issue status is `ready`
-- execution gate is `allowed`
-
-If issue is `draft`, stop and request user-provided acceptance criteria.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "create-issue-gate"
+sections[10]:
+  - "\n"
+  - "# Create Issue Gate\n\n"
+  - "## Overview\n\nCreate GitHub issues as the single tracking entrypoint for tasks, with a hard gate on acceptance criteria.\n\nCore rule: **no explicit, testable acceptance criteria from user => issue stays `draft` and execution is blocked.**\n\n"
+  - "## When to Use\n- You are starting a new implementation task and want a GitHub issue to be the required tracking entrypoint.\n- The work must be blocked until the user provides explicit, testable acceptance criteria.\n- You need to distinguish between `draft`, `ready`, and `blocked` work before execution begins.\n\n"
+  - "## Required Fields\n\nEvery issue must include these sections:\n- Problem\n- Goal\n- Scope\n- Non-Goals\n- Acceptance Criteria\n- Dependencies/Blockers\n- Status (`draft` | `ready` | `blocked` | `done`)\n\n"
+  - "## Acceptance Criteria Gate\n\nAcceptance criteria are valid only when they are testable and pass/fail checkable.\n\nExamples:\n- valid: \"CreateCheckoutLambda-dev returns an openable third-party payment checkout URL\"\n- invalid: \"fix checkout\" / \"improve UX\" / \"make it better\"\n\nIf criteria are missing or non-testable:\n- still create the issue\n- set `Status: draft`\n- add `Execution Gate: blocked (missing valid acceptance criteria)`\n- do not move task to execution\n\n"
+  - "## Issue Creation Mode\n\nDefault mode is direct GitHub creation using `gh issue create`.\n\nUse a body template like:\n\n```md\n## Problem\n<what is broken or missing>\n\n## Goal\n<what outcome is expected>\n\n## Scope\n- <in scope item>\n\n## Non-Goals\n- <out of scope item>\n\n## Acceptance Criteria\n- <explicit, testable criterion 1>\n\n## Dependencies/Blockers\n- <dependency or none>\n\n## Status\ndraft|ready|blocked|done\n\n## Execution Gate\nallowed|blocked (<reason>)\n```\n\n"
+  - "## Status Rules\n\n- `draft`: missing/weak acceptance criteria or incomplete task definition\n- `ready`: acceptance criteria are explicit and testable\n- `blocked`: external dependency prevents progress\n- `done`: acceptance criteria verified with evidence\n\nNever mark an issue `ready` without valid acceptance criteria.\n\n"
+  - "## Handoff to Execution\n\nExecution workflows (for example `closed-loop-delivery`) may start only when:\n- issue status is `ready`\n- execution gate is `allowed`\n\nIf issue is `draft`, stop and request user-provided acceptance criteria.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

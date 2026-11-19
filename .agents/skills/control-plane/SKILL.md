@@ -1,49 +1,12 @@
 ---
 name: control-plane
 description: Manage the experimental Nasiko CLI lifecycle through ECC — read-only status checks, consent-gated install of the pinned qualified version with dry-run preview, and ownership-checked uninstall, under explicit telemetry and secrets boundaries. Use when the user asks to install, inspect, or remove the Nasiko CLI or check whether it is present.
+prompt-source: prompt.toon
 ---
-
-# Nasiko CLI Lifecycle Bridge
-
-Use this skill when a user explicitly asks ECC to install, inspect, or remove
-the qualified Nasiko CLI. This skill does not operate a Nasiko control plane.
-
-## Safety contract
-
-- Begin with `ecc nasiko status --json`. Status is read-only.
-- Installation always requires explicit user consent and `--yes`.
-- Install only an ECC-qualified pinned version, currently `v0.1.0`.
-- Preview first with `ecc nasiko install --version v0.1.0 --dry-run --json`.
-- Install with `ecc nasiko install --version v0.1.0 --yes --json` only after the
-  user reviews the version, registry origin, digest, and destination.
-- Remove only a still-qualified ECC-managed binary with
-  `ecc nasiko uninstall --version v0.1.0 --yes --json`. Preview removal with
-  `--dry-run` first.
-- The qualified source is `https://github.com/Nasiko-Labs/nasiko`, licensed
-  under Apache-2.0; artifact and extracted-binary SHA-256 values are pinned.
-- Never replace the qualified command with a downloaded shell or PowerShell
-  bootstrap script.
-- Never put secrets or credentials in command arguments, logs, skill output,
-  install metadata, or ECC state.
-- Nasiko telemetry and any sharing with Nasiko or Ito must be opt-in and
-  separately disclosed. Installation is not telemetry consent.
-
-## Lifecycle boundary
-
-The initial ECC bridge supports qualified installation, read-only status, and
-ownership-checked uninstall. Use the canonical Nasiko CLI directly for connection, authentication,
-launch, deployment, or shutdown until those verbs have their own verified ECC
-contracts. Do not guess CLI verbs.
-
-Installing the CLI does not prove that a control-plane server is running, an
-agent is governed, routing or ACLs work, observability is complete, telemetry
-was enabled, or Ito compute is connected. Report each state separately.
-
-## Failure behavior
-
-- If the platform, architecture, version, manifest, digest, archive, binary, or
-  destination fails validation, stop without executing the artifact.
-- Do not fall back to `latest`.
-- Do not search arbitrary `PATH` entries. Use ECC's qualified location or an
-  explicit absolute `ECC_NASIKO_CLI_EXECUTABLE` for development verification.
-- Do not treat a partial or ambiguous installation as success.
+skill: "control-plane"
+sections[5]:
+  - "\n"
+  - "# Nasiko CLI Lifecycle Bridge\n\nUse this skill when a user explicitly asks ECC to install, inspect, or remove\nthe qualified Nasiko CLI. This skill does not operate a Nasiko control plane.\n\n"
+  - "## Safety contract\n\n- Begin with `ecc nasiko status --json`. Status is read-only.\n- Installation always requires explicit user consent and `--yes`.\n- Install only an ECC-qualified pinned version, currently `v0.1.0`.\n- Preview first with `ecc nasiko install --version v0.1.0 --dry-run --json`.\n- Install with `ecc nasiko install --version v0.1.0 --yes --json` only after the\n  user reviews the version, registry origin, digest, and destination.\n- Remove only a still-qualified ECC-managed binary with\n  `ecc nasiko uninstall --version v0.1.0 --yes --json`. Preview removal with\n  `--dry-run` first.\n- The qualified source is `https://github.com/Nasiko-Labs/nasiko`, licensed\n  under Apache-2.0; artifact and extracted-binary SHA-256 values are pinned.\n- Never replace the qualified command with a downloaded shell or PowerShell\n  bootstrap script.\n- Never put secrets or credentials in command arguments, logs, skill output,\n  install metadata, or ECC state.\n- Nasiko telemetry and any sharing with Nasiko or Ito must be opt-in and\n  separately disclosed. Installation is not telemetry consent.\n\n"
+  - "## Lifecycle boundary\n\nThe initial ECC bridge supports qualified installation, read-only status, and\nownership-checked uninstall. Use the canonical Nasiko CLI directly for connection, authentication,\nlaunch, deployment, or shutdown until those verbs have their own verified ECC\ncontracts. Do not guess CLI verbs.\n\nInstalling the CLI does not prove that a control-plane server is running, an\nagent is governed, routing or ACLs work, observability is complete, telemetry\nwas enabled, or Ito compute is connected. Report each state separately.\n\n"
+  - "## Failure behavior\n\n- If the platform, architecture, version, manifest, digest, archive, binary, or\n  destination fails validation, stop without executing the artifact.\n- Do not fall back to `latest`.\n- Do not search arbitrary `PATH` entries. Use ECC's qualified location or an\n  explicit absolute `ECC_NASIKO_CLI_EXECUTABLE` for development verification.\n- Do not treat a partial or ambiguous installation as success.\n"

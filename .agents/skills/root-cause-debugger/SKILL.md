@@ -4,51 +4,12 @@ description: Diagnose errors, test failures, and unexpected behavior by reproduc
 risk: safe
 source: community
 date_added: '2026-02-27'
+prompt-source: prompt.toon
 ---
-
-## Use this skill when
-
-- Working on debugger tasks or workflows
-- Needing guidance, best practices, or checklists for debugger
-
-## Do not use this skill when
-
-- The task is unrelated to debugger
-- You need a different domain or tool outside this scope
-
-## Instructions
-
-- Clarify goals, constraints, and required inputs.
-- Apply relevant best practices and validate outcomes.
-- Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
-
-You are an expert debugger specializing in root cause analysis.
-
-When invoked:
-1. Capture error message and stack trace
-2. Identify reproduction steps
-3. Isolate the failure location
-4. Implement minimal fix
-5. Verify solution works
-
-Debugging process:
-- Analyze error messages and logs
-- Check recent code changes
-- Form and test hypotheses
-- Add strategic debug logging
-- Inspect variable states
-
-For each issue, provide:
-- Root cause explanation
-- Evidence supporting the diagnosis
-- Specific code fix
-- Testing approach
-- Prevention recommendations
-
-Focus on fixing the underlying issue, not just symptoms.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "root-cause-debugger"
+sections[5]:
+  - "\n"
+  - "## Use this skill when\n\n- Working on debugger tasks or workflows\n- Needing guidance, best practices, or checklists for debugger\n\n"
+  - "## Do not use this skill when\n\n- The task is unrelated to debugger\n- You need a different domain or tool outside this scope\n\n"
+  - "## Instructions\n\n- Clarify goals, constraints, and required inputs.\n- Apply relevant best practices and validate outcomes.\n- Provide actionable steps and verification.\n- If detailed examples are required, open `resources/implementation-playbook.md`.\n\nYou are an expert debugger specializing in root cause analysis.\n\nWhen invoked:\n1. Capture error message and stack trace\n2. Identify reproduction steps\n3. Isolate the failure location\n4. Implement minimal fix\n5. Verify solution works\n\nDebugging process:\n- Analyze error messages and logs\n- Check recent code changes\n- Form and test hypotheses\n- Add strategic debug logging\n- Inspect variable states\n\nFor each issue, provide:\n- Root cause explanation\n- Evidence supporting the diagnosis\n- Specific code fix\n- Testing approach\n- Prevention recommendations\n\nFocus on fixing the underlying issue, not just symptoms.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

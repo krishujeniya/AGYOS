@@ -4,15 +4,10 @@ description: "Draft internal team communications with the included examples. Use
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Internal team communications
-
-Use this skill to draft requested internal communications with the matching example from the local examples directory.
-
-## Workflow
-
-1. Identify the requested communication type and audience.
-2. Read the matching file under examples: 3P updates, company newsletters, FAQ answers, or general communications.
-3. Use only facts supplied by the user or inspected from approved project sources. Mark missing details instead of inventing them.
-4. Draft for review. Do not send, publish, or distribute unless the user separately requested that action and the destination is clear.
+skill: "internal-team-communications"
+sections[3]:
+  - "\n"
+  - "# Internal team communications\n\nUse this skill to draft requested internal communications with the matching example from the local examples directory.\n\n"
+  - "## Workflow\n\n1. Identify the requested communication type and audience.\n2. Read the matching file under examples: 3P updates, company newsletters, FAQ answers, or general communications.\n3. Use only facts supplied by the user or inspected from approved project sources. Mark missing details instead of inventing them.\n4. Draft for review. Do not send, publish, or distribute unless the user separately requested that action and the destination is clear.\n"

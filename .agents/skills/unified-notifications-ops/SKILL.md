@@ -3,186 +3,24 @@ name: unified-notifications-ops
 description: Operate notifications as one ECC-native workflow across GitHub, Linear, desktop alerts, hooks, and connected communication surfaces. Use when the real problem is alert routing, deduplication, escalation, or inbox collapse.
 metadata:
   origin: ECC
+prompt-source: prompt.toon
 ---
-
-# Unified Notifications Ops
-
-Use this skill when the real problem is not a missing ping. The real problem is a fragmented notification system.
-
-The job is to turn scattered events into one operator surface with:
-- clear severity
-- clear ownership
-- clear routing
-- clear follow-up action
-
-## When to Use
-
-- the user wants a unified notification lane across GitHub, Linear, local hooks, desktop alerts, chat, or email
-- CI failures, review requests, issue updates, and operator events are arriving in disconnected places
-- the current setup creates noise instead of action
-- the user wants to consolidate overlapping notification branches or backlog proposals into one ECC-native lane
-- the workspace already has hooks, MCPs, or connected tools, but no coherent notification policy
-
-## Preferred Surface
-
-Start from what already exists:
-- GitHub issues, PRs, reviews, comments, and CI
-- Linear issue/project movement
-- local hook events and session lifecycle signals
-- desktop notification primitives
-- connected email/chat surfaces when they actually exist
-
-Prefer ECC-native orchestration over telling the user to adopt a separate notification product.
-
-## Non-Negotiable Rules
-
-- never expose tokens, secrets, webhook secrets, or internal identifiers
-- separate:
-  - event source
-  - severity
-  - routing channel
-  - operator action
-- default to digest-first when interruption cost is unclear
-- do not fan out every event to every channel
-- if the real fix is better issue triage, hook policy, or project flow, say so explicitly
-
-## Event Pipeline
-
-Treat the lane as:
-
-1. **Capture** the event
-2. **Classify** urgency and owner
-3. **Route** to the correct channel
-4. **Collapse** duplicates and low-signal churn
-5. **Attach** the next operator action
-
-The goal is fewer, better notifications.
-
-## Default Severity Model
-
-| Class | Examples | Default handling |
-| --- | --- | --- |
-| Critical | broken default-branch CI, security issue, blocked release, failed deploy | interrupt now |
-| High | review requested, failing PR, owner-blocking handoff | same-day alert |
-| Medium | issue state changes, notable comments, backlog movement | digest or queue |
-| Low | repeat successes, routine churn, redundant lifecycle markers | suppress or fold |
-
-If the workspace has no severity model, build one before proposing automation.
-
-## Workflow
-
-### 1. Inventory the current surface
-
-List:
-- event sources
-- current channels
-- existing hooks/scripts that emit alerts
-- duplicate paths for the same event
-- silent failure cases where important things are not being surfaced
-
-Call out what ECC already owns.
-
-### 2. Decide what deserves interruption
-
-For each event family, answer:
-- who needs to know?
-- how fast do they need to know?
-- should this interrupt, batch, or just log?
-
-Use these defaults:
-- interrupt for release, CI, security, and owner-blocking events
-- digest for medium-signal updates
-- log-only for telemetry and low-signal lifecycle markers
-
-### 3. Collapse duplicates before adding channels
-
-Look for:
-- the same PR event appearing in GitHub, Linear, and local logs
-- repeated hook notifications for the same failure
-- comments or status churn that should be summarized instead of forwarded raw
-- channels that duplicate each other without adding a better action path
-
-Prefer:
-- one canonical summary
-- one owner
-- one primary channel
-- one fallback path
-
-### 4. Design the ECC-native workflow
-
-For each real notification need, define:
-- **source**
-- **gate**
-- **shape**: immediate alert, digest, queue, or dashboard-only
-- **channel**
-- **action**
-
-If ECC already has the primitive, prefer:
-- a skill for operator triage
-- a hook for automatic emission/enforcement
-- an agent for delegated classification
-- an MCP/connector only when a real bridge is missing
-
-### 5. Return an action-biased design
-
-End with:
-- what to keep
-- what to suppress
-- what to merge
-- what ECC should wrap next
-
-## Output Format
-
-```text
-CURRENT SURFACE
-- sources
-- channels
-- duplicates
-- gaps
-
-EVENT MODEL
-- critical
-- high
-- medium
-- low
-
-ROUTING PLAN
-- source -> channel
-- why
-- operator owner
-
-CONSOLIDATION
-- suppress
-- merge
-- canonical summaries
-
-NEXT ECC MOVE
-- skill / hook / agent / MCP
-- exact workflow to build next
-```
-
-## Recommendation Rules
-
-- prefer one strong lane over many weak ones
-- prefer digests for medium and low-signal updates
-- prefer hooks when the signal should emit automatically
-- prefer operator skills when the work is triage, routing, and review-first decision-making
-- prefer `project-flow-ops` when the root cause is backlog / PR coordination rather than alerts
-- prefer `workspace-surface-audit` when the user first needs a source inventory
-- if desktop notifications are enough, do not invent an unnecessary external bridge
-
-## Good Use Cases
-
-- "We have GitHub, Linear, and local hook alerts, but no single operator flow"
-- "Our CI failures are noisy and people ignore them"
-- "I want one notification policy across Claude, OpenCode, and Codex surfaces"
-- "Figure out what should interrupt versus land in a digest"
-- "Collapse overlapping notification PR ideas into one canonical ECC lane"
-
-## Related Skills
-
-- `workspace-surface-audit`
-- `project-flow-ops`
-- `github-ops`
-- `knowledge-ops`
-- `customer-billing-ops` when the notification pain is billing/customer operations rather than engineering
+skill: "unified-notifications-ops"
+sections[17]:
+  - "\n"
+  - "# Unified Notifications Ops\n\nUse this skill when the real problem is not a missing ping. The real problem is a fragmented notification system.\n\nThe job is to turn scattered events into one operator surface with:\n- clear severity\n- clear ownership\n- clear routing\n- clear follow-up action\n\n"
+  - "## When to Use\n\n- the user wants a unified notification lane across GitHub, Linear, local hooks, desktop alerts, chat, or email\n- CI failures, review requests, issue updates, and operator events are arriving in disconnected places\n- the current setup creates noise instead of action\n- the user wants to consolidate overlapping notification branches or backlog proposals into one ECC-native lane\n- the workspace already has hooks, MCPs, or connected tools, but no coherent notification policy\n\n"
+  - "## Preferred Surface\n\nStart from what already exists:\n- GitHub issues, PRs, reviews, comments, and CI\n- Linear issue/project movement\n- local hook events and session lifecycle signals\n- desktop notification primitives\n- connected email/chat surfaces when they actually exist\n\nPrefer ECC-native orchestration over telling the user to adopt a separate notification product.\n\n"
+  - "## Non-Negotiable Rules\n\n- never expose tokens, secrets, webhook secrets, or internal identifiers\n- separate:\n  - event source\n  - severity\n  - routing channel\n  - operator action\n- default to digest-first when interruption cost is unclear\n- do not fan out every event to every channel\n- if the real fix is better issue triage, hook policy, or project flow, say so explicitly\n\n"
+  - "## Event Pipeline\n\nTreat the lane as:\n\n1. **Capture** the event\n2. **Classify** urgency and owner\n3. **Route** to the correct channel\n4. **Collapse** duplicates and low-signal churn\n5. **Attach** the next operator action\n\nThe goal is fewer, better notifications.\n\n"
+  - "## Default Severity Model\n\n| Class | Examples | Default handling |\n| --- | --- | --- |\n| Critical | broken default-branch CI, security issue, blocked release, failed deploy | interrupt now |\n| High | review requested, failing PR, owner-blocking handoff | same-day alert |\n| Medium | issue state changes, notable comments, backlog movement | digest or queue |\n| Low | repeat successes, routine churn, redundant lifecycle markers | suppress or fold |\n\nIf the workspace has no severity model, build one before proposing automation.\n\n"
+  - "## Workflow\n\n"
+  - "### 1. Inventory the current surface\n\nList:\n- event sources\n- current channels\n- existing hooks/scripts that emit alerts\n- duplicate paths for the same event\n- silent failure cases where important things are not being surfaced\n\nCall out what ECC already owns.\n\n"
+  - "### 2. Decide what deserves interruption\n\nFor each event family, answer:\n- who needs to know?\n- how fast do they need to know?\n- should this interrupt, batch, or just log?\n\nUse these defaults:\n- interrupt for release, CI, security, and owner-blocking events\n- digest for medium-signal updates\n- log-only for telemetry and low-signal lifecycle markers\n\n"
+  - "### 3. Collapse duplicates before adding channels\n\nLook for:\n- the same PR event appearing in GitHub, Linear, and local logs\n- repeated hook notifications for the same failure\n- comments or status churn that should be summarized instead of forwarded raw\n- channels that duplicate each other without adding a better action path\n\nPrefer:\n- one canonical summary\n- one owner\n- one primary channel\n- one fallback path\n\n"
+  - "### 4. Design the ECC-native workflow\n\nFor each real notification need, define:\n- **source**\n- **gate**\n- **shape**: immediate alert, digest, queue, or dashboard-only\n- **channel**\n- **action**\n\nIf ECC already has the primitive, prefer:\n- a skill for operator triage\n- a hook for automatic emission/enforcement\n- an agent for delegated classification\n- an MCP/connector only when a real bridge is missing\n\n"
+  - "### 5. Return an action-biased design\n\nEnd with:\n- what to keep\n- what to suppress\n- what to merge\n- what ECC should wrap next\n\n"
+  - "## Output Format\n\n```text\nCURRENT SURFACE\n- sources\n- channels\n- duplicates\n- gaps\n\nEVENT MODEL\n- critical\n- high\n- medium\n- low\n\nROUTING PLAN\n- source -> channel\n- why\n- operator owner\n\nCONSOLIDATION\n- suppress\n- merge\n- canonical summaries\n\nNEXT ECC MOVE\n- skill / hook / agent / MCP\n- exact workflow to build next\n```\n\n"
+  - "## Recommendation Rules\n\n- prefer one strong lane over many weak ones\n- prefer digests for medium and low-signal updates\n- prefer hooks when the signal should emit automatically\n- prefer operator skills when the work is triage, routing, and review-first decision-making\n- prefer `project-flow-ops` when the root cause is backlog / PR coordination rather than alerts\n- prefer `workspace-surface-audit` when the user first needs a source inventory\n- if desktop notifications are enough, do not invent an unnecessary external bridge\n\n"
+  - "## Good Use Cases\n\n- \"We have GitHub, Linear, and local hook alerts, but no single operator flow\"\n- \"Our CI failures are noisy and people ignore them\"\n- \"I want one notification policy across Claude, OpenCode, and Codex surfaces\"\n- \"Figure out what should interrupt versus land in a digest\"\n- \"Collapse overlapping notification PR ideas into one canonical ECC lane\"\n\n"
+  - "## Related Skills\n\n- `workspace-surface-audit`\n- `project-flow-ops`\n- `github-ops`\n- `knowledge-ops`\n- `customer-billing-ops` when the notification pain is billing/customer operations rather than engineering\n"

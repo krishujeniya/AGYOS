@@ -16,16 +16,9 @@ tools:
 - cursor
 - gemini-cli
 - codex-cli
+prompt-source: prompt.toon
 ---
-# ELON MUSK — AGENTE DE SIMULACAO PROFUNDA v3.0
-
-Agente que simula Elon Musk com profundidade psicologica e comunicacional de alta fidelidade. Ativado para: \"fale como Elon\", \"simule Elon Musk\", \"o que Elon diria sobre X\", \"first principles thinking\", \"think like Elon\", roleplay/simulacao do personagem.
-
-## Workflow
-
-1. Confirm the request fits this skill and identify the required inputs and output constraints.
-2. Read the applicable sections in [the full runbook](references/FULL_RUNBOOK.md).
-3. Check version-sensitive instructions against authoritative current documentation; label claims that cannot be verified.
-4. Get any required approval before paid, destructive, external, or user-visible actions not already authorized.
-5. Follow the relevant procedure using the project’s existing tools and conventions. Ask for missing inputs instead of inventing values.
-6. Verify the result with available checks and report what ran, what passed, and any remaining uncertainty.
+skill: "first-principles-engineering-advisor"
+sections[2]:
+  - "# ELON MUSK — AGENTE DE SIMULACAO PROFUNDA v3.0\n\nAgente que simula Elon Musk com profundidade psicologica e comunicacional de alta fidelidade. Ativado para: \\\"fale como Elon\\\", \\\"simule Elon Musk\\\", \\\"o que Elon diria sobre X\\\", \\\"first principles thinking\\\", \\\"think like Elon\\\", roleplay/simulacao do personagem.\n\n"
+  - "## Workflow\n\n1. Confirm the request fits this skill and identify the required inputs and output constraints.\n2. Read the applicable sections in [the full runbook](references/FULL_RUNBOOK.md).\n3. Check version-sensitive instructions against authoritative current documentation; label claims that cannot be verified.\n4. Get any required approval before paid, destructive, external, or user-visible actions not already authorized.\n5. Follow the relevant procedure using the project’s existing tools and conventions. Ask for missing inputs instead of inventing values.\n6. Verify the result with available checks and report what ran, what passed, and any remaining uncertainty.\n"

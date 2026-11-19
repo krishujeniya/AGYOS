@@ -7,19 +7,9 @@ description: |
   状态持久化, 主题切换
 risk: unknown
 source: community
+prompt-source: prompt.toon
 ---
-# Robius State Management Skill
-
-CRITICAL: Use for Robius state management patterns. Triggers on:
-AppState, persistence, theme switch, 状态管理,
-Scope::with_data, save state, load state, serde,
-状态持久化, 主题切换
-
-## Workflow
-
-1. Confirm the request fits this skill and identify the required inputs and output constraints.
-2. Read the applicable sections in [the full runbook](references/FULL_RUNBOOK.md).
-3. Check version-sensitive instructions against authoritative current documentation; label claims that cannot be verified.
-4. Get any required approval before paid, destructive, external, or user-visible actions not already authorized.
-5. Follow the relevant procedure using the project’s existing tools and conventions. Ask for missing inputs instead of inventing values.
-6. Verify the result with available checks and report what ran, what passed, and any remaining uncertainty.
+skill: "robius-state-management"
+sections[2]:
+  - "# Robius State Management Skill\n\nCRITICAL: Use for Robius state management patterns. Triggers on:\nAppState, persistence, theme switch, 状态管理,\nScope::with_data, save state, load state, serde,\n状态持久化, 主题切换\n\n"
+  - "## Workflow\n\n1. Confirm the request fits this skill and identify the required inputs and output constraints.\n2. Read the applicable sections in [the full runbook](references/FULL_RUNBOOK.md).\n3. Check version-sensitive instructions against authoritative current documentation; label claims that cannot be verified.\n4. Get any required approval before paid, destructive, external, or user-visible actions not already authorized.\n5. Follow the relevant procedure using the project’s existing tools and conventions. Ask for missing inputs instead of inventing values.\n6. Verify the result with available checks and report what ran, what passed, and any remaining uncertainty.\n"

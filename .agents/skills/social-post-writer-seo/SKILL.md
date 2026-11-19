@@ -10,105 +10,27 @@ author: "Krish Ujeniya"
 tags: [social-media, marketing, content-writing, seo, growth]
 tools: [claude, cursor, gemini]
 version: 1.0.1
+prompt-source: prompt.toon
 ---
-
-# Social Media Strategist and Content Writer
-
-## Overview
-This skill is designed to help users create high-quality, engaging, and platform-optimized social media content. It focuses on clarity, readability, and platform-specific nuances for Instagram, LinkedIn, and Facebook.
-
-## When to Use This Skill
-- Use this skill when you need a clear, engaging, and accurate social media post for Instagram, LinkedIn, or Facebook.
-- Use it to transform topics and keywords into audience-focused content with platform-native structure.
-
-## How It Works
-
-### Step 1: Input Gathering
-The skill starts by collecting essential details like the topic, primary keyword, target audience, and the specific social media platform.
-
-### Step 2: Content Generation
-Based on the inputs, it follows strict writing rules to ensure simplicity, factual accuracy, and engagement. It structures the post with a hook, context, value, and a call to action.
-
-### Step 3: Platform Optimization
-The output is tailored for the selected platform, adjusting emoji density and tone (e.g., more professional for LinkedIn, more visual/casual for Instagram).
-
-## Prompt Template
-
-Your task is to create a clear, engaging, and accurate social media post that works for a global audience on platforms like Instagram, LinkedIn, and Facebook.
-
-### INPUT:
-- **Topic**: {Insert Topic}
-- **Primary Keyword**: {Insert Keyword}
-- **Target Audience**: {Global audience or specific group}
-- **Platform**: {Instagram or LinkedIn or Facebook}
-- **Tone**: {Professional or simple or storytelling or insightful}
-- **Region Focus**: {Global or specific region if needed}
-- **Brand**: {Optional name}
-
-### GOAL:
-Create a post that is easy to understand, useful, and encourages engagement.
-
-### WRITING RULES:
-- Use simple and clear English
-- Avoid slang and complex words
-- Avoid assumptions that are not verified
-- Do not create or guess facts
-- Only include information that is general, widely known, or provided in the input
-- Keep sentences short
-- Use line breaks for readability
-- Do not use long paragraph
-- Use emojis correctly for each platform (fewer for LinkedIn, more for Instagram)
-- Make it about the reader, not just the brand
-- Provide a clear call to action at the end
-- Include 5-8 relevant hashtags
-
-### STRUCTURE:
-1. **Hook**: One strong line.
-2. **Main Context**: Simple and clear.
-3. **Value/Insight**: Useful information.
-4. **Call to Action**: Check the comment section or follow.
-5. **Hashtags**: 5-8 relevant tags.
-
-## Examples
-
-### Example: New Product Launch
-- **Topic**: Solar Powered Coffee Mug
-- **Keyword**: eco-friendly coffee
-- **Target**: Commuters
-- **Platform**: Instagram
-- **Tone**: Insightful
-
-**Output**:
-☕️ Your morning coffee just got a clean energy upgrade! 
-Meet SolMug, a solar powered coffee mug concept for busy commutes.
-It is designed to keep your drink warm without adding another charger to your bag.
-A small change for your morning routine, with sustainability in mind.
-Check the link in bio to pre-order! 
-#ecofriendly #coffee #sustainability #tech #morningroutine
-
-## Best Practices
-- ✅ Always include a "Hook" in the first line to capture attention.
-- ✅ Use line breaks frequently to make the post scannable on mobile.
-- ✅ Tailor the tone: LinkedIn should be more professional, Instagram more visual/energetic.
-- ❌ Avoid using more than 10 hashtags; it can look like spam.
-- ❌ Never guess facts; if info isn't provided, stick to general industry knowledge.
-
-## Limitations
-- This skill does not generate image or video assets.
-- It requires manual copy-pasting to the respective social media platforms.
-- It cannot schedule or post content directly to social media accounts.
-
-## Security & Safety Notes
-- This skill only generates text content and does not interact with system APIs or run shell commands.
-- Ensure any links included in the generated content are verified by the user before posting.
-
-## Common Pitfalls
-- **Problem:** Post feels too "salesy".
-  **Solution:** Focus more on the "Value/Insight" section to provide helpful info before the CTA.
-- **Problem:** Low engagement on LinkedIn.
-  **Solution:** Reduce emoji count and ensure the "Hook" addresses a professional pain point.
-
-## Related Skills
-- `@copywriting` - For longer form sales copy and landing pages.
-- `@seo-content` - For blog-style SEO content optimization.
-- `@ad-creative` - Specifically for paid social media advertisements.
+skill: "social-post-writer-seo"
+sections[20]:
+  - "\n"
+  - "# Social Media Strategist and Content Writer\n\n"
+  - "## Overview\nThis skill is designed to help users create high-quality, engaging, and platform-optimized social media content. It focuses on clarity, readability, and platform-specific nuances for Instagram, LinkedIn, and Facebook.\n\n"
+  - "## When to Use This Skill\n- Use this skill when you need a clear, engaging, and accurate social media post for Instagram, LinkedIn, or Facebook.\n- Use it to transform topics and keywords into audience-focused content with platform-native structure.\n\n"
+  - "## How It Works\n\n"
+  - "### Step 1: Input Gathering\nThe skill starts by collecting essential details like the topic, primary keyword, target audience, and the specific social media platform.\n\n"
+  - "### Step 2: Content Generation\nBased on the inputs, it follows strict writing rules to ensure simplicity, factual accuracy, and engagement. It structures the post with a hook, context, value, and a call to action.\n\n"
+  - "### Step 3: Platform Optimization\nThe output is tailored for the selected platform, adjusting emoji density and tone (e.g., more professional for LinkedIn, more visual/casual for Instagram).\n\n"
+  - "## Prompt Template\n\nYour task is to create a clear, engaging, and accurate social media post that works for a global audience on platforms like Instagram, LinkedIn, and Facebook.\n\n"
+  - "### INPUT:\n- **Topic**: {Insert Topic}\n- **Primary Keyword**: {Insert Keyword}\n- **Target Audience**: {Global audience or specific group}\n- **Platform**: {Instagram or LinkedIn or Facebook}\n- **Tone**: {Professional or simple or storytelling or insightful}\n- **Region Focus**: {Global or specific region if needed}\n- **Brand**: {Optional name}\n\n"
+  - "### GOAL:\nCreate a post that is easy to understand, useful, and encourages engagement.\n\n"
+  - "### WRITING RULES:\n- Use simple and clear English\n- Avoid slang and complex words\n- Avoid assumptions that are not verified\n- Do not create or guess facts\n- Only include information that is general, widely known, or provided in the input\n- Keep sentences short\n- Use line breaks for readability\n- Do not use long paragraph\n- Use emojis correctly for each platform (fewer for LinkedIn, more for Instagram)\n- Make it about the reader, not just the brand\n- Provide a clear call to action at the end\n- Include 5-8 relevant hashtags\n\n"
+  - "### STRUCTURE:\n1. **Hook**: One strong line.\n2. **Main Context**: Simple and clear.\n3. **Value/Insight**: Useful information.\n4. **Call to Action**: Check the comment section or follow.\n5. **Hashtags**: 5-8 relevant tags.\n\n"
+  - "## Examples\n\n"
+  - "### Example: New Product Launch\n- **Topic**: Solar Powered Coffee Mug\n- **Keyword**: eco-friendly coffee\n- **Target**: Commuters\n- **Platform**: Instagram\n- **Tone**: Insightful\n\n**Output**:\n☕️ Your morning coffee just got a clean energy upgrade! \nMeet SolMug, a solar powered coffee mug concept for busy commutes.\nIt is designed to keep your drink warm without adding another charger to your bag.\nA small change for your morning routine, with sustainability in mind.\nCheck the link in bio to pre-order! \n#ecofriendly #coffee #sustainability #tech #morningroutine\n\n"
+  - "## Best Practices\n- ✅ Always include a \"Hook\" in the first line to capture attention.\n- ✅ Use line breaks frequently to make the post scannable on mobile.\n- ✅ Tailor the tone: LinkedIn should be more professional, Instagram more visual/energetic.\n- ❌ Avoid using more than 10 hashtags; it can look like spam.\n- ❌ Never guess facts; if info isn't provided, stick to general industry knowledge.\n\n"
+  - "## Limitations\n- This skill does not generate image or video assets.\n- It requires manual copy-pasting to the respective social media platforms.\n- It cannot schedule or post content directly to social media accounts.\n\n"
+  - "## Security & Safety Notes\n- This skill only generates text content and does not interact with system APIs or run shell commands.\n- Ensure any links included in the generated content are verified by the user before posting.\n\n"
+  - "## Common Pitfalls\n- **Problem:** Post feels too \"salesy\".\n  **Solution:** Focus more on the \"Value/Insight\" section to provide helpful info before the CTA.\n- **Problem:** Low engagement on LinkedIn.\n  **Solution:** Reduce emoji count and ensure the \"Hook\" addresses a professional pain point.\n\n"
+  - "## Related Skills\n- `@copywriting` - For longer form sales copy and landing pages.\n- `@seo-content` - For blog-style SEO content optimization.\n- `@ad-creative` - Specifically for paid social media advertisements.\n"

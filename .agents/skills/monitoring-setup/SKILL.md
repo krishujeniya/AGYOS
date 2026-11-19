@@ -4,53 +4,17 @@ description: "Set up application monitoring with useful metrics, logs, traces, d
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Monitoring and Observability Setup
-
-Set up application monitoring with useful metrics, logs, traces, dashboards, and actionable alerts. Use when adding observability or improving production monitoring.
-
-## Use this skill when
-
-- Working on monitoring and observability setup tasks or workflows
-- Needing guidance, best practices, or checklists for monitoring and observability setup
-
-## Do not use this skill when
-
-- The task is unrelated to monitoring and observability setup
-- You need a different domain or tool outside this scope
-
-## Context
-The user needs to implement or improve monitoring and observability. Focus on the three pillars of observability (metrics, logs, traces), setting up monitoring infrastructure, creating actionable dashboards, and establishing effective alerting strategies.
-
-## Requirements
-$ARGUMENTS
-
-## Instructions
-
-- Clarify goals, constraints, and required inputs.
-- Apply relevant best practices and validate outcomes.
-- Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
-
-## Output Format
-
-1. **Infrastructure Assessment**: Current monitoring capabilities analysis
-2. **Monitoring Architecture**: Complete monitoring stack design
-3. **Implementation Plan**: Step-by-step deployment guide
-4. **Metric Definitions**: Comprehensive metrics catalog
-5. **Dashboard Templates**: Ready-to-use Grafana dashboards
-6. **Alert Runbooks**: Detailed alert response procedures
-7. **SLO Definitions**: Service level objectives and error budgets
-8. **Integration Guide**: Service instrumentation instructions
-
-Focus on creating a monitoring system that provides actionable insights, reduces MTTR, and enables proactive issue detection.
-
-## Resources
-
-- `resources/implementation-playbook.md` for detailed patterns and examples.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "monitoring-setup"
+sections[10]:
+  - "\n"
+  - "# Monitoring and Observability Setup\n\nSet up application monitoring with useful metrics, logs, traces, dashboards, and actionable alerts. Use when adding observability or improving production monitoring.\n\n"
+  - "## Use this skill when\n\n- Working on monitoring and observability setup tasks or workflows\n- Needing guidance, best practices, or checklists for monitoring and observability setup\n\n"
+  - "## Do not use this skill when\n\n- The task is unrelated to monitoring and observability setup\n- You need a different domain or tool outside this scope\n\n"
+  - "## Context\nThe user needs to implement or improve monitoring and observability. Focus on the three pillars of observability (metrics, logs, traces), setting up monitoring infrastructure, creating actionable dashboards, and establishing effective alerting strategies.\n\n"
+  - "## Requirements\n$ARGUMENTS\n\n"
+  - "## Instructions\n\n- Clarify goals, constraints, and required inputs.\n- Apply relevant best practices and validate outcomes.\n- Provide actionable steps and verification.\n- If detailed examples are required, open `resources/implementation-playbook.md`.\n\n"
+  - "## Output Format\n\n1. **Infrastructure Assessment**: Current monitoring capabilities analysis\n2. **Monitoring Architecture**: Complete monitoring stack design\n3. **Implementation Plan**: Step-by-step deployment guide\n4. **Metric Definitions**: Comprehensive metrics catalog\n5. **Dashboard Templates**: Ready-to-use Grafana dashboards\n6. **Alert Runbooks**: Detailed alert response procedures\n7. **SLO Definitions**: Service level objectives and error budgets\n8. **Integration Guide**: Service instrumentation instructions\n\nFocus on creating a monitoring system that provides actionable insights, reduces MTTR, and enables proactive issue detection.\n\n"
+  - "## Resources\n\n- `resources/implementation-playbook.md` for detailed patterns and examples.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

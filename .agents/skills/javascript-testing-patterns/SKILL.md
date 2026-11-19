@@ -4,40 +4,14 @@ description: "Comprehensive guide for implementing robust testing strategies in 
 risk: safe
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# JavaScript Testing Patterns
-
-Comprehensive guide for implementing robust testing strategies in JavaScript/TypeScript applications using modern testing frameworks and best practices.
-
-## Use this skill when
-
-- Setting up test infrastructure for new projects
-- Writing unit tests for functions and classes
-- Creating integration tests for APIs and services
-- Implementing end-to-end tests for user flows
-- Mocking external dependencies and APIs
-- Testing React, Vue, or other frontend components
-- Implementing test-driven development (TDD)
-- Setting up continuous testing in CI/CD pipelines
-
-## Do not use this skill when
-
-- The task is unrelated to javascript testing patterns
-- You need a different domain or tool outside this scope
-
-## Instructions
-
-- Clarify goals, constraints, and required inputs.
-- Apply relevant best practices and validate outcomes.
-- Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
-
-## Resources
-
-- `resources/implementation-playbook.md` for detailed patterns and examples.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "javascript-testing-patterns"
+sections[7]:
+  - "\n"
+  - "# JavaScript Testing Patterns\n\nComprehensive guide for implementing robust testing strategies in JavaScript/TypeScript applications using modern testing frameworks and best practices.\n\n"
+  - "## Use this skill when\n\n- Setting up test infrastructure for new projects\n- Writing unit tests for functions and classes\n- Creating integration tests for APIs and services\n- Implementing end-to-end tests for user flows\n- Mocking external dependencies and APIs\n- Testing React, Vue, or other frontend components\n- Implementing test-driven development (TDD)\n- Setting up continuous testing in CI/CD pipelines\n\n"
+  - "## Do not use this skill when\n\n- The task is unrelated to javascript testing patterns\n- You need a different domain or tool outside this scope\n\n"
+  - "## Instructions\n\n- Clarify goals, constraints, and required inputs.\n- Apply relevant best practices and validate outcomes.\n- Provide actionable steps and verification.\n- If detailed examples are required, open `resources/implementation-playbook.md`.\n\n"
+  - "## Resources\n\n- `resources/implementation-playbook.md` for detailed patterns and examples.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

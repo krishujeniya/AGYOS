@@ -4,171 +4,24 @@ description: Orchestrates design workflows by routing work through brainstorming
 risk: unknown
 source: community
 date_added: '2026-02-27'
+prompt-source: prompt.toon
 ---
-
-# Design Orchestration (Meta-Skill)
-
-## Purpose
-
-Ensure that **ideas become designs**, **designs are reviewed**, and
-**only validated designs reach implementation**.
-
-This skill does not generate designs.
-It **controls the flow between other skills**.
-
----
-
-## Operating Model
-
-This is a **routing and enforcement skill**, not a creative one.
-
-It decides:
-- which skill must run next
-- whether escalation is required
-- whether execution is permitted
-
----
-
-## Controlled Skills
-
-This meta-skill coordinates the following:
-
-- `brainstorming` — design generation
-- `multi-agent-brainstorming` — design validation
-- downstream implementation or planning skills
-
----
-
-## Entry Conditions
-
-Invoke this skill when:
-- a user proposes a new feature, system, or change
-- a design decision carries meaningful risk
-- correctness matters more than speed
-
----
-
-## Routing Logic
-
-### Step 1 — Brainstorming (Mandatory)
-
-If no validated design exists:
-
-- Invoke `brainstorming`
-- Require:
-  - Understanding Lock
-  - Initial Design
-  - Decision Log started
-
-You may NOT proceed without these artifacts.
-
----
-
-### Step 2 — Risk Assessment
-
-After brainstorming completes, classify the design as:
-
-- **Low risk**
-- **Moderate risk**
-- **High risk**
-
-Use factors such as:
-- user impact
-- irreversibility
-- operational cost
-- complexity
-- uncertainty
-- novelty
-
----
-
-### Step 3 — Conditional Escalation
-
-- **Low risk**  
-  → Proceed to implementation planning
-
-- **Moderate risk**  
-  → Recommend `multi-agent-brainstorming`
-
-- **High risk**  
-  → REQUIRE `multi-agent-brainstorming`
-
-Skipping escalation when required is prohibited.
-
----
-
-### Step 4 — Multi-Agent Review (If Invoked)
-
-If `multi-agent-brainstorming` is run:
-
-Require:
-- completed Understanding Lock
-- current Design
-- Decision Log
-
-Do NOT allow:
-- new ideation
-- scope expansion
-- reopening problem definition
-
-Only critique, revision, and decision resolution are allowed.
-
----
-
-### Step 5 — Execution Readiness Check
-
-Before allowing implementation:
-
-Confirm:
-- design is approved (single-agent or multi-agent)
-- Decision Log is complete
-- major assumptions are documented
-- known risks are acknowledged
-
-If any condition fails:
-- block execution
-- return to the appropriate skill
-
----
-
-## Enforcement Rules
-
-- Do NOT allow implementation without a validated design
-- Do NOT allow skipping required review
-- Do NOT allow silent escalation or de-escalation
-- Do NOT merge design and implementation phases
-
----
-
-## Exit Conditions
-
-This meta-skill exits ONLY when:
-- the next step is explicitly identified, AND
-- all required prior steps are complete
-
-Possible exits:
-- “Proceed to implementation planning”
-- “Run multi-agent-brainstorming”
-- “Return to brainstorming for clarification”
-- "If a reviewed design reports a final disposition of APPROVED, REVISE, or REJECT, you MUST route the workflow accordingly and state the chosen next step explicitly."
----
-
-## Design Philosophy
-
-This skill exists to:
-- slow down the right decisions
-- speed up the right execution
-- prevent costly mistakes
-
-Good systems fail early.
-Bad systems fail in production.
-
-This meta-skill exists to enforce the former.
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "design-orchestration"
+sections[17]:
+  - "\n"
+  - "# Design Orchestration (Meta-Skill)\n\n"
+  - "## Purpose\n\nEnsure that **ideas become designs**, **designs are reviewed**, and\n**only validated designs reach implementation**.\n\nThis skill does not generate designs.\nIt **controls the flow between other skills**.\n\n---\n\n"
+  - "## Operating Model\n\nThis is a **routing and enforcement skill**, not a creative one.\n\nIt decides:\n- which skill must run next\n- whether escalation is required\n- whether execution is permitted\n\n---\n\n"
+  - "## Controlled Skills\n\nThis meta-skill coordinates the following:\n\n- `brainstorming` — design generation\n- `multi-agent-brainstorming` — design validation\n- downstream implementation or planning skills\n\n---\n\n"
+  - "## Entry Conditions\n\nInvoke this skill when:\n- a user proposes a new feature, system, or change\n- a design decision carries meaningful risk\n- correctness matters more than speed\n\n---\n\n"
+  - "## Routing Logic\n\n"
+  - "### Step 1 — Brainstorming (Mandatory)\n\nIf no validated design exists:\n\n- Invoke `brainstorming`\n- Require:\n  - Understanding Lock\n  - Initial Design\n  - Decision Log started\n\nYou may NOT proceed without these artifacts.\n\n---\n\n"
+  - "### Step 2 — Risk Assessment\n\nAfter brainstorming completes, classify the design as:\n\n- **Low risk**\n- **Moderate risk**\n- **High risk**\n\nUse factors such as:\n- user impact\n- irreversibility\n- operational cost\n- complexity\n- uncertainty\n- novelty\n\n---\n\n"
+  - "### Step 3 — Conditional Escalation\n\n- **Low risk**  \n  → Proceed to implementation planning\n\n- **Moderate risk**  \n  → Recommend `multi-agent-brainstorming`\n\n- **High risk**  \n  → REQUIRE `multi-agent-brainstorming`\n\nSkipping escalation when required is prohibited.\n\n---\n\n"
+  - "### Step 4 — Multi-Agent Review (If Invoked)\n\nIf `multi-agent-brainstorming` is run:\n\nRequire:\n- completed Understanding Lock\n- current Design\n- Decision Log\n\nDo NOT allow:\n- new ideation\n- scope expansion\n- reopening problem definition\n\nOnly critique, revision, and decision resolution are allowed.\n\n---\n\n"
+  - "### Step 5 — Execution Readiness Check\n\nBefore allowing implementation:\n\nConfirm:\n- design is approved (single-agent or multi-agent)\n- Decision Log is complete\n- major assumptions are documented\n- known risks are acknowledged\n\nIf any condition fails:\n- block execution\n- return to the appropriate skill\n\n---\n\n"
+  - "## Enforcement Rules\n\n- Do NOT allow implementation without a validated design\n- Do NOT allow skipping required review\n- Do NOT allow silent escalation or de-escalation\n- Do NOT merge design and implementation phases\n\n---\n\n"
+  - "## Exit Conditions\n\nThis meta-skill exits ONLY when:\n- the next step is explicitly identified, AND\n- all required prior steps are complete\n\nPossible exits:\n- “Proceed to implementation planning”\n- “Run multi-agent-brainstorming”\n- “Return to brainstorming for clarification”\n- \"If a reviewed design reports a final disposition of APPROVED, REVISE, or REJECT, you MUST route the workflow accordingly and state the chosen next step explicitly.\"\n---\n\n"
+  - "## Design Philosophy\n\nThis skill exists to:\n- slow down the right decisions\n- speed up the right execution\n- prevent costly mistakes\n\nGood systems fail early.\nBad systems fail in production.\n\nThis meta-skill exists to enforce the former.\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

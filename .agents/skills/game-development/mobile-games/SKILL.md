@@ -4,115 +4,24 @@ description: "Mobile game development principles. Touch input, battery, performa
 risk: safe
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Mobile Game Development
-
-> Platform constraints and optimization principles.
-
----
-
-## 1. Platform Considerations
-
-### Key Constraints
-
-| Constraint | Strategy |
-|------------|----------|
-| **Touch input** | Large hit areas, gestures |
-| **Battery** | Limit CPU/GPU usage |
-| **Thermal** | Throttle when hot |
-| **Screen size** | Responsive UI |
-| **Interruptions** | Pause on background |
-
----
-
-## 2. Touch Input Principles
-
-### Touch vs Controller
-
-| Touch | Desktop/Console |
-|-------|-----------------|
-| Imprecise | Precise |
-| Occludes screen | No occlusion |
-| Limited buttons | Many buttons |
-| Gestures available | Buttons/sticks |
-
-### Best Practices
-
-- Minimum touch target: 44x44 points
-- Visual feedback on touch
-- Avoid precise timing requirements
-- Support both portrait and landscape
-
----
-
-## 3. Performance Targets
-
-### Thermal Management
-
-| Action | Trigger |
-|--------|---------|
-| Reduce quality | Device warm |
-| Limit FPS | Device hot |
-| Pause effects | Critical temp |
-
-### Battery Optimization
-
-- 30 FPS often sufficient
-- Sleep when paused
-- Minimize GPS/network
-- Dark mode saves OLED battery
-
----
-
-## 4. App Store Requirements
-
-### iOS (App Store)
-
-| Requirement | Note |
-|-------------|------|
-| Privacy labels | Required |
-| Account deletion | If account creation exists |
-| Screenshots | For all device sizes |
-
-### Android (Google Play)
-
-| Requirement | Note |
-|-------------|------|
-| Target API | Current year's SDK |
-| 64-bit | Required |
-| App bundles | Recommended |
-
----
-
-## 5. Monetization Models
-
-| Model | Best For |
-|-------|----------|
-| **Premium** | Quality games, loyal audience |
-| **Free + IAP** | Casual, progression-based |
-| **Ads** | Hyper-casual, high volume |
-| **Subscription** | Content updates, multiplayer |
-
----
-
-## 6. Anti-Patterns
-
-| ❌ Don't | ✅ Do |
-|----------|-------|
-| Desktop controls on mobile | Design for touch |
-| Ignore battery drain | Monitor thermals |
-| Force landscape | Support player preference |
-| Always-on network | Cache and sync |
-
----
-
-> **Remember:** Mobile is the most constrained platform. Respect battery and attention.
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "mobile-games"
+sections[17]:
+  - "\n"
+  - "# Mobile Game Development\n\n> Platform constraints and optimization principles.\n\n---\n\n"
+  - "## 1. Platform Considerations\n\n"
+  - "### Key Constraints\n\n| Constraint | Strategy |\n|------------|----------|\n| **Touch input** | Large hit areas, gestures |\n| **Battery** | Limit CPU/GPU usage |\n| **Thermal** | Throttle when hot |\n| **Screen size** | Responsive UI |\n| **Interruptions** | Pause on background |\n\n---\n\n"
+  - "## 2. Touch Input Principles\n\n"
+  - "### Touch vs Controller\n\n| Touch | Desktop/Console |\n|-------|-----------------|\n| Imprecise | Precise |\n| Occludes screen | No occlusion |\n| Limited buttons | Many buttons |\n| Gestures available | Buttons/sticks |\n\n"
+  - "### Best Practices\n\n- Minimum touch target: 44x44 points\n- Visual feedback on touch\n- Avoid precise timing requirements\n- Support both portrait and landscape\n\n---\n\n"
+  - "## 3. Performance Targets\n\n"
+  - "### Thermal Management\n\n| Action | Trigger |\n|--------|---------|\n| Reduce quality | Device warm |\n| Limit FPS | Device hot |\n| Pause effects | Critical temp |\n\n"
+  - "### Battery Optimization\n\n- 30 FPS often sufficient\n- Sleep when paused\n- Minimize GPS/network\n- Dark mode saves OLED battery\n\n---\n\n"
+  - "## 4. App Store Requirements\n\n"
+  - "### iOS (App Store)\n\n| Requirement | Note |\n|-------------|------|\n| Privacy labels | Required |\n| Account deletion | If account creation exists |\n| Screenshots | For all device sizes |\n\n"
+  - "### Android (Google Play)\n\n| Requirement | Note |\n|-------------|------|\n| Target API | Current year's SDK |\n| 64-bit | Required |\n| App bundles | Recommended |\n\n---\n\n"
+  - "## 5. Monetization Models\n\n| Model | Best For |\n|-------|----------|\n| **Premium** | Quality games, loyal audience |\n| **Free + IAP** | Casual, progression-based |\n| **Ads** | Hyper-casual, high volume |\n| **Subscription** | Content updates, multiplayer |\n\n---\n\n"
+  - "## 6. Anti-Patterns\n\n| ❌ Don't | ✅ Do |\n|----------|-------|\n| Desktop controls on mobile | Design for touch |\n| Ignore battery drain | Monitor thermals |\n| Force landscape | Support player preference |\n| Always-on network | Cache and sync |\n\n---\n\n> **Remember:** Mobile is the most constrained platform. Respect battery and attention.\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

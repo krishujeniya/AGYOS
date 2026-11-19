@@ -4,151 +4,28 @@ description: "PC and console game development principles. Engine selection, plat
 risk: safe
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# PC/Console Game Development
-
-> Engine selection and platform-specific principles.
-
----
-
-## 1. Engine Selection
-
-### Decision Tree
-
-```
-What are you building?
-│
-├── 2D Game
-│   ├── Open source important? → Godot
-│   └── Large team/assets? → Unity
-│
-├── 3D Game
-│   ├── AAA visual quality? → Unreal
-│   ├── Cross-platform priority? → Unity
-│   └── Indie/open source? → Godot 4
-│
-└── Specific Needs
-    ├── DOTS performance? → Unity
-    ├── Nanite/Lumen? → Unreal
-    └── Lightweight? → Godot
-```
-
-### Comparison
-
-| Factor | Unity 6 | Godot 4 | Unreal 5 |
-|--------|---------|---------|----------|
-| 2D | Good | Excellent | Limited |
-| 3D | Good | Good | Excellent |
-| Learning | Medium | Easy | Hard |
-| Cost | Revenue share | Free | 5% after $1M |
-| Team | Any | Solo-Medium | Medium-Large |
-
----
-
-## 2. Platform Features
-
-### Steam Integration
-
-| Feature | Purpose |
-|---------|---------|
-| Achievements | Player goals |
-| Cloud Saves | Cross-device progress |
-| Leaderboards | Competition |
-| Workshop | User mods |
-| Rich Presence | Show in-game status |
-
-### Console Requirements
-
-| Platform | Certification |
-|----------|--------------|
-| PlayStation | TRC compliance |
-| Xbox | XR compliance |
-| Nintendo | Lotcheck |
-
----
-
-## 3. Controller Support
-
-### Input Abstraction
-
-```
-Map ACTIONS, not buttons:
-- "confirm" → A (Xbox), Cross (PS), B (Nintendo)
-- "cancel" → B (Xbox), Circle (PS), A (Nintendo)
-```
-
-### Haptic Feedback
-
-| Intensity | Use |
-|-----------|-----|
-| Light | UI feedback |
-| Medium | Impacts |
-| Heavy | Major events |
-
----
-
-## 4. Performance Optimization
-
-### Profiling First
-
-| Engine | Tool |
-|--------|------|
-| Unity | Profiler Window |
-| Godot | Debugger → Profiler |
-| Unreal | Unreal Insights |
-
-### Common Bottlenecks
-
-| Bottleneck | Solution |
-|------------|----------|
-| Draw calls | Batching, atlases |
-| GC spikes | Object pooling |
-| Physics | Simpler colliders |
-| Shaders | LOD shaders |
-
----
-
-## 5. Engine-Specific Principles
-
-### Unity 6
-
-- DOTS for performance-critical systems
-- Burst compiler for hot paths
-- Addressables for asset streaming
-
-### Godot 4
-
-- GDScript for rapid iteration
-- C# for complex logic
-- Signals for decoupling
-
-### Unreal 5
-
-- Blueprint for designers
-- C++ for performance
-- Nanite for high-poly environments
-- Lumen for dynamic lighting
-
----
-
-## 6. Anti-Patterns
-
-| ❌ Don't | ✅ Do |
-|----------|-------|
-| Choose engine by hype | Choose by project needs |
-| Ignore platform guidelines | Study certification requirements |
-| Hardcode input buttons | Abstract to actions |
-| Skip profiling | Profile early and often |
-
----
-
-> **Remember:** Engine is a tool. Master the principles, then adapt to any engine.
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "pc-games"
+sections[21]:
+  - "\n"
+  - "# PC/Console Game Development\n\n> Engine selection and platform-specific principles.\n\n---\n\n"
+  - "## 1. Engine Selection\n\n"
+  - "### Decision Tree\n\n```\nWhat are you building?\n│\n├── 2D Game\n│   ├── Open source important? → Godot\n│   └── Large team/assets? → Unity\n│\n├── 3D Game\n│   ├── AAA visual quality? → Unreal\n│   ├── Cross-platform priority? → Unity\n│   └── Indie/open source? → Godot 4\n│\n└── Specific Needs\n    ├── DOTS performance? → Unity\n    ├── Nanite/Lumen? → Unreal\n    └── Lightweight? → Godot\n```\n\n"
+  - "### Comparison\n\n| Factor | Unity 6 | Godot 4 | Unreal 5 |\n|--------|---------|---------|----------|\n| 2D | Good | Excellent | Limited |\n| 3D | Good | Good | Excellent |\n| Learning | Medium | Easy | Hard |\n| Cost | Revenue share | Free | 5% after $1M |\n| Team | Any | Solo-Medium | Medium-Large |\n\n---\n\n"
+  - "## 2. Platform Features\n\n"
+  - "### Steam Integration\n\n| Feature | Purpose |\n|---------|---------|\n| Achievements | Player goals |\n| Cloud Saves | Cross-device progress |\n| Leaderboards | Competition |\n| Workshop | User mods |\n| Rich Presence | Show in-game status |\n\n"
+  - "### Console Requirements\n\n| Platform | Certification |\n|----------|--------------|\n| PlayStation | TRC compliance |\n| Xbox | XR compliance |\n| Nintendo | Lotcheck |\n\n---\n\n"
+  - "## 3. Controller Support\n\n"
+  - "### Input Abstraction\n\n```\nMap ACTIONS, not buttons:\n- \"confirm\" → A (Xbox), Cross (PS), B (Nintendo)\n- \"cancel\" → B (Xbox), Circle (PS), A (Nintendo)\n```\n\n"
+  - "### Haptic Feedback\n\n| Intensity | Use |\n|-----------|-----|\n| Light | UI feedback |\n| Medium | Impacts |\n| Heavy | Major events |\n\n---\n\n"
+  - "## 4. Performance Optimization\n\n"
+  - "### Profiling First\n\n| Engine | Tool |\n|--------|------|\n| Unity | Profiler Window |\n| Godot | Debugger → Profiler |\n| Unreal | Unreal Insights |\n\n"
+  - "### Common Bottlenecks\n\n| Bottleneck | Solution |\n|------------|----------|\n| Draw calls | Batching, atlases |\n| GC spikes | Object pooling |\n| Physics | Simpler colliders |\n| Shaders | LOD shaders |\n\n---\n\n"
+  - "## 5. Engine-Specific Principles\n\n"
+  - "### Unity 6\n\n- DOTS for performance-critical systems\n- Burst compiler for hot paths\n- Addressables for asset streaming\n\n"
+  - "### Godot 4\n\n- GDScript for rapid iteration\n- C# for complex logic\n- Signals for decoupling\n\n"
+  - "### Unreal 5\n\n- Blueprint for designers\n- C++ for performance\n- Nanite for high-poly environments\n- Lumen for dynamic lighting\n\n---\n\n"
+  - "## 6. Anti-Patterns\n\n| ❌ Don't | ✅ Do |\n|----------|-------|\n| Choose engine by hype | Choose by project needs |\n| Ignore platform guidelines | Study certification requirements |\n| Hardcode input buttons | Abstract to actions |\n| Skip profiling | Profile early and often |\n\n---\n\n> **Remember:** Engine is a tool. Master the principles, then adapt to any engine.\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

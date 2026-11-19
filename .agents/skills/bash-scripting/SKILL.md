@@ -5,197 +5,44 @@ category: granular-workflow-bundle
 risk: safe
 source: personal
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Bash Scripting Workflow
-
-## Overview
-
-Specialized workflow for creating robust, production-ready bash scripts with defensive programming patterns, comprehensive error handling, and automated testing.
-
-## When to Use This Workflow
-
-Use this workflow when:
-- Creating automation scripts
-- Writing system administration tools
-- Building deployment scripts
-- Developing backup solutions
-- Creating CI/CD scripts
-
-## Workflow Phases
-
-### Phase 1: Script Design
-
-#### Skills to Invoke
-- `bash-pro` - Professional scripting
-- `bash-defensive-patterns` - Defensive patterns
-
-#### Actions
-1. Define script purpose
-2. Identify inputs/outputs
-3. Plan error handling
-4. Design logging strategy
-5. Document requirements
-
-#### Copy-Paste Prompts
-```
-Use @bash-pro to design production-ready bash script
-```
-
-### Phase 2: Script Structure
-
-#### Skills to Invoke
-- `bash-pro` - Script structure
-- `bash-defensive-patterns` - Safety patterns
-
-#### Actions
-1. Add shebang and strict mode
-2. Create usage function
-3. Implement argument parsing
-4. Set up logging
-5. Add cleanup handlers
-
-#### Copy-Paste Prompts
-```
-Use @bash-defensive-patterns to implement strict mode and error handling
-```
-
-### Phase 3: Core Implementation
-
-#### Skills to Invoke
-- `bash-linux` - Linux commands
-- `linux-shell-scripting` - Shell scripting
-
-#### Actions
-1. Implement main functions
-2. Add input validation
-3. Create helper functions
-4. Handle edge cases
-5. Add progress indicators
-
-#### Copy-Paste Prompts
-```
-Use @bash-linux to implement system commands
-```
-
-### Phase 4: Error Handling
-
-#### Skills to Invoke
-- `bash-defensive-patterns` - Error handling
-- `error-handling-patterns` - Error patterns
-
-#### Actions
-1. Add trap handlers
-2. Implement retry logic
-3. Create error messages
-4. Set up exit codes
-5. Add rollback capability
-
-#### Copy-Paste Prompts
-```
-Use @bash-defensive-patterns to add comprehensive error handling
-```
-
-### Phase 5: Logging
-
-#### Skills to Invoke
-- `bash-pro` - Logging patterns
-
-#### Actions
-1. Create logging function
-2. Add log levels
-3. Implement timestamps
-4. Configure log rotation
-5. Add debug mode
-
-#### Copy-Paste Prompts
-```
-Use @bash-pro to implement structured logging
-```
-
-### Phase 6: Testing
-
-#### Skills to Invoke
-- `bats-testing-patterns` - Bats testing
-- `shellcheck-configuration` - ShellCheck
-
-#### Actions
-1. Write Bats tests
-2. Run ShellCheck
-3. Test edge cases
-4. Verify error handling
-5. Test with different inputs
-
-#### Copy-Paste Prompts
-```
-Use @bats-testing-patterns to write script tests
-```
-
-```
-Use @shellcheck-configuration to lint bash script
-```
-
-### Phase 7: Documentation
-
-#### Skills to Invoke
-- `documentation-templates` - Documentation
-
-#### Actions
-1. Add script header
-2. Document functions
-3. Create usage examples
-4. List dependencies
-5. Add troubleshooting section
-
-#### Copy-Paste Prompts
-```
-Use @documentation-templates to document bash script
-```
-
-## Script Template
-
-```bash
-#!/usr/bin/env bash
-set -euo pipefail
-
-readonly SCRIPT_NAME=$(basename "$0")
-readonly SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
-
-log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*"; }
-error() { log "ERROR: $*" >&2; exit 1; }
-
-usage() { cat <<EOF
-Usage: $SCRIPT_NAME [OPTIONS]
-Options:
-    -h, --help      Show help
-    -v, --verbose   Verbose output
-EOF
-}
-
-main() {
-    log "Script started"
-    # Implementation
-    log "Script completed"
-}
-
-main "$@"
-```
-
-## Quality Gates
-
-- [ ] ShellCheck passes
-- [ ] Bats tests pass
-- [ ] Error handling works
-- [ ] Logging functional
-- [ ] Documentation complete
-
-## Related Workflow Bundles
-
-- `os-scripting` - OS scripting
-- `linux-troubleshooting` - Linux troubleshooting
-- `cloud-devops` - DevOps automation
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "bash-scripting"
+sections[37]:
+  - "\n"
+  - "# Bash Scripting Workflow\n\n"
+  - "## Overview\n\nSpecialized workflow for creating robust, production-ready bash scripts with defensive programming patterns, comprehensive error handling, and automated testing.\n\n"
+  - "## When to Use This Workflow\n\nUse this workflow when:\n- Creating automation scripts\n- Writing system administration tools\n- Building deployment scripts\n- Developing backup solutions\n- Creating CI/CD scripts\n\n"
+  - "## Workflow Phases\n\n"
+  - "### Phase 1: Script Design\n\n"
+  - "#### Skills to Invoke\n- `bash-pro` - Professional scripting\n- `bash-defensive-patterns` - Defensive patterns\n\n"
+  - "#### Actions\n1. Define script purpose\n2. Identify inputs/outputs\n3. Plan error handling\n4. Design logging strategy\n5. Document requirements\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @bash-pro to design production-ready bash script\n```\n\n"
+  - "### Phase 2: Script Structure\n\n"
+  - "#### Skills to Invoke\n- `bash-pro` - Script structure\n- `bash-defensive-patterns` - Safety patterns\n\n"
+  - "#### Actions\n1. Add shebang and strict mode\n2. Create usage function\n3. Implement argument parsing\n4. Set up logging\n5. Add cleanup handlers\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @bash-defensive-patterns to implement strict mode and error handling\n```\n\n"
+  - "### Phase 3: Core Implementation\n\n"
+  - "#### Skills to Invoke\n- `bash-linux` - Linux commands\n- `linux-shell-scripting` - Shell scripting\n\n"
+  - "#### Actions\n1. Implement main functions\n2. Add input validation\n3. Create helper functions\n4. Handle edge cases\n5. Add progress indicators\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @bash-linux to implement system commands\n```\n\n"
+  - "### Phase 4: Error Handling\n\n"
+  - "#### Skills to Invoke\n- `bash-defensive-patterns` - Error handling\n- `error-handling-patterns` - Error patterns\n\n"
+  - "#### Actions\n1. Add trap handlers\n2. Implement retry logic\n3. Create error messages\n4. Set up exit codes\n5. Add rollback capability\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @bash-defensive-patterns to add comprehensive error handling\n```\n\n"
+  - "### Phase 5: Logging\n\n"
+  - "#### Skills to Invoke\n- `bash-pro` - Logging patterns\n\n"
+  - "#### Actions\n1. Create logging function\n2. Add log levels\n3. Implement timestamps\n4. Configure log rotation\n5. Add debug mode\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @bash-pro to implement structured logging\n```\n\n"
+  - "### Phase 6: Testing\n\n"
+  - "#### Skills to Invoke\n- `bats-testing-patterns` - Bats testing\n- `shellcheck-configuration` - ShellCheck\n\n"
+  - "#### Actions\n1. Write Bats tests\n2. Run ShellCheck\n3. Test edge cases\n4. Verify error handling\n5. Test with different inputs\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @bats-testing-patterns to write script tests\n```\n\n```\nUse @shellcheck-configuration to lint bash script\n```\n\n"
+  - "### Phase 7: Documentation\n\n"
+  - "#### Skills to Invoke\n- `documentation-templates` - Documentation\n\n"
+  - "#### Actions\n1. Add script header\n2. Document functions\n3. Create usage examples\n4. List dependencies\n5. Add troubleshooting section\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @documentation-templates to document bash script\n```\n\n"
+  - "## Script Template\n\n```bash\n#!/usr/bin/env bash\nset -euo pipefail\n\nreadonly SCRIPT_NAME=$(basename \"$0\")\nreadonly SCRIPT_DIR=$(cd \"$(dirname \"$0\")\" && pwd)\n\nlog() { echo \"[$(date '+%Y-%m-%d %H:%M:%S')] $*\"; }\nerror() { log \"ERROR: $*\" >&2; exit 1; }\n\nusage() { cat <<EOF\nUsage: $SCRIPT_NAME [OPTIONS]\nOptions:\n    -h, --help      Show help\n    -v, --verbose   Verbose output\nEOF\n}\n\nmain() {\n    log \"Script started\"\n    # Implementation\n    log \"Script completed\"\n}\n\nmain \"$@\"\n```\n\n"
+  - "## Quality Gates\n\n- [ ] ShellCheck passes\n- [ ] Bats tests pass\n- [ ] Error handling works\n- [ ] Logging functional\n- [ ] Documentation complete\n\n"
+  - "## Related Workflow Bundles\n\n- `os-scripting` - OS scripting\n- `linux-troubleshooting` - Linux troubleshooting\n- `cloud-devops` - DevOps automation\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

@@ -4,254 +4,29 @@ description: Azure AI Document Translation SDK for batch translation of document
 risk: unknown
 source: community
 date_added: '2026-02-27'
+prompt-source: prompt.toon
 ---
-
-# Azure AI Document Translation SDK for Python
-
-Client library for Azure AI Translator document translation service for batch document translation with format preservation.
-
-## Installation
-
-```bash
-pip install azure-ai-translation-document
-```
-
-## Environment Variables
-
-```bash
-AZURE_DOCUMENT_TRANSLATION_ENDPOINT=https://<resource>.cognitiveservices.azure.com
-AZURE_DOCUMENT_TRANSLATION_KEY=<your-api-key>  # If using API key
-
-# Storage for source and target documents
-AZURE_SOURCE_CONTAINER_URL=https://<storage>.blob.core.windows.net/<container>?<sas>
-AZURE_TARGET_CONTAINER_URL=https://<storage>.blob.core.windows.net/<container>?<sas>
-```
-
-## Authentication
-
-### API Key
-
-```python
-import os
-from azure.ai.translation.document import DocumentTranslationClient
-from azure.core.credentials import AzureKeyCredential
-
-endpoint = os.environ["AZURE_DOCUMENT_TRANSLATION_ENDPOINT"]
-key = os.environ["AZURE_DOCUMENT_TRANSLATION_KEY"]
-
-client = DocumentTranslationClient(endpoint, AzureKeyCredential(key))
-```
-
-### Entra ID (Recommended)
-
-```python
-from azure.ai.translation.document import DocumentTranslationClient
-from azure.identity import DefaultAzureCredential
-
-client = DocumentTranslationClient(
-    endpoint=os.environ["AZURE_DOCUMENT_TRANSLATION_ENDPOINT"],
-    credential=DefaultAzureCredential()
-)
-```
-
-## Basic Document Translation
-
-```python
-from azure.ai.translation.document import DocumentTranslationInput, TranslationTarget
-
-source_url = os.environ["AZURE_SOURCE_CONTAINER_URL"]
-target_url = os.environ["AZURE_TARGET_CONTAINER_URL"]
-
-# Start translation job
-poller = client.begin_translation(
-    inputs=[
-        DocumentTranslationInput(
-            source_url=source_url,
-            targets=[
-                TranslationTarget(
-                    target_url=target_url,
-                    language="es"  # Translate to Spanish
-                )
-            ]
-        )
-    ]
-)
-
-# Wait for completion
-result = poller.result()
-
-print(f"Status: {poller.status()}")
-print(f"Documents translated: {poller.details.documents_succeeded_count}")
-print(f"Documents failed: {poller.details.documents_failed_count}")
-```
-
-## Multiple Target Languages
-
-```python
-poller = client.begin_translation(
-    inputs=[
-        DocumentTranslationInput(
-            source_url=source_url,
-            targets=[
-                TranslationTarget(target_url=target_url_es, language="es"),
-                TranslationTarget(target_url=target_url_fr, language="fr"),
-                TranslationTarget(target_url=target_url_de, language="de")
-            ]
-        )
-    ]
-)
-```
-
-## Translate Single Document
-
-```python
-from azure.ai.translation.document import SingleDocumentTranslationClient
-
-single_client = SingleDocumentTranslationClient(endpoint, AzureKeyCredential(key))
-
-with open("document.docx", "rb") as f:
-    document_content = f.read()
-
-result = single_client.translate(
-    body=document_content,
-    target_language="es",
-    content_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-)
-
-# Save translated document
-with open("document_es.docx", "wb") as f:
-    f.write(result)
-```
-
-## Check Translation Status
-
-```python
-# Get all translation operations
-operations = client.list_translation_statuses()
-
-for op in operations:
-    print(f"Operation ID: {op.id}")
-    print(f"Status: {op.status}")
-    print(f"Created: {op.created_on}")
-    print(f"Total documents: {op.documents_total_count}")
-    print(f"Succeeded: {op.documents_succeeded_count}")
-    print(f"Failed: {op.documents_failed_count}")
-```
-
-## List Document Statuses
-
-```python
-# Get status of individual documents in a job
-operation_id = poller.id
-document_statuses = client.list_document_statuses(operation_id)
-
-for doc in document_statuses:
-    print(f"Document: {doc.source_document_url}")
-    print(f"  Status: {doc.status}")
-    print(f"  Translated to: {doc.translated_to}")
-    if doc.error:
-        print(f"  Error: {doc.error.message}")
-```
-
-## Cancel Translation
-
-```python
-# Cancel a running translation
-client.cancel_translation(operation_id)
-```
-
-## Using Glossary
-
-```python
-from azure.ai.translation.document import TranslationGlossary
-
-poller = client.begin_translation(
-    inputs=[
-        DocumentTranslationInput(
-            source_url=source_url,
-            targets=[
-                TranslationTarget(
-                    target_url=target_url,
-                    language="es",
-                    glossaries=[
-                        TranslationGlossary(
-                            glossary_url="https://<storage>.blob.core.windows.net/glossary/terms.csv?<sas>",
-                            file_format="csv"
-                        )
-                    ]
-                )
-            ]
-        )
-    ]
-)
-```
-
-## Supported Document Formats
-
-```python
-# Get supported formats
-formats = client.get_supported_document_formats()
-
-for fmt in formats:
-    print(f"Format: {fmt.format}")
-    print(f"  Extensions: {fmt.file_extensions}")
-    print(f"  Content types: {fmt.content_types}")
-```
-
-## Supported Languages
-
-```python
-# Get supported languages
-languages = client.get_supported_languages()
-
-for lang in languages:
-    print(f"Language: {lang.name} ({lang.code})")
-```
-
-## Async Client
-
-```python
-from azure.ai.translation.document.aio import DocumentTranslationClient
-from azure.identity.aio import DefaultAzureCredential
-
-async def translate_documents():
-    async with DocumentTranslationClient(
-        endpoint=endpoint,
-        credential=DefaultAzureCredential()
-    ) as client:
-        poller = await client.begin_translation(inputs=[...])
-        result = await poller.result()
-```
-
-## Supported Formats
-
-| Category | Formats |
-|----------|---------|
-| Documents | DOCX, PDF, PPTX, XLSX, HTML, TXT, RTF |
-| Structured | CSV, TSV, JSON, XML |
-| Localization | XLIFF, XLF, MHTML |
-
-## Storage Requirements
-
-- Source and target containers must be Azure Blob Storage
-- Use SAS tokens with appropriate permissions:
-  - Source: Read, List
-  - Target: Write, List
-
-## Best Practices
-
-1. **Use SAS tokens** with minimal required permissions
-2. **Monitor long-running operations** with `poller.status()`
-3. **Handle document-level errors** by iterating document statuses
-4. **Use glossaries** for domain-specific terminology
-5. **Separate target containers** for each language
-6. **Use async client** for multiple concurrent jobs
-7. **Check supported formats** before submitting documents
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "azure-ai-translation-document-py"
+sections[22]:
+  - "\n"
+  - "# Azure AI Document Translation SDK for Python\n\nClient library for Azure AI Translator document translation service for batch document translation with format preservation.\n\n"
+  - "## Installation\n\n```bash\npip install azure-ai-translation-document\n```\n\n"
+  - "## Environment Variables\n\n```bash\nAZURE_DOCUMENT_TRANSLATION_ENDPOINT=https://<resource>.cognitiveservices.azure.com\nAZURE_DOCUMENT_TRANSLATION_KEY=<your-api-key>  # If using API key\n\n# Storage for source and target documents\nAZURE_SOURCE_CONTAINER_URL=https://<storage>.blob.core.windows.net/<container>?<sas>\nAZURE_TARGET_CONTAINER_URL=https://<storage>.blob.core.windows.net/<container>?<sas>\n```\n\n"
+  - "## Authentication\n\n"
+  - "### API Key\n\n```python\nimport os\nfrom azure.ai.translation.document import DocumentTranslationClient\nfrom azure.core.credentials import AzureKeyCredential\n\nendpoint = os.environ[\"AZURE_DOCUMENT_TRANSLATION_ENDPOINT\"]\nkey = os.environ[\"AZURE_DOCUMENT_TRANSLATION_KEY\"]\n\nclient = DocumentTranslationClient(endpoint, AzureKeyCredential(key))\n```\n\n"
+  - "### Entra ID (Recommended)\n\n```python\nfrom azure.ai.translation.document import DocumentTranslationClient\nfrom azure.identity import DefaultAzureCredential\n\nclient = DocumentTranslationClient(\n    endpoint=os.environ[\"AZURE_DOCUMENT_TRANSLATION_ENDPOINT\"],\n    credential=DefaultAzureCredential()\n)\n```\n\n"
+  - "## Basic Document Translation\n\n```python\nfrom azure.ai.translation.document import DocumentTranslationInput, TranslationTarget\n\nsource_url = os.environ[\"AZURE_SOURCE_CONTAINER_URL\"]\ntarget_url = os.environ[\"AZURE_TARGET_CONTAINER_URL\"]\n\n# Start translation job\npoller = client.begin_translation(\n    inputs=[\n        DocumentTranslationInput(\n            source_url=source_url,\n            targets=[\n                TranslationTarget(\n                    target_url=target_url,\n                    language=\"es\"  # Translate to Spanish\n                )\n            ]\n        )\n    ]\n)\n\n# Wait for completion\nresult = poller.result()\n\nprint(f\"Status: {poller.status()}\")\nprint(f\"Documents translated: {poller.details.documents_succeeded_count}\")\nprint(f\"Documents failed: {poller.details.documents_failed_count}\")\n```\n\n"
+  - "## Multiple Target Languages\n\n```python\npoller = client.begin_translation(\n    inputs=[\n        DocumentTranslationInput(\n            source_url=source_url,\n            targets=[\n                TranslationTarget(target_url=target_url_es, language=\"es\"),\n                TranslationTarget(target_url=target_url_fr, language=\"fr\"),\n                TranslationTarget(target_url=target_url_de, language=\"de\")\n            ]\n        )\n    ]\n)\n```\n\n"
+  - "## Translate Single Document\n\n```python\nfrom azure.ai.translation.document import SingleDocumentTranslationClient\n\nsingle_client = SingleDocumentTranslationClient(endpoint, AzureKeyCredential(key))\n\nwith open(\"document.docx\", \"rb\") as f:\n    document_content = f.read()\n\nresult = single_client.translate(\n    body=document_content,\n    target_language=\"es\",\n    content_type=\"application/vnd.openxmlformats-officedocument.wordprocessingml.document\"\n)\n\n# Save translated document\nwith open(\"document_es.docx\", \"wb\") as f:\n    f.write(result)\n```\n\n"
+  - "## Check Translation Status\n\n```python\n# Get all translation operations\noperations = client.list_translation_statuses()\n\nfor op in operations:\n    print(f\"Operation ID: {op.id}\")\n    print(f\"Status: {op.status}\")\n    print(f\"Created: {op.created_on}\")\n    print(f\"Total documents: {op.documents_total_count}\")\n    print(f\"Succeeded: {op.documents_succeeded_count}\")\n    print(f\"Failed: {op.documents_failed_count}\")\n```\n\n"
+  - "## List Document Statuses\n\n```python\n# Get status of individual documents in a job\noperation_id = poller.id\ndocument_statuses = client.list_document_statuses(operation_id)\n\nfor doc in document_statuses:\n    print(f\"Document: {doc.source_document_url}\")\n    print(f\"  Status: {doc.status}\")\n    print(f\"  Translated to: {doc.translated_to}\")\n    if doc.error:\n        print(f\"  Error: {doc.error.message}\")\n```\n\n"
+  - "## Cancel Translation\n\n```python\n# Cancel a running translation\nclient.cancel_translation(operation_id)\n```\n\n"
+  - "## Using Glossary\n\n```python\nfrom azure.ai.translation.document import TranslationGlossary\n\npoller = client.begin_translation(\n    inputs=[\n        DocumentTranslationInput(\n            source_url=source_url,\n            targets=[\n                TranslationTarget(\n                    target_url=target_url,\n                    language=\"es\",\n                    glossaries=[\n                        TranslationGlossary(\n                            glossary_url=\"https://<storage>.blob.core.windows.net/glossary/terms.csv?<sas>\",\n                            file_format=\"csv\"\n                        )\n                    ]\n                )\n            ]\n        )\n    ]\n)\n```\n\n"
+  - "## Supported Document Formats\n\n```python\n# Get supported formats\nformats = client.get_supported_document_formats()\n\nfor fmt in formats:\n    print(f\"Format: {fmt.format}\")\n    print(f\"  Extensions: {fmt.file_extensions}\")\n    print(f\"  Content types: {fmt.content_types}\")\n```\n\n"
+  - "## Supported Languages\n\n```python\n# Get supported languages\nlanguages = client.get_supported_languages()\n\nfor lang in languages:\n    print(f\"Language: {lang.name} ({lang.code})\")\n```\n\n"
+  - "## Async Client\n\n```python\nfrom azure.ai.translation.document.aio import DocumentTranslationClient\nfrom azure.identity.aio import DefaultAzureCredential\n\nasync def translate_documents():\n    async with DocumentTranslationClient(\n        endpoint=endpoint,\n        credential=DefaultAzureCredential()\n    ) as client:\n        poller = await client.begin_translation(inputs=[...])\n        result = await poller.result()\n```\n\n"
+  - "## Supported Formats\n\n| Category | Formats |\n|----------|---------|\n| Documents | DOCX, PDF, PPTX, XLSX, HTML, TXT, RTF |\n| Structured | CSV, TSV, JSON, XML |\n| Localization | XLIFF, XLF, MHTML |\n\n"
+  - "## Storage Requirements\n\n- Source and target containers must be Azure Blob Storage\n- Use SAS tokens with appropriate permissions:\n  - Source: Read, List\n  - Target: Write, List\n\n"
+  - "## Best Practices\n\n1. **Use SAS tokens** with minimal required permissions\n2. **Monitor long-running operations** with `poller.status()`\n3. **Handle document-level errors** by iterating document statuses\n4. **Use glossaries** for domain-specific terminology\n5. **Separate target containers** for each language\n6. **Use async client** for multiple concurrent jobs\n7. **Check supported formats** before submitting documents\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

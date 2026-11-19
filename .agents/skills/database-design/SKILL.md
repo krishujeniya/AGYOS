@@ -4,59 +4,15 @@ description: "Database design principles and decision-making. Schema design, ind
 risk: safe
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Database Design
-
-> **Learn to THINK, not copy SQL patterns.**
-
-## 🎯 Selective Reading Rule
-
-**Read ONLY files relevant to the request!** Check the content map, find what you need.
-
-| File | Description | When to Read |
-|------|-------------|--------------|
-| `database-selection.md` | PostgreSQL vs Neon vs Turso vs SQLite | Choosing database |
-| `orm-selection.md` | Drizzle vs Prisma vs Kysely | Choosing ORM |
-| `schema-design.md` | Normalization, PKs, relationships | Designing schema |
-| `indexing.md` | Index types, composite indexes | Performance tuning |
-| `optimization.md` | N+1, EXPLAIN ANALYZE | Query optimization |
-| `migrations.md` | Safe migrations, serverless DBs | Schema changes |
-
----
-
-## ⚠️ Core Principle
-
-- ASK user for database preferences when unclear
-- Choose database/ORM based on CONTEXT
-- Don't default to PostgreSQL for everything
-
----
-
-## Decision Checklist
-
-Before designing schema:
-
-- [ ] Asked user about database preference?
-- [ ] Chosen database for THIS context?
-- [ ] Considered deployment environment?
-- [ ] Planned index strategy?
-- [ ] Defined relationship types?
-
----
-
-## Anti-Patterns
-
-❌ Default to PostgreSQL for simple apps (SQLite may suffice)
-❌ Skip indexing
-❌ Use SELECT * in production
-❌ Store JSON when structured data is better
-❌ Ignore N+1 queries
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "database-design"
+sections[8]:
+  - "\n"
+  - "# Database Design\n\n> **Learn to THINK, not copy SQL patterns.**\n\n"
+  - "## 🎯 Selective Reading Rule\n\n**Read ONLY files relevant to the request!** Check the content map, find what you need.\n\n| File | Description | When to Read |\n|------|-------------|--------------|\n| `database-selection.md` | PostgreSQL vs Neon vs Turso vs SQLite | Choosing database |\n| `orm-selection.md` | Drizzle vs Prisma vs Kysely | Choosing ORM |\n| `schema-design.md` | Normalization, PKs, relationships | Designing schema |\n| `indexing.md` | Index types, composite indexes | Performance tuning |\n| `optimization.md` | N+1, EXPLAIN ANALYZE | Query optimization |\n| `migrations.md` | Safe migrations, serverless DBs | Schema changes |\n\n---\n\n"
+  - "## ⚠️ Core Principle\n\n- ASK user for database preferences when unclear\n- Choose database/ORM based on CONTEXT\n- Don't default to PostgreSQL for everything\n\n---\n\n"
+  - "## Decision Checklist\n\nBefore designing schema:\n\n- [ ] Asked user about database preference?\n- [ ] Chosen database for THIS context?\n- [ ] Considered deployment environment?\n- [ ] Planned index strategy?\n- [ ] Defined relationship types?\n\n---\n\n"
+  - "## Anti-Patterns\n\n❌ Default to PostgreSQL for simple apps (SQLite may suffice)\n❌ Skip indexing\n❌ Use SELECT * in production\n❌ Store JSON when structured data is better\n❌ Ignore N+1 queries\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

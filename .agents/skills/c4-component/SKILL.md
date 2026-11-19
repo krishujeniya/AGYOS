@@ -4,152 +4,27 @@ description: Expert C4 Component-level documentation specialist. Synthesizes C4 
 risk: unknown
 source: community
 date_added: '2026-02-27'
+prompt-source: prompt.toon
 ---
-
-# C4 Component Level: [Component Name]
-
-## Use this skill when
-
-- Working on c4 component level: [component name] tasks or workflows
-- Needing guidance, best practices, or checklists for c4 component level: [component name]
-
-## Do not use this skill when
-
-- The task is unrelated to c4 component level: [component name]
-- You need a different domain or tool outside this scope
-
-## Instructions
-
-- Clarify goals, constraints, and required inputs.
-- Apply relevant best practices and validate outcomes.
-- Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
-
-## Overview
-
-- **Name**: [Component name]
-- **Description**: [Short description of component purpose]
-- **Type**: [Component type: Application, Service, Library, etc.]
-- **Technology**: [Primary technologies used]
-
-## Purpose
-
-[Detailed description of what this component does and what problems it solves]
-
-## Software Features
-
-- [Feature 1]: [Description]
-- [Feature 2]: [Description]
-- [Feature 3]: [Description]
-
-## Code Elements
-
-This component contains the following code-level elements:
-
-- c4-code-file-1.md - [Description]
-- c4-code-file-2.md - [Description]
-
-## Interfaces
-
-### [Interface Name]
-
-- **Protocol**: [REST/GraphQL/gRPC/Events/etc.]
-- **Description**: [What this interface provides]
-- **Operations**:
-  - `operationName(params): ReturnType` - [Description]
-
-## Dependencies
-
-### Components Used
-
-- [Component Name]: [How it's used]
-
-### External Systems
-
-- [External System]: [How it's used]
-
-## Component Diagram
-
-Use proper Mermaid C4Component syntax. Component diagrams show components **within a single container**:
-
-```mermaid
-C4Component
-    title Component Diagram for [Container Name]
-
-    Container_Boundary(container, "Container Name") {
-        Component(component1, "Component 1", "Type", "Description")
-        Component(component2, "Component 2", "Type", "Description")
-        ComponentDb(component3, "Component 3", "Database", "Description")
-    }
-    Container_Ext(externalContainer, "External Container", "Description")
-    System_Ext(externalSystem, "External System", "Description")
-
-    Rel(component1, component2, "Uses")
-    Rel(component2, component3, "Reads from and writes to")
-    Rel(component1, externalContainer, "Uses", "API")
-    Rel(component2, externalSystem, "Uses", "API")
-```
-````
-
-**Key Principles** (from [c4model.com](https://c4model.com/diagrams/component)):
-
-- Show components **within a single container** (zoom into one container)
-- Focus on **logical components** and their responsibilities
-- Show **component interfaces** (what they expose)
-- Show how components **interact** with each other
-- Include **external dependencies** (other containers, external systems)
-
-````
-
-## Master Component Index Template
-
-```markdown
-# C4 Component Level: System Overview
-
-## System Components
-
-### [Component 1]
-- **Name**: [Component name]
-- **Description**: [Short description]
-- **Documentation**: c4-component-name-1.md
-
-### [Component 2]
-- **Name**: [Component name]
-- **Description**: [Short description]
-- **Documentation**: c4-component-name-2.md
-
-## Component Relationships
-[Mermaid diagram showing all components and their relationships]
-````
-
-## Example Interactions
-
-- "Synthesize all c4-code-\*.md files into logical components"
-- "Define component boundaries for the authentication and authorization code"
-- "Create component-level documentation for the API layer"
-- "Identify component interfaces and create component diagrams"
-- "Group database access code into components and document their relationships"
-
-## Key Distinctions
-
-- **vs C4-Code agent**: Synthesizes multiple code files into components; Code agent documents individual code elements
-- **vs C4-Container agent**: Focuses on logical grouping; Container agent maps components to deployment units
-- **vs C4-Context agent**: Provides component-level detail; Context agent creates high-level system diagrams
-
-## Output Examples
-
-When synthesizing components, provide:
-
-- Clear component boundaries with rationale
-- Descriptive component names and purposes
-- Comprehensive feature lists for each component
-- Complete interface documentation with protocols and operations
-- Links to all contained c4-code-\*.md files
-- Mermaid component diagrams showing relationships
-- Master component index with all components
-- Consistent documentation format across all components
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "c4-component"
+sections[20]:
+  - "\n"
+  - "# C4 Component Level: [Component Name]\n\n"
+  - "## Use this skill when\n\n- Working on c4 component level: [component name] tasks or workflows\n- Needing guidance, best practices, or checklists for c4 component level: [component name]\n\n"
+  - "## Do not use this skill when\n\n- The task is unrelated to c4 component level: [component name]\n- You need a different domain or tool outside this scope\n\n"
+  - "## Instructions\n\n- Clarify goals, constraints, and required inputs.\n- Apply relevant best practices and validate outcomes.\n- Provide actionable steps and verification.\n- If detailed examples are required, open `resources/implementation-playbook.md`.\n\n"
+  - "## Overview\n\n- **Name**: [Component name]\n- **Description**: [Short description of component purpose]\n- **Type**: [Component type: Application, Service, Library, etc.]\n- **Technology**: [Primary technologies used]\n\n"
+  - "## Purpose\n\n[Detailed description of what this component does and what problems it solves]\n\n"
+  - "## Software Features\n\n- [Feature 1]: [Description]\n- [Feature 2]: [Description]\n- [Feature 3]: [Description]\n\n"
+  - "## Code Elements\n\nThis component contains the following code-level elements:\n\n- c4-code-file-1.md - [Description]\n- c4-code-file-2.md - [Description]\n\n"
+  - "## Interfaces\n\n"
+  - "### [Interface Name]\n\n- **Protocol**: [REST/GraphQL/gRPC/Events/etc.]\n- **Description**: [What this interface provides]\n- **Operations**:\n  - `operationName(params): ReturnType` - [Description]\n\n"
+  - "## Dependencies\n\n"
+  - "### Components Used\n\n- [Component Name]: [How it's used]\n\n"
+  - "### External Systems\n\n- [External System]: [How it's used]\n\n"
+  - "## Component Diagram\n\nUse proper Mermaid C4Component syntax. Component diagrams show components **within a single container**:\n\n```mermaid\nC4Component\n    title Component Diagram for [Container Name]\n\n    Container_Boundary(container, \"Container Name\") {\n        Component(component1, \"Component 1\", \"Type\", \"Description\")\n        Component(component2, \"Component 2\", \"Type\", \"Description\")\n        ComponentDb(component3, \"Component 3\", \"Database\", \"Description\")\n    }\n    Container_Ext(externalContainer, \"External Container\", \"Description\")\n    System_Ext(externalSystem, \"External System\", \"Description\")\n\n    Rel(component1, component2, \"Uses\")\n    Rel(component2, component3, \"Reads from and writes to\")\n    Rel(component1, externalContainer, \"Uses\", \"API\")\n    Rel(component2, externalSystem, \"Uses\", \"API\")\n```\n````\n\n**Key Principles** (from [c4model.com](https://c4model.com/diagrams/component)):\n\n- Show components **within a single container** (zoom into one container)\n- Focus on **logical components** and their responsibilities\n- Show **component interfaces** (what they expose)\n- Show how components **interact** with each other\n- Include **external dependencies** (other containers, external systems)\n\n````\n\n"
+  - "## Master Component Index Template\n\n```markdown\n# C4 Component Level: System Overview\n\n## System Components\n\n### [Component 1]\n- **Name**: [Component name]\n- **Description**: [Short description]\n- **Documentation**: c4-component-name-1.md\n\n### [Component 2]\n- **Name**: [Component name]\n- **Description**: [Short description]\n- **Documentation**: c4-component-name-2.md\n\n## Component Relationships\n[Mermaid diagram showing all components and their relationships]\n````\n\n"
+  - "## Example Interactions\n\n- \"Synthesize all c4-code-\\*.md files into logical components\"\n- \"Define component boundaries for the authentication and authorization code\"\n- \"Create component-level documentation for the API layer\"\n- \"Identify component interfaces and create component diagrams\"\n- \"Group database access code into components and document their relationships\"\n\n"
+  - "## Key Distinctions\n\n- **vs C4-Code agent**: Synthesizes multiple code files into components; Code agent documents individual code elements\n- **vs C4-Container agent**: Focuses on logical grouping; Container agent maps components to deployment units\n- **vs C4-Context agent**: Provides component-level detail; Context agent creates high-level system diagrams\n\n"
+  - "## Output Examples\n\nWhen synthesizing components, provide:\n\n- Clear component boundaries with rationale\n- Descriptive component names and purposes\n- Comprehensive feature lists for each component\n- Complete interface documentation with protocols and operations\n- Links to all contained c4-code-\\*.md files\n- Mermaid component diagrams showing relationships\n- Master component index with all components\n- Consistent documentation format across all components\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

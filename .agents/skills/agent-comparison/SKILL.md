@@ -5,143 +5,25 @@ license: MIT
 metadata:
   origin: ECC
 tools: Read, Write, Edit, Bash, Grep, Glob
+prompt-source: prompt.toon
 ---
-
-# Agent Eval Skill
-
-A lightweight CLI tool for comparing coding agents head-to-head on reproducible tasks. Every "which coding agent is best?" comparison runs on vibes — this tool systematizes it.
-
-## When to Activate
-
-- Comparing coding agents (Claude Code, Aider, Codex, etc.) on your own codebase
-- Measuring agent performance before adopting a new tool or model
-- Running regression checks when an agent updates its model or tooling
-- Producing data-backed agent selection decisions for a team
-
-## Installation
-
-> **Note:** Install agent-eval from its repository after reviewing the source.
-
-## Core Concepts
-
-### YAML Task Definitions
-
-Define tasks declaratively. Each task specifies what to do, which files to touch, and how to judge success:
-
-```yaml
-name: add-retry-logic
-description: Add exponential backoff retry to the HTTP client
-repo: ./my-project
-files:
-  - src/http_client.py
-prompt: |
-  Add retry logic with exponential backoff to all HTTP requests.
-  Max 3 retries. Initial delay 1s, max delay 30s.
-judge:
-  - type: pytest
-    command: pytest tests/test_http_client.py -v
-  - type: grep
-    pattern: "exponential_backoff|retry"
-    files: src/http_client.py
-commit: "abc1234"  # pin to specific commit for reproducibility
-```
-
-### Git Worktree Isolation
-
-Each agent run gets its own git worktree — no Docker required. This provides reproducibility isolation so agents cannot interfere with each other or corrupt the base repo.
-
-### Metrics Collected
-
-| Metric | What It Measures |
-|--------|-----------------|
-| Pass rate | Did the agent produce code that passes the judge? |
-| Cost | API spend per task (when available) |
-| Time | Wall-clock seconds to completion |
-| Consistency | Pass rate across repeated runs (e.g., 3/3 = 100%) |
-
-## Workflow
-
-### 1. Define Tasks
-
-Create a `tasks/` directory with YAML files, one per task:
-
-```bash
-mkdir tasks
-# Write task definitions (see template above)
-```
-
-### 2. Run Agents
-
-Execute agents against your tasks:
-
-```bash
-agent-eval run --task tasks/add-retry-logic.yaml --agent claude-code --agent aider --runs 3
-```
-
-Each run:
-1. Creates a fresh git worktree from the specified commit
-2. Hands the prompt to the agent
-3. Runs the judge criteria
-4. Records pass/fail, cost, and time
-
-### 3. Compare Results
-
-Generate a comparison report:
-
-```bash
-agent-eval report --format table
-```
-
-```
-Task: add-retry-logic (3 runs each)
-┌──────────────┬───────────┬────────┬────────┬─────────────┐
-│ Agent        │ Pass Rate │ Cost   │ Time   │ Consistency │
-├──────────────┼───────────┼────────┼────────┼─────────────┤
-│ claude-code  │ 3/3       │ $0.12  │ 45s    │ 100%        │
-│ aider        │ 2/3       │ $0.08  │ 38s    │  67%        │
-└──────────────┴───────────┴────────┴────────┴─────────────┘
-```
-
-## Judge Types
-
-### Code-Based (deterministic)
-
-```yaml
-judge:
-  - type: pytest
-    command: pytest tests/ -v
-  - type: command
-    command: npm run build
-```
-
-### Pattern-Based
-
-```yaml
-judge:
-  - type: grep
-    pattern: "class.*Retry"
-    files: src/**/*.py
-```
-
-### Model-Based (LLM-as-judge)
-
-```yaml
-judge:
-  - type: llm
-    prompt: |
-      Does this implementation correctly handle exponential backoff?
-      Check for: max retries, increasing delays, jitter.
-```
-
-## Best Practices
-
-- **Start with 3-5 tasks** that represent your real workload, not toy examples
-- **Run at least 3 trials** per agent to capture variance — agents are non-deterministic
-- **Pin the commit** in your task YAML so results are reproducible across days/weeks
-- **Include at least one deterministic judge** (tests, build) per task — LLM judges add noise
-- **Track cost alongside pass rate** — a 95% agent at 10x the cost may not be the right choice
-- **Version your task definitions** — they are test fixtures, treat them as code
-
-## Links
-
-- Repository: [github.com/joaquinhuigomez/agent-eval](https://github.com/joaquinhuigomez/agent-eval)
+skill: "agent-comparison"
+sections[18]:
+  - "\n"
+  - "# Agent Eval Skill\n\nA lightweight CLI tool for comparing coding agents head-to-head on reproducible tasks. Every \"which coding agent is best?\" comparison runs on vibes — this tool systematizes it.\n\n"
+  - "## When to Activate\n\n- Comparing coding agents (Claude Code, Aider, Codex, etc.) on your own codebase\n- Measuring agent performance before adopting a new tool or model\n- Running regression checks when an agent updates its model or tooling\n- Producing data-backed agent selection decisions for a team\n\n"
+  - "## Installation\n\n> **Note:** Install agent-eval from its repository after reviewing the source.\n\n"
+  - "## Core Concepts\n\n"
+  - "### YAML Task Definitions\n\nDefine tasks declaratively. Each task specifies what to do, which files to touch, and how to judge success:\n\n```yaml\nname: add-retry-logic\ndescription: Add exponential backoff retry to the HTTP client\nrepo: ./my-project\nfiles:\n  - src/http_client.py\nprompt: |\n  Add retry logic with exponential backoff to all HTTP requests.\n  Max 3 retries. Initial delay 1s, max delay 30s.\njudge:\n  - type: pytest\n    command: pytest tests/test_http_client.py -v\n  - type: grep\n    pattern: \"exponential_backoff|retry\"\n    files: src/http_client.py\ncommit: \"abc1234\"  # pin to specific commit for reproducibility\n```\n\n"
+  - "### Git Worktree Isolation\n\nEach agent run gets its own git worktree — no Docker required. This provides reproducibility isolation so agents cannot interfere with each other or corrupt the base repo.\n\n"
+  - "### Metrics Collected\n\n| Metric | What It Measures |\n|--------|-----------------|\n| Pass rate | Did the agent produce code that passes the judge? |\n| Cost | API spend per task (when available) |\n| Time | Wall-clock seconds to completion |\n| Consistency | Pass rate across repeated runs (e.g., 3/3 = 100%) |\n\n"
+  - "## Workflow\n\n"
+  - "### 1. Define Tasks\n\nCreate a `tasks/` directory with YAML files, one per task:\n\n```bash\nmkdir tasks\n# Write task definitions (see template above)\n```\n\n"
+  - "### 2. Run Agents\n\nExecute agents against your tasks:\n\n```bash\nagent-eval run --task tasks/add-retry-logic.yaml --agent claude-code --agent aider --runs 3\n```\n\nEach run:\n1. Creates a fresh git worktree from the specified commit\n2. Hands the prompt to the agent\n3. Runs the judge criteria\n4. Records pass/fail, cost, and time\n\n"
+  - "### 3. Compare Results\n\nGenerate a comparison report:\n\n```bash\nagent-eval report --format table\n```\n\n```\nTask: add-retry-logic (3 runs each)\n┌──────────────┬───────────┬────────┬────────┬─────────────┐\n│ Agent        │ Pass Rate │ Cost   │ Time   │ Consistency │\n├──────────────┼───────────┼────────┼────────┼─────────────┤\n│ claude-code  │ 3/3       │ $0.12  │ 45s    │ 100%        │\n│ aider        │ 2/3       │ $0.08  │ 38s    │  67%        │\n└──────────────┴───────────┴────────┴────────┴─────────────┘\n```\n\n"
+  - "## Judge Types\n\n"
+  - "### Code-Based (deterministic)\n\n```yaml\njudge:\n  - type: pytest\n    command: pytest tests/ -v\n  - type: command\n    command: npm run build\n```\n\n"
+  - "### Pattern-Based\n\n```yaml\njudge:\n  - type: grep\n    pattern: \"class.*Retry\"\n    files: src/**/*.py\n```\n\n"
+  - "### Model-Based (LLM-as-judge)\n\n```yaml\njudge:\n  - type: llm\n    prompt: |\n      Does this implementation correctly handle exponential backoff?\n      Check for: max retries, increasing delays, jitter.\n```\n\n"
+  - "## Best Practices\n\n- **Start with 3-5 tasks** that represent your real workload, not toy examples\n- **Run at least 3 trials** per agent to capture variance — agents are non-deterministic\n- **Pin the commit** in your task YAML so results are reproducible across days/weeks\n- **Include at least one deterministic judge** (tests, build) per task — LLM judges add noise\n- **Track cost alongside pass rate** — a 95% agent at 10x the cost may not be the right choice\n- **Version your task definitions** — they are test fixtures, treat them as code\n\n"
+  - "## Links\n\n- Repository: [github.com/joaquinhuigomez/agent-eval](https://github.com/joaquinhuigomez/agent-eval)\n"

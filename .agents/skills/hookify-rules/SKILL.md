@@ -1,149 +1,27 @@
 ---
 name: hookify-rules
 description: Create and configure hookify rules — markdown files with YAML frontmatter that match bash, file, prompt, or stop events by regex or conditions and show warn/block messages to the agent. Use when creating a hookify rule, writing hook rule syntax, configuring hookify, or adding pattern guardrails such as blocking dangerous commands, .env edits, or debug code.
+prompt-source: prompt.toon
 ---
-
-# Writing Hookify Rules
-
-## Overview
-
-ECC evaluates project-local Hookify rules with its built-in Node runtime. No
-separate Hookify plugin or Python installation is required when ECC hooks are
-enabled.
-
-Hookify rules are markdown files with YAML frontmatter that define patterns to watch for and messages to show when those patterns match. Rules are stored in `.claude/hookify.{rule-name}.local.md` files.
-
-## Rule File Format
-
-### Basic Structure
-
-```markdown
----
-name: rule-identifier
-enabled: true
-event: bash|file|stop|prompt|all
-pattern: regex-pattern-here
----
-
-Message to show Claude when this rule triggers.
-Can include markdown formatting, warnings, suggestions, etc.
-```
-
-### Frontmatter Fields
-
-| Field | Required | Values | Description |
-|-------|----------|--------|-------------|
-| name | Yes | kebab-case string | Unique identifier (verb-first: warn-*, block-*, require-*) |
-| enabled | Yes | true/false | Toggle without deleting |
-| event | Yes | bash/file/stop/prompt/all | Which hook event triggers this |
-| action | No | warn/block | warn (default) shows message; block prevents operation |
-| pattern | Yes* | regex string | Pattern to match (*or use conditions for complex rules) |
-
-### Advanced Format (Multiple Conditions)
-
-```markdown
----
-name: warn-env-api-keys
-enabled: true
-event: file
-conditions:
-  - field: file_path
-    operator: regex_match
-    pattern: \.env$
-  - field: new_text
-    operator: contains
-    pattern: API_KEY
----
-
-You're adding an API key to a .env file. Ensure this file is in .gitignore!
-```
-
-**Condition fields by event:**
-- bash: `command`
-- file: `file_path`, `new_text`, `old_text`, `content`
-- prompt: `user_prompt`
-
-**Operators:** `regex_match`, `contains`, `equals`, `not_contains`, `starts_with`, `ends_with`
-
-All conditions must match for rule to trigger.
-
-## Event Type Guide
-
-### bash Events
-Match Bash command patterns:
-- Dangerous commands: `rm\s+-rf`, `dd\s+if=`, `mkfs`
-- Privilege escalation: `sudo\s+`, `su\s+`
-- Permission issues: `chmod\s+777`
-
-### file Events
-Match Edit/Write/MultiEdit operations:
-- Debug code: `console\.log\(`, `debugger`
-- Security risks: `eval\(`, `innerHTML\s*=`
-- Sensitive files: `\.env$`, `credentials`, `\.pem$`
-
-### stop Events
-Completion checks and reminders. Pattern `.*` matches always.
-
-### prompt Events
-Match user prompt content for workflow enforcement.
-
-## Pattern Writing Tips
-
-### Regex Basics
-- Escape special chars: `.` to `\.`, `(` to `\(`
-- `\s` whitespace, `\d` digit, `\w` word char
-- `+` one or more, `*` zero or more, `?` optional
-- `|` OR operator
-
-### Common Pitfalls
-- **Too broad**: `log` matches "login", "dialog" — use `console\.log\(`
-- **Too specific**: `rm -rf /tmp` — use `rm\s+-rf`
-- **YAML escaping**: Use unquoted patterns; quoted strings need `\\s`
-
-### Testing
-```bash
-python3 -c "import re; print(re.search(r'your_pattern', 'test text'))"
-```
-
-Avoid nested quantifiers such as `(a+)+`. The runtime rejects patterns with
-common catastrophic-backtracking shapes because rules run synchronously in the
-hook path, and every regex evaluation has a 25 ms hard timeout. Invalid,
-symlinked, or oversized local rules fail open and emit a
-diagnostic without disabling other Hookify rules.
-
-Git-tracked local rules are disabled by default. Set
-`ECC_HOOKIFY_ALLOW_TRACKED=1` only after reviewing those files; ordinary
-gitignored rules created locally remain active without that override.
-
-## Runtime Behavior
-
-- `warn` injects the message as event-specific additional context and does not block.
-- `block` denies matching Bash, PowerShell, Write, Edit, or MultiEdit calls before execution.
-- On prompt, post-tool, and stop events, `block` uses Claude Code's structured block decision.
-- Stop rules skip recursive `stop_hook_active` events to prevent infinite continuation loops.
-
-## File Organization
-
-- **Location**: `.claude/` directory in project root
-- **Naming**: `.claude/hookify.{descriptive-name}.local.md`
-- **Gitignore**: Add `.claude/*.local.md` to `.gitignore`
-
-## Commands
-
-- `/hookify [description]` - Create new rules (auto-analyzes conversation if no args)
-- `/hookify-list` - View all rules in table format
-- `/hookify-configure` - Toggle rules on/off interactively
-- `/hookify-help` - Full documentation
-
-## Quick Reference
-
-Minimum viable rule:
-```markdown
----
-name: my-rule
-enabled: true
-event: bash
-pattern: dangerous_command
----
-Warning message here
-```
+skill: "hookify-rules"
+sections[20]:
+  - "\n"
+  - "# Writing Hookify Rules\n\n"
+  - "## Overview\n\nECC evaluates project-local Hookify rules with its built-in Node runtime. No\nseparate Hookify plugin or Python installation is required when ECC hooks are\nenabled.\n\nHookify rules are markdown files with YAML frontmatter that define patterns to watch for and messages to show when those patterns match. Rules are stored in `.claude/hookify.{rule-name}.local.md` files.\n\n"
+  - "## Rule File Format\n\n"
+  - "### Basic Structure\n\n```markdown\n---\nname: rule-identifier\nenabled: true\nevent: bash|file|stop|prompt|all\npattern: regex-pattern-here\n---\n\nMessage to show Claude when this rule triggers.\nCan include markdown formatting, warnings, suggestions, etc.\n```\n\n"
+  - "### Frontmatter Fields\n\n| Field | Required | Values | Description |\n|-------|----------|--------|-------------|\n| name | Yes | kebab-case string | Unique identifier (verb-first: warn-*, block-*, require-*) |\n| enabled | Yes | true/false | Toggle without deleting |\n| event | Yes | bash/file/stop/prompt/all | Which hook event triggers this |\n| action | No | warn/block | warn (default) shows message; block prevents operation |\n| pattern | Yes* | regex string | Pattern to match (*or use conditions for complex rules) |\n\n"
+  - "### Advanced Format (Multiple Conditions)\n\n```markdown\n---\nname: warn-env-api-keys\nenabled: true\nevent: file\nconditions:\n  - field: file_path\n    operator: regex_match\n    pattern: \\.env$\n  - field: new_text\n    operator: contains\n    pattern: API_KEY\n---\n\nYou're adding an API key to a .env file. Ensure this file is in .gitignore!\n```\n\n**Condition fields by event:**\n- bash: `command`\n- file: `file_path`, `new_text`, `old_text`, `content`\n- prompt: `user_prompt`\n\n**Operators:** `regex_match`, `contains`, `equals`, `not_contains`, `starts_with`, `ends_with`\n\nAll conditions must match for rule to trigger.\n\n"
+  - "## Event Type Guide\n\n"
+  - "### bash Events\nMatch Bash command patterns:\n- Dangerous commands: `rm\\s+-rf`, `dd\\s+if=`, `mkfs`\n- Privilege escalation: `sudo\\s+`, `su\\s+`\n- Permission issues: `chmod\\s+777`\n\n"
+  - "### file Events\nMatch Edit/Write/MultiEdit operations:\n- Debug code: `console\\.log\\(`, `debugger`\n- Security risks: `eval\\(`, `innerHTML\\s*=`\n- Sensitive files: `\\.env$`, `credentials`, `\\.pem$`\n\n"
+  - "### stop Events\nCompletion checks and reminders. Pattern `.*` matches always.\n\n"
+  - "### prompt Events\nMatch user prompt content for workflow enforcement.\n\n"
+  - "## Pattern Writing Tips\n\n"
+  - "### Regex Basics\n- Escape special chars: `.` to `\\.`, `(` to `\\(`\n- `\\s` whitespace, `\\d` digit, `\\w` word char\n- `+` one or more, `*` zero or more, `?` optional\n- `|` OR operator\n\n"
+  - "### Common Pitfalls\n- **Too broad**: `log` matches \"login\", \"dialog\" — use `console\\.log\\(`\n- **Too specific**: `rm -rf /tmp` — use `rm\\s+-rf`\n- **YAML escaping**: Use unquoted patterns; quoted strings need `\\\\s`\n\n"
+  - "### Testing\n```bash\npython3 -c \"import re; print(re.search(r'your_pattern', 'test text'))\"\n```\n\nAvoid nested quantifiers such as `(a+)+`. The runtime rejects patterns with\ncommon catastrophic-backtracking shapes because rules run synchronously in the\nhook path, and every regex evaluation has a 25 ms hard timeout. Invalid,\nsymlinked, or oversized local rules fail open and emit a\ndiagnostic without disabling other Hookify rules.\n\nGit-tracked local rules are disabled by default. Set\n`ECC_HOOKIFY_ALLOW_TRACKED=1` only after reviewing those files; ordinary\ngitignored rules created locally remain active without that override.\n\n"
+  - "## Runtime Behavior\n\n- `warn` injects the message as event-specific additional context and does not block.\n- `block` denies matching Bash, PowerShell, Write, Edit, or MultiEdit calls before execution.\n- On prompt, post-tool, and stop events, `block` uses Claude Code's structured block decision.\n- Stop rules skip recursive `stop_hook_active` events to prevent infinite continuation loops.\n\n"
+  - "## File Organization\n\n- **Location**: `.claude/` directory in project root\n- **Naming**: `.claude/hookify.{descriptive-name}.local.md`\n- **Gitignore**: Add `.claude/*.local.md` to `.gitignore`\n\n"
+  - "## Commands\n\n- `/hookify [description]` - Create new rules (auto-analyzes conversation if no args)\n- `/hookify-list` - View all rules in table format\n- `/hookify-configure` - Toggle rules on/off interactively\n- `/hookify-help` - Full documentation\n\n"
+  - "## Quick Reference\n\nMinimum viable rule:\n```markdown\n---\nname: my-rule\nenabled: true\nevent: bash\npattern: dangerous_command\n---\nWarning message here\n```\n"

@@ -4,86 +4,16 @@ description: Fetch unread GitHub notifications for open PRs where review is requ
 allowed-tools: Bash
 risk: safe
 source: community
+prompt-source: prompt.toon
 ---
-
-# GitHub Review Requests
-
-Fetch unread `review_requested` notifications for open (unmerged) PRs, filtered by a GitHub team.
-
-**Requires**: GitHub CLI (`gh`) authenticated.
-
-## When to Use
-- You need to find unread GitHub PR review requests for a specific team.
-- You want to check which open PRs currently need your review or a teammate's review.
-- You need a filtered review queue instead of manually browsing GitHub notifications.
-
-## Step 1: Identify the Team
-
-If the user has not specified a team, ask:
-
-> Which GitHub team should I filter by? (e.g. `streaming-platform`)
-
-Accept either a team slug (`streaming-platform`) or a display name ("Streaming Platform") — convert to lowercase-hyphenated slug before passing to the script.
-
-## Step 2: Run the Script
-
-```bash
-uv run ${CLAUDE_SKILL_ROOT}/scripts/fetch_review_requests.py --org getsentry --teams <team-slug>
-```
-
-To filter by multiple teams, pass a comma-separated list:
-
-```bash
-uv run ${CLAUDE_SKILL_ROOT}/scripts/fetch_review_requests.py --org getsentry --teams <team slugs>
-```
-
-### Script output
-
-```json
-{
-  "total": 3,
-  "prs": [
-    {
-      "notification_id": "12345",
-      "title": "feat(kafka): add workflow to restart a broker",
-      "url": "https://github.com/getsentry/ops/pull/19144",
-      "repo": "getsentry/ops",
-      "pr_number": 19144,
-      "author": "bmckerry",
-      "reasons": ["opened by: bmckerry"]
-    }
-  ]
-}
-```
-
-`reasons` will contain one or both of:
-- `"review requested from: <Team Name>"` — the team is a requested reviewer
-- `"opened by: <login>"` — the PR author is a team member
-
-## Step 3: Present Results
-
-Display results as a markdown table with full URLs:
-
-| # | Title | URL | Reason |
-|---|-------|-----|--------|
-| 1 | feat(kafka): add workflow to restart a broker | https://github.com/getsentry/ops/pull/19144 | opened by: evanh |
-
-If `total` is 0, say: "No unread review requests found for that team."
-
-## Fallback
-
-If the script fails, run manually:
-
-```bash
-gh api notifications --paginate
-```
-
-Then for each `review_requested` notification, check:
-- `gh api repos/{repo}/pulls/{number}` — skip if `state == "closed"` or `merged_at` is set
-- `gh api repos/{repo}/pulls/{number}/requested_reviewers` — check `teams[].name`
-- `gh api orgs/{org}/teams/{slug}/members` — check if author is a member
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "gh-review-requests"
+sections[9]:
+  - "\n"
+  - "# GitHub Review Requests\n\nFetch unread `review_requested` notifications for open (unmerged) PRs, filtered by a GitHub team.\n\n**Requires**: GitHub CLI (`gh`) authenticated.\n\n"
+  - "## When to Use\n- You need to find unread GitHub PR review requests for a specific team.\n- You want to check which open PRs currently need your review or a teammate's review.\n- You need a filtered review queue instead of manually browsing GitHub notifications.\n\n"
+  - "## Step 1: Identify the Team\n\nIf the user has not specified a team, ask:\n\n> Which GitHub team should I filter by? (e.g. `streaming-platform`)\n\nAccept either a team slug (`streaming-platform`) or a display name (\"Streaming Platform\") — convert to lowercase-hyphenated slug before passing to the script.\n\n"
+  - "## Step 2: Run the Script\n\n```bash\nuv run ${CLAUDE_SKILL_ROOT}/scripts/fetch_review_requests.py --org getsentry --teams <team-slug>\n```\n\nTo filter by multiple teams, pass a comma-separated list:\n\n```bash\nuv run ${CLAUDE_SKILL_ROOT}/scripts/fetch_review_requests.py --org getsentry --teams <team slugs>\n```\n\n"
+  - "### Script output\n\n```json\n{\n  \"total\": 3,\n  \"prs\": [\n    {\n      \"notification_id\": \"12345\",\n      \"title\": \"feat(kafka): add workflow to restart a broker\",\n      \"url\": \"https://github.com/getsentry/ops/pull/19144\",\n      \"repo\": \"getsentry/ops\",\n      \"pr_number\": 19144,\n      \"author\": \"bmckerry\",\n      \"reasons\": [\"opened by: bmckerry\"]\n    }\n  ]\n}\n```\n\n`reasons` will contain one or both of:\n- `\"review requested from: <Team Name>\"` — the team is a requested reviewer\n- `\"opened by: <login>\"` — the PR author is a team member\n\n"
+  - "## Step 3: Present Results\n\nDisplay results as a markdown table with full URLs:\n\n| # | Title | URL | Reason |\n|---|-------|-----|--------|\n| 1 | feat(kafka): add workflow to restart a broker | https://github.com/getsentry/ops/pull/19144 | opened by: evanh |\n\nIf `total` is 0, say: \"No unread review requests found for that team.\"\n\n"
+  - "## Fallback\n\nIf the script fails, run manually:\n\n```bash\ngh api notifications --paginate\n```\n\nThen for each `review_requested` notification, check:\n- `gh api repos/{repo}/pulls/{number}` — skip if `state == \"closed\"` or `merged_at` is set\n- `gh api repos/{repo}/pulls/{number}/requested_reviewers` — check `teams[].name`\n- `gh api orgs/{org}/teams/{slug}/members` — check if author is a member\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

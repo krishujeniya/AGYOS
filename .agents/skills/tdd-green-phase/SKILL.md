@@ -4,78 +4,17 @@ description: "Implement the minimal code needed to make failing tests pass in th
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Green Phase: Simple function
-def product_list(request):
-    products = Product.objects.all()
-    return JsonResponse({'products': list(products.values())})
-
-# Refactor: Class-based view
-class ProductListView(View):
-    def get(self, request):
-        products = Product.objects.all()
-        return JsonResponse({'products': list(products.values())})
-
-# Refactor: Generic view
-class ProductListView(ListView):
-    model = Product
-    context_object_name = 'products'
-```
-
-### Express Patterns
-
-**Inline → Middleware → Service Layer:**
-```javascript
-// Green Phase: Inline logic
-app.post('/api/users', (req, res) => {
-  const user = { id: Date.now(), ...req.body };
-  users.push(user);
-  res.json(user);
-});
-
-// Refactor: Extract middleware
-app.post('/api/users', validateUser, (req, res) => {
-  const user = userService.create(req.body);
-  res.json(user);
-});
-
-// Refactor: Full layering
-app.post('/api/users',
-  validateUser,
-  asyncHandler(userController.create)
-);
-```
-
-## Use this skill when
-
-- Moving from red to green in a TDD cycle
-- Implementing minimal behavior to satisfy tests
-- You want to keep implementation intentionally simple
-
-## Do not use this skill when
-
-- You are refactoring for design or performance
-- Tests are already passing and you need new requirements
-- You need a full architectural redesign
-
-## Instructions
-
-1. Review failing tests and identify the smallest fix.
-2. Implement the minimal change to pass the next test.
-3. Run tests after each change to confirm progress.
-4. Record shortcuts or debt for the refactor phase.
-
-## Safety
-
-- Avoid bypassing tests to make them pass.
-- Keep changes scoped to the failing behavior only.
-
-## Resources
-
-- `resources/implementation-playbook.md` for detailed patterns and examples.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "tdd-green-phase"
+sections[10]:
+  - "\n"
+  - "# Green Phase: Simple function\ndef product_list(request):\n    products = Product.objects.all()\n    return JsonResponse({'products': list(products.values())})\n\n"
+  - "# Refactor: Class-based view\nclass ProductListView(View):\n    def get(self, request):\n        products = Product.objects.all()\n        return JsonResponse({'products': list(products.values())})\n\n"
+  - "# Refactor: Generic view\nclass ProductListView(ListView):\n    model = Product\n    context_object_name = 'products'\n```\n\n### Express Patterns\n\n**Inline → Middleware → Service Layer:**\n```javascript\n// Green Phase: Inline logic\napp.post('/api/users', (req, res) => {\n  const user = { id: Date.now(), ...req.body };\n  users.push(user);\n  res.json(user);\n});\n\n// Refactor: Extract middleware\napp.post('/api/users', validateUser, (req, res) => {\n  const user = userService.create(req.body);\n  res.json(user);\n});\n\n// Refactor: Full layering\napp.post('/api/users',\n  validateUser,\n  asyncHandler(userController.create)\n);\n```\n\n"
+  - "## Use this skill when\n\n- Moving from red to green in a TDD cycle\n- Implementing minimal behavior to satisfy tests\n- You want to keep implementation intentionally simple\n\n"
+  - "## Do not use this skill when\n\n- You are refactoring for design or performance\n- Tests are already passing and you need new requirements\n- You need a full architectural redesign\n\n"
+  - "## Instructions\n\n1. Review failing tests and identify the smallest fix.\n2. Implement the minimal change to pass the next test.\n3. Run tests after each change to confirm progress.\n4. Record shortcuts or debt for the refactor phase.\n\n"
+  - "## Safety\n\n- Avoid bypassing tests to make them pass.\n- Keep changes scoped to the failing behavior only.\n\n"
+  - "## Resources\n\n- `resources/implementation-playbook.md` for detailed patterns and examples.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

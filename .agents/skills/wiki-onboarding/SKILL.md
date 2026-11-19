@@ -4,84 +4,19 @@ description: "Generate two complementary onboarding documents that together give
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Wiki Onboarding Guide Generator
-
-Generate two complementary onboarding documents that together give any engineer — from newcomer to principal — a complete understanding of a codebase.
-
-## When to Use
-- User asks for onboarding docs or getting-started guides
-- User runs `/deep-wiki:onboard` command
-- User wants to help new team members understand a codebase
-
-## Language Detection
-
-Scan the repository for build files to determine the primary language for code examples:
-- `package.json` / `tsconfig.json` → TypeScript/JavaScript
-- `*.csproj` / `*.sln` → C# / .NET
-- `Cargo.toml` → Rust
-- `pyproject.toml` / `setup.py` / `requirements.txt` → Python
-- `go.mod` → Go
-- `pom.xml` / `build.gradle` → Java
-
-## Guide 1: Principal-Level Onboarding
-
-**Audience**: Senior/staff+ engineers who need the "why" behind decisions.
-
-### Required Sections
-
-1. **System Philosophy & Design Principles** — What invariants does the system maintain? What were the key design choices and why?
-2. **Architecture Overview** — Component map with Mermaid diagram. What owns what, communication patterns.
-3. **Key Abstractions & Interfaces** — The load-bearing abstractions everything depends on
-4. **Decision Log** — Major architectural decisions with context, alternatives considered, trade-offs
-5. **Dependency Rationale** — Why each major dependency was chosen, what it replaced
-6. **Data Flow & State** — How data moves through the system (traced from actual code, not guessed)
-7. **Failure Modes & Error Handling** — What breaks, how errors propagate, recovery patterns
-8. **Performance Characteristics** — Bottlenecks, scaling limits, hot paths
-9. **Security Model** — Auth, authorization, trust boundaries, data sensitivity
-10. **Testing Strategy** — What's tested, what isn't, testing philosophy
-11. **Operational Concerns** — Deployment, monitoring, feature flags, configuration
-12. **Known Technical Debt** — Honest assessment of shortcuts and their risks
-
-### Rules
-- Every claim backed by `(file_path:line_number)` citation
-- Minimum 3 Mermaid diagrams (architecture, data flow, dependency graph)
-- All Mermaid diagrams use dark-mode colors (see wiki-vitepress skill)
-- Focus on WHY decisions were made, not just WHAT exists
-
-## Guide 2: Zero-to-Hero Contributor Guide
-
-**Audience**: New contributors who need step-by-step practical guidance.
-
-### Required Sections
-
-1. **What This Project Does** — 2-3 sentence elevator pitch
-2. **Prerequisites** — Tools, versions, accounts needed
-3. **Environment Setup** — Step-by-step with exact commands, expected output at each step
-4. **Project Structure** — Annotated directory tree (what lives where and why)
-5. **Your First Task** — End-to-end walkthrough of adding a simple feature
-6. **Development Workflow** — Branch strategy, commit conventions, PR process
-7. **Running Tests** — How to run tests, what to test, how to add a test
-8. **Debugging Guide** — Common issues and how to diagnose them
-9. **Key Concepts** — Domain-specific terminology explained with code examples
-10. **Code Patterns** — "If you want to add X, follow this pattern" templates
-11. **Common Pitfalls** — Mistakes every new contributor makes and how to avoid them
-12. **Where to Get Help** — Communication channels, documentation, key contacts
-13. **Glossary** — Terms used in the codebase that aren't obvious
-14. **Quick Reference Card** — Cheat sheet of most-used commands and patterns
-
-### Rules
-- All code examples in the detected primary language
-- Every command must be copy-pasteable
-- Include expected output for verification steps
-- Use Mermaid for workflow diagrams (dark-mode colors)
-- Ground all claims in actual code — cite `(file_path:line_number)`
-
-### When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "wiki-onboarding"
+sections[12]:
+  - "\n"
+  - "# Wiki Onboarding Guide Generator\n\nGenerate two complementary onboarding documents that together give any engineer — from newcomer to principal — a complete understanding of a codebase.\n\n"
+  - "## When to Use\n- User asks for onboarding docs or getting-started guides\n- User runs `/deep-wiki:onboard` command\n- User wants to help new team members understand a codebase\n\n"
+  - "## Language Detection\n\nScan the repository for build files to determine the primary language for code examples:\n- `package.json` / `tsconfig.json` → TypeScript/JavaScript\n- `*.csproj` / `*.sln` → C# / .NET\n- `Cargo.toml` → Rust\n- `pyproject.toml` / `setup.py` / `requirements.txt` → Python\n- `go.mod` → Go\n- `pom.xml` / `build.gradle` → Java\n\n"
+  - "## Guide 1: Principal-Level Onboarding\n\n**Audience**: Senior/staff+ engineers who need the \"why\" behind decisions.\n\n"
+  - "### Required Sections\n\n1. **System Philosophy & Design Principles** — What invariants does the system maintain? What were the key design choices and why?\n2. **Architecture Overview** — Component map with Mermaid diagram. What owns what, communication patterns.\n3. **Key Abstractions & Interfaces** — The load-bearing abstractions everything depends on\n4. **Decision Log** — Major architectural decisions with context, alternatives considered, trade-offs\n5. **Dependency Rationale** — Why each major dependency was chosen, what it replaced\n6. **Data Flow & State** — How data moves through the system (traced from actual code, not guessed)\n7. **Failure Modes & Error Handling** — What breaks, how errors propagate, recovery patterns\n8. **Performance Characteristics** — Bottlenecks, scaling limits, hot paths\n9. **Security Model** — Auth, authorization, trust boundaries, data sensitivity\n10. **Testing Strategy** — What's tested, what isn't, testing philosophy\n11. **Operational Concerns** — Deployment, monitoring, feature flags, configuration\n12. **Known Technical Debt** — Honest assessment of shortcuts and their risks\n\n"
+  - "### Rules\n- Every claim backed by `(file_path:line_number)` citation\n- Minimum 3 Mermaid diagrams (architecture, data flow, dependency graph)\n- All Mermaid diagrams use dark-mode colors (see wiki-vitepress skill)\n- Focus on WHY decisions were made, not just WHAT exists\n\n"
+  - "## Guide 2: Zero-to-Hero Contributor Guide\n\n**Audience**: New contributors who need step-by-step practical guidance.\n\n"
+  - "### Required Sections\n\n1. **What This Project Does** — 2-3 sentence elevator pitch\n2. **Prerequisites** — Tools, versions, accounts needed\n3. **Environment Setup** — Step-by-step with exact commands, expected output at each step\n4. **Project Structure** — Annotated directory tree (what lives where and why)\n5. **Your First Task** — End-to-end walkthrough of adding a simple feature\n6. **Development Workflow** — Branch strategy, commit conventions, PR process\n7. **Running Tests** — How to run tests, what to test, how to add a test\n8. **Debugging Guide** — Common issues and how to diagnose them\n9. **Key Concepts** — Domain-specific terminology explained with code examples\n10. **Code Patterns** — \"If you want to add X, follow this pattern\" templates\n11. **Common Pitfalls** — Mistakes every new contributor makes and how to avoid them\n12. **Where to Get Help** — Communication channels, documentation, key contacts\n13. **Glossary** — Terms used in the codebase that aren't obvious\n14. **Quick Reference Card** — Cheat sheet of most-used commands and patterns\n\n"
+  - "### Rules\n- All code examples in the detected primary language\n- Every command must be copy-pasteable\n- Include expected output for verification steps\n- Use Mermaid for workflow diagrams (dark-mode colors)\n- Ground all claims in actual code — cite `(file_path:line_number)`\n\n"
+  - "### When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

@@ -4,175 +4,25 @@ description: Core principles of SEO including E-E-A-T, Core Web Vitals, technica
 risk: safe
 source: community
 date_added: '2026-02-27'
+prompt-source: prompt.toon
 ---
-
-# SEO Fundamentals
-
-> **Foundational principles for sustainable search visibility.**
-> This skill explains _how search engines evaluate quality_, not tactical shortcuts.
-
----
-
-## 1. E-E-A-T (Quality Evaluation Framework)
-
-E-E-A-T is **not a direct ranking factor**.
-It is a framework used by search engines to **evaluate content quality**, especially for sensitive or high-impact topics.
-
-| Dimension             | What It Represents                 | Common Signals                                      |
-| --------------------- | ---------------------------------- | --------------------------------------------------- |
-| **Experience**        | First-hand, real-world involvement | Original examples, lived experience, demonstrations |
-| **Expertise**         | Subject-matter competence          | Credentials, depth, accuracy                        |
-| **Authoritativeness** | Recognition by others              | Mentions, citations, links                          |
-| **Trustworthiness**   | Reliability and safety             | HTTPS, transparency, accuracy                       |
-
-> Pages competing in the same space are often differentiated by **trust and experience**, not keywords.
-
----
-
-## 2. Core Web Vitals (Page Experience Signals)
-
-Core Web Vitals measure **how users experience a page**, not whether it deserves to rank.
-
-| Metric  | Target  | What It Reflects    |
-| ------- | ------- | ------------------- |
-| **LCP** | < 2.5s  | Loading performance |
-| **INP** | < 200ms | Interactivity       |
-| **CLS** | < 0.1   | Visual stability    |
-
-**Important context:**
-
-- CWV rarely override poor content
-- They matter most when content quality is comparable
-- Failing CWV can _hold back_ otherwise good pages
-
----
-
-## 3. Technical SEO Principles
-
-Technical SEO ensures pages are **accessible, understandable, and stable**.
-
-### Crawl & Index Control
-
-| Element           | Purpose                |
-| ----------------- | ---------------------- |
-| XML sitemaps      | Help discovery         |
-| robots.txt        | Control crawl access   |
-| Canonical tags    | Consolidate duplicates |
-| HTTP status codes | Communicate page state |
-| HTTPS             | Security and trust     |
-
-### Performance & Accessibility
-
-| Factor                 | Why It Matters                |
-| ---------------------- | ----------------------------- |
-| Page speed             | User satisfaction             |
-| Mobile-friendly design | Mobile-first indexing         |
-| Clean URLs             | Crawl clarity                 |
-| Semantic HTML          | Accessibility & understanding |
-
----
-
-## 4. Content SEO Principles
-
-### Page-Level Elements
-
-| Element          | Principle                    |
-| ---------------- | ---------------------------- |
-| Title tag        | Clear topic + intent         |
-| Meta description | Click relevance, not ranking |
-| H1               | Page’s primary subject       |
-| Headings         | Logical structure            |
-| Alt text         | Accessibility and context    |
-
-### Content Quality Signals
-
-| Dimension   | What Search Engines Look For |
-| ----------- | ---------------------------- |
-| Depth       | Fully answers the query      |
-| Originality | Adds unique value            |
-| Accuracy    | Factually correct            |
-| Clarity     | Easy to understand           |
-| Usefulness  | Satisfies intent             |
-
----
-
-## 5. Structured Data (Schema)
-
-Structured data helps search engines **understand meaning**, not boost rankings directly.
-
-| Type           | Purpose                |
-| -------------- | ---------------------- |
-| Article        | Content classification |
-| Organization   | Entity identity        |
-| Person         | Author information     |
-| FAQPage        | Q&A clarity            |
-| Product        | Commerce details       |
-| Review         | Ratings context        |
-| BreadcrumbList | Site structure         |
-
-> Schema enables eligibility for rich results but does not guarantee them.
-
----
-
-## 6. AI-Assisted Content Principles
-
-Search engines evaluate **output quality**, not authorship method.
-
-### Effective Use
-
-- AI as a drafting or research assistant
-- Human review for accuracy and clarity
-- Original insights and synthesis
-- Clear accountability
-
-### Risky Use
-
-- Publishing unedited AI output
-- Factual errors or hallucinations
-- Thin or duplicated content
-- Keyword-driven text with no value
-
----
-
-## 7. Relative Importance of SEO Factors
-
-There is **no fixed ranking factor order**.
-However, when competing pages are similar, importance tends to follow this pattern:
-
-| Relative Weight | Factor                      |
-| --------------- | --------------------------- |
-| Highest         | Content relevance & quality |
-| High            | Authority & trust signals   |
-| Medium          | Page experience (CWV, UX)   |
-| Medium          | Mobile optimization         |
-| Baseline        | Technical accessibility     |
-
-> Technical SEO enables ranking; content quality earns it.
-
----
-
-## 8. Measurement & Evaluation
-
-SEO fundamentals should be validated using **multiple signals**, not single metrics.
-
-| Area        | What to Observe            |
-| ----------- | -------------------------- |
-| Visibility  | Indexed pages, impressions |
-| Engagement  | Click-through, dwell time  |
-| Performance | CWV field data             |
-| Coverage    | Indexing status            |
-| Authority   | Mentions and links         |
-
----
-
-> **Key Principle:**
-> Sustainable SEO is built on _useful content_, _technical clarity_, and _trust over time_.
-> There are no permanent shortcuts.
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "seo-fundamentals"
+sections[18]:
+  - "\n"
+  - "# SEO Fundamentals\n\n> **Foundational principles for sustainable search visibility.**\n> This skill explains _how search engines evaluate quality_, not tactical shortcuts.\n\n---\n\n"
+  - "## 1. E-E-A-T (Quality Evaluation Framework)\n\nE-E-A-T is **not a direct ranking factor**.\nIt is a framework used by search engines to **evaluate content quality**, especially for sensitive or high-impact topics.\n\n| Dimension             | What It Represents                 | Common Signals                                      |\n| --------------------- | ---------------------------------- | --------------------------------------------------- |\n| **Experience**        | First-hand, real-world involvement | Original examples, lived experience, demonstrations |\n| **Expertise**         | Subject-matter competence          | Credentials, depth, accuracy                        |\n| **Authoritativeness** | Recognition by others              | Mentions, citations, links                          |\n| **Trustworthiness**   | Reliability and safety             | HTTPS, transparency, accuracy                       |\n\n> Pages competing in the same space are often differentiated by **trust and experience**, not keywords.\n\n---\n\n"
+  - "## 2. Core Web Vitals (Page Experience Signals)\n\nCore Web Vitals measure **how users experience a page**, not whether it deserves to rank.\n\n| Metric  | Target  | What It Reflects    |\n| ------- | ------- | ------------------- |\n| **LCP** | < 2.5s  | Loading performance |\n| **INP** | < 200ms | Interactivity       |\n| **CLS** | < 0.1   | Visual stability    |\n\n**Important context:**\n\n- CWV rarely override poor content\n- They matter most when content quality is comparable\n- Failing CWV can _hold back_ otherwise good pages\n\n---\n\n"
+  - "## 3. Technical SEO Principles\n\nTechnical SEO ensures pages are **accessible, understandable, and stable**.\n\n"
+  - "### Crawl & Index Control\n\n| Element           | Purpose                |\n| ----------------- | ---------------------- |\n| XML sitemaps      | Help discovery         |\n| robots.txt        | Control crawl access   |\n| Canonical tags    | Consolidate duplicates |\n| HTTP status codes | Communicate page state |\n| HTTPS             | Security and trust     |\n\n"
+  - "### Performance & Accessibility\n\n| Factor                 | Why It Matters                |\n| ---------------------- | ----------------------------- |\n| Page speed             | User satisfaction             |\n| Mobile-friendly design | Mobile-first indexing         |\n| Clean URLs             | Crawl clarity                 |\n| Semantic HTML          | Accessibility & understanding |\n\n---\n\n"
+  - "## 4. Content SEO Principles\n\n"
+  - "### Page-Level Elements\n\n| Element          | Principle                    |\n| ---------------- | ---------------------------- |\n| Title tag        | Clear topic + intent         |\n| Meta description | Click relevance, not ranking |\n| H1               | Page’s primary subject       |\n| Headings         | Logical structure            |\n| Alt text         | Accessibility and context    |\n\n"
+  - "### Content Quality Signals\n\n| Dimension   | What Search Engines Look For |\n| ----------- | ---------------------------- |\n| Depth       | Fully answers the query      |\n| Originality | Adds unique value            |\n| Accuracy    | Factually correct            |\n| Clarity     | Easy to understand           |\n| Usefulness  | Satisfies intent             |\n\n---\n\n"
+  - "## 5. Structured Data (Schema)\n\nStructured data helps search engines **understand meaning**, not boost rankings directly.\n\n| Type           | Purpose                |\n| -------------- | ---------------------- |\n| Article        | Content classification |\n| Organization   | Entity identity        |\n| Person         | Author information     |\n| FAQPage        | Q&A clarity            |\n| Product        | Commerce details       |\n| Review         | Ratings context        |\n| BreadcrumbList | Site structure         |\n\n> Schema enables eligibility for rich results but does not guarantee them.\n\n---\n\n"
+  - "## 6. AI-Assisted Content Principles\n\nSearch engines evaluate **output quality**, not authorship method.\n\n"
+  - "### Effective Use\n\n- AI as a drafting or research assistant\n- Human review for accuracy and clarity\n- Original insights and synthesis\n- Clear accountability\n\n"
+  - "### Risky Use\n\n- Publishing unedited AI output\n- Factual errors or hallucinations\n- Thin or duplicated content\n- Keyword-driven text with no value\n\n---\n\n"
+  - "## 7. Relative Importance of SEO Factors\n\nThere is **no fixed ranking factor order**.\nHowever, when competing pages are similar, importance tends to follow this pattern:\n\n| Relative Weight | Factor                      |\n| --------------- | --------------------------- |\n| Highest         | Content relevance & quality |\n| High            | Authority & trust signals   |\n| Medium          | Page experience (CWV, UX)   |\n| Medium          | Mobile optimization         |\n| Baseline        | Technical accessibility     |\n\n> Technical SEO enables ranking; content quality earns it.\n\n---\n\n"
+  - "## 8. Measurement & Evaluation\n\nSEO fundamentals should be validated using **multiple signals**, not single metrics.\n\n| Area        | What to Observe            |\n| ----------- | -------------------------- |\n| Visibility  | Indexed pages, impressions |\n| Engagement  | Click-through, dwell time  |\n| Performance | CWV field data             |\n| Coverage    | Indexing status            |\n| Authority   | Mentions and links         |\n\n---\n\n> **Key Principle:**\n> Sustainable SEO is built on _useful content_, _technical clarity_, and _trust over time_.\n> There are no permanent shortcuts.\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

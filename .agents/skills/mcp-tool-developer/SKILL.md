@@ -10,123 +10,24 @@ date_added: "2026-05-13"
 author: "Krish Ujeniya"
 tags: [mcp, ai-agent, tool-development, typescript, python, llm, model-context-protocol]
 tools: [claude, cursor, gemini]
+prompt-source: prompt.toon
 ---
-
-# MCP Tool Developer
-
-## Overview
-
-Expert at building Model Context Protocol (MCP) servers that give AI agents new capabilities. Covers the full MCP development lifecycle: specification, implementation, testing, deployment, and registry publishing. Supports both TypeScript and Python with production-ready patterns.
-
-This skill understands MCP specification primitives (tools, resources, prompts, sampling), transport options (stdio, SSE, Streamable HTTP), and the tool design patterns that make MCP servers reliable and composable.
-
-## When to Use This Skill
-
-- Use when building a new MCP server from scratch
-- Use when wrapping an existing API as an MCP tool
-- Use when debugging MCP server issues
-- Use when designing the tool schema for an MCP server
-- Use when publishing an MCP server to a registry
-
-## How It Works
-
-### Step 1: Define the MCP Server Scope
-
-Identify what capabilities the server should expose:
-- **Tools** - Functions the LLM can call (primary use case)
-- **Resources** - Data the LLM can read (files, APIs, databases)
-- **Prompts** - Reusable prompt templates
-
-Choose the transport:
-- **stdio** - For local CLI tools (Claude Code, Cursor)
-- **SSE (Server-Sent Events)** - For remote/hosted tools
-- **Streamable HTTP** - New in MCP spec for modern deployments
-
-### Step 2: Design the Tool Schema
-
-Define input/output schemas before writing implementation:
-
-```typescript
-{
-  name: "tool_name",
-  description: "What this tool does (visible to the LLM)",
-  inputSchema: {
-    type: "object",
-    properties: { ... },
-    required: [ ... ]
-  }
-}
-```
-
-### Step 3: Implement the Server
-
-Create the server with proper error handling, validation, and logging. Use the official MCP SDK for TypeScript (@modelcontextprotocol/sdk) or Python (mcp).
-
-### Step 4: Test and Deploy
-
-Test with the MCP Inspector, validate tool schemas, handle edge cases, then deploy locally or remotely.
-
-## Examples
-
-### Example 1: TypeScript MCP Server
-
-```typescript
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { z } from "zod";
-
-const server = new McpServer({ name: "my-tools", version: "1.0.0" });
-
-server.tool("greet", "Greet someone by name",
-  { name: z.string().describe("Person's name") },
-  async ({ name }) => ({ content: [{ type: "text", text: `Hello, ${name}!` }] })
-);
-
-const transport = new StdioServerTransport();
-await server.connect(transport);
-```
-
-### Example 2: API Wrapper Pattern
-
-Wrap an external API as an MCP tool with auth, rate limiting, and error handling:
-- Map API endpoints to tools
-- Handle auth via environment variables
-- Transform API responses to LLM-friendly format
-- Add retry logic with exponential backoff
-
-## Best Practices
-
-- Build small, focused tools that can be chained rather than monolithic tools
-- Return structured errors, not crashes - tools should fail gracefully
-- Define schemas before implementation
-- Include descriptions that help the LLM understand when and how to use each tool
-- Validate all inputs against the schema
-- Add rate limiting for external API calls
-- Use environment variables for secrets, never hardcode credentials
-
-## Limitations
-
-- This skill provides guidance and code generation; actual runtime testing requires a development environment
-- MCP specification is evolving; always check the latest spec version
-- Security review is essential before deploying tools that handle sensitive data
-
-## Security and Safety Notes
-
-- Never hardcode API keys or credentials in tool implementations
-- Use environment variables or secret managers for all authentication
-- Validate and sanitize all inputs to prevent injection attacks
-- Rate limit external API calls to prevent abuse
-- Review tool permissions carefully - tools can access files, networks, and execute code
-
-## Common Pitfalls
-
-- **Problem:** LLM calls tools with wrong parameters
-  **Solution:** Improve tool descriptions and add examples in the description field. The LLM reads descriptions to decide how to call tools.
-
-- **Problem:** Tool times out on large inputs
-  **Solution:** Add input size validation and pagination. Stream large responses instead of buffering.
-
-## Related Skills
-
-- `api-integration-architect` - For API design patterns used in MCP tools
-- `security-audit-code-reviewer` - For reviewing MCP server code security
+skill: "mcp-tool-developer"
+sections[17]:
+  - "\n"
+  - "# MCP Tool Developer\n\n"
+  - "## Overview\n\nExpert at building Model Context Protocol (MCP) servers that give AI agents new capabilities. Covers the full MCP development lifecycle: specification, implementation, testing, deployment, and registry publishing. Supports both TypeScript and Python with production-ready patterns.\n\nThis skill understands MCP specification primitives (tools, resources, prompts, sampling), transport options (stdio, SSE, Streamable HTTP), and the tool design patterns that make MCP servers reliable and composable.\n\n"
+  - "## When to Use This Skill\n\n- Use when building a new MCP server from scratch\n- Use when wrapping an existing API as an MCP tool\n- Use when debugging MCP server issues\n- Use when designing the tool schema for an MCP server\n- Use when publishing an MCP server to a registry\n\n"
+  - "## How It Works\n\n"
+  - "### Step 1: Define the MCP Server Scope\n\nIdentify what capabilities the server should expose:\n- **Tools** - Functions the LLM can call (primary use case)\n- **Resources** - Data the LLM can read (files, APIs, databases)\n- **Prompts** - Reusable prompt templates\n\nChoose the transport:\n- **stdio** - For local CLI tools (Claude Code, Cursor)\n- **SSE (Server-Sent Events)** - For remote/hosted tools\n- **Streamable HTTP** - New in MCP spec for modern deployments\n\n"
+  - "### Step 2: Design the Tool Schema\n\nDefine input/output schemas before writing implementation:\n\n```typescript\n{\n  name: \"tool_name\",\n  description: \"What this tool does (visible to the LLM)\",\n  inputSchema: {\n    type: \"object\",\n    properties: { ... },\n    required: [ ... ]\n  }\n}\n```\n\n"
+  - "### Step 3: Implement the Server\n\nCreate the server with proper error handling, validation, and logging. Use the official MCP SDK for TypeScript (@modelcontextprotocol/sdk) or Python (mcp).\n\n"
+  - "### Step 4: Test and Deploy\n\nTest with the MCP Inspector, validate tool schemas, handle edge cases, then deploy locally or remotely.\n\n"
+  - "## Examples\n\n"
+  - "### Example 1: TypeScript MCP Server\n\n```typescript\nimport { McpServer } from \"@modelcontextprotocol/sdk/server/mcp.js\";\nimport { StdioServerTransport } from \"@modelcontextprotocol/sdk/server/stdio.js\";\nimport { z } from \"zod\";\n\nconst server = new McpServer({ name: \"my-tools\", version: \"1.0.0\" });\n\nserver.tool(\"greet\", \"Greet someone by name\",\n  { name: z.string().describe(\"Person's name\") },\n  async ({ name }) => ({ content: [{ type: \"text\", text: `Hello, ${name}!` }] })\n);\n\nconst transport = new StdioServerTransport();\nawait server.connect(transport);\n```\n\n"
+  - "### Example 2: API Wrapper Pattern\n\nWrap an external API as an MCP tool with auth, rate limiting, and error handling:\n- Map API endpoints to tools\n- Handle auth via environment variables\n- Transform API responses to LLM-friendly format\n- Add retry logic with exponential backoff\n\n"
+  - "## Best Practices\n\n- Build small, focused tools that can be chained rather than monolithic tools\n- Return structured errors, not crashes - tools should fail gracefully\n- Define schemas before implementation\n- Include descriptions that help the LLM understand when and how to use each tool\n- Validate all inputs against the schema\n- Add rate limiting for external API calls\n- Use environment variables for secrets, never hardcode credentials\n\n"
+  - "## Limitations\n\n- This skill provides guidance and code generation; actual runtime testing requires a development environment\n- MCP specification is evolving; always check the latest spec version\n- Security review is essential before deploying tools that handle sensitive data\n\n"
+  - "## Security and Safety Notes\n\n- Never hardcode API keys or credentials in tool implementations\n- Use environment variables or secret managers for all authentication\n- Validate and sanitize all inputs to prevent injection attacks\n- Rate limit external API calls to prevent abuse\n- Review tool permissions carefully - tools can access files, networks, and execute code\n\n"
+  - "## Common Pitfalls\n\n- **Problem:** LLM calls tools with wrong parameters\n  **Solution:** Improve tool descriptions and add examples in the description field. The LLM reads descriptions to decide how to call tools.\n\n- **Problem:** Tool times out on large inputs\n  **Solution:** Add input size validation and pagination. Stream large responses instead of buffering.\n\n"
+  - "## Related Skills\n\n- `api-integration-architect` - For API design patterns used in MCP tools\n- `security-audit-code-reviewer` - For reviewing MCP server code security\n"

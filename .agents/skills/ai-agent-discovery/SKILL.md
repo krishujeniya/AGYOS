@@ -4,97 +4,18 @@ description: Skill for discovering and researching autonomous AI agents, tools, 
 risk: safe
 source: agentfolio.io
 date_added: '2026-02-27'
+prompt-source: prompt.toon
 ---
-
-# AgentFolio
-
-**Role**: Autonomous Agent Discovery Guide
-
-Use this skill when you want to **discover, compare, and research autonomous AI agents** across ecosystems.
-AgentFolio is a curated directory at https://agentfolio.io that tracks agent frameworks, products, and tools.
-
-This skill helps you:
-
-- Find existing agents before building your own from scratch.
-- Map the landscape of agent frameworks and hosted products.
-- Collect concrete examples and benchmarks for agent capabilities.
-
-## Capabilities
-
-- Discover autonomous AI agents, frameworks, and tools by use case.
-- Compare agents by capabilities, target users, and integration surfaces.
-- Identify gaps in the market or inspiration for new skills/workflows.
-- Gather example agent behavior and UX patterns for your own designs.
-- Track emerging trends in agent architectures and deployments.
-
-## How to Use AgentFolio
-
-1. **Open the directory**
-   - Visit `https://agentfolio.io` in your browser.
-   - Optionally filter by category (e.g., Dev Tools, Ops, Marketing, Productivity).
-
-2. **Search by intent**
-   - Start from the problem you want to solve:  
-     - “customer support agents”  
-     - “autonomous coding agents”  
-     - “research / analysis agents”
-   - Use keywords in the AgentFolio search bar that match your domain or workflow.
-
-3. **Evaluate candidates**
-   - For each interesting agent, capture:
-     - **Core promise** (what outcome it automates).
-     - **Input / output shape** (APIs, UI, data sources).
-     - **Autonomy model** (one-shot, multi-step, tool-using, human-in-the-loop).
-     - **Deployment model** (SaaS, self-hosted, browser, IDE, etc.).
-
-4. **Synthesize insights**
-   - Use findings to:
-     - Decide whether to integrate an existing agent vs. build your own.
-     - Borrow successful UX and safety patterns.
-     - Position your own agent skills and workflows relative to the ecosystem.
-
-## Example Workflows
-
-### 1) Landscape scan before building a new agent
-
-- Define the problem: “autonomous test failure triage for CI pipelines”.
-- Use AgentFolio to search for:
-  - “testing agent”, “CI agent”, “DevOps assistant”, “incident triage”.
-- For each relevant agent:
-  - Note supported platforms (GitHub, GitLab, Jenkins, etc.).
-  - Capture how they explain autonomy and safety boundaries.
-  - Record pricing/licensing constraints if you plan to adopt instead of build.
-
-### 2) Competitive and inspiration research for a new skill
-
-- If you plan to add a new skill (e.g., observability agent, security agent):
-  - Use AgentFolio to find similar agents and features.
-  - Extract 3–5 concrete patterns you want to emulate or avoid.
-  - Translate those patterns into clear requirements for your own skill.
-
-### 3) Vendor shortlisting
-
-- When choosing between multiple agent vendors:
-  - Use AgentFolio entries as a neutral directory.
-  - Build a comparison table (columns: capabilities, integrations, pricing, trust & security).
-  - Use that table to drive a more formal evaluation or proof-of-concept.
-
-## Example Prompts
-
-Use these prompts when working with this skill in an AI coding agent:
-
-- “Use AgentFolio to find 3 autonomous AI agents focused on code review. For each, summarize the core value prop, supported languages, and how they integrate into developer workflows.”
-- “Scan AgentFolio for agents that help with customer support triage. List the top options, their target customer size (SMB vs. enterprise), and any notable UX patterns.”
-- “Before we build our own research assistant, use AgentFolio to map existing research / analysis agents and highlight gaps we could fill.”
-
-## When to Use
-This skill is applicable when you need to **discover or compare autonomous AI agents** instead of building in a vacuum:
-
-- At the start of a new agent or workflow project.
-- When evaluating vendors or tools to integrate.
-- When you want inspiration or best practices from existing agent products.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "ai-agent-discovery"
+sections[11]:
+  - "\n"
+  - "# AgentFolio\n\n**Role**: Autonomous Agent Discovery Guide\n\nUse this skill when you want to **discover, compare, and research autonomous AI agents** across ecosystems.\nAgentFolio is a curated directory at https://agentfolio.io that tracks agent frameworks, products, and tools.\n\nThis skill helps you:\n\n- Find existing agents before building your own from scratch.\n- Map the landscape of agent frameworks and hosted products.\n- Collect concrete examples and benchmarks for agent capabilities.\n\n"
+  - "## Capabilities\n\n- Discover autonomous AI agents, frameworks, and tools by use case.\n- Compare agents by capabilities, target users, and integration surfaces.\n- Identify gaps in the market or inspiration for new skills/workflows.\n- Gather example agent behavior and UX patterns for your own designs.\n- Track emerging trends in agent architectures and deployments.\n\n"
+  - "## How to Use AgentFolio\n\n1. **Open the directory**\n   - Visit `https://agentfolio.io` in your browser.\n   - Optionally filter by category (e.g., Dev Tools, Ops, Marketing, Productivity).\n\n2. **Search by intent**\n   - Start from the problem you want to solve:  \n     - “customer support agents”  \n     - “autonomous coding agents”  \n     - “research / analysis agents”\n   - Use keywords in the AgentFolio search bar that match your domain or workflow.\n\n3. **Evaluate candidates**\n   - For each interesting agent, capture:\n     - **Core promise** (what outcome it automates).\n     - **Input / output shape** (APIs, UI, data sources).\n     - **Autonomy model** (one-shot, multi-step, tool-using, human-in-the-loop).\n     - **Deployment model** (SaaS, self-hosted, browser, IDE, etc.).\n\n4. **Synthesize insights**\n   - Use findings to:\n     - Decide whether to integrate an existing agent vs. build your own.\n     - Borrow successful UX and safety patterns.\n     - Position your own agent skills and workflows relative to the ecosystem.\n\n"
+  - "## Example Workflows\n\n"
+  - "### 1) Landscape scan before building a new agent\n\n- Define the problem: “autonomous test failure triage for CI pipelines”.\n- Use AgentFolio to search for:\n  - “testing agent”, “CI agent”, “DevOps assistant”, “incident triage”.\n- For each relevant agent:\n  - Note supported platforms (GitHub, GitLab, Jenkins, etc.).\n  - Capture how they explain autonomy and safety boundaries.\n  - Record pricing/licensing constraints if you plan to adopt instead of build.\n\n"
+  - "### 2) Competitive and inspiration research for a new skill\n\n- If you plan to add a new skill (e.g., observability agent, security agent):\n  - Use AgentFolio to find similar agents and features.\n  - Extract 3–5 concrete patterns you want to emulate or avoid.\n  - Translate those patterns into clear requirements for your own skill.\n\n"
+  - "### 3) Vendor shortlisting\n\n- When choosing between multiple agent vendors:\n  - Use AgentFolio entries as a neutral directory.\n  - Build a comparison table (columns: capabilities, integrations, pricing, trust & security).\n  - Use that table to drive a more formal evaluation or proof-of-concept.\n\n"
+  - "## Example Prompts\n\nUse these prompts when working with this skill in an AI coding agent:\n\n- “Use AgentFolio to find 3 autonomous AI agents focused on code review. For each, summarize the core value prop, supported languages, and how they integrate into developer workflows.”\n- “Scan AgentFolio for agents that help with customer support triage. List the top options, their target customer size (SMB vs. enterprise), and any notable UX patterns.”\n- “Before we build our own research assistant, use AgentFolio to map existing research / analysis agents and highlight gaps we could fill.”\n\n"
+  - "## When to Use\nThis skill is applicable when you need to **discover or compare autonomous AI agents** instead of building in a vacuum:\n\n- At the start of a new agent or workflow project.\n- When evaluating vendors or tools to integrate.\n- When you want inspiration or best practices from existing agent products.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

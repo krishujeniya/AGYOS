@@ -4,209 +4,26 @@ description: Azure Monitor Ingestion SDK for Python. Use for sending custom logs
 risk: unknown
 source: community
 date_added: '2026-02-27'
+prompt-source: prompt.toon
 ---
-
-# Azure Monitor Ingestion SDK for Python
-
-Send custom logs to Azure Monitor Log Analytics workspace using the Logs Ingestion API.
-
-## Installation
-
-```bash
-pip install azure-monitor-ingestion
-pip install azure-identity
-```
-
-## Environment Variables
-
-```bash
-# Data Collection Endpoint (DCE)
-AZURE_DCE_ENDPOINT=https://<dce-name>.<region>.ingest.monitor.azure.com
-
-# Data Collection Rule (DCR) immutable ID
-AZURE_DCR_RULE_ID=dcr-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-# Stream name from DCR
-AZURE_DCR_STREAM_NAME=Custom-MyTable_CL
-```
-
-## Prerequisites
-
-Before using this SDK, you need:
-
-1. **Log Analytics Workspace** — Target for your logs
-2. **Data Collection Endpoint (DCE)** — Ingestion endpoint
-3. **Data Collection Rule (DCR)** — Defines schema and destination
-4. **Custom Table** — In Log Analytics (created via DCR or manually)
-
-## Authentication
-
-```python
-from azure.monitor.ingestion import LogsIngestionClient
-from azure.identity import DefaultAzureCredential
-import os
-
-client = LogsIngestionClient(
-    endpoint=os.environ["AZURE_DCE_ENDPOINT"],
-    credential=DefaultAzureCredential()
-)
-```
-
-## Upload Custom Logs
-
-```python
-from azure.monitor.ingestion import LogsIngestionClient
-from azure.identity import DefaultAzureCredential
-import os
-
-client = LogsIngestionClient(
-    endpoint=os.environ["AZURE_DCE_ENDPOINT"],
-    credential=DefaultAzureCredential()
-)
-
-rule_id = os.environ["AZURE_DCR_RULE_ID"]
-stream_name = os.environ["AZURE_DCR_STREAM_NAME"]
-
-logs = [
-    {"TimeGenerated": "2024-01-15T10:00:00Z", "Computer": "server1", "Message": "Application started"},
-    {"TimeGenerated": "2024-01-15T10:01:00Z", "Computer": "server1", "Message": "Processing request"},
-    {"TimeGenerated": "2024-01-15T10:02:00Z", "Computer": "server2", "Message": "Connection established"}
-]
-
-client.upload(rule_id=rule_id, stream_name=stream_name, logs=logs)
-```
-
-## Upload from JSON File
-
-```python
-import json
-
-with open("logs.json", "r") as f:
-    logs = json.load(f)
-
-client.upload(rule_id=rule_id, stream_name=stream_name, logs=logs)
-```
-
-## Custom Error Handling
-
-Handle partial failures with a callback:
-
-```python
-failed_logs = []
-
-def on_error(error):
-    print(f"Upload failed: {error.error}")
-    failed_logs.extend(error.failed_logs)
-
-client.upload(
-    rule_id=rule_id,
-    stream_name=stream_name,
-    logs=logs,
-    on_error=on_error
-)
-
-# Retry failed logs
-if failed_logs:
-    print(f"Retrying {len(failed_logs)} failed logs...")
-    client.upload(rule_id=rule_id, stream_name=stream_name, logs=failed_logs)
-```
-
-## Ignore Errors
-
-```python
-def ignore_errors(error):
-    pass  # Silently ignore upload failures
-
-client.upload(
-    rule_id=rule_id,
-    stream_name=stream_name,
-    logs=logs,
-    on_error=ignore_errors
-)
-```
-
-## Async Client
-
-```python
-import asyncio
-from azure.monitor.ingestion.aio import LogsIngestionClient
-from azure.identity.aio import DefaultAzureCredential
-
-async def upload_logs():
-    async with LogsIngestionClient(
-        endpoint=endpoint,
-        credential=DefaultAzureCredential()
-    ) as client:
-        await client.upload(
-            rule_id=rule_id,
-            stream_name=stream_name,
-            logs=logs
-        )
-
-asyncio.run(upload_logs())
-```
-
-## Sovereign Clouds
-
-```python
-from azure.identity import AzureAuthorityHosts, DefaultAzureCredential
-from azure.monitor.ingestion import LogsIngestionClient
-
-# Azure Government
-credential = DefaultAzureCredential(authority=AzureAuthorityHosts.AZURE_GOVERNMENT)
-client = LogsIngestionClient(
-    endpoint="https://example.ingest.monitor.azure.us",
-    credential=credential,
-    credential_scopes=["https://monitor.azure.us/.default"]
-)
-```
-
-## Batching Behavior
-
-The SDK automatically:
-- Splits logs into chunks of 1MB or less
-- Compresses each chunk with gzip
-- Uploads chunks in parallel
-
-No manual batching needed for large log sets.
-
-## Client Types
-
-| Client | Purpose |
-|--------|---------|
-| `LogsIngestionClient` | Sync client for uploading logs |
-| `LogsIngestionClient` (aio) | Async client for uploading logs |
-
-## Key Concepts
-
-| Concept | Description |
-|---------|-------------|
-| **DCE** | Data Collection Endpoint — ingestion URL |
-| **DCR** | Data Collection Rule — defines schema, transformations, destination |
-| **Stream** | Named data flow within a DCR |
-| **Custom Table** | Target table in Log Analytics (ends with `_CL`) |
-
-## DCR Stream Name Format
-
-Stream names follow patterns:
-- `Custom-<TableName>_CL` — For custom tables
-- `Microsoft-<TableName>` — For built-in tables
-
-## Best Practices
-
-1. **Use DefaultAzureCredential** for authentication
-2. **Handle errors gracefully** — use `on_error` callback for partial failures
-3. **Include TimeGenerated** — Required field for all logs
-4. **Match DCR schema** — Log fields must match DCR column definitions
-5. **Use async client** for high-throughput scenarios
-6. **Batch uploads** — SDK handles batching, but send reasonable chunks
-7. **Monitor ingestion** — Check Log Analytics for ingestion status
-8. **Use context manager** — Ensures proper client cleanup
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "azure-monitor-ingestion-py"
+sections[19]:
+  - "\n"
+  - "# Azure Monitor Ingestion SDK for Python\n\nSend custom logs to Azure Monitor Log Analytics workspace using the Logs Ingestion API.\n\n"
+  - "## Installation\n\n```bash\npip install azure-monitor-ingestion\npip install azure-identity\n```\n\n"
+  - "## Environment Variables\n\n```bash\n# Data Collection Endpoint (DCE)\nAZURE_DCE_ENDPOINT=https://<dce-name>.<region>.ingest.monitor.azure.com\n\n# Data Collection Rule (DCR) immutable ID\nAZURE_DCR_RULE_ID=dcr-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n\n# Stream name from DCR\nAZURE_DCR_STREAM_NAME=Custom-MyTable_CL\n```\n\n"
+  - "## Prerequisites\n\nBefore using this SDK, you need:\n\n1. **Log Analytics Workspace** — Target for your logs\n2. **Data Collection Endpoint (DCE)** — Ingestion endpoint\n3. **Data Collection Rule (DCR)** — Defines schema and destination\n4. **Custom Table** — In Log Analytics (created via DCR or manually)\n\n"
+  - "## Authentication\n\n```python\nfrom azure.monitor.ingestion import LogsIngestionClient\nfrom azure.identity import DefaultAzureCredential\nimport os\n\nclient = LogsIngestionClient(\n    endpoint=os.environ[\"AZURE_DCE_ENDPOINT\"],\n    credential=DefaultAzureCredential()\n)\n```\n\n"
+  - "## Upload Custom Logs\n\n```python\nfrom azure.monitor.ingestion import LogsIngestionClient\nfrom azure.identity import DefaultAzureCredential\nimport os\n\nclient = LogsIngestionClient(\n    endpoint=os.environ[\"AZURE_DCE_ENDPOINT\"],\n    credential=DefaultAzureCredential()\n)\n\nrule_id = os.environ[\"AZURE_DCR_RULE_ID\"]\nstream_name = os.environ[\"AZURE_DCR_STREAM_NAME\"]\n\nlogs = [\n    {\"TimeGenerated\": \"2024-01-15T10:00:00Z\", \"Computer\": \"server1\", \"Message\": \"Application started\"},\n    {\"TimeGenerated\": \"2024-01-15T10:01:00Z\", \"Computer\": \"server1\", \"Message\": \"Processing request\"},\n    {\"TimeGenerated\": \"2024-01-15T10:02:00Z\", \"Computer\": \"server2\", \"Message\": \"Connection established\"}\n]\n\nclient.upload(rule_id=rule_id, stream_name=stream_name, logs=logs)\n```\n\n"
+  - "## Upload from JSON File\n\n```python\nimport json\n\nwith open(\"logs.json\", \"r\") as f:\n    logs = json.load(f)\n\nclient.upload(rule_id=rule_id, stream_name=stream_name, logs=logs)\n```\n\n"
+  - "## Custom Error Handling\n\nHandle partial failures with a callback:\n\n```python\nfailed_logs = []\n\ndef on_error(error):\n    print(f\"Upload failed: {error.error}\")\n    failed_logs.extend(error.failed_logs)\n\nclient.upload(\n    rule_id=rule_id,\n    stream_name=stream_name,\n    logs=logs,\n    on_error=on_error\n)\n\n# Retry failed logs\nif failed_logs:\n    print(f\"Retrying {len(failed_logs)} failed logs...\")\n    client.upload(rule_id=rule_id, stream_name=stream_name, logs=failed_logs)\n```\n\n"
+  - "## Ignore Errors\n\n```python\ndef ignore_errors(error):\n    pass  # Silently ignore upload failures\n\nclient.upload(\n    rule_id=rule_id,\n    stream_name=stream_name,\n    logs=logs,\n    on_error=ignore_errors\n)\n```\n\n"
+  - "## Async Client\n\n```python\nimport asyncio\nfrom azure.monitor.ingestion.aio import LogsIngestionClient\nfrom azure.identity.aio import DefaultAzureCredential\n\nasync def upload_logs():\n    async with LogsIngestionClient(\n        endpoint=endpoint,\n        credential=DefaultAzureCredential()\n    ) as client:\n        await client.upload(\n            rule_id=rule_id,\n            stream_name=stream_name,\n            logs=logs\n        )\n\nasyncio.run(upload_logs())\n```\n\n"
+  - "## Sovereign Clouds\n\n```python\nfrom azure.identity import AzureAuthorityHosts, DefaultAzureCredential\nfrom azure.monitor.ingestion import LogsIngestionClient\n\n# Azure Government\ncredential = DefaultAzureCredential(authority=AzureAuthorityHosts.AZURE_GOVERNMENT)\nclient = LogsIngestionClient(\n    endpoint=\"https://example.ingest.monitor.azure.us\",\n    credential=credential,\n    credential_scopes=[\"https://monitor.azure.us/.default\"]\n)\n```\n\n"
+  - "## Batching Behavior\n\nThe SDK automatically:\n- Splits logs into chunks of 1MB or less\n- Compresses each chunk with gzip\n- Uploads chunks in parallel\n\nNo manual batching needed for large log sets.\n\n"
+  - "## Client Types\n\n| Client | Purpose |\n|--------|---------|\n| `LogsIngestionClient` | Sync client for uploading logs |\n| `LogsIngestionClient` (aio) | Async client for uploading logs |\n\n"
+  - "## Key Concepts\n\n| Concept | Description |\n|---------|-------------|\n| **DCE** | Data Collection Endpoint — ingestion URL |\n| **DCR** | Data Collection Rule — defines schema, transformations, destination |\n| **Stream** | Named data flow within a DCR |\n| **Custom Table** | Target table in Log Analytics (ends with `_CL`) |\n\n"
+  - "## DCR Stream Name Format\n\nStream names follow patterns:\n- `Custom-<TableName>_CL` — For custom tables\n- `Microsoft-<TableName>` — For built-in tables\n\n"
+  - "## Best Practices\n\n1. **Use DefaultAzureCredential** for authentication\n2. **Handle errors gracefully** — use `on_error` callback for partial failures\n3. **Include TimeGenerated** — Required field for all logs\n4. **Match DCR schema** — Log fields must match DCR column definitions\n5. **Use async client** for high-throughput scenarios\n6. **Batch uploads** — SDK handles batching, but send reasonable chunks\n7. **Monitor ingestion** — Check Log Analytics for ingestion status\n8. **Use context manager** — Ensures proper client cleanup\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

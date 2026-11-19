@@ -3,90 +3,19 @@ name: investor-outreach
 description: Draft cold emails, warm intro blurbs, follow-ups, update emails, and investor communications for fundraising. Use when the user wants outreach to angels, VCs, strategic investors, or accelerators and needs concise, personalized, investor-facing messaging.
 metadata:
   origin: ECC
+prompt-source: prompt.toon
 ---
-
-# Investor Outreach
-
-Write investor communication that is short, concrete, and easy to act on.
-
-## When to Activate
-
-- writing a cold email to an investor
-- drafting a warm intro request
-- sending follow-ups after a meeting or no response
-- writing investor updates during a process
-- tailoring outreach based on fund thesis or partner fit
-
-## Core Rules
-
-1. Personalize every outbound message.
-2. Keep the ask low-friction.
-3. Use proof instead of adjectives.
-4. Stay concise.
-5. Never send copy that could go to any investor.
-
-## Voice Handling
-
-If the user's voice matters, run `brand-voice` first and reuse its `VOICE PROFILE`.
-This skill should keep the investor-specific structure and ask discipline, not recreate its own parallel voice system.
-
-## Hard Bans
-
-Delete and rewrite any of these:
-- "I'd love to connect"
-- "excited to share"
-- generic thesis praise without a real tie-in
-- vague founder adjectives
-- begging language
-- soft closing questions when a direct ask is clearer
-
-## Cold Email Structure
-
-1. subject line: short and specific
-2. opener: why this investor specifically
-3. pitch: what the company does, why now, and what proof matters
-4. ask: one concrete next step
-5. sign-off: name, role, and one credibility anchor if needed
-
-## Personalization Sources
-
-Reference one or more of:
-- relevant portfolio companies
-- a public thesis, talk, post, or article
-- a mutual connection
-- a clear market or product fit with the investor's focus
-
-If that context is missing, state that the draft still needs personalization instead of pretending it is finished.
-
-## Follow-Up Cadence
-
-Default:
-- day 0: initial outbound
-- day 4 or 5: short follow-up with one new data point
-- day 10 to 12: final follow-up with a clean close
-
-Do not keep nudging after that unless the user wants a longer sequence.
-
-## Warm Intro Requests
-
-Make life easy for the connector:
-- explain why the intro is a fit
-- include a forwardable blurb
-- keep the forwardable blurb under 100 words
-
-## Post-Meeting Updates
-
-Include:
-- the specific thing discussed
-- the answer or update promised
-- one new proof point if available
-- the next step
-
-## Quality Gate
-
-Before delivering:
-- the message is genuinely personalized
-- the ask is explicit
-- the proof point is concrete
-- filler praise and softener language are gone
-- word count stays tight
+skill: "investor-outreach"
+sections[12]:
+  - "\n"
+  - "# Investor Outreach\n\nWrite investor communication that is short, concrete, and easy to act on.\n\n"
+  - "## When to Activate\n\n- writing a cold email to an investor\n- drafting a warm intro request\n- sending follow-ups after a meeting or no response\n- writing investor updates during a process\n- tailoring outreach based on fund thesis or partner fit\n\n"
+  - "## Core Rules\n\n1. Personalize every outbound message.\n2. Keep the ask low-friction.\n3. Use proof instead of adjectives.\n4. Stay concise.\n5. Never send copy that could go to any investor.\n\n"
+  - "## Voice Handling\n\nIf the user's voice matters, run `brand-voice` first and reuse its `VOICE PROFILE`.\nThis skill should keep the investor-specific structure and ask discipline, not recreate its own parallel voice system.\n\n"
+  - "## Hard Bans\n\nDelete and rewrite any of these:\n- \"I'd love to connect\"\n- \"excited to share\"\n- generic thesis praise without a real tie-in\n- vague founder adjectives\n- begging language\n- soft closing questions when a direct ask is clearer\n\n"
+  - "## Cold Email Structure\n\n1. subject line: short and specific\n2. opener: why this investor specifically\n3. pitch: what the company does, why now, and what proof matters\n4. ask: one concrete next step\n5. sign-off: name, role, and one credibility anchor if needed\n\n"
+  - "## Personalization Sources\n\nReference one or more of:\n- relevant portfolio companies\n- a public thesis, talk, post, or article\n- a mutual connection\n- a clear market or product fit with the investor's focus\n\nIf that context is missing, state that the draft still needs personalization instead of pretending it is finished.\n\n"
+  - "## Follow-Up Cadence\n\nDefault:\n- day 0: initial outbound\n- day 4 or 5: short follow-up with one new data point\n- day 10 to 12: final follow-up with a clean close\n\nDo not keep nudging after that unless the user wants a longer sequence.\n\n"
+  - "## Warm Intro Requests\n\nMake life easy for the connector:\n- explain why the intro is a fit\n- include a forwardable blurb\n- keep the forwardable blurb under 100 words\n\n"
+  - "## Post-Meeting Updates\n\nInclude:\n- the specific thing discussed\n- the answer or update promised\n- one new proof point if available\n- the next step\n\n"
+  - "## Quality Gate\n\nBefore delivering:\n- the message is genuinely personalized\n- the ask is explicit\n- the proof point is concrete\n- filler praise and softener language are gone\n- word count stays tight\n"

@@ -4,196 +4,24 @@ description: "Automate Salesforce tasks via Rube MCP (Composio): leads, contacts
 risk: critical
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Salesforce Automation via Rube MCP
-
-Automate Salesforce CRM operations through Composio's Salesforce toolkit via Rube MCP.
-
-## Prerequisites
-
-- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
-- Active Salesforce connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `salesforce`
-- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
-
-## Setup
-
-**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
-
-
-1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
-2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `salesforce`
-3. If connection is not ACTIVE, follow the returned auth link to complete Salesforce OAuth
-4. Confirm connection status shows ACTIVE before running any workflows
-
-## Core Workflows
-
-### 1. Manage Leads
-
-**When to use**: User wants to create, search, update, or list leads
-
-**Tool sequence**:
-1. `SALESFORCE_SEARCH_LEADS` - Search leads by criteria [Optional]
-2. `SALESFORCE_LIST_LEADS` - List all leads [Optional]
-3. `SALESFORCE_CREATE_LEAD` - Create a new lead [Optional]
-4. `SALESFORCE_UPDATE_LEAD` - Update lead fields [Optional]
-5. `SALESFORCE_ADD_LEAD_TO_CAMPAIGN` - Add lead to campaign [Optional]
-6. `SALESFORCE_APPLY_LEAD_ASSIGNMENT_RULES` - Apply assignment rules [Optional]
-
-**Key parameters**:
-- `LastName`: Required for lead creation
-- `Company`: Required for lead creation
-- `Email`, `Phone`, `Title`: Common lead fields
-- `lead_id`: Lead ID for updates
-- `campaign_id`: Campaign ID for campaign operations
-
-**Pitfalls**:
-- LastName and Company are required fields for lead creation
-- Lead IDs are 15 or 18 character Salesforce IDs
-
-### 2. Manage Contacts and Accounts
-
-**When to use**: User wants to manage contacts and their associated accounts
-
-**Tool sequence**:
-1. `SALESFORCE_SEARCH_CONTACTS` - Search contacts [Optional]
-2. `SALESFORCE_LIST_CONTACTS` - List contacts [Optional]
-3. `SALESFORCE_CREATE_CONTACT` - Create a new contact [Optional]
-4. `SALESFORCE_SEARCH_ACCOUNTS` - Search accounts [Optional]
-5. `SALESFORCE_CREATE_ACCOUNT` - Create a new account [Optional]
-6. `SALESFORCE_ASSOCIATE_CONTACT_TO_ACCOUNT` - Link contact to account [Optional]
-
-**Key parameters**:
-- `LastName`: Required for contact creation
-- `Name`: Account name for creation
-- `AccountId`: Account ID to associate with contact
-- `contact_id`, `account_id`: IDs for association
-
-**Pitfalls**:
-- Contact requires at least LastName
-- Account association requires both valid contact and account IDs
-
-### 3. Manage Opportunities
-
-**When to use**: User wants to track and manage sales opportunities
-
-**Tool sequence**:
-1. `SALESFORCE_SEARCH_OPPORTUNITIES` - Search opportunities [Optional]
-2. `SALESFORCE_LIST_OPPORTUNITIES` - List all opportunities [Optional]
-3. `SALESFORCE_GET_OPPORTUNITY` - Get opportunity details [Optional]
-4. `SALESFORCE_CREATE_OPPORTUNITY` - Create new opportunity [Optional]
-5. `SALESFORCE_RETRIEVE_OPPORTUNITIES_DATA` - Retrieve opportunity data [Optional]
-
-**Key parameters**:
-- `Name`: Opportunity name (required)
-- `StageName`: Sales stage (required)
-- `CloseDate`: Expected close date (required)
-- `Amount`: Deal value
-- `AccountId`: Associated account
-
-**Pitfalls**:
-- Name, StageName, and CloseDate are required for creation
-- Stage names must match exactly what is configured in Salesforce
-
-### 4. Run SOQL Queries
-
-**When to use**: User wants to query Salesforce data with custom SOQL
-
-**Tool sequence**:
-1. `SALESFORCE_RUN_SOQL_QUERY` / `SALESFORCE_QUERY` - Execute SOQL [Required]
-
-**Key parameters**:
-- `query`: SOQL query string
-
-**Pitfalls**:
-- SOQL syntax differs from SQL; uses Salesforce object and field API names
-- Field API names may differ from display labels (e.g., `Account.Name` not `Account Name`)
-- Results are paginated for large datasets
-
-### 5. Manage Tasks
-
-**When to use**: User wants to create, search, update, or complete tasks
-
-**Tool sequence**:
-1. `SALESFORCE_SEARCH_TASKS` - Search tasks [Optional]
-2. `SALESFORCE_UPDATE_TASK` - Update task fields [Optional]
-3. `SALESFORCE_COMPLETE_TASK` - Mark task as complete [Optional]
-
-**Key parameters**:
-- `task_id`: Task ID for updates
-- `Status`: Task status value
-- `Subject`: Task subject
-
-**Pitfalls**:
-- Task status values must match picklist options in Salesforce
-
-## Common Patterns
-
-### SOQL Syntax
-
-**Basic query**:
-```
-SELECT Id, Name, Email FROM Contact WHERE LastName = 'Smith'
-```
-
-**With relationships**:
-```
-SELECT Id, Name, Account.Name FROM Contact WHERE Account.Industry = 'Technology'
-```
-
-**Date filtering**:
-```
-SELECT Id, Name FROM Lead WHERE CreatedDate = TODAY
-SELECT Id, Name FROM Opportunity WHERE CloseDate = NEXT_MONTH
-```
-
-### Pagination
-
-- SOQL queries with large results return pagination tokens
-- Use `SALESFORCE_QUERY` with nextRecordsUrl for pagination
-- Check `done` field in response; if false, continue paging
-
-## Known Pitfalls
-
-**Field API Names**:
-- Always use API names, not display labels
-- Custom fields end with `__c` suffix
-- Use SALESFORCE_GET_ALL_CUSTOM_OBJECTS to discover custom objects
-
-**ID Formats**:
-- Salesforce IDs are 15 (case-sensitive) or 18 (case-insensitive) characters
-- Both formats are accepted in most operations
-
-## Quick Reference
-
-| Task | Tool Slug | Key Params |
-|------|-----------|------------|
-| Create lead | SALESFORCE_CREATE_LEAD | LastName, Company |
-| Search leads | SALESFORCE_SEARCH_LEADS | query |
-| List leads | SALESFORCE_LIST_LEADS | (filters) |
-| Update lead | SALESFORCE_UPDATE_LEAD | lead_id, fields |
-| Create contact | SALESFORCE_CREATE_CONTACT | LastName |
-| Search contacts | SALESFORCE_SEARCH_CONTACTS | query |
-| Create account | SALESFORCE_CREATE_ACCOUNT | Name |
-| Search accounts | SALESFORCE_SEARCH_ACCOUNTS | query |
-| Link contact | SALESFORCE_ASSOCIATE_CONTACT_TO_ACCOUNT | contact_id, account_id |
-| Create opportunity | SALESFORCE_CREATE_OPPORTUNITY | Name, StageName, CloseDate |
-| Get opportunity | SALESFORCE_GET_OPPORTUNITY | opportunity_id |
-| Search opportunities | SALESFORCE_SEARCH_OPPORTUNITIES | query |
-| Run SOQL | SALESFORCE_RUN_SOQL_QUERY | query |
-| Query | SALESFORCE_QUERY | query |
-| Search tasks | SALESFORCE_SEARCH_TASKS | query |
-| Update task | SALESFORCE_UPDATE_TASK | task_id, fields |
-| Complete task | SALESFORCE_COMPLETE_TASK | task_id |
-| Get user info | SALESFORCE_GET_USER_INFO | (none) |
-| Custom objects | SALESFORCE_GET_ALL_CUSTOM_OBJECTS | (none) |
-| Create record | SALESFORCE_CREATE_A_RECORD | object_type, fields |
-| Transfer ownership | SALESFORCE_MASS_TRANSFER_OWNERSHIP | records, new_owner |
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "salesforce-automation"
+sections[17]:
+  - "\n"
+  - "# Salesforce Automation via Rube MCP\n\nAutomate Salesforce CRM operations through Composio's Salesforce toolkit via Rube MCP.\n\n"
+  - "## Prerequisites\n\n- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)\n- Active Salesforce connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `salesforce`\n- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas\n\n"
+  - "## Setup\n\n**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.\n\n\n1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds\n2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `salesforce`\n3. If connection is not ACTIVE, follow the returned auth link to complete Salesforce OAuth\n4. Confirm connection status shows ACTIVE before running any workflows\n\n"
+  - "## Core Workflows\n\n"
+  - "### 1. Manage Leads\n\n**When to use**: User wants to create, search, update, or list leads\n\n**Tool sequence**:\n1. `SALESFORCE_SEARCH_LEADS` - Search leads by criteria [Optional]\n2. `SALESFORCE_LIST_LEADS` - List all leads [Optional]\n3. `SALESFORCE_CREATE_LEAD` - Create a new lead [Optional]\n4. `SALESFORCE_UPDATE_LEAD` - Update lead fields [Optional]\n5. `SALESFORCE_ADD_LEAD_TO_CAMPAIGN` - Add lead to campaign [Optional]\n6. `SALESFORCE_APPLY_LEAD_ASSIGNMENT_RULES` - Apply assignment rules [Optional]\n\n**Key parameters**:\n- `LastName`: Required for lead creation\n- `Company`: Required for lead creation\n- `Email`, `Phone`, `Title`: Common lead fields\n- `lead_id`: Lead ID for updates\n- `campaign_id`: Campaign ID for campaign operations\n\n**Pitfalls**:\n- LastName and Company are required fields for lead creation\n- Lead IDs are 15 or 18 character Salesforce IDs\n\n"
+  - "### 2. Manage Contacts and Accounts\n\n**When to use**: User wants to manage contacts and their associated accounts\n\n**Tool sequence**:\n1. `SALESFORCE_SEARCH_CONTACTS` - Search contacts [Optional]\n2. `SALESFORCE_LIST_CONTACTS` - List contacts [Optional]\n3. `SALESFORCE_CREATE_CONTACT` - Create a new contact [Optional]\n4. `SALESFORCE_SEARCH_ACCOUNTS` - Search accounts [Optional]\n5. `SALESFORCE_CREATE_ACCOUNT` - Create a new account [Optional]\n6. `SALESFORCE_ASSOCIATE_CONTACT_TO_ACCOUNT` - Link contact to account [Optional]\n\n**Key parameters**:\n- `LastName`: Required for contact creation\n- `Name`: Account name for creation\n- `AccountId`: Account ID to associate with contact\n- `contact_id`, `account_id`: IDs for association\n\n**Pitfalls**:\n- Contact requires at least LastName\n- Account association requires both valid contact and account IDs\n\n"
+  - "### 3. Manage Opportunities\n\n**When to use**: User wants to track and manage sales opportunities\n\n**Tool sequence**:\n1. `SALESFORCE_SEARCH_OPPORTUNITIES` - Search opportunities [Optional]\n2. `SALESFORCE_LIST_OPPORTUNITIES` - List all opportunities [Optional]\n3. `SALESFORCE_GET_OPPORTUNITY` - Get opportunity details [Optional]\n4. `SALESFORCE_CREATE_OPPORTUNITY` - Create new opportunity [Optional]\n5. `SALESFORCE_RETRIEVE_OPPORTUNITIES_DATA` - Retrieve opportunity data [Optional]\n\n**Key parameters**:\n- `Name`: Opportunity name (required)\n- `StageName`: Sales stage (required)\n- `CloseDate`: Expected close date (required)\n- `Amount`: Deal value\n- `AccountId`: Associated account\n\n**Pitfalls**:\n- Name, StageName, and CloseDate are required for creation\n- Stage names must match exactly what is configured in Salesforce\n\n"
+  - "### 4. Run SOQL Queries\n\n**When to use**: User wants to query Salesforce data with custom SOQL\n\n**Tool sequence**:\n1. `SALESFORCE_RUN_SOQL_QUERY` / `SALESFORCE_QUERY` - Execute SOQL [Required]\n\n**Key parameters**:\n- `query`: SOQL query string\n\n**Pitfalls**:\n- SOQL syntax differs from SQL; uses Salesforce object and field API names\n- Field API names may differ from display labels (e.g., `Account.Name` not `Account Name`)\n- Results are paginated for large datasets\n\n"
+  - "### 5. Manage Tasks\n\n**When to use**: User wants to create, search, update, or complete tasks\n\n**Tool sequence**:\n1. `SALESFORCE_SEARCH_TASKS` - Search tasks [Optional]\n2. `SALESFORCE_UPDATE_TASK` - Update task fields [Optional]\n3. `SALESFORCE_COMPLETE_TASK` - Mark task as complete [Optional]\n\n**Key parameters**:\n- `task_id`: Task ID for updates\n- `Status`: Task status value\n- `Subject`: Task subject\n\n**Pitfalls**:\n- Task status values must match picklist options in Salesforce\n\n"
+  - "## Common Patterns\n\n"
+  - "### SOQL Syntax\n\n**Basic query**:\n```\nSELECT Id, Name, Email FROM Contact WHERE LastName = 'Smith'\n```\n\n**With relationships**:\n```\nSELECT Id, Name, Account.Name FROM Contact WHERE Account.Industry = 'Technology'\n```\n\n**Date filtering**:\n```\nSELECT Id, Name FROM Lead WHERE CreatedDate = TODAY\nSELECT Id, Name FROM Opportunity WHERE CloseDate = NEXT_MONTH\n```\n\n"
+  - "### Pagination\n\n- SOQL queries with large results return pagination tokens\n- Use `SALESFORCE_QUERY` with nextRecordsUrl for pagination\n- Check `done` field in response; if false, continue paging\n\n"
+  - "## Known Pitfalls\n\n**Field API Names**:\n- Always use API names, not display labels\n- Custom fields end with `__c` suffix\n- Use SALESFORCE_GET_ALL_CUSTOM_OBJECTS to discover custom objects\n\n**ID Formats**:\n- Salesforce IDs are 15 (case-sensitive) or 18 (case-insensitive) characters\n- Both formats are accepted in most operations\n\n"
+  - "## Quick Reference\n\n| Task | Tool Slug | Key Params |\n|------|-----------|------------|\n| Create lead | SALESFORCE_CREATE_LEAD | LastName, Company |\n| Search leads | SALESFORCE_SEARCH_LEADS | query |\n| List leads | SALESFORCE_LIST_LEADS | (filters) |\n| Update lead | SALESFORCE_UPDATE_LEAD | lead_id, fields |\n| Create contact | SALESFORCE_CREATE_CONTACT | LastName |\n| Search contacts | SALESFORCE_SEARCH_CONTACTS | query |\n| Create account | SALESFORCE_CREATE_ACCOUNT | Name |\n| Search accounts | SALESFORCE_SEARCH_ACCOUNTS | query |\n| Link contact | SALESFORCE_ASSOCIATE_CONTACT_TO_ACCOUNT | contact_id, account_id |\n| Create opportunity | SALESFORCE_CREATE_OPPORTUNITY | Name, StageName, CloseDate |\n| Get opportunity | SALESFORCE_GET_OPPORTUNITY | opportunity_id |\n| Search opportunities | SALESFORCE_SEARCH_OPPORTUNITIES | query |\n| Run SOQL | SALESFORCE_RUN_SOQL_QUERY | query |\n| Query | SALESFORCE_QUERY | query |\n| Search tasks | SALESFORCE_SEARCH_TASKS | query |\n| Update task | SALESFORCE_UPDATE_TASK | task_id, fields |\n| Complete task | SALESFORCE_COMPLETE_TASK | task_id |\n| Get user info | SALESFORCE_GET_USER_INFO | (none) |\n| Custom objects | SALESFORCE_GET_ALL_CUSTOM_OBJECTS | (none) |\n| Create record | SALESFORCE_CREATE_A_RECORD | object_type, fields |\n| Transfer ownership | SALESFORCE_MASS_TRANSFER_OWNERSHIP | records, new_owner |\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

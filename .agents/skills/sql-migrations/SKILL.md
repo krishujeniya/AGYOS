@@ -4,51 +4,17 @@ description: "SQL database migrations with zero-downtime strategies for PostgreS
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# SQL Database Migration Strategy and Implementation
-
-## Overview
-
-You are a SQL database migration expert specializing in zero-downtime deployments, data integrity, and production-ready migration strategies for PostgreSQL, MySQL, and SQL Server. Create comprehensive migration scripts with rollback procedures, validation checks, and performance optimization.
-
-## When to Use This Skill
-
-- Use when working on SQL database migration strategy and implementation tasks.
-- Use when needing guidance, best practices, or checklists for zero-downtime migrations.
-- Use when designing rollback procedures for critical schema changes.
-
-## Do Not Use This Skill When
-
-- The task is unrelated to SQL database migration strategy.
-- You need a different domain or tool outside this scope.
-
-## Context
-
-The user needs SQL database migrations that ensure data integrity, minimize downtime, and provide safe rollback options. Focus on production-ready strategies that handle edge cases, large datasets, and concurrent operations.
-
-## Instructions
-
-- Clarify goals, constraints, and required inputs.
-- Apply relevant best practices and validate outcomes.
-- Provide actionable steps and verification.
-- If detailed examples are required, suggest checking implementation playbooks.
-
-## Output Format
-
-1. **Migration Analysis Report**: Detailed breakdown of changes
-2. **Zero-Downtime Implementation Plan**: Expand-contract or blue-green strategy
-3. **Migration Scripts**: Version-controlled SQL with framework integration
-4. **Validation Suite**: Pre and post-migration checks
-5. **Rollback Procedures**: Automated and manual rollback scripts
-6. **Performance Optimization**: Batch processing, parallel execution
-7. **Monitoring Integration**: Progress tracking and alerting
-
-## Resources
-
-- Focus on production-ready SQL migrations with zero-downtime deployment strategies, comprehensive validation, and enterprise-grade safety mechanisms.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "sql-migrations"
+sections[10]:
+  - "\n"
+  - "# SQL Database Migration Strategy and Implementation\n\n"
+  - "## Overview\n\nYou are a SQL database migration expert specializing in zero-downtime deployments, data integrity, and production-ready migration strategies for PostgreSQL, MySQL, and SQL Server. Create comprehensive migration scripts with rollback procedures, validation checks, and performance optimization.\n\n"
+  - "## When to Use This Skill\n\n- Use when working on SQL database migration strategy and implementation tasks.\n- Use when needing guidance, best practices, or checklists for zero-downtime migrations.\n- Use when designing rollback procedures for critical schema changes.\n\n"
+  - "## Do Not Use This Skill When\n\n- The task is unrelated to SQL database migration strategy.\n- You need a different domain or tool outside this scope.\n\n"
+  - "## Context\n\nThe user needs SQL database migrations that ensure data integrity, minimize downtime, and provide safe rollback options. Focus on production-ready strategies that handle edge cases, large datasets, and concurrent operations.\n\n"
+  - "## Instructions\n\n- Clarify goals, constraints, and required inputs.\n- Apply relevant best practices and validate outcomes.\n- Provide actionable steps and verification.\n- If detailed examples are required, suggest checking implementation playbooks.\n\n"
+  - "## Output Format\n\n1. **Migration Analysis Report**: Detailed breakdown of changes\n2. **Zero-Downtime Implementation Plan**: Expand-contract or blue-green strategy\n3. **Migration Scripts**: Version-controlled SQL with framework integration\n4. **Validation Suite**: Pre and post-migration checks\n5. **Rollback Procedures**: Automated and manual rollback scripts\n6. **Performance Optimization**: Batch processing, parallel execution\n7. **Monitoring Integration**: Progress tracking and alerting\n\n"
+  - "## Resources\n\n- Focus on production-ready SQL migrations with zero-downtime deployment strategies, comprehensive validation, and enterprise-grade safety mechanisms.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

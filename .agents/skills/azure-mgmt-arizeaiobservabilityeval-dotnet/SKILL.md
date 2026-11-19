@@ -4,234 +4,27 @@ description: Azure Resource Manager SDK for Arize AI Observability and Evaluatio
 risk: unknown
 source: community
 date_added: '2026-02-27'
+prompt-source: prompt.toon
 ---
-
-# Azure.ResourceManager.ArizeAIObservabilityEval
-
-.NET SDK for managing Arize AI Observability and Evaluation resources on Azure.
-
-## Installation
-
-```bash
-dotnet add package Azure.ResourceManager.ArizeAIObservabilityEval --version 1.0.0
-```
-
-## Package Info
-
-| Property | Value |
-|----------|-------|
-| Package | `Azure.ResourceManager.ArizeAIObservabilityEval` |
-| Version | `1.0.0` (GA) |
-| API Version | `2024-10-01` |
-| ARM Type | `ArizeAi.ObservabilityEval/organizations` |
-| Dependencies | `Azure.Core` >= 1.46.2, `Azure.ResourceManager` >= 1.13.1 |
-
-## Environment Variables
-
-```bash
-AZURE_SUBSCRIPTION_ID=<your-subscription-id>
-AZURE_TENANT_ID=<your-tenant-id>
-AZURE_CLIENT_ID=<your-client-id>
-AZURE_CLIENT_SECRET=<your-client-secret>
-```
-
-## Authentication
-
-```csharp
-using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ArizeAIObservabilityEval;
-
-// Always use DefaultAzureCredential
-var credential = new DefaultAzureCredential();
-var armClient = new ArmClient(credential);
-```
-
-## Core Workflow
-
-### Create an Arize AI Organization
-
-```csharp
-using Azure.Core;
-using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.ArizeAIObservabilityEval;
-using Azure.ResourceManager.ArizeAIObservabilityEval.Models;
-
-// Get subscription and resource group
-var subscriptionId = Environment.GetEnvironmentVariable("AZURE_SUBSCRIPTION_ID");
-var subscription = await armClient.GetSubscriptionResource(
-    SubscriptionResource.CreateResourceIdentifier(subscriptionId)).GetAsync();
-var resourceGroup = await subscription.Value.GetResourceGroupAsync("my-resource-group");
-
-// Get the organization collection
-var collection = resourceGroup.Value.GetArizeAIObservabilityEvalOrganizations();
-
-// Create organization data
-var data = new ArizeAIObservabilityEvalOrganizationData(AzureLocation.EastUS)
-{
-    Properties = new ArizeAIObservabilityEvalOrganizationProperties
-    {
-        Marketplace = new ArizeAIObservabilityEvalMarketplaceDetails
-        {
-            SubscriptionId = "marketplace-subscription-id",
-            OfferDetails = new ArizeAIObservabilityEvalOfferDetails
-            {
-                PublisherId = "arikimlabs1649082416596",
-                OfferId = "arize-liftr-1",
-                PlanId = "arize-liftr-1-plan",
-                PlanName = "Arize AI Plan",
-                TermUnit = "P1M",
-                TermId = "term-id"
-            }
-        },
-        User = new ArizeAIObservabilityEvalUserDetails
-        {
-            FirstName = "John",
-            LastName = "Doe",
-            EmailAddress = "john.doe@example.com"
-        }
-    },
-    Tags = { ["environment"] = "production" }
-};
-
-// Create (long-running operation)
-var operation = await collection.CreateOrUpdateAsync(
-    WaitUntil.Completed,
-    "my-arize-org",
-    data);
-
-var organization = operation.Value;
-Console.WriteLine($"Created: {organization.Data.Name}");
-```
-
-### Get an Organization
-
-```csharp
-// Option 1: From collection
-var org = await collection.GetAsync("my-arize-org");
-
-// Option 2: Check if exists first
-var exists = await collection.ExistsAsync("my-arize-org");
-if (exists.Value)
-{
-    var org = await collection.GetAsync("my-arize-org");
-}
-
-// Option 3: GetIfExists (returns null if not found)
-var response = await collection.GetIfExistsAsync("my-arize-org");
-if (response.HasValue)
-{
-    var org = response.Value;
-}
-```
-
-### List Organizations
-
-```csharp
-// List in resource group
-await foreach (var org in collection.GetAllAsync())
-{
-    Console.WriteLine($"Org: {org.Data.Name}, State: {org.Data.Properties?.ProvisioningState}");
-}
-
-// List in subscription
-await foreach (var org in subscription.Value.GetArizeAIObservabilityEvalOrganizationsAsync())
-{
-    Console.WriteLine($"Org: {org.Data.Name}");
-}
-```
-
-### Update an Organization
-
-```csharp
-// Update tags
-var org = await collection.GetAsync("my-arize-org");
-var updateData = new ArizeAIObservabilityEvalOrganizationPatch
-{
-    Tags = { ["environment"] = "staging", ["team"] = "ml-ops" }
-};
-var updated = await org.Value.UpdateAsync(updateData);
-```
-
-### Delete an Organization
-
-```csharp
-var org = await collection.GetAsync("my-arize-org");
-await org.Value.DeleteAsync(WaitUntil.Completed);
-```
-
-## Key Types
-
-| Type | Purpose |
-|------|---------|
-| `ArizeAIObservabilityEvalOrganizationResource` | Main ARM resource for Arize organizations |
-| `ArizeAIObservabilityEvalOrganizationCollection` | Collection for CRUD operations |
-| `ArizeAIObservabilityEvalOrganizationData` | Resource data model |
-| `ArizeAIObservabilityEvalOrganizationProperties` | Organization properties |
-| `ArizeAIObservabilityEvalMarketplaceDetails` | Azure Marketplace subscription info |
-| `ArizeAIObservabilityEvalOfferDetails` | Marketplace offer configuration |
-| `ArizeAIObservabilityEvalUserDetails` | User contact information |
-| `ArizeAIObservabilityEvalOrganizationPatch` | Patch model for updates |
-| `ArizeAIObservabilityEvalSingleSignOnPropertiesV2` | SSO configuration |
-
-## Enums
-
-| Enum | Values |
-|------|--------|
-| `ArizeAIObservabilityEvalOfferProvisioningState` | `Succeeded`, `Failed`, `Canceled`, `Provisioning`, `Updating`, `Deleting`, `Accepted` |
-| `ArizeAIObservabilityEvalMarketplaceSubscriptionStatus` | `PendingFulfillmentStart`, `Subscribed`, `Suspended`, `Unsubscribed` |
-| `ArizeAIObservabilityEvalSingleSignOnState` | `Initial`, `Enable`, `Disable` |
-| `ArizeAIObservabilityEvalSingleSignOnType` | `Saml`, `OpenId` |
-
-## Best Practices
-
-1. **Use async methods** — All operations support async/await
-2. **Handle long-running operations** — Use `WaitUntil.Completed` or poll manually
-3. **Use GetIfExistsAsync** — Avoid exceptions for conditional logic
-4. **Implement retry policies** — Configure via `ArmClientOptions`
-5. **Use resource identifiers** — For direct resource access without listing
-6. **Close clients properly** — Use `using` statements or dispose explicitly
-
-## Error Handling
-
-```csharp
-try
-{
-    var org = await collection.GetAsync("my-arize-org");
-}
-catch (Azure.RequestFailedException ex) when (ex.Status == 404)
-{
-    Console.WriteLine("Organization not found");
-}
-catch (Azure.RequestFailedException ex)
-{
-    Console.WriteLine($"Azure error: {ex.Message}");
-}
-```
-
-## Direct Resource Access
-
-```csharp
-// Access resource directly by ID (without listing)
-var resourceId = ArizeAIObservabilityEvalOrganizationResource.CreateResourceIdentifier(
-    subscriptionId,
-    "my-resource-group",
-    "my-arize-org");
-
-var org = armClient.GetArizeAIObservabilityEvalOrganizationResource(resourceId);
-var data = await org.GetAsync();
-```
-
-## Links
-
-- [NuGet Package](https://www.nuget.org/packages/Azure.ResourceManager.ArizeAIObservabilityEval)
-- [Azure SDK for .NET](https://github.com/Azure/azure-sdk-for-net)
-- [Arize AI](https://arize.com/)
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "azure-mgmt-arizeaiobservabilityeval-dotnet"
+sections[20]:
+  - "\n"
+  - "# Azure.ResourceManager.ArizeAIObservabilityEval\n\n.NET SDK for managing Arize AI Observability and Evaluation resources on Azure.\n\n"
+  - "## Installation\n\n```bash\ndotnet add package Azure.ResourceManager.ArizeAIObservabilityEval --version 1.0.0\n```\n\n"
+  - "## Package Info\n\n| Property | Value |\n|----------|-------|\n| Package | `Azure.ResourceManager.ArizeAIObservabilityEval` |\n| Version | `1.0.0` (GA) |\n| API Version | `2024-10-01` |\n| ARM Type | `ArizeAi.ObservabilityEval/organizations` |\n| Dependencies | `Azure.Core` >= 1.46.2, `Azure.ResourceManager` >= 1.13.1 |\n\n"
+  - "## Environment Variables\n\n```bash\nAZURE_SUBSCRIPTION_ID=<your-subscription-id>\nAZURE_TENANT_ID=<your-tenant-id>\nAZURE_CLIENT_ID=<your-client-id>\nAZURE_CLIENT_SECRET=<your-client-secret>\n```\n\n"
+  - "## Authentication\n\n```csharp\nusing Azure.Identity;\nusing Azure.ResourceManager;\nusing Azure.ResourceManager.ArizeAIObservabilityEval;\n\n// Always use DefaultAzureCredential\nvar credential = new DefaultAzureCredential();\nvar armClient = new ArmClient(credential);\n```\n\n"
+  - "## Core Workflow\n\n"
+  - "### Create an Arize AI Organization\n\n```csharp\nusing Azure.Core;\nusing Azure.ResourceManager.Resources;\nusing Azure.ResourceManager.ArizeAIObservabilityEval;\nusing Azure.ResourceManager.ArizeAIObservabilityEval.Models;\n\n// Get subscription and resource group\nvar subscriptionId = Environment.GetEnvironmentVariable(\"AZURE_SUBSCRIPTION_ID\");\nvar subscription = await armClient.GetSubscriptionResource(\n    SubscriptionResource.CreateResourceIdentifier(subscriptionId)).GetAsync();\nvar resourceGroup = await subscription.Value.GetResourceGroupAsync(\"my-resource-group\");\n\n// Get the organization collection\nvar collection = resourceGroup.Value.GetArizeAIObservabilityEvalOrganizations();\n\n// Create organization data\nvar data = new ArizeAIObservabilityEvalOrganizationData(AzureLocation.EastUS)\n{\n    Properties = new ArizeAIObservabilityEvalOrganizationProperties\n    {\n        Marketplace = new ArizeAIObservabilityEvalMarketplaceDetails\n        {\n            SubscriptionId = \"marketplace-subscription-id\",\n            OfferDetails = new ArizeAIObservabilityEvalOfferDetails\n            {\n                PublisherId = \"arikimlabs1649082416596\",\n                OfferId = \"arize-liftr-1\",\n                PlanId = \"arize-liftr-1-plan\",\n                PlanName = \"Arize AI Plan\",\n                TermUnit = \"P1M\",\n                TermId = \"term-id\"\n            }\n        },\n        User = new ArizeAIObservabilityEvalUserDetails\n        {\n            FirstName = \"John\",\n            LastName = \"Doe\",\n            EmailAddress = \"john.doe@example.com\"\n        }\n    },\n    Tags = { [\"environment\"] = \"production\" }\n};\n\n// Create (long-running operation)\nvar operation = await collection.CreateOrUpdateAsync(\n    WaitUntil.Completed,\n    \"my-arize-org\",\n    data);\n\nvar organization = operation.Value;\nConsole.WriteLine($\"Created: {organization.Data.Name}\");\n```\n\n"
+  - "### Get an Organization\n\n```csharp\n// Option 1: From collection\nvar org = await collection.GetAsync(\"my-arize-org\");\n\n// Option 2: Check if exists first\nvar exists = await collection.ExistsAsync(\"my-arize-org\");\nif (exists.Value)\n{\n    var org = await collection.GetAsync(\"my-arize-org\");\n}\n\n// Option 3: GetIfExists (returns null if not found)\nvar response = await collection.GetIfExistsAsync(\"my-arize-org\");\nif (response.HasValue)\n{\n    var org = response.Value;\n}\n```\n\n"
+  - "### List Organizations\n\n```csharp\n// List in resource group\nawait foreach (var org in collection.GetAllAsync())\n{\n    Console.WriteLine($\"Org: {org.Data.Name}, State: {org.Data.Properties?.ProvisioningState}\");\n}\n\n// List in subscription\nawait foreach (var org in subscription.Value.GetArizeAIObservabilityEvalOrganizationsAsync())\n{\n    Console.WriteLine($\"Org: {org.Data.Name}\");\n}\n```\n\n"
+  - "### Update an Organization\n\n```csharp\n// Update tags\nvar org = await collection.GetAsync(\"my-arize-org\");\nvar updateData = new ArizeAIObservabilityEvalOrganizationPatch\n{\n    Tags = { [\"environment\"] = \"staging\", [\"team\"] = \"ml-ops\" }\n};\nvar updated = await org.Value.UpdateAsync(updateData);\n```\n\n"
+  - "### Delete an Organization\n\n```csharp\nvar org = await collection.GetAsync(\"my-arize-org\");\nawait org.Value.DeleteAsync(WaitUntil.Completed);\n```\n\n"
+  - "## Key Types\n\n| Type | Purpose |\n|------|---------|\n| `ArizeAIObservabilityEvalOrganizationResource` | Main ARM resource for Arize organizations |\n| `ArizeAIObservabilityEvalOrganizationCollection` | Collection for CRUD operations |\n| `ArizeAIObservabilityEvalOrganizationData` | Resource data model |\n| `ArizeAIObservabilityEvalOrganizationProperties` | Organization properties |\n| `ArizeAIObservabilityEvalMarketplaceDetails` | Azure Marketplace subscription info |\n| `ArizeAIObservabilityEvalOfferDetails` | Marketplace offer configuration |\n| `ArizeAIObservabilityEvalUserDetails` | User contact information |\n| `ArizeAIObservabilityEvalOrganizationPatch` | Patch model for updates |\n| `ArizeAIObservabilityEvalSingleSignOnPropertiesV2` | SSO configuration |\n\n"
+  - "## Enums\n\n| Enum | Values |\n|------|--------|\n| `ArizeAIObservabilityEvalOfferProvisioningState` | `Succeeded`, `Failed`, `Canceled`, `Provisioning`, `Updating`, `Deleting`, `Accepted` |\n| `ArizeAIObservabilityEvalMarketplaceSubscriptionStatus` | `PendingFulfillmentStart`, `Subscribed`, `Suspended`, `Unsubscribed` |\n| `ArizeAIObservabilityEvalSingleSignOnState` | `Initial`, `Enable`, `Disable` |\n| `ArizeAIObservabilityEvalSingleSignOnType` | `Saml`, `OpenId` |\n\n"
+  - "## Best Practices\n\n1. **Use async methods** — All operations support async/await\n2. **Handle long-running operations** — Use `WaitUntil.Completed` or poll manually\n3. **Use GetIfExistsAsync** — Avoid exceptions for conditional logic\n4. **Implement retry policies** — Configure via `ArmClientOptions`\n5. **Use resource identifiers** — For direct resource access without listing\n6. **Close clients properly** — Use `using` statements or dispose explicitly\n\n"
+  - "## Error Handling\n\n```csharp\ntry\n{\n    var org = await collection.GetAsync(\"my-arize-org\");\n}\ncatch (Azure.RequestFailedException ex) when (ex.Status == 404)\n{\n    Console.WriteLine(\"Organization not found\");\n}\ncatch (Azure.RequestFailedException ex)\n{\n    Console.WriteLine($\"Azure error: {ex.Message}\");\n}\n```\n\n"
+  - "## Direct Resource Access\n\n```csharp\n// Access resource directly by ID (without listing)\nvar resourceId = ArizeAIObservabilityEvalOrganizationResource.CreateResourceIdentifier(\n    subscriptionId,\n    \"my-resource-group\",\n    \"my-arize-org\");\n\nvar org = armClient.GetArizeAIObservabilityEvalOrganizationResource(resourceId);\nvar data = await org.GetAsync();\n```\n\n"
+  - "## Links\n\n- [NuGet Package](https://www.nuget.org/packages/Azure.ResourceManager.ArizeAIObservabilityEval)\n- [Azure SDK for .NET](https://github.com/Azure/azure-sdk-for-net)\n- [Arize AI](https://arize.com/)\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

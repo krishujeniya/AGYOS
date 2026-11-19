@@ -3,140 +3,25 @@ name: fixing-accessibility
 description: Audit and fix HTML accessibility issues including ARIA labels, keyboard navigation, focus management, color contrast, and form errors. Use when adding interactive controls, forms, dialogs, or reviewing WCAG compliance.
 risk: unknown
 source: community
+prompt-source: prompt.toon
 ---
-
-# fixing-accessibility
-
-Fix accessibility issues.
-
-## how to use
-
-- `/fixing-accessibility`
-  Apply these constraints to any UI work in this conversation.
-
-- `/fixing-accessibility <file>`
-  Review the file against all rules below and report:
-  - violations (quote the exact line or snippet)
-  - why it matters (one short sentence)
-  - a concrete fix (code-level suggestion)
-
-Do not rewrite large parts of the UI. Prefer minimal, targeted fixes.
-
-## When to Use
-Reference these guidelines when:
-- adding or changing buttons, links, inputs, menus, dialogs, tabs, dropdowns
-- building forms, validation, error states, helper text
-- implementing keyboard shortcuts or custom interactions
-- working on focus states, focus trapping, or modal behavior
-- rendering icon-only controls
-- adding hover-only interactions or hidden content
-
-## rule categories by priority
-
-| priority | category | impact |
-|----------|----------|--------|
-| 1 | accessible names | critical |
-| 2 | keyboard access | critical |
-| 3 | focus and dialogs | critical |
-| 4 | semantics | high |
-| 5 | forms and errors | high |
-| 6 | announcements | medium-high |
-| 7 | contrast and states | medium |
-| 8 | media and motion | low-medium |
-| 9 | tool boundaries | critical |
-
-## quick reference
-
-### 1. accessible names (critical)
-
-- every interactive control must have an accessible name
-- icon-only buttons must have aria-label or aria-labelledby
-- every input, select, and textarea must be labeled
-- links must have meaningful text (no “click here”)
-- decorative icons must be aria-hidden
-
-### 2. keyboard access (critical)
-
-- do not use div or span as buttons without full keyboard support
-- all interactive elements must be reachable by Tab
-- focus must be visible for keyboard users
-- do not use tabindex greater than 0
-- Escape must close dialogs or overlays when applicable
-
-### 3. focus and dialogs (critical)
-
-- modals must trap focus while open
-- restore focus to the trigger on close
-- set initial focus inside dialogs
-- opening a dialog should not scroll the page unexpectedly
-
-### 4. semantics (high)
-
-- prefer native elements (button, a, input) over role-based hacks
-- if a role is used, required aria attributes must be present
-- lists must use ul or ol with li
-- do not skip heading levels
-- tables must use th for headers when applicable
-
-### 5. forms and errors (high)
-
-- errors must be linked to fields using aria-describedby
-- required fields must be announced
-- invalid fields must set aria-invalid
-- helper text must be associated with inputs
-- disabled submit actions must explain why
-
-### 6. announcements (medium-high)
-
-- critical form errors should use aria-live
-- loading states should use aria-busy or status text
-- toasts must not be the only way to convey critical information
-- expandable controls must use aria-expanded and aria-controls
-
-### 7. contrast and states (medium)
-
-- ensure sufficient contrast for text and icons
-- hover-only interactions must have keyboard equivalents
-- disabled states must not rely on color alone
-- do not remove focus outlines without a visible replacement
-
-### 8. media and motion (low-medium)
-
-- images must have correct alt text (meaningful or empty)
-- videos with speech should provide captions when relevant
-- respect prefers-reduced-motion for non-essential motion
-- avoid autoplaying media with sound
-
-### 9. tool boundaries (critical)
-
-- prefer minimal changes, do not refactor unrelated code
-- do not add aria when native semantics already solve the problem
-- do not migrate UI libraries unless requested
-
-## common fixes
-
-```html
-<!-- icon-only button: add aria-label -->
-<!-- before --> <button><svg>...</svg></button>
-<!-- after -->  <button aria-label="Close"><svg aria-hidden="true">...</svg></button>
-
-<!-- div as button: use native element -->
-<!-- before --> <div onclick="save()">Save</div>
-<!-- after -->  <button onclick="save()">Save</button>
-
-<!-- form error: link with aria-describedby -->
-<!-- before --> <input id="email" /> <span>Invalid email</span>
-<!-- after -->  <input id="email" aria-describedby="email-err" aria-invalid="true" /> <span id="email-err">Invalid email</span>
-```
-
-## review guidance
-
-- fix critical issues first (names, keyboard, focus, tool boundaries)
-- prefer native HTML before adding aria
-- quote the exact snippet, state the failure, propose a small fix
-- for complex widgets (menu, dialog, combobox), prefer established accessible primitives over custom behavior
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "fixing-accessibility"
+sections[18]:
+  - "\n"
+  - "# fixing-accessibility\n\nFix accessibility issues.\n\n"
+  - "## how to use\n\n- `/fixing-accessibility`\n  Apply these constraints to any UI work in this conversation.\n\n- `/fixing-accessibility <file>`\n  Review the file against all rules below and report:\n  - violations (quote the exact line or snippet)\n  - why it matters (one short sentence)\n  - a concrete fix (code-level suggestion)\n\nDo not rewrite large parts of the UI. Prefer minimal, targeted fixes.\n\n"
+  - "## When to Use\nReference these guidelines when:\n- adding or changing buttons, links, inputs, menus, dialogs, tabs, dropdowns\n- building forms, validation, error states, helper text\n- implementing keyboard shortcuts or custom interactions\n- working on focus states, focus trapping, or modal behavior\n- rendering icon-only controls\n- adding hover-only interactions or hidden content\n\n"
+  - "## rule categories by priority\n\n| priority | category | impact |\n|----------|----------|--------|\n| 1 | accessible names | critical |\n| 2 | keyboard access | critical |\n| 3 | focus and dialogs | critical |\n| 4 | semantics | high |\n| 5 | forms and errors | high |\n| 6 | announcements | medium-high |\n| 7 | contrast and states | medium |\n| 8 | media and motion | low-medium |\n| 9 | tool boundaries | critical |\n\n"
+  - "## quick reference\n\n"
+  - "### 1. accessible names (critical)\n\n- every interactive control must have an accessible name\n- icon-only buttons must have aria-label or aria-labelledby\n- every input, select, and textarea must be labeled\n- links must have meaningful text (no “click here”)\n- decorative icons must be aria-hidden\n\n"
+  - "### 2. keyboard access (critical)\n\n- do not use div or span as buttons without full keyboard support\n- all interactive elements must be reachable by Tab\n- focus must be visible for keyboard users\n- do not use tabindex greater than 0\n- Escape must close dialogs or overlays when applicable\n\n"
+  - "### 3. focus and dialogs (critical)\n\n- modals must trap focus while open\n- restore focus to the trigger on close\n- set initial focus inside dialogs\n- opening a dialog should not scroll the page unexpectedly\n\n"
+  - "### 4. semantics (high)\n\n- prefer native elements (button, a, input) over role-based hacks\n- if a role is used, required aria attributes must be present\n- lists must use ul or ol with li\n- do not skip heading levels\n- tables must use th for headers when applicable\n\n"
+  - "### 5. forms and errors (high)\n\n- errors must be linked to fields using aria-describedby\n- required fields must be announced\n- invalid fields must set aria-invalid\n- helper text must be associated with inputs\n- disabled submit actions must explain why\n\n"
+  - "### 6. announcements (medium-high)\n\n- critical form errors should use aria-live\n- loading states should use aria-busy or status text\n- toasts must not be the only way to convey critical information\n- expandable controls must use aria-expanded and aria-controls\n\n"
+  - "### 7. contrast and states (medium)\n\n- ensure sufficient contrast for text and icons\n- hover-only interactions must have keyboard equivalents\n- disabled states must not rely on color alone\n- do not remove focus outlines without a visible replacement\n\n"
+  - "### 8. media and motion (low-medium)\n\n- images must have correct alt text (meaningful or empty)\n- videos with speech should provide captions when relevant\n- respect prefers-reduced-motion for non-essential motion\n- avoid autoplaying media with sound\n\n"
+  - "### 9. tool boundaries (critical)\n\n- prefer minimal changes, do not refactor unrelated code\n- do not add aria when native semantics already solve the problem\n- do not migrate UI libraries unless requested\n\n"
+  - "## common fixes\n\n```html\n<!-- icon-only button: add aria-label -->\n<!-- before --> <button><svg>...</svg></button>\n<!-- after -->  <button aria-label=\"Close\"><svg aria-hidden=\"true\">...</svg></button>\n\n<!-- div as button: use native element -->\n<!-- before --> <div onclick=\"save()\">Save</div>\n<!-- after -->  <button onclick=\"save()\">Save</button>\n\n<!-- form error: link with aria-describedby -->\n<!-- before --> <input id=\"email\" /> <span>Invalid email</span>\n<!-- after -->  <input id=\"email\" aria-describedby=\"email-err\" aria-invalid=\"true\" /> <span id=\"email-err\">Invalid email</span>\n```\n\n"
+  - "## review guidance\n\n- fix critical issues first (names, keyboard, focus, tool boundaries)\n- prefer native HTML before adding aria\n- quote the exact snippet, state the failure, propose a small fix\n- for complex widgets (menu, dialog, combobox), prefer established accessible primitives over custom behavior\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

@@ -4,56 +4,18 @@ description: "Clean up a focused module or small group of files for readability 
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Refactor and Clean Code
-
-Clean up a focused module or small group of files for readability and testability. Use for contained refactors; use codebase-refactor for wider structural work.
-
-## Use this skill when
-
-- Refactoring tangled or hard-to-maintain code
-- Reducing duplication, complexity, or code smells
-- Improving testability and design consistency
-- Preparing modules for new features safely
-
-## Do not use this skill when
-
-- You only need a small one-line fix
-- Refactoring is prohibited due to change freeze
-- The request is for documentation only
-
-## Context
-The user needs help refactoring code to make it cleaner, more maintainable, and aligned with best practices. Focus on practical improvements that enhance code quality without over-engineering.
-
-## Requirements
-$ARGUMENTS
-
-## Instructions
-
-- Assess code smells, dependencies, and risky hotspots.
-- Propose a refactor plan with incremental steps.
-- Apply changes in small slices and keep behavior stable.
-- Update tests and verify regressions.
-- If detailed patterns are required, open `resources/implementation-playbook.md`.
-
-## Safety
-
-- Avoid changing external behavior without explicit approval.
-- Keep diffs reviewable and ensure tests pass.
-
-## Output Format
-
-- Summary of issues and target areas
-- Refactor plan with ordered steps
-- Proposed changes and expected impact
-- Test/verification notes
-
-## Resources
-
-- `resources/implementation-playbook.md` for detailed patterns and examples.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "refactor-clean"
+sections[11]:
+  - "\n"
+  - "# Refactor and Clean Code\n\nClean up a focused module or small group of files for readability and testability. Use for contained refactors; use codebase-refactor for wider structural work.\n\n"
+  - "## Use this skill when\n\n- Refactoring tangled or hard-to-maintain code\n- Reducing duplication, complexity, or code smells\n- Improving testability and design consistency\n- Preparing modules for new features safely\n\n"
+  - "## Do not use this skill when\n\n- You only need a small one-line fix\n- Refactoring is prohibited due to change freeze\n- The request is for documentation only\n\n"
+  - "## Context\nThe user needs help refactoring code to make it cleaner, more maintainable, and aligned with best practices. Focus on practical improvements that enhance code quality without over-engineering.\n\n"
+  - "## Requirements\n$ARGUMENTS\n\n"
+  - "## Instructions\n\n- Assess code smells, dependencies, and risky hotspots.\n- Propose a refactor plan with incremental steps.\n- Apply changes in small slices and keep behavior stable.\n- Update tests and verify regressions.\n- If detailed patterns are required, open `resources/implementation-playbook.md`.\n\n"
+  - "## Safety\n\n- Avoid changing external behavior without explicit approval.\n- Keep diffs reviewable and ensure tests pass.\n\n"
+  - "## Output Format\n\n- Summary of issues and target areas\n- Refactor plan with ordered steps\n- Proposed changes and expected impact\n- Test/verification notes\n\n"
+  - "## Resources\n\n- `resources/implementation-playbook.md` for detailed patterns and examples.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

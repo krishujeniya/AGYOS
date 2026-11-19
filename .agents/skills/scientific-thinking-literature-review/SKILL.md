@@ -3,191 +3,22 @@ name: scientific-thinking-literature-review
 description: Systematic literature-review workflow for academic, biomedical, technical, and scientific topics, including search planning, source screening, synthesis, citation checks, and evidence logging. Use when the task is to find, screen, synthesize, and cite a body of academic or technical literature.
 metadata:
   origin: community
+prompt-source: prompt.toon
 ---
-
-# Literature Review
-
-Use this skill when the task is to find, screen, synthesize, and cite a body of
-academic or technical literature.
-
-## When to Use
-
-- Building a systematic, scoping, or narrative literature review.
-- Synthesizing the state of the art for a research question.
-- Finding gaps, contradictions, or future-work directions.
-- Preparing citation-backed background sections for papers or reports.
-- Comparing evidence across peer-reviewed papers, preprints, patents, and
-  technical reports.
-
-## Review Types
-
-- **Narrative review**: broad synthesis; useful for orientation.
-- **Scoping review**: maps concepts, methods, and evidence gaps.
-- **Systematic review**: predefined protocol, reproducible search, explicit
-  screening and exclusion.
-- **Meta-analysis**: systematic review plus quantitative effect aggregation.
-
-Ask the user which level of rigor is needed. If unspecified, default to a
-scoping review for exploratory work and a systematic review for publication or
-clinical claims.
-
-## Workflow
-
-### 1. Define the Question
-
-Convert the prompt into a searchable research question.
-
-For clinical or biomedical work, use PICO:
-
-- Population
-- Intervention or exposure
-- Comparator
-- Outcome
-
-For technical work, use:
-
-- system or domain
-- method or intervention
-- comparison baseline
-- evaluation metric
-
-### 2. Plan the Search
-
-Create a search protocol before collecting sources:
-
-- databases to search
-- date range
-- languages
-- publication types
-- inclusion criteria
-- exclusion criteria
-- exact search strings
-
-Minimum useful database set:
-
-- PubMed for biomedical and life-sciences literature.
-- arXiv for CS, math, physics, quantitative biology, and preprints.
-- Semantic Scholar or Crossref for broad academic discovery.
-- Domain-specific sources when relevant, such as clinical-trial registries,
-  patent databases, standards bodies, or official technical docs.
-
-### 3. Search and Log Evidence
-
-Keep a search log that makes the review reproducible:
-
-```markdown
-| Database | Date searched | Query | Filters | Results | Export |
-| --- | --- | --- | --- | ---: | --- |
-| PubMed | 2026-05-11 | `("CRISPR"[tiab] OR "Cas9"[tiab]) AND "sickle cell"[tiab]` | 2020:2026, English | 86 | PMID list |
-| arXiv | 2026-05-11 | `CRISPR sickle cell gene editing` | q-bio, 2020:2026 | 9 | BibTeX |
-```
-
-Save raw IDs, URLs, DOIs, abstracts, and notes separately from the final prose.
-
-### 4. Deduplicate
-
-Deduplicate in this order:
-
-1. DOI
-2. PMID or arXiv ID
-3. exact title
-4. normalized title plus first author and year
-
-Record how many duplicates were removed.
-
-### 5. Screen Sources
-
-Screen in stages:
-
-1. title
-2. abstract
-3. full text
-
-For systematic work, record exclusion reasons:
-
-- wrong population
-- wrong intervention
-- wrong outcome
-- not primary research
-- duplicate
-- unavailable full text
-- outside date range
-
-### 6. Extract Data
-
-Use a structured extraction table:
-
-```markdown
-| Study | Design | Population/Data | Method | Comparator | Outcome | Key finding | Limitations |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Author Year | RCT/cohort/review/etc. | sample or corpus | method | baseline | measured outcome | result | caveat |
-```
-
-For technical papers, include dataset, benchmark, metric, baseline, and
-reproducibility notes.
-
-### 7. Synthesize
-
-Group evidence by theme rather than summarizing papers one by one.
-
-Useful synthesis lenses:
-
-- strongest evidence
-- conflicting evidence
-- methodological weaknesses
-- population or dataset limits
-- recency and replication
-- practical implications
-- unanswered questions
-
-Separate claims by confidence:
-
-- **High confidence**: replicated, high-quality evidence across sources.
-- **Medium confidence**: plausible but limited by sample, method, or recency.
-- **Low confidence**: early, speculative, single-source, or weakly measured.
-
-### 8. Verify Citations
-
-Before finalizing:
-
-- verify DOI, PMID, arXiv ID, or official URL
-- check author names and publication year
-- do not cite a paper for a claim it does not make
-- mark preprints as preprints
-- distinguish reviews from primary evidence
-
-## Output Template
-
-```markdown
-# Literature Review: <Topic>
-
-Generated: <date>
-Review type: <narrative | scoping | systematic | meta-analysis>
-Search window: <dates>
-Databases: <list>
-
-## Research Question
-
-## Search Strategy
-
-## Inclusion and Exclusion Criteria
-
-## Evidence Summary
-
-## Thematic Synthesis
-
-## Gaps and Limitations
-
-## References
-
-## Search Log
-```
-
-## Pitfalls
-
-- Do not treat search snippets as evidence.
-- Do not mix preprints, reviews, and primary studies without labeling them.
-- Do not omit negative or conflicting findings.
-- Do not claim systematic-review rigor without a reproducible protocol.
-- Do not use a single database for a broad claim unless the scope is explicitly
-  limited to that database.
+skill: "scientific-thinking-literature-review"
+sections[15]:
+  - "\n"
+  - "# Literature Review\n\nUse this skill when the task is to find, screen, synthesize, and cite a body of\nacademic or technical literature.\n\n"
+  - "## When to Use\n\n- Building a systematic, scoping, or narrative literature review.\n- Synthesizing the state of the art for a research question.\n- Finding gaps, contradictions, or future-work directions.\n- Preparing citation-backed background sections for papers or reports.\n- Comparing evidence across peer-reviewed papers, preprints, patents, and\n  technical reports.\n\n"
+  - "## Review Types\n\n- **Narrative review**: broad synthesis; useful for orientation.\n- **Scoping review**: maps concepts, methods, and evidence gaps.\n- **Systematic review**: predefined protocol, reproducible search, explicit\n  screening and exclusion.\n- **Meta-analysis**: systematic review plus quantitative effect aggregation.\n\nAsk the user which level of rigor is needed. If unspecified, default to a\nscoping review for exploratory work and a systematic review for publication or\nclinical claims.\n\n"
+  - "## Workflow\n\n"
+  - "### 1. Define the Question\n\nConvert the prompt into a searchable research question.\n\nFor clinical or biomedical work, use PICO:\n\n- Population\n- Intervention or exposure\n- Comparator\n- Outcome\n\nFor technical work, use:\n\n- system or domain\n- method or intervention\n- comparison baseline\n- evaluation metric\n\n"
+  - "### 2. Plan the Search\n\nCreate a search protocol before collecting sources:\n\n- databases to search\n- date range\n- languages\n- publication types\n- inclusion criteria\n- exclusion criteria\n- exact search strings\n\nMinimum useful database set:\n\n- PubMed for biomedical and life-sciences literature.\n- arXiv for CS, math, physics, quantitative biology, and preprints.\n- Semantic Scholar or Crossref for broad academic discovery.\n- Domain-specific sources when relevant, such as clinical-trial registries,\n  patent databases, standards bodies, or official technical docs.\n\n"
+  - "### 3. Search and Log Evidence\n\nKeep a search log that makes the review reproducible:\n\n```markdown\n| Database | Date searched | Query | Filters | Results | Export |\n| --- | --- | --- | --- | ---: | --- |\n| PubMed | 2026-05-11 | `(\"CRISPR\"[tiab] OR \"Cas9\"[tiab]) AND \"sickle cell\"[tiab]` | 2020:2026, English | 86 | PMID list |\n| arXiv | 2026-05-11 | `CRISPR sickle cell gene editing` | q-bio, 2020:2026 | 9 | BibTeX |\n```\n\nSave raw IDs, URLs, DOIs, abstracts, and notes separately from the final prose.\n\n"
+  - "### 4. Deduplicate\n\nDeduplicate in this order:\n\n1. DOI\n2. PMID or arXiv ID\n3. exact title\n4. normalized title plus first author and year\n\nRecord how many duplicates were removed.\n\n"
+  - "### 5. Screen Sources\n\nScreen in stages:\n\n1. title\n2. abstract\n3. full text\n\nFor systematic work, record exclusion reasons:\n\n- wrong population\n- wrong intervention\n- wrong outcome\n- not primary research\n- duplicate\n- unavailable full text\n- outside date range\n\n"
+  - "### 6. Extract Data\n\nUse a structured extraction table:\n\n```markdown\n| Study | Design | Population/Data | Method | Comparator | Outcome | Key finding | Limitations |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| Author Year | RCT/cohort/review/etc. | sample or corpus | method | baseline | measured outcome | result | caveat |\n```\n\nFor technical papers, include dataset, benchmark, metric, baseline, and\nreproducibility notes.\n\n"
+  - "### 7. Synthesize\n\nGroup evidence by theme rather than summarizing papers one by one.\n\nUseful synthesis lenses:\n\n- strongest evidence\n- conflicting evidence\n- methodological weaknesses\n- population or dataset limits\n- recency and replication\n- practical implications\n- unanswered questions\n\nSeparate claims by confidence:\n\n- **High confidence**: replicated, high-quality evidence across sources.\n- **Medium confidence**: plausible but limited by sample, method, or recency.\n- **Low confidence**: early, speculative, single-source, or weakly measured.\n\n"
+  - "### 8. Verify Citations\n\nBefore finalizing:\n\n- verify DOI, PMID, arXiv ID, or official URL\n- check author names and publication year\n- do not cite a paper for a claim it does not make\n- mark preprints as preprints\n- distinguish reviews from primary evidence\n\n"
+  - "## Output Template\n\n```markdown\n# Literature Review: <Topic>\n\nGenerated: <date>\nReview type: <narrative | scoping | systematic | meta-analysis>\nSearch window: <dates>\nDatabases: <list>\n\n## Research Question\n\n## Search Strategy\n\n## Inclusion and Exclusion Criteria\n\n## Evidence Summary\n\n## Thematic Synthesis\n\n## Gaps and Limitations\n\n## References\n\n## Search Log\n```\n\n"
+  - "## Pitfalls\n\n- Do not treat search snippets as evidence.\n- Do not mix preprints, reviews, and primary studies without labeling them.\n- Do not omit negative or conflicting findings.\n- Do not claim systematic-review rigor without a reproducible protocol.\n- Do not use a single database for a broad claim unless the scope is explicitly\n  limited to that database.\n"

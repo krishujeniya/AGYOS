@@ -4,232 +4,27 @@ description: Azure AI Text Analytics SDK for sentiment analysis, entity recognit
 risk: unknown
 source: community
 date_added: '2026-02-27'
+prompt-source: prompt.toon
 ---
-
-# Azure AI Text Analytics SDK for Python
-
-Client library for Azure AI Language service NLP capabilities including sentiment, entities, key phrases, and more.
-
-## Installation
-
-```bash
-pip install azure-ai-textanalytics
-```
-
-## Environment Variables
-
-```bash
-AZURE_LANGUAGE_ENDPOINT=https://<resource>.cognitiveservices.azure.com
-AZURE_LANGUAGE_KEY=<your-api-key>  # If using API key
-```
-
-## Authentication
-
-### API Key
-
-```python
-import os
-from azure.core.credentials import AzureKeyCredential
-from azure.ai.textanalytics import TextAnalyticsClient
-
-endpoint = os.environ["AZURE_LANGUAGE_ENDPOINT"]
-key = os.environ["AZURE_LANGUAGE_KEY"]
-
-client = TextAnalyticsClient(endpoint, AzureKeyCredential(key))
-```
-
-### Entra ID (Recommended)
-
-```python
-from azure.ai.textanalytics import TextAnalyticsClient
-from azure.identity import DefaultAzureCredential
-
-client = TextAnalyticsClient(
-    endpoint=os.environ["AZURE_LANGUAGE_ENDPOINT"],
-    credential=DefaultAzureCredential()
-)
-```
-
-## Sentiment Analysis
-
-```python
-documents = [
-    "I had a wonderful trip to Seattle last week!",
-    "The food was terrible and the service was slow."
-]
-
-result = client.analyze_sentiment(documents, show_opinion_mining=True)
-
-for doc in result:
-    if not doc.is_error:
-        print(f"Sentiment: {doc.sentiment}")
-        print(f"Scores: pos={doc.confidence_scores.positive:.2f}, "
-              f"neg={doc.confidence_scores.negative:.2f}, "
-              f"neu={doc.confidence_scores.neutral:.2f}")
-        
-        # Opinion mining (aspect-based sentiment)
-        for sentence in doc.sentences:
-            for opinion in sentence.mined_opinions:
-                target = opinion.target
-                print(f"  Target: '{target.text}' - {target.sentiment}")
-                for assessment in opinion.assessments:
-                    print(f"    Assessment: '{assessment.text}' - {assessment.sentiment}")
-```
-
-## Entity Recognition
-
-```python
-documents = ["Microsoft was founded by Bill Gates and Paul Allen in Albuquerque."]
-
-result = client.recognize_entities(documents)
-
-for doc in result:
-    if not doc.is_error:
-        for entity in doc.entities:
-            print(f"Entity: {entity.text}")
-            print(f"  Category: {entity.category}")
-            print(f"  Subcategory: {entity.subcategory}")
-            print(f"  Confidence: {entity.confidence_score:.2f}")
-```
-
-## PII Detection
-
-```python
-documents = ["My SSN is 123-45-6789 and my email is john@example.com"]
-
-result = client.recognize_pii_entities(documents)
-
-for doc in result:
-    if not doc.is_error:
-        print(f"Redacted: {doc.redacted_text}")
-        for entity in doc.entities:
-            print(f"PII: {entity.text} ({entity.category})")
-```
-
-## Key Phrase Extraction
-
-```python
-documents = ["Azure AI provides powerful machine learning capabilities for developers."]
-
-result = client.extract_key_phrases(documents)
-
-for doc in result:
-    if not doc.is_error:
-        print(f"Key phrases: {doc.key_phrases}")
-```
-
-## Language Detection
-
-```python
-documents = ["Ce document est en francais.", "This is written in English."]
-
-result = client.detect_language(documents)
-
-for doc in result:
-    if not doc.is_error:
-        print(f"Language: {doc.primary_language.name} ({doc.primary_language.iso6391_name})")
-        print(f"Confidence: {doc.primary_language.confidence_score:.2f}")
-```
-
-## Healthcare Text Analytics
-
-```python
-documents = ["Patient has diabetes and was prescribed metformin 500mg twice daily."]
-
-poller = client.begin_analyze_healthcare_entities(documents)
-result = poller.result()
-
-for doc in result:
-    if not doc.is_error:
-        for entity in doc.entities:
-            print(f"Entity: {entity.text}")
-            print(f"  Category: {entity.category}")
-            print(f"  Normalized: {entity.normalized_text}")
-            
-            # Entity links (UMLS, etc.)
-            for link in entity.data_sources:
-                print(f"  Link: {link.name} - {link.entity_id}")
-```
-
-## Multiple Analysis (Batch)
-
-```python
-from azure.ai.textanalytics import (
-    RecognizeEntitiesAction,
-    ExtractKeyPhrasesAction,
-    AnalyzeSentimentAction
-)
-
-documents = ["Microsoft announced new Azure AI features at Build conference."]
-
-poller = client.begin_analyze_actions(
-    documents,
-    actions=[
-        RecognizeEntitiesAction(),
-        ExtractKeyPhrasesAction(),
-        AnalyzeSentimentAction()
-    ]
-)
-
-results = poller.result()
-for doc_results in results:
-    for result in doc_results:
-        if result.kind == "EntityRecognition":
-            print(f"Entities: {[e.text for e in result.entities]}")
-        elif result.kind == "KeyPhraseExtraction":
-            print(f"Key phrases: {result.key_phrases}")
-        elif result.kind == "SentimentAnalysis":
-            print(f"Sentiment: {result.sentiment}")
-```
-
-## Async Client
-
-```python
-from azure.ai.textanalytics.aio import TextAnalyticsClient
-from azure.identity.aio import DefaultAzureCredential
-
-async def analyze():
-    async with TextAnalyticsClient(
-        endpoint=endpoint,
-        credential=DefaultAzureCredential()
-    ) as client:
-        result = await client.analyze_sentiment(documents)
-        # Process results...
-```
-
-## Client Types
-
-| Client | Purpose |
-|--------|---------|
-| `TextAnalyticsClient` | All text analytics operations |
-| `TextAnalyticsClient` (aio) | Async version |
-
-## Available Operations
-
-| Method | Description |
-|--------|-------------|
-| `analyze_sentiment` | Sentiment analysis with opinion mining |
-| `recognize_entities` | Named entity recognition |
-| `recognize_pii_entities` | PII detection and redaction |
-| `recognize_linked_entities` | Entity linking to Wikipedia |
-| `extract_key_phrases` | Key phrase extraction |
-| `detect_language` | Language detection |
-| `begin_analyze_healthcare_entities` | Healthcare NLP (long-running) |
-| `begin_analyze_actions` | Multiple analyses in batch |
-
-## Best Practices
-
-1. **Use batch operations** for multiple documents (up to 10 per request)
-2. **Enable opinion mining** for detailed aspect-based sentiment
-3. **Use async client** for high-throughput scenarios
-4. **Handle document errors** — results list may contain errors for some docs
-5. **Specify language** when known to improve accuracy
-6. **Use context manager** or close client explicitly
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "azure-ai-textanalytics-py"
+sections[20]:
+  - "\n"
+  - "# Azure AI Text Analytics SDK for Python\n\nClient library for Azure AI Language service NLP capabilities including sentiment, entities, key phrases, and more.\n\n"
+  - "## Installation\n\n```bash\npip install azure-ai-textanalytics\n```\n\n"
+  - "## Environment Variables\n\n```bash\nAZURE_LANGUAGE_ENDPOINT=https://<resource>.cognitiveservices.azure.com\nAZURE_LANGUAGE_KEY=<your-api-key>  # If using API key\n```\n\n"
+  - "## Authentication\n\n"
+  - "### API Key\n\n```python\nimport os\nfrom azure.core.credentials import AzureKeyCredential\nfrom azure.ai.textanalytics import TextAnalyticsClient\n\nendpoint = os.environ[\"AZURE_LANGUAGE_ENDPOINT\"]\nkey = os.environ[\"AZURE_LANGUAGE_KEY\"]\n\nclient = TextAnalyticsClient(endpoint, AzureKeyCredential(key))\n```\n\n"
+  - "### Entra ID (Recommended)\n\n```python\nfrom azure.ai.textanalytics import TextAnalyticsClient\nfrom azure.identity import DefaultAzureCredential\n\nclient = TextAnalyticsClient(\n    endpoint=os.environ[\"AZURE_LANGUAGE_ENDPOINT\"],\n    credential=DefaultAzureCredential()\n)\n```\n\n"
+  - "## Sentiment Analysis\n\n```python\ndocuments = [\n    \"I had a wonderful trip to Seattle last week!\",\n    \"The food was terrible and the service was slow.\"\n]\n\nresult = client.analyze_sentiment(documents, show_opinion_mining=True)\n\nfor doc in result:\n    if not doc.is_error:\n        print(f\"Sentiment: {doc.sentiment}\")\n        print(f\"Scores: pos={doc.confidence_scores.positive:.2f}, \"\n              f\"neg={doc.confidence_scores.negative:.2f}, \"\n              f\"neu={doc.confidence_scores.neutral:.2f}\")\n        \n        # Opinion mining (aspect-based sentiment)\n        for sentence in doc.sentences:\n            for opinion in sentence.mined_opinions:\n                target = opinion.target\n                print(f\"  Target: '{target.text}' - {target.sentiment}\")\n                for assessment in opinion.assessments:\n                    print(f\"    Assessment: '{assessment.text}' - {assessment.sentiment}\")\n```\n\n"
+  - "## Entity Recognition\n\n```python\ndocuments = [\"Microsoft was founded by Bill Gates and Paul Allen in Albuquerque.\"]\n\nresult = client.recognize_entities(documents)\n\nfor doc in result:\n    if not doc.is_error:\n        for entity in doc.entities:\n            print(f\"Entity: {entity.text}\")\n            print(f\"  Category: {entity.category}\")\n            print(f\"  Subcategory: {entity.subcategory}\")\n            print(f\"  Confidence: {entity.confidence_score:.2f}\")\n```\n\n"
+  - "## PII Detection\n\n```python\ndocuments = [\"My SSN is 123-45-6789 and my email is john@example.com\"]\n\nresult = client.recognize_pii_entities(documents)\n\nfor doc in result:\n    if not doc.is_error:\n        print(f\"Redacted: {doc.redacted_text}\")\n        for entity in doc.entities:\n            print(f\"PII: {entity.text} ({entity.category})\")\n```\n\n"
+  - "## Key Phrase Extraction\n\n```python\ndocuments = [\"Azure AI provides powerful machine learning capabilities for developers.\"]\n\nresult = client.extract_key_phrases(documents)\n\nfor doc in result:\n    if not doc.is_error:\n        print(f\"Key phrases: {doc.key_phrases}\")\n```\n\n"
+  - "## Language Detection\n\n```python\ndocuments = [\"Ce document est en francais.\", \"This is written in English.\"]\n\nresult = client.detect_language(documents)\n\nfor doc in result:\n    if not doc.is_error:\n        print(f\"Language: {doc.primary_language.name} ({doc.primary_language.iso6391_name})\")\n        print(f\"Confidence: {doc.primary_language.confidence_score:.2f}\")\n```\n\n"
+  - "## Healthcare Text Analytics\n\n```python\ndocuments = [\"Patient has diabetes and was prescribed metformin 500mg twice daily.\"]\n\npoller = client.begin_analyze_healthcare_entities(documents)\nresult = poller.result()\n\nfor doc in result:\n    if not doc.is_error:\n        for entity in doc.entities:\n            print(f\"Entity: {entity.text}\")\n            print(f\"  Category: {entity.category}\")\n            print(f\"  Normalized: {entity.normalized_text}\")\n            \n            # Entity links (UMLS, etc.)\n            for link in entity.data_sources:\n                print(f\"  Link: {link.name} - {link.entity_id}\")\n```\n\n"
+  - "## Multiple Analysis (Batch)\n\n```python\nfrom azure.ai.textanalytics import (\n    RecognizeEntitiesAction,\n    ExtractKeyPhrasesAction,\n    AnalyzeSentimentAction\n)\n\ndocuments = [\"Microsoft announced new Azure AI features at Build conference.\"]\n\npoller = client.begin_analyze_actions(\n    documents,\n    actions=[\n        RecognizeEntitiesAction(),\n        ExtractKeyPhrasesAction(),\n        AnalyzeSentimentAction()\n    ]\n)\n\nresults = poller.result()\nfor doc_results in results:\n    for result in doc_results:\n        if result.kind == \"EntityRecognition\":\n            print(f\"Entities: {[e.text for e in result.entities]}\")\n        elif result.kind == \"KeyPhraseExtraction\":\n            print(f\"Key phrases: {result.key_phrases}\")\n        elif result.kind == \"SentimentAnalysis\":\n            print(f\"Sentiment: {result.sentiment}\")\n```\n\n"
+  - "## Async Client\n\n```python\nfrom azure.ai.textanalytics.aio import TextAnalyticsClient\nfrom azure.identity.aio import DefaultAzureCredential\n\nasync def analyze():\n    async with TextAnalyticsClient(\n        endpoint=endpoint,\n        credential=DefaultAzureCredential()\n    ) as client:\n        result = await client.analyze_sentiment(documents)\n        # Process results...\n```\n\n"
+  - "## Client Types\n\n| Client | Purpose |\n|--------|---------|\n| `TextAnalyticsClient` | All text analytics operations |\n| `TextAnalyticsClient` (aio) | Async version |\n\n"
+  - "## Available Operations\n\n| Method | Description |\n|--------|-------------|\n| `analyze_sentiment` | Sentiment analysis with opinion mining |\n| `recognize_entities` | Named entity recognition |\n| `recognize_pii_entities` | PII detection and redaction |\n| `recognize_linked_entities` | Entity linking to Wikipedia |\n| `extract_key_phrases` | Key phrase extraction |\n| `detect_language` | Language detection |\n| `begin_analyze_healthcare_entities` | Healthcare NLP (long-running) |\n| `begin_analyze_actions` | Multiple analyses in batch |\n\n"
+  - "## Best Practices\n\n1. **Use batch operations** for multiple documents (up to 10 per request)\n2. **Enable opinion mining** for detailed aspect-based sentiment\n3. **Use async client** for high-throughput scenarios\n4. **Handle document errors** — results list may contain errors for some docs\n5. **Specify language** when known to improve accuracy\n6. **Use context manager** or close client explicitly\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

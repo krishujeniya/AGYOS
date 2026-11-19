@@ -3,41 +3,13 @@ name: orch-fix-defect
 description: Orchestrate fixing a bug — reproduce it as a failing regression test, fix to green, review, and gated commit — by delegating each phase to the matching ECC agent. Use when existing behavior is broken or wrong.
 metadata:
   origin: ECC
+prompt-source: prompt.toon
 ---
-
-# orch-fix-defect
-
-Actor · action · target: **orch · fix · defect**. Thin wrapper over the shared
-engine in [`orch-pipeline`](../orch-pipeline/SKILL.md).
-
-## When to Use
-
-- Something is **broken**: wrong output, an error, a crash, a regression.
-- Distinguish from siblings:
-  - behavior is correct but you want it different → `orch-change-feature`.
-  - the capability does not exist yet → `orch-add-feature`.
-
-## Operation settings
-
-- **Default size floor:** small (often trivial).
-- **Phase mask:** 0 → (light 2 only if root cause is non-obvious or standard+) →
-  4 → 5 → 6. Research (1) is usually skipped.
-- **First move (phase 4):** reproduce the bug as a **new failing** test
-  (regression test), then fix until it goes green. Proving the bug exists first
-  is what separates a fix from a tweak.
-
-## How It Works
-
-1. Run the `orch-pipeline` engine with the settings above.
-2. If the root cause is unclear, scope it with `code-explorer` before the red
-   test; escalate build breaks to `build-error-resolver` / `/build-fix`.
-3. Stop at **Gate 1** (only if a plan was produced) and **Gate 2** (pre-commit).
-4. Add `security-reviewer` if the defect sits in a security-sensitive path.
-
-## Example
-
-```
-orch-fix-defect: poller crashes on empty NWS response
-→ write failing test reproducing the crash → fix to green
-→ code-review → commit  [GATE 2: confirm]   (commit: fix:)
-```
+skill: "orch-fix-defect"
+sections[6]:
+  - "\n"
+  - "# orch-fix-defect\n\nActor · action · target: **orch · fix · defect**. Thin wrapper over the shared\nengine in [`orch-pipeline`](../orch-pipeline/SKILL.md).\n\n"
+  - "## When to Use\n\n- Something is **broken**: wrong output, an error, a crash, a regression.\n- Distinguish from siblings:\n  - behavior is correct but you want it different → `orch-change-feature`.\n  - the capability does not exist yet → `orch-add-feature`.\n\n"
+  - "## Operation settings\n\n- **Default size floor:** small (often trivial).\n- **Phase mask:** 0 → (light 2 only if root cause is non-obvious or standard+) →\n  4 → 5 → 6. Research (1) is usually skipped.\n- **First move (phase 4):** reproduce the bug as a **new failing** test\n  (regression test), then fix until it goes green. Proving the bug exists first\n  is what separates a fix from a tweak.\n\n"
+  - "## How It Works\n\n1. Run the `orch-pipeline` engine with the settings above.\n2. If the root cause is unclear, scope it with `code-explorer` before the red\n   test; escalate build breaks to `build-error-resolver` / `/build-fix`.\n3. Stop at **Gate 1** (only if a plan was produced) and **Gate 2** (pre-commit).\n4. Add `security-reviewer` if the defect sits in a security-sensitive path.\n\n"
+  - "## Example\n\n```\norch-fix-defect: poller crashes on empty NWS response\n→ write failing test reproducing the crash → fix to green\n→ code-review → commit  [GATE 2: confirm]   (commit: fix:)\n```\n"

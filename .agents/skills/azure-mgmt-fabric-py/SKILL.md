@@ -4,264 +4,29 @@ description: Azure Fabric Management SDK for Python. Use for managing Microsoft 
 risk: unknown
 source: community
 date_added: '2026-02-27'
+prompt-source: prompt.toon
 ---
-
-# Azure Fabric Management SDK for Python
-
-Manage Microsoft Fabric capacities and resources programmatically.
-
-## Installation
-
-```bash
-pip install azure-mgmt-fabric
-pip install azure-identity
-```
-
-## Environment Variables
-
-```bash
-AZURE_SUBSCRIPTION_ID=<your-subscription-id>
-AZURE_RESOURCE_GROUP=<your-resource-group>
-```
-
-## Authentication
-
-```python
-from azure.identity import DefaultAzureCredential
-from azure.mgmt.fabric import FabricMgmtClient
-import os
-
-credential = DefaultAzureCredential()
-client = FabricMgmtClient(
-    credential=credential,
-    subscription_id=os.environ["AZURE_SUBSCRIPTION_ID"]
-)
-```
-
-## Create Fabric Capacity
-
-```python
-from azure.mgmt.fabric import FabricMgmtClient
-from azure.mgmt.fabric.models import FabricCapacity, FabricCapacityProperties, CapacitySku
-from azure.identity import DefaultAzureCredential
-import os
-
-credential = DefaultAzureCredential()
-client = FabricMgmtClient(
-    credential=credential,
-    subscription_id=os.environ["AZURE_SUBSCRIPTION_ID"]
-)
-
-resource_group = os.environ["AZURE_RESOURCE_GROUP"]
-capacity_name = "myfabriccapacity"
-
-capacity = client.fabric_capacities.begin_create_or_update(
-    resource_group_name=resource_group,
-    capacity_name=capacity_name,
-    resource=FabricCapacity(
-        location="eastus",
-        sku=CapacitySku(
-            name="F2",  # Fabric SKU
-            tier="Fabric"
-        ),
-        properties=FabricCapacityProperties(
-            administration=FabricCapacityAdministration(
-                members=["user@contoso.com"]
-            )
-        )
-    )
-).result()
-
-print(f"Capacity created: {capacity.name}")
-```
-
-## Get Capacity Details
-
-```python
-capacity = client.fabric_capacities.get(
-    resource_group_name=resource_group,
-    capacity_name=capacity_name
-)
-
-print(f"Capacity: {capacity.name}")
-print(f"SKU: {capacity.sku.name}")
-print(f"State: {capacity.properties.state}")
-print(f"Location: {capacity.location}")
-```
-
-## List Capacities in Resource Group
-
-```python
-capacities = client.fabric_capacities.list_by_resource_group(
-    resource_group_name=resource_group
-)
-
-for capacity in capacities:
-    print(f"Capacity: {capacity.name} - SKU: {capacity.sku.name}")
-```
-
-## List All Capacities in Subscription
-
-```python
-all_capacities = client.fabric_capacities.list_by_subscription()
-
-for capacity in all_capacities:
-    print(f"Capacity: {capacity.name} in {capacity.location}")
-```
-
-## Update Capacity
-
-```python
-from azure.mgmt.fabric.models import FabricCapacityUpdate, CapacitySku
-
-updated = client.fabric_capacities.begin_update(
-    resource_group_name=resource_group,
-    capacity_name=capacity_name,
-    properties=FabricCapacityUpdate(
-        sku=CapacitySku(
-            name="F4",  # Scale up
-            tier="Fabric"
-        ),
-        tags={"environment": "production"}
-    )
-).result()
-
-print(f"Updated SKU: {updated.sku.name}")
-```
-
-## Suspend Capacity
-
-Pause capacity to stop billing:
-
-```python
-client.fabric_capacities.begin_suspend(
-    resource_group_name=resource_group,
-    capacity_name=capacity_name
-).result()
-
-print("Capacity suspended")
-```
-
-## Resume Capacity
-
-Resume a paused capacity:
-
-```python
-client.fabric_capacities.begin_resume(
-    resource_group_name=resource_group,
-    capacity_name=capacity_name
-).result()
-
-print("Capacity resumed")
-```
-
-## Delete Capacity
-
-```python
-client.fabric_capacities.begin_delete(
-    resource_group_name=resource_group,
-    capacity_name=capacity_name
-).result()
-
-print("Capacity deleted")
-```
-
-## Check Name Availability
-
-```python
-from azure.mgmt.fabric.models import CheckNameAvailabilityRequest
-
-result = client.fabric_capacities.check_name_availability(
-    location="eastus",
-    body=CheckNameAvailabilityRequest(
-        name="my-new-capacity",
-        type="Microsoft.Fabric/capacities"
-    )
-)
-
-if result.name_available:
-    print("Name is available")
-else:
-    print(f"Name not available: {result.reason}")
-```
-
-## List Available SKUs
-
-```python
-skus = client.fabric_capacities.list_skus(
-    resource_group_name=resource_group,
-    capacity_name=capacity_name
-)
-
-for sku in skus:
-    print(f"SKU: {sku.name} - Tier: {sku.tier}")
-```
-
-## Client Operations
-
-| Operation | Method |
-|-----------|--------|
-| `client.fabric_capacities` | Capacity CRUD operations |
-| `client.operations` | List available operations |
-
-## Fabric SKUs
-
-| SKU | Description | CUs |
-|-----|-------------|-----|
-| `F2` | Entry level | 2 Capacity Units |
-| `F4` | Small | 4 Capacity Units |
-| `F8` | Medium | 8 Capacity Units |
-| `F16` | Large | 16 Capacity Units |
-| `F32` | X-Large | 32 Capacity Units |
-| `F64` | 2X-Large | 64 Capacity Units |
-| `F128` | 4X-Large | 128 Capacity Units |
-| `F256` | 8X-Large | 256 Capacity Units |
-| `F512` | 16X-Large | 512 Capacity Units |
-| `F1024` | 32X-Large | 1024 Capacity Units |
-| `F2048` | 64X-Large | 2048 Capacity Units |
-
-## Capacity States
-
-| State | Description |
-|-------|-------------|
-| `Active` | Capacity is running |
-| `Paused` | Capacity is suspended (no billing) |
-| `Provisioning` | Being created |
-| `Updating` | Being modified |
-| `Deleting` | Being removed |
-| `Failed` | Operation failed |
-
-## Long-Running Operations
-
-All mutating operations are long-running (LRO). Use `.result()` to wait:
-
-```python
-# Synchronous wait
-capacity = client.fabric_capacities.begin_create_or_update(...).result()
-
-# Or poll manually
-poller = client.fabric_capacities.begin_create_or_update(...)
-while not poller.done():
-    print(f"Status: {poller.status()}")
-    time.sleep(5)
-capacity = poller.result()
-```
-
-## Best Practices
-
-1. **Use DefaultAzureCredential** for authentication
-2. **Suspend unused capacities** to reduce costs
-3. **Start with smaller SKUs** and scale up as needed
-4. **Use tags** for cost tracking and organization
-5. **Check name availability** before creating capacities
-6. **Handle LRO properly** — don't assume immediate completion
-7. **Set up capacity admins** — specify users who can manage workspaces
-8. **Monitor capacity usage** via Azure Monitor metrics
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "azure-mgmt-fabric-py"
+sections[22]:
+  - "\n"
+  - "# Azure Fabric Management SDK for Python\n\nManage Microsoft Fabric capacities and resources programmatically.\n\n"
+  - "## Installation\n\n```bash\npip install azure-mgmt-fabric\npip install azure-identity\n```\n\n"
+  - "## Environment Variables\n\n```bash\nAZURE_SUBSCRIPTION_ID=<your-subscription-id>\nAZURE_RESOURCE_GROUP=<your-resource-group>\n```\n\n"
+  - "## Authentication\n\n```python\nfrom azure.identity import DefaultAzureCredential\nfrom azure.mgmt.fabric import FabricMgmtClient\nimport os\n\ncredential = DefaultAzureCredential()\nclient = FabricMgmtClient(\n    credential=credential,\n    subscription_id=os.environ[\"AZURE_SUBSCRIPTION_ID\"]\n)\n```\n\n"
+  - "## Create Fabric Capacity\n\n```python\nfrom azure.mgmt.fabric import FabricMgmtClient\nfrom azure.mgmt.fabric.models import FabricCapacity, FabricCapacityProperties, CapacitySku\nfrom azure.identity import DefaultAzureCredential\nimport os\n\ncredential = DefaultAzureCredential()\nclient = FabricMgmtClient(\n    credential=credential,\n    subscription_id=os.environ[\"AZURE_SUBSCRIPTION_ID\"]\n)\n\nresource_group = os.environ[\"AZURE_RESOURCE_GROUP\"]\ncapacity_name = \"myfabriccapacity\"\n\ncapacity = client.fabric_capacities.begin_create_or_update(\n    resource_group_name=resource_group,\n    capacity_name=capacity_name,\n    resource=FabricCapacity(\n        location=\"eastus\",\n        sku=CapacitySku(\n            name=\"F2\",  # Fabric SKU\n            tier=\"Fabric\"\n        ),\n        properties=FabricCapacityProperties(\n            administration=FabricCapacityAdministration(\n                members=[\"user@contoso.com\"]\n            )\n        )\n    )\n).result()\n\nprint(f\"Capacity created: {capacity.name}\")\n```\n\n"
+  - "## Get Capacity Details\n\n```python\ncapacity = client.fabric_capacities.get(\n    resource_group_name=resource_group,\n    capacity_name=capacity_name\n)\n\nprint(f\"Capacity: {capacity.name}\")\nprint(f\"SKU: {capacity.sku.name}\")\nprint(f\"State: {capacity.properties.state}\")\nprint(f\"Location: {capacity.location}\")\n```\n\n"
+  - "## List Capacities in Resource Group\n\n```python\ncapacities = client.fabric_capacities.list_by_resource_group(\n    resource_group_name=resource_group\n)\n\nfor capacity in capacities:\n    print(f\"Capacity: {capacity.name} - SKU: {capacity.sku.name}\")\n```\n\n"
+  - "## List All Capacities in Subscription\n\n```python\nall_capacities = client.fabric_capacities.list_by_subscription()\n\nfor capacity in all_capacities:\n    print(f\"Capacity: {capacity.name} in {capacity.location}\")\n```\n\n"
+  - "## Update Capacity\n\n```python\nfrom azure.mgmt.fabric.models import FabricCapacityUpdate, CapacitySku\n\nupdated = client.fabric_capacities.begin_update(\n    resource_group_name=resource_group,\n    capacity_name=capacity_name,\n    properties=FabricCapacityUpdate(\n        sku=CapacitySku(\n            name=\"F4\",  # Scale up\n            tier=\"Fabric\"\n        ),\n        tags={\"environment\": \"production\"}\n    )\n).result()\n\nprint(f\"Updated SKU: {updated.sku.name}\")\n```\n\n"
+  - "## Suspend Capacity\n\nPause capacity to stop billing:\n\n```python\nclient.fabric_capacities.begin_suspend(\n    resource_group_name=resource_group,\n    capacity_name=capacity_name\n).result()\n\nprint(\"Capacity suspended\")\n```\n\n"
+  - "## Resume Capacity\n\nResume a paused capacity:\n\n```python\nclient.fabric_capacities.begin_resume(\n    resource_group_name=resource_group,\n    capacity_name=capacity_name\n).result()\n\nprint(\"Capacity resumed\")\n```\n\n"
+  - "## Delete Capacity\n\n```python\nclient.fabric_capacities.begin_delete(\n    resource_group_name=resource_group,\n    capacity_name=capacity_name\n).result()\n\nprint(\"Capacity deleted\")\n```\n\n"
+  - "## Check Name Availability\n\n```python\nfrom azure.mgmt.fabric.models import CheckNameAvailabilityRequest\n\nresult = client.fabric_capacities.check_name_availability(\n    location=\"eastus\",\n    body=CheckNameAvailabilityRequest(\n        name=\"my-new-capacity\",\n        type=\"Microsoft.Fabric/capacities\"\n    )\n)\n\nif result.name_available:\n    print(\"Name is available\")\nelse:\n    print(f\"Name not available: {result.reason}\")\n```\n\n"
+  - "## List Available SKUs\n\n```python\nskus = client.fabric_capacities.list_skus(\n    resource_group_name=resource_group,\n    capacity_name=capacity_name\n)\n\nfor sku in skus:\n    print(f\"SKU: {sku.name} - Tier: {sku.tier}\")\n```\n\n"
+  - "## Client Operations\n\n| Operation | Method |\n|-----------|--------|\n| `client.fabric_capacities` | Capacity CRUD operations |\n| `client.operations` | List available operations |\n\n"
+  - "## Fabric SKUs\n\n| SKU | Description | CUs |\n|-----|-------------|-----|\n| `F2` | Entry level | 2 Capacity Units |\n| `F4` | Small | 4 Capacity Units |\n| `F8` | Medium | 8 Capacity Units |\n| `F16` | Large | 16 Capacity Units |\n| `F32` | X-Large | 32 Capacity Units |\n| `F64` | 2X-Large | 64 Capacity Units |\n| `F128` | 4X-Large | 128 Capacity Units |\n| `F256` | 8X-Large | 256 Capacity Units |\n| `F512` | 16X-Large | 512 Capacity Units |\n| `F1024` | 32X-Large | 1024 Capacity Units |\n| `F2048` | 64X-Large | 2048 Capacity Units |\n\n"
+  - "## Capacity States\n\n| State | Description |\n|-------|-------------|\n| `Active` | Capacity is running |\n| `Paused` | Capacity is suspended (no billing) |\n| `Provisioning` | Being created |\n| `Updating` | Being modified |\n| `Deleting` | Being removed |\n| `Failed` | Operation failed |\n\n"
+  - "## Long-Running Operations\n\nAll mutating operations are long-running (LRO). Use `.result()` to wait:\n\n```python\n# Synchronous wait\ncapacity = client.fabric_capacities.begin_create_or_update(...).result()\n\n# Or poll manually\npoller = client.fabric_capacities.begin_create_or_update(...)\nwhile not poller.done():\n    print(f\"Status: {poller.status()}\")\n    time.sleep(5)\ncapacity = poller.result()\n```\n\n"
+  - "## Best Practices\n\n1. **Use DefaultAzureCredential** for authentication\n2. **Suspend unused capacities** to reduce costs\n3. **Start with smaller SKUs** and scale up as needed\n4. **Use tags** for cost tracking and organization\n5. **Check name availability** before creating capacities\n6. **Handle LRO properly** — don't assume immediate completion\n7. **Set up capacity admins** — specify users who can manage workspaces\n8. **Monitor capacity usage** via Azure Monitor metrics\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

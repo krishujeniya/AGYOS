@@ -4,116 +4,19 @@ description: "Expert guide for Unreal Engine 5.x C++ development, covering UObje
 risk: safe
 source: self
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Unreal Engine C++ Pro
-
-This skill provides expert-level guidelines for developing with Unreal Engine 5 using C++. It focuses on writing robust, performant, and standard-compliant code.
-
-## When to Use
-Use this skill when:
-- Developing C++ code for Unreal Engine 5.x projects
-- Writing Actors, Components, or UObject-derived classes
-- Optimizing performance-critical code in Unreal Engine
-- Debugging memory leaks or garbage collection issues
-- Implementing Blueprint-exposed functionality
-- Following Epic Games' coding standards and conventions
-- Working with Unreal's reflection system (UCLASS, USTRUCT, UFUNCTION)
-- Managing asset loading and soft references
-
-Do not use this skill when:
-- Working with Blueprint-only projects (no C++ code)
-- Developing for Unreal Engine versions prior to 5.x
-- Working on non-Unreal game engines
-- The task is unrelated to Unreal Engine development
-
-## Core Principles
-
-1.  **UObject & Garbage Collection**:
-    *   Always use `UPROPERTY()` for `UObject*` member variables to ensure they are tracked by the Garbage Collector (GC).
-    *   Use `TStrongObjectPtr<>` if you need to keep a root reference outside of a UObject graph, but prefer `addToRoot()` generally.
-    *   Understand the `IsValid()` check vs `nullptr`. `IsValid()` handles pending kill state safely.
-
-2.  **Unreal Reflection System**:
-    *   Use `UCLASS()`, `USTRUCT()`, `UENUM()`, `UFUNCTION()` to expose types to the reflection system and Blueprints.
-    *   Minimize `BlueprintReadWrite` when possible; prefer `BlueprintReadOnly` for state that shouldn't be trampled by logic in UI/Level BPs.
-
-3.  **Performance First**:
-    *   **Tick**: Disable Ticking (`bCanEverTick = false`) by default. Only enable it if absolutely necessary. Prefer timers (`GetWorldTimerManager()`) or event-driven logic.
-    *   **Casting**: Avoid `Cast<T>()` in hot loops. Cache references in `BeginPlay`.
-    *   **Structs vs Classes**: Use `F` structs for data-heavy, non-UObject types to reduce overhead.
-
-## Naming Conventions (Strict)
-
-Follow Epic Games' coding standard:
-
-*   **Templates**: Prefix with `T` (e.g., `TArray`, `TMap`).
-*   **UObject**: Prefix with `U` (e.g., `UCharacterMovementComponent`).
-*   **AActor**: Prefix with `A` (e.g., `AMyGameMode`).
-*   **SWidget**: Prefix with `S` (Slate widgets).
-*   **Structs**: Prefix with `F` (e.g., `FVector`).
-*   **Enums**: Prefix with `E` (e.g., `EWeaponState`).
-*   **Interfaces**: Prefix with `I` (e.g., `IInteractable`).
-*   **Booleans**: Prefix with `b` (e.g., `bIsDead`).
-
-## Common Patterns
-
-### 1. Robust Component Lookup
-Avoid `GetComponentByClass` in `Tick`. Do it in `PostInitializeComponents` or `BeginPlay`.
-
-```cpp
-void AMyCharacter::PostInitializeComponents() {
-    Super::PostInitializeComponents();
-    HealthComp = FindComponentByClass<UHealthComponent>();
-    check(HealthComp); // Fail hard in dev if missing
-}
-```
-
-### 2. Interface Implementation
-Use interfaces to decouple systems (e.g., Interaction system).
-
-```cpp
-// Interface call check
-if (TargetActor->Implements<UInteractable>()) {
-    IInteractable::Execute_OnInteract(TargetActor, this);
-}
-```
-
-### 3. Async Loading (Soft References)
-Avoid hard references (`UPROPERTY(EditDefaultsOnly) TSubclassOf<AActor>`) for massive assets which force load orders. Use `TSoftClassPtr` or `TSoftObjectPtr`.
-
-```cpp
-UPROPERTY(EditAnywhere, BlueprintReadWrite)
-TSoftClassPtr<AWeapon> WeaponClassToLoad;
-
-void AMyCharacter::Equip() {
-    if (WeaponClassToLoad.IsPending()) {
-        WeaponClassToLoad.LoadSynchronous(); // Or use StreamableManager for async
-    }
-}
-```
-
-## Debugging
-
-*   **Logging**: Use `UE_LOG` with custom categories.
-    ```cpp
-    DEFINE_LOG_CATEGORY_STATIC(LogMyGame, Log, All);
-    UE_LOG(LogMyGame, Warning, TEXT("Health is low: %f"), CurrentHealth);
-    ```
-*   **Screen Messages**:
-    ```cpp
-    if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Died!"));
-    ```
-*   **Visual Logger**: extremely useful for AI debugging. Implement `IVisualLoggerDebugSnapshotInterface`.
-
-## Checklist before PR
-
-- [ ] Does this Actor need to Tick? Can it be a Timer?
-- [ ] Are all `UObject*` members wrapped in `UPROPERTY`?
-- [ ] Are hard references (TSubclassOf) causing load chains? Can they be Soft Ptrs?
-- [ ] Did you clean up verified delegates in `EndPlay`?
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "unreal-engine-cpp-pro"
+sections[12]:
+  - "\n"
+  - "# Unreal Engine C++ Pro\n\nThis skill provides expert-level guidelines for developing with Unreal Engine 5 using C++. It focuses on writing robust, performant, and standard-compliant code.\n\n"
+  - "## When to Use\nUse this skill when:\n- Developing C++ code for Unreal Engine 5.x projects\n- Writing Actors, Components, or UObject-derived classes\n- Optimizing performance-critical code in Unreal Engine\n- Debugging memory leaks or garbage collection issues\n- Implementing Blueprint-exposed functionality\n- Following Epic Games' coding standards and conventions\n- Working with Unreal's reflection system (UCLASS, USTRUCT, UFUNCTION)\n- Managing asset loading and soft references\n\nDo not use this skill when:\n- Working with Blueprint-only projects (no C++ code)\n- Developing for Unreal Engine versions prior to 5.x\n- Working on non-Unreal game engines\n- The task is unrelated to Unreal Engine development\n\n"
+  - "## Core Principles\n\n1.  **UObject & Garbage Collection**:\n    *   Always use `UPROPERTY()` for `UObject*` member variables to ensure they are tracked by the Garbage Collector (GC).\n    *   Use `TStrongObjectPtr<>` if you need to keep a root reference outside of a UObject graph, but prefer `addToRoot()` generally.\n    *   Understand the `IsValid()` check vs `nullptr`. `IsValid()` handles pending kill state safely.\n\n2.  **Unreal Reflection System**:\n    *   Use `UCLASS()`, `USTRUCT()`, `UENUM()`, `UFUNCTION()` to expose types to the reflection system and Blueprints.\n    *   Minimize `BlueprintReadWrite` when possible; prefer `BlueprintReadOnly` for state that shouldn't be trampled by logic in UI/Level BPs.\n\n3.  **Performance First**:\n    *   **Tick**: Disable Ticking (`bCanEverTick = false`) by default. Only enable it if absolutely necessary. Prefer timers (`GetWorldTimerManager()`) or event-driven logic.\n    *   **Casting**: Avoid `Cast<T>()` in hot loops. Cache references in `BeginPlay`.\n    *   **Structs vs Classes**: Use `F` structs for data-heavy, non-UObject types to reduce overhead.\n\n"
+  - "## Naming Conventions (Strict)\n\nFollow Epic Games' coding standard:\n\n*   **Templates**: Prefix with `T` (e.g., `TArray`, `TMap`).\n*   **UObject**: Prefix with `U` (e.g., `UCharacterMovementComponent`).\n*   **AActor**: Prefix with `A` (e.g., `AMyGameMode`).\n*   **SWidget**: Prefix with `S` (Slate widgets).\n*   **Structs**: Prefix with `F` (e.g., `FVector`).\n*   **Enums**: Prefix with `E` (e.g., `EWeaponState`).\n*   **Interfaces**: Prefix with `I` (e.g., `IInteractable`).\n*   **Booleans**: Prefix with `b` (e.g., `bIsDead`).\n\n"
+  - "## Common Patterns\n\n"
+  - "### 1. Robust Component Lookup\nAvoid `GetComponentByClass` in `Tick`. Do it in `PostInitializeComponents` or `BeginPlay`.\n\n```cpp\nvoid AMyCharacter::PostInitializeComponents() {\n    Super::PostInitializeComponents();\n    HealthComp = FindComponentByClass<UHealthComponent>();\n    check(HealthComp); // Fail hard in dev if missing\n}\n```\n\n"
+  - "### 2. Interface Implementation\nUse interfaces to decouple systems (e.g., Interaction system).\n\n```cpp\n// Interface call check\nif (TargetActor->Implements<UInteractable>()) {\n    IInteractable::Execute_OnInteract(TargetActor, this);\n}\n```\n\n"
+  - "### 3. Async Loading (Soft References)\nAvoid hard references (`UPROPERTY(EditDefaultsOnly) TSubclassOf<AActor>`) for massive assets which force load orders. Use `TSoftClassPtr` or `TSoftObjectPtr`.\n\n```cpp\nUPROPERTY(EditAnywhere, BlueprintReadWrite)\nTSoftClassPtr<AWeapon> WeaponClassToLoad;\n\nvoid AMyCharacter::Equip() {\n    if (WeaponClassToLoad.IsPending()) {\n        WeaponClassToLoad.LoadSynchronous(); // Or use StreamableManager for async\n    }\n}\n```\n\n"
+  - "## Debugging\n\n*   **Logging**: Use `UE_LOG` with custom categories.\n    ```cpp\n    DEFINE_LOG_CATEGORY_STATIC(LogMyGame, Log, All);\n    UE_LOG(LogMyGame, Warning, TEXT(\"Health is low: %f\"), CurrentHealth);\n    ```\n*   **Screen Messages**:\n    ```cpp\n    if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT(\"Died!\"));\n    ```\n*   **Visual Logger**: extremely useful for AI debugging. Implement `IVisualLoggerDebugSnapshotInterface`.\n\n"
+  - "## Checklist before PR\n\n- [ ] Does this Actor need to Tick? Can it be a Timer?\n- [ ] Are all `UObject*` members wrapped in `UPROPERTY`?\n- [ ] Are hard references (TSubclassOf) causing load chains? Can they be Soft Ptrs?\n- [ ] Did you clean up verified delegates in `EndPlay`?\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

@@ -4,42 +4,14 @@ description: "Implement comprehensive testing strategies with pytest, fixtures, 
 risk: safe
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Python Testing Patterns
-
-Comprehensive guide to implementing robust testing strategies in Python using pytest, fixtures, mocking, parameterization, and test-driven development practices.
-
-## Use this skill when
-
-- Writing unit tests for Python code
-- Setting up test suites and test infrastructure
-- Implementing test-driven development (TDD)
-- Creating integration tests for APIs and services
-- Mocking external dependencies and services
-- Testing async code and concurrent operations
-- Setting up continuous testing in CI/CD
-- Implementing property-based testing
-- Testing database operations
-- Debugging failing tests
-
-## Do not use this skill when
-
-- The task is unrelated to python testing patterns
-- You need a different domain or tool outside this scope
-
-## Instructions
-
-- Clarify goals, constraints, and required inputs.
-- Apply relevant best practices and validate outcomes.
-- Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
-
-## Resources
-
-- `resources/implementation-playbook.md` for detailed patterns and examples.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "python-testing-patterns"
+sections[7]:
+  - "\n"
+  - "# Python Testing Patterns\n\nComprehensive guide to implementing robust testing strategies in Python using pytest, fixtures, mocking, parameterization, and test-driven development practices.\n\n"
+  - "## Use this skill when\n\n- Writing unit tests for Python code\n- Setting up test suites and test infrastructure\n- Implementing test-driven development (TDD)\n- Creating integration tests for APIs and services\n- Mocking external dependencies and services\n- Testing async code and concurrent operations\n- Setting up continuous testing in CI/CD\n- Implementing property-based testing\n- Testing database operations\n- Debugging failing tests\n\n"
+  - "## Do not use this skill when\n\n- The task is unrelated to python testing patterns\n- You need a different domain or tool outside this scope\n\n"
+  - "## Instructions\n\n- Clarify goals, constraints, and required inputs.\n- Apply relevant best practices and validate outcomes.\n- Provide actionable steps and verification.\n- If detailed examples are required, open `resources/implementation-playbook.md`.\n\n"
+  - "## Resources\n\n- `resources/implementation-playbook.md` for detailed patterns and examples.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

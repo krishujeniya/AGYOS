@@ -5,261 +5,53 @@ category: workflow-bundle
 risk: safe
 source: personal
 date_added: '2026-02-27'
+prompt-source: prompt.toon
 ---
-
-# Documentation Workflow Bundle
-
-## Overview
-
-Comprehensive documentation workflow for generating API documentation, architecture documentation, README files, code comments, and technical content from codebases.
-
-## When to Use This Workflow
-
-Use this workflow when:
-- Creating project documentation
-- Generating API documentation
-- Writing architecture docs
-- Documenting code
-- Creating user guides
-- Maintaining wikis
-
-## Workflow Phases
-
-### Phase 1: Documentation Planning
-
-#### Skills to Invoke
-- `docs-architect` - Documentation architecture
-- `documentation-templates` - Documentation templates
-
-#### Actions
-1. Identify documentation needs
-2. Choose documentation tools
-3. Plan documentation structure
-4. Define style guidelines
-5. Set up documentation site
-
-#### Copy-Paste Prompts
-```
-Use @docs-architect to plan documentation structure
-```
-
-```
-Use @documentation-templates to set up documentation
-```
-
-### Phase 2: API Documentation
-
-#### Skills to Invoke
-- `api-documenter` - API documentation
-- `api-documentation-generator` - Auto-generation
-- `openapi-spec-generation` - OpenAPI specs
-
-#### Actions
-1. Extract API endpoints
-2. Generate OpenAPI specs
-3. Create API reference
-4. Add usage examples
-5. Set up auto-generation
-
-#### Copy-Paste Prompts
-```
-Use @api-documenter to generate API documentation
-```
-
-```
-Use @openapi-spec-generation to create OpenAPI specs
-```
-
-### Phase 3: Architecture Documentation
-
-#### Skills to Invoke
-- `c4-architecture-c4-architecture` - C4 architecture
-- `c4-context` - Context diagrams
-- `c4-container` - Container diagrams
-- `c4-component` - Component diagrams
-- `c4-code` - Code diagrams
-- `mermaid-expert` - Mermaid diagrams
-
-#### Actions
-1. Create C4 diagrams
-2. Document architecture
-3. Generate sequence diagrams
-4. Document data flows
-5. Create deployment docs
-
-#### Copy-Paste Prompts
-```
-Use @c4-architecture-c4-architecture to create C4 diagrams
-```
-
-```
-Use @mermaid-expert to create architecture diagrams
-```
-
-### Phase 4: Code Documentation
-
-#### Skills to Invoke
-- `code-documentation-code-explain` - Code explanation
-- `code-documentation-doc-generate` - Doc generation
-- `documentation-generation-doc-generate` - Auto-generation
-
-#### Actions
-1. Extract code comments
-2. Generate JSDoc/TSDoc
-3. Create type documentation
-4. Document functions
-5. Add usage examples
-
-#### Copy-Paste Prompts
-```
-Use @code-documentation-code-explain to explain code
-```
-
-```
-Use @code-documentation-doc-generate to generate docs
-```
-
-### Phase 5: README and Getting Started
-
-#### Skills to Invoke
-- `readme` - README generation
-- `environment-setup-guide` - Setup guides
-- `tutorial-engineer` - Tutorial creation
-
-#### Actions
-1. Create README
-2. Write getting started guide
-3. Document installation
-4. Add usage examples
-5. Create troubleshooting guide
-
-#### Copy-Paste Prompts
-```
-Use @readme to create project README
-```
-
-```
-Use @tutorial-engineer to create tutorials
-```
-
-### Phase 6: Wiki and Knowledge Base
-
-#### Skills to Invoke
-- `wiki-architect` - Wiki architecture
-- `wiki-page-writer` - Wiki pages
-- `wiki-onboarding` - Onboarding docs
-- `wiki-qa` - Wiki Q&A
-- `wiki-researcher` - Wiki research
-- `wiki-vitepress` - VitePress wiki
-
-#### Actions
-1. Design wiki structure
-2. Create wiki pages
-3. Write onboarding guides
-4. Document processes
-5. Set up wiki site
-
-#### Copy-Paste Prompts
-```
-Use @wiki-architect to design wiki structure
-```
-
-```
-Use @wiki-page-writer to create wiki pages
-```
-
-```
-Use @wiki-onboarding to create onboarding docs
-```
-
-### Phase 7: Changelog and Release Notes
-
-#### Skills to Invoke
-- `changelog-automation` - Changelog generation
-- `wiki-changelog` - Changelog from git
-
-#### Actions
-1. Extract commit history
-2. Categorize changes
-3. Generate changelog
-4. Create release notes
-5. Publish updates
-
-#### Copy-Paste Prompts
-```
-Use @changelog-automation to generate changelog
-```
-
-```
-Use @wiki-changelog to create release notes
-```
-
-### Phase 8: Documentation Maintenance
-
-#### Skills to Invoke
-- `doc-coauthoring` - Collaborative writing
-- `reference-builder` - Reference docs
-
-#### Actions
-1. Review documentation
-2. Update outdated content
-3. Fix broken links
-4. Add new features
-5. Gather feedback
-
-#### Copy-Paste Prompts
-```
-Use @doc-coauthoring to collaborate on docs
-```
-
-## Documentation Types
-
-### Code-Level
-- JSDoc/TSDoc comments
-- Function documentation
-- Type definitions
-- Example code
-
-### API Documentation
-- Endpoint reference
-- Request/response schemas
-- Authentication guides
-- SDK documentation
-
-### Architecture Documentation
-- System overview
-- Component diagrams
-- Data flow diagrams
-- Deployment architecture
-
-### User Documentation
-- Getting started guides
-- User manuals
-- Tutorials
-- FAQs
-
-### Process Documentation
-- Runbooks
-- Onboarding guides
-- SOPs
-- Decision records
-
-## Quality Gates
-
-- [ ] All APIs documented
-- [ ] Architecture diagrams current
-- [ ] README up to date
-- [ ] Code comments helpful
-- [ ] Examples working
-- [ ] Links valid
-
-## Related Workflow Bundles
-
-- `development` - Development workflow
-- `testing-qa` - Documentation testing
-- `ai-ml` - AI documentation
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "technical-documentation-writer"
+sections[46]:
+  - "\n"
+  - "# Documentation Workflow Bundle\n\n"
+  - "## Overview\n\nComprehensive documentation workflow for generating API documentation, architecture documentation, README files, code comments, and technical content from codebases.\n\n"
+  - "## When to Use This Workflow\n\nUse this workflow when:\n- Creating project documentation\n- Generating API documentation\n- Writing architecture docs\n- Documenting code\n- Creating user guides\n- Maintaining wikis\n\n"
+  - "## Workflow Phases\n\n"
+  - "### Phase 1: Documentation Planning\n\n"
+  - "#### Skills to Invoke\n- `docs-architect` - Documentation architecture\n- `documentation-templates` - Documentation templates\n\n"
+  - "#### Actions\n1. Identify documentation needs\n2. Choose documentation tools\n3. Plan documentation structure\n4. Define style guidelines\n5. Set up documentation site\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @docs-architect to plan documentation structure\n```\n\n```\nUse @documentation-templates to set up documentation\n```\n\n"
+  - "### Phase 2: API Documentation\n\n"
+  - "#### Skills to Invoke\n- `api-documenter` - API documentation\n- `api-documentation-generator` - Auto-generation\n- `openapi-spec-generation` - OpenAPI specs\n\n"
+  - "#### Actions\n1. Extract API endpoints\n2. Generate OpenAPI specs\n3. Create API reference\n4. Add usage examples\n5. Set up auto-generation\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @api-documenter to generate API documentation\n```\n\n```\nUse @openapi-spec-generation to create OpenAPI specs\n```\n\n"
+  - "### Phase 3: Architecture Documentation\n\n"
+  - "#### Skills to Invoke\n- `c4-architecture-c4-architecture` - C4 architecture\n- `c4-context` - Context diagrams\n- `c4-container` - Container diagrams\n- `c4-component` - Component diagrams\n- `c4-code` - Code diagrams\n- `mermaid-expert` - Mermaid diagrams\n\n"
+  - "#### Actions\n1. Create C4 diagrams\n2. Document architecture\n3. Generate sequence diagrams\n4. Document data flows\n5. Create deployment docs\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @c4-architecture-c4-architecture to create C4 diagrams\n```\n\n```\nUse @mermaid-expert to create architecture diagrams\n```\n\n"
+  - "### Phase 4: Code Documentation\n\n"
+  - "#### Skills to Invoke\n- `code-documentation-code-explain` - Code explanation\n- `code-documentation-doc-generate` - Doc generation\n- `documentation-generation-doc-generate` - Auto-generation\n\n"
+  - "#### Actions\n1. Extract code comments\n2. Generate JSDoc/TSDoc\n3. Create type documentation\n4. Document functions\n5. Add usage examples\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @code-documentation-code-explain to explain code\n```\n\n```\nUse @code-documentation-doc-generate to generate docs\n```\n\n"
+  - "### Phase 5: README and Getting Started\n\n"
+  - "#### Skills to Invoke\n- `readme` - README generation\n- `environment-setup-guide` - Setup guides\n- `tutorial-engineer` - Tutorial creation\n\n"
+  - "#### Actions\n1. Create README\n2. Write getting started guide\n3. Document installation\n4. Add usage examples\n5. Create troubleshooting guide\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @readme to create project README\n```\n\n```\nUse @tutorial-engineer to create tutorials\n```\n\n"
+  - "### Phase 6: Wiki and Knowledge Base\n\n"
+  - "#### Skills to Invoke\n- `wiki-architect` - Wiki architecture\n- `wiki-page-writer` - Wiki pages\n- `wiki-onboarding` - Onboarding docs\n- `wiki-qa` - Wiki Q&A\n- `wiki-researcher` - Wiki research\n- `wiki-vitepress` - VitePress wiki\n\n"
+  - "#### Actions\n1. Design wiki structure\n2. Create wiki pages\n3. Write onboarding guides\n4. Document processes\n5. Set up wiki site\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @wiki-architect to design wiki structure\n```\n\n```\nUse @wiki-page-writer to create wiki pages\n```\n\n```\nUse @wiki-onboarding to create onboarding docs\n```\n\n"
+  - "### Phase 7: Changelog and Release Notes\n\n"
+  - "#### Skills to Invoke\n- `changelog-automation` - Changelog generation\n- `wiki-changelog` - Changelog from git\n\n"
+  - "#### Actions\n1. Extract commit history\n2. Categorize changes\n3. Generate changelog\n4. Create release notes\n5. Publish updates\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @changelog-automation to generate changelog\n```\n\n```\nUse @wiki-changelog to create release notes\n```\n\n"
+  - "### Phase 8: Documentation Maintenance\n\n"
+  - "#### Skills to Invoke\n- `doc-coauthoring` - Collaborative writing\n- `reference-builder` - Reference docs\n\n"
+  - "#### Actions\n1. Review documentation\n2. Update outdated content\n3. Fix broken links\n4. Add new features\n5. Gather feedback\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @doc-coauthoring to collaborate on docs\n```\n\n"
+  - "## Documentation Types\n\n"
+  - "### Code-Level\n- JSDoc/TSDoc comments\n- Function documentation\n- Type definitions\n- Example code\n\n"
+  - "### API Documentation\n- Endpoint reference\n- Request/response schemas\n- Authentication guides\n- SDK documentation\n\n"
+  - "### Architecture Documentation\n- System overview\n- Component diagrams\n- Data flow diagrams\n- Deployment architecture\n\n"
+  - "### User Documentation\n- Getting started guides\n- User manuals\n- Tutorials\n- FAQs\n\n"
+  - "### Process Documentation\n- Runbooks\n- Onboarding guides\n- SOPs\n- Decision records\n\n"
+  - "## Quality Gates\n\n- [ ] All APIs documented\n- [ ] Architecture diagrams current\n- [ ] README up to date\n- [ ] Code comments helpful\n- [ ] Examples working\n- [ ] Links valid\n\n"
+  - "## Related Workflow Bundles\n\n- `development` - Development workflow\n- `testing-qa` - Documentation testing\n- `ai-ml` - AI documentation\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

@@ -5,35 +5,12 @@ metadata:
   author: vercel
   version: "1.0.0"
   argument-hint: <file-or-pattern>
+prompt-source: prompt.toon
 ---
-
-# Web Interface Guidelines
-
-Review files for compliance with Web Interface Guidelines.
-
-## How It Works
-
-1. Fetch the latest guidelines from the source URL below
-2. Read the specified files (or prompt user for files/pattern)
-3. Check against all rules in the fetched guidelines
-4. Output findings in the terse `file:line` format
-
-## Guidelines Source
-
-Fetch fresh guidelines before each review:
-
-```
-https://raw.githubusercontent.com/vercel-labs/web-interface-guidelines/main/command.md
-```
-
-Use WebFetch to retrieve the latest rules. The fetched content contains all the rules and output format instructions.
-
-## Usage
-
-When a user provides a file or pattern argument:
-1. Fetch guidelines from the source URL above
-2. Read the specified files
-3. Apply all rules from the fetched guidelines
-4. Output findings using the format specified in the guidelines
-
-If no files specified, ask the user which files to review.
+skill: "web-design-guidelines"
+sections[5]:
+  - "\n"
+  - "# Web Interface Guidelines\n\nReview files for compliance with Web Interface Guidelines.\n\n"
+  - "## How It Works\n\n1. Fetch the latest guidelines from the source URL below\n2. Read the specified files (or prompt user for files/pattern)\n3. Check against all rules in the fetched guidelines\n4. Output findings in the terse `file:line` format\n\n"
+  - "## Guidelines Source\n\nFetch fresh guidelines before each review:\n\n```\nhttps://raw.githubusercontent.com/vercel-labs/web-interface-guidelines/main/command.md\n```\n\nUse WebFetch to retrieve the latest rules. The fetched content contains all the rules and output format instructions.\n\n"
+  - "## Usage\n\nWhen a user provides a file or pattern argument:\n1. Fetch guidelines from the source URL above\n2. Read the specified files\n3. Apply all rules from the fetched guidelines\n4. Output findings using the format specified in the guidelines\n\nIf no files specified, ask the user which files to review.\n"

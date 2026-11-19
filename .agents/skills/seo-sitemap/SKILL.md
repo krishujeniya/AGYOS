@@ -16,118 +16,26 @@ allowed-tools:
   - Bash
   - WebFetch
   - Write
+prompt-source: prompt.toon
 ---
-
-# Sitemap Analysis & Generation
-
-## When to Use
-- Use when analyzing an existing XML sitemap or generating a new one.
-- Use when the user mentions sitemap issues, sitemap generation, or sitemap validation.
-- Use when checking URL coverage, sitemap limits, and sitemap quality rules.
-
-## Mode 1: Analyze Existing Sitemap
-
-### Validation Checks
-- Valid XML format
-- URL count <50,000 per file (protocol limit)
-- All URLs return HTTP 200
-- `<lastmod>` dates are accurate (not all identical)
-- No deprecated tags: `<priority>` and `<changefreq>` are ignored by Google
-- Sitemap referenced in robots.txt
-- Compare crawled pages vs sitemap; flag missing pages
-
-### Quality Signals
-- Sitemap index file if >50k URLs
-- Split by content type (pages, posts, images, videos)
-- No non-canonical URLs in sitemap
-- No noindexed URLs in sitemap
-- No redirected URLs in sitemap
-- HTTPS URLs only (no HTTP)
-
-### Common Issues
-| Issue | Severity | Fix |
-|-------|----------|-----|
-| >50k URLs in single file | Critical | Split with sitemap index |
-| Non-200 URLs | High | Remove or fix broken URLs |
-| Noindexed URLs included | High | Remove from sitemap |
-| Redirected URLs included | Medium | Update to final URLs |
-| All identical lastmod | Low | Use actual modification dates |
-| Priority/changefreq used | Info | Can remove (ignored by Google) |
-
-## Mode 2: Generate New Sitemap
-
-### Process
-1. Ask for business type (or auto-detect from existing site)
-2. Load industry template from `../seo-plan/assets/` directory
-3. Interactive structure planning with user
-4. Apply quality gates:
-   - ⚠️ WARNING at 30+ location pages (require 60%+ unique content)
-   - 🛑 HARD STOP at 50+ location pages (require justification)
-5. Generate valid XML output
-6. Split at 50k URLs with sitemap index
-7. Generate STRUCTURE.md documentation
-
-### Safe Programmatic Pages (OK at scale)
-✅ Integration pages (with real setup docs)
-✅ Template/tool pages (with downloadable content)
-✅ Glossary pages (200+ word definitions)
-✅ Product pages (unique specs, reviews)
-✅ User profile pages (user-generated content)
-
-### Penalty Risk (avoid at scale)
-❌ Location pages with only city name swapped
-❌ "Best [tool] for [industry]" without industry-specific value
-❌ "[Competitor] alternative" without real comparison data
-❌ AI-generated pages without human review and unique value
-
-## Sitemap Format
-
-### Standard Sitemap
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://example.com/page</loc>
-    <lastmod>2026-02-07</lastmod>
-  </url>
-</urlset>
-```
-
-### Sitemap Index (for >50k URLs)
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <sitemap>
-    <loc>https://example.com/sitemap-pages.xml</loc>
-    <lastmod>2026-02-07</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://example.com/sitemap-posts.xml</loc>
-    <lastmod>2026-02-07</lastmod>
-  </sitemap>
-</sitemapindex>
-```
-
-## Error Handling
-
-- **URL unreachable**: Report the HTTP status code and suggest checking if the site is live
-- **No sitemap found**: Check common locations (/sitemap.xml, /sitemap_index.xml, robots.txt reference) before reporting "not found"
-- **Invalid XML format**: Report specific parsing errors with line numbers
-- **Rate limiting detected**: Back off and report partial results with a note about retry timing
-
-## Output
-
-### For Analysis
-- `VALIDATION-REPORT.md`: analysis results
-- Issues list with severity
-- Recommendations
-
-### For Generation
-- `sitemap.xml` (or split files with index)
-- `STRUCTURE.md`: site architecture documentation
-- URL count and organization summary
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "seo-sitemap"
+sections[19]:
+  - "\n"
+  - "# Sitemap Analysis & Generation\n\n"
+  - "## When to Use\n- Use when analyzing an existing XML sitemap or generating a new one.\n- Use when the user mentions sitemap issues, sitemap generation, or sitemap validation.\n- Use when checking URL coverage, sitemap limits, and sitemap quality rules.\n\n"
+  - "## Mode 1: Analyze Existing Sitemap\n\n"
+  - "### Validation Checks\n- Valid XML format\n- URL count <50,000 per file (protocol limit)\n- All URLs return HTTP 200\n- `<lastmod>` dates are accurate (not all identical)\n- No deprecated tags: `<priority>` and `<changefreq>` are ignored by Google\n- Sitemap referenced in robots.txt\n- Compare crawled pages vs sitemap; flag missing pages\n\n"
+  - "### Quality Signals\n- Sitemap index file if >50k URLs\n- Split by content type (pages, posts, images, videos)\n- No non-canonical URLs in sitemap\n- No noindexed URLs in sitemap\n- No redirected URLs in sitemap\n- HTTPS URLs only (no HTTP)\n\n"
+  - "### Common Issues\n| Issue | Severity | Fix |\n|-------|----------|-----|\n| >50k URLs in single file | Critical | Split with sitemap index |\n| Non-200 URLs | High | Remove or fix broken URLs |\n| Noindexed URLs included | High | Remove from sitemap |\n| Redirected URLs included | Medium | Update to final URLs |\n| All identical lastmod | Low | Use actual modification dates |\n| Priority/changefreq used | Info | Can remove (ignored by Google) |\n\n"
+  - "## Mode 2: Generate New Sitemap\n\n"
+  - "### Process\n1. Ask for business type (or auto-detect from existing site)\n2. Load industry template from `../seo-plan/assets/` directory\n3. Interactive structure planning with user\n4. Apply quality gates:\n   - ⚠️ WARNING at 30+ location pages (require 60%+ unique content)\n   - 🛑 HARD STOP at 50+ location pages (require justification)\n5. Generate valid XML output\n6. Split at 50k URLs with sitemap index\n7. Generate STRUCTURE.md documentation\n\n"
+  - "### Safe Programmatic Pages (OK at scale)\n✅ Integration pages (with real setup docs)\n✅ Template/tool pages (with downloadable content)\n✅ Glossary pages (200+ word definitions)\n✅ Product pages (unique specs, reviews)\n✅ User profile pages (user-generated content)\n\n"
+  - "### Penalty Risk (avoid at scale)\n❌ Location pages with only city name swapped\n❌ \"Best [tool] for [industry]\" without industry-specific value\n❌ \"[Competitor] alternative\" without real comparison data\n❌ AI-generated pages without human review and unique value\n\n"
+  - "## Sitemap Format\n\n"
+  - "### Standard Sitemap\n```xml\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n  <url>\n    <loc>https://example.com/page</loc>\n    <lastmod>2026-02-07</lastmod>\n  </url>\n</urlset>\n```\n\n"
+  - "### Sitemap Index (for >50k URLs)\n```xml\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n  <sitemap>\n    <loc>https://example.com/sitemap-pages.xml</loc>\n    <lastmod>2026-02-07</lastmod>\n  </sitemap>\n  <sitemap>\n    <loc>https://example.com/sitemap-posts.xml</loc>\n    <lastmod>2026-02-07</lastmod>\n  </sitemap>\n</sitemapindex>\n```\n\n"
+  - "## Error Handling\n\n- **URL unreachable**: Report the HTTP status code and suggest checking if the site is live\n- **No sitemap found**: Check common locations (/sitemap.xml, /sitemap_index.xml, robots.txt reference) before reporting \"not found\"\n- **Invalid XML format**: Report specific parsing errors with line numbers\n- **Rate limiting detected**: Back off and report partial results with a note about retry timing\n\n"
+  - "## Output\n\n"
+  - "### For Analysis\n- `VALIDATION-REPORT.md`: analysis results\n- Issues list with severity\n- Recommendations\n\n"
+  - "### For Generation\n- `sitemap.xml` (or split files with index)\n- `STRUCTURE.md`: site architecture documentation\n- URL count and organization summary\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

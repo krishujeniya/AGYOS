@@ -4,83 +4,18 @@ description: "Guide for quality focused software architecture. This skill should
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Software Architecture Development Skill
-
-This skill provides guidance for quality focused software development and architecture. It is based on Clean Architecture and Domain Driven Design principles.
-
-## Code Style Rules
-
-### General Principles
-
-- **Early return pattern**: Always use early returns when possible, over nested conditions for better readability
-- Avoid code duplication through creation of reusable functions and modules
-- Decompose long (more than 80 lines of code) components and functions into multiple smaller components and functions. If they cannot be used anywhere else, keep it in the same file. But if file longer than 200 lines of code, it should be split into multiple files.
-- Use arrow functions instead of function declarations when possible
-
-### Best Practices
-
-#### Library-First Approach
-
-- **ALWAYS search for existing solutions before writing custom code**
-  - Check npm for existing libraries that solve the problem
-  - Evaluate existing services/SaaS solutions
-  - Consider third-party APIs for common functionality
-- Use libraries instead of writing your own utils or helpers. For example, use `cockatiel` instead of writing your own retry logic.
-- **When custom code IS justified:**
-  - Specific business logic unique to the domain
-  - Performance-critical paths with special requirements
-  - When external dependencies would be overkill
-  - Security-sensitive code requiring full control
-  - When existing solutions don't meet requirements after thorough evaluation
-
-#### Architecture and Design
-
-- **Clean Architecture & DDD Principles:**
-  - Follow domain-driven design and ubiquitous language
-  - Separate domain entities from infrastructure concerns
-  - Keep business logic independent of frameworks
-  - Define use cases clearly and keep them isolated
-- **Naming Conventions:**
-  - **AVOID** generic names: `utils`, `helpers`, `common`, `shared`
-  - **USE** domain-specific names: `OrderCalculator`, `UserAuthenticator`, `InvoiceGenerator`
-  - Follow bounded context naming patterns
-  - Each module should have a single, clear purpose
-- **Separation of Concerns:**
-  - Do NOT mix business logic with UI components
-  - Keep database queries out of controllers
-  - Maintain clear boundaries between contexts
-  - Ensure proper separation of responsibilities
-
-#### Anti-Patterns to Avoid
-
-- **NIH (Not Invented Here) Syndrome:**
-  - Don't build custom auth when Auth0/Supabase exists
-  - Don't write custom state management instead of using Redux/Zustand
-  - Don't create custom form validation instead of using established libraries
-- **Poor Architectural Choices:**
-  - Mixing business logic with UI components
-  - Database queries directly in controllers
-  - Lack of clear separation of concerns
-- **Generic Naming Anti-Patterns:**
-  - `utils.js` with 50 unrelated functions
-  - `helpers/misc.js` as a dumping ground
-  - `common/shared.js` with unclear purpose
-- Remember: Every line of custom code is a liability that needs maintenance, testing, and documentation
-
-#### Code Quality
-
-- Proper error handling with typed catch blocks
-- Break down complex logic into smaller, reusable functions
-- Avoid deep nesting (max 3 levels)
-- Keep functions focused and under 50 lines when possible
-- Keep files focused and under 200 lines of code when possible
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "software-architecture"
+sections[11]:
+  - "\n"
+  - "# Software Architecture Development Skill\n\nThis skill provides guidance for quality focused software development and architecture. It is based on Clean Architecture and Domain Driven Design principles.\n\n"
+  - "## Code Style Rules\n\n"
+  - "### General Principles\n\n- **Early return pattern**: Always use early returns when possible, over nested conditions for better readability\n- Avoid code duplication through creation of reusable functions and modules\n- Decompose long (more than 80 lines of code) components and functions into multiple smaller components and functions. If they cannot be used anywhere else, keep it in the same file. But if file longer than 200 lines of code, it should be split into multiple files.\n- Use arrow functions instead of function declarations when possible\n\n"
+  - "### Best Practices\n\n"
+  - "#### Library-First Approach\n\n- **ALWAYS search for existing solutions before writing custom code**\n  - Check npm for existing libraries that solve the problem\n  - Evaluate existing services/SaaS solutions\n  - Consider third-party APIs for common functionality\n- Use libraries instead of writing your own utils or helpers. For example, use `cockatiel` instead of writing your own retry logic.\n- **When custom code IS justified:**\n  - Specific business logic unique to the domain\n  - Performance-critical paths with special requirements\n  - When external dependencies would be overkill\n  - Security-sensitive code requiring full control\n  - When existing solutions don't meet requirements after thorough evaluation\n\n"
+  - "#### Architecture and Design\n\n- **Clean Architecture & DDD Principles:**\n  - Follow domain-driven design and ubiquitous language\n  - Separate domain entities from infrastructure concerns\n  - Keep business logic independent of frameworks\n  - Define use cases clearly and keep them isolated\n- **Naming Conventions:**\n  - **AVOID** generic names: `utils`, `helpers`, `common`, `shared`\n  - **USE** domain-specific names: `OrderCalculator`, `UserAuthenticator`, `InvoiceGenerator`\n  - Follow bounded context naming patterns\n  - Each module should have a single, clear purpose\n- **Separation of Concerns:**\n  - Do NOT mix business logic with UI components\n  - Keep database queries out of controllers\n  - Maintain clear boundaries between contexts\n  - Ensure proper separation of responsibilities\n\n"
+  - "#### Anti-Patterns to Avoid\n\n- **NIH (Not Invented Here) Syndrome:**\n  - Don't build custom auth when Auth0/Supabase exists\n  - Don't write custom state management instead of using Redux/Zustand\n  - Don't create custom form validation instead of using established libraries\n- **Poor Architectural Choices:**\n  - Mixing business logic with UI components\n  - Database queries directly in controllers\n  - Lack of clear separation of concerns\n- **Generic Naming Anti-Patterns:**\n  - `utils.js` with 50 unrelated functions\n  - `helpers/misc.js` as a dumping ground\n  - `common/shared.js` with unclear purpose\n- Remember: Every line of custom code is a liability that needs maintenance, testing, and documentation\n\n"
+  - "#### Code Quality\n\n- Proper error handling with typed catch blocks\n- Break down complex logic into smaller, reusable functions\n- Avoid deep nesting (max 3 levels)\n- Keep functions focused and under 50 lines when possible\n- Keep files focused and under 200 lines of code when possible\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

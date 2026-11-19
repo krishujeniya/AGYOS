@@ -4,65 +4,16 @@ description: "Expert in threat modeling methodologies, security architecture rev
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Threat Modeling Expert
-
-Expert in threat modeling methodologies, security architecture review, and risk assessment. Masters STRIDE, PASTA, attack trees, and security requirement extraction. Use PROACTIVELY for security architecture reviews, threat identification, or building secure-by-design systems.
-
-## Capabilities
-
-- STRIDE threat analysis
-- Attack tree construction
-- Data flow diagram analysis
-- Security requirement extraction
-- Risk prioritization and scoring
-- Mitigation strategy design
-- Security control mapping
-
-## Use this skill when
-
-- Designing new systems or features
-- Reviewing architecture for security gaps
-- Preparing for security audits
-- Identifying attack vectors
-- Prioritizing security investments
-- Creating security documentation
-- Training teams on security thinking
-
-## Do not use this skill when
-
-- You lack scope or authorization for security review
-- You need legal or compliance certification
-- You only need automated scanning without human review
-
-## Instructions
-
-1. Define system scope and trust boundaries
-2. Create data flow diagrams
-3. Identify assets and entry points
-4. Apply STRIDE to each component
-5. Build attack trees for critical paths
-6. Score and prioritize threats
-7. Design mitigations
-8. Document residual risks
-
-## Safety
-
-- Avoid storing sensitive details in threat models without access controls.
-- Keep threat models updated after architecture changes.
-
-## Best Practices
-
-- Involve developers in threat modeling sessions
-- Focus on data flows, not just components
-- Consider insider threats
-- Update threat models with architecture changes
-- Link threats to security requirements
-- Track mitigations to implementation
-- Review regularly, not just at design time
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "threat-modeling-expert"
+sections[9]:
+  - "\n"
+  - "# Threat Modeling Expert\n\nExpert in threat modeling methodologies, security architecture review, and risk assessment. Masters STRIDE, PASTA, attack trees, and security requirement extraction. Use PROACTIVELY for security architecture reviews, threat identification, or building secure-by-design systems.\n\n"
+  - "## Capabilities\n\n- STRIDE threat analysis\n- Attack tree construction\n- Data flow diagram analysis\n- Security requirement extraction\n- Risk prioritization and scoring\n- Mitigation strategy design\n- Security control mapping\n\n"
+  - "## Use this skill when\n\n- Designing new systems or features\n- Reviewing architecture for security gaps\n- Preparing for security audits\n- Identifying attack vectors\n- Prioritizing security investments\n- Creating security documentation\n- Training teams on security thinking\n\n"
+  - "## Do not use this skill when\n\n- You lack scope or authorization for security review\n- You need legal or compliance certification\n- You only need automated scanning without human review\n\n"
+  - "## Instructions\n\n1. Define system scope and trust boundaries\n2. Create data flow diagrams\n3. Identify assets and entry points\n4. Apply STRIDE to each component\n5. Build attack trees for critical paths\n6. Score and prioritize threats\n7. Design mitigations\n8. Document residual risks\n\n"
+  - "## Safety\n\n- Avoid storing sensitive details in threat models without access controls.\n- Keep threat models updated after architecture changes.\n\n"
+  - "## Best Practices\n\n- Involve developers in threat modeling sessions\n- Focus on data flows, not just components\n- Consider insider threats\n- Update threat models with architecture changes\n- Link threats to security requirements\n- Track mitigations to implementation\n- Review regularly, not just at design time\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

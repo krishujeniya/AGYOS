@@ -4,229 +4,29 @@ description: Azure Monitor OpenTelemetry Distro for Python. Use for one-line App
 risk: unknown
 source: community
 date_added: '2026-02-27'
+prompt-source: prompt.toon
 ---
-
-# Azure Monitor OpenTelemetry Distro for Python
-
-One-line setup for Application Insights with OpenTelemetry auto-instrumentation.
-
-## Installation
-
-```bash
-pip install azure-monitor-opentelemetry
-```
-
-## Environment Variables
-
-```bash
-APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=xxx;IngestionEndpoint=https://xxx.in.applicationinsights.azure.com/
-```
-
-## Quick Start
-
-```python
-from azure.monitor.opentelemetry import configure_azure_monitor
-
-# One-line setup - reads connection string from environment
-configure_azure_monitor()
-
-# Your application code...
-```
-
-## Explicit Configuration
-
-```python
-from azure.monitor.opentelemetry import configure_azure_monitor
-
-configure_azure_monitor(
-    connection_string="InstrumentationKey=xxx;IngestionEndpoint=https://xxx.in.applicationinsights.azure.com/"
-)
-```
-
-## With Flask
-
-```python
-from flask import Flask
-from azure.monitor.opentelemetry import configure_azure_monitor
-
-configure_azure_monitor()
-
-app = Flask(__name__)
-
-@app.route("/")
-def hello():
-    return "Hello, World!"
-
-if __name__ == "__main__":
-    app.run()
-```
-
-## With Django
-
-```python
-# settings.py
-from azure.monitor.opentelemetry import configure_azure_monitor
-
-configure_azure_monitor()
-
-# Django settings...
-```
-
-## With FastAPI
-
-```python
-from fastapi import FastAPI
-from azure.monitor.opentelemetry import configure_azure_monitor
-
-configure_azure_monitor()
-
-app = FastAPI()
-
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-```
-
-## Custom Traces
-
-```python
-from opentelemetry import trace
-from azure.monitor.opentelemetry import configure_azure_monitor
-
-configure_azure_monitor()
-
-tracer = trace.get_tracer(__name__)
-
-with tracer.start_as_current_span("my-operation") as span:
-    span.set_attribute("custom.attribute", "value")
-    # Do work...
-```
-
-## Custom Metrics
-
-```python
-from opentelemetry import metrics
-from azure.monitor.opentelemetry import configure_azure_monitor
-
-configure_azure_monitor()
-
-meter = metrics.get_meter(__name__)
-counter = meter.create_counter("my_counter")
-
-counter.add(1, {"dimension": "value"})
-```
-
-## Custom Logs
-
-```python
-import logging
-from azure.monitor.opentelemetry import configure_azure_monitor
-
-configure_azure_monitor()
-
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-
-logger.info("This will appear in Application Insights")
-logger.error("Errors are captured too", exc_info=True)
-```
-
-## Sampling
-
-```python
-from azure.monitor.opentelemetry import configure_azure_monitor
-
-# Sample 10% of requests
-configure_azure_monitor(
-    sampling_ratio=0.1
-)
-```
-
-## Cloud Role Name
-
-Set cloud role name for Application Map:
-
-```python
-from azure.monitor.opentelemetry import configure_azure_monitor
-from opentelemetry.sdk.resources import Resource, SERVICE_NAME
-
-configure_azure_monitor(
-    resource=Resource.create({SERVICE_NAME: "my-service-name"})
-)
-```
-
-## Disable Specific Instrumentations
-
-```python
-from azure.monitor.opentelemetry import configure_azure_monitor
-
-configure_azure_monitor(
-    instrumentations=["flask", "requests"]  # Only enable these
-)
-```
-
-## Enable Live Metrics
-
-```python
-from azure.monitor.opentelemetry import configure_azure_monitor
-
-configure_azure_monitor(
-    enable_live_metrics=True
-)
-```
-
-## Azure AD Authentication
-
-```python
-from azure.monitor.opentelemetry import configure_azure_monitor
-from azure.identity import DefaultAzureCredential
-
-configure_azure_monitor(
-    credential=DefaultAzureCredential()
-)
-```
-
-## Auto-Instrumentations Included
-
-| Library | Telemetry Type |
-|---------|---------------|
-| Flask | Traces |
-| Django | Traces |
-| FastAPI | Traces |
-| Requests | Traces |
-| urllib3 | Traces |
-| httpx | Traces |
-| aiohttp | Traces |
-| psycopg2 | Traces |
-| pymysql | Traces |
-| pymongo | Traces |
-| redis | Traces |
-
-## Configuration Options
-
-| Parameter | Description | Default |
-|-----------|-------------|---------|
-| `connection_string` | Application Insights connection string | From env var |
-| `credential` | Azure credential for AAD auth | None |
-| `sampling_ratio` | Sampling rate (0.0 to 1.0) | 1.0 |
-| `resource` | OpenTelemetry Resource | Auto-detected |
-| `instrumentations` | List of instrumentations to enable | All |
-| `enable_live_metrics` | Enable Live Metrics stream | False |
-
-## Best Practices
-
-1. **Call configure_azure_monitor() early** — Before importing instrumented libraries
-2. **Use environment variables** for connection string in production
-3. **Set cloud role name** for multi-service applications
-4. **Enable sampling** in high-traffic applications
-5. **Use structured logging** for better log analytics queries
-6. **Add custom attributes** to spans for better debugging
-7. **Use AAD authentication** for production workloads
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "azure-monitor-opentelemetry-py"
+sections[22]:
+  - "\n"
+  - "# Azure Monitor OpenTelemetry Distro for Python\n\nOne-line setup for Application Insights with OpenTelemetry auto-instrumentation.\n\n"
+  - "## Installation\n\n```bash\npip install azure-monitor-opentelemetry\n```\n\n"
+  - "## Environment Variables\n\n```bash\nAPPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=xxx;IngestionEndpoint=https://xxx.in.applicationinsights.azure.com/\n```\n\n"
+  - "## Quick Start\n\n```python\nfrom azure.monitor.opentelemetry import configure_azure_monitor\n\n# One-line setup - reads connection string from environment\nconfigure_azure_monitor()\n\n# Your application code...\n```\n\n"
+  - "## Explicit Configuration\n\n```python\nfrom azure.monitor.opentelemetry import configure_azure_monitor\n\nconfigure_azure_monitor(\n    connection_string=\"InstrumentationKey=xxx;IngestionEndpoint=https://xxx.in.applicationinsights.azure.com/\"\n)\n```\n\n"
+  - "## With Flask\n\n```python\nfrom flask import Flask\nfrom azure.monitor.opentelemetry import configure_azure_monitor\n\nconfigure_azure_monitor()\n\napp = Flask(__name__)\n\n@app.route(\"/\")\ndef hello():\n    return \"Hello, World!\"\n\nif __name__ == \"__main__\":\n    app.run()\n```\n\n"
+  - "## With Django\n\n```python\n# settings.py\nfrom azure.monitor.opentelemetry import configure_azure_monitor\n\nconfigure_azure_monitor()\n\n# Django settings...\n```\n\n"
+  - "## With FastAPI\n\n```python\nfrom fastapi import FastAPI\nfrom azure.monitor.opentelemetry import configure_azure_monitor\n\nconfigure_azure_monitor()\n\napp = FastAPI()\n\n@app.get(\"/\")\nasync def root():\n    return {\"message\": \"Hello World\"}\n```\n\n"
+  - "## Custom Traces\n\n```python\nfrom opentelemetry import trace\nfrom azure.monitor.opentelemetry import configure_azure_monitor\n\nconfigure_azure_monitor()\n\ntracer = trace.get_tracer(__name__)\n\nwith tracer.start_as_current_span(\"my-operation\") as span:\n    span.set_attribute(\"custom.attribute\", \"value\")\n    # Do work...\n```\n\n"
+  - "## Custom Metrics\n\n```python\nfrom opentelemetry import metrics\nfrom azure.monitor.opentelemetry import configure_azure_monitor\n\nconfigure_azure_monitor()\n\nmeter = metrics.get_meter(__name__)\ncounter = meter.create_counter(\"my_counter\")\n\ncounter.add(1, {\"dimension\": \"value\"})\n```\n\n"
+  - "## Custom Logs\n\n```python\nimport logging\nfrom azure.monitor.opentelemetry import configure_azure_monitor\n\nconfigure_azure_monitor()\n\nlogger = logging.getLogger(__name__)\nlogger.setLevel(logging.INFO)\n\nlogger.info(\"This will appear in Application Insights\")\nlogger.error(\"Errors are captured too\", exc_info=True)\n```\n\n"
+  - "## Sampling\n\n```python\nfrom azure.monitor.opentelemetry import configure_azure_monitor\n\n# Sample 10% of requests\nconfigure_azure_monitor(\n    sampling_ratio=0.1\n)\n```\n\n"
+  - "## Cloud Role Name\n\nSet cloud role name for Application Map:\n\n```python\nfrom azure.monitor.opentelemetry import configure_azure_monitor\nfrom opentelemetry.sdk.resources import Resource, SERVICE_NAME\n\nconfigure_azure_monitor(\n    resource=Resource.create({SERVICE_NAME: \"my-service-name\"})\n)\n```\n\n"
+  - "## Disable Specific Instrumentations\n\n```python\nfrom azure.monitor.opentelemetry import configure_azure_monitor\n\nconfigure_azure_monitor(\n    instrumentations=[\"flask\", \"requests\"]  # Only enable these\n)\n```\n\n"
+  - "## Enable Live Metrics\n\n```python\nfrom azure.monitor.opentelemetry import configure_azure_monitor\n\nconfigure_azure_monitor(\n    enable_live_metrics=True\n)\n```\n\n"
+  - "## Azure AD Authentication\n\n```python\nfrom azure.monitor.opentelemetry import configure_azure_monitor\nfrom azure.identity import DefaultAzureCredential\n\nconfigure_azure_monitor(\n    credential=DefaultAzureCredential()\n)\n```\n\n"
+  - "## Auto-Instrumentations Included\n\n| Library | Telemetry Type |\n|---------|---------------|\n| Flask | Traces |\n| Django | Traces |\n| FastAPI | Traces |\n| Requests | Traces |\n| urllib3 | Traces |\n| httpx | Traces |\n| aiohttp | Traces |\n| psycopg2 | Traces |\n| pymysql | Traces |\n| pymongo | Traces |\n| redis | Traces |\n\n"
+  - "## Configuration Options\n\n| Parameter | Description | Default |\n|-----------|-------------|---------|\n| `connection_string` | Application Insights connection string | From env var |\n| `credential` | Azure credential for AAD auth | None |\n| `sampling_ratio` | Sampling rate (0.0 to 1.0) | 1.0 |\n| `resource` | OpenTelemetry Resource | Auto-detected |\n| `instrumentations` | List of instrumentations to enable | All |\n| `enable_live_metrics` | Enable Live Metrics stream | False |\n\n"
+  - "## Best Practices\n\n1. **Call configure_azure_monitor() early** — Before importing instrumented libraries\n2. **Use environment variables** for connection string in production\n3. **Set cloud role name** for multi-service applications\n4. **Enable sampling** in high-traffic applications\n5. **Use structured logging** for better log analytics queries\n6. **Add custom attributes** to spans for better debugging\n7. **Use AAD authentication** for production workloads\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

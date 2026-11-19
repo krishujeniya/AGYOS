@@ -19,226 +19,31 @@ tools:
 - gemini-cli
 - codex-cli
 - antigravity
+prompt-source: prompt.toon
 ---
-
-# GDB Debugging Assistant
-
-## Overview
-
-A GDB debugging skill designed for AI agents. Combines **source code analysis** with **runtime state inspection** using gdb-cli to provide intelligent debugging assistance for C/C++ programs.
-
-## When to Use This Skill
-
-- Analyze core dumps or crash dumps
-- Debug running processes with GDB attach
-- Investigate crashes, deadlocks, or memory issues
-- Get intelligent debugging assistance with source code context
-- Debug multi-threaded applications
-
-## Do Not Use This Skill When
-
-- The task is unrelated to C/C++ debugging
-- The user needs general-purpose assistance without debugging
-- No GDB is available (GDB 9.0+ with Python support required)
-
-## Prerequisites
-
-```bash
-# Install gdb-cli
-pip install gdb-cli
-
-# Or from GitHub
-pip install git+https://github.com/Cerdore/gdb-cli.git
-
-# Verify GDB has Python support
-gdb -nx -q -batch -ex "python print('OK')"
-```
-
-**Requirements:**
-- Python 3.6.8+
-- GDB 9.0+ with Python support enabled
-- Linux OS
-
-## How It Works
-
-### Step 1: Initialize Debug Session
-
-**For core dump analysis:**
-```bash
-gdb-cli load --binary <binary_path> --core <core_path> [--gdb-path <gdb_path>]
-```
-
-**For live process debugging:**
-```bash
-gdb-cli attach --pid <pid> [--binary <binary_path>]
-```
-
-**Output:** A session_id like `"session_id": "a1b2c3"`. Store this for subsequent commands.
-
-### Step 2: Gather Initial Information
-
-```bash
-SESSION="<session_id>"
-
-# List all threads
-gdb-cli threads -s $SESSION
-
-# Get backtrace (with local variables)
-gdb-cli bt -s $SESSION --full
-
-# Get registers
-gdb-cli registers -s $SESSION
-```
-
-### Step 3: Correlate Source Code (CRITICAL)
-
-For each frame in the backtrace:
-1. **Extract frame info**: `{file}:{line} in {function}`
-2. **Read source context**: Get ±20 lines around the crash point
-3. **Get local variables**: `gdb-cli locals-cmd -s $SESSION --frame <N>`
-4. **Analyze**: Correlate code logic with variable values
-
-**Example correlation:**
-```
-Frame #0: process_data() at src/worker.c:87
-Source code shows:
-  85: Node* node = get_node(id);
-  86: if (node == NULL) return;
-  87: node->data = value;  <- Crash here
-
-Variables show:
-  node = 0x0 (NULL)
-
-Analysis: The NULL check on line 86 didn't catch the issue.
-```
-
-### Step 4: Deep Investigation
-
-```bash
-# Examine variables
-gdb-cli eval-cmd -s $SESSION "variable_name"
-gdb-cli eval-cmd -s $SESSION "ptr->field"
-gdb-cli ptype -s $SESSION "struct_name"
-
-# Memory inspection
-gdb-cli memory -s $SESSION "0x7fffffffe000" --size 64
-
-# Disassembly
-gdb-cli disasm -s $SESSION --count 20
-
-# Check all threads (for deadlock analysis)
-gdb-cli thread-apply -s $SESSION bt --all
-
-# View shared libraries
-gdb-cli sharedlibs -s $SESSION
-```
-
-### Step 5: Session Management
-
-```bash
-# List active sessions
-gdb-cli sessions
-
-# Check session status
-gdb-cli status -s $SESSION
-
-# Stop session (cleanup)
-gdb-cli stop -s $SESSION
-```
-
-## Common Debugging Patterns
-
-### Pattern: Null Pointer Dereference
-
-**Indicators:**
-- Crash on memory access instruction
-- Pointer variable is 0x0
-
-**Investigation:**
-```bash
-gdb-cli registers -s $SESSION  # Check RIP
-gdb-cli eval-cmd -s $SESSION "ptr"  # Check pointer value
-```
-
-### Pattern: Deadlock
-
-**Indicators:**
-- Multiple threads stuck in lock functions
-- `pthread_mutex_lock` in backtrace
-
-**Investigation:**
-```bash
-gdb-cli thread-apply -s $SESSION bt --all
-# Look for circular wait patterns
-```
-
-### Pattern: Memory Corruption
-
-**Indicators:**
-- Crash in malloc/free
-- Garbage values in variables
-
-**Investigation:**
-```bash
-gdb-cli memory -s $SESSION "&variable" --size 128
-gdb-cli registers -s $SESSION
-```
-
-## Examples
-
-### Example 1: Core Dump Analysis
-
-```bash
-# Load core dump
-gdb-cli load --binary ./myapp --core /tmp/core.1234
-
-# Get crash location
-gdb-cli bt -s a1b2c3 --full
-
-# Examine crash frame
-gdb-cli locals-cmd -s a1b2c3 --frame 0
-```
-
-### Example 2: Live Process Debugging
-
-```bash
-# Attach to stuck server
-gdb-cli attach --pid 12345
-
-# Check all threads
-gdb-cli threads -s b2c3d4
-
-# Get all backtraces
-gdb-cli thread-apply -s b2c3d4 bt --all
-```
-
-## Best Practices
-
-- Always read source code before drawing conclusions from variable values
-- Use `--range` for pagination on large thread counts or deep backtraces
-- Use `ptype` to understand complex data structures before examining values
-- Check all threads for multi-threaded issues
-- Cross-reference types with source code definitions
-
-## Security & Safety Notes
-
-- This skill requires GDB access to processes and core dumps
-- Attaching to processes may require appropriate permissions (sudo, ptrace_scope)
-- Core dumps may contain sensitive data - handle with care
-- Only debug processes you have authorization to analyze
-
-## Related Skills
-
-- `@systematic-debugging` - General debugging methodology
-- `@test-driven-development` - Write tests before implementation
-
-## Links
-
-- **Repository**: https://github.com/Cerdore/gdb-cli
-- **PyPI**: https://pypi.org/project/gdb-cli/
-- **Documentation**: https://github.com/Cerdore/gdb-cli#readme
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "gdb-cli"
+sections[24]:
+  - "\n"
+  - "# GDB Debugging Assistant\n\n"
+  - "## Overview\n\nA GDB debugging skill designed for AI agents. Combines **source code analysis** with **runtime state inspection** using gdb-cli to provide intelligent debugging assistance for C/C++ programs.\n\n"
+  - "## When to Use This Skill\n\n- Analyze core dumps or crash dumps\n- Debug running processes with GDB attach\n- Investigate crashes, deadlocks, or memory issues\n- Get intelligent debugging assistance with source code context\n- Debug multi-threaded applications\n\n"
+  - "## Do Not Use This Skill When\n\n- The task is unrelated to C/C++ debugging\n- The user needs general-purpose assistance without debugging\n- No GDB is available (GDB 9.0+ with Python support required)\n\n"
+  - "## Prerequisites\n\n```bash\n# Install gdb-cli\npip install gdb-cli\n\n# Or from GitHub\npip install git+https://github.com/Cerdore/gdb-cli.git\n\n# Verify GDB has Python support\ngdb -nx -q -batch -ex \"python print('OK')\"\n```\n\n**Requirements:**\n- Python 3.6.8+\n- GDB 9.0+ with Python support enabled\n- Linux OS\n\n"
+  - "## How It Works\n\n"
+  - "### Step 1: Initialize Debug Session\n\n**For core dump analysis:**\n```bash\ngdb-cli load --binary <binary_path> --core <core_path> [--gdb-path <gdb_path>]\n```\n\n**For live process debugging:**\n```bash\ngdb-cli attach --pid <pid> [--binary <binary_path>]\n```\n\n**Output:** A session_id like `\"session_id\": \"a1b2c3\"`. Store this for subsequent commands.\n\n"
+  - "### Step 2: Gather Initial Information\n\n```bash\nSESSION=\"<session_id>\"\n\n# List all threads\ngdb-cli threads -s $SESSION\n\n# Get backtrace (with local variables)\ngdb-cli bt -s $SESSION --full\n\n# Get registers\ngdb-cli registers -s $SESSION\n```\n\n"
+  - "### Step 3: Correlate Source Code (CRITICAL)\n\nFor each frame in the backtrace:\n1. **Extract frame info**: `{file}:{line} in {function}`\n2. **Read source context**: Get ±20 lines around the crash point\n3. **Get local variables**: `gdb-cli locals-cmd -s $SESSION --frame <N>`\n4. **Analyze**: Correlate code logic with variable values\n\n**Example correlation:**\n```\nFrame #0: process_data() at src/worker.c:87\nSource code shows:\n  85: Node* node = get_node(id);\n  86: if (node == NULL) return;\n  87: node->data = value;  <- Crash here\n\nVariables show:\n  node = 0x0 (NULL)\n\nAnalysis: The NULL check on line 86 didn't catch the issue.\n```\n\n"
+  - "### Step 4: Deep Investigation\n\n```bash\n# Examine variables\ngdb-cli eval-cmd -s $SESSION \"variable_name\"\ngdb-cli eval-cmd -s $SESSION \"ptr->field\"\ngdb-cli ptype -s $SESSION \"struct_name\"\n\n# Memory inspection\ngdb-cli memory -s $SESSION \"0x7fffffffe000\" --size 64\n\n# Disassembly\ngdb-cli disasm -s $SESSION --count 20\n\n# Check all threads (for deadlock analysis)\ngdb-cli thread-apply -s $SESSION bt --all\n\n# View shared libraries\ngdb-cli sharedlibs -s $SESSION\n```\n\n"
+  - "### Step 5: Session Management\n\n```bash\n# List active sessions\ngdb-cli sessions\n\n# Check session status\ngdb-cli status -s $SESSION\n\n# Stop session (cleanup)\ngdb-cli stop -s $SESSION\n```\n\n"
+  - "## Common Debugging Patterns\n\n"
+  - "### Pattern: Null Pointer Dereference\n\n**Indicators:**\n- Crash on memory access instruction\n- Pointer variable is 0x0\n\n**Investigation:**\n```bash\ngdb-cli registers -s $SESSION  # Check RIP\ngdb-cli eval-cmd -s $SESSION \"ptr\"  # Check pointer value\n```\n\n"
+  - "### Pattern: Deadlock\n\n**Indicators:**\n- Multiple threads stuck in lock functions\n- `pthread_mutex_lock` in backtrace\n\n**Investigation:**\n```bash\ngdb-cli thread-apply -s $SESSION bt --all\n# Look for circular wait patterns\n```\n\n"
+  - "### Pattern: Memory Corruption\n\n**Indicators:**\n- Crash in malloc/free\n- Garbage values in variables\n\n**Investigation:**\n```bash\ngdb-cli memory -s $SESSION \"&variable\" --size 128\ngdb-cli registers -s $SESSION\n```\n\n"
+  - "## Examples\n\n"
+  - "### Example 1: Core Dump Analysis\n\n```bash\n# Load core dump\ngdb-cli load --binary ./myapp --core /tmp/core.1234\n\n# Get crash location\ngdb-cli bt -s a1b2c3 --full\n\n# Examine crash frame\ngdb-cli locals-cmd -s a1b2c3 --frame 0\n```\n\n"
+  - "### Example 2: Live Process Debugging\n\n```bash\n# Attach to stuck server\ngdb-cli attach --pid 12345\n\n# Check all threads\ngdb-cli threads -s b2c3d4\n\n# Get all backtraces\ngdb-cli thread-apply -s b2c3d4 bt --all\n```\n\n"
+  - "## Best Practices\n\n- Always read source code before drawing conclusions from variable values\n- Use `--range` for pagination on large thread counts or deep backtraces\n- Use `ptype` to understand complex data structures before examining values\n- Check all threads for multi-threaded issues\n- Cross-reference types with source code definitions\n\n"
+  - "## Security & Safety Notes\n\n- This skill requires GDB access to processes and core dumps\n- Attaching to processes may require appropriate permissions (sudo, ptrace_scope)\n- Core dumps may contain sensitive data - handle with care\n- Only debug processes you have authorization to analyze\n\n"
+  - "## Related Skills\n\n- `@systematic-debugging` - General debugging methodology\n- `@test-driven-development` - Write tests before implementation\n\n"
+  - "## Links\n\n- **Repository**: https://github.com/Cerdore/gdb-cli\n- **PyPI**: https://pypi.org/project/gdb-cli/\n- **Documentation**: https://github.com/Cerdore/gdb-cli#readme\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

@@ -4,40 +4,14 @@ description: "Implement Command Query Responsibility Segregation for scalable ar
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# CQRS Implementation
-
-Comprehensive guide to implementing CQRS (Command Query Responsibility Segregation) patterns.
-
-## Use this skill when
-
-- Separating read and write concerns
-- Scaling reads independently from writes
-- Building event-sourced systems
-- Optimizing complex query scenarios
-- Different read/write data models are needed
-- High-performance reporting is required
-
-## Do not use this skill when
-
-- The domain is simple and CRUD is sufficient
-- You cannot operate separate read/write models
-- Strong immediate consistency is required everywhere
-
-## Instructions
-
-- Identify read/write workloads and consistency needs.
-- Define command and query models with clear boundaries.
-- Implement read model projections and synchronization.
-- Validate performance, recovery, and failure modes.
-- If detailed patterns are required, open `resources/implementation-playbook.md`.
-
-## Resources
-
-- `resources/implementation-playbook.md` for detailed CQRS patterns and templates.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "cqrs-implementation"
+sections[7]:
+  - "\n"
+  - "# CQRS Implementation\n\nComprehensive guide to implementing CQRS (Command Query Responsibility Segregation) patterns.\n\n"
+  - "## Use this skill when\n\n- Separating read and write concerns\n- Scaling reads independently from writes\n- Building event-sourced systems\n- Optimizing complex query scenarios\n- Different read/write data models are needed\n- High-performance reporting is required\n\n"
+  - "## Do not use this skill when\n\n- The domain is simple and CRUD is sufficient\n- You cannot operate separate read/write models\n- Strong immediate consistency is required everywhere\n\n"
+  - "## Instructions\n\n- Identify read/write workloads and consistency needs.\n- Define command and query models with clear boundaries.\n- Implement read model projections and synchronization.\n- Validate performance, recovery, and failure modes.\n- If detailed patterns are required, open `resources/implementation-playbook.md`.\n\n"
+  - "## Resources\n\n- `resources/implementation-playbook.md` for detailed CQRS patterns and templates.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

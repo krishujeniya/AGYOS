@@ -4,147 +4,24 @@ description: 'Azure Key Vault Secrets SDK for Rust. Use for storing and retrievi
 risk: unknown
 source: community
 date_added: '2026-02-27'
+prompt-source: prompt.toon
 ---
-
-# Azure Key Vault Secrets SDK for Rust
-
-Client library for Azure Key Vault Secrets — secure storage for passwords, API keys, and other secrets.
-
-## Installation
-
-```sh
-cargo add azure_security_keyvault_secrets azure_identity
-```
-
-## Environment Variables
-
-```bash
-AZURE_KEYVAULT_URL=https://<vault-name>.vault.azure.net/
-```
-
-## Authentication
-
-```rust
-use azure_identity::DeveloperToolsCredential;
-use azure_security_keyvault_secrets::SecretClient;
-
-let credential = DeveloperToolsCredential::new(None)?;
-let client = SecretClient::new(
-    "https://<vault-name>.vault.azure.net/",
-    credential.clone(),
-    None,
-)?;
-```
-
-## Core Operations
-
-### Get Secret
-
-```rust
-let secret = client
-    .get_secret("secret-name", None)
-    .await?
-    .into_model()?;
-
-println!("Secret value: {:?}", secret.value);
-```
-
-### Set Secret
-
-```rust
-use azure_security_keyvault_secrets::models::SetSecretParameters;
-
-let params = SetSecretParameters {
-    value: Some("secret-value".into()),
-    ..Default::default()
-};
-
-let secret = client
-    .set_secret("secret-name", params.try_into()?, None)
-    .await?
-    .into_model()?;
-```
-
-### Update Secret Properties
-
-```rust
-use azure_security_keyvault_secrets::models::UpdateSecretPropertiesParameters;
-use std::collections::HashMap;
-
-let params = UpdateSecretPropertiesParameters {
-    content_type: Some("text/plain".into()),
-    tags: Some(HashMap::from([("env".into(), "prod".into())])),
-    ..Default::default()
-};
-
-client
-    .update_secret_properties("secret-name", params.try_into()?, None)
-    .await?;
-```
-
-### Delete Secret
-
-```rust
-client.delete_secret("secret-name", None).await?;
-```
-
-### List Secrets
-
-```rust
-use azure_security_keyvault_secrets::ResourceExt;
-use futures::TryStreamExt;
-
-let mut pager = client.list_secret_properties(None)?.into_stream();
-while let Some(secret) = pager.try_next().await? {
-    let name = secret.resource_id()?.name;
-    println!("Secret: {}", name);
-}
-```
-
-### Get Specific Version
-
-```rust
-use azure_security_keyvault_secrets::models::SecretClientGetSecretOptions;
-
-let options = SecretClientGetSecretOptions {
-    secret_version: Some("version-id".into()),
-    ..Default::default()
-};
-
-let secret = client
-    .get_secret("secret-name", Some(options))
-    .await?
-    .into_model()?;
-```
-
-## Best Practices
-
-1. **Use Entra ID auth** — `DeveloperToolsCredential` for dev, `ManagedIdentityCredential` for production
-2. **Use `into_model()?`** — to deserialize responses
-3. **Use `ResourceExt` trait** — for extracting names from IDs
-4. **Handle soft delete** — deleted secrets can be recovered within retention period
-5. **Set content type** — helps identify secret format
-6. **Use tags** — for organizing and filtering secrets
-7. **Version secrets** — new values create new versions automatically
-
-## RBAC Permissions
-
-Assign these Key Vault roles:
-- `Key Vault Secrets User` — get and list
-- `Key Vault Secrets Officer` — full CRUD
-
-## Reference Links
-
-| Resource | Link |
-|----------|------|
-| API Reference | https://docs.rs/azure_security_keyvault_secrets |
-| Source Code | https://github.com/Azure/azure-sdk-for-rust/tree/main/sdk/keyvault/azure_security_keyvault_secrets |
-| crates.io | https://crates.io/crates/azure_security_keyvault_secrets |
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "azure-keyvault-secrets-rust"
+sections[17]:
+  - "\n"
+  - "# Azure Key Vault Secrets SDK for Rust\n\nClient library for Azure Key Vault Secrets — secure storage for passwords, API keys, and other secrets.\n\n"
+  - "## Installation\n\n```sh\ncargo add azure_security_keyvault_secrets azure_identity\n```\n\n"
+  - "## Environment Variables\n\n```bash\nAZURE_KEYVAULT_URL=https://<vault-name>.vault.azure.net/\n```\n\n"
+  - "## Authentication\n\n```rust\nuse azure_identity::DeveloperToolsCredential;\nuse azure_security_keyvault_secrets::SecretClient;\n\nlet credential = DeveloperToolsCredential::new(None)?;\nlet client = SecretClient::new(\n    \"https://<vault-name>.vault.azure.net/\",\n    credential.clone(),\n    None,\n)?;\n```\n\n"
+  - "## Core Operations\n\n"
+  - "### Get Secret\n\n```rust\nlet secret = client\n    .get_secret(\"secret-name\", None)\n    .await?\n    .into_model()?;\n\nprintln!(\"Secret value: {:?}\", secret.value);\n```\n\n"
+  - "### Set Secret\n\n```rust\nuse azure_security_keyvault_secrets::models::SetSecretParameters;\n\nlet params = SetSecretParameters {\n    value: Some(\"secret-value\".into()),\n    ..Default::default()\n};\n\nlet secret = client\n    .set_secret(\"secret-name\", params.try_into()?, None)\n    .await?\n    .into_model()?;\n```\n\n"
+  - "### Update Secret Properties\n\n```rust\nuse azure_security_keyvault_secrets::models::UpdateSecretPropertiesParameters;\nuse std::collections::HashMap;\n\nlet params = UpdateSecretPropertiesParameters {\n    content_type: Some(\"text/plain\".into()),\n    tags: Some(HashMap::from([(\"env\".into(), \"prod\".into())])),\n    ..Default::default()\n};\n\nclient\n    .update_secret_properties(\"secret-name\", params.try_into()?, None)\n    .await?;\n```\n\n"
+  - "### Delete Secret\n\n```rust\nclient.delete_secret(\"secret-name\", None).await?;\n```\n\n"
+  - "### List Secrets\n\n```rust\nuse azure_security_keyvault_secrets::ResourceExt;\nuse futures::TryStreamExt;\n\nlet mut pager = client.list_secret_properties(None)?.into_stream();\nwhile let Some(secret) = pager.try_next().await? {\n    let name = secret.resource_id()?.name;\n    println!(\"Secret: {}\", name);\n}\n```\n\n"
+  - "### Get Specific Version\n\n```rust\nuse azure_security_keyvault_secrets::models::SecretClientGetSecretOptions;\n\nlet options = SecretClientGetSecretOptions {\n    secret_version: Some(\"version-id\".into()),\n    ..Default::default()\n};\n\nlet secret = client\n    .get_secret(\"secret-name\", Some(options))\n    .await?\n    .into_model()?;\n```\n\n"
+  - "## Best Practices\n\n1. **Use Entra ID auth** — `DeveloperToolsCredential` for dev, `ManagedIdentityCredential` for production\n2. **Use `into_model()?`** — to deserialize responses\n3. **Use `ResourceExt` trait** — for extracting names from IDs\n4. **Handle soft delete** — deleted secrets can be recovered within retention period\n5. **Set content type** — helps identify secret format\n6. **Use tags** — for organizing and filtering secrets\n7. **Version secrets** — new values create new versions automatically\n\n"
+  - "## RBAC Permissions\n\nAssign these Key Vault roles:\n- `Key Vault Secrets User` — get and list\n- `Key Vault Secrets Officer` — full CRUD\n\n"
+  - "## Reference Links\n\n| Resource | Link |\n|----------|------|\n| API Reference | https://docs.rs/azure_security_keyvault_secrets |\n| Source Code | https://github.com/Azure/azure-sdk-for-rust/tree/main/sdk/keyvault/azure_security_keyvault_secrets |\n| crates.io | https://crates.io/crates/azure_security_keyvault_secrets |\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

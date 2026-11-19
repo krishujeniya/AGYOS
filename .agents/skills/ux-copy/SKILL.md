@@ -10,74 +10,23 @@ date_added: "2026-04-08"
 author: "Krish Ujeniya"
 tags: [ux, copywriting, microcopy, frontend, styleseed]
 tools: [claude, cursor, codex, gemini]
+prompt-source: prompt.toon
 ---
-
-# UX Copy
-
-## Overview
-
-Part of [StyleSeed](https://github.com/bitjaru/styleseed), this skill generates concise product copy for common UI states. It follows the Toss-inspired tone: casual but polite, direct, active, and specific enough to help the user recover or proceed.
-
-## When to Use
-- Use when you need button labels, helper text, toasts, empty states, or error messages
-- Use when a feature has functional UI but weak or robotic wording
-- Use when you want consistent product voice across a flow
-- Use when confirmation dialogs or state feedback need better phrasing
-
-## Tone Rules
-
-- casual but polite
-- active voice over passive voice
-- positive framing where it stays honest
-- plain language instead of internal jargon
-- concise wording where every word earns its place
-
-## Common Patterns
-
-### Buttons
-
-Use a short action verb plus object when needed.
-
-### Empty States
-
-Start with a friendly observation, then suggest the next action.
-
-### Errors
-
-Explain what happened in user-facing language and what to do next. Do not surface raw internal error strings.
-
-### Toasts
-
-Confirm the result quickly. Add an undo action for reversible destructive behavior.
-
-### Forms
-
-Use clear labels, useful placeholders, specific helper text, and corrective error messages.
-
-### Confirmation Dialogs
-
-State the action in plain language and explain the consequence if the decision is risky or irreversible.
-
-## Output
-
-Return:
-1. The requested microcopy grouped by UI surface
-2. Notes on tone or localization considerations if relevant
-3. Any places where the UX likely needs a structural fix in addition to better copy
-
-## Best Practices
-
-- Make the next action obvious
-- Avoid generic labels like "Submit" or "OK" when the action can be named precisely
-- Blame the system, not the user, when something fails
-- Keep error and empty states useful even without visual context
-
-## Additional Resources
-
-- [StyleSeed repository](https://github.com/bitjaru/styleseed)
-- [Source skill](https://github.com/bitjaru/styleseed/blob/main/seeds/toss/.claude/skills/ux-copy/SKILL.md)
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "ux-copy"
+sections[16]:
+  - "\n"
+  - "# UX Copy\n\n"
+  - "## Overview\n\nPart of [StyleSeed](https://github.com/bitjaru/styleseed), this skill generates concise product copy for common UI states. It follows the Toss-inspired tone: casual but polite, direct, active, and specific enough to help the user recover or proceed.\n\n"
+  - "## When to Use\n- Use when you need button labels, helper text, toasts, empty states, or error messages\n- Use when a feature has functional UI but weak or robotic wording\n- Use when you want consistent product voice across a flow\n- Use when confirmation dialogs or state feedback need better phrasing\n\n"
+  - "## Tone Rules\n\n- casual but polite\n- active voice over passive voice\n- positive framing where it stays honest\n- plain language instead of internal jargon\n- concise wording where every word earns its place\n\n"
+  - "## Common Patterns\n\n"
+  - "### Buttons\n\nUse a short action verb plus object when needed.\n\n"
+  - "### Empty States\n\nStart with a friendly observation, then suggest the next action.\n\n"
+  - "### Errors\n\nExplain what happened in user-facing language and what to do next. Do not surface raw internal error strings.\n\n"
+  - "### Toasts\n\nConfirm the result quickly. Add an undo action for reversible destructive behavior.\n\n"
+  - "### Forms\n\nUse clear labels, useful placeholders, specific helper text, and corrective error messages.\n\n"
+  - "### Confirmation Dialogs\n\nState the action in plain language and explain the consequence if the decision is risky or irreversible.\n\n"
+  - "## Output\n\nReturn:\n1. The requested microcopy grouped by UI surface\n2. Notes on tone or localization considerations if relevant\n3. Any places where the UX likely needs a structural fix in addition to better copy\n\n"
+  - "## Best Practices\n\n- Make the next action obvious\n- Avoid generic labels like \"Submit\" or \"OK\" when the action can be named precisely\n- Blame the system, not the user, when something fails\n- Keep error and empty states useful even without visual context\n\n"
+  - "## Additional Resources\n\n- [StyleSeed repository](https://github.com/bitjaru/styleseed)\n- [Source skill](https://github.com/bitjaru/styleseed/blob/main/seeds/toss/.claude/skills/ux-copy/SKILL.md)\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

@@ -4,235 +4,28 @@ description: Azure Monitor Ingestion SDK for Java. Send custom logs to Azure Mon
 risk: unknown
 source: community
 date_added: '2026-02-27'
+prompt-source: prompt.toon
 ---
-
-# Azure Monitor Ingestion SDK for Java
-
-Client library for sending custom logs to Azure Monitor using the Logs Ingestion API via Data Collection Rules.
-
-## Installation
-
-```xml
-<dependency>
-    <groupId>com.azure</groupId>
-    <artifactId>azure-monitor-ingestion</artifactId>
-    <version>1.2.11</version>
-</dependency>
-```
-
-Or use Azure SDK BOM:
-
-```xml
-<dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>com.azure</groupId>
-            <artifactId>azure-sdk-bom</artifactId>
-            <version>{bom_version}</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-    </dependencies>
-</dependencyManagement>
-
-<dependencies>
-    <dependency>
-        <groupId>com.azure</groupId>
-        <artifactId>azure-monitor-ingestion</artifactId>
-    </dependency>
-</dependencies>
-```
-
-## Prerequisites
-
-- Data Collection Endpoint (DCE)
-- Data Collection Rule (DCR)
-- Log Analytics workspace
-- Target table (custom or built-in: CommonSecurityLog, SecurityEvents, Syslog, WindowsEvents)
-
-## Environment Variables
-
-```bash
-DATA_COLLECTION_ENDPOINT=https://<dce-name>.<region>.ingest.monitor.azure.com
-DATA_COLLECTION_RULE_ID=dcr-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-STREAM_NAME=Custom-MyTable_CL
-```
-
-## Client Creation
-
-### Synchronous Client
-
-```java
-import com.azure.identity.DefaultAzureCredential;
-import com.azure.identity.DefaultAzureCredentialBuilder;
-import com.azure.monitor.ingestion.LogsIngestionClient;
-import com.azure.monitor.ingestion.LogsIngestionClientBuilder;
-
-DefaultAzureCredential credential = new DefaultAzureCredentialBuilder().build();
-
-LogsIngestionClient client = new LogsIngestionClientBuilder()
-    .endpoint("<data-collection-endpoint>")
-    .credential(credential)
-    .buildClient();
-```
-
-### Asynchronous Client
-
-```java
-import com.azure.monitor.ingestion.LogsIngestionAsyncClient;
-
-LogsIngestionAsyncClient asyncClient = new LogsIngestionClientBuilder()
-    .endpoint("<data-collection-endpoint>")
-    .credential(new DefaultAzureCredentialBuilder().build())
-    .buildAsyncClient();
-```
-
-## Key Concepts
-
-| Concept | Description |
-|---------|-------------|
-| Data Collection Endpoint (DCE) | Ingestion endpoint URL for your region |
-| Data Collection Rule (DCR) | Defines data transformation and routing to tables |
-| Stream Name | Target stream in the DCR (e.g., `Custom-MyTable_CL`) |
-| Log Analytics Workspace | Destination for ingested logs |
-
-## Core Operations
-
-### Upload Custom Logs
-
-```java
-import java.util.List;
-import java.util.ArrayList;
-
-List<Object> logs = new ArrayList<>();
-logs.add(new MyLogEntry("2024-01-15T10:30:00Z", "INFO", "Application started"));
-logs.add(new MyLogEntry("2024-01-15T10:30:05Z", "DEBUG", "Processing request"));
-
-client.upload("<data-collection-rule-id>", "<stream-name>", logs);
-System.out.println("Logs uploaded successfully");
-```
-
-### Upload with Concurrency
-
-For large log collections, enable concurrent uploads:
-
-```java
-import com.azure.monitor.ingestion.models.LogsUploadOptions;
-import com.azure.core.util.Context;
-
-List<Object> logs = getLargeLogs(); // Large collection
-
-LogsUploadOptions options = new LogsUploadOptions()
-    .setMaxConcurrency(3);
-
-client.upload("<data-collection-rule-id>", "<stream-name>", logs, options, Context.NONE);
-```
-
-### Upload with Error Handling
-
-Handle partial upload failures gracefully:
-
-```java
-LogsUploadOptions options = new LogsUploadOptions()
-    .setLogsUploadErrorConsumer(uploadError -> {
-        System.err.println("Upload error: " + uploadError.getResponseException().getMessage());
-        System.err.println("Failed logs count: " + uploadError.getFailedLogs().size());
-        
-        // Option 1: Log and continue
-        // Option 2: Throw to abort remaining uploads
-        // throw uploadError.getResponseException();
-    });
-
-client.upload("<data-collection-rule-id>", "<stream-name>", logs, options, Context.NONE);
-```
-
-### Async Upload with Reactor
-
-```java
-import reactor.core.publisher.Mono;
-
-List<Object> logs = getLogs();
-
-asyncClient.upload("<data-collection-rule-id>", "<stream-name>", logs)
-    .doOnSuccess(v -> System.out.println("Upload completed"))
-    .doOnError(e -> System.err.println("Upload failed: " + e.getMessage()))
-    .subscribe();
-```
-
-## Log Entry Model Example
-
-```java
-public class MyLogEntry {
-    private String timeGenerated;
-    private String level;
-    private String message;
-    
-    public MyLogEntry(String timeGenerated, String level, String message) {
-        this.timeGenerated = timeGenerated;
-        this.level = level;
-        this.message = message;
-    }
-    
-    // Getters required for JSON serialization
-    public String getTimeGenerated() { return timeGenerated; }
-    public String getLevel() { return level; }
-    public String getMessage() { return message; }
-}
-```
-
-## Error Handling
-
-```java
-import com.azure.core.exception.HttpResponseException;
-
-try {
-    client.upload(ruleId, streamName, logs);
-} catch (HttpResponseException e) {
-    System.err.println("HTTP Status: " + e.getResponse().getStatusCode());
-    System.err.println("Error: " + e.getMessage());
-    
-    if (e.getResponse().getStatusCode() == 403) {
-        System.err.println("Check DCR permissions and managed identity");
-    } else if (e.getResponse().getStatusCode() == 404) {
-        System.err.println("Verify DCE endpoint and DCR ID");
-    }
-}
-```
-
-## Best Practices
-
-1. **Batch logs** — Upload in batches rather than one at a time
-2. **Use concurrency** — Set `maxConcurrency` for large uploads
-3. **Handle partial failures** — Use error consumer to log failed entries
-4. **Match DCR schema** — Log entry fields must match DCR transformation expectations
-5. **Include TimeGenerated** — Most tables require a timestamp field
-6. **Reuse client** — Create once, reuse throughout application
-7. **Use async for high throughput** — `LogsIngestionAsyncClient` for reactive patterns
-
-## Querying Uploaded Logs
-
-Use azure-monitor-query to query ingested logs:
-
-```java
-// See azure-monitor-query skill for LogsQueryClient usage
-String query = "MyTable_CL | where TimeGenerated > ago(1h) | limit 10";
-```
-
-## Reference Links
-
-| Resource | URL |
-|----------|-----|
-| Maven Package | https://central.sonatype.com/artifact/com.azure/azure-monitor-ingestion |
-| GitHub | https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/monitor/azure-monitor-ingestion |
-| Product Docs | https://learn.microsoft.com/azure/azure-monitor/logs/logs-ingestion-api-overview |
-| DCE Overview | https://learn.microsoft.com/azure/azure-monitor/essentials/data-collection-endpoint-overview |
-| DCR Overview | https://learn.microsoft.com/azure/azure-monitor/essentials/data-collection-rule-overview |
-| Troubleshooting | https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-ingestion/TROUBLESHOOTING.md |
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "azure-monitor-ingestion-java"
+sections[21]:
+  - "\n"
+  - "# Azure Monitor Ingestion SDK for Java\n\nClient library for sending custom logs to Azure Monitor using the Logs Ingestion API via Data Collection Rules.\n\n"
+  - "## Installation\n\n```xml\n<dependency>\n    <groupId>com.azure</groupId>\n    <artifactId>azure-monitor-ingestion</artifactId>\n    <version>1.2.11</version>\n</dependency>\n```\n\nOr use Azure SDK BOM:\n\n```xml\n<dependencyManagement>\n    <dependencies>\n        <dependency>\n            <groupId>com.azure</groupId>\n            <artifactId>azure-sdk-bom</artifactId>\n            <version>{bom_version}</version>\n            <type>pom</type>\n            <scope>import</scope>\n        </dependency>\n    </dependencies>\n</dependencyManagement>\n\n<dependencies>\n    <dependency>\n        <groupId>com.azure</groupId>\n        <artifactId>azure-monitor-ingestion</artifactId>\n    </dependency>\n</dependencies>\n```\n\n"
+  - "## Prerequisites\n\n- Data Collection Endpoint (DCE)\n- Data Collection Rule (DCR)\n- Log Analytics workspace\n- Target table (custom or built-in: CommonSecurityLog, SecurityEvents, Syslog, WindowsEvents)\n\n"
+  - "## Environment Variables\n\n```bash\nDATA_COLLECTION_ENDPOINT=https://<dce-name>.<region>.ingest.monitor.azure.com\nDATA_COLLECTION_RULE_ID=dcr-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\nSTREAM_NAME=Custom-MyTable_CL\n```\n\n"
+  - "## Client Creation\n\n"
+  - "### Synchronous Client\n\n```java\nimport com.azure.identity.DefaultAzureCredential;\nimport com.azure.identity.DefaultAzureCredentialBuilder;\nimport com.azure.monitor.ingestion.LogsIngestionClient;\nimport com.azure.monitor.ingestion.LogsIngestionClientBuilder;\n\nDefaultAzureCredential credential = new DefaultAzureCredentialBuilder().build();\n\nLogsIngestionClient client = new LogsIngestionClientBuilder()\n    .endpoint(\"<data-collection-endpoint>\")\n    .credential(credential)\n    .buildClient();\n```\n\n"
+  - "### Asynchronous Client\n\n```java\nimport com.azure.monitor.ingestion.LogsIngestionAsyncClient;\n\nLogsIngestionAsyncClient asyncClient = new LogsIngestionClientBuilder()\n    .endpoint(\"<data-collection-endpoint>\")\n    .credential(new DefaultAzureCredentialBuilder().build())\n    .buildAsyncClient();\n```\n\n"
+  - "## Key Concepts\n\n| Concept | Description |\n|---------|-------------|\n| Data Collection Endpoint (DCE) | Ingestion endpoint URL for your region |\n| Data Collection Rule (DCR) | Defines data transformation and routing to tables |\n| Stream Name | Target stream in the DCR (e.g., `Custom-MyTable_CL`) |\n| Log Analytics Workspace | Destination for ingested logs |\n\n"
+  - "## Core Operations\n\n"
+  - "### Upload Custom Logs\n\n```java\nimport java.util.List;\nimport java.util.ArrayList;\n\nList<Object> logs = new ArrayList<>();\nlogs.add(new MyLogEntry(\"2024-01-15T10:30:00Z\", \"INFO\", \"Application started\"));\nlogs.add(new MyLogEntry(\"2024-01-15T10:30:05Z\", \"DEBUG\", \"Processing request\"));\n\nclient.upload(\"<data-collection-rule-id>\", \"<stream-name>\", logs);\nSystem.out.println(\"Logs uploaded successfully\");\n```\n\n"
+  - "### Upload with Concurrency\n\nFor large log collections, enable concurrent uploads:\n\n```java\nimport com.azure.monitor.ingestion.models.LogsUploadOptions;\nimport com.azure.core.util.Context;\n\nList<Object> logs = getLargeLogs(); // Large collection\n\nLogsUploadOptions options = new LogsUploadOptions()\n    .setMaxConcurrency(3);\n\nclient.upload(\"<data-collection-rule-id>\", \"<stream-name>\", logs, options, Context.NONE);\n```\n\n"
+  - "### Upload with Error Handling\n\nHandle partial upload failures gracefully:\n\n```java\nLogsUploadOptions options = new LogsUploadOptions()\n    .setLogsUploadErrorConsumer(uploadError -> {\n        System.err.println(\"Upload error: \" + uploadError.getResponseException().getMessage());\n        System.err.println(\"Failed logs count: \" + uploadError.getFailedLogs().size());\n        \n        // Option 1: Log and continue\n        // Option 2: Throw to abort remaining uploads\n        // throw uploadError.getResponseException();\n    });\n\nclient.upload(\"<data-collection-rule-id>\", \"<stream-name>\", logs, options, Context.NONE);\n```\n\n"
+  - "### Async Upload with Reactor\n\n```java\nimport reactor.core.publisher.Mono;\n\nList<Object> logs = getLogs();\n\nasyncClient.upload(\"<data-collection-rule-id>\", \"<stream-name>\", logs)\n    .doOnSuccess(v -> System.out.println(\"Upload completed\"))\n    .doOnError(e -> System.err.println(\"Upload failed: \" + e.getMessage()))\n    .subscribe();\n```\n\n"
+  - "## Log Entry Model Example\n\n```java\npublic class MyLogEntry {\n    private String timeGenerated;\n    private String level;\n    private String message;\n    \n    public MyLogEntry(String timeGenerated, String level, String message) {\n        this.timeGenerated = timeGenerated;\n        this.level = level;\n        this.message = message;\n    }\n    \n    // Getters required for JSON serialization\n    public String getTimeGenerated() { return timeGenerated; }\n    public String getLevel() { return level; }\n    public String getMessage() { return message; }\n}\n```\n\n"
+  - "## Error Handling\n\n```java\nimport com.azure.core.exception.HttpResponseException;\n\ntry {\n    client.upload(ruleId, streamName, logs);\n} catch (HttpResponseException e) {\n    System.err.println(\"HTTP Status: \" + e.getResponse().getStatusCode());\n    System.err.println(\"Error: \" + e.getMessage());\n    \n    if (e.getResponse().getStatusCode() == 403) {\n        System.err.println(\"Check DCR permissions and managed identity\");\n    } else if (e.getResponse().getStatusCode() == 404) {\n        System.err.println(\"Verify DCE endpoint and DCR ID\");\n    }\n}\n```\n\n"
+  - "## Best Practices\n\n1. **Batch logs** — Upload in batches rather than one at a time\n2. **Use concurrency** — Set `maxConcurrency` for large uploads\n3. **Handle partial failures** — Use error consumer to log failed entries\n4. **Match DCR schema** — Log entry fields must match DCR transformation expectations\n5. **Include TimeGenerated** — Most tables require a timestamp field\n6. **Reuse client** — Create once, reuse throughout application\n7. **Use async for high throughput** — `LogsIngestionAsyncClient` for reactive patterns\n\n"
+  - "## Querying Uploaded Logs\n\nUse azure-monitor-query to query ingested logs:\n\n```java\n// See azure-monitor-query skill for LogsQueryClient usage\nString query = \"MyTable_CL | where TimeGenerated > ago(1h) | limit 10\";\n```\n\n"
+  - "## Reference Links\n\n| Resource | URL |\n|----------|-----|\n| Maven Package | https://central.sonatype.com/artifact/com.azure/azure-monitor-ingestion |\n| GitHub | https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/monitor/azure-monitor-ingestion |\n| Product Docs | https://learn.microsoft.com/azure/azure-monitor/logs/logs-ingestion-api-overview |\n| DCE Overview | https://learn.microsoft.com/azure/azure-monitor/essentials/data-collection-endpoint-overview |\n| DCR Overview | https://learn.microsoft.com/azure/azure-monitor/essentials/data-collection-rule-overview |\n| Troubleshooting | https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-ingestion/TROUBLESHOOTING.md |\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

@@ -5,253 +5,47 @@ category: workflow-bundle
 risk: safe
 source: personal
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# AI/ML Workflow Bundle
-
-## Overview
-
-Comprehensive AI/ML workflow for building LLM applications, implementing RAG systems, creating AI agents, and developing machine learning pipelines. This bundle orchestrates skills for production AI development.
-
-## When to Use This Workflow
-
-Use this workflow when:
-- Building LLM-powered applications
-- Implementing RAG (Retrieval-Augmented Generation)
-- Creating AI agents
-- Developing ML pipelines
-- Adding AI features to applications
-- Setting up AI observability
-
-## Workflow Phases
-
-### Phase 1: AI Application Design
-
-#### Skills to Invoke
-- `ai-product` - AI product development
-- `ai-engineer` - AI engineering
-- `ai-agents-architect` - Agent architecture
-- `llm-app-patterns` - LLM patterns
-
-#### Actions
-1. Define AI use cases
-2. Choose appropriate models
-3. Design system architecture
-4. Plan data flows
-5. Define success metrics
-
-#### Copy-Paste Prompts
-```
-Use @ai-product to design AI-powered features
-```
-
-```
-Use @ai-agents-architect to design multi-agent system
-```
-
-### Phase 2: LLM Integration
-
-#### Skills to Invoke
-- `llm-application-dev-ai-assistant` - AI assistant development
-- `llm-application-dev-langchain-agent` - LangChain agents
-- `llm-application-dev-prompt-optimize` - Prompt engineering
-- `gemini-api-dev` - Gemini API
-
-#### Actions
-1. Select LLM provider
-2. Set up API access
-3. Implement prompt templates
-4. Configure model parameters
-5. Add streaming support
-6. Implement error handling
-
-#### Copy-Paste Prompts
-```
-Use @llm-application-dev-ai-assistant to build conversational AI
-```
-
-```
-Use @llm-application-dev-langchain-agent to create LangChain agents
-```
-
-```
-Use @llm-application-dev-prompt-optimize to optimize prompts
-```
-
-### Phase 3: RAG Implementation
-
-#### Skills to Invoke
-- `rag-engineer` - RAG engineering
-- `rag-implementation` - RAG implementation
-- `embedding-strategies` - Embedding selection
-- `vector-database-engineer` - Vector databases
-- `similarity-search-patterns` - Similarity search
-- `hybrid-search-implementation` - Hybrid search
-
-#### Actions
-1. Design data pipeline
-2. Choose embedding model
-3. Set up vector database
-4. Implement chunking strategy
-5. Configure retrieval
-6. Add reranking
-7. Implement caching
-
-#### Copy-Paste Prompts
-```
-Use @rag-engineer to design RAG pipeline
-```
-
-```
-Use @vector-database-engineer to set up vector search
-```
-
-```
-Use @embedding-strategies to select optimal embeddings
-```
-
-### Phase 4: AI Agent Development
-
-#### Skills to Invoke
-- `autonomous-agents` - Autonomous agent patterns
-- `autonomous-agent-patterns` - Agent patterns
-- `crewai` - CrewAI framework
-- `langgraph` - LangGraph
-- `multi-agent-patterns` - Multi-agent systems
-- `computer-use-agents` - Computer use agents
-
-#### Actions
-1. Design agent architecture
-2. Define agent roles
-3. Implement tool integration
-4. Set up memory systems
-5. Configure orchestration
-6. Add human-in-the-loop
-
-#### Copy-Paste Prompts
-```
-Use @crewai to build role-based multi-agent system
-```
-
-```
-Use @langgraph to create stateful AI workflows
-```
-
-```
-Use @autonomous-agents to design autonomous agent
-```
-
-### Phase 5: ML Pipeline Development
-
-#### Skills to Invoke
-- `ml-engineer` - ML engineering
-- `mlops-engineer` - MLOps
-- `machine-learning-ops-ml-pipeline` - ML pipelines
-- `ml-pipeline-workflow` - ML workflows
-- `data-engineer` - Data engineering
-
-#### Actions
-1. Design ML pipeline
-2. Set up data processing
-3. Implement model training
-4. Configure evaluation
-5. Set up model registry
-6. Deploy models
-
-#### Copy-Paste Prompts
-```
-Use @ml-engineer to build machine learning pipeline
-```
-
-```
-Use @mlops-engineer to set up MLOps infrastructure
-```
-
-### Phase 6: AI Observability
-
-#### Skills to Invoke
-- `langfuse` - Langfuse observability
-- `manifest` - Manifest telemetry
-- `evaluation` - AI evaluation
-- `llm-evaluation` - LLM evaluation
-
-#### Actions
-1. Set up tracing
-2. Configure logging
-3. Implement evaluation
-4. Monitor performance
-5. Track costs
-6. Set up alerts
-
-#### Copy-Paste Prompts
-```
-Use @langfuse to set up LLM observability
-```
-
-```
-Use @evaluation to create evaluation framework
-```
-
-### Phase 7: AI Security
-
-#### Skills to Invoke
-- `prompt-engineering` - Prompt security
-- `security-scanning-security-sast` - Security scanning
-
-#### Actions
-1. Implement input validation
-2. Add output filtering
-3. Configure rate limiting
-4. Set up access controls
-5. Monitor for abuse
-6. Implement audit logging
-
-## AI Development Checklist
-
-### LLM Integration
-- [ ] API keys secured
-- [ ] Rate limiting configured
-- [ ] Error handling implemented
-- [ ] Streaming enabled
-- [ ] Token usage tracked
-
-### RAG System
-- [ ] Data pipeline working
-- [ ] Embeddings generated
-- [ ] Vector search optimized
-- [ ] Retrieval accuracy tested
-- [ ] Caching implemented
-
-### AI Agents
-- [ ] Agent roles defined
-- [ ] Tools integrated
-- [ ] Memory working
-- [ ] Orchestration tested
-- [ ] Error handling robust
-
-### Observability
-- [ ] Tracing enabled
-- [ ] Metrics collected
-- [ ] Evaluation running
-- [ ] Alerts configured
-- [ ] Dashboards created
-
-## Quality Gates
-
-- [ ] All AI features tested
-- [ ] Performance benchmarks met
-- [ ] Security measures in place
-- [ ] Observability configured
-- [ ] Documentation complete
-
-## Related Workflow Bundles
-
-- `development` - Application development
-- `database` - Data management
-- `cloud-devops` - Infrastructure
-- `testing-qa` - AI testing
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "ai-ml"
+sections[40]:
+  - "\n"
+  - "# AI/ML Workflow Bundle\n\n"
+  - "## Overview\n\nComprehensive AI/ML workflow for building LLM applications, implementing RAG systems, creating AI agents, and developing machine learning pipelines. This bundle orchestrates skills for production AI development.\n\n"
+  - "## When to Use This Workflow\n\nUse this workflow when:\n- Building LLM-powered applications\n- Implementing RAG (Retrieval-Augmented Generation)\n- Creating AI agents\n- Developing ML pipelines\n- Adding AI features to applications\n- Setting up AI observability\n\n"
+  - "## Workflow Phases\n\n"
+  - "### Phase 1: AI Application Design\n\n"
+  - "#### Skills to Invoke\n- `ai-product` - AI product development\n- `ai-engineer` - AI engineering\n- `ai-agents-architect` - Agent architecture\n- `llm-app-patterns` - LLM patterns\n\n"
+  - "#### Actions\n1. Define AI use cases\n2. Choose appropriate models\n3. Design system architecture\n4. Plan data flows\n5. Define success metrics\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @ai-product to design AI-powered features\n```\n\n```\nUse @ai-agents-architect to design multi-agent system\n```\n\n"
+  - "### Phase 2: LLM Integration\n\n"
+  - "#### Skills to Invoke\n- `llm-application-dev-ai-assistant` - AI assistant development\n- `llm-application-dev-langchain-agent` - LangChain agents\n- `llm-application-dev-prompt-optimize` - Prompt engineering\n- `gemini-api-dev` - Gemini API\n\n"
+  - "#### Actions\n1. Select LLM provider\n2. Set up API access\n3. Implement prompt templates\n4. Configure model parameters\n5. Add streaming support\n6. Implement error handling\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @llm-application-dev-ai-assistant to build conversational AI\n```\n\n```\nUse @llm-application-dev-langchain-agent to create LangChain agents\n```\n\n```\nUse @llm-application-dev-prompt-optimize to optimize prompts\n```\n\n"
+  - "### Phase 3: RAG Implementation\n\n"
+  - "#### Skills to Invoke\n- `rag-engineer` - RAG engineering\n- `rag-implementation` - RAG implementation\n- `embedding-strategies` - Embedding selection\n- `vector-database-engineer` - Vector databases\n- `similarity-search-patterns` - Similarity search\n- `hybrid-search-implementation` - Hybrid search\n\n"
+  - "#### Actions\n1. Design data pipeline\n2. Choose embedding model\n3. Set up vector database\n4. Implement chunking strategy\n5. Configure retrieval\n6. Add reranking\n7. Implement caching\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @rag-engineer to design RAG pipeline\n```\n\n```\nUse @vector-database-engineer to set up vector search\n```\n\n```\nUse @embedding-strategies to select optimal embeddings\n```\n\n"
+  - "### Phase 4: AI Agent Development\n\n"
+  - "#### Skills to Invoke\n- `autonomous-agents` - Autonomous agent patterns\n- `autonomous-agent-patterns` - Agent patterns\n- `crewai` - CrewAI framework\n- `langgraph` - LangGraph\n- `multi-agent-patterns` - Multi-agent systems\n- `computer-use-agents` - Computer use agents\n\n"
+  - "#### Actions\n1. Design agent architecture\n2. Define agent roles\n3. Implement tool integration\n4. Set up memory systems\n5. Configure orchestration\n6. Add human-in-the-loop\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @crewai to build role-based multi-agent system\n```\n\n```\nUse @langgraph to create stateful AI workflows\n```\n\n```\nUse @autonomous-agents to design autonomous agent\n```\n\n"
+  - "### Phase 5: ML Pipeline Development\n\n"
+  - "#### Skills to Invoke\n- `ml-engineer` - ML engineering\n- `mlops-engineer` - MLOps\n- `machine-learning-ops-ml-pipeline` - ML pipelines\n- `ml-pipeline-workflow` - ML workflows\n- `data-engineer` - Data engineering\n\n"
+  - "#### Actions\n1. Design ML pipeline\n2. Set up data processing\n3. Implement model training\n4. Configure evaluation\n5. Set up model registry\n6. Deploy models\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @ml-engineer to build machine learning pipeline\n```\n\n```\nUse @mlops-engineer to set up MLOps infrastructure\n```\n\n"
+  - "### Phase 6: AI Observability\n\n"
+  - "#### Skills to Invoke\n- `langfuse` - Langfuse observability\n- `manifest` - Manifest telemetry\n- `evaluation` - AI evaluation\n- `llm-evaluation` - LLM evaluation\n\n"
+  - "#### Actions\n1. Set up tracing\n2. Configure logging\n3. Implement evaluation\n4. Monitor performance\n5. Track costs\n6. Set up alerts\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @langfuse to set up LLM observability\n```\n\n```\nUse @evaluation to create evaluation framework\n```\n\n"
+  - "### Phase 7: AI Security\n\n"
+  - "#### Skills to Invoke\n- `prompt-engineering` - Prompt security\n- `security-scanning-security-sast` - Security scanning\n\n"
+  - "#### Actions\n1. Implement input validation\n2. Add output filtering\n3. Configure rate limiting\n4. Set up access controls\n5. Monitor for abuse\n6. Implement audit logging\n\n"
+  - "## AI Development Checklist\n\n"
+  - "### LLM Integration\n- [ ] API keys secured\n- [ ] Rate limiting configured\n- [ ] Error handling implemented\n- [ ] Streaming enabled\n- [ ] Token usage tracked\n\n"
+  - "### RAG System\n- [ ] Data pipeline working\n- [ ] Embeddings generated\n- [ ] Vector search optimized\n- [ ] Retrieval accuracy tested\n- [ ] Caching implemented\n\n"
+  - "### AI Agents\n- [ ] Agent roles defined\n- [ ] Tools integrated\n- [ ] Memory working\n- [ ] Orchestration tested\n- [ ] Error handling robust\n\n"
+  - "### Observability\n- [ ] Tracing enabled\n- [ ] Metrics collected\n- [ ] Evaluation running\n- [ ] Alerts configured\n- [ ] Dashboards created\n\n"
+  - "## Quality Gates\n\n- [ ] All AI features tested\n- [ ] Performance benchmarks met\n- [ ] Security measures in place\n- [ ] Observability configured\n- [ ] Documentation complete\n\n"
+  - "## Related Workflow Bundles\n\n- `development` - Application development\n- `database` - Data management\n- `cloud-devops` - Infrastructure\n- `testing-qa` - AI testing\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

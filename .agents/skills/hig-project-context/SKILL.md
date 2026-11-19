@@ -4,133 +4,22 @@ description: Create or update a shared Apple design context document that other 
 risk: unknown
 source: community
 date_added: '2026-02-27'
+prompt-source: prompt.toon
 ---
-
-# Apple HIG: Project Context
-
-Create and maintain `.claude/apple-design-context.md` so other HIG skills can skip redundant questions.
-
-Check for `.claude/apple-design-context.md` before asking questions. Use existing context and only ask for information not already covered.
-
-## Gathering Context
-
-Before asking questions, auto-discover context from:
-
-1. **README.md** -- Product description, platform targets
-2. **Package.swift / .xcodeproj** -- Supported platforms, minimum OS versions, dependencies
-3. **Info.plist** -- App category, required capabilities, supported orientations
-4. **Existing code** -- Import statements reveal frameworks (SwiftUI vs UIKit, HealthKit, etc.)
-5. **Assets.xcassets** -- Color assets, icon sets, dark mode variants
-6. **Accessibility audit** -- Grep for accessibility modifiers/attributes
-
-Present findings and ask the user to confirm or correct. Then gather anything still missing:
-
-### 1. Product Overview
-- What does the app do? (one sentence)
-- Category (productivity, social, health, game, utility, etc.)
-- Stage (concept, development, shipped, redesign)
-
-### 2. Target Platforms
-- Which Apple platforms? (iOS, iPadOS, macOS, tvOS, watchOS, visionOS)
-- Minimum OS versions
-- Universal or platform-specific?
-
-### 3. Technology Stack
-- UI framework: SwiftUI, UIKit, AppKit, or mixed?
-- Architecture: single-window, multi-window, document-based?
-- Apple technologies in use? (HealthKit, CloudKit, ARKit, etc.)
-
-### 4. Design System
-- System defaults or custom design system?
-- Brand colors, fonts, icon style?
-- Dark mode and Dynamic Type support status
-
-### 5. Accessibility Requirements
-- Target level (baseline, enhanced, comprehensive)
-- Specific considerations (VoiceOver, Switch Control, etc.)
-- Regulatory requirements (WCAG, Section 508)
-
-### 6. User Context
-- Primary personas (1-3)
-- Key use cases and environments (desk, on-the-go, glanceable, immersive)
-- Known pain points or design challenges
-
-### 7. Existing Design Assets
-- Figma/Sketch files?
-- Apple Design Resources in use?
-- Existing component library?
-
-## Context Document Template
-
-Generate `.claude/apple-design-context.md` using this structure:
-
-```markdown
-# Apple Design Context
-
-## Product
-- **Name**: [App name]
-- **Description**: [One sentence]
-- **Category**: [Category]
-- **Stage**: [Concept / Development / Shipped / Redesign]
-
-## Platforms
-| Platform | Supported | Min OS | Notes |
-|----------|-----------|--------|-------|
-| iOS      | Yes/No    |        |       |
-| iPadOS   | Yes/No    |        |       |
-| macOS    | Yes/No    |        |       |
-| tvOS     | Yes/No    |        |       |
-| watchOS  | Yes/No    |        |       |
-| visionOS | Yes/No    |        |       |
-
-## Technology
-- **UI Framework**: [SwiftUI / UIKit / AppKit / Mixed]
-- **Architecture**: [Single-window / Multi-window / Document-based]
-- **Apple Technologies**: [List any: HealthKit, CloudKit, ARKit, etc.]
-
-## Design System
-- **Base**: [System defaults / Custom design system]
-- **Brand Colors**: [List or reference]
-- **Typography**: [System fonts / Custom fonts]
-- **Dark Mode**: [Supported / Not yet / N/A]
-- **Dynamic Type**: [Supported / Not yet / N/A]
-
-## Accessibility
-- **Target Level**: [Baseline / Enhanced / Comprehensive]
-- **Key Considerations**: [List any specific needs]
-
-## Users
-- **Primary Persona**: [Description]
-- **Key Use Cases**: [List]
-- **Known Challenges**: [List]
-```
-
-## Updating Context
-
-When updating an existing context document:
-
-1. Read the current `.claude/apple-design-context.md`
-2. Ask what has changed
-3. Update only the changed sections
-4. Preserve all unchanged information
-
-## Related Skills
-
-- **hig-platforms** -- Platform-specific guidance
-- **hig-foundations** -- Color, typography, layout decisions
-- **hig-patterns** -- UX pattern recommendations
-- **hig-components-*** -- Component recommendations
-- **hig-inputs** -- Input method coverage
-- **hig-technologies** -- Apple technology relevance
-
----
-
-*Built by [Raintree Technology](https://raintree.technology) · [More developer tools](https://raintree.technology)*
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "hig-project-context"
+sections[15]:
+  - "\n"
+  - "# Apple HIG: Project Context\n\nCreate and maintain `.claude/apple-design-context.md` so other HIG skills can skip redundant questions.\n\nCheck for `.claude/apple-design-context.md` before asking questions. Use existing context and only ask for information not already covered.\n\n"
+  - "## Gathering Context\n\nBefore asking questions, auto-discover context from:\n\n1. **README.md** -- Product description, platform targets\n2. **Package.swift / .xcodeproj** -- Supported platforms, minimum OS versions, dependencies\n3. **Info.plist** -- App category, required capabilities, supported orientations\n4. **Existing code** -- Import statements reveal frameworks (SwiftUI vs UIKit, HealthKit, etc.)\n5. **Assets.xcassets** -- Color assets, icon sets, dark mode variants\n6. **Accessibility audit** -- Grep for accessibility modifiers/attributes\n\nPresent findings and ask the user to confirm or correct. Then gather anything still missing:\n\n"
+  - "### 1. Product Overview\n- What does the app do? (one sentence)\n- Category (productivity, social, health, game, utility, etc.)\n- Stage (concept, development, shipped, redesign)\n\n"
+  - "### 2. Target Platforms\n- Which Apple platforms? (iOS, iPadOS, macOS, tvOS, watchOS, visionOS)\n- Minimum OS versions\n- Universal or platform-specific?\n\n"
+  - "### 3. Technology Stack\n- UI framework: SwiftUI, UIKit, AppKit, or mixed?\n- Architecture: single-window, multi-window, document-based?\n- Apple technologies in use? (HealthKit, CloudKit, ARKit, etc.)\n\n"
+  - "### 4. Design System\n- System defaults or custom design system?\n- Brand colors, fonts, icon style?\n- Dark mode and Dynamic Type support status\n\n"
+  - "### 5. Accessibility Requirements\n- Target level (baseline, enhanced, comprehensive)\n- Specific considerations (VoiceOver, Switch Control, etc.)\n- Regulatory requirements (WCAG, Section 508)\n\n"
+  - "### 6. User Context\n- Primary personas (1-3)\n- Key use cases and environments (desk, on-the-go, glanceable, immersive)\n- Known pain points or design challenges\n\n"
+  - "### 7. Existing Design Assets\n- Figma/Sketch files?\n- Apple Design Resources in use?\n- Existing component library?\n\n"
+  - "## Context Document Template\n\nGenerate `.claude/apple-design-context.md` using this structure:\n\n```markdown\n# Apple Design Context\n\n## Product\n- **Name**: [App name]\n- **Description**: [One sentence]\n- **Category**: [Category]\n- **Stage**: [Concept / Development / Shipped / Redesign]\n\n## Platforms\n| Platform | Supported | Min OS | Notes |\n|----------|-----------|--------|-------|\n| iOS      | Yes/No    |        |       |\n| iPadOS   | Yes/No    |        |       |\n| macOS    | Yes/No    |        |       |\n| tvOS     | Yes/No    |        |       |\n| watchOS  | Yes/No    |        |       |\n| visionOS | Yes/No    |        |       |\n\n## Technology\n- **UI Framework**: [SwiftUI / UIKit / AppKit / Mixed]\n- **Architecture**: [Single-window / Multi-window / Document-based]\n- **Apple Technologies**: [List any: HealthKit, CloudKit, ARKit, etc.]\n\n## Design System\n- **Base**: [System defaults / Custom design system]\n- **Brand Colors**: [List or reference]\n- **Typography**: [System fonts / Custom fonts]\n- **Dark Mode**: [Supported / Not yet / N/A]\n- **Dynamic Type**: [Supported / Not yet / N/A]\n\n## Accessibility\n- **Target Level**: [Baseline / Enhanced / Comprehensive]\n- **Key Considerations**: [List any specific needs]\n\n## Users\n- **Primary Persona**: [Description]\n- **Key Use Cases**: [List]\n- **Known Challenges**: [List]\n```\n\n"
+  - "## Updating Context\n\nWhen updating an existing context document:\n\n1. Read the current `.claude/apple-design-context.md`\n2. Ask what has changed\n3. Update only the changed sections\n4. Preserve all unchanged information\n\n"
+  - "## Related Skills\n\n- **hig-platforms** -- Platform-specific guidance\n- **hig-foundations** -- Color, typography, layout decisions\n- **hig-patterns** -- UX pattern recommendations\n- **hig-components-*** -- Component recommendations\n- **hig-inputs** -- Input method coverage\n- **hig-technologies** -- Apple technology relevance\n\n---\n\n*Built by [Raintree Technology](https://raintree.technology) · [More developer tools](https://raintree.technology)*\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

@@ -4,76 +4,17 @@ description: "Create Zustand stores following established patterns with proper T
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Zustand Store
-
-Create Zustand stores following established patterns with proper TypeScript types and middleware.
-
-## Quick Start
-
-Copy the template from assets/template.ts and replace placeholders:
-- `{{StoreName}}` → PascalCase store name (e.g., `Project`)
-- `{{description}}` → Brief description for JSDoc
-
-## Always Use subscribeWithSelector
-
-```typescript
-import { create } from 'zustand';
-import { subscribeWithSelector } from 'zustand/middleware';
-
-export const useMyStore = create<MyStore>()(
-  subscribeWithSelector((set, get) => ({
-    // state and actions
-  }))
-);
-```
-
-## Separate State and Actions
-
-```typescript
-export interface MyState {
-  items: Item[];
-  isLoading: boolean;
-}
-
-export interface MyActions {
-  addItem: (item: Item) => void;
-  loadItems: () => Promise<void>;
-}
-
-export type MyStore = MyState & MyActions;
-```
-
-## Use Individual Selectors
-
-```typescript
-// Good - only re-renders when `items` changes
-const items = useMyStore((state) => state.items);
-
-// Avoid - re-renders on any state change
-const { items, isLoading } = useMyStore();
-```
-
-## Subscribe Outside React
-
-```typescript
-useMyStore.subscribe(
-  (state) => state.selectedId,
-  (selectedId) => console.log('Selected:', selectedId)
-);
-```
-
-## Integration Steps
-
-1. Create store in `src/frontend/src/store/`
-2. Export from `src/frontend/src/store/index.ts`
-3. Add tests in `src/frontend/src/store/*.test.ts`
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "zustand-store-ts"
+sections[10]:
+  - "\n"
+  - "# Zustand Store\n\nCreate Zustand stores following established patterns with proper TypeScript types and middleware.\n\n"
+  - "## Quick Start\n\nCopy the template from assets/template.ts and replace placeholders:\n- `{{StoreName}}` → PascalCase store name (e.g., `Project`)\n- `{{description}}` → Brief description for JSDoc\n\n"
+  - "## Always Use subscribeWithSelector\n\n```typescript\nimport { create } from 'zustand';\nimport { subscribeWithSelector } from 'zustand/middleware';\n\nexport const useMyStore = create<MyStore>()(\n  subscribeWithSelector((set, get) => ({\n    // state and actions\n  }))\n);\n```\n\n"
+  - "## Separate State and Actions\n\n```typescript\nexport interface MyState {\n  items: Item[];\n  isLoading: boolean;\n}\n\nexport interface MyActions {\n  addItem: (item: Item) => void;\n  loadItems: () => Promise<void>;\n}\n\nexport type MyStore = MyState & MyActions;\n```\n\n"
+  - "## Use Individual Selectors\n\n```typescript\n// Good - only re-renders when `items` changes\nconst items = useMyStore((state) => state.items);\n\n// Avoid - re-renders on any state change\nconst { items, isLoading } = useMyStore();\n```\n\n"
+  - "## Subscribe Outside React\n\n```typescript\nuseMyStore.subscribe(\n  (state) => state.selectedId,\n  (selectedId) => console.log('Selected:', selectedId)\n);\n```\n\n"
+  - "## Integration Steps\n\n1. Create store in `src/frontend/src/store/`\n2. Export from `src/frontend/src/store/index.ts`\n3. Add tests in `src/frontend/src/store/*.test.ts`\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

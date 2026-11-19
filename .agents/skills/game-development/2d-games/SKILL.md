@@ -4,126 +4,27 @@ description: "2D game development principles. Sprites, tilemaps, physics, camera
 risk: none
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# 2D Game Development
-
-> Principles for 2D game systems.
-
----
-
-## 1. Sprite Systems
-
-### Sprite Organization
-
-| Component | Purpose |
-|-----------|---------|
-| **Atlas** | Combine textures, reduce draw calls |
-| **Animation** | Frame sequences |
-| **Pivot** | Rotation/scale origin |
-| **Layering** | Z-order control |
-
-### Animation Principles
-
-- Frame rate: 8-24 FPS typical
-- Squash and stretch for impact
-- Anticipation before action
-- Follow-through after action
-
----
-
-## 2. Tilemap Design
-
-### Tile Considerations
-
-| Factor | Recommendation |
-|--------|----------------|
-| **Size** | 16x16, 32x32, 64x64 |
-| **Auto-tiling** | Use for terrain |
-| **Collision** | Simplified shapes |
-
-### Layers
-
-| Layer | Content |
-|-------|---------|
-| Background | Non-interactive scenery |
-| Terrain | Walkable ground |
-| Props | Interactive objects |
-| Foreground | Parallax overlay |
-
----
-
-## 3. 2D Physics
-
-### Collision Shapes
-
-| Shape | Use Case |
-|-------|----------|
-| Box | Rectangular objects |
-| Circle | Balls, rounded |
-| Capsule | Characters |
-| Polygon | Complex shapes |
-
-### Physics Considerations
-
-- Pixel-perfect vs physics-based
-- Fixed timestep for consistency
-- Layers for filtering
-
----
-
-## 4. Camera Systems
-
-### Camera Types
-
-| Type | Use |
-|------|-----|
-| **Follow** | Track player |
-| **Look-ahead** | Anticipate movement |
-| **Multi-target** | Two-player |
-| **Room-based** | Metroidvania |
-
-### Screen Shake
-
-- Short duration (50-200ms)
-- Diminishing intensity
-- Use sparingly
-
----
-
-## 5. Genre Patterns
-
-### Platformer
-
-- Coyote time (leniency after edge)
-- Jump buffering
-- Variable jump height
-
-### Top-down
-
-- 8-directional or free movement
-- Aim-based or auto-aim
-- Consider rotation or not
-
----
-
-## 6. Anti-Patterns
-
-| ❌ Don't | ✅ Do |
-|----------|-------|
-| Separate textures | Use atlases |
-| Complex collision shapes | Simplified collision |
-| Jittery camera | Smooth following |
-| Pixel-perfect on physics | Choose one approach |
-
----
-
-> **Remember:** 2D is about clarity. Every pixel should communicate.
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "2d-games"
+sections[20]:
+  - "\n"
+  - "# 2D Game Development\n\n> Principles for 2D game systems.\n\n---\n\n"
+  - "## 1. Sprite Systems\n\n"
+  - "### Sprite Organization\n\n| Component | Purpose |\n|-----------|---------|\n| **Atlas** | Combine textures, reduce draw calls |\n| **Animation** | Frame sequences |\n| **Pivot** | Rotation/scale origin |\n| **Layering** | Z-order control |\n\n"
+  - "### Animation Principles\n\n- Frame rate: 8-24 FPS typical\n- Squash and stretch for impact\n- Anticipation before action\n- Follow-through after action\n\n---\n\n"
+  - "## 2. Tilemap Design\n\n"
+  - "### Tile Considerations\n\n| Factor | Recommendation |\n|--------|----------------|\n| **Size** | 16x16, 32x32, 64x64 |\n| **Auto-tiling** | Use for terrain |\n| **Collision** | Simplified shapes |\n\n"
+  - "### Layers\n\n| Layer | Content |\n|-------|---------|\n| Background | Non-interactive scenery |\n| Terrain | Walkable ground |\n| Props | Interactive objects |\n| Foreground | Parallax overlay |\n\n---\n\n"
+  - "## 3. 2D Physics\n\n"
+  - "### Collision Shapes\n\n| Shape | Use Case |\n|-------|----------|\n| Box | Rectangular objects |\n| Circle | Balls, rounded |\n| Capsule | Characters |\n| Polygon | Complex shapes |\n\n"
+  - "### Physics Considerations\n\n- Pixel-perfect vs physics-based\n- Fixed timestep for consistency\n- Layers for filtering\n\n---\n\n"
+  - "## 4. Camera Systems\n\n"
+  - "### Camera Types\n\n| Type | Use |\n|------|-----|\n| **Follow** | Track player |\n| **Look-ahead** | Anticipate movement |\n| **Multi-target** | Two-player |\n| **Room-based** | Metroidvania |\n\n"
+  - "### Screen Shake\n\n- Short duration (50-200ms)\n- Diminishing intensity\n- Use sparingly\n\n---\n\n"
+  - "## 5. Genre Patterns\n\n"
+  - "### Platformer\n\n- Coyote time (leniency after edge)\n- Jump buffering\n- Variable jump height\n\n"
+  - "### Top-down\n\n- 8-directional or free movement\n- Aim-based or auto-aim\n- Consider rotation or not\n\n---\n\n"
+  - "## 6. Anti-Patterns\n\n| ❌ Don't | ✅ Do |\n|----------|-------|\n| Separate textures | Use atlases |\n| Complex collision shapes | Simplified collision |\n| Jittery camera | Smooth following |\n| Pixel-perfect on physics | Choose one approach |\n\n---\n\n> **Remember:** 2D is about clarity. Every pixel should communicate.\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

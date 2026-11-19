@@ -4,139 +4,26 @@ description: "Multiplayer game development principles. Architecture, networking,
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Multiplayer Game Development
-
-> Networking architecture and synchronization principles.
-
----
-
-## 1. Architecture Selection
-
-### Decision Tree
-
-```
-What type of multiplayer?
-│
-├── Competitive / Real-time
-│   └── Dedicated Server (authoritative)
-│
-├── Cooperative / Casual
-│   └── Host-based (one player is server)
-│
-├── Turn-based
-│   └── Client-server (simple)
-│
-└── Massive (MMO)
-    └── Distributed servers
-```
-
-### Comparison
-
-| Architecture | Latency | Cost | Security |
-|--------------|---------|------|----------|
-| **Dedicated** | Low | High | Strong |
-| **P2P** | Variable | Low | Weak |
-| **Host-based** | Medium | Low | Medium |
-
----
-
-## 2. Synchronization Principles
-
-### State vs Input
-
-| Approach | Sync What | Best For |
-|----------|-----------|----------|
-| **State Sync** | Game state | Simple, few objects |
-| **Input Sync** | Player inputs | Action games |
-| **Hybrid** | Both | Most games |
-
-### Lag Compensation
-
-| Technique | Purpose |
-|-----------|---------|
-| **Prediction** | Client predicts server |
-| **Interpolation** | Smooth remote players |
-| **Reconciliation** | Fix mispredictions |
-| **Lag compensation** | Rewind for hit detection |
-
----
-
-## 3. Network Optimization
-
-### Bandwidth Reduction
-
-| Technique | Savings |
-|-----------|---------|
-| **Delta compression** | Send only changes |
-| **Quantization** | Reduce precision |
-| **Priority** | Important data first |
-| **Area of interest** | Only nearby entities |
-
-### Update Rates
-
-| Type | Rate |
-|------|------|
-| Position | 20-60 Hz |
-| Health | On change |
-| Inventory | On change |
-| Chat | On send |
-
----
-
-## 4. Security Principles
-
-### Server Authority
-
-```
-Client: "I hit the enemy"
-Server: Validate → did projectile actually hit?
-         → was player in valid state?
-         → was timing possible?
-```
-
-### Anti-Cheat
-
-| Cheat | Prevention |
-|-------|------------|
-| Speed hack | Server validates movement |
-| Aimbot | Server validates sight line |
-| Item dupe | Server owns inventory |
-| Wall hack | Don't send hidden data |
-
----
-
-## 5. Matchmaking
-
-### Considerations
-
-| Factor | Impact |
-|--------|--------|
-| **Skill** | Fair matches |
-| **Latency** | Playable connection |
-| **Wait time** | Player patience |
-| **Party size** | Group play |
-
----
-
-## 6. Anti-Patterns
-
-| ❌ Don't | ✅ Do |
-|----------|-------|
-| Trust the client | Server is authority |
-| Send everything | Send only necessary |
-| Ignore latency | Design for 100-200ms |
-| Sync exact positions | Interpolate/predict |
-
----
-
-> **Remember:** Never trust the client. The server is the source of truth.
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "multiplayer"
+sections[19]:
+  - "\n"
+  - "# Multiplayer Game Development\n\n> Networking architecture and synchronization principles.\n\n---\n\n"
+  - "## 1. Architecture Selection\n\n"
+  - "### Decision Tree\n\n```\nWhat type of multiplayer?\n│\n├── Competitive / Real-time\n│   └── Dedicated Server (authoritative)\n│\n├── Cooperative / Casual\n│   └── Host-based (one player is server)\n│\n├── Turn-based\n│   └── Client-server (simple)\n│\n└── Massive (MMO)\n    └── Distributed servers\n```\n\n"
+  - "### Comparison\n\n| Architecture | Latency | Cost | Security |\n|--------------|---------|------|----------|\n| **Dedicated** | Low | High | Strong |\n| **P2P** | Variable | Low | Weak |\n| **Host-based** | Medium | Low | Medium |\n\n---\n\n"
+  - "## 2. Synchronization Principles\n\n"
+  - "### State vs Input\n\n| Approach | Sync What | Best For |\n|----------|-----------|----------|\n| **State Sync** | Game state | Simple, few objects |\n| **Input Sync** | Player inputs | Action games |\n| **Hybrid** | Both | Most games |\n\n"
+  - "### Lag Compensation\n\n| Technique | Purpose |\n|-----------|---------|\n| **Prediction** | Client predicts server |\n| **Interpolation** | Smooth remote players |\n| **Reconciliation** | Fix mispredictions |\n| **Lag compensation** | Rewind for hit detection |\n\n---\n\n"
+  - "## 3. Network Optimization\n\n"
+  - "### Bandwidth Reduction\n\n| Technique | Savings |\n|-----------|---------|\n| **Delta compression** | Send only changes |\n| **Quantization** | Reduce precision |\n| **Priority** | Important data first |\n| **Area of interest** | Only nearby entities |\n\n"
+  - "### Update Rates\n\n| Type | Rate |\n|------|------|\n| Position | 20-60 Hz |\n| Health | On change |\n| Inventory | On change |\n| Chat | On send |\n\n---\n\n"
+  - "## 4. Security Principles\n\n"
+  - "### Server Authority\n\n```\nClient: \"I hit the enemy\"\nServer: Validate → did projectile actually hit?\n         → was player in valid state?\n         → was timing possible?\n```\n\n"
+  - "### Anti-Cheat\n\n| Cheat | Prevention |\n|-------|------------|\n| Speed hack | Server validates movement |\n| Aimbot | Server validates sight line |\n| Item dupe | Server owns inventory |\n| Wall hack | Don't send hidden data |\n\n---\n\n"
+  - "## 5. Matchmaking\n\n"
+  - "### Considerations\n\n| Factor | Impact |\n|--------|--------|\n| **Skill** | Fair matches |\n| **Latency** | Playable connection |\n| **Wait time** | Player patience |\n| **Party size** | Group play |\n\n---\n\n"
+  - "## 6. Anti-Patterns\n\n| ❌ Don't | ✅ Do |\n|----------|-------|\n| Trust the client | Server is authority |\n| Send everything | Send only necessary |\n| Ignore latency | Design for 100-200ms |\n| Sync exact positions | Interpolate/predict |\n\n---\n\n> **Remember:** Never trust the client. The server is the source of truth.\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

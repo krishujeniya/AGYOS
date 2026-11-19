@@ -29,16 +29,9 @@ hooks:
           command: "if [ -f task_plan.md ]; then echo '[planning-with-files] PreCompact: context compaction is about to occur.'; echo 'Before compaction completes: ensure progress.md captures recent actions and task_plan.md status reflects current phase.'; echo 'task_plan.md, findings.md, progress.md remain on disk and will be re-read after compaction.'; ATTEST=''; if [ -f .planning/.active_plan ]; then AP=$(tr -d '[:space:]' < .planning/.active_plan 2>/dev/null); if [ -n \"$AP\" ] && [ -f \".planning/$AP/.attestation\" ]; then ATTEST=$(tr -d '[:space:]' < \".planning/$AP/.attestation\" 2>/dev/null); fi; fi; if [ -z \"$ATTEST\" ] && [ -f .plan-attestation ]; then ATTEST=$(tr -d '[:space:]' < .plan-attestation 2>/dev/null); fi; if [ -n \"$ATTEST\" ]; then echo \"Plan-SHA256 at compaction: $ATTEST\"; fi; fi; exit 0"
 metadata:
   version: "2.38.0"
+prompt-source: prompt.toon
 ---
-# Planning with Files
-
-Implements Manus-style file-based planning to organize and track progress on complex tasks. Creates task_plan.md, findings.md, and progress.md. Use when asked to plan out, break down, or organize a multi-step project, research task, or any work requiring 5+ tool calls. Supports automatic session recovery after /clear.
-
-## Workflow
-
-1. Confirm the request fits this skill and identify the required inputs and output constraints.
-2. Read the applicable sections in [the full runbook](references/FULL_RUNBOOK.md).
-3. Check version-sensitive instructions against authoritative current documentation; label claims that cannot be verified.
-4. Get any required approval before paid, destructive, external, or user-visible actions not already authorized.
-5. Follow the relevant procedure using the project’s existing tools and conventions. Ask for missing inputs instead of inventing values.
-6. Verify the result with available checks and report what ran, what passed, and any remaining uncertainty.
+skill: "planning-with-files"
+sections[2]:
+  - "# Planning with Files\n\nImplements Manus-style file-based planning to organize and track progress on complex tasks. Creates task_plan.md, findings.md, and progress.md. Use when asked to plan out, break down, or organize a multi-step project, research task, or any work requiring 5+ tool calls. Supports automatic session recovery after /clear.\n\n"
+  - "## Workflow\n\n1. Confirm the request fits this skill and identify the required inputs and output constraints.\n2. Read the applicable sections in [the full runbook](references/FULL_RUNBOOK.md).\n3. Check version-sensitive instructions against authoritative current documentation; label claims that cannot be verified.\n4. Get any required approval before paid, destructive, external, or user-visible actions not already authorized.\n5. Follow the relevant procedure using the project’s existing tools and conventions. Ask for missing inputs instead of inventing values.\n6. Verify the result with available checks and report what ran, what passed, and any remaining uncertainty.\n"

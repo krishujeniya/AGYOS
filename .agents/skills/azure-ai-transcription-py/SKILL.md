@@ -4,74 +4,17 @@ description: Azure AI Transcription SDK for Python. Use for real-time and batch 
 risk: unknown
 source: community
 date_added: '2026-02-27'
+prompt-source: prompt.toon
 ---
-
-# Azure AI Transcription SDK for Python
-
-Client library for Azure AI Transcription (speech-to-text) with real-time and batch transcription.
-
-## Installation
-
-```bash
-pip install azure-ai-transcription
-```
-
-## Environment Variables
-
-```bash
-TRANSCRIPTION_ENDPOINT=https://<resource>.cognitiveservices.azure.com
-TRANSCRIPTION_KEY=<your-key>
-```
-
-## Authentication
-
-Use subscription key authentication (DefaultAzureCredential is not supported for this client):
-
-```python
-import os
-from azure.ai.transcription import TranscriptionClient
-
-client = TranscriptionClient(
-    endpoint=os.environ["TRANSCRIPTION_ENDPOINT"],
-    credential=os.environ["TRANSCRIPTION_KEY"]
-)
-```
-
-## Transcription (Batch)
-
-```python
-job = client.begin_transcription(
-    name="meeting-transcription",
-    locale="en-US",
-    content_urls=["https://<storage>/audio.wav"],
-    diarization_enabled=True
-)
-result = job.result()
-print(result.status)
-```
-
-## Transcription (Real-time)
-
-```python
-stream = client.begin_stream_transcription(locale="en-US")
-stream.send_audio_file("audio.wav")
-for event in stream:
-    print(event.text)
-```
-
-## Best Practices
-
-1. **Enable diarization** when multiple speakers are present
-2. **Use batch transcription** for long files stored in blob storage
-3. **Capture timestamps** for subtitle generation
-4. **Specify language** to improve recognition accuracy
-5. **Handle streaming backpressure** for real-time transcription
-6. **Close transcription sessions** when complete
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "azure-ai-transcription-py"
+sections[10]:
+  - "\n"
+  - "# Azure AI Transcription SDK for Python\n\nClient library for Azure AI Transcription (speech-to-text) with real-time and batch transcription.\n\n"
+  - "## Installation\n\n```bash\npip install azure-ai-transcription\n```\n\n"
+  - "## Environment Variables\n\n```bash\nTRANSCRIPTION_ENDPOINT=https://<resource>.cognitiveservices.azure.com\nTRANSCRIPTION_KEY=<your-key>\n```\n\n"
+  - "## Authentication\n\nUse subscription key authentication (DefaultAzureCredential is not supported for this client):\n\n```python\nimport os\nfrom azure.ai.transcription import TranscriptionClient\n\nclient = TranscriptionClient(\n    endpoint=os.environ[\"TRANSCRIPTION_ENDPOINT\"],\n    credential=os.environ[\"TRANSCRIPTION_KEY\"]\n)\n```\n\n"
+  - "## Transcription (Batch)\n\n```python\njob = client.begin_transcription(\n    name=\"meeting-transcription\",\n    locale=\"en-US\",\n    content_urls=[\"https://<storage>/audio.wav\"],\n    diarization_enabled=True\n)\nresult = job.result()\nprint(result.status)\n```\n\n"
+  - "## Transcription (Real-time)\n\n```python\nstream = client.begin_stream_transcription(locale=\"en-US\")\nstream.send_audio_file(\"audio.wav\")\nfor event in stream:\n    print(event.text)\n```\n\n"
+  - "## Best Practices\n\n1. **Enable diarization** when multiple speakers are present\n2. **Use batch transcription** for long files stored in blob storage\n3. **Capture timestamps** for subtitle generation\n4. **Specify language** to improve recognition accuracy\n5. **Handle streaming backpressure** for real-time transcription\n6. **Close transcription sessions** when complete\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

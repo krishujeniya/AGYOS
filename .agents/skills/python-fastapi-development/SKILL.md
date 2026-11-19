@@ -5,216 +5,48 @@ category: granular-workflow-bundle
 risk: safe
 source: personal
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Python/FastAPI Development Workflow
-
-## Overview
-
-Specialized workflow for building production-ready Python backends with FastAPI, featuring async patterns, SQLAlchemy ORM, Pydantic validation, and comprehensive API patterns.
-
-## When to Use This Workflow
-
-Use this workflow when:
-- Building new REST APIs with FastAPI
-- Creating async Python backends
-- Implementing database integration with SQLAlchemy
-- Setting up API authentication
-- Developing microservices
-
-## Workflow Phases
-
-### Phase 1: Project Setup
-
-#### Skills to Invoke
-- `app-builder` - Application scaffolding
-- `python-development-python-scaffold` - Python scaffolding
-- `fastapi-templates` - FastAPI templates
-- `uv-package-manager` - Package management
-
-#### Actions
-1. Set up Python environment (uv/poetry)
-2. Create project structure
-3. Configure FastAPI app
-4. Set up logging
-5. Configure environment variables
-
-#### Copy-Paste Prompts
-```
-Use @fastapi-templates to scaffold a new FastAPI project
-```
-
-```
-Use @python-development-python-scaffold to set up Python project structure
-```
-
-### Phase 2: Database Setup
-
-#### Skills to Invoke
-- `prisma-expert` - Prisma ORM (alternative)
-- `database-design` - Schema design
-- `postgresql` - PostgreSQL setup
-- `pydantic-models-py` - Pydantic models
-
-#### Actions
-1. Design database schema
-2. Set up SQLAlchemy models
-3. Create database connection
-4. Configure migrations (Alembic)
-5. Set up session management
-
-#### Copy-Paste Prompts
-```
-Use @database-design to design PostgreSQL schema
-```
-
-```
-Use @pydantic-models-py to create Pydantic models for API
-```
-
-### Phase 3: API Routes
-
-#### Skills to Invoke
-- `fastapi-router-py` - FastAPI routers
-- `api-design-principles` - API design
-- `api-patterns` - API patterns
-
-#### Actions
-1. Design API endpoints
-2. Create API routers
-3. Implement CRUD operations
-4. Add request validation
-5. Configure response models
-
-#### Copy-Paste Prompts
-```
-Use @fastapi-router-py to create API endpoints with CRUD operations
-```
-
-```
-Use @api-design-principles to design RESTful API
-```
-
-### Phase 4: Authentication
-
-#### Skills to Invoke
-- `auth-implementation-patterns` - Authentication
-- `api-security-best-practices` - API security
-
-#### Actions
-1. Choose auth strategy (JWT, OAuth2)
-2. Implement user registration
-3. Set up login endpoints
-4. Create auth middleware
-5. Add password hashing
-
-#### Copy-Paste Prompts
-```
-Use @auth-implementation-patterns to implement JWT authentication
-```
-
-### Phase 5: Error Handling
-
-#### Skills to Invoke
-- `fastapi-pro` - FastAPI patterns
-- `error-handling-patterns` - Error handling
-
-#### Actions
-1. Create custom exceptions
-2. Set up exception handlers
-3. Implement error responses
-4. Add request logging
-5. Configure error tracking
-
-#### Copy-Paste Prompts
-```
-Use @fastapi-pro to implement comprehensive error handling
-```
-
-### Phase 6: Testing
-
-#### Skills to Invoke
-- `python-testing-patterns` - pytest testing
-- `api-testing-observability-api-mock` - API testing
-
-#### Actions
-1. Set up pytest
-2. Create test fixtures
-3. Write unit tests
-4. Implement integration tests
-5. Configure test database
-
-#### Copy-Paste Prompts
-```
-Use @python-testing-patterns to write pytest tests for FastAPI
-```
-
-### Phase 7: Documentation
-
-#### Skills to Invoke
-- `api-documenter` - API documentation
-- `openapi-spec-generation` - OpenAPI specs
-
-#### Actions
-1. Configure OpenAPI schema
-2. Add endpoint documentation
-3. Create usage examples
-4. Set up API versioning
-5. Generate API docs
-
-#### Copy-Paste Prompts
-```
-Use @api-documenter to generate comprehensive API documentation
-```
-
-### Phase 8: Deployment
-
-#### Skills to Invoke
-- `deployment-engineer` - Deployment
-- `docker-expert` - Containerization
-
-#### Actions
-1. Create Dockerfile
-2. Set up docker-compose
-3. Configure production settings
-4. Set up reverse proxy
-5. Deploy to cloud
-
-#### Copy-Paste Prompts
-```
-Use @docker-expert to containerize FastAPI application
-```
-
-## Technology Stack
-
-| Category | Technology |
-|----------|------------|
-| Framework | FastAPI |
-| Language | Python 3.11+ |
-| ORM | SQLAlchemy 2.0 |
-| Validation | Pydantic v2 |
-| Database | PostgreSQL |
-| Migrations | Alembic |
-| Auth | JWT, OAuth2 |
-| Testing | pytest |
-
-## Quality Gates
-
-- [ ] All tests passing (>80% coverage)
-- [ ] Type checking passes (mypy)
-- [ ] Linting clean (ruff, black)
-- [ ] API documentation complete
-- [ ] Security scan passed
-- [ ] Performance benchmarks met
-
-## Related Workflow Bundles
-
-- `development` - General development
-- `database` - Database operations
-- `security-audit` - Security testing
-- `api-development` - API patterns
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "python-fastapi-development"
+sections[41]:
+  - "\n"
+  - "# Python/FastAPI Development Workflow\n\n"
+  - "## Overview\n\nSpecialized workflow for building production-ready Python backends with FastAPI, featuring async patterns, SQLAlchemy ORM, Pydantic validation, and comprehensive API patterns.\n\n"
+  - "## When to Use This Workflow\n\nUse this workflow when:\n- Building new REST APIs with FastAPI\n- Creating async Python backends\n- Implementing database integration with SQLAlchemy\n- Setting up API authentication\n- Developing microservices\n\n"
+  - "## Workflow Phases\n\n"
+  - "### Phase 1: Project Setup\n\n"
+  - "#### Skills to Invoke\n- `app-builder` - Application scaffolding\n- `python-development-python-scaffold` - Python scaffolding\n- `fastapi-templates` - FastAPI templates\n- `uv-package-manager` - Package management\n\n"
+  - "#### Actions\n1. Set up Python environment (uv/poetry)\n2. Create project structure\n3. Configure FastAPI app\n4. Set up logging\n5. Configure environment variables\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @fastapi-templates to scaffold a new FastAPI project\n```\n\n```\nUse @python-development-python-scaffold to set up Python project structure\n```\n\n"
+  - "### Phase 2: Database Setup\n\n"
+  - "#### Skills to Invoke\n- `prisma-expert` - Prisma ORM (alternative)\n- `database-design` - Schema design\n- `postgresql` - PostgreSQL setup\n- `pydantic-models-py` - Pydantic models\n\n"
+  - "#### Actions\n1. Design database schema\n2. Set up SQLAlchemy models\n3. Create database connection\n4. Configure migrations (Alembic)\n5. Set up session management\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @database-design to design PostgreSQL schema\n```\n\n```\nUse @pydantic-models-py to create Pydantic models for API\n```\n\n"
+  - "### Phase 3: API Routes\n\n"
+  - "#### Skills to Invoke\n- `fastapi-router-py` - FastAPI routers\n- `api-design-principles` - API design\n- `api-patterns` - API patterns\n\n"
+  - "#### Actions\n1. Design API endpoints\n2. Create API routers\n3. Implement CRUD operations\n4. Add request validation\n5. Configure response models\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @fastapi-router-py to create API endpoints with CRUD operations\n```\n\n```\nUse @api-design-principles to design RESTful API\n```\n\n"
+  - "### Phase 4: Authentication\n\n"
+  - "#### Skills to Invoke\n- `auth-implementation-patterns` - Authentication\n- `api-security-best-practices` - API security\n\n"
+  - "#### Actions\n1. Choose auth strategy (JWT, OAuth2)\n2. Implement user registration\n3. Set up login endpoints\n4. Create auth middleware\n5. Add password hashing\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @auth-implementation-patterns to implement JWT authentication\n```\n\n"
+  - "### Phase 5: Error Handling\n\n"
+  - "#### Skills to Invoke\n- `fastapi-pro` - FastAPI patterns\n- `error-handling-patterns` - Error handling\n\n"
+  - "#### Actions\n1. Create custom exceptions\n2. Set up exception handlers\n3. Implement error responses\n4. Add request logging\n5. Configure error tracking\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @fastapi-pro to implement comprehensive error handling\n```\n\n"
+  - "### Phase 6: Testing\n\n"
+  - "#### Skills to Invoke\n- `python-testing-patterns` - pytest testing\n- `api-testing-observability-api-mock` - API testing\n\n"
+  - "#### Actions\n1. Set up pytest\n2. Create test fixtures\n3. Write unit tests\n4. Implement integration tests\n5. Configure test database\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @python-testing-patterns to write pytest tests for FastAPI\n```\n\n"
+  - "### Phase 7: Documentation\n\n"
+  - "#### Skills to Invoke\n- `api-documenter` - API documentation\n- `openapi-spec-generation` - OpenAPI specs\n\n"
+  - "#### Actions\n1. Configure OpenAPI schema\n2. Add endpoint documentation\n3. Create usage examples\n4. Set up API versioning\n5. Generate API docs\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @api-documenter to generate comprehensive API documentation\n```\n\n"
+  - "### Phase 8: Deployment\n\n"
+  - "#### Skills to Invoke\n- `deployment-engineer` - Deployment\n- `docker-expert` - Containerization\n\n"
+  - "#### Actions\n1. Create Dockerfile\n2. Set up docker-compose\n3. Configure production settings\n4. Set up reverse proxy\n5. Deploy to cloud\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @docker-expert to containerize FastAPI application\n```\n\n"
+  - "## Technology Stack\n\n| Category | Technology |\n|----------|------------|\n| Framework | FastAPI |\n| Language | Python 3.11+ |\n| ORM | SQLAlchemy 2.0 |\n| Validation | Pydantic v2 |\n| Database | PostgreSQL |\n| Migrations | Alembic |\n| Auth | JWT, OAuth2 |\n| Testing | pytest |\n\n"
+  - "## Quality Gates\n\n- [ ] All tests passing (>80% coverage)\n- [ ] Type checking passes (mypy)\n- [ ] Linting clean (ruff, black)\n- [ ] API documentation complete\n- [ ] Security scan passed\n- [ ] Performance benchmarks met\n\n"
+  - "## Related Workflow Bundles\n\n- `development` - General development\n- `database` - Database operations\n- `security-audit` - Security testing\n- `api-development` - API patterns\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

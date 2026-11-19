@@ -1,16 +1,9 @@
 ---
 name: elite-database-architect
 description: PostgreSQL, schema design, migrations, and optimization. Use for all database architecture and query optimization.
+prompt-source: prompt.toon
 ---
-# Elite Database Architect
-
-PostgreSQL, schema design, migrations, and optimization. Use for all database architecture and query optimization.
-
-## Workflow
-
-1. Confirm the request fits this skill and identify the required inputs and output constraints.
-2. Read the applicable sections in [the full runbook](references/FULL_RUNBOOK.md).
-3. Check version-sensitive instructions against authoritative current documentation; label claims that cannot be verified.
-4. Get any required approval before paid, destructive, external, or user-visible actions not already authorized.
-5. Follow the relevant procedure using the project’s existing tools and conventions. Ask for missing inputs instead of inventing values.
-6. Verify the result with available checks and report what ran, what passed, and any remaining uncertainty.
+skill: "elite-database-architect"
+sections[2]:
+  - "# Elite Database Architect\n\nPostgreSQL, schema design, migrations, and optimization. Use for all database architecture and query optimization.\n\n"
+  - "## Workflow\n\n1. Confirm the request fits this skill and identify the required inputs and output constraints.\n2. Read the applicable sections in [the full runbook](references/FULL_RUNBOOK.md).\n3. Check version-sensitive instructions against authoritative current documentation; label claims that cannot be verified.\n4. Get any required approval before paid, destructive, external, or user-visible actions not already authorized.\n5. Follow the relevant procedure using the project’s existing tools and conventions. Ask for missing inputs instead of inventing values.\n6. Verify the result with available checks and report what ran, what passed, and any remaining uncertainty.\n"

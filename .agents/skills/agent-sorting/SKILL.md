@@ -3,214 +3,24 @@ name: agent-sorting
 description: Build an evidence-backed ECC install plan for a specific repo by sorting skills, commands, rules, hooks, and extras into DAILY vs LIBRARY buckets using parallel repo-aware review passes. Use when ECC should be trimmed to what a project actually needs instead of loading the full bundle.
 metadata:
   origin: ECC
+prompt-source: prompt.toon
 ---
-
-# Agent Sort
-
-Use this skill when a repo needs a project-specific ECC surface instead of the default full install.
-
-The goal is not to guess what "feels useful." The goal is to classify ECC components with evidence from the actual codebase.
-
-## When to Use
-
-- A project only needs a subset of ECC and full installs are too noisy
-- The repo stack is clear, but nobody wants to hand-curate skills one by one
-- A team wants a repeatable install decision backed by grep evidence instead of opinion
-- You need to separate always-loaded daily workflow surfaces from searchable library/reference surfaces
-- A repo has drifted into the wrong language, rule, or hook set and needs cleanup
-
-## Non-Negotiable Rules
-
-- Use the current repository as the source of truth, not generic preferences
-- Every DAILY decision must cite concrete repo evidence
-- LIBRARY does not mean "delete"; it means "keep accessible without loading by default"
-- Do not install hooks, rules, or scripts that the current repo cannot use
-- Prefer ECC-native surfaces; do not introduce a second install system
-
-## Outputs
-
-Produce these artifacts in order:
-
-1. DAILY inventory
-2. LIBRARY inventory
-3. install plan
-4. verification report
-5. optional `skill-library` router if the project wants one
-
-## Classification Model
-
-Use two buckets only:
-
-- `DAILY`
-  - should load every session for this repo
-  - strongly matched to the repo's language, framework, workflow, or operator surface
-- `LIBRARY`
-  - useful to retain, but not worth loading by default
-  - should remain reachable through search, router skill, or selective manual use
-
-## Evidence Sources
-
-Use repo-local evidence before making any classification:
-
-- file extensions
-- package managers and lockfiles
-- framework configs
-- CI and hook configs
-- build/test scripts
-- imports and dependency manifests
-- repo docs that explicitly describe the stack
-
-Useful commands include:
-
-```bash
-rg --files
-rg -n "typescript|react|next|supabase|django|spring|flutter|swift"
-cat package.json
-cat pyproject.toml
-cat Cargo.toml
-cat pubspec.yaml
-cat go.mod
-```
-
-## Parallel Review Passes
-
-If parallel subagents are available, split the review into these passes:
-
-1. Agents
-   - classify `agents/*`
-2. Skills
-   - classify `skills/*`
-3. Commands
-   - classify `commands/*`
-4. Rules
-   - classify `rules/*`
-5. Hooks and scripts
-   - classify hook surfaces, MCP health checks, helper scripts, and OS compatibility
-6. Extras
-   - classify contexts, examples, MCP configs, templates, and guidance docs
-
-If subagents are not available, run the same passes sequentially.
-
-## Core Workflow
-
-### 1. Read the repo
-
-Establish the real stack before classifying anything:
-
-- languages in use
-- frameworks in use
-- primary package manager
-- test stack
-- lint/format stack
-- deployment/runtime surface
-- operator integrations already present
-
-### 2. Build the evidence table
-
-For every candidate surface, record:
-
-- component path
-- component type
-- proposed bucket
-- repo evidence
-- short justification
-
-Use this format:
-
-```text
-skills/frontend-patterns | skill | DAILY | 84 .tsx files, next.config.ts present | core frontend stack
-skills/django-patterns   | skill | LIBRARY | no .py files, no pyproject.toml       | not active in this repo
-rules/typescript/*       | rules | DAILY | package.json + tsconfig.json            | active TS repo
-rules/python/*           | rules | LIBRARY | zero Python source files             | keep accessible only
-```
-
-### 3. Decide DAILY vs LIBRARY
-
-Promote to `DAILY` when:
-
-- the repo clearly uses the matching stack
-- the component is general enough to help every session
-- the repo already depends on the corresponding runtime or workflow
-
-Demote to `LIBRARY` when:
-
-- the component is off-stack
-- the repo might need it later, but not every day
-- it adds context overhead without immediate relevance
-
-### 4. Build the install plan
-
-Translate the classification into action:
-
-- DAILY skills -> install or keep in `.claude/skills/`
-- DAILY commands -> keep as explicit shims only if still useful
-- DAILY rules -> install only matching language sets
-- DAILY hooks/scripts -> keep only compatible ones
-- LIBRARY surfaces -> keep accessible through search or `skill-library`
-
-If the repo already uses selective installs, update that plan instead of creating another system.
-
-### 5. Create the optional library router
-
-If the project wants a searchable library surface, create:
-
-- `.claude/skills/skill-library/SKILL.md`
-
-That router should contain:
-
-- a short explanation of DAILY vs LIBRARY
-- grouped trigger keywords
-- where the library references live
-
-Do not duplicate every skill body inside the router.
-
-### 6. Verify the result
-
-After the plan is applied, verify:
-
-- every DAILY file exists where expected
-- stale language rules were not left active
-- incompatible hooks were not installed
-- the resulting install actually matches the repo stack
-
-Return a compact report with:
-
-- DAILY count
-- LIBRARY count
-- removed stale surfaces
-- open questions
-
-## Handoffs
-
-If the next step is interactive installation or repair, hand off to:
-
-- `configure-ecc`
-
-If the next step is overlap cleanup or catalog review, hand off to:
-
-- `skill-stocktake`
-
-If the next step is broader context trimming, hand off to:
-
-- `strategic-compact`
-
-## Output Format
-
-Return the result in this order:
-
-```text
-STACK
-- language/framework/runtime summary
-
-DAILY
-- always-loaded items with evidence
-
-LIBRARY
-- searchable/reference items with evidence
-
-INSTALL PLAN
-- what should be installed, removed, or routed
-
-VERIFICATION
-- checks run and remaining gaps
-```
+skill: "agent-sorting"
+sections[17]:
+  - "\n"
+  - "# Agent Sort\n\nUse this skill when a repo needs a project-specific ECC surface instead of the default full install.\n\nThe goal is not to guess what \"feels useful.\" The goal is to classify ECC components with evidence from the actual codebase.\n\n"
+  - "## When to Use\n\n- A project only needs a subset of ECC and full installs are too noisy\n- The repo stack is clear, but nobody wants to hand-curate skills one by one\n- A team wants a repeatable install decision backed by grep evidence instead of opinion\n- You need to separate always-loaded daily workflow surfaces from searchable library/reference surfaces\n- A repo has drifted into the wrong language, rule, or hook set and needs cleanup\n\n"
+  - "## Non-Negotiable Rules\n\n- Use the current repository as the source of truth, not generic preferences\n- Every DAILY decision must cite concrete repo evidence\n- LIBRARY does not mean \"delete\"; it means \"keep accessible without loading by default\"\n- Do not install hooks, rules, or scripts that the current repo cannot use\n- Prefer ECC-native surfaces; do not introduce a second install system\n\n"
+  - "## Outputs\n\nProduce these artifacts in order:\n\n1. DAILY inventory\n2. LIBRARY inventory\n3. install plan\n4. verification report\n5. optional `skill-library` router if the project wants one\n\n"
+  - "## Classification Model\n\nUse two buckets only:\n\n- `DAILY`\n  - should load every session for this repo\n  - strongly matched to the repo's language, framework, workflow, or operator surface\n- `LIBRARY`\n  - useful to retain, but not worth loading by default\n  - should remain reachable through search, router skill, or selective manual use\n\n"
+  - "## Evidence Sources\n\nUse repo-local evidence before making any classification:\n\n- file extensions\n- package managers and lockfiles\n- framework configs\n- CI and hook configs\n- build/test scripts\n- imports and dependency manifests\n- repo docs that explicitly describe the stack\n\nUseful commands include:\n\n```bash\nrg --files\nrg -n \"typescript|react|next|supabase|django|spring|flutter|swift\"\ncat package.json\ncat pyproject.toml\ncat Cargo.toml\ncat pubspec.yaml\ncat go.mod\n```\n\n"
+  - "## Parallel Review Passes\n\nIf parallel subagents are available, split the review into these passes:\n\n1. Agents\n   - classify `agents/*`\n2. Skills\n   - classify `skills/*`\n3. Commands\n   - classify `commands/*`\n4. Rules\n   - classify `rules/*`\n5. Hooks and scripts\n   - classify hook surfaces, MCP health checks, helper scripts, and OS compatibility\n6. Extras\n   - classify contexts, examples, MCP configs, templates, and guidance docs\n\nIf subagents are not available, run the same passes sequentially.\n\n"
+  - "## Core Workflow\n\n"
+  - "### 1. Read the repo\n\nEstablish the real stack before classifying anything:\n\n- languages in use\n- frameworks in use\n- primary package manager\n- test stack\n- lint/format stack\n- deployment/runtime surface\n- operator integrations already present\n\n"
+  - "### 2. Build the evidence table\n\nFor every candidate surface, record:\n\n- component path\n- component type\n- proposed bucket\n- repo evidence\n- short justification\n\nUse this format:\n\n```text\nskills/frontend-patterns | skill | DAILY | 84 .tsx files, next.config.ts present | core frontend stack\nskills/django-patterns   | skill | LIBRARY | no .py files, no pyproject.toml       | not active in this repo\nrules/typescript/*       | rules | DAILY | package.json + tsconfig.json            | active TS repo\nrules/python/*           | rules | LIBRARY | zero Python source files             | keep accessible only\n```\n\n"
+  - "### 3. Decide DAILY vs LIBRARY\n\nPromote to `DAILY` when:\n\n- the repo clearly uses the matching stack\n- the component is general enough to help every session\n- the repo already depends on the corresponding runtime or workflow\n\nDemote to `LIBRARY` when:\n\n- the component is off-stack\n- the repo might need it later, but not every day\n- it adds context overhead without immediate relevance\n\n"
+  - "### 4. Build the install plan\n\nTranslate the classification into action:\n\n- DAILY skills -> install or keep in `.claude/skills/`\n- DAILY commands -> keep as explicit shims only if still useful\n- DAILY rules -> install only matching language sets\n- DAILY hooks/scripts -> keep only compatible ones\n- LIBRARY surfaces -> keep accessible through search or `skill-library`\n\nIf the repo already uses selective installs, update that plan instead of creating another system.\n\n"
+  - "### 5. Create the optional library router\n\nIf the project wants a searchable library surface, create:\n\n- `.claude/skills/skill-library/SKILL.md`\n\nThat router should contain:\n\n- a short explanation of DAILY vs LIBRARY\n- grouped trigger keywords\n- where the library references live\n\nDo not duplicate every skill body inside the router.\n\n"
+  - "### 6. Verify the result\n\nAfter the plan is applied, verify:\n\n- every DAILY file exists where expected\n- stale language rules were not left active\n- incompatible hooks were not installed\n- the resulting install actually matches the repo stack\n\nReturn a compact report with:\n\n- DAILY count\n- LIBRARY count\n- removed stale surfaces\n- open questions\n\n"
+  - "## Handoffs\n\nIf the next step is interactive installation or repair, hand off to:\n\n- `configure-ecc`\n\nIf the next step is overlap cleanup or catalog review, hand off to:\n\n- `skill-stocktake`\n\nIf the next step is broader context trimming, hand off to:\n\n- `strategic-compact`\n\n"
+  - "## Output Format\n\nReturn the result in this order:\n\n```text\nSTACK\n- language/framework/runtime summary\n\nDAILY\n- always-loaded items with evidence\n\nLIBRARY\n- searchable/reference items with evidence\n\nINSTALL PLAN\n- what should be installed, removed, or routed\n\nVERIFICATION\n- checks run and remaining gaps\n```\n"

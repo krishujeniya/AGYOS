@@ -55,7 +55,7 @@ def minify_xml(xml_text: str) -> str:
 def compile_skill_to_xml(skill_name: str, max_instruction_lines: int = 25, compact: bool = False) -> str:
     """Compile a raw physical skill runbook into a compact <agyos_skill> XML card."""
     directory = REPO_ROOT / ".agents" / "skills" / skill_name
-    if (directory / "prompt.toon").is_file():
+    if (directory / "SKILL.md").is_file():
         from .catalog import read_metadata, runbook_file
 
         source = runbook_file(directory / "SKILL.md")

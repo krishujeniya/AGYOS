@@ -3,42 +3,13 @@ name: orch-refine-code
 description: Orchestrate a behavior-preserving refactor — confirm tests are green, restructure without changing behavior, keep tests green, review, and gated commit. Use when the structure should improve but behavior must not change.
 metadata:
   origin: ECC
+prompt-source: prompt.toon
 ---
-
-# orch-refine-code
-
-Actor · action · target: **orch · refine · code**. Thin wrapper over the shared
-engine in [`orch-pipeline`](../orch-pipeline/SKILL.md).
-
-## When to Use
-
-- Same behavior, **better structure**: extract modules, remove duplication, kill
-  dead code, reduce nesting, rename for clarity.
-- Distinguish from siblings: if behavior is meant to change at all, this is the
-  wrong skill (`orch-change-feature` / `orch-fix-defect`).
-
-## Operation settings
-
-- **Default size floor:** standard — restructures touch multiple files.
-- **Phase mask:** 0 → 2 (plan the restructure) → 4 (keep green) → 5 → 6. No new
-  behavior tests are written — the existing suite is the safety net.
-- **First move (phase 4):** confirm the relevant tests exist and are **green
-  before** touching code; if coverage is thin, add characterization tests first.
-  Then restructure in small steps, re-running tests after each.
-
-## How It Works
-
-1. Run the `orch-pipeline` engine with the settings above.
-2. For dead-code / duplication sweeps, delegate to the `refactor-cleaner` agent
-   (it runs knip / depcheck / ts-prune and removes safely).
-3. Stop at **Gate 1** (restructure plan) and **Gate 2** (pre-commit).
-4. Commit as `refactor:` — the diff must be behavior-neutral.
-
-## Example
-
-```
-orch-refine-code: extract the NWS HTTP client out of poller.py
-→ confirm tests green → plan extraction  [GATE 1: approve]
-→ move in small steps, tests green throughout → code-review
-→ commit refactor:  [GATE 2: confirm]
-```
+skill: "orch-refine-code"
+sections[6]:
+  - "\n"
+  - "# orch-refine-code\n\nActor · action · target: **orch · refine · code**. Thin wrapper over the shared\nengine in [`orch-pipeline`](../orch-pipeline/SKILL.md).\n\n"
+  - "## When to Use\n\n- Same behavior, **better structure**: extract modules, remove duplication, kill\n  dead code, reduce nesting, rename for clarity.\n- Distinguish from siblings: if behavior is meant to change at all, this is the\n  wrong skill (`orch-change-feature` / `orch-fix-defect`).\n\n"
+  - "## Operation settings\n\n- **Default size floor:** standard — restructures touch multiple files.\n- **Phase mask:** 0 → 2 (plan the restructure) → 4 (keep green) → 5 → 6. No new\n  behavior tests are written — the existing suite is the safety net.\n- **First move (phase 4):** confirm the relevant tests exist and are **green\n  before** touching code; if coverage is thin, add characterization tests first.\n  Then restructure in small steps, re-running tests after each.\n\n"
+  - "## How It Works\n\n1. Run the `orch-pipeline` engine with the settings above.\n2. For dead-code / duplication sweeps, delegate to the `refactor-cleaner` agent\n   (it runs knip / depcheck / ts-prune and removes safely).\n3. Stop at **Gate 1** (restructure plan) and **Gate 2** (pre-commit).\n4. Commit as `refactor:` — the diff must be behavior-neutral.\n\n"
+  - "## Example\n\n```\norch-refine-code: extract the NWS HTTP client out of poller.py\n→ confirm tests green → plan extraction  [GATE 1: approve]\n→ move in small steps, tests green throughout → code-review\n→ commit refactor:  [GATE 2: confirm]\n```\n"

@@ -4,106 +4,22 @@ description: Build monitoring dashboards that answer real operator questions for
 metadata:
   version: "1.0.0"
   origin: ECC direct-port adaptation
+prompt-source: prompt.toon
 ---
-
-# Dashboard Builder
-
-Use this when the task is to build a dashboard people can operate from.
-
-The goal is not "show every metric." The goal is to answer:
-
-- is it healthy?
-- where is the bottleneck?
-- what changed?
-- what action should someone take?
-
-## When to Use
-
-- "Build a Kafka monitoring dashboard"
-- "Create a Grafana dashboard for Elasticsearch"
-- "Make a SigNoz dashboard for this service"
-- "Turn this metrics list into a real operational dashboard"
-
-## Guardrails
-
-- do not start from visual layout; start from operator questions
-- do not include every available metric just because it exists
-- do not mix health, throughput, and resource panels without structure
-- do not ship panels without titles, units, and sane thresholds
-
-## Workflow
-
-### 1. Define the operating questions
-
-Organize around:
-
-- health / availability
-- latency / performance
-- throughput / volume
-- saturation / resources
-- service-specific risk
-
-### 2. Study the target platform schema
-
-Inspect existing dashboards first:
-
-- JSON structure
-- query language
-- variables
-- threshold styling
-- section layout
-
-### 3. Build the minimum useful board
-
-Recommended structure:
-
-1. overview
-2. performance
-3. resources
-4. service-specific section
-
-### 4. Cut vanity panels
-
-Every panel should answer a real question. If it does not, remove it.
-
-## Example Panel Sets
-
-### Elasticsearch
-
-- cluster health
-- shard allocation
-- search latency
-- indexing rate
-- JVM heap / GC
-
-### Kafka
-
-- broker count
-- under-replicated partitions
-- messages in / out
-- consumer lag
-- disk and network pressure
-
-### API gateway / ingress
-
-- request rate
-- p50 / p95 / p99 latency
-- error rate
-- upstream health
-- active connections
-
-## Quality Checklist
-
-- [ ] valid dashboard JSON
-- [ ] clear section grouping
-- [ ] titles and units are present
-- [ ] thresholds/status colors are meaningful
-- [ ] variables exist for common filters
-- [ ] default time range and refresh are sensible
-- [ ] no vanity panels with no operator value
-
-## Related Skills
-
-- `research-ops`
-- `backend-patterns`
-- `terminal-ops`
+skill: "dashboard-builder"
+sections[15]:
+  - "\n"
+  - "# Dashboard Builder\n\nUse this when the task is to build a dashboard people can operate from.\n\nThe goal is not \"show every metric.\" The goal is to answer:\n\n- is it healthy?\n- where is the bottleneck?\n- what changed?\n- what action should someone take?\n\n"
+  - "## When to Use\n\n- \"Build a Kafka monitoring dashboard\"\n- \"Create a Grafana dashboard for Elasticsearch\"\n- \"Make a SigNoz dashboard for this service\"\n- \"Turn this metrics list into a real operational dashboard\"\n\n"
+  - "## Guardrails\n\n- do not start from visual layout; start from operator questions\n- do not include every available metric just because it exists\n- do not mix health, throughput, and resource panels without structure\n- do not ship panels without titles, units, and sane thresholds\n\n"
+  - "## Workflow\n\n"
+  - "### 1. Define the operating questions\n\nOrganize around:\n\n- health / availability\n- latency / performance\n- throughput / volume\n- saturation / resources\n- service-specific risk\n\n"
+  - "### 2. Study the target platform schema\n\nInspect existing dashboards first:\n\n- JSON structure\n- query language\n- variables\n- threshold styling\n- section layout\n\n"
+  - "### 3. Build the minimum useful board\n\nRecommended structure:\n\n1. overview\n2. performance\n3. resources\n4. service-specific section\n\n"
+  - "### 4. Cut vanity panels\n\nEvery panel should answer a real question. If it does not, remove it.\n\n"
+  - "## Example Panel Sets\n\n"
+  - "### Elasticsearch\n\n- cluster health\n- shard allocation\n- search latency\n- indexing rate\n- JVM heap / GC\n\n"
+  - "### Kafka\n\n- broker count\n- under-replicated partitions\n- messages in / out\n- consumer lag\n- disk and network pressure\n\n"
+  - "### API gateway / ingress\n\n- request rate\n- p50 / p95 / p99 latency\n- error rate\n- upstream health\n- active connections\n\n"
+  - "## Quality Checklist\n\n- [ ] valid dashboard JSON\n- [ ] clear section grouping\n- [ ] titles and units are present\n- [ ] thresholds/status colors are meaningful\n- [ ] variables exist for common filters\n- [ ] default time range and refresh are sensible\n- [ ] no vanity panels with no operator value\n\n"
+  - "## Related Skills\n\n- `research-ops`\n- `backend-patterns`\n- `terminal-ops`\n"

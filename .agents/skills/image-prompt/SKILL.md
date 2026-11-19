@@ -15,98 +15,19 @@ description: >-
 metadata:
   version: 1.0.0
 license: MIT
+prompt-source: prompt.toon
 ---
-
-# Image Prompt (brief · craft · router)
-
-The **foundation of the visual cluster.** When a post needs an image, this skill decides **what** image
-(the brief), describes it with **model-agnostic** craft, and routes to the **right tool** — then hands
-off. It sits *above* the tool-specific mini-skills (`nano-banana`, `ideogram`, `flux`,
-`veo-3`), which own their model's specific tricks.
-
-Think of it as the visual equivalent of `brand-profile`/`content-pillars`: the shared decision layer
-the tool skills assume you've already worked through.
-
-## Step 0 — Gate: should this even be AI-generated?
-
-AI generation is one option, not the default. A **real photo** (your actual product/space/team), a
-**screenshot**, **UGC**, or a **chart** often wins on authenticity and clarity — and AI must never
-fabricate your real people/place. Reach for generation when you need something that doesn't exist, must
-match a brand look, needs legible in-image text, or a consistent series — and no real asset fits. If a
-real asset is better, **say so.** (See `references/the-image-brief.md`.)
-
-## Step 1 — Write the brief
-
-Read `brand-profile.md`, then answer four things: **job/purpose** (hero / explainer / quote graphic /
-product / lifestyle / thumbnail / background / ad), **the one thing it must convey**, **format/aspect
-ratio** for the destination, and the **brand look**. Output a one-line brief. See
-`references/the-image-brief.md`.
-
-## Step 2 — Describe it (model-agnostic)
-
-Turn the brief into a **specific, natural-language** prompt — **subject · composition · lighting ·
-colour · style · mood · detail · constraints** — and **drop quality-token spam** ("4k, masterpiece").
-Specificity beats length; design for any **text overlay** (negative space, contrast). See
-`references/prompt-anatomy.md`.
-
-## Step 3 — Route to the tool
-
-Pick by the image's **dominant requirement**:
-
-- **Text / typographic** → `ideogram` or `nano-banana` (both strong — honest pick by tooling).
-- **Photoreal portrait/product** → `nano-banana` or `flux` (Midjourney external). **Surreal/painterly** → Midjourney.
-- **Editing** ("change one thing, keep the rest") → `nano-banana` (conversational) or `flux` (Kontext).
-- **Consistent character/product set** → `nano-banana` (multi-image references) or `flux` (multi-reference).
-- **Search-grounded infographics** → `nano-banana`. **Brand-exact hex / open weights / license control** → `flux`.
-- **Vector/SVG** → Recraft. **Video** → `veo-3`.
-
-When two fit, **say both work and pick by the deciding factor** — don't fake a winner. See
-`references/choosing-the-tool.md`.
-
-## Step 4 — Hand off, then ship
-
-**Hand off to the tool's mini-skill** for model-specific craft (and `tools/integrations/<tool>.md` for
-the API). After generation: **verify** in-image text/data, **disclose** AI per platform/region, then
-**upload to WoopSocial Media → attach** via `scheduling-and-queue`. WoopSocial publishes; it **doesn't
-generate**.
-
-## Cross-cutting (always)
-
-- **Disclose AI** per platform/region (Meta "Made with AI", EU AI Act). **Watermark behaviour varies by
-  tool** (SynthID on Google tools; none enforced on Ideogram) — don't rely on it for disclosure.
-- **No real people / no IP** — no real identifiable individuals, copyrighted characters, or trademarked
-  logos; original directions only.
-- **Verify** in-image text and data before publishing.
-- **Accessibility** — contrast + legibility on mobile; leave room for overlays.
-
-## Quality bar — self-check
-
-- Did I **gate** (real asset vs AI) before generating?
-- Did I write a **brief** (job + the one thing + format + brand) and a **specific, natural-language**
-  prompt (no token spam)?
-- Did I **route by the dominant requirement** with an honest which-tool read, and **hand off**?
-- Did I design for **overlays/accessibility**, and cover **disclosure, IP, and verification**?
-- Did I keep WoopSocial honest (publishes via Media; doesn't generate)?
-
-## Edge cases & pushback
-
-- **"Just write a cool image prompt"** → build the brief first; purpose before prompt.
-- **"4k masterpiece ultra-detailed"** → rewrite into a specific scene; drop quality tokens.
-- **"Generate my real cafe/staff"** → use a real photo; don't fabricate real people/place.
-- **"Base it on [studio]'s characters" / a real person** → refuse IP/real people; original direction.
-- **"Which model — A or B?"** → honest, tooling-based answer; both can be right.
-- **"Generate it in WoopSocial"** → WoopSocial doesn't generate; route to a tool, then upload + attach.
-
-## Related
-
-- `nano-banana`, `ideogram`, `flux`, `veo-3` — the tool-specific mini-skills this routes/hands off to.
-- `tools/integrations/*` — the connection/API for each tool; `brand-profile` — the visual brand.
-- `carousel-writer`, `reels-script`, `caption-writer`/`hook-writer` — consumers (image-prompt-pack / overlay copy).
-- `scheduling-and-queue` — upload the asset to Media and attach to a post.
-
-## References
-
-- `references/the-image-brief.md` — the "should this be AI?" gate and the four-question brief.
-- `references/prompt-anatomy.md` — the universal, model-agnostic anatomy of a strong prompt.
-- `references/choosing-the-tool.md` — the router/decision tree and honest which-tool calls.
-- `references/examples.md` — end-to-end flows, weak→strong, the don't-generate gate, and honest scope.
+skill: "image-prompt"
+sections[12]:
+  - "\n"
+  - "# Image Prompt (brief · craft · router)\n\nThe **foundation of the visual cluster.** When a post needs an image, this skill decides **what** image\n(the brief), describes it with **model-agnostic** craft, and routes to the **right tool** — then hands\noff. It sits *above* the tool-specific mini-skills (`nano-banana`, `ideogram`, `flux`,\n`veo-3`), which own their model's specific tricks.\n\nThink of it as the visual equivalent of `brand-profile`/`content-pillars`: the shared decision layer\nthe tool skills assume you've already worked through.\n\n"
+  - "## Step 0 — Gate: should this even be AI-generated?\n\nAI generation is one option, not the default. A **real photo** (your actual product/space/team), a\n**screenshot**, **UGC**, or a **chart** often wins on authenticity and clarity — and AI must never\nfabricate your real people/place. Reach for generation when you need something that doesn't exist, must\nmatch a brand look, needs legible in-image text, or a consistent series — and no real asset fits. If a\nreal asset is better, **say so.** (See `references/the-image-brief.md`.)\n\n"
+  - "## Step 1 — Write the brief\n\nRead `brand-profile.md`, then answer four things: **job/purpose** (hero / explainer / quote graphic /\nproduct / lifestyle / thumbnail / background / ad), **the one thing it must convey**, **format/aspect\nratio** for the destination, and the **brand look**. Output a one-line brief. See\n`references/the-image-brief.md`.\n\n"
+  - "## Step 2 — Describe it (model-agnostic)\n\nTurn the brief into a **specific, natural-language** prompt — **subject · composition · lighting ·\ncolour · style · mood · detail · constraints** — and **drop quality-token spam** (\"4k, masterpiece\").\nSpecificity beats length; design for any **text overlay** (negative space, contrast). See\n`references/prompt-anatomy.md`.\n\n"
+  - "## Step 3 — Route to the tool\n\nPick by the image's **dominant requirement**:\n\n- **Text / typographic** → `ideogram` or `nano-banana` (both strong — honest pick by tooling).\n- **Photoreal portrait/product** → `nano-banana` or `flux` (Midjourney external). **Surreal/painterly** → Midjourney.\n- **Editing** (\"change one thing, keep the rest\") → `nano-banana` (conversational) or `flux` (Kontext).\n- **Consistent character/product set** → `nano-banana` (multi-image references) or `flux` (multi-reference).\n- **Search-grounded infographics** → `nano-banana`. **Brand-exact hex / open weights / license control** → `flux`.\n- **Vector/SVG** → Recraft. **Video** → `veo-3`.\n\nWhen two fit, **say both work and pick by the deciding factor** — don't fake a winner. See\n`references/choosing-the-tool.md`.\n\n"
+  - "## Step 4 — Hand off, then ship\n\n**Hand off to the tool's mini-skill** for model-specific craft (and `tools/integrations/<tool>.md` for\nthe API). After generation: **verify** in-image text/data, **disclose** AI per platform/region, then\n**upload to WoopSocial Media → attach** via `scheduling-and-queue`. WoopSocial publishes; it **doesn't\ngenerate**.\n\n"
+  - "## Cross-cutting (always)\n\n- **Disclose AI** per platform/region (Meta \"Made with AI\", EU AI Act). **Watermark behaviour varies by\n  tool** (SynthID on Google tools; none enforced on Ideogram) — don't rely on it for disclosure.\n- **No real people / no IP** — no real identifiable individuals, copyrighted characters, or trademarked\n  logos; original directions only.\n- **Verify** in-image text and data before publishing.\n- **Accessibility** — contrast + legibility on mobile; leave room for overlays.\n\n"
+  - "## Quality bar — self-check\n\n- Did I **gate** (real asset vs AI) before generating?\n- Did I write a **brief** (job + the one thing + format + brand) and a **specific, natural-language**\n  prompt (no token spam)?\n- Did I **route by the dominant requirement** with an honest which-tool read, and **hand off**?\n- Did I design for **overlays/accessibility**, and cover **disclosure, IP, and verification**?\n- Did I keep WoopSocial honest (publishes via Media; doesn't generate)?\n\n"
+  - "## Edge cases & pushback\n\n- **\"Just write a cool image prompt\"** → build the brief first; purpose before prompt.\n- **\"4k masterpiece ultra-detailed\"** → rewrite into a specific scene; drop quality tokens.\n- **\"Generate my real cafe/staff\"** → use a real photo; don't fabricate real people/place.\n- **\"Base it on [studio]'s characters\" / a real person** → refuse IP/real people; original direction.\n- **\"Which model — A or B?\"** → honest, tooling-based answer; both can be right.\n- **\"Generate it in WoopSocial\"** → WoopSocial doesn't generate; route to a tool, then upload + attach.\n\n"
+  - "## Related\n\n- `nano-banana`, `ideogram`, `flux`, `veo-3` — the tool-specific mini-skills this routes/hands off to.\n- `tools/integrations/*` — the connection/API for each tool; `brand-profile` — the visual brand.\n- `carousel-writer`, `reels-script`, `caption-writer`/`hook-writer` — consumers (image-prompt-pack / overlay copy).\n- `scheduling-and-queue` — upload the asset to Media and attach to a post.\n\n"
+  - "## References\n\n- `references/the-image-brief.md` — the \"should this be AI?\" gate and the four-question brief.\n- `references/prompt-anatomy.md` — the universal, model-agnostic anatomy of a strong prompt.\n- `references/choosing-the-tool.md` — the router/decision tree and honest which-tool calls.\n- `references/examples.md` — end-to-end flows, weak→strong, the don't-generate gate, and honest scope.\n"

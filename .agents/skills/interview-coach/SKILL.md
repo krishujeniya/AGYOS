@@ -8,106 +8,21 @@ date_added: "2026-03-11"
 author: "Krish Ujeniya"
 tags: [interview, job-search, coaching, career, storybank, negotiation]
 tools: [claude]
+prompt-source: prompt.toon
 ---
-
-# Interview Coach
-
-## Overview
-
-A persistent, adaptive coaching system for the full job search lifecycle.
-Not a question bank — an opinionated system that tracks your patterns,
-scores your answers, and gets sharper the more you use it. State persists
-in `coaching_state.md` across sessions so you always pick up where you left off.
-
-## Install
-
-```bash
-npx skills add dbhat93/job-search-os
-```
-
-Then type `/coach` → `kickoff`.
-
-## When to Use This Skill
-
-- Use when starting a job search and need a structured system
-- Use when preparing for a specific interview (company research, mock, hype)
-- Use when you want to analyze a past interview transcript
-- Use when negotiating an offer or handling comp questions on recruiter screens
-- Use when building or maintaining a storybank of interview-ready stories
-
-## What It Covers
-
-- **JD decoding** — six lenses, fit verdict, recruiter questions to ask
-- **Resume + LinkedIn** — ATS audit, bullet rewrites, platform-native optimization
-- **Mock interviews** — behavioral, system design, case, panel, technical formats
-- **Transcript analysis** — paste from Otter/Zoom/Grain, auto-detected format
-- **Storybank** — STAR stories with earned secrets, retrieval drills, portfolio optimization
-- **Comp + negotiation** — pre-offer scripting, offer analysis, exact negotiation scripts
-- **23 total commands** across the full search lifecycle
-
-## Examples
-
-### Example 1: Start your job search
-
-```
-/coach
-kickoff
-```
-
-The coach asks for your resume, target role, and timeline — then builds
-your profile and gives you a prioritized action plan.
-
-### Example 2: Prep for a specific company
-
-```
-/coach
-prep Stripe Senior PM
-```
-
-Runs company research, generates a role-specific prep brief, and queues
-up mock interview questions tailored to Stripe's process.
-
-### Example 3: Analyze an interview transcript
-
-```
-/coach
-analyze
-```
-
-Paste a raw transcript from Otter, Zoom, or any tool. The coach
-auto-detects the format, scores each answer across five dimensions,
-and gives you a drill plan targeting your specific gaps.
-
-### Example 4: Handle a comp question
-
-```
-/coach
-salary
-```
-
-Coaches you through the recruiter screen "what are your salary
-expectations?" moment with a defensible range and exact scripts.
-
-## Source
-
-https://github.com/dbhat93/job-search-os
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
-
-## AGYOS-Native AI Career Planning (adapted from Ayush Singh, MIT)
-
-When a user describes a career objective in ordinary language, do **not** require installing JobGPT, launching /coach, or answering a fixed 15-question form. Reuse known profile details only with permission. Ask a short follow-up only when a missing constraint would materially affect the plan.
-
-1. Establish the target role and region, time budget, current skills with practical evidence, portfolio links, and constraints; identify unknowns explicitly.
-2. Compare the user's demonstrable skills against current role requirements using dated job descriptions and primary hiring sources. Mark each gap as *confirmed*, *likely*, or *unknown*; never manufacture a salary figure.
-3. Create a six-month plan in weekly milestones covering ML foundations, system design, agent/evaluation engineering, production deployment, public project artifacts, and interviews. Adapt its scope to hours available and provide free resources where possible.
-4. Assign portfolio deliverables with testable acceptance criteria: documented baseline, reproducible experiment, code review, deployment evidence, security review, and concise case study.
-5. Provide optional networking, research-paper reading, outreach-draft and LinkedIn content tasks. No unsolicited messages, auto-applications, or social posting.
-6. At follow-ups, compare evidence against milestones, rescope remaining weeks, and record progress only in user-authorized private storage. Never put personal history in repo state, logs, or public markdown.
-
-Use `pod-people` for career development, `pod-build` for projects, and existing job/research skills only when they can produce evidence. No job placement, six-month hiring, or $100k earnings guarantee.
-
-Provenance: https://github.com/ayush488-glitch/ai-career-planner-skill at pinned commit `48a4467f7fbc9a719e1c8cc6dc2efdb2079b75ed`; adapted method, not copied source instructions.
+skill: "interview-coach"
+sections[14]:
+  - "\n"
+  - "# Interview Coach\n\n"
+  - "## Overview\n\nA persistent, adaptive coaching system for the full job search lifecycle.\nNot a question bank — an opinionated system that tracks your patterns,\nscores your answers, and gets sharper the more you use it. State persists\nin `coaching_state.md` across sessions so you always pick up where you left off.\n\n"
+  - "## Install\n\n```bash\nnpx skills add dbhat93/job-search-os\n```\n\nThen type `/coach` → `kickoff`.\n\n"
+  - "## When to Use This Skill\n\n- Use when starting a job search and need a structured system\n- Use when preparing for a specific interview (company research, mock, hype)\n- Use when you want to analyze a past interview transcript\n- Use when negotiating an offer or handling comp questions on recruiter screens\n- Use when building or maintaining a storybank of interview-ready stories\n\n"
+  - "## What It Covers\n\n- **JD decoding** — six lenses, fit verdict, recruiter questions to ask\n- **Resume + LinkedIn** — ATS audit, bullet rewrites, platform-native optimization\n- **Mock interviews** — behavioral, system design, case, panel, technical formats\n- **Transcript analysis** — paste from Otter/Zoom/Grain, auto-detected format\n- **Storybank** — STAR stories with earned secrets, retrieval drills, portfolio optimization\n- **Comp + negotiation** — pre-offer scripting, offer analysis, exact negotiation scripts\n- **23 total commands** across the full search lifecycle\n\n"
+  - "## Examples\n\n"
+  - "### Example 1: Start your job search\n\n```\n/coach\nkickoff\n```\n\nThe coach asks for your resume, target role, and timeline — then builds\nyour profile and gives you a prioritized action plan.\n\n"
+  - "### Example 2: Prep for a specific company\n\n```\n/coach\nprep Stripe Senior PM\n```\n\nRuns company research, generates a role-specific prep brief, and queues\nup mock interview questions tailored to Stripe's process.\n\n"
+  - "### Example 3: Analyze an interview transcript\n\n```\n/coach\nanalyze\n```\n\nPaste a raw transcript from Otter, Zoom, or any tool. The coach\nauto-detects the format, scores each answer across five dimensions,\nand gives you a drill plan targeting your specific gaps.\n\n"
+  - "### Example 4: Handle a comp question\n\n```\n/coach\nsalary\n```\n\nCoaches you through the recruiter screen \"what are your salary\nexpectations?\" moment with a defensible range and exact scripts.\n\n"
+  - "## Source\n\nhttps://github.com/dbhat93/job-search-os\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n\n"
+  - "## AGYOS-Native AI Career Planning (adapted from Ayush Singh, MIT)\n\nWhen a user describes a career objective in ordinary language, do **not** require installing JobGPT, launching /coach, or answering a fixed 15-question form. Reuse known profile details only with permission. Ask a short follow-up only when a missing constraint would materially affect the plan.\n\n1. Establish the target role and region, time budget, current skills with practical evidence, portfolio links, and constraints; identify unknowns explicitly.\n2. Compare the user's demonstrable skills against current role requirements using dated job descriptions and primary hiring sources. Mark each gap as *confirmed*, *likely*, or *unknown*; never manufacture a salary figure.\n3. Create a six-month plan in weekly milestones covering ML foundations, system design, agent/evaluation engineering, production deployment, public project artifacts, and interviews. Adapt its scope to hours available and provide free resources where possible.\n4. Assign portfolio deliverables with testable acceptance criteria: documented baseline, reproducible experiment, code review, deployment evidence, security review, and concise case study.\n5. Provide optional networking, research-paper reading, outreach-draft and LinkedIn content tasks. No unsolicited messages, auto-applications, or social posting.\n6. At follow-ups, compare evidence against milestones, rescope remaining weeks, and record progress only in user-authorized private storage. Never put personal history in repo state, logs, or public markdown.\n\nUse `pod-people` for career development, `pod-build` for projects, and existing job/research skills only when they can produce evidence. No job placement, six-month hiring, or $100k earnings guarantee.\n\nProvenance: https://github.com/ayush488-glitch/ai-career-planner-skill at pinned commit `48a4467f7fbc9a719e1c8cc6dc2efdb2079b75ed`; adapted method, not copied source instructions.\n"

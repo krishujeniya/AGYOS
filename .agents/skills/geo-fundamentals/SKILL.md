@@ -4,162 +4,26 @@ description: "Generative Engine Optimization for AI search engines (ChatGPT, Cla
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# GEO Fundamentals
-
-> Optimization for AI-powered search engines.
-
----
-
-## 1. What is GEO?
-
-**GEO** = Generative Engine Optimization
-
-| Goal | Platform |
-|------|----------|
-| Be cited in AI responses | ChatGPT, Claude, Perplexity, Gemini |
-
-### SEO vs GEO
-
-| Aspect | SEO | GEO |
-|--------|-----|-----|
-| Goal | #1 ranking | AI citations |
-| Platform | Google | AI engines |
-| Metrics | Rankings, CTR | Citation rate |
-| Focus | Keywords | Entities, data |
-
----
-
-## 2. AI Engine Landscape
-
-| Engine | Citation Style | Opportunity |
-|--------|----------------|-------------|
-| **Perplexity** | Numbered [1][2] | Highest citation rate |
-| **ChatGPT** | Inline/footnotes | Custom GPTs |
-| **Claude** | Contextual | Long-form content |
-| **Gemini** | Sources section | SEO crossover |
-
----
-
-## 3. RAG Retrieval Factors
-
-How AI engines select content to cite:
-
-| Factor | Weight |
-|--------|--------|
-| Semantic relevance | ~40% |
-| Keyword match | ~20% |
-| Authority signals | ~15% |
-| Freshness | ~10% |
-| Source diversity | ~15% |
-
----
-
-## 4. Content That Gets Cited
-
-| Element | Why It Works |
-|---------|--------------|
-| **Original statistics** | Unique, citable data |
-| **Expert quotes** | Authority transfer |
-| **Clear definitions** | Easy to extract |
-| **Step-by-step guides** | Actionable value |
-| **Comparison tables** | Structured info |
-| **FAQ sections** | Direct answers |
-
----
-
-## 5. GEO Content Checklist
-
-### Content Elements
-
-- [ ] Question-based titles
-- [ ] Summary/TL;DR at top
-- [ ] Original data with sources
-- [ ] Expert quotes (name, title)
-- [ ] FAQ section (3-5 Q&A)
-- [ ] Clear definitions
-- [ ] "Last updated" timestamp
-- [ ] Author with credentials
-
-### Technical Elements
-
-- [ ] Article schema with dates
-- [ ] Person schema for author
-- [ ] FAQPage schema
-- [ ] Fast loading (< 2.5s)
-- [ ] Clean HTML structure
-
----
-
-## 6. Entity Building
-
-| Action | Purpose |
-|--------|---------|
-| Google Knowledge Panel | Entity recognition |
-| Wikipedia (if notable) | Authority source |
-| Consistent info across web | Entity consolidation |
-| Industry mentions | Authority signals |
-
----
-
-## 7. AI Crawler Access
-
-### Key AI User-Agents
-
-| Crawler | Engine |
-|---------|--------|
-| GPTBot | ChatGPT/OpenAI |
-| Claude-Web | Claude |
-| PerplexityBot | Perplexity |
-| Googlebot | Gemini (shared) |
-
-### Access Decision
-
-| Strategy | When |
-|----------|------|
-| Allow all | Want AI citations |
-| Block GPTBot | Don't want OpenAI training |
-| Selective | Allow some, block others |
-
----
-
-## 8. Measurement
-
-| Metric | How to Track |
-|--------|--------------|
-| AI citations | Manual monitoring |
-| "According to [Brand]" mentions | Search in AI |
-| Competitor citations | Compare share |
-| AI-referred traffic | UTM parameters |
-
----
-
-## 9. Anti-Patterns
-
-| ❌ Don't | ✅ Do |
-|----------|-------|
-| Publish without dates | Add timestamps |
-| Vague attributions | Name sources |
-| Skip author info | Show credentials |
-| Thin content | Comprehensive coverage |
-
----
-
-> **Remember:** AI cites content that's clear, authoritative, and easy to extract. Be the best answer.
-
----
-
-## Script
-
-| Script | Purpose | Command |
-|--------|---------|---------|
-| `scripts/geo_checker.py` | GEO audit (AI citation readiness) | `python scripts/geo_checker.py <project_path>` |
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "geo-fundamentals"
+sections[19]:
+  - "\n"
+  - "# GEO Fundamentals\n\n> Optimization for AI-powered search engines.\n\n---\n\n"
+  - "## 1. What is GEO?\n\n**GEO** = Generative Engine Optimization\n\n| Goal | Platform |\n|------|----------|\n| Be cited in AI responses | ChatGPT, Claude, Perplexity, Gemini |\n\n"
+  - "### SEO vs GEO\n\n| Aspect | SEO | GEO |\n|--------|-----|-----|\n| Goal | #1 ranking | AI citations |\n| Platform | Google | AI engines |\n| Metrics | Rankings, CTR | Citation rate |\n| Focus | Keywords | Entities, data |\n\n---\n\n"
+  - "## 2. AI Engine Landscape\n\n| Engine | Citation Style | Opportunity |\n|--------|----------------|-------------|\n| **Perplexity** | Numbered [1][2] | Highest citation rate |\n| **ChatGPT** | Inline/footnotes | Custom GPTs |\n| **Claude** | Contextual | Long-form content |\n| **Gemini** | Sources section | SEO crossover |\n\n---\n\n"
+  - "## 3. RAG Retrieval Factors\n\nHow AI engines select content to cite:\n\n| Factor | Weight |\n|--------|--------|\n| Semantic relevance | ~40% |\n| Keyword match | ~20% |\n| Authority signals | ~15% |\n| Freshness | ~10% |\n| Source diversity | ~15% |\n\n---\n\n"
+  - "## 4. Content That Gets Cited\n\n| Element | Why It Works |\n|---------|--------------|\n| **Original statistics** | Unique, citable data |\n| **Expert quotes** | Authority transfer |\n| **Clear definitions** | Easy to extract |\n| **Step-by-step guides** | Actionable value |\n| **Comparison tables** | Structured info |\n| **FAQ sections** | Direct answers |\n\n---\n\n"
+  - "## 5. GEO Content Checklist\n\n"
+  - "### Content Elements\n\n- [ ] Question-based titles\n- [ ] Summary/TL;DR at top\n- [ ] Original data with sources\n- [ ] Expert quotes (name, title)\n- [ ] FAQ section (3-5 Q&A)\n- [ ] Clear definitions\n- [ ] \"Last updated\" timestamp\n- [ ] Author with credentials\n\n"
+  - "### Technical Elements\n\n- [ ] Article schema with dates\n- [ ] Person schema for author\n- [ ] FAQPage schema\n- [ ] Fast loading (< 2.5s)\n- [ ] Clean HTML structure\n\n---\n\n"
+  - "## 6. Entity Building\n\n| Action | Purpose |\n|--------|---------|\n| Google Knowledge Panel | Entity recognition |\n| Wikipedia (if notable) | Authority source |\n| Consistent info across web | Entity consolidation |\n| Industry mentions | Authority signals |\n\n---\n\n"
+  - "## 7. AI Crawler Access\n\n"
+  - "### Key AI User-Agents\n\n| Crawler | Engine |\n|---------|--------|\n| GPTBot | ChatGPT/OpenAI |\n| Claude-Web | Claude |\n| PerplexityBot | Perplexity |\n| Googlebot | Gemini (shared) |\n\n"
+  - "### Access Decision\n\n| Strategy | When |\n|----------|------|\n| Allow all | Want AI citations |\n| Block GPTBot | Don't want OpenAI training |\n| Selective | Allow some, block others |\n\n---\n\n"
+  - "## 8. Measurement\n\n| Metric | How to Track |\n|--------|--------------|\n| AI citations | Manual monitoring |\n| \"According to [Brand]\" mentions | Search in AI |\n| Competitor citations | Compare share |\n| AI-referred traffic | UTM parameters |\n\n---\n\n"
+  - "## 9. Anti-Patterns\n\n| ❌ Don't | ✅ Do |\n|----------|-------|\n| Publish without dates | Add timestamps |\n| Vague attributions | Name sources |\n| Skip author info | Show credentials |\n| Thin content | Comprehensive coverage |\n\n---\n\n> **Remember:** AI cites content that's clear, authoritative, and easy to extract. Be the best answer.\n\n---\n\n"
+  - "## Script\n\n| Script | Purpose | Command |\n|--------|---------|---------|\n| `scripts/geo_checker.py` | GEO audit (AI citation readiness) | `python scripts/geo_checker.py <project_path>` |\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

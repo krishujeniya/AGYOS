@@ -4,272 +4,30 @@ description: "Core component library and design system patterns. Use when buildi
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Core Components
-
-## Design System Overview
-
-Use components from your core library instead of raw platform components. This ensures consistent styling and behavior.
-
-## Design Tokens
-
-**NEVER hard-code values. Always use design tokens.**
-
-### Spacing Tokens
-
-```tsx
-// CORRECT - Use tokens
-<Box padding="$4" marginBottom="$2" />
-
-// WRONG - Hard-coded values
-<Box padding={16} marginBottom={8} />
-```
-
-| Token | Value |
-|-------|-------|
-| `$1` | 4px |
-| `$2` | 8px |
-| `$3` | 12px |
-| `$4` | 16px |
-| `$6` | 24px |
-| `$8` | 32px |
-
-### Color Tokens
-
-```tsx
-// CORRECT - Semantic tokens
-<Text color="$textPrimary" />
-<Box backgroundColor="$backgroundSecondary" />
-
-// WRONG - Hard-coded colors
-<Text color="#333333" />
-<Box backgroundColor="rgb(245, 245, 245)" />
-```
-
-| Semantic Token | Use For |
-|----------------|---------|
-| `$textPrimary` | Main text |
-| `$textSecondary` | Supporting text |
-| `$textTertiary` | Disabled/hint text |
-| `$primary500` | Brand/accent color |
-| `$statusError` | Error states |
-| `$statusSuccess` | Success states |
-
-### Typography Tokens
-
-```tsx
-<Text fontSize="$lg" fontWeight="$semibold" />
-```
-
-| Token | Size |
-|-------|------|
-| `$xs` | 12px |
-| `$sm` | 14px |
-| `$md` | 16px |
-| `$lg` | 18px |
-| `$xl` | 20px |
-| `$2xl` | 24px |
-
-## Core Components
-
-### Box
-
-Base layout component with token support:
-
-```tsx
-<Box
-  padding="$4"
-  backgroundColor="$backgroundPrimary"
-  borderRadius="$lg"
->
-  {children}
-</Box>
-```
-
-### HStack / VStack
-
-Horizontal and vertical flex layouts:
-
-```tsx
-<HStack gap="$3" alignItems="center">
-  <Icon name="user" />
-  <Text>Username</Text>
-</HStack>
-
-<VStack gap="$4" padding="$4">
-  <Heading>Title</Heading>
-  <Text>Content</Text>
-</VStack>
-```
-
-### Text
-
-Typography with token support:
-
-```tsx
-<Text
-  fontSize="$lg"
-  fontWeight="$semibold"
-  color="$textPrimary"
->
-  Hello World
-</Text>
-```
-
-### Button
-
-Interactive button with variants:
-
-```tsx
-<Button
-  onPress={handlePress}
-  variant="solid"
-  size="md"
-  isLoading={loading}
-  isDisabled={disabled}
->
-  Click Me
-</Button>
-```
-
-| Variant | Use For |
-|---------|---------|
-| `solid` | Primary actions |
-| `outline` | Secondary actions |
-| `ghost` | Tertiary/subtle actions |
-| `link` | Inline actions |
-
-### Input
-
-Form input with validation:
-
-```tsx
-<Input
-  value={value}
-  onChangeText={setValue}
-  placeholder="Enter text"
-  error={touched ? errors.field : undefined}
-  label="Field Name"
-/>
-```
-
-### Card
-
-Content container:
-
-```tsx
-<Card padding="$4" gap="$3">
-  <CardHeader>
-    <Heading size="sm">Card Title</Heading>
-  </CardHeader>
-  <CardBody>
-    <Text>Card content</Text>
-  </CardBody>
-</Card>
-```
-
-## Layout Patterns
-
-### Screen Layout
-
-```tsx
-const MyScreen = () => (
-  <Screen>
-    <ScreenHeader title="Page Title" />
-    <ScreenContent padding="$4">
-      {/* Content */}
-    </ScreenContent>
-  </Screen>
-);
-```
-
-### Form Layout
-
-```tsx
-<VStack gap="$4" padding="$4">
-  <Input label="Name" {...nameProps} />
-  <Input label="Email" {...emailProps} />
-  <Button isLoading={loading}>Submit</Button>
-</VStack>
-```
-
-### List Item Layout
-
-```tsx
-<HStack
-  padding="$4"
-  gap="$3"
-  alignItems="center"
-  borderBottomWidth={1}
-  borderColor="$borderLight"
->
-  <Avatar source={{ uri: imageUrl }} size="md" />
-  <VStack flex={1}>
-    <Text fontWeight="$semibold">{title}</Text>
-    <Text color="$textSecondary" fontSize="$sm">{subtitle}</Text>
-  </VStack>
-  <Icon name="chevron-right" color="$textTertiary" />
-</HStack>
-```
-
-## Anti-Patterns
-
-```tsx
-// WRONG - Hard-coded values
-<View style={{ padding: 16, backgroundColor: '#fff' }}>
-
-// CORRECT - Design tokens
-<Box padding="$4" backgroundColor="$backgroundPrimary">
-
-
-// WRONG - Raw platform components
-import { View, Text } from 'react-native';
-
-// CORRECT - Core components
-import { Box, Text } from 'components/core';
-
-
-// WRONG - Inline styles
-<Text style={{ fontSize: 18, fontWeight: '600' }}>
-
-// CORRECT - Token props
-<Text fontSize="$lg" fontWeight="$semibold">
-```
-
-## Component Props Pattern
-
-When creating components, use token-based props:
-
-```tsx
-interface CardProps {
-  padding?: '$2' | '$4' | '$6';
-  variant?: 'elevated' | 'outlined' | 'filled';
-  children: React.ReactNode;
-}
-
-const Card = ({ padding = '$4', variant = 'elevated', children }: CardProps) => (
-  <Box
-    padding={padding}
-    backgroundColor="$backgroundPrimary"
-    borderRadius="$lg"
-    {...variantStyles[variant]}
-  >
-    {children}
-  </Box>
-);
-```
-
-## Integration with Other Skills
-
-- **react-ui-patterns**: Use core components for UI states
-- **testing-patterns**: Mock core components in tests
-- **storybook**: Document component variants
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "core-components"
+sections[23]:
+  - "\n"
+  - "# Core Components\n\n"
+  - "## Design System Overview\n\nUse components from your core library instead of raw platform components. This ensures consistent styling and behavior.\n\n"
+  - "## Design Tokens\n\n**NEVER hard-code values. Always use design tokens.**\n\n"
+  - "### Spacing Tokens\n\n```tsx\n// CORRECT - Use tokens\n<Box padding=\"$4\" marginBottom=\"$2\" />\n\n// WRONG - Hard-coded values\n<Box padding={16} marginBottom={8} />\n```\n\n| Token | Value |\n|-------|-------|\n| `$1` | 4px |\n| `$2` | 8px |\n| `$3` | 12px |\n| `$4` | 16px |\n| `$6` | 24px |\n| `$8` | 32px |\n\n"
+  - "### Color Tokens\n\n```tsx\n// CORRECT - Semantic tokens\n<Text color=\"$textPrimary\" />\n<Box backgroundColor=\"$backgroundSecondary\" />\n\n// WRONG - Hard-coded colors\n<Text color=\"#333333\" />\n<Box backgroundColor=\"rgb(245, 245, 245)\" />\n```\n\n| Semantic Token | Use For |\n|----------------|---------|\n| `$textPrimary` | Main text |\n| `$textSecondary` | Supporting text |\n| `$textTertiary` | Disabled/hint text |\n| `$primary500` | Brand/accent color |\n| `$statusError` | Error states |\n| `$statusSuccess` | Success states |\n\n"
+  - "### Typography Tokens\n\n```tsx\n<Text fontSize=\"$lg\" fontWeight=\"$semibold\" />\n```\n\n| Token | Size |\n|-------|------|\n| `$xs` | 12px |\n| `$sm` | 14px |\n| `$md` | 16px |\n| `$lg` | 18px |\n| `$xl` | 20px |\n| `$2xl` | 24px |\n\n"
+  - "## Core Components\n\n"
+  - "### Box\n\nBase layout component with token support:\n\n```tsx\n<Box\n  padding=\"$4\"\n  backgroundColor=\"$backgroundPrimary\"\n  borderRadius=\"$lg\"\n>\n  {children}\n</Box>\n```\n\n"
+  - "### HStack / VStack\n\nHorizontal and vertical flex layouts:\n\n```tsx\n<HStack gap=\"$3\" alignItems=\"center\">\n  <Icon name=\"user\" />\n  <Text>Username</Text>\n</HStack>\n\n<VStack gap=\"$4\" padding=\"$4\">\n  <Heading>Title</Heading>\n  <Text>Content</Text>\n</VStack>\n```\n\n"
+  - "### Text\n\nTypography with token support:\n\n```tsx\n<Text\n  fontSize=\"$lg\"\n  fontWeight=\"$semibold\"\n  color=\"$textPrimary\"\n>\n  Hello World\n</Text>\n```\n\n"
+  - "### Button\n\nInteractive button with variants:\n\n```tsx\n<Button\n  onPress={handlePress}\n  variant=\"solid\"\n  size=\"md\"\n  isLoading={loading}\n  isDisabled={disabled}\n>\n  Click Me\n</Button>\n```\n\n| Variant | Use For |\n|---------|---------|\n| `solid` | Primary actions |\n| `outline` | Secondary actions |\n| `ghost` | Tertiary/subtle actions |\n| `link` | Inline actions |\n\n"
+  - "### Input\n\nForm input with validation:\n\n```tsx\n<Input\n  value={value}\n  onChangeText={setValue}\n  placeholder=\"Enter text\"\n  error={touched ? errors.field : undefined}\n  label=\"Field Name\"\n/>\n```\n\n"
+  - "### Card\n\nContent container:\n\n```tsx\n<Card padding=\"$4\" gap=\"$3\">\n  <CardHeader>\n    <Heading size=\"sm\">Card Title</Heading>\n  </CardHeader>\n  <CardBody>\n    <Text>Card content</Text>\n  </CardBody>\n</Card>\n```\n\n"
+  - "## Layout Patterns\n\n"
+  - "### Screen Layout\n\n```tsx\nconst MyScreen = () => (\n  <Screen>\n    <ScreenHeader title=\"Page Title\" />\n    <ScreenContent padding=\"$4\">\n      {/* Content */}\n    </ScreenContent>\n  </Screen>\n);\n```\n\n"
+  - "### Form Layout\n\n```tsx\n<VStack gap=\"$4\" padding=\"$4\">\n  <Input label=\"Name\" {...nameProps} />\n  <Input label=\"Email\" {...emailProps} />\n  <Button isLoading={loading}>Submit</Button>\n</VStack>\n```\n\n"
+  - "### List Item Layout\n\n```tsx\n<HStack\n  padding=\"$4\"\n  gap=\"$3\"\n  alignItems=\"center\"\n  borderBottomWidth={1}\n  borderColor=\"$borderLight\"\n>\n  <Avatar source={{ uri: imageUrl }} size=\"md\" />\n  <VStack flex={1}>\n    <Text fontWeight=\"$semibold\">{title}</Text>\n    <Text color=\"$textSecondary\" fontSize=\"$sm\">{subtitle}</Text>\n  </VStack>\n  <Icon name=\"chevron-right\" color=\"$textTertiary\" />\n</HStack>\n```\n\n"
+  - "## Anti-Patterns\n\n```tsx\n// WRONG - Hard-coded values\n<View style={{ padding: 16, backgroundColor: '#fff' }}>\n\n// CORRECT - Design tokens\n<Box padding=\"$4\" backgroundColor=\"$backgroundPrimary\">\n\n\n// WRONG - Raw platform components\nimport { View, Text } from 'react-native';\n\n// CORRECT - Core components\nimport { Box, Text } from 'components/core';\n\n\n// WRONG - Inline styles\n<Text style={{ fontSize: 18, fontWeight: '600' }}>\n\n// CORRECT - Token props\n<Text fontSize=\"$lg\" fontWeight=\"$semibold\">\n```\n\n"
+  - "## Component Props Pattern\n\nWhen creating components, use token-based props:\n\n```tsx\ninterface CardProps {\n  padding?: '$2' | '$4' | '$6';\n  variant?: 'elevated' | 'outlined' | 'filled';\n  children: React.ReactNode;\n}\n\nconst Card = ({ padding = '$4', variant = 'elevated', children }: CardProps) => (\n  <Box\n    padding={padding}\n    backgroundColor=\"$backgroundPrimary\"\n    borderRadius=\"$lg\"\n    {...variantStyles[variant]}\n  >\n    {children}\n  </Box>\n);\n```\n\n"
+  - "## Integration with Other Skills\n\n- **react-ui-patterns**: Use core components for UI states\n- **testing-patterns**: Mock core components in tests\n- **storybook**: Document component variants\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

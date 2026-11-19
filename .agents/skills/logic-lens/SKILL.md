@@ -12,114 +12,23 @@ date_added: "2026-04-29"
 author: "Krish Ujeniya"
 tags: [code-review, logic-analysis, debugging, security-review, claude-code]
 tools: [claude, codex, cursor, gemini]
+prompt-source: prompt.toon
 ---
-
-# Logic Lens
-
-## Overview
-
-Logic Lens is a Claude Code skill that performs deep, logic-driven code review using formal reasoning frameworks. Unlike traditional linters that check syntax and style, Logic Lens analyzes your code for logical errors, race conditions, security vulnerabilities, type mismatches, and algorithmic flaws that only appear when you reason through the code's behavior.
-
-Powered by structured AI analysis, Logic Lens applies systematic logical inspection across 9 risk categories: null/undefined handling, type safety, concurrency, resource management, security injection, boundary conditions, algorithm correctness, state management, and API contract violations.
-
-## When to Use This Skill
-
-- Use when you want a thorough logic review before merging a PR
-- Use when a bug seems hard to find and standard linters aren't helping
-- Use when reviewing security-sensitive code paths (auth, payments, file access)
-- Use when refactoring complex business logic
-- Use when onboarding to a new codebase and need to understand risk areas
-
-## How It Works
-
-Logic Lens uses Claude Code's reasoning capabilities to:
-
-1. Parse code structure and build a mental model of data flow
-2. Apply formal logic checks across 9 risk categories
-3. Trace execution paths for edge cases and boundary conditions
-4. Identify security anti-patterns (injection, privilege escalation, data leakage)
-5. Report findings with severity levels and actionable fix suggestions
-
-## Installation
-
-```bash
-# Install via Claude Code plugin marketplace
-# Search: "logic-lens" in Claude Code > Extensions
-
-# Or install via NPX (Antigravity)
-npx antigravity-awesome-skills --claude
-# Then invoke: @logic-lens
-```
-
-## Examples
-
-### Example 1: Review a Single File
-
-```
-@logic-lens review src/auth/login.ts for security issues
-```
-
-**Logic Lens output:**
-```
-[CRITICAL] SQL Injection risk at line 42: user input concatenated into query string
-[HIGH] Missing rate limiting on login attempts
-[MEDIUM] Password comparison uses == instead of timing-safe comparison
-[LOW] Error messages may leak valid usernames (user enumeration)
-```
-
-### Example 2: Full Repository Scan
-
-```
-@logic-lens scan the entire codebase and prioritize by severity
-```
-
-### Example 3: Pre-PR Review
-
-```
-@logic-lens review all files changed in this branch before I open a PR
-```
-
-## The 9 Risk Categories
-
-| Category | What It Checks |
-|----------|----------------|
-| **Null/Undefined** | Missing null checks, optional chaining gaps |
-| **Type Safety** | Implicit coercions, any-typed boundaries |
-| **Concurrency** | Race conditions, shared mutable state |
-| **Resource Management** | Unclosed handles, memory leaks |
-| **Security Injection** | SQL/XSS/Command injection, path traversal |
-| **Boundary Conditions** | Off-by-one errors, integer overflow |
-| **Algorithm Correctness** | Wrong complexity, incorrect assumptions |
-| **State Management** | Inconsistent state, missing rollbacks |
-| **API Contracts** | Undocumented side effects, broken interfaces |
-
-## Best Practices
-
-- Run `@logic-lens` on authentication and payment code before every release
-- Combine with `@lint-and-validate` for full coverage: style + logic
-- Review the CRITICAL and HIGH findings first; LOW findings can be deferred
-- Use `@logic-lens` on legacy code you are about to modify to understand risk surface
-
-## Benchmark Results
-
-Logic Lens was tested against real-world codebases and caught issues missed by ESLint, TypeScript strict mode, and Snyk:
-
-- **47% of critical bugs** found were invisible to linters
-- **Race conditions** detected in async code that static analysis missed
-- **Security vulnerabilities** identified before deployment in CI pipeline
-
-## Related Skills
-
-- `@lint-and-validate` — Complementary: run after logic-lens for style/syntax
-- `@security-auditor` — Specialized security-only deep scan
-- `@debugging-strategies` — Use when logic-lens findings need tracing
-
-## Additional Resources
-
-- [GitHub Repository](https://github.com/hyhmrright/logic-lens)
-- [Dev.to Article: Why AI Code Review Misses the Most Dangerous Bugs](https://dev.to/hyhmrright/why-ai-code-review-misses-the-most-dangerous-bugs-logic-lens-fixes-that-4a8l)
-- [Claude Code Skills Documentation](https://docs.anthropic.com/claude-code)
-
-## Limitations
-
-Use this skill only when the task clearly matches the scope described above (code review and logic analysis). Logic Lens provides AI-powered analysis and should be combined with human review for production-critical decisions. Do not treat the output as a substitute for environment-specific testing or security audits.
+skill: "logic-lens"
+sections[16]:
+  - "\n"
+  - "# Logic Lens\n\n"
+  - "## Overview\n\nLogic Lens is a Claude Code skill that performs deep, logic-driven code review using formal reasoning frameworks. Unlike traditional linters that check syntax and style, Logic Lens analyzes your code for logical errors, race conditions, security vulnerabilities, type mismatches, and algorithmic flaws that only appear when you reason through the code's behavior.\n\nPowered by structured AI analysis, Logic Lens applies systematic logical inspection across 9 risk categories: null/undefined handling, type safety, concurrency, resource management, security injection, boundary conditions, algorithm correctness, state management, and API contract violations.\n\n"
+  - "## When to Use This Skill\n\n- Use when you want a thorough logic review before merging a PR\n- Use when a bug seems hard to find and standard linters aren't helping\n- Use when reviewing security-sensitive code paths (auth, payments, file access)\n- Use when refactoring complex business logic\n- Use when onboarding to a new codebase and need to understand risk areas\n\n"
+  - "## How It Works\n\nLogic Lens uses Claude Code's reasoning capabilities to:\n\n1. Parse code structure and build a mental model of data flow\n2. Apply formal logic checks across 9 risk categories\n3. Trace execution paths for edge cases and boundary conditions\n4. Identify security anti-patterns (injection, privilege escalation, data leakage)\n5. Report findings with severity levels and actionable fix suggestions\n\n"
+  - "## Installation\n\n```bash\n# Install via Claude Code plugin marketplace\n# Search: \"logic-lens\" in Claude Code > Extensions\n\n# Or install via NPX (Antigravity)\nnpx antigravity-awesome-skills --claude\n# Then invoke: @logic-lens\n```\n\n"
+  - "## Examples\n\n"
+  - "### Example 1: Review a Single File\n\n```\n@logic-lens review src/auth/login.ts for security issues\n```\n\n**Logic Lens output:**\n```\n[CRITICAL] SQL Injection risk at line 42: user input concatenated into query string\n[HIGH] Missing rate limiting on login attempts\n[MEDIUM] Password comparison uses == instead of timing-safe comparison\n[LOW] Error messages may leak valid usernames (user enumeration)\n```\n\n"
+  - "### Example 2: Full Repository Scan\n\n```\n@logic-lens scan the entire codebase and prioritize by severity\n```\n\n"
+  - "### Example 3: Pre-PR Review\n\n```\n@logic-lens review all files changed in this branch before I open a PR\n```\n\n"
+  - "## The 9 Risk Categories\n\n| Category | What It Checks |\n|----------|----------------|\n| **Null/Undefined** | Missing null checks, optional chaining gaps |\n| **Type Safety** | Implicit coercions, any-typed boundaries |\n| **Concurrency** | Race conditions, shared mutable state |\n| **Resource Management** | Unclosed handles, memory leaks |\n| **Security Injection** | SQL/XSS/Command injection, path traversal |\n| **Boundary Conditions** | Off-by-one errors, integer overflow |\n| **Algorithm Correctness** | Wrong complexity, incorrect assumptions |\n| **State Management** | Inconsistent state, missing rollbacks |\n| **API Contracts** | Undocumented side effects, broken interfaces |\n\n"
+  - "## Best Practices\n\n- Run `@logic-lens` on authentication and payment code before every release\n- Combine with `@lint-and-validate` for full coverage: style + logic\n- Review the CRITICAL and HIGH findings first; LOW findings can be deferred\n- Use `@logic-lens` on legacy code you are about to modify to understand risk surface\n\n"
+  - "## Benchmark Results\n\nLogic Lens was tested against real-world codebases and caught issues missed by ESLint, TypeScript strict mode, and Snyk:\n\n- **47% of critical bugs** found were invisible to linters\n- **Race conditions** detected in async code that static analysis missed\n- **Security vulnerabilities** identified before deployment in CI pipeline\n\n"
+  - "## Related Skills\n\n- `@lint-and-validate` — Complementary: run after logic-lens for style/syntax\n- `@security-auditor` — Specialized security-only deep scan\n- `@debugging-strategies` — Use when logic-lens findings need tracing\n\n"
+  - "## Additional Resources\n\n- [GitHub Repository](https://github.com/hyhmrright/logic-lens)\n- [Dev.to Article: Why AI Code Review Misses the Most Dangerous Bugs](https://dev.to/hyhmrright/why-ai-code-review-misses-the-most-dangerous-bugs-logic-lens-fixes-that-4a8l)\n- [Claude Code Skills Documentation](https://docs.anthropic.com/claude-code)\n\n"
+  - "## Limitations\n\nUse this skill only when the task clearly matches the scope described above (code review and logic analysis). Logic Lens provides AI-powered analysis and should be combined with human review for production-critical decisions. Do not treat the output as a substitute for environment-specific testing or security audits.\n"

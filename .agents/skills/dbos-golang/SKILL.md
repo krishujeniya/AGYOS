@@ -4,128 +4,19 @@ description: "Guide for building reliable, fault-tolerant Go applications with D
 risk: safe
 source: "https://docs.dbos.dev/"
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# DBOS Go Best Practices
-
-Guide for building reliable, fault-tolerant Go applications with DBOS durable workflows.
-
-## When to Use
-Reference these guidelines when:
-- Adding DBOS to existing Go code
-- Creating workflows and steps
-- Using queues for concurrency control
-- Implementing workflow communication (events, messages, streams)
-- Configuring and launching DBOS applications
-- Using the DBOS Client from external applications
-- Testing DBOS applications
-
-## Rule Categories by Priority
-
-| Priority | Category | Impact | Prefix |
-|----------|----------|--------|--------|
-| 1 | Lifecycle | CRITICAL | `lifecycle-` |
-| 2 | Workflow | CRITICAL | `workflow-` |
-| 3 | Step | HIGH | `step-` |
-| 4 | Queue | HIGH | `queue-` |
-| 5 | Communication | MEDIUM | `comm-` |
-| 6 | Pattern | MEDIUM | `pattern-` |
-| 7 | Testing | LOW-MEDIUM | `test-` |
-| 8 | Client | MEDIUM | `client-` |
-| 9 | Advanced | LOW | `advanced-` |
-
-## Critical Rules
-
-### Installation
-
-Install the DBOS Go module:
-
-```bash
-go get github.com/dbos-inc/dbos-transact-golang/dbos@latest
-```
-
-### DBOS Configuration and Launch
-
-A DBOS application MUST create a context, register workflows, and launch before running any workflows:
-
-```go
-package main
-
-import (
-	"context"
-	"log"
-	"os"
-	"time"
-
-	"github.com/dbos-inc/dbos-transact-golang/dbos"
-)
-
-func main() {
-	ctx, err := dbos.NewDBOSContext(context.Background(), dbos.Config{
-		AppName:     "my-app",
-		DatabaseURL: os.Getenv("DBOS_SYSTEM_DATABASE_URL"),
-	})
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer dbos.Shutdown(ctx, 30*time.Second)
-
-	dbos.RegisterWorkflow(ctx, myWorkflow)
-
-	if err := dbos.Launch(ctx); err != nil {
-		log.Fatal(err)
-	}
-}
-```
-
-### Workflow and Step Structure
-
-Workflows are comprised of steps. Any function performing complex operations or accessing external services must be run as a step using `dbos.RunAsStep`:
-
-```go
-func fetchData(ctx context.Context) (string, error) {
-	resp, err := http.Get("https://api.example.com/data")
-	if err != nil {
-		return "", err
-	}
-	defer resp.Body.Close()
-	body, _ := io.ReadAll(resp.Body)
-	return string(body), nil
-}
-
-func myWorkflow(ctx dbos.DBOSContext, input string) (string, error) {
-	result, err := dbos.RunAsStep(ctx, fetchData, dbos.WithStepName("fetchData"))
-	if err != nil {
-		return "", err
-	}
-	return result, nil
-}
-```
-
-### Key Constraints
-
-- Do NOT start or enqueue workflows from within steps
-- Do NOT use uncontrolled goroutines to start workflows - use `dbos.RunWorkflow` with queues or `dbos.Go`/`dbos.Select` for concurrent steps
-- Workflows MUST be deterministic - non-deterministic operations go in steps
-- Do NOT modify global variables from workflows or steps
-- All workflows and queues MUST be registered before calling `Launch()`
-
-## How to Use
-
-Read individual rule files for detailed explanations and examples:
-
-```
-references/lifecycle-config.md
-references/workflow-determinism.md
-references/queue-concurrency.md
-```
-
-## References
-
-- https://docs.dbos.dev/
-- https://github.com/dbos-inc/dbos-transact-golang
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "dbos-golang"
+sections[12]:
+  - "\n"
+  - "# DBOS Go Best Practices\n\nGuide for building reliable, fault-tolerant Go applications with DBOS durable workflows.\n\n"
+  - "## When to Use\nReference these guidelines when:\n- Adding DBOS to existing Go code\n- Creating workflows and steps\n- Using queues for concurrency control\n- Implementing workflow communication (events, messages, streams)\n- Configuring and launching DBOS applications\n- Using the DBOS Client from external applications\n- Testing DBOS applications\n\n"
+  - "## Rule Categories by Priority\n\n| Priority | Category | Impact | Prefix |\n|----------|----------|--------|--------|\n| 1 | Lifecycle | CRITICAL | `lifecycle-` |\n| 2 | Workflow | CRITICAL | `workflow-` |\n| 3 | Step | HIGH | `step-` |\n| 4 | Queue | HIGH | `queue-` |\n| 5 | Communication | MEDIUM | `comm-` |\n| 6 | Pattern | MEDIUM | `pattern-` |\n| 7 | Testing | LOW-MEDIUM | `test-` |\n| 8 | Client | MEDIUM | `client-` |\n| 9 | Advanced | LOW | `advanced-` |\n\n"
+  - "## Critical Rules\n\n"
+  - "### Installation\n\nInstall the DBOS Go module:\n\n```bash\ngo get github.com/dbos-inc/dbos-transact-golang/dbos@latest\n```\n\n"
+  - "### DBOS Configuration and Launch\n\nA DBOS application MUST create a context, register workflows, and launch before running any workflows:\n\n```go\npackage main\n\nimport (\n\t\"context\"\n\t\"log\"\n\t\"os\"\n\t\"time\"\n\n\t\"github.com/dbos-inc/dbos-transact-golang/dbos\"\n)\n\nfunc main() {\n\tctx, err := dbos.NewDBOSContext(context.Background(), dbos.Config{\n\t\tAppName:     \"my-app\",\n\t\tDatabaseURL: os.Getenv(\"DBOS_SYSTEM_DATABASE_URL\"),\n\t})\n\tif err != nil {\n\t\tlog.Fatal(err)\n\t}\n\tdefer dbos.Shutdown(ctx, 30*time.Second)\n\n\tdbos.RegisterWorkflow(ctx, myWorkflow)\n\n\tif err := dbos.Launch(ctx); err != nil {\n\t\tlog.Fatal(err)\n\t}\n}\n```\n\n"
+  - "### Workflow and Step Structure\n\nWorkflows are comprised of steps. Any function performing complex operations or accessing external services must be run as a step using `dbos.RunAsStep`:\n\n```go\nfunc fetchData(ctx context.Context) (string, error) {\n\tresp, err := http.Get(\"https://api.example.com/data\")\n\tif err != nil {\n\t\treturn \"\", err\n\t}\n\tdefer resp.Body.Close()\n\tbody, _ := io.ReadAll(resp.Body)\n\treturn string(body), nil\n}\n\nfunc myWorkflow(ctx dbos.DBOSContext, input string) (string, error) {\n\tresult, err := dbos.RunAsStep(ctx, fetchData, dbos.WithStepName(\"fetchData\"))\n\tif err != nil {\n\t\treturn \"\", err\n\t}\n\treturn result, nil\n}\n```\n\n"
+  - "### Key Constraints\n\n- Do NOT start or enqueue workflows from within steps\n- Do NOT use uncontrolled goroutines to start workflows - use `dbos.RunWorkflow` with queues or `dbos.Go`/`dbos.Select` for concurrent steps\n- Workflows MUST be deterministic - non-deterministic operations go in steps\n- Do NOT modify global variables from workflows or steps\n- All workflows and queues MUST be registered before calling `Launch()`\n\n"
+  - "## How to Use\n\nRead individual rule files for detailed explanations and examples:\n\n```\nreferences/lifecycle-config.md\nreferences/workflow-determinism.md\nreferences/queue-concurrency.md\n```\n\n"
+  - "## References\n\n- https://docs.dbos.dev/\n- https://github.com/dbos-inc/dbos-transact-golang\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

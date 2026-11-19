@@ -4,194 +4,23 @@ description: "Use mmx to generate text, images, video, speech, and music via the
 risk: safe
 source: "https://github.com/MiniMax-AI/cli"
 date_added: "2026-04-14"
+prompt-source: prompt.toon
 ---
-
-# MiniMax CLI — Agent Skill Guide
-
-Use `mmx` to generate text, images, video, speech, music, and perform web search via the MiniMax AI platform.
-
-## When to Use
-
-Use this skill when the user wants to generate or inspect text, images, video, speech, music, web-search results, or MiniMax API resources through the `mmx` terminal CLI.
-
-## Prerequisites
-
-```bash
-# Install
-npm install -g mmx-cli
-
-# Auth (OAuth persists to ~/.mmx/credentials.json, API key persists to ~/.mmx/config.json)
-mmx auth login --api-key sk-xxxxx
-
-# Verify active auth source
-mmx auth status
-
-# Or pass per-call
-mmx text chat --api-key sk-xxxxx --message "Hello"
-```
-
-Region is auto-detected. Override with `--region global` or `--region cn`.
-
----
-
-## Agent Flags
-
-Always use these flags in non-interactive (agent/CI) contexts:
-
-| Flag | Purpose |
-|---|---|
-| `--non-interactive` | Fail fast on missing args instead of prompting |
-| `--quiet` | Suppress spinners/progress; stdout is pure data |
-| `--output json` | Machine-readable JSON output |
-| `--async` | Return task ID immediately (video generation) |
-| `--dry-run` | Preview the API request without executing |
-| `--yes` | Skip confirmation prompts |
-
----
-
-## Commands
-
-### text chat
-
-Chat completion. Default model: `MiniMax-M2.7`.
-
-```bash
-mmx text chat --message <text> [flags]
-```
-
-```bash
-# Single message
-mmx text chat --message "user:What is MiniMax?" --output json --quiet
-
-# Multi-turn with system prompt
-mmx text chat \
-  --system "You are a coding assistant." \
-  --message "user:Write fizzbuzz in Python" \
-  --output json
-
-# From file
-cat conversation.json | mmx text chat --messages-file - --output json
-```
-
----
-
-### image generate
-
-Generate images. Model: `image-01`.
-
-```bash
-mmx image generate --prompt <text> [flags]
-```
-
-```bash
-mmx image generate --prompt "A cat in a spacesuit" --output json --quiet
-mmx image generate --prompt "Logo" --n 3 --out-dir ./gen/ --quiet
-```
-
----
-
-### video generate
-
-Generate video. Default model: `MiniMax-Hailuo-2.3`. Async task — polls until completion by default.
-
-```bash
-mmx video generate --prompt <text> [flags]
-```
-
-```bash
-# Non-blocking: get task ID
-mmx video generate --prompt "A robot." --async --quiet
-
-# Blocking: wait and save file
-mmx video generate --prompt "Ocean waves." --download ocean.mp4 --quiet
-```
-
----
-
-### speech synthesize
-
-Text-to-speech. Default model: `speech-2.8-hd`. Max 10k chars.
-
-```bash
-mmx speech synthesize --text <text> [flags]
-```
-
-```bash
-mmx speech synthesize --text "Hello world" --out hello.mp3 --quiet
-echo "Breaking news." | mmx speech synthesize --text-file - --out news.mp3
-```
-
----
-
-### music generate
-
-Generate music. Model: `music-2.6-free`.
-
-```bash
-mmx music generate --prompt <text> [--lyrics <text>] [flags]
-```
-
-```bash
-# Instrumental
-mmx music generate --prompt "Cinematic orchestral, building tension" --instrumental --out bgm.mp3 --quiet
-
-# With auto-generated lyrics
-mmx music generate --prompt "Upbeat pop about summer" --lyrics-optimizer --out summer.mp3 --quiet
-```
-
----
-
-### search query
-
-Web search via MiniMax.
-
-```bash
-mmx search query --q "MiniMax AI" --output json --quiet
-```
-
----
-
-### vision describe
-
-Image understanding via VLM.
-
-```bash
-mmx vision describe --image photo.jpg --prompt "What breed?" --output json
-```
-
----
-
-## Piping Patterns
-
-```bash
-# Chain: generate image → describe it
-URL=$(mmx image generate --prompt "A sunset" --quiet)
-mmx vision describe --image "$URL" --quiet
-
-# Async video workflow
-TASK=$(mmx video generate --prompt "A robot" --async --quiet | jq -r '.taskId')
-mmx video task get --task-id "$TASK" --output json
-mmx video download --task-id "$TASK" --out robot.mp4
-```
-
----
-
-## Exit Codes
-
-| Code | Meaning |
-|---|---|
-| 0 | Success |
-| 1 | General error |
-| 2 | Usage error |
-| 3 | Authentication error |
-| 4 | Quota exceeded |
-| 5 | Timeout |
-| 10 | Content filter triggered |
-
----
-
-## Limitations
-
-- Requires a configured MiniMax account and valid authentication before any API-backed command will work.
-- Media-generation tasks can be async, quota-limited, or region-constrained; agents should handle delayed completion and provider-side failures explicitly.
-- This skill documents CLI usage only and does not replace provider policy review, content-safety checks, or downstream file validation.
+skill: "mmx-cli"
+sections[16]:
+  - "\n"
+  - "# MiniMax CLI — Agent Skill Guide\n\nUse `mmx` to generate text, images, video, speech, music, and perform web search via the MiniMax AI platform.\n\n"
+  - "## When to Use\n\nUse this skill when the user wants to generate or inspect text, images, video, speech, music, web-search results, or MiniMax API resources through the `mmx` terminal CLI.\n\n"
+  - "## Prerequisites\n\n```bash\n# Install\nnpm install -g mmx-cli\n\n# Auth (OAuth persists to ~/.mmx/credentials.json, API key persists to ~/.mmx/config.json)\nmmx auth login --api-key sk-xxxxx\n\n# Verify active auth source\nmmx auth status\n\n# Or pass per-call\nmmx text chat --api-key sk-xxxxx --message \"Hello\"\n```\n\nRegion is auto-detected. Override with `--region global` or `--region cn`.\n\n---\n\n"
+  - "## Agent Flags\n\nAlways use these flags in non-interactive (agent/CI) contexts:\n\n| Flag | Purpose |\n|---|---|\n| `--non-interactive` | Fail fast on missing args instead of prompting |\n| `--quiet` | Suppress spinners/progress; stdout is pure data |\n| `--output json` | Machine-readable JSON output |\n| `--async` | Return task ID immediately (video generation) |\n| `--dry-run` | Preview the API request without executing |\n| `--yes` | Skip confirmation prompts |\n\n---\n\n"
+  - "## Commands\n\n"
+  - "### text chat\n\nChat completion. Default model: `MiniMax-M2.7`.\n\n```bash\nmmx text chat --message <text> [flags]\n```\n\n```bash\n# Single message\nmmx text chat --message \"user:What is MiniMax?\" --output json --quiet\n\n# Multi-turn with system prompt\nmmx text chat \\\n  --system \"You are a coding assistant.\" \\\n  --message \"user:Write fizzbuzz in Python\" \\\n  --output json\n\n# From file\ncat conversation.json | mmx text chat --messages-file - --output json\n```\n\n---\n\n"
+  - "### image generate\n\nGenerate images. Model: `image-01`.\n\n```bash\nmmx image generate --prompt <text> [flags]\n```\n\n```bash\nmmx image generate --prompt \"A cat in a spacesuit\" --output json --quiet\nmmx image generate --prompt \"Logo\" --n 3 --out-dir ./gen/ --quiet\n```\n\n---\n\n"
+  - "### video generate\n\nGenerate video. Default model: `MiniMax-Hailuo-2.3`. Async task — polls until completion by default.\n\n```bash\nmmx video generate --prompt <text> [flags]\n```\n\n```bash\n# Non-blocking: get task ID\nmmx video generate --prompt \"A robot.\" --async --quiet\n\n# Blocking: wait and save file\nmmx video generate --prompt \"Ocean waves.\" --download ocean.mp4 --quiet\n```\n\n---\n\n"
+  - "### speech synthesize\n\nText-to-speech. Default model: `speech-2.8-hd`. Max 10k chars.\n\n```bash\nmmx speech synthesize --text <text> [flags]\n```\n\n```bash\nmmx speech synthesize --text \"Hello world\" --out hello.mp3 --quiet\necho \"Breaking news.\" | mmx speech synthesize --text-file - --out news.mp3\n```\n\n---\n\n"
+  - "### music generate\n\nGenerate music. Model: `music-2.6-free`.\n\n```bash\nmmx music generate --prompt <text> [--lyrics <text>] [flags]\n```\n\n```bash\n# Instrumental\nmmx music generate --prompt \"Cinematic orchestral, building tension\" --instrumental --out bgm.mp3 --quiet\n\n# With auto-generated lyrics\nmmx music generate --prompt \"Upbeat pop about summer\" --lyrics-optimizer --out summer.mp3 --quiet\n```\n\n---\n\n"
+  - "### search query\n\nWeb search via MiniMax.\n\n```bash\nmmx search query --q \"MiniMax AI\" --output json --quiet\n```\n\n---\n\n"
+  - "### vision describe\n\nImage understanding via VLM.\n\n```bash\nmmx vision describe --image photo.jpg --prompt \"What breed?\" --output json\n```\n\n---\n\n"
+  - "## Piping Patterns\n\n```bash\n# Chain: generate image → describe it\nURL=$(mmx image generate --prompt \"A sunset\" --quiet)\nmmx vision describe --image \"$URL\" --quiet\n\n# Async video workflow\nTASK=$(mmx video generate --prompt \"A robot\" --async --quiet | jq -r '.taskId')\nmmx video task get --task-id \"$TASK\" --output json\nmmx video download --task-id \"$TASK\" --out robot.mp4\n```\n\n---\n\n"
+  - "## Exit Codes\n\n| Code | Meaning |\n|---|---|\n| 0 | Success |\n| 1 | General error |\n| 2 | Usage error |\n| 3 | Authentication error |\n| 4 | Quota exceeded |\n| 5 | Timeout |\n| 10 | Content filter triggered |\n\n---\n\n"
+  - "## Limitations\n\n- Requires a configured MiniMax account and valid authentication before any API-backed command will work.\n- Media-generation tasks can be async, quota-limited, or region-constrained; agents should handle delayed completion and provider-side failures explicitly.\n- This skill documents CLI usage only and does not replace provider policy review, content-safety checks, or downstream file validation.\n"

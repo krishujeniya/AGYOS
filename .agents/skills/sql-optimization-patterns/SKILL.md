@@ -4,40 +4,14 @@ description: "Transform slow database queries into lightning-fast operations thr
 risk: safe
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# SQL Optimization Patterns
-
-Transform slow database queries into lightning-fast operations through systematic optimization, proper indexing, and query plan analysis.
-
-## Use this skill when
-
-- Debugging slow-running queries
-- Designing performant database schemas
-- Optimizing application response times
-- Reducing database load and costs
-- Improving scalability for growing datasets
-- Analyzing EXPLAIN query plans
-- Implementing efficient indexes
-- Resolving N+1 query problems
-
-## Do not use this skill when
-
-- The task is unrelated to sql optimization patterns
-- You need a different domain or tool outside this scope
-
-## Instructions
-
-- Clarify goals, constraints, and required inputs.
-- Apply relevant best practices and validate outcomes.
-- Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
-
-## Resources
-
-- `resources/implementation-playbook.md` for detailed patterns and examples.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "sql-optimization-patterns"
+sections[7]:
+  - "\n"
+  - "# SQL Optimization Patterns\n\nTransform slow database queries into lightning-fast operations through systematic optimization, proper indexing, and query plan analysis.\n\n"
+  - "## Use this skill when\n\n- Debugging slow-running queries\n- Designing performant database schemas\n- Optimizing application response times\n- Reducing database load and costs\n- Improving scalability for growing datasets\n- Analyzing EXPLAIN query plans\n- Implementing efficient indexes\n- Resolving N+1 query problems\n\n"
+  - "## Do not use this skill when\n\n- The task is unrelated to sql optimization patterns\n- You need a different domain or tool outside this scope\n\n"
+  - "## Instructions\n\n- Clarify goals, constraints, and required inputs.\n- Apply relevant best practices and validate outcomes.\n- Provide actionable steps and verification.\n- If detailed examples are required, open `resources/implementation-playbook.md`.\n\n"
+  - "## Resources\n\n- `resources/implementation-playbook.md` for detailed patterns and examples.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

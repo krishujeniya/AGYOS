@@ -3,126 +3,20 @@ name: finance-billing-ops
 description: Evidence-first revenue, pricing, refunds, team-billing, and billing-model truth workflow for ECC. Use when the user wants a sales snapshot, pricing comparison, duplicate-charge diagnosis, or code-backed billing reality instead of generic payments advice.
 metadata:
   origin: ECC
+prompt-source: prompt.toon
 ---
-
-# Finance Billing Ops
-
-Use this when the user wants to understand money, pricing, refunds, team-seat logic, or whether the product actually behaves the way the website and sales copy imply.
-
-This is broader than `customer-billing-ops`. That skill is for customer remediation. This skill is for operator truth: revenue state, pricing decisions, team billing, and code-backed billing behavior.
-
-## Skill Stack
-
-Pull these ECC-native skills into the workflow when relevant:
-
-- `customer-billing-ops` for customer-specific remediation and follow-up
-- `research-ops` when competitor pricing or current market evidence matters
-- `market-research` when the answer should end in a pricing recommendation
-- `github-ops` when the billing truth depends on code, backlog, or release state in sibling repos
-- `verification-loop` when the answer depends on proving checkout, seat handling, or entitlement behavior
-
-## When to Use
-
-- user asks for Stripe sales, refunds, MRR, or recent customer activity
-- user asks whether team billing, per-seat billing, or quota stacking is real in code
-- user wants competitor pricing comparisons or pricing-model benchmarks
-- the question mixes revenue facts with product implementation truth
-
-## Guardrails
-
-- distinguish live data from saved snapshots
-- separate:
-  - revenue fact
-  - customer impact
-  - code-backed product truth
-  - recommendation
-- do not say "per seat" unless the actual entitlement path enforces it
-- do not assume duplicate subscriptions imply duplicate value
-
-## Workflow
-
-### 1. Start from the freshest billing evidence
-
-Prefer live billing data. If the data is not live, state the snapshot timestamp explicitly.
-
-Normalize the picture:
-
-- paid sales
-- active subscriptions
-- failed or incomplete checkouts
-- refunds
-- disputes
-- duplicate subscriptions
-
-### 2. Separate customer incidents from product truth
-
-If the question is customer-specific, classify first:
-
-- duplicate checkout
-- real team intent
-- broken self-serve controls
-- unmet product value
-- failed payment or incomplete setup
-
-Then separate that from the broader product question:
-
-- does team billing really exist?
-- are seats actually counted?
-- does checkout quantity change entitlement?
-- does the site overstate current behavior?
-
-### 3. Inspect code-backed billing behavior
-
-If the answer depends on implementation truth, inspect the code path:
-
-- checkout
-- pricing page
-- entitlement calculation
-- seat or quota handling
-- installation vs user usage logic
-- billing portal or self-serve management support
-
-### 4. End with a decision and product gap
-
-Report:
-
-- sales snapshot
-- issue diagnosis
-- product truth
-- recommended operator action
-- product or backlog gap
-
-## Output Format
-
-```text
-SNAPSHOT
-- timestamp
-- revenue / subscriptions / anomalies
-
-CUSTOMER IMPACT
-- who is affected
-- what happened
-
-PRODUCT TRUTH
-- what the code actually does
-- what the website or sales copy claims
-
-DECISION
-- refund / preserve / convert / no-op
-
-PRODUCT GAP
-- exact follow-up item to build or fix
-```
-
-## Pitfalls
-
-- do not conflate failed attempts with net revenue
-- do not infer team billing from marketing language alone
-- do not compare competitor pricing from memory when current evidence is available
-- do not jump from diagnosis straight to refund without classifying the issue
-
-## Verification
-
-- the answer includes a live-data statement or snapshot timestamp
-- product-truth claims are code-backed
-- customer-impact and broader pricing/product conclusions are separated cleanly
+skill: "finance-billing-ops"
+sections[13]:
+  - "\n"
+  - "# Finance Billing Ops\n\nUse this when the user wants to understand money, pricing, refunds, team-seat logic, or whether the product actually behaves the way the website and sales copy imply.\n\nThis is broader than `customer-billing-ops`. That skill is for customer remediation. This skill is for operator truth: revenue state, pricing decisions, team billing, and code-backed billing behavior.\n\n"
+  - "## Skill Stack\n\nPull these ECC-native skills into the workflow when relevant:\n\n- `customer-billing-ops` for customer-specific remediation and follow-up\n- `research-ops` when competitor pricing or current market evidence matters\n- `market-research` when the answer should end in a pricing recommendation\n- `github-ops` when the billing truth depends on code, backlog, or release state in sibling repos\n- `verification-loop` when the answer depends on proving checkout, seat handling, or entitlement behavior\n\n"
+  - "## When to Use\n\n- user asks for Stripe sales, refunds, MRR, or recent customer activity\n- user asks whether team billing, per-seat billing, or quota stacking is real in code\n- user wants competitor pricing comparisons or pricing-model benchmarks\n- the question mixes revenue facts with product implementation truth\n\n"
+  - "## Guardrails\n\n- distinguish live data from saved snapshots\n- separate:\n  - revenue fact\n  - customer impact\n  - code-backed product truth\n  - recommendation\n- do not say \"per seat\" unless the actual entitlement path enforces it\n- do not assume duplicate subscriptions imply duplicate value\n\n"
+  - "## Workflow\n\n"
+  - "### 1. Start from the freshest billing evidence\n\nPrefer live billing data. If the data is not live, state the snapshot timestamp explicitly.\n\nNormalize the picture:\n\n- paid sales\n- active subscriptions\n- failed or incomplete checkouts\n- refunds\n- disputes\n- duplicate subscriptions\n\n"
+  - "### 2. Separate customer incidents from product truth\n\nIf the question is customer-specific, classify first:\n\n- duplicate checkout\n- real team intent\n- broken self-serve controls\n- unmet product value\n- failed payment or incomplete setup\n\nThen separate that from the broader product question:\n\n- does team billing really exist?\n- are seats actually counted?\n- does checkout quantity change entitlement?\n- does the site overstate current behavior?\n\n"
+  - "### 3. Inspect code-backed billing behavior\n\nIf the answer depends on implementation truth, inspect the code path:\n\n- checkout\n- pricing page\n- entitlement calculation\n- seat or quota handling\n- installation vs user usage logic\n- billing portal or self-serve management support\n\n"
+  - "### 4. End with a decision and product gap\n\nReport:\n\n- sales snapshot\n- issue diagnosis\n- product truth\n- recommended operator action\n- product or backlog gap\n\n"
+  - "## Output Format\n\n```text\nSNAPSHOT\n- timestamp\n- revenue / subscriptions / anomalies\n\nCUSTOMER IMPACT\n- who is affected\n- what happened\n\nPRODUCT TRUTH\n- what the code actually does\n- what the website or sales copy claims\n\nDECISION\n- refund / preserve / convert / no-op\n\nPRODUCT GAP\n- exact follow-up item to build or fix\n```\n\n"
+  - "## Pitfalls\n\n- do not conflate failed attempts with net revenue\n- do not infer team billing from marketing language alone\n- do not compare competitor pricing from memory when current evidence is available\n- do not jump from diagnosis straight to refund without classifying the issue\n\n"
+  - "## Verification\n\n- the answer includes a live-data statement or snapshot timestamp\n- product-truth claims are code-backed\n- customer-impact and broader pricing/product conclusions are separated cleanly\n"

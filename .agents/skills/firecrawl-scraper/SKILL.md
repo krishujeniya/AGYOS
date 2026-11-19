@@ -4,42 +4,18 @@ description: "Deep web scraping, screenshots, PDF parsing, and website crawling 
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# firecrawl-scraper
-
-## Overview
-Deep web scraping, screenshots, PDF parsing, and website crawling using Firecrawl API
-
-## When to Use
-- When you need deep content extraction from web pages
-- When page interaction is required (clicking, scrolling, etc.)
-- When you want screenshots or PDF parsing
-- When batch scraping multiple URLs
-
-## Installation
-```bash
-npx skills add -g BenedictKing/firecrawl-scraper
-```
-
-## Step-by-Step Guide
-1. Install the skill using the command above
-2. Configure Firecrawl API key
-3. Use naturally in Claude Code conversations
-
-## Examples
-See [GitHub Repository](https://github.com/BenedictKing/firecrawl-scraper) for examples.
-
-## Best Practices
-- Configure API keys via environment variables
-
-## Troubleshooting
-See the GitHub repository for troubleshooting guides.
-
-## Related Skills
-- context7-auto-research, tavily-web, exa-search, codex-review
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "firecrawl-scraper"
+sections[11]:
+  - "\n"
+  - "# firecrawl-scraper\n\n"
+  - "## Overview\nDeep web scraping, screenshots, PDF parsing, and website crawling using Firecrawl API\n\n"
+  - "## When to Use\n- When you need deep content extraction from web pages\n- When page interaction is required (clicking, scrolling, etc.)\n- When you want screenshots or PDF parsing\n- When batch scraping multiple URLs\n\n"
+  - "## Installation\n```bash\nnpx skills add -g BenedictKing/firecrawl-scraper\n```\n\n"
+  - "## Step-by-Step Guide\n1. Install the skill using the command above\n2. Configure Firecrawl API key\n3. Use naturally in Claude Code conversations\n\n"
+  - "## Examples\nSee [GitHub Repository](https://github.com/BenedictKing/firecrawl-scraper) for examples.\n\n"
+  - "## Best Practices\n- Configure API keys via environment variables\n\n"
+  - "## Troubleshooting\nSee the GitHub repository for troubleshooting guides.\n\n"
+  - "## Related Skills\n- context7-auto-research, tavily-web, exa-search, codex-review\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

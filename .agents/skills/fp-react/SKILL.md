@@ -6,8 +6,9 @@ source: community
 version: 2.0.1
 author: "Krish Ujeniya"
 tags: [fp-ts, react, typescript, hooks, state-management, forms, data-fetching, remote-data, react-19, next-js]
+prompt-source: prompt.toon
 ---
-
-# fp-ts React compatibility ID
-
-Use the canonical [fp-ts-react runbook](../fp-ts-react/SKILL.md) for React hooks, state, forms, and data fetching. This ID also covers React 18/19 and Next.js 14/15 requests.
+skill: "fp-react"
+sections[2]:
+  - "\n"
+  - "# fp-ts React compatibility ID\n\nUse the canonical [fp-ts-react runbook](../fp-ts-react/SKILL.md) for React hooks, state, forms, and data fetching. This ID also covers React 18/19 and Next.js 14/15 requests.\n"

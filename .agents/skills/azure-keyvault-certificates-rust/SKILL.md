@@ -4,182 +4,26 @@ description: Azure Key Vault Certificates SDK for Rust. Use for creating, import
 risk: unknown
 source: community
 date_added: '2026-02-27'
+prompt-source: prompt.toon
 ---
-
-# Azure Key Vault Certificates SDK for Rust
-
-Client library for Azure Key Vault Certificates — secure storage and management of certificates.
-
-## Installation
-
-```sh
-cargo add azure_security_keyvault_certificates azure_identity
-```
-
-## Environment Variables
-
-```bash
-AZURE_KEYVAULT_URL=https://<vault-name>.vault.azure.net/
-```
-
-## Authentication
-
-```rust
-use azure_identity::DeveloperToolsCredential;
-use azure_security_keyvault_certificates::CertificateClient;
-
-let credential = DeveloperToolsCredential::new(None)?;
-let client = CertificateClient::new(
-    "https://<vault-name>.vault.azure.net/",
-    credential.clone(),
-    None,
-)?;
-```
-
-## Core Operations
-
-### Get Certificate
-
-```rust
-use azure_core::base64;
-
-let certificate = client
-    .get_certificate("certificate-name", None)
-    .await?
-    .into_model()?;
-
-println!(
-    "Thumbprint: {:?}",
-    certificate.x509_thumbprint.map(base64::encode_url_safe)
-);
-```
-
-### Create Certificate
-
-```rust
-use azure_security_keyvault_certificates::models::{
-    CreateCertificateParameters, CertificatePolicy,
-    IssuerParameters, X509CertificateProperties,
-};
-
-let policy = CertificatePolicy {
-    issuer_parameters: Some(IssuerParameters {
-        name: Some("Self".into()),
-        ..Default::default()
-    }),
-    x509_certificate_properties: Some(X509CertificateProperties {
-        subject: Some("CN=example.com".into()),
-        ..Default::default()
-    }),
-    ..Default::default()
-};
-
-let params = CreateCertificateParameters {
-    certificate_policy: Some(policy),
-    ..Default::default()
-};
-
-let operation = client
-    .create_certificate("cert-name", params.try_into()?, None)
-    .await?;
-```
-
-### Import Certificate
-
-```rust
-use azure_security_keyvault_certificates::models::ImportCertificateParameters;
-
-let params = ImportCertificateParameters {
-    base64_encoded_certificate: Some(base64_cert_data),
-    password: Some("optional-password".into()),
-    ..Default::default()
-};
-
-let certificate = client
-    .import_certificate("cert-name", params.try_into()?, None)
-    .await?
-    .into_model()?;
-```
-
-### Delete Certificate
-
-```rust
-client.delete_certificate("certificate-name", None).await?;
-```
-
-### List Certificates
-
-```rust
-use azure_security_keyvault_certificates::ResourceExt;
-use futures::TryStreamExt;
-
-let mut pager = client.list_certificate_properties(None)?.into_stream();
-while let Some(cert) = pager.try_next().await? {
-    let name = cert.resource_id()?.name;
-    println!("Certificate: {}", name);
-}
-```
-
-### Get Certificate Policy
-
-```rust
-let policy = client
-    .get_certificate_policy("certificate-name", None)
-    .await?
-    .into_model()?;
-```
-
-### Update Certificate Policy
-
-```rust
-use azure_security_keyvault_certificates::models::UpdateCertificatePolicyParameters;
-
-let params = UpdateCertificatePolicyParameters {
-    // Update policy properties
-    ..Default::default()
-};
-
-client
-    .update_certificate_policy("cert-name", params.try_into()?, None)
-    .await?;
-```
-
-## Certificate Lifecycle
-
-1. **Create** — generates new certificate with policy
-2. **Import** — import existing PFX/PEM certificate
-3. **Get** — retrieve certificate (public key only)
-4. **Update** — modify certificate properties
-5. **Delete** — soft delete (recoverable)
-6. **Purge** — permanent deletion
-
-## Best Practices
-
-1. **Use Entra ID auth** — `DeveloperToolsCredential` for dev
-2. **Use managed certificates** — auto-renewal with supported issuers
-3. **Set proper validity period** — balance security and maintenance
-4. **Use certificate policies** — define renewal and key properties
-5. **Monitor expiration** — set up alerts for expiring certificates
-6. **Enable soft delete** — required for production vaults
-
-## RBAC Permissions
-
-Assign these Key Vault roles:
-- `Key Vault Certificates Officer` — full CRUD on certificates
-- `Key Vault Reader` — read certificate metadata
-
-## Reference Links
-
-| Resource | Link |
-|----------|------|
-| API Reference | https://docs.rs/azure_security_keyvault_certificates |
-| Source Code | https://github.com/Azure/azure-sdk-for-rust/tree/main/sdk/keyvault/azure_security_keyvault_certificates |
-| crates.io | https://crates.io/crates/azure_security_keyvault_certificates |
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "azure-keyvault-certificates-rust"
+sections[19]:
+  - "\n"
+  - "# Azure Key Vault Certificates SDK for Rust\n\nClient library for Azure Key Vault Certificates — secure storage and management of certificates.\n\n"
+  - "## Installation\n\n```sh\ncargo add azure_security_keyvault_certificates azure_identity\n```\n\n"
+  - "## Environment Variables\n\n```bash\nAZURE_KEYVAULT_URL=https://<vault-name>.vault.azure.net/\n```\n\n"
+  - "## Authentication\n\n```rust\nuse azure_identity::DeveloperToolsCredential;\nuse azure_security_keyvault_certificates::CertificateClient;\n\nlet credential = DeveloperToolsCredential::new(None)?;\nlet client = CertificateClient::new(\n    \"https://<vault-name>.vault.azure.net/\",\n    credential.clone(),\n    None,\n)?;\n```\n\n"
+  - "## Core Operations\n\n"
+  - "### Get Certificate\n\n```rust\nuse azure_core::base64;\n\nlet certificate = client\n    .get_certificate(\"certificate-name\", None)\n    .await?\n    .into_model()?;\n\nprintln!(\n    \"Thumbprint: {:?}\",\n    certificate.x509_thumbprint.map(base64::encode_url_safe)\n);\n```\n\n"
+  - "### Create Certificate\n\n```rust\nuse azure_security_keyvault_certificates::models::{\n    CreateCertificateParameters, CertificatePolicy,\n    IssuerParameters, X509CertificateProperties,\n};\n\nlet policy = CertificatePolicy {\n    issuer_parameters: Some(IssuerParameters {\n        name: Some(\"Self\".into()),\n        ..Default::default()\n    }),\n    x509_certificate_properties: Some(X509CertificateProperties {\n        subject: Some(\"CN=example.com\".into()),\n        ..Default::default()\n    }),\n    ..Default::default()\n};\n\nlet params = CreateCertificateParameters {\n    certificate_policy: Some(policy),\n    ..Default::default()\n};\n\nlet operation = client\n    .create_certificate(\"cert-name\", params.try_into()?, None)\n    .await?;\n```\n\n"
+  - "### Import Certificate\n\n```rust\nuse azure_security_keyvault_certificates::models::ImportCertificateParameters;\n\nlet params = ImportCertificateParameters {\n    base64_encoded_certificate: Some(base64_cert_data),\n    password: Some(\"optional-password\".into()),\n    ..Default::default()\n};\n\nlet certificate = client\n    .import_certificate(\"cert-name\", params.try_into()?, None)\n    .await?\n    .into_model()?;\n```\n\n"
+  - "### Delete Certificate\n\n```rust\nclient.delete_certificate(\"certificate-name\", None).await?;\n```\n\n"
+  - "### List Certificates\n\n```rust\nuse azure_security_keyvault_certificates::ResourceExt;\nuse futures::TryStreamExt;\n\nlet mut pager = client.list_certificate_properties(None)?.into_stream();\nwhile let Some(cert) = pager.try_next().await? {\n    let name = cert.resource_id()?.name;\n    println!(\"Certificate: {}\", name);\n}\n```\n\n"
+  - "### Get Certificate Policy\n\n```rust\nlet policy = client\n    .get_certificate_policy(\"certificate-name\", None)\n    .await?\n    .into_model()?;\n```\n\n"
+  - "### Update Certificate Policy\n\n```rust\nuse azure_security_keyvault_certificates::models::UpdateCertificatePolicyParameters;\n\nlet params = UpdateCertificatePolicyParameters {\n    // Update policy properties\n    ..Default::default()\n};\n\nclient\n    .update_certificate_policy(\"cert-name\", params.try_into()?, None)\n    .await?;\n```\n\n"
+  - "## Certificate Lifecycle\n\n1. **Create** — generates new certificate with policy\n2. **Import** — import existing PFX/PEM certificate\n3. **Get** — retrieve certificate (public key only)\n4. **Update** — modify certificate properties\n5. **Delete** — soft delete (recoverable)\n6. **Purge** — permanent deletion\n\n"
+  - "## Best Practices\n\n1. **Use Entra ID auth** — `DeveloperToolsCredential` for dev\n2. **Use managed certificates** — auto-renewal with supported issuers\n3. **Set proper validity period** — balance security and maintenance\n4. **Use certificate policies** — define renewal and key properties\n5. **Monitor expiration** — set up alerts for expiring certificates\n6. **Enable soft delete** — required for production vaults\n\n"
+  - "## RBAC Permissions\n\nAssign these Key Vault roles:\n- `Key Vault Certificates Officer` — full CRUD on certificates\n- `Key Vault Reader` — read certificate metadata\n\n"
+  - "## Reference Links\n\n| Resource | Link |\n|----------|------|\n| API Reference | https://docs.rs/azure_security_keyvault_certificates |\n| Source Code | https://github.com/Azure/azure-sdk-for-rust/tree/main/sdk/keyvault/azure_security_keyvault_certificates |\n| crates.io | https://crates.io/crates/azure_security_keyvault_certificates |\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

@@ -4,38 +4,14 @@ description: "Implement efficient similarity search with vector databases. Use w
 risk: safe
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Similarity Search Patterns
-
-Patterns for implementing efficient similarity search in production systems.
-
-## Use this skill when
-
-- Building semantic search systems
-- Implementing RAG retrieval
-- Creating recommendation engines
-- Optimizing search latency
-- Scaling to millions of vectors
-- Combining semantic and keyword search
-
-## Do not use this skill when
-
-- The task is unrelated to similarity search patterns
-- You need a different domain or tool outside this scope
-
-## Instructions
-
-- Clarify goals, constraints, and required inputs.
-- Apply relevant best practices and validate outcomes.
-- Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
-
-## Resources
-
-- `resources/implementation-playbook.md` for detailed patterns and examples.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "similarity-search-patterns"
+sections[7]:
+  - "\n"
+  - "# Similarity Search Patterns\n\nPatterns for implementing efficient similarity search in production systems.\n\n"
+  - "## Use this skill when\n\n- Building semantic search systems\n- Implementing RAG retrieval\n- Creating recommendation engines\n- Optimizing search latency\n- Scaling to millions of vectors\n- Combining semantic and keyword search\n\n"
+  - "## Do not use this skill when\n\n- The task is unrelated to similarity search patterns\n- You need a different domain or tool outside this scope\n\n"
+  - "## Instructions\n\n- Clarify goals, constraints, and required inputs.\n- Apply relevant best practices and validate outcomes.\n- Provide actionable steps and verification.\n- If detailed examples are required, open `resources/implementation-playbook.md`.\n\n"
+  - "## Resources\n\n- `resources/implementation-playbook.md` for detailed patterns and examples.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

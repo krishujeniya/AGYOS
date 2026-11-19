@@ -10,8 +10,9 @@ tags:
   - functional-programming
   - typescript
   - pragmatic
+prompt-source: prompt.toon
 ---
-
-# Pragmatic fp-ts compatibility ID
-
-Use the canonical [fp-ts-pragmatic runbook](../fp-ts-pragmatic/SKILL.md) for practical TypeScript functional programming guidance. Its applicability includes fp-ts adoption, nullable values, errors, async operations, and refactoring imperative code.
+skill: "fp-pragmatic"
+sections[2]:
+  - "\n"
+  - "# Pragmatic fp-ts compatibility ID\n\nUse the canonical [fp-ts-pragmatic runbook](../fp-ts-pragmatic/SKILL.md) for practical TypeScript functional programming guidance. Its applicability includes fp-ts adoption, nullable values, errors, async operations, and refactoring imperative code.\n"

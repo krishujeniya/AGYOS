@@ -4,98 +4,17 @@ description: "⚠️ DEPRECATED: This SDK has been renamed to Call Automation. F
 risk: safe
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Azure Communication CallingServer (Java) - DEPRECATED
-
-> **⚠️ DEPRECATED**: This SDK has been renamed to **Call Automation**. For new projects, use `azure-communication-callautomation` instead. This skill is for maintaining legacy code only.
-
-## Migration to Call Automation
-
-```xml
-<!-- OLD (deprecated) -->
-<dependency>
-    <groupId>com.azure</groupId>
-    <artifactId>azure-communication-callingserver</artifactId>
-    <version>1.0.0-beta.5</version>
-</dependency>
-
-<!-- NEW (use this instead) -->
-<dependency>
-    <groupId>com.azure</groupId>
-    <artifactId>azure-communication-callautomation</artifactId>
-    <version>1.6.0</version>
-</dependency>
-```
-
-## Class Name Changes
-
-| CallingServer (Old) | Call Automation (New) |
-|---------------------|----------------------|
-| `CallingServerClient` | `CallAutomationClient` |
-| `CallingServerClientBuilder` | `CallAutomationClientBuilder` |
-| `CallConnection` | `CallConnection` (same) |
-| `ServerCall` | Removed - use `CallConnection` |
-
-## Legacy Client Creation
-
-```java
-// OLD WAY (deprecated)
-import com.azure.communication.callingserver.CallingServerClient;
-import com.azure.communication.callingserver.CallingServerClientBuilder;
-
-CallingServerClient client = new CallingServerClientBuilder()
-    .connectionString("<connection-string>")
-    .buildClient();
-
-// NEW WAY
-import com.azure.communication.callautomation.CallAutomationClient;
-import com.azure.communication.callautomation.CallAutomationClientBuilder;
-
-CallAutomationClient client = new CallAutomationClientBuilder()
-    .connectionString("<connection-string>")
-    .buildClient();
-```
-
-## Legacy Recording
-
-```java
-// OLD WAY
-StartRecordingOptions options = new StartRecordingOptions(serverCallId)
-    .setRecordingStateCallbackUri(callbackUri);
-
-StartCallRecordingResult result = client.startRecording(options);
-String recordingId = result.getRecordingId();
-
-client.pauseRecording(recordingId);
-client.resumeRecording(recordingId);
-client.stopRecording(recordingId);
-
-// NEW WAY - see azure-communication-callautomation skill
-```
-
-## For New Development
-
-**Do not use this SDK for new projects.** 
-
-See the `azure-communication-callautomation-java` skill for:
-- Making outbound calls
-- Answering incoming calls
-- Call recording
-- DTMF recognition
-- Text-to-speech / speech-to-text
-- Adding/removing participants
-- Call transfer
-
-## Trigger Phrases
-
-- "callingserver legacy", "deprecated calling SDK"
-- "migrate callingserver to callautomation"
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "azure-communication-callingserver-java"
+sections[10]:
+  - "\n"
+  - "# Azure Communication CallingServer (Java) - DEPRECATED\n\n> **⚠️ DEPRECATED**: This SDK has been renamed to **Call Automation**. For new projects, use `azure-communication-callautomation` instead. This skill is for maintaining legacy code only.\n\n"
+  - "## Migration to Call Automation\n\n```xml\n<!-- OLD (deprecated) -->\n<dependency>\n    <groupId>com.azure</groupId>\n    <artifactId>azure-communication-callingserver</artifactId>\n    <version>1.0.0-beta.5</version>\n</dependency>\n\n<!-- NEW (use this instead) -->\n<dependency>\n    <groupId>com.azure</groupId>\n    <artifactId>azure-communication-callautomation</artifactId>\n    <version>1.6.0</version>\n</dependency>\n```\n\n"
+  - "## Class Name Changes\n\n| CallingServer (Old) | Call Automation (New) |\n|---------------------|----------------------|\n| `CallingServerClient` | `CallAutomationClient` |\n| `CallingServerClientBuilder` | `CallAutomationClientBuilder` |\n| `CallConnection` | `CallConnection` (same) |\n| `ServerCall` | Removed - use `CallConnection` |\n\n"
+  - "## Legacy Client Creation\n\n```java\n// OLD WAY (deprecated)\nimport com.azure.communication.callingserver.CallingServerClient;\nimport com.azure.communication.callingserver.CallingServerClientBuilder;\n\nCallingServerClient client = new CallingServerClientBuilder()\n    .connectionString(\"<connection-string>\")\n    .buildClient();\n\n// NEW WAY\nimport com.azure.communication.callautomation.CallAutomationClient;\nimport com.azure.communication.callautomation.CallAutomationClientBuilder;\n\nCallAutomationClient client = new CallAutomationClientBuilder()\n    .connectionString(\"<connection-string>\")\n    .buildClient();\n```\n\n"
+  - "## Legacy Recording\n\n```java\n// OLD WAY\nStartRecordingOptions options = new StartRecordingOptions(serverCallId)\n    .setRecordingStateCallbackUri(callbackUri);\n\nStartCallRecordingResult result = client.startRecording(options);\nString recordingId = result.getRecordingId();\n\nclient.pauseRecording(recordingId);\nclient.resumeRecording(recordingId);\nclient.stopRecording(recordingId);\n\n// NEW WAY - see azure-communication-callautomation skill\n```\n\n"
+  - "## For New Development\n\n**Do not use this SDK for new projects.** \n\nSee the `azure-communication-callautomation-java` skill for:\n- Making outbound calls\n- Answering incoming calls\n- Call recording\n- DTMF recognition\n- Text-to-speech / speech-to-text\n- Adding/removing participants\n- Call transfer\n\n"
+  - "## Trigger Phrases\n\n- \"callingserver legacy\", \"deprecated calling SDK\"\n- \"migrate callingserver to callautomation\"\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

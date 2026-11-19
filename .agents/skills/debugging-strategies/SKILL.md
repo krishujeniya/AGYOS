@@ -4,39 +4,14 @@ description: "Transform debugging from frustrating guesswork into systematic pro
 risk: safe
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Debugging Strategies
-
-Transform debugging from frustrating guesswork into systematic problem-solving with proven strategies, powerful tools, and methodical approaches.
-
-## Use this skill when
-
-- Tracking down elusive bugs
-- Investigating performance issues
-- Debugging production incidents
-- Analyzing crash dumps or stack traces
-- Debugging distributed systems
-
-## Do not use this skill when
-
-- There is no reproducible issue or observable symptom
-- The task is purely feature development
-- You cannot access logs, traces, or runtime signals
-
-## Instructions
-
-- Reproduce the issue and capture logs, traces, and environment details.
-- Form hypotheses and design controlled experiments.
-- Narrow scope with binary search and targeted instrumentation.
-- Document findings and verify the fix.
-- If detailed playbooks are required, open `resources/implementation-playbook.md`.
-
-## Resources
-
-- `resources/implementation-playbook.md` for detailed debugging patterns and checklists.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "debugging-strategies"
+sections[7]:
+  - "\n"
+  - "# Debugging Strategies\n\nTransform debugging from frustrating guesswork into systematic problem-solving with proven strategies, powerful tools, and methodical approaches.\n\n"
+  - "## Use this skill when\n\n- Tracking down elusive bugs\n- Investigating performance issues\n- Debugging production incidents\n- Analyzing crash dumps or stack traces\n- Debugging distributed systems\n\n"
+  - "## Do not use this skill when\n\n- There is no reproducible issue or observable symptom\n- The task is purely feature development\n- You cannot access logs, traces, or runtime signals\n\n"
+  - "## Instructions\n\n- Reproduce the issue and capture logs, traces, and environment details.\n- Form hypotheses and design controlled experiments.\n- Narrow scope with binary search and targeted instrumentation.\n- Document findings and verify the fix.\n- If detailed playbooks are required, open `resources/implementation-playbook.md`.\n\n"
+  - "## Resources\n\n- `resources/implementation-playbook.md` for detailed debugging patterns and checklists.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

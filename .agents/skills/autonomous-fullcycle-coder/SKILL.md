@@ -26,107 +26,23 @@ tools:
 - windsurf
 - opencode
 - copilot
+prompt-source: prompt.toon
 ---
-
-# Squirrel — Full-Cycle Software Development Skill
-
-## Overview
-
-Squirrel is a full-cycle AI coding skill that works across 9 AI coding agents. It auto-detects project state (greenfield, in-progress, or mature) and adapts its 8-phase engineering pipeline accordingly. Instead of a one-size-fits-all workflow, it figures out where the project actually is and jumps in at exactly the right point.
-
-## When to Use This Skill
-
-- Use when starting a new project from scratch (greenfield)
-- Use when improving an existing codebase (in-progress or mature)
-- Use when fixing bugs, adding features, or refactoring
-- Use when adding tests, linting, or CI/CD to a project
-- Use when writing production-grade documentation
-- Use when the user says "build me", "fix this", "squirrel this project", or any multi-step development task
-
-## How It Works
-
-### Step 0: Detect Mode
-
-Squirrel classifies the project directory:
-
-| Signal | Mode | Entry Point |
-|--------|------|-------------|
-| Empty directory | Greenfield | All 8 phases from scratch |
-| Source files, no tests/docs | In-Progress | Audit first, then improve |
-| Source + tests + CI + README | Mature | Targeted improvements |
-| "fix this bug / add feature" | Targeted | Scoped work only |
-
-### The 8-Phase Pipeline
-
-1. **Discover** — Understand the project (audit existing code or gather requirements)
-2. **Plan** — Concrete task list with dependencies and done-criteria
-3. **Build** — Write or modify code (parallel sub-agents when supported)
-4. **Test** — Run existing tests, write new ones, 70%+ coverage target
-5. **Bug Hunt** — Static analysis + manual review
-6. **Polish** — Lint, format, type check, remove dead code
-7. **Document** — README + inline docs (update existing, don't overwrite)
-8. **Ship** — Final checklist: tests green, no secrets, CI configured
-
-### Failure Recovery (3-Strike Rule)
-
-1. **Strike 1:** Fix the specific error. Run tests. Move on.
-2. **Strike 2:** Re-read the code. Try a different approach.
-3. **Strike 3:** STOP. Revert. Document what failed. Ask the user.
-
-## Examples
-
-### Example 1: Build a REST API
-
-```text
-> build me a REST API for a todo app with TypeScript and Express
-```
-
-Squirrel auto-detects greenfield mode and runs all 8 phases.
-
-### Example 2: Fix a bug
-
-```text
-> fix this bug in src/auth/login.py
-```
-
-Squirrel enters targeted mode — abbreviated audit, scoped fix, verify.
-
-### Example 3: Improve existing project
-
-```text
-> squirrel this project — add tests, fix lint errors, write README
-```
-
-Squirrel audits the existing codebase, then applies phases 4-8.
-
-## Best Practices
-
-- Respects existing code — matches naming conventions, test framework, import style, and architecture
-- Reads 2-3 similar files before writing a new one
-- Never suppresses type errors with `as any` or `@ts-ignore`
-- Never deletes failing tests to "pass"
-- Never leaves code in a broken state
-
-## Platform Compatibility
-
-Squirrel works on: Claude Code, Codex, Cursor, Antigravity, Gemini CLI, GitHub Copilot, Windsurf, OpenCode, Aider (9 total).
-
-Install with:
-
-```bash
-# Universal installer
-npx skills add flyingsquirrel0419/squirrel-skill
-
-```
-
-## Limitations
-
-- Does not replace environment-specific validation or expert review
-- CI/CD templates are starting points, not drop-in guarantees
-- Parallel sub-agent execution depends on platform support
-
-## Related Skills
-
-- `@brainstorming` - For planning before implementation
-- `@test-driven-development` - For TDD-oriented workflows
-- `@systematic-debugging` - For methodical problem-solving
+skill: "autonomous-fullcycle-coder"
+sections[16]:
+  - "\n"
+  - "# Squirrel — Full-Cycle Software Development Skill\n\n"
+  - "## Overview\n\nSquirrel is a full-cycle AI coding skill that works across 9 AI coding agents. It auto-detects project state (greenfield, in-progress, or mature) and adapts its 8-phase engineering pipeline accordingly. Instead of a one-size-fits-all workflow, it figures out where the project actually is and jumps in at exactly the right point.\n\n"
+  - "## When to Use This Skill\n\n- Use when starting a new project from scratch (greenfield)\n- Use when improving an existing codebase (in-progress or mature)\n- Use when fixing bugs, adding features, or refactoring\n- Use when adding tests, linting, or CI/CD to a project\n- Use when writing production-grade documentation\n- Use when the user says \"build me\", \"fix this\", \"squirrel this project\", or any multi-step development task\n\n"
+  - "## How It Works\n\n"
+  - "### Step 0: Detect Mode\n\nSquirrel classifies the project directory:\n\n| Signal | Mode | Entry Point |\n|--------|------|-------------|\n| Empty directory | Greenfield | All 8 phases from scratch |\n| Source files, no tests/docs | In-Progress | Audit first, then improve |\n| Source + tests + CI + README | Mature | Targeted improvements |\n| \"fix this bug / add feature\" | Targeted | Scoped work only |\n\n"
+  - "### The 8-Phase Pipeline\n\n1. **Discover** — Understand the project (audit existing code or gather requirements)\n2. **Plan** — Concrete task list with dependencies and done-criteria\n3. **Build** — Write or modify code (parallel sub-agents when supported)\n4. **Test** — Run existing tests, write new ones, 70%+ coverage target\n5. **Bug Hunt** — Static analysis + manual review\n6. **Polish** — Lint, format, type check, remove dead code\n7. **Document** — README + inline docs (update existing, don't overwrite)\n8. **Ship** — Final checklist: tests green, no secrets, CI configured\n\n"
+  - "### Failure Recovery (3-Strike Rule)\n\n1. **Strike 1:** Fix the specific error. Run tests. Move on.\n2. **Strike 2:** Re-read the code. Try a different approach.\n3. **Strike 3:** STOP. Revert. Document what failed. Ask the user.\n\n"
+  - "## Examples\n\n"
+  - "### Example 1: Build a REST API\n\n```text\n> build me a REST API for a todo app with TypeScript and Express\n```\n\nSquirrel auto-detects greenfield mode and runs all 8 phases.\n\n"
+  - "### Example 2: Fix a bug\n\n```text\n> fix this bug in src/auth/login.py\n```\n\nSquirrel enters targeted mode — abbreviated audit, scoped fix, verify.\n\n"
+  - "### Example 3: Improve existing project\n\n```text\n> squirrel this project — add tests, fix lint errors, write README\n```\n\nSquirrel audits the existing codebase, then applies phases 4-8.\n\n"
+  - "## Best Practices\n\n- Respects existing code — matches naming conventions, test framework, import style, and architecture\n- Reads 2-3 similar files before writing a new one\n- Never suppresses type errors with `as any` or `@ts-ignore`\n- Never deletes failing tests to \"pass\"\n- Never leaves code in a broken state\n\n"
+  - "## Platform Compatibility\n\nSquirrel works on: Claude Code, Codex, Cursor, Antigravity, Gemini CLI, GitHub Copilot, Windsurf, OpenCode, Aider (9 total).\n\nInstall with:\n\n```bash\n# Universal installer\nnpx skills add flyingsquirrel0419/squirrel-skill\n\n```\n\n"
+  - "## Limitations\n\n- Does not replace environment-specific validation or expert review\n- CI/CD templates are starting points, not drop-in guarantees\n- Parallel sub-agent execution depends on platform support\n\n"
+  - "## Related Skills\n\n- `@brainstorming` - For planning before implementation\n- `@test-driven-development` - For TDD-oriented workflows\n- `@systematic-debugging` - For methodical problem-solving\n"

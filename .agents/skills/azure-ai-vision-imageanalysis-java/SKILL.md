@@ -4,296 +4,33 @@ description: "Build image analysis applications with Azure AI Vision SDK for Jav
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Azure AI Vision Image Analysis SDK for Java
-
-Build image analysis applications using the Azure AI Vision Image Analysis SDK for Java.
-
-## Installation
-
-```xml
-<dependency>
-    <groupId>com.azure</groupId>
-    <artifactId>azure-ai-vision-imageanalysis</artifactId>
-    <version>1.1.0-beta.1</version>
-</dependency>
-```
-
-## Client Creation
-
-### With API Key
-
-```java
-import com.azure.ai.vision.imageanalysis.ImageAnalysisClient;
-import com.azure.ai.vision.imageanalysis.ImageAnalysisClientBuilder;
-import com.azure.core.credential.KeyCredential;
-
-String endpoint = System.getenv("VISION_ENDPOINT");
-String key = System.getenv("VISION_KEY");
-
-ImageAnalysisClient client = new ImageAnalysisClientBuilder()
-    .endpoint(endpoint)
-    .credential(new KeyCredential(key))
-    .buildClient();
-```
-
-### Async Client
-
-```java
-import com.azure.ai.vision.imageanalysis.ImageAnalysisAsyncClient;
-
-ImageAnalysisAsyncClient asyncClient = new ImageAnalysisClientBuilder()
-    .endpoint(endpoint)
-    .credential(new KeyCredential(key))
-    .buildAsyncClient();
-```
-
-### With DefaultAzureCredential
-
-```java
-import com.azure.identity.DefaultAzureCredentialBuilder;
-
-ImageAnalysisClient client = new ImageAnalysisClientBuilder()
-    .endpoint(endpoint)
-    .credential(new DefaultAzureCredentialBuilder().build())
-    .buildClient();
-```
-
-## Visual Features
-
-| Feature | Description |
-|---------|-------------|
-| `CAPTION` | Generate human-readable image description |
-| `DENSE_CAPTIONS` | Captions for up to 10 regions |
-| `READ` | OCR - Extract text from images |
-| `TAGS` | Content tags for objects, scenes, actions |
-| `OBJECTS` | Detect objects with bounding boxes |
-| `SMART_CROPS` | Smart thumbnail regions |
-| `PEOPLE` | Detect people with locations |
-
-## Core Patterns
-
-### Generate Caption
-
-```java
-import com.azure.ai.vision.imageanalysis.models.*;
-import com.azure.core.util.BinaryData;
-import java.io.File;
-import java.util.Arrays;
-
-// From file
-BinaryData imageData = BinaryData.fromFile(new File("image.jpg").toPath());
-
-ImageAnalysisResult result = client.analyze(
-    imageData,
-    Arrays.asList(VisualFeatures.CAPTION),
-    new ImageAnalysisOptions().setGenderNeutralCaption(true));
-
-System.out.printf("Caption: \"%s\" (confidence: %.4f)%n",
-    result.getCaption().getText(),
-    result.getCaption().getConfidence());
-```
-
-### Generate Caption from URL
-
-```java
-ImageAnalysisResult result = client.analyzeFromUrl(
-    "https://example.com/image.jpg",
-    Arrays.asList(VisualFeatures.CAPTION),
-    new ImageAnalysisOptions().setGenderNeutralCaption(true));
-
-System.out.printf("Caption: \"%s\"%n", result.getCaption().getText());
-```
-
-### Extract Text (OCR)
-
-```java
-ImageAnalysisResult result = client.analyze(
-    BinaryData.fromFile(new File("document.jpg").toPath()),
-    Arrays.asList(VisualFeatures.READ),
-    null);
-
-for (DetectedTextBlock block : result.getRead().getBlocks()) {
-    for (DetectedTextLine line : block.getLines()) {
-        System.out.printf("Line: '%s'%n", line.getText());
-        System.out.printf("  Bounding polygon: %s%n", line.getBoundingPolygon());
-        
-        for (DetectedTextWord word : line.getWords()) {
-            System.out.printf("  Word: '%s' (confidence: %.4f)%n",
-                word.getText(),
-                word.getConfidence());
-        }
-    }
-}
-```
-
-### Detect Objects
-
-```java
-ImageAnalysisResult result = client.analyzeFromUrl(
-    imageUrl,
-    Arrays.asList(VisualFeatures.OBJECTS),
-    null);
-
-for (DetectedObject obj : result.getObjects()) {
-    System.out.printf("Object: %s (confidence: %.4f)%n",
-        obj.getTags().get(0).getName(),
-        obj.getTags().get(0).getConfidence());
-    
-    ImageBoundingBox box = obj.getBoundingBox();
-    System.out.printf("  Location: x=%d, y=%d, w=%d, h=%d%n",
-        box.getX(), box.getY(), box.getWidth(), box.getHeight());
-}
-```
-
-### Get Tags
-
-```java
-ImageAnalysisResult result = client.analyzeFromUrl(
-    imageUrl,
-    Arrays.asList(VisualFeatures.TAGS),
-    null);
-
-for (DetectedTag tag : result.getTags()) {
-    System.out.printf("Tag: %s (confidence: %.4f)%n",
-        tag.getName(),
-        tag.getConfidence());
-}
-```
-
-### Detect People
-
-```java
-ImageAnalysisResult result = client.analyzeFromUrl(
-    imageUrl,
-    Arrays.asList(VisualFeatures.PEOPLE),
-    null);
-
-for (DetectedPerson person : result.getPeople()) {
-    ImageBoundingBox box = person.getBoundingBox();
-    System.out.printf("Person at x=%d, y=%d (confidence: %.4f)%n",
-        box.getX(), box.getY(), person.getConfidence());
-}
-```
-
-### Smart Cropping
-
-```java
-ImageAnalysisResult result = client.analyzeFromUrl(
-    imageUrl,
-    Arrays.asList(VisualFeatures.SMART_CROPS),
-    new ImageAnalysisOptions().setSmartCropsAspectRatios(Arrays.asList(1.0, 1.5)));
-
-for (CropRegion crop : result.getSmartCrops()) {
-    System.out.printf("Crop region: aspect=%.2f, x=%d, y=%d, w=%d, h=%d%n",
-        crop.getAspectRatio(),
-        crop.getBoundingBox().getX(),
-        crop.getBoundingBox().getY(),
-        crop.getBoundingBox().getWidth(),
-        crop.getBoundingBox().getHeight());
-}
-```
-
-### Dense Captions
-
-```java
-ImageAnalysisResult result = client.analyzeFromUrl(
-    imageUrl,
-    Arrays.asList(VisualFeatures.DENSE_CAPTIONS),
-    new ImageAnalysisOptions().setGenderNeutralCaption(true));
-
-for (DenseCaption caption : result.getDenseCaptions()) {
-    System.out.printf("Caption: \"%s\" (confidence: %.4f)%n",
-        caption.getText(),
-        caption.getConfidence());
-    System.out.printf("  Region: x=%d, y=%d, w=%d, h=%d%n",
-        caption.getBoundingBox().getX(),
-        caption.getBoundingBox().getY(),
-        caption.getBoundingBox().getWidth(),
-        caption.getBoundingBox().getHeight());
-}
-```
-
-### Multiple Features
-
-```java
-ImageAnalysisResult result = client.analyzeFromUrl(
-    imageUrl,
-    Arrays.asList(
-        VisualFeatures.CAPTION,
-        VisualFeatures.TAGS,
-        VisualFeatures.OBJECTS,
-        VisualFeatures.READ),
-    new ImageAnalysisOptions()
-        .setGenderNeutralCaption(true)
-        .setLanguage("en"));
-
-// Access all results
-System.out.println("Caption: " + result.getCaption().getText());
-System.out.println("Tags: " + result.getTags().size());
-System.out.println("Objects: " + result.getObjects().size());
-System.out.println("Text blocks: " + result.getRead().getBlocks().size());
-```
-
-### Async Analysis
-
-```java
-asyncClient.analyzeFromUrl(
-    imageUrl,
-    Arrays.asList(VisualFeatures.CAPTION),
-    null)
-    .subscribe(
-        result -> System.out.println("Caption: " + result.getCaption().getText()),
-        error -> System.err.println("Error: " + error.getMessage()),
-        () -> System.out.println("Complete")
-    );
-```
-
-## Error Handling
-
-```java
-import com.azure.core.exception.HttpResponseException;
-
-try {
-    client.analyzeFromUrl(imageUrl, Arrays.asList(VisualFeatures.CAPTION), null);
-} catch (HttpResponseException e) {
-    System.out.println("Status: " + e.getResponse().getStatusCode());
-    System.out.println("Error: " + e.getMessage());
-}
-```
-
-## Environment Variables
-
-```bash
-VISION_ENDPOINT=https://<resource>.cognitiveservices.azure.com/
-VISION_KEY=<your-api-key>
-```
-
-## Image Requirements
-
-- Formats: JPEG, PNG, GIF, BMP, WEBP, ICO, TIFF, MPO
-- Size: < 20 MB
-- Dimensions: 50x50 to 16000x16000 pixels
-
-## Regional Availability
-
-Caption and Dense Captions require GPU-supported regions. Check [supported regions](https://learn.microsoft.com/azure/ai-services/computer-vision/concept-describe-images-40) before deployment.
-
-## Trigger Phrases
-
-- "image analysis Java"
-- "Azure Vision SDK"
-- "image captioning"
-- "OCR image text extraction"
-- "object detection image"
-- "smart crop thumbnail"
-- "detect people image"
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "azure-ai-vision-imageanalysis-java"
+sections[26]:
+  - "\n"
+  - "# Azure AI Vision Image Analysis SDK for Java\n\nBuild image analysis applications using the Azure AI Vision Image Analysis SDK for Java.\n\n"
+  - "## Installation\n\n```xml\n<dependency>\n    <groupId>com.azure</groupId>\n    <artifactId>azure-ai-vision-imageanalysis</artifactId>\n    <version>1.1.0-beta.1</version>\n</dependency>\n```\n\n"
+  - "## Client Creation\n\n"
+  - "### With API Key\n\n```java\nimport com.azure.ai.vision.imageanalysis.ImageAnalysisClient;\nimport com.azure.ai.vision.imageanalysis.ImageAnalysisClientBuilder;\nimport com.azure.core.credential.KeyCredential;\n\nString endpoint = System.getenv(\"VISION_ENDPOINT\");\nString key = System.getenv(\"VISION_KEY\");\n\nImageAnalysisClient client = new ImageAnalysisClientBuilder()\n    .endpoint(endpoint)\n    .credential(new KeyCredential(key))\n    .buildClient();\n```\n\n"
+  - "### Async Client\n\n```java\nimport com.azure.ai.vision.imageanalysis.ImageAnalysisAsyncClient;\n\nImageAnalysisAsyncClient asyncClient = new ImageAnalysisClientBuilder()\n    .endpoint(endpoint)\n    .credential(new KeyCredential(key))\n    .buildAsyncClient();\n```\n\n"
+  - "### With DefaultAzureCredential\n\n```java\nimport com.azure.identity.DefaultAzureCredentialBuilder;\n\nImageAnalysisClient client = new ImageAnalysisClientBuilder()\n    .endpoint(endpoint)\n    .credential(new DefaultAzureCredentialBuilder().build())\n    .buildClient();\n```\n\n"
+  - "## Visual Features\n\n| Feature | Description |\n|---------|-------------|\n| `CAPTION` | Generate human-readable image description |\n| `DENSE_CAPTIONS` | Captions for up to 10 regions |\n| `READ` | OCR - Extract text from images |\n| `TAGS` | Content tags for objects, scenes, actions |\n| `OBJECTS` | Detect objects with bounding boxes |\n| `SMART_CROPS` | Smart thumbnail regions |\n| `PEOPLE` | Detect people with locations |\n\n"
+  - "## Core Patterns\n\n"
+  - "### Generate Caption\n\n```java\nimport com.azure.ai.vision.imageanalysis.models.*;\nimport com.azure.core.util.BinaryData;\nimport java.io.File;\nimport java.util.Arrays;\n\n// From file\nBinaryData imageData = BinaryData.fromFile(new File(\"image.jpg\").toPath());\n\nImageAnalysisResult result = client.analyze(\n    imageData,\n    Arrays.asList(VisualFeatures.CAPTION),\n    new ImageAnalysisOptions().setGenderNeutralCaption(true));\n\nSystem.out.printf(\"Caption: \\\"%s\\\" (confidence: %.4f)%n\",\n    result.getCaption().getText(),\n    result.getCaption().getConfidence());\n```\n\n"
+  - "### Generate Caption from URL\n\n```java\nImageAnalysisResult result = client.analyzeFromUrl(\n    \"https://example.com/image.jpg\",\n    Arrays.asList(VisualFeatures.CAPTION),\n    new ImageAnalysisOptions().setGenderNeutralCaption(true));\n\nSystem.out.printf(\"Caption: \\\"%s\\\"%n\", result.getCaption().getText());\n```\n\n"
+  - "### Extract Text (OCR)\n\n```java\nImageAnalysisResult result = client.analyze(\n    BinaryData.fromFile(new File(\"document.jpg\").toPath()),\n    Arrays.asList(VisualFeatures.READ),\n    null);\n\nfor (DetectedTextBlock block : result.getRead().getBlocks()) {\n    for (DetectedTextLine line : block.getLines()) {\n        System.out.printf(\"Line: '%s'%n\", line.getText());\n        System.out.printf(\"  Bounding polygon: %s%n\", line.getBoundingPolygon());\n        \n        for (DetectedTextWord word : line.getWords()) {\n            System.out.printf(\"  Word: '%s' (confidence: %.4f)%n\",\n                word.getText(),\n                word.getConfidence());\n        }\n    }\n}\n```\n\n"
+  - "### Detect Objects\n\n```java\nImageAnalysisResult result = client.analyzeFromUrl(\n    imageUrl,\n    Arrays.asList(VisualFeatures.OBJECTS),\n    null);\n\nfor (DetectedObject obj : result.getObjects()) {\n    System.out.printf(\"Object: %s (confidence: %.4f)%n\",\n        obj.getTags().get(0).getName(),\n        obj.getTags().get(0).getConfidence());\n    \n    ImageBoundingBox box = obj.getBoundingBox();\n    System.out.printf(\"  Location: x=%d, y=%d, w=%d, h=%d%n\",\n        box.getX(), box.getY(), box.getWidth(), box.getHeight());\n}\n```\n\n"
+  - "### Get Tags\n\n```java\nImageAnalysisResult result = client.analyzeFromUrl(\n    imageUrl,\n    Arrays.asList(VisualFeatures.TAGS),\n    null);\n\nfor (DetectedTag tag : result.getTags()) {\n    System.out.printf(\"Tag: %s (confidence: %.4f)%n\",\n        tag.getName(),\n        tag.getConfidence());\n}\n```\n\n"
+  - "### Detect People\n\n```java\nImageAnalysisResult result = client.analyzeFromUrl(\n    imageUrl,\n    Arrays.asList(VisualFeatures.PEOPLE),\n    null);\n\nfor (DetectedPerson person : result.getPeople()) {\n    ImageBoundingBox box = person.getBoundingBox();\n    System.out.printf(\"Person at x=%d, y=%d (confidence: %.4f)%n\",\n        box.getX(), box.getY(), person.getConfidence());\n}\n```\n\n"
+  - "### Smart Cropping\n\n```java\nImageAnalysisResult result = client.analyzeFromUrl(\n    imageUrl,\n    Arrays.asList(VisualFeatures.SMART_CROPS),\n    new ImageAnalysisOptions().setSmartCropsAspectRatios(Arrays.asList(1.0, 1.5)));\n\nfor (CropRegion crop : result.getSmartCrops()) {\n    System.out.printf(\"Crop region: aspect=%.2f, x=%d, y=%d, w=%d, h=%d%n\",\n        crop.getAspectRatio(),\n        crop.getBoundingBox().getX(),\n        crop.getBoundingBox().getY(),\n        crop.getBoundingBox().getWidth(),\n        crop.getBoundingBox().getHeight());\n}\n```\n\n"
+  - "### Dense Captions\n\n```java\nImageAnalysisResult result = client.analyzeFromUrl(\n    imageUrl,\n    Arrays.asList(VisualFeatures.DENSE_CAPTIONS),\n    new ImageAnalysisOptions().setGenderNeutralCaption(true));\n\nfor (DenseCaption caption : result.getDenseCaptions()) {\n    System.out.printf(\"Caption: \\\"%s\\\" (confidence: %.4f)%n\",\n        caption.getText(),\n        caption.getConfidence());\n    System.out.printf(\"  Region: x=%d, y=%d, w=%d, h=%d%n\",\n        caption.getBoundingBox().getX(),\n        caption.getBoundingBox().getY(),\n        caption.getBoundingBox().getWidth(),\n        caption.getBoundingBox().getHeight());\n}\n```\n\n"
+  - "### Multiple Features\n\n```java\nImageAnalysisResult result = client.analyzeFromUrl(\n    imageUrl,\n    Arrays.asList(\n        VisualFeatures.CAPTION,\n        VisualFeatures.TAGS,\n        VisualFeatures.OBJECTS,\n        VisualFeatures.READ),\n    new ImageAnalysisOptions()\n        .setGenderNeutralCaption(true)\n        .setLanguage(\"en\"));\n\n// Access all results\nSystem.out.println(\"Caption: \" + result.getCaption().getText());\nSystem.out.println(\"Tags: \" + result.getTags().size());\nSystem.out.println(\"Objects: \" + result.getObjects().size());\nSystem.out.println(\"Text blocks: \" + result.getRead().getBlocks().size());\n```\n\n"
+  - "### Async Analysis\n\n```java\nasyncClient.analyzeFromUrl(\n    imageUrl,\n    Arrays.asList(VisualFeatures.CAPTION),\n    null)\n    .subscribe(\n        result -> System.out.println(\"Caption: \" + result.getCaption().getText()),\n        error -> System.err.println(\"Error: \" + error.getMessage()),\n        () -> System.out.println(\"Complete\")\n    );\n```\n\n"
+  - "## Error Handling\n\n```java\nimport com.azure.core.exception.HttpResponseException;\n\ntry {\n    client.analyzeFromUrl(imageUrl, Arrays.asList(VisualFeatures.CAPTION), null);\n} catch (HttpResponseException e) {\n    System.out.println(\"Status: \" + e.getResponse().getStatusCode());\n    System.out.println(\"Error: \" + e.getMessage());\n}\n```\n\n"
+  - "## Environment Variables\n\n```bash\nVISION_ENDPOINT=https://<resource>.cognitiveservices.azure.com/\nVISION_KEY=<your-api-key>\n```\n\n"
+  - "## Image Requirements\n\n- Formats: JPEG, PNG, GIF, BMP, WEBP, ICO, TIFF, MPO\n- Size: < 20 MB\n- Dimensions: 50x50 to 16000x16000 pixels\n\n"
+  - "## Regional Availability\n\nCaption and Dense Captions require GPU-supported regions. Check [supported regions](https://learn.microsoft.com/azure/ai-services/computer-vision/concept-describe-images-40) before deployment.\n\n"
+  - "## Trigger Phrases\n\n- \"image analysis Java\"\n- \"Azure Vision SDK\"\n- \"image captioning\"\n- \"OCR image text extraction\"\n- \"object detection image\"\n- \"smart crop thumbnail\"\n- \"detect people image\"\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

@@ -4,40 +4,14 @@ description: "Comprehensive guide for mastering modern JavaScript (ES6+) feature
 risk: safe
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Modern JavaScript Patterns
-
-Comprehensive guide for mastering modern JavaScript (ES6+) features, functional programming patterns, and best practices for writing clean, maintainable, and performant code.
-
-## Use this skill when
-
-- Refactoring legacy JavaScript to modern syntax
-- Implementing functional programming patterns
-- Optimizing JavaScript performance
-- Writing maintainable and readable code
-- Working with asynchronous operations
-- Building modern web applications
-- Migrating from callbacks to Promises/async-await
-- Implementing data transformation pipelines
-
-## Do not use this skill when
-
-- The task is unrelated to modern javascript patterns
-- You need a different domain or tool outside this scope
-
-## Instructions
-
-- Clarify goals, constraints, and required inputs.
-- Apply relevant best practices and validate outcomes.
-- Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
-
-## Resources
-
-- `resources/implementation-playbook.md` for detailed patterns and examples.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "modern-javascript-patterns"
+sections[7]:
+  - "\n"
+  - "# Modern JavaScript Patterns\n\nComprehensive guide for mastering modern JavaScript (ES6+) features, functional programming patterns, and best practices for writing clean, maintainable, and performant code.\n\n"
+  - "## Use this skill when\n\n- Refactoring legacy JavaScript to modern syntax\n- Implementing functional programming patterns\n- Optimizing JavaScript performance\n- Writing maintainable and readable code\n- Working with asynchronous operations\n- Building modern web applications\n- Migrating from callbacks to Promises/async-await\n- Implementing data transformation pipelines\n\n"
+  - "## Do not use this skill when\n\n- The task is unrelated to modern javascript patterns\n- You need a different domain or tool outside this scope\n\n"
+  - "## Instructions\n\n- Clarify goals, constraints, and required inputs.\n- Apply relevant best practices and validate outcomes.\n- Provide actionable steps and verification.\n- If detailed examples are required, open `resources/implementation-playbook.md`.\n\n"
+  - "## Resources\n\n- `resources/implementation-playbook.md` for detailed patterns and examples.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

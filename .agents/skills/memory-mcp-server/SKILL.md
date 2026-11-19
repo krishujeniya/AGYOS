@@ -4,89 +4,19 @@ description: "A hybrid memory system that provides persistent, searchable knowle
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Agent Memory Skill
-
-This skill provides a persistent, searchable memory bank that automatically syncs with project documentation. It runs as an MCP server to allow reading/writing/searching of long-term memories.
-
-## Prerequisites
-
-- Node.js (v18+)
-
-## Setup
-
-1. **Clone the Repository**:
-   Clone the `agentMemory` project into your agent's workspace or a parallel directory:
-
-   ```bash
-   git clone https://github.com/webzler/agentMemory.git .agent/skills/agent-memory
-   ```
-
-2. **Install Dependencies**:
-
-   ```bash
-   cd .agent/skills/agent-memory
-   npm install
-   npm run compile
-   ```
-
-3. **Start the MCP Server**:
-   Use the helper script to activate the memory bank for your current project:
-
-   ```bash
-   npm run start-server <project_id> <absolute_path_to_target_workspace>
-   ```
-
-   _Example for current directory:_
-
-   ```bash
-   npm run start-server my-project $(pwd)
-   ```
-
-## Capabilities (MCP Tools)
-
-### `memory_search`
-
-Search for memories by query, type, or tags.
-
-- **Args**: `query` (string), `type?` (string), `tags?` (string[])
-- **Usage**: "Find all authentication patterns" -> `memory_search({ query: "authentication", type: "pattern" })`
-
-### `memory_write`
-
-Record new knowledge or decisions.
-
-- **Args**: `key` (string), `type` (string), `content` (string), `tags?` (string[])
-- **Usage**: "Save this architecture decision" -> `memory_write({ key: "auth-v1", type: "decision", content: "..." })`
-
-### `memory_read`
-
-Retrieve specific memory content by key.
-
-- **Args**: `key` (string)
-- **Usage**: "Get the auth design" -> `memory_read({ key: "auth-v1" })`
-
-### `memory_stats`
-
-View analytics on memory usage.
-
-- **Usage**: "Show memory statistics" -> `memory_stats({})`
-
-## Dashboard
-
-This skill includes a standalone dashboard to visualize memory usage.
-
-```bash
-npm run start-dashboard <absolute_path_to_target_workspace>
-```
-
-Access at: `http://localhost:3333`
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "memory-mcp-server"
+sections[12]:
+  - "\n"
+  - "# Agent Memory Skill\n\nThis skill provides a persistent, searchable memory bank that automatically syncs with project documentation. It runs as an MCP server to allow reading/writing/searching of long-term memories.\n\n"
+  - "## Prerequisites\n\n- Node.js (v18+)\n\n"
+  - "## Setup\n\n1. **Clone the Repository**:\n   Clone the `agentMemory` project into your agent's workspace or a parallel directory:\n\n   ```bash\n   git clone https://github.com/webzler/agentMemory.git .agent/skills/agent-memory\n   ```\n\n2. **Install Dependencies**:\n\n   ```bash\n   cd .agent/skills/agent-memory\n   npm install\n   npm run compile\n   ```\n\n3. **Start the MCP Server**:\n   Use the helper script to activate the memory bank for your current project:\n\n   ```bash\n   npm run start-server <project_id> <absolute_path_to_target_workspace>\n   ```\n\n   _Example for current directory:_\n\n   ```bash\n   npm run start-server my-project $(pwd)\n   ```\n\n"
+  - "## Capabilities (MCP Tools)\n\n"
+  - "### `memory_search`\n\nSearch for memories by query, type, or tags.\n\n- **Args**: `query` (string), `type?` (string), `tags?` (string[])\n- **Usage**: \"Find all authentication patterns\" -> `memory_search({ query: \"authentication\", type: \"pattern\" })`\n\n"
+  - "### `memory_write`\n\nRecord new knowledge or decisions.\n\n- **Args**: `key` (string), `type` (string), `content` (string), `tags?` (string[])\n- **Usage**: \"Save this architecture decision\" -> `memory_write({ key: \"auth-v1\", type: \"decision\", content: \"...\" })`\n\n"
+  - "### `memory_read`\n\nRetrieve specific memory content by key.\n\n- **Args**: `key` (string)\n- **Usage**: \"Get the auth design\" -> `memory_read({ key: \"auth-v1\" })`\n\n"
+  - "### `memory_stats`\n\nView analytics on memory usage.\n\n- **Usage**: \"Show memory statistics\" -> `memory_stats({})`\n\n"
+  - "## Dashboard\n\nThis skill includes a standalone dashboard to visualize memory usage.\n\n```bash\nnpm run start-dashboard <absolute_path_to_target_workspace>\n```\n\nAccess at: `http://localhost:3333`\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

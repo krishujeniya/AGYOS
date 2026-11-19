@@ -5,219 +5,47 @@ category: workflow-bundle
 risk: safe
 source: personal
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Office Productivity Workflow Bundle
-
-## Overview
-
-Comprehensive office productivity workflow for document creation, spreadsheet automation, presentation generation, and format conversion using LibreOffice and Microsoft Office tools.
-
-## When to Use This Workflow
-
-Use this workflow when:
-- Creating office documents programmatically
-- Automating document workflows
-- Converting between document formats
-- Generating reports
-- Creating presentations from data
-- Processing spreadsheets
-
-## Workflow Phases
-
-### Phase 1: Document Creation
-
-#### Skills to Invoke
-- `libreoffice-writer` - LibreOffice Writer
-- `docx-official` - Microsoft Word
-- `pdf-official` - PDF handling
-
-#### Actions
-1. Design document template
-2. Create document structure
-3. Add content programmatically
-4. Apply formatting
-5. Export to required formats
-
-#### Copy-Paste Prompts
-```
-Use @libreoffice-writer to create ODT documents
-```
-
-```
-Use @docx-official to create Word documents
-```
-
-### Phase 2: Spreadsheet Automation
-
-#### Skills to Invoke
-- `libreoffice-calc` - LibreOffice Calc
-- `xlsx-official` - Excel spreadsheets
-- `googlesheets-automation` - Google Sheets
-
-#### Actions
-1. Design spreadsheet structure
-2. Create formulas
-3. Import data
-4. Generate charts
-5. Export reports
-
-#### Copy-Paste Prompts
-```
-Use @libreoffice-calc to create ODS spreadsheets
-```
-
-```
-Use @xlsx-official to create Excel reports
-```
-
-### Phase 3: Presentation Generation
-
-#### Skills to Invoke
-- `libreoffice-impress` - LibreOffice Impress
-- `pptx-official` - PowerPoint
-- `frontend-slides` - HTML slides
-- `nanobanana-ppt-skills` - AI PPT generation
-
-#### Actions
-1. Design slide template
-2. Generate slides from data
-3. Add charts and graphics
-4. Apply animations
-5. Export presentations
-
-#### Copy-Paste Prompts
-```
-Use @libreoffice-impress to create ODP presentations
-```
-
-```
-Use @pptx-official to create PowerPoint presentations
-```
-
-```
-Use @frontend-slides to create HTML presentations
-```
-
-### Phase 4: Format Conversion
-
-#### Skills to Invoke
-- `libreoffice-writer` - Document conversion
-- `libreoffice-calc` - Spreadsheet conversion
-- `pdf-official` - PDF conversion
-
-#### Actions
-1. Identify source format
-2. Choose target format
-3. Perform conversion
-4. Verify quality
-5. Batch process files
-
-#### Copy-Paste Prompts
-```
-Use @libreoffice-writer to convert documents
-```
-
-### Phase 5: Document Automation
-
-#### Skills to Invoke
-- `libreoffice-writer` - Mail merge
-- `workflow-automation` - Workflow automation
-- `file-organizer` - File organization
-
-#### Actions
-1. Design automation workflow
-2. Create templates
-3. Set up data sources
-4. Generate documents
-5. Distribute outputs
-
-#### Copy-Paste Prompts
-```
-Use @libreoffice-writer to perform mail merge
-```
-
-```
-Use @workflow-automation to automate document workflows
-```
-
-### Phase 6: Graphics and Diagrams
-
-#### Skills to Invoke
-- `libreoffice-draw` - Vector graphics
-- `canvas-design` - Canvas design
-- `mermaid-expert` - Diagram generation
-
-#### Actions
-1. Design graphics
-2. Create diagrams
-3. Generate charts
-4. Export images
-5. Integrate with documents
-
-#### Copy-Paste Prompts
-```
-Use @libreoffice-draw to create vector graphics
-```
-
-```
-Use @mermaid-expert to create diagrams
-```
-
-### Phase 7: Database Integration
-
-#### Skills to Invoke
-- `libreoffice-base` - LibreOffice Base
-- `database-architect` - Database design
-
-#### Actions
-1. Connect to data sources
-2. Create forms
-3. Design reports
-4. Automate queries
-5. Generate output
-
-#### Copy-Paste Prompts
-```
-Use @libreoffice-base to create database reports
-```
-
-## Office Application Workflows
-
-### LibreOffice
-```
-Skills: libreoffice-writer, libreoffice-calc, libreoffice-impress, libreoffice-draw, libreoffice-base
-Formats: ODT, ODS, ODP, ODG, ODB
-```
-
-### Microsoft Office
-```
-Skills: docx-official, xlsx-official, pptx-official
-Formats: DOCX, XLSX, PPTX
-```
-
-### Google Workspace
-```
-Skills: googlesheets-automation, google-drive-automation, gmail-automation
-Formats: Google Docs, Sheets, Slides
-```
-
-## Quality Gates
-
-- [ ] Documents formatted correctly
-- [ ] Formulas working
-- [ ] Presentations complete
-- [ ] Conversions successful
-- [ ] Automation tested
-- [ ] Files organized
-
-## Related Workflow Bundles
-
-- `development` - Application development
-- `documentation` - Documentation generation
-- `database` - Data integration
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "office-productivity"
+sections[40]:
+  - "\n"
+  - "# Office Productivity Workflow Bundle\n\n"
+  - "## Overview\n\nComprehensive office productivity workflow for document creation, spreadsheet automation, presentation generation, and format conversion using LibreOffice and Microsoft Office tools.\n\n"
+  - "## When to Use This Workflow\n\nUse this workflow when:\n- Creating office documents programmatically\n- Automating document workflows\n- Converting between document formats\n- Generating reports\n- Creating presentations from data\n- Processing spreadsheets\n\n"
+  - "## Workflow Phases\n\n"
+  - "### Phase 1: Document Creation\n\n"
+  - "#### Skills to Invoke\n- `libreoffice-writer` - LibreOffice Writer\n- `docx-official` - Microsoft Word\n- `pdf-official` - PDF handling\n\n"
+  - "#### Actions\n1. Design document template\n2. Create document structure\n3. Add content programmatically\n4. Apply formatting\n5. Export to required formats\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @libreoffice-writer to create ODT documents\n```\n\n```\nUse @docx-official to create Word documents\n```\n\n"
+  - "### Phase 2: Spreadsheet Automation\n\n"
+  - "#### Skills to Invoke\n- `libreoffice-calc` - LibreOffice Calc\n- `xlsx-official` - Excel spreadsheets\n- `googlesheets-automation` - Google Sheets\n\n"
+  - "#### Actions\n1. Design spreadsheet structure\n2. Create formulas\n3. Import data\n4. Generate charts\n5. Export reports\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @libreoffice-calc to create ODS spreadsheets\n```\n\n```\nUse @xlsx-official to create Excel reports\n```\n\n"
+  - "### Phase 3: Presentation Generation\n\n"
+  - "#### Skills to Invoke\n- `libreoffice-impress` - LibreOffice Impress\n- `pptx-official` - PowerPoint\n- `frontend-slides` - HTML slides\n- `nanobanana-ppt-skills` - AI PPT generation\n\n"
+  - "#### Actions\n1. Design slide template\n2. Generate slides from data\n3. Add charts and graphics\n4. Apply animations\n5. Export presentations\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @libreoffice-impress to create ODP presentations\n```\n\n```\nUse @pptx-official to create PowerPoint presentations\n```\n\n```\nUse @frontend-slides to create HTML presentations\n```\n\n"
+  - "### Phase 4: Format Conversion\n\n"
+  - "#### Skills to Invoke\n- `libreoffice-writer` - Document conversion\n- `libreoffice-calc` - Spreadsheet conversion\n- `pdf-official` - PDF conversion\n\n"
+  - "#### Actions\n1. Identify source format\n2. Choose target format\n3. Perform conversion\n4. Verify quality\n5. Batch process files\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @libreoffice-writer to convert documents\n```\n\n"
+  - "### Phase 5: Document Automation\n\n"
+  - "#### Skills to Invoke\n- `libreoffice-writer` - Mail merge\n- `workflow-automation` - Workflow automation\n- `file-organizer` - File organization\n\n"
+  - "#### Actions\n1. Design automation workflow\n2. Create templates\n3. Set up data sources\n4. Generate documents\n5. Distribute outputs\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @libreoffice-writer to perform mail merge\n```\n\n```\nUse @workflow-automation to automate document workflows\n```\n\n"
+  - "### Phase 6: Graphics and Diagrams\n\n"
+  - "#### Skills to Invoke\n- `libreoffice-draw` - Vector graphics\n- `canvas-design` - Canvas design\n- `mermaid-expert` - Diagram generation\n\n"
+  - "#### Actions\n1. Design graphics\n2. Create diagrams\n3. Generate charts\n4. Export images\n5. Integrate with documents\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @libreoffice-draw to create vector graphics\n```\n\n```\nUse @mermaid-expert to create diagrams\n```\n\n"
+  - "### Phase 7: Database Integration\n\n"
+  - "#### Skills to Invoke\n- `libreoffice-base` - LibreOffice Base\n- `database-architect` - Database design\n\n"
+  - "#### Actions\n1. Connect to data sources\n2. Create forms\n3. Design reports\n4. Automate queries\n5. Generate output\n\n"
+  - "#### Copy-Paste Prompts\n```\nUse @libreoffice-base to create database reports\n```\n\n"
+  - "## Office Application Workflows\n\n"
+  - "### LibreOffice\n```\nSkills: libreoffice-writer, libreoffice-calc, libreoffice-impress, libreoffice-draw, libreoffice-base\nFormats: ODT, ODS, ODP, ODG, ODB\n```\n\n"
+  - "### Microsoft Office\n```\nSkills: docx-official, xlsx-official, pptx-official\nFormats: DOCX, XLSX, PPTX\n```\n\n"
+  - "### Google Workspace\n```\nSkills: googlesheets-automation, google-drive-automation, gmail-automation\nFormats: Google Docs, Sheets, Slides\n```\n\n"
+  - "## Quality Gates\n\n- [ ] Documents formatted correctly\n- [ ] Formulas working\n- [ ] Presentations complete\n- [ ] Conversions successful\n- [ ] Automation tested\n- [ ] Files organized\n\n"
+  - "## Related Workflow Bundles\n\n- `development` - Application development\n- `documentation` - Documentation generation\n- `database` - Data integration\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

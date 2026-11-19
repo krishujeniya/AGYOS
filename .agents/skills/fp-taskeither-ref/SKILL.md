@@ -5,111 +5,16 @@ risk: unknown
 source: community
 version: 1.0.0
 tags: [fp-ts, taskeither, async, promise, error-handling, quick-reference]
+prompt-source: prompt.toon
 ---
-
-# TaskEither Quick Reference
-
-TaskEither = async operation that can fail. Like `Promise<Either<E, A>>`.
-
-## When to Use
-- You need a quick fp-ts reference for async operations that can fail.
-- The task involves API calls, Promise wrapping, or composing asynchronous error-handling pipelines.
-- You want a concise cheat sheet for `TaskEither` operators and patterns.
-
-## Create
-
-```typescript
-import * as TE from 'fp-ts/TaskEither'
-
-TE.right(value)          // Async success
-TE.left(error)           // Async failure
-TE.tryCatch(asyncFn, toError)  // Promise → TaskEither
-TE.fromEither(either)    // Either → TaskEither
-```
-
-## Transform
-
-```typescript
-TE.map(fn)               // Transform success value
-TE.mapLeft(fn)           // Transform error
-TE.flatMap(fn)           // Chain (fn returns TaskEither)
-TE.orElse(fn)            // Recover from error
-```
-
-## Execute
-
-```typescript
-// TaskEither is lazy - must call () to run
-const result = await myTaskEither()  // Either<E, A>
-
-// Or pattern match
-await pipe(
-  myTaskEither,
-  TE.match(
-    (err) => console.error(err),
-    (val) => console.log(val)
-  )
-)()
-```
-
-## Common Patterns
-
-```typescript
-import { pipe } from 'fp-ts/function'
-import * as TE from 'fp-ts/TaskEither'
-
-// Wrap fetch
-const fetchUser = (id: string) => TE.tryCatch(
-  () => fetch(`/api/users/${id}`).then(r => r.json()),
-  (e) => ({ type: 'NETWORK_ERROR', message: String(e) })
-)
-
-// Chain async calls
-pipe(
-  fetchUser('123'),
-  TE.flatMap(user => fetchPosts(user.id)),
-  TE.map(posts => posts.length)
-)
-
-// Parallel calls
-import { sequenceT } from 'fp-ts/Apply'
-sequenceT(TE.ApplyPar)(
-  fetchUser('1'),
-  fetchPosts('1'),
-  fetchComments('1')
-)
-
-// With recovery
-pipe(
-  fetchUser('123'),
-  TE.orElse(() => TE.right(defaultUser)),
-  TE.getOrElse(() => defaultUser)
-)
-```
-
-## vs async/await
-
-```typescript
-// ❌ async/await - errors hidden
-async function getUser(id: string) {
-  try {
-    const res = await fetch(`/api/users/${id}`)
-    return await res.json()
-  } catch (e) {
-    return null  // Error info lost
-  }
-}
-
-// ✅ TaskEither - errors typed and composable
-const getUser = (id: string) => pipe(
-  TE.tryCatch(() => fetch(`/api/users/${id}`), toNetworkError),
-  TE.flatMap(res => TE.tryCatch(() => res.json(), toParseError))
-)
-```
-
-Use TaskEither when you need **typed errors** for async operations.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "fp-taskeither-ref"
+sections[9]:
+  - "\n"
+  - "# TaskEither Quick Reference\n\nTaskEither = async operation that can fail. Like `Promise<Either<E, A>>`.\n\n"
+  - "## When to Use\n- You need a quick fp-ts reference for async operations that can fail.\n- The task involves API calls, Promise wrapping, or composing asynchronous error-handling pipelines.\n- You want a concise cheat sheet for `TaskEither` operators and patterns.\n\n"
+  - "## Create\n\n```typescript\nimport * as TE from 'fp-ts/TaskEither'\n\nTE.right(value)          // Async success\nTE.left(error)           // Async failure\nTE.tryCatch(asyncFn, toError)  // Promise → TaskEither\nTE.fromEither(either)    // Either → TaskEither\n```\n\n"
+  - "## Transform\n\n```typescript\nTE.map(fn)               // Transform success value\nTE.mapLeft(fn)           // Transform error\nTE.flatMap(fn)           // Chain (fn returns TaskEither)\nTE.orElse(fn)            // Recover from error\n```\n\n"
+  - "## Execute\n\n```typescript\n// TaskEither is lazy - must call () to run\nconst result = await myTaskEither()  // Either<E, A>\n\n// Or pattern match\nawait pipe(\n  myTaskEither,\n  TE.match(\n    (err) => console.error(err),\n    (val) => console.log(val)\n  )\n)()\n```\n\n"
+  - "## Common Patterns\n\n```typescript\nimport { pipe } from 'fp-ts/function'\nimport * as TE from 'fp-ts/TaskEither'\n\n// Wrap fetch\nconst fetchUser = (id: string) => TE.tryCatch(\n  () => fetch(`/api/users/${id}`).then(r => r.json()),\n  (e) => ({ type: 'NETWORK_ERROR', message: String(e) })\n)\n\n// Chain async calls\npipe(\n  fetchUser('123'),\n  TE.flatMap(user => fetchPosts(user.id)),\n  TE.map(posts => posts.length)\n)\n\n// Parallel calls\nimport { sequenceT } from 'fp-ts/Apply'\nsequenceT(TE.ApplyPar)(\n  fetchUser('1'),\n  fetchPosts('1'),\n  fetchComments('1')\n)\n\n// With recovery\npipe(\n  fetchUser('123'),\n  TE.orElse(() => TE.right(defaultUser)),\n  TE.getOrElse(() => defaultUser)\n)\n```\n\n"
+  - "## vs async/await\n\n```typescript\n// ❌ async/await - errors hidden\nasync function getUser(id: string) {\n  try {\n    const res = await fetch(`/api/users/${id}`)\n    return await res.json()\n  } catch (e) {\n    return null  // Error info lost\n  }\n}\n\n// ✅ TaskEither - errors typed and composable\nconst getUser = (id: string) => pipe(\n  TE.tryCatch(() => fetch(`/api/users/${id}`), toNetworkError),\n  TE.flatMap(res => TE.tryCatch(() => res.json(), toParseError))\n)\n```\n\nUse TaskEither when you need **typed errors** for async operations.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

@@ -4,56 +4,18 @@ description: "Compatibility ID for dependency audits. Use for vulnerability, lic
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Dependency Audit and Security Analysis
-
-Compatibility ID for dependency audits. Use for vulnerability, license, package freshness, or supply-chain reviews; details are in dependency-management-deps-audit.
-
-## Use this skill when
-
-- Auditing dependencies for vulnerabilities
-- Checking license compliance or supply-chain risks
-- Identifying outdated packages and upgrade paths
-- Preparing security reports or remediation plans
-
-## Do not use this skill when
-
-- The project has no dependency manifests
-- You cannot change or update dependencies
-- The task is unrelated to dependency management
-
-## Context
-The user needs comprehensive dependency analysis to identify security vulnerabilities, licensing conflicts, and maintenance risks in their project dependencies. Focus on actionable insights with automated fixes where possible.
-
-## Requirements
-$ARGUMENTS
-
-## Instructions
-
-- Inventory direct and transitive dependencies.
-- Run vulnerability and license scans.
-- Prioritize fixes by severity and exposure.
-- Propose upgrades with compatibility notes.
-- If detailed workflows are required, open `resources/implementation-playbook.md`.
-
-## Safety
-
-- Do not publish sensitive vulnerability details to public channels.
-- Verify upgrades in staging before production rollout.
-
-## Output Format
-
-- Dependency summary and risk overview
-- Vulnerabilities and license issues
-- Recommended upgrades and mitigations
-- Assumptions and follow-up tasks
-
-## Resources
-
-- `resources/implementation-playbook.md` for detailed tooling and templates.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "deps-audit"
+sections[11]:
+  - "\n"
+  - "# Dependency Audit and Security Analysis\n\nCompatibility ID for dependency audits. Use for vulnerability, license, package freshness, or supply-chain reviews; details are in dependency-management-deps-audit.\n\n"
+  - "## Use this skill when\n\n- Auditing dependencies for vulnerabilities\n- Checking license compliance or supply-chain risks\n- Identifying outdated packages and upgrade paths\n- Preparing security reports or remediation plans\n\n"
+  - "## Do not use this skill when\n\n- The project has no dependency manifests\n- You cannot change or update dependencies\n- The task is unrelated to dependency management\n\n"
+  - "## Context\nThe user needs comprehensive dependency analysis to identify security vulnerabilities, licensing conflicts, and maintenance risks in their project dependencies. Focus on actionable insights with automated fixes where possible.\n\n"
+  - "## Requirements\n$ARGUMENTS\n\n"
+  - "## Instructions\n\n- Inventory direct and transitive dependencies.\n- Run vulnerability and license scans.\n- Prioritize fixes by severity and exposure.\n- Propose upgrades with compatibility notes.\n- If detailed workflows are required, open `resources/implementation-playbook.md`.\n\n"
+  - "## Safety\n\n- Do not publish sensitive vulnerability details to public channels.\n- Verify upgrades in staging before production rollout.\n\n"
+  - "## Output Format\n\n- Dependency summary and risk overview\n- Vulnerabilities and license issues\n- Recommended upgrades and mitigations\n- Assumptions and follow-up tasks\n\n"
+  - "## Resources\n\n- `resources/implementation-playbook.md` for detailed tooling and templates.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

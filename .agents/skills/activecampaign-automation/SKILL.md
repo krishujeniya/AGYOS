@@ -4,215 +4,25 @@ description: "Automate ActiveCampaign tasks via Rube MCP (Composio): manage cont
 risk: critical
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# ActiveCampaign Automation via Rube MCP
-
-Automate ActiveCampaign CRM and marketing automation operations through Composio's ActiveCampaign toolkit via Rube MCP.
-
-## Prerequisites
-
-- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)
-- Active ActiveCampaign connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `active_campaign`
-- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas
-
-## Setup
-
-**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
-
-
-1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
-2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `active_campaign`
-3. If connection is not ACTIVE, follow the returned auth link to complete ActiveCampaign authentication
-4. Confirm connection status shows ACTIVE before running any workflows
-
-## Core Workflows
-
-### 1. Create and Find Contacts
-
-**When to use**: User wants to create new contacts or look up existing ones
-
-**Tool sequence**:
-1. `ACTIVE_CAMPAIGN_FIND_CONTACT` - Search for an existing contact [Optional]
-2. `ACTIVE_CAMPAIGN_CREATE_CONTACT` - Create a new contact [Required]
-
-**Key parameters for find**:
-- `email`: Search by email address
-- `id`: Search by ActiveCampaign contact ID
-- `phone`: Search by phone number
-
-**Key parameters for create**:
-- `email`: Contact email address (required)
-- `first_name`: Contact first name
-- `last_name`: Contact last name
-- `phone`: Contact phone number
-- `organization_name`: Contact's organization
-- `job_title`: Contact's job title
-- `tags`: Comma-separated list of tags to apply
-
-**Pitfalls**:
-- `email` is the only required field for contact creation
-- Phone search uses a general search parameter internally; it may return partial matches
-- When combining `email` and `phone` in FIND_CONTACT, results are filtered client-side
-- Tags provided during creation are applied immediately
-- Creating a contact with an existing email may update the existing contact
-
-### 2. Manage Contact Tags
-
-**When to use**: User wants to add or remove tags from contacts
-
-**Tool sequence**:
-1. `ACTIVE_CAMPAIGN_FIND_CONTACT` - Find contact by email or ID [Prerequisite]
-2. `ACTIVE_CAMPAIGN_MANAGE_CONTACT_TAG` - Add or remove tags [Required]
-
-**Key parameters**:
-- `action`: 'Add' or 'Remove' (required)
-- `tags`: Tag names as comma-separated string or array of strings (required)
-- `contact_id`: Contact ID (provide this or contact_email)
-- `contact_email`: Contact email address (alternative to contact_id)
-
-**Pitfalls**:
-- `action` values are capitalized: 'Add' or 'Remove' (not lowercase)
-- Tags can be a comma-separated string ('tag1, tag2') or an array (['tag1', 'tag2'])
-- Either `contact_id` or `contact_email` must be provided; `contact_id` takes precedence
-- Adding a tag that does not exist creates it automatically
-- Removing a non-existent tag is a no-op (does not error)
-
-### 3. Manage List Subscriptions
-
-**When to use**: User wants to subscribe or unsubscribe contacts from lists
-
-**Tool sequence**:
-1. `ACTIVE_CAMPAIGN_FIND_CONTACT` - Find the contact [Prerequisite]
-2. `ACTIVE_CAMPAIGN_MANAGE_LIST_SUBSCRIPTION` - Subscribe or unsubscribe [Required]
-
-**Key parameters**:
-- `action`: 'subscribe' or 'unsubscribe' (required)
-- `list_id`: Numeric list ID string (required)
-- `email`: Contact email address (provide this or contact_id)
-- `contact_id`: Numeric contact ID string (alternative to email)
-
-**Pitfalls**:
-- `action` values are lowercase: 'subscribe' or 'unsubscribe'
-- `list_id` is a numeric string (e.g., '2'), not the list name
-- List IDs can be retrieved via the GET /api/3/lists endpoint (not available as a Composio tool; use the ActiveCampaign UI)
-- If both `email` and `contact_id` are provided, `contact_id` takes precedence
-- Unsubscribing changes status to '2' (unsubscribed) but the relationship record persists
-
-### 4. Add Contacts to Automations
-
-**When to use**: User wants to enroll a contact in an automation workflow
-
-**Tool sequence**:
-1. `ACTIVE_CAMPAIGN_FIND_CONTACT` - Verify contact exists [Prerequisite]
-2. `ACTIVE_CAMPAIGN_ADD_CONTACT_TO_AUTOMATION` - Enroll contact in automation [Required]
-
-**Key parameters**:
-- `contact_email`: Email of the contact to enroll (required)
-- `automation_id`: ID of the target automation (required)
-
-**Pitfalls**:
-- The contact must already exist in ActiveCampaign
-- Automations can only be created through the ActiveCampaign UI, not via API
-- `automation_id` must reference an existing, active automation
-- The tool performs a two-step process: lookup contact by email, then enroll
-- Automation IDs can be found in the ActiveCampaign UI or via GET /api/3/automations
-
-### 5. Create Contact Tasks
-
-**When to use**: User wants to create follow-up tasks associated with contacts
-
-**Tool sequence**:
-1. `ACTIVE_CAMPAIGN_FIND_CONTACT` - Find the contact to associate the task with [Prerequisite]
-2. `ACTIVE_CAMPAIGN_CREATE_CONTACT_TASK` - Create the task [Required]
-
-**Key parameters**:
-- `relid`: Contact ID to associate the task with (required)
-- `duedate`: Due date in ISO 8601 format with timezone (required, e.g., '2025-01-15T14:30:00-05:00')
-- `dealTasktype`: Task type ID based on available types (required)
-- `title`: Task title
-- `note`: Task description/content
-- `assignee`: User ID to assign the task to
-- `edate`: End date in ISO 8601 format (must be later than duedate)
-- `status`: 0 for incomplete, 1 for complete
-
-**Pitfalls**:
-- `duedate` must be a valid ISO 8601 datetime with timezone offset; do NOT use placeholder values
-- `edate` must be later than `duedate`
-- `dealTasktype` is a string ID referencing task types configured in ActiveCampaign
-- `relid` is the numeric contact ID, not the email address
-- `assignee` is a user ID; resolve user names to IDs via the ActiveCampaign UI
-
-## Common Patterns
-
-### Contact Lookup Flow
-
-```
-1. Call ACTIVE_CAMPAIGN_FIND_CONTACT with email
-2. If found, extract contact ID for subsequent operations
-3. If not found, create contact with ACTIVE_CAMPAIGN_CREATE_CONTACT
-4. Use contact ID for tags, subscriptions, or automations
-```
-
-### Bulk Contact Tagging
-
-```
-1. For each contact, call ACTIVE_CAMPAIGN_MANAGE_CONTACT_TAG
-2. Use contact_email to avoid separate lookup calls
-3. Batch with reasonable delays to respect rate limits
-```
-
-### ID Resolution
-
-**Contact email -> Contact ID**:
-```
-1. Call ACTIVE_CAMPAIGN_FIND_CONTACT with email
-2. Extract id from the response
-```
-
-## Known Pitfalls
-
-**Action Capitalization**:
-- Tag actions: 'Add', 'Remove' (capitalized)
-- Subscription actions: 'subscribe', 'unsubscribe' (lowercase)
-- Mixing up capitalization causes errors
-
-**ID Types**:
-- Contact IDs: numeric strings (e.g., '123')
-- List IDs: numeric strings
-- Automation IDs: numeric strings
-- All IDs should be passed as strings, not integers
-
-**Automations**:
-- Automations cannot be created via API; only enrollment is possible
-- Automation must be active to accept new contacts
-- Enrolling a contact already in the automation may have no effect
-
-**Rate Limits**:
-- ActiveCampaign API has rate limits per account
-- Implement backoff on 429 responses
-- Batch operations should be spaced appropriately
-
-**Response Parsing**:
-- Response data may be nested under `data` or `data.data`
-- Parse defensively with fallback patterns
-- Contact search may return multiple results; match by email for accuracy
-
-## Quick Reference
-
-| Task | Tool Slug | Key Params |
-|------|-----------|------------|
-| Find contact | ACTIVE_CAMPAIGN_FIND_CONTACT | email, id, phone |
-| Create contact | ACTIVE_CAMPAIGN_CREATE_CONTACT | email, first_name, last_name, tags |
-| Add/remove tags | ACTIVE_CAMPAIGN_MANAGE_CONTACT_TAG | action, tags, contact_email |
-| Subscribe/unsubscribe | ACTIVE_CAMPAIGN_MANAGE_LIST_SUBSCRIPTION | action, list_id, email |
-| Add to automation | ACTIVE_CAMPAIGN_ADD_CONTACT_TO_AUTOMATION | contact_email, automation_id |
-| Create task | ACTIVE_CAMPAIGN_CREATE_CONTACT_TASK | relid, duedate, dealTasktype, title |
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "activecampaign-automation"
+sections[18]:
+  - "\n"
+  - "# ActiveCampaign Automation via Rube MCP\n\nAutomate ActiveCampaign CRM and marketing automation operations through Composio's ActiveCampaign toolkit via Rube MCP.\n\n"
+  - "## Prerequisites\n\n- Rube MCP must be connected (RUBE_SEARCH_TOOLS available)\n- Active ActiveCampaign connection via `RUBE_MANAGE_CONNECTIONS` with toolkit `active_campaign`\n- Always call `RUBE_SEARCH_TOOLS` first to get current tool schemas\n\n"
+  - "## Setup\n\n**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.\n\n\n1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds\n2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `active_campaign`\n3. If connection is not ACTIVE, follow the returned auth link to complete ActiveCampaign authentication\n4. Confirm connection status shows ACTIVE before running any workflows\n\n"
+  - "## Core Workflows\n\n"
+  - "### 1. Create and Find Contacts\n\n**When to use**: User wants to create new contacts or look up existing ones\n\n**Tool sequence**:\n1. `ACTIVE_CAMPAIGN_FIND_CONTACT` - Search for an existing contact [Optional]\n2. `ACTIVE_CAMPAIGN_CREATE_CONTACT` - Create a new contact [Required]\n\n**Key parameters for find**:\n- `email`: Search by email address\n- `id`: Search by ActiveCampaign contact ID\n- `phone`: Search by phone number\n\n**Key parameters for create**:\n- `email`: Contact email address (required)\n- `first_name`: Contact first name\n- `last_name`: Contact last name\n- `phone`: Contact phone number\n- `organization_name`: Contact's organization\n- `job_title`: Contact's job title\n- `tags`: Comma-separated list of tags to apply\n\n**Pitfalls**:\n- `email` is the only required field for contact creation\n- Phone search uses a general search parameter internally; it may return partial matches\n- When combining `email` and `phone` in FIND_CONTACT, results are filtered client-side\n- Tags provided during creation are applied immediately\n- Creating a contact with an existing email may update the existing contact\n\n"
+  - "### 2. Manage Contact Tags\n\n**When to use**: User wants to add or remove tags from contacts\n\n**Tool sequence**:\n1. `ACTIVE_CAMPAIGN_FIND_CONTACT` - Find contact by email or ID [Prerequisite]\n2. `ACTIVE_CAMPAIGN_MANAGE_CONTACT_TAG` - Add or remove tags [Required]\n\n**Key parameters**:\n- `action`: 'Add' or 'Remove' (required)\n- `tags`: Tag names as comma-separated string or array of strings (required)\n- `contact_id`: Contact ID (provide this or contact_email)\n- `contact_email`: Contact email address (alternative to contact_id)\n\n**Pitfalls**:\n- `action` values are capitalized: 'Add' or 'Remove' (not lowercase)\n- Tags can be a comma-separated string ('tag1, tag2') or an array (['tag1', 'tag2'])\n- Either `contact_id` or `contact_email` must be provided; `contact_id` takes precedence\n- Adding a tag that does not exist creates it automatically\n- Removing a non-existent tag is a no-op (does not error)\n\n"
+  - "### 3. Manage List Subscriptions\n\n**When to use**: User wants to subscribe or unsubscribe contacts from lists\n\n**Tool sequence**:\n1. `ACTIVE_CAMPAIGN_FIND_CONTACT` - Find the contact [Prerequisite]\n2. `ACTIVE_CAMPAIGN_MANAGE_LIST_SUBSCRIPTION` - Subscribe or unsubscribe [Required]\n\n**Key parameters**:\n- `action`: 'subscribe' or 'unsubscribe' (required)\n- `list_id`: Numeric list ID string (required)\n- `email`: Contact email address (provide this or contact_id)\n- `contact_id`: Numeric contact ID string (alternative to email)\n\n**Pitfalls**:\n- `action` values are lowercase: 'subscribe' or 'unsubscribe'\n- `list_id` is a numeric string (e.g., '2'), not the list name\n- List IDs can be retrieved via the GET /api/3/lists endpoint (not available as a Composio tool; use the ActiveCampaign UI)\n- If both `email` and `contact_id` are provided, `contact_id` takes precedence\n- Unsubscribing changes status to '2' (unsubscribed) but the relationship record persists\n\n"
+  - "### 4. Add Contacts to Automations\n\n**When to use**: User wants to enroll a contact in an automation workflow\n\n**Tool sequence**:\n1. `ACTIVE_CAMPAIGN_FIND_CONTACT` - Verify contact exists [Prerequisite]\n2. `ACTIVE_CAMPAIGN_ADD_CONTACT_TO_AUTOMATION` - Enroll contact in automation [Required]\n\n**Key parameters**:\n- `contact_email`: Email of the contact to enroll (required)\n- `automation_id`: ID of the target automation (required)\n\n**Pitfalls**:\n- The contact must already exist in ActiveCampaign\n- Automations can only be created through the ActiveCampaign UI, not via API\n- `automation_id` must reference an existing, active automation\n- The tool performs a two-step process: lookup contact by email, then enroll\n- Automation IDs can be found in the ActiveCampaign UI or via GET /api/3/automations\n\n"
+  - "### 5. Create Contact Tasks\n\n**When to use**: User wants to create follow-up tasks associated with contacts\n\n**Tool sequence**:\n1. `ACTIVE_CAMPAIGN_FIND_CONTACT` - Find the contact to associate the task with [Prerequisite]\n2. `ACTIVE_CAMPAIGN_CREATE_CONTACT_TASK` - Create the task [Required]\n\n**Key parameters**:\n- `relid`: Contact ID to associate the task with (required)\n- `duedate`: Due date in ISO 8601 format with timezone (required, e.g., '2025-01-15T14:30:00-05:00')\n- `dealTasktype`: Task type ID based on available types (required)\n- `title`: Task title\n- `note`: Task description/content\n- `assignee`: User ID to assign the task to\n- `edate`: End date in ISO 8601 format (must be later than duedate)\n- `status`: 0 for incomplete, 1 for complete\n\n**Pitfalls**:\n- `duedate` must be a valid ISO 8601 datetime with timezone offset; do NOT use placeholder values\n- `edate` must be later than `duedate`\n- `dealTasktype` is a string ID referencing task types configured in ActiveCampaign\n- `relid` is the numeric contact ID, not the email address\n- `assignee` is a user ID; resolve user names to IDs via the ActiveCampaign UI\n\n"
+  - "## Common Patterns\n\n"
+  - "### Contact Lookup Flow\n\n```\n1. Call ACTIVE_CAMPAIGN_FIND_CONTACT with email\n2. If found, extract contact ID for subsequent operations\n3. If not found, create contact with ACTIVE_CAMPAIGN_CREATE_CONTACT\n4. Use contact ID for tags, subscriptions, or automations\n```\n\n"
+  - "### Bulk Contact Tagging\n\n```\n1. For each contact, call ACTIVE_CAMPAIGN_MANAGE_CONTACT_TAG\n2. Use contact_email to avoid separate lookup calls\n3. Batch with reasonable delays to respect rate limits\n```\n\n"
+  - "### ID Resolution\n\n**Contact email -> Contact ID**:\n```\n1. Call ACTIVE_CAMPAIGN_FIND_CONTACT with email\n2. Extract id from the response\n```\n\n"
+  - "## Known Pitfalls\n\n**Action Capitalization**:\n- Tag actions: 'Add', 'Remove' (capitalized)\n- Subscription actions: 'subscribe', 'unsubscribe' (lowercase)\n- Mixing up capitalization causes errors\n\n**ID Types**:\n- Contact IDs: numeric strings (e.g., '123')\n- List IDs: numeric strings\n- Automation IDs: numeric strings\n- All IDs should be passed as strings, not integers\n\n**Automations**:\n- Automations cannot be created via API; only enrollment is possible\n- Automation must be active to accept new contacts\n- Enrolling a contact already in the automation may have no effect\n\n**Rate Limits**:\n- ActiveCampaign API has rate limits per account\n- Implement backoff on 429 responses\n- Batch operations should be spaced appropriately\n\n**Response Parsing**:\n- Response data may be nested under `data` or `data.data`\n- Parse defensively with fallback patterns\n- Contact search may return multiple results; match by email for accuracy\n\n"
+  - "## Quick Reference\n\n| Task | Tool Slug | Key Params |\n|------|-----------|------------|\n| Find contact | ACTIVE_CAMPAIGN_FIND_CONTACT | email, id, phone |\n| Create contact | ACTIVE_CAMPAIGN_CREATE_CONTACT | email, first_name, last_name, tags |\n| Add/remove tags | ACTIVE_CAMPAIGN_MANAGE_CONTACT_TAG | action, tags, contact_email |\n| Subscribe/unsubscribe | ACTIVE_CAMPAIGN_MANAGE_LIST_SUBSCRIPTION | action, list_id, email |\n| Add to automation | ACTIVE_CAMPAIGN_ADD_CONTACT_TO_AUTOMATION | contact_email, automation_id |\n| Create task | ACTIVE_CAMPAIGN_CREATE_CONTACT_TASK | relid, duedate, dealTasktype, title |\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

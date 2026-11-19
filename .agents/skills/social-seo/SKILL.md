@@ -14,122 +14,21 @@ description: >-
 metadata:
   version: 1.0.0
 license: MIT
+prompt-source: prompt.toon
 ---
-
-# Social SEO
-
-Make content **findable when people search**, not just visible when the feed happens to show it. In
-2026 every social platform is a search engine, and search is the highest-intent, most **evergreen**
-discovery there is.
-
-Four truths shape everything:
-
-1. **All social platforms are search engines** (TikTok/IG/YouTube/Pinterest/LinkedIn) — and people
-   search *different* platforms for different intents. If you only optimize for the feed, you're
-   invisible to people actively looking.
-2. **Keywords, not hashtags, are the lever.** Write for the search bar first; hashtags are a minor
-   category signal → `hashtag-strategy`.
-3. **Search optimization doubles as recommendation optimization** — the keywords that get you found in
-   search are the same signals the algorithm uses to categorize you for the right feed/FYP audience.
-4. **SEO turns posts into evergreen assets** — a search-optimized post keeps getting found for months;
-   a feed post dies in ~48h.
-
-(Full model + the AI-search/GEO boundary: `references/why-social-search.md`.)
-
-## Step 0 — Read the foundation + the goal
-
-Load `brand-profile.md` and `audience.md` (their exact search language matters). Get the **platform(s)**
-and what the user wants to be **found for**.
-
-## Step 1 — Keyword research (real demand, never invented)
-
-Find the terms people actually search via **platform autocomplete**, **"others searched for"**,
-related searches, **comments**, audience language, and the user's **native search analytics** (+ tools
-like TikTok Creative Center / VidIQ). **The agent can't pull live search volumes — never fabricate
-numbers**; give the method and work from intent/specificity. Favor long-tail, intent-rich queries you
-can genuinely answer. See `references/keyword-research-and-technique.md`.
-
-## Step 2 — Place keywords across the platform's SEO surface
-
-Each platform indexes different things — optimize the right ones (full per-platform guide in
-`references/platform-seo-surfaces.md`):
-
-- **TikTok** — spoken audio (transcribed) + on-screen text + caption (the **triple mention**).
-- **Instagram** — caption + the **searchable name/display field** + bio + alt text + captioned Reels.
-- **YouTube** — keyword-led **title** + ~200–300w **description** + **transcript/captions** + chapters.
-- **Pinterest** — keyword **title + description + board names + alt** (hashtags deprecated there).
-- **LinkedIn** — searchable **headline/About** + on-topic post keywords → `linkedin-growth`.
-- **Cross-cutting** — subtitles, alt text, descriptive file names, a consistent branded handle.
-
-## Step 3 — The on-content technique
-
-**Lead with keywords, support with hashtags.** State the primary phrase in **natural language, early,
-once or twice**; align audio + on-screen + caption to **one** search intent; add 3–5 niche hashtags.
-**Never keyword-stuff** (spam dilutes your topical signal). Resolve the search-vs-feed tension (clarity
-vs hook) deliberately. See `references/keyword-research-and-technique.md`.
-
-## Step 4 — Build topical clusters (evergreen authority)
-
-One post rarely owns a query. **Cluster** evergreen content around a pillar topic so you become the
-**answer/authority** — which compounds *and* sharpens recommendation categorization. Map a
-`content-pillars` pillar → a keyword cluster → many evergreen posts.
-
-## Step 5 — Optimize the profile as a search asset
-
-The **name/display field, handle, headline/bio** should carry the searchable keyword/category (not just
-a clever brand line). This is the *searchability* lens — `profile-optimization` owns the *conversion*
-lens; both matter. Public profiles/content are increasingly **Google-indexable** too.
-
-## Step 6 — Measure (honestly) + hand off GEO
-
-Track **discoverability**: impressions from search, the search terms that found you, profile visits
-from non-followers, saves, evergreen-post growth — via **native platform search analytics** (+ Search
-Console/UTMs). **No WoopSocial analytics.** For getting cited by **AI search/LLMs (GEO)**, hand off to
-`ai-search-optimization` — related but separate.
-
-## Orchestration map
-
-social-seo sets the discovery layer; it routes to / is routed from: `hashtag-strategy` (hashtag
-specifics) · `caption-writer` (adds the keyword layer) · `profile-optimization` (conversion lens) ·
-`content-pillars` (clusters) · `tiktok-growth` / `instagram-growth` / `linkedin-growth` (search as a
-growth pillar) · `ai-search-optimization` (GEO hand-off) · `scheduling-and-queue` (publish).
-
-## Quality bar — self-check
-
-- Did I do **real keyword research** (autocomplete/native analytics) and **avoid inventing volumes**?
-- Did I optimize the **platform-specific indexed surfaces** (not one generic answer)?
-- Did I use **lead-with-keywords + the triple mention**, in **natural language** (no stuffing)?
-- Did I think in **evergreen clusters / topical authority**, and note the **search = recommendation**
-  payoff?
-- Did I treat the **profile as a search asset**, route hashtags to `hashtag-strategy`, and **hand GEO**
-  to `ai-search-optimization`?
-- **Native-search-insights** measurement, **no WoopSocial analytics**, **searchability not guaranteed
-  rankings**?
-
-## Edge cases & pushback
-
-- **"Give me exact search volumes"** → can't pull live volume; show the research method; don't
-  fabricate.
-- **"Stuff every keyword + 30 hashtags"** → refuse; spam dilutes the signal; natural language + a few
-  niche tags.
-- **"I optimized one post, done"** → build a cluster; one post rarely owns a query.
-- **"Just use trending hashtags"** → hashtags categorize, keywords get found → `hashtag-strategy`.
-- **"Make ChatGPT/Google-AI cite me"** → that's GEO → `ai-search-optimization`.
-- **"Which post ranks best?"** → native platform search insights; no WoopSocial analytics.
-- **Clever-but-vague title** → keep the searchable phrase; add intrigue after the keyword.
-
-## Related skills
-
-- `brand-profile`, `audience-research` — the search language and positioning.
-- `instagram-seo`, `pinterest-seo` — single-platform search depth (route platform-specific asks there).
-- `hashtag-strategy` — the hashtag layer (a minor signal); `caption-writer` — caption craft.
-- `profile-optimization` — profile as conversion (this skill = profile as search).
-- `content-pillars` — pillars become keyword clusters; the growth skills lean on search.
-- `ai-search-optimization` — the AI-search/LLM-citation (GEO) hand-off; `scheduling-and-queue` — publish.
-
-## References
-
-- `references/why-social-search.md` — the 2026 reality, the three layers, search=recommendation, evergreen, the GEO boundary.
-- `references/platform-seo-surfaces.md` — what each platform indexes and how to optimize it (TikTok/IG/YouTube/Pinterest/LinkedIn/X/FB + cross-cutting).
-- `references/keyword-research-and-technique.md` — finding keywords (no fabrication), the triple-mention technique, clusters, no-stuffing, measurement.
-- `references/examples.md` — worked optimizations per platform + a cluster plan + honest scope.
+skill: "social-seo"
+sections[14]:
+  - "\n"
+  - "# Social SEO\n\nMake content **findable when people search**, not just visible when the feed happens to show it. In\n2026 every social platform is a search engine, and search is the highest-intent, most **evergreen**\ndiscovery there is.\n\nFour truths shape everything:\n\n1. **All social platforms are search engines** (TikTok/IG/YouTube/Pinterest/LinkedIn) — and people\n   search *different* platforms for different intents. If you only optimize for the feed, you're\n   invisible to people actively looking.\n2. **Keywords, not hashtags, are the lever.** Write for the search bar first; hashtags are a minor\n   category signal → `hashtag-strategy`.\n3. **Search optimization doubles as recommendation optimization** — the keywords that get you found in\n   search are the same signals the algorithm uses to categorize you for the right feed/FYP audience.\n4. **SEO turns posts into evergreen assets** — a search-optimized post keeps getting found for months;\n   a feed post dies in ~48h.\n\n(Full model + the AI-search/GEO boundary: `references/why-social-search.md`.)\n\n"
+  - "## Step 0 — Read the foundation + the goal\n\nLoad `brand-profile.md` and `audience.md` (their exact search language matters). Get the **platform(s)**\nand what the user wants to be **found for**.\n\n"
+  - "## Step 1 — Keyword research (real demand, never invented)\n\nFind the terms people actually search via **platform autocomplete**, **\"others searched for\"**,\nrelated searches, **comments**, audience language, and the user's **native search analytics** (+ tools\nlike TikTok Creative Center / VidIQ). **The agent can't pull live search volumes — never fabricate\nnumbers**; give the method and work from intent/specificity. Favor long-tail, intent-rich queries you\ncan genuinely answer. See `references/keyword-research-and-technique.md`.\n\n"
+  - "## Step 2 — Place keywords across the platform's SEO surface\n\nEach platform indexes different things — optimize the right ones (full per-platform guide in\n`references/platform-seo-surfaces.md`):\n\n- **TikTok** — spoken audio (transcribed) + on-screen text + caption (the **triple mention**).\n- **Instagram** — caption + the **searchable name/display field** + bio + alt text + captioned Reels.\n- **YouTube** — keyword-led **title** + ~200–300w **description** + **transcript/captions** + chapters.\n- **Pinterest** — keyword **title + description + board names + alt** (hashtags deprecated there).\n- **LinkedIn** — searchable **headline/About** + on-topic post keywords → `linkedin-growth`.\n- **Cross-cutting** — subtitles, alt text, descriptive file names, a consistent branded handle.\n\n"
+  - "## Step 3 — The on-content technique\n\n**Lead with keywords, support with hashtags.** State the primary phrase in **natural language, early,\nonce or twice**; align audio + on-screen + caption to **one** search intent; add 3–5 niche hashtags.\n**Never keyword-stuff** (spam dilutes your topical signal). Resolve the search-vs-feed tension (clarity\nvs hook) deliberately. See `references/keyword-research-and-technique.md`.\n\n"
+  - "## Step 4 — Build topical clusters (evergreen authority)\n\nOne post rarely owns a query. **Cluster** evergreen content around a pillar topic so you become the\n**answer/authority** — which compounds *and* sharpens recommendation categorization. Map a\n`content-pillars` pillar → a keyword cluster → many evergreen posts.\n\n"
+  - "## Step 5 — Optimize the profile as a search asset\n\nThe **name/display field, handle, headline/bio** should carry the searchable keyword/category (not just\na clever brand line). This is the *searchability* lens — `profile-optimization` owns the *conversion*\nlens; both matter. Public profiles/content are increasingly **Google-indexable** too.\n\n"
+  - "## Step 6 — Measure (honestly) + hand off GEO\n\nTrack **discoverability**: impressions from search, the search terms that found you, profile visits\nfrom non-followers, saves, evergreen-post growth — via **native platform search analytics** (+ Search\nConsole/UTMs). **No WoopSocial analytics.** For getting cited by **AI search/LLMs (GEO)**, hand off to\n`ai-search-optimization` — related but separate.\n\n"
+  - "## Orchestration map\n\nsocial-seo sets the discovery layer; it routes to / is routed from: `hashtag-strategy` (hashtag\nspecifics) · `caption-writer` (adds the keyword layer) · `profile-optimization` (conversion lens) ·\n`content-pillars` (clusters) · `tiktok-growth` / `instagram-growth` / `linkedin-growth` (search as a\ngrowth pillar) · `ai-search-optimization` (GEO hand-off) · `scheduling-and-queue` (publish).\n\n"
+  - "## Quality bar — self-check\n\n- Did I do **real keyword research** (autocomplete/native analytics) and **avoid inventing volumes**?\n- Did I optimize the **platform-specific indexed surfaces** (not one generic answer)?\n- Did I use **lead-with-keywords + the triple mention**, in **natural language** (no stuffing)?\n- Did I think in **evergreen clusters / topical authority**, and note the **search = recommendation**\n  payoff?\n- Did I treat the **profile as a search asset**, route hashtags to `hashtag-strategy`, and **hand GEO**\n  to `ai-search-optimization`?\n- **Native-search-insights** measurement, **no WoopSocial analytics**, **searchability not guaranteed\n  rankings**?\n\n"
+  - "## Edge cases & pushback\n\n- **\"Give me exact search volumes\"** → can't pull live volume; show the research method; don't\n  fabricate.\n- **\"Stuff every keyword + 30 hashtags\"** → refuse; spam dilutes the signal; natural language + a few\n  niche tags.\n- **\"I optimized one post, done\"** → build a cluster; one post rarely owns a query.\n- **\"Just use trending hashtags\"** → hashtags categorize, keywords get found → `hashtag-strategy`.\n- **\"Make ChatGPT/Google-AI cite me\"** → that's GEO → `ai-search-optimization`.\n- **\"Which post ranks best?\"** → native platform search insights; no WoopSocial analytics.\n- **Clever-but-vague title** → keep the searchable phrase; add intrigue after the keyword.\n\n"
+  - "## Related skills\n\n- `brand-profile`, `audience-research` — the search language and positioning.\n- `instagram-seo`, `pinterest-seo` — single-platform search depth (route platform-specific asks there).\n- `hashtag-strategy` — the hashtag layer (a minor signal); `caption-writer` — caption craft.\n- `profile-optimization` — profile as conversion (this skill = profile as search).\n- `content-pillars` — pillars become keyword clusters; the growth skills lean on search.\n- `ai-search-optimization` — the AI-search/LLM-citation (GEO) hand-off; `scheduling-and-queue` — publish.\n\n"
+  - "## References\n\n- `references/why-social-search.md` — the 2026 reality, the three layers, search=recommendation, evergreen, the GEO boundary.\n- `references/platform-seo-surfaces.md` — what each platform indexes and how to optimize it (TikTok/IG/YouTube/Pinterest/LinkedIn/X/FB + cross-cutting).\n- `references/keyword-research-and-technique.md` — finding keywords (no fabrication), the triple-mention technique, clusters, no-stuffing, measurement.\n- `references/examples.md` — worked optimizations per platform + a cluster plan + honest scope.\n"

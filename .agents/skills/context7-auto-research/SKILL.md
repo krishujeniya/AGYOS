@@ -4,41 +4,18 @@ description: "Automatically fetch latest library/framework documentation for Cla
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# context7-auto-research
-
-## Overview
-Automatically fetch latest library/framework documentation for Claude Code via Context7 API
-
-## When to Use
-- When you need up-to-date documentation for libraries and frameworks
-- When asking about React, Next.js, Prisma, or any other popular library
-
-## Installation
-```bash
-npx skills add -g BenedictKing/context7-auto-research
-```
-
-## Step-by-Step Guide
-1. Install the skill using the command above
-2. Configure API key (optional, see GitHub repo for details)
-3. Use naturally in Claude Code conversations
-
-## Examples
-See [GitHub Repository](https://github.com/BenedictKing/context7-auto-research) for examples.
-
-## Best Practices
-- Configure API keys via environment variables for higher rate limits
-- Use the skill's auto-trigger feature for seamless integration
-
-## Troubleshooting
-See the GitHub repository for troubleshooting guides.
-
-## Related Skills
-- tavily-web, exa-search, firecrawl-scraper, codex-review
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "context7-auto-research"
+sections[11]:
+  - "\n"
+  - "# context7-auto-research\n\n"
+  - "## Overview\nAutomatically fetch latest library/framework documentation for Claude Code via Context7 API\n\n"
+  - "## When to Use\n- When you need up-to-date documentation for libraries and frameworks\n- When asking about React, Next.js, Prisma, or any other popular library\n\n"
+  - "## Installation\n```bash\nnpx skills add -g BenedictKing/context7-auto-research\n```\n\n"
+  - "## Step-by-Step Guide\n1. Install the skill using the command above\n2. Configure API key (optional, see GitHub repo for details)\n3. Use naturally in Claude Code conversations\n\n"
+  - "## Examples\nSee [GitHub Repository](https://github.com/BenedictKing/context7-auto-research) for examples.\n\n"
+  - "## Best Practices\n- Configure API keys via environment variables for higher rate limits\n- Use the skill's auto-trigger feature for seamless integration\n\n"
+  - "## Troubleshooting\nSee the GitHub repository for troubleshooting guides.\n\n"
+  - "## Related Skills\n- tavily-web, exa-search, firecrawl-scraper, codex-review\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

@@ -3,150 +3,20 @@ name: jpa-patterns
 description: JPA/Hibernate patterns for entity design, relationships, query optimization, transactions, auditing, indexing, pagination, and pooling in Spring Boot. Use when designing JPA entities or relationships, or when a Hibernate query, transaction, or N+1 problem needs fixing.
 metadata:
   origin: ECC
+prompt-source: prompt.toon
 ---
-
-# JPA/Hibernate Patterns
-
-Use for data modeling, repositories, and performance tuning in Spring Boot.
-
-## When to Activate
-
-- Designing JPA entities and table mappings
-- Defining relationships (@OneToMany, @ManyToOne, @ManyToMany)
-- Optimizing queries (N+1 prevention, fetch strategies, projections)
-- Configuring transactions, auditing, or soft deletes
-- Setting up pagination, sorting, or custom repository methods
-- Tuning connection pooling (HikariCP) or second-level caching
-
-## Entity Design
-
-```java
-@Entity
-@Table(name = "markets", indexes = {
-  @Index(name = "idx_markets_slug", columnList = "slug", unique = true)
-})
-@EntityListeners(AuditingEntityListener.class)
-public class MarketEntity {
-  @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
-
-  @Column(nullable = false, length = 200)
-  private String name;
-
-  @Column(nullable = false, unique = true, length = 120)
-  private String slug;
-
-  @Enumerated(EnumType.STRING)
-  private MarketStatus status = MarketStatus.ACTIVE;
-
-  @CreatedDate private Instant createdAt;
-  @LastModifiedDate private Instant updatedAt;
-}
-```
-
-Enable auditing:
-```java
-@Configuration
-@EnableJpaAuditing
-class JpaConfig {}
-```
-
-## Relationships and N+1 Prevention
-
-```java
-@OneToMany(mappedBy = "market", cascade = CascadeType.ALL, orphanRemoval = true)
-private List<PositionEntity> positions = new ArrayList<>();
-```
-
-- Default to lazy loading; use `JOIN FETCH` in queries when needed
-- Avoid `EAGER` on collections; use DTO projections for read paths
-
-```java
-@Query("select m from MarketEntity m left join fetch m.positions where m.id = :id")
-Optional<MarketEntity> findWithPositions(@Param("id") Long id);
-```
-
-## Repository Patterns
-
-```java
-public interface MarketRepository extends JpaRepository<MarketEntity, Long> {
-  Optional<MarketEntity> findBySlug(String slug);
-
-  @Query("select m from MarketEntity m where m.status = :status")
-  Page<MarketEntity> findByStatus(@Param("status") MarketStatus status, Pageable pageable);
-}
-```
-
-- Use projections for lightweight queries:
-```java
-public interface MarketSummary {
-  Long getId();
-  String getName();
-  MarketStatus getStatus();
-}
-Page<MarketSummary> findAllBy(Pageable pageable);
-```
-
-## Transactions
-
-- Annotate service methods with `@Transactional`
-- Use `@Transactional(readOnly = true)` for read paths to optimize
-- Choose propagation carefully; avoid long-running transactions
-
-```java
-@Transactional
-public Market updateStatus(Long id, MarketStatus status) {
-  MarketEntity entity = repo.findById(id)
-      .orElseThrow(() -> new EntityNotFoundException("Market"));
-  entity.setStatus(status);
-  return Market.from(entity);
-}
-```
-
-## Pagination
-
-```java
-PageRequest page = PageRequest.of(pageNumber, pageSize, Sort.by("createdAt").descending());
-Page<MarketEntity> markets = repo.findByStatus(MarketStatus.ACTIVE, page);
-```
-
-For cursor-like pagination, include `id > :lastId` in JPQL with ordering.
-
-## Indexing and Performance
-
-- Add indexes for common filters (`status`, `slug`, foreign keys)
-- Use composite indexes matching query patterns (`status, created_at`)
-- Avoid `select *`; project only needed columns
-- Batch writes with `saveAll` and `hibernate.jdbc.batch_size`
-
-## Connection Pooling (HikariCP)
-
-Recommended properties:
-```
-spring.datasource.hikari.maximum-pool-size=20
-spring.datasource.hikari.minimum-idle=5
-spring.datasource.hikari.connection-timeout=30000
-spring.datasource.hikari.validation-timeout=5000
-```
-
-For PostgreSQL LOB handling, add:
-```
-spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
-```
-
-## Caching
-
-- 1st-level cache is per EntityManager; avoid keeping entities across transactions
-- For read-heavy entities, consider second-level cache cautiously; validate eviction strategy
-
-## Migrations
-
-- Use Flyway or Liquibase; never rely on Hibernate auto DDL in production
-- Keep migrations idempotent and additive; avoid dropping columns without plan
-
-## Testing Data Access
-
-- Prefer `@DataJpaTest` with Testcontainers to mirror production
-- Assert SQL efficiency using logs: set `logging.level.org.hibernate.SQL=DEBUG` and `logging.level.org.hibernate.orm.jdbc.bind=TRACE` for parameter values
-
-**Remember**: Keep entities lean, queries intentional, and transactions short. Prevent N+1 with fetch strategies and projections, and index for your read/write paths.
+skill: "jpa-patterns"
+sections[13]:
+  - "\n"
+  - "# JPA/Hibernate Patterns\n\nUse for data modeling, repositories, and performance tuning in Spring Boot.\n\n"
+  - "## When to Activate\n\n- Designing JPA entities and table mappings\n- Defining relationships (@OneToMany, @ManyToOne, @ManyToMany)\n- Optimizing queries (N+1 prevention, fetch strategies, projections)\n- Configuring transactions, auditing, or soft deletes\n- Setting up pagination, sorting, or custom repository methods\n- Tuning connection pooling (HikariCP) or second-level caching\n\n"
+  - "## Entity Design\n\n```java\n@Entity\n@Table(name = \"markets\", indexes = {\n  @Index(name = \"idx_markets_slug\", columnList = \"slug\", unique = true)\n})\n@EntityListeners(AuditingEntityListener.class)\npublic class MarketEntity {\n  @Id @GeneratedValue(strategy = GenerationType.IDENTITY)\n  private Long id;\n\n  @Column(nullable = false, length = 200)\n  private String name;\n\n  @Column(nullable = false, unique = true, length = 120)\n  private String slug;\n\n  @Enumerated(EnumType.STRING)\n  private MarketStatus status = MarketStatus.ACTIVE;\n\n  @CreatedDate private Instant createdAt;\n  @LastModifiedDate private Instant updatedAt;\n}\n```\n\nEnable auditing:\n```java\n@Configuration\n@EnableJpaAuditing\nclass JpaConfig {}\n```\n\n"
+  - "## Relationships and N+1 Prevention\n\n```java\n@OneToMany(mappedBy = \"market\", cascade = CascadeType.ALL, orphanRemoval = true)\nprivate List<PositionEntity> positions = new ArrayList<>();\n```\n\n- Default to lazy loading; use `JOIN FETCH` in queries when needed\n- Avoid `EAGER` on collections; use DTO projections for read paths\n\n```java\n@Query(\"select m from MarketEntity m left join fetch m.positions where m.id = :id\")\nOptional<MarketEntity> findWithPositions(@Param(\"id\") Long id);\n```\n\n"
+  - "## Repository Patterns\n\n```java\npublic interface MarketRepository extends JpaRepository<MarketEntity, Long> {\n  Optional<MarketEntity> findBySlug(String slug);\n\n  @Query(\"select m from MarketEntity m where m.status = :status\")\n  Page<MarketEntity> findByStatus(@Param(\"status\") MarketStatus status, Pageable pageable);\n}\n```\n\n- Use projections for lightweight queries:\n```java\npublic interface MarketSummary {\n  Long getId();\n  String getName();\n  MarketStatus getStatus();\n}\nPage<MarketSummary> findAllBy(Pageable pageable);\n```\n\n"
+  - "## Transactions\n\n- Annotate service methods with `@Transactional`\n- Use `@Transactional(readOnly = true)` for read paths to optimize\n- Choose propagation carefully; avoid long-running transactions\n\n```java\n@Transactional\npublic Market updateStatus(Long id, MarketStatus status) {\n  MarketEntity entity = repo.findById(id)\n      .orElseThrow(() -> new EntityNotFoundException(\"Market\"));\n  entity.setStatus(status);\n  return Market.from(entity);\n}\n```\n\n"
+  - "## Pagination\n\n```java\nPageRequest page = PageRequest.of(pageNumber, pageSize, Sort.by(\"createdAt\").descending());\nPage<MarketEntity> markets = repo.findByStatus(MarketStatus.ACTIVE, page);\n```\n\nFor cursor-like pagination, include `id > :lastId` in JPQL with ordering.\n\n"
+  - "## Indexing and Performance\n\n- Add indexes for common filters (`status`, `slug`, foreign keys)\n- Use composite indexes matching query patterns (`status, created_at`)\n- Avoid `select *`; project only needed columns\n- Batch writes with `saveAll` and `hibernate.jdbc.batch_size`\n\n"
+  - "## Connection Pooling (HikariCP)\n\nRecommended properties:\n```\nspring.datasource.hikari.maximum-pool-size=20\nspring.datasource.hikari.minimum-idle=5\nspring.datasource.hikari.connection-timeout=30000\nspring.datasource.hikari.validation-timeout=5000\n```\n\nFor PostgreSQL LOB handling, add:\n```\nspring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true\n```\n\n"
+  - "## Caching\n\n- 1st-level cache is per EntityManager; avoid keeping entities across transactions\n- For read-heavy entities, consider second-level cache cautiously; validate eviction strategy\n\n"
+  - "## Migrations\n\n- Use Flyway or Liquibase; never rely on Hibernate auto DDL in production\n- Keep migrations idempotent and additive; avoid dropping columns without plan\n\n"
+  - "## Testing Data Access\n\n- Prefer `@DataJpaTest` with Testcontainers to mirror production\n- Assert SQL efficiency using logs: set `logging.level.org.hibernate.SQL=DEBUG` and `logging.level.org.hibernate.orm.jdbc.bind=TRACE` for parameter values\n\n**Remember**: Keep entities lean, queries intentional, and transactions short. Prevent N+1 with fetch strategies and projections, and index for your read/write paths.\n"

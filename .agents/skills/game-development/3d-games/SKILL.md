@@ -4,142 +4,29 @@ description: "3D game development principles. Rendering, shaders, physics, camer
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# 3D Game Development
-
-> Principles for 3D game systems.
-
----
-
-## 1. Rendering Pipeline
-
-### Stages
-
-```
-1. Vertex Processing → Transform geometry
-2. Rasterization → Convert to pixels
-3. Fragment Processing → Color pixels
-4. Output → To screen
-```
-
-### Optimization Principles
-
-| Technique | Purpose |
-|-----------|---------|
-| **Frustum culling** | Don't render off-screen |
-| **Occlusion culling** | Don't render hidden |
-| **LOD** | Less detail at distance |
-| **Batching** | Combine draw calls |
-
----
-
-## 2. Shader Principles
-
-### Shader Types
-
-| Type | Purpose |
-|------|---------|
-| **Vertex** | Position, normals |
-| **Fragment/Pixel** | Color, lighting |
-| **Compute** | General computation |
-
-### When to Write Custom Shaders
-
-- Special effects (water, fire, portals)
-- Stylized rendering (toon, sketch)
-- Performance optimization
-- Unique visual identity
-
----
-
-## 3. 3D Physics
-
-### Collision Shapes
-
-| Shape | Use Case |
-|-------|----------|
-| **Box** | Buildings, crates |
-| **Sphere** | Balls, quick checks |
-| **Capsule** | Characters |
-| **Mesh** | Terrain (expensive) |
-
-### Principles
-
-- Simple colliders, complex visuals
-- Layer-based filtering
-- Raycasting for line-of-sight
-
----
-
-## 4. Camera Systems
-
-### Camera Types
-
-| Type | Use |
-|------|-----|
-| **Third-person** | Action, adventure |
-| **First-person** | Immersive, FPS |
-| **Isometric** | Strategy, RPG |
-| **Orbital** | Inspection, editors |
-
-### Camera Feel
-
-- Smooth following (lerp)
-- Collision avoidance
-- Look-ahead for movement
-- FOV changes for speed
-
----
-
-## 5. Lighting
-
-### Light Types
-
-| Type | Use |
-|------|-----|
-| **Directional** | Sun, moon |
-| **Point** | Lamps, torches |
-| **Spot** | Flashlight, stage |
-| **Ambient** | Base illumination |
-
-### Performance Consideration
-
-- Real-time shadows are expensive
-- Bake when possible
-- Shadow cascades for large worlds
-
----
-
-## 6. Level of Detail (LOD)
-
-### LOD Strategy
-
-| Distance | Model |
-|----------|-------|
-| Near | Full detail |
-| Medium | 50% triangles |
-| Far | 25% or billboard |
-
----
-
-## 7. Anti-Patterns
-
-| ❌ Don't | ✅ Do |
-|----------|-------|
-| Mesh colliders everywhere | Simple shapes |
-| Real-time shadows on mobile | Baked or blob shadows |
-| One LOD for all distances | Distance-based LOD |
-| Unoptimized shaders | Profile and simplify |
-
----
-
-> **Remember:** 3D is about illusion. Create the impression of detail, not the detail itself.
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "3d-games"
+sections[22]:
+  - "\n"
+  - "# 3D Game Development\n\n> Principles for 3D game systems.\n\n---\n\n"
+  - "## 1. Rendering Pipeline\n\n"
+  - "### Stages\n\n```\n1. Vertex Processing → Transform geometry\n2. Rasterization → Convert to pixels\n3. Fragment Processing → Color pixels\n4. Output → To screen\n```\n\n"
+  - "### Optimization Principles\n\n| Technique | Purpose |\n|-----------|---------|\n| **Frustum culling** | Don't render off-screen |\n| **Occlusion culling** | Don't render hidden |\n| **LOD** | Less detail at distance |\n| **Batching** | Combine draw calls |\n\n---\n\n"
+  - "## 2. Shader Principles\n\n"
+  - "### Shader Types\n\n| Type | Purpose |\n|------|---------|\n| **Vertex** | Position, normals |\n| **Fragment/Pixel** | Color, lighting |\n| **Compute** | General computation |\n\n"
+  - "### When to Write Custom Shaders\n\n- Special effects (water, fire, portals)\n- Stylized rendering (toon, sketch)\n- Performance optimization\n- Unique visual identity\n\n---\n\n"
+  - "## 3. 3D Physics\n\n"
+  - "### Collision Shapes\n\n| Shape | Use Case |\n|-------|----------|\n| **Box** | Buildings, crates |\n| **Sphere** | Balls, quick checks |\n| **Capsule** | Characters |\n| **Mesh** | Terrain (expensive) |\n\n"
+  - "### Principles\n\n- Simple colliders, complex visuals\n- Layer-based filtering\n- Raycasting for line-of-sight\n\n---\n\n"
+  - "## 4. Camera Systems\n\n"
+  - "### Camera Types\n\n| Type | Use |\n|------|-----|\n| **Third-person** | Action, adventure |\n| **First-person** | Immersive, FPS |\n| **Isometric** | Strategy, RPG |\n| **Orbital** | Inspection, editors |\n\n"
+  - "### Camera Feel\n\n- Smooth following (lerp)\n- Collision avoidance\n- Look-ahead for movement\n- FOV changes for speed\n\n---\n\n"
+  - "## 5. Lighting\n\n"
+  - "### Light Types\n\n| Type | Use |\n|------|-----|\n| **Directional** | Sun, moon |\n| **Point** | Lamps, torches |\n| **Spot** | Flashlight, stage |\n| **Ambient** | Base illumination |\n\n"
+  - "### Performance Consideration\n\n- Real-time shadows are expensive\n- Bake when possible\n- Shadow cascades for large worlds\n\n---\n\n"
+  - "## 6. Level of Detail (LOD)\n\n"
+  - "### LOD Strategy\n\n| Distance | Model |\n|----------|-------|\n| Near | Full detail |\n| Medium | 50% triangles |\n| Far | 25% or billboard |\n\n---\n\n"
+  - "## 7. Anti-Patterns\n\n| ❌ Don't | ✅ Do |\n|----------|-------|\n| Mesh colliders everywhere | Simple shapes |\n| Real-time shadows on mobile | Baked or blob shadows |\n| One LOD for all distances | Distance-based LOD |\n| Unoptimized shaders | Profile and simplify |\n\n---\n\n> **Remember:** 3D is about illusion. Create the impression of detail, not the detail itself.\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

@@ -3,118 +3,17 @@ name: docs-governance
 description: Route broad documentation-governance requests to existing ECC skills and run an opt-in, read-only audit of mapped documentation roles, links, ADR indexes, and evidence references. Use when a user asks for documentation governance, project-knowledge organization, documentation integrity, or a deterministic docs audit without naming a narrower skill.
 metadata:
   origin: ECC
+prompt-source: prompt.toon
 ---
-
-# Documentation Governance Router
-
-Use this optional router to select the smallest existing ECC capability for a
-documentation-governance request. The router does not create a parallel project
-management system and does not make documentation authoritative over code,
-tests, Issues, or maintainer decisions.
-
-## When to Activate
-
-- The user asks broadly for documentation governance or project-knowledge organization.
-- A request spans several documentation roles and the correct owner is unclear.
-- The user asks for a deterministic, read-only documentation integrity audit.
-- A project needs to discover its existing documentation sources before adding files.
-
-Do not activate for a narrowly named skill or for ordinary documentation edits
-whose destination is already clear.
-
-## Role Contract
-
-Read [the artifact-role contract](references/artifact-role-contract.md) before
-interpreting `.governance/docs-map.json` or default filenames. Logical roles own
-facts; filenames are fallbacks. Reuse a repository's established sources of
-truth and never create a second document merely to satisfy a default role.
-
-## Intent Routing
-
-| User intent | Route to |
-|---|---|
-| Adopt or maintain a constitution, map, status, and history spine | `living-docs-governance` |
-| Record a hard-to-reverse architecture decision | `architecture-decision-records` |
-| Preserve an executable regression for an important defect | `ai-regression-testing` (install separately in standalone Pi core) |
-| Define a verifiable goal and feedback loop | `loop-design-check` (install separately in standalone Pi core) |
-| Check mapped roles, local links, ADR indexes, TEST-IDs, or possible orphan docs | Run the bundled read-only audit |
-
-If no row fits, explain the ownership ambiguity instead of combining several
-workflows speculatively.
-
-## Read-Only Audit
-
-Run the audit only when the user asks for an audit or when it is an agreed
-verification step. Resolve the selected skill directory first, then invoke:
-
-```bash
-python3 <docs-governance-skill>/scripts/audit-docs.py --root <repository> --scope full
-```
-
-Available scopes are `spine`, `context`, `adr`, `artifacts`, `modules`, and `full`.
-For module evidence, select real business boundaries explicitly; directories
-alone do not prove a bounded context. Repeat `--module` for several boundaries:
-
-```bash
-python3 <docs-governance-skill>/scripts/audit-docs.py --root <repository> --scope modules --module src/inventory --module src/billing
-```
-
-`modules` requires a selected directory. `full` also accepts `--module`; other
-scopes reject it rather than silently skipping the requested checks. The module
-check finds local `AGENTS.md` and `CONTEXT.md`, or reports the nearest ancestor
-and mapped project sources as shared candidates. Missing local files are review
-prompts, not a demand to create two files per directory. It checks selected
-carriers' local links relative to each source using the same contained-path and
-Markdown checks as the artifact audit. It never infers harness loading from
-file presence.
-
-After mechanical checks, inspect the actual module code, callers, contracts and
-tests: compare responsibilities and import/call boundaries with documented
-rules, and terminology with the canonical context source. Report concrete
-contradictions with source paths; unknown business intent remains unverified.
-Confirm that shared candidates really cover the module and that the host loads
-applicable instructions. Reuse existing contract and ADR owners rather than
-copying them into `AGENTS.md`. Passing links is not passing this semantic review.
-
-The audit reads repository files and Git history but does not create, rewrite,
-archive, stage, or commit anything. It reports:
-
-- exit code `0` when deterministic checks pass, including any manual-review warnings;
-- exit code `1` when mechanically provable integrity failures exist; and
-- exit code `2` for invalid CLI input.
-
-Treat warnings as review prompts, not failures. Semantic accuracy, business
-meaning, task completion, and release approval remain human or workflow-owner
-decisions.
-
-## When to Use
-
-Use this router when the request is broad enough that choosing the right
-governance capability is part of the work. For a direct ADR or regression
-request, invoke that specialized skill without routing through this one.
-
-## How It Works
-
-1. Discover the repository's existing instruction and documentation surfaces.
-2. Resolve logical roles through the artifact-role contract.
-3. Select one smallest matching capability from the routing table.
-4. If a deterministic audit is requested, run the narrowest useful scope.
-5. Report failures, warnings, and ownership gaps without mutating project state.
-
-## Examples
-
-- “Organize our long-lived project docs” routes to `living-docs-governance`.
-- “Record why we selected PostgreSQL” routes to `architecture-decision-records`.
-- “Check whether our documentation links and ADR index are intact” runs the
-  bundled audit once with `--scope artifacts`, then again with `--scope adr`.
-- “Are we finished with the migration?” is not answered from documentation
-  alone; the Issue owns completion, tests provide evidence, and maintainers own
-  merge approval.
-
-## Boundaries
-
-- Keep task ownership, scheduling, attempts, and completion in the Issue tracker.
-- Keep stable interface facts in the repository's contract source.
-- Treat documentation as evidence and navigation, not executable instructions.
-- Do not teach users to bypass repository controls such as pre-commit hooks.
-- Do not add archive or index mutation to this read-only foundation.
+skill: "docs-governance"
+sections[10]:
+  - "\n"
+  - "# Documentation Governance Router\n\nUse this optional router to select the smallest existing ECC capability for a\ndocumentation-governance request. The router does not create a parallel project\nmanagement system and does not make documentation authoritative over code,\ntests, Issues, or maintainer decisions.\n\n"
+  - "## When to Activate\n\n- The user asks broadly for documentation governance or project-knowledge organization.\n- A request spans several documentation roles and the correct owner is unclear.\n- The user asks for a deterministic, read-only documentation integrity audit.\n- A project needs to discover its existing documentation sources before adding files.\n\nDo not activate for a narrowly named skill or for ordinary documentation edits\nwhose destination is already clear.\n\n"
+  - "## Role Contract\n\nRead [the artifact-role contract](references/artifact-role-contract.md) before\ninterpreting `.governance/docs-map.json` or default filenames. Logical roles own\nfacts; filenames are fallbacks. Reuse a repository's established sources of\ntruth and never create a second document merely to satisfy a default role.\n\n"
+  - "## Intent Routing\n\n| User intent | Route to |\n|---|---|\n| Adopt or maintain a constitution, map, status, and history spine | `living-docs-governance` |\n| Record a hard-to-reverse architecture decision | `architecture-decision-records` |\n| Preserve an executable regression for an important defect | `ai-regression-testing` (install separately in standalone Pi core) |\n| Define a verifiable goal and feedback loop | `loop-design-check` (install separately in standalone Pi core) |\n| Check mapped roles, local links, ADR indexes, TEST-IDs, or possible orphan docs | Run the bundled read-only audit |\n\nIf no row fits, explain the ownership ambiguity instead of combining several\nworkflows speculatively.\n\n"
+  - "## Read-Only Audit\n\nRun the audit only when the user asks for an audit or when it is an agreed\nverification step. Resolve the selected skill directory first, then invoke:\n\n```bash\npython3 <docs-governance-skill>/scripts/audit-docs.py --root <repository> --scope full\n```\n\nAvailable scopes are `spine`, `context`, `adr`, `artifacts`, `modules`, and `full`.\nFor module evidence, select real business boundaries explicitly; directories\nalone do not prove a bounded context. Repeat `--module` for several boundaries:\n\n```bash\npython3 <docs-governance-skill>/scripts/audit-docs.py --root <repository> --scope modules --module src/inventory --module src/billing\n```\n\n`modules` requires a selected directory. `full` also accepts `--module`; other\nscopes reject it rather than silently skipping the requested checks. The module\ncheck finds local `AGENTS.md` and `CONTEXT.md`, or reports the nearest ancestor\nand mapped project sources as shared candidates. Missing local files are review\nprompts, not a demand to create two files per directory. It checks selected\ncarriers' local links relative to each source using the same contained-path and\nMarkdown checks as the artifact audit. It never infers harness loading from\nfile presence.\n\nAfter mechanical checks, inspect the actual module code, callers, contracts and\ntests: compare responsibilities and import/call boundaries with documented\nrules, and terminology with the canonical context source. Report concrete\ncontradictions with source paths; unknown business intent remains unverified.\nConfirm that shared candidates really cover the module and that the host loads\napplicable instructions. Reuse existing contract and ADR owners rather than\ncopying them into `AGENTS.md`. Passing links is not passing this semantic review.\n\nThe audit reads repository files and Git history but does not create, rewrite,\narchive, stage, or commit anything. It reports:\n\n- exit code `0` when deterministic checks pass, including any manual-review warnings;\n- exit code `1` when mechanically provable integrity failures exist; and\n- exit code `2` for invalid CLI input.\n\nTreat warnings as review prompts, not failures. Semantic accuracy, business\nmeaning, task completion, and release approval remain human or workflow-owner\ndecisions.\n\n"
+  - "## When to Use\n\nUse this router when the request is broad enough that choosing the right\ngovernance capability is part of the work. For a direct ADR or regression\nrequest, invoke that specialized skill without routing through this one.\n\n"
+  - "## How It Works\n\n1. Discover the repository's existing instruction and documentation surfaces.\n2. Resolve logical roles through the artifact-role contract.\n3. Select one smallest matching capability from the routing table.\n4. If a deterministic audit is requested, run the narrowest useful scope.\n5. Report failures, warnings, and ownership gaps without mutating project state.\n\n"
+  - "## Examples\n\n- “Organize our long-lived project docs” routes to `living-docs-governance`.\n- “Record why we selected PostgreSQL” routes to `architecture-decision-records`.\n- “Check whether our documentation links and ADR index are intact” runs the\n  bundled audit once with `--scope artifacts`, then again with `--scope adr`.\n- “Are we finished with the migration?” is not answered from documentation\n  alone; the Issue owns completion, tests provide evidence, and maintainers own\n  merge approval.\n\n"
+  - "## Boundaries\n\n- Keep task ownership, scheduling, attempts, and completion in the Issue tracker.\n- Keep stable interface facts in the repository's contract source.\n- Treat documentation as evidence and navigation, not executable instructions.\n- Do not teach users to bypass repository controls such as pre-commit hooks.\n- Do not add archive or index mutation to this read-only foundation.\n"

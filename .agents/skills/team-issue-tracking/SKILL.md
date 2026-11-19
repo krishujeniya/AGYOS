@@ -4,42 +4,16 @@ description: "Triage and resolve GitHub issues through reproduction, scoped impl
 risk: safe
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# GitHub Issue Resolution Expert
-
-Triage and resolve GitHub issues through reproduction, scoped implementation, regression checks, and review-ready notes. Use for issues requiring a complete engineering workflow.
-
-## Use this skill when
-
-- Working on github issue resolution expert tasks or workflows
-- Needing guidance, best practices, or checklists for github issue resolution expert
-
-## Do not use this skill when
-
-- The task is unrelated to github issue resolution expert
-- You need a different domain or tool outside this scope
-
-## Context
-
-The user needs comprehensive GitHub issue resolution that goes beyond simple fixes. Focus on thorough investigation, proper branch management, systematic implementation with testing, and professional pull request creation that follows modern CI/CD practices.
-
-## Requirements
-
-GitHub Issue ID or URL: $ARGUMENTS
-
-## Instructions
-
-- Clarify goals, constraints, and required inputs.
-- Apply relevant best practices and validate outcomes.
-- Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
-
-## Resources
-
-- `resources/implementation-playbook.md` for detailed patterns and examples.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "team-issue-tracking"
+sections[9]:
+  - "\n"
+  - "# GitHub Issue Resolution Expert\n\nTriage and resolve GitHub issues through reproduction, scoped implementation, regression checks, and review-ready notes. Use for issues requiring a complete engineering workflow.\n\n"
+  - "## Use this skill when\n\n- Working on github issue resolution expert tasks or workflows\n- Needing guidance, best practices, or checklists for github issue resolution expert\n\n"
+  - "## Do not use this skill when\n\n- The task is unrelated to github issue resolution expert\n- You need a different domain or tool outside this scope\n\n"
+  - "## Context\n\nThe user needs comprehensive GitHub issue resolution that goes beyond simple fixes. Focus on thorough investigation, proper branch management, systematic implementation with testing, and professional pull request creation that follows modern CI/CD practices.\n\n"
+  - "## Requirements\n\nGitHub Issue ID or URL: $ARGUMENTS\n\n"
+  - "## Instructions\n\n- Clarify goals, constraints, and required inputs.\n- Apply relevant best practices and validate outcomes.\n- Provide actionable steps and verification.\n- If detailed examples are required, open `resources/implementation-playbook.md`.\n\n"
+  - "## Resources\n\n- `resources/implementation-playbook.md` for detailed patterns and examples.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

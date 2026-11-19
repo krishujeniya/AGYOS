@@ -4,257 +4,30 @@ description: Azure Monitor Query SDK for Python. Use for querying Log Analytics 
 risk: unknown
 source: community
 date_added: '2026-02-27'
+prompt-source: prompt.toon
 ---
-
-# Azure Monitor Query SDK for Python
-
-Query logs and metrics from Azure Monitor and Log Analytics workspaces.
-
-## Installation
-
-```bash
-pip install azure-monitor-query
-```
-
-## Environment Variables
-
-```bash
-# Log Analytics
-AZURE_LOG_ANALYTICS_WORKSPACE_ID=<workspace-id>
-
-# Metrics
-AZURE_METRICS_RESOURCE_URI=/subscriptions/<sub>/resourceGroups/<rg>/providers/<provider>/<type>/<name>
-```
-
-## Authentication
-
-```python
-from azure.identity import DefaultAzureCredential
-
-credential = DefaultAzureCredential()
-```
-
-## Logs Query Client
-
-### Basic Query
-
-```python
-from azure.monitor.query import LogsQueryClient
-from datetime import timedelta
-
-client = LogsQueryClient(credential)
-
-query = """
-AppRequests
-| where TimeGenerated > ago(1h)
-| summarize count() by bin(TimeGenerated, 5m), ResultCode
-| order by TimeGenerated desc
-"""
-
-response = client.query_workspace(
-    workspace_id=os.environ["AZURE_LOG_ANALYTICS_WORKSPACE_ID"],
-    query=query,
-    timespan=timedelta(hours=1)
-)
-
-for table in response.tables:
-    for row in table.rows:
-        print(row)
-```
-
-### Query with Time Range
-
-```python
-from datetime import datetime, timezone
-
-response = client.query_workspace(
-    workspace_id=workspace_id,
-    query="AppRequests | take 10",
-    timespan=(
-        datetime(2024, 1, 1, tzinfo=timezone.utc),
-        datetime(2024, 1, 2, tzinfo=timezone.utc)
-    )
-)
-```
-
-### Convert to DataFrame
-
-```python
-import pandas as pd
-
-response = client.query_workspace(workspace_id, query, timespan=timedelta(hours=1))
-
-if response.tables:
-    table = response.tables[0]
-    df = pd.DataFrame(data=table.rows, columns=[col.name for col in table.columns])
-    print(df.head())
-```
-
-### Batch Query
-
-```python
-from azure.monitor.query import LogsBatchQuery
-
-queries = [
-    LogsBatchQuery(workspace_id=workspace_id, query="AppRequests | take 5", timespan=timedelta(hours=1)),
-    LogsBatchQuery(workspace_id=workspace_id, query="AppExceptions | take 5", timespan=timedelta(hours=1))
-]
-
-responses = client.query_batch(queries)
-
-for response in responses:
-    if response.tables:
-        print(f"Rows: {len(response.tables[0].rows)}")
-```
-
-### Handle Partial Results
-
-```python
-from azure.monitor.query import LogsQueryStatus
-
-response = client.query_workspace(workspace_id, query, timespan=timedelta(hours=24))
-
-if response.status == LogsQueryStatus.PARTIAL:
-    print(f"Partial results: {response.partial_error}")
-elif response.status == LogsQueryStatus.FAILURE:
-    print(f"Query failed: {response.partial_error}")
-```
-
-## Metrics Query Client
-
-### Query Resource Metrics
-
-```python
-from azure.monitor.query import MetricsQueryClient
-from datetime import timedelta
-
-metrics_client = MetricsQueryClient(credential)
-
-response = metrics_client.query_resource(
-    resource_uri=os.environ["AZURE_METRICS_RESOURCE_URI"],
-    metric_names=["Percentage CPU", "Network In Total"],
-    timespan=timedelta(hours=1),
-    granularity=timedelta(minutes=5)
-)
-
-for metric in response.metrics:
-    print(f"{metric.name}:")
-    for time_series in metric.timeseries:
-        for data in time_series.data:
-            print(f"  {data.timestamp}: {data.average}")
-```
-
-### Aggregations
-
-```python
-from azure.monitor.query import MetricAggregationType
-
-response = metrics_client.query_resource(
-    resource_uri=resource_uri,
-    metric_names=["Requests"],
-    timespan=timedelta(hours=1),
-    aggregations=[
-        MetricAggregationType.AVERAGE,
-        MetricAggregationType.MAXIMUM,
-        MetricAggregationType.MINIMUM,
-        MetricAggregationType.COUNT
-    ]
-)
-```
-
-### Filter by Dimension
-
-```python
-response = metrics_client.query_resource(
-    resource_uri=resource_uri,
-    metric_names=["Requests"],
-    timespan=timedelta(hours=1),
-    filter="ApiName eq 'GetBlob'"
-)
-```
-
-### List Metric Definitions
-
-```python
-definitions = metrics_client.list_metric_definitions(resource_uri)
-for definition in definitions:
-    print(f"{definition.name}: {definition.unit}")
-```
-
-### List Metric Namespaces
-
-```python
-namespaces = metrics_client.list_metric_namespaces(resource_uri)
-for ns in namespaces:
-    print(ns.fully_qualified_namespace)
-```
-
-## Async Clients
-
-```python
-from azure.monitor.query.aio import LogsQueryClient, MetricsQueryClient
-from azure.identity.aio import DefaultAzureCredential
-
-async def query_logs():
-    credential = DefaultAzureCredential()
-    client = LogsQueryClient(credential)
-    
-    response = await client.query_workspace(
-        workspace_id=workspace_id,
-        query="AppRequests | take 10",
-        timespan=timedelta(hours=1)
-    )
-    
-    await client.close()
-    await credential.close()
-    return response
-```
-
-## Common Kusto Queries
-
-```kusto
-// Requests by status code
-AppRequests
-| summarize count() by ResultCode
-| order by count_ desc
-
-// Exceptions over time
-AppExceptions
-| summarize count() by bin(TimeGenerated, 1h)
-
-// Slow requests
-AppRequests
-| where DurationMs > 1000
-| project TimeGenerated, Name, DurationMs
-| order by DurationMs desc
-
-// Top errors
-AppExceptions
-| summarize count() by ExceptionType
-| top 10 by count_
-```
-
-## Client Types
-
-| Client | Purpose |
-|--------|---------|
-| `LogsQueryClient` | Query Log Analytics workspaces |
-| `MetricsQueryClient` | Query Azure Monitor metrics |
-
-## Best Practices
-
-1. **Use timedelta** for relative time ranges
-2. **Handle partial results** for large queries
-3. **Use batch queries** when running multiple queries
-4. **Set appropriate granularity** for metrics to reduce data points
-5. **Convert to DataFrame** for easier data analysis
-6. **Use aggregations** to summarize metric data
-7. **Filter by dimensions** to narrow metric results
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "azure-monitor-query-py"
+sections[23]:
+  - "\n"
+  - "# Azure Monitor Query SDK for Python\n\nQuery logs and metrics from Azure Monitor and Log Analytics workspaces.\n\n"
+  - "## Installation\n\n```bash\npip install azure-monitor-query\n```\n\n"
+  - "## Environment Variables\n\n```bash\n# Log Analytics\nAZURE_LOG_ANALYTICS_WORKSPACE_ID=<workspace-id>\n\n# Metrics\nAZURE_METRICS_RESOURCE_URI=/subscriptions/<sub>/resourceGroups/<rg>/providers/<provider>/<type>/<name>\n```\n\n"
+  - "## Authentication\n\n```python\nfrom azure.identity import DefaultAzureCredential\n\ncredential = DefaultAzureCredential()\n```\n\n"
+  - "## Logs Query Client\n\n"
+  - "### Basic Query\n\n```python\nfrom azure.monitor.query import LogsQueryClient\nfrom datetime import timedelta\n\nclient = LogsQueryClient(credential)\n\nquery = \"\"\"\nAppRequests\n| where TimeGenerated > ago(1h)\n| summarize count() by bin(TimeGenerated, 5m), ResultCode\n| order by TimeGenerated desc\n\"\"\"\n\nresponse = client.query_workspace(\n    workspace_id=os.environ[\"AZURE_LOG_ANALYTICS_WORKSPACE_ID\"],\n    query=query,\n    timespan=timedelta(hours=1)\n)\n\nfor table in response.tables:\n    for row in table.rows:\n        print(row)\n```\n\n"
+  - "### Query with Time Range\n\n```python\nfrom datetime import datetime, timezone\n\nresponse = client.query_workspace(\n    workspace_id=workspace_id,\n    query=\"AppRequests | take 10\",\n    timespan=(\n        datetime(2024, 1, 1, tzinfo=timezone.utc),\n        datetime(2024, 1, 2, tzinfo=timezone.utc)\n    )\n)\n```\n\n"
+  - "### Convert to DataFrame\n\n```python\nimport pandas as pd\n\nresponse = client.query_workspace(workspace_id, query, timespan=timedelta(hours=1))\n\nif response.tables:\n    table = response.tables[0]\n    df = pd.DataFrame(data=table.rows, columns=[col.name for col in table.columns])\n    print(df.head())\n```\n\n"
+  - "### Batch Query\n\n```python\nfrom azure.monitor.query import LogsBatchQuery\n\nqueries = [\n    LogsBatchQuery(workspace_id=workspace_id, query=\"AppRequests | take 5\", timespan=timedelta(hours=1)),\n    LogsBatchQuery(workspace_id=workspace_id, query=\"AppExceptions | take 5\", timespan=timedelta(hours=1))\n]\n\nresponses = client.query_batch(queries)\n\nfor response in responses:\n    if response.tables:\n        print(f\"Rows: {len(response.tables[0].rows)}\")\n```\n\n"
+  - "### Handle Partial Results\n\n```python\nfrom azure.monitor.query import LogsQueryStatus\n\nresponse = client.query_workspace(workspace_id, query, timespan=timedelta(hours=24))\n\nif response.status == LogsQueryStatus.PARTIAL:\n    print(f\"Partial results: {response.partial_error}\")\nelif response.status == LogsQueryStatus.FAILURE:\n    print(f\"Query failed: {response.partial_error}\")\n```\n\n"
+  - "## Metrics Query Client\n\n"
+  - "### Query Resource Metrics\n\n```python\nfrom azure.monitor.query import MetricsQueryClient\nfrom datetime import timedelta\n\nmetrics_client = MetricsQueryClient(credential)\n\nresponse = metrics_client.query_resource(\n    resource_uri=os.environ[\"AZURE_METRICS_RESOURCE_URI\"],\n    metric_names=[\"Percentage CPU\", \"Network In Total\"],\n    timespan=timedelta(hours=1),\n    granularity=timedelta(minutes=5)\n)\n\nfor metric in response.metrics:\n    print(f\"{metric.name}:\")\n    for time_series in metric.timeseries:\n        for data in time_series.data:\n            print(f\"  {data.timestamp}: {data.average}\")\n```\n\n"
+  - "### Aggregations\n\n```python\nfrom azure.monitor.query import MetricAggregationType\n\nresponse = metrics_client.query_resource(\n    resource_uri=resource_uri,\n    metric_names=[\"Requests\"],\n    timespan=timedelta(hours=1),\n    aggregations=[\n        MetricAggregationType.AVERAGE,\n        MetricAggregationType.MAXIMUM,\n        MetricAggregationType.MINIMUM,\n        MetricAggregationType.COUNT\n    ]\n)\n```\n\n"
+  - "### Filter by Dimension\n\n```python\nresponse = metrics_client.query_resource(\n    resource_uri=resource_uri,\n    metric_names=[\"Requests\"],\n    timespan=timedelta(hours=1),\n    filter=\"ApiName eq 'GetBlob'\"\n)\n```\n\n"
+  - "### List Metric Definitions\n\n```python\ndefinitions = metrics_client.list_metric_definitions(resource_uri)\nfor definition in definitions:\n    print(f\"{definition.name}: {definition.unit}\")\n```\n\n"
+  - "### List Metric Namespaces\n\n```python\nnamespaces = metrics_client.list_metric_namespaces(resource_uri)\nfor ns in namespaces:\n    print(ns.fully_qualified_namespace)\n```\n\n"
+  - "## Async Clients\n\n```python\nfrom azure.monitor.query.aio import LogsQueryClient, MetricsQueryClient\nfrom azure.identity.aio import DefaultAzureCredential\n\nasync def query_logs():\n    credential = DefaultAzureCredential()\n    client = LogsQueryClient(credential)\n    \n    response = await client.query_workspace(\n        workspace_id=workspace_id,\n        query=\"AppRequests | take 10\",\n        timespan=timedelta(hours=1)\n    )\n    \n    await client.close()\n    await credential.close()\n    return response\n```\n\n"
+  - "## Common Kusto Queries\n\n```kusto\n// Requests by status code\nAppRequests\n| summarize count() by ResultCode\n| order by count_ desc\n\n// Exceptions over time\nAppExceptions\n| summarize count() by bin(TimeGenerated, 1h)\n\n// Slow requests\nAppRequests\n| where DurationMs > 1000\n| project TimeGenerated, Name, DurationMs\n| order by DurationMs desc\n\n// Top errors\nAppExceptions\n| summarize count() by ExceptionType\n| top 10 by count_\n```\n\n"
+  - "## Client Types\n\n| Client | Purpose |\n|--------|---------|\n| `LogsQueryClient` | Query Log Analytics workspaces |\n| `MetricsQueryClient` | Query Azure Monitor metrics |\n\n"
+  - "## Best Practices\n\n1. **Use timedelta** for relative time ranges\n2. **Handle partial results** for large queries\n3. **Use batch queries** when running multiple queries\n4. **Set appropriate granularity** for metrics to reduce data points\n5. **Convert to DataFrame** for easier data analysis\n6. **Use aggregations** to summarize metric data\n7. **Filter by dimensions** to narrow metric results\n\n"
+  - "## When to Use\nThis skill is applicable to execute the workflow or actions described in the overview.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

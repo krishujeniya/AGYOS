@@ -4,47 +4,15 @@ description: "Optimize vector index performance for latency, recall, and memory.
 risk: safe
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-# Vector Index Tuning
-
-Guide to optimizing vector indexes for production performance.
-
-## Use this skill when
-
-- Tuning HNSW parameters
-- Implementing quantization
-- Optimizing memory usage
-- Reducing search latency
-- Balancing recall vs speed
-- Scaling to billions of vectors
-
-## Do not use this skill when
-
-- You only need exact search on small datasets (use a flat index)
-- You lack workload metrics or ground truth to validate recall
-- You need end-to-end retrieval system design beyond index tuning
-
-## Instructions
-
-1. Gather workload targets (latency, recall, QPS), data size, and memory budget.
-2. Choose an index type and establish a baseline with default parameters.
-3. Benchmark parameter sweeps using real queries and track recall, latency, and memory.
-4. Validate changes on a staging dataset before rolling out to production.
-
-Refer to `resources/implementation-playbook.md` for detailed patterns, checklists, and templates.
-
-## Safety
-
-- Avoid reindexing in production without a rollback plan.
-- Validate changes under realistic load before applying globally.
-- Track recall regressions and revert if quality drops.
-
-## Resources
-
-- `resources/implementation-playbook.md` for detailed patterns, checklists, and templates.
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "vector-index-tuning"
+sections[8]:
+  - "\n"
+  - "# Vector Index Tuning\n\nGuide to optimizing vector indexes for production performance.\n\n"
+  - "## Use this skill when\n\n- Tuning HNSW parameters\n- Implementing quantization\n- Optimizing memory usage\n- Reducing search latency\n- Balancing recall vs speed\n- Scaling to billions of vectors\n\n"
+  - "## Do not use this skill when\n\n- You only need exact search on small datasets (use a flat index)\n- You lack workload metrics or ground truth to validate recall\n- You need end-to-end retrieval system design beyond index tuning\n\n"
+  - "## Instructions\n\n1. Gather workload targets (latency, recall, QPS), data size, and memory budget.\n2. Choose an index type and establish a baseline with default parameters.\n3. Benchmark parameter sweeps using real queries and track recall, latency, and memory.\n4. Validate changes on a staging dataset before rolling out to production.\n\nRefer to `resources/implementation-playbook.md` for detailed patterns, checklists, and templates.\n\n"
+  - "## Safety\n\n- Avoid reindexing in production without a rollback plan.\n- Validate changes under realistic load before applying globally.\n- Track recall regressions and revert if quality drops.\n\n"
+  - "## Resources\n\n- `resources/implementation-playbook.md` for detailed patterns, checklists, and templates.\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

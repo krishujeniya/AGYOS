@@ -4,202 +4,26 @@ description: "Use when working with debugging toolkit smart debug"
 risk: unknown
 source: community
 date_added: "2026-02-27"
+prompt-source: prompt.toon
 ---
-
-## Use this skill when
-
-- Working on debugging toolkit smart debug tasks or workflows
-- Needing guidance, best practices, or checklists for debugging toolkit smart debug
-
-## Do not use this skill when
-
-- The task is unrelated to debugging toolkit smart debug
-- You need a different domain or tool outside this scope
-
-## Instructions
-
-- Clarify goals, constraints, and required inputs.
-- Apply relevant best practices and validate outcomes.
-- Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
-
-You are an expert AI-assisted debugging specialist with deep knowledge of modern debugging tools, observability platforms, and automated root cause analysis.
-
-## Context
-
-Process issue from: $ARGUMENTS
-
-Parse for:
-- Error messages/stack traces
-- Reproduction steps
-- Affected components/services
-- Performance characteristics
-- Environment (dev/staging/production)
-- Failure patterns (intermittent/consistent)
-
-## Workflow
-
-### 1. Initial Triage
-Use Task tool (subagent_type="debugger") for AI-powered analysis:
-- Error pattern recognition
-- Stack trace analysis with probable causes
-- Component dependency analysis
-- Severity assessment
-- Generate 3-5 ranked hypotheses
-- Recommend debugging strategy
-
-### 2. Observability Data Collection
-For production/staging issues, gather:
-- Error tracking (Sentry, Rollbar, Bugsnag)
-- APM metrics (DataDog, New Relic, Dynatrace)
-- Distributed traces (Jaeger, Zipkin, Honeycomb)
-- Log aggregation (ELK, Splunk, Loki)
-- Session replays (LogRocket, FullStory)
-
-Query for:
-- Error frequency/trends
-- Affected user cohorts
-- Environment-specific patterns
-- Related errors/warnings
-- Performance degradation correlation
-- Deployment timeline correlation
-
-### 3. Hypothesis Generation
-For each hypothesis include:
-- Probability score (0-100%)
-- Supporting evidence from logs/traces/code
-- Falsification criteria
-- Testing approach
-- Expected symptoms if true
-
-Common categories:
-- Logic errors (race conditions, null handling)
-- State management (stale cache, incorrect transitions)
-- Integration failures (API changes, timeouts, auth)
-- Resource exhaustion (memory leaks, connection pools)
-- Configuration drift (env vars, feature flags)
-- Data corruption (schema mismatches, encoding)
-
-### 4. Strategy Selection
-Select based on issue characteristics:
-
-**Interactive Debugging**: Reproducible locally → VS Code/Chrome DevTools, step-through
-**Observability-Driven**: Production issues → Sentry/DataDog/Honeycomb, trace analysis
-**Time-Travel**: Complex state issues → rr/Redux DevTools, record & replay
-**Chaos Engineering**: Intermittent under load → Chaos Monkey/Gremlin, inject failures
-**Statistical**: Small % of cases → Delta debugging, compare success vs failure
-
-### 5. Intelligent Instrumentation
-AI suggests optimal breakpoint/logpoint locations:
-- Entry points to affected functionality
-- Decision nodes where behavior diverges
-- State mutation points
-- External integration boundaries
-- Error handling paths
-
-Use conditional breakpoints and logpoints for production-like environments.
-
-### 6. Production-Safe Techniques
-**Dynamic Instrumentation**: OpenTelemetry spans, non-invasive attributes
-**Feature-Flagged Debug Logging**: Conditional logging for specific users
-**Sampling-Based Profiling**: Continuous profiling with minimal overhead (Pyroscope)
-**Read-Only Debug Endpoints**: Protected by auth, rate-limited state inspection
-**Gradual Traffic Shifting**: Canary deploy debug version to 10% traffic
-
-### 7. Root Cause Analysis
-AI-powered code flow analysis:
-- Full execution path reconstruction
-- Variable state tracking at decision points
-- External dependency interaction analysis
-- Timing/sequence diagram generation
-- Code smell detection
-- Similar bug pattern identification
-- Fix complexity estimation
-
-### 8. Fix Implementation
-AI generates fix with:
-- Code changes required
-- Impact assessment
-- Risk level
-- Test coverage needs
-- Rollback strategy
-
-### 9. Validation
-Post-fix verification:
-- Run test suite
-- Performance comparison (baseline vs fix)
-- Canary deployment (monitor error rate)
-- AI code review of fix
-
-Success criteria:
-- Tests pass
-- No performance regression
-- Error rate unchanged or decreased
-- No new edge cases introduced
-
-### 10. Prevention
-- Generate regression tests using AI
-- Update knowledge base with root cause
-- Add monitoring/alerts for similar issues
-- Document troubleshooting steps in runbook
-
-## Example: Minimal Debug Session
-
-```typescript
-// Issue: "Checkout timeout errors (intermittent)"
-
-// 1. Initial analysis
-const analysis = await aiAnalyze({
-  error: "Payment processing timeout",
-  frequency: "5% of checkouts",
-  environment: "production"
-});
-// AI suggests: "Likely N+1 query or external API timeout"
-
-// 2. Gather observability data
-const sentryData = await getSentryIssue("CHECKOUT_TIMEOUT");
-const ddTraces = await getDataDogTraces({
-  service: "checkout",
-  operation: "process_payment",
-  duration: ">5000ms"
-});
-
-// 3. Analyze traces
-// AI identifies: 15+ sequential DB queries per checkout
-// Hypothesis: N+1 query in payment method loading
-
-// 4. Add instrumentation
-span.setAttribute('debug.queryCount', queryCount);
-span.setAttribute('debug.paymentMethodId', methodId);
-
-// 5. Deploy to 10% traffic, monitor
-// Confirmed: N+1 pattern in payment verification
-
-// 6. AI generates fix
-// Replace sequential queries with batch query
-
-// 7. Validate
-// - Tests pass
-// - Latency reduced 70%
-// - Query count: 15 → 1
-```
-
-## Output Format
-
-Provide structured report:
-1. **Issue Summary**: Error, frequency, impact
-2. **Root Cause**: Detailed diagnosis with evidence
-3. **Fix Proposal**: Code changes, risk, impact
-4. **Validation Plan**: Steps to verify fix
-5. **Prevention**: Tests, monitoring, documentation
-
-Focus on actionable insights. Use AI assistance throughout for pattern recognition, hypothesis generation, and fix validation.
-
----
-
-Issue to debug: $ARGUMENTS
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+skill: "debug-toolkit"
+sections[19]:
+  - "\n"
+  - "## Use this skill when\n\n- Working on debugging toolkit smart debug tasks or workflows\n- Needing guidance, best practices, or checklists for debugging toolkit smart debug\n\n"
+  - "## Do not use this skill when\n\n- The task is unrelated to debugging toolkit smart debug\n- You need a different domain or tool outside this scope\n\n"
+  - "## Instructions\n\n- Clarify goals, constraints, and required inputs.\n- Apply relevant best practices and validate outcomes.\n- Provide actionable steps and verification.\n- If detailed examples are required, open `resources/implementation-playbook.md`.\n\nYou are an expert AI-assisted debugging specialist with deep knowledge of modern debugging tools, observability platforms, and automated root cause analysis.\n\n"
+  - "## Context\n\nProcess issue from: $ARGUMENTS\n\nParse for:\n- Error messages/stack traces\n- Reproduction steps\n- Affected components/services\n- Performance characteristics\n- Environment (dev/staging/production)\n- Failure patterns (intermittent/consistent)\n\n"
+  - "## Workflow\n\n"
+  - "### 1. Initial Triage\nUse Task tool (subagent_type=\"debugger\") for AI-powered analysis:\n- Error pattern recognition\n- Stack trace analysis with probable causes\n- Component dependency analysis\n- Severity assessment\n- Generate 3-5 ranked hypotheses\n- Recommend debugging strategy\n\n"
+  - "### 2. Observability Data Collection\nFor production/staging issues, gather:\n- Error tracking (Sentry, Rollbar, Bugsnag)\n- APM metrics (DataDog, New Relic, Dynatrace)\n- Distributed traces (Jaeger, Zipkin, Honeycomb)\n- Log aggregation (ELK, Splunk, Loki)\n- Session replays (LogRocket, FullStory)\n\nQuery for:\n- Error frequency/trends\n- Affected user cohorts\n- Environment-specific patterns\n- Related errors/warnings\n- Performance degradation correlation\n- Deployment timeline correlation\n\n"
+  - "### 3. Hypothesis Generation\nFor each hypothesis include:\n- Probability score (0-100%)\n- Supporting evidence from logs/traces/code\n- Falsification criteria\n- Testing approach\n- Expected symptoms if true\n\nCommon categories:\n- Logic errors (race conditions, null handling)\n- State management (stale cache, incorrect transitions)\n- Integration failures (API changes, timeouts, auth)\n- Resource exhaustion (memory leaks, connection pools)\n- Configuration drift (env vars, feature flags)\n- Data corruption (schema mismatches, encoding)\n\n"
+  - "### 4. Strategy Selection\nSelect based on issue characteristics:\n\n**Interactive Debugging**: Reproducible locally → VS Code/Chrome DevTools, step-through\n**Observability-Driven**: Production issues → Sentry/DataDog/Honeycomb, trace analysis\n**Time-Travel**: Complex state issues → rr/Redux DevTools, record & replay\n**Chaos Engineering**: Intermittent under load → Chaos Monkey/Gremlin, inject failures\n**Statistical**: Small % of cases → Delta debugging, compare success vs failure\n\n"
+  - "### 5. Intelligent Instrumentation\nAI suggests optimal breakpoint/logpoint locations:\n- Entry points to affected functionality\n- Decision nodes where behavior diverges\n- State mutation points\n- External integration boundaries\n- Error handling paths\n\nUse conditional breakpoints and logpoints for production-like environments.\n\n"
+  - "### 6. Production-Safe Techniques\n**Dynamic Instrumentation**: OpenTelemetry spans, non-invasive attributes\n**Feature-Flagged Debug Logging**: Conditional logging for specific users\n**Sampling-Based Profiling**: Continuous profiling with minimal overhead (Pyroscope)\n**Read-Only Debug Endpoints**: Protected by auth, rate-limited state inspection\n**Gradual Traffic Shifting**: Canary deploy debug version to 10% traffic\n\n"
+  - "### 7. Root Cause Analysis\nAI-powered code flow analysis:\n- Full execution path reconstruction\n- Variable state tracking at decision points\n- External dependency interaction analysis\n- Timing/sequence diagram generation\n- Code smell detection\n- Similar bug pattern identification\n- Fix complexity estimation\n\n"
+  - "### 8. Fix Implementation\nAI generates fix with:\n- Code changes required\n- Impact assessment\n- Risk level\n- Test coverage needs\n- Rollback strategy\n\n"
+  - "### 9. Validation\nPost-fix verification:\n- Run test suite\n- Performance comparison (baseline vs fix)\n- Canary deployment (monitor error rate)\n- AI code review of fix\n\nSuccess criteria:\n- Tests pass\n- No performance regression\n- Error rate unchanged or decreased\n- No new edge cases introduced\n\n"
+  - "### 10. Prevention\n- Generate regression tests using AI\n- Update knowledge base with root cause\n- Add monitoring/alerts for similar issues\n- Document troubleshooting steps in runbook\n\n"
+  - "## Example: Minimal Debug Session\n\n```typescript\n// Issue: \"Checkout timeout errors (intermittent)\"\n\n// 1. Initial analysis\nconst analysis = await aiAnalyze({\n  error: \"Payment processing timeout\",\n  frequency: \"5% of checkouts\",\n  environment: \"production\"\n});\n// AI suggests: \"Likely N+1 query or external API timeout\"\n\n// 2. Gather observability data\nconst sentryData = await getSentryIssue(\"CHECKOUT_TIMEOUT\");\nconst ddTraces = await getDataDogTraces({\n  service: \"checkout\",\n  operation: \"process_payment\",\n  duration: \">5000ms\"\n});\n\n// 3. Analyze traces\n// AI identifies: 15+ sequential DB queries per checkout\n// Hypothesis: N+1 query in payment method loading\n\n// 4. Add instrumentation\nspan.setAttribute('debug.queryCount', queryCount);\nspan.setAttribute('debug.paymentMethodId', methodId);\n\n// 5. Deploy to 10% traffic, monitor\n// Confirmed: N+1 pattern in payment verification\n\n// 6. AI generates fix\n// Replace sequential queries with batch query\n\n// 7. Validate\n// - Tests pass\n// - Latency reduced 70%\n// - Query count: 15 → 1\n```\n\n"
+  - "## Output Format\n\nProvide structured report:\n1. **Issue Summary**: Error, frequency, impact\n2. **Root Cause**: Detailed diagnosis with evidence\n3. **Fix Proposal**: Code changes, risk, impact\n4. **Validation Plan**: Steps to verify fix\n5. **Prevention**: Tests, monitoring, documentation\n\nFocus on actionable insights. Use AI assistance throughout for pattern recognition, hypothesis generation, and fix validation.\n\n---\n\nIssue to debug: $ARGUMENTS\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"
