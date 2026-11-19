@@ -1,0 +1,22 @@
+title: What If The Power Went Out For 3 Days?
+voice: am_puck
+speed: 1.0
+lead: 0.35
+outro: 1.0
+gap: 0.26
+music: bed
+sources[2]: American Red Cross, Power Outage Safety (fridge keeps food cold ~4 hours if unopened; a full freezer ~48 hours; use flashlights, not candles; disconnect electronics to avoid surge damage), Ready.gov, Water (store at least one gallon of water per person per day)
+lines[12]:
+  - text, caps
+  - What would you do if the power went out for three whole days?, What would *you | do if the *power | went *out?
+  - "It's nine at night, and suddenly everything goes dark.", Nine at *night | everything goes *dark.
+  - Step one: don't touch the fridge., Step *one: | don't touch the *fridge.
+  - "If you keep it closed, your food stays cold for about four hours, and a full freezer lasts two days.", Keep it *closed | food stays *cold | about four *hours | a full *freezer | lasts two *days.
+  - "Step two: grab a flashlight, not a candle.", Step *two: | grab a *flashlight | not a *candle.
+  - Candles and dark rooms are a real fire risk., *Candles? | real *fire risk.
+  - "Step three: fill some bottles with water,", "Step *three: | fill some *bottles | with *water,"
+  - "about a gallon per person, every day.", "a *gallon | per *person, | every *day."
+  - "Step four: unplug your electronics,", "Step *four: | unplug your *electronics,"
+  - "because when the power comes back, a surge can fry them.", power comes *back | a *surge | can *fry them.
+  - Day three: the lights flicker back on., Day *three: | the *lights | flicker back *on.
+  - "And because you were ready, you're totally fine.", "You were *ready, | so you're *fine."

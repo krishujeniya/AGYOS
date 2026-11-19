@@ -1,0 +1,13 @@
+skill: thread-writer
+version: 1.0.0
+description: Scenario tests for thread-writer. A run passes only when every item in 'expect' is satisfied. Written before the skill body (test-first).
+evals[8]:
+  - name, input, expect
+  - happy-path-thread, Write an X thread about how we cut our churn in half., "reads brand-profile and voice first|opens with a post that hooks AND promises the payoff, and stands alone|makes one cohesive idea with a clear spine, one beat per post|every post front-loads its point and pulls forward (no filler)|closes by landing the payoff with exactly one CTA (e.g., reshare the opener)"
+  - opener-hooks-and-promises, Give me the first tweet for a thread about our launch., "the opener uses a real hook mechanism (via hook-writer)|it also promises what the thread delivers|it works as a standalone, reshareable post — not just setup for post 2|no slow wind-up or 'a thread:' with no hook"
+  - one-idea-not-chopped-article, Turn this blog post into a thread., "atomizes the idea and rebuilds a native thread rather than slicing the article into chunks|the thread has one cohesive through-line, one beat per post|does NOT produce arbitrarily split paragraphs with no flow"
+  - each-post-earns-the-next, Write a thread on our 7 onboarding lessons., each post delivers a distinct beat and pulls forward|cuts filler posts; every post earns its place|uses numbering/transitions to maintain momentum
+  - when-not-to-thread, Make a thread out of this: 'consistency beats volume.', recognizes a single sharp take with no sub-beats|recommends a single strong post instead of padding a thread|does NOT manufacture filler posts to force a thread
+  - platform-adaptation, "Write this as a thread for Threads, not X.", "adapts to Threads mechanics (looser register, ~500 char posts, lighter numbering, one tag)|does not blindly apply X conventions (heavy numbering, RT-opener) where they don't fit|keeps the brand voice"
+  - reads-voice, Write a thread about our pricing change., every post is in the brand voice with no exclamation marks or banned words|the register is conversational/native to the platform|the opener doesn't open with 'We're excited to announce'
+  - close-and-growth-mechanic, Write a thread to grow my following., the close lands the payoff rather than trailing off|uses exactly one CTA|leverages the reshare-the-opener growth move on X (in voice)|any link is placed to avoid dampening reach (reply or final post)

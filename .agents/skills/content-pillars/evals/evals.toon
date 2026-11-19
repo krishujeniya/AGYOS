@@ -1,0 +1,13 @@
+skill: content-pillars
+version: 1.0.0
+description: Scenario tests for content-pillars. A run passes only when every item in 'expect' is satisfied. Written before the skill body (test-first).
+evals[8]:
+  - name, input, expect
+  - happy-path-derive-pillars, Help me figure out my content pillars., "reads brand-profile (or runs it first if missing) rather than brainstorming blind|mines positioning, POV, audience pains, and proof for candidates|selects 3-5 pillars that each pass the ownable/relevant/strategic/sustainable test|identifies exactly one signature pillar|writes a content-pillars.md following the template"
+  - rejects-generic-buckets, "My pillars are educational, behind-the-scenes, and promotional. Flesh those out.", "explains that those are intents/formats, not pillars (themes)|converts them into real ownable themes derived from the brand|does NOT accept the generic buckets as the pillar set"
+  - ownability-required, Give me content pillars for my business., "for each pillar, states a specific reason THIS brand can own it|rejects pillars that 'anyone could post' as not ownable|ties each pillar back to something real in the brand profile"
+  - sustainability-test, Are these three pillars good?, "applies the 10+ ideas sustainability test|flags the narrow pillar as a topic, not a pillar, or broadens it to the audience problem it solves|keeps only pillars that can sustain ongoing content"
+  - too-many-narrow-to-3-5, I want to post about 10 different topics. Make them all pillars., "narrows to the 3-5 strongest, clustering overlapping topics|explains that too many pillars means no focus|produces a coherent, ownable set"
+  - balance-and-signature, Build my pillars — and I want most of it to sell our product., keeps a conversion/product pillar to the minority|ensures supporting pillars carry audience value and connection|identifies a non-promotional signature pillar as the differentiator
+  - personal-brand-adaptation, I'm a solo creator — what should my content pillars be?, "frames pillars as person-led (what they're known for, journey, craft)|ties pillars to the individual, not a faceless topic list|still produces ownable, sustainable themes"
+  - existing-pillars-loaded, Plan my month., loads the existing pillars rather than re-deriving them|summarizes them and proceeds (hands off to batch-content-plan)|only re-runs the exercise if the user asks to revisit

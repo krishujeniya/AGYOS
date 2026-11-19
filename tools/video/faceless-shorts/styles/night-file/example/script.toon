@@ -1,0 +1,21 @@
+title: The Man Who Jumped Out Of A Plane
+voice: am_onyx
+speed: 0.95
+lead: 0.6
+outro: 1.4
+gap: 0.42
+music: tension
+sources[2]: "FBI, 'D.B. Cooper Hijacking' (fbi.gov/history): Nov 24, 1971, Northwest Orient Flight 305, Portland to Seattle; ticket bought as 'Dan Cooper'; note to a flight attendant; $200,000 and four parachutes; passengers released in Seattle; jumped from the rear stairs; $5,800 found in 1980; active investigation suspended in 2016", History.com, 'Who Was the Mysterious Hijacker D.B. Cooper?'
+lines[11]:
+  - text, caps
+  - "November twenty-fourth, nineteen seventy-one.", "*November 24, | *1971."
+  - A quiet man in a dark suit boards a flight to Seattle., A quiet *man | boards a *flight | to *Seattle.
+  - The name on his ticket is Dan Cooper., His *ticket says | Dan *Cooper.
+  - "Mid-flight, he hands the flight attendant a note.", He *hands her | a *note.
+  - "He wants two hundred thousand dollars, and four parachutes.", "*$200,000 | and four *parachutes."
+  - "In Seattle, he lets every passenger go.", "In *Seattle, | every passenger *goes."
+  - "Then, somewhere over the dark forests of Washington, in the rain,", "Over the dark *forests, | in the *rain,"
+  - "he opens the rear stairs, and jumps.", "he opens the *stairs, | and *jumps."
+  - He was never seen again., Never seen *again.
+  - "Nine years later, a boy found some of the cash buried by a river.", "Nine years *later, | a *boy found | some of the *cash."
+  - "The rest of it, and Dan Cooper, are still missing.", "The *rest, | and Dan *Cooper, | still *missing."

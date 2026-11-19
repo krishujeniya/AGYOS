@@ -1,0 +1,9 @@
+object: list
+data[6]:
+  - id, object, created, owned_by
+  - gpt-5.2, model, 1704067200, openai
+  - gpt-5.1, model, 1701388800, openai
+  - gpt-5, model, 1698710400, openai
+  - gpt-5-mini, model, 1704067200, openai
+  - gpt-4o, model, 1683158400, openai
+  - gpt-4-turbo, model, 1680566400, openai

@@ -28,16 +28,22 @@ def encode_toon(
         row_vals = []
         for k in keys:
             v = r.get(k, "")
-            if isinstance(v, list):
+            if v is None:
+                val_str = "null"
+            elif isinstance(v, list):
                 val_str = "|".join(str(item) for item in v)
+            elif isinstance(v, bool):
+                val_str = "true" if v else "false"
             else:
                 val_str = str(v).replace("\n", " ").strip()
-            # Quote if contains comma or double quote
-            if "," in val_str or '"' in val_str:
+
+            if val_str == "":
+                val_str = '""'
+            elif "," in val_str or '"' in val_str:
                 escaped = val_str.replace('"', '""')
                 val_str = f'"{escaped}"'
             row_vals.append(val_str)
-        output.append(f"{prefix}{', '.join(row_vals)}")
+        output.append(f"{prefix}{', '.join(row_vals)}".rstrip())
 
     return "\n".join(output)
 

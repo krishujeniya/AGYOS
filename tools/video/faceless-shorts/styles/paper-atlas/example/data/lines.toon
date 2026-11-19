@@ -1,0 +1,15 @@
+duration: 40.924
+voice: bm_george
+speed: 1.0
+lines[10]:
+  - i, text, start, end
+  - 0, "In sixteen sixty-six, a tiny bakery fire burned down most of London.", 0.4, 5.46
+  - 1, "It started just after midnight, in Thomas Farriner's bakery on Pudding Lane.", 5.76, 10.791
+  - 2, "London was packed with wooden houses, and a strong wind was blowing,", 11.091, 15.321
+  - 3, so the flames jumped from roof to roof., 15.671, 17.947
+  - 4, "The Lord Mayor was woken up, but he shrugged it off.", 18.247, 21.175
+  - 5, "For four days, the city burned.", 21.475, 23.636
+  - 6, "Thirteen thousand houses, eighty-seven churches, and St Paul's Cathedral were gone.", 23.936, 29.306
+  - 7, "In the end, they blew up whole streets to stop it spreading.", 29.606, 32.797
+  - 8, "And when London was rebuilt, it was built in brick and stone.", 33.097, 36.797
+  - 9, All because of one small bakery., 37.097, 39.624

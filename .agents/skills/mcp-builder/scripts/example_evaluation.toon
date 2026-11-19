@@ -1,0 +1,7 @@
+qa_pairs[5]:
+  - question, answer
+  - "Calculate the compound interest on $10,000 invested at 5% annual interest rate, compounded monthly for 3 years. What is the final amount in dollars (rounded to 2 decimal places)?", 11614.72
+  - "A projectile is launched at a 45-degree angle with an initial velocity of 50 m/s. Calculate the total distance (in meters) it has traveled from the launch point after 2 seconds, assuming g=9.8 m/s². Round to 2 decimal places.", 87.25
+  - A sphere has a volume of 500 cubic meters. Calculate its surface area in square meters. Round to 2 decimal places., 304.65
+  - "Calculate the population standard deviation of this dataset: [12, 15, 18, 22, 25, 30, 35]. Round to 2 decimal places.", 7.61
+  - Calculate the pH of a solution with a hydrogen ion concentration of 3.5 × 10^-5 M. Round to 2 decimal places., 4.46

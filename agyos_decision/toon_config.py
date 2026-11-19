@@ -164,8 +164,8 @@ def _parse_toon_lines(lines: List[str], idx: int = 0, base_indent: int = 0) -> t
     return result, idx
 
 
-def load_toon_config(path: Union[Path, str]) -> Dict[str, Any]:
-    """Parse a TOON key-value config or mixed schema file into a Python dictionary.
+def load_toon_config(path: Union[Path, str]) -> Any:
+    """Parse a TOON key-value config or mixed schema file into a Python dictionary or list.
 
     Supports:
     - Key-value scalars: `key: value`
@@ -184,11 +184,30 @@ def load_toon_config(path: Union[Path, str]) -> Dict[str, Any]:
     text = file_path.read_text(encoding="utf-8")
     lines = text.splitlines()
     parsed, _ = _parse_toon_lines(lines, 0, 0)
+    if not parsed and lines:
+        records = decode_toon(text)
+        if records:
+            return records
     return parsed
 
 
-def dump_toon_config(data: Dict[str, Any], path: Union[Path, str]) -> None:
-    """Serialize a Python dictionary to a TOON configuration file."""
+def dump_toon_config(
+    data: Union[Dict[str, Any], List[Any]],
+    path: Union[Path, str],
+    key_name: str = "items",
+) -> None:
+    """Serialize a Python dictionary or list to a TOON configuration file."""
+    if isinstance(data, list):
+        if not data:
+            Path(path).write_text(f"{key_name}[0]:\n  - (empty)\n", encoding="utf-8")
+            return
+        if isinstance(data[0], dict):
+            dump_toon_manifest(data, path, key_name=key_name)
+            return
+        val_strs = [_format_scalar_value(x) for x in data]
+        Path(path).write_text(f"{key_name}[{len(data)}]: {', '.join(val_strs)}\n", encoding="utf-8")
+        return
+
     lines = _dump_toon_lines(data, indent_level=0)
     Path(path).write_text("\n".join(lines) + "\n", encoding="utf-8")
 

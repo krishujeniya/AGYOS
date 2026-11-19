@@ -1,0 +1,30 @@
+title: The Girl Who Was Mailed To Grandma
+voice: am_michael
+speed: 1.05
+lead: 0.3
+outro: 1.2
+gap: 0.18
+music: bounce
+sources[4]: History.com, 'When Americans Mailed Their Children' (parcel post began January 1, 1913; in February 1914 May Pierstorff, nearly six, was mailed 73 miles from Grangeville to her grandparents in Lewiston, Idaho, for 53 cents in stamps attached to her coat; a relative who was a postal worker took her on a Railway Mail train; the Postmaster General then banned accepting people as mail), Wikipedia, 'Charlotte May Pierstorff' (48.5 pounds; rode in the mail car with Leonard Mochel, her mother's cousin, a railway postal clerk, who delivered her to her grandmother; the case led to rules against mailing people; day-old poultry stayed mailable), "USPS Publication 52 / DMM 526: day-old poultry (live baby chicks) can still be mailed today", Parcel post weight limit was raised to 50 pounds for the first and second zones on January 1, 1914
+lines[20]:
+  - text, caps
+  - "In 1914, a couple in Idaho mailed their five year old daughter", "In 1914, | a couple | in Idaho | mailed | their | five year old | daughter"
+  - to her grandma's house., ""
+  - With the stamps stuck right on her coat., ""
+  - "See, the post office had just started delivering packages,", ""
+  - "and May's parents wanted her to visit grandma,", ""
+  - seventy-three miles away., 73 miles | away.
+  - But a train ticket wasn't cheap., ""
+  - So her dad walked her into the post office, ""
+  - and asked how much it costs to mail a kid., ""
+  - "The clerk checked the rules,", ""
+  - and nothing said he couldn't., ""
+  - "May weighed forty-eight and a half pounds,", "May | weighed | 48 and a half | pounds,"
+  - just under the fifty pound limit., just | under | the 50 pound | limit.
+  - "So on went fifty-three cents in stamps,", "So on | went | 53 cents | in stamps,"
+  - "and she rode the train in the mail car,", ""
+  - "with her mom's cousin, who happened to be the mail clerk.", ""
+  - He walked her right up to grandma's front door., ""
+  - "Soon after, the post office banned mailing people.", ""
+  - "Which is why today, you can still mail baby chicks,", ""
+  - but not your little sister., ""

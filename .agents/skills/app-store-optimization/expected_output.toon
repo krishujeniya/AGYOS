@@ -1,0 +1,50 @@
+request_type: keyword_research
+app_name: TaskFlow Pro
+keyword_analysis:
+  total_keywords_analyzed: 25
+  primary_keywords[3]:
+    - keyword, search_volume, competition_level, relevance_score, difficulty_score, potential_score, recommendation
+    - task manager, 45000, high, 0.95, 72.5, 78.3, High priority - target immediately
+    - productivity app, 38000, high, 0.9, 68.2, 75.1, High priority - target immediately
+    - todo list, 52000, very_high, 0.85, 78.9, 71.4, High priority - target immediately
+  secondary_keywords[2]:
+    - keyword, search_volume, competition_level, relevance_score, difficulty_score, potential_score, recommendation
+    - team task manager, 8500, medium, 0.88, 42.3, 68.7, Good opportunity - include in metadata
+    - project planning app, 12000, medium, 0.75, 48.1, 64.2, Good opportunity - include in metadata
+  long_tail_keywords[2]:
+    - keyword, search_volume, competition_level, relevance_score, difficulty_score, potential_score, recommendation
+    - ai task prioritization, 2800, low, 0.95, 25.4, 82.6, Excellent long-tail opportunity
+    - team productivity tool, 3500, low, 0.85, 28.7, 79.3, Excellent long-tail opportunity
+competitor_insights:
+  competitors_analyzed: 4
+  common_keywords[6]: task, todo, list, productivity, organize, manage
+  keyword_gaps[2]:
+    - keyword, used_by, opportunity
+    - ai prioritization, None of the major competitors, Unique positioning opportunity
+    - smart task manager, Things 3, Underutilized by most competitors
+metadata_recommendations:
+  apple_app_store:
+    title_options[2]:
+      - title, length, keywords_included, strategy
+      - TaskFlow - AI Task Manager, 26, task manager|ai, brand_plus_primary
+      - TaskFlow: Smart Todo & Tasks, 29, todo|tasks, brand_plus_multiple
+    subtitle_recommendation: AI-Powered Team Productivity
+    keyword_field: productivity,organize,planner,schedule,workflow,reminders,collaboration,calendar,sync,priorities
+    description_focus: Lead with AI differentiation, emphasize team features
+  google_play_store:
+    title_options[1]:
+      - title, length, keywords_included, strategy
+      - TaskFlow - AI Task Manager & Team Productivity, 48, task manager|ai|team|productivity, keyword_rich
+    short_description_recommendation: AI task manager - Organize, prioritize, and collaborate with your team
+    description_focus: Keywords naturally integrated throughout 4000 character description
+strategic_recommendations[5]: Focus on 'AI prioritization' as unique differentiator - low competition, high relevance, Target 'team task manager' and 'team productivity' keywords - good search volume, lower competition than generic terms, Include long-tail keywords in description for additional discovery opportunities, Test title variations with A/B testing after launch, Monitor competitor keyword changes quarterly
+priority_actions[3]:
+  - action, priority, expected_impact
+  - Optimize app title with primary keyword, high, 15-25% improvement in search visibility
+  - Create description highlighting AI features with natural keyword integration, high, 10-15% improvement in conversion rate
+  - Plan A/B tests for icon and screenshots post-launch, medium, 5-10% improvement in conversion rate
+aso_health_estimate:
+  current_score: N/A (pre-launch)
+  potential_score_with_optimizations: 75-80/100
+  key_strengths[3]: Unique AI differentiation, Clear target audience, Strong feature set
+  areas_to_develop[3]: Build rating volume post-launch, Monitor and respond to reviews, Continuous keyword optimization

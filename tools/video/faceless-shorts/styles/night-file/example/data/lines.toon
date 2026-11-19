@@ -1,0 +1,16 @@
+duration: 36.23
+voice: am_onyx
+speed: 0.95
+lines[11]:
+  - i, text, start, end
+  - 0, "November twenty-fourth, nineteen seventy-one.", 0.6, 3.293
+  - 1, A quiet man in a dark suit boards a flight to Seattle., 3.713, 6.962
+  - 2, The name on his ticket is Dan Cooper., 7.382, 9.67
+  - 3, "Mid-flight, he hands the flight attendant a note.", 10.09, 12.726
+  - 4, "He wants two hundred thousand dollars, and four parachutes.", 13.146, 16.338
+  - 5, "In Seattle, he lets every passenger go.", 16.758, 19.327
+  - 6, "Then, somewhere over the dark forests of Washington, in the rain,", 19.747, 22.817
+  - 7, "he opens the rear stairs, and jumps.", 23.087, 25.213
+  - 8, He was never seen again., 25.633, 27.271
+  - 9, "Nine years later, a boy found some of the cash buried by a river.", 27.691, 31.407
+  - 10, "The rest of it, and Dan Cooper, are still missing.", 31.827, 34.53
