@@ -268,14 +268,17 @@ def write_seo_files(skills):
     print(f"Saved: {robots_out}")
 
     llms_out = os.path.join(DOCS_DIR, "llms.txt")
+    rules_cnt = len(list((Path(REPO_ROOT) / '.agents/rules').glob('*.toon'))) or len(list((Path(REPO_ROOT) / '.agents/rules').glob('*.md')))
+    agents_cnt = len(list((Path(REPO_ROOT) / '.agents/agents').glob('*.toon'))) or len(list((Path(REPO_ROOT) / '.agents/agents').glob('*.md')))
+    workflows_cnt = len(list((Path(REPO_ROOT) / '.agents/workflows').glob('*.toon'))) or len(list((Path(REPO_ROOT) / '.agents/workflows').glob('*.md')))
     llms_content = f"""# AGYOS Documentation
 
 > The Autonomous Cognitive Operating System for AGY CLI (`agy`).
 > Maintained By Krish Ujeniya (@krishujeniya).
 > Total skills documented: {len(skills)}
-> Total modular rules: {len(list((Path(REPO_ROOT) / '.agents/rules').glob('*.md')))}
-> Total role agents: {len(list((Path(REPO_ROOT) / '.agents/agents').glob('*.md')))}
-> Total workflow pipelines: {len(list((Path(REPO_ROOT) / '.agents/workflows').glob('*.md')))}
+> Total modular rules: {rules_cnt}
+> Total role agents: {agents_cnt}
+> Total workflow pipelines: {workflows_cnt}
 
 ## Core Operating Subsystems
 

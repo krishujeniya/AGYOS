@@ -3,9 +3,9 @@
 > The Autonomous Cognitive Operating System for AGY CLI (`agy`).
 > Maintained By Krish Ujeniya (@krishujeniya).
 > Total skills documented: 2287
-> Total modular rules: 0
-> Total role agents: 0
-> Total workflow pipelines: 0
+> Total modular rules: 146
+> Total role agents: 185
+> Total workflow pipelines: 98
 
 ## Core Operating Subsystems
 
