@@ -103,7 +103,7 @@ _r(CompanyRole(
     default_risk="R2",
     keywords=["cto", "tech stack", "architecture decision", "platform strategy",
                "engineering culture", "adr", "technical direction", "build vs buy"],
-    primary_skills=["senior-architect", "architecture-decision-records", "faang-architect",
+    primary_skills=["senior-architect", "architecture-decision-records", "software-architecture",
                     "aws-cloud-architecture", "multi-cloud-architecture"],
 ))
 
@@ -200,7 +200,7 @@ _r(CompanyRole(
     default_risk="R2",
     keywords=["vp engineering", "engineering manager", "engineering org", "delivery",
                "incident command", "on call", "team health", "hiring bar", "tech interview"],
-    primary_skills=["senior-architect", "faang-architect", "incident-response",
+    primary_skills=["senior-architect", "architect-review", "incident-response",
                     "tech-interview-resume-prep", "engineering-blueprint-planner"],
 ))
 
@@ -350,8 +350,8 @@ _r(CompanyRole(
     default_risk="R2",
     keywords=["staff engineer", "principal engineer", "architecture review", "rfc",
                "tech design", "cross-team", "tech lead", "system design"],
-    primary_skills=["faang-architect", "senior-architect", "code-reviewer",
-                    "architecture-decision-records", "differential-review"],
+    primary_skills=["senior-architect", "architecture-decision-records", "code-reviewer",
+                    "architect-review", "differential-review"],
 ))
 
 _r(CompanyRole(
@@ -382,8 +382,8 @@ _r(CompanyRole(
     default_risk="R1",
     keywords=["software engineer", "bug fix", "implement", "code", "unit test",
                "feature", "handler", "function", "class", "module"],
-    primary_skills=["vibe-engineer", "tdd-guide", "code-reviewer", "systematic-debugging",
-                    "test-driven-development"],
+    primary_skills=["vibe-to-production", "test-driven-development", "code-reviewer", "systematic-debugging",
+                    "clean-architecture-craftsmanship"],
 ))
 
 _r(CompanyRole(
@@ -494,8 +494,8 @@ _r(CompanyRole(
     default_risk="R1",
     keywords=["qa", "test", "e2e", "playwright", "cypress", "selenium", "test case",
                "test plan", "regression", "smoke test", "integration test"],
-    primary_skills=["elite-qa-architect", "tdd-guide", "playwright-browser-testing",
-                    "pairwise-test-generator", "pr-test-analyzer"],
+    primary_skills=["elite-qa-architect", "test-driven-development", "playwright-browser-testing",
+                    "pairwise-test-generator", "git-pr-review"],
 ))
 
 _r(CompanyRole(
@@ -542,7 +542,7 @@ _r(CompanyRole(
     default_risk="R2",
     keywords=["network", "routing", "bgp", "vlan", "vpn", "dns", "firewall",
                "cisco", "switch", "load balancer", "cdn", "mtls"],
-    primary_skills=["network-architect", "cisco-ios-patterns", "mtls-configuration",
+    primary_skills=["network-engineer", "cisco-ios-patterns", "mtls-configuration",
                     "homelab-network-setup", "homelab-wireguard-vpn"],
 ))
 
@@ -591,7 +591,7 @@ _r(CompanyRole(
     keywords=["agent", "agentic", "multi-agent", "llm orchestration", "tool calling",
                "autonomous", "workflow", "mcp", "swarm", "orchestration", "agent loop"],
     primary_skills=["autonomous-agents", "autonomous-agent-patterns", "crewai",
-                    "multi-agent-patterns", "agents-sdk"],
+                    "multi-agent-patterns", "agents-spec-generator"],
 ))
 
 
@@ -1132,7 +1132,7 @@ _r(CompanyRole(
     default_risk="R1",
     keywords=["customer success", "csm", "adoption", "nps", "churn", "expansion",
                "renewal", "qbr", "account health", "upsell"],
-    primary_skills=["pod-customer", "churn-prevention", "hubspot-integration",
+    primary_skills=["sop-customer", "churn-prevention", "hubspot-integration",
                     "analytics-tracking", "email-sequence"],
 ))
 
@@ -1199,7 +1199,7 @@ _r(CompanyRole(
     default_risk="R1",
     keywords=["support", "ticket", "customer issue", "bug report", "helpdesk",
                "troubleshoot", "error log", "api error", "integration error"],
-    primary_skills=["pod-customer", "systematic-debugging", "incident-response",
+    primary_skills=["sop-customer", "systematic-debugging", "incident-response",
                     "customer-support", "postmortem-writing"],
 ))
 
@@ -1215,7 +1215,7 @@ _r(CompanyRole(
     default_risk="R1",
     keywords=["onboarding", "new customer", "activation", "welcome", "kickoff",
                "setup guide", "first value", "time to value", "ttv"],
-    primary_skills=["pod-customer", "email-sequence", "onboarding-cro",
+    primary_skills=["sop-customer", "email-sequence", "onboarding-cro",
                     "customer-support", "content-creator"],
 ))
 
@@ -1231,7 +1231,7 @@ _r(CompanyRole(
     default_risk="R2",
     keywords=["implementation", "professional services", "deployment", "configuration",
                "client customization", "enterprise deployment", "project plan"],
-    primary_skills=["pod-customer", "project-flow-ops", "developer-session-diary",
+    primary_skills=["sop-customer", "project-flow-ops", "developer-session-diary",
                     "api-design", "content-creator"],
 ))
 
@@ -1247,7 +1247,7 @@ _r(CompanyRole(
     default_risk="R1",
     keywords=["tam", "technical account manager", "strategic account",
                "account health", "technical advisory", "roadmap preview"],
-    primary_skills=["pod-customer", "api-design", "analytics-tracking",
+    primary_skills=["sop-customer", "api-design", "analytics-tracking",
                     "pitch-psychologist", "content-creator"],
 ))
 
@@ -1528,7 +1528,7 @@ _r(CompanyRole(
     default_risk="R2",
     keywords=["vp people", "hr strategy", "culture", "talent strategy", "compensation",
                "people ops", "org design", "hr leader", "people team"],
-    primary_skills=["pod-people", "hr-pro", "employment-contract-templates",
+    primary_skills=["sop-people", "hr-pro", "employment-contract-templates",
                     "analytics-tracking", "financial-projections"],
 ))
 
@@ -1544,7 +1544,7 @@ _r(CompanyRole(
     default_risk="R1",
     keywords=["recruiter", "hiring", "candidate", "resume", "screening",
                "job description", "interview", "offer", "talent acquisition"],
-    primary_skills=["pod-people", "hr-pro", "tech-interview-resume-prep",
+    primary_skills=["sop-people", "hr-pro", "tech-interview-resume-prep",
                     "apify-lead-generation", "linkedin-growth"],
 ))
 
@@ -1560,7 +1560,7 @@ _r(CompanyRole(
     default_risk="R1",
     keywords=["hrbp", "hr partner", "performance review", "pip", "org design",
                "team health", "culture", "employee engagement", "l&d"],
-    primary_skills=["pod-people", "hr-pro", "content-creator",
+    primary_skills=["sop-people", "hr-pro", "content-creator",
                     "analytics-tracking", "employment-contract-templates"],
 ))
 

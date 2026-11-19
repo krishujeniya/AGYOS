@@ -13,7 +13,7 @@ SRC="$SKILL/styles/$STYLE/example"
 [ -d "$SRC" ] || { echo "no style '$STYLE' ($USAGE)" >&2; exit 2; }
 DST="$PARENT/$NAME"
 [ -e "$DST" ] && { echo "$DST already exists: pick another name" >&2; exit 2; }
-mkdir -p "$PARENT"; cp -R "$SRC" "$DST"; mkdir -p "$DST/renders" "$DST/review"
+mkdir -p "$PARENT"; cp -RL "$SRC" "$DST"; mkdir -p "$DST/renders" "$DST/review"
 rm -f "$DST/data/narration.wav" "$DST/data/mix.wav"
 echo "$DST"
 echo "style: $STYLE. Read $SKILL/styles/$STYLE/STYLE.md, then rewrite script.json + src/shots.js"

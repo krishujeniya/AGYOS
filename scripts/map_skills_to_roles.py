@@ -40,7 +40,7 @@ PREFIX_RULES: List[Tuple[str, str, List[str]]] = [
     (r"^jake-founder-", "role-ceo", ["role-solopreneur-operator", "role-chief-of-staff"]),
     (r"^jake-seed-", "role-startup-cfo-advisor", ["role-ceo"]),
     (r"^jake-whale-", "role-enterprise-ae", ["role-vp-sales", "role-account-executive"]),
-    (r"^jake-replica-", "role-senior-swe", ["role-swe", "role-vibe-engineer"]),
+    (r"^jake-replica-", "role-senior-swe", ["role-swe", "role-staff-engineer"]),
     (r"^jake-console-", "role-desktop-app-eng", ["role-swe"]),
     (r"^jake-instagram-", "role-social-media-manager", ["role-content-strategist"]),
     (r"^jake-x-", "role-social-media-manager", ["role-content-strategist"]),
@@ -316,12 +316,14 @@ def create_symlinks(matrix: Dict[str, Any]):
     for role_id, data in by_role.items():
         role_dir = SKILLS_BY_ROLE_DIR / role_id
         role_dir.mkdir(parents=True, exist_ok=True)
+        valid_skills = set()
 
         for skill_name in data["skills"]:
             target_skill_dir = SKILLS_DIR / skill_name
             if not target_skill_dir.exists():
                 continue
 
+            valid_skills.add(skill_name)
             link_path = role_dir / skill_name
             rel_target = Path("../../skills") / skill_name
 
@@ -330,6 +332,11 @@ def create_symlinks(matrix: Dict[str, Any]):
 
             os.symlink(str(rel_target), str(link_path))
             created_links += 1
+
+        # Prune stale symlinks
+        for item in role_dir.iterdir():
+            if item.is_symlink() and item.name not in valid_skills:
+                item.unlink()
 
     # Ensure root symlink skills-by-role -> .agents/skills-by-role
     if ROOT_LINK.is_symlink() or ROOT_LINK.exists():
@@ -340,8 +347,30 @@ def create_symlinks(matrix: Dict[str, Any]):
     matrix_file = SKILLS_BY_ROLE_DIR / "roles-skills-matrix.json"
     matrix_file.write_text(json.dumps(matrix, indent=2), encoding="utf-8")
 
-    # Generate README in skills-by-role
-    readme_file = SKILLS_BY_ROLE_DIR / "README.md"
+    # Save TOON matrix
+    from agyos_decision.toon_config import dump_toon_manifest
+    matrix_toon_file = SKILLS_BY_ROLE_DIR / "roles-skills-matrix.toon"
+    role_records = []
+    for role_id, rdata in sorted(by_role.items()):
+        role_records.append({
+            "role_id": rdata["role_id"],
+            "title": rdata["title"],
+            "department": rdata["department"],
+            "seniority": rdata["seniority"],
+            "governing_pod": rdata["governing_pod"],
+            "primary_skills": "|".join(rdata["primary_skills"]),
+            "total_mapped_skills": rdata["total_mapped_skills"],
+            "skills": "|".join(rdata["skills"]),
+        })
+    matrix_metadata = {
+        "version": matrix["version"],
+        "total_skills": matrix["total_skills"],
+        "total_roles": matrix["total_roles"],
+    }
+    dump_toon_manifest(role_records, matrix_toon_file, key_name="roles", metadata=matrix_metadata)
+
+    # Generate README.toon in skills-by-role (TOON document envelope)
+    readme_toon_file = SKILLS_BY_ROLE_DIR / "README.toon"
     readme_lines = [
         "# AGYOS Role-Wise Skills Directory (`skills-by-role/`)",
         "",
@@ -350,7 +379,7 @@ def create_symlinks(matrix: Dict[str, Any]):
         "",
         "## Subsystem Architecture",
         "",
-        "In AGYOS, physical skill runbooks are canonically authored in `.agents/skills/<skill-name>/SKILL.md`.",
+        "In AGYOS, physical skill runbooks are canonically authored in `.agents/skills/<skill-name>/SKILL.toon`.",
         "This directory (`.agents/skills-by-role/` and its root symlink `skills-by-role/`) organizes skills",
         "into dedicated per-role workspaces via relative symlinks.",
         "",
@@ -379,9 +408,17 @@ def create_symlinks(matrix: Dict[str, Any]):
         "```",
         ""
     ])
-    readme_file.write_text("\n".join(readme_lines), encoding="utf-8")
+    readme_body = "\n".join(readme_lines)
+    readme_envelope = f'mode: "100644"\ntext: {json.dumps(readme_body, ensure_ascii=False)}\n'
+    readme_toon_file.write_text(readme_envelope, encoding="utf-8")
+
+    # Remove stale README.md if present
+    readme_md_file = SKILLS_BY_ROLE_DIR / "README.md"
+    if readme_md_file.exists():
+        readme_md_file.unlink()
+
     print(f"Created {created_links} symlinks across {len(by_role)} roles.")
-    print(f"Wrote matrix to {matrix_file} and documentation to {readme_file}.")
+    print(f"Wrote matrix to {matrix_file} and {matrix_toon_file}, documentation to {readme_toon_file}.")
 
 
 PROMPT_DEFENSE = """## Prompt Defense Baseline

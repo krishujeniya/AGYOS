@@ -66,7 +66,7 @@
       "primary_skills": [
         "senior-architect",
         "architecture-decision-records",
-        "faang-architect",
+        "software-architecture",
         "aws-cloud-architecture",
         "multi-cloud-architecture"
       ],
@@ -101,7 +101,6 @@
         "cofounder-compatibility-matcher",
         "context-and-decisions",
         "expert-tech-architect",
-        "faang-architect",
         "m365-agents-dotnet",
         "multi-cloud-architecture",
         "nodejs-best-practices",
@@ -109,6 +108,7 @@
         "saas-mvp-launcher",
         "senior-architect",
         "settings-audit",
+        "software-architecture",
         "svg-diagram-gen",
         "swiftui-architecture",
         "turborepo-caching"
@@ -184,10 +184,9 @@
         "feature-development-pipeline",
         "product-manager"
       ],
-      "total_mapped_skills": 31,
+      "total_mapped_skills": 29,
       "skills": [
         "backtesting-frameworks",
-        "blog-writing-guide",
         "business-case-analysis",
         "competitor-alternatives",
         "core-skill-obedience",
@@ -209,7 +208,6 @@
         "product-lens",
         "product-manager",
         "product-manager-toolkit",
-        "product-marketing-context",
         "saas-monetization-strategy",
         "strategic-compact",
         "tdd-red-phase",
@@ -232,7 +230,7 @@
         "analytics-tracking",
         "seo-audit"
       ],
-      "total_mapped_skills": 26,
+      "total_mapped_skills": 30,
       "skills": [
         "analytics-and-reporting",
         "analytics-tracking",
@@ -241,23 +239,27 @@
         "brand-guidelines",
         "content-pillars",
         "content-strategy",
+        "copy-editing",
         "daily-gift",
         "descript",
         "free-tool-strategy",
         "growth-engine",
         "growth-log",
-        "hashtag-strategy",
         "idea-generation-and-ideation",
         "identity-mirror",
         "market-opportunity",
         "marketing-ideas",
+        "marketing-psychology",
         "pinterest-growth",
+        "product-marketing-context",
         "prompt-caching",
         "referral-program",
         "reply-and-comment-writer",
         "seasonal-and-moment-marketing",
         "seo-audit",
         "sop-growth",
+        "ugc-and-influencer",
+        "web-vitals-performance-benchmark",
         "writing-style-and-tone",
         "x-growth"
       ]
@@ -352,14 +354,15 @@
       "governing_pod": "pod-build",
       "primary_skills": [
         "senior-architect",
-        "faang-architect",
+        "architect-review",
         "incident-response",
         "tech-interview-resume-prep",
         "engineering-blueprint-planner"
       ],
-      "total_mapped_skills": 30,
+      "total_mapped_skills": 29,
       "skills": [
         "ai-first-engineering",
+        "architect-review",
         "brooks-lint",
         "brownfield-retrospective",
         "context-manager",
@@ -367,11 +370,9 @@
         "dispatching-parallel-agents",
         "engineering-blueprint-planner",
         "engineering-recipes-playbook",
-        "faang-architect",
         "family-health-analyzer",
         "firmware-analyst",
         "first-principles-engineering-advisor",
-        "free-tool-strategy",
         "incident-response",
         "llm-prompt-optimizer",
         "module-regression",
@@ -403,7 +404,7 @@
         "analytics-product",
         "kpi-dashboard-design"
       ],
-      "total_mapped_skills": 26,
+      "total_mapped_skills": 25,
       "skills": [
         "ai-product",
         "ai-wrapper-product",
@@ -429,8 +430,7 @@
         "scroll-experience",
         "sop-build",
         "team-agent-orchestration",
-        "visionary-product-craftsmanship",
-        "webpage-screenshot-capture"
+        "visionary-product-craftsmanship"
       ]
     },
     "role-senior-pm": {
@@ -580,11 +580,12 @@
         "posthog-automation",
         "mixpanel-automation"
       ],
-      "total_mapped_skills": 20,
+      "total_mapped_skills": 22,
       "skills": [
         "ab-test-setup",
         "activecampaign-automation",
         "analytics-tracking",
+        "awareness-stage-mapper",
         "context-restore",
         "continuous-agent-loop",
         "convertkit-automation",
@@ -601,7 +602,8 @@
         "popup-cro",
         "posthog-automation",
         "postmark-automation",
-        "sendgrid-automation"
+        "sendgrid-automation",
+        "terminal-opener"
       ]
     },
     "role-product-analyst": {
@@ -658,7 +660,7 @@
         "product-manager-toolkit",
         "feature-development-pipeline"
       ],
-      "total_mapped_skills": 33,
+      "total_mapped_skills": 32,
       "skills": [
         "alpha-vantage",
         "api-connector-builder",
@@ -690,7 +692,6 @@
         "technical-documentation-writer",
         "telegram-bot-integration",
         "unsplash-integration",
-        "vibe-to-production",
         "write-swift",
         "writing-plans"
       ]
@@ -702,13 +703,13 @@
       "seniority": "L7",
       "governing_pod": "pod-build",
       "primary_skills": [
-        "faang-architect",
         "senior-architect",
-        "code-reviewer",
         "architecture-decision-records",
+        "code-reviewer",
+        "architect-review",
         "differential-review"
       ],
-      "total_mapped_skills": 77,
+      "total_mapped_skills": 86,
       "skills": [
         "agyos-academic-research",
         "agyos-agency-agents",
@@ -746,7 +747,6 @@
         "azure-servicebus-py",
         "azure-servicebus-ts",
         "azure-web-pubsub-ts",
-        "clean-architecture-craftsmanship",
         "code-reviewer",
         "council-list",
         "council-multi-model",
@@ -757,10 +757,20 @@
         "deployment-engineer",
         "differential-review",
         "expert-tech-architect",
-        "faang-architect",
         "flox-environments",
         "gh-review-requests",
         "git-onboarding",
+        "jake-replica-replica-architect",
+        "jake-replica-replica-backend",
+        "jake-replica-replica-brand",
+        "jake-replica-replica-build",
+        "jake-replica-replica-deploy",
+        "jake-replica-replica-design",
+        "jake-replica-replica-diff",
+        "jake-replica-replica-entrepreneur",
+        "jake-replica-replica-launch",
+        "jake-replica-replica-recon",
+        "jake-replica-replica-test",
         "lightning-architecture-review",
         "reverse-engineer",
         "senior-architect",
@@ -803,7 +813,7 @@
         "tdd-cycle",
         "code-reviewer"
       ],
-      "total_mapped_skills": 174,
+      "total_mapped_skills": 173,
       "skills": [
         "address-github-comments",
         "ai-code-review",
@@ -816,7 +826,6 @@
         "astro",
         "backend-dev-guidelines",
         "c-pro",
-        "clean-architecture-craftsmanship",
         "click-path-audit",
         "code-review-excellence",
         "code-reviewer",
@@ -988,13 +997,13 @@
       "seniority": "L5",
       "governing_pod": "pod-build",
       "primary_skills": [
-        "vibe-engineer",
-        "tdd-guide",
+        "vibe-to-production",
+        "test-driven-development",
         "code-reviewer",
         "systematic-debugging",
-        "test-driven-development"
+        "clean-architecture-craftsmanship"
       ],
-      "total_mapped_skills": 134,
+      "total_mapped_skills": 133,
       "skills": [
         "advanced-evaluation",
         "adversarial-red-team",
@@ -1008,6 +1017,7 @@
         "brooks-lint",
         "c4-code",
         "c4-component",
+        "clean-architecture-craftsmanship",
         "clean-code",
         "code-cli-expert",
         "code-explainer",
@@ -1111,14 +1121,12 @@
         "rfc-pipeline",
         "search-first",
         "similarity-search-patterns",
-        "software-architecture",
         "speed-reader",
         "superpowers-lab",
         "swiftui-liquid-glass",
         "systematic-debugging",
         "systems-programming-rust-project",
         "tdd-green-phase",
-        "tdd-guide",
         "tdd-workflow",
         "test-collaboration",
         "test-driven-development",
@@ -1127,7 +1135,7 @@
         "typescript-patterns",
         "unit-testing-test-generate",
         "verification-loop",
-        "vibe-engineer",
+        "vibe-to-production",
         "vscode-extension-guide-en",
         "writing-plans"
       ]
@@ -1146,7 +1154,7 @@
         "frontend-a11y",
         "design-spells"
       ],
-      "total_mapped_skills": 214,
+      "total_mapped_skills": 213,
       "skills": [
         "3d-web-experience",
         "algolia-search",
@@ -1314,7 +1322,6 @@
         "web-interface-guidelines",
         "web-performance-optimization",
         "web-scraper",
-        "web-vitals-performance-benchmark",
         "webapp-testing",
         "windows-desktop-e2e",
         "windows-privilege-escalation",
@@ -1727,7 +1734,7 @@
         "docker-patterns",
         "gitops-workflow"
       ],
-      "total_mapped_skills": 82,
+      "total_mapped_skills": 81,
       "skills": [
         "agentic-actions-auditor",
         "aws-serverless",
@@ -1800,7 +1807,6 @@
         "network-101",
         "network-bgp-diagnostics",
         "network-config-validation",
-        "network-engineer",
         "network-interface-health",
         "recursive-decision-ledger",
         "service-mesh-expert",
@@ -1983,10 +1989,10 @@
       "governing_pod": "pod-build",
       "primary_skills": [
         "elite-qa-architect",
-        "tdd-guide",
+        "test-driven-development",
         "playwright-browser-testing",
         "pairwise-test-generator",
-        "pr-test-analyzer"
+        "git-pr-review"
       ],
       "total_mapped_skills": 53,
       "skills": [
@@ -2013,6 +2019,7 @@
         "expert-qa-test",
         "fsharp-testing",
         "gateway-smoke-test",
+        "git-pr-review",
         "healthcare-eval-harness",
         "lambdatest-testing",
         "opus-clip",
@@ -2021,7 +2028,6 @@
         "perf-test-review",
         "playwright-browser-testing",
         "playwright-java",
-        "pr-test-analyzer",
         "process-verify-completion",
         "qa-tdd-architect",
         "reasoning-harness",
@@ -2030,11 +2036,11 @@
         "security-requirement-extraction",
         "semgrep-rule-variant-creator",
         "sop-build",
-        "tdd-guide",
         "tdd-orchestrator",
         "tdd-workflow",
         "test-automator",
         "test-collaboration",
+        "test-driven-development",
         "test-fixing",
         "testing-patterns",
         "testing-qa",
@@ -2163,13 +2169,13 @@
       "seniority": "L5",
       "governing_pod": "pod-build",
       "primary_skills": [
-        "network-architect",
+        "network-engineer",
         "cisco-ios-patterns",
         "mtls-configuration",
         "homelab-network-setup",
         "homelab-wireguard-vpn"
       ],
-      "total_mapped_skills": 26,
+      "total_mapped_skills": 25,
       "skills": [
         "cisco-ios-patterns",
         "connections-optimizer",
@@ -2188,7 +2194,6 @@
         "mtls-configuration",
         "netmiko-ssh-automation",
         "network-101",
-        "network-architect",
         "network-bgp-diagnostics",
         "network-config-validation",
         "network-engineer",
@@ -2297,9 +2302,9 @@
         "autonomous-agent-patterns",
         "crewai",
         "multi-agent-patterns",
-        "agents-sdk"
+        "agents-spec-generator"
       ],
-      "total_mapped_skills": 269,
+      "total_mapped_skills": 268,
       "skills": [
         "1password-mcp",
         "adversarial-verification-method",
@@ -2320,7 +2325,6 @@
         "agent-sorting",
         "agentic-actions-auditor",
         "agentic-os",
-        "agents-sdk",
         "agents-spec-generator",
         "agents-v2-py",
         "agenttrace-session-audit",
@@ -3411,7 +3415,7 @@
         "design-spells",
         "swiftui-ui-patterns"
       ],
-      "total_mapped_skills": 45,
+      "total_mapped_skills": 43,
       "skills": [
         "acceptance-orchestrator",
         "architecture-frontend-design",
@@ -3445,7 +3449,6 @@
         "saas-multi-tenant",
         "scroll-experience",
         "sketch-to-3d-render-design",
-        "software-architecture",
         "swiftui-ui-patterns",
         "team-composition-analysis",
         "tool-design",
@@ -3455,7 +3458,6 @@
         "ux-feedback",
         "ux-flow",
         "ux-persuasion-engineer",
-        "vibe-to-production",
         "visionary-product-craftsmanship",
         "web-animation-design"
       ]
@@ -3778,6 +3780,7 @@
         "article-writing",
         "audience-research",
         "batch-content-plan",
+        "blog-writing-guide",
         "box-automation",
         "browser-extension-builder",
         "campaign-and-launch-planning",
@@ -3944,7 +3947,6 @@
         "twitter-article-publisher",
         "twitter-automation",
         "twitter-post-scraper",
-        "ugc-and-influencer",
         "wcag-audit-patterns",
         "web-fuzzing-ffuf",
         "webpage-article-extractor",
@@ -4091,7 +4093,7 @@
         "linkedin-growth",
         "tiktok-growth"
       ],
-      "total_mapped_skills": 118,
+      "total_mapped_skills": 116,
       "skills": [
         "ai-search-optimization",
         "analytics-and-reporting",
@@ -4112,7 +4114,6 @@
         "fixing-metadata",
         "goals-and-kpis",
         "hashtag-strategy",
-        "headline-psychologist",
         "instagram-automation",
         "instagram-graph-api",
         "instagram-growth",
@@ -4191,7 +4192,6 @@
         "twitter-article-publisher",
         "twitter-automation",
         "twitter-post-scraper",
-        "ugc-and-influencer",
         "url-to-markdown",
         "videodb-media-engine",
         "webpage-screenshot-capture",
@@ -4226,9 +4226,10 @@
         "avoid-ai-writing",
         "brand-voice"
       ],
-      "total_mapped_skills": 23,
+      "total_mapped_skills": 30,
       "skills": [
         "avoid-ai-writing",
+        "awareness-stage-mapper",
         "brand-voice",
         "canva-automation",
         "caption-writer",
@@ -4238,6 +4239,9 @@
         "copywriting-psychologist",
         "cross-platform-repurposing",
         "customer-psychographic-profiler",
+        "free-tool-strategy",
+        "hashtag-strategy",
+        "headline-psychologist",
         "hook-writer",
         "i18n-sync",
         "interactive-content",
@@ -4246,9 +4250,12 @@
         "pr-enhancement",
         "pr-enhancer",
         "pr-writer",
+        "sop-growth",
         "story-writer",
         "trending-tech-tracker",
+        "ugc-and-influencer",
         "viral-reverse-engineering",
+        "webpage-screenshot-capture",
         "writing-clearly-and-concisely",
         "x-growth"
       ]
@@ -4266,11 +4273,10 @@
         "ab-test-setup",
         "analytics-tracking"
       ],
-      "total_mapped_skills": 19,
+      "total_mapped_skills": 18,
       "skills": [
         "ab-test-setup",
         "analytics-tracking",
-        "copy-editing",
         "copywriting-psychologist",
         "discord-bot-architect",
         "form-cro",
@@ -4566,7 +4572,7 @@
         "linkedin-growth",
         "social-selling-and-dm"
       ],
-      "total_mapped_skills": 24,
+      "total_mapped_skills": 23,
       "skills": [
         "apify-actor-development",
         "apify-actorization",
@@ -4590,8 +4596,7 @@
         "options-flow-analyzer",
         "sales-automator",
         "salesforce-development",
-        "social-selling-and-dm",
-        "sop-growth"
+        "social-selling-and-dm"
       ]
     },
     "role-solutions-engineer": {
@@ -4642,7 +4647,7 @@
       "seniority": "L5",
       "governing_pod": "pod-customer",
       "primary_skills": [
-        "pod-customer",
+        "sop-customer",
         "churn-prevention",
         "hubspot-integration",
         "analytics-tracking",
@@ -4659,7 +4664,7 @@
         "hubspot-integration",
         "intercom-automation",
         "onboarding-psychologist",
-        "pod-customer",
+        "sop-customer",
         "verification-before-completion",
         "zendesk-automation"
       ]
@@ -4801,13 +4806,13 @@
       "seniority": "L4",
       "governing_pod": "pod-customer",
       "primary_skills": [
-        "pod-customer",
+        "sop-customer",
         "systematic-debugging",
         "incident-response",
         "customer-support",
         "postmortem-writing"
       ],
-      "total_mapped_skills": 37,
+      "total_mapped_skills": 36,
       "skills": [
         "api-endpoint-builder",
         "bash-linux",
@@ -4834,7 +4839,6 @@
         "kotlin-coroutines-flows",
         "lint-and-validate",
         "native-data-fetching",
-        "pod-customer",
         "postmortem-writing",
         "powershell-windows",
         "progressive-web-app",
@@ -4855,13 +4859,13 @@
       "seniority": "L4",
       "governing_pod": "pod-customer",
       "primary_skills": [
-        "pod-customer",
+        "sop-customer",
         "email-sequence",
         "onboarding-cro",
         "customer-support",
         "content-creator"
       ],
-      "total_mapped_skills": 34,
+      "total_mapped_skills": 33,
       "skills": [
         "assumption-audit-first-principles",
         "c4-code",
@@ -4886,7 +4890,6 @@
         "obsidian-clipper-template-creator",
         "onboarding-cro",
         "onboarding-psychologist",
-        "pod-customer",
         "price-psychology-strategist",
         "product-lens",
         "project-skill-audit",
@@ -4906,7 +4909,7 @@
       "seniority": "L5",
       "governing_pod": "pod-customer",
       "primary_skills": [
-        "pod-customer",
+        "sop-customer",
         "project-flow-ops",
         "developer-session-diary",
         "api-design",
@@ -4954,13 +4957,13 @@
         "nx-workspace-patterns",
         "orch-add-feature",
         "planning-with-files",
-        "pod-customer",
         "process-writing-plans",
         "project-flow-ops",
         "project-guidelines-example",
         "puzzle-activity-planner",
         "receiving-code-review",
         "shellcheck-configuration",
+        "sop-customer",
         "spec-to-code-compliance",
         "story-lifecycle",
         "subagent-driven-development",
@@ -4980,7 +4983,7 @@
       "seniority": "L6",
       "governing_pod": "pod-customer",
       "primary_skills": [
-        "pod-customer",
+        "sop-customer",
         "api-design",
         "analytics-tracking",
         "pitch-psychologist",
@@ -5004,11 +5007,11 @@
         "oral-health-analyzer",
         "osint-investigation",
         "pitch-psychologist",
-        "pod-customer",
         "project-readme-generator",
         "scientific-thinking-literature-review",
         "secure-env-secrets-manager",
         "sexual-health-analyzer",
+        "sop-customer",
         "tech-debt-cleanup",
         "technical-change-tracker",
         "uv-package-manager",
@@ -5052,13 +5055,11 @@
         "app-store-changelog",
         "git-pr-review"
       ],
-      "total_mapped_skills": 44,
+      "total_mapped_skills": 42,
       "skills": [
-        "agents-spec-generator",
         "api-documentation-generator",
         "api-documenter",
         "app-store-changelog",
-        "awareness-stage-mapper",
         "c4-component",
         "c4-container",
         "c4-context",
@@ -5141,7 +5142,7 @@
         "data-storytelling",
         "kpi-dashboard-design"
       ],
-      "total_mapped_skills": 84,
+      "total_mapped_skills": 83,
       "skills": [
         "andruia-skill-smith",
         "antigravity-skill-orchestrator",
@@ -5198,7 +5199,6 @@
         "legacy-modernize",
         "lint-and-validate",
         "llm-prompt-tuning",
-        "marketing-psychology",
         "new-rails-project",
         "pentest-checklist",
         "phase-gated-debugging",
@@ -5642,13 +5642,13 @@
       "seniority": "L8",
       "governing_pod": "pod-people",
       "primary_skills": [
-        "pod-people",
+        "sop-people",
         "hr-pro",
         "employment-contract-templates",
         "analytics-tracking",
         "financial-projections"
       ],
-      "total_mapped_skills": 22,
+      "total_mapped_skills": 21,
       "skills": [
         "analytics-tracking",
         "basecamp-automation",
@@ -5669,7 +5669,6 @@
         "jake-hunter-hunter-scout",
         "jake-hunter-hunter-tracker",
         "odoo-hr-payroll-setup",
-        "pod-people",
         "sop-people",
         "viral-generator-builder"
       ]
@@ -5681,16 +5680,15 @@
       "seniority": "L4",
       "governing_pod": "pod-people",
       "primary_skills": [
-        "pod-people",
+        "sop-people",
         "hr-pro",
         "tech-interview-resume-prep",
         "apify-lead-generation",
         "linkedin-growth"
       ],
-      "total_mapped_skills": 21,
+      "total_mapped_skills": 19,
       "skills": [
         "apify-lead-generation",
-        "awareness-stage-mapper",
         "hr-pro",
         "interview-coach",
         "jake-hunter-hunter-apply",
@@ -5705,7 +5703,6 @@
         "jake-hunter-hunter-scout",
         "jake-hunter-hunter-tracker",
         "linkedin-growth",
-        "pod-people",
         "refactor-context-restore",
         "sop-people",
         "tech-interview-resume-prep",
@@ -5719,7 +5716,7 @@
       "seniority": "L5",
       "governing_pod": "pod-people",
       "primary_skills": [
-        "pod-people",
+        "sop-people",
         "hr-pro",
         "content-creator",
         "analytics-tracking",
@@ -5744,10 +5741,10 @@
         "nutrition-analyzer",
         "perf-ai-review",
         "perf-test-review",
-        "pod-people",
         "rehabilitation-analyzer",
         "saga-orchestration",
         "sleep-analyzer",
+        "sop-people",
         "startup-metrics-framework",
         "swiftui-performance-audit",
         "weightloss-analyzer"
@@ -5788,7 +5785,7 @@
         "ai-engineering-toolkit",
         "educational-content-and-how-to"
       ],
-      "total_mapped_skills": 30,
+      "total_mapped_skills": 29,
       "skills": [
         "advanced-mathematical-reasoning",
         "ai-engineering-toolkit",
@@ -5815,7 +5812,6 @@
         "project-guidelines-example",
         "senior-frontend",
         "subagent-driven-development",
-        "terminal-opener",
         "unity-ai-game-creator",
         "unreal-engine-cpp-pro",
         "visa-doc-translate",
@@ -6091,10 +6087,9 @@
         "terraform-infrastructure-as-code",
         "cost-optimization"
       ],
-      "total_mapped_skills": 83,
+      "total_mapped_skills": 82,
       "skills": [
         "ai-agents-architect",
-        "architect-review",
         "aws-cloud-architecture",
         "aws-serverless",
         "azure-ai-projects-py",
@@ -6604,9 +6599,7 @@
     },
     "agents-spec-generator": {
       "primary_role": "role-agentic-workflow-architect",
-      "secondary_roles": [
-        "role-docs-technical-writer"
-      ],
+      "secondary_roles": [],
       "tier": 2,
       "description": "create AGENTS.md\", \"update AGENTS.md\", \"maintain agent docs\", \"set up CLAUDE.md\", or needs to keep agent instructions concise. Enforces research-backed best practices for minimal, high-signal agent documentation."
     },
@@ -7628,9 +7621,9 @@
       "description": "Implement tasks from an Aegis change. Use when the user wants to start implementing, continue implementation, or work through tasks."
     },
     "architect-review": {
-      "primary_role": "role-staff-engineer",
+      "primary_role": "role-vp-engineering",
       "secondary_roles": [
-        "role-cloud-architect"
+        "role-staff-engineer"
       ],
       "tier": 1,
       "description": "Master software architect specializing in modern architecture"
@@ -7971,9 +7964,9 @@
       "description": "Audit and rewrite content to remove 21 categories of AI writing patterns with a 43-entry replacement table"
     },
     "awareness-stage-mapper": {
-      "primary_role": "role-recruiter",
+      "primary_role": "role-brand-copywriter",
       "secondary_roles": [
-        "role-docs-technical-writer"
+        "role-growth-pm"
       ],
       "tier": 2,
       "description": "Use when diagnosing audience awareness before writing an offer or choosing stage-specific campaign messaging."
@@ -9240,7 +9233,7 @@
     "blog-writing-guide": {
       "primary_role": "role-product-director",
       "secondary_roles": [
-        "role-cpo"
+        "role-content-strategist"
       ],
       "tier": 2,
       "description": "This skill enforces Sentry's blog writing standards across every post \u2014 whether you're helping an engineer write their first blog post or a marketer draft a product announcement."
@@ -9545,9 +9538,9 @@
       "description": "Interact with the Camber data science and agentic platform via its MCP server. Create, discover, and chat with Camber agents; manage team and personal workspaces; and orchestrate multi-agent data workflows."
     },
     "campaign-and-launch-planning": {
-      "primary_role": "role-product-director",
+      "primary_role": "role-content-strategist",
       "secondary_roles": [
-        "role-content-strategist"
+        "role-product-director"
       ],
       "tier": 2,
       "description": "Plan and orchestrate a product launch or social media campaign end to end \u2014 the multi-week arc, channel by channel. Use when someone wants to plan a launch, product drop, campaign, big announcement, waitlist/pre-launch push, or coordinated multi-platform moment. Plans a time-boxed campaign as ONE story across three phases (tease -> launch -> sustain) toward a single goal, and schedules the coordinated social posts via WoopSocial. Uses the STORY framework. Reads brand-profile + goals-and-kpis first. WoopSocial schedules + publishes the social posts on the timeline; the waitlist/hub, email sequence, checkout, paid ads, press/creator outreach, and livestream are external/native, and conversion/ROI come from native analytics + the store (never fabricated). Urgency must be credible (no fake countdowns/scarcity). Distinct from content-calendar (the ongoing always-on cadence) and goals-and-kpis (the targets a campaign serves)."
@@ -9775,10 +9768,8 @@
       "description": "Score any MCP server, API, or CLI for agent-readiness using Clarvia AEO (Agent Experience Optimization). Search 15,400+ indexed tools before adding them to your workflow."
     },
     "clean-architecture-craftsmanship": {
-      "primary_role": "role-staff-engineer",
-      "secondary_roles": [
-        "role-senior-swe"
-      ],
+      "primary_role": "role-swe",
+      "secondary_roles": [],
       "tier": 1,
       "description": "Use when performing code review, writing or refactoring code, or discussing architecture; complements clean-code and does not replace project linter/formatter."
     },
@@ -10603,7 +10594,7 @@
     "copy-editing": {
       "primary_role": "role-brand-copywriter",
       "secondary_roles": [
-        "role-conversion-optimizer"
+        "role-cmo"
       ],
       "tier": 2,
       "description": "You are an expert copy editor specializing in marketing and conversion copy. Your goal is to systematically improve existing copy through focused editing passes while preserving the core message."
@@ -12832,7 +12823,7 @@
     "free-tool-strategy": {
       "primary_role": "role-cmo",
       "secondary_roles": [
-        "role-vp-engineering"
+        "role-brand-copywriter"
       ],
       "tier": 2,
       "description": "You are an expert in engineering-as-marketing strategy. Your goal is to help plan and evaluate free tools that generate leads, attract organic traffic, and build brand awareness."
@@ -13200,8 +13191,10 @@
       "description": "Onboard a developer to a repository by mapping its architecture, workflows, conventions, and starter tasks. Use when preparing team knowledge-transfer material."
     },
     "git-pr-review": {
-      "primary_role": "role-docs-technical-writer",
-      "secondary_roles": [],
+      "primary_role": "role-qa-engineer",
+      "secondary_roles": [
+        "role-docs-technical-writer"
+      ],
       "tier": 1,
       "description": "Generate a concise and structured PR description from commit history with minimal token usage"
     },
@@ -13502,9 +13495,9 @@
       "description": "Master modern GraphQL with federation, performance optimization, and enterprise security. Build scalable schemas, implement advanced caching, and design real-time systems."
     },
     "growth-engine": {
-      "primary_role": "role-seo-specialist",
+      "primary_role": "role-cmo",
       "secondary_roles": [
-        "role-cmo"
+        "role-seo-specialist"
       ],
       "tier": 2,
       "description": "Motor de crescimento para produtos digitais -- growth hacking, SEO, ASO, viral loops, email marketing, CRM, referral programs e aquisicao organica."
@@ -13534,9 +13527,9 @@
       "description": "Review or plan a setup of the Harvey/Sellbird AI sales agent using the user-supplied setup guide while checking current upstream documentation, license, provider, and approval settings. Use for Harvey, Sellbird, local prospect research, sales-agent setup, or cold-email workflow questions."
     },
     "hashtag-strategy": {
-      "primary_role": "role-social-media-manager",
+      "primary_role": "role-brand-copywriter",
       "secondary_roles": [
-        "role-cmo"
+        "role-social-media-manager"
       ],
       "tier": 2,
       "description": "Use to build a hashtag and discoverability strategy for social posts \u2014 the modern (2026) approach, not the outdated \"30 hashtags to go viral\" playbook. Run when the user says \"hashtags,\" \"what hashtags should I use,\" \"how many hashtags,\" \"hashtag strategy,\" \"help me get discovered/reach,\" asks \"do hashtags still work / are hashtags dead,\" or asks how to tag a post. Reads brand-profile and audience first. Sets the keyword/social-SEO layer first (caption, on-screen text, spoken audio) because that \u2014 plus engagement and the content itself \u2014 drives discovery far more than hashtags now; then picks a tight, relevant, per-platform hashtag set (respecting caps like Instagram's enforced 5-tag limit), favors niche/mid-tier tags over generic mega-tags, and designs branded/campaign hashtags for community and tracking. Rotates sets rather than copy-pasting one block, and hands placement/publishing to scheduling-and-queue. Sets honest expectations: hashtags categorize and aid search; they are not a reach hack."
@@ -13552,7 +13545,7 @@
     "headline-psychologist": {
       "primary_role": "role-email-lifecycle-marketer",
       "secondary_roles": [
-        "role-social-media-manager"
+        "role-brand-copywriter"
       ],
       "tier": 1,
       "description": "Use when drafting or testing headlines for ads, landing pages, email, or social posts, with relevance and curiosity instead of clickbait."
@@ -15363,7 +15356,8 @@
     "jake-replica-replica-architect": {
       "primary_role": "role-senior-swe",
       "secondary_roles": [
-        "role-swe"
+        "role-swe",
+        "role-staff-engineer"
       ],
       "tier": 1,
       "description": "Plans the stack, database schema and API for an app clone, from the recon map replica-recon wrote. Picks boring, managed tech, turns the inferred data model into real SQL with indexes and access rules, lists every route by flow, and orders the build as a thin vertical slice first. Use when the user says \"plan the clone\", \"what stack should I use\", \"design the database\", \"write the schema\", \"plan the API\", \"architecture for my version of X\", or after /replica-recon finishes."
@@ -15371,7 +15365,8 @@
     "jake-replica-replica-backend": {
       "primary_role": "role-senior-swe",
       "secondary_roles": [
-        "role-swe"
+        "role-swe",
+        "role-staff-engineer"
       ],
       "tier": 2,
       "description": "Builds the backend of an app clone: auth, database migrations and access rules, payments with Stripe, email, background jobs and third-party integrations through official APIs only, plus a security checklist. Use when the user says \"add login\", \"set up auth\", \"wire up the database\", \"add payments\", \"connect Stripe\", \"add Google Calendar\", \"send emails\", \"backend for my clone\", or when /replica-build is running on fake data."
@@ -15379,7 +15374,8 @@
     "jake-replica-replica-brand": {
       "primary_role": "role-senior-swe",
       "secondary_roles": [
-        "role-swe"
+        "role-swe",
+        "role-staff-engineer"
       ],
       "tier": 2,
       "description": "Names and rebrands an app clone so it is the user's own: name candidates with the trademark, domain, store and handle checks to run, a new palette checked for contrast, a logo brief, a voice guide, and a sweep tool that finds anything of the original left in the codebase. Use when the user says \"name my app\", \"rebrand the clone\", \"make it mine\", \"pick a name and colours\", \"logo brief\", \"brand voice\", \"check for leftovers\", or after /replica-entrepreneur. Always runs before /replica-launch."
@@ -15387,7 +15383,8 @@
     "jake-replica-replica-build": {
       "primary_role": "role-senior-swe",
       "secondary_roles": [
-        "role-swe"
+        "role-swe",
+        "role-staff-engineer"
       ],
       "tier": 2,
       "description": "Rebuilds an app screen by screen from the recon map: app shell first, then the core flow as a vertical slice, then every screen with all its states, ticking off the feature matrix as it goes. Writes every line fresh, never the original's code, assets or copy. Use when the user says \"build the clone\", \"build screen S07\", \"start building\", \"rebuild this screen\", \"implement the booking page\", or after /replica-design."
@@ -15395,7 +15392,8 @@
     "jake-replica-replica-deploy": {
       "primary_role": "role-senior-swe",
       "secondary_roles": [
-        "role-swe"
+        "role-swe",
+        "role-staff-engineer"
       ],
       "tier": 2,
       "description": "Ships an app clone live on the user's own domain: a preflight gate (tests green, parity must-haves done, rebrand sweep clean, listing linted, legal pages up), production database and env vars, the host, DNS records for the domain and for email, Stripe live mode, OAuth redirects, monitoring, and mobile builds to TestFlight and Play. Use when the user says \"deploy it\", \"ship it\", \"put it live\", \"connect my domain\", \"go to production\", \"publish the app\", or after /replica-launch."
@@ -15403,7 +15401,8 @@
     "jake-replica-replica-design": {
       "primary_role": "role-senior-swe",
       "secondary_roles": [
-        "role-swe"
+        "role-swe",
+        "role-staff-engineer"
       ],
       "tier": 2,
       "description": "Rebuilds an app's design system for a clone: colour roles, type scale, spacing, radius, shadows and every component with its states, as design tokens plus component specs, with original assets instead of the target's logos, icons, illustrations or licensed fonts. Includes a WCAG contrast checker. Use when the user says \"match the design\", \"rebuild the design system\", \"get the colours and fonts\", \"make it look like X\", \"design tokens for my clone\", or after /replica-architect."
@@ -15411,7 +15410,8 @@
     "jake-replica-replica-diff": {
       "primary_role": "role-senior-swe",
       "secondary_roles": [
-        "role-swe"
+        "role-swe",
+        "role-staff-engineer"
       ],
       "tier": 2,
       "description": "Compares an app clone against the original: a feature parity score from the feature matrix (weighted by must, should, could) with the missing list in build order, plus a screenshot layout diff that ignores colour so a rebrand does not count against you. Two standard-library Python tools. Use when the user says \"how close is my clone\", \"compare it to the original\", \"what's missing\", \"parity check\", \"diff the screens\", \"is it ready\", or after /replica-test."
@@ -15419,7 +15419,8 @@
     "jake-replica-replica-entrepreneur": {
       "primary_role": "role-senior-swe",
       "secondary_roles": [
-        "role-swe"
+        "role-swe",
+        "role-staff-engineer"
       ],
       "tier": 2,
       "description": "Researches the app being cloned and reads what its real users say in public reviews (App Store, Google Play, G2, Capterra, Trustpilot, Reddit, Hacker News, its own feature-request board), then ranks what they hate, what is missing and what is unsolved, turns it into a fix plan for the clone and a positioning angle you can sell. Every quote is real, verbatim and linked. Use when the user says \"what do people hate about X\", \"read the reviews\", \"how do I make mine better\", \"find the gap\", \"what features are missing\", \"how do I position this\", \"make it sellable\", or after /replica-diff."
@@ -15427,7 +15428,8 @@
     "jake-replica-replica-launch": {
       "primary_role": "role-senior-swe",
       "secondary_roles": [
-        "role-swe"
+        "role-swe",
+        "role-staff-engineer"
       ],
       "tier": 2,
       "description": "Writes the launch for an app clone: the landing page built on the positioning angle, pricing set against the original's public pricing and its users' complaints, and the App Store and Google Play listing linted against the stores' limits and copycat rules. Use when the user says \"landing page\", \"pricing\", \"how much should I charge\", \"App Store listing\", \"store screenshots\", \"launch plan\", \"Product Hunt\", or after /replica-brand."
@@ -15435,7 +15437,8 @@
     "jake-replica-replica-recon": {
       "primary_role": "role-senior-swe",
       "secondary_roles": [
-        "role-swe"
+        "role-swe",
+        "role-staff-engineer"
       ],
       "tier": 2,
       "description": "Reverse-engineers any app into a recon map: screen inventory, user flows, component list, inferred data model and a feature matrix, from public pages, screenshots, app store listings, help docs and the user's own account. The first step of the Replica pack. Use when the user says \"clone this app\", \"reverse engineer X\", \"how does X work\", \"map out X\", \"what screens does X have\", \"I want to build my own version of X\", \"copy this app\", or pastes an app's URL or App Store link and wants to rebuild it."
@@ -15443,7 +15446,8 @@
     "jake-replica-replica-test": {
       "primary_role": "role-senior-swe",
       "secondary_roles": [
-        "role-swe"
+        "role-swe",
+        "role-staff-engineer"
       ],
       "tier": 2,
       "description": "Clicks through every flow of an app clone and tests it for bugs: a test plan generated from the recon flows with happy paths and edge cases, Playwright end-to-end tests where possible, a browser click-through where not, and bug reports in a fixed format with severity, steps and evidence. Use when the user says \"test my clone\", \"find bugs\", \"QA this\", \"click through everything\", \"write e2e tests\", \"does it work\", or after /replica-build or /replica-backend."
@@ -17132,9 +17136,9 @@
       "description": "Provide proven marketing strategies and growth ideas for SaaS and software products, prioritized using a marketing feasibility scoring system."
     },
     "marketing-psychology": {
-      "primary_role": "role-design-system-engineer",
+      "primary_role": "role-cmo",
       "secondary_roles": [
-        "role-fp-and-a-analyst"
+        "role-design-system-engineer"
       ],
       "tier": 2,
       "description": "Apply behavioral science and mental models to marketing decisions, prioritized using a psychological leverage and feasibility scoring system."
@@ -17837,9 +17841,7 @@
     },
     "network-engineer": {
       "primary_role": "role-network-infra-eng",
-      "secondary_roles": [
-        "role-devops-engineer"
-      ],
+      "secondary_roles": [],
       "tier": 1,
       "description": "Expert network engineer specializing in modern cloud networking, security architectures, and performance optimization."
     },
@@ -19165,7 +19167,7 @@
     "product-marketing-context": {
       "primary_role": "role-product-director",
       "secondary_roles": [
-        "role-cpo"
+        "role-cmo"
       ],
       "tier": 2,
       "description": "Create or update a reusable product marketing context document with positioning, audience, ICP, use cases, and messaging. Use at the start of a project to avoid repeating core marketing context across tasks."
@@ -20382,9 +20384,9 @@
       "description": "Expert web researcher using advanced search techniques and"
     },
     "seasonal-and-moment-marketing": {
-      "primary_role": "role-content-strategist",
+      "primary_role": "role-cmo",
       "secondary_roles": [
-        "role-cmo"
+        "role-content-strategist"
       ],
       "tier": 2,
       "description": "The annual moment-planning skill -- map the few seasonal/cultural/commercial moments that genuinely fit your brand, gate them for fit + authenticity, tier by weight, and plan far in advance. Use when someone wants a seasonal/holiday content plan, a moment calendar, to plan Black Friday/holiday content, or to decide whether to post for a holiday/awareness day. The planned counterpart to trend-jacking's reactivity: silence on the wrong day beats noise on the wrong topic. Uses the DATES framework. Reads brand-profile + audience-research first. The agent builds the calendar, gates fit + authenticity, tiers, plans lead-time, feeds content-calendar. Big moments route to campaign-and-launch-planning + paid; the reactive half to trend-jacking. WoopSocial schedules ahead -- it does not pick moments, judge authenticity, or run paid. Never join identity/cause moments without year-round standing; never fabricate. Distinct from trend-jacking, content-calendar, and campaign-and-launch-planning."
@@ -21327,10 +21329,8 @@
       "description": "Use to set a brand's overall social media strategy \u2014 which channels to focus on (and which to ignore), what to achieve, the angle to win, and a realistic operating cadence. The top-level plan that sits above content pillars and the calendar. Run when the user says \"social strategy,\" \"social media strategy,\" \"which platforms should I be on,\" \"what's my plan,\" \"should I be on TikTok/LinkedIn,\" or is starting or resetting their social presence. Reads brand-profile, audience-research, and content-pillars first. Makes real choices and trade-offs \u2014 especially what NOT to do \u2014 ties goals to the business not vanity metrics, and measures covered networks with WoopSocial post analytics (TikTok, LinkedIn, Facebook, Instagram, Pinterest, YouTube, and Bluesky) and uses native dashboards otherwise. Produces a social-strategy.md. It names the objective; to turn it into SMART targets, KPIs, and North Star metrics, use goals-and-kpis. Works for any business."
     },
     "software-architecture": {
-      "primary_role": "role-product-designer",
-      "secondary_roles": [
-        "role-swe"
-      ],
+      "primary_role": "role-cto",
+      "secondary_roles": [],
       "tier": 1,
       "description": "Guide for quality focused software architecture. This skill should be used when users want to write code, design architecture, analyze code, in any case that relates to software development."
     },
@@ -21349,9 +21349,12 @@
       "description": "Standard Operating Procedure for Build Pod (Product and Engineering). Governs PRD authoring, Test-Driven Development (TDD) red-green-refactor loops, code quality, and regression verification."
     },
     "sop-customer": {
-      "primary_role": "role-support-engineer",
+      "primary_role": "role-customer-success-manager",
       "secondary_roles": [
-        "role-onboarding-specialist"
+        "role-support-engineer",
+        "role-onboarding-specialist",
+        "role-implementation-consultant",
+        "role-technical-account-manager"
       ],
       "tier": 2,
       "description": "Standard Operating Procedure for Customer Pod (Onboarding and Support). Governs client onboarding checklists, ticket diagnosis, policy-adherent response drafting, and defect escalation."
@@ -21367,15 +21370,16 @@
     "sop-growth": {
       "primary_role": "role-cmo",
       "secondary_roles": [
-        "role-sales-development-rep"
+        "role-brand-copywriter"
       ],
       "tier": 2,
       "description": "Standard Operating Procedure for Growth Pod (Marketing, Lead Generation, and Sales). Governs campaign drafting, audience targeting, compliant lead qualification, and non-binding quote generation."
     },
     "sop-people": {
-      "primary_role": "role-recruiter",
+      "primary_role": "role-vp-people",
       "secondary_roles": [
-        "role-vp-people"
+        "role-recruiter",
+        "role-hr-business-partner"
       ],
       "tier": 2,
       "description": "Standard Operating Procedure for People Pod (Hiring and Talent). Governs objective applicant screening, interview packets, evaluation rubrics, and onboarding handoffs."
@@ -22093,9 +22097,9 @@
       "description": "Comprehensive testing approaches for Temporal workflows using pytest, progressive disclosure resources for specific testing scenarios."
     },
     "terminal-opener": {
-      "primary_role": "role-fp-and-a-analyst",
+      "primary_role": "role-growth-pm",
       "secondary_roles": [
-        "role-learning-development"
+        "role-fp-and-a-analyst"
       ],
       "tier": 2,
       "description": "Open an executable and its argument array in a visible terminal window through a reusable, shell-free launch plan with dry-run, JSON, capability detection, detached fallback, and standalone recovery modes. Use when Codex needs to open an interactive CLI, SSH session, local development process, sandbox, or other argv-based command in a new host terminal; diagnose whether a supported terminal is available; or provide an actionable plan when the requested terminal is unsupported."
@@ -22167,7 +22171,9 @@
     },
     "test-driven-development": {
       "primary_role": "role-swe",
-      "secondary_roles": [],
+      "secondary_roles": [
+        "role-qa-engineer"
+      ],
       "tier": 1,
       "description": "Use when implementing any feature or bugfix, before writing implementation code"
     },
@@ -22658,9 +22664,9 @@
       "description": "Scaffold a TypeScript application or library with package management, modules, type checks, tests, and build tooling. Use when starting a TypeScript project."
     },
     "ugc-and-influencer": {
-      "primary_role": "role-content-strategist",
+      "primary_role": "role-brand-copywriter",
       "secondary_roles": [
-        "role-social-media-manager"
+        "role-cmo"
       ],
       "tier": 2,
       "description": "UGC and influencer marketing \u2014 paid or gifted creator partnerships, briefs, usage rights, and disclosure done right. Use when someone wants to run an influencer campaign, sponsored post, paid or gifted creator partnership, write a creator brief, license/whitelist creator content, source customer UGC, or build a UGC pipeline. Vets creators on engagement + audience quality (not follower count); briefs with guardrails not scripts; inks usage rights up front; enforces FTC/ASA disclosure on EVERY paid AND gifted post; runs the customer-UGC pipeline. Uses the BRIEF framework. Reads brand-profile + goals-and-kpis first. WoopSocial publishes the BRAND'S OWN posts (rights-cleared UGC reshares, campaign posts) \u2014 NOT creator DMs/payment/whitelisting/contracts. Undisclosed sponsorship = decline and correct; a tag is not usage permission. Distinct from collabs-and-cross-promotion (mutual, unpaid), creator-monetization (the creator's side), and social-proof-and-testimonials (UGC as proof content)."
@@ -23092,10 +23098,8 @@
       "description": "Audit rapidly generated or AI-produced code for structural flaws, fragility, technical debt, and production risks. Automatically triggers before merging large features or concluding deep implementation loops to ensure the code is actually robust."
     },
     "vibe-to-production": {
-      "primary_role": "role-technical-pm",
-      "secondary_roles": [
-        "role-product-designer"
-      ],
+      "primary_role": "role-swe",
+      "secondary_roles": [],
       "tier": 1,
       "description": "Transform high-level vibe coding prompts and non-technical ideas into production-grade, FAANG-level software with automated PRD synthesis, TDD, threat modeling, and design engineering."
     },
@@ -23338,7 +23342,7 @@
     "web-vitals-performance-benchmark": {
       "primary_role": "role-it-systems-admin",
       "secondary_roles": [
-        "role-frontend-engineer"
+        "role-cmo"
       ],
       "tier": 2,
       "description": "it feels slow' reports, verifying launch performance targets, or comparing stack alternatives."
@@ -23376,7 +23380,7 @@
     "webpage-screenshot-capture": {
       "primary_role": "role-social-media-manager",
       "secondary_roles": [
-        "role-product-director"
+        "role-brand-copywriter"
       ],
       "tier": 2,
       "description": "Generate marketing screenshots of your app using Playwright. Use when the user wants to create screenshots for Product Hunt, social media, landing pages, or documentation."
