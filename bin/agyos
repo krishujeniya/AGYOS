@@ -452,11 +452,14 @@ print(session.phase_plan())
       exit 1
     fi
     skill_file=".agents/skills/${target_skill}/SKILL.md"
-    if [[ -f "$skill_file" ]] && sed -n '1,/^---$/{p;}' "$skill_file" | grep -Fxq "prompt-source: prompt.toon"; then
-      skill_file=".agents/skills/${target_skill}/prompt.toon"
-    fi
-    if [ -f "$skill_file" ]; then
-      cat "$skill_file"
+    if [[ "$target_skill" =~ ^[a-z0-9][a-z0-9_-]*$ && -f "$skill_file" ]]; then
+      python3 - "$skill_file" <<'PYTHON'
+from pathlib import Path
+import sys
+from agyos_decision.catalog import runbook_file
+
+sys.stdout.write(runbook_file(Path(sys.argv[1])).read_text(encoding="utf-8"))
+PYTHON
     else
       echo "❌ Skill not found: $target_skill" >&2
       exit 1

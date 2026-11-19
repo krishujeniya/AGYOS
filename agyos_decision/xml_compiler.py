@@ -54,6 +54,16 @@ def minify_xml(xml_text: str) -> str:
 @functools.lru_cache(maxsize=1024)
 def compile_skill_to_xml(skill_name: str, max_instruction_lines: int = 25, compact: bool = False) -> str:
     """Compile a raw physical skill runbook into a compact <agyos_skill> XML card."""
+    directory = REPO_ROOT / ".agents" / "skills" / skill_name
+    if (directory / "prompt.toon").is_file():
+        from .catalog import read_metadata, runbook_file
+
+        source = runbook_file(directory / "SKILL.md")
+        if source.name == "prompt.toon":
+            card = ET.Element("agyos_skill", id=skill_name)
+            ET.SubElement(card, "intent").text = read_metadata(directory / "SKILL.md")["description"]
+            ET.SubElement(card, "instructions").text = source.read_text(encoding="utf-8")
+            return ET.tostring(card, encoding="unicode")
     # Fast path: Read from precompiled XML directory if available at default line limit
     if max_instruction_lines == 25:
         precompiled_file = REPO_ROOT / ".agents" / "skills-xml" / f"{skill_name}.xml"

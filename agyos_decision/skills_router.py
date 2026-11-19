@@ -12,7 +12,7 @@ import re
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
-from .catalog import canonical_entry, physical_catalog, read_metadata
+from .catalog import canonical_entry, physical_catalog, runbook_file
 from .integrations.source_registry import match_sources
 from .roles import classify_role_for_task, get_skills_for_role
 
@@ -748,8 +748,8 @@ def decide_skill(query: str) -> Dict[str, Any]:
     skill_path = primary.get("path", "")
     runbook_path = f"{skill_path}/SKILL.md"
     manifest = REPO_ROOT / runbook_path
-    if manifest.is_file() and read_metadata(manifest).get("prompt-source") == "prompt.toon":
-        runbook_path = f"{skill_path}/prompt.toon"
+    if manifest.is_file():
+        runbook_path = str(runbook_file(manifest).relative_to(REPO_ROOT))
     return {
         "task": query,
         "classification": {

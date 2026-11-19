@@ -14,7 +14,7 @@ steps[4]:
   - Check requirements against .agents/state/context-graph.json and inspect linked_repos in .agents/config.json for cross-repository dependencies.
   - Review the security scan from GitHub Actions and flag any findings by location without disclosing secret values.
   - Inspect the codebase for undocumented dependencies, overlapping abstractions, breaking changes, and potential races.
-ci_command: bash .agents/skills/agyos-scout/scripts/scan-security.sh
+ci_evidence: GitHub Actions CI secret-detection job and its gitleaks-report artifact
 output:
   deliverable: One scope and risk summary for the orchestrator's ANALYZE gate.
   maximum_tokens: 1000

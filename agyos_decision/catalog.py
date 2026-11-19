@@ -64,3 +64,17 @@ def canonical_entry(entry: Any) -> dict[str, Any] | None:
         "tier": entry.get("tier", 2),
         "category": category.lower(),
     }
+
+
+def runbook_file(manifest: Path) -> Path:
+    """Resolve an opted-in skill's delivery file and reject stale host content."""
+    metadata = read_metadata(manifest)
+    if "prompt-source" not in metadata:
+        return manifest
+    if metadata["prompt-source"] != "prompt.toon":
+        raise ValueError(f"Unsupported prompt source: {manifest}")
+    source = manifest.with_name("prompt.toon")
+    content = manifest.read_text(encoding="utf-8")
+    if source.read_text(encoding="utf-8") != content[FRONTMATTER.match(content).end():]:
+        raise ValueError(f"Host manifest differs from {source}")
+    return source
