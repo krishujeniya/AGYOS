@@ -1,9 +1,0 @@
-items[7]:
-  - id, title, family, fonts, demo_duration, demo_still, has_aroll
-  - creator-motion-graphics, Creator Motion Graphics, Kinetic Type, "60px ""Anton""|italic 60px ""Instrument Serif""|600 30px ""Inter""|700 30px ""Inter""|800 30px ""Inter""|500 20px ""Inter""", 21.5, 1.95, false
-  - chalk-talk, Chalk Talk, Hand-Drawn, "700 60px ""Cabin Sketch""|700 40px ""Kalam""|400 40px ""Kalam""|600 14px ""Inter""", 20.8, 12.6, false
-  - clean-tech, Clean Tech, Kinetic Type, "800 60px ""Inter Tight""|500 30px ""Inter Tight""|600 30px ""Inter Tight""|700 30px ""Inter Tight""|700 20px ""JetBrains Mono""", 20.0, 8.6, false
-  - software-walkthrough, Software Walkthrough, Screen and UI, "700 30px ""DM Sans""|600 30px ""DM Sans""|500 30px ""DM Sans""|400 30px ""DM Sans""|500 20px ""DM Mono""", 19.5, 10.9, false
-  - data-story, Data Story, Data, "800 60px ""Archivo""|600 30px ""Archivo""|500 30px ""IBM Plex Mono""|600 30px ""IBM Plex Mono""", 21.0, 7.0, false
-  - warm-canvas, Warm Canvas, Talking Head, "560 60px ""Fraunces""|600 30px ""Fraunces""|500 20px ""Inter""|600 20px ""Inter""", 32.6, 18.9, true
-  - pop-info, Pop Info, Illustrated, "600 20px ""Fredoka""|500 20px ""Fredoka""|700 20px ""Fredoka""", 12.0, 4.6, false
