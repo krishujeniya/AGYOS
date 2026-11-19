@@ -120,7 +120,7 @@ def main():
         prompt = target.with_name("prompt.toon")
         header = json.dumps(content.removesuffix(source), ensure_ascii=False)
         outputs = (
-            (target.with_name("SKILL.md.toon"), f'mode: "100644"\nheader: {header}\n'),
+            (target.with_name("SKILL.toon"), f'mode: "100644"\nheader: {header}\n'),
             (prompt, source),
             (target, content),
         )

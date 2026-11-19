@@ -7,8 +7,14 @@ import { pathToFileURL } from 'node:url'
 
 const stateName = '.agyos-documents-state.json'
 const excluded = new Set(['.git', 'OLD', 'node_modules', '.venv', '__pycache__'])
-const sourcePattern = /\.md\.toon$/i
+const sourcePattern = /\.toon$/i
 const utf8 = new TextDecoder('utf-8', { fatal: true, ignoreBOM: true })
+
+export function targetRelative(source) {
+  if (source.endsWith('.md.toon')) return source.slice(0, -'.toon'.length)
+  if (source.endsWith('.toon')) return source.slice(0, -'.toon'.length) + '.md'
+  return source
+}
 
 function sources(root) {
   if (fs.existsSync(path.join(root, '.git'))) {
@@ -51,22 +57,23 @@ function readRegular(filename) {
   }
 }
 
-function document(root, relative) {
-  const filename = safePath(root, relative)
+function document(root, source, relative) {
+  const filename = safePath(root, source)
   const input = utf8.decode(readRegular(filename))
   const fields = /^mode: "(100644|100755|120000)"\r?\n(text|header|target|archive): ("[^\r\n]*")\r?\n?$/.exec(input)
-  if (!fields || fields[0].length !== input.length) throw new Error(`Invalid document: ${relative}`)
+  if (!fields || fields[0].length !== input.length) return null
   const [, mode, field, encoded] = fields
   const value = JSON.parse(encoded)
   if (field === 'archive') return null
-  if ((mode === '120000') !== (field === 'target')) throw new Error(`Invalid target mode: ${relative}`)
-  if (field === 'target' && (relative !== 'GEMINI.md.toon' || value !== 'AGENTS.md')) {
-    throw new Error(`Unsupported document symlink: ${relative}`)
+  if ((mode === '120000') !== (field === 'target')) throw new Error(`Invalid target mode: ${source}`)
+  if (field === 'target' && (relative !== 'GEMINI.md' || value !== 'AGENTS.md')) {
+    throw new Error(`Unsupported document symlink: ${source}`)
   }
   let bytes = Buffer.from(value)
   if (field === 'header') {
-    if (path.basename(relative) !== 'SKILL.md.toon' || !/^---\r?\n[\s\S]*?\r?\n---\r?\n$/.test(value)) {
-      throw new Error(`Invalid discovery header: ${relative}`)
+    const base = path.basename(source)
+    if ((base !== 'SKILL.toon' && base !== 'SKILL.md.toon') || !/^---\r?\n[\s\S]*?\r?\n---\r?\n$/.test(value)) {
+      throw new Error(`Invalid discovery header: ${source}`)
     }
     bytes = Buffer.concat([bytes, readRegular(path.join(path.dirname(filename), 'prompt.toon'))])
   }
@@ -109,9 +116,9 @@ export function materialize(root = process.cwd()) {
   const next = new Map()
   let changes = 0
   for (const source of sources(root).sort()) {
-    const doc = document(root, source)
+    const relative = targetRelative(source)
+    const doc = document(root, source, relative)
     if (!doc) continue
-    const relative = source.slice(0, -'.toon'.length)
     const filename = safePath(root, relative)
     const expected = signature(doc.mode, doc.bytes)
     const before = current(filename)

@@ -16,7 +16,7 @@ assert.deepEqual(decode(encode(prompt)), prompt)
 assert.equal(manifest.slice(manifest.indexOf('\n---\n', 4) + 5), source)
 assert.equal(execFileSync('bash', ['bin/agyos', 'skill', prompt.skill], {encoding: 'utf8'}), source)
 
-const files = execFileSync('git', ['ls-files', '-z', '--', '.agents/skills/*/SKILL.md.toon'], { encoding: 'utf8', maxBuffer: 8 << 20 }).split('\0').filter(Boolean).map(file => file.slice(0, -'.toon'.length))
+const files = execFileSync('git', ['ls-files', '-z', '--', '.agents/skills/*/SKILL.toon', '.agents/skills/*/SKILL.md.toon'], { encoding: 'utf8', maxBuffer: 8 << 20 }).split('\0').filter(Boolean).map(file => file.endsWith('.md.toon') ? file.slice(0, -'.toon'.length) : file.slice(0, -'.toon'.length) + '.md')
 const sources = new Set(execFileSync('git', ['ls-files', '-z', '--', '.agents/skills/*/prompt.toon'], { encoding: 'utf8' }).split('\0').filter(Boolean))
 assert.equal(sources.size, files.length, 'Each manifest needs a tracked source')
 let unavailable = 0
@@ -41,9 +41,17 @@ for (const file of files) {
 }
 console.log(`Validated ${files.length} skill prompts, including ${unavailable} unavailable records.`)
 
-const documents = execFileSync('git', ['ls-files', '-z', '--', ':(icase)*.md.toon'], {
+const allToon = execFileSync('git', ['ls-files', '-z', '--', ':(icase)*.toon'], {
   encoding: 'utf8', maxBuffer: 8 << 20
 }).split('\0').filter(Boolean)
+const documents = allToon.filter(doc => {
+  try {
+    const head = readFileSync(doc, 'utf8').slice(0, 50)
+    return /^mode: "(100644|100755|120000)"/.test(head)
+  } catch {
+    return false
+  }
+})
 assert.ok(documents.length > 0, 'Expected tracked TOON document sources')
 const counts = { text: 0, header: 0, target: 0, archive: 0 }
 for (const document of documents) {
@@ -54,7 +62,9 @@ for (const document of documents) {
   assert.ok(Object.hasOwn(counts, kind), document)
   assert.equal(typeof record[kind], 'string', document)
   counts[kind]++
-  const output = document.slice(0, -'.toon'.length)
+  const output = document.endsWith('.md.toon')
+    ? document.slice(0, -'.toon'.length)
+    : document.slice(0, -'.toon'.length) + '.md'
   if (kind === 'target') {
     assert.equal(record.mode, '120000', document)
     assert.equal(readlinkSync(output), record.target, document)

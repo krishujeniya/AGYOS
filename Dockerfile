@@ -2,7 +2,7 @@
 FROM node:22-bookworm-slim AS documents
 WORKDIR /app
 COPY scripts/materialize-documents.mjs scripts/
-COPY README.md.toon SECURITY.md.toon ./
+COPY README.toon SECURITY.toon ./
 COPY docs/ docs/
 COPY site/ site/
 RUN node scripts/materialize-documents.mjs
