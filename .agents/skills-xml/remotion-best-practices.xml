@@ -1,8 +1,0 @@
-<agyos_skill id="remotion-best-practices">
-  <intent>Compatibility ID for Remotion video work in React. Use remotion-video-creation as the canonical guide for animations, audio, captions, charts, transitions, and 3D.</intent>
-  <instructions>
-<![CDATA[
-Use the canonical [remotion-video-creation runbook](../remotion-video-creation/SKILL.md). Its rule files contain the current shared guidance. This directory's rules paths remain in place for compatibility with existing links.
-]]>
-  </instructions>
-</agyos_skill>

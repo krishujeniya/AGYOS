@@ -64,12 +64,6 @@ def compile_skill_to_xml(skill_name: str, max_instruction_lines: int = 25, compa
             ET.SubElement(card, "intent").text = read_metadata(directory / "SKILL.md")["description"]
             ET.SubElement(card, "instructions").text = source.read_text(encoding="utf-8")
             return ET.tostring(card, encoding="unicode")
-    # Fast path: Read from precompiled XML directory if available at default line limit
-    if max_instruction_lines == 25:
-        precompiled_file = REPO_ROOT / ".agents" / "skills-xml" / f"{skill_name}.xml"
-        if precompiled_file.is_file():
-            content = precompiled_file.read_text(encoding="utf-8")
-            return minify_xml(content) if compact else content
 
     skill_file = REPO_ROOT / ".agents" / "skills" / skill_name / "SKILL.md"
     if not skill_file.is_file():

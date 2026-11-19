@@ -74,3 +74,7 @@ integrations/google-flow-mcp/
 .agyos-private/
 *.agyos.enc.json
 *.agyos.private.json
+
+# Archived legacy material (never upload to GitHub)
+OLD/
+OLD

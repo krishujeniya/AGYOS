@@ -4,8 +4,8 @@ Validates:
 1. TOON (Token-Oriented Object Notation) encoding and decoding round-trip.
 2. Token efficiency reduction (>35% vs JSON on skill catalog datasets).
 3. XML compilation of skills, agents, and task contracts with CDATA protection.
-4. Parsing validity of all 104 agent XML blocks in .agents/agents/role-*.md.
-5. Sampling validity of pre-compiled XML skill cards in .agents/skills-xml/.
+4. Parsing validity of all 104 agent XML blocks in .agents/agents/role-*.md with TOON workspaces.
+5. Verification of 100% pure TOON catalog in .agents/skills/ and exclusion of legacy skills-xml.
 6. Parsing validity and structure of .agents/state/skills-roles-graph.xml.
 7. Graph engine node and edge traversal.
 """
@@ -201,28 +201,27 @@ class TestXmlCompiler(unittest.TestCase):
         self.assertEqual(task_elem.tag, "agyos_task")
 
 
-class TestPrecompiledArtifacts(unittest.TestCase):
-    def test_skills_xml_symlink_exists(self):
+class TestToonArchitecture(unittest.TestCase):
+    def test_legacy_skills_xml_excluded_from_workspace(self):
         symlink = ROOT / "skills-xml"
-        self.assertTrue(symlink.exists(), "Root symlink skills-xml does not exist")
-        self.assertTrue(symlink.is_symlink() or symlink.is_dir())
-
-    def test_skills_xml_catalog_populated(self):
+        self.assertFalse(symlink.exists(), "Root symlink skills-xml should not exist in active workspace")
         xml_dir = ROOT / ".agents" / "skills-xml"
-        self.assertTrue(xml_dir.is_dir(), ".agents/skills-xml directory does not exist")
-        xml_files = list(xml_dir.glob("*.xml"))
-        self.assertGreaterEqual(len(xml_files), 2000, f"Expected >= 2000 XML skill cards, found {len(xml_files)}")
+        self.assertFalse(xml_dir.exists(), ".agents/skills-xml should not exist in active workspace")
 
-    def test_skills_xml_parse_samples(self):
-        xml_dir = ROOT / ".agents" / "skills-xml"
-        xml_files = list(xml_dir.glob("*.xml"))[:50]
-        for f in xml_files:
-            content = f.read_text(encoding="utf-8")
-            try:
-                root = ET.fromstring(content)
-                self.assertEqual(root.tag, "agyos_skill")
-            except Exception as e:
-                self.fail(f"Failed to parse XML in {f.name}: {e}")
+    def test_toon_skills_catalog_populated(self):
+        skills_dir = ROOT / ".agents" / "skills"
+        self.assertTrue(skills_dir.is_dir(), ".agents/skills directory does not exist")
+        skill_dirs = [d for d in skills_dir.iterdir() if d.is_dir() and not d.name.startswith(".")]
+        self.assertGreaterEqual(len(skill_dirs), 2000, f"Expected >= 2000 skills, found {len(skill_dirs)}")
+
+    def test_toon_skills_parse_samples(self):
+        skills_dir = ROOT / ".agents" / "skills"
+        skill_dirs = [d for d in skills_dir.iterdir() if d.is_dir() and not d.name.startswith(".")][:50]
+        for sd in skill_dirs:
+            toon_file = sd / "prompt.toon"
+            self.assertTrue(toon_file.is_file(), f"Missing prompt.toon in {sd.name}")
+            content = toon_file.read_text(encoding="utf-8")
+            self.assertIn(f"skill: \"{sd.name}\"", content)
 
     def test_all_104_agents_have_valid_xml_blocks(self):
         agents_dir = ROOT / ".agents" / "agents"

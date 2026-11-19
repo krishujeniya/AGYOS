@@ -1,3 +1,18 @@
+# AGYOS handoff: transition workspace strictly to pure TOON system and isolate legacy XML artifacts into ignored OLD directory (2026-11-19)
+
+- Task: Arrange and restrict repository strictly to the TOON system, moving all legacy non-TOON artifacts into `OLD/` with strict exclusion from GitHub uploads.
+- Branch: `main`.
+- Delivered changes:
+  - Isolated legacy non-TOON artifacts into local directory `OLD/` (`OLD/skills-xml/` containing 2,247 legacy XML skill cards and `OLD/generate_xml_architecture.py`).
+  - Added `OLD/` and `OLD` to `.gitignore`, strictly preventing any upload, tracking, or push to GitHub.
+  - Staged removal of 2,247 legacy `.agents/skills-xml/*.xml` files, `skills-xml` root symlink, and `scripts/generate_xml_architecture.py` from Git index.
+  - Updated `agyos_decision/xml_compiler.py` to compile skills dynamically from tracked `prompt.toon` sources without obsolete fallback to `.agents/skills-xml`.
+  - Updated `scripts/tests/test_xml_toon_architecture.py` to validate active TOON catalog completeness (>= 2,000 skills with `prompt.toon`), agent TOON workspace embeds, and absence of legacy XML artifacts from the active workspace.
+- Verification evidence: static read-only inspection, `git diff --check`, `git check-ignore OLD/` all passed cleanly; zero local builds/tests run.
+- Exact next command: `git status --short --branch`
+
+---
+
 # AGYOS handoff: automated 2-day session pruner and maintenance scheduler (2026-11-19)
 
 - Task: Implement automated 2-day retention pruner for AGY CLI session and execution artifacts.

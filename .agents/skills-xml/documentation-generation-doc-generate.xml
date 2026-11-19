@@ -1,8 +1,0 @@
-<agyos_skill id="documentation-generation-doc-generate">
-  <intent>Compatibility ID for generating API docs, architecture diagrams, user guides, and technical references. Use doc-generator as the canonical runbook.</intent>
-  <instructions>
-<![CDATA[
-Use the canonical [doc-generator runbook](../doc-generator/SKILL.md). The legacy implementation-playbook path remains available as a pointer to the canonical reference.
-]]>
-  </instructions>
-</agyos_skill>
