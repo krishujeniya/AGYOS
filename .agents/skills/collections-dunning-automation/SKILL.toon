@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: collections-dunning-automation\ndescription: \"Operate the collections ladder from gentle reminder to bad-debt provision. Use when AR ages past 60 days, when a dunning stage fires, or when provisioning is due for the quarter. Excludes disputed invoices until the dispute closes, and hands legal-grade escalations to the operator for a human decision.\"\nrisk: medium\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

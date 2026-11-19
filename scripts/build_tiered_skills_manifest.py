@@ -54,13 +54,13 @@ def build_manifest():
     tier1_list = []
     
     for item in sorted(SKILLS_DIR.iterdir()):
-        if not item.is_dir():
+        if not item.is_dir() or item.name.startswith("."):
             continue
-        skill_md = item / "SKILL.md"
-        if not skill_md.exists():
+        skill_file = item / "SKILL.md" if (item / "SKILL.md").is_file() else item / "SKILL.toon"
+        if not skill_file.is_file():
             continue
             
-        _, desc = extract_frontmatter(skill_md)
+        _, desc = extract_frontmatter(skill_file)
         is_tier1 = (
             item.name in TIER1_EXACT or
             item.name.startswith(TIER1_CORE_PREFIXES) or

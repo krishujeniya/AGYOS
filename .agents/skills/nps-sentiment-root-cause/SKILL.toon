@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: nps-sentiment-root-cause\ndescription: \"Cluster NPS and CSAT verbatims into themes, link them to measurable drivers, and assign remediation owners. Use after each NPS or CSAT wave closes, when detractor share moves without an obvious incident, or quarterly when the remediation backlog is reviewed.\"\nrisk: safe\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

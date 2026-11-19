@@ -1,126 +1,52 @@
 {
   "mcpServers": {
-    "anchor": {
-      "command": "node",
-      "args": [
-        "./mcp/agyos-state-server.cjs"
+    "github-remote": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "env_ref": "AGY_GITHUB_MCP_PAT",
+      "tool_scope": [
+        "pull_requests:read",
+        "issues:write",
+        "code_scanning:read",
+        "labels:write"
       ],
-      "disabled": true
+      "enabled": true
     },
-    "azure-mcp": {
-      "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/azure-mcp.sh",
-      "env": {
-        "AZURE_SUBSCRIPTION_ID": "60da109a-8501-4d1d-8c58-12f62c231164",
-        "AZURE_CONFIG_DIR": "/home/ai/.azure"
-      },
-      "disabled": true
-    },
-    "aws-api-mcp": {
-      "command": "uvx",
-      "args": [
-        "awslabs.aws-api-mcp-server@latest"
+    "jira-remote": {
+      "type": "http",
+      "url": "https://api.atlassian.com/mcp/",
+      "env_ref": "AGY_JIRA_MCP_TOKEN",
+      "tool_scope": [
+        "boards:read",
+        "sprints:read",
+        "issues:read"
       ],
-      "env": {
-        "AWS_DEFAULT_REGION": "us-east-1",
-        "AWS_REGION": "us-east-1",
-        "AWS_SHARED_CREDENTIALS_FILE": "/home/ai/.aws/credentials",
-        "AWS_CONFIG_FILE": "/home/ai/.aws/config"
-      },
-      "disabled": true
+      "enabled": true
     },
-    "aws-docs-mcp": {
-      "command": "uvx",
-      "args": [
-        "awslabs.aws-documentation-mcp-server@latest"
+    "google-workspace": {
+      "type": "http",
+      "url": "https://googleworkspace.googleapis.com/mcp/",
+      "env_ref": "AGY_WORKSPACE_OAUTH_REF",
+      "tool_scope": [
+        "drive:read",
+        "drive:write",
+        "docs:export"
       ],
-      "env": {
-        "AWS_DEFAULT_REGION": "us-east-1",
-        "AWS_REGION": "us-east-1"
-      },
-      "disabled": true
+      "folder_scope": "AGYOS-artifacts",
+      "access_log": true,
+      "enabled": true
     },
-    "aws-iac-mcp": {
-      "command": "uvx",
-      "args": [
-        "awslabs.aws-iac-mcp-server@latest"
+    "stripe": {
+      "type": "http",
+      "url": "https://mcp.stripe.com",
+      "env_ref": "AGY_STRIPE_MCP_KEY",
+      "tool_scope": [
+        "payouts:read",
+        "balance_transactions:read",
+        "disputes:read"
       ],
-      "env": {
-        "AWS_DEFAULT_REGION": "us-east-1",
-        "AWS_REGION": "us-east-1"
-      },
-      "disabled": true
-    },
-    "ibm-docling-mcp": {
-      "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/ibm-mcp.sh",
-      "args": [
-        "docling"
-      ],
-      "env": {
-        "IBMCLOUD_REGION": "in-mum",
-        "IBMCLOUD_ACCOUNT_ID": "9b8df9c9897a405b95d55653bb400ace"
-      },
-      "disabled": true
-    },
-    "ibm-watsonxdata-mcp": {
-      "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/ibm-mcp.sh",
-      "args": [
-        "watsonx"
-      ],
-      "env": {
-        "IBMCLOUD_REGION": "in-mum",
-        "IBMCLOUD_ACCOUNT_ID": "9b8df9c9897a405b95d55653bb400ace"
-      },
-      "disabled": true
-    },
-    "ibm-carbon-mcp": {
-      "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/ibm-mcp.sh",
-      "args": [
-        "carbon"
-      ],
-      "env": {
-        "IBMCLOUD_REGION": "in-mum",
-        "IBMCLOUD_ACCOUNT_ID": "9b8df9c9897a405b95d55653bb400ace"
-      },
-      "disabled": true
-    },
-    "kaggle": {
-      "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/kaggle-mcp.sh",
-      "args": [],
-      "disabled": true
-    },
-    "mongodb": {
-      "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/mongodb-mcp.sh",
-      "args": [],
-      "disabled": true
-    },
-    "google-flow": {
-      "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/google-flow-mcp.sh",
-      "args": [],
-      "disabled": true
-    },
-    "firebase-mcp-server": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "firebase-tools@latest",
-        "mcp"
-      ],
-      "disabled": true
-    },
-    "docker-hub": {
-      "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/docker-hub-mcp.sh",
-      "args": [],
-      "disabled": true
-    },
-    "obscura": {
-      "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/obscura-mcp.sh",
-      "args": [],
-      "disabled": true
-    },
-    "gemini-notebook": {
-      "command": "/home/ai/Documents/projects/Freelance/AGYOS/mcp/gemini-notebook-mcp.sh",
-      "args": [],
-      "disabled": true
+      "write_scope": "none",
+      "enabled": true
     }
   }
 }

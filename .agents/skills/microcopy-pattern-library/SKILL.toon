@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: microcopy-pattern-library\ndescription: \"Build and maintain the interface copy pattern library: error messages, empty states, success confirmations and their placement rules, keyed for i18n and wired to the design system. Use when a surface ships without copy review, when error rates cluster on a screen, or when the design-system-engineer adds components that need standard strings.\"\nrisk: safe\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

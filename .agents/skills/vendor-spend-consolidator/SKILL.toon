@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: vendor-spend-consolidator\ndescription: \"Keep one inventory of every software and hardware contract, surface renewals before they auto-renew, and propose consolidations where the same category is spread across multiple vendors. Use quarterly, when a renewal alert fires, or when spend in any category grows without a matching headcount or usage story.\"\nrisk: safe\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

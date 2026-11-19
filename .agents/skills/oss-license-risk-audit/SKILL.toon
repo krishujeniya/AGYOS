@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: oss-license-risk-audit\ndescription: \"Audit the dependency tree for license risk: build the compatibility matrix, find copyleft paths into proprietary code, and issue the license gate verdict. Use on every release train, when a new dependency is proposed, or when the CI SBOM job flags a new license class. This skill is the enforcement brain behind the legal license gate.\"\nrisk: medium\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

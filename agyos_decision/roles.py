@@ -180,12 +180,14 @@ _r(CompanyRole(
     governing_pod="pod-gna",
     mandate="Financial health, treasury, R3 payment approvals, and investor reporting.",
     psychology_principles=["loss_aversion", "anchoring", "authority"],
-    allowed_tools=["read_file"],
+    allowed_tools=["read_file", "edit_file", "write_file", "run_command", "search_web"],
     default_risk="R3",
     keywords=["cfo", "financial plan", "cash flow", "burn rate", "runway",
                "fundraise", "investor report", "financial model", "treasury"],
     primary_skills=["financial-projections", "startup-financial-modeling",
-                    "billing-automation", "analytics-tracking"],
+                    "billing-automation", "analytics-tracking",
+                    "cap-table-modeler", "runway-sensitivity-analysis",
+                    "fundraising-data-room"],
 ))
 
 _r(CompanyRole(
@@ -263,12 +265,13 @@ _r(CompanyRole(
     governing_pod="pod-build",
     mandate="Facilitate ceremonies, remove blockers, enforce definition of done.",
     psychology_principles=["commitment", "social_proof", "peak_end_rule"],
-    allowed_tools=["read_file", "edit_file"],
+    allowed_tools=["read_file", "edit_file", "run_command", "search_web"],
     default_risk="R0",
     keywords=["scrum", "agile", "sprint", "retrospective", "daily standup",
                "velocity", "burndown", "kanban", "definition of done", "ceremony"],
     primary_skills=["kanban-agent-pipeline", "project-flow-ops", "developer-session-diary",
-                    "conductor-status"],
+                    "conductor-status", "sprint-backlog-grooming",
+                    "story-pointing-calibration", "retrospective-synthesis"],
 ))
 
 _r(CompanyRole(
@@ -701,12 +704,13 @@ _r(CompanyRole(
     governing_pod="pod-gna",
     mandate="PII discovery, anonymization, GDPR/CCPA compliance, and data governance.",
     psychology_principles=["loss_aversion", "authority"],
-    allowed_tools=["read_file", "edit_file"],
+    allowed_tools=["read_file", "edit_file", "run_command", "search_web"],
     default_risk="R2",
     keywords=["privacy", "pii", "gdpr", "ccpa", "data retention", "anonymization",
                "data governance", "consent", "right to erasure", "dpa"],
     primary_skills=["gdpr-data-handling", "zeroize-audit", "privacy-by-design",
-                    "healthcare-phi-compliance", "security-auditor"],
+                    "healthcare-phi-compliance", "security-auditor",
+                    "dsar-pipeline", "deidentification-benchmark", "crossborder-tia"],
 ))
 
 _r(CompanyRole(
@@ -880,12 +884,14 @@ _r(CompanyRole(
     governing_pod="pod-build",
     mandate="Write UI strings, error messages, onboarding flows, and microcopy.",
     psychology_principles=["hicks_law", "peak_end_rule", "liking"],
-    allowed_tools=["read_file", "edit_file", "write_file"],
+    allowed_tools=["read_file", "edit_file", "write_file", "run_command", "search_web"],
     default_risk="R1",
     keywords=["ux copy", "microcopy", "error message", "onboarding copy",
                "ui text", "tooltip", "button label", "placeholder text"],
     primary_skills=["ux-copy", "conversion-copywriting", "content-creator",
-                    "avoid-ai-writing", "hook-writer"],
+                    "avoid-ai-writing", "hook-writer",
+                    "microcopy-pattern-library", "onboarding-tooltip-system",
+                    "a11y-copy-audit"],
 ))
 
 
@@ -1029,12 +1035,14 @@ _r(CompanyRole(
     governing_pod="pod-growth",
     mandate="Identify, negotiate, and activate strategic partnerships and co-marketing deals.",
     psychology_principles=["reciprocity", "liking", "commitment", "unity"],
-    allowed_tools=["read_file", "edit_file", "write_file"],
+    allowed_tools=["read_file", "edit_file", "write_file", "run_command", "search_web"],
     default_risk="R1",
     keywords=["partnership", "business development", "bd", "co-marketing",
                "integration partner", "affiliate", "ecosystem", "channel partner"],
     primary_skills=["collabs-and-cross-promotion", "market-opportunity",
-                    "competitive-landscape", "content-creator"],
+                    "competitive-landscape", "content-creator",
+                    "partner-ecosystem-mapping", "co-marketing-term-sheet-builder",
+                    "affiliate-program-ops"],
 ))
 
 _r(CompanyRole(
@@ -1045,12 +1053,14 @@ _r(CompanyRole(
     governing_pod="pod-customer",
     mandate="Nurture online communities, run events, and amplify advocates.",
     psychology_principles=["unity", "reciprocity", "social_proof", "liking"],
-    allowed_tools=["read_file", "edit_file", "write_file"],
+    allowed_tools=["read_file", "edit_file", "write_file", "run_command", "search_web"],
     default_risk="R1",
     keywords=["community", "discord", "slack community", "forum", "user group",
                "advocate", "ambassador", "community event", "community growth"],
     primary_skills=["community-management", "discord-automation", "slack-automation",
-                    "social-content", "engagement-routine"],
+                    "social-content", "engagement-routine",
+                    "moderation-escalation-ladder", "community-sentiment-trends",
+                    "ambassador-event-ops"],
 ))
 
 
@@ -1259,12 +1269,14 @@ _r(CompanyRole(
     governing_pod="pod-customer",
     mandate="Model churn risk, trigger save plays, and report retention metrics.",
     psychology_principles=["loss_aversion", "commitment", "social_proof"],
-    allowed_tools=["read_file", "edit_file"],
+    allowed_tools=["read_file", "edit_file", "run_command", "search_web"],
     default_risk="R0",
     keywords=["churn", "retention", "cancellation", "save play", "win-back",
                "churned customer", "logo retention", "nrr"],
     primary_skills=["churn-prevention", "analytics-tracking", "kpi-dashboard-design",
-                    "email-sequence", "data-storytelling"],
+                    "email-sequence", "data-storytelling",
+                    "cohort-retention-curves", "customer-health-score",
+                    "nps-sentiment-root-cause"],
 ))
 
 _r(CompanyRole(
@@ -1358,12 +1370,14 @@ _r(CompanyRole(
     governing_pod="pod-gna",
     mandate="Manage cash, wire transfers, banking relationships, and FX exposure.",
     psychology_principles=["loss_aversion", "authority"],
-    allowed_tools=["read_file"],
+    allowed_tools=["read_file", "edit_file", "write_file", "run_command", "search_web"],
     default_risk="R3",
     keywords=["treasury", "wire transfer", "bank account", "fx", "forex",
                "cash management", "banking", "liquidity", "disbursement"],
     primary_skills=["financial-projections", "billing-automation",
-                    "startup-financial-modeling", "customs-trade-compliance"],
+                    "startup-financial-modeling", "customs-trade-compliance",
+                    "daily-cashflow-forecast", "fx-hedging-advisor",
+                    "settlement-reconciliation-audit"],
 ))
 
 _r(CompanyRole(
@@ -1374,12 +1388,14 @@ _r(CompanyRole(
     governing_pod="pod-gna",
     mandate="Process invoices, AR/AP, reconciliations, and expense reports.",
     psychology_principles=["commitment", "authority"],
-    allowed_tools=["read_file", "edit_file"],
+    allowed_tools=["read_file", "edit_file", "run_command", "search_web"],
     default_risk="R2",
     keywords=["accounts", "invoice", "ar", "ap", "reconcile", "expense",
                "receipt", "reimbursement", "purchase order", "vendor payment"],
     primary_skills=["billing-automation", "financial-projections",
-                    "stripe-automation", "analytics-tracking"],
+                    "stripe-automation", "analytics-tracking",
+                    "ap-ar-aging-schedules", "ledger-reconciliation",
+                    "collections-dunning-automation"],
 ))
 
 _r(CompanyRole(
@@ -1425,12 +1441,13 @@ _r(CompanyRole(
     governing_pod="pod-gna",
     mandate="Legal strategy, contract approval, employment law, and regulatory posture.",
     psychology_principles=["authority", "loss_aversion", "commitment"],
-    allowed_tools=["read_file"],
+    allowed_tools=["read_file", "edit_file", "write_file", "run_command", "search_web"],
     default_risk="R3",
     keywords=["general counsel", "legal strategy", "regulatory", "litigation",
                "employment law", "corporate governance", "legal risk"],
     primary_skills=["legal-advisor", "legal-compliance-consultant",
-                    "legal-contract-truth-engine", "gdpr-data-handling"],
+                    "legal-contract-truth-engine", "gdpr-data-handling",
+                    "corporate-governance-resolutions", "litigation-regulatory-risk-scanner"],
 ))
 
 _r(CompanyRole(
@@ -1441,12 +1458,13 @@ _r(CompanyRole(
     governing_pod="pod-gna",
     mandate="IP strategy, patent filings, trademark, and open-source license compliance.",
     psychology_principles=["authority", "loss_aversion"],
-    allowed_tools=["read_file"],
+    allowed_tools=["read_file", "edit_file", "write_file", "run_command", "search_web"],
     default_risk="R2",
     keywords=["ip", "patent", "trademark", "copyright", "open source license",
                "mit license", "gpl", "ip strategy", "trade secret"],
     primary_skills=["legal-contract-truth-engine", "scientific-db-uspto-database",
-                    "legal-advisor", "legal-compliance-consultant"],
+                    "legal-advisor", "legal-compliance-consultant",
+                    "prior-art-search", "patent-claim-drafter", "oss-license-risk-audit"],
 ))
 
 _r(CompanyRole(
@@ -1457,12 +1475,13 @@ _r(CompanyRole(
     governing_pod="pod-gna",
     mandate="Draft, review, and execute MSAs, NDAs, SOWs, and vendor agreements.",
     psychology_principles=["commitment", "loss_aversion", "authority"],
-    allowed_tools=["read_file", "edit_file", "write_file"],
+    allowed_tools=["read_file", "edit_file", "write_file", "run_command", "search_web"],
     default_risk="R2",
     keywords=["contract", "msa", "nda", "sow", "agreement", "terms",
                "vendor contract", "client contract", "redline", "clause"],
     primary_skills=["legal-contract-truth-engine", "master-agreement-generator",
-                    "employment-contract-templates", "legal-advisor"],
+                    "employment-contract-templates", "legal-advisor",
+                    "redline-diff-analyzer", "renewal-and-liability-watch"],
 ))
 
 _r(CompanyRole(
@@ -1572,12 +1591,14 @@ _r(CompanyRole(
     governing_pod="pod-people",
     mandate="HRIS administration, payroll coordination, benefits, and onboarding logistics.",
     psychology_principles=["commitment", "authority"],
-    allowed_tools=["read_file", "edit_file"],
+    allowed_tools=["read_file", "edit_file", "run_command", "search_web"],
     default_risk="R2",
     keywords=["hr ops", "hris", "payroll", "benefits", "offer letter",
                "onboarding logistics", "offboarding", "hr admin"],
     primary_skills=["employment-contract-templates", "hr-pro",
-                    "billing-automation", "analytics-tracking"],
+                    "billing-automation", "analytics-tracking",
+                    "payroll-cycle-ops", "benefits-leave-administration",
+                    "workforce-compliance-tracker"],
 ))
 
 _r(CompanyRole(
@@ -1604,12 +1625,14 @@ _r(CompanyRole(
     governing_pod="pod-gna",
     mandate="Vendor evaluation, contract negotiation, purchase orders, and supplier management.",
     psychology_principles=["authority", "loss_aversion", "commitment"],
-    allowed_tools=["read_file", "edit_file", "write_file"],
+    allowed_tools=["read_file", "edit_file", "write_file", "run_command", "search_web"],
     default_risk="R2",
     keywords=["procurement", "vendor", "supplier", "purchase order", "rfp",
                "vendor evaluation", "contract negotiation", "sourcing"],
     primary_skills=["customs-trade-compliance", "inventory-demand-planning",
-                    "legal-contract-truth-engine", "financial-projections"],
+                    "legal-contract-truth-engine", "financial-projections",
+                    "vendor-rfp-generator", "vendor-spend-consolidator",
+                    "vendor-sla-breach-watch"],
 ))
 
 _r(CompanyRole(

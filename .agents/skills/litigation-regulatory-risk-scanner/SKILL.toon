@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: litigation-regulatory-risk-scanner\ndescription: \"Scan the company's exposure surface: demand letters, regulatory inquiries, incident aftermath and deal diligence. Classifies exposure, scores severity, starts the response clock with the right template, and instantiates the M&A legal audit checklist when a deal flag is set. Use on any legal threat, inquiry or deal signal.\"\nrisk: medium\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

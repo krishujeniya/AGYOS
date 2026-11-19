@@ -1,0 +1,28 @@
+{
+  "hooks": [
+    {
+      "event": "PreToolUse",
+      "matcher": "write_file|edit_file",
+      "command": "uv run scripts/lint_toon.py --check-path",
+      "action": "block-outside-agents-and-scripts"
+    },
+    {
+      "event": "PreToolUse",
+      "matcher": "run_command",
+      "command": "uv run scripts/lint_toon.py --check-command",
+      "action": "block-bare-python-pip; require gate:legal-cleared label for merge-class calls"
+    },
+    {
+      "event": "PostToolUse",
+      "matcher": "write_file|edit_file",
+      "command": "uv run scripts/lint_toon.py --lint-changed",
+      "action": "lint .toon envelope; run git diff --check"
+    },
+    {
+      "event": "Stop",
+      "matcher": "*",
+      "command": "uv run scripts/lint_toon.py --summary",
+      "action": "print static verification summary"
+    }
+  ]
+}

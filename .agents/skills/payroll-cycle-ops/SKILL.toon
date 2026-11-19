@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: payroll-cycle-ops\ndescription: \"Run one payroll cycle from pre-close checklist to signed register. Use at each cycle boundary (T-7 to freeze), when compensation changes land mid-cycle, or when any variance against the prior cycle needs explanation before approval. Produces the register role-cfo approves and the audit trail auditors ask for.\"\nrisk: medium\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

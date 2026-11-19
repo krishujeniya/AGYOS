@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ledger-reconciliation\ndescription: \"Reconcile sub-ledgers to the general ledger and resolve invoice discrepancies with recorded evidence. Use at each close, when a sub-ledger total disagrees with its GL control account, or when a customer or vendor disputes amounts. Produces journal proposals for the controller - it never posts directly.\"\nrisk: medium\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

@@ -1,6 +1,6 @@
 {
   "version": "3.1.0",
-  "total_skills": 2247,
+  "total_skills": 2287,
   "total_roles": 104,
   "by_role": {
     "role-ceo": {
@@ -333,16 +333,22 @@
         "financial-projections",
         "startup-financial-modeling",
         "billing-automation",
-        "analytics-tracking"
+        "analytics-tracking",
+        "cap-table-modeler",
+        "runway-sensitivity-analysis",
+        "fundraising-data-room"
       ],
-      "total_mapped_skills": 7,
+      "total_mapped_skills": 10,
       "skills": [
         "analytics-tracking",
         "billing-automation",
+        "cap-table-modeler",
         "financial-projections",
+        "fundraising-data-room",
         "investor-materials",
         "investor-outreach",
         "puzzle-activity-planner",
+        "runway-sensitivity-analysis",
         "startup-financial-modeling"
       ]
     },
@@ -514,15 +520,20 @@
         "kanban-agent-pipeline",
         "project-flow-ops",
         "developer-session-diary",
-        "conductor-status"
+        "conductor-status",
+        "sprint-backlog-grooming",
+        "story-pointing-calibration",
+        "retrospective-synthesis"
       ],
-      "total_mapped_skills": 5,
+      "total_mapped_skills": 7,
       "skills": [
-        "angular",
         "conductor-status",
         "developer-session-diary",
         "kanban-agent-pipeline",
-        "project-flow-ops"
+        "project-flow-ops",
+        "retrospective-synthesis",
+        "sprint-backlog-grooming",
+        "story-pointing-calibration"
       ]
     },
     "role-ux-researcher": {
@@ -3089,10 +3100,16 @@
         "zeroize-audit",
         "privacy-by-design",
         "healthcare-phi-compliance",
-        "security-auditor"
+        "security-auditor",
+        "dsar-pipeline",
+        "deidentification-benchmark",
+        "crossborder-tia"
       ],
-      "total_mapped_skills": 8,
+      "total_mapped_skills": 11,
       "skills": [
+        "crossborder-tia",
+        "deidentification-benchmark",
+        "dsar-pipeline",
         "gdpr-data-handling",
         "healthcare-phi-compliance",
         "privacy-by-design",
@@ -3748,16 +3765,22 @@
         "conversion-copywriting",
         "content-creator",
         "avoid-ai-writing",
-        "hook-writer"
+        "hook-writer",
+        "microcopy-pattern-library",
+        "onboarding-tooltip-system",
+        "a11y-copy-audit"
       ],
-      "total_mapped_skills": 7,
+      "total_mapped_skills": 10,
       "skills": [
+        "a11y-copy-audit",
         "avoid-ai-writing",
         "content-creator",
         "conversion-copywriting",
         "hook-writer",
         "i18n-sync",
         "lightning-factory-explainer",
+        "microcopy-pattern-library",
+        "onboarding-tooltip-system",
         "ux-copy"
       ]
     },
@@ -4408,16 +4431,20 @@
         "collabs-and-cross-promotion",
         "market-opportunity",
         "competitive-landscape",
-        "content-creator"
+        "content-creator",
+        "partner-ecosystem-mapping",
+        "co-marketing-term-sheet-builder",
+        "affiliate-program-ops"
       ],
-      "total_mapped_skills": 6,
+      "total_mapped_skills": 7,
       "skills": [
-        "amazon-alexa",
-        "cloudflare-workers-expert",
+        "affiliate-program-ops",
+        "co-marketing-term-sheet-builder",
         "collabs-and-cross-promotion",
         "competitive-landscape",
         "content-creator",
-        "market-opportunity"
+        "market-opportunity",
+        "partner-ecosystem-mapping"
       ]
     },
     "role-community-manager": {
@@ -4431,15 +4458,21 @@
         "discord-automation",
         "slack-automation",
         "social-content",
-        "engagement-routine"
+        "engagement-routine",
+        "moderation-escalation-ladder",
+        "community-sentiment-trends",
+        "ambassador-event-ops"
       ],
-      "total_mapped_skills": 9,
+      "total_mapped_skills": 12,
       "skills": [
+        "ambassador-event-ops",
         "community-management",
+        "community-sentiment-trends",
         "discord-automation",
         "engagement-routine",
         "internal-comms-community",
         "livestream-and-realtime",
+        "moderation-escalation-ladder",
         "prompt-library",
         "reply-and-comment-writer",
         "slack-automation",
@@ -5029,16 +5062,22 @@
         "analytics-tracking",
         "kpi-dashboard-design",
         "email-sequence",
-        "data-storytelling"
+        "data-storytelling",
+        "cohort-retention-curves",
+        "customer-health-score",
+        "nps-sentiment-root-cause"
       ],
-      "total_mapped_skills": 7,
+      "total_mapped_skills": 10,
       "skills": [
         "analytics-tracking",
         "churn-prevention",
+        "cohort-retention-curves",
+        "customer-health-score",
         "data-storytelling",
         "email-sequence",
         "kpi-dashboard-design",
         "memory-systems",
+        "nps-sentiment-root-cause",
         "saas-monetization-strategy"
       ]
     },
@@ -5299,13 +5338,19 @@
         "financial-projections",
         "billing-automation",
         "startup-financial-modeling",
-        "customs-trade-compliance"
+        "customs-trade-compliance",
+        "daily-cashflow-forecast",
+        "fx-hedging-advisor",
+        "settlement-reconciliation-audit"
       ],
-      "total_mapped_skills": 4,
+      "total_mapped_skills": 7,
       "skills": [
         "billing-automation",
         "customs-trade-compliance",
+        "daily-cashflow-forecast",
         "financial-projections",
+        "fx-hedging-advisor",
+        "settlement-reconciliation-audit",
         "startup-financial-modeling"
       ]
     },
@@ -5319,14 +5364,20 @@
         "billing-automation",
         "financial-projections",
         "stripe-automation",
-        "analytics-tracking"
+        "analytics-tracking",
+        "ap-ar-aging-schedules",
+        "ledger-reconciliation",
+        "collections-dunning-automation"
       ],
-      "total_mapped_skills": 7,
+      "total_mapped_skills": 10,
       "skills": [
         "analytics-tracking",
+        "ap-ar-aging-schedules",
         "billing-automation",
+        "collections-dunning-automation",
         "financial-projections",
         "google-analytics-automation",
+        "ledger-reconciliation",
         "odoo-accounting-setup",
         "odoo-purchase-workflow",
         "stripe-automation"
@@ -5450,18 +5501,22 @@
         "legal-advisor",
         "legal-compliance-consultant",
         "legal-contract-truth-engine",
-        "gdpr-data-handling"
+        "gdpr-data-handling",
+        "corporate-governance-resolutions",
+        "litigation-regulatory-risk-scanner"
       ],
-      "total_mapped_skills": 9,
+      "total_mapped_skills": 11,
       "skills": [
         "auction-legal-analysis",
         "contract-first",
+        "corporate-governance-resolutions",
         "criminal-defense-law-consultant",
         "dotnet-patterns",
         "gdpr-data-handling",
         "legal-advisor",
         "legal-compliance-consultant",
         "legal-contract-truth-engine",
+        "litigation-regulatory-risk-scanner",
         "sop-gna"
       ]
     },
@@ -5475,17 +5530,21 @@
         "legal-contract-truth-engine",
         "scientific-db-uspto-database",
         "legal-advisor",
-        "legal-compliance-consultant"
+        "legal-compliance-consultant",
+        "prior-art-search",
+        "patent-claim-drafter",
+        "oss-license-risk-audit"
       ],
-      "total_mapped_skills": 7,
+      "total_mapped_skills": 8,
       "skills": [
-        "algorithmic-art",
         "dependency-management-deps-audit",
         "legal-advisor",
         "legal-compliance-consultant",
         "legal-contract-truth-engine",
-        "scientific-db-uspto-database",
-        "trend-jacking"
+        "oss-license-risk-audit",
+        "patent-claim-drafter",
+        "prior-art-search",
+        "scientific-db-uspto-database"
       ]
     },
     "role-contract-manager": {
@@ -5498,9 +5557,11 @@
         "legal-contract-truth-engine",
         "master-agreement-generator",
         "employment-contract-templates",
-        "legal-advisor"
+        "legal-advisor",
+        "redline-diff-analyzer",
+        "renewal-and-liability-watch"
       ],
-      "total_mapped_skills": 8,
+      "total_mapped_skills": 10,
       "skills": [
         "beautiful-prose",
         "contract-first",
@@ -5509,7 +5570,9 @@
         "legal-contract-truth-engine",
         "master-agreement-generator",
         "operator-approval-loop",
-        "rails-patterns"
+        "rails-patterns",
+        "redline-diff-analyzer",
+        "renewal-and-liability-watch"
       ]
     },
     "role-compliance-officer": {
@@ -5760,16 +5823,22 @@
         "employment-contract-templates",
         "hr-pro",
         "billing-automation",
-        "analytics-tracking"
+        "analytics-tracking",
+        "payroll-cycle-ops",
+        "benefits-leave-administration",
+        "workforce-compliance-tracker"
       ],
-      "total_mapped_skills": 6,
+      "total_mapped_skills": 9,
       "skills": [
         "analytics-tracking",
         "bamboohr-automation",
+        "benefits-leave-administration",
         "billing-automation",
         "employment-contract-templates",
         "hr-pro",
-        "odoo-hr-payroll-setup"
+        "odoo-hr-payroll-setup",
+        "payroll-cycle-ops",
+        "workforce-compliance-tracker"
       ]
     },
     "role-learning-development": {
@@ -5828,16 +5897,22 @@
         "customs-trade-compliance",
         "inventory-demand-planning",
         "legal-contract-truth-engine",
-        "financial-projections"
+        "financial-projections",
+        "vendor-rfp-generator",
+        "vendor-spend-consolidator",
+        "vendor-sla-breach-watch"
       ],
-      "total_mapped_skills": 6,
+      "total_mapped_skills": 9,
       "skills": [
         "customs-trade-compliance",
         "energy-procurement",
         "financial-projections",
         "inventory-demand-planning",
         "ito-compute",
-        "legal-contract-truth-engine"
+        "legal-contract-truth-engine",
+        "vendor-rfp-generator",
+        "vendor-sla-breach-watch",
+        "vendor-spend-consolidator"
       ]
     },
     "role-office-facilities-manager": {
@@ -7117,9 +7192,7 @@
     },
     "algorithmic-art": {
       "primary_role": "role-swe",
-      "secondary_roles": [
-        "role-ip-patent-attorney"
-      ],
+      "secondary_roles": [],
       "tier": 2,
       "description": "Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request creating art using code, generative art, algorithmic art, flow fields, or particle systems. Create original algorithmic art rather than copying existing artists' work to avoid copyright violations."
     },
@@ -7244,9 +7317,7 @@
     },
     "angular": {
       "primary_role": "role-chief-of-staff",
-      "secondary_roles": [
-        "role-scrum-agile-coach"
-      ],
+      "secondary_roles": [],
       "tier": 2,
       "description": "Modern Angular (v20+) expert with deep knowledge of Signals, Standalone Components, Zoneless applications, SSR/Hydration, and reactive patterns."
     },
@@ -22531,9 +22602,7 @@
     },
     "trend-jacking": {
       "primary_role": "role-content-strategist",
-      "secondary_roles": [
-        "role-ip-patent-attorney"
-      ],
+      "secondary_roles": [],
       "tier": 2,
       "description": "Use to ride a trend \u2014 a trending sound, format, meme, hashtag, news moment, or cultural conversation \u2014 to earn reach by attaching the brand to something already getting attention (a.k.a. trendjacking / newsjacking). Run when the user says \"trend,\" \"trending,\" \"jump on this trend,\" \"trendjack,\" \"newsjack,\" \"is this trend worth doing,\" \"make this go viral,\" or wants to react to a current moment. Reads brand-profile, voice, and audience first, then runs three gates \u2014 FIT, SAFETY, and TIMING \u2014 before executing a fast, on-brand remix and handing to the right content skill (tiktok-script, reels-script, caption-writer) and scheduling-and-queue. Refuses to trendjack tragedies or divisive moments and won't force irrelevant trends; live trend discovery needs current scanning \u2014 this skill vets and executes. For meme-format craft, cultural fluency, and meme IP/likeness judgment (\"make a meme,\" \"is this meme safe\"), route to meme-and-culture."
     },
@@ -24220,6 +24289,166 @@
       ],
       "tier": 2,
       "description": "Create Zustand stores following established patterns with proper TypeScript types and middleware."
+    },
+    "daily-cashflow-forecast": {
+      "primary_role": "role-treasury-banking-spec",
+      "secondary_roles": []
+    },
+    "fx-hedging-advisor": {
+      "primary_role": "role-treasury-banking-spec",
+      "secondary_roles": []
+    },
+    "settlement-reconciliation-audit": {
+      "primary_role": "role-treasury-banking-spec",
+      "secondary_roles": []
+    },
+    "sprint-backlog-grooming": {
+      "primary_role": "role-scrum-agile-coach",
+      "secondary_roles": []
+    },
+    "story-pointing-calibration": {
+      "primary_role": "role-scrum-agile-coach",
+      "secondary_roles": []
+    },
+    "retrospective-synthesis": {
+      "primary_role": "role-scrum-agile-coach",
+      "secondary_roles": []
+    },
+    "partner-ecosystem-mapping": {
+      "primary_role": "role-partnership-bd-manager",
+      "secondary_roles": []
+    },
+    "co-marketing-term-sheet-builder": {
+      "primary_role": "role-partnership-bd-manager",
+      "secondary_roles": []
+    },
+    "affiliate-program-ops": {
+      "primary_role": "role-partnership-bd-manager",
+      "secondary_roles": []
+    },
+    "payroll-cycle-ops": {
+      "primary_role": "role-hr-ops-specialist",
+      "secondary_roles": []
+    },
+    "benefits-leave-administration": {
+      "primary_role": "role-hr-ops-specialist",
+      "secondary_roles": []
+    },
+    "workforce-compliance-tracker": {
+      "primary_role": "role-hr-ops-specialist",
+      "secondary_roles": []
+    },
+    "vendor-rfp-generator": {
+      "primary_role": "role-procurement-vendor-manager",
+      "secondary_roles": []
+    },
+    "vendor-spend-consolidator": {
+      "primary_role": "role-procurement-vendor-manager",
+      "secondary_roles": []
+    },
+    "vendor-sla-breach-watch": {
+      "primary_role": "role-procurement-vendor-manager",
+      "secondary_roles": []
+    },
+    "cap-table-modeler": {
+      "primary_role": "role-cfo",
+      "secondary_roles": []
+    },
+    "runway-sensitivity-analysis": {
+      "primary_role": "role-cfo",
+      "secondary_roles": []
+    },
+    "fundraising-data-room": {
+      "primary_role": "role-cfo",
+      "secondary_roles": []
+    },
+    "microcopy-pattern-library": {
+      "primary_role": "role-ux-copywriter",
+      "secondary_roles": []
+    },
+    "onboarding-tooltip-system": {
+      "primary_role": "role-ux-copywriter",
+      "secondary_roles": []
+    },
+    "a11y-copy-audit": {
+      "primary_role": "role-ux-copywriter",
+      "secondary_roles": []
+    },
+    "cohort-retention-curves": {
+      "primary_role": "role-churn-analyst",
+      "secondary_roles": []
+    },
+    "customer-health-score": {
+      "primary_role": "role-churn-analyst",
+      "secondary_roles": []
+    },
+    "nps-sentiment-root-cause": {
+      "primary_role": "role-churn-analyst",
+      "secondary_roles": []
+    },
+    "ap-ar-aging-schedules": {
+      "primary_role": "role-accounts-manager",
+      "secondary_roles": []
+    },
+    "ledger-reconciliation": {
+      "primary_role": "role-accounts-manager",
+      "secondary_roles": []
+    },
+    "collections-dunning-automation": {
+      "primary_role": "role-accounts-manager",
+      "secondary_roles": []
+    },
+    "prior-art-search": {
+      "primary_role": "role-ip-patent-attorney",
+      "secondary_roles": []
+    },
+    "patent-claim-drafter": {
+      "primary_role": "role-ip-patent-attorney",
+      "secondary_roles": []
+    },
+    "oss-license-risk-audit": {
+      "primary_role": "role-ip-patent-attorney",
+      "secondary_roles": []
+    },
+    "dsar-pipeline": {
+      "primary_role": "role-privacy-engineer",
+      "secondary_roles": []
+    },
+    "deidentification-benchmark": {
+      "primary_role": "role-privacy-engineer",
+      "secondary_roles": []
+    },
+    "crossborder-tia": {
+      "primary_role": "role-privacy-engineer",
+      "secondary_roles": []
+    },
+    "moderation-escalation-ladder": {
+      "primary_role": "role-community-manager",
+      "secondary_roles": []
+    },
+    "community-sentiment-trends": {
+      "primary_role": "role-community-manager",
+      "secondary_roles": []
+    },
+    "ambassador-event-ops": {
+      "primary_role": "role-community-manager",
+      "secondary_roles": []
+    },
+    "redline-diff-analyzer": {
+      "primary_role": "role-contract-manager",
+      "secondary_roles": []
+    },
+    "renewal-and-liability-watch": {
+      "primary_role": "role-contract-manager",
+      "secondary_roles": []
+    },
+    "corporate-governance-resolutions": {
+      "primary_role": "role-general-counsel",
+      "secondary_roles": []
+    },
+    "litigation-regulatory-risk-scanner": {
+      "primary_role": "role-general-counsel",
+      "secondary_roles": []
     }
   }
 }

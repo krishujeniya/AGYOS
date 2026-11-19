@@ -14,7 +14,27 @@ YAML_LOADER = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
 
 def read_metadata(skill_file: Path) -> dict[str, Any]:
     """Read metadata without accepting a body or a path as a skill identity."""
-    match = FRONTMATTER.match(skill_file.read_text(encoding="utf-8"))
+    raw_text = ""
+    if skill_file.is_file():
+        raw_text = skill_file.read_text(encoding="utf-8")
+        if raw_text.startswith('mode: "'):
+            m = re.search(r'^(?:header|text): ("(?:[^"\\]|\\.)*")', raw_text, re.M)
+            if m:
+                import json
+                raw_text = json.loads(m.group(1))
+    elif skill_file.name == "SKILL.md":
+        toon_file = skill_file.with_name("SKILL.toon")
+        if toon_file.is_file():
+            raw_toon = toon_file.read_text(encoding="utf-8")
+            if raw_toon.startswith('mode: "'):
+                m = re.search(r'^(?:header|text): ("(?:[^"\\]|\\.)*")', raw_toon, re.M)
+                if m:
+                    import json
+                    raw_text = json.loads(m.group(1))
+    if not raw_text:
+        match = None
+    else:
+        match = FRONTMATTER.match(raw_text)
     if not match:
         raise ValueError(f"Missing YAML frontmatter: {skill_file}")
     try:
@@ -32,12 +52,17 @@ def read_metadata(skill_file: Path) -> dict[str, Any]:
 def physical_catalog() -> list[dict[str, Any]]:
     """Index every physical runbook; invalid metadata is an actionable error."""
     entries = []
-    for file in sorted(SKILLS_DIR.glob("*/SKILL.md")):
-        metadata = read_metadata(file)
+    for item in sorted(SKILLS_DIR.iterdir()):
+        if not item.is_dir() or item.name.startswith("."):
+            continue
+        skill_file = item / "SKILL.md" if (item / "SKILL.md").is_file() else item / "SKILL.toon"
+        if not skill_file.is_file():
+            continue
+        metadata = read_metadata(skill_file)
         entries.append({
-            "name": file.parent.name,
+            "name": item.name,
             "description": metadata["description"].strip(),
-            "path": f".agents/skills/{file.parent.name}",
+            "path": f".agents/skills/{item.name}",
             "tier": 2,
         })
     return entries

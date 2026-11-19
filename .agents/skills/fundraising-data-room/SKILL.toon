@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: fundraising-data-room\ndescription: \"Assemble and police the diligence data room: the index of required documents, the chase list for missing items, redaction rules and the access policy. Use when a raise starts, when investor diligence begins, or before any data room link is shared, so access is deliberate and the index is complete.\"\nrisk: medium\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

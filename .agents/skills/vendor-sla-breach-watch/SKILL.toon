@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: vendor-sla-breach-watch\ndescription: \"Maintain the SLA register per vendor contract, collect breach evidence, compute credits owed and escalate repeat offenders. Use when an incident touches a vendor-managed service, when a monthly vendor report lands, or when a credit claim deadline is close. Feeds SRE error-budget reviews with vendor-side context.\"\nrisk: safe\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

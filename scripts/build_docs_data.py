@@ -80,7 +80,8 @@ def unslop(text: str) -> str:
 
 def extract_frontmatter(skill_dir: Path):
     """Use strict shared discovery metadata; do not hide invalid headers."""
-    metadata = read_metadata(skill_dir / "SKILL.md")
+    skill_file = skill_dir / "SKILL.md" if (skill_dir / "SKILL.md").is_file() else skill_dir / "SKILL.toon"
+    metadata = read_metadata(skill_file)
     return metadata["name"], metadata["description"].strip()
 
 def classify_skill(sid: str, name: str, desc: str):
@@ -172,7 +173,7 @@ def compile_all_skills():
         if not os.path.isdir(entry_path):
             continue
         skill_file = os.path.join(entry_path, "SKILL.md")
-        if not os.path.exists(skill_file):
+        if not os.path.exists(skill_file) and not os.path.exists(os.path.join(entry_path, "SKILL.toon")):
             continue
 
         raw_name, raw_desc = extract_frontmatter(Path(entry_path))

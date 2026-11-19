@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: crossborder-tia\ndescription: \"Run the transfer impact assessment for personal data leaving a jurisdiction: flow map, transfer mechanism, destination access risk and supplemental measures, ending in a go/no-go recommendation. Use before a new region is added to any data flow, before a vendor in another region processes personal data, and when transfer law changes.\"\nrisk: medium\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

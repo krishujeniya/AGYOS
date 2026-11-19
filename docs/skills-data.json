@@ -51,6 +51,23 @@
     "description": "Expert in building 3D experiences for the web - Three.js, React Three Fiber, Spline, WebGL, and interactive 3D scenes. Covers product configurators, 3D portfolios, immersive websites, and bringing depth to web experiences."
   },
   {
+    "id": "a11y-copy-audit",
+    "name": "A11Y Copy Audit",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill a11y-copy-audit",
+    "path": ".agents/skills/a11y-copy-audit",
+    "risk": "assess_for_task",
+    "description": "Audit surface copy against WCAG 2.2 AA text requirements: link text descriptiveness, alt text adequacy, form label and error text rules, heading text hierarchy and a reading level cap. Use before release of any user-facing surface, after the microcopy library changes, or when an accessibility complaint arrives."
+  },
+  {
     "id": "ab-test-setup",
     "name": "Ab Test Setup",
     "module": "Domain & Research Extensions",
@@ -236,6 +253,23 @@
     "path": ".agents/skills/adversarial-verification-method",
     "risk": "assess_for_task",
     "description": "Multi-agent adversarial verification: two independent reviewers with the same rubric must both pass before output ships, with a fix-and-re-review convergence loop and human escalation cap. Use when gating publishing, production deploys, compliance or brand-sensitive content, or hallucination-prone claims before they ship."
+  },
+  {
+    "id": "affiliate-program-ops",
+    "name": "Affiliate Program Ops",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill affiliate-program-ops",
+    "path": ".agents/skills/affiliate-program-ops",
+    "risk": "assess_for_task",
+    "description": "Operate the affiliate program end to end: commission tiers, fraud rules, monthly payout reconciliation and a quarterly channel audit. Use when affiliates are onboarded, when payout reports arrive from the network, or when acquisition cost per channel is due for review before budget moves."
   },
   {
     "id": "agent-arch-audit",
@@ -1649,6 +1683,23 @@
     "description": "Integracao completa com Amazon Alexa para criar skills de voz inteligentes, transformar Alexa em assistente com Claude como cerebro (projeto Auri) e integrar com AWS ecosystem (Lambda, DynamoDB, Polly, Transcribe, Lex, Smart Home)."
   },
   {
+    "id": "ambassador-event-ops",
+    "name": "Ambassador Event Ops",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill ambassador-event-ops",
+    "path": ".agents/skills/ambassador-event-ops",
+    "risk": "assess_for_task",
+    "description": "Operate the ambassador program and the event runbook: tiers and criteria, contribution tracking, event logistics with consent and code-of-conduct handling, and the post-event report. Use when onboarding or reviewing ambassadors, when an event is planned, and within 72 hours after every event while evidence is fresh."
+  },
+  {
     "id": "amplitude-automation",
     "name": "Amplitude Automation",
     "module": "Domain & Research Extensions",
@@ -2089,6 +2140,23 @@
     "path": ".agents/skills/aomi-transact",
     "risk": "assess_for_task",
     "description": "Build natural-language crypto/DeFi agents and EVM MCP plugins (Claude Code, Cursor, Codex, Gemini). Aomi turns prompts into wallet-signed txs on Ethereum, Base, Arbitrum, Optimism, Polygon, Linea , non-custodial, fork-simulated. 40+ apps: Uniswap, Aave, Lido, Morpho, GMX, Hyperliquid, Polymarket."
+  },
+  {
+    "id": "ap-ar-aging-schedules",
+    "name": "Ap Ar Aging Schedules",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill ap-ar-aging-schedules",
+    "path": ".agents/skills/ap-ar-aging-schedules",
+    "risk": "assess_for_task",
+    "description": "Produce the receivables and payables aging schedules with dispute flags and cash-impact summary. Use at each period close, when treasury needs the collection outlook, or when an invoice ages past 60 days and needs a named next action. This is the feed that daily-cashflow-forecast and collections-dunning-automation run on."
   },
   {
     "id": "api-connector-builder",
@@ -5950,6 +6018,23 @@
     "description": "Convert 'make it faster' requests into a bounded measured optimization loop , baseline first, generate one-hypothesis variants, benchmark each against a correctness gate, and promote the fastest safe variant with reproducible commands. Use when asked to speed something up, try many variants, run recursive optimization, benchmark latency/throughput/cost, or pick the best implementation by repeated measured tests."
   },
   {
+    "id": "benefits-leave-administration",
+    "name": "Benefits Leave Administration",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill benefits-leave-administration",
+    "path": ".agents/skills/benefits-leave-administration",
+    "risk": "assess_for_task",
+    "description": "Administer benefits enrollment windows and leave accrual enforcement. Use at enrollment windows, when the provider export arrives each month, when an employee questions a balance, or when a policy exception is requested so exceptions are logged with approvals instead of absorbed silently."
+  },
+  {
     "id": "bengali-nlp",
     "name": "Bengali Nlp",
     "module": "Domain & Research Extensions",
@@ -6851,6 +6936,23 @@
     "description": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations."
   },
   {
+    "id": "cap-table-modeler",
+    "name": "Cap Table Modeler",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill cap-table-modeler",
+    "path": ".agents/skills/cap-table-modeler",
+    "risk": "assess_for_task",
+    "description": "Model funding-round scenarios against the live cap table: dilution per holder, ESOP pool top-ups and exit waterfalls. Use before a term sheet is signed, when an option grant changes the pool, or when the board asks what a down round does to founder and employee ownership. Produces scenarios, never decisions."
+  },
+  {
     "id": "capcut",
     "name": "Capcut",
     "module": "Domain & Research Extensions",
@@ -7514,6 +7616,23 @@
     "description": "CloudFormation template optimization, nested stacks, drift detection, and production-ready patterns. Use when writing or reviewing CF templates."
   },
   {
+    "id": "co-marketing-term-sheet-builder",
+    "name": "Co Marketing Term Sheet Builder",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill co-marketing-term-sheet-builder",
+    "path": ".agents/skills/co-marketing-term-sheet-builder",
+    "risk": "assess_for_task",
+    "description": "Draft the commercial skeleton of a co-marketing or joint-venture arrangement before legal drafting starts: rights, spend splits, fund usage rules, lead ownership and exit terms. Use once a target agrees to explore a partnership and always before any draft agreement is written or shared externally."
+  },
+  {
     "id": "coda-automation",
     "name": "Coda Automation",
     "module": "Domain & Research Extensions",
@@ -7854,6 +7973,23 @@
     "description": "Clinically informed wisdom companion blending psychology and philosophy into a structured thinking partner"
   },
   {
+    "id": "cohort-retention-curves",
+    "name": "Cohort Retention Curves",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill cohort-retention-curves",
+    "path": ".agents/skills/cohort-retention-curves",
+    "risk": "assess_for_task",
+    "description": "Build cohort retention curves, fit the decay, and name the segments that fall under benchmark. Use when monthly retention moves, before a pricing or packaging change, or when product asks which acquisition cohort actually sticks. Produces the evidence base that health scores and PRD problem statements are built on."
+  },
+  {
     "id": "colab-cloud-execution",
     "name": "Colab Cloud Execution",
     "module": "Domain & Research Extensions",
@@ -7905,6 +8041,23 @@
     "description": "Creator collabs and cross-promotion , organic creator-to-creator partnerships that swap audiences. Use when someone wants to set up a collab, audience swap, cross-promotion, shoutout swap, joint giveaway, guest spot, joint video/series, a YouTube/IG collab post, or co-promo with another creator. Picks a complementary, similar-size, values-aligned partner, agrees the plan before creating, and co-creates shared-value content (not a bare shoutout) on a coordinated schedule. Uses the UNITE framework. Reads brand-profile + goals-and-kpis first. WoopSocial publishes each partner's OWN posts to their OWN accounts; it does NOT create native IG Collab co-authored posts, run giveaways, duet/stitch, or manage the agreement. A pure mutual collab isn't a sponsorship, but payment/free product makes it one -> disclose -> ugc-and-influencer; partnerships must be genuine; metrics never fabricated. Distinct from ugc-and-influencer (brand->creator) and creator-monetization (the creator's income)."
   },
   {
+    "id": "collections-dunning-automation",
+    "name": "Collections Dunning Automation",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill collections-dunning-automation",
+    "path": ".agents/skills/collections-dunning-automation",
+    "risk": "assess_for_task",
+    "description": "Operate the collections ladder from gentle reminder to bad-debt provision. Use when AR ages past 60 days, when a dunning stage fires, or when provisioning is due for the quarter. Excludes disputed invoices until the dispute closes, and hands legal-grade escalations to the operator for a human decision."
+  },
+  {
     "id": "comfyui-gateway",
     "name": "Comfyui Gateway",
     "module": "Domain & Research Extensions",
@@ -7954,6 +8107,23 @@
     "path": ".agents/skills/community-management",
     "risk": "assess_for_task",
     "description": "Use to build a genuine community , turning an audience into people who interact with each other, not just with the brand. Run when the user asks how to build community, support belonging/loyalty, create superfans, start a group/Discord channel, get members talking to each other, or move beyond chasing followers/virality. Reads brand-profile/social-strategy/audience-research. Community outperforms virality, measured by relationship depth/retention, not follower count. Covers the audience-to-community distinction (member-to-member interaction), choosing the space (in-feed -> semi-owned -> owned groups/Discord), recurring rituals, building belonging, and nurturing superfans into advocates. KPIs read natively, never fabricated. Advisory: WoopSocial schedules the content but does NOT run Discord/Slack or show analytics , the human runs the community, the agent drafts. Never fake community; get consent before spotlighting. Pairs with reply-and-comment-writer and crisis-and-moderation."
+  },
+  {
+    "id": "community-sentiment-trends",
+    "name": "Community Sentiment Trends",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill community-sentiment-trends",
+    "path": ".agents/skills/community-sentiment-trends",
+    "risk": "assess_for_task",
+    "description": "Track community sentiment per channel and topic, alert on abnormal drops, and correlate them with releases and incidents. Use weekly for the standing digest, when support volume spikes, and before release so known friction is distinguished from new friction."
   },
   {
     "id": "competitive-landscape",
@@ -9095,6 +9265,23 @@
     "description": "Master rule for skill usage. Prevents rationalization and enforces strict adherence to all existing skills. Triggers on any task, question, or action."
   },
   {
+    "id": "corporate-governance-resolutions",
+    "name": "Corporate Governance Resolutions",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill corporate-governance-resolutions",
+    "path": ".agents/skills/corporate-governance-resolutions",
+    "risk": "assess_for_task",
+    "description": "Draft board and shareholder resolutions from precedent, verify them against bylaws and jurisdiction requirements, and keep the corporate records index current. Use when a corporate action needs approval (grants, financings, officer appointments, policy adoptions), before a board meeting, or when an auditor or bank asks for evidence of authority."
+  },
+  {
     "id": "cost-aware-llm-pipeline",
     "name": "Cost Aware Llm Pipeline",
     "module": "Domain & Research Extensions",
@@ -9537,6 +9724,23 @@
     "description": "Use to turn one piece of content into multiple platform-native posts , adapt, never copy-paste. Run when the user says \"repurpose this,\" \"turn this into posts for every platform,\" \"cross-post,\" \"make this work on TikTok/LinkedIn/X too,\" \"one idea into a week of content,\" \"turn this blog/video/podcast into social posts,\" or wants to fan content out. Reads brand-profile and voice first, extracts the core idea, then re-natives it for each platform (different hook, format, length, mechanics, CTA) using the content skills, and hands the fan-out to scheduling-and-queue. This is the multiplier that makes a content operation sustainable , but every version must stand on its own and feel native, never duplicated."
   },
   {
+    "id": "crossborder-tia",
+    "name": "Crossborder Tia",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill crossborder-tia",
+    "path": ".agents/skills/crossborder-tia",
+    "risk": "assess_for_task",
+    "description": "Run the transfer impact assessment for personal data leaving a jurisdiction: flow map, transfer mechanism, destination access risk and supplemental measures, ending in a go/no-go recommendation. Use before a new region is added to any data flow, before a vendor in another region processes personal data, and when transfer law changes."
+  },
+  {
     "id": "crypto-bd-agent",
     "name": "Crypto Bd Agent",
     "module": "Domain & Research Extensions",
@@ -9603,6 +9807,23 @@
     "path": ".agents/skills/customer-billing-ops",
     "risk": "assess_for_task",
     "description": "Operate customer billing workflows such as subscriptions, refunds, churn triage, billing-portal recovery, and plan analysis using connected billing tools like Stripe. Use when the user needs to help a customer, inspect subscription state, or manage revenue-impacting billing operations."
+  },
+  {
+    "id": "customer-health-score",
+    "name": "Customer Health Score",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill customer-health-score",
+    "path": ".agents/skills/customer-health-score",
+    "risk": "assess_for_task",
+    "description": "Define, validate and operate the composite customer health score with intervention triggers. Use when customer success needs a ranked at-risk list, after a quarter closes (to validate the score against actual churn), or when triggers fire so the right playbook reaches the right CSM owner."
   },
   {
     "id": "customer-psychographic-profiler",
@@ -9688,6 +9909,23 @@
     "path": ".agents/skills/d3js-visualization",
     "risk": "assess_for_task",
     "description": "This skill provides guidance for creating sophisticated, interactive data visualisations using d3.js."
+  },
+  {
+    "id": "daily-cashflow-forecast",
+    "name": "Daily Cashflow Forecast",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill daily-cashflow-forecast",
+    "path": ".agents/skills/daily-cashflow-forecast",
+    "risk": "assess_for_task",
+    "description": "Build and maintain a rolling 13-week direct cash-flow forecast with a hard liquidity floor alert. Use when the operator asks for cash runway detail, when accounts-manager publishes new AR/AP aging schedules, when payroll or debt-service dates change, or when a payment-gateway payout lag is about to move more than the floor amount. Produces the one artifact every finance role reads before approving spend."
   },
   {
     "id": "daily-gift",
@@ -10385,6 +10623,23 @@
     "path": ".agents/skills/defi-protocol-templates",
     "risk": "assess_for_task",
     "description": "Implement DeFi protocols with production-ready templates for staking, AMMs, governance, and lending systems. Use when building decentralized finance applications or smart contract protocols."
+  },
+  {
+    "id": "deidentification-benchmark",
+    "name": "Deidentification Benchmark",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill deidentification-benchmark",
+    "path": ".agents/skills/deidentification-benchmark",
+    "risk": "assess_for_task",
+    "description": "Benchmark a dataset's deidentification before it leaves its trust boundary: identifier classification, k-anonymity style measures, re-identification risk tests and differential privacy parameter checks against policy caps. Use before any analytics export, model training share or third-party data release."
   },
   {
     "id": "delivery-gate",
@@ -11473,6 +11728,23 @@
     "path": ".agents/skills/dropbox-automation",
     "risk": "assess_for_task",
     "description": "Automate Dropbox file management, sharing, search, uploads, downloads, and folder operations via Rube MCP (Composio). Always search tools first for current schemas."
+  },
+  {
+    "id": "dsar-pipeline",
+    "name": "Dsar Pipeline",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill dsar-pipeline",
+    "path": ".agents/skills/dsar-pipeline",
+    "risk": "assess_for_task",
+    "description": "Run a data subject request end to end: intake, identity proof, system inventory, fulfillment and certification under the applicable deadline (GDPR 30 days, CCPA/CPRA 45 days with one 45-day extension). Use when a request arrives through any channel, when a deadline clock is running, or when a quarterly DSAR audit is due."
   },
   {
     "id": "dwarf-expert",
@@ -14295,6 +14567,40 @@
     "path": ".agents/skills/fullstack-feature",
     "risk": "assess_for_task",
     "description": "Use when working with full stack orchestration full stack feature"
+  },
+  {
+    "id": "fundraising-data-room",
+    "name": "Fundraising Data Room",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill fundraising-data-room",
+    "path": ".agents/skills/fundraising-data-room",
+    "risk": "assess_for_task",
+    "description": "Assemble and police the diligence data room: the index of required documents, the chase list for missing items, redaction rules and the access policy. Use when a raise starts, when investor diligence begins, or before any data room link is shared, so access is deliberate and the index is complete."
+  },
+  {
+    "id": "fx-hedging-advisor",
+    "name": "Fx Hedging Advisor",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill fx-hedging-advisor",
+    "path": ".agents/skills/fx-hedging-advisor",
+    "risk": "assess_for_task",
+    "description": "Net currency exposures and draft a hedging recommendation inside policy bands. Use when invoicing or spending is concentrated in a currency other than the functional one, when the treasury policy review comes up, or before any forward contract or option is quoted. Outputs a decision memo; it never executes a hedge itself."
   },
   {
     "id": "game-development",
@@ -21607,6 +21913,23 @@
     "description": "Lead magnets and funnels , design offers that turn social traffic into subscribers, leads, and customers. Use when someone wants to \"create a lead magnet,\" \"build a funnel,\" \"design a freebie/opt-in,\" \"make a quiz/calculator/template to grow my list,\" or turn social traffic into qualified leads and customers. Designs the magnet the capture paths deliver PLUS the whole social->capture->nurture funnel, using the MAGNET framework. Reads brand-profile + goals-and-kpis first. WoopSocial has no landing/form/email/quiz builder: the agent designs the magnet + funnel and drafts the nurture and promo posts; WoopSocial publishes the promo posts; capture/delivery/nurture run in external tools; metrics from those + GA4, never fabricated; no dark patterns. Distinct from link-in-bio-and-traffic / social-selling-and-dm (the capture paths) and email-and-newsletter (the owned channel)."
   },
   {
+    "id": "ledger-reconciliation",
+    "name": "Ledger Reconciliation",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill ledger-reconciliation",
+    "path": ".agents/skills/ledger-reconciliation",
+    "risk": "assess_for_task",
+    "description": "Reconcile sub-ledgers to the general ledger and resolve invoice discrepancies with recorded evidence. Use at each close, when a sub-ledger total disagrees with its GL control account, or when a customer or vendor disputes amounts. Produces journal proposals for the controller - it never posts directly."
+  },
+  {
     "id": "legacy-modernize",
     "name": "Legacy Modernize",
     "module": "Domain & Research Extensions",
@@ -22013,6 +22336,23 @@
     "path": ".agents/skills/listicle-and-roundup",
     "risk": "assess_for_task",
     "description": "The list/roundup content type , design honestly-curated, scannable, AI-citable listicles (\"7 ways to X\", \"best tools for Y\") and expert / product / link roundups. Use when someone wants a listicle, a \"best of\" or \"top N\" list, a ranked recommendation list, an expert roundup, a product/affiliate roundup, or a curated resource list. Ranked \"best-of\" lists are among the most-cited formats in AI search. Uses the RANKS framework. Reads brand-profile + audience-research first. The agent designs the list and frames the cuts; for roundups it drafts the contributor ask; the human secures real contributor quotes/consent and verifies product facts; WoopSocial publishes the cuts. Feeds the format writers and ai-search-optimization + social-seo. NEVER fabricates items, quotes, or rankings, or pads to a number; discloses affiliate/own-product. Distinct from carousel-writer/thread-writer, educational-content-and-how-to, data-and-original-research, and competitor-analysis."
+  },
+  {
+    "id": "litigation-regulatory-risk-scanner",
+    "name": "Litigation Regulatory Risk Scanner",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill litigation-regulatory-risk-scanner",
+    "path": ".agents/skills/litigation-regulatory-risk-scanner",
+    "risk": "assess_for_task",
+    "description": "Scan the company's exposure surface: demand letters, regulatory inquiries, incident aftermath and deal diligence. Classifies exposure, scores severity, starts the response clock with the right template, and instantiates the M&A legal audit checklist when a deal flag is set. Use on any legal threat, inquiry or deal signal."
   },
   {
     "id": "livestream-and-realtime",
@@ -23273,6 +23613,23 @@
     "description": "Expert in launching small, focused SaaS products fast - the indie hacker approach to building profitable software. Covers idea validation, MVP development, pricing, launch strategies, and growing to sustainable revenue. Ship in weeks, not months."
   },
   {
+    "id": "microcopy-pattern-library",
+    "name": "Microcopy Pattern Library",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill microcopy-pattern-library",
+    "path": ".agents/skills/microcopy-pattern-library",
+    "risk": "assess_for_task",
+    "description": "Build and maintain the interface copy pattern library: error messages, empty states, success confirmations and their placement rules, keyed for i18n and wired to the design system. Use when a surface ships without copy review, when error rates cluster on a screen, or when the design-system-engineer adds components that need standard strings."
+  },
+  {
     "id": "microservices-patterns",
     "name": "Microservices Patterns",
     "module": "Domain & Research Extensions",
@@ -23662,6 +24019,23 @@
     "path": ".agents/skills/mock-hunter",
     "risk": "assess_for_task",
     "description": "Audit a live web page in five phases (catalog, click, trace, classify, report) to identify mock data, hardcoded values, LLM-generated metrics, and broken endpoints. Outputs a markdown report with REAL/MOCK/LLM/HARDCODED/BROKEN/UNKNOWN verdicts per visible value."
+  },
+  {
+    "id": "moderation-escalation-ladder",
+    "name": "Moderation Escalation Ladder",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill moderation-escalation-ladder",
+    "path": ".agents/skills/moderation-escalation-ladder",
+    "risk": "assess_for_task",
+    "description": "Enforce the moderation ladder consistently across channels: policy classes, escalating actions, evidence snapshots, appeals and the weekly false-positive review. Use when a violation is reported or detected, when an appeal arrives, or when moderation stats are due for the transparency report."
   },
   {
     "id": "modern-javascript-patterns",
@@ -24786,6 +25160,23 @@
     "description": "Expert in building and selling Notion templates as a business - not just making templates, but building a sustainable digital product business. Covers template design, pricing, marketplaces, marketing, and scaling to real revenue."
   },
   {
+    "id": "nps-sentiment-root-cause",
+    "name": "Nps Sentiment Root Cause",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill nps-sentiment-root-cause",
+    "path": ".agents/skills/nps-sentiment-root-cause",
+    "risk": "assess_for_task",
+    "description": "Cluster NPS and CSAT verbatims into themes, link them to measurable drivers, and assign remediation owners. Use after each NPS or CSAT wave closes, when detractor share moves without an obvious incident, or quarterly when the remediation backlog is reviewed."
+  },
+  {
     "id": "nutrient-document-processing",
     "name": "Nutrient Document Processing",
     "module": "Domain & Research Extensions",
@@ -25449,6 +25840,23 @@
     "description": "Use when designing first-use onboarding to reduce friction and help users reach an early success."
   },
   {
+    "id": "onboarding-tooltip-system",
+    "name": "Onboarding Tooltip System",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill onboarding-tooltip-system",
+    "path": ".agents/skills/onboarding-tooltip-system",
+    "risk": "assess_for_task",
+    "description": "Design the first-run and feature-discovery tooltip sequence: step copy, dismissal rules and the instrumentation events that prove whether guidance works. Use when activation drops at a known funnel step, when a major surface ships, or when tooltips are added ad hoc and start competing with each other."
+  },
+  {
     "id": "one-drive-automation",
     "name": "One Drive Automation",
     "module": "Domain & Research Extensions",
@@ -25823,6 +26231,23 @@
     "description": "Automatically hunt for high-impact OSS contribution opportunities in trending repositories."
   },
   {
+    "id": "oss-license-risk-audit",
+    "name": "Oss License Risk Audit",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill oss-license-risk-audit",
+    "path": ".agents/skills/oss-license-risk-audit",
+    "risk": "assess_for_task",
+    "description": "Audit the dependency tree for license risk: build the compatibility matrix, find copyleft paths into proprietary code, and issue the license gate verdict. Use on every release train, when a new dependency is proposed, or when the CI SBOM job flags a new license class. This skill is the enforcement brain behind the legal license gate."
+  },
+  {
     "id": "outlook-automation",
     "name": "Outlook Automation",
     "module": "Domain & Research Extensions",
@@ -26010,6 +26435,40 @@
     "description": "Speed up a task by turning it into a dependency graph of parallel lanes with a lane matrix, batched reads and checks, write surfaces isolated by file, worktree, branch, or service, and a final verification table. Use when the user wants a task done much faster through parallel work, concurrent agents, batched tool calls, isolated worktrees, many independent verification lanes, or bounded homogeneous work that reuses shared preparation while record operations remain sequential, without losing correctness."
   },
   {
+    "id": "partner-ecosystem-mapping",
+    "name": "Partner Ecosystem Mapping",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill partner-ecosystem-mapping",
+    "path": ".agents/skills/partner-ecosystem-mapping",
+    "risk": "assess_for_task",
+    "description": "Map the partner landscape by category, score candidates on reach, overlap and effort, and produce a ranked target list with written rationale. Use when entering a new channel, when a partnership underperforms for two consecutive quarters, or before any outreach campaign so pursuit effort is spent on scored targets, not guesses."
+  },
+  {
+    "id": "patent-claim-drafter",
+    "name": "Patent Claim Drafter",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill patent-claim-drafter",
+    "path": ".agents/skills/patent-claim-drafter",
+    "risk": "assess_for_task",
+    "description": "Draft the claim set for a disclosure that passed novelty screening: independent claim with a deliberate boundary, dependent claims per element, and the boundary map against the closest prior art. Use after prior-art-search completes and before outside counsel engagement so review hours are spent on a structured draft."
+  },
+  {
     "id": "payment-integration",
     "name": "Payment Integration",
     "module": "Domain & Research Extensions",
@@ -26042,6 +26501,23 @@
     "path": ".agents/skills/paypal-integration",
     "risk": "assess_for_task",
     "description": "Master PayPal payment integration including Express Checkout, IPN handling, recurring billing, and refund workflows."
+  },
+  {
+    "id": "payroll-cycle-ops",
+    "name": "Payroll Cycle Ops",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill payroll-cycle-ops",
+    "path": ".agents/skills/payroll-cycle-ops",
+    "risk": "assess_for_task",
+    "description": "Run one payroll cycle from pre-close checklist to signed register. Use at each cycle boundary (T-7 to freeze), when compensation changes land mid-cycle, or when any variance against the prior cycle needs explanation before approval. Produces the register role-cfo approves and the audit trail auditors ask for."
   },
   {
     "id": "paywall-upgrade-cro",
@@ -27045,6 +27521,23 @@
     "path": ".agents/skills/pricing-strategy",
     "risk": "assess_for_task",
     "description": "Design pricing, packaging, and monetization strategies based on value, customer willingness to pay, and growth objectives."
+  },
+  {
+    "id": "prior-art-search",
+    "name": "Prior Art Search",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill prior-art-search",
+    "path": ".agents/skills/prior-art-search",
+    "risk": "assess_for_task",
+    "description": "Run a structured prior-art search and write the novelty report for an invention disclosure, including the trademark watch check. Use when a disclosure arrives from engineering, before any patent filing decision, or when a competitor filing needs screening against the company's roadmap."
   },
   {
     "id": "prisma-expert",
@@ -28679,6 +29172,23 @@
     "description": "Redis data structure patterns, caching strategies, distributed locks, rate limiting, pub/sub, and connection management for production applications. Use when adding caching, a distributed lock, rate limiting, or pub/sub with Redis, or when key design needs review."
   },
   {
+    "id": "redline-diff-analyzer",
+    "name": "Redline Diff Analyzer",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill redline-diff-analyzer",
+    "path": ".agents/skills/redline-diff-analyzer",
+    "risk": "assess_for_task",
+    "description": "Analyze a counterparty's redline against the template: classify every change as added, modified or deleted per clause, flag variances against the clause playbook, and propose fallback language from pre-approved ranges. Use every time a draft comes back from a counterparty, before any human reads it."
+  },
+  {
     "id": "reels-script",
     "name": "Reels Script",
     "module": "Domain & Research Extensions",
@@ -28866,6 +29376,23 @@
     "description": "Automate Render tasks via Rube MCP (Composio): services, deployments, projects. Always search tools first for current schemas."
   },
   {
+    "id": "renewal-and-liability-watch",
+    "name": "Renewal And Liability Watch",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill renewal-and-liability-watch",
+    "path": ".agents/skills/renewal-and-liability-watch",
+    "risk": "assess_for_task",
+    "description": "Watch the contract register for renewal windows and liability exposure: auto-renewal deadlines with notice cutoffs, liability caps against the policy floor, uncapped exposures and insurance requirements. Use monthly, and whenever a contract is signed, amended or assigned."
+  },
+  {
     "id": "repl-runner",
     "name": "Repl Runner",
     "module": "Domain & Research Extensions",
@@ -28949,6 +29476,23 @@
     "path": ".agents/skills/research-ops",
     "risk": "assess_for_task",
     "description": "Evidence-first current-state research workflow for ECC. Use when the user wants fresh facts, comparisons, enrichment, or a recommendation built from current public evidence and any supplied local context."
+  },
+  {
+    "id": "retrospective-synthesis",
+    "name": "Retrospective Synthesis",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill retrospective-synthesis",
+    "path": ".agents/skills/retrospective-synthesis",
+    "risk": "assess_for_task",
+    "description": "Convert a sprint retrospective into evidence-linked actions. Use at sprint end, after an incident, or whenever velocity or burndown moves without an obvious cause. Clusters the transcript into themes, ties each theme to a delivery metric, and caps the action list at what the team can actually carry."
   },
   {
     "id": "returns-reverse-logistics",
@@ -29255,6 +29799,23 @@
     "path": ".agents/skills/runway",
     "risk": "assess_for_task",
     "description": "Prompt and direct Runway (Gen-4.5, Aleph) , the control-grade generative video tool for camera moves, character consistency, and edit-grade shots. Use when someone wants \"a specific camera move,\" \"the same character across multiple shots,\" \"to edit/restyle existing footage,\" \"a branded product/ad shot,\" \"film-style previz,\" \"image to video with Runway\" (animate a still), or names Runway / Gen-4 / Gen-4.5 / Aleph / Act-Two / Motion Brush / References. Runway generates clips; a human assembles/edits; audio comes from ai-voiceover; WoopSocial schedules/publishes. Below the ai-video router, sibling to veo-3 (all-round + native audio), kling (native 4K/multi-shot/motion), and luma (cinematic HDR/mood). Consented performances only (Act-Two); AI disclosure mandatory."
+  },
+  {
+    "id": "runway-sensitivity-analysis",
+    "name": "Runway Sensitivity Analysis",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill runway-sensitivity-analysis",
+    "path": ".agents/skills/runway-sensitivity-analysis",
+    "risk": "assess_for_task",
+    "description": "Extend the 13-week cash forecast into scenario runway bands with named cost levers, and synthesize the board financial deck outline from them. Use monthly before board cadence, when a hiring or spend decision lands, or whenever the base-case floor distance narrows below policy tolerance."
   },
   {
     "id": "rust-async-patterns",
@@ -31008,6 +31569,23 @@
     "description": "Analyze a repository to generate recommended Claude Code settings.json permissions. Use when setting up a new project, auditing existing settings, or determining which read-only bash commands to allow. Detects tech stack, build tools, and monorepo structure."
   },
   {
+    "id": "settlement-reconciliation-audit",
+    "name": "Settlement Reconciliation Audit",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill settlement-reconciliation-audit",
+    "path": ".agents/skills/settlement-reconciliation-audit",
+    "risk": "assess_for_task",
+    "description": "Three-way match between payment-processor settlement files, the internal payout ledger and bank statements. Use after each settlement period closes, when a payout amount looks wrong, when chargeback volume moves, or before role-cfo signs a payment approval. Classifies breaks, ages them, and drafts processor credit claims."
+  },
+  {
     "id": "sexual-health-analyzer",
     "name": "Sexual Health Analyzer",
     "module": "Domain & Research Extensions",
@@ -32249,6 +32827,23 @@
     "description": "Run the full Spring Boot verification loop , Maven or Gradle build, SpotBugs, PMD, and Checkstyle static analysis, unit and Testcontainers integration tests with JaCoCo coverage, OWASP dependency and secret scans, and diff review , producing a pass/fail readiness report. Use when preparing a Spring Boot pull request, validating coverage thresholds, or running pre-deploy verification."
   },
   {
+    "id": "sprint-backlog-grooming",
+    "name": "Sprint Backlog Grooming",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill sprint-backlog-grooming",
+    "path": ".agents/skills/sprint-backlog-grooming",
+    "risk": "assess_for_task",
+    "description": "Turn a raw backlog into a sprint-ready one: definition-of-ready enforcement, oversized story splitting and an explicit dependency map. Use before sprint planning, when items sit in backlog for more than two sprints, or when planning stalls on unclear scope. Feeds kanban-agent-pipeline and conductor-status with clean, ordered work."
+  },
+  {
     "id": "sql-injection-testing",
     "name": "Sql Injection Testing",
     "module": "Security & Defense",
@@ -32536,6 +33131,23 @@
     "path": ".agents/skills/story-lifecycle",
     "risk": "assess_for_task",
     "description": "Manage a file-based epic \u2192 story \u2192 sprint development loop without requiring an external project management tool. Creates and tracks epics, breaks them into user stories, assigns them to sprints, and drives implementation story by story. Use when starting a new feature initiative or when the team has no Jira/Linear/Taiga but needs structured delivery tracking."
+  },
+  {
+    "id": "story-pointing-calibration",
+    "name": "Story Pointing Calibration",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill story-pointing-calibration",
+    "path": ".agents/skills/story-pointing-calibration",
+    "risk": "assess_for_task",
+    "description": "Anchor estimation to reference stories and detect drift. Use during backlog refinement, when velocity swings more than the control band between sprints, or when estimates from different contributors stop being comparable. Produces calibrated estimates with a recorded spread, not false precision."
   },
   {
     "id": "story-writer",
@@ -35615,6 +36227,57 @@
     "description": "Find files by meaning with the Vexor semantic-search CLI. Use when installed and configured; inspect the embedding provider and data boundary before indexing source files."
   },
   {
+    "id": "vendor-rfp-generator",
+    "name": "Vendor Rfp Generator",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill vendor-rfp-generator",
+    "path": ".agents/skills/vendor-rfp-generator",
+    "risk": "assess_for_task",
+    "description": "Produce a complete RFP pack: requirements matrix, weighted scorecard and the approval chain that matches the spend band. Use when a vendor need is first scoped, when an incumbent contract approaches renewal with competitive options, or whenever spend above the threshold requires a documented selection process."
+  },
+  {
+    "id": "vendor-sla-breach-watch",
+    "name": "Vendor Sla Breach Watch",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill vendor-sla-breach-watch",
+    "path": ".agents/skills/vendor-sla-breach-watch",
+    "risk": "assess_for_task",
+    "description": "Maintain the SLA register per vendor contract, collect breach evidence, compute credits owed and escalate repeat offenders. Use when an incident touches a vendor-managed service, when a monthly vendor report lands, or when a credit claim deadline is close. Feeds SRE error-budget reviews with vendor-side context."
+  },
+  {
+    "id": "vendor-spend-consolidator",
+    "name": "Vendor Spend Consolidator",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill vendor-spend-consolidator",
+    "path": ".agents/skills/vendor-spend-consolidator",
+    "risk": "assess_for_task",
+    "description": "Keep one inventory of every software and hardware contract, surface renewals before they auto-renew, and propose consolidations where the same category is spread across multiple vendors. Use quarterly, when a renewal alert fires, or when spend in any category grows without a matching headcount or usage story."
+  },
+  {
     "id": "veo-3",
     "name": "Veo 3",
     "module": "Domain & Research Extensions",
@@ -36922,6 +37585,23 @@
     "path": ".agents/skills/workflow-patterns",
     "risk": "assess_for_task",
     "description": "Use this skill when implementing tasks according to Conductor's TDD workflow, handling phase checkpoints, managing git commits for tasks, or understanding the verification protocol."
+  },
+  {
+    "id": "workforce-compliance-tracker",
+    "name": "Workforce Compliance Tracker",
+    "module": "Security & Defense",
+    "category": "Security",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill workforce-compliance-tracker",
+    "path": ".agents/skills/workforce-compliance-tracker",
+    "risk": "assess_for_task",
+    "description": "Track work-authorization expiries and drive the offboarding compliance sequence with evidence at every step. Use when a visa or permit approaches expiry, when any employment ends, or when an audit asks who verified what and when. The offboarding path hands explicitly to the security zeroize-audit flow."
   },
   {
     "id": "workplace-wellness-assistant",

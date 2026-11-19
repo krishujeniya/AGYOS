@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: affiliate-program-ops\ndescription: \"Operate the affiliate program end to end: commission tiers, fraud rules, monthly payout reconciliation and a quarterly channel audit. Use when affiliates are onboarded, when payout reports arrive from the network, or when acquisition cost per channel is due for review before budget moves.\"\nrisk: medium\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

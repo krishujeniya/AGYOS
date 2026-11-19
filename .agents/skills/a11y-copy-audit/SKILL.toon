@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: a11y-copy-audit\ndescription: \"Audit surface copy against WCAG 2.2 AA text requirements: link text descriptiveness, alt text adequacy, form label and error text rules, heading text hierarchy and a reading level cap. Use before release of any user-facing surface, after the microcopy library changes, or when an accessibility complaint arrives.\"\nrisk: safe\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

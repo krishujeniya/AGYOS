@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: vendor-rfp-generator\ndescription: \"Produce a complete RFP pack: requirements matrix, weighted scorecard and the approval chain that matches the spend band. Use when a vendor need is first scoped, when an incumbent contract approaches renewal with competitive options, or whenever spend above the threshold requires a documented selection process.\"\nrisk: safe\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

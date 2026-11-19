@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<skills_roles_graph total_departments="12" total_pods="5" total_roles="104" total_skills="2247">
+<skills_roles_graph total_departments="12" total_pods="5" total_roles="104" total_skills="2287">
   <departments>
     <department id="customer_success" />
     <department id="data_ai" />
@@ -25,103 +25,103 @@
     <role id="role-ceo" title="Chief Executive Officer" department="executive" pod="pod-gna" seniority="L8" risk="R3" mapped_skills="37" />
     <role id="role-cto" title="Chief Technology Officer" department="executive" pod="pod-build" seniority="L8" risk="R2" mapped_skills="40" />
     <role id="role-coo" title="Chief Operating Officer" department="executive" pod="pod-gna" seniority="L8" risk="R1" mapped_skills="40" />
-    <role id="role-cpo" title="Chief Product Officer" department="executive" pod="pod-build" seniority="L8" risk="R1" mapped_skills="31" />
-    <role id="role-cmo" title="Chief Marketing Officer" department="executive" pod="pod-growth" seniority="L8" risk="R1" mapped_skills="26" />
+    <role id="role-cpo" title="Chief Product Officer" department="executive" pod="pod-build" seniority="L8" risk="R1" mapped_skills="29" />
+    <role id="role-cmo" title="Chief Marketing Officer" department="executive" pod="pod-growth" seniority="L8" risk="R1" mapped_skills="30" />
     <role id="role-cso" title="Chief Security Officer" department="executive" pod="pod-gna" seniority="L8" risk="R2" mapped_skills="42" />
-    <role id="role-cfo" title="Chief Financial Officer" department="executive" pod="pod-gna" seniority="L8" risk="R3" mapped_skills="7" />
-    <role id="role-vp-engineering" title="VP Engineering" department="executive" pod="pod-build" seniority="L8" risk="R2" mapped_skills="30" />
-    <role id="role-product-director" title="Product Director" department="product" pod="pod-build" seniority="L7" risk="R1" mapped_skills="26" />
+    <role id="role-cfo" title="Chief Financial Officer" department="executive" pod="pod-gna" seniority="L8" risk="R3" mapped_skills="10" />
+    <role id="role-vp-engineering" title="VP Engineering" department="executive" pod="pod-build" seniority="L8" risk="R2" mapped_skills="29" />
+    <role id="role-product-director" title="Product Director" department="product" pod="pod-build" seniority="L7" risk="R1" mapped_skills="25" />
     <role id="role-senior-pm" title="Senior Product Manager" department="product" pod="pod-build" seniority="L6" risk="R1" mapped_skills="27" />
     <role id="role-pm" title="Product Manager" department="product" pod="pod-build" seniority="L5" risk="R1" mapped_skills="11" />
-    <role id="role-scrum-agile-coach" title="Scrum / Agile Coach" department="product" pod="pod-build" seniority="L5" risk="R0" mapped_skills="5" />
+    <role id="role-scrum-agile-coach" title="Scrum / Agile Coach" department="product" pod="pod-build" seniority="L5" risk="R0" mapped_skills="7" />
     <role id="role-ux-researcher" title="UX Researcher" department="product" pod="pod-build" seniority="L5" risk="R0" mapped_skills="26" />
-    <role id="role-growth-pm" title="Growth Product Manager" department="product" pod="pod-growth" seniority="L5" risk="R1" mapped_skills="20" />
+    <role id="role-growth-pm" title="Growth Product Manager" department="product" pod="pod-growth" seniority="L5" risk="R1" mapped_skills="22" />
     <role id="role-product-analyst" title="Product Analyst" department="product" pod="pod-build" seniority="L4" risk="R0" mapped_skills="24" />
-    <role id="role-technical-pm" title="Technical Product Manager" department="product" pod="pod-build" seniority="L6" risk="R1" mapped_skills="33" />
-    <role id="role-staff-engineer" title="Staff Software Engineer" department="engineering" pod="pod-build" seniority="L7" risk="R2" mapped_skills="77" />
-    <role id="role-senior-swe" title="Senior Software Engineer" department="engineering" pod="pod-build" seniority="L6" risk="R1" mapped_skills="174" />
-    <role id="role-swe" title="Software Engineer" department="engineering" pod="pod-build" seniority="L5" risk="R1" mapped_skills="134" />
-    <role id="role-frontend-engineer" title="Frontend Engineer" department="engineering" pod="pod-build" seniority="L5" risk="R1" mapped_skills="214" />
+    <role id="role-technical-pm" title="Technical Product Manager" department="product" pod="pod-build" seniority="L6" risk="R1" mapped_skills="32" />
+    <role id="role-staff-engineer" title="Staff Software Engineer" department="engineering" pod="pod-build" seniority="L7" risk="R2" mapped_skills="86" />
+    <role id="role-senior-swe" title="Senior Software Engineer" department="engineering" pod="pod-build" seniority="L6" risk="R1" mapped_skills="173" />
+    <role id="role-swe" title="Software Engineer" department="engineering" pod="pod-build" seniority="L5" risk="R1" mapped_skills="133" />
+    <role id="role-frontend-engineer" title="Frontend Engineer" department="engineering" pod="pod-build" seniority="L5" risk="R1" mapped_skills="213" />
     <role id="role-backend-engineer" title="Backend Engineer" department="engineering" pod="pod-build" seniority="L5" risk="R1" mapped_skills="218" />
     <role id="role-mobile-engineer" title="Mobile Engineer" department="engineering" pod="pod-build" seniority="L5" risk="R1" mapped_skills="97" />
-    <role id="role-devops-engineer" title="DevOps / Platform Engineer" department="engineering" pod="pod-build" seniority="L5" risk="R2" mapped_skills="82" />
+    <role id="role-devops-engineer" title="DevOps / Platform Engineer" department="engineering" pod="pod-build" seniority="L5" risk="R2" mapped_skills="81" />
     <role id="role-site-reliability-engineer" title="Site Reliability Engineer" department="engineering" pod="pod-build" seniority="L6" risk="R2" mapped_skills="43" />
     <role id="role-security-engineer" title="Security Engineer" department="engineering" pod="pod-gna" seniority="L6" risk="R2" mapped_skills="85" />
     <role id="role-qa-engineer" title="QA / Test Engineer" department="engineering" pod="pod-build" seniority="L5" risk="R1" mapped_skills="53" />
     <role id="role-web3-blockchain-eng" title="Web3 / Blockchain Engineer" department="engineering" pod="pod-build" seniority="L5" risk="R2" mapped_skills="21" />
     <role id="role-desktop-app-eng" title="Desktop Application Engineer" department="engineering" pod="pod-build" seniority="L5" risk="R1" mapped_skills="57" />
-    <role id="role-network-infra-eng" title="Network Infrastructure Engineer" department="engineering" pod="pod-build" seniority="L5" risk="R2" mapped_skills="26" />
+    <role id="role-network-infra-eng" title="Network Infrastructure Engineer" department="engineering" pod="pod-build" seniority="L5" risk="R2" mapped_skills="25" />
     <role id="role-database-reliability-eng" title="Database Reliability Engineer" department="engineering" pod="pod-build" seniority="L6" risk="R2" mapped_skills="39" />
     <role id="role-incident-commander" title="Incident Commander" department="engineering" pod="pod-build" seniority="L6" risk="R2" mapped_skills="14" />
-    <role id="role-agentic-workflow-architect" title="Agentic Workflow Architect" department="engineering" pod="pod-build" seniority="L7" risk="R2" mapped_skills="269" />
+    <role id="role-agentic-workflow-architect" title="Agentic Workflow Architect" department="engineering" pod="pod-build" seniority="L7" risk="R2" mapped_skills="268" />
     <role id="role-data-scientist" title="Data Scientist" department="data_ai" pod="pod-build" seniority="L5" risk="R1" mapped_skills="40" />
     <role id="role-ml-engineer" title="ML Engineer" department="data_ai" pod="pod-build" seniority="L5" risk="R1" mapped_skills="61" />
     <role id="role-data-engineer" title="Data Engineer" department="data_ai" pod="pod-build" seniority="L5" risk="R1" mapped_skills="55" />
     <role id="role-ai-product-engineer" title="AI Product Engineer" department="data_ai" pod="pod-build" seniority="L5" risk="R1" mapped_skills="157" />
     <role id="role-data-analyst" title="Data Analyst" department="data_ai" pod="pod-build" seniority="L4" risk="R0" mapped_skills="53" />
     <role id="role-research-scientist" title="Research Scientist" department="data_ai" pod="pod-build" seniority="L7" risk="R1" mapped_skills="34" />
-    <role id="role-privacy-engineer" title="Privacy Engineer" department="data_ai" pod="pod-gna" seniority="L6" risk="R2" mapped_skills="8" />
+    <role id="role-privacy-engineer" title="Privacy Engineer" department="data_ai" pod="pod-gna" seniority="L6" risk="R2" mapped_skills="11" />
     <role id="role-computer-vision-eng" title="Computer Vision Engineer" department="data_ai" pod="pod-build" seniority="L5" risk="R1" mapped_skills="14" />
     <role id="role-speech-audio-ai-eng" title="Speech &amp; Audio AI Engineer" department="data_ai" pod="pod-build" seniority="L5" risk="R1" mapped_skills="35" />
     <role id="role-mlops-engineer" title="MLOps Engineer" department="data_ai" pod="pod-build" seniority="L5" risk="R2" mapped_skills="24" />
     <role id="role-design-director" title="Design Director" department="design" pod="pod-build" seniority="L7" risk="R1" mapped_skills="45" />
     <role id="role-ux-ui-designer" title="UX / UI Designer" department="design" pod="pod-build" seniority="L5" risk="R1" mapped_skills="95" />
-    <role id="role-product-designer" title="Product Designer" department="design" pod="pod-build" seniority="L5" risk="R1" mapped_skills="45" />
+    <role id="role-product-designer" title="Product Designer" department="design" pod="pod-build" seniority="L5" risk="R1" mapped_skills="43" />
     <role id="role-brand-designer" title="Brand Designer" department="design" pod="pod-growth" seniority="L5" risk="R1" mapped_skills="51" />
     <role id="role-motion-designer" title="Motion Designer" department="design" pod="pod-growth" seniority="L5" risk="R1" mapped_skills="68" />
     <role id="role-3d-visual-designer" title="3D Visual Designer" department="design" pod="pod-growth" seniority="L5" risk="R1" mapped_skills="26" />
     <role id="role-design-system-engineer" title="Design System Engineer" department="design" pod="pod-build" seniority="L5" risk="R1" mapped_skills="62" />
-    <role id="role-ux-copywriter" title="UX Copywriter" department="design" pod="pod-build" seniority="L4" risk="R1" mapped_skills="7" />
+    <role id="role-ux-copywriter" title="UX Copywriter" department="design" pod="pod-build" seniority="L4" risk="R1" mapped_skills="10" />
     <role id="role-content-strategist" title="Content Strategist" department="marketing" pod="pod-growth" seniority="L5" risk="R1" mapped_skills="190" />
     <role id="role-seo-specialist" title="SEO Specialist" department="marketing" pod="pod-growth" seniority="L4" risk="R1" mapped_skills="60" />
     <role id="role-performance-marketer" title="Performance Marketer" department="marketing" pod="pod-growth" seniority="L5" risk="R2" mapped_skills="18" />
-    <role id="role-social-media-manager" title="Social Media Manager" department="marketing" pod="pod-growth" seniority="L4" risk="R1" mapped_skills="118" />
-    <role id="role-brand-copywriter" title="Brand Copywriter" department="marketing" pod="pod-growth" seniority="L4" risk="R1" mapped_skills="23" />
-    <role id="role-conversion-optimizer" title="Conversion Rate Optimizer" department="marketing" pod="pod-growth" seniority="L5" risk="R1" mapped_skills="19" />
+    <role id="role-social-media-manager" title="Social Media Manager" department="marketing" pod="pod-growth" seniority="L4" risk="R1" mapped_skills="116" />
+    <role id="role-brand-copywriter" title="Brand Copywriter" department="marketing" pod="pod-growth" seniority="L4" risk="R1" mapped_skills="30" />
+    <role id="role-conversion-optimizer" title="Conversion Rate Optimizer" department="marketing" pod="pod-growth" seniority="L5" risk="R1" mapped_skills="18" />
     <role id="role-email-lifecycle-marketer" title="Email &amp; Lifecycle Marketer" department="marketing" pod="pod-growth" seniority="L5" risk="R1" mapped_skills="49" />
     <role id="role-pr-comms-manager" title="PR &amp; Communications Manager" department="marketing" pod="pod-growth" seniority="L5" risk="R1" mapped_skills="20" />
-    <role id="role-partnership-bd-manager" title="Partnership &amp; BD Manager" department="marketing" pod="pod-growth" seniority="L5" risk="R1" mapped_skills="6" />
-    <role id="role-community-manager" title="Community Manager" department="marketing" pod="pod-customer" seniority="L4" risk="R1" mapped_skills="9" />
+    <role id="role-partnership-bd-manager" title="Partnership &amp; BD Manager" department="marketing" pod="pod-growth" seniority="L5" risk="R1" mapped_skills="7" />
+    <role id="role-community-manager" title="Community Manager" department="marketing" pod="pod-customer" seniority="L4" risk="R1" mapped_skills="12" />
     <role id="role-vp-sales" title="VP Sales" department="sales_bd" pod="pod-growth" seniority="L8" risk="R2" mapped_skills="32" />
     <role id="role-account-executive" title="Account Executive" department="sales_bd" pod="pod-growth" seniority="L5" risk="R1" mapped_skills="47" />
-    <role id="role-sales-development-rep" title="Sales Development Representative" department="sales_bd" pod="pod-growth" seniority="L4" risk="R1" mapped_skills="24" />
+    <role id="role-sales-development-rep" title="Sales Development Representative" department="sales_bd" pod="pod-growth" seniority="L4" risk="R1" mapped_skills="23" />
     <role id="role-solutions-engineer" title="Solutions Engineer" department="sales_bd" pod="pod-growth" seniority="L5" risk="R1" mapped_skills="24" />
     <role id="role-customer-success-manager" title="Customer Success Manager" department="sales_bd" pod="pod-customer" seniority="L5" risk="R1" mapped_skills="12" />
     <role id="role-revenue-operations" title="Revenue Operations Analyst" department="sales_bd" pod="pod-growth" seniority="L5" risk="R1" mapped_skills="16" />
     <role id="role-enterprise-ae" title="Enterprise Account Executive" department="sales_bd" pod="pod-growth" seniority="L6" risk="R2" mapped_skills="38" />
     <role id="role-freelancer-sales" title="Freelancer Business Development" department="sales_bd" pod="pod-growth" seniority="L5" risk="R1" mapped_skills="25" />
-    <role id="role-support-engineer" title="Support Engineer" department="customer_success" pod="pod-customer" seniority="L4" risk="R1" mapped_skills="37" />
-    <role id="role-onboarding-specialist" title="Onboarding Specialist" department="customer_success" pod="pod-customer" seniority="L4" risk="R1" mapped_skills="34" />
+    <role id="role-support-engineer" title="Support Engineer" department="customer_success" pod="pod-customer" seniority="L4" risk="R1" mapped_skills="36" />
+    <role id="role-onboarding-specialist" title="Onboarding Specialist" department="customer_success" pod="pod-customer" seniority="L4" risk="R1" mapped_skills="33" />
     <role id="role-implementation-consultant" title="Implementation Consultant" department="customer_success" pod="pod-customer" seniority="L5" risk="R2" mapped_skills="57" />
     <role id="role-technical-account-manager" title="Technical Account Manager" department="customer_success" pod="pod-customer" seniority="L6" risk="R1" mapped_skills="25" />
-    <role id="role-churn-analyst" title="Churn &amp; Retention Analyst" department="customer_success" pod="pod-customer" seniority="L4" risk="R0" mapped_skills="7" />
-    <role id="role-docs-technical-writer" title="Technical Writer" department="customer_success" pod="pod-customer" seniority="L4" risk="R1" mapped_skills="44" />
+    <role id="role-churn-analyst" title="Churn &amp; Retention Analyst" department="customer_success" pod="pod-customer" seniority="L4" risk="R0" mapped_skills="10" />
+    <role id="role-docs-technical-writer" title="Technical Writer" department="customer_success" pod="pod-customer" seniority="L4" risk="R1" mapped_skills="42" />
     <role id="role-corporate-controller" title="Corporate Controller" department="finance" pod="pod-gna" seniority="L7" risk="R3" mapped_skills="13" />
-    <role id="role-fp-and-a-analyst" title="FP&amp;A Analyst" department="finance" pod="pod-gna" seniority="L5" risk="R0" mapped_skills="84" />
+    <role id="role-fp-and-a-analyst" title="FP&amp;A Analyst" department="finance" pod="pod-gna" seniority="L5" risk="R0" mapped_skills="83" />
     <role id="role-tax-compliance-spec" title="Tax &amp; Compliance Specialist" department="finance" pod="pod-gna" seniority="L5" risk="R2" mapped_skills="12" />
     <role id="role-billing-payments-eng" title="Billing &amp; Payments Engineer" department="finance" pod="pod-gna" seniority="L5" risk="R2" mapped_skills="15" />
-    <role id="role-treasury-banking-spec" title="Treasury &amp; Banking Specialist" department="finance" pod="pod-gna" seniority="L5" risk="R3" mapped_skills="4" />
-    <role id="role-accounts-manager" title="Accounts Manager" department="finance" pod="pod-gna" seniority="L4" risk="R2" mapped_skills="7" />
+    <role id="role-treasury-banking-spec" title="Treasury &amp; Banking Specialist" department="finance" pod="pod-gna" seniority="L5" risk="R3" mapped_skills="7" />
+    <role id="role-accounts-manager" title="Accounts Manager" department="finance" pod="pod-gna" seniority="L4" risk="R2" mapped_skills="10" />
     <role id="role-startup-cfo-advisor" title="Startup CFO Advisor" department="finance" pod="pod-gna" seniority="L7" risk="R2" mapped_skills="47" />
     <role id="role-cost-optimization-analyst" title="Cost Optimization Analyst" department="finance" pod="pod-gna" seniority="L4" risk="R1" mapped_skills="28" />
-    <role id="role-general-counsel" title="General Counsel" department="legal_compliance" pod="pod-gna" seniority="L8" risk="R3" mapped_skills="9" />
-    <role id="role-ip-patent-attorney" title="IP &amp; Patent Attorney" department="legal_compliance" pod="pod-gna" seniority="L7" risk="R2" mapped_skills="7" />
-    <role id="role-contract-manager" title="Contract Manager" department="legal_compliance" pod="pod-gna" seniority="L5" risk="R2" mapped_skills="8" />
+    <role id="role-general-counsel" title="General Counsel" department="legal_compliance" pod="pod-gna" seniority="L8" risk="R3" mapped_skills="11" />
+    <role id="role-ip-patent-attorney" title="IP &amp; Patent Attorney" department="legal_compliance" pod="pod-gna" seniority="L7" risk="R2" mapped_skills="8" />
+    <role id="role-contract-manager" title="Contract Manager" department="legal_compliance" pod="pod-gna" seniority="L5" risk="R2" mapped_skills="10" />
     <role id="role-compliance-officer" title="Compliance Officer" department="legal_compliance" pod="pod-gna" seniority="L6" risk="R2" mapped_skills="28" />
     <role id="role-data-protection-officer" title="Data Protection Officer" department="legal_compliance" pod="pod-gna" seniority="L6" risk="R2" mapped_skills="29" />
     <role id="role-risk-manager" title="Risk Manager" department="legal_compliance" pod="pod-gna" seniority="L6" risk="R1" mapped_skills="16" />
-    <role id="role-vp-people" title="VP People" department="people_ops" pod="pod-people" seniority="L8" risk="R2" mapped_skills="22" />
-    <role id="role-recruiter" title="Talent Recruiter" department="people_ops" pod="pod-people" seniority="L4" risk="R1" mapped_skills="21" />
+    <role id="role-vp-people" title="VP People" department="people_ops" pod="pod-people" seniority="L8" risk="R2" mapped_skills="21" />
+    <role id="role-recruiter" title="Talent Recruiter" department="people_ops" pod="pod-people" seniority="L4" risk="R1" mapped_skills="19" />
     <role id="role-hr-business-partner" title="HR Business Partner" department="people_ops" pod="pod-people" seniority="L5" risk="R1" mapped_skills="24" />
-    <role id="role-hr-ops-specialist" title="HR Operations Specialist" department="people_ops" pod="pod-people" seniority="L4" risk="R2" mapped_skills="6" />
-    <role id="role-learning-development" title="L&amp;D Specialist" department="people_ops" pod="pod-people" seniority="L4" risk="R1" mapped_skills="30" />
-    <role id="role-procurement-vendor-manager" title="Procurement &amp; Vendor Manager" department="people_ops" pod="pod-gna" seniority="L5" risk="R2" mapped_skills="6" />
+    <role id="role-hr-ops-specialist" title="HR Operations Specialist" department="people_ops" pod="pod-people" seniority="L4" risk="R2" mapped_skills="9" />
+    <role id="role-learning-development" title="L&amp;D Specialist" department="people_ops" pod="pod-people" seniority="L4" risk="R1" mapped_skills="29" />
+    <role id="role-procurement-vendor-manager" title="Procurement &amp; Vendor Manager" department="people_ops" pod="pod-gna" seniority="L5" risk="R2" mapped_skills="9" />
     <role id="role-office-facilities-manager" title="Office &amp; Facilities Manager" department="people_ops" pod="pod-gna" seniority="L4" risk="R1" mapped_skills="13" />
     <role id="role-executive-assistant" title="Executive Assistant" department="people_ops" pod="pod-gna" seniority="L4" risk="R1" mapped_skills="13" />
     <role id="role-solopreneur-operator" title="Solopreneur Operator" department="people_ops" pod="pod-gna" seniority="L6" risk="R1" mapped_skills="68" />
     <role id="role-chief-of-staff" title="Chief of Staff" department="people_ops" pod="pod-gna" seniority="L6" risk="R1" mapped_skills="26" />
     <role id="role-it-systems-admin" title="IT Systems Administrator" department="it_infra" pod="pod-build" seniority="L4" risk="R2" mapped_skills="30" />
-    <role id="role-cloud-architect" title="Cloud Architect" department="it_infra" pod="pod-build" seniority="L7" risk="R2" mapped_skills="83" />
+    <role id="role-cloud-architect" title="Cloud Architect" department="it_infra" pod="pod-build" seniority="L7" risk="R2" mapped_skills="82" />
     <role id="role-platform-engineer" title="Platform Engineer" department="it_infra" pod="pod-build" seniority="L5" risk="R2" mapped_skills="20" />
     <role id="role-cybersecurity-analyst" title="Cybersecurity Analyst" department="it_infra" pod="pod-gna" seniority="L5" risk="R2" mapped_skills="28" />
     <role id="role-observability-engineer" title="Observability Engineer" department="it_infra" pod="pod-build" seniority="L5" risk="R1" mapped_skills="31" />
@@ -131,6 +131,7 @@
     <skill id="1password-mcp" tier="2" />
     <skill id="3b1b-manim" tier="1" />
     <skill id="3d-web-experience" tier="2" />
+    <skill id="a11y-copy-audit" tier="2" />
     <skill id="ab-test-setup" tier="2" />
     <skill id="acceptance-orchestrator" tier="2" />
     <skill id="accessibility-audit" tier="2" />
@@ -142,6 +143,7 @@
     <skill id="advanced-mathematical-reasoning" tier="2" />
     <skill id="adversarial-red-team" tier="2" />
     <skill id="adversarial-verification-method" tier="2" />
+    <skill id="affiliate-program-ops" tier="2" />
     <skill id="agent-arch-audit" tier="2" />
     <skill id="agent-benchmarking" tier="2" />
     <skill id="agent-comparison" tier="2" />
@@ -225,6 +227,7 @@
     <skill id="algorithmic-art" tier="2" />
     <skill id="alpha-vantage" tier="2" />
     <skill id="amazon-alexa" tier="2" />
+    <skill id="ambassador-event-ops" tier="2" />
     <skill id="amplitude-automation" tier="2" />
     <skill id="analytics-and-reporting" tier="2" />
     <skill id="analytics-product" tier="2" />
@@ -251,6 +254,7 @@
     <skill id="antigravity-skill-orchestrator" tier="2" />
     <skill id="antigravity-workflows" tier="2" />
     <skill id="aomi-transact" tier="2" />
+    <skill id="ap-ar-aging-schedules" tier="2" />
     <skill id="api-connector-builder" tier="1" />
     <skill id="api-design" tier="1" />
     <skill id="api-design-principles" tier="2" />
@@ -478,6 +482,7 @@
     <skill id="behind-the-scenes-and-founder" tier="2" />
     <skill id="benchmark-methodology" tier="2" />
     <skill id="benchmark-optimization-loop" tier="1" />
+    <skill id="benefits-leave-administration" tier="2" />
     <skill id="bengali-nlp" tier="2" />
     <skill id="benji-stage-stageshow" tier="2" />
     <skill id="bevy-ecs-expert" tier="2" />
@@ -531,6 +536,7 @@
     <skill id="canva" tier="2" />
     <skill id="canva-automation" tier="2" />
     <skill id="canvas-design" tier="2" />
+    <skill id="cap-table-modeler" tier="2" />
     <skill id="capcut" tier="2" />
     <skill id="caption-writer" tier="2" />
     <skill id="captions-and-clipping" tier="2" />
@@ -570,6 +576,7 @@
     <skill id="cloud-sandbox-execution" tier="2" />
     <skill id="cloudflare-workers-expert" tier="2" />
     <skill id="cloudformation-best-practices" tier="2" />
+    <skill id="co-marketing-term-sheet-builder" tier="2" />
     <skill id="coda-automation" tier="2" />
     <skill id="code-cli-expert" tier="2" />
     <skill id="code-cli-guide" tier="2" />
@@ -590,12 +597,15 @@
     <skill id="coding-standards" tier="2" />
     <skill id="cofounder-compatibility-matcher" tier="2" />
     <skill id="cognitive-thinking-partner" tier="2" />
+    <skill id="cohort-retention-curves" tier="2" />
     <skill id="colab-cloud-execution" tier="2" />
     <skill id="cold-email" tier="2" />
     <skill id="collabs-and-cross-promotion" tier="2" />
+    <skill id="collections-dunning-automation" tier="2" />
     <skill id="comfyui-gateway" tier="2" />
     <skill id="comic-creator" tier="2" />
     <skill id="community-management" tier="2" />
+    <skill id="community-sentiment-trends" tier="2" />
     <skill id="competitive-landscape" tier="2" />
     <skill id="competitive-platform-analysis" tier="2" />
     <skill id="competitive-report-structure" tier="2" />
@@ -663,6 +673,7 @@
     <skill id="copywriting-psychologist" tier="2" />
     <skill id="core-components" tier="2" />
     <skill id="core-skill-obedience" tier="2" />
+    <skill id="corporate-governance-resolutions" tier="2" />
     <skill id="cost-aware-llm-pipeline" tier="2" />
     <skill id="cost-optimization" tier="2" />
     <skill id="cost-tracking" tier="2" />
@@ -689,15 +700,18 @@
     <skill id="criminal-defense-law-consultant" tier="2" />
     <skill id="crisis-and-moderation" tier="2" />
     <skill id="cross-platform-repurposing" tier="2" />
+    <skill id="crossborder-tia" tier="2" />
     <skill id="crypto-bd-agent" tier="2" />
     <skill id="csharp-pro" tier="1" />
     <skill id="csharp-testing" tier="1" />
     <skill id="customer-billing-ops" tier="2" />
+    <skill id="customer-health-score" tier="2" />
     <skill id="customer-psychographic-profiler" tier="2" />
     <skill id="customer-support" tier="2" />
     <skill id="customs-trade-compliance" tier="2" />
     <skill id="cve-vulnerability-intelligence" tier="2" />
     <skill id="d3js-visualization" tier="2" />
+    <skill id="daily-cashflow-forecast" tier="2" />
     <skill id="daily-gift" tier="2" />
     <skill id="daily-news-report" tier="2" />
     <skill id="daily-webrtc-video-api" tier="2" />
@@ -739,6 +753,7 @@
     <skill id="deepseek-harness-setup" tier="2" />
     <skill id="defi-amm-security" tier="2" />
     <skill id="defi-protocol-templates" tier="2" />
+    <skill id="deidentification-benchmark" tier="2" />
     <skill id="delivery-gate" tier="2" />
     <skill id="dependency-management-deps-audit" tier="2" />
     <skill id="dependency-upgrade" tier="1" />
@@ -803,6 +818,7 @@
     <skill id="dotnet-patterns" tier="2" />
     <skill id="drizzle-orm-expert" tier="2" />
     <skill id="dropbox-automation" tier="2" />
+    <skill id="dsar-pipeline" tier="2" />
     <skill id="dwarf-expert" tier="2" />
     <skill id="dx-optimizer" tier="2" />
     <skill id="dynamic-workflow-mode" tier="2" />
@@ -969,6 +985,8 @@
     <skill id="fullstack-app-deployment" tier="2" />
     <skill id="fullstack-development-workflow" tier="2" />
     <skill id="fullstack-feature" tier="2" />
+    <skill id="fundraising-data-room" tier="2" />
+    <skill id="fx-hedging-advisor" tier="2" />
     <skill id="game-development" tier="2" />
     <skill id="gan-style-harness" tier="2" />
     <skill id="gateway-smoke-test" tier="2" />
@@ -1399,6 +1417,7 @@
     <skill id="lead-intelligence" tier="2" />
     <skill id="lead-magnets" tier="2" />
     <skill id="lead-magnets-and-funnels" tier="2" />
+    <skill id="ledger-reconciliation" tier="2" />
     <skill id="legacy-modernize" tier="2" />
     <skill id="legacy-modernizer" tier="2" />
     <skill id="legal-advisor" tier="2" />
@@ -1423,6 +1442,7 @@
     <skill id="linux-troubleshooting" tier="2" />
     <skill id="liquid-glass-design" tier="2" />
     <skill id="listicle-and-roundup" tier="2" />
+    <skill id="litigation-regulatory-risk-scanner" tier="2" />
     <skill id="livestream-and-realtime" tier="2" />
     <skill id="living-docs-governance" tier="2" />
     <skill id="llm-app-patterns" tier="2" />
@@ -1497,6 +1517,7 @@
     <skill id="messages-ops" tier="2" />
     <skill id="metasploit-framework" tier="2" />
     <skill id="micro-saas-launcher" tier="2" />
+    <skill id="microcopy-pattern-library" tier="2" />
     <skill id="microservices-patterns" tier="1" />
     <skill id="microsoft-azure-webjobs-extensions-authentication-events-dotnet" tier="2" />
     <skill id="microsoft-teams-automation" tier="2" />
@@ -1520,6 +1541,7 @@
     <skill id="mobile-security-coder" tier="2" />
     <skill id="mobile-xss-scan" tier="2" />
     <skill id="mock-hunter" tier="2" />
+    <skill id="moderation-escalation-ladder" tier="2" />
     <skill id="modern-javascript-patterns" tier="2" />
     <skill id="modern-web-guidance" tier="1" />
     <skill id="module-governance" tier="2" />
@@ -1586,6 +1608,7 @@
     <skill id="notebooklm-researcher" tier="2" />
     <skill id="notion-automation" tier="2" />
     <skill id="notion-template-business" tier="2" />
+    <skill id="nps-sentiment-root-cause" tier="2" />
     <skill id="nutrient-document-processing" tier="2" />
     <skill id="nutrition-analyzer" tier="2" />
     <skill id="nuxt4-patterns" tier="2" />
@@ -1625,6 +1648,7 @@
     <skill id="on-call-handoff-patterns" tier="2" />
     <skill id="onboarding-cro" tier="2" />
     <skill id="onboarding-psychologist" tier="2" />
+    <skill id="onboarding-tooltip-system" tier="2" />
     <skill id="one-drive-automation" tier="2" />
     <skill id="openapi-spec-generation" tier="2" />
     <skill id="openclaw-github-repo-commander" tier="2" />
@@ -1647,6 +1671,7 @@
     <skill id="os-scripting" tier="2" />
     <skill id="osint-investigation" tier="1" />
     <skill id="oss-hunter" tier="2" />
+    <skill id="oss-license-risk-audit" tier="2" />
     <skill id="outlook-automation" tier="2" />
     <skill id="outlook-calendar-automation" tier="2" />
     <skill id="owasp-top-10-testing" tier="1" />
@@ -1658,8 +1683,11 @@
     <skill id="paper-orchestra" tier="1" />
     <skill id="parallel-agents" tier="2" />
     <skill id="parallel-execution-optimizer" tier="2" />
+    <skill id="partner-ecosystem-mapping" tier="2" />
+    <skill id="patent-claim-drafter" tier="2" />
     <skill id="payment-integration" tier="2" />
     <skill id="paypal-integration" tier="2" />
+    <skill id="payroll-cycle-ops" tier="2" />
     <skill id="paywall-upgrade-cro" tier="2" />
     <skill id="pci-compliance" tier="2" />
     <skill id="pdf-document-processing" tier="2" />
@@ -1719,6 +1747,7 @@
     <skill id="prediction-market-risk-review" tier="2" />
     <skill id="price-psychology-strategist" tier="2" />
     <skill id="pricing-strategy" tier="2" />
+    <skill id="prior-art-search" tier="2" />
     <skill id="prisma-expert" tier="2" />
     <skill id="prisma-patterns" tier="2" />
     <skill id="privacy-by-design" tier="2" />
@@ -1815,6 +1844,7 @@
     <skill id="reddit-marketing" tier="2" />
     <skill id="redesign-existing-projects" tier="2" />
     <skill id="redis-patterns" tier="2" />
+    <skill id="redline-diff-analyzer" tier="2" />
     <skill id="reels-script" tier="2" />
     <skill id="refactor-clean" tier="2" />
     <skill id="refactor-context-restore" tier="2" />
@@ -1826,11 +1856,13 @@
     <skill id="remotion-video-creation" tier="2" />
     <skill id="remove-animations" tier="1" />
     <skill id="render-automation" tier="2" />
+    <skill id="renewal-and-liability-watch" tier="2" />
     <skill id="repl-runner" tier="2" />
     <skill id="reply-and-comment-writer" tier="2" />
     <skill id="repo-scan" tier="2" />
     <skill id="requesting-code-review" tier="2" />
     <skill id="research-ops" tier="2" />
+    <skill id="retrospective-synthesis" tier="2" />
     <skill id="returns-reverse-logistics" tier="2" />
     <skill id="revenue-operations-analytics" tier="2" />
     <skill id="reverse-engineer" tier="2" />
@@ -1849,6 +1881,7 @@
     <skill id="ruby-pro" tier="1" />
     <skill id="rules-distill" tier="2" />
     <skill id="runway" tier="2" />
+    <skill id="runway-sensitivity-analysis" tier="2" />
     <skill id="rust-async-patterns" tier="1" />
     <skill id="rust-patterns" tier="1" />
     <skill id="rust-pro" tier="1" />
@@ -1952,6 +1985,7 @@
     <skill id="service-mesh-expert" tier="2" />
     <skill id="service-mesh-observability" tier="2" />
     <skill id="settings-audit" tier="2" />
+    <skill id="settlement-reconciliation-audit" tier="2" />
     <skill id="sexual-health-analyzer" tier="2" />
     <skill id="shadcn-ui-components" tier="2" />
     <skill id="shader-programming-glsl" tier="2" />
@@ -2025,6 +2059,7 @@
     <skill id="springboot-security" tier="2" />
     <skill id="springboot-tdd" tier="2" />
     <skill id="springboot-verification" tier="2" />
+    <skill id="sprint-backlog-grooming" tier="2" />
     <skill id="sql-injection-testing" tier="2" />
     <skill id="sql-migrations" tier="2" />
     <skill id="sql-optimization-patterns" tier="2" />
@@ -2042,6 +2077,7 @@
     <skill id="startup-metrics-framework" tier="2" />
     <skill id="statsmodels" tier="2" />
     <skill id="story-lifecycle" tier="2" />
+    <skill id="story-pointing-calibration" tier="2" />
     <skill id="story-writer" tier="2" />
     <skill id="storytelling-and-narrative" tier="2" />
     <skill id="strategic-compact" tier="2" />
@@ -2223,6 +2259,9 @@
     <skill id="vector-database-engineer" tier="2" />
     <skill id="vector-index-tuning" tier="2" />
     <skill id="vector-semantic-file-search" tier="2" />
+    <skill id="vendor-rfp-generator" tier="2" />
+    <skill id="vendor-sla-breach-watch" tier="2" />
+    <skill id="vendor-spend-consolidator" tier="2" />
     <skill id="veo-3" tier="2" />
     <skill id="vercel-ai-sdk-expert" tier="2" />
     <skill id="vercel-automation" tier="2" />
@@ -2300,6 +2339,7 @@
     <skill id="workflow-automation" tier="2" />
     <skill id="workflow-orchestration-patterns" tier="1" />
     <skill id="workflow-patterns" tier="1" />
+    <skill id="workforce-compliance-tracker" tier="2" />
     <skill id="workplace-wellness-assistant" tier="2" />
     <skill id="workspace-surface-audit" tier="2" />
     <skill id="wrike-automation" tier="2" />
@@ -2443,7 +2483,6 @@
     <edge from="role-cto" to="cofounder-compatibility-matcher" type="specialized_skill" />
     <edge from="role-cto" to="context-and-decisions" type="specialized_skill" />
     <edge from="role-cto" to="expert-tech-architect" type="specialized_skill" />
-    <edge from="role-cto" to="faang-architect" type="primary_skill" />
     <edge from="role-cto" to="m365-agents-dotnet" type="specialized_skill" />
     <edge from="role-cto" to="multi-cloud-architecture" type="primary_skill" />
     <edge from="role-cto" to="nodejs-best-practices" type="specialized_skill" />
@@ -2451,6 +2490,7 @@
     <edge from="role-cto" to="saas-mvp-launcher" type="specialized_skill" />
     <edge from="role-cto" to="senior-architect" type="primary_skill" />
     <edge from="role-cto" to="settings-audit" type="specialized_skill" />
+    <edge from="role-cto" to="software-architecture" type="primary_skill" />
     <edge from="role-cto" to="svg-diagram-gen" type="specialized_skill" />
     <edge from="role-cto" to="swiftui-architecture" type="specialized_skill" />
     <edge from="role-cto" to="turborepo-caching" type="specialized_skill" />
@@ -2495,7 +2535,6 @@
     <edge from="role-coo" to="workspace-surface-audit" type="specialized_skill" />
     <edge from="role-coo" to="zapier-make-patterns" type="specialized_skill" />
     <edge from="role-cpo" to="backtesting-frameworks" type="specialized_skill" />
-    <edge from="role-cpo" to="blog-writing-guide" type="specialized_skill" />
     <edge from="role-cpo" to="business-case-analysis" type="specialized_skill" />
     <edge from="role-cpo" to="competitor-alternatives" type="specialized_skill" />
     <edge from="role-cpo" to="core-skill-obedience" type="specialized_skill" />
@@ -2517,7 +2556,6 @@
     <edge from="role-cpo" to="product-lens" type="specialized_skill" />
     <edge from="role-cpo" to="product-manager" type="primary_skill" />
     <edge from="role-cpo" to="product-manager-toolkit" type="primary_skill" />
-    <edge from="role-cpo" to="product-marketing-context" type="specialized_skill" />
     <edge from="role-cpo" to="saas-monetization-strategy" type="specialized_skill" />
     <edge from="role-cpo" to="strategic-compact" type="specialized_skill" />
     <edge from="role-cpo" to="tdd-red-phase" type="specialized_skill" />
@@ -2532,23 +2570,27 @@
     <edge from="role-cmo" to="brand-guidelines" type="primary_skill" />
     <edge from="role-cmo" to="content-pillars" type="specialized_skill" />
     <edge from="role-cmo" to="content-strategy" type="primary_skill" />
+    <edge from="role-cmo" to="copy-editing" type="specialized_skill" />
     <edge from="role-cmo" to="daily-gift" type="specialized_skill" />
     <edge from="role-cmo" to="descript" type="specialized_skill" />
     <edge from="role-cmo" to="free-tool-strategy" type="specialized_skill" />
     <edge from="role-cmo" to="growth-engine" type="specialized_skill" />
     <edge from="role-cmo" to="growth-log" type="specialized_skill" />
-    <edge from="role-cmo" to="hashtag-strategy" type="specialized_skill" />
     <edge from="role-cmo" to="idea-generation-and-ideation" type="specialized_skill" />
     <edge from="role-cmo" to="identity-mirror" type="specialized_skill" />
     <edge from="role-cmo" to="market-opportunity" type="primary_skill" />
     <edge from="role-cmo" to="marketing-ideas" type="specialized_skill" />
+    <edge from="role-cmo" to="marketing-psychology" type="specialized_skill" />
     <edge from="role-cmo" to="pinterest-growth" type="specialized_skill" />
+    <edge from="role-cmo" to="product-marketing-context" type="specialized_skill" />
     <edge from="role-cmo" to="prompt-caching" type="specialized_skill" />
     <edge from="role-cmo" to="referral-program" type="specialized_skill" />
     <edge from="role-cmo" to="reply-and-comment-writer" type="specialized_skill" />
     <edge from="role-cmo" to="seasonal-and-moment-marketing" type="specialized_skill" />
     <edge from="role-cmo" to="seo-audit" type="primary_skill" />
     <edge from="role-cmo" to="sop-growth" type="specialized_skill" />
+    <edge from="role-cmo" to="ugc-and-influencer" type="specialized_skill" />
+    <edge from="role-cmo" to="web-vitals-performance-benchmark" type="specialized_skill" />
     <edge from="role-cmo" to="writing-style-and-tone" type="specialized_skill" />
     <edge from="role-cmo" to="x-growth" type="specialized_skill" />
     <edge from="role-cso" to="akf-trust-metadata" type="specialized_skill" />
@@ -2595,12 +2637,16 @@
     <edge from="role-cso" to="wordpress-development" type="specialized_skill" />
     <edge from="role-cfo" to="analytics-tracking" type="primary_skill" />
     <edge from="role-cfo" to="billing-automation" type="primary_skill" />
+    <edge from="role-cfo" to="cap-table-modeler" type="primary_skill" />
     <edge from="role-cfo" to="financial-projections" type="primary_skill" />
+    <edge from="role-cfo" to="fundraising-data-room" type="primary_skill" />
     <edge from="role-cfo" to="investor-materials" type="specialized_skill" />
     <edge from="role-cfo" to="investor-outreach" type="specialized_skill" />
     <edge from="role-cfo" to="puzzle-activity-planner" type="specialized_skill" />
+    <edge from="role-cfo" to="runway-sensitivity-analysis" type="primary_skill" />
     <edge from="role-cfo" to="startup-financial-modeling" type="primary_skill" />
     <edge from="role-vp-engineering" to="ai-first-engineering" type="specialized_skill" />
+    <edge from="role-vp-engineering" to="architect-review" type="primary_skill" />
     <edge from="role-vp-engineering" to="brooks-lint" type="specialized_skill" />
     <edge from="role-vp-engineering" to="brownfield-retrospective" type="specialized_skill" />
     <edge from="role-vp-engineering" to="context-manager" type="specialized_skill" />
@@ -2608,11 +2654,9 @@
     <edge from="role-vp-engineering" to="dispatching-parallel-agents" type="specialized_skill" />
     <edge from="role-vp-engineering" to="engineering-blueprint-planner" type="primary_skill" />
     <edge from="role-vp-engineering" to="engineering-recipes-playbook" type="specialized_skill" />
-    <edge from="role-vp-engineering" to="faang-architect" type="primary_skill" />
     <edge from="role-vp-engineering" to="family-health-analyzer" type="specialized_skill" />
     <edge from="role-vp-engineering" to="firmware-analyst" type="specialized_skill" />
     <edge from="role-vp-engineering" to="first-principles-engineering-advisor" type="specialized_skill" />
-    <edge from="role-vp-engineering" to="free-tool-strategy" type="specialized_skill" />
     <edge from="role-vp-engineering" to="incident-response" type="primary_skill" />
     <edge from="role-vp-engineering" to="llm-prompt-optimizer" type="specialized_skill" />
     <edge from="role-vp-engineering" to="module-regression" type="specialized_skill" />
@@ -2655,7 +2699,6 @@
     <edge from="role-product-director" to="sop-build" type="specialized_skill" />
     <edge from="role-product-director" to="team-agent-orchestration" type="specialized_skill" />
     <edge from="role-product-director" to="visionary-product-craftsmanship" type="specialized_skill" />
-    <edge from="role-product-director" to="webpage-screenshot-capture" type="specialized_skill" />
     <edge from="role-senior-pm" to="ai-agent-discovery" type="specialized_skill" />
     <edge from="role-senior-pm" to="api-fuzzing-bug-bounty" type="specialized_skill" />
     <edge from="role-senior-pm" to="ask-questions-if-underspecified" type="primary_skill" />
@@ -2694,11 +2737,13 @@
     <edge from="role-pm" to="product-manager" type="primary_skill" />
     <edge from="role-pm" to="pydantic-models-py" type="primary_skill" />
     <edge from="role-pm" to="rapid-mvp-prototyping" type="specialized_skill" />
-    <edge from="role-scrum-agile-coach" to="angular" type="specialized_skill" />
     <edge from="role-scrum-agile-coach" to="conductor-status" type="primary_skill" />
     <edge from="role-scrum-agile-coach" to="developer-session-diary" type="primary_skill" />
     <edge from="role-scrum-agile-coach" to="kanban-agent-pipeline" type="primary_skill" />
     <edge from="role-scrum-agile-coach" to="project-flow-ops" type="primary_skill" />
+    <edge from="role-scrum-agile-coach" to="retrospective-synthesis" type="primary_skill" />
+    <edge from="role-scrum-agile-coach" to="sprint-backlog-grooming" type="primary_skill" />
+    <edge from="role-scrum-agile-coach" to="story-pointing-calibration" type="primary_skill" />
     <edge from="role-ux-researcher" to="analytics-tracking" type="primary_skill" />
     <edge from="role-ux-researcher" to="ask-questions-if-underspecified" type="primary_skill" />
     <edge from="role-ux-researcher" to="auction-market-research" type="specialized_skill" />
@@ -2728,6 +2773,7 @@
     <edge from="role-growth-pm" to="ab-test-setup" type="primary_skill" />
     <edge from="role-growth-pm" to="activecampaign-automation" type="specialized_skill" />
     <edge from="role-growth-pm" to="analytics-tracking" type="primary_skill" />
+    <edge from="role-growth-pm" to="awareness-stage-mapper" type="specialized_skill" />
     <edge from="role-growth-pm" to="context-restore" type="specialized_skill" />
     <edge from="role-growth-pm" to="continuous-agent-loop" type="specialized_skill" />
     <edge from="role-growth-pm" to="convertkit-automation" type="specialized_skill" />
@@ -2745,6 +2791,7 @@
     <edge from="role-growth-pm" to="posthog-automation" type="primary_skill" />
     <edge from="role-growth-pm" to="postmark-automation" type="specialized_skill" />
     <edge from="role-growth-pm" to="sendgrid-automation" type="specialized_skill" />
+    <edge from="role-growth-pm" to="terminal-opener" type="specialized_skill" />
     <edge from="role-product-analyst" to="ai-product" type="specialized_skill" />
     <edge from="role-product-analyst" to="analytics-tracking" type="primary_skill" />
     <edge from="role-product-analyst" to="before-after-and-transformation" type="specialized_skill" />
@@ -2799,7 +2846,6 @@
     <edge from="role-technical-pm" to="technical-documentation-writer" type="specialized_skill" />
     <edge from="role-technical-pm" to="telegram-bot-integration" type="specialized_skill" />
     <edge from="role-technical-pm" to="unsplash-integration" type="specialized_skill" />
-    <edge from="role-technical-pm" to="vibe-to-production" type="specialized_skill" />
     <edge from="role-technical-pm" to="write-swift" type="specialized_skill" />
     <edge from="role-technical-pm" to="writing-plans" type="specialized_skill" />
     <edge from="role-staff-engineer" to="agyos-academic-research" type="specialized_skill" />
@@ -2825,7 +2871,7 @@
     <edge from="role-staff-engineer" to="agyos-swarm-prediction-engine" type="specialized_skill" />
     <edge from="role-staff-engineer" to="agyos-verify" type="specialized_skill" />
     <edge from="role-staff-engineer" to="andruia-consultant" type="specialized_skill" />
-    <edge from="role-staff-engineer" to="architect-review" type="specialized_skill" />
+    <edge from="role-staff-engineer" to="architect-review" type="primary_skill" />
     <edge from="role-staff-engineer" to="architecture-decision-records" type="primary_skill" />
     <edge from="role-staff-engineer" to="azure-eventhub-dotnet" type="specialized_skill" />
     <edge from="role-staff-engineer" to="azure-eventhub-java" type="specialized_skill" />
@@ -2838,7 +2884,6 @@
     <edge from="role-staff-engineer" to="azure-servicebus-py" type="specialized_skill" />
     <edge from="role-staff-engineer" to="azure-servicebus-ts" type="specialized_skill" />
     <edge from="role-staff-engineer" to="azure-web-pubsub-ts" type="specialized_skill" />
-    <edge from="role-staff-engineer" to="clean-architecture-craftsmanship" type="specialized_skill" />
     <edge from="role-staff-engineer" to="code-reviewer" type="primary_skill" />
     <edge from="role-staff-engineer" to="council-list" type="specialized_skill" />
     <edge from="role-staff-engineer" to="council-multi-model" type="specialized_skill" />
@@ -2849,10 +2894,20 @@
     <edge from="role-staff-engineer" to="deployment-engineer" type="specialized_skill" />
     <edge from="role-staff-engineer" to="differential-review" type="primary_skill" />
     <edge from="role-staff-engineer" to="expert-tech-architect" type="specialized_skill" />
-    <edge from="role-staff-engineer" to="faang-architect" type="primary_skill" />
     <edge from="role-staff-engineer" to="flox-environments" type="specialized_skill" />
     <edge from="role-staff-engineer" to="gh-review-requests" type="specialized_skill" />
     <edge from="role-staff-engineer" to="git-onboarding" type="specialized_skill" />
+    <edge from="role-staff-engineer" to="jake-replica-replica-architect" type="specialized_skill" />
+    <edge from="role-staff-engineer" to="jake-replica-replica-backend" type="specialized_skill" />
+    <edge from="role-staff-engineer" to="jake-replica-replica-brand" type="specialized_skill" />
+    <edge from="role-staff-engineer" to="jake-replica-replica-build" type="specialized_skill" />
+    <edge from="role-staff-engineer" to="jake-replica-replica-deploy" type="specialized_skill" />
+    <edge from="role-staff-engineer" to="jake-replica-replica-design" type="specialized_skill" />
+    <edge from="role-staff-engineer" to="jake-replica-replica-diff" type="specialized_skill" />
+    <edge from="role-staff-engineer" to="jake-replica-replica-entrepreneur" type="specialized_skill" />
+    <edge from="role-staff-engineer" to="jake-replica-replica-launch" type="specialized_skill" />
+    <edge from="role-staff-engineer" to="jake-replica-replica-recon" type="specialized_skill" />
+    <edge from="role-staff-engineer" to="jake-replica-replica-test" type="specialized_skill" />
     <edge from="role-staff-engineer" to="lightning-architecture-review" type="specialized_skill" />
     <edge from="role-staff-engineer" to="reverse-engineer" type="specialized_skill" />
     <edge from="role-staff-engineer" to="senior-architect" type="primary_skill" />
@@ -2890,7 +2945,6 @@
     <edge from="role-senior-swe" to="astro" type="specialized_skill" />
     <edge from="role-senior-swe" to="backend-dev-guidelines" type="specialized_skill" />
     <edge from="role-senior-swe" to="c-pro" type="specialized_skill" />
-    <edge from="role-senior-swe" to="clean-architecture-craftsmanship" type="specialized_skill" />
     <edge from="role-senior-swe" to="click-path-audit" type="specialized_skill" />
     <edge from="role-senior-swe" to="code-review-excellence" type="specialized_skill" />
     <edge from="role-senior-swe" to="code-reviewer" type="primary_skill" />
@@ -3065,6 +3119,7 @@
     <edge from="role-swe" to="brooks-lint" type="specialized_skill" />
     <edge from="role-swe" to="c4-code" type="specialized_skill" />
     <edge from="role-swe" to="c4-component" type="specialized_skill" />
+    <edge from="role-swe" to="clean-architecture-craftsmanship" type="primary_skill" />
     <edge from="role-swe" to="clean-code" type="specialized_skill" />
     <edge from="role-swe" to="code-cli-expert" type="specialized_skill" />
     <edge from="role-swe" to="code-explainer" type="specialized_skill" />
@@ -3168,14 +3223,12 @@
     <edge from="role-swe" to="rfc-pipeline" type="specialized_skill" />
     <edge from="role-swe" to="search-first" type="specialized_skill" />
     <edge from="role-swe" to="similarity-search-patterns" type="specialized_skill" />
-    <edge from="role-swe" to="software-architecture" type="specialized_skill" />
     <edge from="role-swe" to="speed-reader" type="specialized_skill" />
     <edge from="role-swe" to="superpowers-lab" type="specialized_skill" />
     <edge from="role-swe" to="swiftui-liquid-glass" type="specialized_skill" />
     <edge from="role-swe" to="systematic-debugging" type="primary_skill" />
     <edge from="role-swe" to="systems-programming-rust-project" type="specialized_skill" />
     <edge from="role-swe" to="tdd-green-phase" type="specialized_skill" />
-    <edge from="role-swe" to="tdd-guide" type="primary_skill" />
     <edge from="role-swe" to="tdd-workflow" type="specialized_skill" />
     <edge from="role-swe" to="test-collaboration" type="specialized_skill" />
     <edge from="role-swe" to="test-driven-development" type="primary_skill" />
@@ -3184,7 +3237,7 @@
     <edge from="role-swe" to="typescript-patterns" type="specialized_skill" />
     <edge from="role-swe" to="unit-testing-test-generate" type="specialized_skill" />
     <edge from="role-swe" to="verification-loop" type="specialized_skill" />
-    <edge from="role-swe" to="vibe-engineer" type="primary_skill" />
+    <edge from="role-swe" to="vibe-to-production" type="primary_skill" />
     <edge from="role-swe" to="vscode-extension-guide-en" type="specialized_skill" />
     <edge from="role-swe" to="writing-plans" type="specialized_skill" />
     <edge from="role-frontend-engineer" to="3d-web-experience" type="specialized_skill" />
@@ -3353,7 +3406,6 @@
     <edge from="role-frontend-engineer" to="web-interface-guidelines" type="specialized_skill" />
     <edge from="role-frontend-engineer" to="web-performance-optimization" type="specialized_skill" />
     <edge from="role-frontend-engineer" to="web-scraper" type="specialized_skill" />
-    <edge from="role-frontend-engineer" to="web-vitals-performance-benchmark" type="specialized_skill" />
     <edge from="role-frontend-engineer" to="webapp-testing" type="specialized_skill" />
     <edge from="role-frontend-engineer" to="windows-desktop-e2e" type="specialized_skill" />
     <edge from="role-frontend-engineer" to="windows-privilege-escalation" type="specialized_skill" />
@@ -3787,7 +3839,6 @@
     <edge from="role-devops-engineer" to="network-101" type="specialized_skill" />
     <edge from="role-devops-engineer" to="network-bgp-diagnostics" type="specialized_skill" />
     <edge from="role-devops-engineer" to="network-config-validation" type="specialized_skill" />
-    <edge from="role-devops-engineer" to="network-engineer" type="specialized_skill" />
     <edge from="role-devops-engineer" to="network-interface-health" type="specialized_skill" />
     <edge from="role-devops-engineer" to="recursive-decision-ledger" type="specialized_skill" />
     <edge from="role-devops-engineer" to="service-mesh-expert" type="specialized_skill" />
@@ -3949,6 +4000,7 @@
     <edge from="role-qa-engineer" to="expert-qa-test" type="specialized_skill" />
     <edge from="role-qa-engineer" to="fsharp-testing" type="specialized_skill" />
     <edge from="role-qa-engineer" to="gateway-smoke-test" type="specialized_skill" />
+    <edge from="role-qa-engineer" to="git-pr-review" type="primary_skill" />
     <edge from="role-qa-engineer" to="healthcare-eval-harness" type="specialized_skill" />
     <edge from="role-qa-engineer" to="lambdatest-testing" type="specialized_skill" />
     <edge from="role-qa-engineer" to="opus-clip" type="specialized_skill" />
@@ -3957,7 +4009,6 @@
     <edge from="role-qa-engineer" to="perf-test-review" type="specialized_skill" />
     <edge from="role-qa-engineer" to="playwright-browser-testing" type="primary_skill" />
     <edge from="role-qa-engineer" to="playwright-java" type="specialized_skill" />
-    <edge from="role-qa-engineer" to="pr-test-analyzer" type="primary_skill" />
     <edge from="role-qa-engineer" to="process-verify-completion" type="specialized_skill" />
     <edge from="role-qa-engineer" to="qa-tdd-architect" type="specialized_skill" />
     <edge from="role-qa-engineer" to="reasoning-harness" type="specialized_skill" />
@@ -3966,11 +4017,11 @@
     <edge from="role-qa-engineer" to="security-requirement-extraction" type="specialized_skill" />
     <edge from="role-qa-engineer" to="semgrep-rule-variant-creator" type="specialized_skill" />
     <edge from="role-qa-engineer" to="sop-build" type="specialized_skill" />
-    <edge from="role-qa-engineer" to="tdd-guide" type="primary_skill" />
     <edge from="role-qa-engineer" to="tdd-orchestrator" type="specialized_skill" />
     <edge from="role-qa-engineer" to="tdd-workflow" type="specialized_skill" />
     <edge from="role-qa-engineer" to="test-automator" type="specialized_skill" />
     <edge from="role-qa-engineer" to="test-collaboration" type="specialized_skill" />
+    <edge from="role-qa-engineer" to="test-driven-development" type="primary_skill" />
     <edge from="role-qa-engineer" to="test-fixing" type="specialized_skill" />
     <edge from="role-qa-engineer" to="testing-patterns" type="specialized_skill" />
     <edge from="role-qa-engineer" to="testing-qa" type="specialized_skill" />
@@ -4074,10 +4125,9 @@
     <edge from="role-network-infra-eng" to="mtls-configuration" type="primary_skill" />
     <edge from="role-network-infra-eng" to="netmiko-ssh-automation" type="specialized_skill" />
     <edge from="role-network-infra-eng" to="network-101" type="specialized_skill" />
-    <edge from="role-network-infra-eng" to="network-architect" type="primary_skill" />
     <edge from="role-network-infra-eng" to="network-bgp-diagnostics" type="specialized_skill" />
     <edge from="role-network-infra-eng" to="network-config-validation" type="specialized_skill" />
-    <edge from="role-network-infra-eng" to="network-engineer" type="specialized_skill" />
+    <edge from="role-network-infra-eng" to="network-engineer" type="primary_skill" />
     <edge from="role-network-infra-eng" to="network-interface-health" type="specialized_skill" />
     <edge from="role-network-infra-eng" to="pentest-commands" type="specialized_skill" />
     <edge from="role-network-infra-eng" to="ssrf-oob-interaction-testing" type="specialized_skill" />
@@ -4155,8 +4205,7 @@
     <edge from="role-agentic-workflow-architect" to="agent-sorting" type="specialized_skill" />
     <edge from="role-agentic-workflow-architect" to="agentic-actions-auditor" type="specialized_skill" />
     <edge from="role-agentic-workflow-architect" to="agentic-os" type="specialized_skill" />
-    <edge from="role-agentic-workflow-architect" to="agents-sdk" type="primary_skill" />
-    <edge from="role-agentic-workflow-architect" to="agents-spec-generator" type="specialized_skill" />
+    <edge from="role-agentic-workflow-architect" to="agents-spec-generator" type="primary_skill" />
     <edge from="role-agentic-workflow-architect" to="agents-v2-py" type="specialized_skill" />
     <edge from="role-agentic-workflow-architect" to="agenttrace-session-audit" type="specialized_skill" />
     <edge from="role-agentic-workflow-architect" to="agyos-academic-research" type="specialized_skill" />
@@ -4805,6 +4854,9 @@
     <edge from="role-research-scientist" to="self-supervised-learning-jepa" type="specialized_skill" />
     <edge from="role-research-scientist" to="tavily-web" type="specialized_skill" />
     <edge from="role-research-scientist" to="universal-ai-research" type="specialized_skill" />
+    <edge from="role-privacy-engineer" to="crossborder-tia" type="primary_skill" />
+    <edge from="role-privacy-engineer" to="deidentification-benchmark" type="primary_skill" />
+    <edge from="role-privacy-engineer" to="dsar-pipeline" type="primary_skill" />
     <edge from="role-privacy-engineer" to="gdpr-data-handling" type="primary_skill" />
     <edge from="role-privacy-engineer" to="healthcare-phi-compliance" type="primary_skill" />
     <edge from="role-privacy-engineer" to="privacy-by-design" type="primary_skill" />
@@ -5058,7 +5110,6 @@
     <edge from="role-product-designer" to="saas-multi-tenant" type="specialized_skill" />
     <edge from="role-product-designer" to="scroll-experience" type="specialized_skill" />
     <edge from="role-product-designer" to="sketch-to-3d-render-design" type="specialized_skill" />
-    <edge from="role-product-designer" to="software-architecture" type="specialized_skill" />
     <edge from="role-product-designer" to="swiftui-ui-patterns" type="primary_skill" />
     <edge from="role-product-designer" to="team-composition-analysis" type="specialized_skill" />
     <edge from="role-product-designer" to="tool-design" type="specialized_skill" />
@@ -5068,7 +5119,6 @@
     <edge from="role-product-designer" to="ux-feedback" type="specialized_skill" />
     <edge from="role-product-designer" to="ux-flow" type="specialized_skill" />
     <edge from="role-product-designer" to="ux-persuasion-engineer" type="specialized_skill" />
-    <edge from="role-product-designer" to="vibe-to-production" type="specialized_skill" />
     <edge from="role-product-designer" to="visionary-product-craftsmanship" type="specialized_skill" />
     <edge from="role-product-designer" to="web-animation-design" type="specialized_skill" />
     <edge from="role-brand-designer" to="ai-image-editing" type="specialized_skill" />
@@ -5278,17 +5328,21 @@
     <edge from="role-design-system-engineer" to="ui-tokens" type="primary_skill" />
     <edge from="role-design-system-engineer" to="ui-visual-validator" type="specialized_skill" />
     <edge from="role-design-system-engineer" to="unity-ecs-patterns" type="specialized_skill" />
+    <edge from="role-ux-copywriter" to="a11y-copy-audit" type="primary_skill" />
     <edge from="role-ux-copywriter" to="avoid-ai-writing" type="primary_skill" />
     <edge from="role-ux-copywriter" to="content-creator" type="primary_skill" />
     <edge from="role-ux-copywriter" to="conversion-copywriting" type="primary_skill" />
     <edge from="role-ux-copywriter" to="hook-writer" type="primary_skill" />
     <edge from="role-ux-copywriter" to="i18n-sync" type="specialized_skill" />
     <edge from="role-ux-copywriter" to="lightning-factory-explainer" type="specialized_skill" />
+    <edge from="role-ux-copywriter" to="microcopy-pattern-library" type="primary_skill" />
+    <edge from="role-ux-copywriter" to="onboarding-tooltip-system" type="primary_skill" />
     <edge from="role-ux-copywriter" to="ux-copy" type="primary_skill" />
     <edge from="role-content-strategist" to="adversarial-verification-method" type="specialized_skill" />
     <edge from="role-content-strategist" to="article-writing" type="specialized_skill" />
     <edge from="role-content-strategist" to="audience-research" type="specialized_skill" />
     <edge from="role-content-strategist" to="batch-content-plan" type="primary_skill" />
+    <edge from="role-content-strategist" to="blog-writing-guide" type="specialized_skill" />
     <edge from="role-content-strategist" to="box-automation" type="specialized_skill" />
     <edge from="role-content-strategist" to="browser-extension-builder" type="specialized_skill" />
     <edge from="role-content-strategist" to="campaign-and-launch-planning" type="specialized_skill" />
@@ -5455,7 +5509,6 @@
     <edge from="role-content-strategist" to="twitter-article-publisher" type="specialized_skill" />
     <edge from="role-content-strategist" to="twitter-automation" type="specialized_skill" />
     <edge from="role-content-strategist" to="twitter-post-scraper" type="specialized_skill" />
-    <edge from="role-content-strategist" to="ugc-and-influencer" type="specialized_skill" />
     <edge from="role-content-strategist" to="wcag-audit-patterns" type="specialized_skill" />
     <edge from="role-content-strategist" to="web-fuzzing-ffuf" type="specialized_skill" />
     <edge from="role-content-strategist" to="webpage-article-extractor" type="specialized_skill" />
@@ -5572,7 +5625,6 @@
     <edge from="role-social-media-manager" to="fixing-metadata" type="specialized_skill" />
     <edge from="role-social-media-manager" to="goals-and-kpis" type="specialized_skill" />
     <edge from="role-social-media-manager" to="hashtag-strategy" type="specialized_skill" />
-    <edge from="role-social-media-manager" to="headline-psychologist" type="specialized_skill" />
     <edge from="role-social-media-manager" to="instagram-automation" type="specialized_skill" />
     <edge from="role-social-media-manager" to="instagram-graph-api" type="specialized_skill" />
     <edge from="role-social-media-manager" to="instagram-growth" type="primary_skill" />
@@ -5651,7 +5703,6 @@
     <edge from="role-social-media-manager" to="twitter-article-publisher" type="specialized_skill" />
     <edge from="role-social-media-manager" to="twitter-automation" type="specialized_skill" />
     <edge from="role-social-media-manager" to="twitter-post-scraper" type="specialized_skill" />
-    <edge from="role-social-media-manager" to="ugc-and-influencer" type="specialized_skill" />
     <edge from="role-social-media-manager" to="url-to-markdown" type="specialized_skill" />
     <edge from="role-social-media-manager" to="videodb-media-engine" type="specialized_skill" />
     <edge from="role-social-media-manager" to="webpage-screenshot-capture" type="specialized_skill" />
@@ -5672,6 +5723,7 @@
     <edge from="role-social-media-manager" to="youtube-summarizer" type="specialized_skill" />
     <edge from="role-social-media-manager" to="youtube-transcript" type="specialized_skill" />
     <edge from="role-brand-copywriter" to="avoid-ai-writing" type="primary_skill" />
+    <edge from="role-brand-copywriter" to="awareness-stage-mapper" type="specialized_skill" />
     <edge from="role-brand-copywriter" to="brand-voice" type="primary_skill" />
     <edge from="role-brand-copywriter" to="canva-automation" type="specialized_skill" />
     <edge from="role-brand-copywriter" to="caption-writer" type="specialized_skill" />
@@ -5681,6 +5733,9 @@
     <edge from="role-brand-copywriter" to="copywriting-psychologist" type="specialized_skill" />
     <edge from="role-brand-copywriter" to="cross-platform-repurposing" type="specialized_skill" />
     <edge from="role-brand-copywriter" to="customer-psychographic-profiler" type="specialized_skill" />
+    <edge from="role-brand-copywriter" to="free-tool-strategy" type="specialized_skill" />
+    <edge from="role-brand-copywriter" to="hashtag-strategy" type="specialized_skill" />
+    <edge from="role-brand-copywriter" to="headline-psychologist" type="specialized_skill" />
     <edge from="role-brand-copywriter" to="hook-writer" type="primary_skill" />
     <edge from="role-brand-copywriter" to="i18n-sync" type="specialized_skill" />
     <edge from="role-brand-copywriter" to="interactive-content" type="specialized_skill" />
@@ -5689,14 +5744,16 @@
     <edge from="role-brand-copywriter" to="pr-enhancement" type="specialized_skill" />
     <edge from="role-brand-copywriter" to="pr-enhancer" type="specialized_skill" />
     <edge from="role-brand-copywriter" to="pr-writer" type="specialized_skill" />
+    <edge from="role-brand-copywriter" to="sop-growth" type="specialized_skill" />
     <edge from="role-brand-copywriter" to="story-writer" type="specialized_skill" />
     <edge from="role-brand-copywriter" to="trending-tech-tracker" type="specialized_skill" />
+    <edge from="role-brand-copywriter" to="ugc-and-influencer" type="specialized_skill" />
     <edge from="role-brand-copywriter" to="viral-reverse-engineering" type="specialized_skill" />
+    <edge from="role-brand-copywriter" to="webpage-screenshot-capture" type="specialized_skill" />
     <edge from="role-brand-copywriter" to="writing-clearly-and-concisely" type="specialized_skill" />
     <edge from="role-brand-copywriter" to="x-growth" type="specialized_skill" />
     <edge from="role-conversion-optimizer" to="ab-test-setup" type="primary_skill" />
     <edge from="role-conversion-optimizer" to="analytics-tracking" type="primary_skill" />
-    <edge from="role-conversion-optimizer" to="copy-editing" type="specialized_skill" />
     <edge from="role-conversion-optimizer" to="copywriting-psychologist" type="specialized_skill" />
     <edge from="role-conversion-optimizer" to="discord-bot-architect" type="specialized_skill" />
     <edge from="role-conversion-optimizer" to="form-cro" type="primary_skill" />
@@ -5782,17 +5839,21 @@
     <edge from="role-pr-comms-manager" to="self-supervised-learning-jepa" type="specialized_skill" />
     <edge from="role-pr-comms-manager" to="task-intelligence" type="specialized_skill" />
     <edge from="role-pr-comms-manager" to="whatsapp-automation" type="specialized_skill" />
-    <edge from="role-partnership-bd-manager" to="amazon-alexa" type="specialized_skill" />
-    <edge from="role-partnership-bd-manager" to="cloudflare-workers-expert" type="specialized_skill" />
+    <edge from="role-partnership-bd-manager" to="affiliate-program-ops" type="primary_skill" />
+    <edge from="role-partnership-bd-manager" to="co-marketing-term-sheet-builder" type="primary_skill" />
     <edge from="role-partnership-bd-manager" to="collabs-and-cross-promotion" type="primary_skill" />
     <edge from="role-partnership-bd-manager" to="competitive-landscape" type="primary_skill" />
     <edge from="role-partnership-bd-manager" to="content-creator" type="primary_skill" />
     <edge from="role-partnership-bd-manager" to="market-opportunity" type="primary_skill" />
+    <edge from="role-partnership-bd-manager" to="partner-ecosystem-mapping" type="primary_skill" />
+    <edge from="role-community-manager" to="ambassador-event-ops" type="primary_skill" />
     <edge from="role-community-manager" to="community-management" type="primary_skill" />
+    <edge from="role-community-manager" to="community-sentiment-trends" type="primary_skill" />
     <edge from="role-community-manager" to="discord-automation" type="primary_skill" />
     <edge from="role-community-manager" to="engagement-routine" type="primary_skill" />
     <edge from="role-community-manager" to="internal-comms-community" type="specialized_skill" />
     <edge from="role-community-manager" to="livestream-and-realtime" type="specialized_skill" />
+    <edge from="role-community-manager" to="moderation-escalation-ladder" type="primary_skill" />
     <edge from="role-community-manager" to="prompt-library" type="specialized_skill" />
     <edge from="role-community-manager" to="reply-and-comment-writer" type="specialized_skill" />
     <edge from="role-community-manager" to="slack-automation" type="primary_skill" />
@@ -5899,7 +5960,6 @@
     <edge from="role-sales-development-rep" to="sales-automator" type="primary_skill" />
     <edge from="role-sales-development-rep" to="salesforce-development" type="specialized_skill" />
     <edge from="role-sales-development-rep" to="social-selling-and-dm" type="primary_skill" />
-    <edge from="role-sales-development-rep" to="sop-growth" type="specialized_skill" />
     <edge from="role-solutions-engineer" to="api-design" type="primary_skill" />
     <edge from="role-solutions-engineer" to="content-creator" type="primary_skill" />
     <edge from="role-solutions-engineer" to="odoo-automated-tests" type="specialized_skill" />
@@ -5933,7 +5993,7 @@
     <edge from="role-customer-success-manager" to="hubspot-integration" type="primary_skill" />
     <edge from="role-customer-success-manager" to="intercom-automation" type="specialized_skill" />
     <edge from="role-customer-success-manager" to="onboarding-psychologist" type="specialized_skill" />
-    <edge from="role-customer-success-manager" to="pod-customer" type="primary_skill" />
+    <edge from="role-customer-success-manager" to="sop-customer" type="primary_skill" />
     <edge from="role-customer-success-manager" to="verification-before-completion" type="specialized_skill" />
     <edge from="role-customer-success-manager" to="zendesk-automation" type="specialized_skill" />
     <edge from="role-revenue-operations" to="analytics-tracking" type="primary_skill" />
@@ -6040,14 +6100,13 @@
     <edge from="role-support-engineer" to="kotlin-coroutines-flows" type="specialized_skill" />
     <edge from="role-support-engineer" to="lint-and-validate" type="specialized_skill" />
     <edge from="role-support-engineer" to="native-data-fetching" type="specialized_skill" />
-    <edge from="role-support-engineer" to="pod-customer" type="primary_skill" />
     <edge from="role-support-engineer" to="postmortem-writing" type="primary_skill" />
     <edge from="role-support-engineer" to="powershell-windows" type="specialized_skill" />
     <edge from="role-support-engineer" to="progressive-web-app" type="specialized_skill" />
     <edge from="role-support-engineer" to="root-cause-debugger" type="specialized_skill" />
     <edge from="role-support-engineer" to="scientific-thinking-scholar-evaluation" type="specialized_skill" />
     <edge from="role-support-engineer" to="smart-debug" type="specialized_skill" />
-    <edge from="role-support-engineer" to="sop-customer" type="specialized_skill" />
+    <edge from="role-support-engineer" to="sop-customer" type="primary_skill" />
     <edge from="role-support-engineer" to="systematic-debugging" type="primary_skill" />
     <edge from="role-support-engineer" to="visual-emotion-engineer" type="specialized_skill" />
     <edge from="role-support-engineer" to="write-swift" type="specialized_skill" />
@@ -6075,14 +6134,13 @@
     <edge from="role-onboarding-specialist" to="obsidian-clipper-template-creator" type="specialized_skill" />
     <edge from="role-onboarding-specialist" to="onboarding-cro" type="primary_skill" />
     <edge from="role-onboarding-specialist" to="onboarding-psychologist" type="specialized_skill" />
-    <edge from="role-onboarding-specialist" to="pod-customer" type="primary_skill" />
     <edge from="role-onboarding-specialist" to="price-psychology-strategist" type="specialized_skill" />
     <edge from="role-onboarding-specialist" to="product-lens" type="specialized_skill" />
     <edge from="role-onboarding-specialist" to="project-skill-audit" type="specialized_skill" />
     <edge from="role-onboarding-specialist" to="recursive-context-pruning-token-budgeting" type="specialized_skill" />
     <edge from="role-onboarding-specialist" to="rules-distill" type="specialized_skill" />
     <edge from="role-onboarding-specialist" to="screen-reader-testing" type="specialized_skill" />
-    <edge from="role-onboarding-specialist" to="sop-customer" type="specialized_skill" />
+    <edge from="role-onboarding-specialist" to="sop-customer" type="primary_skill" />
     <edge from="role-onboarding-specialist" to="standup-notes" type="specialized_skill" />
     <edge from="role-onboarding-specialist" to="system-guide" type="specialized_skill" />
     <edge from="role-onboarding-specialist" to="theme-factory" type="specialized_skill" />
@@ -6126,13 +6184,13 @@
     <edge from="role-implementation-consultant" to="nx-workspace-patterns" type="specialized_skill" />
     <edge from="role-implementation-consultant" to="orch-add-feature" type="specialized_skill" />
     <edge from="role-implementation-consultant" to="planning-with-files" type="specialized_skill" />
-    <edge from="role-implementation-consultant" to="pod-customer" type="primary_skill" />
     <edge from="role-implementation-consultant" to="process-writing-plans" type="specialized_skill" />
     <edge from="role-implementation-consultant" to="project-flow-ops" type="primary_skill" />
     <edge from="role-implementation-consultant" to="project-guidelines-example" type="specialized_skill" />
     <edge from="role-implementation-consultant" to="puzzle-activity-planner" type="specialized_skill" />
     <edge from="role-implementation-consultant" to="receiving-code-review" type="specialized_skill" />
     <edge from="role-implementation-consultant" to="shellcheck-configuration" type="specialized_skill" />
+    <edge from="role-implementation-consultant" to="sop-customer" type="primary_skill" />
     <edge from="role-implementation-consultant" to="spec-to-code-compliance" type="specialized_skill" />
     <edge from="role-implementation-consultant" to="story-lifecycle" type="specialized_skill" />
     <edge from="role-implementation-consultant" to="subagent-driven-development" type="specialized_skill" />
@@ -6159,27 +6217,28 @@
     <edge from="role-technical-account-manager" to="oral-health-analyzer" type="specialized_skill" />
     <edge from="role-technical-account-manager" to="osint-investigation" type="specialized_skill" />
     <edge from="role-technical-account-manager" to="pitch-psychologist" type="primary_skill" />
-    <edge from="role-technical-account-manager" to="pod-customer" type="primary_skill" />
     <edge from="role-technical-account-manager" to="project-readme-generator" type="specialized_skill" />
     <edge from="role-technical-account-manager" to="scientific-thinking-literature-review" type="specialized_skill" />
     <edge from="role-technical-account-manager" to="secure-env-secrets-manager" type="specialized_skill" />
     <edge from="role-technical-account-manager" to="sexual-health-analyzer" type="specialized_skill" />
+    <edge from="role-technical-account-manager" to="sop-customer" type="primary_skill" />
     <edge from="role-technical-account-manager" to="tech-debt-cleanup" type="specialized_skill" />
     <edge from="role-technical-account-manager" to="technical-change-tracker" type="specialized_skill" />
     <edge from="role-technical-account-manager" to="uv-package-manager" type="specialized_skill" />
     <edge from="role-technical-account-manager" to="vibe-code-auditor" type="specialized_skill" />
     <edge from="role-churn-analyst" to="analytics-tracking" type="primary_skill" />
     <edge from="role-churn-analyst" to="churn-prevention" type="primary_skill" />
+    <edge from="role-churn-analyst" to="cohort-retention-curves" type="primary_skill" />
+    <edge from="role-churn-analyst" to="customer-health-score" type="primary_skill" />
     <edge from="role-churn-analyst" to="data-storytelling" type="primary_skill" />
     <edge from="role-churn-analyst" to="email-sequence" type="primary_skill" />
     <edge from="role-churn-analyst" to="kpi-dashboard-design" type="primary_skill" />
     <edge from="role-churn-analyst" to="memory-systems" type="specialized_skill" />
+    <edge from="role-churn-analyst" to="nps-sentiment-root-cause" type="primary_skill" />
     <edge from="role-churn-analyst" to="saas-monetization-strategy" type="specialized_skill" />
-    <edge from="role-docs-technical-writer" to="agents-spec-generator" type="specialized_skill" />
     <edge from="role-docs-technical-writer" to="api-documentation-generator" type="specialized_skill" />
     <edge from="role-docs-technical-writer" to="api-documenter" type="primary_skill" />
     <edge from="role-docs-technical-writer" to="app-store-changelog" type="primary_skill" />
-    <edge from="role-docs-technical-writer" to="awareness-stage-mapper" type="specialized_skill" />
     <edge from="role-docs-technical-writer" to="c4-component" type="specialized_skill" />
     <edge from="role-docs-technical-writer" to="c4-container" type="specialized_skill" />
     <edge from="role-docs-technical-writer" to="c4-context" type="specialized_skill" />
@@ -6287,7 +6346,6 @@
     <edge from="role-fp-and-a-analyst" to="legacy-modernize" type="specialized_skill" />
     <edge from="role-fp-and-a-analyst" to="lint-and-validate" type="specialized_skill" />
     <edge from="role-fp-and-a-analyst" to="llm-prompt-tuning" type="specialized_skill" />
-    <edge from="role-fp-and-a-analyst" to="marketing-psychology" type="specialized_skill" />
     <edge from="role-fp-and-a-analyst" to="new-rails-project" type="specialized_skill" />
     <edge from="role-fp-and-a-analyst" to="pentest-checklist" type="specialized_skill" />
     <edge from="role-fp-and-a-analyst" to="phase-gated-debugging" type="specialized_skill" />
@@ -6345,12 +6403,18 @@
     <edge from="role-billing-payments-eng" to="x402-payment-agent" type="specialized_skill" />
     <edge from="role-treasury-banking-spec" to="billing-automation" type="primary_skill" />
     <edge from="role-treasury-banking-spec" to="customs-trade-compliance" type="primary_skill" />
+    <edge from="role-treasury-banking-spec" to="daily-cashflow-forecast" type="primary_skill" />
     <edge from="role-treasury-banking-spec" to="financial-projections" type="primary_skill" />
+    <edge from="role-treasury-banking-spec" to="fx-hedging-advisor" type="primary_skill" />
+    <edge from="role-treasury-banking-spec" to="settlement-reconciliation-audit" type="primary_skill" />
     <edge from="role-treasury-banking-spec" to="startup-financial-modeling" type="primary_skill" />
     <edge from="role-accounts-manager" to="analytics-tracking" type="primary_skill" />
+    <edge from="role-accounts-manager" to="ap-ar-aging-schedules" type="primary_skill" />
     <edge from="role-accounts-manager" to="billing-automation" type="primary_skill" />
+    <edge from="role-accounts-manager" to="collections-dunning-automation" type="primary_skill" />
     <edge from="role-accounts-manager" to="financial-projections" type="primary_skill" />
     <edge from="role-accounts-manager" to="google-analytics-automation" type="specialized_skill" />
+    <edge from="role-accounts-manager" to="ledger-reconciliation" type="primary_skill" />
     <edge from="role-accounts-manager" to="odoo-accounting-setup" type="specialized_skill" />
     <edge from="role-accounts-manager" to="odoo-purchase-workflow" type="specialized_skill" />
     <edge from="role-accounts-manager" to="stripe-automation" type="primary_skill" />
@@ -6431,20 +6495,23 @@
     <edge from="role-cost-optimization-analyst" to="tool-cost-audit" type="specialized_skill" />
     <edge from="role-general-counsel" to="auction-legal-analysis" type="specialized_skill" />
     <edge from="role-general-counsel" to="contract-first" type="specialized_skill" />
+    <edge from="role-general-counsel" to="corporate-governance-resolutions" type="primary_skill" />
     <edge from="role-general-counsel" to="criminal-defense-law-consultant" type="specialized_skill" />
     <edge from="role-general-counsel" to="dotnet-patterns" type="specialized_skill" />
     <edge from="role-general-counsel" to="gdpr-data-handling" type="primary_skill" />
     <edge from="role-general-counsel" to="legal-advisor" type="primary_skill" />
     <edge from="role-general-counsel" to="legal-compliance-consultant" type="primary_skill" />
     <edge from="role-general-counsel" to="legal-contract-truth-engine" type="primary_skill" />
+    <edge from="role-general-counsel" to="litigation-regulatory-risk-scanner" type="primary_skill" />
     <edge from="role-general-counsel" to="sop-gna" type="specialized_skill" />
-    <edge from="role-ip-patent-attorney" to="algorithmic-art" type="specialized_skill" />
     <edge from="role-ip-patent-attorney" to="dependency-management-deps-audit" type="specialized_skill" />
     <edge from="role-ip-patent-attorney" to="legal-advisor" type="primary_skill" />
     <edge from="role-ip-patent-attorney" to="legal-compliance-consultant" type="primary_skill" />
     <edge from="role-ip-patent-attorney" to="legal-contract-truth-engine" type="primary_skill" />
+    <edge from="role-ip-patent-attorney" to="oss-license-risk-audit" type="primary_skill" />
+    <edge from="role-ip-patent-attorney" to="patent-claim-drafter" type="primary_skill" />
+    <edge from="role-ip-patent-attorney" to="prior-art-search" type="primary_skill" />
     <edge from="role-ip-patent-attorney" to="scientific-db-uspto-database" type="primary_skill" />
-    <edge from="role-ip-patent-attorney" to="trend-jacking" type="specialized_skill" />
     <edge from="role-contract-manager" to="beautiful-prose" type="specialized_skill" />
     <edge from="role-contract-manager" to="contract-first" type="specialized_skill" />
     <edge from="role-contract-manager" to="employment-contract-templates" type="primary_skill" />
@@ -6453,6 +6520,8 @@
     <edge from="role-contract-manager" to="master-agreement-generator" type="primary_skill" />
     <edge from="role-contract-manager" to="operator-approval-loop" type="specialized_skill" />
     <edge from="role-contract-manager" to="rails-patterns" type="specialized_skill" />
+    <edge from="role-contract-manager" to="redline-diff-analyzer" type="primary_skill" />
+    <edge from="role-contract-manager" to="renewal-and-liability-watch" type="primary_skill" />
     <edge from="role-compliance-officer" to="accessibility-audit" type="specialized_skill" />
     <edge from="role-compliance-officer" to="adversarial-red-team" type="specialized_skill" />
     <edge from="role-compliance-officer" to="ai-readme-gen" type="specialized_skill" />
@@ -6545,11 +6614,9 @@
     <edge from="role-vp-people" to="jake-hunter-hunter-scout" type="specialized_skill" />
     <edge from="role-vp-people" to="jake-hunter-hunter-tracker" type="specialized_skill" />
     <edge from="role-vp-people" to="odoo-hr-payroll-setup" type="specialized_skill" />
-    <edge from="role-vp-people" to="pod-people" type="primary_skill" />
-    <edge from="role-vp-people" to="sop-people" type="specialized_skill" />
+    <edge from="role-vp-people" to="sop-people" type="primary_skill" />
     <edge from="role-vp-people" to="viral-generator-builder" type="specialized_skill" />
     <edge from="role-recruiter" to="apify-lead-generation" type="primary_skill" />
-    <edge from="role-recruiter" to="awareness-stage-mapper" type="specialized_skill" />
     <edge from="role-recruiter" to="hr-pro" type="primary_skill" />
     <edge from="role-recruiter" to="interview-coach" type="specialized_skill" />
     <edge from="role-recruiter" to="jake-hunter-hunter-apply" type="specialized_skill" />
@@ -6564,9 +6631,8 @@
     <edge from="role-recruiter" to="jake-hunter-hunter-scout" type="specialized_skill" />
     <edge from="role-recruiter" to="jake-hunter-hunter-tracker" type="specialized_skill" />
     <edge from="role-recruiter" to="linkedin-growth" type="primary_skill" />
-    <edge from="role-recruiter" to="pod-people" type="primary_skill" />
     <edge from="role-recruiter" to="refactor-context-restore" type="specialized_skill" />
-    <edge from="role-recruiter" to="sop-people" type="specialized_skill" />
+    <edge from="role-recruiter" to="sop-people" type="primary_skill" />
     <edge from="role-recruiter" to="tech-interview-resume-prep" type="primary_skill" />
     <edge from="role-recruiter" to="unified-memory" type="specialized_skill" />
     <edge from="role-hr-business-partner" to="advanced-mathematical-reasoning" type="specialized_skill" />
@@ -6586,19 +6652,22 @@
     <edge from="role-hr-business-partner" to="nutrition-analyzer" type="specialized_skill" />
     <edge from="role-hr-business-partner" to="perf-ai-review" type="specialized_skill" />
     <edge from="role-hr-business-partner" to="perf-test-review" type="specialized_skill" />
-    <edge from="role-hr-business-partner" to="pod-people" type="primary_skill" />
     <edge from="role-hr-business-partner" to="rehabilitation-analyzer" type="specialized_skill" />
     <edge from="role-hr-business-partner" to="saga-orchestration" type="specialized_skill" />
     <edge from="role-hr-business-partner" to="sleep-analyzer" type="specialized_skill" />
+    <edge from="role-hr-business-partner" to="sop-people" type="primary_skill" />
     <edge from="role-hr-business-partner" to="startup-metrics-framework" type="specialized_skill" />
     <edge from="role-hr-business-partner" to="swiftui-performance-audit" type="specialized_skill" />
     <edge from="role-hr-business-partner" to="weightloss-analyzer" type="specialized_skill" />
     <edge from="role-hr-ops-specialist" to="analytics-tracking" type="primary_skill" />
     <edge from="role-hr-ops-specialist" to="bamboohr-automation" type="specialized_skill" />
+    <edge from="role-hr-ops-specialist" to="benefits-leave-administration" type="primary_skill" />
     <edge from="role-hr-ops-specialist" to="billing-automation" type="primary_skill" />
     <edge from="role-hr-ops-specialist" to="employment-contract-templates" type="primary_skill" />
     <edge from="role-hr-ops-specialist" to="hr-pro" type="primary_skill" />
     <edge from="role-hr-ops-specialist" to="odoo-hr-payroll-setup" type="specialized_skill" />
+    <edge from="role-hr-ops-specialist" to="payroll-cycle-ops" type="primary_skill" />
+    <edge from="role-hr-ops-specialist" to="workforce-compliance-tracker" type="primary_skill" />
     <edge from="role-learning-development" to="advanced-mathematical-reasoning" type="specialized_skill" />
     <edge from="role-learning-development" to="ai-engineering-toolkit" type="primary_skill" />
     <edge from="role-learning-development" to="andruia-skill-smith" type="specialized_skill" />
@@ -6624,7 +6693,6 @@
     <edge from="role-learning-development" to="project-guidelines-example" type="specialized_skill" />
     <edge from="role-learning-development" to="senior-frontend" type="specialized_skill" />
     <edge from="role-learning-development" to="subagent-driven-development" type="specialized_skill" />
-    <edge from="role-learning-development" to="terminal-opener" type="specialized_skill" />
     <edge from="role-learning-development" to="unity-ai-game-creator" type="specialized_skill" />
     <edge from="role-learning-development" to="unreal-engine-cpp-pro" type="specialized_skill" />
     <edge from="role-learning-development" to="visa-doc-translate" type="specialized_skill" />
@@ -6635,6 +6703,9 @@
     <edge from="role-procurement-vendor-manager" to="inventory-demand-planning" type="primary_skill" />
     <edge from="role-procurement-vendor-manager" to="ito-compute" type="specialized_skill" />
     <edge from="role-procurement-vendor-manager" to="legal-contract-truth-engine" type="primary_skill" />
+    <edge from="role-procurement-vendor-manager" to="vendor-rfp-generator" type="primary_skill" />
+    <edge from="role-procurement-vendor-manager" to="vendor-sla-breach-watch" type="primary_skill" />
+    <edge from="role-procurement-vendor-manager" to="vendor-spend-consolidator" type="primary_skill" />
     <edge from="role-office-facilities-manager" to="analytics-tracking" type="primary_skill" />
     <edge from="role-office-facilities-manager" to="bitbucket-automation" type="specialized_skill" />
     <edge from="role-office-facilities-manager" to="content-creator" type="primary_skill" />
@@ -6786,7 +6857,6 @@
     <edge from="role-it-systems-admin" to="win11-system-manager" type="primary_skill" />
     <edge from="role-it-systems-admin" to="workflow-automation" type="specialized_skill" />
     <edge from="role-cloud-architect" to="ai-agents-architect" type="specialized_skill" />
-    <edge from="role-cloud-architect" to="architect-review" type="specialized_skill" />
     <edge from="role-cloud-architect" to="aws-cloud-architecture" type="primary_skill" />
     <edge from="role-cloud-architect" to="aws-serverless" type="specialized_skill" />
     <edge from="role-cloud-architect" to="azure-ai-projects-py" type="primary_skill" />

@@ -1,8 +1,8 @@
 {
   "version": "3.1.0",
-  "total_skills": 2247,
+  "total_skills": 2287,
   "tier1_count": 415,
-  "tier2_count": 1832,
+  "tier2_count": 1872,
   "skills": [
     {
       "name": "1password-mcp",
@@ -21,6 +21,12 @@
       "tier": 2,
       "description": "Expert in building 3D experiences for the web - Three.js, React Three Fiber, Spline, WebGL, and interactive 3D scenes. Covers product configurators, 3D portfolios, immersive websites, and bringing depth to web experiences.",
       "path": ".agents/skills/3d-web-experience"
+    },
+    {
+      "name": "a11y-copy-audit",
+      "tier": 2,
+      "description": "Audit surface copy against WCAG 2.2 AA text requirements: link text descriptiveness, alt text adequacy, form label and error text rules, heading text hierarchy and a reading level cap. Use before release of any user-facing surface, after the microcopy library changes, or when an accessibility complaint arrives.",
+      "path": ".agents/skills/a11y-copy-audit"
     },
     {
       "name": "ab-test-setup",
@@ -87,6 +93,12 @@
       "tier": 2,
       "description": "Multi-agent adversarial verification: two independent reviewers with the same rubric must both pass before output ships, with a fix-and-re-review convergence loop and human escalation cap. Use when gating publishing, production deploys, compliance or brand-sensitive content, or hallucination-prone claims before they ship.",
       "path": ".agents/skills/adversarial-verification-method"
+    },
+    {
+      "name": "affiliate-program-ops",
+      "tier": 2,
+      "description": "Operate the affiliate program end to end: commission tiers, fraud rules, monthly payout reconciliation and a quarterly channel audit. Use when affiliates are onboarded, when payout reports arrive from the network, or when acquisition cost per channel is due for review before budget moves.",
+      "path": ".agents/skills/affiliate-program-ops"
     },
     {
       "name": "agent-arch-audit",
@@ -587,6 +599,12 @@
       "path": ".agents/skills/amazon-alexa"
     },
     {
+      "name": "ambassador-event-ops",
+      "tier": 2,
+      "description": "Operate the ambassador program and the event runbook: tiers and criteria, contribution tracking, event logistics with consent and code-of-conduct handling, and the post-event report. Use when onboarding or reviewing ambassadors, when an event is planned, and within 72 hours after every event while evidence is fresh.",
+      "path": ".agents/skills/ambassador-event-ops"
+    },
+    {
       "name": "amplitude-automation",
       "tier": 2,
       "description": "Automate Amplitude tasks via Rube MCP (Composio): events, user activity, cohorts, user identification. Always search tools first for current schemas.",
@@ -741,6 +759,12 @@
       "tier": 2,
       "description": "Build natural-language crypto/DeFi agents and EVM MCP plugins (Claude Code, Cursor, Codex, Gemini). Aomi turns prompts into wallet-signed txs on Ethereum, Base, Arbitrum, Optimism, Polygon, Linea \u2014 non-custodial, fork-simulated. 40+ apps: Uniswap, Aave, Lido, Morpho, GMX, Hyperliquid, Polymarket.",
       "path": ".agents/skills/aomi-transact"
+    },
+    {
+      "name": "ap-ar-aging-schedules",
+      "tier": 2,
+      "description": "Produce the receivables and payables aging schedules with dispute flags and cash-impact summary. Use at each period close, when treasury needs the collection outlook, or when an invoice ages past 60 days and needs a named next action. This is the feed that daily-cashflow-forecast and collections-dunning-automation run on.",
+      "path": ".agents/skills/ap-ar-aging-schedules"
     },
     {
       "name": "api-connector-builder",
@@ -2105,6 +2129,12 @@
       "path": ".agents/skills/benchmark-optimization-loop"
     },
     {
+      "name": "benefits-leave-administration",
+      "tier": 2,
+      "description": "Administer benefits enrollment windows and leave accrual enforcement. Use at enrollment windows, when the provider export arrives each month, when an employee questions a balance, or when a policy exception is requested so exceptions are logged with approvals instead of absorbed silently.",
+      "path": ".agents/skills/benefits-leave-administration"
+    },
+    {
       "name": "bengali-nlp",
       "tier": 2,
       "description": "Bengali (Bangla) text processing patterns including Unicode normalization, script detection, tokenization, conjunct handling, and Bangla-specific NLP best practices for AI applications.",
@@ -2423,6 +2453,12 @@
       "path": ".agents/skills/canvas-design"
     },
     {
+      "name": "cap-table-modeler",
+      "tier": 2,
+      "description": "Model funding-round scenarios against the live cap table: dilution per holder, ESOP pool top-ups and exit waterfalls. Use before a term sheet is signed, when an option grant changes the pool, or when the board asks what a down round does to founder and employee ownership. Produces scenarios, never decisions.",
+      "path": ".agents/skills/cap-table-modeler"
+    },
+    {
       "name": "capcut",
       "tier": 2,
       "description": "The CapCut craft skill \u2014 edit short-form social video (TikTok, Reels, Shorts) fast and safely: retention-paced cuts, auto-captions, beat-synced sound, exports. Use when someone wants to edit in CapCut, cut a reel/short, set up auto-captions, use CapCut's AI tools, pick a plan, or asks whether CapCut music/assets or client work are safe commercially. Uses the EDITS framework. Reads short-form-video-script + brand-profile/design-and-templates + voice-builder first. The agent plans the edit and flags the licensing/ToS gates; the HUMAN executes in CapCut and approves; WoopSocial publishes the finished export. Safety spine: client/NDA work edits locally, never synced (the ToS licenses uploads), and music licensing has fine print \u2014 never pirated assets, non-consensual lip-sync, or uncorrected captions. Distinct from short-form-video-script (the script), captions-and-clipping/opus-clip (clipping long video), descript (long-form), canva (graphics), and ai-video/veo-3/kling/runway (generation).",
@@ -2657,6 +2693,12 @@
       "path": ".agents/skills/cloudformation-best-practices"
     },
     {
+      "name": "co-marketing-term-sheet-builder",
+      "tier": 2,
+      "description": "Draft the commercial skeleton of a co-marketing or joint-venture arrangement before legal drafting starts: rights, spend splits, fund usage rules, lead ownership and exit terms. Use once a target agrees to explore a partnership and always before any draft agreement is written or shared externally.",
+      "path": ".agents/skills/co-marketing-term-sheet-builder"
+    },
+    {
       "name": "coda-automation",
       "tier": 2,
       "description": "Automate Coda tasks via Rube MCP (Composio): manage docs, pages, tables, rows, formulas, permissions, and publishing. Always search tools first for current schemas.",
@@ -2777,6 +2819,12 @@
       "path": ".agents/skills/cognitive-thinking-partner"
     },
     {
+      "name": "cohort-retention-curves",
+      "tier": 2,
+      "description": "Build cohort retention curves, fit the decay, and name the segments that fall under benchmark. Use when monthly retention moves, before a pricing or packaging change, or when product asks which acquisition cohort actually sticks. Produces the evidence base that health scores and PRD problem statements are built on.",
+      "path": ".agents/skills/cohort-retention-curves"
+    },
+    {
       "name": "colab-cloud-execution",
       "tier": 2,
       "description": "Provision remote Google Colab GPU/TPU/CPU runtimes and execute Python scripts, notebooks, or shell workloads headlessly via the official Google Colab CLI (`colab`).",
@@ -2795,6 +2843,12 @@
       "path": ".agents/skills/collabs-and-cross-promotion"
     },
     {
+      "name": "collections-dunning-automation",
+      "tier": 2,
+      "description": "Operate the collections ladder from gentle reminder to bad-debt provision. Use when AR ages past 60 days, when a dunning stage fires, or when provisioning is due for the quarter. Excludes disputed invoices until the dispute closes, and hands legal-grade escalations to the operator for a human decision.",
+      "path": ".agents/skills/collections-dunning-automation"
+    },
+    {
       "name": "comfyui-gateway",
       "tier": 2,
       "description": "REST API gateway for ComfyUI servers. Workflow management, job queuing, webhooks, caching, auth, rate limiting, and image delivery (URL + base64).",
@@ -2811,6 +2865,12 @@
       "tier": 2,
       "description": "Use to build a genuine community \u2014 turning an audience into people who interact with each other, not just with the brand. Run when the user asks how to build community, foster belonging/loyalty, create superfans, start a group/Discord channel, get members talking to each other, or move beyond chasing followers/virality. Reads brand-profile/social-strategy/audience-research. Community outperforms virality, measured by relationship depth/retention, not follower count. Covers the audience-to-community distinction (member-to-member interaction), choosing the space (in-feed -> semi-owned -> owned groups/Discord), recurring rituals, building belonging, and nurturing superfans into advocates. KPIs read natively, never fabricated. Advisory: WoopSocial schedules the content but does NOT run Discord/Slack or show analytics \u2014 the human runs the community, the agent drafts. Never fake community; get consent before spotlighting. Pairs with reply-and-comment-writer and crisis-and-moderation.",
       "path": ".agents/skills/community-management"
+    },
+    {
+      "name": "community-sentiment-trends",
+      "tier": 2,
+      "description": "Track community sentiment per channel and topic, alert on abnormal drops, and correlate them with releases and incidents. Use weekly for the standing digest, when support volume spikes, and before release so known friction is distinguished from new friction.",
+      "path": ".agents/skills/community-sentiment-trends"
     },
     {
       "name": "competitive-landscape",
@@ -3215,6 +3275,12 @@
       "path": ".agents/skills/core-skill-obedience"
     },
     {
+      "name": "corporate-governance-resolutions",
+      "tier": 2,
+      "description": "Draft board and shareholder resolutions from precedent, verify them against bylaws and jurisdiction requirements, and keep the corporate records index current. Use when a corporate action needs approval (grants, financings, officer appointments, policy adoptions), before a board meeting, or when an auditor or bank asks for evidence of authority.",
+      "path": ".agents/skills/corporate-governance-resolutions"
+    },
+    {
       "name": "cost-aware-llm-pipeline",
       "tier": 2,
       "description": "Cost optimization patterns for LLM API usage \u2014 model routing by task complexity, budget tracking, retry logic, and prompt caching. Use when LLM spend needs to come down, or when routing tasks across model tiers and budgets.",
@@ -3371,6 +3437,12 @@
       "path": ".agents/skills/cross-platform-repurposing"
     },
     {
+      "name": "crossborder-tia",
+      "tier": 2,
+      "description": "Run the transfer impact assessment for personal data leaving a jurisdiction: flow map, transfer mechanism, destination access risk and supplemental measures, ending in a go/no-go recommendation. Use before a new region is added to any data flow, before a vendor in another region processes personal data, and when transfer law changes.",
+      "path": ".agents/skills/crossborder-tia"
+    },
+    {
       "name": "crypto-bd-agent",
       "tier": 2,
       "description": "Production-tested patterns for building AI agents that autonomously discover, > evaluate, and acquire token listings for cryptocurrency exchanges.",
@@ -3393,6 +3465,12 @@
       "tier": 2,
       "description": "Operate customer billing workflows such as subscriptions, refunds, churn triage, billing-portal recovery, and plan analysis using connected billing tools like Stripe. Use when the user needs to help a customer, inspect subscription state, or manage revenue-impacting billing operations.",
       "path": ".agents/skills/customer-billing-ops"
+    },
+    {
+      "name": "customer-health-score",
+      "tier": 2,
+      "description": "Define, validate and operate the composite customer health score with intervention triggers. Use when customer success needs a ranked at-risk list, after a quarter closes (to validate the score against actual churn), or when triggers fire so the right playbook reaches the right CSM owner.",
+      "path": ".agents/skills/customer-health-score"
     },
     {
       "name": "customer-psychographic-profiler",
@@ -3423,6 +3501,12 @@
       "tier": 2,
       "description": "This skill provides guidance for creating sophisticated, interactive data visualisations using d3.js.",
       "path": ".agents/skills/d3js-visualization"
+    },
+    {
+      "name": "daily-cashflow-forecast",
+      "tier": 2,
+      "description": "Build and maintain a rolling 13-week direct cash-flow forecast with a hard liquidity floor alert. Use when the operator asks for cash runway detail, when accounts-manager publishes new AR/AP aging schedules, when payroll or debt-service dates change, or when a payment-gateway payout lag is about to move more than the floor amount. Produces the one artifact every finance role reads before approving spend.",
+      "path": ".agents/skills/daily-cashflow-forecast"
     },
     {
       "name": "daily-gift",
@@ -3669,6 +3753,12 @@
       "tier": 2,
       "description": "Implement DeFi protocols with production-ready templates for staking, AMMs, governance, and lending systems. Use when building decentralized finance applications or smart contract protocols.",
       "path": ".agents/skills/defi-protocol-templates"
+    },
+    {
+      "name": "deidentification-benchmark",
+      "tier": 2,
+      "description": "Benchmark a dataset's deidentification before it leaves its trust boundary: identifier classification, k-anonymity style measures, re-identification risk tests and differential privacy parameter checks against policy caps. Use before any analytics export, model training share or third-party data release.",
+      "path": ".agents/skills/deidentification-benchmark"
     },
     {
       "name": "delivery-gate",
@@ -4053,6 +4143,12 @@
       "tier": 2,
       "description": "Automate Dropbox file management, sharing, search, uploads, downloads, and folder operations via Rube MCP (Composio). Always search tools first for current schemas.",
       "path": ".agents/skills/dropbox-automation"
+    },
+    {
+      "name": "dsar-pipeline",
+      "tier": 2,
+      "description": "Run a data subject request end to end: intake, identity proof, system inventory, fulfillment and certification under the applicable deadline (GDPR 30 days, CCPA/CPRA 45 days with one 45-day extension). Use when a request arrives through any channel, when a deadline clock is running, or when a quarterly DSAR audit is due.",
+      "path": ".agents/skills/dsar-pipeline"
     },
     {
       "name": "dwarf-expert",
@@ -5049,6 +5145,18 @@
       "tier": 2,
       "description": "Use when working with full stack orchestration full stack feature",
       "path": ".agents/skills/fullstack-feature"
+    },
+    {
+      "name": "fundraising-data-room",
+      "tier": 2,
+      "description": "Assemble and police the diligence data room: the index of required documents, the chase list for missing items, redaction rules and the access policy. Use when a raise starts, when investor diligence begins, or before any data room link is shared, so access is deliberate and the index is complete.",
+      "path": ".agents/skills/fundraising-data-room"
+    },
+    {
+      "name": "fx-hedging-advisor",
+      "tier": 2,
+      "description": "Net currency exposures and draft a hedging recommendation inside policy bands. Use when invoicing or spending is concentrated in a currency other than the functional one, when the treasury policy review comes up, or before any forward contract or option is quoted. Outputs a decision memo; it never executes a hedge itself.",
+      "path": ".agents/skills/fx-hedging-advisor"
     },
     {
       "name": "game-development",
@@ -7631,6 +7739,12 @@
       "path": ".agents/skills/lead-magnets-and-funnels"
     },
     {
+      "name": "ledger-reconciliation",
+      "tier": 2,
+      "description": "Reconcile sub-ledgers to the general ledger and resolve invoice discrepancies with recorded evidence. Use at each close, when a sub-ledger total disagrees with its GL control account, or when a customer or vendor disputes amounts. Produces journal proposals for the controller - it never posts directly.",
+      "path": ".agents/skills/ledger-reconciliation"
+    },
+    {
       "name": "legacy-modernize",
       "tier": 2,
       "description": "Plan an incremental modernization of a legacy system while preserving existing behavior. Use for strangler-pattern migrations, compatibility boundaries, and rollback planning.",
@@ -7773,6 +7887,12 @@
       "tier": 2,
       "description": "The list/roundup content type \u2014 design honestly-curated, scannable, AI-citable listicles (\"7 ways to X\", \"best tools for Y\") and expert / product / link roundups. Use when someone wants a listicle, a \"best of\" or \"top N\" list, a ranked recommendation list, an expert roundup, a product/affiliate roundup, or a curated resource list. Ranked \"best-of\" lists are among the most-cited formats in AI search. Uses the RANKS framework. Reads brand-profile + audience-research first. The agent designs the list and frames the cuts; for roundups it drafts the contributor ask; the human secures real contributor quotes/consent and verifies product facts; WoopSocial publishes the cuts. Feeds the format writers and ai-search-optimization + social-seo. NEVER fabricates items, quotes, or rankings, or pads to a number; discloses affiliate/own-product. Distinct from carousel-writer/thread-writer, educational-content-and-how-to, data-and-original-research, and competitor-analysis.",
       "path": ".agents/skills/listicle-and-roundup"
+    },
+    {
+      "name": "litigation-regulatory-risk-scanner",
+      "tier": 2,
+      "description": "Scan the company's exposure surface: demand letters, regulatory inquiries, incident aftermath and deal diligence. Classifies exposure, scores severity, starts the response clock with the right template, and instantiates the M&A legal audit checklist when a deal flag is set. Use on any legal threat, inquiry or deal signal.",
+      "path": ".agents/skills/litigation-regulatory-risk-scanner"
     },
     {
       "name": "livestream-and-realtime",
@@ -8219,6 +8339,12 @@
       "path": ".agents/skills/micro-saas-launcher"
     },
     {
+      "name": "microcopy-pattern-library",
+      "tier": 2,
+      "description": "Build and maintain the interface copy pattern library: error messages, empty states, success confirmations and their placement rules, keyed for i18n and wired to the design system. Use when a surface ships without copy review, when error rates cluster on a screen, or when the design-system-engineer adds components that need standard strings.",
+      "path": ".agents/skills/microcopy-pattern-library"
+    },
+    {
       "name": "microservices-patterns",
       "tier": 1,
       "description": "Master microservices architecture patterns including service boundaries, inter-service communication, data management, and resilience patterns for building distributed systems.",
@@ -8355,6 +8481,12 @@
       "tier": 2,
       "description": "Audit a live web page in five phases (catalog, click, trace, classify, report) to identify mock data, hardcoded values, LLM-generated metrics, and broken endpoints. Outputs a markdown report with REAL/MOCK/LLM/HARDCODED/BROKEN/UNKNOWN verdicts per visible value.",
       "path": ".agents/skills/mock-hunter"
+    },
+    {
+      "name": "moderation-escalation-ladder",
+      "tier": 2,
+      "description": "Enforce the moderation ladder consistently across channels: policy classes, escalating actions, evidence snapshots, appeals and the weekly false-positive review. Use when a violation is reported or detected, when an appeal arrives, or when moderation stats are due for the transparency report.",
+      "path": ".agents/skills/moderation-escalation-ladder"
     },
     {
       "name": "modern-javascript-patterns",
@@ -8753,6 +8885,12 @@
       "path": ".agents/skills/notion-template-business"
     },
     {
+      "name": "nps-sentiment-root-cause",
+      "tier": 2,
+      "description": "Cluster NPS and CSAT verbatims into themes, link them to measurable drivers, and assign remediation owners. Use after each NPS or CSAT wave closes, when detractor share moves without an obvious incident, or quarterly when the remediation backlog is reviewed.",
+      "path": ".agents/skills/nps-sentiment-root-cause"
+    },
+    {
       "name": "nutrient-document-processing",
       "tier": 2,
       "description": "Process, convert, OCR, extract, redact, sign, and fill documents using the Nutrient DWS API. Works with PDFs, DOCX, XLSX, PPTX, HTML, and images. Use when converting, OCRing, extracting from, redacting, signing, or filling documents via the Nutrient DWS API.",
@@ -8987,6 +9125,12 @@
       "path": ".agents/skills/onboarding-psychologist"
     },
     {
+      "name": "onboarding-tooltip-system",
+      "tier": 2,
+      "description": "Design the first-run and feature-discovery tooltip sequence: step copy, dismissal rules and the instrumentation events that prove whether guidance works. Use when activation drops at a known funnel step, when a major surface ships, or when tooltips are added ad hoc and start competing with each other.",
+      "path": ".agents/skills/onboarding-tooltip-system"
+    },
+    {
       "name": "one-drive-automation",
       "tier": 2,
       "description": "Automate OneDrive file management, search, uploads, downloads, sharing, permissions, and folder operations via Rube MCP (Composio). Always search tools first for current schemas.",
@@ -9119,6 +9263,12 @@
       "path": ".agents/skills/oss-hunter"
     },
     {
+      "name": "oss-license-risk-audit",
+      "tier": 2,
+      "description": "Audit the dependency tree for license risk: build the compatibility matrix, find copyleft paths into proprietary code, and issue the license gate verdict. Use on every release train, when a new dependency is proposed, or when the CI SBOM job flags a new license class. This skill is the enforcement brain behind the legal license gate.",
+      "path": ".agents/skills/oss-license-risk-audit"
+    },
+    {
       "name": "outlook-automation",
       "tier": 2,
       "description": "Automate Outlook tasks via Rube MCP (Composio): emails, calendar, contacts, folders, attachments. Always search tools first for current schemas.",
@@ -9185,6 +9335,18 @@
       "path": ".agents/skills/parallel-execution-optimizer"
     },
     {
+      "name": "partner-ecosystem-mapping",
+      "tier": 2,
+      "description": "Map the partner landscape by category, score candidates on reach, overlap and effort, and produce a ranked target list with written rationale. Use when entering a new channel, when a partnership underperforms for two consecutive quarters, or before any outreach campaign so pursuit effort is spent on scored targets, not guesses.",
+      "path": ".agents/skills/partner-ecosystem-mapping"
+    },
+    {
+      "name": "patent-claim-drafter",
+      "tier": 2,
+      "description": "Draft the claim set for a disclosure that passed novelty screening: independent claim with a deliberate boundary, dependent claims per element, and the boundary map against the closest prior art. Use after prior-art-search completes and before outside counsel engagement so review hours are spent on a structured draft.",
+      "path": ".agents/skills/patent-claim-drafter"
+    },
+    {
       "name": "payment-integration",
       "tier": 2,
       "description": "Integrate Stripe, PayPal, and payment processors. Handles checkout flows, subscriptions, webhooks, and PCI compliance. Use PROACTIVELY when implementing payments, billing, or subscription features.",
@@ -9195,6 +9357,12 @@
       "tier": 2,
       "description": "Master PayPal payment integration including Express Checkout, IPN handling, recurring billing, and refund workflows.",
       "path": ".agents/skills/paypal-integration"
+    },
+    {
+      "name": "payroll-cycle-ops",
+      "tier": 2,
+      "description": "Run one payroll cycle from pre-close checklist to signed register. Use at each cycle boundary (T-7 to freeze), when compensation changes land mid-cycle, or when any variance against the prior cycle needs explanation before approval. Produces the register role-cfo approves and the audit trail auditors ask for.",
+      "path": ".agents/skills/payroll-cycle-ops"
     },
     {
       "name": "paywall-upgrade-cro",
@@ -9549,6 +9717,12 @@
       "tier": 2,
       "description": "Design pricing, packaging, and monetization strategies based on value, customer willingness to pay, and growth objectives.",
       "path": ".agents/skills/pricing-strategy"
+    },
+    {
+      "name": "prior-art-search",
+      "tier": 2,
+      "description": "Run a structured prior-art search and write the novelty report for an invention disclosure, including the trademark watch check. Use when a disclosure arrives from engineering, before any patent filing decision, or when a competitor filing needs screening against the company's roadmap.",
+      "path": ".agents/skills/prior-art-search"
     },
     {
       "name": "prisma-expert",
@@ -10127,6 +10301,12 @@
       "path": ".agents/skills/redis-patterns"
     },
     {
+      "name": "redline-diff-analyzer",
+      "tier": 2,
+      "description": "Analyze a counterparty's redline against the template: classify every change as added, modified or deleted per clause, flag variances against the clause playbook, and propose fallback language from pre-approved ranges. Use every time a draft comes back from a counterparty, before any human reads it.",
+      "path": ".agents/skills/redline-diff-analyzer"
+    },
+    {
       "name": "reels-script",
       "tier": 2,
       "description": "Use to write an Instagram Reels script \u2014 a native, sound-off-first short-video script optimized for Instagram's discovery engine, built around a 3-second hook, watch-through, and sends (DM shares). Run when the user says \"Reels script,\" \"Instagram Reel,\" \"make a Reel,\" \"Reel hook,\" \"trial reel,\" or wants short-form video for Instagram specifically. Reads brand-profile and voice first; writes the muted version first; structures for watch-through + sends; places IG-search keywords; picks original vs trending audio (trending audio is added natively in-app \u2014 not via WoopSocial); briefs the cover frame; outputs a production doc (shot - on-screen text - spoken - audio - timing) plus a Veo prompt pack for faceless/b-roll shots. The generic scripting craft lives in short-form-video-script; for TikTok use tiktok-script; for Shorts use youtube-shorts; hands the caption to caption-writer, publishing to instagram-reels-publishing, and scheduling to scheduling-and-queue.",
@@ -10193,6 +10373,12 @@
       "path": ".agents/skills/render-automation"
     },
     {
+      "name": "renewal-and-liability-watch",
+      "tier": 2,
+      "description": "Watch the contract register for renewal windows and liability exposure: auto-renewal deadlines with notice cutoffs, liability caps against the policy floor, uncapped exposures and insurance requirements. Use monthly, and whenever a contract is signed, amended or assigned.",
+      "path": ".agents/skills/renewal-and-liability-watch"
+    },
+    {
       "name": "repl-runner",
       "tier": 2,
       "description": "Operate and extend NanoClaw, ECC's zero-dependency session-aware REPL, with persistent markdown-backed sessions and slash commands for model switching, skill loading, session branching, cross-session search, history compaction, and export. Use when running or extending scripts/claw.js, or when resuming, branching, compacting, searching, or exporting a NanoClaw session.",
@@ -10221,6 +10407,12 @@
       "tier": 2,
       "description": "Evidence-first current-state research workflow for ECC. Use when the user wants fresh facts, comparisons, enrichment, or a recommendation built from current public evidence and any supplied local context.",
       "path": ".agents/skills/research-ops"
+    },
+    {
+      "name": "retrospective-synthesis",
+      "tier": 2,
+      "description": "Convert a sprint retrospective into evidence-linked actions. Use at sprint end, after an incident, or whenever velocity or burndown moves without an obvious cause. Clusters the transcript into themes, ties each theme to a delivery metric, and caps the action list at what the team can actually carry.",
+      "path": ".agents/skills/retrospective-synthesis"
     },
     {
       "name": "returns-reverse-logistics",
@@ -10329,6 +10521,12 @@
       "tier": 2,
       "description": "Prompt and direct Runway (Gen-4.5, Aleph) \u2014 the control-grade generative video tool for camera moves, character consistency, and edit-grade shots. Use when someone wants \"a specific camera move,\" \"the same character across multiple shots,\" \"to edit/restyle existing footage,\" \"a branded product/ad shot,\" \"film-style previz,\" \"image to video with Runway\" (animate a still), or names Runway / Gen-4 / Gen-4.5 / Aleph / Act-Two / Motion Brush / References. Runway generates clips; a human assembles/edits; audio comes from ai-voiceover; WoopSocial schedules/publishes. Below the ai-video router, sibling to veo-3 (all-round + native audio), kling (native 4K/multi-shot/motion), and luma (cinematic HDR/mood). Consented performances only (Act-Two); AI disclosure mandatory.",
       "path": ".agents/skills/runway"
+    },
+    {
+      "name": "runway-sensitivity-analysis",
+      "tier": 2,
+      "description": "Extend the 13-week cash forecast into scenario runway bands with named cost levers, and synthesize the board financial deck outline from them. Use monthly before board cadence, when a hiring or spend decision lands, or whenever the base-case floor distance narrows below policy tolerance.",
+      "path": ".agents/skills/runway-sensitivity-analysis"
     },
     {
       "name": "rust-async-patterns",
@@ -10949,6 +11147,12 @@
       "path": ".agents/skills/settings-audit"
     },
     {
+      "name": "settlement-reconciliation-audit",
+      "tier": 2,
+      "description": "Three-way match between payment-processor settlement files, the internal payout ledger and bank statements. Use after each settlement period closes, when a payout amount looks wrong, when chargeback volume moves, or before role-cfo signs a payment approval. Classifies breaks, ages them, and drafts processor credit claims.",
+      "path": ".agents/skills/settlement-reconciliation-audit"
+    },
+    {
       "name": "sexual-health-analyzer",
       "tier": 2,
       "description": "Sexual Health Analyzer",
@@ -11387,6 +11591,12 @@
       "path": ".agents/skills/springboot-verification"
     },
     {
+      "name": "sprint-backlog-grooming",
+      "tier": 2,
+      "description": "Turn a raw backlog into a sprint-ready one: definition-of-ready enforcement, oversized story splitting and an explicit dependency map. Use before sprint planning, when items sit in backlog for more than two sprints, or when planning stalls on unclear scope. Feeds kanban-agent-pipeline and conductor-status with clean, ordered work.",
+      "path": ".agents/skills/sprint-backlog-grooming"
+    },
+    {
       "name": "sql-injection-testing",
       "tier": 2,
       "description": "Execute comprehensive SQL injection vulnerability assessments on web applications to identify database security flaws, demonstrate exploitation techniques, and validate input sanitization mechanisms.",
@@ -11487,6 +11697,12 @@
       "tier": 2,
       "description": "Manage a file-based epic \u2192 story \u2192 sprint development loop without requiring an external project management tool. Creates and tracks epics, breaks them into user stories, assigns them to sprints, and drives implementation story by story. Use when starting a new feature initiative or when the team has no Jira/Linear/Taiga but needs structured delivery tracking.",
       "path": ".agents/skills/story-lifecycle"
+    },
+    {
+      "name": "story-pointing-calibration",
+      "tier": 2,
+      "description": "Anchor estimation to reference stories and detect drift. Use during backlog refinement, when velocity swings more than the control band between sprints, or when estimates from different contributors stop being comparable. Produces calibrated estimates with a recorded spread, not false precision.",
+      "path": ".agents/skills/story-pointing-calibration"
     },
     {
       "name": "story-writer",
@@ -12575,6 +12791,24 @@
       "path": ".agents/skills/vector-semantic-file-search"
     },
     {
+      "name": "vendor-rfp-generator",
+      "tier": 2,
+      "description": "Produce a complete RFP pack: requirements matrix, weighted scorecard and the approval chain that matches the spend band. Use when a vendor need is first scoped, when an incumbent contract approaches renewal with competitive options, or whenever spend above the threshold requires a documented selection process.",
+      "path": ".agents/skills/vendor-rfp-generator"
+    },
+    {
+      "name": "vendor-sla-breach-watch",
+      "tier": 2,
+      "description": "Maintain the SLA register per vendor contract, collect breach evidence, compute credits owed and escalate repeat offenders. Use when an incident touches a vendor-managed service, when a monthly vendor report lands, or when a credit claim deadline is close. Feeds SRE error-budget reviews with vendor-side context.",
+      "path": ".agents/skills/vendor-sla-breach-watch"
+    },
+    {
+      "name": "vendor-spend-consolidator",
+      "tier": 2,
+      "description": "Keep one inventory of every software and hardware contract, surface renewals before they auto-renew, and propose consolidations where the same category is spread across multiple vendors. Use quarterly, when a renewal alert fires, or when spend in any category grows without a matching headcount or usage story.",
+      "path": ".agents/skills/vendor-spend-consolidator"
+    },
+    {
       "name": "veo-3",
       "tier": 2,
       "description": "Use to write great prompts for Google Veo (Veo 3.1) to generate or animate video for social media \u2014 the video-prompt-craft mini-skill, the video counterpart to nano-banana. Run when the user wants a Veo / AI video prompt, a short video clip for a post (b-roll, product-in-motion, hook visual, spokesperson/UGC clip, ad), to animate a still image into video, or a vertical Reel/TikTok/Short clip. Reads brand-profile for brand style. Veo's standout is native synchronized audio in one pass, plus image-to-video and native 9:16 vertical. Teaches the prompt anatomy, audio prompting, the image-to-video pipeline, and the 8-second constraint + extension/stitching. Honest: iterate cheap then finalize, disclose AI video (SynthID watermark), never generate real identifiable people or copyrighted IP. This is the prompt-craft layer \u2014 the API/connection and the generate -> upload to WoopSocial Media -> attach flow live in tools/integrations/veo.md; the consuming pack is reels-script's veo-prompt-pack.",
@@ -13035,6 +13269,12 @@
       "tier": 1,
       "description": "Use this skill when implementing tasks according to Conductor's TDD workflow, handling phase checkpoints, managing git commits for tasks, or understanding the verification protocol.",
       "path": ".agents/skills/workflow-patterns"
+    },
+    {
+      "name": "workforce-compliance-tracker",
+      "tier": 2,
+      "description": "Track work-authorization expiries and drive the offboarding compliance sequence with evidence at every step. Use when a visa or permit approaches expiry, when any employment ends, or when an audit asks who verified what and when. The offboarding path hands explicitly to the security zeroize-audit flow.",
+      "path": ".agents/skills/workforce-compliance-tracker"
     },
     {
       "name": "workplace-wellness-assistant",

@@ -1,118 +1,119 @@
 total_departments: 12
 total_pods: 5
 total_roles: 104
-total_skills: 2247
+total_skills: 2287
 departments[12]: customer_success, data_ai, design, engineering, executive, finance, it_infra, legal_compliance, marketing, people_ops, product, sales_bd
 pods[5]: pod-build, pod-customer, pod-gna, pod-growth, pod-people
 roles[104]{id, title, department, pod, seniority, risk, mapped_skills}:
   - role-ceo, "Chief Executive Officer", executive, pod-gna, L8, R3, 37
   - role-cto, "Chief Technology Officer", executive, pod-build, L8, R2, 40
   - role-coo, "Chief Operating Officer", executive, pod-gna, L8, R1, 40
-  - role-cpo, "Chief Product Officer", executive, pod-build, L8, R1, 31
-  - role-cmo, "Chief Marketing Officer", executive, pod-growth, L8, R1, 26
+  - role-cpo, "Chief Product Officer", executive, pod-build, L8, R1, 29
+  - role-cmo, "Chief Marketing Officer", executive, pod-growth, L8, R1, 30
   - role-cso, "Chief Security Officer", executive, pod-gna, L8, R2, 42
-  - role-cfo, "Chief Financial Officer", executive, pod-gna, L8, R3, 7
-  - role-vp-engineering, "VP Engineering", executive, pod-build, L8, R2, 30
-  - role-product-director, "Product Director", product, pod-build, L7, R1, 26
+  - role-cfo, "Chief Financial Officer", executive, pod-gna, L8, R3, 10
+  - role-vp-engineering, "VP Engineering", executive, pod-build, L8, R2, 29
+  - role-product-director, "Product Director", product, pod-build, L7, R1, 25
   - role-senior-pm, "Senior Product Manager", product, pod-build, L6, R1, 27
   - role-pm, "Product Manager", product, pod-build, L5, R1, 11
-  - role-scrum-agile-coach, "Scrum / Agile Coach", product, pod-build, L5, R0, 5
+  - role-scrum-agile-coach, "Scrum / Agile Coach", product, pod-build, L5, R0, 7
   - role-ux-researcher, "UX Researcher", product, pod-build, L5, R0, 26
-  - role-growth-pm, "Growth Product Manager", product, pod-growth, L5, R1, 20
+  - role-growth-pm, "Growth Product Manager", product, pod-growth, L5, R1, 22
   - role-product-analyst, "Product Analyst", product, pod-build, L4, R0, 24
-  - role-technical-pm, "Technical Product Manager", product, pod-build, L6, R1, 33
-  - role-staff-engineer, "Staff Software Engineer", engineering, pod-build, L7, R2, 77
-  - role-senior-swe, "Senior Software Engineer", engineering, pod-build, L6, R1, 174
-  - role-swe, "Software Engineer", engineering, pod-build, L5, R1, 134
-  - role-frontend-engineer, "Frontend Engineer", engineering, pod-build, L5, R1, 214
+  - role-technical-pm, "Technical Product Manager", product, pod-build, L6, R1, 32
+  - role-staff-engineer, "Staff Software Engineer", engineering, pod-build, L7, R2, 86
+  - role-senior-swe, "Senior Software Engineer", engineering, pod-build, L6, R1, 173
+  - role-swe, "Software Engineer", engineering, pod-build, L5, R1, 133
+  - role-frontend-engineer, "Frontend Engineer", engineering, pod-build, L5, R1, 213
   - role-backend-engineer, "Backend Engineer", engineering, pod-build, L5, R1, 218
   - role-mobile-engineer, "Mobile Engineer", engineering, pod-build, L5, R1, 97
-  - role-devops-engineer, "DevOps / Platform Engineer", engineering, pod-build, L5, R2, 82
+  - role-devops-engineer, "DevOps / Platform Engineer", engineering, pod-build, L5, R2, 81
   - role-site-reliability-engineer, "Site Reliability Engineer", engineering, pod-build, L6, R2, 43
   - role-security-engineer, "Security Engineer", engineering, pod-gna, L6, R2, 85
   - role-qa-engineer, "QA / Test Engineer", engineering, pod-build, L5, R1, 53
   - role-web3-blockchain-eng, "Web3 / Blockchain Engineer", engineering, pod-build, L5, R2, 21
   - role-desktop-app-eng, "Desktop Application Engineer", engineering, pod-build, L5, R1, 57
-  - role-network-infra-eng, "Network Infrastructure Engineer", engineering, pod-build, L5, R2, 26
+  - role-network-infra-eng, "Network Infrastructure Engineer", engineering, pod-build, L5, R2, 25
   - role-database-reliability-eng, "Database Reliability Engineer", engineering, pod-build, L6, R2, 39
   - role-incident-commander, "Incident Commander", engineering, pod-build, L6, R2, 14
-  - role-agentic-workflow-architect, "Agentic Workflow Architect", engineering, pod-build, L7, R2, 269
+  - role-agentic-workflow-architect, "Agentic Workflow Architect", engineering, pod-build, L7, R2, 268
   - role-data-scientist, "Data Scientist", data_ai, pod-build, L5, R1, 40
   - role-ml-engineer, "ML Engineer", data_ai, pod-build, L5, R1, 61
   - role-data-engineer, "Data Engineer", data_ai, pod-build, L5, R1, 55
   - role-ai-product-engineer, "AI Product Engineer", data_ai, pod-build, L5, R1, 157
   - role-data-analyst, "Data Analyst", data_ai, pod-build, L4, R0, 53
   - role-research-scientist, "Research Scientist", data_ai, pod-build, L7, R1, 34
-  - role-privacy-engineer, "Privacy Engineer", data_ai, pod-gna, L6, R2, 8
+  - role-privacy-engineer, "Privacy Engineer", data_ai, pod-gna, L6, R2, 11
   - role-computer-vision-eng, "Computer Vision Engineer", data_ai, pod-build, L5, R1, 14
   - role-speech-audio-ai-eng, "Speech & Audio AI Engineer", data_ai, pod-build, L5, R1, 35
   - role-mlops-engineer, "MLOps Engineer", data_ai, pod-build, L5, R2, 24
   - role-design-director, "Design Director", design, pod-build, L7, R1, 45
   - role-ux-ui-designer, "UX / UI Designer", design, pod-build, L5, R1, 95
-  - role-product-designer, "Product Designer", design, pod-build, L5, R1, 45
+  - role-product-designer, "Product Designer", design, pod-build, L5, R1, 43
   - role-brand-designer, "Brand Designer", design, pod-growth, L5, R1, 51
   - role-motion-designer, "Motion Designer", design, pod-growth, L5, R1, 68
   - role-3d-visual-designer, "3D Visual Designer", design, pod-growth, L5, R1, 26
   - role-design-system-engineer, "Design System Engineer", design, pod-build, L5, R1, 62
-  - role-ux-copywriter, "UX Copywriter", design, pod-build, L4, R1, 7
+  - role-ux-copywriter, "UX Copywriter", design, pod-build, L4, R1, 10
   - role-content-strategist, "Content Strategist", marketing, pod-growth, L5, R1, 190
   - role-seo-specialist, "SEO Specialist", marketing, pod-growth, L4, R1, 60
   - role-performance-marketer, "Performance Marketer", marketing, pod-growth, L5, R2, 18
-  - role-social-media-manager, "Social Media Manager", marketing, pod-growth, L4, R1, 118
-  - role-brand-copywriter, "Brand Copywriter", marketing, pod-growth, L4, R1, 23
-  - role-conversion-optimizer, "Conversion Rate Optimizer", marketing, pod-growth, L5, R1, 19
+  - role-social-media-manager, "Social Media Manager", marketing, pod-growth, L4, R1, 116
+  - role-brand-copywriter, "Brand Copywriter", marketing, pod-growth, L4, R1, 30
+  - role-conversion-optimizer, "Conversion Rate Optimizer", marketing, pod-growth, L5, R1, 18
   - role-email-lifecycle-marketer, "Email & Lifecycle Marketer", marketing, pod-growth, L5, R1, 49
   - role-pr-comms-manager, "PR & Communications Manager", marketing, pod-growth, L5, R1, 20
-  - role-partnership-bd-manager, "Partnership & BD Manager", marketing, pod-growth, L5, R1, 6
-  - role-community-manager, "Community Manager", marketing, pod-customer, L4, R1, 9
+  - role-partnership-bd-manager, "Partnership & BD Manager", marketing, pod-growth, L5, R1, 7
+  - role-community-manager, "Community Manager", marketing, pod-customer, L4, R1, 12
   - role-vp-sales, "VP Sales", sales_bd, pod-growth, L8, R2, 32
   - role-account-executive, "Account Executive", sales_bd, pod-growth, L5, R1, 47
-  - role-sales-development-rep, "Sales Development Representative", sales_bd, pod-growth, L4, R1, 24
+  - role-sales-development-rep, "Sales Development Representative", sales_bd, pod-growth, L4, R1, 23
   - role-solutions-engineer, "Solutions Engineer", sales_bd, pod-growth, L5, R1, 24
   - role-customer-success-manager, "Customer Success Manager", sales_bd, pod-customer, L5, R1, 12
   - role-revenue-operations, "Revenue Operations Analyst", sales_bd, pod-growth, L5, R1, 16
   - role-enterprise-ae, "Enterprise Account Executive", sales_bd, pod-growth, L6, R2, 38
   - role-freelancer-sales, "Freelancer Business Development", sales_bd, pod-growth, L5, R1, 25
-  - role-support-engineer, "Support Engineer", customer_success, pod-customer, L4, R1, 37
-  - role-onboarding-specialist, "Onboarding Specialist", customer_success, pod-customer, L4, R1, 34
+  - role-support-engineer, "Support Engineer", customer_success, pod-customer, L4, R1, 36
+  - role-onboarding-specialist, "Onboarding Specialist", customer_success, pod-customer, L4, R1, 33
   - role-implementation-consultant, "Implementation Consultant", customer_success, pod-customer, L5, R2, 57
   - role-technical-account-manager, "Technical Account Manager", customer_success, pod-customer, L6, R1, 25
-  - role-churn-analyst, "Churn & Retention Analyst", customer_success, pod-customer, L4, R0, 7
-  - role-docs-technical-writer, "Technical Writer", customer_success, pod-customer, L4, R1, 44
+  - role-churn-analyst, "Churn & Retention Analyst", customer_success, pod-customer, L4, R0, 10
+  - role-docs-technical-writer, "Technical Writer", customer_success, pod-customer, L4, R1, 42
   - role-corporate-controller, "Corporate Controller", finance, pod-gna, L7, R3, 13
-  - role-fp-and-a-analyst, "FP&A Analyst", finance, pod-gna, L5, R0, 84
+  - role-fp-and-a-analyst, "FP&A Analyst", finance, pod-gna, L5, R0, 83
   - role-tax-compliance-spec, "Tax & Compliance Specialist", finance, pod-gna, L5, R2, 12
   - role-billing-payments-eng, "Billing & Payments Engineer", finance, pod-gna, L5, R2, 15
-  - role-treasury-banking-spec, "Treasury & Banking Specialist", finance, pod-gna, L5, R3, 4
-  - role-accounts-manager, "Accounts Manager", finance, pod-gna, L4, R2, 7
+  - role-treasury-banking-spec, "Treasury & Banking Specialist", finance, pod-gna, L5, R3, 7
+  - role-accounts-manager, "Accounts Manager", finance, pod-gna, L4, R2, 10
   - role-startup-cfo-advisor, "Startup CFO Advisor", finance, pod-gna, L7, R2, 47
   - role-cost-optimization-analyst, "Cost Optimization Analyst", finance, pod-gna, L4, R1, 28
-  - role-general-counsel, "General Counsel", legal_compliance, pod-gna, L8, R3, 9
-  - role-ip-patent-attorney, "IP & Patent Attorney", legal_compliance, pod-gna, L7, R2, 7
-  - role-contract-manager, "Contract Manager", legal_compliance, pod-gna, L5, R2, 8
+  - role-general-counsel, "General Counsel", legal_compliance, pod-gna, L8, R3, 11
+  - role-ip-patent-attorney, "IP & Patent Attorney", legal_compliance, pod-gna, L7, R2, 8
+  - role-contract-manager, "Contract Manager", legal_compliance, pod-gna, L5, R2, 10
   - role-compliance-officer, "Compliance Officer", legal_compliance, pod-gna, L6, R2, 28
   - role-data-protection-officer, "Data Protection Officer", legal_compliance, pod-gna, L6, R2, 29
   - role-risk-manager, "Risk Manager", legal_compliance, pod-gna, L6, R1, 16
-  - role-vp-people, "VP People", people_ops, pod-people, L8, R2, 22
-  - role-recruiter, "Talent Recruiter", people_ops, pod-people, L4, R1, 21
+  - role-vp-people, "VP People", people_ops, pod-people, L8, R2, 21
+  - role-recruiter, "Talent Recruiter", people_ops, pod-people, L4, R1, 19
   - role-hr-business-partner, "HR Business Partner", people_ops, pod-people, L5, R1, 24
-  - role-hr-ops-specialist, "HR Operations Specialist", people_ops, pod-people, L4, R2, 6
-  - role-learning-development, "L&D Specialist", people_ops, pod-people, L4, R1, 30
-  - role-procurement-vendor-manager, "Procurement & Vendor Manager", people_ops, pod-gna, L5, R2, 6
+  - role-hr-ops-specialist, "HR Operations Specialist", people_ops, pod-people, L4, R2, 9
+  - role-learning-development, "L&D Specialist", people_ops, pod-people, L4, R1, 29
+  - role-procurement-vendor-manager, "Procurement & Vendor Manager", people_ops, pod-gna, L5, R2, 9
   - role-office-facilities-manager, "Office & Facilities Manager", people_ops, pod-gna, L4, R1, 13
   - role-executive-assistant, "Executive Assistant", people_ops, pod-gna, L4, R1, 13
   - role-solopreneur-operator, "Solopreneur Operator", people_ops, pod-gna, L6, R1, 68
   - role-chief-of-staff, "Chief of Staff", people_ops, pod-gna, L6, R1, 26
   - role-it-systems-admin, "IT Systems Administrator", it_infra, pod-build, L4, R2, 30
-  - role-cloud-architect, "Cloud Architect", it_infra, pod-build, L7, R2, 83
+  - role-cloud-architect, "Cloud Architect", it_infra, pod-build, L7, R2, 82
   - role-platform-engineer, "Platform Engineer", it_infra, pod-build, L5, R2, 20
   - role-cybersecurity-analyst, "Cybersecurity Analyst", it_infra, pod-gna, L5, R2, 28
   - role-observability-engineer, "Observability Engineer", it_infra, pod-build, L5, R1, 31
   - role-finops-cloud-cost, "FinOps / Cloud Cost Engineer", it_infra, pod-gna, L5, R1, 20
-skills[2247]{id, tier}:
+skills[2287]{id, tier}:
   - 1password-mcp, 2
   - 3b1b-manim, 1
   - 3d-web-experience, 2
+  - a11y-copy-audit, 2
   - ab-test-setup, 2
   - acceptance-orchestrator, 2
   - accessibility-audit, 2
@@ -124,6 +125,7 @@ skills[2247]{id, tier}:
   - advanced-mathematical-reasoning, 2
   - adversarial-red-team, 2
   - adversarial-verification-method, 2
+  - affiliate-program-ops, 2
   - agent-arch-audit, 2
   - agent-benchmarking, 2
   - agent-comparison, 2
@@ -207,6 +209,7 @@ skills[2247]{id, tier}:
   - algorithmic-art, 2
   - alpha-vantage, 2
   - amazon-alexa, 2
+  - ambassador-event-ops, 2
   - amplitude-automation, 2
   - analytics-and-reporting, 2
   - analytics-product, 2
@@ -233,6 +236,7 @@ skills[2247]{id, tier}:
   - antigravity-skill-orchestrator, 2
   - antigravity-workflows, 2
   - aomi-transact, 2
+  - ap-ar-aging-schedules, 2
   - api-connector-builder, 1
   - api-design, 1
   - api-design-principles, 2
@@ -460,6 +464,7 @@ skills[2247]{id, tier}:
   - behind-the-scenes-and-founder, 2
   - benchmark-methodology, 2
   - benchmark-optimization-loop, 1
+  - benefits-leave-administration, 2
   - bengali-nlp, 2
   - benji-stage-stageshow, 2
   - bevy-ecs-expert, 2
@@ -513,6 +518,7 @@ skills[2247]{id, tier}:
   - canva, 2
   - canva-automation, 2
   - canvas-design, 2
+  - cap-table-modeler, 2
   - capcut, 2
   - caption-writer, 2
   - captions-and-clipping, 2
@@ -552,6 +558,7 @@ skills[2247]{id, tier}:
   - cloud-sandbox-execution, 2
   - cloudflare-workers-expert, 2
   - cloudformation-best-practices, 2
+  - co-marketing-term-sheet-builder, 2
   - coda-automation, 2
   - code-cli-expert, 2
   - code-cli-guide, 2
@@ -572,12 +579,15 @@ skills[2247]{id, tier}:
   - coding-standards, 2
   - cofounder-compatibility-matcher, 2
   - cognitive-thinking-partner, 2
+  - cohort-retention-curves, 2
   - colab-cloud-execution, 2
   - cold-email, 2
   - collabs-and-cross-promotion, 2
+  - collections-dunning-automation, 2
   - comfyui-gateway, 2
   - comic-creator, 2
   - community-management, 2
+  - community-sentiment-trends, 2
   - competitive-landscape, 2
   - competitive-platform-analysis, 2
   - competitive-report-structure, 2
@@ -645,6 +655,7 @@ skills[2247]{id, tier}:
   - copywriting-psychologist, 2
   - core-components, 2
   - core-skill-obedience, 2
+  - corporate-governance-resolutions, 2
   - cost-aware-llm-pipeline, 2
   - cost-optimization, 2
   - cost-tracking, 2
@@ -671,15 +682,18 @@ skills[2247]{id, tier}:
   - criminal-defense-law-consultant, 2
   - crisis-and-moderation, 2
   - cross-platform-repurposing, 2
+  - crossborder-tia, 2
   - crypto-bd-agent, 2
   - csharp-pro, 1
   - csharp-testing, 1
   - customer-billing-ops, 2
+  - customer-health-score, 2
   - customer-psychographic-profiler, 2
   - customer-support, 2
   - customs-trade-compliance, 2
   - cve-vulnerability-intelligence, 2
   - d3js-visualization, 2
+  - daily-cashflow-forecast, 2
   - daily-gift, 2
   - daily-news-report, 2
   - daily-webrtc-video-api, 2
@@ -721,6 +735,7 @@ skills[2247]{id, tier}:
   - deepseek-harness-setup, 2
   - defi-amm-security, 2
   - defi-protocol-templates, 2
+  - deidentification-benchmark, 2
   - delivery-gate, 2
   - dependency-management-deps-audit, 2
   - dependency-upgrade, 1
@@ -785,6 +800,7 @@ skills[2247]{id, tier}:
   - dotnet-patterns, 2
   - drizzle-orm-expert, 2
   - dropbox-automation, 2
+  - dsar-pipeline, 2
   - dwarf-expert, 2
   - dx-optimizer, 2
   - dynamic-workflow-mode, 2
@@ -951,6 +967,8 @@ skills[2247]{id, tier}:
   - fullstack-app-deployment, 2
   - fullstack-development-workflow, 2
   - fullstack-feature, 2
+  - fundraising-data-room, 2
+  - fx-hedging-advisor, 2
   - game-development, 2
   - gan-style-harness, 2
   - gateway-smoke-test, 2
@@ -1381,6 +1399,7 @@ skills[2247]{id, tier}:
   - lead-intelligence, 2
   - lead-magnets, 2
   - lead-magnets-and-funnels, 2
+  - ledger-reconciliation, 2
   - legacy-modernize, 2
   - legacy-modernizer, 2
   - legal-advisor, 2
@@ -1405,6 +1424,7 @@ skills[2247]{id, tier}:
   - linux-troubleshooting, 2
   - liquid-glass-design, 2
   - listicle-and-roundup, 2
+  - litigation-regulatory-risk-scanner, 2
   - livestream-and-realtime, 2
   - living-docs-governance, 2
   - llm-app-patterns, 2
@@ -1479,6 +1499,7 @@ skills[2247]{id, tier}:
   - messages-ops, 2
   - metasploit-framework, 2
   - micro-saas-launcher, 2
+  - microcopy-pattern-library, 2
   - microservices-patterns, 1
   - microsoft-azure-webjobs-extensions-authentication-events-dotnet, 2
   - microsoft-teams-automation, 2
@@ -1502,6 +1523,7 @@ skills[2247]{id, tier}:
   - mobile-security-coder, 2
   - mobile-xss-scan, 2
   - mock-hunter, 2
+  - moderation-escalation-ladder, 2
   - modern-javascript-patterns, 2
   - modern-web-guidance, 1
   - module-governance, 2
@@ -1568,6 +1590,7 @@ skills[2247]{id, tier}:
   - notebooklm-researcher, 2
   - notion-automation, 2
   - notion-template-business, 2
+  - nps-sentiment-root-cause, 2
   - nutrient-document-processing, 2
   - nutrition-analyzer, 2
   - nuxt4-patterns, 2
@@ -1607,6 +1630,7 @@ skills[2247]{id, tier}:
   - on-call-handoff-patterns, 2
   - onboarding-cro, 2
   - onboarding-psychologist, 2
+  - onboarding-tooltip-system, 2
   - one-drive-automation, 2
   - openapi-spec-generation, 2
   - openclaw-github-repo-commander, 2
@@ -1629,6 +1653,7 @@ skills[2247]{id, tier}:
   - os-scripting, 2
   - osint-investigation, 1
   - oss-hunter, 2
+  - oss-license-risk-audit, 2
   - outlook-automation, 2
   - outlook-calendar-automation, 2
   - owasp-top-10-testing, 1
@@ -1640,8 +1665,11 @@ skills[2247]{id, tier}:
   - paper-orchestra, 1
   - parallel-agents, 2
   - parallel-execution-optimizer, 2
+  - partner-ecosystem-mapping, 2
+  - patent-claim-drafter, 2
   - payment-integration, 2
   - paypal-integration, 2
+  - payroll-cycle-ops, 2
   - paywall-upgrade-cro, 2
   - pci-compliance, 2
   - pdf-document-processing, 2
@@ -1701,6 +1729,7 @@ skills[2247]{id, tier}:
   - prediction-market-risk-review, 2
   - price-psychology-strategist, 2
   - pricing-strategy, 2
+  - prior-art-search, 2
   - prisma-expert, 2
   - prisma-patterns, 2
   - privacy-by-design, 2
@@ -1797,6 +1826,7 @@ skills[2247]{id, tier}:
   - reddit-marketing, 2
   - redesign-existing-projects, 2
   - redis-patterns, 2
+  - redline-diff-analyzer, 2
   - reels-script, 2
   - refactor-clean, 2
   - refactor-context-restore, 2
@@ -1808,11 +1838,13 @@ skills[2247]{id, tier}:
   - remotion-video-creation, 2
   - remove-animations, 1
   - render-automation, 2
+  - renewal-and-liability-watch, 2
   - repl-runner, 2
   - reply-and-comment-writer, 2
   - repo-scan, 2
   - requesting-code-review, 2
   - research-ops, 2
+  - retrospective-synthesis, 2
   - returns-reverse-logistics, 2
   - revenue-operations-analytics, 2
   - reverse-engineer, 2
@@ -1831,6 +1863,7 @@ skills[2247]{id, tier}:
   - ruby-pro, 1
   - rules-distill, 2
   - runway, 2
+  - runway-sensitivity-analysis, 2
   - rust-async-patterns, 1
   - rust-patterns, 1
   - rust-pro, 1
@@ -1934,6 +1967,7 @@ skills[2247]{id, tier}:
   - service-mesh-expert, 2
   - service-mesh-observability, 2
   - settings-audit, 2
+  - settlement-reconciliation-audit, 2
   - sexual-health-analyzer, 2
   - shadcn-ui-components, 2
   - shader-programming-glsl, 2
@@ -2007,6 +2041,7 @@ skills[2247]{id, tier}:
   - springboot-security, 2
   - springboot-tdd, 2
   - springboot-verification, 2
+  - sprint-backlog-grooming, 2
   - sql-injection-testing, 2
   - sql-migrations, 2
   - sql-optimization-patterns, 2
@@ -2024,6 +2059,7 @@ skills[2247]{id, tier}:
   - startup-metrics-framework, 2
   - statsmodels, 2
   - story-lifecycle, 2
+  - story-pointing-calibration, 2
   - story-writer, 2
   - storytelling-and-narrative, 2
   - strategic-compact, 2
@@ -2205,6 +2241,9 @@ skills[2247]{id, tier}:
   - vector-database-engineer, 2
   - vector-index-tuning, 2
   - vector-semantic-file-search, 2
+  - vendor-rfp-generator, 2
+  - vendor-sla-breach-watch, 2
+  - vendor-spend-consolidator, 2
   - veo-3, 2
   - vercel-ai-sdk-expert, 2
   - vercel-automation, 2
@@ -2282,6 +2321,7 @@ skills[2247]{id, tier}:
   - workflow-automation, 2
   - workflow-orchestration-patterns, 1
   - workflow-patterns, 1
+  - workforce-compliance-tracker, 2
   - workplace-wellness-assistant, 2
   - workspace-surface-audit, 2
   - wrike-automation, 2
@@ -2357,7 +2397,7 @@ skills[2247]{id, tier}:
   - zoho-crm-automation, 2
   - zoom-automation, 2
   - zustand-store-ts, 2
-edges[4590]{from, to, type}:
+edges[4620]{from, to, type}:
   - role-ceo, andruia-niche-intel, specialized_skill
   - role-ceo, auction-property-appraisal, specialized_skill
   - role-ceo, auri-core, specialized_skill
@@ -2424,7 +2464,6 @@ edges[4590]{from, to, type}:
   - role-cto, cofounder-compatibility-matcher, specialized_skill
   - role-cto, context-and-decisions, specialized_skill
   - role-cto, expert-tech-architect, specialized_skill
-  - role-cto, faang-architect, primary_skill
   - role-cto, m365-agents-dotnet, specialized_skill
   - role-cto, multi-cloud-architecture, primary_skill
   - role-cto, nodejs-best-practices, specialized_skill
@@ -2432,6 +2471,7 @@ edges[4590]{from, to, type}:
   - role-cto, saas-mvp-launcher, specialized_skill
   - role-cto, senior-architect, primary_skill
   - role-cto, settings-audit, specialized_skill
+  - role-cto, software-architecture, primary_skill
   - role-cto, svg-diagram-gen, specialized_skill
   - role-cto, swiftui-architecture, specialized_skill
   - role-cto, turborepo-caching, specialized_skill
@@ -2476,7 +2516,6 @@ edges[4590]{from, to, type}:
   - role-coo, workspace-surface-audit, specialized_skill
   - role-coo, zapier-make-patterns, specialized_skill
   - role-cpo, backtesting-frameworks, specialized_skill
-  - role-cpo, blog-writing-guide, specialized_skill
   - role-cpo, business-case-analysis, specialized_skill
   - role-cpo, competitor-alternatives, specialized_skill
   - role-cpo, core-skill-obedience, specialized_skill
@@ -2498,7 +2537,6 @@ edges[4590]{from, to, type}:
   - role-cpo, product-lens, specialized_skill
   - role-cpo, product-manager, primary_skill
   - role-cpo, product-manager-toolkit, primary_skill
-  - role-cpo, product-marketing-context, specialized_skill
   - role-cpo, saas-monetization-strategy, specialized_skill
   - role-cpo, strategic-compact, specialized_skill
   - role-cpo, tdd-red-phase, specialized_skill
@@ -2513,23 +2551,27 @@ edges[4590]{from, to, type}:
   - role-cmo, brand-guidelines, primary_skill
   - role-cmo, content-pillars, specialized_skill
   - role-cmo, content-strategy, primary_skill
+  - role-cmo, copy-editing, specialized_skill
   - role-cmo, daily-gift, specialized_skill
   - role-cmo, descript, specialized_skill
   - role-cmo, free-tool-strategy, specialized_skill
   - role-cmo, growth-engine, specialized_skill
   - role-cmo, growth-log, specialized_skill
-  - role-cmo, hashtag-strategy, specialized_skill
   - role-cmo, idea-generation-and-ideation, specialized_skill
   - role-cmo, identity-mirror, specialized_skill
   - role-cmo, market-opportunity, primary_skill
   - role-cmo, marketing-ideas, specialized_skill
+  - role-cmo, marketing-psychology, specialized_skill
   - role-cmo, pinterest-growth, specialized_skill
+  - role-cmo, product-marketing-context, specialized_skill
   - role-cmo, prompt-caching, specialized_skill
   - role-cmo, referral-program, specialized_skill
   - role-cmo, reply-and-comment-writer, specialized_skill
   - role-cmo, seasonal-and-moment-marketing, specialized_skill
   - role-cmo, seo-audit, primary_skill
   - role-cmo, sop-growth, specialized_skill
+  - role-cmo, ugc-and-influencer, specialized_skill
+  - role-cmo, web-vitals-performance-benchmark, specialized_skill
   - role-cmo, writing-style-and-tone, specialized_skill
   - role-cmo, x-growth, specialized_skill
   - role-cso, akf-trust-metadata, specialized_skill
@@ -2576,12 +2618,16 @@ edges[4590]{from, to, type}:
   - role-cso, wordpress-development, specialized_skill
   - role-cfo, analytics-tracking, primary_skill
   - role-cfo, billing-automation, primary_skill
+  - role-cfo, cap-table-modeler, primary_skill
   - role-cfo, financial-projections, primary_skill
+  - role-cfo, fundraising-data-room, primary_skill
   - role-cfo, investor-materials, specialized_skill
   - role-cfo, investor-outreach, specialized_skill
   - role-cfo, puzzle-activity-planner, specialized_skill
+  - role-cfo, runway-sensitivity-analysis, primary_skill
   - role-cfo, startup-financial-modeling, primary_skill
   - role-vp-engineering, ai-first-engineering, specialized_skill
+  - role-vp-engineering, architect-review, primary_skill
   - role-vp-engineering, brooks-lint, specialized_skill
   - role-vp-engineering, brownfield-retrospective, specialized_skill
   - role-vp-engineering, context-manager, specialized_skill
@@ -2589,11 +2635,9 @@ edges[4590]{from, to, type}:
   - role-vp-engineering, dispatching-parallel-agents, specialized_skill
   - role-vp-engineering, engineering-blueprint-planner, primary_skill
   - role-vp-engineering, engineering-recipes-playbook, specialized_skill
-  - role-vp-engineering, faang-architect, primary_skill
   - role-vp-engineering, family-health-analyzer, specialized_skill
   - role-vp-engineering, firmware-analyst, specialized_skill
   - role-vp-engineering, first-principles-engineering-advisor, specialized_skill
-  - role-vp-engineering, free-tool-strategy, specialized_skill
   - role-vp-engineering, incident-response, primary_skill
   - role-vp-engineering, llm-prompt-optimizer, specialized_skill
   - role-vp-engineering, module-regression, specialized_skill
@@ -2636,7 +2680,6 @@ edges[4590]{from, to, type}:
   - role-product-director, sop-build, specialized_skill
   - role-product-director, team-agent-orchestration, specialized_skill
   - role-product-director, visionary-product-craftsmanship, specialized_skill
-  - role-product-director, webpage-screenshot-capture, specialized_skill
   - role-senior-pm, ai-agent-discovery, specialized_skill
   - role-senior-pm, api-fuzzing-bug-bounty, specialized_skill
   - role-senior-pm, ask-questions-if-underspecified, primary_skill
@@ -2675,11 +2718,13 @@ edges[4590]{from, to, type}:
   - role-pm, product-manager, primary_skill
   - role-pm, pydantic-models-py, primary_skill
   - role-pm, rapid-mvp-prototyping, specialized_skill
-  - role-scrum-agile-coach, angular, specialized_skill
   - role-scrum-agile-coach, conductor-status, primary_skill
   - role-scrum-agile-coach, developer-session-diary, primary_skill
   - role-scrum-agile-coach, kanban-agent-pipeline, primary_skill
   - role-scrum-agile-coach, project-flow-ops, primary_skill
+  - role-scrum-agile-coach, retrospective-synthesis, primary_skill
+  - role-scrum-agile-coach, sprint-backlog-grooming, primary_skill
+  - role-scrum-agile-coach, story-pointing-calibration, primary_skill
   - role-ux-researcher, analytics-tracking, primary_skill
   - role-ux-researcher, ask-questions-if-underspecified, primary_skill
   - role-ux-researcher, auction-market-research, specialized_skill
@@ -2709,6 +2754,7 @@ edges[4590]{from, to, type}:
   - role-growth-pm, ab-test-setup, primary_skill
   - role-growth-pm, activecampaign-automation, specialized_skill
   - role-growth-pm, analytics-tracking, primary_skill
+  - role-growth-pm, awareness-stage-mapper, specialized_skill
   - role-growth-pm, context-restore, specialized_skill
   - role-growth-pm, continuous-agent-loop, specialized_skill
   - role-growth-pm, convertkit-automation, specialized_skill
@@ -2726,6 +2772,7 @@ edges[4590]{from, to, type}:
   - role-growth-pm, posthog-automation, primary_skill
   - role-growth-pm, postmark-automation, specialized_skill
   - role-growth-pm, sendgrid-automation, specialized_skill
+  - role-growth-pm, terminal-opener, specialized_skill
   - role-product-analyst, ai-product, specialized_skill
   - role-product-analyst, analytics-tracking, primary_skill
   - role-product-analyst, before-after-and-transformation, specialized_skill
@@ -2780,7 +2827,6 @@ edges[4590]{from, to, type}:
   - role-technical-pm, technical-documentation-writer, specialized_skill
   - role-technical-pm, telegram-bot-integration, specialized_skill
   - role-technical-pm, unsplash-integration, specialized_skill
-  - role-technical-pm, vibe-to-production, specialized_skill
   - role-technical-pm, write-swift, specialized_skill
   - role-technical-pm, writing-plans, specialized_skill
   - role-staff-engineer, agyos-academic-research, specialized_skill
@@ -2806,7 +2852,7 @@ edges[4590]{from, to, type}:
   - role-staff-engineer, agyos-swarm-prediction-engine, specialized_skill
   - role-staff-engineer, agyos-verify, specialized_skill
   - role-staff-engineer, andruia-consultant, specialized_skill
-  - role-staff-engineer, architect-review, specialized_skill
+  - role-staff-engineer, architect-review, primary_skill
   - role-staff-engineer, architecture-decision-records, primary_skill
   - role-staff-engineer, azure-eventhub-dotnet, specialized_skill
   - role-staff-engineer, azure-eventhub-java, specialized_skill
@@ -2819,7 +2865,6 @@ edges[4590]{from, to, type}:
   - role-staff-engineer, azure-servicebus-py, specialized_skill
   - role-staff-engineer, azure-servicebus-ts, specialized_skill
   - role-staff-engineer, azure-web-pubsub-ts, specialized_skill
-  - role-staff-engineer, clean-architecture-craftsmanship, specialized_skill
   - role-staff-engineer, code-reviewer, primary_skill
   - role-staff-engineer, council-list, specialized_skill
   - role-staff-engineer, council-multi-model, specialized_skill
@@ -2830,10 +2875,20 @@ edges[4590]{from, to, type}:
   - role-staff-engineer, deployment-engineer, specialized_skill
   - role-staff-engineer, differential-review, primary_skill
   - role-staff-engineer, expert-tech-architect, specialized_skill
-  - role-staff-engineer, faang-architect, primary_skill
   - role-staff-engineer, flox-environments, specialized_skill
   - role-staff-engineer, gh-review-requests, specialized_skill
   - role-staff-engineer, git-onboarding, specialized_skill
+  - role-staff-engineer, jake-replica-replica-architect, specialized_skill
+  - role-staff-engineer, jake-replica-replica-backend, specialized_skill
+  - role-staff-engineer, jake-replica-replica-brand, specialized_skill
+  - role-staff-engineer, jake-replica-replica-build, specialized_skill
+  - role-staff-engineer, jake-replica-replica-deploy, specialized_skill
+  - role-staff-engineer, jake-replica-replica-design, specialized_skill
+  - role-staff-engineer, jake-replica-replica-diff, specialized_skill
+  - role-staff-engineer, jake-replica-replica-entrepreneur, specialized_skill
+  - role-staff-engineer, jake-replica-replica-launch, specialized_skill
+  - role-staff-engineer, jake-replica-replica-recon, specialized_skill
+  - role-staff-engineer, jake-replica-replica-test, specialized_skill
   - role-staff-engineer, lightning-architecture-review, specialized_skill
   - role-staff-engineer, reverse-engineer, specialized_skill
   - role-staff-engineer, senior-architect, primary_skill
@@ -2871,7 +2926,6 @@ edges[4590]{from, to, type}:
   - role-senior-swe, astro, specialized_skill
   - role-senior-swe, backend-dev-guidelines, specialized_skill
   - role-senior-swe, c-pro, specialized_skill
-  - role-senior-swe, clean-architecture-craftsmanship, specialized_skill
   - role-senior-swe, click-path-audit, specialized_skill
   - role-senior-swe, code-review-excellence, specialized_skill
   - role-senior-swe, code-reviewer, primary_skill
@@ -3046,6 +3100,7 @@ edges[4590]{from, to, type}:
   - role-swe, brooks-lint, specialized_skill
   - role-swe, c4-code, specialized_skill
   - role-swe, c4-component, specialized_skill
+  - role-swe, clean-architecture-craftsmanship, primary_skill
   - role-swe, clean-code, specialized_skill
   - role-swe, code-cli-expert, specialized_skill
   - role-swe, code-explainer, specialized_skill
@@ -3149,14 +3204,12 @@ edges[4590]{from, to, type}:
   - role-swe, rfc-pipeline, specialized_skill
   - role-swe, search-first, specialized_skill
   - role-swe, similarity-search-patterns, specialized_skill
-  - role-swe, software-architecture, specialized_skill
   - role-swe, speed-reader, specialized_skill
   - role-swe, superpowers-lab, specialized_skill
   - role-swe, swiftui-liquid-glass, specialized_skill
   - role-swe, systematic-debugging, primary_skill
   - role-swe, systems-programming-rust-project, specialized_skill
   - role-swe, tdd-green-phase, specialized_skill
-  - role-swe, tdd-guide, primary_skill
   - role-swe, tdd-workflow, specialized_skill
   - role-swe, test-collaboration, specialized_skill
   - role-swe, test-driven-development, primary_skill
@@ -3165,7 +3218,7 @@ edges[4590]{from, to, type}:
   - role-swe, typescript-patterns, specialized_skill
   - role-swe, unit-testing-test-generate, specialized_skill
   - role-swe, verification-loop, specialized_skill
-  - role-swe, vibe-engineer, primary_skill
+  - role-swe, vibe-to-production, primary_skill
   - role-swe, vscode-extension-guide-en, specialized_skill
   - role-swe, writing-plans, specialized_skill
   - role-frontend-engineer, 3d-web-experience, specialized_skill
@@ -3334,7 +3387,6 @@ edges[4590]{from, to, type}:
   - role-frontend-engineer, web-interface-guidelines, specialized_skill
   - role-frontend-engineer, web-performance-optimization, specialized_skill
   - role-frontend-engineer, web-scraper, specialized_skill
-  - role-frontend-engineer, web-vitals-performance-benchmark, specialized_skill
   - role-frontend-engineer, webapp-testing, specialized_skill
   - role-frontend-engineer, windows-desktop-e2e, specialized_skill
   - role-frontend-engineer, windows-privilege-escalation, specialized_skill
@@ -3768,7 +3820,6 @@ edges[4590]{from, to, type}:
   - role-devops-engineer, network-101, specialized_skill
   - role-devops-engineer, network-bgp-diagnostics, specialized_skill
   - role-devops-engineer, network-config-validation, specialized_skill
-  - role-devops-engineer, network-engineer, specialized_skill
   - role-devops-engineer, network-interface-health, specialized_skill
   - role-devops-engineer, recursive-decision-ledger, specialized_skill
   - role-devops-engineer, service-mesh-expert, specialized_skill
@@ -3930,6 +3981,7 @@ edges[4590]{from, to, type}:
   - role-qa-engineer, expert-qa-test, specialized_skill
   - role-qa-engineer, fsharp-testing, specialized_skill
   - role-qa-engineer, gateway-smoke-test, specialized_skill
+  - role-qa-engineer, git-pr-review, primary_skill
   - role-qa-engineer, healthcare-eval-harness, specialized_skill
   - role-qa-engineer, lambdatest-testing, specialized_skill
   - role-qa-engineer, opus-clip, specialized_skill
@@ -3938,7 +3990,6 @@ edges[4590]{from, to, type}:
   - role-qa-engineer, perf-test-review, specialized_skill
   - role-qa-engineer, playwright-browser-testing, primary_skill
   - role-qa-engineer, playwright-java, specialized_skill
-  - role-qa-engineer, pr-test-analyzer, primary_skill
   - role-qa-engineer, process-verify-completion, specialized_skill
   - role-qa-engineer, qa-tdd-architect, specialized_skill
   - role-qa-engineer, reasoning-harness, specialized_skill
@@ -3947,11 +3998,11 @@ edges[4590]{from, to, type}:
   - role-qa-engineer, security-requirement-extraction, specialized_skill
   - role-qa-engineer, semgrep-rule-variant-creator, specialized_skill
   - role-qa-engineer, sop-build, specialized_skill
-  - role-qa-engineer, tdd-guide, primary_skill
   - role-qa-engineer, tdd-orchestrator, specialized_skill
   - role-qa-engineer, tdd-workflow, specialized_skill
   - role-qa-engineer, test-automator, specialized_skill
   - role-qa-engineer, test-collaboration, specialized_skill
+  - role-qa-engineer, test-driven-development, primary_skill
   - role-qa-engineer, test-fixing, specialized_skill
   - role-qa-engineer, testing-patterns, specialized_skill
   - role-qa-engineer, testing-qa, specialized_skill
@@ -4055,10 +4106,9 @@ edges[4590]{from, to, type}:
   - role-network-infra-eng, mtls-configuration, primary_skill
   - role-network-infra-eng, netmiko-ssh-automation, specialized_skill
   - role-network-infra-eng, network-101, specialized_skill
-  - role-network-infra-eng, network-architect, primary_skill
   - role-network-infra-eng, network-bgp-diagnostics, specialized_skill
   - role-network-infra-eng, network-config-validation, specialized_skill
-  - role-network-infra-eng, network-engineer, specialized_skill
+  - role-network-infra-eng, network-engineer, primary_skill
   - role-network-infra-eng, network-interface-health, specialized_skill
   - role-network-infra-eng, pentest-commands, specialized_skill
   - role-network-infra-eng, ssrf-oob-interaction-testing, specialized_skill
@@ -4136,8 +4186,7 @@ edges[4590]{from, to, type}:
   - role-agentic-workflow-architect, agent-sorting, specialized_skill
   - role-agentic-workflow-architect, agentic-actions-auditor, specialized_skill
   - role-agentic-workflow-architect, agentic-os, specialized_skill
-  - role-agentic-workflow-architect, agents-sdk, primary_skill
-  - role-agentic-workflow-architect, agents-spec-generator, specialized_skill
+  - role-agentic-workflow-architect, agents-spec-generator, primary_skill
   - role-agentic-workflow-architect, agents-v2-py, specialized_skill
   - role-agentic-workflow-architect, agenttrace-session-audit, specialized_skill
   - role-agentic-workflow-architect, agyos-academic-research, specialized_skill
@@ -4786,6 +4835,9 @@ edges[4590]{from, to, type}:
   - role-research-scientist, self-supervised-learning-jepa, specialized_skill
   - role-research-scientist, tavily-web, specialized_skill
   - role-research-scientist, universal-ai-research, specialized_skill
+  - role-privacy-engineer, crossborder-tia, primary_skill
+  - role-privacy-engineer, deidentification-benchmark, primary_skill
+  - role-privacy-engineer, dsar-pipeline, primary_skill
   - role-privacy-engineer, gdpr-data-handling, primary_skill
   - role-privacy-engineer, healthcare-phi-compliance, primary_skill
   - role-privacy-engineer, privacy-by-design, primary_skill
@@ -5039,7 +5091,6 @@ edges[4590]{from, to, type}:
   - role-product-designer, saas-multi-tenant, specialized_skill
   - role-product-designer, scroll-experience, specialized_skill
   - role-product-designer, sketch-to-3d-render-design, specialized_skill
-  - role-product-designer, software-architecture, specialized_skill
   - role-product-designer, swiftui-ui-patterns, primary_skill
   - role-product-designer, team-composition-analysis, specialized_skill
   - role-product-designer, tool-design, specialized_skill
@@ -5049,7 +5100,6 @@ edges[4590]{from, to, type}:
   - role-product-designer, ux-feedback, specialized_skill
   - role-product-designer, ux-flow, specialized_skill
   - role-product-designer, ux-persuasion-engineer, specialized_skill
-  - role-product-designer, vibe-to-production, specialized_skill
   - role-product-designer, visionary-product-craftsmanship, specialized_skill
   - role-product-designer, web-animation-design, specialized_skill
   - role-brand-designer, ai-image-editing, specialized_skill
@@ -5259,17 +5309,21 @@ edges[4590]{from, to, type}:
   - role-design-system-engineer, ui-tokens, primary_skill
   - role-design-system-engineer, ui-visual-validator, specialized_skill
   - role-design-system-engineer, unity-ecs-patterns, specialized_skill
+  - role-ux-copywriter, a11y-copy-audit, primary_skill
   - role-ux-copywriter, avoid-ai-writing, primary_skill
   - role-ux-copywriter, content-creator, primary_skill
   - role-ux-copywriter, conversion-copywriting, primary_skill
   - role-ux-copywriter, hook-writer, primary_skill
   - role-ux-copywriter, i18n-sync, specialized_skill
   - role-ux-copywriter, lightning-factory-explainer, specialized_skill
+  - role-ux-copywriter, microcopy-pattern-library, primary_skill
+  - role-ux-copywriter, onboarding-tooltip-system, primary_skill
   - role-ux-copywriter, ux-copy, primary_skill
   - role-content-strategist, adversarial-verification-method, specialized_skill
   - role-content-strategist, article-writing, specialized_skill
   - role-content-strategist, audience-research, specialized_skill
   - role-content-strategist, batch-content-plan, primary_skill
+  - role-content-strategist, blog-writing-guide, specialized_skill
   - role-content-strategist, box-automation, specialized_skill
   - role-content-strategist, browser-extension-builder, specialized_skill
   - role-content-strategist, campaign-and-launch-planning, specialized_skill
@@ -5436,7 +5490,6 @@ edges[4590]{from, to, type}:
   - role-content-strategist, twitter-article-publisher, specialized_skill
   - role-content-strategist, twitter-automation, specialized_skill
   - role-content-strategist, twitter-post-scraper, specialized_skill
-  - role-content-strategist, ugc-and-influencer, specialized_skill
   - role-content-strategist, wcag-audit-patterns, specialized_skill
   - role-content-strategist, web-fuzzing-ffuf, specialized_skill
   - role-content-strategist, webpage-article-extractor, specialized_skill
@@ -5553,7 +5606,6 @@ edges[4590]{from, to, type}:
   - role-social-media-manager, fixing-metadata, specialized_skill
   - role-social-media-manager, goals-and-kpis, specialized_skill
   - role-social-media-manager, hashtag-strategy, specialized_skill
-  - role-social-media-manager, headline-psychologist, specialized_skill
   - role-social-media-manager, instagram-automation, specialized_skill
   - role-social-media-manager, instagram-graph-api, specialized_skill
   - role-social-media-manager, instagram-growth, primary_skill
@@ -5632,7 +5684,6 @@ edges[4590]{from, to, type}:
   - role-social-media-manager, twitter-article-publisher, specialized_skill
   - role-social-media-manager, twitter-automation, specialized_skill
   - role-social-media-manager, twitter-post-scraper, specialized_skill
-  - role-social-media-manager, ugc-and-influencer, specialized_skill
   - role-social-media-manager, url-to-markdown, specialized_skill
   - role-social-media-manager, videodb-media-engine, specialized_skill
   - role-social-media-manager, webpage-screenshot-capture, specialized_skill
@@ -5653,6 +5704,7 @@ edges[4590]{from, to, type}:
   - role-social-media-manager, youtube-summarizer, specialized_skill
   - role-social-media-manager, youtube-transcript, specialized_skill
   - role-brand-copywriter, avoid-ai-writing, primary_skill
+  - role-brand-copywriter, awareness-stage-mapper, specialized_skill
   - role-brand-copywriter, brand-voice, primary_skill
   - role-brand-copywriter, canva-automation, specialized_skill
   - role-brand-copywriter, caption-writer, specialized_skill
@@ -5662,6 +5714,9 @@ edges[4590]{from, to, type}:
   - role-brand-copywriter, copywriting-psychologist, specialized_skill
   - role-brand-copywriter, cross-platform-repurposing, specialized_skill
   - role-brand-copywriter, customer-psychographic-profiler, specialized_skill
+  - role-brand-copywriter, free-tool-strategy, specialized_skill
+  - role-brand-copywriter, hashtag-strategy, specialized_skill
+  - role-brand-copywriter, headline-psychologist, specialized_skill
   - role-brand-copywriter, hook-writer, primary_skill
   - role-brand-copywriter, i18n-sync, specialized_skill
   - role-brand-copywriter, interactive-content, specialized_skill
@@ -5670,14 +5725,16 @@ edges[4590]{from, to, type}:
   - role-brand-copywriter, pr-enhancement, specialized_skill
   - role-brand-copywriter, pr-enhancer, specialized_skill
   - role-brand-copywriter, pr-writer, specialized_skill
+  - role-brand-copywriter, sop-growth, specialized_skill
   - role-brand-copywriter, story-writer, specialized_skill
   - role-brand-copywriter, trending-tech-tracker, specialized_skill
+  - role-brand-copywriter, ugc-and-influencer, specialized_skill
   - role-brand-copywriter, viral-reverse-engineering, specialized_skill
+  - role-brand-copywriter, webpage-screenshot-capture, specialized_skill
   - role-brand-copywriter, writing-clearly-and-concisely, specialized_skill
   - role-brand-copywriter, x-growth, specialized_skill
   - role-conversion-optimizer, ab-test-setup, primary_skill
   - role-conversion-optimizer, analytics-tracking, primary_skill
-  - role-conversion-optimizer, copy-editing, specialized_skill
   - role-conversion-optimizer, copywriting-psychologist, specialized_skill
   - role-conversion-optimizer, discord-bot-architect, specialized_skill
   - role-conversion-optimizer, form-cro, primary_skill
@@ -5763,17 +5820,21 @@ edges[4590]{from, to, type}:
   - role-pr-comms-manager, self-supervised-learning-jepa, specialized_skill
   - role-pr-comms-manager, task-intelligence, specialized_skill
   - role-pr-comms-manager, whatsapp-automation, specialized_skill
-  - role-partnership-bd-manager, amazon-alexa, specialized_skill
-  - role-partnership-bd-manager, cloudflare-workers-expert, specialized_skill
+  - role-partnership-bd-manager, affiliate-program-ops, primary_skill
+  - role-partnership-bd-manager, co-marketing-term-sheet-builder, primary_skill
   - role-partnership-bd-manager, collabs-and-cross-promotion, primary_skill
   - role-partnership-bd-manager, competitive-landscape, primary_skill
   - role-partnership-bd-manager, content-creator, primary_skill
   - role-partnership-bd-manager, market-opportunity, primary_skill
+  - role-partnership-bd-manager, partner-ecosystem-mapping, primary_skill
+  - role-community-manager, ambassador-event-ops, primary_skill
   - role-community-manager, community-management, primary_skill
+  - role-community-manager, community-sentiment-trends, primary_skill
   - role-community-manager, discord-automation, primary_skill
   - role-community-manager, engagement-routine, primary_skill
   - role-community-manager, internal-comms-community, specialized_skill
   - role-community-manager, livestream-and-realtime, specialized_skill
+  - role-community-manager, moderation-escalation-ladder, primary_skill
   - role-community-manager, prompt-library, specialized_skill
   - role-community-manager, reply-and-comment-writer, specialized_skill
   - role-community-manager, slack-automation, primary_skill
@@ -5880,7 +5941,6 @@ edges[4590]{from, to, type}:
   - role-sales-development-rep, sales-automator, primary_skill
   - role-sales-development-rep, salesforce-development, specialized_skill
   - role-sales-development-rep, social-selling-and-dm, primary_skill
-  - role-sales-development-rep, sop-growth, specialized_skill
   - role-solutions-engineer, api-design, primary_skill
   - role-solutions-engineer, content-creator, primary_skill
   - role-solutions-engineer, odoo-automated-tests, specialized_skill
@@ -5914,7 +5974,7 @@ edges[4590]{from, to, type}:
   - role-customer-success-manager, hubspot-integration, primary_skill
   - role-customer-success-manager, intercom-automation, specialized_skill
   - role-customer-success-manager, onboarding-psychologist, specialized_skill
-  - role-customer-success-manager, pod-customer, primary_skill
+  - role-customer-success-manager, sop-customer, primary_skill
   - role-customer-success-manager, verification-before-completion, specialized_skill
   - role-customer-success-manager, zendesk-automation, specialized_skill
   - role-revenue-operations, analytics-tracking, primary_skill
@@ -6021,14 +6081,13 @@ edges[4590]{from, to, type}:
   - role-support-engineer, kotlin-coroutines-flows, specialized_skill
   - role-support-engineer, lint-and-validate, specialized_skill
   - role-support-engineer, native-data-fetching, specialized_skill
-  - role-support-engineer, pod-customer, primary_skill
   - role-support-engineer, postmortem-writing, primary_skill
   - role-support-engineer, powershell-windows, specialized_skill
   - role-support-engineer, progressive-web-app, specialized_skill
   - role-support-engineer, root-cause-debugger, specialized_skill
   - role-support-engineer, scientific-thinking-scholar-evaluation, specialized_skill
   - role-support-engineer, smart-debug, specialized_skill
-  - role-support-engineer, sop-customer, specialized_skill
+  - role-support-engineer, sop-customer, primary_skill
   - role-support-engineer, systematic-debugging, primary_skill
   - role-support-engineer, visual-emotion-engineer, specialized_skill
   - role-support-engineer, write-swift, specialized_skill
@@ -6056,14 +6115,13 @@ edges[4590]{from, to, type}:
   - role-onboarding-specialist, obsidian-clipper-template-creator, specialized_skill
   - role-onboarding-specialist, onboarding-cro, primary_skill
   - role-onboarding-specialist, onboarding-psychologist, specialized_skill
-  - role-onboarding-specialist, pod-customer, primary_skill
   - role-onboarding-specialist, price-psychology-strategist, specialized_skill
   - role-onboarding-specialist, product-lens, specialized_skill
   - role-onboarding-specialist, project-skill-audit, specialized_skill
   - role-onboarding-specialist, recursive-context-pruning-token-budgeting, specialized_skill
   - role-onboarding-specialist, rules-distill, specialized_skill
   - role-onboarding-specialist, screen-reader-testing, specialized_skill
-  - role-onboarding-specialist, sop-customer, specialized_skill
+  - role-onboarding-specialist, sop-customer, primary_skill
   - role-onboarding-specialist, standup-notes, specialized_skill
   - role-onboarding-specialist, system-guide, specialized_skill
   - role-onboarding-specialist, theme-factory, specialized_skill
@@ -6107,13 +6165,13 @@ edges[4590]{from, to, type}:
   - role-implementation-consultant, nx-workspace-patterns, specialized_skill
   - role-implementation-consultant, orch-add-feature, specialized_skill
   - role-implementation-consultant, planning-with-files, specialized_skill
-  - role-implementation-consultant, pod-customer, primary_skill
   - role-implementation-consultant, process-writing-plans, specialized_skill
   - role-implementation-consultant, project-flow-ops, primary_skill
   - role-implementation-consultant, project-guidelines-example, specialized_skill
   - role-implementation-consultant, puzzle-activity-planner, specialized_skill
   - role-implementation-consultant, receiving-code-review, specialized_skill
   - role-implementation-consultant, shellcheck-configuration, specialized_skill
+  - role-implementation-consultant, sop-customer, primary_skill
   - role-implementation-consultant, spec-to-code-compliance, specialized_skill
   - role-implementation-consultant, story-lifecycle, specialized_skill
   - role-implementation-consultant, subagent-driven-development, specialized_skill
@@ -6140,27 +6198,28 @@ edges[4590]{from, to, type}:
   - role-technical-account-manager, oral-health-analyzer, specialized_skill
   - role-technical-account-manager, osint-investigation, specialized_skill
   - role-technical-account-manager, pitch-psychologist, primary_skill
-  - role-technical-account-manager, pod-customer, primary_skill
   - role-technical-account-manager, project-readme-generator, specialized_skill
   - role-technical-account-manager, scientific-thinking-literature-review, specialized_skill
   - role-technical-account-manager, secure-env-secrets-manager, specialized_skill
   - role-technical-account-manager, sexual-health-analyzer, specialized_skill
+  - role-technical-account-manager, sop-customer, primary_skill
   - role-technical-account-manager, tech-debt-cleanup, specialized_skill
   - role-technical-account-manager, technical-change-tracker, specialized_skill
   - role-technical-account-manager, uv-package-manager, specialized_skill
   - role-technical-account-manager, vibe-code-auditor, specialized_skill
   - role-churn-analyst, analytics-tracking, primary_skill
   - role-churn-analyst, churn-prevention, primary_skill
+  - role-churn-analyst, cohort-retention-curves, primary_skill
+  - role-churn-analyst, customer-health-score, primary_skill
   - role-churn-analyst, data-storytelling, primary_skill
   - role-churn-analyst, email-sequence, primary_skill
   - role-churn-analyst, kpi-dashboard-design, primary_skill
   - role-churn-analyst, memory-systems, specialized_skill
+  - role-churn-analyst, nps-sentiment-root-cause, primary_skill
   - role-churn-analyst, saas-monetization-strategy, specialized_skill
-  - role-docs-technical-writer, agents-spec-generator, specialized_skill
   - role-docs-technical-writer, api-documentation-generator, specialized_skill
   - role-docs-technical-writer, api-documenter, primary_skill
   - role-docs-technical-writer, app-store-changelog, primary_skill
-  - role-docs-technical-writer, awareness-stage-mapper, specialized_skill
   - role-docs-technical-writer, c4-component, specialized_skill
   - role-docs-technical-writer, c4-container, specialized_skill
   - role-docs-technical-writer, c4-context, specialized_skill
@@ -6268,7 +6327,6 @@ edges[4590]{from, to, type}:
   - role-fp-and-a-analyst, legacy-modernize, specialized_skill
   - role-fp-and-a-analyst, lint-and-validate, specialized_skill
   - role-fp-and-a-analyst, llm-prompt-tuning, specialized_skill
-  - role-fp-and-a-analyst, marketing-psychology, specialized_skill
   - role-fp-and-a-analyst, new-rails-project, specialized_skill
   - role-fp-and-a-analyst, pentest-checklist, specialized_skill
   - role-fp-and-a-analyst, phase-gated-debugging, specialized_skill
@@ -6326,12 +6384,18 @@ edges[4590]{from, to, type}:
   - role-billing-payments-eng, x402-payment-agent, specialized_skill
   - role-treasury-banking-spec, billing-automation, primary_skill
   - role-treasury-banking-spec, customs-trade-compliance, primary_skill
+  - role-treasury-banking-spec, daily-cashflow-forecast, primary_skill
   - role-treasury-banking-spec, financial-projections, primary_skill
+  - role-treasury-banking-spec, fx-hedging-advisor, primary_skill
+  - role-treasury-banking-spec, settlement-reconciliation-audit, primary_skill
   - role-treasury-banking-spec, startup-financial-modeling, primary_skill
   - role-accounts-manager, analytics-tracking, primary_skill
+  - role-accounts-manager, ap-ar-aging-schedules, primary_skill
   - role-accounts-manager, billing-automation, primary_skill
+  - role-accounts-manager, collections-dunning-automation, primary_skill
   - role-accounts-manager, financial-projections, primary_skill
   - role-accounts-manager, google-analytics-automation, specialized_skill
+  - role-accounts-manager, ledger-reconciliation, primary_skill
   - role-accounts-manager, odoo-accounting-setup, specialized_skill
   - role-accounts-manager, odoo-purchase-workflow, specialized_skill
   - role-accounts-manager, stripe-automation, primary_skill
@@ -6412,20 +6476,23 @@ edges[4590]{from, to, type}:
   - role-cost-optimization-analyst, tool-cost-audit, specialized_skill
   - role-general-counsel, auction-legal-analysis, specialized_skill
   - role-general-counsel, contract-first, specialized_skill
+  - role-general-counsel, corporate-governance-resolutions, primary_skill
   - role-general-counsel, criminal-defense-law-consultant, specialized_skill
   - role-general-counsel, dotnet-patterns, specialized_skill
   - role-general-counsel, gdpr-data-handling, primary_skill
   - role-general-counsel, legal-advisor, primary_skill
   - role-general-counsel, legal-compliance-consultant, primary_skill
   - role-general-counsel, legal-contract-truth-engine, primary_skill
+  - role-general-counsel, litigation-regulatory-risk-scanner, primary_skill
   - role-general-counsel, sop-gna, specialized_skill
-  - role-ip-patent-attorney, algorithmic-art, specialized_skill
   - role-ip-patent-attorney, dependency-management-deps-audit, specialized_skill
   - role-ip-patent-attorney, legal-advisor, primary_skill
   - role-ip-patent-attorney, legal-compliance-consultant, primary_skill
   - role-ip-patent-attorney, legal-contract-truth-engine, primary_skill
+  - role-ip-patent-attorney, oss-license-risk-audit, primary_skill
+  - role-ip-patent-attorney, patent-claim-drafter, primary_skill
+  - role-ip-patent-attorney, prior-art-search, primary_skill
   - role-ip-patent-attorney, scientific-db-uspto-database, primary_skill
-  - role-ip-patent-attorney, trend-jacking, specialized_skill
   - role-contract-manager, beautiful-prose, specialized_skill
   - role-contract-manager, contract-first, specialized_skill
   - role-contract-manager, employment-contract-templates, primary_skill
@@ -6434,6 +6501,8 @@ edges[4590]{from, to, type}:
   - role-contract-manager, master-agreement-generator, primary_skill
   - role-contract-manager, operator-approval-loop, specialized_skill
   - role-contract-manager, rails-patterns, specialized_skill
+  - role-contract-manager, redline-diff-analyzer, primary_skill
+  - role-contract-manager, renewal-and-liability-watch, primary_skill
   - role-compliance-officer, accessibility-audit, specialized_skill
   - role-compliance-officer, adversarial-red-team, specialized_skill
   - role-compliance-officer, ai-readme-gen, specialized_skill
@@ -6526,11 +6595,9 @@ edges[4590]{from, to, type}:
   - role-vp-people, jake-hunter-hunter-scout, specialized_skill
   - role-vp-people, jake-hunter-hunter-tracker, specialized_skill
   - role-vp-people, odoo-hr-payroll-setup, specialized_skill
-  - role-vp-people, pod-people, primary_skill
-  - role-vp-people, sop-people, specialized_skill
+  - role-vp-people, sop-people, primary_skill
   - role-vp-people, viral-generator-builder, specialized_skill
   - role-recruiter, apify-lead-generation, primary_skill
-  - role-recruiter, awareness-stage-mapper, specialized_skill
   - role-recruiter, hr-pro, primary_skill
   - role-recruiter, interview-coach, specialized_skill
   - role-recruiter, jake-hunter-hunter-apply, specialized_skill
@@ -6545,9 +6612,8 @@ edges[4590]{from, to, type}:
   - role-recruiter, jake-hunter-hunter-scout, specialized_skill
   - role-recruiter, jake-hunter-hunter-tracker, specialized_skill
   - role-recruiter, linkedin-growth, primary_skill
-  - role-recruiter, pod-people, primary_skill
   - role-recruiter, refactor-context-restore, specialized_skill
-  - role-recruiter, sop-people, specialized_skill
+  - role-recruiter, sop-people, primary_skill
   - role-recruiter, tech-interview-resume-prep, primary_skill
   - role-recruiter, unified-memory, specialized_skill
   - role-hr-business-partner, advanced-mathematical-reasoning, specialized_skill
@@ -6567,19 +6633,22 @@ edges[4590]{from, to, type}:
   - role-hr-business-partner, nutrition-analyzer, specialized_skill
   - role-hr-business-partner, perf-ai-review, specialized_skill
   - role-hr-business-partner, perf-test-review, specialized_skill
-  - role-hr-business-partner, pod-people, primary_skill
   - role-hr-business-partner, rehabilitation-analyzer, specialized_skill
   - role-hr-business-partner, saga-orchestration, specialized_skill
   - role-hr-business-partner, sleep-analyzer, specialized_skill
+  - role-hr-business-partner, sop-people, primary_skill
   - role-hr-business-partner, startup-metrics-framework, specialized_skill
   - role-hr-business-partner, swiftui-performance-audit, specialized_skill
   - role-hr-business-partner, weightloss-analyzer, specialized_skill
   - role-hr-ops-specialist, analytics-tracking, primary_skill
   - role-hr-ops-specialist, bamboohr-automation, specialized_skill
+  - role-hr-ops-specialist, benefits-leave-administration, primary_skill
   - role-hr-ops-specialist, billing-automation, primary_skill
   - role-hr-ops-specialist, employment-contract-templates, primary_skill
   - role-hr-ops-specialist, hr-pro, primary_skill
   - role-hr-ops-specialist, odoo-hr-payroll-setup, specialized_skill
+  - role-hr-ops-specialist, payroll-cycle-ops, primary_skill
+  - role-hr-ops-specialist, workforce-compliance-tracker, primary_skill
   - role-learning-development, advanced-mathematical-reasoning, specialized_skill
   - role-learning-development, ai-engineering-toolkit, primary_skill
   - role-learning-development, andruia-skill-smith, specialized_skill
@@ -6605,7 +6674,6 @@ edges[4590]{from, to, type}:
   - role-learning-development, project-guidelines-example, specialized_skill
   - role-learning-development, senior-frontend, specialized_skill
   - role-learning-development, subagent-driven-development, specialized_skill
-  - role-learning-development, terminal-opener, specialized_skill
   - role-learning-development, unity-ai-game-creator, specialized_skill
   - role-learning-development, unreal-engine-cpp-pro, specialized_skill
   - role-learning-development, visa-doc-translate, specialized_skill
@@ -6616,6 +6684,9 @@ edges[4590]{from, to, type}:
   - role-procurement-vendor-manager, inventory-demand-planning, primary_skill
   - role-procurement-vendor-manager, ito-compute, specialized_skill
   - role-procurement-vendor-manager, legal-contract-truth-engine, primary_skill
+  - role-procurement-vendor-manager, vendor-rfp-generator, primary_skill
+  - role-procurement-vendor-manager, vendor-sla-breach-watch, primary_skill
+  - role-procurement-vendor-manager, vendor-spend-consolidator, primary_skill
   - role-office-facilities-manager, analytics-tracking, primary_skill
   - role-office-facilities-manager, bitbucket-automation, specialized_skill
   - role-office-facilities-manager, content-creator, primary_skill
@@ -6767,7 +6838,6 @@ edges[4590]{from, to, type}:
   - role-it-systems-admin, win11-system-manager, primary_skill
   - role-it-systems-admin, workflow-automation, specialized_skill
   - role-cloud-architect, ai-agents-architect, specialized_skill
-  - role-cloud-architect, architect-review, specialized_skill
   - role-cloud-architect, aws-cloud-architecture, primary_skill
   - role-cloud-architect, aws-serverless, specialized_skill
   - role-cloud-architect, azure-ai-projects-py, primary_skill

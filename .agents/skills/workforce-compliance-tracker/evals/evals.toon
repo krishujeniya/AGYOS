@@ -1,0 +1,5 @@
+skill_name: workforce-compliance-tracker
+evals[2]:
+  - id, prompt, expected_output, assertions, files
+  - 1, "Run the workforce-compliance-tracker skill end to end: work-authorization records work-auth.toon (type, expiry, jurisdiction) is ready and current. Follow the workflow and produce the artifact.", "Executes the numbered workflow in order; produces the declared outputs with the declared keys; verifies results with the checks the workflow names; records assumptions with their sources.", "Follows workflow step order|Produces the declared output artifact and keys|Verifies results with the named checks|Records assumptions with sources|Direct technical prose, no filler", ""
+  - 2, "The input work-authorization records work-auth.toon is missing or older than the staleness window when workforce-compliance-tracker is invoked. What does the agent do?", "Stops before executing; emits ask_question naming the missing or stale inputs; does not proceed with invented values; does not mark the run complete.", "Stops before execution|Emits ask_question listing the stale inputs|Does not invent values|Does not claim completion", ""

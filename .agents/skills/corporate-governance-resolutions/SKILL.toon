@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: corporate-governance-resolutions\ndescription: \"Draft board and shareholder resolutions from precedent, verify them against bylaws and jurisdiction requirements, and keep the corporate records index current. Use when a corporate action needs approval (grants, financings, officer appointments, policy adoptions), before a board meeting, or when an auditor or bank asks for evidence of authority.\"\nrisk: medium\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

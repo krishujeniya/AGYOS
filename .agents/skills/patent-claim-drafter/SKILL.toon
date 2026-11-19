@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: patent-claim-drafter\ndescription: \"Draft the claim set for a disclosure that passed novelty screening: independent claim with a deliberate boundary, dependent claims per element, and the boundary map against the closest prior art. Use after prior-art-search completes and before outside counsel engagement so review hours are spent on a structured draft.\"\nrisk: medium\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

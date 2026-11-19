@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: workforce-compliance-tracker\ndescription: \"Track work-authorization expiries and drive the offboarding compliance sequence with evidence at every step. Use when a visa or permit approaches expiry, when any employment ends, or when an audit asks who verified what and when. The offboarding path hands explicitly to the security zeroize-audit flow.\"\nrisk: medium\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"
