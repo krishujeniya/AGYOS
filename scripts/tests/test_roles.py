@@ -352,6 +352,17 @@ class TestSkillsByRoleOnDisk(unittest.TestCase):
         self.assertEqual(len(data["by_role"]), 104)
         self.assertGreaterEqual(len(data["by_skill"]), 2000)
 
+    def test_matrix_covers_physical_catalog(self):
+        import json
+
+        skills_dir = self.repo_root / ".agents" / "skills"
+        physical = {path.parent.name for path in skills_dir.glob("*/SKILL.md")}
+        mapped = set(json.loads(self.matrix_file.read_text(encoding="utf-8"))["by_skill"])
+        missing = sorted(physical - mapped)
+        dangling = sorted(mapped - physical)
+        self.assertFalse(missing, f"Skills missing from the role matrix: {missing}")
+        self.assertFalse(dangling, f"Role matrix entries without a skill: {dangling}")
+
     def test_all_roles_have_skills_directory(self):
         for role in list_roles():
             role_dir = self.skills_by_role_dir / role.role_id

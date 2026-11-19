@@ -59,7 +59,7 @@ Strix are autonomous AI penetration testing agents that act just like real hacke
 
 <div align="center">
   <a href="https://strix.ai">
-    <img src=".github/screenshot.png" alt="Strix Demo" width="1000" style="border-radius: 16px;">
+    <img src="docs/images/screenshot.png" alt="Strix Demo" width="1000" style="border-radius: 16px;">
   </a>
 </div>
 

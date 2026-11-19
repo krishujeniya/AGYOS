@@ -1,8 +1,7 @@
 # AGYOS Master Execution Cursor
 
 **Last Updated:** 2026-11-08T13:56:00+05:30  
-**Current Gate:** IMPLEMENT  
-**Active Milestone:** M5-CLI-INTEG  
+**Record:** Historical execution snapshot with artifact status reconciled against `b44f0777`
 **Working Branch:** `main`  
 **Git Baseline Commit:** `35903ad9125607daf89ca2f189864136dbe18a67`  
 **Host Environment:** Ubuntu 25.04, 3.3GB RAM (2.3GB used, 1.0GB available), Python 3.13.3, Node 24.11.1, Bun 1.3.14
@@ -21,14 +20,12 @@
 | T3-DATAFLOW | Data flow inventory | `docs/security/DATA_FLOW_INVENTORY.md` | COMPLETED | Classification matrix |
 | T3-COVERAGE | Encryption coverage & key lifecycle | `docs/security/ENCRYPTION_COVERAGE.md` | COMPLETED | Vault & E2EE envelope documented |
 | T4-ROUTER | Model registry & routing engine | `agyos_decision/model_router.py` | COMPLETED | 12/12 unit tests passing |
-| T5-CLI | CLI command `model-route` | `bin/agyos` | IN PROGRESS | Integrating subcommand |
-| T6-RUNBOOK | Operations runbook & SLO guide | `docs/OPERATIONS_RUNBOOK.md` | PENDING | SRE incident and rollback guide |
-| T7-REPORT | Final implementation report | `docs/IMPLEMENTATION_REPORT.md` | PENDING | Complete metrics, SHAs, residual blockers |
+| T5-CLI | CLI command `model-route` | `bin/agyos` | IMPLEMENTED | CLI dispatch present in `bin/agyos` |
+| T6-RUNBOOK | Operations runbook & SLO guide | `docs/OPERATIONS_RUNBOOK.md` | DOCUMENTED | Runbook present. Operational rehearsal evidence remains open. |
+| T7-REPORT | Final implementation report | `docs/IMPLEMENTATION_REPORT.md` | DOCUMENTED | Report records historical evidence for `35903ad`. |
 
 ---
 
-## Resumable Cursor
+## Open verification
 
-- **Current Action:** Adding `model-route` to `bin/agyos` and testing execution.
-- **Next Command:** `bin/agyos model-route "implement secure login endpoint"`
-- **Blockers:** None. All local dependencies and tools functional.
+See [host compatibility](../HOST_COMPATIBILITY.md) for the current runtime qualification status.
