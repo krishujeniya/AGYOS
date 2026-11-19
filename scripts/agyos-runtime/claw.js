@@ -12,7 +12,6 @@ const path = require('path');
 const os = require('os');
 const { spawnSync } = require('child_process');
 const readline = require('readline');
-const { decode, encode } = require('@toon-format/toon');
 
 const SESSION_NAME_RE = /^[a-zA-Z0-9][-a-zA-Z0-9]*$/;
 const DEFAULT_MODEL = process.env.CLAW_MODEL || 'sonnet';
@@ -63,7 +62,8 @@ function normalizeSkillList(raw) {
     .filter(Boolean);
 }
 
-function loadECCContext(skillList) {
+async function loadECCContext(skillList) {
+  const { decode } = await import('@toon-format/toon');
   const requested = normalizeSkillList(skillList !== undefined ? skillList : process.env.CLAW_SKILLS || '');
   return requested.map(name => {
     if (!/^(?:\.system\/)?[a-z0-9][a-z0-9_-]*(?:\/[a-z0-9][a-z0-9_-]*)*$/.test(name)) {
@@ -79,15 +79,16 @@ function loadECCContext(skillList) {
   });
 }
 
-function buildPrompt(systemPrompt, history, userMessage) {
+async function buildPrompt(systemPrompt, history, userMessage) {
+  const { encode } = await import('@toon-format/toon');
   const input = { user_message: userMessage };
   if (systemPrompt?.length) input.skill_context = systemPrompt;
   if (history) input.conversation_history = history;
   return encode(input);
 }
 
-function askClaude(systemPrompt, history, userMessage, model) {
-  const fullPrompt = buildPrompt(systemPrompt, history, userMessage);
+async function askClaude(systemPrompt, history, userMessage, model) {
+  const fullPrompt = await buildPrompt(systemPrompt, history, userMessage);
   const args = [];
   if (model) {
     args.push('--model', model);
@@ -322,7 +323,7 @@ function handleHelp() {
   console.log('  exit                           Quit the REPL');
 }
 
-function main() {
+async function main() {
   const initialSessionName = process.env.CLAW_SESSION || 'default';
   if (!isValidSessionName(initialSessionName)) {
     console.error(`Error: Invalid session name "${initialSessionName}". Use alphanumeric characters and hyphens only.`);
@@ -340,7 +341,7 @@ function main() {
 
   let eccContext;
   try {
-    eccContext = loadECCContext(state.skills);
+    eccContext = await loadECCContext(state.skills);
   } catch (error) {
     console.error(error.message);
     process.exitCode = 1;
@@ -359,7 +360,7 @@ function main() {
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 
   const prompt = () => {
-    rl.question('claw> ', input => {
+    rl.question('claw> ', async input => {
       const line = input.trim();
       if (!line) return prompt();
 
@@ -408,7 +409,7 @@ function main() {
         }
         const nextSkills = [...new Set([...state.skills, skill])];
         try {
-          eccContext = loadECCContext(nextSkills);
+          eccContext = await loadECCContext(nextSkills);
           state.skills = nextSkills;
         } catch (error) {
           console.log(error.message);
@@ -482,7 +483,7 @@ function main() {
       // Regular message
       const history = loadHistory(state.sessionPath);
       appendTurn(state.sessionPath, 'User', line);
-      const response = askClaude(eccContext, history, line, state.model);
+      const response = await askClaude(eccContext, history, line, state.model);
       console.log(`\n${response}\n`);
       appendTurn(state.sessionPath, 'Assistant', response);
       prompt();
