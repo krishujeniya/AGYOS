@@ -447,7 +447,31 @@ impl SkillPlacementRegistry {
             },
         ]
     }
+}
 
+fn matches_whole_phrase(text: &str, phrase: &str) -> bool {
+    let t_bytes = text.as_bytes();
+    let p_bytes = phrase.as_bytes();
+    let p_len = p_bytes.len();
+
+    if p_len == 0 || p_len > t_bytes.len() {
+        return false;
+    }
+
+    for (start, _) in text.match_indices(phrase) {
+        let is_start_boundary = start == 0 || !t_bytes[start - 1].is_ascii_alphanumeric();
+        let end = start + p_len;
+        let is_end_boundary = end == t_bytes.len() || !t_bytes[end].is_ascii_alphanumeric();
+
+        if is_start_boundary && is_end_boundary {
+            return true;
+        }
+    }
+
+    false
+}
+
+impl SkillPlacementRegistry {
     pub fn evaluate_natural_language_route(prompt: &str) -> RouteEvaluationResult {
         let p_lower = prompt.to_lowercase();
 
@@ -493,41 +517,28 @@ impl SkillPlacementRegistry {
             }
         }
 
-        // 3. Match positive routes across the 153 skills
+        // 3. Match positive routes across the 153 skills with longest-match precision
         let all_skills = Self::load_required_153();
-
-        // Pass 1: exact substring match of route label
-        for skill in &all_skills {
-            for label in &skill.route_labels {
-                let l_lower = label.to_lowercase();
-                if p_lower.contains(&l_lower) {
-                    return RouteEvaluationResult::Matched {
-                        skill_id: skill.id.clone(),
-                        department: skill.department,
-                        pod: skill.pod,
-                    };
-                }
-            }
-        }
-
-        // Pass 2: whole-word matching across all words of route label
-        let prompt_tokens: std::collections::HashSet<&str> = p_lower
-            .split(|c: char| !c.is_alphanumeric() && c != '-')
-            .filter(|s| !s.is_empty())
-            .collect();
+        let mut best_match: Option<(usize, CanonicalSkill)> = None;
 
         for skill in all_skills {
             for label in &skill.route_labels {
                 let l_lower = label.to_lowercase();
-                let words: Vec<&str> = l_lower.split_whitespace().collect();
-                if words.len() > 1 && words.iter().all(|w| prompt_tokens.contains(*w)) {
-                    return RouteEvaluationResult::Matched {
-                        skill_id: skill.id,
-                        department: skill.department,
-                        pod: skill.pod,
-                    };
+                if matches_whole_phrase(&p_lower, &l_lower) {
+                    let len = l_lower.len();
+                    if best_match.as_ref().map_or(true, |(best_len, _)| len > *best_len) {
+                        best_match = Some((len, skill.clone()));
+                    }
                 }
             }
+        }
+
+        if let Some((_, skill)) = best_match {
+            return RouteEvaluationResult::Matched {
+                skill_id: skill.id,
+                department: skill.department,
+                pod: skill.pod,
+            };
         }
 
         // 4. Default out-of-scope abstention
