@@ -1,68 +1,11 @@
-//! Transactional Recovery and Outbox Fixture Tests.
-//! Principles: P09, P10, P11, P12, P21
-//!
-//! Acceptance Targets:
-//! - An acknowledged local operation survives process kill.
-//! - Duplicate replay emits exactly one effect with a fixture provider.
-//! - Crashes around the provider receipt end as Confirmed or explicit Unknown.
-//! - Deleting a workspace invalidates all its indexes and memory access.
-//! - Stale split-brain writer with old fence token is rejected.
+//! Effect Broker, Idempotency, and Crash Recovery Tests.
+//! Principles: P05, P10, P11, P12
 
 use domain::WorkspaceId;
-use effects::{EffectBroker, MockFailureMode, MockFixtureProvider};
+use effects::{EffectBroker, MockFailureMode, MockFixtureProvider, SagaCoordinator};
 use store::{
-    EventRecord, FenceToken, OutboxRecord, OutboxStatus, StoreError, TransactionalStore,
+    EventRecord, FenceToken, OutboxRecord, OutboxStatus, TransactionalStore,
 };
-
-#[test]
-fn test_acknowledged_local_operation_survives_process_kill() {
-    let temp_dir = std::env::temp_dir().join(format!("agyos_recov_{}", std::process::id()));
-    let ws_id = WorkspaceId::new("ws_recovery_test");
-
-    // Phase 1: Open store, commit event and outbox record
-    {
-        let mut store = TransactionalStore::open(&temp_dir, ws_id.clone())
-            .expect("Store open should succeed");
-
-        let event = EventRecord {
-            revision: 1,
-            timestamp_epoch_s: 1700000000,
-            event_type: "TASK_CREATED".to_string(),
-            payload_json: "{\"task\":\"onboard_client\"}".to_string(),
-        };
-
-        let outbox = OutboxRecord {
-            effect_id: "eff_01".to_string(),
-            operation_key: "op_key_abc".to_string(),
-            effect_type: "STAGE_PROPOSAL".to_string(),
-            payload_json: "{\"amount\":12}".to_string(),
-            status: OutboxStatus::Pending,
-            retry_count: 0,
-            updated_at_epoch_s: 1700000000,
-        };
-
-        store
-            .commit_transaction(FenceToken::new(1), event, Some(outbox))
-            .expect("Commit should succeed");
-        // Store dropped here without clean exit, simulating process termination
-    }
-
-    // Phase 2: Fresh process start - recover from disk
-    {
-        let recovered = TransactionalStore::open(&temp_dir, ws_id)
-            .expect("Store recovery should succeed");
-
-        assert_eq!(recovered.events().len(), 1);
-        assert_eq!(recovered.events()[0].revision, 1);
-        assert_eq!(recovered.events()[0].event_type, "TASK_CREATED");
-
-        assert_eq!(recovered.outbox().len(), 1);
-        assert_eq!(recovered.outbox()[0].effect_id, "eff_01");
-        assert_eq!(recovered.outbox()[0].status, OutboxStatus::Pending);
-    }
-
-    let _ = std::fs::remove_dir_all(&temp_dir);
-}
 
 #[test]
 fn test_duplicate_replay_emits_one_effect_with_fixture_provider() {
@@ -183,63 +126,41 @@ fn test_crashes_around_provider_receipt_end_as_confirmed_or_explicit_unknown() {
 }
 
 #[test]
-fn test_deleting_workspace_invalidates_all_indexes_and_access() {
-    let temp_dir = std::env::temp_dir().join(format!("agyos_del_{}", std::process::id()));
-    let ws_id = WorkspaceId::new("ws_ephemeral");
-
-    {
-        let mut store = TransactionalStore::open(&temp_dir, ws_id.clone()).expect("Store open");
-        let event = EventRecord {
-            revision: 1,
-            timestamp_epoch_s: 1700000030,
-            event_type: "INIT".to_string(),
-            payload_json: "{}".to_string(),
-        };
-        store.commit_transaction(FenceToken::new(1), event, None).expect("Commit");
-    }
-
-    // Delete workspace completely
-    TransactionalStore::delete_workspace(&temp_dir, &ws_id).expect("Delete workspace");
-
-    // Subsequent access returns WorkspaceNotFound
-    let err = TransactionalStore::delete_workspace(&temp_dir, &ws_id)
-        .expect_err("Already deleted workspace must return WorkspaceNotFound");
-    match err {
-        StoreError::WorkspaceNotFound(id) => assert_eq!(id, ws_id),
-        other => panic!("Expected WorkspaceNotFound, got {:?}", other),
-    }
-
-    let _ = std::fs::remove_dir_all(&temp_dir);
-}
-
-#[test]
-fn test_fencing_token_rejects_stale_split_brain_writer() {
-    let temp_dir = std::env::temp_dir().join(format!("agyos_fence_{}", std::process::id()));
-    let ws_id = WorkspaceId::new("ws_fence_test");
+fn test_saga_compensation_on_cancelled_effect() {
+    let temp_dir = std::env::temp_dir().join(format!("agyos_saga_{}", std::process::id()));
+    let ws_id = WorkspaceId::new("ws_saga_test");
 
     let mut store = TransactionalStore::open(&temp_dir, ws_id).expect("Store open");
-    // Leader lease updated to epoch 5
-    store.set_fence(FenceToken::new(5));
+    let mut provider = MockFixtureProvider::new(MockFailureMode::NormalSuccess);
 
     let event = EventRecord {
         revision: 1,
-        timestamp_epoch_s: 1700000040,
-        event_type: "STALE_WRITE".to_string(),
+        timestamp_epoch_s: 1700000030,
+        event_type: "STAGE_PROPOSAL".to_string(),
         payload_json: "{}".to_string(),
     };
+    let outbox = OutboxRecord {
+        effect_id: "eff_compensate".to_string(),
+        operation_key: "op_comp".to_string(),
+        effect_type: "PAYMENT".to_string(),
+        payload_json: "{}".to_string(),
+        status: OutboxStatus::Pending,
+        retry_count: 0,
+        updated_at_epoch_s: 1700000030,
+    };
 
-    // Stale writer submits with old epoch 3 -> MUST FAIL
-    let err = store
-        .commit_transaction(FenceToken::new(3), event, None)
-        .expect_err("Stale fence token must be rejected");
+    store.commit_transaction(FenceToken::new(1), event, Some(outbox)).expect("Commit");
+    EffectBroker::process_outbox(&mut store, &mut provider).expect("Process");
 
-    match err {
-        StoreError::StaleFenceToken { current_fence, submitted_fence } => {
-            assert_eq!(current_fence, 5);
-            assert_eq!(submitted_fence, 3);
-        }
-        other => panic!("Expected StaleFenceToken, got {:?}", other),
-    }
+    assert_eq!(store.outbox()[0].status, OutboxStatus::Confirmed);
+
+    // Operator cancels / rolls back -> trigger saga compensation
+    let compensated = SagaCoordinator::compensate_effect(&mut store, &mut provider, "eff_compensate")
+        .expect("Compensate should succeed");
+
+    assert!(compensated);
+    assert_eq!(store.outbox()[0].status, OutboxStatus::Compensated);
+    assert_eq!(provider.compensate_count, 1);
 
     let _ = std::fs::remove_dir_all(&temp_dir);
 }

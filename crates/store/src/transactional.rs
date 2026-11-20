@@ -51,6 +51,10 @@ impl TransactionalStore {
         self.current_fence
     }
 
+    pub fn workspace_id(&self) -> &WorkspaceId {
+        &self.workspace_id
+    }
+
     pub fn set_fence(&mut self, token: FenceToken) {
         self.current_fence = token;
     }

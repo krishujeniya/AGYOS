@@ -11,7 +11,7 @@ use crate::error::{
     MAX_ARRAY_ELEMENTS, MAX_NESTING_DEPTH, MAX_PAYLOAD_BYTES, MAX_STRING_LENGTH, ToonError,
 };
 use crate::model::ToonValue;
-use serde_json::{Map, Number, Value};
+use serde_json::{Map, Value};
 
 /// Get line indentation count (leading whitespace).
 fn get_indent(line: &str) -> usize {
