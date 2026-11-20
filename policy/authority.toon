@@ -1,0 +1,22 @@
+policy:
+  id: "policy/authority.toon"
+  version: "1.0.0"
+  description: "Authority and Complete Mediation Policy"
+  risk_rules[4]:
+    - risk: "R0"
+      label: "Read-only"
+      authorization_required: false
+      external_network: false
+    - risk: "R1"
+      label: "Local Reversible"
+      authorization_required: false
+      external_network: false
+    - risk: "R2"
+      label: "Shared Internal"
+      authorization_required: false
+      external_network: false
+    - risk: "R3"
+      label: "External Irreversible"
+      authorization_required: true
+      external_network: true
+      requires_fiduciary_authorization: true

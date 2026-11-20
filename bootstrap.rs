@@ -73,6 +73,8 @@ members = [
     "apps/agyos",
     "apps/worker",
     "crates/toon-codec",
+    "crates/domain",
+    "crates/governance",
 ]
 resolver = "2"
 

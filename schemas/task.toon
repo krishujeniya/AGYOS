@@ -1,0 +1,32 @@
+schema:
+  id: "schemas/task.toon"
+  version: "1.0.0"
+  type: "object"
+  fields[10]:
+    - name: "id"
+      type: "string"
+      format: "task_*"
+    - name: "workspace_id"
+      type: "string"
+      format: "ws_*"
+    - name: "revision"
+      type: "integer"
+      minimum: 1
+    - name: "actor_id"
+      type: "string"
+    - name: "role_id"
+      type: "string"
+    - name: "delegation_depth"
+      type: "integer"
+      maximum: 2
+    - name: "risk_tier"
+      type: "enum"
+      values[4]: ["R0", "R1", "R2", "R3"]
+    - name: "data_class"
+      type: "enum"
+      values[4]: ["CLASS_0_PUBLIC", "CLASS_1_INTERNAL", "CLASS_2_PRIVATE", "CLASS_3_SECRET"]
+    - name: "current_gate"
+      type: "enum"
+      values[8]: ["IDLE", "UNDERSTAND", "ANALYZE", "PLAN", "IMPLEMENT", "VERIFY", "SHIP", "REFLECT"]
+    - name: "prompt"
+      type: "string"

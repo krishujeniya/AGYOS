@@ -1,0 +1,19 @@
+schema:
+  id: "schemas/approval.toon"
+  version: "1.0.0"
+  type: "object"
+  fields[6]:
+    - name: "id"
+      type: "string"
+      format: "appr_*"
+    - name: "granter"
+      type: "string"
+    - name: "scope"
+      type: "string"
+    - name: "status"
+      type: "enum"
+      values[5]: ["PENDING", "APPROVED", "DECLINED", "EXPIRED", "REVOKED"]
+    - name: "granted_at_epoch_s"
+      type: "integer"
+    - name: "expires_at_epoch_s"
+      type: "integer"
