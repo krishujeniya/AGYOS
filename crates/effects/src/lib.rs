@@ -8,5 +8,5 @@ pub mod provider;
 pub mod saga;
 
 pub use broker::EffectBroker;
-pub use provider::{EffectOutcome, EffectProvider, MockFixtureProvider};
+pub use provider::{EffectOutcome, EffectProvider, MockFailureMode, MockFixtureProvider};
 pub use saga::SagaCoordinator;
