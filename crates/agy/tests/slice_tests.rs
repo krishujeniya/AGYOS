@@ -10,7 +10,7 @@
 //! - Novice operator can explain what happened from receipt.
 
 use agy::{
-    AriadneBreadcrumb, OnboardingProposalSession, SliceError,
+    OnboardingProposalSession, SliceError,
 };
 use domain::{Gate, TaskId, WorkspaceId};
 use store::TransactionalStore;
@@ -45,7 +45,7 @@ fn test_slice_nominal_and_interruption_recovery() {
             .expect("Store reopen should succeed");
 
         // Retrieve breadcrumb from durable store
-        let crumb = OnboardingProposalSession::resume_from_store(&store, ws_id.clone(), task_id.clone())
+        let crumb = OnboardingProposalSession::resume_from_store(&store, &ws_id, &task_id)
             .expect("Ariadne breadcrumb recovery should succeed");
 
         assert_eq!(crumb.task_id, task_id);
@@ -103,7 +103,6 @@ fn test_slice_uncorrected_proposal_exceeding_12h_blocks_ship() {
         .expect("Init");
 
     // Proposal remains at 20h without correction -> Attempt to ship must fail
-    // First simulate transitioning to implement
     let err = session.finalize_ship(&mut store).expect_err("Gate not implement should fail");
     assert!(err.to_string().contains("Gate progression blocked"));
 

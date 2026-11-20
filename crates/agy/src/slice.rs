@@ -13,10 +13,9 @@
 //! - P31 (A Recoverable Path — Ariadne's Breadcrumb)
 
 use std::fmt;
-use std::path::Path;
 use serde::{Deserialize, Serialize};
-use domain::{Gate, RiskTier, TaskContract, TaskId, WorkspaceId};
-use store::{EventRecord, FenceToken, OutboxRecord, OutboxStatus, StoreError, TransactionalStore};
+use domain::{Gate, TaskId, WorkspaceId};
+use store::{EventRecord, FenceToken, OutboxStatus, TransactionalStore};
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct AriadneBreadcrumb {
@@ -77,7 +76,6 @@ impl std::error::Error for SliceError {}
 pub struct OnboardingProposalSession {
     workspace_id: WorkspaceId,
     task_id: TaskId,
-    contract: TaskContract,
     current_gate: Gate,
     active_proposal: ProposalDraft,
     breadcrumb: AriadneBreadcrumb,
@@ -91,7 +89,6 @@ impl OnboardingProposalSession {
         task_id: TaskId,
     ) -> Result<Self, SliceError> {
         let initial_cap = 20;
-        let contract = TaskContract::new(task_id.clone(), workspace_id.clone(), RiskTier::R1);
 
         let proposal = ProposalDraft {
             client_name: "Fictional Client Corp".to_string(),
@@ -129,7 +126,6 @@ impl OnboardingProposalSession {
         Ok(Self {
             workspace_id,
             task_id,
-            contract,
             current_gate: Gate::Plan,
             active_proposal: proposal,
             breadcrumb,
@@ -184,13 +180,13 @@ impl OnboardingProposalSession {
     /// Step 4: Resume session from Ariadne breadcrumb after interruption/crash.
     pub fn resume_from_store(
         store: &TransactionalStore,
-        workspace_id: WorkspaceId,
-        task_id: TaskId,
+        _workspace_id: &WorkspaceId,
+        task_id: &TaskId,
     ) -> Result<AriadneBreadcrumb, SliceError> {
         for event in store.events().iter().rev() {
             if event.event_type == "OPERATOR_CORRECTION_APPLIED" || event.event_type == "PROPOSAL_SESSION_INITIALIZED" {
                 if let Ok(crumb) = serde_json::from_str::<AriadneBreadcrumb>(&event.payload_json) {
-                    if crumb.task_id == task_id {
+                    if &crumb.task_id == task_id {
                         return Ok(crumb);
                     }
                 }
