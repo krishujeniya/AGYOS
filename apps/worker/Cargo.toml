@@ -3,14 +3,22 @@ name = "agyos-worker"
 version = "0.1.0"
 edition = "2021"
 authors = ["Krish Ujeniya <100012208+krishujeniya@users.noreply.github.com>"]
-description = "AGYOS Hosted Worker entrypoint in Rust"
+description = "AGYOS Hosted Worker daemon and Heavy Production Qualification Engine"
 license = "MIT"
 repository = "https://github.com/krishujeniya/AGYOS"
 
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
+domain = { path = "../../crates/domain" }
+store = { path = "../../crates/store" }
+runtime = { path = "../../crates/runtime" }
+telemetry = { path = "../../crates/telemetry" }
 toon-codec = { path = "../../crates/toon-codec" }
+
+[lib]
+name = "worker"
+path = "src/lib.rs"
 
 [[bin]]
 name = "agyos-worker"
