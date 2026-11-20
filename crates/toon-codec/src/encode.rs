@@ -1,16 +1,29 @@
-//! Fast streaming encoder for Token-Oriented Object Notation (TOON).
+//! Fast Canonical Encoder for Token-Oriented Object Notation (TOON).
+//!
+//! Enforces:
+//! - Deterministic alphabetical key ordering in maps
+//! - Minimal escaping with literal UTF-8 preservation
+//! - Consistent tabular encoding for arrays of uniform records
 
 use std::fmt::Write;
+use crate::error::ToonError;
+use crate::model::ToonValue;
 use serde_json::Value;
 
-/// Format a single scalar value according to TOON rules.
-pub fn format_scalar(val: &Value) -> String {
+/// Format a single scalar value.
+pub fn format_scalar(val: &ToonValue) -> String {
     match val {
-        Value::Null => "null".to_string(),
-        Value::Bool(b) => if *b { "true".to_string() } else { "false".to_string() },
-        Value::Number(n) => n.to_string(),
-        Value::String(s) => {
-            // Quote string if it contains delimiter characters, newlines, or looks like a number/boolean
+        ToonValue::Null => "null".to_string(),
+        ToonValue::Bool(b) => if *b { "true".to_string() } else { "false".to_string() },
+        ToonValue::Int(i) => i.to_string(),
+        ToonValue::Float(f) => {
+            if f.fract() == 0.0 {
+                format!("{:.1}", f)
+            } else {
+                f.to_string()
+            }
+        }
+        ToonValue::String(s) => {
             if s.is_empty()
                 || s.contains(',')
                 || s.contains(':')
@@ -32,11 +45,69 @@ pub fn format_scalar(val: &Value) -> String {
                 s.clone()
             }
         }
-        _ => serde_json::to_string(val).unwrap_or_default(),
+        _ => "".to_string(),
     }
 }
 
-/// Encode a slice of JSON map records into canonical TOON tabular text.
+/// Canonical TOON encoder.
+pub fn encode(val: &ToonValue) -> Result<String, ToonError> {
+    let mut out = String::new();
+    encode_value(val, 0, &mut out)?;
+    if out.ends_with('\n') {
+        out.pop();
+    }
+    Ok(out)
+}
+
+fn encode_value(val: &ToonValue, depth: usize, out: &mut String) -> Result<(), ToonError> {
+    let indent = "  ".repeat(depth);
+
+    match val {
+        ToonValue::Null | ToonValue::Bool(_) | ToonValue::Int(_) | ToonValue::Float(_) | ToonValue::String(_) => {
+            let _ = writeln!(out, "{}{}", indent, format_scalar(val));
+        }
+        ToonValue::Array(items) => {
+            for item in items {
+                match item {
+                    ToonValue::Map(_) => {
+                        let _ = write!(out, "{}- ", indent);
+                        encode_value(item, depth + 1, out)?;
+                    }
+                    _ => {
+                        let _ = writeln!(out, "{}- {}", indent, format_scalar(item));
+                    }
+                }
+            }
+        }
+        ToonValue::Map(entries) => {
+            // Sort keys alphabetically for canonical determinism
+            let mut sorted = entries.clone();
+            sorted.sort_by(|a, b| a.0.cmp(&b.0));
+
+            for (k, v) in &sorted {
+                match v {
+                    ToonValue::Map(sub_entries) => {
+                        let _ = writeln!(out, "{}{}:", indent, k);
+                        let sub_val = ToonValue::Map(sub_entries.clone());
+                        encode_value(&sub_val, depth + 1, out)?;
+                    }
+                    ToonValue::Array(items) => {
+                        let count = items.len();
+                        let _ = writeln!(out, "{}{}[{}]:", indent, k, count);
+                        let sub_arr = ToonValue::Array(items.clone());
+                        encode_value(&sub_arr, depth + 1, out)?;
+                    }
+                    _ => {
+                        let _ = writeln!(out, "{}{}: {}", indent, k, format_scalar(v));
+                    }
+                }
+            }
+        }
+    }
+    Ok(())
+}
+
+/// Backward-compatible tabular records encoder.
 pub fn encode_records(
     records: &[serde_json::Map<String, Value>],
     key_name: &str,
@@ -46,7 +117,6 @@ pub fn encode_records(
         return format!("{}[0]:\n  - (empty)", key_name);
     }
 
-    // Determine deterministic columns from the keys of the first record (or union)
     let mut columns: Vec<String> = Vec::new();
     for rec in records {
         for key in rec.keys() {
@@ -55,15 +125,14 @@ pub fn encode_records(
             }
         }
     }
+    columns.sort();
 
     let mut out = String::with_capacity(records.len() * columns.len() * 16);
     let count = records.len();
 
     if inline_schema {
-        // e.g. skills[2]{name, tier}:
         let _ = writeln!(out, "{}[{}]{{{}}}:", key_name, count, columns.join(", "));
     } else {
-        // e.g. skills[2]:\n  - name, tier
         let _ = writeln!(out, "{}[{}]:", key_name, count);
         let _ = writeln!(out, "  - {}", columns.join(", "));
     }
@@ -72,19 +141,18 @@ pub fn encode_records(
         let mut row_vals: Vec<String> = Vec::with_capacity(columns.len());
         for col in &columns {
             let val = rec.get(col).unwrap_or(&Value::Null);
-            row_vals.push(format_scalar(val));
+            let toon_val = ToonValue::from_json(val);
+            row_vals.push(format_scalar(&toon_val));
         }
         let _ = writeln!(out, "  - {}", row_vals.join(", "));
     }
 
-    // Strip trailing newline to return clean block
     if out.ends_with('\n') {
         out.pop();
     }
     out
 }
 
-/// Encode arbitrary JSON array of objects to TOON text.
 pub fn encode_json_array(array: &[Value], key_name: &str) -> Result<String, String> {
     let mut maps: Vec<serde_json::Map<String, Value>> = Vec::with_capacity(array.len());
     for item in array {

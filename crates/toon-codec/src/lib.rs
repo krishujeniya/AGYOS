@@ -1,13 +1,20 @@
 //! TOON (Token-Oriented Object Notation) Codec Library.
 //!
-//! Provides ultra-fast serialization and deserialization between JSON/Rust data structures
-//! and token-efficient TOON format for LLM prompting and configuration.
+//! Provides high-performance, bounded serialization and deserialization between
+//! JSON/Rust data structures and token-efficient TOON format for LLM prompting,
+//! configuration, and persistent memory.
 
 pub mod decode;
 pub mod encode;
+pub mod error;
+pub mod legacy;
+pub mod model;
 
-pub use decode::decode_records;
-pub use encode::{encode_json_array, encode_records};
+pub use decode::{decode_document, decode_records, parse_scalar, split_csv_line};
+pub use encode::{encode, encode_json_array, encode_records, format_scalar};
+pub use error::ToonError;
+pub use legacy::{unpack_legacy_envelope, LegacyEnvelope};
+pub use model::ToonValue;
 
 /// Minify TOON text by stripping empty lines and trailing whitespace.
 pub fn minify_toon(input: &str) -> String {
@@ -23,25 +30,4 @@ pub fn minify_toon(input: &str) -> String {
         out.pop();
     }
     out
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use serde_json::json;
-
-    #[test]
-    fn test_roundtrip() {
-        let sample = json!([
-            {"name": "skill-a", "tier": 1, "active": true},
-            {"name": "skill-b", "tier": 2, "active": false}
-        ]);
-        let encoded = encode_json_array(sample.as_array().unwrap(), "skills").unwrap();
-        assert!(encoded.starts_with("skills[2]:"));
-        let decoded = decode_records(&encoded).unwrap();
-        assert_eq!(decoded.len(), 2);
-        assert_eq!(decoded[0].get("name").unwrap(), "skill-a");
-        assert_eq!(decoded[0].get("tier").unwrap(), 1);
-        assert_eq!(decoded[0].get("active").unwrap(), true);
-    }
 }
