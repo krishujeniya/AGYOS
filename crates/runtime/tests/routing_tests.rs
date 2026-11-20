@@ -3,12 +3,12 @@
 //! Complies with Principle P22 (Measured Retrieval), P24 (Calibrated Reliance),
 //! P26 (Universal Accessibility), and P29 (Progressive Disclosure).
 
-use catalog::{Department, GoverningPod, RouteEvaluationResult, SkillPlacementRegistry};
-use runtime::{CandidateSkillMatch, ProgressiveRetriever, RetrievalResult};
+use catalog::{GoverningPod, SkillPlacementRegistry};
+use runtime::{ProgressiveRetriever, RetrievalResult};
 
 #[test]
 fn test_all_12_department_positive_natural_language_routes() {
-    let fixtures = SkillPlacementRegistry::load_fixtures_12();
+    let fixtures = SkillPlacementRegistry::get_department_fixtures();
     let retriever = ProgressiveRetriever::new();
 
     let mut matched_count = 0;
@@ -54,7 +54,7 @@ fn test_all_5_governing_pods_coverage() {
 
 #[test]
 fn test_100_percent_deterministic_authority_denials_on_negatives() {
-    let fixtures = SkillPlacementRegistry::load_fixtures_12();
+    let fixtures = SkillPlacementRegistry::get_department_fixtures();
     let retriever = ProgressiveRetriever::new();
 
     for fixture in &fixtures {
