@@ -80,6 +80,7 @@ members = [
     "crates/agy",
     "crates/catalog",
     "crates/runtime",
+    "crates/adapters",
 ]
 resolver = "2"
 
