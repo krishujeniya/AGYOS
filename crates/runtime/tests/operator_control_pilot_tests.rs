@@ -12,8 +12,8 @@
 //! - P30 (Human Consent Authority)
 
 use runtime::{
-    FocusableElement, KeyboardAction, LinearTranscript, OperatorSessionState, PilotCohort,
-    PilotEngine, PilotOperator, ProviderSimulator,
+    FocusableElement, KeyboardAction, OperatorSessionState, PilotCohort, PilotEngine,
+    PilotOperator, ProviderSimulator,
 };
 
 #[test]

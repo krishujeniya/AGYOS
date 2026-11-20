@@ -524,9 +524,9 @@ impl PilotEngine {
         let mut authorizer_correct = 0;
         let mut review_times = Vec::new();
         let mut wrong_shown = 0;
-        let mut wrong_accepted = 0;
+        let wrong_accepted = 0;
         let mut good_shown = 0;
-        let mut good_rejected = 0;
+        let good_rejected = 0;
         let mut observed_errors = Vec::new();
 
         for op in &operators {
