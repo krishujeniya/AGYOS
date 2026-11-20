@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # agyos-init.sh — Universal Zero-Config Bootstrapper for AGYOS
-# Configures Antigravity CLI (AGY CLI) with the 5-Gate Anchor Governance,
+# Configures Antigravity CLI (AGY CLI) with the 5-Gate AGYOS Governance,
 # multi-model Agent Council, FastMCP servers, ECC capabilities, and 8 modular AGYOS plugins.
 
 set -euo pipefail
@@ -26,7 +26,7 @@ done
 node scripts/materialize-documents.mjs
 
 # 3. State & Governance initialization
-echo "Validating Anchor State Machine..."
+echo "Validating AGYOS State Machine..."
 mkdir -p .agents/state/checkpoints .agents/state/decisions
 bash bin/state-validate.sh
 echo "  ✓ State machine validated"
@@ -37,9 +37,9 @@ chmod +x scripts/hooks/agy_os_hook.py
 echo "  ✓ .agents/hooks.json active"
 
 # 5. FastMCP Server
-echo "Verifying Anchor FastMCP Server..."
-chmod +x mcp/state-server.cjs
-echo "  ✓ Anchor MCP server ready"
+echo "Verifying AGYOS FastMCP Server..."
+chmod +x mcp/agyos-state-server.cjs mcp/state-server.cjs
+echo "  ✓ AGYOS MCP server ready"
 
 # 6. Packaging & Validating 8 AGYOS Plugins
 echo "Validating AGYOS Plugins..."

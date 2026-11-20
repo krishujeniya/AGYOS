@@ -26,16 +26,20 @@ WORKSPACE_ROOT = Path(__file__).resolve().parents[1]
 WORKSPACE_MCP_CONFIG = WORKSPACE_ROOT / ".mcp.json"
 
 PLUGIN_SKILL_MAP: Dict[str, List[str]] = {
-    "agyos-aegis": ["aegis"],
-    "agyos-anchor": [
-        "anchor",
-        "anchor-draft-commit",
-        "anchor-graph",
-        "anchor-orchestrator",
-        "anchor-preflight",
-        "anchor-scope",
-        "anchor-scout",
-        "anchor-verify",
+    "agyos-governance": [
+        "agyos-draft-commit",
+        "agyos-graph",
+        "agyos-orchestrator",
+        "agyos-preflight",
+        "agyos-scope",
+        "agyos-scout",
+        "agyos-verify",
+        "agyos-decision",
+    ],
+    "agyos-core": [
+        "autonomous-loops",
+        "continuous-code-improvement",
+        "intent-driven-development",
     ],
     "agyos-business-creative": [
         "animate",
@@ -87,7 +91,7 @@ MCP_TOOL_PREFIXES: Dict[str, str] = {
     "op_": "1password-mcp",
     "travis_": "travis-mcp",
     "obscura_": "obscura",
-    "agyos_": "anchor",
+    "agyos_": "agyos",
     "notebooklm_": "gemini-notebook",
     "gemini_notebook_": "gemini-notebook",
     "nlm_": "gemini-notebook",
