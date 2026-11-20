@@ -15,7 +15,7 @@
 //! - P20 (End-to-End Observability)
 //! - P21 (Privacy & Boundary Protection)
 
-use domain::{ActorId, EventId, WorkspaceId};
+use domain::WorkspaceId;
 use std::fs;
 use std::path::PathBuf;
 use store::{EventRecord, FenceToken, OutboxRecord, OutboxStatus, TransactionalStore};
@@ -128,53 +128,44 @@ fn test_clean_install_and_backup_recovery_locates_outstanding_effects() {
     let ws_id = WorkspaceId::new("ws-production-local");
     let mut store = TransactionalStore::open(&source_dir, ws_id.clone()).unwrap();
 
-    // 1. Commit 10 durable events and 4 outbox records (2 delivered, 2 pending)
+    // 1. Commit 10 durable events and 3 outbox records (1 confirmed, 2 pending)
     for i in 1..=10 {
         let event = EventRecord {
-            event_id: EventId::new(format!("evt-{:03}", i)),
-            workspace_id: ws_id.clone(),
             revision: i as u64,
-            actor_id: ActorId::new("operator-admin"),
+            timestamp_epoch_s: 1_000_000 + i as u64,
             event_type: "proposal_step_committed".to_string(),
             payload_json: format!("{{\"step\": {}}}", i),
-            timestamp_epoch_s: 1_000_000 + i as u64,
         };
 
         let outbox = if i == 3 {
             Some(OutboxRecord {
                 effect_id: "eff-01".to_string(),
                 operation_key: "op-key-01".to_string(),
-                tenant_id: ws_id.clone(),
-                caller_id: ActorId::new("operator-admin"),
-                recipient: "crm-account:acme".to_string(),
-                deadline_epoch_s: 1_005_000,
-                status: OutboxStatus::Delivered,
-                attempt_count: 1,
-                last_error: None,
+                effect_type: "crm_sync".to_string(),
+                payload_json: "{\"account\": \"acme\"}".to_string(),
+                status: OutboxStatus::Confirmed,
+                retry_count: 1,
+                updated_at_epoch_s: 1_005_000,
             })
         } else if i == 7 {
             Some(OutboxRecord {
                 effect_id: "eff-02-pending".to_string(),
                 operation_key: "op-key-02-pending".to_string(),
-                tenant_id: ws_id.clone(),
-                caller_id: ActorId::new("operator-admin"),
-                recipient: "ticket:inc-404".to_string(),
-                deadline_epoch_s: 1_005_000,
+                effect_type: "helpdesk_ticket".to_string(),
+                payload_json: "{\"ticket\": \"inc-404\"}".to_string(),
                 status: OutboxStatus::Pending, // Outstanding effect 1
-                attempt_count: 0,
-                last_error: None,
+                retry_count: 0,
+                updated_at_epoch_s: 1_005_000,
             })
         } else if i == 9 {
             Some(OutboxRecord {
                 effect_id: "eff-03-pending".to_string(),
                 operation_key: "op-key-03-pending".to_string(),
-                tenant_id: ws_id.clone(),
-                caller_id: ActorId::new("operator-admin"),
-                recipient: "stripe:acct_99".to_string(),
-                deadline_epoch_s: 1_005_000,
+                effect_type: "billing_disburse".to_string(),
+                payload_json: "{\"amount\": 100}".to_string(),
                 status: OutboxStatus::Pending, // Outstanding effect 2
-                attempt_count: 0,
-                last_error: None,
+                retry_count: 0,
+                updated_at_epoch_s: 1_005_000,
             })
         } else {
             None
