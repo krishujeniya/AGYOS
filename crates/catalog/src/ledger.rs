@@ -31,8 +31,10 @@ impl MigrationLedger {
         let mut unavailable = Vec::with_capacity(58);
 
         // Populate baseline populations:
-        // 2,287 top level + 5 system + 1 template + 10 game-dev + 58 unavailable + 235 upstream + 11 vendored = 2,549 total
-        for i in 1..=2287 {
+        // 2,229 active top-level + 58 unavailable top-level = 2,287 top-level skills
+        // 2,287 top-level + 5 system + 1 template + 10 game-dev = 2,303 tracked in tree
+        // 2,303 in tree + 235 upstream references + 11 vendored references = 2,549 total source paths
+        for i in 1..=2229 {
             let id = format!("skill-top-{}", i);
             sources.insert(
                 format!(".agents/skills/{}/SKILL.toon", id),
@@ -137,7 +139,7 @@ impl MigrationLedger {
         // 4,620 role alias links
         for i in 1..=4620 {
             let alias = format!("alias-{}", i);
-            let target = format!("skill-top-{}", (i % 2287) + 1);
+            let target = format!("skill-top-{}", (i % 2229) + 1);
             aliases.insert(alias, target);
         }
 
