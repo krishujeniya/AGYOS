@@ -1,43 +1,27 @@
 {
   "project": "AGYOS",
   "current_gate": "IDLE",
-  "current_milestone": "M1-prompt-principles",
-  "iteration": 6,
-  "iteration_cap": 10,
+  "current_milestone": "M20-tracker-rebuild",
+  "iteration": 20,
+  "iteration_cap": 25,
   "token_budget": 50000,
   "max_cost_usd": 10.0,
   "max_wall_clock_minutes": 60,
   "tokens_used": 0,
   "no_progress_strikes": 0,
   "hitl_approvals": {
-    "UNDERSTAND": "Operator replied y to docs/PROMPT_PRINCIPLES_UPGRADE_TASK_LIST.md on 2026-11-14",
-    "ANALYZE": "Operator approved prompt scope, vibe-engineer.md addition, and response to the CI blocker on 2026-11-14; baseline CI passed on e0d9bbfc",
-    "PLAN": "Operator replied y to docs/PROMPT_PRINCIPLES_UPGRADE_PLAN.md and approved three context-graph invariants on 2026-11-14",
-    "PLAN_AMENDMENT": "Operator approved the pinned-source sparse checkout and 7-day CI ledger artifact amendment on 2026-11-14",
-    "PLAN_AMENDMENT_CATALOGS": "Operator approved including generated skill catalog outputs affected by revised skill descriptions on 2026-11-14",
-    "VERIFY": "Operator approved the final status-record synchronization on 2026-11-14; commit 31b4018d38cfe68cae669f5df689c257ccc8b069 passed CI run 43579658988 and Pages run 43579658930."
+    "UNDERSTAND": "Operator authorized complete 20-step Tracker.md rebuild plan on 2026-11-20",
+    "ANALYZE": "Operator approved single main branch, zero local execution, and pure TOON authoring invariants on 2026-11-20",
+    "PLAN": "Operator approved phased crate decomposition across 15 crates and apps on 2026-11-20",
+    "IMPLEMENT": "All 20 steps implemented and verified monotonically on Remote Builder CI on 2026-11-20",
+    "VERIFY": "Remote Builder CI run 44736184705 passed on commit 2cefaea3 with 101 tests ok on 2026-11-20"
   },
-  "last_updated": "2026-11-14T10:30:00+00:00",
-  "last_known_commit": "8710b95e4a038c540c0673ac470a3a07004a509c",
-  "last_known_commit_COMPACT": "e0d9bbfc3abd9cee2da9567e94cb725c531c59b6",
-  "skill_versions": {
-    "anchor-draft-commit": "1.1.0",
-    "anchor-graph": "1.1.0",
-    "anchor-orchestrator": "1.1.0",
-    "anchor-preflight": "1.1.0",
-    "anchor-scope": "1.1.0",
-    "anchor-scout": "1.1.0",
-    "anchor-verify": "1.1.0"
-  },
-  "complexity_score": 4,
+  "last_updated": "2026-11-20T18:04:00+05:30",
+  "last_known_commit": "2cefaea3a60e7b53012a3b9f4443f1ee3c0ae8be",
+  "complexity_score": 5,
   "verification": {
     "status": "PASS",
-    "human_acceptance": "Operator approved the final status-record synchronization; CI and Pages passed on 31b4018d38cfe68cae669f5df689c257ccc8b069.",
-    "independent_checker": "PASS: prompt_metadata_checker verified the five-file status update, exact CI/Pages run references, counts, and guarded draft script; git diff --check passed"
-  },
-  "last_known_commit_UNDERSTAND": "228884581aaebe3c2f6f2a246df6b30361b5bcb0",
-  "last_known_commit_ANALYZE": "e0d9bbfc3abd9cee2da9567e94cb725c531c59b6",
-  "last_known_commit_PLAN": "e0d9bbfc3abd9cee2da9567e94cb725c531c59b6",
-  "last_known_commit_IMPLEMENT": "98486147dbab917deee345fd4c36498f5901bc01",
-  "last_known_commit_VERIFY": "8710b95e4a038c540c0673ac470a3a07004a509c"
+    "human_acceptance": "Operator verified all 20 steps of Tracker.md complete and certified on main branch",
+    "independent_checker": "PASS: Remote Builder CI run 44736184705 passed 101 unit and integration tests across 15 workspace crates; git diff --check clean; zero tracked .md files"
+  }
 }
