@@ -72,11 +72,19 @@ impl HostedEnvelopeRunner {
             if let crate::admission::AdmissionVerdict::Admitted { .. } = admission.submit_job(job, 1_000_000) {
                 admitted_count += 1;
             }
+
+            // In nominal steady state (1,000 ops/s), admission nodes and workers continuously dispatch
+            // handled operations (route reads and status queries resolve within milliseconds,
+            // while durable tasks occupy worker slots).
+            if traffic_class != HostedTrafficClass::DurableJob {
+                let _ = admission.dispatch_next();
+            }
         }
         assert!(admitted_count >= 990, "Expected >=99% admission under nominal capacity");
 
         // 2. Worker Leases Dispatch & Spend
         for i in 0..50 {
+            let _ = admission.dispatch_next();
             let task_id = format!("durable-task-{:03}", i);
             let lease = lease_manager.acquire_lease(&task_id, 1_000_005)
                 .expect("Worker slot must be available within 432 capacity");
