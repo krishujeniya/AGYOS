@@ -1,0 +1,17 @@
+[package]
+name = "agyos-worker"
+version = "0.1.0"
+edition = "2021"
+authors = ["Krish Ujeniya <100012208+krishujeniya@users.noreply.github.com>"]
+description = "AGYOS Hosted Worker entrypoint in Rust"
+license = "MIT"
+repository = "https://github.com/krishujeniya/AGYOS"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toon_codec = { path = "../../crates/toon-codec" }
+
+[[bin]]
+name = "agyos-worker"
+path = "src/main.rs"

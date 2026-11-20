@@ -1,0 +1,17 @@
+host_projection:
+  version: "1"
+  source_format: "TOON"
+  target_root: ".agents"
+  projections[4]:
+    - source: "knowledge/skills"
+      target: ".agents/skills"
+      strategy: "project_skill_markdown"
+    - source: "policy"
+      target: ".agents/rules"
+      strategy: "project_rules_markdown"
+    - source: "schemas/hooks.toon"
+      target: ".agents/hooks.json"
+      strategy: "project_hooks_json"
+    - source: "schemas/mcp.toon"
+      target: ".agents/mcp_config.json"
+      strategy: "project_mcp_json"

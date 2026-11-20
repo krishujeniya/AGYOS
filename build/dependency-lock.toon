@@ -1,0 +1,11 @@
+dependency_lock:
+  version: "1"
+  dependencies[2]:
+    - name: "serde"
+      version: "1.0.217"
+      source: "registry+https://github.com/rust-lang/crates.io-index"
+      checksum: "0d9b6c69f843987aaf8e8b9d30d237b68844f6974c77e7b6819fa3c73f12b8f4"
+    - name: "serde_json"
+      version: "1.0.138"
+      source: "registry+https://github.com/rust-lang/crates.io-index"
+      checksum: "d4c4146a480572e9d240d06f1518475524341764ab784d822fbe9e38043b9042"

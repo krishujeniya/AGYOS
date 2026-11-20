@@ -1,0 +1,18 @@
+targets:
+  binaries[3]:
+    - name: "agyos"
+      path: "apps/agyos/src/main.rs"
+      crate_name: "agyos-cli"
+    - name: "agyos-worker"
+      path: "apps/worker/src/main.rs"
+      crate_name: "agyos-worker"
+    - name: "toon"
+      path: "crates/toon-codec/src/main.rs"
+      crate_name: "toon-codec"
+  profiles:
+    release:
+      opt_level: 3
+      lto: true
+      codegen_units: 1
+      panic: "abort"
+      strip: true

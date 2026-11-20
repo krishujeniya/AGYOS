@@ -1,0 +1,12 @@
+toolchain:
+  name: "agyos-rust-toolchain"
+  version: "1.82.0"
+  channel: "stable"
+  edition: "2021"
+  targets[2]:
+    - "x86_64-unknown-linux-gnu"
+    - "aarch64-unknown-linux-gnu"
+  rustflags[3]:
+    - "-Dwarnings"
+    - "-Ctarget-cpu=generic"
+    - "-Cpanic=abort"

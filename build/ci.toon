@@ -1,0 +1,9 @@
+ci_profile:
+  version: "1"
+  builder: "github-actions"
+  runner_os: "ubuntu-latest"
+  trust_root: "github.com/krishujeniya/AGYOS"
+  slsa_provenance: "level-3"
+  enforce_locked_dependencies: true
+  offline_build_enforced: true
+  publish_artifacts: true

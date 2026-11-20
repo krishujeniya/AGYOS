@@ -1,0 +1,50 @@
+name: Remote Builder
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      target_sha:
+        description: 'Specific commit SHA to build'
+        required: false
+
+jobs:
+  build-rust-kernel:
+    name: Build Rust Kernel and Verify Reproducibility
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out target revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.target_sha || github.sha }}
+
+      - name: Set up Rust stable toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.82.0
+          targets: x86_64-unknown-linux-gnu
+
+      - name: Compile bootstrap driver
+        run: rustc bootstrap.rs -o bootstrap
+
+      - name: Verify build profiles and dependency lock
+        run: ./bootstrap --verify-only
+
+      - name: Materialize workspace and build release artifacts
+        run: ./bootstrap --build
+
+      - name: Calculate and verify artifact digests
+        run: |
+          sha256sum target/release/agyos target/release/agyos-worker target/release/toon | tee artifacts.sha256
+
+      - name: Upload compiled artifacts and provenance digests
+        uses: actions/upload-artifact@v4
+        with:
+          name: agyos-binaries-${{ github.sha }}
+          path: |
+            target/release/agyos
+            target/release/agyos-worker
+            target/release/toon
+            artifacts.sha256
+          retention-days: 7

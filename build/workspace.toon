@@ -1,0 +1,20 @@
+workspace:
+  name: "agyos-workspace"
+  version: "0.1.0"
+  resolver: "2"
+  members[3]:
+    - "apps/agyos"
+    - "apps/worker"
+    - "crates/toon-codec"
+  future_members[11]:
+    - "crates/domain"
+    - "crates/codec"
+    - "crates/catalog"
+    - "crates/governance"
+    - "crates/runtime"
+    - "crates/store"
+    - "crates/effects"
+    - "crates/agy"
+    - "crates/mcp"
+    - "crates/telemetry"
+    - "crates/adapters"
