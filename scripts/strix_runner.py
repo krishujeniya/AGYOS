@@ -53,6 +53,8 @@ def check_status() -> Dict[str, Any]:
     installed_skills = []
     for skill_name in STRIX_SKILLS:
         skill_path = SKILLS_DIR / skill_name / "SKILL.md"
+        if not skill_path.is_file():
+            skill_path = SKILLS_DIR / skill_name / "SKILL.toon"
         if skill_path.is_file():
             installed_skills.append(skill_name)
 
@@ -86,17 +88,19 @@ def list_skills() -> List[Dict[str, str]]:
     """List available Strix pentesting and security skills."""
     catalog = []
     for skill_name in STRIX_SKILLS:
-        skill_md = SKILLS_DIR / skill_name / "SKILL.md"
+        skill_path = SKILLS_DIR / skill_name / "SKILL.md"
+        if not skill_path.is_file():
+            skill_path = SKILLS_DIR / skill_name / "SKILL.toon"
         description = "Not installed"
-        if skill_md.is_file():
-            text = skill_md.read_text(encoding="utf-8")
+        if skill_path.is_file():
+            text = skill_path.read_text(encoding="utf-8")
             for line in text.splitlines():
-                if line.startswith("description:"):
-                    description = line.replace("description:", "").strip().strip('"').strip("'")
+                if "description:" in line:
+                    description = line.split("description:", 1)[1].strip().strip('"').strip("'")
                     break
         catalog.append({
             "name": skill_name,
-            "path": str(skill_md),
+            "path": str(skill_path),
             "description": description,
         })
     return catalog

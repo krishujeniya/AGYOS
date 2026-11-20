@@ -72,6 +72,14 @@ strix_runs/
 OLD/
 OLD
 
-# Markdown compatibility views come from their tracked .toon documents.
-*.[mM][dD]
+# Skills remain strictly in TOON format; do not commit skill markdown
+.agents/skills/**.md
+.agents/skills/**/*.md
+knowledge/skills/**.md
+knowledge/skills/**/*.md
+tools/**/skills/**.md
+tools/**/skills/**/*.md
+tools/video/**/SKILL.md
+tools/video/**/styles/**.md
+tools/video/**/styles/**/*.md
 /.agyos-documents-state.json

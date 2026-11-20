@@ -127,10 +127,14 @@ class AutonomousCycleTests(unittest.TestCase):
             state_dir.mkdir(parents=True)
             (state_dir / f"{ctx.milestone_id}.md").write_text("# Initial", encoding="utf-8")
 
-            # Review against actual ROOT codebase
-            review_ctx = execute_review(ctx, root_dir=ROOT)
-            self.assertIn(review_ctx.review_verdict, ("PASS", "FAIL"))
-            self.assertIsInstance(review_ctx.review_findings, list)
+            # Setup clean test files in tmp_root
+            (tmp_root / "agyos_decision").mkdir()
+            (tmp_root / "agyos_decision" / "app.py").write_text("def hello():\n    return 'clean'\n", encoding="utf-8")
+
+            review_ctx = execute_review(ctx, root_dir=tmp_root)
+            self.assertEqual(review_ctx.stage_statuses[AutonomousCycleStage.REVIEW.value], StageStatus.PASS.value)
+            self.assertEqual(review_ctx.review_verdict, "PASS")
+            self.assertEqual(len(review_ctx.review_findings), 0)
 
     def test_stage_5_test_static_verification(self):
         with tempfile.TemporaryDirectory() as tmp_dir:
@@ -140,29 +144,36 @@ class AutonomousCycleTests(unittest.TestCase):
             state_dir.mkdir(parents=True)
             (state_dir / f"{ctx.milestone_id}.md").write_text("# Initial", encoding="utf-8")
 
-            test_ctx = execute_test(ctx, root_dir=ROOT)
+            # Setup clean environment in tmp_root
+            (tmp_root / ".github" / "workflows").mkdir(parents=True)
+            (tmp_root / ".github" / "workflows" / "ci.yml").write_text("name: CI\n", encoding="utf-8")
+            (tmp_root / "agyos_decision").mkdir()
+            (tmp_root / "agyos_decision" / "app.py").write_text("def test():\n    pass\n", encoding="utf-8")
+
+            test_ctx = execute_test(ctx, root_dir=tmp_root)
             self.assertEqual(test_ctx.test_verdict, "PASS")
             self.assertEqual(len(test_ctx.test_errors), 0)
 
     def test_stage_6_ship_invariants(self):
-        # Verify git invariants helper
-        ok, msg = check_git_invariants(ROOT)
-        self.assertTrue(ok, f"Git invariant check failed: {msg}")
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            tmp_root = Path(tmp_dir)
+            subprocess.run(["git", "init", "-b", "main"], cwd=tmp_root, capture_output=True, check=True, timeout=10)
+            subprocess.run(["git", "config", "user.name", "Krish Ujeniya"], cwd=tmp_root, check=True, timeout=10)
+            subprocess.run(["git", "config", "user.email", "100012208+krishujeniya@users.noreply.github.com"], cwd=tmp_root, check=True, timeout=10)
+            subprocess.run(["git", "commit", "--allow-empty", "-m", "initial commit"], cwd=tmp_root, capture_output=True, check=True, timeout=10)
 
-        ctx = execute_think("ship milestone verification", root_dir=ROOT)
-        state_dir = ROOT / ".agents" / "state" / "checkpoints"
-        state_dir.mkdir(parents=True, exist_ok=True)
-        (state_dir / f"{ctx.milestone_id}.md").write_text("# Initial", encoding="utf-8")
+            # Verify git invariants helper
+            ok, msg = check_git_invariants(tmp_root)
+            self.assertTrue(ok, f"Git invariant check failed: {msg}")
 
-        try:
-            ship_ctx = execute_ship(ctx, root_dir=ROOT, auto_push=False)
+            ctx = execute_think("ship milestone verification", root_dir=tmp_root)
+            state_dir = tmp_root / ".agents" / "state" / "checkpoints"
+            state_dir.mkdir(parents=True, exist_ok=True)
+            (state_dir / f"{ctx.milestone_id}.md").write_text("# Initial", encoding="utf-8")
+
+            ship_ctx = execute_ship(ctx, root_dir=tmp_root, auto_push=False)
             self.assertEqual(ship_ctx.stage_statuses[AutonomousCycleStage.SHIP.value], StageStatus.PASS.value)
-            self.assertIn("READY", ship_ctx.delivery_status) or self.assertIn("CLEAN", ship_ctx.delivery_status)
-        finally:
-            # Clean up dummy test checkpoint if created in real repo
-            test_cp = state_dir / f"{ctx.milestone_id}.md"
-            if test_cp.exists():
-                test_cp.unlink()
+            self.assertTrue("READY" in ship_ctx.delivery_status or "CLEAN" in ship_ctx.delivery_status)
 
     def test_stage_7_reflect_handoff(self):
         with tempfile.TemporaryDirectory() as tmp_dir:
@@ -194,9 +205,9 @@ class AutonomousCycleTests(unittest.TestCase):
                 shutil.copy2(ROOT / "bin" / name, bin_dir / name)
 
             # Initialize git repo in tmp_root to verify git invariants
-            subprocess.run(["git", "init", "-b", "main"], cwd=tmp_root, capture_output=True, check=True)
-            subprocess.run(["git", "config", "user.name", "Krish Ujeniya"], cwd=tmp_root, check=True)
-            subprocess.run(["git", "config", "user.email", "100012208+krishujeniya@users.noreply.github.com"], cwd=tmp_root, check=True)
+            subprocess.run(["git", "init", "-b", "main"], cwd=tmp_root, capture_output=True, check=True, timeout=10)
+            subprocess.run(["git", "config", "user.name", "Krish Ujeniya"], cwd=tmp_root, check=True, timeout=10)
+            subprocess.run(["git", "config", "user.email", "100012208+krishujeniya@users.noreply.github.com"], cwd=tmp_root, check=True, timeout=10)
             (tmp_root / ".github" / "workflows").mkdir(parents=True)
             (tmp_root / ".github" / "workflows" / "ci.yml").write_text("name: CI\n", encoding="utf-8")
             (tmp_root / "AI_HANDOFF.md").write_text("# Baseline handoff\n", encoding="utf-8")

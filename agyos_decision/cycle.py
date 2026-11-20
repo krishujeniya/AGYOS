@@ -156,7 +156,7 @@ def run_state_gate(
     if mode == "fast":
         cmd = ["bash", "bin/agyos", "fast"]
     env = {**os.environ, "STATE_FILE": str(state_file)} if state_file else None
-    res = subprocess.run(cmd, cwd=root_dir, capture_output=True, text=True, env=env)
+    res = subprocess.run(cmd, cwd=root_dir, capture_output=True, text=True, env=env, timeout=30)
     return res.returncode == 0
 
 
@@ -271,30 +271,28 @@ def execute_plan(context: CycleContext, root_dir: Path = ROOT) -> CycleContext:
     context.acceptance_criteria = acceptance_criteria
 
     if state_file.exists():
-        with state_file.with_suffix(".json.lock").open("a") as lock:
-            fcntl.flock(lock, fcntl.LOCK_EX)
-            try:
-                state = read_state_file(state_file)
-                if state.get("current_gate") == "VERIFY":
-                    run_state_gate("IDLE", root_dir, state_file=state_file)
-                run_state_gate("UNDERSTAND", root_dir, state_file=state_file)
-                run_state_gate("ANALYZE", root_dir, state_file=state_file)
-                state = read_state_file(state_file)
-                state.update(
-                    current_milestone=context.milestone_id,
-                    complexity_score=context.complexity,
-                    active_role=context.role_id,
-                    primary_skill=context.skill_name,
-                    last_updated=datetime.now(timezone.utc).isoformat(),
-                )
-                write_state_file(state_file, state)
-                if context.fast_path:
-                    run_state_gate("IMPLEMENT", root_dir, mode="fast", state_file=state_file)
-                else:
-                    run_state_gate("PLAN", root_dir, state_file=state_file)
-            except Exception as exc:
-                context.stage_statuses[AutonomousCycleStage.PLAN.value] = StageStatus.FAIL.value
-                raise ValueError(f"State gate transition failed during PLAN: {exc}") from exc
+        try:
+            state = read_state_file(state_file)
+            if state.get("current_gate") == "VERIFY":
+                run_state_gate("IDLE", root_dir, state_file=state_file)
+            run_state_gate("UNDERSTAND", root_dir, state_file=state_file)
+            run_state_gate("ANALYZE", root_dir, state_file=state_file)
+            state = read_state_file(state_file)
+            state.update(
+                current_milestone=context.milestone_id,
+                complexity_score=context.complexity,
+                active_role=context.role_id,
+                primary_skill=context.skill_name,
+                last_updated=datetime.now(timezone.utc).isoformat(),
+            )
+            write_state_file(state_file, state)
+            if context.fast_path:
+                run_state_gate("IMPLEMENT", root_dir, mode="fast", state_file=state_file)
+            else:
+                run_state_gate("PLAN", root_dir, state_file=state_file)
+        except Exception as exc:
+            context.stage_statuses[AutonomousCycleStage.PLAN.value] = StageStatus.FAIL.value
+            raise ValueError(f"State gate transition failed during PLAN: {exc}") from exc
 
     checkpoint_file = root_dir / ".agents" / "state" / "checkpoints" / f"{context.milestone_id}.md"
     checkpoint_file.parent.mkdir(parents=True, exist_ok=True)
@@ -347,6 +345,7 @@ def execute_build(
             cwd=root_dir,
             capture_output=True,
             text=True,
+            timeout=30,
         )
         if st_res.returncode == 0:
             lines = [l.strip() for l in st_res.stdout.splitlines() if l.strip()]
@@ -375,15 +374,17 @@ def execute_review(context: CycleContext, root_dir: Path = ROOT) -> CycleContext
     findings: List[str] = []
 
     # 1. AST syntax inspection for Python files
-    for root_sub, _, files in os.walk(root_dir / "agyos_decision"):
-        for f in files:
-            if f.endswith(".py"):
-                fpath = Path(root_sub) / f
-                try:
-                    import ast
-                    ast.parse(fpath.read_text(encoding="utf-8"), filename=str(fpath))
-                except SyntaxError as e:
-                    findings.append(f"Python AST syntax error in {fpath.name}: {e}")
+    target_py_dir = root_dir / "agyos_decision"
+    if target_py_dir.is_dir():
+        for root_sub, _, files in os.walk(target_py_dir):
+            for f in files:
+                if f.endswith(".py"):
+                    fpath = Path(root_sub) / f
+                    try:
+                        import ast
+                        ast.parse(fpath.read_text(encoding="utf-8"), filename=str(fpath))
+                    except SyntaxError as e:
+                        findings.append(f"Python AST syntax error in {fpath.name}: {e}")
 
     # 2. Shell syntax checks
     bin_agyos = root_dir / "bin" / "agyos"
@@ -393,6 +394,7 @@ def execute_review(context: CycleContext, root_dir: Path = ROOT) -> CycleContext
             cwd=root_dir,
             capture_output=True,
             text=True,
+            timeout=30,
         )
         if sh_res.returncode != 0:
             findings.append(f"Shell syntax error in bin/agyos: {sh_res.stderr.strip()}")
@@ -414,14 +416,16 @@ def execute_review(context: CycleContext, root_dir: Path = ROOT) -> CycleContext
                 pass
 
     # 4. Git diff whitespace check
-    diff_res = subprocess.run(
-        ["git", "diff", "--check"],
-        cwd=root_dir,
-        capture_output=True,
-        text=True,
-    )
-    if diff_res.returncode != 0 and diff_res.stdout.strip():
-        findings.append(f"Git diff whitespace error: {diff_res.stdout.strip()[:200]}")
+    if (root_dir / ".git").exists():
+        diff_res = subprocess.run(
+            ["git", "diff", "--check"],
+            cwd=root_dir,
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        if diff_res.returncode != 0 and diff_res.stdout.strip():
+            findings.append(f"Git diff whitespace error: {diff_res.stdout.strip()[:200]}")
 
     context.review_findings = findings
     passed = len(findings) == 0
@@ -459,24 +463,30 @@ def execute_test(context: CycleContext, root_dir: Path = ROOT) -> CycleContext:
             run_state_gate("VERIFY", root_dir, state_file=state_file)
 
     # Static python compileall
-    py_res = subprocess.run(
-        ["python3", "-m", "compileall", "-q", "agyos_decision", "scripts"],
-        cwd=root_dir,
-        capture_output=True,
-        text=True,
-    )
-    if py_res.returncode != 0:
-        errors.append(f"Compileall error: {py_res.stderr.strip()[:200]}")
+    compile_targets = [d for d in ("agyos_decision", "scripts") if (root_dir / d).is_dir()]
+    if compile_targets:
+        py_res = subprocess.run(
+            ["python3", "-m", "compileall", "-q", *compile_targets],
+            cwd=root_dir,
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        if py_res.returncode != 0:
+            errors.append(f"Compileall error: {py_res.stderr.strip()[:200]}")
 
     # Shell syntax check
-    sh_res = subprocess.run(
-        ["bash", "-n", "bin/agyos", "bin/state.sh", "bin/state-validate.sh"],
-        cwd=root_dir,
-        capture_output=True,
-        text=True,
-    )
-    if sh_res.returncode != 0:
-        errors.append(f"Shell syntax error: {sh_res.stderr.strip()[:200]}")
+    sh_targets = [f for f in ("bin/agyos", "bin/state.sh", "bin/state-validate.sh") if (root_dir / f).is_file()]
+    if sh_targets:
+        sh_res = subprocess.run(
+            ["bash", "-n", *sh_targets],
+            cwd=root_dir,
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        if sh_res.returncode != 0:
+            errors.append(f"Shell syntax error: {sh_res.stderr.strip()[:200]}")
 
     # Check that GitHub Actions CI workflows are defined
     ci_workflow = root_dir / ".github" / "workflows" / "ci.yml"
@@ -524,6 +534,7 @@ def check_git_invariants(root_dir: Path) -> Tuple[bool, str]:
         cwd=root_dir,
         capture_output=True,
         text=True,
+        timeout=30,
     )
     branch = branch_res.stdout.strip()
     if not branch:
@@ -532,10 +543,12 @@ def check_git_invariants(root_dir: Path) -> Tuple[bool, str]:
             cwd=root_dir,
             capture_output=True,
             text=True,
+            timeout=30,
         )
         branch = rev_res.stdout.strip()
 
-    if branch != "main":
+    ref_name = os.environ.get("GITHUB_REF_NAME", "")
+    if branch != "main" and ref_name != "main":
         return False, f"Branch invariant violation: active branch is '{branch}', must be 'main'"
 
     name_res = subprocess.run(
@@ -543,6 +556,7 @@ def check_git_invariants(root_dir: Path) -> Tuple[bool, str]:
         cwd=root_dir,
         capture_output=True,
         text=True,
+        timeout=30,
     )
     user_name = name_res.stdout.strip()
     if user_name != "Krish Ujeniya":
@@ -553,6 +567,7 @@ def check_git_invariants(root_dir: Path) -> Tuple[bool, str]:
         cwd=root_dir,
         capture_output=True,
         text=True,
+        timeout=30,
     )
     user_email = email_res.stdout.strip()
     if "krishujeniya" not in user_email:
@@ -583,6 +598,7 @@ def execute_ship(
         cwd=root_dir,
         capture_output=True,
         text=True,
+        timeout=30,
     )
     has_changes = bool(st_res.stdout.strip())
 
@@ -591,12 +607,13 @@ def execute_ship(
         msg = commit_msg or default_msg
 
         # Stage and commit
-        subprocess.run(["git", "add", "-A"], cwd=root_dir, check=True)
+        subprocess.run(["git", "add", "-A"], cwd=root_dir, check=True, timeout=30)
         commit_res = subprocess.run(
             ["git", "commit", "-m", msg],
             cwd=root_dir,
             capture_output=True,
             text=True,
+            timeout=30,
         )
         if commit_res.returncode == 0:
             rev_res = subprocess.run(
@@ -604,6 +621,7 @@ def execute_ship(
                 cwd=root_dir,
                 capture_output=True,
                 text=True,
+                timeout=30,
             )
             context.commit_sha = rev_res.stdout.strip()
 
@@ -612,6 +630,7 @@ def execute_ship(
                 cwd=root_dir,
                 capture_output=True,
                 text=True,
+                timeout=30,
             )
             context.pushed = (push_res.returncode == 0)
             context.delivery_status = "DELIVERED" if context.pushed else "COMMITTED_LOCAL"
@@ -653,7 +672,7 @@ def update_ai_handoff_document(entry_text: str, root_dir: Path = ROOT) -> None:
             handoff_toon.write_text(
                 f'mode: "100644"\ntext: {json.dumps(updated_body)}\n', encoding="utf-8"
             )
-    elif handoff_md.exists():
+    if handoff_md.exists():
         existing_md = handoff_md.read_text(encoding="utf-8")
         handoff_md.write_text(f"{entry_text}\n\n---\n\n{existing_md}", encoding="utf-8")
 

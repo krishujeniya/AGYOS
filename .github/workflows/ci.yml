@@ -11,9 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Verify Markdown sources have moved to TOON
+      - name: Verify skill sources have moved to TOON
         run: |
-          if git ls-files -- ':(icase)*.md' | grep .; then
+          if git ls-files -- '.agents/skills/**.md' 'knowledge/skills/**.md' | grep .; then
+            echo "Error: Skill definitions must be in TOON format, not Markdown" >&2
             exit 1
           fi
       - name: Materialize AGY compatibility documents
