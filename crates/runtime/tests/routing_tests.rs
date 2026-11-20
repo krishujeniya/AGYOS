@@ -35,7 +35,7 @@ fn test_all_5_governing_pods_coverage() {
 
     let pod_prompts = [
         (GoverningPod::PodBuild, "Implement client change for stripe subscription webhook"),
-        (GoverningPod::PodGrowth, "Draft enterprise proposal for solopreneur workflow platform"),
+        (GoverningPod::PodGrowth, "Draft proposal for solopreneur workflow platform"),
         (GoverningPod::PodCustomer, "Onboard client with initial workspace setup and credentials"),
         (GoverningPod::PodPeople, "Draft hiring rubric for senior software engineer"),
         (GoverningPod::PodGna, "Prioritize portfolio initiatives for Q1 capital planning"),
