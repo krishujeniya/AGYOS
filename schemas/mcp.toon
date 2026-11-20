@@ -1,0 +1,9 @@
+mcp_manifest:
+  version: "1"
+  servers[1]:
+    - name: "agyos-kernel"
+      command: "target/release/agyos"
+      args[1]:
+        - "mcp-server"
+      env:
+        AGYOS_CONFINED: "true"

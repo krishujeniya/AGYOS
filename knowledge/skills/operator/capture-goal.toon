@@ -1,0 +1,18 @@
+skill:
+  id: "capture-goal"
+  home: "operator"
+  version: "1.0.0"
+  intent: "Capture the primary objective and constraints from the operator"
+  risk_level: "R0"
+  department: "product"
+  pod: "Build"
+  inputs[1]:
+    - name: "natural_language_prompt"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "goal_summary"
+      type: "string"
+  steps[2]:
+    - "Ingest natural language input and extract intent"
+    - "Format into TaskContract draft and return receipt"

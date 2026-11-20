@@ -1,0 +1,21 @@
+[package]
+name = "agy"
+version = "0.1.0"
+edition = "2021"
+authors = ["Krish Ujeniya <100012208+krishujeniya@users.noreply.github.com>"]
+description = "AGYOS AGY Host Bridge, Projection Engine, and Broker Confinement"
+license = "MIT"
+repository = "https://github.com/krishujeniya/AGYOS"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+domain = { path = "../domain" }
+toon-codec = { path = "../toon-codec" }
+governance = { path = "../governance" }
+store = { path = "../store" }
+effects = { path = "../effects" }
+
+[lib]
+name = "agy"
+path = "src/lib.rs"

@@ -1,0 +1,11 @@
+hooks_manifest:
+  version: "1"
+  hooks[2]:
+    - name: "pre-command"
+      type: "PreToolUse"
+      action: "enforce_confinement"
+      enforced: true
+    - name: "post-command"
+      type: "PostToolUse"
+      action: "verify_receipt"
+      enforced: true
