@@ -5,9 +5,11 @@
 pub mod bridge;
 pub mod confinement;
 pub mod projection;
+pub mod slice;
 pub mod version;
 
 pub use bridge::{AgyBridge, BridgeError, ExecutionReceipt, ExecutionStatus};
 pub use confinement::{ConfinementError, ConfinementGuard};
 pub use projection::{ProjectionEngine, ProjectionError};
+pub use slice::{AriadneBreadcrumb, OnboardingProposalSession, ProposalDraft, SliceError, SliceOperatorReceipt};
 pub use version::{AgyVersion, VersionError};
