@@ -6,13 +6,37 @@ skill:
   risk_level: "R0"
   department: "product"
   pod: "Build"
+  owner_team: "Product"
+  principles[5]:
+    - "P23"
+    - "P24"
+    - "P26"
+    - "P28"
+    - "P31"
   inputs[1]:
-    - name: "natural_language_prompt"
+    - name: "request_payload"
       type: "string"
       required: true
   outputs[1]:
-    - name: "goal_summary"
+    - name: "receipt_summary"
       type: "string"
   steps[2]:
-    - "Ingest natural language input and extract intent"
-    - "Format into TaskContract draft and return receipt"
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute capture goal with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute capture goal but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "capture goal"
+    - "user objective"
+  clarification_triggers[1]:
+    - "vague goal"
+  abstention_triggers[1]:
+    - "unsupported task"

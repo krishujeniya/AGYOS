@@ -1,0 +1,42 @@
+skill:
+  id: "attest-evidence"
+  home: "assurance"
+  version: "1.0.0"
+  intent: "Cryptographically sign verified test outcomes"
+  risk_level: "R0"
+  department: "engineering"
+  pod: "Build"
+  owner_team: "Engineering"
+  principles[5]:
+    - "P04"
+    - "P08"
+    - "P09"
+    - "P12"
+    - "P13"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute attest evidence with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute attest evidence but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "attest evidence"
+    - "sign receipt"
+  clarification_triggers[1]:
+    - "forged evidence"
+  abstention_triggers[1]:
+    - "unsigned test"

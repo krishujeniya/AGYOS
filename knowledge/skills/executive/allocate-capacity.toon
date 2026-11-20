@@ -1,0 +1,41 @@
+skill:
+  id: "allocate-capacity"
+  home: "executive"
+  version: "1.0.0"
+  intent: "Balance operational bandwidth across pods"
+  risk_level: "R1"
+  department: "executive"
+  pod: "GNA"
+  owner_team: "Executive"
+  principles[4]:
+    - "P01"
+    - "P17"
+    - "P23"
+    - "P32"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute allocate capacity with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute allocate capacity but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "allocate capacity"
+    - "pod bandwidth"
+  clarification_triggers[1]:
+    - "overallocation"
+  abstention_triggers[1]:
+    - "bottleneck"

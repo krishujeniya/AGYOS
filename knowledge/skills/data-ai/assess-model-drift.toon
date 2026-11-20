@@ -1,0 +1,42 @@
+skill:
+  id: "assess-model-drift"
+  home: "data-ai"
+  version: "1.0.0"
+  intent: "Monitor accuracy degradation in production model outputs"
+  risk_level: "R0"
+  department: "data_ai"
+  pod: "Build"
+  owner_team: "Data & AI"
+  principles[5]:
+    - "P06"
+    - "P12"
+    - "P21"
+    - "P23"
+    - "P27"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute assess model drift with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute assess model drift but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "assess model drift"
+    - "drift detection"
+  clarification_triggers[1]:
+    - "degraded accuracy"
+  abstention_triggers[1]:
+    - "unmonitored model"

@@ -1,0 +1,44 @@
+skill:
+  id: "forecast-capacity"
+  home: "operations"
+  version: "1.0.0"
+  intent: "Model infrastructure demands from traffic projections"
+  risk_level: "R0"
+  department: "it_infra"
+  pod: "GNA"
+  owner_team: "IT & Platform"
+  principles[7]:
+    - "P12"
+    - "P14"
+    - "P15"
+    - "P16"
+    - "P17"
+    - "P18"
+    - "P20"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute forecast capacity with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute forecast capacity but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "forecast capacity"
+    - "resource plan"
+  clarification_triggers[1]:
+    - "resource exhaustion"
+  abstention_triggers[1]:
+    - "overprovisioning"

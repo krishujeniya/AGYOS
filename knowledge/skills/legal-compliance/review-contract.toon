@@ -1,0 +1,41 @@
+skill:
+  id: "review-contract"
+  home: "legal-compliance"
+  version: "1.0.0"
+  intent: "Identify indemnity, liability caps, and termination clauses"
+  risk_level: "R0"
+  department: "legal_compliance"
+  pod: "GNA"
+  owner_team: "Legal & Compliance"
+  principles[4]:
+    - "P05"
+    - "P06"
+    - "P07"
+    - "P21"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute review contract with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute review contract but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "review contract"
+    - "contract analysis"
+  clarification_triggers[1]:
+    - "unlimited liability"
+  abstention_triggers[1]:
+    - "hidden clause"

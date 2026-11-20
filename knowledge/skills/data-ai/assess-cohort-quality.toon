@@ -1,0 +1,42 @@
+skill:
+  id: "assess-cohort-quality"
+  home: "data-ai"
+  version: "1.0.0"
+  intent: "Analyze retention and user segments from behavioral data"
+  risk_level: "R0"
+  department: "data_ai"
+  pod: "Build"
+  owner_team: "Data & AI"
+  principles[5]:
+    - "P06"
+    - "P12"
+    - "P21"
+    - "P23"
+    - "P27"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute assess cohort quality with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute assess cohort quality but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "assess cohort quality"
+    - "cohort analysis"
+  clarification_triggers[1]:
+    - "confounded segment"
+  abstention_triggers[1]:
+    - "unreliable signal"

@@ -1,0 +1,41 @@
+skill:
+  id: "model-trust-boundaries"
+  home: "protection"
+  version: "1.0.0"
+  intent: "Map untrusted inputs and external data paths"
+  risk_level: "R0"
+  department: "it_infra"
+  pod: "GNA"
+  owner_team: "IT & Platform"
+  principles[4]:
+    - "P05"
+    - "P07"
+    - "P20"
+    - "P21"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute trust boundaries with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute trust boundaries but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "trust boundaries"
+    - "stride threat"
+  clarification_triggers[1]:
+    - "unmapped path"
+  abstention_triggers[1]:
+    - "blind trust"

@@ -1,0 +1,41 @@
+skill:
+  id: "draft-channel-content"
+  home: "marketing"
+  version: "1.0.0"
+  intent: "Author engaging copy for social, email, and blog channels"
+  risk_level: "R1"
+  department: "marketing"
+  pod: "Growth"
+  owner_team: "Marketing"
+  principles[4]:
+    - "P06"
+    - "P21"
+    - "P23"
+    - "P24"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute draft channel content with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute draft channel content but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "draft channel content"
+    - "marketing copy"
+  clarification_triggers[1]:
+    - "low-quality copy"
+  abstention_triggers[1]:
+    - "plagiarism"

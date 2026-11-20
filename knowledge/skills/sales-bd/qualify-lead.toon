@@ -1,0 +1,41 @@
+skill:
+  id: "qualify-lead"
+  home: "sales-bd"
+  version: "1.0.0"
+  intent: "Score prospect fit against ideal customer profile"
+  risk_level: "R0"
+  department: "sales_bd"
+  pod: "Growth"
+  owner_team: "Sales & BD"
+  principles[4]:
+    - "P04"
+    - "P05"
+    - "P06"
+    - "P23"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute qualify lead with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute qualify lead but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "qualify lead"
+    - "icp score"
+  clarification_triggers[1]:
+    - "unqualified lead"
+  abstention_triggers[1]:
+    - "fake contact"

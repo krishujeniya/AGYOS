@@ -1,0 +1,41 @@
+skill:
+  id: "write-prd"
+  home: "product"
+  version: "1.0.0"
+  intent: "Author comprehensive product requirement documents"
+  risk_level: "R1"
+  department: "product"
+  pod: "Build"
+  owner_team: "Product"
+  principles[4]:
+    - "P01"
+    - "P23"
+    - "P24"
+    - "P28"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute write prd with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute write prd but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "write prd"
+    - "product spec"
+  clarification_triggers[1]:
+    - "ambiguous requirement"
+  abstention_triggers[1]:
+    - "unscoped feature"

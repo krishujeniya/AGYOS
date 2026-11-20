@@ -1,0 +1,41 @@
+skill:
+  id: "index-recall"
+  home: "memory"
+  version: "1.0.0"
+  intent: "Retrieve historical session context and durable learnings"
+  risk_level: "R0"
+  department: "data_ai"
+  pod: "Build"
+  owner_team: "Data & AI"
+  principles[4]:
+    - "P06"
+    - "P09"
+    - "P21"
+    - "P31"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute index recall with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute index recall but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "index recall"
+    - "query memory"
+  clarification_triggers[1]:
+    - "stale fact"
+  abstention_triggers[1]:
+    - "unauthorized recall"

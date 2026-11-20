@@ -1,0 +1,41 @@
+skill:
+  id: "capture-checkpoint"
+  home: "memory"
+  version: "1.0.0"
+  intent: "Persist transactional milestone checkpoint and session snapshot"
+  risk_level: "R1"
+  department: "data_ai"
+  pod: "Build"
+  owner_team: "Data & AI"
+  principles[4]:
+    - "P06"
+    - "P09"
+    - "P21"
+    - "P31"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute capture checkpoint with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute capture checkpoint but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "capture checkpoint"
+    - "save state"
+  clarification_triggers[1]:
+    - "partial checkpoint"
+  abstention_triggers[1]:
+    - "corrupted snapshot"

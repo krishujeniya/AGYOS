@@ -1,0 +1,41 @@
+skill:
+  id: "inventory-sources"
+  home: "knowledge"
+  version: "1.0.0"
+  intent: "Scan repository and external references for source provenance"
+  risk_level: "R0"
+  department: "data_ai"
+  pod: "Build"
+  owner_team: "Data & AI"
+  principles[4]:
+    - "P06"
+    - "P07"
+    - "P22"
+    - "P29"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute inventory sources with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute inventory sources but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "inventory sources"
+    - "trace provenance"
+  clarification_triggers[1]:
+    - "untracked source"
+  abstention_triggers[1]:
+    - "unlicensed asset"

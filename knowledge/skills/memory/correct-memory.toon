@@ -1,0 +1,41 @@
+skill:
+  id: "correct-memory"
+  home: "memory"
+  version: "1.0.0"
+  intent: "Update or invalidate erroneous recalled facts upon operator correction"
+  risk_level: "R1"
+  department: "data_ai"
+  pod: "Build"
+  owner_team: "Data & AI"
+  principles[4]:
+    - "P06"
+    - "P09"
+    - "P21"
+    - "P31"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute correct memory with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute correct memory but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "correct memory"
+    - "fix fact"
+  clarification_triggers[1]:
+    - "conflicting memory"
+  abstention_triggers[1]:
+    - "unverified rewrite"

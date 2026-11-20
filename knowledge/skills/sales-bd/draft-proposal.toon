@@ -1,0 +1,41 @@
+skill:
+  id: "draft-proposal"
+  home: "sales-bd"
+  version: "1.0.0"
+  intent: "Author tailored commercial proposals and service agreements"
+  risk_level: "R1"
+  department: "sales_bd"
+  pod: "Growth"
+  owner_team: "Sales & BD"
+  principles[4]:
+    - "P04"
+    - "P05"
+    - "P06"
+    - "P23"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute draft proposal with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute draft proposal but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "draft proposal"
+    - "commercial agreement"
+  clarification_triggers[1]:
+    - "unscoped deliverables"
+  abstention_triggers[1]:
+    - "unbounded liability"

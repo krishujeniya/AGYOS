@@ -1,0 +1,41 @@
+skill:
+  id: "preview-effect"
+  home: "authority"
+  version: "1.0.0"
+  intent: "Render dry-run preview of proposed external mutations"
+  risk_level: "R0"
+  department: "legal_compliance"
+  pod: "GNA"
+  owner_team: "Legal & Compliance"
+  principles[4]:
+    - "P05"
+    - "P09"
+    - "P11"
+    - "P30"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute preview effect with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute preview effect but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "preview effect"
+    - "dry run"
+  clarification_triggers[1]:
+    - "unknown side effect"
+  abstention_triggers[1]:
+    - "skip preview"

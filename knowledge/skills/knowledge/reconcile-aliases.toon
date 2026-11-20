@@ -1,0 +1,41 @@
+skill:
+  id: "reconcile-aliases"
+  home: "knowledge"
+  version: "1.0.0"
+  intent: "Map legacy names and aliases to canonical skill targets"
+  risk_level: "R1"
+  department: "data_ai"
+  pod: "Build"
+  owner_team: "Data & AI"
+  principles[4]:
+    - "P06"
+    - "P07"
+    - "P22"
+    - "P29"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute reconcile aliases with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute reconcile aliases but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "reconcile aliases"
+    - "alias redirect"
+  clarification_triggers[1]:
+    - "broken alias"
+  abstention_triggers[1]:
+    - "circular redirect"

@@ -1,0 +1,41 @@
+skill:
+  id: "prepare-estimate"
+  home: "finance"
+  version: "1.0.0"
+  intent: "Calculate project costs, margins, and payment milestones"
+  risk_level: "R0"
+  department: "finance"
+  pod: "GNA"
+  owner_team: "Finance"
+  principles[4]:
+    - "P06"
+    - "P09"
+    - "P10"
+    - "P32"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute prepare estimate with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute prepare estimate but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "prepare estimate"
+    - "cost quote"
+  clarification_triggers[1]:
+    - "underestimated expense"
+  abstention_triggers[1]:
+    - "negative margin"

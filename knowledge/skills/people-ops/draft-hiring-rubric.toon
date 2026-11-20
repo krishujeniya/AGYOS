@@ -1,0 +1,42 @@
+skill:
+  id: "draft-hiring-rubric"
+  home: "people-ops"
+  version: "1.0.0"
+  intent: "Establish structured interview evaluation scorecards"
+  risk_level: "R1"
+  department: "people_ops"
+  pod: "People"
+  owner_team: "People & Ops"
+  principles[5]:
+    - "P05"
+    - "P06"
+    - "P21"
+    - "P23"
+    - "P25"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute draft hiring rubric with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute draft hiring rubric but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "draft hiring rubric"
+    - "interview rubric"
+  clarification_triggers[1]:
+    - "subjective bias"
+  abstention_triggers[1]:
+    - "inconsistent grading"

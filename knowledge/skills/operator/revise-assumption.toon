@@ -1,0 +1,42 @@
+skill:
+  id: "revise-assumption"
+  home: "operator"
+  version: "1.0.0"
+  intent: "Update task contract assumptions upon operator guidance"
+  risk_level: "R1"
+  department: "product"
+  pod: "Build"
+  owner_team: "Product"
+  principles[5]:
+    - "P23"
+    - "P24"
+    - "P26"
+    - "P28"
+    - "P31"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute revise assumption with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute revise assumption but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "revise assumption"
+    - "change constraint"
+  clarification_triggers[1]:
+    - "conflicting constraint"
+  abstention_triggers[1]:
+    - "illegal override"

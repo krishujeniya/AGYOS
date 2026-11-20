@@ -1,0 +1,41 @@
+skill:
+  id: "map-user-journey"
+  home: "design"
+  version: "1.0.0"
+  intent: "Chart end-to-end customer interaction workflows"
+  risk_level: "R0"
+  department: "design"
+  pod: "Build"
+  owner_team: "Design"
+  principles[4]:
+    - "P23"
+    - "P24"
+    - "P26"
+    - "P30"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute map user journey with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute map user journey but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "map user journey"
+    - "interaction flow"
+  clarification_triggers[1]:
+    - "disconnected flow"
+  abstention_triggers[1]:
+    - "blind step"

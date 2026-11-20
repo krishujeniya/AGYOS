@@ -1,0 +1,41 @@
+skill:
+  id: "record-license"
+  home: "legal-compliance"
+  version: "1.0.0"
+  intent: "Track open source and vendor software licensing obligations"
+  risk_level: "R1"
+  department: "legal_compliance"
+  pod: "GNA"
+  owner_team: "Legal & Compliance"
+  principles[4]:
+    - "P05"
+    - "P06"
+    - "P07"
+    - "P21"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute record license with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute record license but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "record license"
+    - "license inventory"
+  clarification_triggers[1]:
+    - "unlicensed dependency"
+  abstention_triggers[1]:
+    - "gpl violation"

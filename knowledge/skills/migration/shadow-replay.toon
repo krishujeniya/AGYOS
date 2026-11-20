@@ -1,0 +1,42 @@
+skill:
+  id: "shadow-replay"
+  home: "migration"
+  version: "1.0.0"
+  intent: "Compare new runtime behavior against legacy baselines"
+  risk_level: "R0"
+  department: "engineering"
+  pod: "Build"
+  owner_team: "Engineering"
+  principles[5]:
+    - "P03"
+    - "P06"
+    - "P09"
+    - "P10"
+    - "P12"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute shadow replay with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute shadow replay but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "shadow replay"
+    - "dark launch"
+  clarification_triggers[1]:
+    - "divergent behavior"
+  abstention_triggers[1]:
+    - "missed edge case"

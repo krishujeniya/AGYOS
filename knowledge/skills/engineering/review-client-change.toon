@@ -1,0 +1,41 @@
+skill:
+  id: "review-client-change"
+  home: "engineering"
+  version: "1.0.0"
+  intent: "Conduct independent peer review across code diffs"
+  risk_level: "R0"
+  department: "engineering"
+  pod: "Build"
+  owner_team: "Engineering"
+  principles[4]:
+    - "P01"
+    - "P04"
+    - "P07"
+    - "P08"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute review client change with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute review client change but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "review client change"
+    - "code review"
+  clarification_triggers[1]:
+    - "unreviewed diff"
+  abstention_triggers[1]:
+    - "rubber stamp"

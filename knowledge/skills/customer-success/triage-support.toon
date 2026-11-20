@@ -1,0 +1,42 @@
+skill:
+  id: "triage-support"
+  home: "customer-success"
+  version: "1.0.0"
+  intent: "Prioritize incoming support requests by customer tier and severity"
+  risk_level: "R0"
+  department: "customer_success"
+  pod: "Customer"
+  owner_team: "Customer Success"
+  principles[5]:
+    - "P04"
+    - "P11"
+    - "P23"
+    - "P26"
+    - "P31"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute triage support with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute triage support but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "triage support"
+    - "ticket priority"
+  clarification_triggers[1]:
+    - "misclassified severity"
+  abstention_triggers[1]:
+    - "ignored customer"

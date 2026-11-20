@@ -1,0 +1,41 @@
+skill:
+  id: "localize-interface"
+  home: "design"
+  version: "1.0.0"
+  intent: "Adapt UI typography, spacing, and copy for target locales"
+  risk_level: "R1"
+  department: "design"
+  pod: "Build"
+  owner_team: "Design"
+  principles[4]:
+    - "P23"
+    - "P24"
+    - "P26"
+    - "P30"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute localize interface with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute localize interface but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "localize interface"
+    - "gujarati localization"
+  clarification_triggers[1]:
+    - "broken layout"
+  abstention_triggers[1]:
+    - "untranslated string"

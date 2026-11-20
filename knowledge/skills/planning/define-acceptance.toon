@@ -1,0 +1,42 @@
+skill:
+  id: "define-acceptance"
+  home: "planning"
+  version: "1.0.0"
+  intent: "Establish deterministic Given-When-Then criteria"
+  risk_level: "R0"
+  department: "product"
+  pod: "Build"
+  owner_team: "Product"
+  principles[5]:
+    - "P01"
+    - "P04"
+    - "P09"
+    - "P10"
+    - "P23"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute define acceptance with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute define acceptance but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "define acceptance"
+    - "given when then"
+  clarification_triggers[1]:
+    - "untestable criterion"
+  abstention_triggers[1]:
+    - "speculative promise"

@@ -1,0 +1,41 @@
+skill:
+  id: "assess-privacy-request"
+  home: "legal-compliance"
+  version: "1.0.0"
+  intent: "Coordinate data subject access and deletion requests DSAR"
+  risk_level: "R1"
+  department: "legal_compliance"
+  pod: "GNA"
+  owner_team: "Legal & Compliance"
+  principles[4]:
+    - "P05"
+    - "P06"
+    - "P07"
+    - "P21"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute assess privacy request with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute assess privacy request but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "assess privacy request"
+    - "dsar processing"
+  clarification_triggers[1]:
+    - "missed deadline"
+  abstention_triggers[1]:
+    - "data spoliation"

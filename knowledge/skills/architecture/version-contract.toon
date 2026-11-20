@@ -1,0 +1,41 @@
+skill:
+  id: "version-contract"
+  home: "architecture"
+  version: "1.0.0"
+  intent: "Manage semantic versioning and schema migrations"
+  risk_level: "R1"
+  department: "engineering"
+  pod: "Build"
+  owner_team: "Engineering"
+  principles[4]:
+    - "P02"
+    - "P03"
+    - "P04"
+    - "P09"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute version contract with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute version contract but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "version contract"
+    - "schema semver"
+  clarification_triggers[1]:
+    - "breaking schema"
+  abstention_triggers[1]:
+    - "unversioned payload"

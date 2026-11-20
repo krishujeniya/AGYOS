@@ -1,0 +1,41 @@
+skill:
+  id: "implement-slice"
+  home: "rust"
+  version: "1.0.0"
+  intent: "Author memory-safe, zero-copy Rust implementation slices"
+  risk_level: "R1"
+  department: "engineering"
+  pod: "Build"
+  owner_team: "Engineering"
+  principles[4]:
+    - "P01"
+    - "P02"
+    - "P07"
+    - "P12"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute implement slice with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute implement slice but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "implement slice"
+    - "rust feature"
+  clarification_triggers[1]:
+    - "unsafe memory"
+  abstention_triggers[1]:
+    - "unbounded clone"

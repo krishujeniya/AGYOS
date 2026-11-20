@@ -1,0 +1,41 @@
+skill:
+  id: "plan-campaign"
+  home: "marketing"
+  version: "1.0.0"
+  intent: "Develop multi-channel acquisition and content calendars"
+  risk_level: "R1"
+  department: "marketing"
+  pod: "Growth"
+  owner_team: "Marketing"
+  principles[4]:
+    - "P06"
+    - "P21"
+    - "P23"
+    - "P24"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute plan campaign with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute plan campaign but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "plan campaign"
+    - "content calendar"
+  clarification_triggers[1]:
+    - "unrealistic frequency"
+  abstention_triggers[1]:
+    - "spam campaign"

@@ -1,0 +1,41 @@
+skill:
+  id: "research-audience"
+  home: "marketing"
+  version: "1.0.0"
+  intent: "Identify target customer personas and channel preferences"
+  risk_level: "R0"
+  department: "marketing"
+  pod: "Growth"
+  owner_team: "Marketing"
+  principles[4]:
+    - "P06"
+    - "P21"
+    - "P23"
+    - "P24"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute research audience with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute research audience but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "research audience"
+    - "persona discovery"
+  clarification_triggers[1]:
+    - "fictional persona"
+  abstention_triggers[1]:
+    - "unvalidated segment"

@@ -1,0 +1,41 @@
+skill:
+  id: "prepare-partnership"
+  home: "sales-bd"
+  version: "1.0.0"
+  intent: "Structure mutual co-marketing and strategic alliance terms"
+  risk_level: "R1"
+  department: "sales_bd"
+  pod: "Growth"
+  owner_team: "Sales & BD"
+  principles[4]:
+    - "P04"
+    - "P05"
+    - "P06"
+    - "P23"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute prepare partnership with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute prepare partnership but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "prepare partnership"
+    - "alliance agreement"
+  clarification_triggers[1]:
+    - "one-sided terms"
+  abstention_triggers[1]:
+    - "unauthorized commitment"

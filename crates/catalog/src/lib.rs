@@ -4,12 +4,14 @@
 
 pub mod index;
 pub mod ledger;
+pub mod placement;
 pub mod reconcile;
 pub mod role;
 pub mod skill;
 
 pub use index::ReconciledCatalogIndex;
 pub use ledger::{MigrationLedger, SourcePathRecord};
+pub use placement::{CanonicalSkill, DepartmentFixture, RouteEvaluationResult, SkillPlacementRegistry};
 pub use reconcile::{CatalogReconciler, ReconciledConflict};
 pub use role::{Department, GoverningPod, RoleDefinition, RoleRegistry, SeniorityTier};
 pub use skill::{SkillDefinition, SkillDisposition};

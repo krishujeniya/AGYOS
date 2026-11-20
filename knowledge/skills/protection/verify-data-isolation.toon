@@ -1,0 +1,41 @@
+skill:
+  id: "verify-data-isolation"
+  home: "protection"
+  version: "1.0.0"
+  intent: "Audit memory and storage boundaries across tenants"
+  risk_level: "R0"
+  department: "it_infra"
+  pod: "GNA"
+  owner_team: "IT & Platform"
+  principles[4]:
+    - "P05"
+    - "P07"
+    - "P20"
+    - "P21"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute verify isolation with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute verify isolation but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "verify isolation"
+    - "tenant privacy"
+  clarification_triggers[1]:
+    - "cross-tenant leak"
+  abstention_triggers[1]:
+    - "unencrypted data"

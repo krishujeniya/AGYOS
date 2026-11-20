@@ -1,0 +1,44 @@
+skill:
+  id: "investigate-tail"
+  home: "operations"
+  version: "1.0.0"
+  intent: "Profile high-percentile p99 latency anomalies"
+  risk_level: "R0"
+  department: "it_infra"
+  pod: "GNA"
+  owner_team: "IT & Platform"
+  principles[7]:
+    - "P12"
+    - "P14"
+    - "P15"
+    - "P16"
+    - "P17"
+    - "P18"
+    - "P20"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute investigate tail with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute investigate tail but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "investigate tail"
+    - "p99 latency"
+  clarification_triggers[1]:
+    - "unexplained spike"
+  abstention_triggers[1]:
+    - "noisy neighbor"

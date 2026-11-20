@@ -1,0 +1,41 @@
+skill:
+  id: "classify-risk"
+  home: "authority"
+  version: "1.0.0"
+  intent: "Determine R0 read-only, R1 local reversible, R2 shared internal, or R3 external irreversible tier"
+  risk_level: "R0"
+  department: "legal_compliance"
+  pod: "GNA"
+  owner_team: "Legal & Compliance"
+  principles[4]:
+    - "P05"
+    - "P09"
+    - "P11"
+    - "P30"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute classify risk with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute classify risk but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "classify risk"
+    - "risk tier"
+  clarification_triggers[1]:
+    - "uncertain impact"
+  abstention_triggers[1]:
+    - "bypass safety"

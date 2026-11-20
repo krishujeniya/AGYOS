@@ -1,0 +1,42 @@
+skill:
+  id: "request-publication"
+  home: "delivery"
+  version: "1.0.0"
+  intent: "Stage release artifacts and request operator deployment sign-off"
+  risk_level: "R1"
+  department: "it_infra"
+  pod: "Build"
+  owner_team: "IT & Platform"
+  principles[5]:
+    - "P05"
+    - "P08"
+    - "P11"
+    - "P17"
+    - "P19"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute request publication with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute request publication but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "request publication"
+    - "stage release"
+  clarification_triggers[1]:
+    - "unauthorized push"
+  abstention_triggers[1]:
+    - "unreviewed artifact"

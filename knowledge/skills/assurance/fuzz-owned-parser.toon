@@ -1,0 +1,42 @@
+skill:
+  id: "fuzz-owned-parser"
+  home: "assurance"
+  version: "1.0.0"
+  intent: "Execute property-based stress tests on TOON codec"
+  risk_level: "R0"
+  department: "engineering"
+  pod: "Build"
+  owner_team: "Engineering"
+  principles[5]:
+    - "P04"
+    - "P08"
+    - "P09"
+    - "P12"
+    - "P13"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute fuzz parser with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute fuzz parser but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "fuzz parser"
+    - "afl fuzz"
+  clarification_triggers[1]:
+    - "crash input"
+  abstention_triggers[1]:
+    - "infinite loop"

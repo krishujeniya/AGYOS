@@ -1,0 +1,41 @@
+skill:
+  id: "implement-client-change"
+  home: "engineering"
+  version: "1.0.0"
+  intent: "Author clean, tested business logic changes"
+  risk_level: "R1"
+  department: "engineering"
+  pod: "Build"
+  owner_team: "Engineering"
+  principles[4]:
+    - "P01"
+    - "P04"
+    - "P07"
+    - "P08"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute implement client change with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute implement client change but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "implement client change"
+    - "code change"
+  clarification_triggers[1]:
+    - "untested code"
+  abstention_triggers[1]:
+    - "breaking change"

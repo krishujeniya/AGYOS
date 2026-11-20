@@ -1,0 +1,42 @@
+skill:
+  id: "onboard-colleague"
+  home: "people-ops"
+  version: "1.0.0"
+  intent: "Facilitate new hire systems access and culture orientation"
+  risk_level: "R1"
+  department: "people_ops"
+  pod: "People"
+  owner_team: "People & Ops"
+  principles[5]:
+    - "P05"
+    - "P06"
+    - "P21"
+    - "P23"
+    - "P25"
+  inputs[1]:
+    - name: "request_payload"
+      type: "string"
+      required: true
+  outputs[1]:
+    - name: "receipt_summary"
+      type: "string"
+  steps[2]:
+    - "Validate input boundaries, schema, and caller permissions"
+    - "Execute domain action and emit verified receipt"
+  fixtures:
+    positive:
+      prompt: "Execute onboard colleague with verified scope"
+      expected_action: "execute"
+    negative:
+      prompt: "Execute unauthorized or out-of-scope operation"
+      expected_action: "abstain"
+    interruption:
+      prompt: "Execute onboard colleague but interrupt process at checkpoint"
+      expected_action: "resume_via_breadcrumb"
+  route_labels[2]:
+    - "onboard colleague"
+    - "new hire setup"
+  clarification_triggers[1]:
+    - "delayed access"
+  abstention_triggers[1]:
+    - "unsupervised starter"
