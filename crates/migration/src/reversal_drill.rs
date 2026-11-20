@@ -44,7 +44,7 @@ impl ReversalDrillHarness {
 
         // 1. Initial State: Register baseline operations in dedup table
         for op in &base_snapshot.operations {
-            dedup_table.record_operation(&op.idempotency_key, &op.op_id);
+            dedup_table.insert(op.idempotency_key.clone(), op.op_id.clone());
         }
         let pre_count = base_snapshot.operations.len();
 
@@ -104,10 +104,10 @@ impl ReversalDrillHarness {
             }
 
             for post_op in &in_flight_post {
-                if dedup_table.is_duplicate(&post_op.operation_key) {
+                if dedup_table.contains(&post_op.operation_key) {
                     duplicate_effects += 1;
                 } else {
-                    dedup_table.record_operation(&post_op.operation_key, &post_op.effect_id);
+                    dedup_table.insert(post_op.operation_key.clone(), post_op.effect_id.clone());
                 }
 
                 // Verify operation is marked confirmed/accepted

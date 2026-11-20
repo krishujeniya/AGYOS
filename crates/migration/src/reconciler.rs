@@ -158,7 +158,7 @@ impl ShadowReaderReconciler {
         hasher.update(cursor_epoch_s.to_be_bytes());
         hasher.update(legacy_digest.as_bytes());
         hasher.update(canonical_digest.as_bytes());
-        hasher.update(if is_reconciled { b"RECONCILED_SUCCESS" } else { b"DISCREPANCIES_DETECTED" });
+        hasher.update(if is_reconciled { "RECONCILED_SUCCESS".as_bytes() } else { "DISCREPANCIES_DETECTED".as_bytes() });
         let signature = format!("SIG-RECON-SHA256:{}", hex::encode(hasher.finalize()));
 
         SignedDifferenceLedger {
