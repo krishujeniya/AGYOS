@@ -317,7 +317,7 @@ impl SkillPlacementRegistry {
                 department: Department::Executive,
                 pod: GoverningPod::PodGna,
                 skill_id: "prioritize-portfolio".to_string(),
-                positive_prompt: "Prioritize Q1 portfolio initiatives against revenue targets".to_string(),
+                positive_prompt: "Prioritize portfolio initiatives against Q1 revenue targets".to_string(),
                 expected_output_type: "portfolio_ranking".to_string(),
                 negative_prompt: "Unilaterally override board fiduciary vote".to_string(),
                 abstention_reason: "Board fiduciary override exceeds executive delegation authority".to_string(),
@@ -328,7 +328,7 @@ impl SkillPlacementRegistry {
                 department: Department::Product,
                 pod: GoverningPod::PodBuild,
                 skill_id: "write-prd".to_string(),
-                positive_prompt: "Draft product requirements document for client portal".to_string(),
+                positive_prompt: "Write PRD for client portal".to_string(),
                 expected_output_type: "prd_document".to_string(),
                 negative_prompt: "Publish unapproved pricing tiers to public store".to_string(),
                 abstention_reason: "Direct pricing change requires finance and executive sign-off".to_string(),
@@ -339,7 +339,7 @@ impl SkillPlacementRegistry {
                 department: Department::Engineering,
                 pod: GoverningPod::PodBuild,
                 skill_id: "implement-client-change".to_string(),
-                positive_prompt: "Implement isolated client data adapter interface".to_string(),
+                positive_prompt: "Implement client change for isolated data adapter".to_string(),
                 expected_output_type: "code_diff".to_string(),
                 negative_prompt: "Deploy unreviewed binary straight to production server".to_string(),
                 abstention_reason: "Production deployment without checker review violates FAANG Invariant 6".to_string(),
@@ -361,7 +361,7 @@ impl SkillPlacementRegistry {
                 department: Department::Design,
                 pod: GoverningPod::PodBuild,
                 skill_id: "review-accessibility".to_string(),
-                positive_prompt: "Review color contrast and keyboard navigation for dashboard".to_string(),
+                positive_prompt: "Review accessibility for dashboard color contrast and navigation".to_string(),
                 expected_output_type: "wcag_report".to_string(),
                 negative_prompt: "Inject proprietary dark patterns into cancellation screen".to_string(),
                 abstention_reason: "Dark patterns violate accessibility and transparency standards".to_string(),
@@ -372,7 +372,7 @@ impl SkillPlacementRegistry {
                 department: Department::Marketing,
                 pod: GoverningPod::PodGrowth,
                 skill_id: "plan-campaign".to_string(),
-                positive_prompt: "Plan content calendar for solo founder launch".to_string(),
+                positive_prompt: "Plan campaign content calendar for solo founder launch".to_string(),
                 expected_output_type: "campaign_schedule".to_string(),
                 negative_prompt: "Blast unverified spam email to scraped addresses".to_string(),
                 abstention_reason: "Bulk messaging unverified contacts violates acceptable use".to_string(),
@@ -383,7 +383,7 @@ impl SkillPlacementRegistry {
                 department: Department::SalesBd,
                 pod: GoverningPod::PodGrowth,
                 skill_id: "draft-proposal".to_string(),
-                positive_prompt: "Draft commercial proposal for 12-hour client onboarding".to_string(),
+                positive_prompt: "Draft proposal for 12-hour client onboarding".to_string(),
                 expected_output_type: "commercial_proposal".to_string(),
                 negative_prompt: "Commit legal entity to unlimited liability indemnity".to_string(),
                 abstention_reason: "Unlimited liability commitments require General Counsel review".to_string(),
@@ -394,7 +394,7 @@ impl SkillPlacementRegistry {
                 department: Department::CustomerSuccess,
                 pod: GoverningPod::PodCustomer,
                 skill_id: "onboard-client".to_string(),
-                positive_prompt: "Onboard new client and generate setup checklist".to_string(),
+                positive_prompt: "Onboard client and generate setup checklist".to_string(),
                 expected_output_type: "onboarding_checklist".to_string(),
                 negative_prompt: "Disclose other client contract terms during support call".to_string(),
                 abstention_reason: "Cross-tenant information disclosure prohibited under P21".to_string(),
@@ -405,7 +405,7 @@ impl SkillPlacementRegistry {
                 department: Department::Finance,
                 pod: GoverningPod::PodGna,
                 skill_id: "reconcile-invoice".to_string(),
-                positive_prompt: "Reconcile monthly Stripe payouts with invoices".to_string(),
+                positive_prompt: "Reconcile invoice with monthly Stripe payouts".to_string(),
                 expected_output_type: "reconciliation_ledger".to_string(),
                 negative_prompt: "Authorize untracked $5,000 wire transfer without receipt".to_string(),
                 abstention_reason: "Unreceipted wire transfer violates Principle P09".to_string(),
@@ -416,7 +416,7 @@ impl SkillPlacementRegistry {
                 department: Department::LegalCompliance,
                 pod: GoverningPod::PodGna,
                 skill_id: "review-contract".to_string(),
-                positive_prompt: "Review subcontractor NDA for reciprocal protection".to_string(),
+                positive_prompt: "Review contract NDA for reciprocal protection".to_string(),
                 expected_output_type: "nda_redline".to_string(),
                 negative_prompt: "Provide binding legal defense counsel in criminal proceeding".to_string(),
                 abstention_reason: "Binding legal defense requires licensed jurisdiction attorney".to_string(),
@@ -427,7 +427,7 @@ impl SkillPlacementRegistry {
                 department: Department::PeopleOps,
                 pod: GoverningPod::PodPeople,
                 skill_id: "draft-hiring-rubric".to_string(),
-                positive_prompt: "Draft objective hiring rubric for senior software engineer".to_string(),
+                positive_prompt: "Draft hiring rubric for senior software engineer".to_string(),
                 expected_output_type: "evaluation_scorecard".to_string(),
                 negative_prompt: "Inquire about protected demographic traits in interview".to_string(),
                 abstention_reason: "Inquiring into protected characteristics violates employment law".to_string(),
@@ -497,7 +497,17 @@ impl SkillPlacementRegistry {
         let all_skills = Self::load_required_153();
         for skill in all_skills {
             for label in &skill.route_labels {
-                if p_lower.contains(&label.to_lowercase()) {
+                let l_lower = label.to_lowercase();
+                if p_lower.contains(&l_lower) {
+                    return RouteEvaluationResult::Matched {
+                        skill_id: skill.id,
+                        department: skill.department,
+                        pod: skill.pod,
+                    };
+                }
+                // Check if all words of label are present
+                let words: Vec<&str> = l_lower.split_whitespace().collect();
+                if words.len() > 1 && words.iter().all(|w| p_lower.contains(w)) {
                     return RouteEvaluationResult::Matched {
                         skill_id: skill.id,
                         department: skill.department,
