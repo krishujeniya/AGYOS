@@ -4,13 +4,13 @@
 //! P07 (Secure Development & Recurrence Prevention).
 
 use std::fmt;
-use domain::RiskLevel;
+use domain::RiskTier;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum ConfinementError {
     OmittedHooks(String),
     UnbrokeredCommandDenied(String),
-    UnauthorizedPrivilegeEscalation { requested: RiskLevel, max_permitted: RiskLevel },
+    UnauthorizedPrivilegeEscalation { requested: RiskTier, max_permitted: RiskTier },
     PrivateVaultAccessViolation(String),
 }
 
@@ -36,11 +36,11 @@ impl std::error::Error for ConfinementError {}
 pub struct ConfinementGuard {
     hooks_installed: bool,
     broker_token_active: bool,
-    max_permitted_risk: RiskLevel,
+    max_permitted_risk: RiskTier,
 }
 
 impl ConfinementGuard {
-    pub fn new(hooks_installed: bool, broker_token_active: bool, max_permitted_risk: RiskLevel) -> Self {
+    pub fn new(hooks_installed: bool, broker_token_active: bool, max_permitted_risk: RiskTier) -> Self {
         Self {
             hooks_installed,
             broker_token_active,
@@ -49,7 +49,7 @@ impl ConfinementGuard {
     }
 
     /// Check whether a command is permitted to execute.
-    pub fn verify_command_execution(&self, command: &str, risk: RiskLevel) -> Result<(), ConfinementError> {
+    pub fn verify_command_execution(&self, command: &str, risk: RiskTier) -> Result<(), ConfinementError> {
         // 1. Mandatory hook enforcement
         if !self.hooks_installed {
             return Err(ConfinementError::OmittedHooks(
@@ -66,7 +66,7 @@ impl ConfinementGuard {
         }
 
         // 3. For R1..R3 effects, unbrokered shell execution is forbidden
-        if risk != RiskLevel::R0 && !self.broker_token_active {
+        if risk != RiskTier::R0 && !self.broker_token_active {
             return Err(ConfinementError::UnbrokeredCommandDenied(command.to_string()));
         }
 

@@ -7,7 +7,7 @@ pub mod confinement;
 pub mod projection;
 pub mod version;
 
-pub use bridge::{AgyBridge, BridgeError, ExecutionReceipt};
+pub use bridge::{AgyBridge, BridgeError, ExecutionReceipt, ExecutionStatus};
 pub use confinement::{ConfinementError, ConfinementGuard};
 pub use projection::{ProjectionEngine, ProjectionError};
 pub use version::{AgyVersion, VersionError};

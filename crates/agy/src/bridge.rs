@@ -6,20 +6,26 @@
 //! and returns a receipt. A denied harmless read records blocked even if the CLI exits zero."
 
 use std::fmt;
-use domain::{GateState, RiskLevel, TaskId, WorkspaceId};
-use governance::GatePolicy;
+use serde::{Deserialize, Serialize};
+use domain::{RiskTier, TaskId, WorkspaceId};
 use store::{EventRecord, FenceToken, TransactionalStore};
 
 use crate::confinement::ConfinementGuard;
 use crate::version::AgyVersion;
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+pub enum ExecutionStatus {
+    Confirmed,
+    Blocked,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct ExecutionReceipt {
     pub receipt_id: String,
     pub task_id: TaskId,
     pub workspace_id: WorkspaceId,
     pub skill_id: String,
-    pub gate_state: GateState,
+    pub status: ExecutionStatus,
     pub exit_code: i32,
     pub reason: String,
     pub evidence_hash: String,
@@ -53,7 +59,7 @@ impl AgyBridge {
         store: &mut TransactionalStore,
         host_version: &str,
         guard: &ConfinementGuard,
-        policy: &GatePolicy,
+        allow_r0_fast_path: bool,
         task_id: TaskId,
         skill_id: &str,
         is_actor_permitted: bool,
@@ -63,18 +69,18 @@ impl AgyBridge {
         AgyVersion::negotiate(host_version).map_err(|e| BridgeError::HostVersionError(e.to_string()))?;
 
         // 2. Confinement check
-        guard.verify_command_execution(skill_id, RiskLevel::R0)
+        guard.verify_command_execution(skill_id, RiskTier::R0)
             .map_err(|e| BridgeError::ConfinementViolation(e.to_string()))?;
 
         let timestamp = 1700000000;
         let receipt_id = format!("rcpt_{}_{}", task_id.as_str(), skill_id.replace('/', "_"));
 
         // 3. Evaluate permission policy
-        let (gate_state, reason) = if is_actor_permitted && policy.allow_r0_fast_path {
-            (GateState::Confirmed, "Authorized R0 read successfully executed".to_string())
+        let (status, reason) = if is_actor_permitted && allow_r0_fast_path {
+            (ExecutionStatus::Confirmed, "Authorized R0 read successfully executed".to_string())
         } else {
             // Even if CLI exits 0, the store and receipt record Blocked!
-            (GateState::Blocked, "Policy violation: actor lacks read authorization for target item".to_string())
+            (ExecutionStatus::Blocked, "Policy violation: actor lacks read authorization for target item".to_string())
         };
 
         // 4. Commit audit event to transactional store WAL
@@ -83,8 +89,8 @@ impl AgyBridge {
             timestamp_epoch_s: timestamp,
             event_type: "EXECUTION_RECEIPT_ISSUED".to_string(),
             payload_json: format!(
-                "{{\"receipt_id\":\"{}\",\"gate_state\":\"{:?}\",\"cli_exit\":{}}}",
-                receipt_id, gate_state, cli_exit_code
+                "{{\"receipt_id\":\"{}\",\"status\":\"{:?}\",\"cli_exit\":{}}}",
+                receipt_id, status, cli_exit_code
             ),
         };
 
@@ -97,7 +103,7 @@ impl AgyBridge {
             task_id,
             workspace_id: store.workspace_id().clone(),
             skill_id: skill_id.to_string(),
-            gate_state,
+            status,
             exit_code: cli_exit_code,
             reason,
             evidence_hash: "sha256_mock_evidence_63c0ee6".to_string(),

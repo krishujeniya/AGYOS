@@ -10,10 +10,9 @@
 //! - Flat collision detection on skill slugs.
 
 use agy::{
-    AgyBridge, ConfinementError, ConfinementGuard, ProjectionEngine,
+    AgyBridge, ConfinementError, ConfinementGuard, ExecutionStatus, ProjectionEngine,
 };
-use domain::{GateState, RiskLevel, TaskId, WorkspaceId};
-use governance::GatePolicy;
+use domain::{RiskTier, TaskId, WorkspaceId};
 use store::TransactionalStore;
 
 #[test]
@@ -22,8 +21,7 @@ fn test_deterministic_one_skill_lookup_and_receipt() {
     let ws_id = WorkspaceId::new("ws_lookup");
     let mut store = TransactionalStore::open(&temp_dir, ws_id).expect("Store open");
 
-    let guard = ConfinementGuard::new(true, true, RiskLevel::R3);
-    let policy = GatePolicy::default();
+    let guard = ConfinementGuard::new(true, true, RiskTier::R3);
     let task_id = TaskId::new("task_01");
 
     // Authenticated natural language request for fixture skill
@@ -31,14 +29,14 @@ fn test_deterministic_one_skill_lookup_and_receipt() {
         &mut store,
         "1.5.13",
         &guard,
-        &policy,
+        true, // allow R0 fast path
         task_id.clone(),
         "operator/capture-goal",
         true, // actor permitted
         0,    // CLI exit code 0
     ).expect("Execute skill request should succeed");
 
-    assert_eq!(receipt.gate_state, GateState::Confirmed);
+    assert_eq!(receipt.status, ExecutionStatus::Confirmed);
     assert_eq!(receipt.skill_id, "operator/capture-goal");
     assert_eq!(receipt.task_id, task_id);
     assert_eq!(receipt.exit_code, 0);
@@ -57,8 +55,7 @@ fn test_denied_harmless_read_records_blocked_receipt_even_if_exit_zero() {
     let ws_id = WorkspaceId::new("ws_denied");
     let mut store = TransactionalStore::open(&temp_dir, ws_id).expect("Store open");
 
-    let guard = ConfinementGuard::new(true, true, RiskLevel::R3);
-    let policy = GatePolicy::default();
+    let guard = ConfinementGuard::new(true, true, RiskTier::R3);
     let task_id = TaskId::new("task_denied");
 
     // Host CLI simulator returned 0, but actor is unpermitted
@@ -66,7 +63,7 @@ fn test_denied_harmless_read_records_blocked_receipt_even_if_exit_zero() {
         &mut store,
         "1.5.13",
         &guard,
-        &policy,
+        true,
         task_id.clone(),
         "operator/capture-goal",
         false, // actor is NOT permitted!
@@ -74,7 +71,7 @@ fn test_denied_harmless_read_records_blocked_receipt_even_if_exit_zero() {
     ).expect("Bridge should generate audit receipt");
 
     // Must record Blocked despite CLI exit 0!
-    assert_eq!(receipt.gate_state, GateState::Blocked);
+    assert_eq!(receipt.status, ExecutionStatus::Blocked);
     assert_eq!(receipt.exit_code, 0);
     assert!(receipt.reason.contains("Policy violation"));
 
@@ -91,8 +88,7 @@ fn test_unsupported_agy_version_rejected() {
     let ws_id = WorkspaceId::new("ws_ver");
     let mut store = TransactionalStore::open(&temp_dir, ws_id).expect("Store open");
 
-    let guard = ConfinementGuard::new(true, true, RiskLevel::R3);
-    let policy = GatePolicy::default();
+    let guard = ConfinementGuard::new(true, true, RiskTier::R3);
     let task_id = TaskId::new("task_ver");
 
     // Version 1.4.0 is below supported range (1.5.0+)
@@ -100,7 +96,7 @@ fn test_unsupported_agy_version_rejected() {
         &mut store,
         "1.4.0",
         &guard,
-        &policy,
+        true,
         task_id,
         "operator/capture-goal",
         true,
@@ -115,8 +111,8 @@ fn test_unsupported_agy_version_rejected() {
 #[test]
 fn test_omitted_hooks_prevent_privileged_effect_dispatch() {
     // Hooks NOT installed
-    let guard = ConfinementGuard::new(false, true, RiskLevel::R3);
-    let err = guard.verify_command_execution("billing/charge", RiskLevel::R3)
+    let guard = ConfinementGuard::new(false, true, RiskTier::R3);
+    let err = guard.verify_command_execution("billing/charge", RiskTier::R3)
         .expect_err("Missing hooks must be rejected");
 
     match err {
@@ -128,10 +124,10 @@ fn test_omitted_hooks_prevent_privileged_effect_dispatch() {
 #[test]
 fn test_unbrokered_command_cannot_exercise_privileged_effects() {
     // Hooks installed, but broker token NOT active (unbrokered shell)
-    let guard = ConfinementGuard::new(true, false, RiskLevel::R3);
+    let guard = ConfinementGuard::new(true, false, RiskTier::R3);
 
     // 1. Privileged R2/R3 command denied
-    let err = guard.verify_command_execution("billing/charge", RiskLevel::R3)
+    let err = guard.verify_command_execution("billing/charge", RiskTier::R3)
         .expect_err("Unbrokered command must be denied");
 
     match err {
