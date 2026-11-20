@@ -1,0 +1,15 @@
+aliases_ledger:
+  version: "1"
+  total_aliases_reconciled: 4620
+  total_roles_reconciled: 104
+  total_departments: 12
+  pod_role_counts:
+    pod_build: 43
+    pod_growth: 21
+    pod_customer: 8
+    pod_people: 5
+    pod_gna: 27
+  rules:
+    zero_dangling_edges: true
+    bidirectional_integrity: true
+    unavailable_unselectable: true

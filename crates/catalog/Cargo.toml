@@ -1,0 +1,18 @@
+[package]
+name = "catalog"
+version = "0.1.0"
+edition = "2021"
+authors = ["Krish Ujeniya <100012208+krishujeniya@users.noreply.github.com>"]
+description = "AGYOS Reconciled Skill and Role Catalog Engine in Rust"
+license = "MIT"
+repository = "https://github.com/krishujeniya/AGYOS"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+domain = { path = "../domain" }
+toon-codec = { path = "../toon-codec" }
+
+[lib]
+name = "catalog"
+path = "src/lib.rs"

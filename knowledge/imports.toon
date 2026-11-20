@@ -1,0 +1,27 @@
+imports_ledger:
+  version: "1"
+  source_revision: "63c0ee6aba44f0ceaedb4b01611ac028bf2dc6e4"
+  total_sources_reconciled: 2549
+  populations:
+    top_level_manifest_ids: 2287
+    tier_1_count: 415
+    tier_2_count: 1872
+    system_records: 5
+    template_records: 1
+    nested_game_dev_records: 10
+    top_level_unavailable_records: 58
+    upstream_references: 235
+    vendored_references: 11
+  ownership_conflict_resolutions[2]:
+    - skill_id: "amazon-alexa"
+      previous_claim_primary: "role-partnership-bd-manager"
+      previous_claim_secondary: "role-web3-blockchain-eng"
+      reconciled_primary: "role-speech-audio-ai-eng"
+      reconciled_secondary: "role-partnership-bd-manager"
+      rationale: "Voice interface and smart home SDK integration belongs under speech/audio engineering"
+    - skill_id: "cloudflare-workers-expert"
+      previous_claim_primary: "role-partnership-bd-manager"
+      previous_claim_secondary: "role-design-system-engineer"
+      reconciled_primary: "role-platform-engineer"
+      reconciled_secondary: "role-design-system-engineer"
+      rationale: "Edge compute, serverless KV/D1/R2 and Wrangler infrastructure belongs under platform engineering"

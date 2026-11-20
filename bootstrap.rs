@@ -78,6 +78,7 @@ members = [
     "crates/store",
     "crates/effects",
     "crates/agy",
+    "crates/catalog",
 ]
 resolver = "2"
 
