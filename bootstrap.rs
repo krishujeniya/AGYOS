@@ -75,6 +75,8 @@ members = [
     "crates/toon-codec",
     "crates/domain",
     "crates/governance",
+    "crates/store",
+    "crates/effects",
 ]
 resolver = "2"
 
