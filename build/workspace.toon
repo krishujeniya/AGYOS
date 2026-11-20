@@ -2,7 +2,7 @@ workspace:
   name: "agyos-workspace"
   version: "0.1.0"
   resolver: "2"
-  members[14]:
+  members[15]:
     - "apps/agyos"
     - "apps/worker"
     - "crates/toon-codec"
@@ -17,6 +17,7 @@ workspace:
     - "crates/telemetry"
     - "crates/migration"
     - "crates/release"
+    - "crates/maintenance"
   future_members[2]:
     - "crates/codec"
     - "crates/mcp"

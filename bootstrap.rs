@@ -84,6 +84,7 @@ members = [
     "crates/telemetry",
     "crates/migration",
     "crates/release",
+    "crates/maintenance",
 ]
 resolver = "2"
 
