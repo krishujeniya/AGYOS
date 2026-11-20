@@ -495,19 +495,32 @@ impl SkillPlacementRegistry {
 
         // 3. Match positive routes across the 153 skills
         let all_skills = Self::load_required_153();
-        for skill in all_skills {
+
+        // Pass 1: exact substring match of route label
+        for skill in &all_skills {
             for label in &skill.route_labels {
                 let l_lower = label.to_lowercase();
                 if p_lower.contains(&l_lower) {
                     return RouteEvaluationResult::Matched {
-                        skill_id: skill.id,
+                        skill_id: skill.id.clone(),
                         department: skill.department,
                         pod: skill.pod,
                     };
                 }
-                // Check if all words of label are present
+            }
+        }
+
+        // Pass 2: whole-word matching across all words of route label
+        let prompt_tokens: std::collections::HashSet<&str> = p_lower
+            .split(|c: char| !c.is_alphanumeric() && c != '-')
+            .filter(|s| !s.is_empty())
+            .collect();
+
+        for skill in all_skills {
+            for label in &skill.route_labels {
+                let l_lower = label.to_lowercase();
                 let words: Vec<&str> = l_lower.split_whitespace().collect();
-                if words.len() > 1 && words.iter().all(|w| p_lower.contains(w)) {
+                if words.len() > 1 && words.iter().all(|w| prompt_tokens.contains(*w)) {
                     return RouteEvaluationResult::Matched {
                         skill_id: skill.id,
                         department: skill.department,
