@@ -81,6 +81,7 @@ members = [
     "crates/catalog",
     "crates/runtime",
     "crates/adapters",
+    "crates/telemetry",
 ]
 resolver = "2"
 

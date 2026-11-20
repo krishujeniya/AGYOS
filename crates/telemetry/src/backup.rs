@@ -1,0 +1,184 @@
+//! Local Backup, Restore, and Outstanding Effect Recovery Engine (Step 15).
+//!
+//! Complies with Step 15 finish criteria:
+//! "An operator can recover with a clean installation and verified backup and locate every outstanding effect."
+//!
+//! Principles:
+//! - P09 (Explicit State & Invariants)
+//! - P10 (Atomic Durability & Sagas)
+//! - P11 (Idempotent Semantics)
+//! - P20 (End-to-End Observability)
+
+use domain::WorkspaceId;
+use serde::{Deserialize, Serialize};
+use std::fs::{self, File};
+use std::io::{BufRead, BufReader, Write};
+use std::path::{Path, PathBuf};
+use store::{OutboxRecord, OutboxStatus, StoreError, TransactionalStore};
+
+/// Verified backup archive manifest containing SHA-256 integrity digests.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct BackupManifest {
+    pub workspace_id: String,
+    pub created_epoch_s: u64,
+    pub events_count: usize,
+    pub outbox_count: usize,
+    pub pending_effects_count: usize,
+    pub events_digest: String,
+    pub outbox_digest: String,
+    pub dedup_digest: String,
+    pub manifest_digest: String,
+}
+
+/// Local backup and disaster recovery coordinator.
+pub struct LocalBackupEngine;
+
+impl LocalBackupEngine {
+    /// Creates a verified, self-contained backup archive from an active workspace store.
+    pub fn create_backup(
+        base_dir: &Path,
+        workspace_id: &WorkspaceId,
+        backup_archive_path: &Path,
+        timestamp_s: u64,
+    ) -> Result<BackupManifest, String> {
+        let ws_dir = base_dir.join(workspace_id.as_str());
+        if !ws_dir.exists() {
+            return Err(format!("Workspace directory {:?} does not exist", ws_dir));
+        }
+
+        let events_path = ws_dir.join("events.log");
+        let events_raw = if events_path.exists() {
+            fs::read_to_string(&events_path).map_err(|e| e.to_string())?
+        } else {
+            String::new()
+        };
+        let events_count = events_raw.lines().filter(|l| !l.trim().is_empty()).count();
+        let events_digest = crate::metrics::RedactedMetricsCollector::compute_sha256_digest(&events_raw);
+
+        let outbox_path = ws_dir.join("outbox.json");
+        let outbox_raw = if outbox_path.exists() {
+            fs::read_to_string(&outbox_path).map_err(|e| e.to_string())?
+        } else {
+            "[]".to_string()
+        };
+        let outbox_records: Vec<OutboxRecord> = serde_json::from_str(&outbox_raw).unwrap_or_default();
+        let outbox_count = outbox_records.len();
+        let pending_effects_count = outbox_records
+            .iter()
+            .filter(|r| r.status == OutboxStatus::Pending)
+            .count();
+        let outbox_digest = crate::metrics::RedactedMetricsCollector::compute_sha256_digest(&outbox_raw);
+
+        let dedup_path = ws_dir.join("dedup.json");
+        let dedup_raw = if dedup_path.exists() {
+            fs::read_to_string(&dedup_path).map_err(|e| e.to_string())?
+        } else {
+            "{}".to_string()
+        };
+        let dedup_digest = crate::metrics::RedactedMetricsCollector::compute_sha256_digest(&dedup_raw);
+
+        let manifest_content = format!(
+            "{}:{}:{}:{}:{}",
+            workspace_id.as_str(),
+            events_digest,
+            outbox_digest,
+            dedup_digest,
+            timestamp_s
+        );
+        let manifest_digest =
+            crate::metrics::RedactedMetricsCollector::compute_sha256_digest(&manifest_content);
+
+        let manifest = BackupManifest {
+            workspace_id: workspace_id.as_str().to_string(),
+            created_epoch_s: timestamp_s,
+            events_count,
+            outbox_count,
+            pending_effects_count,
+            events_digest,
+            outbox_digest,
+            dedup_digest,
+            manifest_digest,
+        };
+
+        // Serialize backup archive package
+        let package = serde_json::json!({
+            "manifest": manifest,
+            "events_raw": events_raw,
+            "outbox_raw": outbox_raw,
+            "dedup_raw": dedup_raw,
+        });
+
+        if let Some(parent) = backup_archive_path.parent() {
+            fs::create_dir_all(parent).map_err(|e| e.to_string())?;
+        }
+        let json = serde_json::to_string_pretty(&package).map_err(|e| e.to_string())?;
+        fs::write(backup_archive_path, json).map_err(|e| e.to_string())?;
+
+        Ok(manifest)
+    }
+
+    /// Restores a verified backup into a clean installation target directory.
+    pub fn restore_backup(
+        backup_archive_path: &Path,
+        target_base_dir: &Path,
+    ) -> Result<BackupManifest, String> {
+        let package_raw = fs::read_to_string(backup_archive_path).map_err(|e| e.to_string())?;
+        let package: serde_json::Value =
+            serde_json::from_str(&package_raw).map_err(|e| e.to_string())?;
+
+        let manifest: BackupManifest = serde_json::from_value(package["manifest"].clone())
+            .map_err(|e| format!("Invalid backup manifest: {}", e))?;
+
+        let events_raw = package["events_raw"].as_str().unwrap_or_default();
+        let outbox_raw = package["outbox_raw"].as_str().unwrap_or("[]");
+        let dedup_raw = package["dedup_raw"].as_str().unwrap_or("{}");
+
+        // Verify digests before restoring (P09, P20)
+        let calc_events_digest =
+            crate::metrics::RedactedMetricsCollector::compute_sha256_digest(events_raw);
+        if calc_events_digest != manifest.events_digest {
+            return Err("Corrupted backup: events digest mismatch".to_string());
+        }
+
+        let calc_outbox_digest =
+            crate::metrics::RedactedMetricsCollector::compute_sha256_digest(outbox_raw);
+        if calc_outbox_digest != manifest.outbox_digest {
+            return Err("Corrupted backup: outbox digest mismatch".to_string());
+        }
+
+        let calc_dedup_digest =
+            crate::metrics::RedactedMetricsCollector::compute_sha256_digest(dedup_raw);
+        if calc_dedup_digest != manifest.dedup_digest {
+            return Err("Corrupted backup: dedup digest mismatch".to_string());
+        }
+
+        // Write restored state into fresh target directory
+        let ws_dir = target_base_dir.join(&manifest.workspace_id);
+        fs::create_dir_all(&ws_dir).map_err(|e| e.to_string())?;
+
+        fs::write(ws_dir.join("events.log"), events_raw).map_err(|e| e.to_string())?;
+        fs::write(ws_dir.join("outbox.json"), outbox_raw).map_err(|e| e.to_string())?;
+        fs::write(ws_dir.join("dedup.json"), dedup_raw).map_err(|e| e.to_string())?;
+
+        Ok(manifest)
+    }
+
+    /// Locates every outstanding effect in the restored outbox.
+    pub fn locate_outstanding_effects(
+        target_base_dir: &Path,
+        workspace_id: &WorkspaceId,
+    ) -> Result<Vec<OutboxRecord>, String> {
+        let store = TransactionalStore::open(target_base_dir, workspace_id.clone())
+            .map_err(|e| format!("Failed to open restored store: {:?}", e))?;
+
+        // Outstanding effects are those with Pending status in the outbox
+        let pending = store
+            .outbox()
+            .iter()
+            .filter(|rec| rec.status == OutboxStatus::Pending)
+            .cloned()
+            .collect();
+
+        Ok(pending)
+    }
+}
