@@ -30,7 +30,7 @@ impl SpendingLimitController {
     ) -> Self {
         Self {
             max_authorized_spend,
-            accumulated_spend: FixedMoney::zero(),
+            accumulated_spend: FixedMoney::ZERO,
             input_price_per_million: input_price_per_m,
             output_price_per_million: output_price_per_m,
             max_rpm: 6_000,
@@ -53,8 +53,8 @@ impl SpendingLimitController {
     /// Calculates hourly cost according to Tracker.md capacity math:
     /// cost/hour = 540 * input_price + 108 * output_price (per million tokens)
     pub fn calculate_hourly_cost_at_50_jobs_per_sec(&self) -> FixedMoney {
-        let input_cost = self.input_price_per_million.times(540);
-        let output_cost = self.output_price_per_million.times(108);
+        let input_cost = FixedMoney::from_micros(self.input_price_per_million.as_micros() * 540);
+        let output_cost = FixedMoney::from_micros(self.output_price_per_million.as_micros() * 108);
         input_cost + output_cost
     }
 
@@ -76,16 +76,16 @@ impl SpendingLimitController {
         }
 
         // Calculate call cost in micros
-        let in_micros = (input_tokens as u64 * self.input_price_per_million.micros()) / 1_000_000;
-        let out_micros = (output_tokens as u64 * self.output_price_per_million.micros()) / 1_000_000;
+        let in_micros = (input_tokens as i64 * self.input_price_per_million.as_micros()) / 1_000_000;
+        let out_micros = (output_tokens as i64 * self.output_price_per_million.as_micros()) / 1_000_000;
         let call_cost = FixedMoney::from_micros(in_micros + out_micros);
 
         if self.accumulated_spend + call_cost > self.max_authorized_spend {
             return Err(format!(
                 "Spending limit reached: authorized ${:.2}, current ${:.2}, requested ${:.4}",
-                self.max_authorized_spend.dollars(),
-                self.accumulated_spend.dollars(),
-                call_cost.dollars()
+                self.max_authorized_spend.as_f64(),
+                self.accumulated_spend.as_f64(),
+                call_cost.as_f64()
             ));
         }
 

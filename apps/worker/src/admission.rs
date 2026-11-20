@@ -47,7 +47,7 @@ pub struct QueueAdmissionController {
     max_queue_bytes: usize,
     max_queue_age_s: u64,
     protected_control_headroom_percent: u32,
-    queues: BTreeMap<WorkspaceId, VecDeque<QueuedJob>>,
+    queues: BTreeMap<String, VecDeque<QueuedJob>>,
     protected_queue: VecDeque<QueuedJob>,
     total_bytes: usize,
     total_entries: usize,
@@ -100,7 +100,7 @@ impl QueueAdmissionController {
         }
 
         // Hot-tenant isolation: single tenant cannot exceed 40% of standard queue entries under contention
-        let tenant_queue = self.queues.entry(job.workspace_id.clone()).or_default();
+        let tenant_queue = self.queues.entry(job.workspace_id.as_str().to_string()).or_default();
         let max_per_tenant = (self.max_queue_entries * 40) / 100;
         if tenant_queue.len() >= max_per_tenant {
             return AdmissionVerdict::RejectedTenantQuotaExceeded {
@@ -129,14 +129,14 @@ impl QueueAdmissionController {
         let mut selected_job = None;
         let mut empty_tenants = Vec::new();
 
-        for (ws_id, q) in self.queues.iter_mut() {
+        for (ws_str, q) in self.queues.iter_mut() {
             if let Some(job) = q.pop_front() {
                 self.total_bytes = self.total_bytes.saturating_sub(job.payload_bytes);
                 self.total_entries = self.total_entries.saturating_sub(1);
                 selected_job = Some(job);
                 break;
             } else {
-                empty_tenants.push(ws_id.clone());
+                empty_tenants.push(ws_str.clone());
             }
         }
 
