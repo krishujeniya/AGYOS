@@ -623,7 +623,7 @@ print(json.dumps(output, indent=2))
     exec bash bin/obscura "$@"
     ;;
   strix|pentest)
-    exec python3 scripts/strix_runner.py "$@"
+    exec uv run python scripts/strix_runner.py "$@"
     ;;
   video)
     exec python3 scripts/video_pipeline.py "$@"

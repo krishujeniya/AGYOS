@@ -106,6 +106,9 @@ async def preflight_model_connection(
     settings: Settings | None = None,
 ) -> None:
     """Verify the configured model route before starting a scan."""
+    if model_name.startswith("agy/") or model_name == "agy/native":
+        logger.info("Direct AGY CLI zero-API engine active; skipping external model preflight.")
+        return
     from strix.config.models import StrixProvider, configure_sdk_model_defaults
 
     resolved_settings = load_settings() if settings is None else settings

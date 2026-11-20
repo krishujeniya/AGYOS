@@ -2,7 +2,8 @@
 """AGYOS Strix Security & Penetration Testing Runner.
 
 Coordinates autonomous penetration testing, OWASP Top 10 assessment, and
-exploit verification using the Strix toolkit in tools/security/strix.
+exploit verification using the Strix toolkit in tools/security/strix, operating
+directly via the AGY CLI engine without requiring external APIs or cloud tokens.
 
 Usage:
   python3 scripts/strix_runner.py status [--json]
@@ -16,12 +17,14 @@ from __future__ import annotations
 import argparse
 import json
 import os
+from pathlib import Path
 import shutil
 import sys
-from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 STRIX_ROOT = ROOT / "tools" / "security" / "strix"
 SKILLS_DIR = ROOT / ".agents" / "skills"
 
@@ -56,6 +59,9 @@ def check_status() -> Dict[str, Any]:
     llm_configured = bool(os.environ.get("STRIX_LLM") and os.environ.get("LLM_API_KEY"))
     cloud_token_configured = bool(os.environ.get("STRIX_API_TOKEN"))
 
+    agy_installed = shutil.which("agy") is not None
+    agy_bin = shutil.which("agy") or str(ROOT / "bin" / "agyos")
+
     return {
         "strix_toolkit_present": strix_present,
         "strix_path": str(STRIX_ROOT),
@@ -65,9 +71,14 @@ def check_status() -> Dict[str, Any]:
         "obscura_available": obscura_bin.is_file(),
         "llm_configured": llm_configured,
         "cloud_token_configured": cloud_token_configured,
-        "strix_llm": os.environ.get("STRIX_LLM", "not set"),
+        "strix_llm": os.environ.get("STRIX_LLM", "agy/native"),
         "installed_skills_count": len(installed_skills),
         "installed_skills": installed_skills,
+        "agy_cli_available": agy_installed or (ROOT / "bin" / "agyos").is_file(),
+        "agy_cli_path": agy_bin,
+        "direct_agy_mode": True,
+        "api_required": False,
+        "active_backend": "external" if (llm_configured or cloud_token_configured) else "agy",
     }
 
 
@@ -112,12 +123,38 @@ def test_inventory() -> Dict[str, Any]:
     }
 
 
-def run_scan(target: str, mode: str = "quick", budget: float = 10.0, dry_run: bool = False) -> int:
-    """Execute or prepare headless Strix pentest scan."""
+def run_scan(
+    target: str,
+    mode: str = "quick",
+    budget: float = 10.0,
+    dry_run: bool = False,
+    fail_on: Optional[str] = None,
+    backend: str = "auto",
+) -> int:
+    """Execute or prepare autonomous Strix pentest scan."""
     status = check_status()
     if not status["strix_toolkit_present"]:
         print(f"Error: Strix toolkit not found at {STRIX_ROOT}", file=sys.stderr)
         return 1
+
+    use_agy_direct = (
+        backend == "agy"
+        or (backend == "auto" and not (status["llm_configured"] or status["cloud_token_configured"]))
+    )
+
+    if use_agy_direct:
+        try:
+            from scripts.agy_security_scanner import execute_agy_direct_scan
+        except ImportError:
+            from agy_security_scanner import execute_agy_direct_scan
+
+        return execute_agy_direct_scan(
+            target=target,
+            mode=mode,
+            budget=budget,
+            fail_on=fail_on,
+            dry_run=dry_run,
+        )
 
     cmd = [
         "python3", "-m", "strix.interface.main",
@@ -126,6 +163,8 @@ def run_scan(target: str, mode: str = "quick", budget: float = 10.0, dry_run: bo
         "--scan-mode", mode,
         "--max-budget", str(budget),
     ]
+    if fail_on:
+        cmd.extend(["--fail-on", fail_on])
 
     env = os.environ.copy()
     current_pp = env.get("PYTHONPATH", "")
@@ -136,13 +175,6 @@ def run_scan(target: str, mode: str = "quick", budget: float = 10.0, dry_run: bo
         print(" ".join(cmd))
         print("Environment PYTHONPATH:", env["PYTHONPATH"])
         return 0
-
-    if not status["docker_available"] and not status["cloud_token_configured"]:
-        print(
-            "Notice: Local Docker engine is required for self-hosted sandbox execution. "
-            "For managed cloud execution without Docker, configure STRIX_API_TOKEN.",
-            file=sys.stderr,
-        )
 
     import subprocess
     proc = subprocess.run(cmd, env=env, cwd=str(STRIX_ROOT))
@@ -167,6 +199,8 @@ def main(argv: list[str] | None = None) -> int:
     scan_parser.add_argument("--mode", "-m", choices=["quick", "deep"], default="quick", help="Scan depth mode")
     scan_parser.add_argument("--budget", "-b", type=float, default=10.0, help="Maximum budget in USD")
     scan_parser.add_argument("--dry-run", action="store_true", help="Print command without executing")
+    scan_parser.add_argument("--fail-on", choices=["critical", "high", "medium", "low", "info"], default=None, help="Exit with code 2 on findings at or above this severity")
+    scan_parser.add_argument("--backend", choices=["auto", "agy", "external"], default="auto", help="Execution backend (default: auto)")
 
     args, extra = parser.parse_known_args(argv)
 
@@ -179,6 +213,10 @@ def main(argv: list[str] | None = None) -> int:
             print(f"Toolkit Present:       {st['strix_toolkit_present']}")
             print(f"Toolkit Path:          {st['strix_path']}")
             print(f"Pyproject Found:       {st['pyproject_found']}")
+            print("Execution Engine:      Direct AGY CLI (Zero-API Autonomous Security Engine)")
+            print("API Key Required:      No (Operating natively without external LLM API)")
+            print(f"AGY CLI Available:     {st['agy_cli_available']} ({st['agy_cli_path']})")
+            print(f"Active Backend:        {st['active_backend']}")
             print(f"Docker Available:      {st['docker_available']}")
             print(f"uv Available:          {st['uv_available']}")
             print(f"Obscura Headless:      {st['obscura_available']}")
@@ -213,7 +251,14 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     if args.subcommand == "scan":
-        return run_scan(target=args.target, mode=args.mode, budget=args.budget, dry_run=args.dry_run)
+        return run_scan(
+            target=args.target,
+            mode=args.mode,
+            budget=args.budget,
+            dry_run=args.dry_run,
+            fail_on=args.fail_on,
+            backend=args.backend,
+        )
 
     parser.print_help()
     return 0

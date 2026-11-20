@@ -303,9 +303,27 @@ async def run_strix_scan(
     configure_sdk_model_defaults(settings)
     resolved_model = (model or settings.llm.model or "").strip()
     if not resolved_model:
-        raise RuntimeError(
-            "No LLM model configured. Set STRIX_LLM env or pass model= to run_strix_scan().",
+        if shutil.which("agy") is not None or (Path(__file__).resolve().parents[4] / "bin" / "agyos").is_file():
+            resolved_model = "agy/native"
+        else:
+            raise RuntimeError(
+                "No LLM model configured. Set STRIX_LLM env or pass model= to run_strix_scan().",
+            )
+
+    if resolved_model.startswith("agy/"):
+        logger.info("Executing via Direct AGY CLI Security Engine: %s", resolved_model)
+        from scripts.agy_security_scanner import execute_agy_direct_scan
+
+        target_str = "./"
+        if scan_config.get("targets"):
+            target_str = scan_config["targets"][0].get("original", "./")
+        execute_agy_direct_scan(
+            target=target_str,
+            mode=scan_mode,
+            budget=max_budget_usd or 0.0,
+            run_name=scan_id,
         )
+        return None
     if resolved_model != (settings.llm.model or "").strip() and not codex.subscription_model(
         resolved_model
     ):

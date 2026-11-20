@@ -48,6 +48,7 @@ coverage/
 .coverage
 .nyc_output/
 media/
+strix_runs/
 integrations/google-flow-mcp/
 *.mp4
 

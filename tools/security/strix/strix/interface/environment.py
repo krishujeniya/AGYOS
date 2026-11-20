@@ -51,6 +51,10 @@ def validate_environment() -> None:
         return
 
     if not settings.llm.model:
+        if shutil.which("agy") is not None or (Path(__file__).resolve().parents[4] / "bin" / "agyos").is_file():
+            logger.info("Direct AGY CLI mode detected: operating zero-API without external LLM")
+            settings.llm.model = "agy/native"
+            return
         missing_required_vars.append("STRIX_LLM")
 
     if not settings.llm.api_key:
@@ -165,6 +169,9 @@ def validate_environment() -> None:
 
 def check_docker_installed() -> None:
     if shutil.which("docker") is None:
+        if shutil.which("agy") is not None or (Path(__file__).resolve().parents[4] / "bin" / "agyos").is_file():
+            logger.info("Docker not installed; operating in direct AGY CLI execution sandbox")
+            return
         logger.debug("Docker CLI not found in PATH")
         console = Console()
         error_text = Text()
@@ -189,6 +196,9 @@ def check_docker_installed() -> None:
 
 
 def pull_docker_image() -> None:
+    if shutil.which("docker") is None:
+        return
+
     from docker.errors import DockerException
 
     console = Console()

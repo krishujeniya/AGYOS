@@ -52,3 +52,42 @@ class StrixRunnerContractTests(unittest.TestCase):
     def test_run_scan_dry_run(self) -> None:
         exit_code = run_scan(target="./", mode="quick", budget=10.0, dry_run=True)
         self.assertEqual(exit_code, 0)
+
+    def test_direct_agy_mode_status(self) -> None:
+        status = check_status()
+        self.assertTrue(status.get("direct_agy_mode"))
+        self.assertFalse(status.get("api_required"))
+        self.assertTrue(status.get("agy_cli_available"))
+        self.assertEqual(status.get("active_backend"), "agy")
+
+    def test_meets_fail_threshold_evaluations(self) -> None:
+        from scripts.agy_security_scanner import meets_fail_threshold
+
+        self.assertTrue(meets_fail_threshold("critical", "high"))
+        self.assertTrue(meets_fail_threshold("high", "high"))
+        self.assertFalse(meets_fail_threshold("medium", "high"))
+        self.assertFalse(meets_fail_threshold("low", "critical"))
+        self.assertTrue(meets_fail_threshold("low", None))
+
+    def test_direct_scan_clean_directory(self) -> None:
+        import tempfile
+        from scripts.agy_security_scanner import execute_agy_direct_scan
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            tmp_path = Path(tmp_dir)
+            clean_file = tmp_path / "app.py"
+            clean_file.write_text("def hello():\n    return 'Hello, World!'\n", encoding="utf-8")
+
+            runs_dir = tmp_path / "strix_runs"
+            exit_code = execute_agy_direct_scan(
+                target=str(tmp_path),
+                mode="quick",
+                run_name="test_clean_run",
+                output_base=runs_dir,
+            )
+            self.assertEqual(exit_code, 0)
+            run_dir = runs_dir / "test_clean_run"
+            self.assertTrue((run_dir / "run.json").is_file())
+            self.assertTrue((run_dir / "findings.sarif").is_file())
+            self.assertTrue((run_dir / "penetration_test_report.md").is_file())
+            self.assertTrue((run_dir / "vulnerabilities.json").is_file())
