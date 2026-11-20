@@ -13,6 +13,11 @@ use crate::error::{
 use crate::model::ToonValue;
 use serde_json::{Map, Number, Value};
 
+/// Get line indentation count (leading whitespace).
+fn get_indent(line: &str) -> usize {
+    line.len() - line.trim_start().len()
+}
+
 /// Parse and unescape a string token, rejecting lone surrogates.
 pub fn parse_string_token(token: &str) -> Result<String, ToonError> {
     let mut out = String::with_capacity(token.len());
@@ -165,10 +170,15 @@ pub fn decode_document(input: &str) -> Result<ToonValue, ToonError> {
     }
 
     let lines: Vec<&str> = input.lines().collect();
-    parse_block(&lines, 0, 0).map(|(val, _)| val)
+    parse_block(&lines, 0, 0, 0).map(|(val, _)| val)
 }
 
-fn parse_block(lines: &[&str], start_idx: usize, depth: usize) -> Result<(ToonValue, usize), ToonError> {
+fn parse_block(
+    lines: &[&str],
+    mut idx: usize,
+    expected_indent: usize,
+    depth: usize,
+) -> Result<(ToonValue, usize), ToonError> {
     if depth > MAX_NESTING_DEPTH {
         return Err(ToonError::MaxDepthExceeded {
             limit: MAX_NESTING_DEPTH,
@@ -177,7 +187,6 @@ fn parse_block(lines: &[&str], start_idx: usize, depth: usize) -> Result<(ToonVa
     }
 
     let mut entries: Vec<(String, ToonValue)> = Vec::new();
-    let mut idx = start_idx;
 
     while idx < lines.len() {
         let line = lines[idx];
@@ -188,19 +197,22 @@ fn parse_block(lines: &[&str], start_idx: usize, depth: usize) -> Result<(ToonVa
             continue;
         }
 
-        // Check if map key
-        if let Some(colon_pos) = line.find(':') {
-            let key_part = line[..colon_pos].trim();
-            let val_part = line[colon_pos + 1..].trim();
+        let indent = get_indent(line);
+        if indent < expected_indent {
+            break;
+        }
 
-            // Duplicate key check
+        if let Some(colon_pos) = trimmed.find(':') {
+            let key_part = trimmed[..colon_pos].trim();
+            let val_part = trimmed[colon_pos + 1..].trim();
+
             if entries.iter().any(|(k, _)| k == key_part) {
                 return Err(ToonError::DuplicateKey(key_part.to_string()));
             }
 
             // Tabular record indicator: key[N] or key[N]{cols}
             if let Some(bracket_start) = key_part.find('[') {
-                if let Some(bracket_end) = key_part.find(']') {
+                if key_part.contains(']') {
                     let key_name = key_part[..bracket_start].trim().to_string();
                     let (tabular_val, next_idx) = parse_tabular(lines, idx, depth + 1)?;
                     entries.push((key_name, tabular_val));
@@ -210,16 +222,39 @@ fn parse_block(lines: &[&str], start_idx: usize, depth: usize) -> Result<(ToonVa
             }
 
             if val_part.is_empty() {
-                // Nested block or list
-                if idx + 1 < lines.len() && lines[idx + 1].trim().starts_with('-') {
-                    let (list_val, next_idx) = parse_list(lines, idx + 1, depth + 1)?;
-                    entries.push((key_part.to_string(), list_val));
-                    idx = next_idx;
-                } else {
-                    let (nested_val, next_idx) = parse_block(lines, idx + 1, depth + 1)?;
-                    entries.push((key_part.to_string(), nested_val));
-                    idx = next_idx;
+                // Peek next line to determine child indent
+                let mut next_idx = idx + 1;
+                while next_idx < lines.len()
+                    && (lines[next_idx].trim().is_empty() || lines[next_idx].trim().starts_with('#'))
+                {
+                    next_idx += 1;
                 }
+
+                if next_idx < lines.len() {
+                    let child_indent = get_indent(lines[next_idx]);
+                    if child_indent > indent {
+                        if depth + 1 > MAX_NESTING_DEPTH {
+                            return Err(ToonError::MaxDepthExceeded {
+                                limit: MAX_NESTING_DEPTH,
+                                actual: depth + 1,
+                            });
+                        }
+                        if lines[next_idx].trim().starts_with('-') {
+                            let (list_val, after_idx) =
+                                parse_list(lines, next_idx, child_indent, depth + 1)?;
+                            entries.push((key_part.to_string(), list_val));
+                            idx = after_idx;
+                        } else {
+                            let (nested_val, after_idx) =
+                                parse_block(lines, next_idx, child_indent, depth + 1)?;
+                            entries.push((key_part.to_string(), nested_val));
+                            idx = after_idx;
+                        }
+                        continue;
+                    }
+                }
+                entries.push((key_part.to_string(), ToonValue::Null));
+                idx += 1;
             } else {
                 let scalar = parse_scalar(val_part)?;
                 entries.push((key_part.to_string(), scalar));
@@ -233,7 +268,11 @@ fn parse_block(lines: &[&str], start_idx: usize, depth: usize) -> Result<(ToonVa
     Ok((ToonValue::Map(entries), idx))
 }
 
-fn parse_tabular(lines: &[&str], header_idx: usize, _depth: usize) -> Result<(ToonValue, usize), ToonError> {
+fn parse_tabular(
+    lines: &[&str],
+    header_idx: usize,
+    _depth: usize,
+) -> Result<(ToonValue, usize), ToonError> {
     let header_line = lines[header_idx].trim();
     let mut columns: Vec<String> = Vec::new();
 
@@ -251,7 +290,6 @@ fn parse_tabular(lines: &[&str], header_idx: usize, _depth: usize) -> Result<(To
     let mut rows: Vec<ToonValue> = Vec::new();
     let mut idx = header_idx + 1;
 
-    // If columns not in inline header, look at first row
     if columns.is_empty() && idx < lines.len() && lines[idx].trim().starts_with('-') {
         let first_line = lines[idx].trim_start_matches('-').trim();
         let cols = split_csv_line(first_line)?;
@@ -299,16 +337,29 @@ fn parse_tabular(lines: &[&str], header_idx: usize, _depth: usize) -> Result<(To
     Ok((ToonValue::Array(rows), idx))
 }
 
-fn parse_list(lines: &[&str], start_idx: usize, _depth: usize) -> Result<(ToonValue, usize), ToonError> {
+fn parse_list(
+    lines: &[&str],
+    mut idx: usize,
+    expected_indent: usize,
+    _depth: usize,
+) -> Result<(ToonValue, usize), ToonError> {
     let mut items = Vec::new();
-    let mut idx = start_idx;
 
     while idx < lines.len() {
-        let line = lines[idx].trim();
-        if !line.starts_with('-') {
+        let line = lines[idx];
+        let trimmed = line.trim();
+
+        if trimmed.is_empty() || trimmed.starts_with('#') {
+            idx += 1;
+            continue;
+        }
+
+        let indent = get_indent(line);
+        if indent < expected_indent || !trimmed.starts_with('-') {
             break;
         }
-        let raw_item = line.trim_start_matches('-').trim();
+
+        let raw_item = trimmed.trim_start_matches('-').trim();
         let scalar = parse_scalar(raw_item)?;
         items.push(scalar);
 

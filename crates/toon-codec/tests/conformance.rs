@@ -43,8 +43,8 @@ fn test_conformance_reject_duplicate_keys() {
 
 #[test]
 fn test_conformance_size_ceiling_enforcement() {
-    // Exceed 256 KiB
-    let large_input = "a: \"x\"\n".repeat(35_000);
+    // Payload > 256 KiB (262,144 bytes)
+    let large_input = "key: \"".to_string() + &"x".repeat(270_000) + "\"\n";
     let err = decode_document(&large_input).expect_err("Payload > 256 KiB must fail");
     match err {
         ToonError::SizeCeilingExceeded { limit, actual } => {
@@ -57,8 +57,8 @@ fn test_conformance_size_ceiling_enforcement() {
 
 #[test]
 fn test_conformance_max_depth_enforcement() {
-    // Depth > 4 must fail
-    let input = "level1:\n  level2:\n    level3:\n      level4:\n        level5: \"overflow\"\n";
+    // Nesting depth > 4 must fail
+    let input = "l1:\n  l2:\n    l3:\n      l4:\n        l5:\n          l6: \"overflow\"\n";
     let err = decode_document(input).expect_err("Nesting depth > 4 must fail");
     match err {
         ToonError::MaxDepthExceeded { limit, actual } => {
