@@ -17,7 +17,7 @@
 //! - P12 (Statistical Proof & Regression Bounds)
 //! - P17 (Progressive Delivery & Canary Gates)
 
-use migration::{CutoverCoordinator, MigrationCursor, WriterRole};
+use migration::{CutoverCoordinator, WriterRole};
 use release::{
     CleanMachineVerifier, ClientDiscoveryProject, LiveCutoverGuard, OperatorApprovalToken,
     ReleaseCandidate, ReleaseGateEngine, ReleaseGateFailure,
