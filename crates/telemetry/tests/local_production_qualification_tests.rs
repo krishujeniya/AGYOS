@@ -20,7 +20,7 @@ use std::fs;
 use std::path::PathBuf;
 use store::{EventRecord, FenceToken, OutboxRecord, OutboxStatus, TransactionalStore};
 use telemetry::{
-    BackupManifest, IncidentSeverity, LocalBackupEngine, LocalFaultProfile, LocalLoadProfile,
+    IncidentSeverity, LocalBackupEngine, LocalFaultProfile, LocalLoadProfile,
     LocalOfflineProfile, MetricClass, OnCallRunbook, RedactedMetricsCollector,
 };
 

@@ -6,7 +6,6 @@
 //! - P21 (Privacy & Boundary Protection - Zero Plaintext Secrets in Telemetry)
 
 use serde::{Deserialize, Serialize};
-use std::collections::BTreeMap;
 
 /// High-frequency operational traffic classes in the local production envelope.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]

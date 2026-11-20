@@ -11,10 +11,9 @@
 
 use domain::WorkspaceId;
 use serde::{Deserialize, Serialize};
-use std::fs::{self, File};
-use std::io::{BufRead, BufReader, Write};
-use std::path::{Path, PathBuf};
-use store::{OutboxRecord, OutboxStatus, StoreError, TransactionalStore};
+use std::fs;
+use std::path::Path;
+use store::{OutboxRecord, OutboxStatus, TransactionalStore};
 
 /// Verified backup archive manifest containing SHA-256 integrity digests.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]

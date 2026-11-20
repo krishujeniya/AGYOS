@@ -8,8 +8,8 @@
 
 use crate::metrics::{MetricClass, RedactedMetricsCollector};
 use domain::WorkspaceId;
-use store::{FenceToken, StoreError, TransactionalStore};
 use std::path::Path;
+use store::{FenceToken, TransactionalStore};
 
 /// Local nominal load profile simulating 20 operations/sec on reference 2 vCPU / 2 GiB hardware.
 pub struct LocalLoadProfile {
@@ -83,21 +83,21 @@ impl LocalFaultProfile {
 
         store.set_fence(FenceToken::new(10));
         let active_fence = store.current_fence();
-        assert_eq!(active_fence.value(), 10);
+        assert_eq!(active_fence.epoch(), 10);
 
         // Stale fence token with value 8 must be rejected by fence invariants
         let stale_token = FenceToken::new(8);
-        if stale_token.value() >= active_fence.value() {
+        if stale_token.epoch() >= active_fence.epoch() {
             return Err("Stale fence was not detected as lesser value".to_string());
         }
 
         // Newer fence token supersedes older
         let newer_token = FenceToken::new(11);
-        if newer_token.value() <= active_fence.value() {
+        if newer_token.epoch() <= active_fence.epoch() {
             return Err("Newer fence was not detected as greater value".to_string());
         }
         store.set_fence(newer_token);
-        assert_eq!(store.current_fence().value(), 11);
+        assert_eq!(store.current_fence().epoch(), 11);
 
         Ok(())
     }
