@@ -52,7 +52,8 @@ fn test_selective_cognitive_forcing_and_dissent_recording() {
 
     assert_eq!(outcome.dissents.len(), 1, "Expected 1 recorded dissent");
     assert_eq!(outcome.dissents[0].member.as_str(), "role-database-reliability-eng");
-    assert!(outcome.dissents[0].rationale.contains("Missing index"));
+    assert!(outcome.dissents[0].dissenting_verdict.contains("Missing index"));
+    assert!(outcome.dissents[0].rationale.contains("lacks index"));
     assert_eq!(outcome.effective_risk_tier, RiskTier::R2);
     assert_eq!(outcome.authorized_spend, FixedMoney::from_dollars(1));
 }
