@@ -1,3 +1,20 @@
+# AGYOS handoff: resolve CI deadlocks and catalog drift, certify complete CI/CD success (2026-11-20)
+
+- Task: Resolve all CI/CD failures and test runner deadlocks in GitHub Actions until full pass; synchronize GitHub-rendered documentation markdown across repository while keeping skills strictly in TOON format; eliminate catalog drift in `docs/llms.txt`.
+- Branch: `main` (commit `a10fd12d`).
+- Delivered changes:
+  - Deadlock Elimination: Removed nested `fcntl.flock` contention in `execute_plan` (`agyos_decision/cycle.py`) and added defensive 30s timeouts across all lifecycle subprocess calls, resolving the 26-minute runner hang on `test_agyos_cycle.py`.
+  - GitHub Actions CI Policy: Updated `.github/workflows/ci.yml` to strictly enforce zero markdown files in `.agents/skills/**` and `knowledge/skills/**`, permitting repo-level markdown (`README.md`, `DEPLOYMENT.md`, `AI_HANDOFF.md`, `docs/**/*.md`) for native GitHub rendering.
+  - Catalog Synchronization: Synchronized `docs/llms.txt` rule counter (147) and workflow counter (99) to match `scripts/build_docs_data.py` generated catalog outputs.
+  - Zero Local Execution Invariant: Performed only read-only AST inspection and `git diff --check` locally; all test and build verifications executed strictly in GitHub Actions.
+- Verified Evidence (GitHub Actions):
+  - CI Run `44749204998`: conclusion `success` (all 5 jobs passed: `validate` in 1m4s, `council` in 9s, `documentation-pages` in 12s, `documentation-image` in 21s, `secret-detection` in 17s).
+  - Remote Builder Run `44749204986`: conclusion `success` (Rust kernel compilation, TOON codec conformance, artifact digests in 1m51s).
+  - Video Toolkits Run `44748711250`: conclusion `success` (2m8s).
+- Exact next command: `git status --short --branch`
+
+---
+
 # AGYOS handoff: update README with full certified architecture and operational guide (2026-11-20)
 
 - Task: Update README.md and authoritative README.toon to perfectly reflect the full certified AGYOS architecture: 15-crate native Rust kernel, 104-role virtual matrix, 5 operational pods, 2,289-skill catalog, 7-step autonomous cycle, 6 FAANG production invariants, all 20 certified Tracker.md rebuild steps, repository directory layout, and developer CLI workflows.
