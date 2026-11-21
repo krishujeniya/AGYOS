@@ -21,7 +21,7 @@
 //! - P27 (Empirical 4-Arm Benchmark)
 
 use maintenance::{
-    CanaryObservation, CanaryRetirementEngine, DecisionDisposition,
+    CanaryObservation, CanaryRetirementEngine, MaintenanceRiskLedger,
     OpenRisk, ResearchDecisionRecord, VendorIndependentEngine,
 };
 use store::{EventRecord, OutboxRecord, OutboxStatus};
