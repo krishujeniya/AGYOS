@@ -1,3 +1,16 @@
+# AGYOS handoff: unify agent file structure under .agents and eliminate redundant root symlinks (2026-11-21)
+
+- Task: Consolidate repository structure so `.agents/` is the single authoritative directory for all agent assets (roles, rules, skills, workflows, plugins, and state); eliminate redundant root-level symlinks (`agents`, `rules`, `skills`, `skills-by-role`, `workflows`) to establish a clean, non-duplicated repository root file structure.
+- Branch: `main`.
+- Delivered changes:
+  - Redundant Root Symlinks Purge: Removed 5 legacy root symlinks (`agents -> .agents/agents`, `rules -> .agents/rules`, `skills -> .agents/skills`, `skills-by-role -> .agents/skills-by-role`, `workflows -> .agents/workflows`) that previously duplicated `.agents/` subdirectories at the root level.
+  - Single Authoritative Directory: All agent assets now reside exclusively under `.agents/` (`.agents/agents`, `.agents/rules`, `.agents/workflows`, `.agents/skills`, `.agents/skills-by-role`, `.agents/plugins`, `.agents/skill-sources`, `.agents/state`).
+  - Root Cleanliness: The repository root now exclusively houses core domain folders (`.agents/`, `crates/`, `apps/`, `docs/`, `mcp/`, `tools/`, `scripts/`, `bin/`, `assets/`, `site/`), build manifests, and allowlisted project documentation.
+- Verification evidence: static structure verification and `git diff --check` passed; zero local builds/tests run (CI/CD strictly via GitHub Actions).
+- Exact next command: `git push origin main`
+
+---
+
 # AGYOS handoff: restrict markdown strictly to docs, readmes, and core docs; convert all other markdown to TOON; remove tracker and context (2026-11-21)
 
 - Task: Retain markdown (.md) exclusively for `docs/` folder, all `README.md` files, `AI_HANDOFF.md`, `DEPLOYMENT.md`, and `SECURITY.md`. Remove `context` and `tracker` documents from both local disk and git tracking. Convert all remaining markdown files across the entire codebase (`.agents/rules/`, `.agents/agents/`, `.agents/workflows/`, `.agents/plugins/`, `.agents/state/`, `.github/`, `AGENTS.toon`, `GEMINI.toon`, etc.) into canonical `.toon` envelopes, and remove the original `.md` files from both local disk and git tracking.
