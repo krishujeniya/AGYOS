@@ -15,6 +15,8 @@ toon-codec = { path = "../toon-codec" }
 governance = { path = "../governance" }
 store = { path = "../store" }
 effects = { path = "../effects" }
+sha2 = "0.10"
+hex = "0.4"
 
 [lib]
 name = "agy"

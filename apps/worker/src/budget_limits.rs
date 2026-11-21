@@ -75,9 +75,21 @@ impl SpendingLimitController {
             return Err("Rate limit exceeded: Output TPM cap reached".to_string());
         }
 
-        // Calculate call cost in micros
-        let in_micros = (input_tokens as i64 * self.input_price_per_million.as_micros()) / 1_000_000;
-        let out_micros = (output_tokens as i64 * self.output_price_per_million.as_micros()) / 1_000_000;
+        // Calculate call cost in micros without truncating small charges
+        let in_product = input_tokens as i64 * self.input_price_per_million.as_micros();
+        let in_micros = if in_product > 0 && in_product < 1_000_000 {
+            1 // Prevent truncating small non-zero input charges to zero
+        } else {
+            in_product / 1_000_000
+        };
+
+        let out_product = output_tokens as i64 * self.output_price_per_million.as_micros();
+        let out_micros = if out_product > 0 && out_product < 1_000_000 {
+            1 // Prevent truncating small non-zero output charges to zero
+        } else {
+            out_product / 1_000_000
+        };
+
         let call_cost = FixedMoney::from_micros(in_micros + out_micros);
 
         if self.accumulated_spend + call_cost > self.max_authorized_spend {

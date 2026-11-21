@@ -317,3 +317,93 @@ fn test_the_four_p27_arms_comparative_benchmark_and_200_task_cohort() {
     assert!(mean_council_defect_rate >= 0.95, "Council defect detection rate on high-risk tasks must be >= 95%");
     assert!(mean_single_agent_quality >= 0.90, "Single agent quality on low-risk tasks must be >= 90%");
 }
+
+#[test]
+fn test_council_negative_verdicts_stay_negative_and_deduplication() {
+    let reviewer_1 = ActorId::new("role-staff-engineer");
+    let reviewer_2 = ActorId::new("role-security-engineer");
+
+    // 1. "Not approved" or "Do not approve" must evaluate as negative (never substring matched as approved)
+    let reviews_negative = vec![
+        BlindReviewCriterion {
+            reviewer: reviewer_1.clone(),
+            prior_criterion: "Criterion 1".to_string(),
+            verdict: "Do not approve: critical memory vulnerability".to_string(),
+            confidence: 0.99,
+            rationale: "Unbounded buffer detected".to_string(),
+        },
+        BlindReviewCriterion {
+            reviewer: reviewer_2.clone(),
+            prior_criterion: "Criterion 2".to_string(),
+            verdict: "Not approved under policy".to_string(),
+            confidence: 0.95,
+            rationale: "Fails policy check".to_string(),
+        },
+    ];
+
+    let outcome_neg = CouncilEngine::conduct_blind_review(
+        "Evaluate memory safety",
+        reviews_negative,
+        RiskTier::R2,
+        FixedMoney::from_dollars(1),
+    ).expect("Deliberation succeeds");
+    assert!(!outcome_neg.approved, "Negative verdicts containing 'approve' substring must NOT evaluate as approved");
+
+    // 2. Duplicated reviewer entries must not artificially create a quorum
+    let reviews_duplicated = vec![
+        BlindReviewCriterion {
+            reviewer: reviewer_1.clone(),
+            prior_criterion: "Criterion 1".to_string(),
+            verdict: "Approve".to_string(),
+            confidence: 0.95,
+            rationale: "Looks good".to_string(),
+        },
+        BlindReviewCriterion {
+            reviewer: reviewer_1.clone(), // Duplicate!
+            prior_criterion: "Criterion 1".to_string(),
+            verdict: "Approve".to_string(),
+            confidence: 0.95,
+            rationale: "Looks good again".to_string(),
+        },
+    ];
+
+    let outcome_dup = CouncilEngine::conduct_blind_review(
+        "Evaluate with duplicated member",
+        reviews_duplicated,
+        RiskTier::R1,
+        FixedMoney::from_dollars(1),
+    ).expect("Deliberation succeeds");
+    // After deduplication, there is only 1 member
+    assert_eq!(outcome_dup.dissents.len(), 0);
+}
+
+#[test]
+fn test_budget_ledger_positive_amounts_and_reservation_ownership() {
+    use domain::BudgetLedger;
+
+    let mut ledger = BudgetLedger::new(FixedMoney::from_dollars(100)); // $100
+    // 20% recovery reserve is $20. Spendable is $80.
+    assert_eq!(ledger.recovery_reserve(), FixedMoney::from_dollars(20));
+    assert_eq!(ledger.available_spendable(), FixedMoney::from_dollars(80));
+
+    // Zero or negative amounts must fail
+    assert!(ledger.reserve(FixedMoney::ZERO).is_err());
+    assert!(ledger.reserve(FixedMoney::from_micros(-500)).is_err());
+
+    // Reservation with ownership ID
+    ledger.reserve_for("task-res-1", FixedMoney::from_dollars(30)).unwrap();
+    assert_eq!(ledger.available_spendable(), FixedMoney::from_dollars(50));
+
+    // Commit spend against owned reservation
+    ledger.commit_spend_for("task-res-1", FixedMoney::from_dollars(20)).unwrap();
+    assert_eq!(ledger.spent_funds, FixedMoney::from_dollars(20));
+    assert_eq!(ledger.reserved_funds, FixedMoney::from_dollars(10));
+
+    // Exceeding reservation for that owner must fail
+    assert!(ledger.commit_spend_for("task-res-1", FixedMoney::from_dollars(15)).is_err());
+
+    // Releasing remaining owned reservation
+    ledger.release_reservation_for("task-res-1", FixedMoney::from_dollars(10)).unwrap();
+    assert_eq!(ledger.reserved_funds, FixedMoney::ZERO);
+    assert_eq!(ledger.available_spendable(), FixedMoney::from_dollars(60));
+}

@@ -47,6 +47,8 @@ pub struct RedactedMetricsCollector {
 }
 
 impl RedactedMetricsCollector {
+    pub const MAX_SAMPLES_PER_CLASS: usize = 10_000;
+
     pub fn new() -> Self {
         Self {
             samples: Vec::new(),
@@ -66,6 +68,7 @@ impl RedactedMetricsCollector {
     }
 
     /// Records an operation, strictly stripping any embedded secrets or PII.
+    /// Bounds memory by evicting oldest samples when per-class capacity is reached.
     pub fn record(
         &mut self,
         class: MetricClass,
@@ -77,6 +80,13 @@ impl RedactedMetricsCollector {
         let sanitized_tag = Self::redact_sensitive_strings(raw_tag);
         let payload_digest = Self::compute_sha256_digest(raw_payload);
 
+        let class_samples_count = self.samples.iter().filter(|s| s.class == class).count();
+        if class_samples_count >= Self::MAX_SAMPLES_PER_CLASS {
+            if let Some(pos) = self.samples.iter().position(|s| s.class == class) {
+                self.samples.swap_remove(pos);
+            }
+        }
+
         self.samples.push(OperationSample {
             class,
             duration_ms,
@@ -86,8 +96,8 @@ impl RedactedMetricsCollector {
         });
     }
 
-    /// Calculates a specified percentile (e.g. 50, 90, 95, 99) for an operation class.
-    pub fn percentile(&self, class: MetricClass, p: u32) -> u64 {
+    /// Calculates a specified percentile with typed None on empty slice (insufficient data).
+    pub fn percentile_checked(&self, class: MetricClass, p: u32) -> Option<u64> {
         let mut durations: Vec<u64> = self
             .samples
             .iter()
@@ -96,12 +106,21 @@ impl RedactedMetricsCollector {
             .collect();
 
         if durations.is_empty() {
-            return 0;
+            return None;
+        }
+
+        if durations.len() == 1 {
+            return Some(durations[0]);
         }
 
         durations.sort_unstable();
         let rank = ((p as f64 / 100.0) * (durations.len() as f64 - 1.0)).round() as usize;
-        durations[rank.min(durations.len() - 1)]
+        Some(durations[rank.min(durations.len() - 1)])
+    }
+
+    /// Calculates a specified percentile (e.g. 50, 90, 95, 99) for an operation class.
+    pub fn percentile(&self, class: MetricClass, p: u32) -> u64 {
+        self.percentile_checked(class, p).unwrap_or(0)
     }
 
     pub fn total_samples(&self) -> usize {
@@ -116,8 +135,16 @@ impl RedactedMetricsCollector {
         self.percentile(class, 99)
     }
 
+    pub fn warm_p99_ms_checked(&self, class: MetricClass) -> Option<u64> {
+        self.percentile_checked(class, 99)
+    }
+
     pub fn cold_first_route_ms(&self) -> u64 {
         self.cold_first_route_ms.unwrap_or(0)
+    }
+
+    pub fn cold_first_route_ms_checked(&self) -> Option<u64> {
+        self.cold_first_route_ms
     }
 
     pub fn steady_rss_mib(&self) -> u64 {
@@ -220,21 +247,12 @@ impl RedactedMetricsCollector {
         sanitized
     }
 
-    /// Computes deterministic SHA-256 digest of payload for traceable provenance (P06, P20).
+    /// Computes deterministic standard SHA-256 digest of payload for traceable provenance (P06, P20).
     pub fn compute_sha256_digest(content: &str) -> String {
-        use std::collections::hash_map::DefaultHasher;
-        use std::hash::{Hash, Hasher};
-
-        let mut hasher = DefaultHasher::new();
-        content.hash(&mut hasher);
-        let h1 = hasher.finish();
-
-        let mut hasher2 = DefaultHasher::new();
-        h1.hash(&mut hasher2);
-        content.len().hash(&mut hasher2);
-        let h2 = hasher2.finish();
-
-        format!("sha256:{:016x}{:016x}", h1, h2)
+        use sha2::{Digest, Sha256};
+        let mut hasher = Sha256::new();
+        hasher.update(content.as_bytes());
+        format!("sha256:{}", hex::encode(hasher.finalize()))
     }
 
     /// Exports redacted metrics in structured JSON format.

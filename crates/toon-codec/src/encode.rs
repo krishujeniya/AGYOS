@@ -10,6 +10,54 @@ use crate::error::ToonError;
 use crate::model::ToonValue;
 use serde_json::Value;
 
+fn string_needs_quotes(s: &str) -> bool {
+    if s.is_empty()
+        || s.starts_with(' ')
+        || s.ends_with(' ')
+        || s.starts_with('-')
+        || s.starts_with('+')
+        || s.starts_with('.')
+        || s.contains(',')
+        || s.contains(':')
+        || s.contains('"')
+        || s.contains('\'')
+        || s.contains('\n')
+        || s.contains('\r')
+        || s.contains('\t')
+        || s.contains('[')
+        || s.contains(']')
+        || s.contains('{')
+        || s.contains('}')
+        || s.contains('#')
+        || s.contains('\\')
+    {
+        return true;
+    }
+
+    if s.eq_ignore_ascii_case("true")
+        || s.eq_ignore_ascii_case("false")
+        || s.eq_ignore_ascii_case("null")
+        || s.eq_ignore_ascii_case("none")
+        || s.eq_ignore_ascii_case("nan")
+        || s.eq_ignore_ascii_case("inf")
+        || s.eq_ignore_ascii_case("-inf")
+        || s.eq_ignore_ascii_case("infinity")
+        || s.eq_ignore_ascii_case("-infinity")
+    {
+        return true;
+    }
+
+    if s.parse::<i64>().is_ok() || s.parse::<f64>().is_ok() {
+        return true;
+    }
+
+    if s.chars().all(|c| c.is_ascii_digit() || c == '-' || c == '.' || c == '+' || c == 'e' || c == 'E') {
+        return true;
+    }
+
+    false
+}
+
 /// Format a single scalar value.
 pub fn format_scalar(val: &ToonValue) -> String {
     match val {
@@ -24,22 +72,7 @@ pub fn format_scalar(val: &ToonValue) -> String {
             }
         }
         ToonValue::String(s) => {
-            if s.is_empty()
-                || s.contains(',')
-                || s.contains(':')
-                || s.contains('"')
-                || s.contains('\n')
-                || s.contains('\r')
-                || s.contains('\t')
-                || s.contains('[')
-                || s.contains(']')
-                || s.contains('{')
-                || s.contains('}')
-                || s == "true"
-                || s == "false"
-                || s == "null"
-                || s.chars().all(|c| c.is_ascii_digit() || c == '-' || c == '.')
-            {
+            if string_needs_quotes(s) {
                 serde_json::to_string(s).unwrap_or_else(|_| format!("\"{}\"", s))
             } else {
                 s.clone()

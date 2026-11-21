@@ -58,7 +58,7 @@ jobs:
       - name: Upload compiled artifacts and provenance digests
         uses: actions/upload-artifact@v4
         with:
-          name: agyos-binaries-${{ github.sha }}
+          name: agyos-binaries-${{ github.event.inputs.target_sha || github.sha }}
           path: |
             target/release/agyos
             target/release/agyos-worker

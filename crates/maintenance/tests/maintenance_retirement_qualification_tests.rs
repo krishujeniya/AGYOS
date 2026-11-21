@@ -64,11 +64,29 @@ fn test_canary_observation_and_legacy_write_retirement() {
     // 3. Reject if unresolved discrepancies exist
     let dirty_canary = CanaryObservation {
         unresolved_migration_discrepancies: 2,
-        ..valid_canary
+        ..valid_canary.clone()
     };
     let err_dirty = CanaryRetirementEngine::evaluate_retirement(&dirty_canary, now);
     assert!(err_dirty.is_err());
     assert!(err_dirty.unwrap_err().contains("must be 0"));
+
+    // 4. Reject if legacy provider is not retained as fallback
+    let no_fallback_canary = CanaryObservation {
+        legacy_provider_retained: false,
+        ..valid_canary.clone()
+    };
+    let err_no_fallback = CanaryRetirementEngine::evaluate_retirement(&no_fallback_canary, now);
+    assert!(err_no_fallback.is_err());
+    assert!(err_no_fallback.unwrap_err().contains("Legacy provider must be retained"));
+
+    // 5. Reject if zero operations were observed
+    let zero_ops_canary = CanaryObservation {
+        total_operations_observed: 0,
+        ..valid_canary
+    };
+    let err_zero_ops = CanaryRetirementEngine::evaluate_retirement(&zero_ops_canary, now);
+    assert!(err_zero_ops.is_err());
+    assert!(err_zero_ops.unwrap_err().contains("Zero operations observed"));
 }
 
 #[test]

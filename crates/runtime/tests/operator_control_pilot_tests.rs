@@ -494,3 +494,33 @@ fn test_external_effect_authorization_identification() {
         );
     }
 }
+
+#[test]
+fn test_edit_invalidates_prior_confirmation_and_escape_withdraws_consent() {
+    let operator = PilotOperator {
+        id: "op-test-edit".to_string(),
+        name: "Test Operator".to_string(),
+        cohort: PilotCohort::EnglishKeyboardOnly,
+        is_assistive_tech_user: false,
+        is_first_time_user: true,
+        identified_external_authorizer: Some("human_operator".to_string()),
+    };
+
+    let mut session = OperatorSessionState::new(&operator);
+    // Confirm first
+    session.focused_element = FocusableElement::ConfirmButton;
+    session.handle_keyboard_action(KeyboardAction::Enter, 1_000_010);
+    assert!(session.is_confirmed);
+
+    // Operator edits input text -> confirmation must be invalidated
+    session.focused_element = FocusableElement::WorkHoursCapInput;
+    session.handle_keyboard_action(KeyboardAction::InputText("10".to_string()), 1_000_020);
+    assert!(!session.is_confirmed, "Editing constraints must invalidate stale confirmation");
+    assert_eq!(session.hours_cap, 10);
+
+    // Pressing Escape revokes consent
+    session.handle_keyboard_action(KeyboardAction::Escape, 1_000_030);
+    assert!(session.consent_withdrawn);
+    assert!(session.is_cancelled);
+    assert!(!session.is_confirmed);
+}

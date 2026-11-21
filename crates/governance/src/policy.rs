@@ -4,17 +4,23 @@
 //! - 20% untouchable recovery reserve fund (P32)
 //! - Expiration and scope checks on human approvals (P05, P30)
 
-use domain::{Approval, DomainError, FixedMoney, TaskContract};
+use domain::{Approval, ApprovalStatus, DomainError, FixedMoney, TaskContract};
 
 pub struct PolicyEngine;
 
 impl PolicyEngine {
-    /// Verify human approval validity against requested scope and current timestamp.
+    /// Verify human approval validity against requested scope, status, and current timestamp.
     pub fn verify_approval(
         approval: &Approval,
         required_scope: &str,
         current_time_epoch_s: u64,
     ) -> Result<(), DomainError> {
+        if approval.status != ApprovalStatus::Approved {
+            return Err(DomainError::ApprovalScopeMismatch {
+                required: format!("Status: Approved (found {:?})", approval.status),
+                provided: format!("{:?}", approval.status),
+            });
+        }
         if current_time_epoch_s > approval.expires_at_epoch_s {
             return Err(DomainError::ApprovalExpired {
                 expires_at_epoch_s: approval.expires_at_epoch_s,

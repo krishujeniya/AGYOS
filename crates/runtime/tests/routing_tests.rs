@@ -123,4 +123,8 @@ fn test_progressive_disclosure_and_on_demand_runbook_loading() {
     assert!(body.is_some(), "Runbook must be retrievable on demand");
     let content = body.unwrap();
     assert!(content.contains("review-accessibility"));
+
+    // 3. Absent runbook returns None (abstention) rather than synthesized generic filler
+    let missing_body = retriever.load_selected_runbook("non-existent-skill-never-created");
+    assert!(missing_body.is_none(), "Missing runbook must return None to trigger abstention or clarification");
 }

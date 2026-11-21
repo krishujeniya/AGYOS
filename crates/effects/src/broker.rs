@@ -23,6 +23,9 @@ impl EffectBroker {
             .collect();
 
         for record in pending_records {
+            // Record durable claim in store before invoking external provider dispatch
+            store.update_outbox_status(&record.effect_id, OutboxStatus::Dispatched)?;
+
             let outcome = provider.dispatch(&record.effect_id, &record.payload_json);
             let final_status = match outcome {
                 EffectOutcome::Confirmed => OutboxStatus::Confirmed,

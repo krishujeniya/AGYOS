@@ -42,8 +42,8 @@ impl HostedEnvelopeRunner {
         let mut lease_manager = WorkerPoolLeaseManager::new();
 
         let max_spend = FixedMoney::from_dollars(500);
-        let in_price = FixedMoney::from_micros(150); // $0.15 per million input tokens
-        let out_price = FixedMoney::from_micros(600); // $0.60 per million output tokens
+        let in_price = FixedMoney::from_micros(150_000); // $0.15 per million input tokens (150,000 microdollars)
+        let out_price = FixedMoney::from_micros(600_000); // $0.60 per million output tokens (600,000 microdollars)
         let mut budget = SpendingLimitController::new(max_spend, in_price, out_price);
 
         // 1. Nominal Load Simulation: 1,000 ops/s across 100 workspaces

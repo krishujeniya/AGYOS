@@ -83,13 +83,20 @@ impl ReleaseGateEngine {
             });
         }
 
-        // 3. Evidence Freshness Gate
-        let evidence_age = current_epoch_s.saturating_sub(candidate.evidence_timestamp_epoch_s);
-        if evidence_age > max_evidence_age_s {
+        // 3. Evidence Freshness Gate (Reject stale and future timestamps)
+        if candidate.evidence_timestamp_epoch_s > current_epoch_s {
             failures.push(ReleaseGateFailure::StaleEvidence {
-                evidence_age_s: evidence_age,
+                evidence_age_s: candidate.evidence_timestamp_epoch_s - current_epoch_s,
                 max_allowed_s: max_evidence_age_s,
             });
+        } else {
+            let evidence_age = current_epoch_s - candidate.evidence_timestamp_epoch_s;
+            if evidence_age > max_evidence_age_s {
+                failures.push(ReleaseGateFailure::StaleEvidence {
+                    evidence_age_s: evidence_age,
+                    max_allowed_s: max_evidence_age_s,
+                });
+            }
         }
 
         // 4. Artifact Integrity / Provenance Digest Gate
@@ -140,13 +147,19 @@ impl ReleaseGateEngine {
         // 8. Separate Operator Decisions Gate
         // Decision A: Git publication
         match &candidate.git_publication_approval {
-            Some(token) if token.approved && token.approved_revision == candidate.target_commit_sha => {}
+            Some(token) if token.approved
+                && token.approved_revision == candidate.target_commit_sha
+                && token.action_type == "git_publication"
+                && token.timestamp_epoch_s <= current_epoch_s => {}
             _ => failures.push(ReleaseGateFailure::GitPublicationDeclinedOrMissing),
         }
 
         // Decision B: Production release cutover
         match &candidate.production_release_approval {
-            Some(token) if token.approved && token.approved_revision == candidate.target_commit_sha => {}
+            Some(token) if token.approved
+                && token.approved_revision == candidate.target_commit_sha
+                && token.action_type == "production_release"
+                && token.timestamp_epoch_s <= current_epoch_s => {}
             _ => failures.push(ReleaseGateFailure::ProductionReleaseDeclinedOrMissing),
         }
 

@@ -67,6 +67,7 @@ impl WorkerPoolLeaseManager {
     }
 
     /// Acquires a new lease for a task on an available worker.
+    /// Rejects double leases cleanly if task already has an active lease.
     pub fn acquire_lease(
         &mut self,
         task_id: &str,
@@ -74,6 +75,11 @@ impl WorkerPoolLeaseManager {
     ) -> Result<WorkerLease, String> {
         // Prune expired leases first
         self.reclaim_expired_leases(current_epoch_s);
+
+        // Reject duplicate active leases for the same task
+        if self.active_leases.contains_key(task_id) {
+            return Err(format!("Task {} already has an active lease", task_id));
+        }
 
         // Find worker with least load
         let available_worker = self
@@ -129,7 +135,35 @@ impl WorkerPoolLeaseManager {
         Ok(lease.clone())
     }
 
-    /// Releases a completed task lease.
+    /// Releases a completed task lease with fence verification. Rejects mismatched fence tokens.
+    pub fn release_lease_with_fence(
+        &mut self,
+        task_id: &str,
+        caller_fence: FenceToken,
+    ) -> Result<bool, String> {
+        let lease = match self.active_leases.get(task_id) {
+            Some(l) => l,
+            None => return Ok(false),
+        };
+
+        if caller_fence.epoch() != lease.fence_token.epoch() {
+            return Err(format!(
+                "Cannot release lease for task {}: fence mismatch (caller {}, active {})",
+                task_id,
+                caller_fence.epoch(),
+                lease.fence_token.epoch()
+            ));
+        }
+
+        let worker_id = lease.worker_id.clone();
+        self.active_leases.remove(task_id);
+        if let Some(used) = self.worker_slot_usage.get_mut(&worker_id) {
+            *used = used.saturating_sub(1);
+        }
+        Ok(true)
+    }
+
+    /// Releases a completed task lease (for recovery and expired lease cleanup).
     pub fn release_lease(&mut self, task_id: &str) -> bool {
         if let Some(lease) = self.active_leases.remove(task_id) {
             if let Some(used) = self.worker_slot_usage.get_mut(&lease.worker_id) {

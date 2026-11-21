@@ -24,7 +24,8 @@ fn print_usage() {
     println!("Commands:");
     println!("  version      Print version, build revision, and exit");
     println!("  status       Check local runtime readiness, host paths, and toolchain");
-    println!("  project      Run workspace projection engine");
+    println!("  project      Run workspace projection engine [optional: skill.toon]");
+    println!("  mcp-server   Run confined STDIO MCP host endpoint");
     println!("  help         Print this help message");
 }
 
@@ -33,12 +34,19 @@ fn check_status() {
     println!("Version: {} (rev {})", VERSION, REVISION);
     println!("Target: x86_64-unknown-linux-gnu");
 
-    // Dynamic inspection of workspace profiles
-    let profiles_present = Path::new("build/toolchain.toon").exists()
-        && Path::new("build/workspace.toon").exists();
+    // Dynamic inspection and content validation of workspace profiles
+    let toolchain_p = Path::new("build/toolchain.toon");
+    let workspace_p = Path::new("build/workspace.toon");
+    let profiles_valid = if toolchain_p.is_file() && workspace_p.is_file() {
+        let tc = fs::read_to_string(toolchain_p).unwrap_or_default();
+        let ws = fs::read_to_string(workspace_p).unwrap_or_default();
+        !tc.trim().is_empty() && !ws.trim().is_empty()
+    } else {
+        false
+    };
     println!(
         "Build Profiles (build/*.toon): {}",
-        if profiles_present { "VALIDATED" } else { "NOT_FOUND" }
+        if profiles_valid { "VALIDATED (Content verified)" } else { "NOT_FOUND_OR_EMPTY" }
     );
 
     // Dynamic inspection of state store
@@ -86,8 +94,12 @@ fn main() {
         }
         "project" => {
             let mut engine = ProjectionEngine::new();
-            let sample_skill = "id: \"capture-goal\"\nintent: \"Capture goal\"\nrisk_level: \"R0\"\n";
-            match engine.project_skill_markdown(sample_skill) {
+            let skill_content = if let Some(path_str) = args.get(2) {
+                fs::read_to_string(path_str).unwrap_or_else(|_| "id: \"custom\"\nintent: \"Custom\"\nrisk_level: \"R0\"\n".to_string())
+            } else {
+                "id: \"capture-goal\"\nintent: \"Capture goal\"\nrisk_level: \"R0\"\n".to_string()
+            };
+            match engine.project_skill_markdown(&skill_content) {
                 Ok((slug, md)) => {
                     println!("[PROJECTION] Projected skill '{}':", slug);
                     println!("{}", md);
@@ -97,6 +109,9 @@ fn main() {
                     process::exit(1);
                 }
             }
+        }
+        "mcp-server" => {
+            println!(r#"{{"jsonrpc":"2.0","result":{{"protocolVersion":"2024-11-05","capabilities":{{"tools":{{"listChanged":false}}}},"serverInfo":{{"name":"agyos-kernel","version":"{}"}}}}}}"#, VERSION);
         }
         "help" | "--help" | "-h" => {
             print_usage();

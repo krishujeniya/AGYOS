@@ -171,9 +171,81 @@ class AutonomousCycleTests(unittest.TestCase):
             state_dir.mkdir(parents=True, exist_ok=True)
             (state_dir / f"{ctx.milestone_id}.md").write_text("# Initial", encoding="utf-8")
 
+            # Review and Test gates must pass before entering Ship
+            ctx.stage_statuses[AutonomousCycleStage.REVIEW.value] = StageStatus.PASS.value
+            ctx.review_verdict = "PASS"
+            ctx.stage_statuses[AutonomousCycleStage.TEST.value] = StageStatus.PASS.value
+            ctx.test_verdict = "PASS"
+
             ship_ctx = execute_ship(ctx, root_dir=tmp_root, auto_push=False)
             self.assertEqual(ship_ctx.stage_statuses[AutonomousCycleStage.SHIP.value], StageStatus.PASS.value)
-            self.assertTrue("READY" in ship_ctx.delivery_status or "CLEAN" in ship_ctx.delivery_status)
+            self.assertTrue("PENDING_OPERATOR_APPROVAL" in ship_ctx.delivery_status or "CLEAN" in ship_ctx.delivery_status)
+
+    def test_stage_6_ship_blocked_when_review_or_test_fails_or_missing(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            tmp_root = Path(tmp_dir)
+            subprocess.run(["git", "init", "-b", "main"], cwd=tmp_root, capture_output=True, check=True, timeout=10)
+            subprocess.run(["git", "config", "user.name", "Krish Ujeniya"], cwd=tmp_root, check=True, timeout=10)
+            subprocess.run(["git", "config", "user.email", "100012208+krishujeniya@users.noreply.github.com"], cwd=tmp_root, check=True, timeout=10)
+            subprocess.run(["git", "commit", "--allow-empty", "-m", "initial commit"], cwd=tmp_root, capture_output=True, check=True, timeout=10)
+
+            # 1. Missing review -> BLOCKED
+            ctx1 = execute_think("task missing review", root_dir=tmp_root)
+            ship_ctx1 = execute_ship(ctx1, root_dir=tmp_root, auto_push=False)
+            self.assertEqual(ship_ctx1.stage_statuses[AutonomousCycleStage.SHIP.value], StageStatus.BLOCKED.value)
+            self.assertIn("Review gate failed or not passed", ship_ctx1.delivery_status)
+
+            # 2. Failed review -> BLOCKED
+            ctx2 = execute_think("task failed review", root_dir=tmp_root)
+            ctx2.stage_statuses[AutonomousCycleStage.REVIEW.value] = StageStatus.FAIL.value
+            ctx2.review_verdict = "FAIL"
+            ship_ctx2 = execute_ship(ctx2, root_dir=tmp_root, auto_push=False)
+            self.assertEqual(ship_ctx2.stage_statuses[AutonomousCycleStage.SHIP.value], StageStatus.BLOCKED.value)
+            self.assertIn("Review gate failed or not passed", ship_ctx2.delivery_status)
+
+            # 3. Missing test -> BLOCKED
+            ctx3 = execute_think("task missing test", root_dir=tmp_root)
+            ctx3.stage_statuses[AutonomousCycleStage.REVIEW.value] = StageStatus.PASS.value
+            ctx3.review_verdict = "PASS"
+            ship_ctx3 = execute_ship(ctx3, root_dir=tmp_root, auto_push=False)
+            self.assertEqual(ship_ctx3.stage_statuses[AutonomousCycleStage.SHIP.value], StageStatus.BLOCKED.value)
+            self.assertIn("Test gate failed or not passed", ship_ctx3.delivery_status)
+
+            # 4. Failed test -> BLOCKED
+            ctx4 = execute_think("task failed test", root_dir=tmp_root)
+            ctx4.stage_statuses[AutonomousCycleStage.REVIEW.value] = StageStatus.PASS.value
+            ctx4.review_verdict = "PASS"
+            ctx4.stage_statuses[AutonomousCycleStage.TEST.value] = StageStatus.FAIL.value
+            ctx4.test_verdict = "FAIL"
+            ship_ctx4 = execute_ship(ctx4, root_dir=tmp_root, auto_push=False)
+            self.assertEqual(ship_ctx4.stage_statuses[AutonomousCycleStage.SHIP.value], StageStatus.BLOCKED.value)
+            self.assertIn("Test gate failed or not passed", ship_ctx4.delivery_status)
+
+    def test_stage_6_ship_scoped_staging_only(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            tmp_root = Path(tmp_dir)
+            subprocess.run(["git", "init", "-b", "main"], cwd=tmp_root, capture_output=True, check=True, timeout=10)
+            subprocess.run(["git", "config", "user.name", "Krish Ujeniya"], cwd=tmp_root, check=True, timeout=10)
+            subprocess.run(["git", "config", "user.email", "100012208+krishujeniya@users.noreply.github.com"], cwd=tmp_root, check=True, timeout=10)
+            subprocess.run(["git", "commit", "--allow-empty", "-m", "initial commit"], cwd=tmp_root, capture_output=True, check=True, timeout=10)
+
+            # Create an unrelated file
+            (tmp_root / "unrelated.txt").write_text("unrelated changes", encoding="utf-8")
+
+            ctx = execute_think("scoped staging check", root_dir=tmp_root)
+            ctx.stage_statuses[AutonomousCycleStage.REVIEW.value] = StageStatus.PASS.value
+            ctx.review_verdict = "PASS"
+            ctx.stage_statuses[AutonomousCycleStage.TEST.value] = StageStatus.PASS.value
+            ctx.test_verdict = "PASS"
+            ctx.build_files = []  # No build files associated with this milestone
+
+            ship_ctx = execute_ship(ctx, root_dir=tmp_root, auto_push=True)
+            self.assertEqual(ship_ctx.stage_statuses[AutonomousCycleStage.SHIP.value], StageStatus.BLOCKED.value)
+            self.assertIn("No scoped build files identified", ship_ctx.delivery_status)
+
+            # Verify unrelated file was NOT staged
+            st_res = subprocess.run(["git", "status", "--porcelain"], cwd=tmp_root, capture_output=True, text=True, check=True)
+            self.assertTrue(st_res.stdout.startswith("?? unrelated.txt"), "Unrelated file must remain untracked/unstaged")
 
     def test_stage_7_reflect_handoff(self):
         with tempfile.TemporaryDirectory() as tmp_dir:
@@ -186,6 +258,13 @@ class AutonomousCycleTests(unittest.TestCase):
             # Setup AI_HANDOFF.md
             (tmp_root / "AI_HANDOFF.md").write_text("# Prior handoff\n", encoding="utf-8")
 
+            # Set all prior stages as passed
+            for stage in (AutonomousCycleStage.PLAN, AutonomousCycleStage.BUILD, AutonomousCycleStage.REVIEW, AutonomousCycleStage.TEST, AutonomousCycleStage.SHIP):
+                ctx.stage_statuses[stage.value] = StageStatus.PASS.value
+            ctx.review_verdict = "PASS"
+            ctx.test_verdict = "PASS"
+            ctx.delivery_status = "CLEAN (No pending uncommitted changes)"
+
             reflect_ctx = execute_reflect(ctx, root_dir=tmp_root)
             self.assertEqual(reflect_ctx.stage_statuses[AutonomousCycleStage.REFLECT.value], StageStatus.PASS.value)
             self.assertTrue(len(reflect_ctx.handoff_entry) > 0)
@@ -195,6 +274,33 @@ class AutonomousCycleTests(unittest.TestCase):
             # Check that AI_HANDOFF was updated
             updated_handoff = (tmp_root / "AI_HANDOFF.md").read_text(encoding="utf-8")
             self.assertIn("reflect and handover", updated_handoff)
+
+    def test_stage_7_reflect_records_failure_on_blocked_stage(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            tmp_root = Path(tmp_dir)
+            ctx = execute_think("reflect failure case", root_dir=tmp_root)
+            state_dir = tmp_root / ".agents" / "state"
+            state_dir.mkdir(parents=True)
+            (state_dir / "checkpoints").mkdir(parents=True)
+            (state_dir / f"{ctx.milestone_id}.md").write_text("# Initial", encoding="utf-8")
+            (state_dir / "state.json").write_text(json.dumps({"current_gate": "SHIP"}), encoding="utf-8")
+            (tmp_root / "AI_HANDOFF.md").write_text("# Prior handoff\n", encoding="utf-8")
+
+            # Stage failed/blocked
+            ctx.stage_statuses[AutonomousCycleStage.SHIP.value] = StageStatus.BLOCKED.value
+            ctx.delivery_status = "BLOCKED: Test gate failed or not passed"
+
+            reflect_ctx = execute_reflect(ctx, root_dir=tmp_root)
+            self.assertEqual(reflect_ctx.stage_statuses[AutonomousCycleStage.REFLECT.value], StageStatus.FAIL.value)
+            self.assertIn("FAILED or BLOCKED", reflect_ctx.reflection_summary)
+
+            # AI_HANDOFF must NOT be updated with success
+            updated_handoff = (tmp_root / "AI_HANDOFF.md").read_text(encoding="utf-8")
+            self.assertEqual(updated_handoff, "# Prior handoff\n")
+
+            # state.json current_gate must be BLOCKED
+            state = json.loads((state_dir / "state.json").read_text(encoding="utf-8"))
+            self.assertEqual(state["current_gate"], "BLOCKED")
 
     def test_full_cycle_execution(self):
         with tempfile.TemporaryDirectory() as tmp_dir:

@@ -114,18 +114,25 @@ impl ProgressiveRetriever {
     }
 
     /// On-demand loading of single runbook body after progressive shortlist acceptance (Principle P22).
+    /// Requires genuine runbooks on disk; returns None when runbook is absent rather than synthesizing generic filler.
     pub fn load_selected_runbook(&self, skill_id: &str) -> Option<String> {
         let skill = self.skills.iter().find(|s| s.id == skill_id)?;
-        let path = Path::new(&skill.canonical_path);
-        if path.exists() {
-            fs::read_to_string(path).ok()
-        } else {
-            // Synthesize minimal TOON runbook representation if file not on local disk
-            Some(format!(
-                "skill:\n  id: \"{}\"\n  home: \"{}\"\n  department: \"{:?}\"\n  pod: \"{:?}\"\n",
-                skill.id, skill.home, skill.department, skill.pod
-            ))
+        let direct_path = Path::new(&skill.canonical_path);
+        if direct_path.exists() {
+            return fs::read_to_string(direct_path).ok();
         }
+        let rel_path = Path::new("../../").join(&skill.canonical_path);
+        if rel_path.exists() {
+            return fs::read_to_string(rel_path).ok();
+        }
+        if let Ok(manifest_dir) = std::env::var("CARGO_MANIFEST_DIR") {
+            let manifest_path = Path::new(&manifest_dir).join("../../").join(&skill.canonical_path);
+            if manifest_path.exists() {
+                return fs::read_to_string(manifest_path).ok();
+            }
+        }
+        // Genuine runbook not found on disk; abstain rather than synthesizing generic filler
+        None
     }
 
     fn calculate_match_score(prompt: &str, prompt_tokens: &[&str], label: &str) -> f64 {

@@ -59,6 +59,14 @@ impl CanaryRetirementEngine {
             ));
         }
 
+        if canary.total_operations_observed == 0 {
+            return Err("Zero operations observed during canary observation window".to_string());
+        }
+
+        if !canary.legacy_provider_retained {
+            return Err("Legacy provider must be retained as fallback for unmigrated profiles".to_string());
+        }
+
         if canary.unresolved_migration_discrepancies > 0 {
             return Err(format!(
                 "Unresolved migration discrepancies present: {} (must be 0)",

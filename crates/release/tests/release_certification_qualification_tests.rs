@@ -95,6 +95,39 @@ fn test_complete_client_discovery_to_handover_project_lifecycle() {
 }
 
 #[test]
+fn test_declined_or_unconfirmed_external_action_issues_no_delivery_receipt() {
+    let mut project = ClientDiscoveryProject::new_fixture("proj-declined-01", "Gamma Corp");
+    project.apply_operator_correction(12);
+    project.generate_proposal_artifact();
+    project.sandbox_verify_zero_outbound_delivery();
+
+    // 1. Explicitly declined external action -> NO delivery receipt
+    project.decline_external_action();
+    let cert_declined = project.sign_handover("Krish Ujeniya", 1_000_100);
+    assert_eq!(
+        cert_declined.handover_status,
+        "NO_DELIVERY_RECEIPT_DECLINED_OR_UNCONFIRMED"
+    );
+    assert_eq!(
+        cert_declined.certificate_signature,
+        "NO_RECEIPT_DECLINED_OR_UNCONFIRMED"
+    );
+
+    // 2. Unconfirmed external action -> NO delivery receipt
+    project.external_action_declined = false;
+    project.external_action_confirmed = false;
+    let cert_unconfirmed = project.sign_handover("Krish Ujeniya", 1_000_100);
+    assert_eq!(
+        cert_unconfirmed.handover_status,
+        "NO_DELIVERY_RECEIPT_DECLINED_OR_UNCONFIRMED"
+    );
+    assert_eq!(
+        cert_unconfirmed.certificate_signature,
+        "NO_RECEIPT_DECLINED_OR_UNCONFIRMED"
+    );
+}
+
+#[test]
 fn test_blocking_on_declined_or_missing_operator_approval() {
     let sha = "a1b2c3d4e5f60718293a4b5c6d7e8f9012345678";
     let now = 1_000_000;
@@ -192,6 +225,25 @@ fn test_blocking_on_stale_evidence_or_changed_artifact_digest() {
     assert!(
         matches!(res_digest, Err(ref errs) if errs.iter().any(|e| matches!(e, ReleaseGateFailure::ChangedArtifactDigest { .. }))),
         "Modified artifact digest must block release"
+    );
+
+    // 3. Future evidence timestamp -> BLOCK
+    candidate.artifact_digest = candidate.provenance_digest.clone();
+    candidate.evidence_timestamp_epoch_s = now + 600; // In the future!
+    let res_future = ReleaseGateEngine::evaluate_candidate(&candidate, now, 3600);
+    assert!(
+        matches!(res_future, Err(ref errs) if errs.iter().any(|e| matches!(e, ReleaseGateFailure::StaleEvidence { .. }))),
+        "Future evidence timestamp must block release"
+    );
+
+    // 4. Swapped or replayed approval token -> BLOCK
+    candidate.evidence_timestamp_epoch_s = now - 60;
+    // Put git_publication approval in production_release slot
+    candidate.production_release_approval = candidate.git_publication_approval.clone();
+    let res_swapped = ReleaseGateEngine::evaluate_candidate(&candidate, now, 3600);
+    assert!(
+        matches!(res_swapped, Err(ref errs) if errs.contains(&ReleaseGateFailure::ProductionReleaseDeclinedOrMissing)),
+        "Swapped approval token with wrong action_type must block release"
     );
 }
 

@@ -96,3 +96,65 @@ fn test_conformance_canonical_roundtrip() {
     let decoded = decode_document(&encoded).expect("Decoding should succeed");
     assert_eq!(doc, decoded);
 }
+
+#[test]
+fn test_conformance_string_none_and_numeric_strings_roundtrip() {
+    let doc = ToonValue::Map(vec![
+        ("empty".to_string(), ToonValue::String(String::new())),
+        ("exp_str".to_string(), ToonValue::String("1e5".to_string())),
+        ("leading_zero".to_string(), ToonValue::String("0123".to_string())),
+        ("none_str".to_string(), ToonValue::String("none".to_string())),
+        ("null_val".to_string(), ToonValue::Null),
+        ("plus_int".to_string(), ToonValue::String("+1".to_string())),
+        ("raw_none".to_string(), ToonValue::Null),
+        ("real_bool_str".to_string(), ToonValue::String("true".to_string())),
+    ]);
+
+    let encoded = encode(&doc).expect("Encoding should succeed");
+
+    // "none" string must be quoted in the encoded TOON output
+    assert!(
+        encoded.contains("\"none\""),
+        "String 'none' must be quoted: {}",
+        encoded
+    );
+    assert!(
+        encoded.contains("\"+1\""),
+        "String '+1' must be quoted: {}",
+        encoded
+    );
+    assert!(
+        encoded.contains("\"0123\""),
+        "String '0123' must be quoted: {}",
+        encoded
+    );
+    assert!(
+        encoded.contains("\"1e5\""),
+        "String '1e5' must be quoted: {}",
+        encoded
+    );
+
+    let decoded = decode_document(&encoded).expect("Decoding should succeed");
+    assert_eq!(doc, decoded, "Roundtrip must preserve string values and types intact");
+}
+
+#[test]
+fn test_conformance_unquoted_none_decodes_to_null() {
+    let input = "task_status: none\n";
+    let decoded = decode_document(input).expect("Decoding unquoted none should succeed");
+    if let ToonValue::Map(entries) = decoded {
+        assert_eq!(entries.len(), 1);
+        assert_eq!(entries[0].1, ToonValue::Null);
+    } else {
+        panic!("Expected map");
+    }
+
+    let input_quoted = "task_status: \"none\"\n";
+    let decoded_quoted = decode_document(input_quoted).expect("Decoding quoted \"none\" should succeed");
+    if let ToonValue::Map(entries) = decoded_quoted {
+        assert_eq!(entries.len(), 1);
+        assert_eq!(entries[0].1, ToonValue::String("none".to_string()));
+    } else {
+        panic!("Expected map");
+    }
+}

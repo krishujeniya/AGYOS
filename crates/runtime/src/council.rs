@@ -29,29 +29,61 @@ pub struct CouncilDeliberationOutcome {
     pub authorized_spend: FixedMoney,
 }
 
+fn is_verdict_approved(v: &str) -> bool {
+    let lower = v.trim().to_lowercase();
+    if lower.contains("not approve")
+        || lower.contains("not approved")
+        || lower.contains("do not approve")
+        || lower.contains("disapprove")
+        || lower.contains("reject")
+        || lower.contains("fail")
+        || lower.contains("denied")
+        || lower.contains("deny")
+        || lower.contains("dissent")
+    {
+        return false;
+    }
+    lower == "approve"
+        || lower == "approved"
+        || lower == "pass"
+        || lower == "passed"
+        || lower.starts_with("approve")
+}
+
 pub struct CouncilEngine;
 
 impl CouncilEngine {
     /// Conduct blind independent review across council members (Principle P25).
-    /// Enforces that each member evaluates against their own recorded prior criterion.
+    /// Enforces that each unique member evaluates against their own recorded prior criterion.
+    /// Duplicated reviewers do not create a quorum; negative verdicts stay negative.
     pub fn conduct_blind_review(
         question_prompt: &str,
         reviews: Vec<BlindReviewCriterion>,
         base_risk: RiskTier,
         base_budget: FixedMoney,
     ) -> Result<CouncilDeliberationOutcome, DomainError> {
-        if reviews.is_empty() {
+        let mut seen = std::collections::HashSet::new();
+        let mut unique_reviews = Vec::new();
+        for r in reviews {
+            if seen.insert(r.reviewer.clone()) {
+                unique_reviews.push(r);
+            }
+        }
+
+        if unique_reviews.is_empty() {
             return Err(DomainError::UnauthorizedR3Effect(
                 "Cannot deliberate with empty council roster".to_string(),
             ));
         }
 
         let mut dissents = Vec::new();
-        let first_verdict = reviews[0].verdict.clone();
+        let first_verdict = unique_reviews[0].verdict.clone();
+        let first_approved = is_verdict_approved(&first_verdict);
         let mut unanimous = true;
 
-        for review in &reviews {
-            if review.verdict != first_verdict {
+        for review in &unique_reviews {
+            let approved = is_verdict_approved(&review.verdict);
+            if review.verdict != first_verdict || approved != first_approved {
                 unanimous = false;
                 dissents.push(CouncilDissent {
                     member: review.reviewer.clone(),
@@ -62,11 +94,11 @@ impl CouncilEngine {
         }
 
         let (consensus_verdict, approved) = if unanimous {
-            (first_verdict.clone(), first_verdict.to_lowercase().contains("approve") || first_verdict.to_lowercase().contains("pass"))
+            (first_verdict.clone(), first_approved)
         } else {
-            // Coordinator reconciles dissent
-            let pass_count = reviews.iter().filter(|r| r.verdict.to_lowercase().contains("approve") || r.verdict.to_lowercase().contains("pass")).count();
-            if pass_count > reviews.len() / 2 {
+            // Coordinator reconciles dissent based on unique quorum
+            let pass_count = unique_reviews.iter().filter(|r| is_verdict_approved(&r.verdict)).count();
+            if pass_count > unique_reviews.len() / 2 {
                 ("Approved with recorded dissent".to_string(), true)
             } else {
                 ("Rejected: majority or critical dissent unreconciled".to_string(), false)

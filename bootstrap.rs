@@ -58,8 +58,13 @@ fn verify_profiles() -> Result<(), String> {
 
     let dep_lock_raw = fs::read_to_string("build/dependency-lock.toon")
         .map_err(|e| format!("Read dependency lock failed: {}", e))?;
-    if !dep_lock_raw.contains("serde") || !dep_lock_raw.contains("checksum") {
-        return Err("Dependency lock missing pinned serde checksums".to_string());
+    for dep in &["serde", "serde_json", "sha2", "hex"] {
+        if !dep_lock_raw.contains(&format!("name: \"{}\"", dep)) {
+            return Err(format!("Dependency lock missing pinned entry for {}", dep));
+        }
+    }
+    if !dep_lock_raw.contains("checksum: \"0d9b6c69f843987aaf8e8b9d30d237b68844f6974c77e7b6819fa3c73f12b8f4\"") {
+        return Err("Dependency lock contains invalid or tampered serde checksum".to_string());
     }
 
     println!("[BOOTSTRAP] Build profiles verified successfully.");

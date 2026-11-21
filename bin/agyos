@@ -4,8 +4,16 @@ set -euo pipefail
 
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$PROJECT_ROOT"
-export PYTHONPATH="${PROJECT_ROOT}:${PYTHONPATH:-}:/home/ai/.local/lib/python3.13/site-packages:/usr/lib/python3/dist-packages"
-export UV_PYTHON="${UV_PYTHON:-/usr/bin/python3}"
+export PYTHONPATH="${PROJECT_ROOT}:${PYTHONPATH:-}"
+export UV_PYTHON="${UV_PYTHON:-$(which python3 2>/dev/null || echo python3)}"
+
+run_py() {
+  if command -v uv >/dev/null 2>&1; then
+    uv run python "$@"
+  else
+    python3 "$@"
+  fi
+}
 
 usage() {
   cat << 'EOF'
@@ -67,10 +75,10 @@ case "$cmd" in
     bash scripts/agyos-verify.sh "$@"
     ;;
   benchmark)
-    python3 scripts/ab_compare_benchmark.py "$@"
+    run_py scripts/ab_compare_benchmark.py "$@"
     ;;
   canary)
-    python3 scripts/canary_launch_gate.py "$@"
+    run_py scripts/canary_launch_gate.py "$@"
     ;;
   query|optimize-query)
     use_compact=0
@@ -93,7 +101,7 @@ case "$cmd" in
       echo "Usage: agyos query [--compact] [--json] [--xml] <prompt>" >&2
       exit 1
     fi
-    python3 -c "
+    run_py -c "
 import json, sys
 sys.path.insert(0, '.')
 from agyos_decision.query_optimizer import optimize_query
@@ -157,7 +165,7 @@ else:
       echo "Usage: agyos intent [--xml] [--compact] <natural-language-prompt>" >&2
       exit 1
     fi
-    python3 -c "
+    run_py -c "
 import json, sys
 sys.path.insert(0, '.')
 from agyos_decision.intent_compiler import compile_intent
@@ -191,7 +199,7 @@ else:
       echo "Usage: agyos toon-agent <role-id> [--compact]" >&2
       exit 1
     fi
-    python3 -c "
+    run_py -c "
 import sys
 sys.path.insert(0, '.')
 from agyos_decision.toon_compiler import compile_agent_to_toon
@@ -206,7 +214,7 @@ print(compile_agent_to_toon(sys.argv[1], compact=compact))
       echo "Usage: agyos toon-skill <skill-name> [--compact]" >&2
       exit 1
     fi
-    python3 -c "
+    run_py -c "
 import sys
 sys.path.insert(0, '.')
 from agyos_decision.toon_compiler import compile_skill_to_toon
@@ -229,7 +237,7 @@ print(compile_skill_to_toon(sys.argv[1], compact=compact))
       echo "Usage: agyos cached-prompt [--compact] <task-prompt>" >&2
       exit 1
     fi
-    python3 -c "
+    run_py -c "
 import sys
 sys.path.insert(0, '.')
 from agyos_decision.intent_compiler import compile_intent
@@ -254,7 +262,7 @@ print(parts['dynamic_suffix'])
       exit 1
     fi
     all_flag="${2:-}"
-    python3 -c "
+    run_py -c "
 import sys
 sys.path.insert(0, '.')
 from agyos_decision.roles import get_role, get_skills_for_role, get_all_skills_for_role
@@ -342,7 +350,7 @@ else:
           ;;
       esac
     done
-    python3 -c "
+    run_py -c "
 import sys
 sys.path.insert(0, '.')
 from agyos_decision.roles import list_roles, get_all_skills_for_role
@@ -385,7 +393,7 @@ else:
       echo "Usage: agyos role <role-id> [--skills]" >&2
       exit 1
     fi
-    python3 -c "
+    run_py -c "
 import sys
 sys.path.insert(0, '.')
 from agyos_decision.roles import get_role, get_all_skills_for_role
@@ -423,7 +431,7 @@ if show_skills:
       echo "Usage: agyos client-interview <project-query>" >&2
       exit 1
     fi
-    python3 -c "
+    run_py -c "
 import sys
 sys.path.insert(0, '.')
 from agyos_decision.sdlc import ClientInterviewSession
@@ -484,7 +492,7 @@ print(session.phase_plan())
       echo "Usage: agyos decide <task-description-or-keywords>" >&2
       exit 1
     fi
-    python3 scripts/agyos-decision.py "$@"
+    run_py scripts/agyos-decision.py "$@"
     ;;
   find|search)
     query="$*"
@@ -503,7 +511,7 @@ print(session.phase_plan())
     fi
     skill_file=".agents/skills/${target_skill}/SKILL.md"
     if [[ "$target_skill" =~ ^[a-z0-9][a-z0-9_-]*$ && -f "$skill_file" ]]; then
-      python3 - "$skill_file" <<'PYTHON'
+      run_py - "$skill_file" <<'PYTHON'
 from pathlib import Path
 import sys
 from agyos_decision.catalog import runbook_file
@@ -532,7 +540,7 @@ PYTHON
     echo "$json_req" | node mcp/state-server.cjs | jq -r '.result.content[0].text // .result.error // "No response"'
     ;;
   privacy-audit)
-    exec python3 scripts/agyos-privacy-audit.py "$@"
+    run_py scripts/agyos-privacy-audit.py "$@"
     ;;
   model-route|route-model)
     task=""
@@ -562,7 +570,7 @@ PYTHON
       echo "Usage: agyos model-route <task> [--sensitivity <public|internal|confidential|secret>] [--override <model>]" >&2
       exit 1
     fi
-    python3 -c "
+    run_py -c "
 import json, sys
 sys.path.insert(0, '.')
 from agyos_decision.skills_router import assess_complexity
@@ -636,7 +644,7 @@ print(json.dumps(output, indent=2))
     exec uv run python scripts/strix_runner.py "$@"
     ;;
   video)
-    exec python3 scripts/video_pipeline.py "$@"
+    run_py scripts/video_pipeline.py "$@"
     ;;
   gemini-notebook|notebooklm|nlm)
     exec bash mcp/gemini-notebook-mcp.sh "$@"
@@ -645,13 +653,13 @@ print(json.dumps(output, indent=2))
     exec node bin/workspace-state.cjs "$@"
     ;;
   diagnostics)
-    exec python3 scripts/export_diagnostics.py "$@"
+    run_py scripts/export_diagnostics.py "$@"
     ;;
   ondemand)
-    exec python3 scripts/agy_ondemand.py "$@"
+    run_py scripts/agy_ondemand.py "$@"
     ;;
   use)
-    exec python3 scripts/agy_ondemand.py activate "$@"
+    run_py scripts/agy_ondemand.py activate "$@"
     ;;
   prune)
     exec uv run scripts/prune_sessions.py "$@"

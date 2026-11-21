@@ -47,8 +47,8 @@ impl AgyVersion {
     }
 
     pub fn is_supported(&self) -> bool {
-        // Supported range: 1.5.0 to 1.5.x
-        self.major == 1 && self.minor >= 5
+        // Supported range: 1.5.0 to 1.5.x (pinned compatibility window)
+        self.major == 1 && self.minor == 5
     }
 
     pub fn negotiate(raw_version: &str) -> Result<Self, VersionError> {

@@ -592,6 +592,19 @@ def execute_ship(
         context.stage_statuses[AutonomousCycleStage.SHIP.value] = StageStatus.BLOCKED.value
         return context
 
+    # Verify review and test gates passed before entering Ship
+    review_status = context.stage_statuses.get(AutonomousCycleStage.REVIEW.value)
+    if review_status != StageStatus.PASS.value or context.review_verdict != "PASS":
+        context.delivery_status = f"BLOCKED: Review gate failed or not passed (status: {review_status}, verdict: {context.review_verdict})"
+        context.stage_statuses[AutonomousCycleStage.SHIP.value] = StageStatus.BLOCKED.value
+        return context
+
+    test_status = context.stage_statuses.get(AutonomousCycleStage.TEST.value)
+    if test_status != StageStatus.PASS.value or context.test_verdict != "PASS":
+        context.delivery_status = f"BLOCKED: Test gate failed or not passed (status: {test_status}, verdict: {context.test_verdict})"
+        context.stage_statuses[AutonomousCycleStage.SHIP.value] = StageStatus.BLOCKED.value
+        return context
+
     # Check git status for uncommitted changes
     st_res = subprocess.run(
         ["git", "status", "--porcelain"],
@@ -606,8 +619,15 @@ def execute_ship(
         default_msg = f"feat({context.pod}): {context.goal}"
         msg = commit_msg or default_msg
 
-        # Stage and commit
-        subprocess.run(["git", "add", "-A"], cwd=root_dir, check=True, timeout=30)
+        # Scoped staging: stage only active build files, never arbitrary unassociated files
+        files_to_stage = [str(f) for f in context.build_files if Path(f).exists()]
+        if not files_to_stage:
+            context.delivery_status = "BLOCKED: No scoped build files identified for milestone staging"
+            context.stage_statuses[AutonomousCycleStage.SHIP.value] = StageStatus.BLOCKED.value
+            return context
+
+        subprocess.run(["git", "add", "--"] + files_to_stage, cwd=root_dir, check=True, timeout=30)
+
         commit_res = subprocess.run(
             ["git", "commit", "-m", msg],
             cwd=root_dir,
@@ -637,7 +657,7 @@ def execute_ship(
         else:
             context.delivery_status = f"COMMIT_FAILED: {commit_res.stderr.strip()[:100]}"
     elif has_changes:
-        context.delivery_status = "STAGED_READY (Run 'git push origin main' to deliver)"
+        context.delivery_status = "PENDING_OPERATOR_APPROVAL (Changes uncommitted; push not authorized)"
     else:
         context.delivery_status = "CLEAN (No pending uncommitted changes)"
 
@@ -682,6 +702,35 @@ def execute_reflect(context: CycleContext, root_dir: Path = ROOT) -> CycleContex
     context.current_stage = AutonomousCycleStage.REFLECT.value
     now = datetime.now(timezone.utc).isoformat()
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+    # Determine if any prior stage failed, was blocked, or did not pass
+    has_failed_stage = any(
+        s in (StageStatus.FAIL.value, StageStatus.BLOCKED.value, StageStatus.PENDING.value)
+        for s in context.stage_statuses.values()
+    ) or context.test_verdict != "PASS" or context.review_verdict != "PASS" or context.delivery_status.startswith("BLOCKED") or context.stage_statuses.get(AutonomousCycleStage.SHIP.value) != StageStatus.PASS.value
+
+    if has_failed_stage:
+        context.reflection_summary = (
+            f"Milestone {context.milestone_id} FAILED or BLOCKED. "
+            f"Review: {context.review_verdict}, Test: {context.test_verdict}, Delivery: {context.delivery_status}."
+        )
+        context.stage_statuses[AutonomousCycleStage.REFLECT.value] = StageStatus.FAIL.value
+        checkpoint_file = root_dir / ".agents" / "state" / "checkpoints" / f"{context.milestone_id}.md"
+        append_checkpoint_entry(
+            checkpoint_file,
+            f"- [{now}] Step REFLECT finished: Milestone FAILED or BLOCKED. Delivery aborted.",
+        )
+        # Record explicit BLOCKED gate in state.json
+        state_file = root_dir / ".agents" / "state" / "state.json"
+        if state_file.exists():
+            state = read_state_file(state_file)
+            state["current_gate"] = "BLOCKED"
+            state["last_updated"] = now
+            write_state_file(state_file, state)
+
+        update_current_summary(root_dir, context.milestone_id, "BLOCKED", context)
+        context.completed_at = now
+        return context
 
     # Construct structured handoff entry
     handoff_entry = (
@@ -758,11 +807,21 @@ def run_autonomous_cycle(
 
     # 4. Review
     context = execute_review(context, root_dir)
+    if context.review_verdict == "FAIL" or context.stage_statuses.get(AutonomousCycleStage.REVIEW.value) == StageStatus.FAIL.value:
+        context.delivery_status = f"BLOCKED: Review failed with {len(context.review_findings)} findings"
+        context.stage_statuses[AutonomousCycleStage.SHIP.value] = StageStatus.BLOCKED.value
+        context = execute_reflect(context, root_dir)
+        return context
     if stop_at_stage and stop_at_stage.upper() == AutonomousCycleStage.REVIEW.value:
         return context
 
     # 5. Test
     context = execute_test(context, root_dir)
+    if context.test_verdict == "FAIL" or context.stage_statuses.get(AutonomousCycleStage.TEST.value) == StageStatus.FAIL.value:
+        context.delivery_status = f"BLOCKED: Static test suite failed ({len(context.test_errors)} errors)"
+        context.stage_statuses[AutonomousCycleStage.SHIP.value] = StageStatus.BLOCKED.value
+        context = execute_reflect(context, root_dir)
+        return context
     if stop_at_stage and stop_at_stage.upper() == AutonomousCycleStage.TEST.value:
         return context
 

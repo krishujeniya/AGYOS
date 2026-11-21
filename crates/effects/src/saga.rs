@@ -14,12 +14,17 @@ impl SagaCoordinator {
     ) -> Result<bool, StoreError> {
         let record = store.outbox().iter().find(|r| r.effect_id == effect_id);
         if let Some(r) = record {
-            if r.status == OutboxStatus::Confirmed || r.status == OutboxStatus::ExplicitUnknown {
+            // Only confirmed effects can be compensated safely.
+            // ExplicitUnknown outcomes cannot be blindly compensated without reconciliation.
+            if r.status == OutboxStatus::Confirmed {
                 let success = provider.compensate(effect_id);
                 if success {
                     store.update_outbox_status(effect_id, OutboxStatus::Compensated)?;
                     return Ok(true);
                 }
+            } else if r.status == OutboxStatus::ExplicitUnknown {
+                // Unknown outcome stays visible without blind compensation
+                return Ok(false);
             }
         }
         Ok(false)

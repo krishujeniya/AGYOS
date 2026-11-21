@@ -72,7 +72,10 @@ impl AgyBridge {
         guard.verify_command_execution(skill_id, RiskTier::R0)
             .map_err(|e| BridgeError::ConfinementViolation(e.to_string()))?;
 
-        let timestamp = 1700000000;
+        let timestamp = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .map(|d| d.as_secs())
+            .unwrap_or(1700000000);
         let receipt_id = format!("rcpt_{}_{}", task_id.as_str(), skill_id.replace('/', "_"));
 
         // 3. Evaluate permission policy
@@ -83,14 +86,24 @@ impl AgyBridge {
             (ExecutionStatus::Blocked, "Policy violation: actor lacks read authorization for target item".to_string())
         };
 
+        // Compute observed evidence SHA-256 digest
+        use sha2::{Digest, Sha256};
+        let mut hasher = Sha256::new();
+        hasher.update(receipt_id.as_bytes());
+        hasher.update(skill_id.as_bytes());
+        hasher.update(&cli_exit_code.to_be_bytes());
+        hasher.update(format!("{:?}", status).as_bytes());
+        hasher.update(&timestamp.to_be_bytes());
+        let evidence_hash = format!("sha256:{}", hex::encode(hasher.finalize()));
+
         // 4. Commit audit event to transactional store WAL
         let event = EventRecord {
             revision: (store.events().len() + 1) as u64,
             timestamp_epoch_s: timestamp,
             event_type: "EXECUTION_RECEIPT_ISSUED".to_string(),
             payload_json: format!(
-                "{{\"receipt_id\":\"{}\",\"status\":\"{:?}\",\"cli_exit\":{}}}",
-                receipt_id, status, cli_exit_code
+                "{{\"receipt_id\":\"{}\",\"status\":\"{:?}\",\"cli_exit\":{},\"evidence_hash\":\"{}\"}}",
+                receipt_id, status, cli_exit_code, evidence_hash
             ),
         };
 
@@ -106,7 +119,7 @@ impl AgyBridge {
             status,
             exit_code: cli_exit_code,
             reason,
-            evidence_hash: "sha256_mock_evidence_63c0ee6".to_string(),
+            evidence_hash,
             timestamp_epoch_s: timestamp,
         })
     }

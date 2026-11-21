@@ -355,3 +355,45 @@ fn test_oncall_runbook_triage() {
     assert_eq!(sev3_plan.severity, IncidentSeverity::Sev3Minor);
     assert!(sev3_plan.verification_command.contains("bin/agyos compact"));
 }
+
+#[test]
+fn test_metrics_boundary_conditions_and_bounded_memory() {
+    let mut collector = RedactedMetricsCollector::new();
+
+    // 1. Empty metric queries return typed None (no misleading 0 fallback)
+    assert!(collector.percentile_checked(MetricClass::Route, 99).is_none());
+    assert!(collector.warm_p99_ms_checked(MetricClass::Route).is_none());
+    assert!(collector.cold_first_route_ms_checked().is_none());
+
+    // 2. Single-sample metric returns exact value
+    collector.record(
+        MetricClass::Route,
+        42,
+        "tag:single_sample",
+        "payload: test single",
+        1_000_000,
+    );
+    assert_eq!(collector.percentile_checked(MetricClass::Route, 50), Some(42));
+    assert_eq!(collector.percentile_checked(MetricClass::Route, 99), Some(42));
+    assert_eq!(collector.warm_p99_ms_checked(MetricClass::Route), Some(42));
+
+    // Other classes remain None
+    assert!(collector.percentile_checked(MetricClass::Status, 99).is_none());
+
+    // 3. Bounded memory under continuous telemetry
+    for i in 0..15_000 {
+        collector.record(
+            MetricClass::Status,
+            (i % 100) as u64,
+            "tag:burst_stream",
+            "payload: load test",
+            1_000_000 + i as u64,
+        );
+    }
+
+    assert_eq!(
+        collector.count_by_class(MetricClass::Status),
+        RedactedMetricsCollector::MAX_SAMPLES_PER_CLASS,
+        "Class sample buffer must be capped at MAX_SAMPLES_PER_CLASS"
+    );
+}

@@ -60,21 +60,37 @@ impl LocalBackupEngine {
         } else {
             "[]".to_string()
         };
-        let outbox_records: Vec<OutboxRecord> = serde_json::from_str(&outbox_raw).unwrap_or_default();
+        let outbox_records: Vec<OutboxRecord> = if outbox_path.exists() {
+            serde_json::from_str(&outbox_raw)
+                .map_err(|e| format!("Corrupted outbox.json in workspace: {}", e))?
+        } else {
+            Vec::new()
+        };
         let outbox_count = outbox_records.len();
         let pending_effects_count = outbox_records
             .iter()
-            .filter(|r| r.status == OutboxStatus::Pending)
+            .filter(|r| r.status == OutboxStatus::Pending || r.status == OutboxStatus::ExplicitUnknown)
             .count();
         let outbox_digest = crate::metrics::RedactedMetricsCollector::compute_sha256_digest(&outbox_raw);
 
         let dedup_path = ws_dir.join("dedup.json");
         let dedup_raw = if dedup_path.exists() {
-            fs::read_to_string(&dedup_path).map_err(|e| e.to_string())?
+            let content = fs::read_to_string(&dedup_path).map_err(|e| e.to_string())?;
+            // Validate dedup JSON integrity
+            let _: serde_json::Value = serde_json::from_str(&content)
+                .map_err(|e| format!("Corrupted dedup.json in workspace: {}", e))?;
+            content
         } else {
             "{}".to_string()
         };
         let dedup_digest = crate::metrics::RedactedMetricsCollector::compute_sha256_digest(&dedup_raw);
+
+        let fence_path = ws_dir.join("fence.json");
+        let fence_raw = if fence_path.exists() {
+            fs::read_to_string(&fence_path).map_err(|e| e.to_string())?
+        } else {
+            "{\"epoch\":1}".to_string()
+        };
 
         let manifest_content = format!(
             "{}:{}:{}:{}:{}",
@@ -105,6 +121,7 @@ impl LocalBackupEngine {
             "events_raw": events_raw,
             "outbox_raw": outbox_raw,
             "dedup_raw": dedup_raw,
+            "fence_raw": fence_raw,
         });
 
         if let Some(parent) = backup_archive_path.parent() {
@@ -151,18 +168,54 @@ impl LocalBackupEngine {
             return Err("Corrupted backup: dedup digest mismatch".to_string());
         }
 
-        // Write restored state into fresh target directory
-        let ws_dir = target_base_dir.join(&manifest.workspace_id);
-        fs::create_dir_all(&ws_dir).map_err(|e| e.to_string())?;
+        // Validate payload deserializability before writing any files to target destination
+        if !outbox_raw.trim().is_empty() {
+            let _: Vec<OutboxRecord> = serde_json::from_str(outbox_raw)
+                .map_err(|e| format!("Corrupted outbox records in archive: {}", e))?;
+        }
+        if !dedup_raw.trim().is_empty() {
+            let _: serde_json::Value = serde_json::from_str(dedup_raw)
+                .map_err(|e| format!("Corrupted dedup table in archive: {}", e))?;
+        }
 
-        fs::write(ws_dir.join("events.log"), events_raw).map_err(|e| e.to_string())?;
-        fs::write(ws_dir.join("outbox.json"), outbox_raw).map_err(|e| e.to_string())?;
-        fs::write(ws_dir.join("dedup.json"), dedup_raw).map_err(|e| e.to_string())?;
+        // Write restored state into temporary staging directory first for atomic activation (P10)
+        let staging_dir = target_base_dir.join(format!(".restore_tmp_{}", manifest.workspace_id));
+        if staging_dir.exists() {
+            let _ = fs::remove_dir_all(&staging_dir);
+        }
+        if let Err(e) = fs::create_dir_all(&staging_dir) {
+            return Err(format!("Failed to create staging directory: {}", e));
+        }
+
+        let write_res = (|| -> Result<(), std::io::Error> {
+            fs::write(staging_dir.join("events.log"), events_raw)?;
+            fs::write(staging_dir.join("outbox.json"), outbox_raw)?;
+            fs::write(staging_dir.join("dedup.json"), dedup_raw)?;
+            if let Some(fence_raw) = package.get("fence_raw").and_then(|v| v.as_str()) {
+                fs::write(staging_dir.join("fence.json"), fence_raw)?;
+            }
+            Ok(())
+        })();
+
+        if let Err(e) = write_res {
+            let _ = fs::remove_dir_all(&staging_dir);
+            return Err(format!("Failed to write staged restore files: {}", e));
+        }
+
+        // Atomically activate restored directory
+        let ws_dir = target_base_dir.join(&manifest.workspace_id);
+        if ws_dir.exists() {
+            let _ = fs::remove_dir_all(&ws_dir);
+        }
+        if let Err(e) = fs::rename(&staging_dir, &ws_dir) {
+            let _ = fs::remove_dir_all(&staging_dir);
+            return Err(format!("Failed to activate restored workspace directory: {}", e));
+        }
 
         Ok(manifest)
     }
 
-    /// Locates every outstanding effect in the restored outbox.
+    /// Locates every outstanding effect in the restored outbox (Pending or ExplicitUnknown).
     pub fn locate_outstanding_effects(
         target_base_dir: &Path,
         workspace_id: &WorkspaceId,
@@ -170,11 +223,11 @@ impl LocalBackupEngine {
         let store = TransactionalStore::open(target_base_dir, workspace_id.clone())
             .map_err(|e| format!("Failed to open restored store: {:?}", e))?;
 
-        // Outstanding effects are those with Pending status in the outbox
+        // Outstanding effects are those requiring reconciliation (Pending or ExplicitUnknown)
         let pending = store
             .outbox()
             .iter()
-            .filter(|rec| rec.status == OutboxStatus::Pending)
+            .filter(|rec| rec.status == OutboxStatus::Pending || rec.status == OutboxStatus::ExplicitUnknown)
             .cloned()
             .collect();
 

@@ -74,7 +74,8 @@ def main() -> None:
         prog="agyos-cycle",
         description="AGYOS 7-Step Autonomous Cycle Engine (Think -> Plan -> Build -> Review -> Test -> Ship -> Reflect)",
     )
-    parser.add_argument("goal", help="Natural language objective or feature requirement")
+    parser.add_argument("goal", nargs="?", default=None, help="Natural language objective or feature requirement")
+    parser.add_argument("--task", default=None, help="Alias for goal objective")
     parser.add_argument(
         "--step",
         "--stage",
@@ -100,8 +101,12 @@ def main() -> None:
     )
     args = parser.parse_args()
 
+    effective_goal = args.task or args.goal
+    if not effective_goal:
+        parser.error("A goal or --task argument is required")
+
     try:
-        clean_goal = validate_goal(args.goal)
+        clean_goal = validate_goal(effective_goal)
         ctx = run_autonomous_cycle(
             goal=clean_goal,
             root_dir=ROOT,

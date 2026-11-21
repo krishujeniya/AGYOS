@@ -87,6 +87,16 @@ pub fn parse_scalar(token: &str) -> Result<ToonValue, ToonError> {
     if trimmed.is_empty() {
         return Ok(ToonValue::String(String::new()));
     }
+
+    // Quoted string (evaluated first so quoted "none", "null", "true" are parsed as strings)
+    if (trimmed.starts_with('"') && trimmed.ends_with('"') && trimmed.len() >= 2)
+        || (trimmed.starts_with('\'') && trimmed.ends_with('\'') && trimmed.len() >= 2)
+    {
+        let inner = &trimmed[1..trimmed.len() - 1];
+        let unescaped = parse_string_token(inner)?;
+        return Ok(ToonValue::String(unescaped));
+    }
+
     if trimmed.eq_ignore_ascii_case("true") {
         return Ok(ToonValue::Bool(true));
     }
@@ -95,15 +105,6 @@ pub fn parse_scalar(token: &str) -> Result<ToonValue, ToonError> {
     }
     if trimmed.eq_ignore_ascii_case("null") || trimmed.eq_ignore_ascii_case("none") {
         return Ok(ToonValue::Null);
-    }
-
-    // Quoted string
-    if (trimmed.starts_with('"') && trimmed.ends_with('"') && trimmed.len() >= 2)
-        || (trimmed.starts_with('\'') && trimmed.ends_with('\'') && trimmed.len() >= 2)
-    {
-        let inner = &trimmed[1..trimmed.len() - 1];
-        let unescaped = parse_string_token(inner)?;
-        return Ok(ToonValue::String(unescaped));
     }
 
     // Integer

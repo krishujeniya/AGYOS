@@ -29,12 +29,12 @@ fn test_slice_nominal_and_interruption_recovery() {
         let mut session = OnboardingProposalSession::initialize(&mut store, ws_id.clone(), task_id.clone())
             .expect("Session init should succeed");
 
-        // Independent review of evidence
-        session.review_evidence(true).expect("Review should pass with valid evidence");
-
         // Operator applies natural-language correction: change cap to 12h
         session.apply_operator_correction(&mut store, 12)
             .expect("Correction to 12h should succeed");
+
+        // Independent review of evidence on corrected proposal
+        session.review_evidence(&mut store, true).expect("Review should pass with valid evidence");
 
         // Process dropped here simulating unexpected crash / operator closing AGY CLI!
     }
@@ -52,12 +52,15 @@ fn test_slice_nominal_and_interruption_recovery() {
         assert_eq!(crumb.active_hours_cap, 12, "Corrected constraint must survive interruption");
         assert_eq!(crumb.last_confirmed_gate, Gate::Plan);
         assert_eq!(crumb.pending_gate, Gate::Implement);
+        assert!(crumb.review_passed, "Review verdict on corrected proposal preserved");
 
         // Resume active session and proceed to Ship
         let mut session = OnboardingProposalSession::initialize(&mut store, ws_id.clone(), task_id.clone())
             .expect("Session re-init");
         session.apply_operator_correction(&mut store, crumb.active_hours_cap)
             .expect("Apply recovered cap");
+        session.review_evidence(&mut store, true)
+            .expect("Review confirmed on active session");
 
         let receipt = session.finalize_ship(&mut store).expect("Ship should succeed");
 
@@ -79,15 +82,20 @@ fn test_slice_false_evidence_fails_review_and_blocks_ship() {
     let task_id = TaskId::new("task_false_002");
 
     let mut store = TransactionalStore::open(&temp_dir, ws_id.clone()).expect("Store open");
-    let session = OnboardingProposalSession::initialize(&mut store, ws_id, task_id)
+    let mut session = OnboardingProposalSession::initialize(&mut store, ws_id, task_id)
         .expect("Init");
 
     // Reviewer identifies falsified or unverified evidence
-    let err = session.review_evidence(false).expect_err("False evidence must fail Review");
+    let err = session.review_evidence(&mut store, false).expect_err("False evidence must fail Review");
     match err {
         SliceError::ReviewFailed(msg) => assert!(msg.contains("Falsified or unverified evidence")),
         other => panic!("Expected ReviewFailed, got {:?}", other),
     }
+
+    // Attempting to ship after failed review must block
+    session.apply_operator_correction(&mut store, 10).expect("Correction");
+    let ship_err = session.finalize_ship(&mut store).expect_err("Failed review must block Ship");
+    assert!(ship_err.to_string().contains("review verdict"));
 
     let _ = std::fs::remove_dir_all(&temp_dir);
 }
@@ -120,10 +128,61 @@ fn test_slice_zero_outbound_egress_enforced() {
         .expect("Init");
 
     session.apply_operator_correction(&mut store, 10).expect("Correction");
+    session.review_evidence(&mut store, true).expect("Review");
     let receipt = session.finalize_ship(&mut store).expect("Ship");
 
     assert_eq!(receipt.outbound_effects_count, 0);
     assert_eq!(store.outbox().len(), 0);
+
+    let _ = std::fs::remove_dir_all(&temp_dir);
+}
+
+#[test]
+fn test_slice_stale_review_after_operator_correction_blocks_ship() {
+    let temp_dir = std::env::temp_dir().join(format!("agy_stale_{}", std::process::id()));
+    let ws_id = WorkspaceId::new("ws_stale");
+    let task_id = TaskId::new("task_stale_005");
+
+    let mut store = TransactionalStore::open(&temp_dir, ws_id.clone()).expect("Store open");
+    let mut session = OnboardingProposalSession::initialize(&mut store, ws_id, task_id)
+        .expect("Init");
+
+    // Review passes for initial 20h draft
+    session.review_evidence(&mut store, true).expect("Review passes initially");
+
+    // Operator applies correction modifying constraint to 10h
+    session.apply_operator_correction(&mut store, 10).expect("Correction to 10h");
+
+    // Attempting to finalize ship without re-reviewing the corrected proposal MUST fail as stale
+    let err = session.finalize_ship(&mut store).expect_err("Stale review must block Ship");
+    assert!(
+        err.to_string().contains("stale"),
+        "Error message must explicitly cite stale review verdict, got: {}",
+        err
+    );
+
+    let _ = std::fs::remove_dir_all(&temp_dir);
+}
+
+#[test]
+fn test_slice_missing_review_verdict_blocks_ship() {
+    let temp_dir = std::env::temp_dir().join(format!("agy_missing_rev_{}", std::process::id()));
+    let ws_id = WorkspaceId::new("ws_missing_rev");
+    let task_id = TaskId::new("task_missing_006");
+
+    let mut store = TransactionalStore::open(&temp_dir, ws_id.clone()).expect("Store open");
+    let mut session = OnboardingProposalSession::initialize(&mut store, ws_id, task_id)
+        .expect("Init");
+
+    // Operator applies correction without any review ever happening
+    session.apply_operator_correction(&mut store, 10).expect("Correction to 10h");
+
+    let err = session.finalize_ship(&mut store).expect_err("Missing review must block Ship");
+    assert!(
+        err.to_string().contains("Missing stored review verdict"),
+        "Error message must cite missing review verdict, got: {}",
+        err
+    );
 
     let _ = std::fs::remove_dir_all(&temp_dir);
 }

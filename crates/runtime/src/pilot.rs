@@ -266,6 +266,7 @@ impl OperatorSessionState {
                     if let Ok(parsed_hours) = text.trim().parse::<u32>() {
                         let old_hours = self.hours_cap;
                         self.hours_cap = parsed_hours;
+                        self.is_confirmed = false; // Modification invalidates any stale prior confirmation
                         let msg = match self.locale.as_str() {
                             "gu-IN" => format!("કલાક મર્યાદા {} થી બદલીને {} કલાક કરવામાં આવી.", old_hours, parsed_hours),
                             _ => format!("Work hours cap modified from {}h to {}h.", old_hours, parsed_hours),
@@ -297,6 +298,7 @@ impl OperatorSessionState {
                 }
                 FocusableElement::DeclineButton => {
                     self.is_cancelled = true;
+                    self.is_confirmed = false;
                     let msg = match self.locale.as_str() {
                         "gu-IN" => "ઓપરેટરે દરખાસ્ત અસ્વીકાર કરી.",
                         _ => "Operator declined proposal.",
@@ -314,6 +316,7 @@ impl OperatorSessionState {
             KeyboardAction::Escape => {
                 self.is_cancelled = true;
                 self.consent_withdrawn = true;
+                self.is_confirmed = false;
                 let msg = match self.locale.as_str() {
                     "gu-IN" => "ઓપરેટરે મંજૂરી પાછી ખેંચી અને સત્ર રદ કર્યું.",
                     _ => "Operator withdrew consent via Escape key. Operation halted.",
@@ -331,8 +334,9 @@ impl OperatorSessionState {
 
     /// Simulate process crash and subsequent rehydration from checkpoint.
     pub fn simulate_crash_and_recover(&self) -> Self {
-        // Rehydrates cleanly from snapshot without state corruption
-        let mut recovered = self.clone();
+        // Rehydrates cleanly from snapshot without in-memory reference sharing
+        let json = serde_json::to_string(self).unwrap_or_default();
+        let mut recovered: Self = serde_json::from_str(&json).unwrap_or_else(|_| self.clone());
         let timestamp = 1_000_100;
         let announcement = match recovered.locale.as_str() {
             "gu-IN" => "સિસ્ટમ ક્રેશ પછી સ્થિતિ પુનઃસ્થાપિત થઈ. તમામ ફેરફારો સુરક્ષિત છે.",

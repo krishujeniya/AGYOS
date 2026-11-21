@@ -42,6 +42,8 @@ pub struct ClientDiscoveryProject {
     pub is_private_workspace: bool,
     pub outbound_deliveries_attempted: usize,
     pub outbound_deliveries_executed: usize,
+    pub external_action_declined: bool,
+    pub external_action_confirmed: bool,
 }
 
 impl ClientDiscoveryProject {
@@ -59,7 +61,21 @@ impl ClientDiscoveryProject {
             is_private_workspace: true,
             outbound_deliveries_attempted: 0,
             outbound_deliveries_executed: 0,
+            external_action_declined: false,
+            external_action_confirmed: true,
         }
+    }
+
+    /// Explicitly decline external outbound action.
+    pub fn decline_external_action(&mut self) {
+        self.external_action_declined = true;
+        self.external_action_confirmed = false;
+    }
+
+    /// Explicitly confirm external outbound action.
+    pub fn confirm_external_action(&mut self) {
+        self.external_action_confirmed = true;
+        self.external_action_declined = false;
     }
 
     /// Applies human operator correction: capping work at 12 hours instead of 20.
@@ -88,12 +104,46 @@ impl ClientDiscoveryProject {
         self.outbound_deliveries_executed == 0
     }
 
-    /// Signs final handover certificate.
+    /// Signs final handover certificate only if evidence, cap, and zero unconfirmed outbound actions are verified.
     pub fn sign_handover(
         &self,
         operator_name: &str,
         current_epoch_s: u64,
     ) -> SignedHandoverCertificate {
+        let is_valid = !self.artifact_body.is_empty()
+            && self.corrected_work_cap_hours <= 12
+            && self.outbound_deliveries_attempted > 0
+            && self.outbound_deliveries_executed == 0
+            && !self.external_action_declined
+            && self.external_action_confirmed;
+
+        if !is_valid {
+            let reason = if self.artifact_body.is_empty() {
+                "MISSING_ARTIFACT"
+            } else if self.corrected_work_cap_hours > 12 {
+                "CAP_EXCEEDED"
+            } else if self.outbound_deliveries_attempted == 0 {
+                "UNVERIFIED_SANDBOX"
+            } else if self.external_action_declined || !self.external_action_confirmed {
+                "DECLINED_OR_UNCONFIRMED"
+            } else {
+                "UNCONFIRMED_EXTERNAL_ACTION"
+            };
+
+            return SignedHandoverCertificate {
+                project_id: self.project_id.clone(),
+                client_name: self.client_name.clone(),
+                original_cap_hours: self.initial_work_cap_hours,
+                agreed_cap_hours: self.corrected_work_cap_hours,
+                artifact_sha256: self.artifact_sha256.clone(),
+                authorizing_operator: operator_name.to_string(),
+                outbound_external_deliveries_blocked: self.outbound_deliveries_executed == 0,
+                handover_status: format!("NO_DELIVERY_RECEIPT_{}", reason),
+                completed_epoch_s: current_epoch_s,
+                certificate_signature: "NO_RECEIPT_DECLINED_OR_UNCONFIRMED".to_string(),
+            };
+        }
+
         let mut hasher = Sha256::new();
         hasher.update(self.project_id.as_bytes());
         hasher.update(self.client_name.as_bytes());
@@ -111,7 +161,7 @@ impl ClientDiscoveryProject {
             agreed_cap_hours: self.corrected_work_cap_hours,
             artifact_sha256: self.artifact_sha256.clone(),
             authorizing_operator: operator_name.to_string(),
-            outbound_external_deliveries_blocked: self.outbound_deliveries_executed == 0,
+            outbound_external_deliveries_blocked: true,
             handover_status: "DELIVERED_VERIFIED".to_string(),
             completed_epoch_s: current_epoch_s,
             certificate_signature,

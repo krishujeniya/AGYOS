@@ -57,7 +57,7 @@ Prompt / Task Intent
 - **Transactional State Engine (`crates/store`):** Append-only event store, transactional outbox with monotonic fence tokens (`FenceToken`), deduplication tables, and crash recovery with RPO = 0.
 - **TOON Codec (`crates/toon-codec`):** Deterministic parser, serializer, and minifier implementing Token-Oriented Object Notation invariants.
 - **Domain & Balance Ledger (`crates/domain`):** Typed `TaskContract`, exact micro-currency accounting (1,000 charges of $0.001 sum to $1.000), and R0 (read-only) through R3 (external irreversible) risk tiers.
-- **Fair Admission & Worker Pool (`apps/worker`):** Round-robin fair queue admission, hot-tenant throttling (40% ceiling under contention), 6-worker pool lease management (432 concurrent slots), and AES-256-GCM encrypted backup envelopes.
+- **Fair Admission & Worker Pool (`apps/worker`):** Round-robin fair queue admission, hot-tenant throttling (40% ceiling under contention), 6-worker pool lease management (432 concurrent slots), and authenticated encryption envelopes (HMAC-SHA256 authenticated cipher with per-key unique nonces, versioned keys, and AAD integrity).
 - **State Migration & Shadow Reconciler (`crates/migration`):** Deterministic imports, signed difference ledgers, and zero-loss cutover roll-forward and reversal drills ($W_{post}$ 100% retained).
 - **Release Certification & Cutover Guard (`crates/release`):** Exact-SHA verification, provenance digest matching, clean-machine verification, and separate operator approvals for publication and production release.
 - **Retirement & Maintenance (`crates/maintenance`):** 14-day canary observation evaluation, vendor-independent export/restore, and maintenance risk register.
@@ -111,11 +111,11 @@ The repository contains implementations and automated integration tests for the 
 | **13** | Business effects | `crates/adapters` (8 domain adapters, SSRF defense, W3C PROV receipts) | PASS (CI run `44727853460`) |
 | **14** | Operator control | `crates/runtime/src/pilot.rs` (12-operator pilot in English & Gujarati) | PASS (CI run `44728657584`) |
 | **15** | Local production | `crates/telemetry` (redacted metrics, 2 vCPU / 2 GiB load/fault/restore profiles) | PASS (CI run `44730651359`) |
-| **16** | Heavy production | `apps/worker` (fair queue admission, 6 worker leases, spending limits, AES-256-GCM) | PASS (CI run `44732412969`) |
+| **16** | Heavy production | `apps/worker` (fair queue admission, 6 worker leases, spending limits, authenticated encryption) | PASS (CI run `44732412969`) |
 | **17** | State migration | `crates/migration` (deterministic import, shadow reader, zero-loss reversal drill) | PASS (CI run `44733737010`) |
 | **18** | Certified release | `crates/release` (release gate engine, live cutover guard, clean machine drill) | PASS (CI run `44734422860`) |
 | **19** | Retire & maintain | `crates/maintenance` (14-day canary observation, vendor-free export/restore, risk ledger) | PASS (CI run `44735206249`) |
-| **20** | Refresh 2027 evidence | `crates/maintenance/src/research_decision.rs` & `docs/research/RDR-2027-EVIDENCE-REFRESH.toon` | PASS (CI run `44736184705`) |
+| **20** | Refresh 2027 evidence | `crates/maintenance/src/research_decision.rs` & `docs/research/RDR-2027-EVIDENCE-REFRESH.md` | PASS (CI run `44736184705`) |
 
 ---
 
@@ -172,7 +172,7 @@ bin/agyos skill software-architecture
 ### 2. Autonomous Cycle Dispatch
 ```bash
 # Execute end-to-end 7-step autonomous cycle
-bin/agyos cycle --task "Implement tenant isolation adapter with W3C PROV receipt"
+bin/agyos cycle "Implement tenant isolation adapter with W3C PROV receipt"
 
 # Read active operational state and current gate
 bin/agyos state
