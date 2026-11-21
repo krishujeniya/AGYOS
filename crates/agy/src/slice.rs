@@ -288,20 +288,28 @@ impl OnboardingProposalSession {
         }
 
         // Verify stored review verdict is present, current, and passed
+        let mut has_review = false;
         let mut last_review: Option<bool> = None;
         let mut stale_correction = false;
 
         for event in store.events().iter().rev() {
-            if event.event_type == "OPERATOR_CORRECTION_APPLIED" && last_review.is_none() {
+            if event.event_type == "OPERATOR_CORRECTION_APPLIED" && !has_review {
                 stale_correction = true;
             }
             if event.event_type == "REVIEW_VERDICT_RECORDED" && last_review.is_none() {
+                has_review = true;
                 if let Ok(val) = serde_json::from_str::<serde_json::Value>(&event.payload_json) {
                     if val.get("task_id").and_then(|t| t.as_str()) == Some(self.task_id.as_str()) {
                         last_review = val.get("review_passed").and_then(|b| b.as_bool());
                     }
                 }
             }
+        }
+
+        if last_review.is_none() {
+            return Err(SliceError::ReviewFailed(
+                "Cannot ship: Missing stored review verdict (Review gate not passed)".to_string(),
+            ));
         }
 
         if stale_correction {
@@ -319,11 +327,7 @@ impl OnboardingProposalSession {
             Some(false) => {
                 return Err(SliceError::ReviewFailed("Cannot ship: Stored review verdict is failed".to_string()));
             }
-            None => {
-                return Err(SliceError::ReviewFailed(
-                    "Cannot ship: Missing stored review verdict (Review gate not passed)".to_string(),
-                ));
-            }
+            None => unreachable!(),
         }
 
         // Ensure zero external outbound messages in outbox
