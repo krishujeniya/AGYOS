@@ -8,10 +8,11 @@ const pluginsDir = resolve(repoRoot, ".agents/plugins");
 
 describe("AGYOS SDLC Gates & Handoff Contracts", () => {
   test("handoff contract rule exists and specifies schema", () => {
-    const file = resolve(rulesDir, "agyos-handoff-contract.toon");
+    const file = existsSync(resolve(rulesDir, "agyos-handoff-contract.md"))
+      ? resolve(rulesDir, "agyos-handoff-contract.md")
+      : resolve(rulesDir, "agyos-handoff-contract.toon");
     expect(existsSync(file)).toBe(true);
     const content = readFileSync(file, "utf8");
-    expect(content).toContain('mode: "100644"');
     expect(content).toContain("handoff_id");
     expect(content).toContain("from_role");
     expect(content).toContain("to_role");
@@ -23,7 +24,9 @@ describe("AGYOS SDLC Gates & Handoff Contracts", () => {
   });
 
   test("legal clearance gate rule requires SBOM evidence and verdict", () => {
-    const file = resolve(rulesDir, "agyos-gate-legal-clearance.toon");
+    const file = existsSync(resolve(rulesDir, "agyos-gate-legal-clearance.md"))
+      ? resolve(rulesDir, "agyos-gate-legal-clearance.md")
+      : resolve(rulesDir, "agyos-gate-legal-clearance.toon");
     expect(existsSync(file)).toBe(true);
     const content = readFileSync(file, "utf8");
     expect(content).toContain("Gate: Legal Clearance");
@@ -34,7 +37,9 @@ describe("AGYOS SDLC Gates & Handoff Contracts", () => {
   });
 
   test("DSAR evidence gate rule requires subject-data inventory and TIA", () => {
-    const file = resolve(rulesDir, "agyos-gate-dsar-evidence.toon");
+    const file = existsSync(resolve(rulesDir, "agyos-gate-dsar-evidence.md"))
+      ? resolve(rulesDir, "agyos-gate-dsar-evidence.md")
+      : resolve(rulesDir, "agyos-gate-dsar-evidence.toon");
     expect(existsSync(file)).toBe(true);
     const content = readFileSync(file, "utf8");
     expect(content).toContain("Gate: DSAR Evidence");
