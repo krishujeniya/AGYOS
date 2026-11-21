@@ -23,16 +23,148 @@
       <a href="{{BASE}}docs/overview/" class="feature-line reveal"><span class="feature-no">06</span><span class="feature-name">Crosswalk industry standards</span><span class="feature-desc">45 agent platform principles and 41 FAANG/SRE standards.</span><span class="feature-arrow" aria-hidden="true">↗</span></a>
     </div></div></section>
 
-  <section class="architecture-section section-pad" id="architecture"><div class="container"><div class="section-label reveal">Designed For Control</div><div class="arch-top"><div><h2 class="section-big reveal">From intention<br>to execution.</h2><p class="arch-intro reveal">The architecture document describes six layers. They shape how requests pass through policy, memory, tools, governance, and execution.</p></div><a class="outline-action reveal" href="{{BASE}}docs/architecture/">Explore architecture <span>↗</span></a></div>
-  <div class="system-diagram reveal" aria-label="AGYOS execution path">
-    <ol class="architecture-path">
-      <li><span class="path-index">01</span><div><strong>Intent and policy</strong><p>Interpret the request and establish permitted actions.</p></div></li>
-      <li><span class="path-index">02</span><div><strong>Context and memory</strong><p>Bring the relevant project knowledge into scope.</p></div></li>
-      <li><span class="path-index">03</span><div><strong>Skill and tool routing</strong><p>Choose the documented runbook and supported tool access.</p></div></li>
-      <li><span class="path-index">04</span><div><strong>Execution pods</strong><p>Coordinate specialist work under clear responsibilities.</p></div></li>
-      <li><span class="path-index">05</span><div><strong>Review and verification</strong><p>Inspect evidence, tests, and approval gates before completion.</p></div></li>
-    </ol>
-    <p class="diagram-caption">Conceptual sequence. Consult the architecture guide for the full layered design.</p>
+  <section class="architecture-section section-pad" id="architecture"><div class="container"><div class="section-label reveal">System Architecture</div><div class="arch-top"><div><h2 class="section-big reveal">From intention<br>to execution.</h2><p class="arch-intro reveal">The complete multi-layer architecture combines a 13-crate Rust engine, a 104-role enterprise organization across 12 departments, and an autonomous 7-step cycle.</p></div><a class="outline-action reveal" href="{{BASE}}docs/architecture/">Explore architecture <span>↗</span></a></div>
+
+  <div class="arch-flowchart reveal" aria-label="AGYOS System Architecture Flowchart">
+    <div class="flow-trigger">
+      <div class="flow-pill operator-node">
+        <span class="flow-pill-tag">User Input</span>
+        <strong>Operator / User Request</strong>
+        <span class="flow-pill-sub">Natural Language Prompt</span>
+      </div>
+      <div class="flow-arrow-down" aria-hidden="true">↓ <span>Compiles Intent &amp; Evaluates EVPI</span></div>
+    </div>
+
+    <div class="flow-subgraph">
+      <div class="subgraph-header">
+        <span class="subgraph-num">01</span>
+        <h3>Intent &amp; Cognitive Governance</h3>
+        <span class="subgraph-sub">Prompt Ingestion &amp; Organization Routing</span>
+      </div>
+      <div class="subgraph-cards triple-grid">
+        <div class="flow-card">
+          <span class="card-kicker">Compiler</span>
+          <strong>Intent Compilation &amp; EVPI</strong>
+          <p>Compiles prompt into typed <code>TaskContract</code> and computes Howard 1966 EVPI</p>
+        </div>
+        <div class="flow-card">
+          <span class="card-kicker">Hierarchy</span>
+          <strong>104-Role Virtual Org</strong>
+          <p>12 functional departments partitioned into 5 governing operational pods</p>
+        </div>
+        <div class="flow-card">
+          <span class="card-kicker">Runbooks</span>
+          <strong>Skill Discovery &amp; Retrieval</strong>
+          <p>2,289 modular engineering skills with JIT on-demand runbook retrieval</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-connector" aria-hidden="true">↓ <span>Dispatches TaskContract to Autonomous Cycle</span></div>
+
+    <div class="flow-subgraph cycle-subgraph">
+      <div class="subgraph-header">
+        <span class="subgraph-num">02</span>
+        <h3>7-Step Autonomous Engineering Cycle</h3>
+        <span class="subgraph-sub">Automated End-to-End Workflow Execution</span>
+      </div>
+      <div class="cycle-track">
+        <div class="cycle-step"><span class="step-num">1</span><strong>Think</strong><small>Role Alignment</small></div>
+        <div class="cycle-arrow" aria-hidden="true">→</div>
+        <div class="cycle-step"><span class="step-num">2</span><strong>Plan</strong><small>Checkpoints</small></div>
+        <div class="cycle-arrow" aria-hidden="true">→</div>
+        <div class="cycle-step"><span class="step-num">3</span><strong>Build</strong><small>Maker TDD</small></div>
+        <div class="cycle-arrow" aria-hidden="true">→</div>
+        <div class="cycle-step"><span class="step-num">4</span><strong>Review</strong><small>Checker Audit</small></div>
+        <div class="cycle-arrow" aria-hidden="true">→</div>
+        <div class="cycle-step"><span class="step-num">5</span><strong>Test</strong><small>Static Gates</small></div>
+        <div class="cycle-arrow" aria-hidden="true">→</div>
+        <div class="cycle-step"><span class="step-num">6</span><strong>Ship</strong><small>Commit &amp; Lock</small></div>
+        <div class="cycle-arrow" aria-hidden="true">→</div>
+        <div class="cycle-step"><span class="step-num">7</span><strong>Reflect</strong><small>AI_HANDOFF</small></div>
+      </div>
+    </div>
+
+    <div class="flow-connector" aria-hidden="true">↓ <span>Atomic Persistence &amp; Dispatched Execution</span></div>
+
+    <div class="flow-dual-grid">
+      <div class="flow-subgraph">
+        <div class="subgraph-header">
+          <span class="subgraph-num">03</span>
+          <h3>Rust ACID Storage Engine</h3>
+          <span class="subgraph-sub">crates/store • Append-Only WAL</span>
+        </div>
+        <div class="subgraph-cards double-grid">
+          <div class="flow-card">
+            <span class="card-kicker">Persistence</span>
+            <strong>Append-Only WAL</strong>
+            <p>Monotonic revisions &amp; atomic snapshot checkpoints</p>
+          </div>
+          <div class="flow-card">
+            <span class="card-kicker">Guarantees</span>
+            <strong>Transactional Outbox</strong>
+            <p>Zero-loss delivery (RPO=0) with idempotent replay</p>
+          </div>
+          <div class="flow-card">
+            <span class="card-kicker">Idempotency</span>
+            <strong>Deduplication Table</strong>
+            <p>Unique key &amp; payload SHA-256 collision rejection</p>
+          </div>
+          <div class="flow-card">
+            <span class="card-kicker">Fencing</span>
+            <strong>Durable Disk Fence</strong>
+            <p>Monotonic writer fencing against split-brain corruption</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-subgraph">
+        <div class="subgraph-header">
+          <span class="subgraph-num">04</span>
+          <h3>Hosted Execution &amp; Adapters</h3>
+          <span class="subgraph-sub">apps/worker • crates/adapters</span>
+        </div>
+        <div class="subgraph-cards vertical-grid">
+          <div class="flow-card">
+            <span class="card-kicker">Runtime</span>
+            <strong>Hosted Worker Pool</strong>
+            <p>Fair admission queue, health leases, and automated recovery</p>
+          </div>
+          <div class="flow-card">
+            <span class="card-kicker">Domain Integrations</span>
+            <strong>8 Business Adapters</strong>
+            <p>Git, CRM, Billing, Legal, Hiring, Web, Helpdesk, Model APIs</p>
+          </div>
+          <div class="flow-card">
+            <span class="card-kicker">Data Protocol</span>
+            <strong>TOON Codec Engine</strong>
+            <p>Typed Token-Oriented Object Notation parsing and compression</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-connector" aria-hidden="true">↓ <span>Monotonic Ratchet Verification</span></div>
+
+    <div class="flow-subgraph delivery-subgraph">
+      <div class="subgraph-header">
+        <span class="subgraph-num">05</span>
+        <h3>Gated Verification &amp; Delivery</h3>
+        <span class="subgraph-sub">Strict Single Branch &amp; Provenance Locking</span>
+      </div>
+      <div class="subgraph-cards double-grid">
+        <div class="flow-card highlight-card">
+          <span class="card-kicker">CI/CD Pipeline</span>
+          <strong>GitHub Actions Remote Builder</strong>
+          <p>Clean rebuild verification, provenance digests, and monotonic test ratchets</p>
+        </div>
+        <div class="flow-card highlight-card">
+          <span class="card-kicker">Protected Deployment</span>
+          <strong>Single main Branch Invariant</strong>
+          <p>Verified author lock (Krish Ujeniya) with fast-forward convergence</p>
+        </div>
+      </div>
+    </div>
   </div>
   </div></section>
 
