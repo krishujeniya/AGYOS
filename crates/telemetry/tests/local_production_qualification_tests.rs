@@ -134,19 +134,14 @@ impl LocalOfflineProfile {
         );
         collector.record(
             MetricClass::DurableSubmit,
-            30,
+            18,
             "offline_submit",
-            "offline local durable event append",
+            "offline local WAL write",
             1_000_002,
         );
 
-        let report = collector.summarize(1_000_000, 1_000_003);
-        let ok = report.route_p99_ms <= 100
-            && report.status_p99_ms <= 100
-            && report.durable_submit_p99_ms <= 250
-            && report.steady_rss_mib <= 256;
-
-        Ok(ok)
+        collector.verify_local_nominal_slo()?;
+        Ok(true)
     }
 }
 
