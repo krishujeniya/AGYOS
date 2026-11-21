@@ -13,6 +13,8 @@ jobs:
   build-rust-kernel:
     name: Build Rust Kernel and Verify Reproducibility
     runs-on: ubuntu-latest
+    env:
+      AGYOS_BUILD_GIT_SHA: ${{ github.event.inputs.target_sha || github.sha }}
     steps:
       - name: Check out target revision
         uses: actions/checkout@v4
@@ -35,7 +37,19 @@ jobs:
         run: ./bootstrap --build
 
       - name: Run TOON Codec test suite and conformance verification
-        run: cargo test --release --workspace
+        run: cargo test --release --locked --workspace
+
+      - name: Verify build reproducibility via independent rebuild
+        run: |
+          mkdir -p target/build_1 target/build_2
+          cp target/release/agyos target/release/agyos-worker target/release/toon target/build_1/
+          (cd target/build_1 && sha256sum agyos agyos-worker toon) > build_1.sha256
+          cargo clean
+          ./bootstrap --build
+          cp target/release/agyos target/release/agyos-worker target/release/toon target/build_2/
+          (cd target/build_2 && sha256sum agyos agyos-worker toon) > build_2.sha256
+          diff -u build_1.sha256 build_2.sha256
+          echo "Reproducible build verification: Bit-for-bit identical binary digests confirmed across independent builds."
 
       - name: Calculate and verify artifact digests
         run: |

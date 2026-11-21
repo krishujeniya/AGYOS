@@ -110,8 +110,13 @@ fn execute_build() -> Result<(), String> {
     materialize_workspace_manifest(Path::new("."))?;
 
     println!("[BOOTSTRAP] Phase 3/3: Running cargo build --release --workspace...");
+    let mut cargo_args = vec!["build", "--release"];
+    if Path::new("Cargo.lock").exists() {
+        cargo_args.push("--locked");
+    }
+    cargo_args.push("--workspace");
     let status = Command::new("cargo")
-        .args(["build", "--release", "--workspace"])
+        .args(&cargo_args)
         .status()
         .map_err(|e| format!("Failed to execute cargo: {}", e))?;
 

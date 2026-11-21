@@ -1,3 +1,19 @@
+# AGYOS handoff: isolate qualification harnesses, enforce build reproducibility, and eliminate asset and playbook duplication (2026-11-21)
+
+- Task: Address audit findings across qualification harness exports, README production claims, CLI dynamic readiness probing, build reproducibility verification, trending-tech-tracker deleted asset references, and resource duplication.
+- Branch: `main`.
+- Delivered changes:
+  - Qualification Harness Isolation: Completely removed simulation and test harnesses from production libraries (`MockFixtureProvider` from `crates/effects`, `ReversalDrillHarness` from `crates/migration`, `LocalLoadProfile`/`LocalFaultProfile`/`LocalOfflineProfile` from `crates/telemetry`, and `P27BenchmarkRunner`/`ProviderSimulator`/`PilotEngine` from `crates/runtime`), relocating them directly into their respective integration tests (`tests/*.rs`).
+  - Production Claims & Truth Alignment: Aligned `README.md` to clarify that 20 milestones represent implemented architecture and automated tests, while capacity, benchmark, and pilot metrics reflect deterministic qualification fixtures rather than measured live telemetry. Updated directory hierarchy to explicitly detail all 13 library crates and 2 applications.
+  - Dynamic Native CLI Diagnostics: Replaced hardcoded status and fixed commit revisions in `apps/agyos/src/main.rs` with dynamic build environment extraction (`env!("CARGO_PKG_VERSION")`, `option_env!("AGYOS_BUILD_GIT_SHA")`), workspace profile verification (`build/*.toon`), state store inspection (`.agents/state`), and live host CLI negotiation (`agy --version`).
+  - Proven Build Reproducibility: Updated `bootstrap.rs` to enforce `--locked` when `Cargo.lock` exists, and updated `.github/workflows/remote-builder.yml` with `--locked` test runs and an independent clean rebuild comparison step validating bit-for-bit identical binary SHA-256 digests across builds.
+  - Deleted Asset References Cleaned: Removed broken `assets/` references in `.agents/skills/trending-tech-tracker/README.toon` and replaced them with descriptive text summaries.
+  - Resource Deduplication: Consolidated duplicate playbooks in `refactor-clean` and `deps-audit` behind canonical resources in `codebase-refactor` and `dependency-management-deps-audit`, and shared `base.py` validation logic via relative symlink in `pptx-official`.
+- Verification evidence: `git diff --check` clean, zero syntax errors, static inspection verified; zero local heavy builds/tests run (CI/CD strictly via GitHub Actions).
+- Exact next command: `git push origin main`
+
+---
+
 # AGYOS handoff: evidence-based repository cleanup, resource consolidation, and qualification isolation (2026-11-21)
 
 - Task: Execute comprehensive, evidence-based cleanup and repository organization across tracked paths. Remove broken external symlinks and demo media, consolidate duplicate playbooks and branding assets behind canonical sources, retire dead GUI helpers, isolate test qualification simulation harnesses from production crate libraries, and align documentation and state records to truth.

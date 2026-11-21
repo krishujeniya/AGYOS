@@ -1,11 +1,19 @@
 //! AGYOS CLI: Standalone AGY Bridge and Diagnostic Kernel in Rust.
 
 use std::env;
-use std::process;
+use std::fs;
+use std::path::Path;
+use std::process::{self, Command};
 use agy::{AgyVersion, ProjectionEngine};
 
-const VERSION: &str = "0.1.0-bootstrap";
-const REVISION: &str = "63c0ee6aba44f0ceaedb4b01611ac028bf2dc6e4";
+const VERSION: &str = env!("CARGO_PKG_VERSION");
+const REVISION: &str = match option_env!("AGYOS_BUILD_GIT_SHA") {
+    Some(sha) => sha,
+    None => match option_env!("GITHUB_SHA") {
+        Some(sha) => sha,
+        None => "development",
+    },
+};
 
 fn print_usage() {
     println!("AGYOS Runtime ({})", VERSION);
@@ -15,9 +23,51 @@ fn print_usage() {
     println!();
     println!("Commands:");
     println!("  version      Print version, build revision, and exit");
-    println!("  status       Check local runtime readiness and baseline");
+    println!("  status       Check local runtime readiness, host paths, and toolchain");
     println!("  project      Run workspace projection engine");
     println!("  help         Print this help message");
+}
+
+fn check_status() {
+    println!("AGYOS Kernel Status: INITIALIZED");
+    println!("Version: {} (rev {})", VERSION, REVISION);
+    println!("Target: x86_64-unknown-linux-gnu");
+
+    // Dynamic inspection of workspace profiles
+    let profiles_present = Path::new("build/toolchain.toon").exists()
+        && Path::new("build/workspace.toon").exists();
+    println!(
+        "Build Profiles (build/*.toon): {}",
+        if profiles_present { "VALIDATED" } else { "NOT_FOUND" }
+    );
+
+    // Dynamic inspection of state store
+    let state_dir = Path::new(".agents/state");
+    if state_dir.is_dir() {
+        let entries = fs::read_dir(state_dir).map(|rd| rd.count()).unwrap_or(0);
+        println!("Storage Engine: Local State Present ({}/ active paths)", entries);
+    } else {
+        println!("Storage Engine: In-Memory / Uninitialized");
+    }
+
+    // Dynamic inspection of AGY CLI host binary
+    match Command::new("agy").arg("--version").output() {
+        Ok(output) if output.status.success() => {
+            let ver_str = String::from_utf8_lossy(&output.stdout);
+            match AgyVersion::parse(&ver_str) {
+                Ok(v) => {
+                    let status_str = if v.is_supported() { "SUPPORTED" } else { "UNSUPPORTED" };
+                    println!("AGY Host CLI Detected: {} ({})", ver_str.trim(), status_str);
+                }
+                Err(e) => {
+                    println!("AGY Host CLI Detected: {} (parse note: {})", ver_str.trim(), e);
+                }
+            }
+        }
+        _ => {
+            println!("AGY Host CLI: Not detected in PATH (tested 'agy --version')");
+        }
+    }
 }
 
 fn main() {
@@ -32,12 +82,7 @@ fn main() {
             println!("agyos {} (rev {})", VERSION, REVISION);
         }
         "status" => {
-            println!("AGYOS Kernel Status: READY");
-            println!("Build: Remote Builder Verified");
-            println!("Target: x86_64-unknown-linux-gnu");
-            println!("Storage: In-Memory / WAL Verified");
-            let supported = AgyVersion::parse("1.5.13").map(|v| v.is_supported()).unwrap_or(false);
-            println!("AGY CLI v1.5.13 Negotiation: {}", if supported { "SUPPORTED" } else { "REJECTED" });
+            check_status();
         }
         "project" => {
             let mut engine = ProjectionEngine::new();

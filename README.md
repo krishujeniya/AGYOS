@@ -14,9 +14,9 @@
   <a href="https://krishujeniya.github.io/AGYOS/"><img src="https://img.shields.io/badge/Docs-GitHub_Pages-blue.svg" alt="Documentation site" /></a>
 </p>
 
-AGYOS (Antigravity Operating System) is an autonomous cognitive operating system and bounded multi-agent kernel designed for solopreneurs, independent engineers, and autonomous agent fleets. It combines a 15-crate native Rust kernel, a 104-role virtual corporate organization across 12 departments and 5 governing operational pods, a 2,289-skill catalog with on-demand physical runbook retrieval, a tri-format semantic compilation engine (TOON, XML, and typed JSON), and a 7-step autonomous cycle (`Think -> Plan -> Build -> Review -> Test -> Ship -> Reflect`).
+AGYOS (Antigravity Operating System) is an autonomous cognitive operating system and bounded multi-agent kernel designed for solopreneurs, independent engineers, and autonomous agent fleets. It combines a 13-library Rust workspace with 2 application packages, a 104-role virtual corporate organization across 12 departments and 5 governing operational pods, a 2,289-skill catalog with on-demand physical runbook retrieval, a tri-format semantic compilation engine (TOON, XML, and typed JSON), and a 7-step autonomous cycle (`Think -> Plan -> Build -> Review -> Test -> Ship -> Reflect`).
 
-The runtime is qualified across local production (2 vCPU / 2 GiB reference hardware) and heavy production hosted profiles, with strict boundary enforcement, Howard 1966 EVPI intent clarification, zero-loss crash recovery, and monotonic remote CI verification.
+The codebase implements contracts and deterministic qualification test suites for local (2 vCPU / 2 GiB reference target) and hosted worker profiles, including Howard 1966 EVPI intent clarification, crash recovery, and monotonic remote CI verification. Live human pilot deployments and measured production throughput remain ongoing engineering qualifications.
 
 ---
 
@@ -90,9 +90,9 @@ AGYOS executes complex engineering workflows autonomously without requiring manu
 
 ---
 
-## 20-Step Qualified Rebuild Plan
+## 20-Step Architectural Rebuild Implementation Status
 
-AGYOS has achieved certified completion across all 20 steps of the architectural rebuild specification (benchmark and pilot metrics represent scripted qualification test fixtures):
+The repository contains implementations and automated integration tests for the 20 rebuild milestones. Verification status indicates automated CI test passes on the specified commits; note that benchmark, pilot, and capacity numbers reflect deterministic qualification test fixtures rather than measured live production telemetry:
 
 | Step | Milestone | Delivered Components | Verification Status |
 |:---|:---|:---|:---|
@@ -125,21 +125,23 @@ AGYOS has achieved certified completion across all 20 steps of the architectural
 .
 ├── bootstrap.rs                 # Rust workspace orchestrator & compilation driver
 ├── build/                       # Build profiles & locked workspace declarations (workspace.toon)
-├── crates/                      # Core Rust workspace crates
-│   ├── toon-codec/              # Pure TOON format encoder, decoder & conformance tests
+├── crates/                      # 13 Library Crates
 │   ├── domain/                  # Contracts, R0-R3 risk boundaries, balance ledger
+│   ├── toon-codec/              # Pure TOON format encoder, decoder & conformance tests
+│   ├── governance/              # Policy engine and state transition invariants
 │   ├── store/                   # Event log, transactional outbox, deduplication, fence tokens
-│   ├── agy/                     # AGY CLI boundary projection & tool broker confinement
-│   ├── catalog/                 # 104-role registry, 153 canonical skills, phrase router
-│   ├── runtime/                 # Progressive retrieval, Howard EVPI, context budget, councils, pilot
-│   ├── adapters/                # 8 domain adapters (CRM, billing, legal, hiring, Git, models, web)
-│   ├── telemetry/               # Redacted metrics, local production profiles, backup/restore
-│   ├── migration/               # Shadow reader, signed difference ledger, reversal drill
-│   ├── release/                 # Release gates, live cutover guard, discovery-to-handover engine
-│   └── maintenance/             # Canary observation, vendor-free export/restore, 2027 RDR engine
-├── apps/                        # Production applications
-│   ├── agyos/                   # Native CLI application
-│   └── worker/                  # Heavy hosted worker pool, fair queue admission, AES-256-GCM
+│   ├── effects/                 # External effect dispatch traits & compensating sagas
+│   ├── catalog/                 # 104-role registry, canonical skills, phrase router
+│   ├── runtime/                 # Progressive retrieval, Howard EVPI, context budgets, councils
+│   ├── agy/                     # AGY CLI boundary projection & broker confinement
+│   ├── adapters/                # 8 domain adapters (CRM, billing, legal, hiring, Git, web)
+│   ├── telemetry/               # Redacted metrics, local backup engine, incident runbooks
+│   ├── migration/               # Shadow reader reconciler, signed difference ledgers
+│   ├── release/                 # Release verification gates, clean machine verifier, cutover guard
+│   └── maintenance/             # Canary evaluation, vendor-free export/restore, 2027 RDR engine
+├── apps/                        # Production Applications
+│   ├── agyos/                   # Native CLI application & diagnostic kernel
+│   └── worker/                  # Hosted worker pool, fair queue admission, AES-256-GCM
 ├── .agents/                     # Autonomous agent definitions, workflows, rules, and skills
 │   ├── agents/                  # 104 role agent profiles in TOON/XML format
 │   ├── rules/                   # Operational and engineering policies

@@ -13,7 +13,6 @@
 //! - P30 (Authority and Reversibility as Human Choices)
 //! - P32 (Operator-Owned Budgets & Verification Reserves)
 
-pub mod benchmark;
 pub mod budget;
 pub mod council;
 pub mod evpi;
@@ -21,13 +20,12 @@ pub mod model_policy;
 pub mod pilot;
 pub mod routing;
 
-pub use benchmark::{ArmMetricResult, P27Arm, P27BenchmarkRunner, PairedComparisonResult};
 pub use budget::{ContextBudget, TokenSavingsEvaluator};
 pub use council::{BlindReviewCriterion, CouncilDeliberationOutcome, CouncilEngine};
 pub use evpi::{ActionDecision, EvpiEngine, EvpiParameters};
 pub use model_policy::{AdmissionController, ExecutionMode, ModelPolicyRouter, ModelTier};
 pub use pilot::{
     FocusableElement, KeyboardAction, LinearTranscript, OperatorSessionState, PilotCohort,
-    PilotEngine, PilotOperator, PilotReport, ProviderSimulator, TranscriptEntry,
+    PilotOperator, TranscriptEntry,
 };
 pub use routing::{CandidateSkillMatch, ProgressiveRetriever, RetrievalResult};

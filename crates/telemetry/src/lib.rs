@@ -8,10 +8,8 @@
 
 pub mod backup;
 pub mod metrics;
-pub mod profiles;
 pub mod runbook;
 
 pub use backup::{BackupManifest, LocalBackupEngine};
 pub use metrics::{MetricClass, OperationSample, RedactedMetricsCollector};
-pub use profiles::{LocalFaultProfile, LocalLoadProfile, LocalOfflineProfile};
 pub use runbook::{IncidentResponsePlan, IncidentSeverity, OnCallRunbook};

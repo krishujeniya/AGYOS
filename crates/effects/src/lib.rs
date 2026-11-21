@@ -1,12 +1,15 @@
-//! AGYOS Privileged Effect Broker and Saga Compensator.
+//! AGYOS External Effect Execution, Compensating Sagas, and Outbox Broker.
 //!
-//! Complies with Principle P05 (Complete Mediation), P10 (Atomic Durability and Sagas),
-//! and P11 (Idempotent Semantics).
+//! Complies with Step 13: Implement business and external effects, and Principles:
+//! - P05 (Complete Mediation)
+//! - P10 (Atomic Durability & Sagas)
+//! - P11 (Explicit Compensation & Audit Trails)
+//! - P17 (Effect Confinement)
 
 pub mod broker;
 pub mod provider;
 pub mod saga;
 
-pub use broker::EffectBroker;
-pub use provider::{EffectOutcome, EffectProvider, MockFailureMode, MockFixtureProvider};
-pub use saga::SagaCoordinator;
+pub use broker::{EffectBroker, EffectBrokerError};
+pub use provider::{EffectOutcome, EffectProvider};
+pub use saga::{CompensatingAction, SagaCoordinator, SagaError, SagaStatus, SagaStep};

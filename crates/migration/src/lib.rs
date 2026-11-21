@@ -12,7 +12,6 @@ pub mod fencing_cutover;
 pub mod legacy_reader;
 pub mod mapper;
 pub mod reconciler;
-pub mod reversal_drill;
 
 pub use fencing_cutover::{
     CutoverCoordinator, FencingCutoverError, MigrationCursor, WriterOwnershipReceipt, WriterRole,
@@ -26,4 +25,3 @@ pub use mapper::{
     MappedCanonicalState, StateMapper,
 };
 pub use reconciler::{ShadowReaderReconciler, SignedDifferenceLedger, StateDiscrepancy};
-pub use reversal_drill::{ReversalDrillHarness, ReversalDrillResult};
