@@ -41,10 +41,11 @@ def skill_files(source):
 def adapter_content(source, source_root, source_skill):
     upstream = read_metadata(source_skill)
     name = f"{source['prefix']}-{source_skill.parent.name}"
-    source_relative = Path(os.path.relpath(source_skill, SKILLS_DIR / name)).as_posix()
+    logical_skill = source_skill.with_name("SKILL.md") if source_skill.name == "SKILL.toon" else source_skill
+    source_relative = Path(os.path.relpath(logical_skill, SKILLS_DIR / name)).as_posix()
     source_url = (
         f"https://github.com/{source['owner']}/{source['repo']}/blob/"
-        f"{source['commit']}/{source_skill.relative_to(source_root).as_posix()}"
+        f"{source['commit']}/{logical_skill.relative_to(source_root).as_posix()}"
     )
     quoted_description = json.dumps(upstream["description"].strip(), ensure_ascii=False)
     body = [
@@ -63,7 +64,7 @@ def adapter_content(source, source_root, source_skill):
         "This AGYOS entry points to an unmodified, pinned upstream runbook. Read it",
         "in full, then inspect any linked references or scripts before using them:",
         "",
-        f"- Local source: [{source_skill.relative_to(ROOT).as_posix()}]({source_relative})",
+        f"- Local source: [{logical_skill.relative_to(ROOT).as_posix()}]({source_relative})",
         f"- Upstream source: [{source['owner']}/{source['repo']} at {source['commit']}]({source_url})",
         f"- License: MIT; retain the notice in `{(source_root / source.get('license_file', 'LICENSE')).relative_to(ROOT).as_posix()}`.",
         "",
@@ -128,8 +129,13 @@ def main():
             target.parent.mkdir(parents=True, exist_ok=True)
             for path, value in outputs:
                 path.write_text(value, encoding="utf-8")
-        elif not all(path.is_file() and path.read_text(encoding="utf-8") == value
-                     for path, value in outputs):
+        elif not (
+            target.with_name("SKILL.toon").is_file()
+            and target.with_name("SKILL.toon").read_text(encoding="utf-8") == outputs[0][1]
+            and prompt.is_file()
+            and prompt.read_text(encoding="utf-8") == source
+            and (not target.is_file() or target.read_text(encoding="utf-8") == content)
+        ):
             problems.append(name)
     if problems:
         print(f"Upstream skill adapters need regeneration: {', '.join(problems)}", file=sys.stderr)
