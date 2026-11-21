@@ -23,30 +23,64 @@ The system combines a 13-crate Rust engine and 2 applications with an enterprise
 
 ## Architecture
 
-```text
-Task Intent / Goal
-         │
-         ▼
-[ Intent Compilation & Howard 1966 EVPI Clarification ]
-         │
-         ▼
-[ 104-Role Virtual Matrix & 5 Operational Pods ]
-         │
-         ▼
-[ Progressive Retrieval & 2,289-Skill Catalog ]
-         │
-         ▼
-[ 7-Step Autonomous Engineering Cycle ]
-  Think ──► Plan ──► Build ──► Review ──► Test ──► Ship ──► Reflect
-         │
-         ▼
-[ 15-Crate Native Rust Kernel & ACID Storage Engine ]
-  • Event Revisions & Transactional Outbox (RPO = 0)
-  • Deduplication & Monotonic Fence Tokens
-  • Authenticated Encryption Backups & State Reconciler
-         │
-         ▼
-[ Remote Builder CI & Gated Release Certification ]
+```mermaid
+flowchart TD
+    User(["Operator / User Request"]):::operator
+
+    subgraph CognitiveLayer["1. Intent & Cognitive Governance"]
+        Intent["Intent Compilation & EVPI<br/><code>TaskContract • Howard 1966 Decision</code>"]
+        Pods["104-Role Virtual Organization<br/><code>12 Departments • 5 Governing Pods</code>"]
+        Catalog["Skill Discovery & Retrieval<br/><code>2,289 Skills • On-Demand Runbooks</code>"]
+    end
+
+    subgraph AutonomousCycle["2. 7-Step Autonomous Engineering Cycle"]
+        direction LR
+        S1["1. Think<br/><code>Role & Skill Alignment</code>"] --> S2["2. Plan<br/><code>Checkpoints & Blueprint</code>"]
+        S2 --> S3["3. Build<br/><code>Maker TDD Execution</code>"]
+        S3 --> S4["4. Review<br/><code>Checker Audit & Diff Hygiene</code>"]
+        S4 --> S5["5. Test<br/><code>Deterministic Static Gates</code>"]
+        S5 --> S6["6. Ship<br/><code>Scoped Commit & Lock</code>"]
+        S6 --> S7["7. Reflect<br/><code>AI_HANDOFF & Milestone Close</code>"]
+    end
+
+    subgraph StorageEngine["3. Rust ACID Storage Engine (crates/store)"]
+        direction TB
+        WAL[("Append-Only WAL<br/><code>Monotonic Event Revisions</code>")]
+        Outbox["Transactional Outbox<br/><code>Zero-Loss Guarantee (RPO=0)</code>"]
+        Dedup["Deduplication Table<br/><code>Idempotency Key + Payload Hash</code>"]
+        Fence["Durable Disk Fence<br/><code>Writer Monotonic Fencing</code>"]
+        WAL --- Outbox
+        WAL --- Dedup
+        WAL --- Fence
+    end
+
+    subgraph WorkerPool["4. Hosted Execution & Business Adapters"]
+        Worker["Hosted Worker Pool (apps/worker)<br/><code>Fair Admission • Lease Management</code>"]
+        Adapters["Domain Business Adapters (crates/adapters)<br/><code>Git • CRM • Billing • Legal • Hiring • Web</code>"]
+        Codec["TOON Codec Engine (crates/toon-codec)<br/><code>Typed Parsing • Exact Encoding</code>"]
+    end
+
+    subgraph ReleaseGate["5. Gated Verification & Delivery"]
+        CI["GitHub Actions Remote Builder<br/><code>Clean Rebuilds • Provenance Digests</code>"]
+        MainBranch[("Protected Single main Branch<br/><code>Author: Krish Ujeniya</code>")]
+    end
+
+    %% Connections
+    User -->|"Natural Language Prompt"| Intent
+    Intent -->|"Assigns Lead Role"| Pods
+    Pods -->|"Selects Specialist Skill"| Catalog
+    Catalog -->|"Dispatches TaskContract"| AutonomousCycle
+
+    S3 <-->|"Atomic Revisions & Snapshot"| StorageEngine
+    S4 <-->|"Audits Evidence Receipts"| Adapters
+    Worker <-->|"Executes Dispatched Jobs"| StorageEngine
+
+    S5 -->|"Triggers Verification"| CI
+    CI -->|"Verifies Artifacts & Digests"| S6
+    S6 -->|"Fast-Forward Merge"| MainBranch
+
+    %% Class Styles
+    classDef operator fill:#2563eb,stroke:#1d4ed8,color:#ffffff,stroke-width:2px;
 ```
 
 ---
