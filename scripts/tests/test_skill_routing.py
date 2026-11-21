@@ -135,26 +135,42 @@ class RoutingTests(unittest.TestCase):
 
 class CatalogTests(unittest.TestCase):
     def test_every_rule_has_supported_metadata_and_size(self):
-        for path in (ROOT / ".agents/rules").glob("*.md"):
+        rule_files = list((ROOT / ".agents/rules").glob("*.toon")) or list((ROOT / ".agents/rules").glob("*.md"))
+        for path in rule_files:
             with self.subTest(rule=path.name):
-                text = path.read_text()
-                self.assertLess(path.stat().st_size, 24000)
+                raw = path.read_text(encoding="utf-8")
+                if raw.startswith('mode: "100644"\ntext: '):
+                    import json
+                    text = json.loads(raw.split("text: ", 1)[1].strip())
+                else:
+                    text = raw
+                self.assertLess(len(raw.encode("utf-8")), 24000)
                 self.assertTrue(text.startswith("---\n"))
                 metadata = yaml.load(text.split("\n---\n", 1)[0][4:], Loader=YAML_LOADER)
                 self.assertIn(metadata["trigger"], ("always_on", "model_decision", "glob", "manual"))
 
     def test_every_skill_has_valid_discovery_metadata(self):
-        for path in (ROOT / ".agents/skills").glob("*/SKILL.md"):
+        skill_files = list((ROOT / ".agents/skills").glob("*/SKILL.toon")) or list((ROOT / ".agents/skills").glob("*/SKILL.md"))
+        for path in skill_files:
             with self.subTest(skill=path.parent.name):
-                text = path.read_text()
-                self.assertTrue(text.startswith("---\n"))
-                metadata = yaml.load(text.split("\n---\n", 1)[0][4:], Loader=YAML_LOADER)
+                raw = path.read_text(encoding="utf-8")
+                if raw.startswith('mode: "100644"\nheader: '):
+                    import json
+                    header_str = json.loads(raw.split("header: ", 1)[1].strip())
+                    metadata = yaml.load(header_str.strip().removeprefix("---").split("\n---")[0], Loader=YAML_LOADER)
+                elif raw.startswith('mode: "100644"\ntext: '):
+                    import json
+                    text = json.loads(raw.split("text: ", 1)[1].strip())
+                    metadata = yaml.load(text.split("\n---\n", 1)[0][4:], Loader=YAML_LOADER)
+                else:
+                    text = raw
+                    metadata = yaml.load(text.split("\n---\n", 1)[0][4:], Loader=YAML_LOADER)
                 self.assertEqual(metadata["name"], path.parent.name)
                 self.assertIsInstance(metadata["description"], str)
                 self.assertTrue(metadata["description"].strip())
 
     def test_all_indexes_cover_the_physical_catalog(self):
-        physical = {p.parent.name for p in (ROOT / ".agents/skills").glob("*/SKILL.md")}
+        physical = {p.parent.name for p in (ROOT / ".agents/skills").glob("*/SKILL.toon")} or {p.parent.name for p in (ROOT / ".agents/skills").glob("*/SKILL.md")}
         manifest = json.loads((ROOT / ".agents/skills-manifest.json").read_text())
         docs = json.loads((ROOT / "docs/skills-data.json").read_text())
         self.assertEqual({s["name"] for s in manifest["skills"]}, physical)

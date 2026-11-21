@@ -1,0 +1,2 @@
+mode: "100644"
+text: "---\ntrigger: glob\nglobs: \"**/*.pl,**/*.pm,**/*.t,**/*.psgi,**/*.cgi\"\n---\n# Perl Hooks\n\n> This file extends [common/hooks.md](common-hooks.md) with Perl-specific content.\n\n## PostToolUse Hooks\n\nConfigure in `~/.claude/settings.json`:\n\n- **perltidy**: Auto-format `.pl` and `.pm` files after edit\n- **perlcritic**: Run lint check after editing `.pm` files\n\n## Warnings\n\n- Warn about `print` in non-script `.pm` files — use `say` or a logging module (e.g., `Log::Any`)\n"

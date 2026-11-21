@@ -65,29 +65,52 @@ class HookContractTests(unittest.TestCase):
 class StartupMetadataTests(unittest.TestCase):
     def test_attune_skill_is_text_with_its_documented_assets(self):
         base = ROOT / ".agents/skills/attune-task-bridge"
-        self.assertTrue((base / "SKILL.md").read_text().startswith("---\n"))
+        skill_file = (base / "SKILL.toon") if (base / "SKILL.toon").is_file() else (base / "SKILL.md")
+        content = skill_file.read_text(encoding="utf-8")
+        if content.startswith('mode: "100644"'):
+            import json
+            content = json.loads(content.split("header: ", 1)[1].strip()) if "header: " in content else json.loads(content.split("text: ", 1)[1].strip())
+        self.assertTrue(content.startswith("---\n"))
         for asset in ("references/api.md", "scripts/check_tasks.py", "scripts/ws_bridge.py",
                       "scripts/poll_tasks.py", "scripts/notify.py"):
             with self.subTest(asset=asset):
-                self.assertTrue((base / asset).is_file())
+                asset_file = (base / asset.replace(".md", ".toon")) if not (base / asset).is_file() else (base / asset)
+                self.assertTrue(asset_file.is_file())
 
     def test_planning_header_has_no_embedded_delimiter(self):
-        text = (ROOT / ".agents/skills/planning-with-files/SKILL.md").read_text()
+        plan_file = (ROOT / ".agents/skills/planning-with-files/SKILL.toon") if (ROOT / ".agents/skills/planning-with-files/SKILL.toon").is_file() else (ROOT / ".agents/skills/planning-with-files/SKILL.md")
+        text = plan_file.read_text(encoding="utf-8")
+        if text.startswith('mode: "100644"'):
+            import json
+            text = json.loads(text.split("header: ", 1)[1].strip()) if "header: " in text else json.loads(text.split("text: ", 1)[1].strip())
         header = re.split(r"^---\s*$", text, maxsplit=2, flags=re.MULTILINE)[1]
         self.assertNotIn("---", header)
 
     def test_every_flat_rule_declares_supported_trigger(self):
-        for path in (ROOT / ".agents/rules").glob("*.md"):
+        rule_files = list((ROOT / ".agents/rules").glob("*.toon")) or list((ROOT / ".agents/rules").glob("*.md"))
+        for path in rule_files:
             with self.subTest(path=path.name):
-                header = path.read_text().split("---", 2)
+                raw = path.read_text(encoding="utf-8")
+                if raw.startswith('mode: "100644"'):
+                    import json
+                    text = json.loads(raw.split("text: ", 1)[1].strip())
+                else:
+                    text = raw
+                header = text.split("---", 2)
                 self.assertEqual(header[0].strip(), "")
                 self.assertRegex(header[1], r"(?m)^trigger: (always_on|model_decision|glob|manual)$")
 
     def test_workflow_directory_contains_only_loadable_markdown(self):
-        for path in (ROOT / ".agents/workflows").glob("*.md"):
+        wf_files = list((ROOT / ".agents/workflows").glob("*.toon")) or list((ROOT / ".agents/workflows").glob("*.md"))
+        for path in wf_files:
             with self.subTest(path=path.name):
-                with path.open("r", encoding="utf-8") as f:
-                    self.assertEqual(f.read(4), "---\n")
+                raw = path.read_text(encoding="utf-8")
+                if raw.startswith('mode: "100644"'):
+                    import json
+                    text = json.loads(raw.split("text: ", 1)[1].strip())
+                else:
+                    text = raw
+                self.assertEqual(text[:4], "---\n")
 
 
 class NotificationTests(unittest.TestCase):

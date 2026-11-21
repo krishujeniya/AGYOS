@@ -1,0 +1,2 @@
+mode: "100644"
+text: "---\ndescription: Publish a validated epic update back to the issue and local cache.\n---\n\n# /epic-publish\n\nPublish a validated coordination update to GitHub.\n\n```bash\nnode scripts/github-coordination.js publish <issue-number> --repo <owner/repo>\n```\n\nWhat this does:\n\n1. Re-validates the epic before publishing.\n2. Updates the coordination block in the issue body.\n3. Appends a concise publish comment.\n4. Records the final local snapshot.\n\nCompatibility aliases:\n\n- `/pr`\n- `/prp-pr`\n"

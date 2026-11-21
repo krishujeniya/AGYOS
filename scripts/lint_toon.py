@@ -13,11 +13,16 @@ from pathlib import Path
 
 BLOB_RE = re.compile(r'^mode: "100644"\ntext: "(?:[^"\\]|\\.)*"\n$', re.S)
 HEADER_BLOB_RE = re.compile(r'^mode: "100644"\nheader: "(?:[^"\\]|\\.)*"\n$', re.S)
+TARGET_BLOB_RE = re.compile(r'^mode: "120000"\ntarget: "(?:[^"\\]|\\.)*"\n$', re.S)
 
 
 def lint_file(path: Path):
     problems = []
     text = path.read_text(encoding="utf-8")
+    if text.startswith('mode: "120000"'):
+        if not TARGET_BLOB_RE.match(text):
+            problems.append("target blob malformed (unescaped quote/newline or missing trailing newline)")
+        return problems
     if text.startswith('mode: "100644"'):
         if text.startswith('mode: "100644"\nheader: "'):
             if not HEADER_BLOB_RE.match(text):

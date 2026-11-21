@@ -320,12 +320,18 @@ class TestAgentDefinitionsOnDisk(unittest.TestCase):
         agents_dir = repo_root / ".agents" / "agents"
         self.assertTrue(agents_dir.is_dir())
         for role in list_roles():
-            agent_file = agents_dir / f"{role.role_id}.md"
+            agent_file_toon = agents_dir / f"{role.role_id}.toon"
+            agent_file_md = agents_dir / f"{role.role_id}.md"
             self.assertTrue(
-                agent_file.is_file(),
-                f"Missing agent file for role: {role.role_id} at {agent_file}",
+                agent_file_toon.is_file() or agent_file_md.is_file(),
+                f"Missing agent file for role: {role.role_id}",
             )
-            content = agent_file.read_text(encoding="utf-8")
+            raw = (agent_file_toon if agent_file_toon.is_file() else agent_file_md).read_text(encoding="utf-8")
+            if raw.startswith('mode: "100644"\ntext: '):
+                import json
+                content = json.loads(raw.split("text: ", 1)[1].strip())
+            else:
+                content = raw
             self.assertTrue(content.startswith("---"))
             self.assertIn(f"name: {role.role_id}", content)
 

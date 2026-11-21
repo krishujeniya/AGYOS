@@ -28,7 +28,7 @@ def skill_files(source):
     license_path = source_root / source.get("license_file", "LICENSE")
     if source["license"] != "MIT" or not license_path.is_file():
         raise ValueError(f"Expected MIT license file for {source['repo']}")
-    files = sorted(source_root.rglob("SKILL.md"))
+    files = sorted(list(source_root.rglob("SKILL.toon")) or list(source_root.rglob("SKILL.md")))
     if not source.get("include_root_skill", False):
         files = [item for item in files if item.parent != source_root]
     if len(files) != source["expected_skills"]:

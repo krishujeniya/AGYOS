@@ -1,0 +1,2 @@
+mode: "100644"
+text: "# Technical SEO Standards\n- Ensure valid semantic HTML, OpenGraph tags, and Schema.org JSON-LD markup.\n- Verify indexability, crawlability, and accurate sitemap declarations."

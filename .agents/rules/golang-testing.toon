@@ -1,0 +1,2 @@
+mode: "100644"
+text: "---\ntrigger: glob\nglobs: \"**/*.go,**/go.mod,**/go.sum\"\n---\n# Go Testing\n\n> This file extends [common/testing.md](common-testing.md) with Go specific content.\n\n## Framework\n\nUse the standard `go test` with **table-driven tests**.\n\n## Race Detection\n\nAlways run with the `-race` flag:\n\n```bash\ngo test -race ./...\n```\n\n## Coverage\n\n```bash\ngo test -cover ./...\n```\n\n## Reference\n\nSee skill: `golang-testing` for detailed Go testing patterns and helpers.\n"

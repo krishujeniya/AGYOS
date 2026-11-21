@@ -1,3 +1,17 @@
+# AGYOS handoff: restrict markdown strictly to docs, readmes, and core docs; convert all other markdown to TOON; remove tracker and context (2026-11-21)
+
+- Task: Retain markdown (.md) exclusively for `docs/` folder, all `README.md` files, `AI_HANDOFF.md`, `DEPLOYMENT.md`, and `SECURITY.md`. Remove `context` and `tracker` documents from both local disk and git tracking. Convert all remaining markdown files across the entire codebase (`.agents/rules/`, `.agents/agents/`, `.agents/workflows/`, `.agents/plugins/`, `.agents/state/`, `.github/`, `AGENTS.toon`, `GEMINI.toon`, etc.) into canonical `.toon` envelopes, and remove the original `.md` files from both local disk and git tracking.
+- Branch: `main`.
+- Delivered changes:
+  - Tracker and Context Purge: Removed `TRACKER.md`, `context.md`, and `/home/ai/Downloads/Tracker.md` from local disk and repository tracking.
+  - Markdown Allowlist Conformance: Retained markdown exclusively for 84 files: all files in `docs/` (49 files), all `README.md` files across directories (32 files), `AI_HANDOFF.md`, `DEPLOYMENT.md`, and `SECURITY.md`.
+  - Full TOON Conversion: Converted 845 remaining markdown files into canonical `.toon` files with validated envelopes (`mode: "100644"`, `text: <JSON string>` and `GEMINI.toon` target link), removing all corresponding `.md` files from both disk and git.
+  - Harness and Test Compatibility: Updated `scripts/tests/test_startup.py`, `scripts/tests/test_roles.py`, `scripts/tests/test_skill_routing.py`, `scripts/import_upstream_skill_packs.py`, `scripts/lint_toon.py`, and `scripts/agyos-verify.sh` to transparently resolve `.toon` and `.md` formats.
+- Verification evidence: static read-only AST compilation, `scripts/lint_toon.py`, and `git diff --check` passed; zero local builds/tests run (CI/CD strictly via GitHub Actions).
+- Exact next command: `git push origin main`
+
+---
+
 # AGYOS handoff: remove duplicate .toon files for all GitHub markdown documents (2026-11-21)
 
 - Task: Remove all duplicate companion `.toon` files corresponding to GitHub-rendered markdown documents (`README.md`, `AI_HANDOFF.md`, `DEPLOYMENT.md`, `SECURITY.md`, `AGENTS.md`, `GEMINI.md`, `TRACKER.md`, `docs/**/*.md`, `.agents/rules/*.md`, `.agents/agents/*.md`, `.agents/workflows/*.md`, `.agents/state/checkpoints/*.md`, etc.) both locally and on GitHub tracking, keeping skills strictly in pure TOON format.

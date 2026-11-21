@@ -111,8 +111,8 @@ check "Transactional snapshot rollback restoration" python3 -c 'import sys; sys.
 check "LIFO Saga compensation reverse-order execution" python3 -c 'import sys; sys.path.insert(0, "."); from agyos_decision.state_ledger import SagaCoordinator; s = SagaCoordinator("s1"); order = []; s.register_step("1", lambda: order.append(1)); s.register_step("2", lambda: order.append(2)); s.rollback(); assert order == [2, 1] and s.status == "COMPENSATED"'
 
 # 16. Host Pods, SOP Skills & Fail-Closed Authorizer Hook
-check "5 Pod agent definitions exist in .agents/agents/" bash -c 'for p in pod-growth pod-customer pod-build pod-gna pod-people; do test -s ".agents/agents/$p.md" || exit 1; done'
-check "5 SOP skills exist in .agents/skills/" bash -c 'for s in sop-growth sop-customer sop-build sop-gna sop-people; do test -s ".agents/skills/$s/SKILL.md" || exit 1; done'
+check "5 Pod agent definitions exist in .agents/agents/" bash -c 'for p in pod-growth pod-customer pod-build pod-gna pod-people; do test -s ".agents/agents/$p.toon" || test -s ".agents/agents/$p.md" || exit 1; done'
+check "5 SOP skills exist in .agents/skills/" bash -c 'for s in sop-growth sop-customer sop-build sop-gna sop-people; do test -s ".agents/skills/$s/SKILL.toon" || test -s ".agents/skills/$s/SKILL.md" || exit 1; done'
 check "Fail-Closed Authorizer hook blocks unauthorized R3 payments" bash -c 'echo "{\"toolCall\":{\"name\":\"run_command\",\"args\":{\"CommandLine\":\"curl -X POST https://api.stripe.com/v1/refunds\"}}}" | python3 scripts/hooks/authorizer.py PreToolUse | grep -q "\"decision\": \"deny\""'
 check "Fail-Closed Authorizer enforces capability allowlist" bash -c 'echo "{\"taskContract\":{\"capability_allowlist\":[\"read_file\"]},\"toolCall\":{\"name\":\"edit_file\",\"args\":{}}}" | python3 scripts/hooks/authorizer.py PreToolUse | grep -q "\"decision\": \"deny\""'
 
