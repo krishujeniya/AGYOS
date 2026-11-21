@@ -1,3 +1,17 @@
+# AGYOS handoff: native TOON catalog routing, local skill cleanup, and AGY CLI integration (2026-11-21)
+
+- Task: Synchronize local workspace to match GitHub tracking (zero local skill markdown files), upgrade decision router to resolve native `.toon` skill manifests directly, purge legacy local artifacts, and configure AGY CLI runtime environment with all 13 plugins and UV hooks.
+- Branch: `main`.
+- Delivered changes:
+  - Native TOON Router Resolution: Updated `agyos_decision/catalog.py`, `agyos_decision/skills_router.py`, `agyos_decision/integrations/source_registry.py`, and `agyos_decision/toon_compiler.py` to index and resolve `SKILL.toon` and `prompt.toon` natively without requiring local `SKILL.md` files.
+  - Local Disk Parity: Purged 5,320 obsolete local `.md` files in `.agents/skills/` and 20 in `tools/video/`, plus temporary caches (`.agents/state/snapshots/`, `.agyos-documents-state.json`, `tools/security/strix/strix/tools/coverage/`), bringing local worktree to 100% parity with git and GitHub.
+  - AGY CLI Configuration: Enabled all 13 AGYOS plugins in `~/.gemini/config/config.json`, enabled `agyos` FastMCP state daemon in `~/.gemini/config/mcp_config.json`, synchronized global `~/.gemini/config/AGENTS.md`, and configured AGYOS policy guard hooks in `hooks.json` to execute via `uv run`.
+  - Format & Invariants: Zero skill `.md` files in repo (`git ls-files -- '.agents/skills/**.md'` returns 0), zero trailing whitespace (`git diff --check` clean), and pure UV execution.
+- Verification evidence: static read-only AST compilation and git diff check passed; zero local builds/tests run (CI/CD strictly via GitHub Actions).
+- Exact next command: `git status --short --branch`
+
+---
+
 # AGYOS handoff: resolve CI deadlocks and catalog drift, certify complete CI/CD success (2026-11-20)
 
 - Task: Resolve all CI/CD failures and test runner deadlocks in GitHub Actions until full pass; synchronize GitHub-rendered documentation markdown across repository while keeping skills strictly in TOON format; eliminate catalog drift in `docs/llms.txt`.

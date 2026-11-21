@@ -75,7 +75,7 @@ def canonical_entry(entry: Any) -> dict[str, Any] | None:
     name = entry.get("id") or entry.get("name")
     if not isinstance(name, str) or not re.fullmatch(r"[a-z0-9][a-z0-9_-]*", name):
         return None
-    file = SKILLS_DIR / name / "SKILL.md"
+    file = SKILLS_DIR / name / "SKILL.toon" if (SKILLS_DIR / name / "SKILL.toon").is_file() else SKILLS_DIR / name / "SKILL.md"
     if not file.is_file() or not file.resolve().is_relative_to(SKILLS_DIR.resolve()):
         return None
     description = entry.get("description", "")
@@ -99,6 +99,8 @@ def runbook_file(manifest: Path) -> Path:
     if metadata["prompt-source"] != "prompt.toon":
         raise ValueError(f"Unsupported prompt source: {manifest}")
     source = manifest.with_name("prompt.toon")
+    if manifest.name == "SKILL.toon":
+        return source
     content = manifest.read_text(encoding="utf-8")
     if source.read_text(encoding="utf-8") != content[FRONTMATTER.match(content).end():]:
         raise ValueError(f"Host manifest differs from {source}")

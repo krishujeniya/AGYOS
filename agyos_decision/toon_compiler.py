@@ -44,12 +44,13 @@ def minify_toon(toon_text: str) -> str:
 def compile_skill_to_toon(skill_name: str, max_instruction_lines: int = 25, compact: bool = False) -> str:
     """Compile a skill runbook into a compact TOON skill card."""
     directory = REPO_ROOT / ".agents" / "skills" / skill_name
-    if (directory / "SKILL.md").is_file():
+    skill_file = directory / "SKILL.toon" if (directory / "SKILL.toon").is_file() else directory / "SKILL.md"
+    if skill_file.is_file():
         from .catalog import read_metadata, runbook_file
 
-        source = runbook_file(directory / "SKILL.md")
+        source = runbook_file(skill_file)
         if source.name == "prompt.toon":
-            desc = read_metadata(directory / "SKILL.md")["description"]
+            desc = read_metadata(skill_file)["description"]
             instructions = source.read_text(encoding="utf-8").strip()
             lines = [
                 f'skill: "{skill_name}"',
@@ -60,7 +61,6 @@ def compile_skill_to_toon(skill_name: str, max_instruction_lines: int = 25, comp
             raw = "\n".join(lines)
             return minify_toon(raw) if compact else raw
 
-    skill_file = REPO_ROOT / ".agents" / "skills" / skill_name / "SKILL.md"
     if not skill_file.is_file():
         return f'skill: "{skill_name}"\nstatus: not_found'
 
@@ -260,17 +260,17 @@ def minify_xml(xml_text: str) -> str:
 def compile_skill_to_xml(skill_name: str, max_instruction_lines: int = 25, compact: bool = False) -> str:
     """Compile a raw physical skill runbook into a compact <agyos_skill> XML card."""
     directory = REPO_ROOT / ".agents" / "skills" / skill_name
-    if (directory / "SKILL.md").is_file():
+    skill_file = directory / "SKILL.toon" if (directory / "SKILL.toon").is_file() else directory / "SKILL.md"
+    if skill_file.is_file():
         from .catalog import read_metadata, runbook_file
 
-        source = runbook_file(directory / "SKILL.md")
+        source = runbook_file(skill_file)
         if source.name == "prompt.toon":
             card = ET.Element("agyos_skill", id=skill_name)
-            ET.SubElement(card, "intent").text = read_metadata(directory / "SKILL.md")["description"]
+            ET.SubElement(card, "intent").text = read_metadata(skill_file)["description"]
             ET.SubElement(card, "instructions").text = source.read_text(encoding="utf-8")
             return ET.tostring(card, encoding="unicode")
 
-    skill_file = REPO_ROOT / ".agents" / "skills" / skill_name / "SKILL.md"
     if not skill_file.is_file():
         return f'<agyos_skill id="{skill_name}" status="not_found" />'
 

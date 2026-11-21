@@ -488,7 +488,7 @@ def load_catalog() -> List[Dict[str, Any]]:
             if not isinstance(entries, list):
                 continue
             valid = [item for entry in entries if (item := canonical_entry(entry))]
-            physical_names = {p.parent.name for p in (REPO_ROOT / ".agents/skills").glob("*/SKILL.md")}
+            physical_names = {p.parent.name for p in (REPO_ROOT / ".agents/skills").glob("*/SKILL.toon")} or {p.parent.name for p in (REPO_ROOT / ".agents/skills").glob("*/SKILL.md")}
             if {s["name"] for s in valid} == physical_names and len(valid) == len(physical_names):
                 entries_list = valid
                 break
@@ -756,7 +756,7 @@ def decide_skill(query: str) -> Dict[str, Any]:
         fallback = False
 
     skill_path = primary.get("path", "")
-    runbook_path = f"{skill_path}/SKILL.md"
+    runbook_path = f"{skill_path}/SKILL.toon" if (REPO_ROOT / f"{skill_path}/SKILL.toon").is_file() else f"{skill_path}/SKILL.md"
     manifest = REPO_ROOT / runbook_path
     if manifest.is_file():
         runbook_path = str(runbook_file(manifest).relative_to(REPO_ROOT))

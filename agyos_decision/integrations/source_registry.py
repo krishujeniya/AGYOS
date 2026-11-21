@@ -52,7 +52,7 @@ def load_registry(path: Path = REGISTRY, skills_dir: Path | None = None) -> list
         skill = entry.get("primary_skill")
         if not isinstance(skill, str) or not ID_PATTERN.fullmatch(skill):
             raise ValueError("Invalid skill identifier")
-        skill_path = root / skill / "SKILL.md"
+        skill_path = root / skill / "SKILL.toon" if (root / skill / "SKILL.toon").is_file() else root / skill / "SKILL.md"
         if not skill_path.is_file() or not skill_path.resolve().is_relative_to(root.resolve()):
             raise ValueError(f"Integration maps to missing or unsafe skill: {skill}")
         rules = entry.get("routes")
