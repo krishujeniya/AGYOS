@@ -52,7 +52,7 @@ Prompt / Task Intent
 
 ## Core Capabilities
 
-### 1. 15-Crate Native Rust Kernel
+### 1. Native Rust Architecture: 13 Library Crates & 2 Application Packages
 - **High-Performance Memory Ceiling:** Bounded working set <= 256 MiB steady RSS; sub-35ms p99 routing latency.
 - **Transactional State Engine (`crates/store`):** Append-only event store, transactional outbox with monotonic fence tokens (`FenceToken`), deduplication tables, and crash recovery with RPO = 0.
 - **TOON Codec (`crates/toon-codec`):** Deterministic parser, serializer, and minifier implementing Token-Oriented Object Notation invariants.
@@ -90,9 +90,9 @@ AGYOS executes complex engineering workflows autonomously without requiring manu
 
 ---
 
-## 20-Step Qualified Rebuild Plan (Tracker.md)
+## 20-Step Qualified Rebuild Plan
 
-AGYOS has achieved certified completion across all 20 steps of the architectural rebuild specification:
+AGYOS has achieved certified completion across all 20 steps of the architectural rebuild specification (benchmark and pilot metrics represent scripted qualification test fixtures):
 
 | Step | Milestone | Delivered Components | Verification Status |
 |:---|:---|:---|:---|
@@ -103,7 +103,7 @@ AGYOS has achieved certified completion across all 20 steps of the architectural
 | **05** | Qualify TOON codec | `crates/toon-codec` (parser, encoder, round-trip tests, size ceilings) | PASS (CI run `44716773379`) |
 | **06** | Build domain & policy | `crates/domain` (TaskContracts, R0-R3 risk tiers, exact balance ledger) | PASS (CI run `44717789498`) |
 | **07** | Transactional recovery | `crates/store` (event log, outbox, dedup table, fence tokens, snapshots) | PASS (CI run `44718501229`) |
-| **08** | AGY CLI integration | `crates/broker` (isolated AGY workspace projection, broker confinement) | PASS (CI run `44719232352`) |
+| **08** | AGY CLI integration | `crates/agy` (isolated AGY workspace projection, broker confinement) | PASS (CI run `44719232352`) |
 | **09** | First internal slice | Client proposal drafting, checker review, crash recovery survival | PASS (CI run `44719888802`) |
 | **10** | Reconcile catalogs | `crates/catalog` (reconciled 2,549 source paths, 4,620 aliases, 104 roles) | PASS (CI run `44720797333`) |
 | **11** | Place & qualify skills | 153 skills across 27 homes with 12 department end-to-end fixtures | PASS (CI run `44723974439`) |
@@ -129,7 +129,7 @@ AGYOS has achieved certified completion across all 20 steps of the architectural
 │   ├── toon-codec/              # Pure TOON format encoder, decoder & conformance tests
 │   ├── domain/                  # Contracts, R0-R3 risk boundaries, balance ledger
 │   ├── store/                   # Event log, transactional outbox, deduplication, fence tokens
-│   ├── broker/                  # AGY CLI boundary projection & tool broker confinement
+│   ├── agy/                     # AGY CLI boundary projection & tool broker confinement
 │   ├── catalog/                 # 104-role registry, 153 canonical skills, phrase router
 │   ├── runtime/                 # Progressive retrieval, Howard EVPI, context budget, councils, pilot
 │   ├── adapters/                # 8 domain adapters (CRM, billing, legal, hiring, Git, models, web)
@@ -138,6 +138,7 @@ AGYOS has achieved certified completion across all 20 steps of the architectural
 │   ├── release/                 # Release gates, live cutover guard, discovery-to-handover engine
 │   └── maintenance/             # Canary observation, vendor-free export/restore, 2027 RDR engine
 ├── apps/                        # Production applications
+│   ├── agyos/                   # Native CLI application
 │   └── worker/                  # Heavy hosted worker pool, fair queue admission, AES-256-GCM
 ├── .agents/                     # Autonomous agent definitions, workflows, rules, and skills
 │   ├── agents/                  # 104 role agent profiles in TOON/XML format

@@ -15,6 +15,10 @@ catalog = { path = "../catalog" }
 governance = { path = "../governance" }
 toon-codec = { path = "../toon-codec" }
 
+[features]
+default = []
+test-support = []
+
 [lib]
 name = "runtime"
 path = "src/lib.rs"

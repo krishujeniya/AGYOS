@@ -16,6 +16,10 @@ domain = { path = "../domain" }
 store = { path = "../store" }
 toon-codec = { path = "../toon-codec" }
 
+[features]
+default = []
+test-support = []
+
 [lib]
 name = "migration"
 path = "src/lib.rs"

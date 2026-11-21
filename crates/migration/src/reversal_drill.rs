@@ -30,8 +30,10 @@ pub struct ReversalDrillResult {
     pub drill_passed: bool,
 }
 
+#[cfg(any(test, feature = "test-support"))]
 pub struct ReversalDrillHarness;
 
+#[cfg(any(test, feature = "test-support"))]
 impl ReversalDrillHarness {
     /// Executes the full cutover rollback qualification drill with failure injection.
     pub fn run_drill(
