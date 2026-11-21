@@ -194,7 +194,7 @@ impl PilotEngine {
         let wrong_accepted = 0;
         let mut good_shown = 0;
         let good_rejected = 0;
-        let mut observed_errors = Vec::new();
+        let observed_errors = Vec::new();
 
         for op in &operators {
             *cohort_counts.entry(op.cohort.as_str().to_string()).or_insert(0) += 1;
@@ -500,7 +500,7 @@ fn test_edit_invalidates_prior_confirmation_and_escape_withdraws_consent() {
     let operator = PilotOperator {
         id: "op-test-edit".to_string(),
         name: "Test Operator".to_string(),
-        cohort: PilotCohort::EnglishKeyboardOnly,
+        cohort: PilotCohort::EnglishAssistive,
         is_assistive_tech_user: false,
         is_first_time_user: true,
         identified_external_authorizer: Some("human_operator".to_string()),

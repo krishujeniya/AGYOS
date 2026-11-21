@@ -704,9 +704,17 @@ def execute_reflect(context: CycleContext, root_dir: Path = ROOT) -> CycleContex
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
     # Determine if any prior stage failed, was blocked, or did not pass
+    prior_stages = [
+        AutonomousCycleStage.THINK.value,
+        AutonomousCycleStage.PLAN.value,
+        AutonomousCycleStage.BUILD.value,
+        AutonomousCycleStage.REVIEW.value,
+        AutonomousCycleStage.TEST.value,
+        AutonomousCycleStage.SHIP.value,
+    ]
     has_failed_stage = any(
-        s in (StageStatus.FAIL.value, StageStatus.BLOCKED.value, StageStatus.PENDING.value)
-        for s in context.stage_statuses.values()
+        context.stage_statuses.get(s) in (StageStatus.FAIL.value, StageStatus.BLOCKED.value, StageStatus.PENDING.value)
+        for s in prior_stages
     ) or context.test_verdict != "PASS" or context.review_verdict != "PASS" or context.delivery_status.startswith("BLOCKED") or context.stage_statuses.get(AutonomousCycleStage.SHIP.value) != StageStatus.PASS.value
 
     if has_failed_stage:

@@ -53,9 +53,9 @@ fn main() {
         iteration += 1;
 
         // Dispatch and drain any available queued jobs
-        let mut drained_in_batch = 0;
+        let mut _drained_in_batch = 0;
         while let Some(job) = admission.dispatch_next() {
-            drained_in_batch += 1;
+            _drained_in_batch += 1;
             // Acquire lease for dispatched job
             let current_epoch_s = std::time::SystemTime::now()
                 .duration_since(std::time::UNIX_EPOCH)
