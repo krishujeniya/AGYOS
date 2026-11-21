@@ -13,7 +13,7 @@ import yaml
 YAML_LOADER = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
 
 from agyos_decision import skills_router as router
-from agyos_decision.catalog import canonical_entry
+from agyos_decision.catalog import canonical_entry, read_metadata
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -153,18 +153,7 @@ class CatalogTests(unittest.TestCase):
         skill_files = list((ROOT / ".agents/skills").glob("*/SKILL.toon")) or list((ROOT / ".agents/skills").glob("*/SKILL.md"))
         for path in skill_files:
             with self.subTest(skill=path.parent.name):
-                raw = path.read_text(encoding="utf-8")
-                if raw.startswith('mode: "100644"\nheader: '):
-                    import json
-                    header_str = json.loads(raw.split("header: ", 1)[1].strip())
-                    metadata = yaml.load(header_str.strip().removeprefix("---").split("\n---")[0], Loader=YAML_LOADER)
-                elif raw.startswith('mode: "100644"\ntext: '):
-                    import json
-                    text = json.loads(raw.split("text: ", 1)[1].strip())
-                    metadata = yaml.load(text.split("\n---\n", 1)[0][4:], Loader=YAML_LOADER)
-                else:
-                    text = raw
-                    metadata = yaml.load(text.split("\n---\n", 1)[0][4:], Loader=YAML_LOADER)
+                metadata = read_metadata(path)
                 self.assertEqual(metadata["name"], path.parent.name)
                 self.assertIsInstance(metadata["description"], str)
                 self.assertTrue(metadata["description"].strip())
