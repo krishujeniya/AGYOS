@@ -147,5 +147,110 @@
     headings.forEach(h=>tocObserver.observe(h));
   }
 
+  // Skills Catalog Explorer Controller
+  const skillsGrid = doc.querySelector('#skills-grid');
+  if (skillsGrid) {
+    let catalogSkills = [];
+    let catalogFilter = 'all';
+    let catalogQuery = '';
+    let visibleLimit = 36;
+    const countEl = doc.querySelector('#skills-count');
+    const searchEl = doc.querySelector('#explorer-search');
+    const filterTabs = doc.querySelectorAll('.filter-tab');
+    const loadMoreBtn = doc.querySelector('#load-more-skills');
+
+    async function fetchSkillsCatalog() {
+      try {
+        const resp = await fetch(new URL('skills-data.json', script.src));
+        if (resp.ok) {
+          const data = await resp.json();
+          return Array.isArray(data) ? data : (data.skills || []);
+        }
+      } catch { /* fallback */ }
+      try {
+        const resp = await fetch('skills-data.json');
+        if (resp.ok) {
+          const data = await resp.json();
+          return Array.isArray(data) ? data : (data.skills || []);
+        }
+      } catch { /* unavailable */ }
+      return [];
+    }
+
+    function filterSkills() {
+      let filtered = catalogSkills;
+      if (catalogFilter !== 'all') {
+        const f = catalogFilter.toLowerCase();
+        filtered = filtered.filter(s => (s.module || s.category || '').toLowerCase().includes(f));
+      }
+      if (catalogQuery) {
+        const q = catalogQuery.toLowerCase();
+        filtered = filtered.filter(s =>
+          (s.name || '').toLowerCase().includes(q) ||
+          (s.id || '').toLowerCase().includes(q) ||
+          (s.description || '').toLowerCase().includes(q) ||
+          (s.module || s.category || '').toLowerCase().includes(q)
+        );
+      }
+      return filtered;
+    }
+
+    function renderCatalog() {
+      const filtered = filterSkills();
+      const visible = filtered.slice(0, visibleLimit);
+
+      if (countEl) {
+        countEl.textContent = `Showing ${visible.length} of ${filtered.length.toLocaleString()} skills`;
+      }
+
+      if (visible.length === 0) {
+        skillsGrid.innerHTML = '<p class="search-hint" style="grid-column:1/-1;">No skills match your search criteria.</p>';
+      } else {
+        skillsGrid.innerHTML = visible.map(s => `
+          <article class="skill-card">
+            <div class="skill-card-header">
+              <strong class="skill-name">${escape(s.id || s.name)}</strong>
+              <span class="skill-tier tier-${s.tier || 2}">T${s.tier || 2}</span>
+            </div>
+            <p class="skill-desc">${escape(s.description || 'No description provided.')}</p>
+            <span class="skill-module">${escape(s.module || s.category || 'General')}</span>
+          </article>
+        `).join('');
+      }
+
+      if (loadMoreBtn) {
+        loadMoreBtn.style.display = filtered.length > visibleLimit ? 'inline-flex' : 'none';
+      }
+    }
+
+    searchEl?.addEventListener('input', () => {
+      catalogQuery = searchEl.value.trim();
+      visibleLimit = 36;
+      renderCatalog();
+    });
+
+    filterTabs.forEach(tab => tab.addEventListener('click', () => {
+      filterTabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      catalogFilter = tab.dataset.filter || 'all';
+      visibleLimit = 36;
+      renderCatalog();
+    }));
+
+    loadMoreBtn?.addEventListener('click', () => {
+      visibleLimit += 36;
+      renderCatalog();
+    });
+
+    fetchSkillsCatalog().then(skills => {
+      catalogSkills = skills;
+      renderCatalog();
+    });
+  }
+
   // Visual decoration removed; navigation, search, theme and copy remain functional.
 })();

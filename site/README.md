@@ -18,7 +18,7 @@ For local previews at `http://localhost:8000/`, pass `--base /` instead.
 
 `site/public-docs.json` explicitly lists public documents. Newly approved Markdown under `docs/public/` is included automatically. Other repository Markdown, tracked state files, prompt libraries, PDFs, private files, and agent instructions are not copied into `_site`. Exclusions are listed in the generated `content-inventory.json`. Keep `docs/public/` strictly public, and review every newly committed file before publication. Do not place credentials in docs or image assets.
 
-Source code for the original interactive catalog is preserved at `docs/`; the build copies its public HTML, JS, CSS, logo assets, and skills metadata into the isolated `/catalog/` route. It does not export any other repository content.
+The interactive skill catalog is templated at `site/catalog.html` and rendered into `/catalog/` using the unified `site.css` and `site.js` assets alongside `docs/skills-data.json`. The `docs/` directory is dedicated to source Markdown specifications, ADRs, and metadata datasets. The generator does not export any unapproved repository content.
 
 ## Checks
 

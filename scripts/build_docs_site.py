@@ -199,9 +199,14 @@ def build(out: Path, base: str) -> dict:
             shutil.copy2(ROOT / 'docs/assets' / asset, out / 'assets' / asset)
     catalog = out / 'catalog'
     catalog.mkdir(parents=True, exist_ok=True)
-    for asset in ('index.html','docs.js','docs.css','skills-data.json'):
-        shutil.copy2(ROOT / 'docs' / asset, catalog / asset)
+    for asset in ('skills-data.json', 'skills-data.toon'):
+        src = ROOT / 'docs' / asset
+        if src.exists():
+            shutil.copy2(src, catalog / asset)
     shutil.copytree(ROOT / 'docs/assets', catalog / 'assets', dirs_exist_ok=True)
+    catalog_template = (ROOT / 'site/catalog.html').read_text(encoding='utf-8').replace('{{BASE}}', base)
+    catalog_template = catalog_template.replace('<!-- SITE-HEADER -->', site_header(base, False)).replace('<!-- SITE-FOOTER -->', footer(base)).replace('<!-- SITE-SEARCH -->', search_dialog(base))
+    (catalog / 'index.html').write_text(template(base, 'Skill catalog', 'Search and explore 2,180 modular engineering skills in AGYOS.', URL+'catalog/', catalog_template, 'catalog-page'), encoding='utf-8')
     docs = config['documents']
     search_index = []
     inventory = []
@@ -239,6 +244,8 @@ def build(out: Path, base: str) -> dict:
     urls = [URL, URL+'catalog/'] + [URL+'docs/'+doc['slug']+'/' for doc in docs]
     (out / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+html.escape(url)+'</loc></url>' for url in urls)+'</urlset>',encoding='utf-8')
     (out / 'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: '+URL+'sitemap.xml\n',encoding='utf-8')
+    if (ROOT / 'docs/llms.txt').exists():
+        shutil.copy2(ROOT / 'docs/llms.txt', out / 'llms.txt')
     (out / '.nojekyll').touch()
     return {'pages':len(docs),'source_paths':[d['source'] for d in docs],'destination':str(out)}
 

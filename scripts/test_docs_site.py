@@ -18,6 +18,12 @@ def main():
     assert (site / 'catalog/skills-data.json').is_file(), 'Skill catalog index missing'
     assert (site / 'site.js').is_file(), 'Interaction JS missing'
     assert (site / 'site.css').is_file(), 'Site styles missing'
+    assert (site / 'llms.txt').is_file(), 'LLMs discovery text missing'
+    assert not (site / 'catalog/docs.js').exists(), 'Duplicate legacy docs.js leaked into catalog'
+    assert not (site / 'catalog/docs.css').exists(), 'Duplicate legacy docs.css leaked into catalog'
+    catalog_html = (site / 'catalog/index.html').read_text(encoding='utf-8')
+    assert 'skills-grid' in catalog_html, 'Catalog missing skills grid'
+    assert 'site.js' in catalog_html, 'Catalog not using unified site.js'
     inventory = json.loads((site / 'content-inventory.json').read_text())
     index = json.loads((site / 'search-index.json').read_text())
     assert len(index) == len(inventory['published']) >= 8, 'Public content inventory is incomplete'
