@@ -350,9 +350,8 @@ impl OperatorSessionState {
     }
 }
 
-/// Simulated external provider with controllable accessibility.
+/// Simulated external provider with controllable accessibility for qualification test fixtures.
 #[derive(Debug, Clone)]
-#[cfg(any(test, feature = "test-support"))]
 pub struct ProviderSimulator {
     pub is_accessible: bool,
     pub failure_status_code: u16,
@@ -360,7 +359,6 @@ pub struct ProviderSimulator {
     pub retry_after_s: u64,
 }
 
-#[cfg(any(test, feature = "test-support"))]
 impl ProviderSimulator {
     pub fn healthy() -> Self {
         Self {
@@ -412,7 +410,6 @@ pub struct PilotEngine;
 
 impl PilotEngine {
     /// Instantiates the 12 counterbalanced first-time operators.
-    #[cfg(any(test, feature = "test-support"))]
     pub fn get_standard_12_operator_cohort() -> Vec<PilotOperator> {
         vec![
             // Cohort A: English locale, keyboard-only, including assistive tech
@@ -517,7 +514,6 @@ impl PilotEngine {
     }
 
     /// Executes the complete Step 14 qualification pilot across all 12 operators.
-    #[cfg(any(test, feature = "test-support"))]
     pub fn run_qualification_pilot() -> PilotReport {
         let operators = Self::get_standard_12_operator_cohort();
         let mut cohort_counts = BTreeMap::new();

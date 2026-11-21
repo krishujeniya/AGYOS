@@ -14,22 +14,21 @@ pub trait EffectProvider {
     fn compensate(&mut self, effect_id: &str) -> bool;
 }
 
+/// Mock failure modes for effect qualification test fixtures.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
-#[cfg(any(test, feature = "test-support"))]
 pub enum MockFailureMode {
     NormalSuccess,
     FailBeforeDispatch,
     CrashAfterDispatchBeforeReceipt,
 }
 
-#[cfg(any(test, feature = "test-support"))]
+/// Mock fixture provider for Step 13 effect broker qualification testing.
 pub struct MockFixtureProvider {
     pub mode: MockFailureMode,
     pub dispatch_count: usize,
     pub compensate_count: usize,
 }
 
-#[cfg(any(test, feature = "test-support"))]
 impl MockFixtureProvider {
     pub fn new(mode: MockFailureMode) -> Self {
         Self {
@@ -40,7 +39,6 @@ impl MockFixtureProvider {
     }
 }
 
-#[cfg(any(test, feature = "test-support"))]
 impl EffectProvider for MockFixtureProvider {
     fn dispatch(&mut self, _effect_id: &str, _payload: &str) -> EffectOutcome {
         self.dispatch_count += 1;

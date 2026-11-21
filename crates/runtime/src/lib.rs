@@ -21,17 +21,13 @@ pub mod model_policy;
 pub mod pilot;
 pub mod routing;
 
-pub use benchmark::{ArmMetricResult, P27Arm, PairedComparisonResult};
-#[cfg(any(test, feature = "test-support"))]
-pub use benchmark::P27BenchmarkRunner;
+pub use benchmark::{ArmMetricResult, P27Arm, P27BenchmarkRunner, PairedComparisonResult};
 pub use budget::{ContextBudget, TokenSavingsEvaluator};
 pub use council::{BlindReviewCriterion, CouncilDeliberationOutcome, CouncilEngine};
 pub use evpi::{ActionDecision, EvpiEngine, EvpiParameters};
 pub use model_policy::{AdmissionController, ExecutionMode, ModelPolicyRouter, ModelTier};
 pub use pilot::{
     FocusableElement, KeyboardAction, LinearTranscript, OperatorSessionState, PilotCohort,
-    PilotEngine, PilotOperator, PilotReport, TranscriptEntry,
+    PilotEngine, PilotOperator, PilotReport, ProviderSimulator, TranscriptEntry,
 };
-#[cfg(any(test, feature = "test-support"))]
-pub use pilot::ProviderSimulator;
 pub use routing::{CandidateSkillMatch, ProgressiveRetriever, RetrievalResult};

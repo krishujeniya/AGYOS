@@ -11,13 +11,11 @@ use domain::WorkspaceId;
 use std::path::Path;
 use store::{FenceToken, TransactionalStore};
 
-/// Local nominal load profile simulating 20 operations/sec on reference 2 vCPU / 2 GiB hardware.
-#[cfg(any(test, feature = "test-support"))]
+/// Local nominal load profile simulating 20 operations/sec for Step 15 qualification testing.
 pub struct LocalLoadProfile {
     collector: RedactedMetricsCollector,
 }
 
-#[cfg(any(test, feature = "test-support"))]
 impl LocalLoadProfile {
     pub fn new() -> Self {
         Self {
@@ -75,10 +73,8 @@ impl LocalLoadProfile {
 }
 
 /// Local fault simulation profile testing resilience against process crash and stale fences.
-#[cfg(any(test, feature = "test-support"))]
 pub struct LocalFaultProfile;
 
-#[cfg(any(test, feature = "test-support"))]
 impl LocalFaultProfile {
     /// Tests that stale fence tokens are rejected and monotonic leader fencing is enforced.
     pub fn test_fence_split_brain(base_dir: &Path, ws_id: &WorkspaceId) -> Result<(), String> {
@@ -108,10 +104,8 @@ impl LocalFaultProfile {
 }
 
 /// Local offline profile verifying complete offline execution with zero network dependence.
-#[cfg(any(test, feature = "test-support"))]
 pub struct LocalOfflineProfile;
 
-#[cfg(any(test, feature = "test-support"))]
 impl LocalOfflineProfile {
     /// Verifies deterministic local execution without outbound network access or live API calls.
     pub fn verify_offline_independence() -> Result<bool, String> {

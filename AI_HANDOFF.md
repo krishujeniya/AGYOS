@@ -6,14 +6,8 @@
   - Broken External Links Purged: Removed 22 broken directory symlinks under `.agents/rules/` pointing to non-portable `/home/ai/.local/share/ecc/rules/...`.
   - Upstream Demonstration Media Purged: Removed 5 large unused demo media files (13.7 MiB) from `.agents/skills/trending-tech-tracker/assets/` (`agent-code-rap.mp3`, `aging-portrait.jpeg`, `dog-as-human.png`, `dog-original.jpeg`, `swimmom-mockup.jpeg`).
   - Dead Runtime Helpers Retired: Removed `scripts/agyos-runtime/lib/ecc_dashboard_runtime.py` (legacy Tkinter GUI helper with zero callers).
-  - Identical Resource Consolidation: Consolidated byte-identical resources behind single maintained canonical sources via relative symlinks:
-    - `.agents/skills/refactor-clean/resources/implementation-playbook.toon` -> `../../codebase-refactor/resources/implementation-playbook.toon`
-    - `.agents/skills/deps-audit/resources/implementation-playbook.toon` -> `../../dependency-management-deps-audit/resources/implementation-playbook.toon`
-    - `.agents/skills/word-document-processing/ooxml.toon` -> `../docx-official/ooxml.toon`
-    - `.agents/skills/powerpoint-document-processing/html2pptx.toon` -> `../pptx-official/html2pptx.toon`
-    - `.agents/skills/pptx-official/ooxml/scripts/validation/base.py` -> `../../../docx-official/ooxml/scripts/validation/base.py`
-  - Branding Assets Consolidated: Replaced 7 duplicate plugin `logo.svg` copies with relative symlinks to canonical `.agents/plugins/agyos-core/assets/logo.svg`.
-  - Production Library Qualification Isolation: Isolated simulation-only harnesses (`ProviderSimulator` in `crates/runtime`, `P27BenchmarkRunner` in `crates/runtime`, `LocalLoadProfile`/`LocalFaultProfile`/`LocalOfflineProfile` in `crates/telemetry`, `MockFixtureProvider` in `crates/effects`, `ReversalDrillHarness` in `crates/migration`) behind `#[cfg(any(test, feature = "test-support"))]` so production builds only export operational logic while test qualification remains 100% covered.
+  - Identical Resource Consolidation: Consolidated branding assets by replacing 7 duplicate plugin `logo.svg` copies with relative symlinks to canonical `.agents/plugins/agyos-core/assets/logo.svg`, while preserving regular `.toon` file security integrity required by `materialize-documents.mjs`.
+  - Production Library Qualification Documentation: Explicitly documented and categorized simulation-only harnesses (`ProviderSimulator` and `P27BenchmarkRunner` in `crates/runtime`, `LocalLoadProfile`/`LocalFaultProfile`/`LocalOfflineProfile` in `crates/telemetry`, `MockFixtureProvider` in `crates/effects`, `ReversalDrillHarness` in `crates/migration`) as test qualification fixtures while preserving full integration test suite coverage.
   - State and README Truth Alignment: Corrected `README.md` and `.agents/state/CURRENT.toon` to accurately identify 13 library crates and 2 application packages, corrected `crates/broker` to `crates/agy`, clarified scripted qualification fixture results, and removed stale workstation paths.
 - Verification evidence: `git diff --check` clean, zero syntax errors, static inspection verified; zero local heavy builds/tests run (CI/CD strictly via GitHub Actions).
 - Exact next command: `git push origin main`

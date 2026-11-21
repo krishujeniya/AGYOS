@@ -8,7 +8,5 @@ pub mod provider;
 pub mod saga;
 
 pub use broker::EffectBroker;
-pub use provider::{EffectOutcome, EffectProvider};
-#[cfg(any(test, feature = "test-support"))]
-pub use provider::{MockFailureMode, MockFixtureProvider};
+pub use provider::{EffectOutcome, EffectProvider, MockFailureMode, MockFixtureProvider};
 pub use saga::SagaCoordinator;

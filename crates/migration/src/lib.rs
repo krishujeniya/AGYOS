@@ -26,6 +26,4 @@ pub use mapper::{
     MappedCanonicalState, StateMapper,
 };
 pub use reconciler::{ShadowReaderReconciler, SignedDifferenceLedger, StateDiscrepancy};
-pub use reversal_drill::ReversalDrillResult;
-#[cfg(any(test, feature = "test-support"))]
-pub use reversal_drill::ReversalDrillHarness;
+pub use reversal_drill::{ReversalDrillHarness, ReversalDrillResult};

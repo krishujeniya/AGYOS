@@ -13,6 +13,5 @@ pub mod runbook;
 
 pub use backup::{BackupManifest, LocalBackupEngine};
 pub use metrics::{MetricClass, OperationSample, RedactedMetricsCollector};
-#[cfg(any(test, feature = "test-support"))]
 pub use profiles::{LocalFaultProfile, LocalLoadProfile, LocalOfflineProfile};
 pub use runbook::{IncidentResponsePlan, IncidentSeverity, OnCallRunbook};

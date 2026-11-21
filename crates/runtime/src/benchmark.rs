@@ -43,10 +43,9 @@ pub struct PairedComparisonResult {
     pub token_savings_pct: f64,
 }
 
-#[cfg(any(test, feature = "test-support"))]
+/// The Four P27 Arms Comparative Evaluation Benchmark test fixture harness.
 pub struct P27BenchmarkRunner;
 
-#[cfg(any(test, feature = "test-support"))]
 impl P27BenchmarkRunner {
     /// Evaluate a high-risk matched task across all 4 P27 arms.
     /// In high-risk scenarios, council catches critical edge cases and security defects.
