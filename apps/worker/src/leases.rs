@@ -58,6 +58,10 @@ impl WorkerPoolLeaseManager {
         self.total_capacity
     }
 
+    pub fn worker_count(&self) -> usize {
+        self.worker_count
+    }
+
     pub fn active_lease_count(&self) -> usize {
         self.active_leases.len()
     }
