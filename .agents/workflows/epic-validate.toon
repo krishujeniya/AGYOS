@@ -1,2 +1,0 @@
-mode: "100644"
-text: "---\ndescription: Validate epic readiness, dependencies, and coordination policy.\n---\n\n# /epic-validate\n\nValidate a single epic issue before publishing or review handoff.\n\n```bash\nnode scripts/github-coordination.js validate <issue-number> --repo <owner/repo>\n```\n\nWhat this checks:\n\n1. Coordination state exists and is parseable.\n2. Validation state is satisfied by policy.\n3. Declared dependencies are closed.\n4. The epic is ready for the next workflow stage.\n\nCompatibility aliases:\n\n- `/quality-gate`\n"

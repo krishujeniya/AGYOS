@@ -129,7 +129,7 @@ class Renderer(mistune.HTMLRenderer):
         if full.startswith(('http:', 'https:')):
             return '#'
         if full.lower().endswith('.md'):
-            return GITHUB + quote(full + '.toon', safe='/')
+            return GITHUB + quote(full, safe='/')
         suffix = ('#' + quote(p.fragment)) if p.fragment else ''
         return GITHUB + quote(full, safe='/') + suffix
 
@@ -207,7 +207,7 @@ def build(out: Path, base: str) -> dict:
     inventory = []
     for i, doc in enumerate(docs):
         source = ROOT / doc['source']
-        tracked_source = doc['source'] + ('.toon' if source.suffix.lower() == '.md' else '')
+        tracked_source = doc['source']
         raw = source_text(source)
         renderer = Renderer(doc['source'], routes, base)
         md = mistune.create_markdown(renderer=renderer, plugins=['table', 'strikethrough', 'url', 'task_lists'])

@@ -1,2 +1,0 @@
-mode: "100644"
-text: "---\ntrigger: glob\nglobs: \"**/*.go,**/go.mod,**/go.sum\"\n---\n# Go Hooks\n\n> This file extends [common/hooks.md](common-hooks.md) with Go specific content.\n\n## PostToolUse Hooks\n\nConfigure in `~/.claude/settings.json`:\n\n- **gofmt/goimports**: Auto-format `.go` files after edit\n- **go vet**: Run static analysis after editing `.go` files\n- **staticcheck**: Run extended static checks on modified packages\n"

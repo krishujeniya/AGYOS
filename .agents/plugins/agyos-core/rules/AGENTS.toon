@@ -1,2 +1,0 @@
-mode: "100644"
-text: "# AGYOS SDLC Standards\n- Follow contract-first API design and maintain specification documents before mutating code.\n- Enforce clean separation of concerns and layered architecture."

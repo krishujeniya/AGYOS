@@ -1,3 +1,16 @@
+# AGYOS handoff: remove duplicate .toon files for all GitHub markdown documents (2026-11-21)
+
+- Task: Remove all duplicate companion `.toon` files corresponding to GitHub-rendered markdown documents (`README.md`, `AI_HANDOFF.md`, `DEPLOYMENT.md`, `SECURITY.md`, `AGENTS.md`, `GEMINI.md`, `TRACKER.md`, `docs/**/*.md`, `.agents/rules/*.md`, `.agents/agents/*.md`, `.agents/workflows/*.md`, `.agents/state/checkpoints/*.md`, etc.) both locally and on GitHub tracking, keeping skills strictly in pure TOON format.
+- Branch: `main`.
+- Delivered changes:
+  - Companion TOON Purge: Deleted 708 duplicate `.toon` companion files across root, docs, rules, agents, workflows, and checkpoints whose authoritative sources are directly maintained and rendered as markdown on GitHub.
+  - Docs Link Alignment: Updated `scripts/build_docs_site.py` to point GitHub source links directly to canonical markdown files instead of obsolete `.toon` paths.
+  - Format & Invariants: All 2,289 skills remain strictly in `.toon` format (`git ls-files -- '.agents/skills/**.md'` returns 0), zero trailing whitespace (`git diff --check` clean), and pure UV execution.
+- Verification evidence: static read-only AST compilation and git diff check passed; zero local builds/tests run (CI/CD strictly via GitHub Actions).
+- Exact next command: `git status --short --branch`
+
+---
+
 # AGYOS handoff: native TOON catalog routing, local skill cleanup, and AGY CLI integration (2026-11-21)
 
 - Task: Synchronize local workspace to match GitHub tracking (zero local skill markdown files), upgrade decision router to resolve native `.toon` skill manifests directly, purge legacy local artifacts, and configure AGY CLI runtime environment with all 13 plugins and UV hooks.

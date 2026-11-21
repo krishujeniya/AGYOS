@@ -1,2 +1,0 @@
-mode: "100644"
-text: "---\ndescription: Break an epic into task children without creating task branches.\n---\n\n# /epic-decompose\n\nReconcile the task breakdown for one epic issue.\n\n```bash\nnode scripts/github-coordination.js decompose <issue-number> --repo <owner/repo>\n```\n\nWhat this does:\n\n1. Reads the epic issue body for task checklists and dependency references.\n2. Stores the decomposition in the coordination block.\n3. Leaves task branches out of the workflow.\n4. Appends a concise audit comment.\n\nCompatibility aliases:\n\n- `/plan`\n- `/prp-plan`\n"

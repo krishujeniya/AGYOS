@@ -1,2 +1,0 @@
-mode: "100644"
-text: "# AGYOS Governance Spine\n- Enforce the 5-Gate Workflow: UNDERSTAND -> ANALYZE -> PLAN -> IMPLEMENT -> VERIFY.\n- Never write code on speculation; inspect manifests and existing files first.\n- Strictly adhere to declared scope boundaries."

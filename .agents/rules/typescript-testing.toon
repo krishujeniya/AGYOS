@@ -1,2 +1,0 @@
-mode: "100644"
-text: "---\ntrigger: glob\nglobs: \"**/*.ts,**/*.tsx,**/*.js,**/*.jsx\"\n---\n# TypeScript/JavaScript Testing\n\n> This file extends [common/testing.md](common-testing.md) with TypeScript/JavaScript specific content.\n\n## E2E Testing\n\nUse **Playwright** as the E2E testing framework for critical user flows.\n\n## Agent Support\n\n- **e2e-runner** - Playwright E2E testing specialist\n"

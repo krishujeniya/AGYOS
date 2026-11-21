@@ -1,2 +1,0 @@
-mode: "100644"
-text: "---\ndescription: Sweep blocked epic issues and reopen anything whose dependencies are closed.\n---\n\n# /epic-unblock\n\nSweep blocked epics whose declared dependencies are complete.\n\n```bash\nnode scripts/github-coordination.js unblock --repo <owner/repo>\n```\n\nWhat this does:\n\n1. Scans epic issues in the repository.\n2. Checks each blocked epic's dependency list.\n3. Moves fully unblocked epics to ready.\n4. Updates labels, comments, and local snapshots.\n\nCompatibility aliases:\n\n- `/loop-status`\n"

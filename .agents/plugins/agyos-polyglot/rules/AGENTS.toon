@@ -1,2 +1,0 @@
-mode: "100644"
-text: "# Polyglot Engineering Standards\n- Keep functions under 50 lines with a single responsibility.\n- Keep source files under the 800-line maintainability ceiling.\n- Enforce immutability: return new data structures; never mutate in-place."
