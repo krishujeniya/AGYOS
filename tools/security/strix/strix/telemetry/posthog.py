@@ -22,7 +22,7 @@ if TYPE_CHECKING:
 
 logger = logging.getLogger(__name__)
 
-_POSTHOG_PUBLIC_API_KEY = "phc_7rO3XRuNT5sgSKAl6HDIrWdSGh1COzxw0vxVIAR6vVZ"
+_POSTHOG_PUBLIC_API_KEY = os.environ.get("POSTHOG_API_KEY", "")
 _POSTHOG_HOST = "https://us.i.posthog.com"
 
 

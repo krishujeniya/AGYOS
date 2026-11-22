@@ -244,13 +244,13 @@ def write_seo_files(skills):
     sitemap_out = os.path.join(DOCS_DIR, "sitemap.xml")
     modules = ["overview", "installation", "architecture", "governance", "model-router", "pods", "decision", "research", "security", "vibe-faang", "council", "verification", "explorer", "docs"]
     sitemap_urls = [
-        f'  <url>\n    <loc>https://krishujeniya.github.io/AGYOS/#{m}</loc>\n    <lastmod>2026-11-08</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.9</priority>\n  </url>'
+        f'  <url>\n    <loc>https://agyos-docs.pages.dev/#{m}</loc>\n    <lastmod>2026-11-08</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.9</priority>\n  </url>'
         for m in modules
     ]
     sitemap_content = f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://krishujeniya.github.io/AGYOS/</loc>
+    <loc>https://agyos-docs.pages.dev/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -264,7 +264,7 @@ def write_seo_files(skills):
 
     robots_out = os.path.join(DOCS_DIR, "robots.txt")
     with open(robots_out, "w", encoding="utf-8") as f:
-        f.write("User-agent: *\nAllow: /\n\nSitemap: https://krishujeniya.github.io/AGYOS/sitemap.xml\n")
+        f.write("User-agent: *\nAllow: /\n\nSitemap: https://agyos-docs.pages.dev/sitemap.xml\n")
     print(f"Saved: {robots_out}")
 
     llms_out = os.path.join(DOCS_DIR, "llms.txt")
@@ -293,7 +293,7 @@ def write_seo_files(skills):
 
 ## Structured Skill Catalog
 
-Access the complete JSON catalog at https://krishujeniya.github.io/AGYOS/skills-data.json
+Access the complete JSON catalog at https://agyos-docs.pages.dev/skills-data.json
 
 ## Skill Execution Contract
 

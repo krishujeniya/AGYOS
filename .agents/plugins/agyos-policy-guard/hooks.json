@@ -41,5 +41,21 @@
         "timeout": 15
       }
     ]
-  }
+  },
+  "hooks": [
+    {
+      "event": "PreToolUse",
+      "matcher": "write_file|edit_file",
+      "command": "uv run scripts/lint_toon.py --check-path"
+    },
+    {
+      "event": "PostToolUse",
+      "matcher": "write_file|edit_file",
+      "command": "uv run scripts/lint_toon.py --lint-changed"
+    },
+    {
+      "event": "Stop",
+      "command": "uv run scripts/lint_toon.py --summary"
+    }
+  ]
 }
