@@ -83,3 +83,10 @@ tools/video/**/SKILL.md
 tools/video/**/styles/**.md
 tools/video/**/styles/**/*.md
 /.agyos-documents-state.json
+
+# Cloudflare & Secret Guardrails
+.env.local
+.env.*.local
+.dev.vars
+.wrangler/
+.vercel/

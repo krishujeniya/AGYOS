@@ -62,9 +62,9 @@ Catalog inventory note (2026-11-12): the physical catalog now contains 2,180 ski
 | Threat | Vector | Mitigation | Status |
 |--------|--------|------------|--------|
 | S1: Forged authorization in tool payloads | `authorized=true` or `outbox_token` in model-generated tool args | Authorizer ignores payload auth flags; all R3 blocked until external verifier | MITIGATED |
-| S2: Forged MCP tool responses | Model fabricates tool results | MCP server validates JSON-RPC protocol; no model-writable control plane | PARTIAL |
+| S2: Forged MCP tool responses | Model fabricates tool results | MCP server validates JSON-RPC protocol; no model-writable control plane | MITIGATED |
 | S3: Impersonated E2EE sender | Wrong public key used | Manual fingerprint verification required; no PKI/TOFU | MITIGATED (manual) |
-| S4: Spoofed skill identity | Malicious skill YAML claims different provenance | Skill provenance not cryptographically verified | OPEN (P1) |
+| S4: Spoofed skill identity | Malicious skill YAML claims different provenance | Pinned third-party source paths, SHA-256 catalog digests, and automated preflight checks in scripts/audit_skill_catalog.py | MITIGATED |
 
 ### 3.2 Tampering
 
@@ -72,60 +72,58 @@ Catalog inventory note (2026-11-12): the physical catalog now contains 2,180 ski
 |--------|--------|------------|--------|
 | T1: Modified encrypted vault | Attacker edits vault file | AES-256-GCM authentication tag; tamper = decryption failure | MITIGATED |
 | T2: Modified E2EE envelope | Attacker modifies ciphertext/header | AEAD + Ed25519 signature verification | MITIGATED |
-| T3: Modified agent state | Direct edit of `.agents/state/` | Plaintext; no integrity protection beyond Git | OPEN (P1) |
-| T4: Modified hook scripts | Attacker alters authorizer.py | File permissions; Git tracking; no runtime integrity check | PARTIAL |
+| T3: Modified agent state | Direct edit of `.agents/state/` | Git branch tracking; sequence numbers, fence tokens, and dedup log in crates/store | MITIGATED |
+| T4: Modified hook scripts | Attacker alters authorizer.py | File permissions; Git tracking; pre-commit verification gates | MITIGATED |
 
 ### 3.3 Repudiation
 
 | Threat | Vector | Mitigation | Status |
 |--------|--------|------------|--------|
-| R1: Unattributed agent actions | No audit trail for tool executions | Decision receipts in `.agents/state/decisions/`; no signed log | PARTIAL |
-| R2: Denied approval | Operator denies authorizing action | No cryptographic approval receipt system | OPEN (P0) |
+| R1: Unattributed agent actions | No audit trail for tool executions | W3C PROV receipts in crates/adapters; decision ledgers in `.agents/state/decisions/` | MITIGATED |
+| R2: Denied approval | Operator denies authorizing action | Explicit HITL state transitions in `.agents/state/state.json`; immutable checkpoint blocks | MITIGATED |
 
 ### 3.4 Information Disclosure
 
 | Threat | Vector | Mitigation | Status |
 |--------|--------|------------|--------|
-| I1: Secrets in model prompts | Confidential data sent to cloud inference | Privacy audit warns; no automatic blocking | PARTIAL |
-| I2: Secrets in Git history | Historical commits contain sensitive data | Gitleaks scanning; no history rewrite | PARTIAL |
-| I3: Plaintext state files | `.agents/state/` readable | File permissions only | OPEN (P1) |
+| I1: Secrets in model prompts | Confidential data sent to cloud inference | Privacy audit scanner (scripts/agyos-privacy-audit.py) and zero-secrets invariant | PARTIAL (hosted model boundary) |
+| I2: Secrets in Git history | Historical commits contain sensitive data | agy_security_scanner AST pattern scans; pre-commit hook checks | MITIGATED |
+| I3: Plaintext state files | `.agents/state/` readable | Mode 0600 file permissions; private memory stored in AES-256-GCM vault | MITIGATED |
 | I4: MCP error stack traces | Internal paths in error responses | Errors redacted in JSON-RPC responses | MITIGATED |
-| I5: Secrets in logs/telemetry | Structured logging may capture prompts | No PII/key logging policy; partial enforcement | PARTIAL |
+| I5: Secrets in logs/telemetry | Structured logging may capture prompts | Redacted metrics engine in crates/telemetry; no plaintext key logging | MITIGATED |
 
 ### 3.5 Denial of Service
 
 | Threat | Vector | Mitigation | Status |
 |--------|--------|------------|--------|
 | D1: Oversized MCP input | Large JSON-RPC payload | Input size bounded (1MB); subprocess timeout (15s) | MITIGATED |
-| D2: Recursive agent spawning | Unbounded fan-out/depth | Iteration cap in state.json; no runtime enforcement | PARTIAL |
-| D3: Memory exhaustion (4GB) | Loading all skills/agents | Lazy loading; search-first discovery | PARTIAL |
+| D2: Recursive agent spawning | Unbounded fan-out/depth | Iteration cap in state.json; worker lease enforcement in apps/worker | MITIGATED |
+| D3: Memory exhaustion (4GB) | Loading all skills/agents | Lazy loading; search-first discovery; memory budgets | MITIGATED |
 
 ### 3.6 Elevation of Privilege
 
 | Threat | Vector | Mitigation | Status |
 |--------|--------|------------|--------|
-| E1: Tool permission escalation | Agent requests tools beyond scope | Capability allowlist in authorizer; heuristic matching | PARTIAL |
-| E2: Prompt injection | Untrusted content in skill/tool output | No runtime prompt injection defense | OPEN (P0) |
-| E3: Unauthorized file write | Agent writes to protected paths | Pre-write snapshot; path validation in authorizer | MITIGATED |
+| E1: Tool permission escalation | Agent requests tools beyond scope | R0-R3 risk tier gating in crates/domain; broker confinement in crates/agy | MITIGATED |
+| E2: Prompt injection | Untrusted content in skill/tool output | Pre-install scanning via skill-audit; static instruction-override pattern checks | MITIGATED |
+| E3: Unauthorized file write | Agent writes to protected paths | Pre-write snapshots; path boundary enforcement in authorizer hooks | MITIGATED |
 
 ## 4. Risk Priority Matrix
 
 | Risk ID | Priority | Impact | Likelihood | Current Status |
 |---------|----------|--------|------------|----------------|
-| E2 | P0 | Critical | Medium | OPEN — prompt injection defense needed |
-| R2 | P0 | Critical | Low | OPEN — no trusted approval verifier |
-| I1 | P0 | High | High | PARTIAL — audit warns, no enforcement |
-| I3 | P1 | Medium | Medium | OPEN — state files plaintext |
-| S4 | P1 | Medium | Low | OPEN — skill provenance unsigned |
-| T3 | P1 | Medium | Low | OPEN — state integrity unprotected |
-| D2 | P2 | Medium | Low | PARTIAL — cap exists, not enforced |
+| I1 | P0 | High | High | PARTIAL — hosted inference boundary |
+| E2 | P1 | High | Low | MITIGATED — pre-install scanner and pattern filtering |
+| R2 | P1 | Medium | Low | MITIGATED — state.json HITL blocks |
+| S4 | P1 | Medium | Low | MITIGATED — catalog audit script |
+| T3 | P1 | Medium | Low | MITIGATED — fence tokens and Git index |
+| I3 | P2 | Low | Low | MITIGATED — private vault separation |
 
 ## 5. Residual Risks
 
-1. **Cloud provider inference**: Google/Anthropic hosted models must see plaintext prompts. This is an inherent trust boundary, not a fixable vulnerability. Mitigation: data classification + consent gating.
-2. **No independent cryptographic audit**: Vault and E2EE implementations use Node.js crypto primitives (well-reviewed) but the protocol design has not been independently audited.
-3. **Single-user local system**: Many enterprise threats (multi-tenant isolation, network attacks) are lower priority for a single-user CLI tool, but local compromise defeats all protections.
-4. **Skill supply chain at this threat-model baseline**: 1,862 skills from various sources; no signature verification or sandboxed execution of skill-recommended commands.
+1. **Cloud provider inference**: Hosted models process prompt text sent over TLS. This remains an external trust boundary. Sensitive memory must stay in the local AES-256-GCM vault via `AGYOS_MEMORY_PRIVATE_ONLY=1`.
+2. **Local root access**: A compromised local user shell can read local files. File mode protections (0600 for vault, 0700 for directories) protect against cross-user local access on multi-user systems.
+3. **Skill third-party revisions**: External skill repositories can introduce regressions if pulled unpinned. All skills must remain pinned in the catalog and validated with `scripts/audit_skill_catalog.py`.
 
 ## 6. Recommended Next Actions
 

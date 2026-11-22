@@ -10,9 +10,7 @@
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache--2.0-blue.svg" alt="Apache 2.0 license" /></a>
-  <a href="https://github.com/krishujeniya/AGYOS/actions/workflows/remote-builder.yml"><img src="https://github.com/krishujeniya/AGYOS/actions/workflows/remote-builder.yml/badge.svg" alt="Remote Builder CI" /></a>
-  <a href="https://github.com/krishujeniya/AGYOS/actions/workflows/ci.yml"><img src="https://github.com/krishujeniya/AGYOS/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
-  <a href="https://krishujeniya.github.io/AGYOS/"><img src="https://img.shields.io/badge/Docs-GitHub_Pages-blue.svg" alt="Documentation site" /></a>
+  <a href="https://img.shields.io/badge/Cloudflare_Pages-Active-F38020?style=flat-square&logo=cloudflare" alt="Documentation site" /></a>
 </p>
 
 AGYOS is an autonomous operating system and multi-agent execution kernel for AGY CLI. It is built for solopreneurs, independent operators, and autonomous agent swarms to plan, build, review, test, and ship software under strict engineering invariants.

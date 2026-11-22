@@ -170,8 +170,11 @@ def build_plugins():
         # 1. Assets and logo
         assets_dir = p_dir / "assets"
         assets_dir.mkdir(parents=True, exist_ok=True)
+        logo_dst = assets_dir / "logo.svg"
+        if logo_dst.is_symlink():
+            logo_dst.unlink()
         if LOGO_SRC.exists():
-            shutil.copyfile(LOGO_SRC, assets_dir / "logo.svg")
+            shutil.copyfile(LOGO_SRC, logo_dst)
         
         # 2. Manifest plugin.json
         manifest = {

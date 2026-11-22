@@ -194,6 +194,15 @@ class AgySecurityScanner:
                 7.8,
                 "Hardcoded secret tokens in source code bypass access control when exposed.",
             ),
+            (
+                re.compile(r"(?i)(?:postgres|mysql|mongodb(?:\+srv)?):\/\/[^\s:]+:([^\s@]+)@"),
+                "Hardcoded Database Connection URI with Plaintext Password",
+                "critical",
+                "owasp-a02-cryptographic-failures",
+                "CWE-798",
+                8.9,
+                "Exposes database instance credentials directly in source files or configuration manifests.",
+            ),
         ]
 
         for line_no, line in enumerate(lines, 1):

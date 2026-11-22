@@ -59,6 +59,32 @@ docker pull ghcr.io/krishujeniya/agyos:latest
 docker run -d --restart unless-stopped -p 8080:8080 ghcr.io/krishujeniya/agyos:latest
 ```
 
+### Method C: Vercel CLI Deployment (Preview & Edge)
+
+Deploy documentation or edge runtime to Vercel via CLI:
+```bash
+# Link project and pull environment
+vercel link --yes
+
+# Deploy preview build
+vercel deploy
+
+# Deploy production release
+vercel deploy --prod
+```
+
+### Method D: Cloudflare Free Stack Deployment (CLI)
+
+Deploy static documentation to Cloudflare Pages and configure edge bindings via Wrangler CLI:
+```bash
+# Deploy docs directory to Cloudflare Pages
+wrangler pages deploy docs --project-name=krishujeniya
+
+# Verify D1 and KV bindings status
+wrangler d1 info shared-production-db
+wrangler kv namespace list
+```
+
 ---
 
 ## 4. Health Check & Readiness Probes

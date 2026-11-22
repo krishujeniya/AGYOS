@@ -91,3 +91,20 @@ class StrixRunnerContractTests(unittest.TestCase):
             self.assertTrue((run_dir / "findings.sarif").is_file())
             self.assertTrue((run_dir / "penetration_test_report.md").is_file())
             self.assertTrue((run_dir / "vulnerabilities.json").is_file())
+
+    def test_database_uri_secret_detection(self) -> None:
+        import tempfile
+        from scripts.agy_security_scanner import AgySecurityScanner
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            tmp_path = Path(tmp_dir)
+            vuln_file = tmp_path / "config.py"
+            vuln_file.write_text("DB_URI = 'postgres://admin:SuperSecretPass123@db.internal:5432/prod'\n", encoding="utf-8")
+
+            scanner = AgySecurityScanner(target=str(tmp_path), mode="quick")
+            findings = scanner.scan()
+            self.assertGreaterEqual(len(findings), 1)
+            uri_finding = next((f for f in findings if "Database Connection URI" in f["title"]), None)
+            self.assertIsNotNone(uri_finding)
+            self.assertEqual(uri_finding["severity"], "critical")
+            self.assertEqual(uri_finding["cwe_id"], "CWE-798")

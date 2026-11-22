@@ -1,18 +1,26 @@
 # AGYOS Documentation
 
 > The Autonomous Cognitive Operating System for AGY CLI (`agy`).
-> Maintained By Krish Ujeniya (@krishujeniya).
+> Architected and Maintained by Krish Ujeniya (@krishujeniya).
+> Developer Profile: https://github.com/krishujeniya
+> Portfolio Showcase: https://krishujeniya.github.io/MostlyOutlier/
+> Documentation Portal: https://krishujeniya.github.io/AGYOS/
 > Total skills documented: 2287
 > Total modular rules: 147
 > Total role agents: 185
 > Total workflow pipelines: 99
 
+## Author & Ecosystem
+- Author: Krish Ujeniya (https://github.com/krishujeniya)
+- Canonical Person Entity: https://krishujeniya.github.io/#krishujeniya
+- Linked Projects: Hadron, WaferPulse, Somnostasis, Curavex, Hajree, Scanlark, TraceMigo, AmberClaw
+
 ## Core Operating Subsystems
 
 - AGYOS Governance: 5-Gate spine (UNDERSTAND -> ANALYZE -> PLAN -> IMPLEMENT -> VERIFY) with FastMCP JSON-RPC 2.0 daemon and adaptive fast-path.
-- Model Registry & Router: 4-Tier task mapping (T0–T3), context economics (55/20/15/10), compaction trigger at 65% utilization, and strict fail-closed privacy gating (LOCAL_INFERENCE_UNAVAILABLE).
-- Architecture Research & Standards Crosswalk: Empirical synthesis of 45 verified principles from 10 reference platforms (OpenHands, agent-zero, LangGraph, etc.) and 41 FAANG/SRE/DevOps public standards.
-- Security & Cryptographic Architecture: STRIDE threat model, at-rest AES-256-GCM private memory vault, X25519 secure envelope exchange, dual hooks (agy_os_hook.py + authorizer.py), and transparent PARTIAL_ENCRYPTION_NOT_SYSTEM_WIDE_E2EE boundaries.
+- Model Registry & Router: 4-Tier task mapping (T0–T3), context economics (55/20/15/10), compaction trigger at 65% utilization, and strict fail-closed privacy gating.
+- Architecture Research & Standards Crosswalk: Empirical synthesis of 45 verified principles from 10 reference platforms and 41 FAANG/SRE/DevOps standards.
+- Security & Cryptographic Architecture: STRIDE threat model, at-rest AES-256-GCM private memory vault, X25519 secure envelope exchange, dual hooks, and transparent boundary isolation.
 - Agent Council: Multi-model CLI consensus engine deliberating across models in parallel Bun subprocesses.
 - UI/UX & Motion: Emil Kowalski design engineering invariants: concentric border radii, frequency-based timing, compositor-only animations, and tactile micro-interactions.
 - Adversarial Verification: 51-point adversarial verification suite with monotonic test ratchets.
@@ -21,11 +29,3 @@
 ## Structured Skill Catalog
 
 Access the complete JSON catalog at https://krishujeniya.github.io/AGYOS/skills-data.json
-
-## Skill Execution Contract
-
-For every task, discover a relevant skill, read its runbook, apply applicable steps, and verify the result.
-Run `bin/agyos decide "<task>" --json --runbook` to return the selected instructions.
-MCP `agyos_decision` accepts `include_runbook: true`.
-Matching scores are heuristics, not calibrated probabilities. Runbook delivery does not certify execution.
-See https://github.com/krishujeniya/AGYOS/blob/main/docs/SKILL_ROUTING.md for the contract and limits.
