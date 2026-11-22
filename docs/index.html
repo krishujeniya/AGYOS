@@ -1,24 +1,31 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AGYOS Documentation · Autonomous Agent Operating System | Krish Ujeniya</title>
-  <meta name="description" content="AGYOS is the autonomous cognitive operating system for AGY CLI, featuring a 5-gate governance spine, multi-model agent council, and 2000+ engineering skills by Krish Ujeniya.">
+  <meta name="description" content="AGYOS is the autonomous cognitive operating system for AGY CLI, featuring a 5-gate governance spine, multi-model agent council, and 2,287 engineering skills by Krish Ujeniya.">
   <meta name="author" content="Krish Ujeniya">
   <meta name="keywords" content="AGYOS, AGY CLI, autonomous agent OS, AI agent governance, agent skills, Krish Ujeniya, Krish Ujeniya projects">
-  <meta http-equiv="refresh" content="0; url=https://krishujeniya.github.io/AGYOS/">
-  <link rel="canonical" href="https://krishujeniya.github.io/AGYOS/">
+  <link rel="canonical" href="https://agyos-docs.pages.dev/">
   <meta name="robots" content="index, follow">
 
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://krishujeniya.github.io/AGYOS/">
+  <meta property="og:url" content="https://agyos-docs.pages.dev/">
   <meta property="og:title" content="AGYOS Documentation · Autonomous Agent Operating System | Krish Ujeniya">
   <meta property="og:description" content="The Autonomous Cognitive Operating System for AGY CLI. Architected by Krish Ujeniya.">
+  <meta property="og:image" content="./assets/social-card.svg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:creator" content="@krishujeniya">
   <meta name="twitter:title" content="AGYOS Documentation · Autonomous Agent Operating System | Krish Ujeniya">
   <meta name="twitter:description" content="The Autonomous Cognitive Operating System for AGY CLI. Architected by Krish Ujeniya.">
+  <meta name="twitter:image" content="./assets/social-card.svg">
+
+  <link rel="icon" type="image/svg+xml" href="./assets/logo-mark.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 
   <!-- JSON-LD Entity & AEO Schema -->
   <script type="application/ld+json">
@@ -27,7 +34,7 @@
     "@graph": [
       {
         "@type": "Person",
-        "@id": "https://krishujeniya.github.io/#krishujeniya",
+        "@id": "https://krishujeniya.dev/#krishujeniya",
         "name": "Krish Ujeniya",
         "url": "https://github.com/krishujeniya",
         "jobTitle": "Software Engineer & AI Systems Architect",
@@ -39,18 +46,18 @@
       },
       {
         "@type": "SoftwareApplication",
-        "@id": "https://krishujeniya.github.io/AGYOS/#software",
+        "@id": "https://agyos-docs.pages.dev/#software",
         "name": "AGYOS",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Linux, macOS, Windows",
         "description": "Autonomous cognitive operating system for Antigravity CLI (agy) featuring a 5-gate lifecycle spine, FastMCP state daemon, and multi-model consensus council.",
-        "url": "https://krishujeniya.github.io/AGYOS/",
-        "author": { "@id": "https://krishujeniya.github.io/#krishujeniya" },
-        "creator": { "@id": "https://krishujeniya.github.io/#krishujeniya" }
+        "url": "https://agyos-docs.pages.dev/",
+        "author": { "@id": "https://krishujeniya.dev/#krishujeniya" },
+        "creator": { "@id": "https://krishujeniya.dev/#krishujeniya" }
       },
       {
         "@type": "FAQPage",
-        "@id": "https://krishujeniya.github.io/AGYOS/#faq",
+        "@id": "https://agyos-docs.pages.dev/#faq",
         "mainEntity": [
           {
             "@type": "Question",
@@ -73,8 +80,261 @@
     ]
   }
   </script>
+
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #111827;
+      --border: #1f2937;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --accent: #38bdf8;
+      --accent-hover: #0ea5e9;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      padding: 2rem 1.5rem;
+    }
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3rem;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+    .brand img {
+      width: 32px;
+      height: 32px;
+    }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: var(--accent);
+    }
+    .hero {
+      margin-bottom: 4rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+    .hero p {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin-bottom: 2rem;
+    }
+    .actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #0b0f19;
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .card-kicker {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .card h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .card p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .card a {
+      margin-top: auto;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .card a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      margin-top: 4rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-  <p>Redirecting to <a href="https://krishujeniya.github.io/AGYOS/">AGYOS Documentation Portal</a>…</p>
+  <div class="container">
+    <header>
+      <a href="https://agyos-docs.pages.dev/" class="brand" aria-label="AGYOS home">
+        <img src="./assets/logo-mark.svg" alt="AGYOS Logo">
+        <span>AGYOS</span>
+      </a>
+      <nav aria-label="Primary">
+        <a href="#capabilities">Platform</a>
+        <a href="#architecture">Architecture</a>
+        <a href="./skills-data.json">Skill Catalog</a>
+        <a href="https://github.com/krishujeniya/AGYOS" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero">
+        <span class="badge">Cloudflare Native Edge Runtime</span>
+        <h1>From Intent to Verified Work.</h1>
+        <p>AGYOS is the autonomous cognitive operating system for AGY CLI, featuring a 5-gate lifecycle spine, multi-model consensus council, 2,287 modular engineering skills, and fail-closed privacy gating.</p>
+        <div class="actions">
+          <a href="./skills-data.json" class="btn btn-primary">Browse Skills Catalog (JSON) ↗</a>
+          <a href="https://github.com/krishujeniya/AGYOS" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Source Code on GitHub ↗</a>
+        </div>
+      </section>
+
+      <section id="capabilities" class="grid">
+        <div class="card">
+          <span class="card-kicker">Governance</span>
+          <h2>5-Gate SDLC Spine</h2>
+          <p>Strict progressive transition through UNDERSTAND, ANALYZE, PLAN, IMPLEMENT, and VERIFY gates with monotonic test ratchets and machine evidence verification.</p>
+          <a href="https://github.com/krishujeniya/AGYOS/blob/main/docs/RULES.md">View Governance Rules ↗</a>
+        </div>
+
+        <div class="card">
+          <span class="card-kicker">Consensus</span>
+          <h2>Multi-Model Council</h2>
+          <p>Autonomous multi-model deliberation panel running parallel subprocesses for architectural decisions, trade-off evaluations, and security audits.</p>
+          <a href="https://github.com/krishujeniya/AGYOS/blob/main/docs/ARCHITECTURE.md">Read Architecture Spec ↗</a>
+        </div>
+
+        <div class="card">
+          <span class="card-kicker">Knowledge</span>
+          <h2>2,287 Engineering Skills</h2>
+          <p>Comprehensive runbook catalog covering polyglot systems, infrastructure, technical SEO, cloud sandboxes, and verification contracts.</p>
+          <a href="./ai-catalog.json">Inspect AI Catalog ↗</a>
+        </div>
+
+        <div class="card">
+          <span class="card-kicker">Security</span>
+          <h2>STRIDE Threat Model &amp; Vault</h2>
+          <p>At-rest AES-256-GCM encrypted private memory vault, X25519 secure envelope protocol, and fail-closed safety interceptor hooks.</p>
+          <a href="https://github.com/krishujeniya/AGYOS/blob/main/docs/security/THREAT_MODEL.md">Threat Model &amp; Controls ↗</a>
+        </div>
+
+        <div class="card">
+          <span class="card-kicker">Routing</span>
+          <h2>4-Tier Model Router</h2>
+          <p>Automated workload complexity assessment (T0 to T3) enforcing context budget economics (55/20/15/10) and strict privacy fail-closed protection.</p>
+          <a href="./llms.txt">View LLMs Discovery Text ↗</a>
+        </div>
+
+        <div class="card">
+          <span class="card-kicker">Operations</span>
+          <h2>Cloudflare Pages Edge</h2>
+          <p>Pure Cloudflare-native deployment with zero Vercel dependencies, zero GitHub Pages redirects, and automated CI/CD validation via GitHub Actions.</p>
+          <a href="./sitemap.xml">Inspect Sitemap XML ↗</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Open-source autonomous cognitive operating system by <a href="https://krishujeniya.dev/#krishujeniya" target="_blank" rel="noopener noreferrer">Krish Ujeniya</a>.</span>
+      <span>Served directly via Cloudflare Pages.</span>
+    </footer>
+  </div>
 </body>
 </html>

@@ -215,7 +215,7 @@ def write_json_files(skills):
     catalog_data = {
         "name": "AGYOS",
         "description": "The Autonomous Cognitive Operating System for AGY CLI.",
-        "url": "https://krishujeniya.github.io/AGYOS/",
+        "url": "https://agyos-docs.pages.dev/",
         "version": "3.1.0",
         "total_skills": len(skills),
         "modules": [

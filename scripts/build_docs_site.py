@@ -15,7 +15,7 @@ import mistune
 
 ROOT = Path(__file__).resolve().parents[1]
 GITHUB = 'https://github.com/krishujeniya/AGYOS/blob/main/'
-URL = 'https://krishujeniya.github.io/AGYOS/'
+URL = 'https://agyos-docs.pages.dev/'
 
 
 def slugify(text: str) -> str:
