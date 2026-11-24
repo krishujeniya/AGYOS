@@ -195,35 +195,37 @@ bin/agyos toon minify --input sample.toon
 ## Repository Layout
 
 ```text
-.
-├── bootstrap.rs                 # Rust workspace orchestrator & compilation driver
-├── build/                       # Build profiles & locked workspace declarations (workspace.toon)
-├── crates/                      # 13 Library Crates
-│   ├── domain/                  # Contracts, R0-R3 risk boundaries, balance ledger
-│   ├── toon-codec/              # Pure TOON format encoder, decoder & conformance tests
-│   ├── governance/              # Policy engine and state transition invariants
-│   ├── store/                   # Event log, transactional outbox, deduplication, fence tokens
-│   ├── effects/                 # Dispatched external effects & compensating sagas
-│   ├── catalog/                 # 104-role registry, canonical skills, phrase router
-│   ├── runtime/                 # Progressive retrieval, Howard EVPI, context budgets, councils
-│   ├── agy/                     # AGY CLI boundary projection & broker confinement
-│   ├── adapters/                # 8 domain adapters (CRM, billing, legal, hiring, Git, web)
-│   ├── telemetry/               # Redacted metrics, local backup engine, incident runbooks
-│   ├── migration/               # Shadow reader reconciler, signed difference ledgers
-│   ├── release/                 # Release verification gates, clean machine verifier, cutover guard
-│   └── maintenance/             # Canary evaluation, vendor-free export/restore, risk register
-├── apps/                        # Production Applications
-│   ├── agyos/                   # Native CLI application & diagnostic kernel
-│   └── worker/                  # Hosted worker pool, fair queue admission, authenticated backups
-├── .agents/                     # Agent definitions, workflows, rules, and skills
-│   ├── agents/                  # 104 role agent profiles in TOON/XML format
-│   ├── rules/                   # Operational and engineering policies
-│   ├── skills/                  # 2,289 skill runbooks and reference materials
-│   ├── state/                   # Active operational state (CURRENT.toon, state.json, checkpoints/)
-│   └── workflows/               # Autonomous execution cycle workflows
-├── bin/                         # Developer CLI binaries (bin/agyos, bin/state.sh)
-├── docs/                        # Specifications, architecture models, research decision records
-└── knowledge/                   # Canonical skill runbooks, aliases, unavailable catalog
+AGYOS/
+├── .github/
+│   ├── workflows/
+│   │   ├── ci.yml                     # Lint, typecheck & test (frontend + backend)
+│   │   ├── deploy.yml                 # Auto-deploy on push to main (Cloudflare Pages & Workers)
+│   │   └── codeql.yml                 # Automated security scanning
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── bug_report.yml             # Structured bug report form
+│   │   ├── feature_request.yml        # Structured feature request form
+│   │   └── config.yml                 # Disables blank issues / links to Discussions
+│   ├── PULL_REQUEST_TEMPLATE.md       # Checklist for every PR
+│   ├── CODEOWNERS                     # Auto-assigns reviewers per folder
+│   ├── dependabot.yml                 # Auto-updates npm, pip/uv, and GitHub Actions
+│   ├── CONTRIBUTING.md                # How to set up & contribute
+│   ├── CODE_OF_CONDUCT.md             # Community standards (Contributor Covenant v2.1)
+│   ├── SECURITY.md                    # How to report vulnerabilities privately
+│   ├── SUPPORT.md                     # Where to ask for help
+│   ├── FUNDING.yml                    # Enables the GitHub Sponsor button
+│   └── copilot-instructions.md        # Custom rules for GitHub Copilot & coding agents
+├── assets/                            # Brand logos, screenshots, diagrams
+├── backend/                           # FastAPI (app/, tests/, pyproject.toml, .env.example)
+├── deploy/                            # docker/ (Dockerfiles, compose) & hosting configs
+├── docs/                              # architecture.md, setup.md, deployment.md
+├── frontend/                          # Next.js 15+ App Router (src/app, src/features, package.json)
+├── scripts/                           # DB seed, typegen, automation scripts
+├── .editorconfig                      # Consistent indentation/line-endings across IDEs
+├── .gitignore                         # Combined Node/Next.js + Python/FastAPI + OS rules
+├── CHANGELOG.md                       # Version history & release notes
+├── LICENSE                            # Apache 2.0 license
+├── Makefile                           # Unified commands (make dev, make test, make build)
+└── README.md                          # Project overview, badges, architecture, quickstart
 ```
 
 ---
@@ -232,4 +234,4 @@ bin/agyos toon minify --input sample.toon
 
 This project is licensed under the Apache License 2.0. See [`LICENSE`](LICENSE) for details.
 
-Security policies and vulnerability reporting procedures are documented in [`SECURITY.md`](SECURITY.md).
+Security policies and vulnerability reporting procedures are documented in [`.github/SECURITY.md`](.github/SECURITY.md).

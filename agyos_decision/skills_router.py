@@ -311,6 +311,24 @@ DOMAIN_TAXONOMY: Dict[str, Dict[str, Any]] = {
         "primary": "ai-video-editor",
         "alternatives": ["ffmpeg-video-editor", "video-editing", "video-editing-principles"],
     },
+    "video_clipping": {
+        "keywords": [
+            "chopify", "clip video", "clip podcast", "clip vod", "headless clipping",
+            "long to short", "long-to-short", "auto clip", "highlight clips",
+            "livestream clipping", "split screen podcast", "stacked facecam"
+        ],
+        "primary": "chopify",
+        "alternatives": ["captions-and-clipping", "opus-clip", "vertical-video-psychology", "ffmpeg-video-editor", "video-production-orchestrator"],
+    },
+    "video_orchestration": {
+        "keywords": [
+            "video pipeline", "video workflow", "video production", "edl",
+            "pack transcript", "timeline view", "self eval video", "video studio",
+            "end to end video", "video orchestrator"
+        ],
+        "primary": "video-production-orchestrator",
+        "alternatives": ["video-editing-principles", "ffmpeg-video-editor", "google-flow", "chopify", "organic-film-de-ai"],
+    },
     "video_production": {
         "keywords": [
             "video", "video editing", "editing", "cut", "footage", "film",
@@ -318,7 +336,7 @@ DOMAIN_TAXONOMY: Dict[str, Dict[str, Any]] = {
             "cinematic", "watermark", "delogo", "de-ai"
         ],
         "primary": "video-editing-principles",
-        "alternatives": ["vertical-video-psychology", "faceless-shorts-engine", "organic-film-de-ai", "ai-video-quality-enhancement", "ffmpeg-video-editor", "youtube-long-form-production", "google-flow"],
+        "alternatives": ["video-production-orchestrator", "vertical-video-psychology", "faceless-shorts-engine", "organic-film-de-ai", "ai-video-quality-enhancement", "ffmpeg-video-editor", "youtube-long-form-production", "google-flow", "chopify"],
     },
     "faceless_shorts": {
         "keywords": [
@@ -457,7 +475,11 @@ LANGUAGE_FRAMEWORK_MAP = {
     "solidity": "solidity-security",
     "ffmpeg": "ffmpeg-video-editor",
     "flow": "google-flow",
+    "veo": "veo-3",
+    "chopify": "chopify",
+    "manim": "3b1b-manim",
     "remotion": "react-video-remotion",
+    "video-production-orchestrator": "video-production-orchestrator",
     "dockerhub": "docker-hub-mcp",
     "hub-mcp": "docker-hub-mcp",
     "docker-hub-mcp": "docker-hub-mcp",

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "AGYOS Discussions"
+    url: "https://github.com/krishujeniya/AGYOS/discussions"
+    about: "Ask questions, share ideas, and discuss architecture with the maintainers."
+  - name: "Documentation Portal"
+    url: "https://agyos.pages.dev"
+    about: "Read full API documentation, architectural specifications, and quickstarts."

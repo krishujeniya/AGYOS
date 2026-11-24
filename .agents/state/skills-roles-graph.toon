@@ -1,7 +1,7 @@
 total_departments: 12
 total_pods: 5
 total_roles: 104
-total_skills: 2287
+total_skills: 2289
 departments[12]: customer_success, data_ai, design, engineering, executive, finance, it_infra, legal_compliance, marketing, people_ops, product, sales_bd
 pods[5]: pod-build, pod-customer, pod-gna, pod-growth, pod-people
 roles[104]{id, title, department, pod, seniority, risk, mapped_skills}:
@@ -16,7 +16,7 @@ roles[104]{id, title, department, pod, seniority, risk, mapped_skills}:
   - role-product-director, "Product Director", product, pod-build, L7, R1, 25
   - role-senior-pm, "Senior Product Manager", product, pod-build, L6, R1, 27
   - role-pm, "Product Manager", product, pod-build, L5, R1, 11
-  - role-scrum-agile-coach, "Scrum / Agile Coach", product, pod-build, L5, R0, 7
+  - role-scrum-agile-coach, "Scrum / Agile Coach", product, pod-build, L5, R0, 8
   - role-ux-researcher, "UX Researcher", product, pod-build, L5, R0, 26
   - role-growth-pm, "Growth Product Manager", product, pod-growth, L5, R1, 22
   - role-product-analyst, "Product Analyst", product, pod-build, L4, R0, 24
@@ -24,7 +24,7 @@ roles[104]{id, title, department, pod, seniority, risk, mapped_skills}:
   - role-staff-engineer, "Staff Software Engineer", engineering, pod-build, L7, R2, 86
   - role-senior-swe, "Senior Software Engineer", engineering, pod-build, L6, R1, 173
   - role-swe, "Software Engineer", engineering, pod-build, L5, R1, 133
-  - role-frontend-engineer, "Frontend Engineer", engineering, pod-build, L5, R1, 213
+  - role-frontend-engineer, "Frontend Engineer", engineering, pod-build, L5, R1, 214
   - role-backend-engineer, "Backend Engineer", engineering, pod-build, L5, R1, 218
   - role-mobile-engineer, "Mobile Engineer", engineering, pod-build, L5, R1, 97
   - role-devops-engineer, "DevOps / Platform Engineer", engineering, pod-build, L5, R2, 81
@@ -33,37 +33,37 @@ roles[104]{id, title, department, pod, seniority, risk, mapped_skills}:
   - role-qa-engineer, "QA / Test Engineer", engineering, pod-build, L5, R1, 53
   - role-web3-blockchain-eng, "Web3 / Blockchain Engineer", engineering, pod-build, L5, R2, 21
   - role-desktop-app-eng, "Desktop Application Engineer", engineering, pod-build, L5, R1, 57
-  - role-network-infra-eng, "Network Infrastructure Engineer", engineering, pod-build, L5, R2, 25
+  - role-network-infra-eng, "Network Infrastructure Engineer", engineering, pod-build, L5, R2, 24
   - role-database-reliability-eng, "Database Reliability Engineer", engineering, pod-build, L6, R2, 39
   - role-incident-commander, "Incident Commander", engineering, pod-build, L6, R2, 14
-  - role-agentic-workflow-architect, "Agentic Workflow Architect", engineering, pod-build, L7, R2, 268
+  - role-agentic-workflow-architect, "Agentic Workflow Architect", engineering, pod-build, L7, R2, 269
   - role-data-scientist, "Data Scientist", data_ai, pod-build, L5, R1, 40
   - role-ml-engineer, "ML Engineer", data_ai, pod-build, L5, R1, 61
   - role-data-engineer, "Data Engineer", data_ai, pod-build, L5, R1, 55
   - role-ai-product-engineer, "AI Product Engineer", data_ai, pod-build, L5, R1, 157
   - role-data-analyst, "Data Analyst", data_ai, pod-build, L4, R0, 53
-  - role-research-scientist, "Research Scientist", data_ai, pod-build, L7, R1, 34
+  - role-research-scientist, "Research Scientist", data_ai, pod-build, L7, R1, 33
   - role-privacy-engineer, "Privacy Engineer", data_ai, pod-gna, L6, R2, 11
   - role-computer-vision-eng, "Computer Vision Engineer", data_ai, pod-build, L5, R1, 14
   - role-speech-audio-ai-eng, "Speech & Audio AI Engineer", data_ai, pod-build, L5, R1, 35
-  - role-mlops-engineer, "MLOps Engineer", data_ai, pod-build, L5, R2, 24
+  - role-mlops-engineer, "MLOps Engineer", data_ai, pod-build, L5, R2, 25
   - role-design-director, "Design Director", design, pod-build, L7, R1, 45
-  - role-ux-ui-designer, "UX / UI Designer", design, pod-build, L5, R1, 95
+  - role-ux-ui-designer, "UX / UI Designer", design, pod-build, L5, R1, 94
   - role-product-designer, "Product Designer", design, pod-build, L5, R1, 43
   - role-brand-designer, "Brand Designer", design, pod-growth, L5, R1, 51
-  - role-motion-designer, "Motion Designer", design, pod-growth, L5, R1, 68
+  - role-motion-designer, "Motion Designer", design, pod-growth, L5, R1, 70
   - role-3d-visual-designer, "3D Visual Designer", design, pod-growth, L5, R1, 26
   - role-design-system-engineer, "Design System Engineer", design, pod-build, L5, R1, 62
   - role-ux-copywriter, "UX Copywriter", design, pod-build, L4, R1, 10
   - role-content-strategist, "Content Strategist", marketing, pod-growth, L5, R1, 190
   - role-seo-specialist, "SEO Specialist", marketing, pod-growth, L4, R1, 60
   - role-performance-marketer, "Performance Marketer", marketing, pod-growth, L5, R2, 18
-  - role-social-media-manager, "Social Media Manager", marketing, pod-growth, L4, R1, 116
+  - role-social-media-manager, "Social Media Manager", marketing, pod-growth, L4, R1, 123
   - role-brand-copywriter, "Brand Copywriter", marketing, pod-growth, L4, R1, 30
   - role-conversion-optimizer, "Conversion Rate Optimizer", marketing, pod-growth, L5, R1, 18
   - role-email-lifecycle-marketer, "Email & Lifecycle Marketer", marketing, pod-growth, L5, R1, 49
   - role-pr-comms-manager, "PR & Communications Manager", marketing, pod-growth, L5, R1, 20
-  - role-partnership-bd-manager, "Partnership & BD Manager", marketing, pod-growth, L5, R1, 7
+  - role-partnership-bd-manager, "Partnership & BD Manager", marketing, pod-growth, L5, R1, 9
   - role-community-manager, "Community Manager", marketing, pod-customer, L4, R1, 12
   - role-vp-sales, "VP Sales", sales_bd, pod-growth, L8, R2, 32
   - role-account-executive, "Account Executive", sales_bd, pod-growth, L5, R1, 47
@@ -88,7 +88,7 @@ roles[104]{id, title, department, pod, seniority, risk, mapped_skills}:
   - role-startup-cfo-advisor, "Startup CFO Advisor", finance, pod-gna, L7, R2, 47
   - role-cost-optimization-analyst, "Cost Optimization Analyst", finance, pod-gna, L4, R1, 28
   - role-general-counsel, "General Counsel", legal_compliance, pod-gna, L8, R3, 11
-  - role-ip-patent-attorney, "IP & Patent Attorney", legal_compliance, pod-gna, L7, R2, 8
+  - role-ip-patent-attorney, "IP & Patent Attorney", legal_compliance, pod-gna, L7, R2, 10
   - role-contract-manager, "Contract Manager", legal_compliance, pod-gna, L5, R2, 10
   - role-compliance-officer, "Compliance Officer", legal_compliance, pod-gna, L6, R2, 28
   - role-data-protection-officer, "Data Protection Officer", legal_compliance, pod-gna, L6, R2, 29
@@ -109,7 +109,7 @@ roles[104]{id, title, department, pod, seniority, risk, mapped_skills}:
   - role-cybersecurity-analyst, "Cybersecurity Analyst", it_infra, pod-gna, L5, R2, 28
   - role-observability-engineer, "Observability Engineer", it_infra, pod-build, L5, R1, 31
   - role-finops-cloud-cost, "FinOps / Cloud Cost Engineer", it_infra, pod-gna, L5, R1, 20
-skills[2287]{id, tier}:
+skills[2289]{id, tier}:
   - 1password-mcp, 2
   - 3b1b-manim, 1
   - 3d-web-experience, 2
@@ -217,7 +217,7 @@ skills[2287]{id, tier}:
   - analyze-project, 2
   - android-clean-architecture, 1
   - android-jetpack-compose-expert, 2
-  - android_ui_verification, 1
+  - android-ui-verification, 1
   - andruia-consultant, 2
   - andruia-niche-intel, 2
   - andruia-skill-smith, 2
@@ -529,6 +529,7 @@ skills[2287]{id, tier}:
   - change-impact, 2
   - changelog-automation, 2
   - chat-widget, 2
+  - chopify, 2
   - chrome-extension-developer, 2
   - chrome-extensions, 1
   - chrome-mcp-troubleshoot, 2
@@ -2258,6 +2259,7 @@ skills[2287]{id, tier}:
   - vibers-code-review, 1
   - video-editing, 2
   - video-editing-principles, 2
+  - video-production-orchestrator, 1
   - videodb-media-engine, 2
   - videodb-media-processing, 2
   - viral-generator-builder, 2
@@ -2397,7 +2399,7 @@ skills[2287]{id, tier}:
   - zoho-crm-automation, 2
   - zoom-automation, 2
   - zustand-store-ts, 2
-edges[4620]{from, to, type}:
+edges[4634]{from, to, type}:
   - role-ceo, andruia-niche-intel, specialized_skill
   - role-ceo, auction-property-appraisal, specialized_skill
   - role-ceo, auri-core, specialized_skill
@@ -2718,6 +2720,7 @@ edges[4620]{from, to, type}:
   - role-pm, product-manager, primary_skill
   - role-pm, pydantic-models-py, primary_skill
   - role-pm, rapid-mvp-prototyping, specialized_skill
+  - role-scrum-agile-coach, angular, specialized_skill
   - role-scrum-agile-coach, conductor-status, primary_skill
   - role-scrum-agile-coach, developer-session-diary, primary_skill
   - role-scrum-agile-coach, kanban-agent-pipeline, primary_skill
@@ -3225,6 +3228,7 @@ edges[4620]{from, to, type}:
   - role-frontend-engineer, algolia-search, specialized_skill
   - role-frontend-engineer, android-clean-architecture, specialized_skill
   - role-frontend-engineer, android-jetpack-compose-expert, specialized_skill
+  - role-frontend-engineer, android-ui-verification, specialized_skill
   - role-frontend-engineer, angular-best-practices, specialized_skill
   - role-frontend-engineer, angular-developer, specialized_skill
   - role-frontend-engineer, angular-migration, specialized_skill
@@ -3655,7 +3659,7 @@ edges[4620]{from, to, type}:
   - role-mobile-engineer, ai-dashboad-e2e-testing, specialized_skill
   - role-mobile-engineer, android-clean-architecture, specialized_skill
   - role-mobile-engineer, android-jetpack-compose-expert, specialized_skill
-  - role-mobile-engineer, android_ui_verification, specialized_skill
+  - role-mobile-engineer, android-ui-verification, specialized_skill
   - role-mobile-engineer, animate-expo, specialized_skill
   - role-mobile-engineer, app-store-optimization, specialized_skill
   - role-mobile-engineer, avalonia-viewmodels-zafiro, specialized_skill
@@ -4093,7 +4097,6 @@ edges[4620]{from, to, type}:
   - role-network-infra-eng, connections-optimizer, specialized_skill
   - role-network-infra-eng, context-window-management, specialized_skill
   - role-network-infra-eng, create-branch, specialized_skill
-  - role-network-infra-eng, google-flow, specialized_skill
   - role-network-infra-eng, homelab-network-readiness, specialized_skill
   - role-network-infra-eng, homelab-network-setup, primary_skill
   - role-network-infra-eng, homelab-pihole-dns, specialized_skill
@@ -4290,6 +4293,7 @@ edges[4620]{from, to, type}:
   - role-agentic-workflow-architect, google-analytics-automation, specialized_skill
   - role-agentic-workflow-architect, google-docs-automation, specialized_skill
   - role-agentic-workflow-architect, google-drive-automation, specialized_skill
+  - role-agentic-workflow-architect, google-flow, specialized_skill
   - role-agentic-workflow-architect, google-sheets-automation, specialized_skill
   - role-agentic-workflow-architect, google-slides-automation, specialized_skill
   - role-agentic-workflow-architect, google-workspace-ops, specialized_skill
@@ -4810,7 +4814,6 @@ edges[4620]{from, to, type}:
   - role-research-scientist, context7-auto-research, specialized_skill
   - role-research-scientist, deep-research, specialized_skill
   - role-research-scientist, gemini-notebook, specialized_skill
-  - role-research-scientist, google-flow, specialized_skill
   - role-research-scientist, hugging-face-cli, specialized_skill
   - role-research-scientist, hugging-face-community-evals, specialized_skill
   - role-research-scientist, hugging-face-dataset-viewer, specialized_skill
@@ -4917,6 +4920,7 @@ edges[4620]{from, to, type}:
   - role-mlops-engineer, mle-workflow, specialized_skill
   - role-mlops-engineer, mlops-engineer, primary_skill
   - role-mlops-engineer, monitoring-setup, primary_skill
+  - role-mlops-engineer, organic-film-de-ai, specialized_skill
   - role-mlops-engineer, repl-runner, specialized_skill
   - role-mlops-engineer, seek-and-analyze-video, specialized_skill
   - role-design-director, accessibility-audit, specialized_skill
@@ -4964,7 +4968,6 @@ edges[4620]{from, to, type}:
   - role-design-director, ui-ux-expert, primary_skill
   - role-design-director, wordpress-theme-development, specialized_skill
   - role-design-director, workflow-orchestration-patterns, specialized_skill
-  - role-ux-ui-designer, android_ui_verification, specialized_skill
   - role-ux-ui-designer, antigravity-design-expert, specialized_skill
   - role-ux-ui-designer, apple-design, specialized_skill
   - role-ux-ui-designer, architecture-frontend-design, specialized_skill
@@ -5164,6 +5167,7 @@ edges[4620]{from, to, type}:
   - role-motion-designer, animation-vocabulary, primary_skill
   - role-motion-designer, animejs-animation, primary_skill
   - role-motion-designer, apple-design, specialized_skill
+  - role-motion-designer, chopify, primary_skill
   - role-motion-designer, cinematic-web-design, specialized_skill
   - role-motion-designer, fal-ai-media, specialized_skill
   - role-motion-designer, fal-image-edit, specialized_skill
@@ -5173,6 +5177,7 @@ edges[4620]{from, to, type}:
   - role-motion-designer, find-animation-opportunities, specialized_skill
   - role-motion-designer, fixing-motion-performance, specialized_skill
   - role-motion-designer, flux, specialized_skill
+  - role-motion-designer, google-flow, specialized_skill
   - role-motion-designer, heygen, specialized_skill
   - role-motion-designer, ideogram, specialized_skill
   - role-motion-designer, improve-animations, specialized_skill
@@ -5206,7 +5211,6 @@ edges[4620]{from, to, type}:
   - role-motion-designer, motion-advanced, specialized_skill
   - role-motion-designer, motion-foundations, primary_skill
   - role-motion-designer, motion-patterns, specialized_skill
-  - role-motion-designer, organic-film-de-ai, specialized_skill
   - role-motion-designer, react-video-remotion, primary_skill
   - role-motion-designer, remotion-best-practices, specialized_skill
   - role-motion-designer, remotion-video-creation, specialized_skill
@@ -5219,6 +5223,7 @@ edges[4620]{from, to, type}:
   - role-motion-designer, veo-3, specialized_skill
   - role-motion-designer, video-editing, specialized_skill
   - role-motion-designer, video-editing-principles, specialized_skill
+  - role-motion-designer, video-production-orchestrator, primary_skill
   - role-motion-designer, videodb-media-engine, specialized_skill
   - role-motion-designer, web-animation-design, specialized_skill
   - role-3d-visual-designer, 3b1b-manim, specialized_skill
@@ -5603,6 +5608,7 @@ edges[4620]{from, to, type}:
   - role-social-media-manager, experimentation-and-ab-testing, specialized_skill
   - role-social-media-manager, facebook-groups, specialized_skill
   - role-social-media-manager, facebook-strategy, specialized_skill
+  - role-social-media-manager, ffmpeg-video-editor, specialized_skill
   - role-social-media-manager, fixing-metadata, specialized_skill
   - role-social-media-manager, goals-and-kpis, specialized_skill
   - role-social-media-manager, hashtag-strategy, specialized_skill
@@ -5653,12 +5659,16 @@ edges[4620]{from, to, type}:
   - role-social-media-manager, linkedin-growth, primary_skill
   - role-social-media-manager, linkedin-post-writer, specialized_skill
   - role-social-media-manager, linkedin-profile-optimizer, specialized_skill
+  - role-social-media-manager, motion-advanced, specialized_skill
+  - role-social-media-manager, motion-patterns, specialized_skill
   - role-social-media-manager, platform-specs-and-validation, specialized_skill
   - role-social-media-manager, profile-optimization, specialized_skill
   - role-social-media-manager, quote-cards-and-text-graphics, specialized_skill
   - role-social-media-manager, reddit-automation, specialized_skill
   - role-social-media-manager, reddit-marketing, specialized_skill
   - role-social-media-manager, reels-script, specialized_skill
+  - role-social-media-manager, remotion-best-practices, specialized_skill
+  - role-social-media-manager, remotion-video-creation, specialized_skill
   - role-social-media-manager, robius-app-architecture, specialized_skill
   - role-social-media-manager, robius-event-action, specialized_skill
   - role-social-media-manager, scheduling-and-queue, specialized_skill
@@ -5685,6 +5695,8 @@ edges[4620]{from, to, type}:
   - role-social-media-manager, twitter-automation, specialized_skill
   - role-social-media-manager, twitter-post-scraper, specialized_skill
   - role-social-media-manager, url-to-markdown, specialized_skill
+  - role-social-media-manager, video-editing, specialized_skill
+  - role-social-media-manager, video-editing-principles, specialized_skill
   - role-social-media-manager, videodb-media-engine, specialized_skill
   - role-social-media-manager, webpage-screenshot-capture, specialized_skill
   - role-social-media-manager, wechat-official-account-strategist, specialized_skill
@@ -5821,6 +5833,8 @@ edges[4620]{from, to, type}:
   - role-pr-comms-manager, task-intelligence, specialized_skill
   - role-pr-comms-manager, whatsapp-automation, specialized_skill
   - role-partnership-bd-manager, affiliate-program-ops, primary_skill
+  - role-partnership-bd-manager, amazon-alexa, specialized_skill
+  - role-partnership-bd-manager, cloudflare-workers-expert, specialized_skill
   - role-partnership-bd-manager, co-marketing-term-sheet-builder, primary_skill
   - role-partnership-bd-manager, collabs-and-cross-promotion, primary_skill
   - role-partnership-bd-manager, competitive-landscape, primary_skill
@@ -6485,6 +6499,7 @@ edges[4620]{from, to, type}:
   - role-general-counsel, legal-contract-truth-engine, primary_skill
   - role-general-counsel, litigation-regulatory-risk-scanner, primary_skill
   - role-general-counsel, sop-gna, specialized_skill
+  - role-ip-patent-attorney, algorithmic-art, specialized_skill
   - role-ip-patent-attorney, dependency-management-deps-audit, specialized_skill
   - role-ip-patent-attorney, legal-advisor, primary_skill
   - role-ip-patent-attorney, legal-compliance-consultant, primary_skill
@@ -6493,6 +6508,7 @@ edges[4620]{from, to, type}:
   - role-ip-patent-attorney, patent-claim-drafter, primary_skill
   - role-ip-patent-attorney, prior-art-search, primary_skill
   - role-ip-patent-attorney, scientific-db-uspto-database, primary_skill
+  - role-ip-patent-attorney, trend-jacking, specialized_skill
   - role-contract-manager, beautiful-prose, specialized_skill
   - role-contract-manager, contract-first, specialized_skill
   - role-contract-manager, employment-contract-templates, primary_skill

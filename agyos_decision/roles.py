@@ -841,7 +841,8 @@ _r(CompanyRole(
     keywords=["motion design", "animation", "lottie", "after effects", "video",
                "transition", "micro interaction", "motion graphic", "gsap"],
     primary_skills=["magic-animator", "animejs-animation", "animation-vocabulary",
-                    "motion-foundations", "react-video-remotion"],
+                    "motion-foundations", "react-video-remotion",
+                    "video-production-orchestrator", "chopify"],
 ))
 
 _r(CompanyRole(

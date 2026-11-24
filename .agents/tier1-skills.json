@@ -199,10 +199,10 @@
       "path": ".agents/skills/android-clean-architecture"
     },
     {
-      "name": "android_ui_verification",
+      "name": "android-ui-verification",
       "tier": 1,
       "description": "Automated end-to-end UI testing and verification on an Android Emulator using ADB.",
-      "path": ".agents/skills/android_ui_verification"
+      "path": ".agents/skills/android-ui-verification"
     },
     {
       "name": "angular-best-practices",
@@ -2381,6 +2381,12 @@
       "tier": 1,
       "description": "Human review workflow for AI-generated GitHub projects with spec-based feedback, security review, and follow-up PRs from the Vibers service.",
       "path": ".agents/skills/vibers-code-review"
+    },
+    {
+      "name": "video-production-orchestrator",
+      "tier": 1,
+      "description": "Master AGYOS video production and editing orchestrator. Routes across Google Flow, Chopify, ai-video-editor, faceless-shorts, Manim, FFmpeg EDL rendering, AI repair, and organic film finishing with 12 production hard rules and post-render self-eval.",
+      "path": ".agents/skills/video-production-orchestrator"
     },
     {
       "name": "vue-patterns",

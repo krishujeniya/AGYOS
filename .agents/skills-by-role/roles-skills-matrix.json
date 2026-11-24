@@ -1,6 +1,6 @@
 {
   "version": "3.1.0",
-  "total_skills": 2287,
+  "total_skills": 2289,
   "total_roles": 104,
   "by_role": {
     "role-ceo": {
@@ -525,8 +525,9 @@
         "story-pointing-calibration",
         "retrospective-synthesis"
       ],
-      "total_mapped_skills": 7,
+      "total_mapped_skills": 8,
       "skills": [
+        "angular",
         "conductor-status",
         "developer-session-diary",
         "kanban-agent-pipeline",
@@ -1165,12 +1166,13 @@
         "frontend-a11y",
         "design-spells"
       ],
-      "total_mapped_skills": 213,
+      "total_mapped_skills": 214,
       "skills": [
         "3d-web-experience",
         "algolia-search",
         "android-clean-architecture",
         "android-jetpack-compose-expert",
+        "android-ui-verification",
         "angular-best-practices",
         "angular-developer",
         "angular-migration",
@@ -1636,7 +1638,7 @@
         "ai-dashboad-e2e-testing",
         "android-clean-architecture",
         "android-jetpack-compose-expert",
-        "android_ui_verification",
+        "android-ui-verification",
         "animate-expo",
         "app-store-optimization",
         "avalonia-viewmodels-zafiro",
@@ -2186,13 +2188,12 @@
         "homelab-network-setup",
         "homelab-wireguard-vpn"
       ],
-      "total_mapped_skills": 25,
+      "total_mapped_skills": 24,
       "skills": [
         "cisco-ios-patterns",
         "connections-optimizer",
         "context-window-management",
         "create-branch",
-        "google-flow",
         "homelab-network-readiness",
         "homelab-network-setup",
         "homelab-pihole-dns",
@@ -2315,7 +2316,7 @@
         "multi-agent-patterns",
         "agents-spec-generator"
       ],
-      "total_mapped_skills": 268,
+      "total_mapped_skills": 269,
       "skills": [
         "1password-mcp",
         "adversarial-verification-method",
@@ -2440,6 +2441,7 @@
         "google-analytics-automation",
         "google-docs-automation",
         "google-drive-automation",
+        "google-flow",
         "google-sheets-automation",
         "google-slides-automation",
         "google-workspace-ops",
@@ -3051,7 +3053,7 @@
         "neural-networks-foundations-advisor",
         "benchmark-methodology"
       ],
-      "total_mapped_skills": 34,
+      "total_mapped_skills": 33,
       "skills": [
         "architecture-c4-model",
         "auction-market-research",
@@ -3062,7 +3064,6 @@
         "context7-auto-research",
         "deep-research",
         "gemini-notebook",
-        "google-flow",
         "hugging-face-cli",
         "hugging-face-community-evals",
         "hugging-face-dataset-viewer",
@@ -3217,7 +3218,7 @@
         "hugging-face-jobs",
         "monitoring-setup"
       ],
-      "total_mapped_skills": 24,
+      "total_mapped_skills": 25,
       "skills": [
         "1password-mcp",
         "bdistill-behavioral-xray",
@@ -3241,6 +3242,7 @@
         "mle-workflow",
         "mlops-engineer",
         "monitoring-setup",
+        "organic-film-de-ai",
         "repl-runner",
         "seek-and-analyze-video"
       ]
@@ -3320,9 +3322,8 @@
         "design-system-spec-generator",
         "ui-design-guidelines"
       ],
-      "total_mapped_skills": 95,
+      "total_mapped_skills": 94,
       "skills": [
-        "android_ui_verification",
         "antigravity-design-expert",
         "apple-design",
         "architecture-frontend-design",
@@ -3558,9 +3559,11 @@
         "animejs-animation",
         "animation-vocabulary",
         "motion-foundations",
-        "react-video-remotion"
+        "react-video-remotion",
+        "video-production-orchestrator",
+        "chopify"
       ],
-      "total_mapped_skills": 68,
+      "total_mapped_skills": 70,
       "skills": [
         "3b1b-manim",
         "ai-image-editing",
@@ -3573,6 +3576,7 @@
         "animation-vocabulary",
         "animejs-animation",
         "apple-design",
+        "chopify",
         "cinematic-web-design",
         "fal-ai-media",
         "fal-image-edit",
@@ -3582,6 +3586,7 @@
         "find-animation-opportunities",
         "fixing-motion-performance",
         "flux",
+        "google-flow",
         "heygen",
         "ideogram",
         "improve-animations",
@@ -3615,7 +3620,6 @@
         "motion-advanced",
         "motion-foundations",
         "motion-patterns",
-        "organic-film-de-ai",
         "react-video-remotion",
         "remotion-best-practices",
         "remotion-video-creation",
@@ -3628,6 +3632,7 @@
         "veo-3",
         "video-editing",
         "video-editing-principles",
+        "video-production-orchestrator",
         "videodb-media-engine",
         "web-animation-design"
       ]
@@ -4116,7 +4121,7 @@
         "linkedin-growth",
         "tiktok-growth"
       ],
-      "total_mapped_skills": 116,
+      "total_mapped_skills": 123,
       "skills": [
         "ai-search-optimization",
         "analytics-and-reporting",
@@ -4134,6 +4139,7 @@
         "experimentation-and-ab-testing",
         "facebook-groups",
         "facebook-strategy",
+        "ffmpeg-video-editor",
         "fixing-metadata",
         "goals-and-kpis",
         "hashtag-strategy",
@@ -4184,12 +4190,16 @@
         "linkedin-growth",
         "linkedin-post-writer",
         "linkedin-profile-optimizer",
+        "motion-advanced",
+        "motion-patterns",
         "platform-specs-and-validation",
         "profile-optimization",
         "quote-cards-and-text-graphics",
         "reddit-automation",
         "reddit-marketing",
         "reels-script",
+        "remotion-best-practices",
+        "remotion-video-creation",
         "robius-app-architecture",
         "robius-event-action",
         "scheduling-and-queue",
@@ -4216,6 +4226,8 @@
         "twitter-automation",
         "twitter-post-scraper",
         "url-to-markdown",
+        "video-editing",
+        "video-editing-principles",
         "videodb-media-engine",
         "webpage-screenshot-capture",
         "wechat-official-account-strategist",
@@ -4436,9 +4448,11 @@
         "co-marketing-term-sheet-builder",
         "affiliate-program-ops"
       ],
-      "total_mapped_skills": 7,
+      "total_mapped_skills": 9,
       "skills": [
         "affiliate-program-ops",
+        "amazon-alexa",
+        "cloudflare-workers-expert",
         "co-marketing-term-sheet-builder",
         "collabs-and-cross-promotion",
         "competitive-landscape",
@@ -5535,8 +5549,9 @@
         "patent-claim-drafter",
         "oss-license-risk-audit"
       ],
-      "total_mapped_skills": 8,
+      "total_mapped_skills": 10,
       "skills": [
+        "algorithmic-art",
         "dependency-management-deps-audit",
         "legal-advisor",
         "legal-compliance-consultant",
@@ -5544,7 +5559,8 @@
         "oss-license-risk-audit",
         "patent-claim-drafter",
         "prior-art-search",
-        "scientific-db-uspto-database"
+        "scientific-db-uspto-database",
+        "trend-jacking"
       ]
     },
     "role-contract-manager": {
@@ -6441,6 +6457,12 @@
       "tier": 2,
       "description": "Expert in building 3D experiences for the web - Three.js, React Three Fiber, Spline, WebGL, and interactive 3D scenes. Covers product configurators, 3D portfolios, immersive websites, and bringing depth to web experiences."
     },
+    "a11y-copy-audit": {
+      "primary_role": "role-ux-copywriter",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Audit surface copy against WCAG 2.2 AA text requirements: link text descriptiveness, alt text adequacy, form label and error text rules, heading text hierarchy and a reading level cap. Use before release of any user-facing surface, after the microcopy library changes, or when an accessibility complaint arrives."
+    },
     "ab-test-setup": {
       "primary_role": "role-growth-pm",
       "secondary_roles": [
@@ -6527,6 +6549,12 @@
       ],
       "tier": 2,
       "description": "Multi-agent adversarial verification: two independent reviewers with the same rubric must both pass before output ships, with a fix-and-re-review convergence loop and human escalation cap. Use when gating publishing, production deploys, compliance or brand-sensitive content, or hallucination-prone claims before they ship."
+    },
+    "affiliate-program-ops": {
+      "primary_role": "role-partnership-bd-manager",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Operate the affiliate program end to end: commission tiers, fraud rules, monthly payout reconciliation and a quarterly channel audit. Use when affiliates are onboarded, when payout reports arrive from the network, or when acquisition cost per channel is due for review before budget moves."
     },
     "agent-arch-audit": {
       "primary_role": "role-agentic-workflow-architect",
@@ -7142,7 +7170,7 @@
         "role-brand-designer"
       ],
       "tier": 2,
-      "description": "Master reference and CLI toolkit for repairing AI-generated video defects (Google Flow & Veo 2026). Maps 200 forensic detection principles to actionable restoration pipelines using FFmpeg, CodeFormer, Real-ESRGAN, Video2X, ProPainter, DeepFilterNet, Demucs, whisper.cpp, PySceneDetect, VapourSynth, VidStab, and VMAF. Includes generation-time prompt engineering for Google Flow studio."
+      "description": "Diagnose and repair AI-generated video defects (Google Flow and Veo) via scripts/repair_ai_video.py, FFmpeg, VidStab, CodeFormer, ProPainter, DeepFilterNet, Demucs, PySceneDetect, and ebur128/VMAF verification."
     },
     "ai-voiceover": {
       "primary_role": "role-speech-audio-ai-eng",
@@ -7192,7 +7220,9 @@
     },
     "algorithmic-art": {
       "primary_role": "role-swe",
-      "secondary_roles": [],
+      "secondary_roles": [
+        "role-ip-patent-attorney"
+      ],
       "tier": 2,
       "description": "Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request creating art using code, generative art, algorithmic art, flow fields, or particle systems. Create original algorithmic art rather than copying existing artists' work to avoid copyright violations."
     },
@@ -7211,6 +7241,12 @@
       ],
       "tier": 2,
       "description": "Integracao completa com Amazon Alexa para criar skills de voz inteligentes, transformar Alexa em assistente com Claude como cerebro (projeto Auri) e integrar com AWS ecosystem (Lambda, DynamoDB, Polly, Transcribe, Lex, Smart Home)."
+    },
+    "ambassador-event-ops": {
+      "primary_role": "role-community-manager",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Operate the ambassador program and the event runbook: tiers and criteria, contribution tracking, event logistics with consent and code-of-conduct handling, and the post-event report. Use when onboarding or reviewing ambassadors, when an event is planned, and within 72 hours after every event while evidence is fresh."
     },
     "amplitude-automation": {
       "primary_role": "role-agentic-workflow-architect",
@@ -7285,10 +7321,10 @@
       "tier": 2,
       "description": "Expert guidance for building modern Android UIs with Jetpack Compose, covering state management, navigation, performance, and Material Design 3."
     },
-    "android_ui_verification": {
-      "primary_role": "role-ux-ui-designer",
+    "android-ui-verification": {
+      "primary_role": "role-mobile-engineer",
       "secondary_roles": [
-        "role-mobile-engineer"
+        "role-frontend-engineer"
       ],
       "tier": 1,
       "description": "Automated end-to-end UI testing and verification on an Android Emulator using ADB."
@@ -7317,7 +7353,9 @@
     },
     "angular": {
       "primary_role": "role-chief-of-staff",
-      "secondary_roles": [],
+      "secondary_roles": [
+        "role-scrum-agile-coach"
+      ],
       "tier": 2,
       "description": "Modern Angular (v20+) expert with deep knowledge of Signals, Standalone Components, Zoneless applications, SSR/Hydration, and reactive patterns."
     },
@@ -7428,6 +7466,12 @@
       ],
       "tier": 2,
       "description": "Build natural-language crypto/DeFi agents and EVM MCP plugins (Claude Code, Cursor, Codex, Gemini). Aomi turns prompts into wallet-signed txs on Ethereum, Base, Arbitrum, Optimism, Polygon, Linea \u2014 non-custodial, fork-simulated. 40+ apps: Uniswap, Aave, Lido, Morpho, GMX, Hyperliquid, Polymarket."
+    },
+    "ap-ar-aging-schedules": {
+      "primary_role": "role-accounts-manager",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Produce the receivables and payables aging schedules with dispute flags and cash-impact summary. Use at each period close, when treasury needs the collection outlook, or when an invoice ages past 60 days and needs a named next action. This is the feed that daily-cashflow-forecast and collections-dunning-automation run on."
     },
     "api-connector-builder": {
       "primary_role": "role-technical-pm",
@@ -9225,6 +9269,12 @@
       "tier": 1,
       "description": "Convert 'make it faster' requests into a bounded measured optimization loop \u2014 baseline first, generate one-hypothesis variants, benchmark each against a correctness gate, and promote the fastest safe variant with reproducible commands. Use when asked to speed something up, try many variants, run recursive optimization, benchmark latency/throughput/cost, or pick the best implementation by repeated measured tests."
     },
+    "benefits-leave-administration": {
+      "primary_role": "role-hr-ops-specialist",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Administer benefits enrollment windows and leave accrual enforcement. Use at enrollment windows, when the provider export arrives each month, when an employee questions a balance, or when a policy exception is requested so exceptions are logged with approvals instead of absorbed silently."
+    },
     "bengali-nlp": {
       "primary_role": "role-ai-product-engineer",
       "secondary_roles": [
@@ -9648,6 +9698,12 @@
       "tier": 2,
       "description": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations."
     },
+    "cap-table-modeler": {
+      "primary_role": "role-cfo",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Model funding-round scenarios against the live cap table: dilution per holder, ESOP pool top-ups and exit waterfalls. Use before a term sheet is signed, when an option grant changes the pool, or when the board asks what a down round does to founder and employee ownership. Produces scenarios, never decisions."
+    },
     "capcut": {
       "primary_role": "role-brand-designer",
       "secondary_roles": [
@@ -9727,6 +9783,12 @@
       ],
       "tier": 2,
       "description": "Build a real-time support chat system with a floating widget for users and an admin dashboard for support staff. Use when the user wants live chat, customer support chat, real-time messaging, or in-app support."
+    },
+    "chopify": {
+      "primary_role": "role-motion-designer",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Headless local AI video clipper for Shorts, Reels, and TikTok via bin/chopify. Converts long recordings, URLs, or live streams into scored, tightened, speaker-tracked, captioned clips."
     },
     "chrome-extension-developer": {
       "primary_role": "role-content-strategist",
@@ -9954,6 +10016,12 @@
       "tier": 2,
       "description": "CloudFormation template optimization, nested stacks, drift detection, and production-ready patterns. Use when writing or reviewing CF templates."
     },
+    "co-marketing-term-sheet-builder": {
+      "primary_role": "role-partnership-bd-manager",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Draft the commercial skeleton of a co-marketing or joint-venture arrangement before legal drafting starts: rights, spend splits, fund usage rules, lead ownership and exit terms. Use once a target agrees to explore a partnership and always before any draft agreement is written or shared externally."
+    },
     "coda-automation": {
       "primary_role": "role-agentic-workflow-architect",
       "secondary_roles": [
@@ -10115,6 +10183,12 @@
       "tier": 2,
       "description": "Clinically informed wisdom companion blending psychology and philosophy into a structured thinking partner"
     },
+    "cohort-retention-curves": {
+      "primary_role": "role-churn-analyst",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Build cohort retention curves, fit the decay, and name the segments that fall under benchmark. Use when monthly retention moves, before a pricing or packaging change, or when product asks which acquisition cohort actually sticks. Produces the evidence base that health scores and PRD problem statements are built on."
+    },
     "colab-cloud-execution": {
       "primary_role": "role-cloud-architect",
       "secondary_roles": [
@@ -10134,6 +10208,12 @@
       "secondary_roles": [],
       "tier": 2,
       "description": "Creator collabs and cross-promotion \u2014 organic creator-to-creator partnerships that swap audiences. Use when someone wants to set up a collab, audience swap, cross-promotion, shoutout swap, joint giveaway, guest spot, joint video/series, a YouTube/IG collab post, or co-promo with another creator. Picks a complementary, similar-size, values-aligned partner, agrees the plan before creating, and co-creates shared-value content (not a bare shoutout) on a coordinated schedule. Uses the UNITE framework. Reads brand-profile + goals-and-kpis first. WoopSocial publishes each partner's OWN posts to their OWN accounts; it does NOT create native IG Collab co-authored posts, run giveaways, duet/stitch, or manage the agreement. A pure mutual collab isn't a sponsorship, but payment/free product makes it one -> disclose -> ugc-and-influencer; partnerships must be genuine; metrics never fabricated. Distinct from ugc-and-influencer (brand->creator) and creator-monetization (the creator's income)."
+    },
+    "collections-dunning-automation": {
+      "primary_role": "role-accounts-manager",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Operate the collections ladder from gentle reminder to bad-debt provision. Use when AR ages past 60 days, when a dunning stage fires, or when provisioning is due for the quarter. Excludes disputed invoices until the dispute closes, and hands legal-grade escalations to the operator for a human decision."
     },
     "comfyui-gateway": {
       "primary_role": "role-backend-engineer",
@@ -10156,6 +10236,12 @@
       "secondary_roles": [],
       "tier": 2,
       "description": "Use to build a genuine community \u2014 turning an audience into people who interact with each other, not just with the brand. Run when the user asks how to build community, foster belonging/loyalty, create superfans, start a group/Discord channel, get members talking to each other, or move beyond chasing followers/virality. Reads brand-profile/social-strategy/audience-research. Community outperforms virality, measured by relationship depth/retention, not follower count. Covers the audience-to-community distinction (member-to-member interaction), choosing the space (in-feed -> semi-owned -> owned groups/Discord), recurring rituals, building belonging, and nurturing superfans into advocates. KPIs read natively, never fabricated. Advisory: WoopSocial schedules the content but does NOT run Discord/Slack or show analytics \u2014 the human runs the community, the agent drafts. Never fake community; get consent before spotlighting. Pairs with reply-and-comment-writer and crisis-and-moderation."
+    },
+    "community-sentiment-trends": {
+      "primary_role": "role-community-manager",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Track community sentiment per channel and topic, alert on abnormal drops, and correlate them with releases and incidents. Use weekly for the standing digest, when support volume spikes, and before release so known friction is distinguished from new friction."
     },
     "competitive-landscape": {
       "primary_role": "role-partnership-bd-manager",
@@ -10694,6 +10780,12 @@
       "tier": 2,
       "description": "Master rule for skill usage. Prevents rationalization and enforces strict adherence to all existing skills. Triggers on any task, question, or action."
     },
+    "corporate-governance-resolutions": {
+      "primary_role": "role-general-counsel",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Draft board and shareholder resolutions from precedent, verify them against bylaws and jurisdiction requirements, and keep the corporate records index current. Use when a corporate action needs approval (grants, financings, officer appointments, policy adoptions), before a board meeting, or when an auditor or bank asks for evidence of authority."
+    },
     "cost-aware-llm-pipeline": {
       "primary_role": "role-cost-optimization-analyst",
       "secondary_roles": [
@@ -10899,6 +10991,12 @@
       "tier": 2,
       "description": "Use to turn one piece of content into multiple platform-native posts \u2014 adapt, never copy-paste. Run when the user says \"repurpose this,\" \"turn this into posts for every platform,\" \"cross-post,\" \"make this work on TikTok/LinkedIn/X too,\" \"one idea into a week of content,\" \"turn this blog/video/podcast into social posts,\" or wants to fan content out. Reads brand-profile and voice first, extracts the core idea, then re-natives it for each platform (different hook, format, length, mechanics, CTA) using the content skills, and hands the fan-out to scheduling-and-queue. This is the multiplier that makes a content operation sustainable \u2014 but every version must stand on its own and feel native, never duplicated."
     },
+    "crossborder-tia": {
+      "primary_role": "role-privacy-engineer",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Run the transfer impact assessment for personal data leaving a jurisdiction: flow map, transfer mechanism, destination access risk and supplemental measures, ending in a go/no-go recommendation. Use before a new region is added to any data flow, before a vendor in another region processes personal data, and when transfer law changes."
+    },
     "crypto-bd-agent": {
       "primary_role": "role-web3-blockchain-eng",
       "secondary_roles": [
@@ -10930,6 +11028,12 @@
       ],
       "tier": 2,
       "description": "Operate customer billing workflows such as subscriptions, refunds, churn triage, billing-portal recovery, and plan analysis using connected billing tools like Stripe. Use when the user needs to help a customer, inspect subscription state, or manage revenue-impacting billing operations."
+    },
+    "customer-health-score": {
+      "primary_role": "role-churn-analyst",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Define, validate and operate the composite customer health score with intervention triggers. Use when customer success needs a ranked at-risk list, after a quarter closes (to validate the score against actual churn), or when triggers fire so the right playbook reaches the right CSM owner."
     },
     "customer-psychographic-profiler": {
       "primary_role": "role-brand-copywriter",
@@ -10969,6 +11073,12 @@
       "secondary_roles": [],
       "tier": 2,
       "description": "This skill provides guidance for creating sophisticated, interactive data visualisations using d3.js."
+    },
+    "daily-cashflow-forecast": {
+      "primary_role": "role-treasury-banking-spec",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Build and maintain a rolling 13-week direct cash-flow forecast with a hard liquidity floor alert. Use when the operator asks for cash runway detail, when accounts-manager publishes new AR/AP aging schedules, when payroll or debt-service dates change, or when a payment-gateway payout lag is about to move more than the floor amount. Produces the one artifact every finance role reads before approving spend."
     },
     "daily-gift": {
       "primary_role": "role-cmo",
@@ -11292,6 +11402,12 @@
       "secondary_roles": [],
       "tier": 2,
       "description": "Implement DeFi protocols with production-ready templates for staking, AMMs, governance, and lending systems. Use when building decentralized finance applications or smart contract protocols."
+    },
+    "deidentification-benchmark": {
+      "primary_role": "role-privacy-engineer",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Benchmark a dataset's deidentification before it leaves its trust boundary: identifier classification, k-anonymity style measures, re-identification risk tests and differential privacy parameter checks against policy caps. Use before any analytics export, model training share or third-party data release."
     },
     "delivery-gate": {
       "primary_role": "role-vp-engineering",
@@ -11793,6 +11909,12 @@
       ],
       "tier": 2,
       "description": "Automate Dropbox file management, sharing, search, uploads, downloads, and folder operations via Rube MCP (Composio). Always search tools first for current schemas."
+    },
+    "dsar-pipeline": {
+      "primary_role": "role-privacy-engineer",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Run a data subject request end to end: intake, identity proof, system inventory, fulfillment and certification under the applicable deadline (GDPR 30 days, CCPA/CPRA 45 days with one 45-day extension). Use when a request arrives through any channel, when a deadline clock is running, or when a quarterly DSAR audit is due."
     },
     "dwarf-expert": {
       "primary_role": "role-data-protection-officer",
@@ -12520,10 +12642,11 @@
     "ffmpeg-video-editor": {
       "primary_role": "role-motion-designer",
       "secondary_roles": [
-        "role-frontend-engineer"
+        "role-frontend-engineer",
+        "role-social-media-manager"
       ],
       "tier": 2,
-      "description": "Automated, programmatic video and audio editing using local FFmpeg. Covers silence detection, audio ducking with sidechain compression, YouTube loudness normalization (-14 LUFS), B-roll overlay cutaways, dynamic zoom punch-ins, SRT caption styling, and multi-clip concatenation with transitions."
+      "description": "Programmatic FFmpeg video editing, EDL rendering, 30ms boundary fades, PTS-shifted overlays, subtitles-last compositing, two-pass -14 LUFS mastering, and ebur128/blackdetect verification."
     },
     "ffuf-web-fuzzing": {
       "primary_role": "role-security-engineer",
@@ -13116,6 +13239,18 @@
       "tier": 2,
       "description": "Use when working with full stack orchestration full stack feature"
     },
+    "fundraising-data-room": {
+      "primary_role": "role-cfo",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Assemble and police the diligence data room: the index of required documents, the chase list for missing items, redaction rules and the access policy. Use when a raise starts, when investor diligence begins, or before any data room link is shared, so access is deliberate and the index is complete."
+    },
+    "fx-hedging-advisor": {
+      "primary_role": "role-treasury-banking-spec",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Net currency exposures and draft a hedging recommendation inside policy bands. Use when invoicing or spending is concentrated in a currency other than the functional one, when the treasury policy review comes up, or before any forward contract or option is quoted. Outputs a decision memo; it never executes a hedge itself."
+    },
     "game-development": {
       "primary_role": "role-platform-engineer",
       "secondary_roles": [
@@ -13494,12 +13629,12 @@
       "description": "Lightweight Google Drive integration with standalone OAuth authentication. No MCP server required. Full read/write access."
     },
     "google-flow": {
-      "primary_role": "role-research-scientist",
+      "primary_role": "role-agentic-workflow-architect",
       "secondary_roles": [
-        "role-network-infra-eng"
+        "role-motion-designer"
       ],
       "tier": 2,
-      "description": "Headless video generation and media retrieval using Google Flow and Veo 3.1. Enforces zero visible browser windows (--headless=new), automatic local downloads, machine-verified media integrity, and mandatory skill-first research routing before crafting prompts."
+      "description": "Headless video generation and Scene Builder automation using Google Flow and Veo 3.1 via google-flow-mcp. Enforces Obscura headless execution, dry-run confirmation, Veo 3.1 prompting, local download, and post-render verification."
     },
     "google-sheets-automation": {
       "primary_role": "role-agentic-workflow-architect",
@@ -15529,7 +15664,7 @@
         "role-ceo"
       ],
       "tier": 2,
-      "description": "The Closer. Sends personalised outreach emails to investors, manages the conversations and keeps following up until an investor call is booked, and nothing leaves the user's inbox without their yes. Drafts one RFC 5322 .eml per investor from seed/investors.json and a template (a real personal line, the sender's real name and an opt-out line, generic lines refused), shows the batch, records the user's yes word for word, enforces a daily cap of 20, then Claude sends through the user's own Gmail connector where the Allow once card is a second check. Schedules follow-ups on +3 and +7 business days (3 touches at most, never after a reply), sorts replies into interested / question / not now / no / out of office, stops a thread for good on a no, an opt-out or a bounce, writes a valid .ics invite and shows the funnel. Reads seed/config.json and seed/investors.json, writes seed/pipeline.json, seed/outreach/ and seed/calls/. Use when the user says \"email the investors\", \"send the outreach\", \"follow up with everyone who hasn't replied\", \"who do I follow up with today\", \"sort my replies\", \"book the call\", \"send her an invite\", \"how is the raise going\", or after /seed-investors ranks the list."
+      "description": "Manage investor outreach and follow-ups without sending externally without approval. Draft and review investor emails, triage replies, stop threads after declines or opt-outs, schedule calls, and maintain the raise pipeline. Use for investor email outreach, follow-ups, reply sorting, call scheduling, or raise status."
     },
     "jake-seed-seed-coach": {
       "primary_role": "role-startup-cfo-advisor",
@@ -15601,7 +15736,7 @@
         "role-ceo"
       ],
       "tier": 2,
-      "description": "Term Sheet Reader. Reads a SAFE or a term sheet in plain English, does the dilution math and flags the clauses to ask a lawyer about. Works out what a post-money SAFE owns at its cap and what it converts into at a priced round (cap price vs discount price, whichever is lower), builds a priced round's cap table with the option-pool shuffle (price per share, new shares, the pool top-up, the effective pre-money, everyone's dilution), and scans a pasted term sheet for the traps: liquidation preference over 1x, participating preferred, full ratchet, redemption, cumulative dividends, board control, operating vetoes, pay-to-play, drag-along, long no-shops, exploding deadlines, founder vesting resets, super pro rata and MFN, each with a severity and a question for the lawyer. Not legal advice. Writes seed/terms/ with --write. Use when the user says \"read this term sheet\", \"is this a good deal\", \"what does this SAFE mean\", \"how much do I own after\", \"how much dilution\", \"what's the option pool shuffle\", \"what is a post-money cap\", \"any red flags in this\", or when an investor sends terms after a /seed-closer call."
+      "description": "Explain SAFEs and term sheets in plain English, calculate dilution, build priced-round cap-table scenarios, and flag clauses that need legal review. Covers liquidation preferences, participation, ratchets, board rights, and vesting. This is analytical guidance, not legal advice."
     },
     "jake-seed-seed-updates": {
       "primary_role": "role-startup-cfo-advisor",
@@ -16591,6 +16726,12 @@
       "tier": 2,
       "description": "Lead magnets and funnels \u2014 design offers that turn social traffic into subscribers, leads, and customers. Use when someone wants to \"create a lead magnet,\" \"build a funnel,\" \"design a freebie/opt-in,\" \"make a quiz/calculator/template to grow my list,\" or turn social traffic into qualified leads and customers. Designs the magnet the capture paths deliver PLUS the whole social->capture->nurture funnel, using the MAGNET framework. Reads brand-profile + goals-and-kpis first. WoopSocial has no landing/form/email/quiz builder: the agent designs the magnet + funnel and drafts the nurture and promo posts; WoopSocial publishes the promo posts; capture/delivery/nurture run in external tools; metrics from those + GA4, never fabricated; no dark patterns. Distinct from link-in-bio-and-traffic / social-selling-and-dm (the capture paths) and email-and-newsletter (the owned channel)."
     },
+    "ledger-reconciliation": {
+      "primary_role": "role-accounts-manager",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Reconcile sub-ledgers to the general ledger and resolve invoice discrepancies with recorded evidence. Use at each close, when a sub-ledger total disagrees with its GL control account, or when a customer or vendor disputes amounts. Produces journal proposals for the controller - it never posts directly."
+    },
     "legacy-modernize": {
       "primary_role": "role-fp-and-a-analyst",
       "secondary_roles": [
@@ -16786,6 +16927,12 @@
       ],
       "tier": 2,
       "description": "The list/roundup content type \u2014 design honestly-curated, scannable, AI-citable listicles (\"7 ways to X\", \"best tools for Y\") and expert / product / link roundups. Use when someone wants a listicle, a \"best of\" or \"top N\" list, a ranked recommendation list, an expert roundup, a product/affiliate roundup, or a curated resource list. Ranked \"best-of\" lists are among the most-cited formats in AI search. Uses the RANKS framework. Reads brand-profile + audience-research first. The agent designs the list and frames the cuts; for roundups it drafts the contributor ask; the human secures real contributor quotes/consent and verifies product facts; WoopSocial publishes the cuts. Feeds the format writers and ai-search-optimization + social-seo. NEVER fabricates items, quotes, or rankings, or pads to a number; discloses affiliate/own-product. Distinct from carousel-writer/thread-writer, educational-content-and-how-to, data-and-original-research, and competitor-analysis."
+    },
+    "litigation-regulatory-risk-scanner": {
+      "primary_role": "role-general-counsel",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Scan the company's exposure surface: demand letters, regulatory inquiries, incident aftermath and deal diligence. Classifies exposure, scores severity, starts the response clock with the right template, and instantiates the M&A legal audit checklist when a deal flag is set. Use on any legal threat, inquiry or deal signal."
     },
     "livestream-and-realtime": {
       "primary_role": "role-community-manager",
@@ -17364,6 +17511,12 @@
       "tier": 2,
       "description": "Expert in launching small, focused SaaS products fast - the indie hacker approach to building profitable software. Covers idea validation, MVP development, pricing, launch strategies, and growing to sustainable revenue. Ship in weeks, not months."
     },
+    "microcopy-pattern-library": {
+      "primary_role": "role-ux-copywriter",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Build and maintain the interface copy pattern library: error messages, empty states, success confirmations and their placement rules, keyed for i18n and wired to the design system. Use when a surface ships without copy review, when error rates cluster on a screen, or when the design-system-engineer adds components that need standard strings."
+    },
     "microservices-patterns": {
       "primary_role": "role-data-protection-officer",
       "secondary_roles": [
@@ -17548,6 +17701,12 @@
       "tier": 2,
       "description": "Audit a live web page in five phases (catalog, click, trace, classify, report) to identify mock data, hardcoded values, LLM-generated metrics, and broken endpoints. Outputs a markdown report with REAL/MOCK/LLM/HARDCODED/BROKEN/UNKNOWN verdicts per visible value."
     },
+    "moderation-escalation-ladder": {
+      "primary_role": "role-community-manager",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Enforce the moderation ladder consistently across channels: policy classes, escalating actions, evidence snapshots, appeals and the weekly false-positive review. Use when a violation is reported or detected, when an appeal arrives, or when moderation stats are due for the transparency report."
+    },
     "modern-javascript-patterns": {
       "primary_role": "role-swe",
       "secondary_roles": [
@@ -17656,7 +17815,8 @@
     "motion-advanced": {
       "primary_role": "role-motion-designer",
       "secondary_roles": [
-        "role-frontend-engineer"
+        "role-frontend-engineer",
+        "role-social-media-manager"
       ],
       "tier": 2,
       "description": "Advanced motion patterns for React / Next.js \u2014 drag & drop, gestures, text animations, SVG path drawing, custom hooks, imperative sequences (useAnimate), loaders, and the full API decision tree. Requires motion-foundations. Use when building drag and drop, gestures, text or SVG animation, or imperative animation sequences in React or Next.js."
@@ -17670,7 +17830,8 @@
     "motion-patterns": {
       "primary_role": "role-motion-designer",
       "secondary_roles": [
-        "role-frontend-engineer"
+        "role-frontend-engineer",
+        "role-social-media-manager"
       ],
       "tier": 2,
       "description": "Production-ready animation patterns for React / Next.js \u2014 button, modal, toast, stagger, page transitions, exit animations, scroll, and layout \u2014 built on motion-foundations tokens and springs. Use when animating a specific UI element in React or Next.js \u2014 button, modal, toast, stagger, page transition, or scroll."
@@ -18063,6 +18224,12 @@
       "tier": 2,
       "description": "Expert in building and selling Notion templates as a business - not just making templates, but building a sustainable digital product business. Covers template design, pricing, marketplaces, marketing, and scaling to real revenue."
     },
+    "nps-sentiment-root-cause": {
+      "primary_role": "role-churn-analyst",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Cluster NPS and CSAT verbatims into themes, link them to measurable drivers, and assign remediation owners. Use after each NPS or CSAT wave closes, when detractor share moves without an obvious incident, or quarterly when the remediation backlog is reviewed."
+    },
     "nutrient-document-processing": {
       "primary_role": "role-backend-engineer",
       "secondary_roles": [
@@ -18373,6 +18540,12 @@
       "tier": 2,
       "description": "Use when designing first-use onboarding to reduce friction and help users reach an early success."
     },
+    "onboarding-tooltip-system": {
+      "primary_role": "role-ux-copywriter",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Design the first-run and feature-discovery tooltip sequence: step copy, dismissal rules and the instrumentation events that prove whether guidance works. Use when activation drops at a known funnel step, when a major surface ships, or when tooltips are added ad hoc and start competing with each other."
+    },
     "one-drive-automation": {
       "primary_role": "role-coo",
       "secondary_roles": [
@@ -18516,12 +18689,12 @@
       "description": "Plan and execute large refactors with dependency-aware work packets and parallel analysis."
     },
     "organic-film-de-ai": {
-      "primary_role": "role-motion-designer",
+      "primary_role": "role-ai-product-engineer",
       "secondary_roles": [
-        "role-ai-product-engineer"
+        "role-mlops-engineer"
       ],
       "tier": 2,
-      "description": "Master craft and CLI engine for transforming AI-generated and AI-edited video into authentic, organic cinema. Eliminates the artificial 'AI sheen' (waxy skin, hyper-saturation, sliding camera, sterile silence, and staccato motion) using photochemical 35mm film grain, highlight halation bloom, lens optical distortion, handheld micro-drift, 180-degree shutter motion blur, Kodak 2383 tone curves, and room impulse acoustics. Integrates with the entire AGYOS video editing ecosystem."
+      "description": "Transform AI-generated video into organic cinema using Kodak 2383 curves, halation bloom, 35mm grain, lens optics, 180-degree shutter blur, aspect-preserving handheld drift, and room acoustics via scripts/organic_film_engine.py."
     },
     "os-scripting": {
       "primary_role": "role-coo",
@@ -18546,6 +18719,12 @@
       ],
       "tier": 2,
       "description": "Automatically hunt for high-impact OSS contribution opportunities in trending repositories."
+    },
+    "oss-license-risk-audit": {
+      "primary_role": "role-ip-patent-attorney",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Audit the dependency tree for license risk: build the compatibility matrix, find copyleft paths into proprietary code, and issue the license gate verdict. Use on every release train, when a new dependency is proposed, or when the CI SBOM job flags a new license class. This skill is the enforcement brain behind the legal license gate."
     },
     "outlook-automation": {
       "primary_role": "role-executive-assistant",
@@ -18629,6 +18808,18 @@
       "tier": 2,
       "description": "Speed up a task by turning it into a dependency graph of parallel lanes with a lane matrix, batched reads and checks, write surfaces isolated by file, worktree, branch, or service, and a final verification table. Use when the user wants a task done much faster through parallel work, concurrent agents, batched tool calls, isolated worktrees, many independent verification lanes, or bounded homogeneous work that reuses shared preparation while record operations remain sequential, without losing correctness."
     },
+    "partner-ecosystem-mapping": {
+      "primary_role": "role-partnership-bd-manager",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Map the partner landscape by category, score candidates on reach, overlap and effort, and produce a ranked target list with written rationale. Use when entering a new channel, when a partnership underperforms for two consecutive quarters, or before any outreach campaign so pursuit effort is spent on scored targets, not guesses."
+    },
+    "patent-claim-drafter": {
+      "primary_role": "role-ip-patent-attorney",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Draft the claim set for a disclosure that passed novelty screening: independent claim with a deliberate boundary, dependent claims per element, and the boundary map against the closest prior art. Use after prior-art-search completes and before outside counsel engagement so review hours are spent on a structured draft."
+    },
     "payment-integration": {
       "primary_role": "role-billing-payments-eng",
       "secondary_roles": [],
@@ -18642,6 +18833,12 @@
       ],
       "tier": 2,
       "description": "Master PayPal payment integration including Express Checkout, IPN handling, recurring billing, and refund workflows."
+    },
+    "payroll-cycle-ops": {
+      "primary_role": "role-hr-ops-specialist",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Run one payroll cycle from pre-close checklist to signed register. Use at each cycle boundary (T-7 to freeze), when compensation changes land mid-cycle, or when any variance against the prior cycle needs explanation before approval. Produces the register role-cfo approves and the audit trail auditors ask for."
     },
     "paywall-upgrade-cro": {
       "primary_role": "role-conversion-optimizer",
@@ -19115,6 +19312,12 @@
       "secondary_roles": [],
       "tier": 2,
       "description": "Design pricing, packaging, and monetization strategies based on value, customer willingness to pay, and growth objectives."
+    },
+    "prior-art-search": {
+      "primary_role": "role-ip-patent-attorney",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Run a structured prior-art search and write the novelty report for an invention disclosure, including the trademark watch check. Use when a disclosure arrives from engineering, before any patent filing decision, or when a competitor filing needs screening against the company's roadmap."
     },
     "prisma-expert": {
       "primary_role": "role-database-reliability-eng",
@@ -19883,6 +20086,12 @@
       "tier": 2,
       "description": "Redis data structure patterns, caching strategies, distributed locks, rate limiting, pub/sub, and connection management for production applications. Use when adding caching, a distributed lock, rate limiting, or pub/sub with Redis, or when key design needs review."
     },
+    "redline-diff-analyzer": {
+      "primary_role": "role-contract-manager",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Analyze a counterparty's redline against the template: classify every change as added, modified or deleted per clause, flag variances against the clause playbook, and propose fallback language from pre-approved ranges. Use every time a draft comes back from a counterparty, before any human reads it."
+    },
     "reels-script": {
       "primary_role": "role-speech-audio-ai-eng",
       "secondary_roles": [
@@ -19942,7 +20151,8 @@
     "remotion-best-practices": {
       "primary_role": "role-motion-designer",
       "secondary_roles": [
-        "role-frontend-engineer"
+        "role-frontend-engineer",
+        "role-social-media-manager"
       ],
       "tier": 2,
       "description": "Compatibility ID for Remotion video work in React. Use remotion-video-creation as the canonical guide for animations, audio, captions, charts, transitions, and 3D."
@@ -19950,7 +20160,8 @@
     "remotion-video-creation": {
       "primary_role": "role-motion-designer",
       "secondary_roles": [
-        "role-frontend-engineer"
+        "role-frontend-engineer",
+        "role-social-media-manager"
       ],
       "tier": 2,
       "description": "Best practices for Remotion - Video creation in React. 29 domain-specific rules covering 3D, animations, audio, captions, charts, transitions, and more. Use when building video in React with Remotion \u2014 animations, audio, captions, charts, or transitions."
@@ -19970,6 +20181,12 @@
       ],
       "tier": 2,
       "description": "Automate Render tasks via Rube MCP (Composio): services, deployments, projects. Always search tools first for current schemas."
+    },
+    "renewal-and-liability-watch": {
+      "primary_role": "role-contract-manager",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Watch the contract register for renewal windows and liability exposure: auto-renewal deadlines with notice cutoffs, liability caps against the policy floor, uncapped exposures and insurance requirements. Use monthly, and whenever a contract is signed, amended or assigned."
     },
     "repl-runner": {
       "primary_role": "role-fp-and-a-analyst",
@@ -20010,6 +20227,12 @@
       ],
       "tier": 2,
       "description": "Evidence-first current-state research workflow for ECC. Use when the user wants fresh facts, comparisons, enrichment, or a recommendation built from current public evidence and any supplied local context."
+    },
+    "retrospective-synthesis": {
+      "primary_role": "role-scrum-agile-coach",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Convert a sprint retrospective into evidence-linked actions. Use at sprint end, after an incident, or whenever velocity or burndown moves without an obvious cause. Clusters the transcript into themes, ties each theme to a delivery metric, and caps the action list at what the team can actually carry."
     },
     "returns-reverse-logistics": {
       "primary_role": "role-product-designer",
@@ -20151,6 +20374,12 @@
       ],
       "tier": 2,
       "description": "Prompt and direct Runway (Gen-4.5, Aleph) \u2014 the control-grade generative video tool for camera moves, character consistency, and edit-grade shots. Use when someone wants \"a specific camera move,\" \"the same character across multiple shots,\" \"to edit/restyle existing footage,\" \"a branded product/ad shot,\" \"film-style previz,\" \"image to video with Runway\" (animate a still), or names Runway / Gen-4 / Gen-4.5 / Aleph / Act-Two / Motion Brush / References. Runway generates clips; a human assembles/edits; audio comes from ai-voiceover; WoopSocial schedules/publishes. Below the ai-video router, sibling to veo-3 (all-round + native audio), kling (native 4K/multi-shot/motion), and luma (cinematic HDR/mood). Consented performances only (Act-Two); AI disclosure mandatory."
+    },
+    "runway-sensitivity-analysis": {
+      "primary_role": "role-cfo",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Extend the 13-week cash forecast into scenario runway bands with named cost levers, and synthesize the board financial deck outline from them. Use monthly before board cadence, when a hiring or spend decision lands, or whenever the base-case floor distance narrows below policy tolerance."
     },
     "rust-async-patterns": {
       "primary_role": "role-backend-engineer",
@@ -20957,6 +21186,12 @@
       "tier": 2,
       "description": "Analyze a repository to generate recommended Claude Code settings.json permissions. Use when setting up a new project, auditing existing settings, or determining which read-only bash commands to allow. Detects tech stack, build tools, and monorepo structure."
     },
+    "settlement-reconciliation-audit": {
+      "primary_role": "role-treasury-banking-spec",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Three-way match between payment-processor settlement files, the internal payout ledger and bank statements. Use after each settlement period closes, when a payout amount looks wrong, when chargeback volume moves, or before role-cfo signs a payment approval. Classifies breaks, ages them, and drafts processor credit claims."
+    },
     "sexual-health-analyzer": {
       "primary_role": "role-vp-engineering",
       "secondary_roles": [
@@ -21521,6 +21756,12 @@
       "tier": 2,
       "description": "Run the full Spring Boot verification loop \u2014 Maven or Gradle build, SpotBugs, PMD, and Checkstyle static analysis, unit and Testcontainers integration tests with JaCoCo coverage, OWASP dependency and secret scans, and diff review \u2014 producing a pass/fail readiness report. Use when preparing a Spring Boot pull request, validating coverage thresholds, or running pre-deploy verification."
     },
+    "sprint-backlog-grooming": {
+      "primary_role": "role-scrum-agile-coach",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Turn a raw backlog into a sprint-ready one: definition-of-ready enforcement, oversized story splitting and an explicit dependency map. Use before sprint planning, when items sit in backlog for more than two sprints, or when planning stalls on unclear scope. Feeds kanban-agent-pipeline and conductor-status with clean, ordered work."
+    },
     "sql-injection-testing": {
       "primary_role": "role-database-reliability-eng",
       "secondary_roles": [
@@ -21656,6 +21897,12 @@
       ],
       "tier": 2,
       "description": "Manage a file-based epic \u2192 story \u2192 sprint development loop without requiring an external project management tool. Creates and tracks epics, breaks them into user stories, assigns them to sprints, and drives implementation story by story. Use when starting a new feature initiative or when the team has no Jira/Linear/Taiga but needs structured delivery tracking."
+    },
+    "story-pointing-calibration": {
+      "primary_role": "role-scrum-agile-coach",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Anchor estimation to reference stories and detect drift. Use during backlog refinement, when velocity swings more than the control band between sprints, or when estimates from different contributors stop being comparable. Produces calibrated estimates with a recorded spread, not false precision."
     },
     "story-writer": {
       "primary_role": "role-brand-copywriter",
@@ -22602,7 +22849,9 @@
     },
     "trend-jacking": {
       "primary_role": "role-content-strategist",
-      "secondary_roles": [],
+      "secondary_roles": [
+        "role-ip-patent-attorney"
+      ],
       "tier": 2,
       "description": "Use to ride a trend \u2014 a trending sound, format, meme, hashtag, news moment, or cultural conversation \u2014 to earn reach by attaching the brand to something already getting attention (a.k.a. trendjacking / newsjacking). Run when the user says \"trend,\" \"trending,\" \"jump on this trend,\" \"trendjack,\" \"newsjack,\" \"is this trend worth doing,\" \"make this go viral,\" or wants to react to a current moment. Reads brand-profile, voice, and audience first, then runs three gates \u2014 FIT, SAFETY, and TIMING \u2014 before executing a fast, on-brand remix and handing to the right content skill (tiktok-script, reels-script, caption-writer) and scheduling-and-queue. Refuses to trendjack tragedies or divisive moments and won't force irrelevant trends; live trend discovery needs current scanning \u2014 this skill vets and executes. For meme-format craft, cultural fluency, and meme IP/likeness judgment (\"make a meme,\" \"is this meme safe\"), route to meme-and-culture."
     },
@@ -23085,6 +23334,24 @@
       "tier": 2,
       "description": "Find files by meaning with the Vexor semantic-search CLI. Use when installed and configured; inspect the embedding provider and data boundary before indexing source files."
     },
+    "vendor-rfp-generator": {
+      "primary_role": "role-procurement-vendor-manager",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Produce a complete RFP pack: requirements matrix, weighted scorecard and the approval chain that matches the spend band. Use when a vendor need is first scoped, when an incumbent contract approaches renewal with competitive options, or whenever spend above the threshold requires a documented selection process."
+    },
+    "vendor-sla-breach-watch": {
+      "primary_role": "role-procurement-vendor-manager",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Maintain the SLA register per vendor contract, collect breach evidence, compute credits owed and escalate repeat offenders. Use when an incident touches a vendor-managed service, when a monthly vendor report lands, or when a credit claim deadline is close. Feeds SRE error-budget reviews with vendor-side context."
+    },
+    "vendor-spend-consolidator": {
+      "primary_role": "role-procurement-vendor-manager",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Keep one inventory of every software and hardware contract, surface renewals before they auto-renew, and propose consolidations where the same category is spread across multiple vendors. Use quarterly, when a renewal alert fires, or when spend in any category grows without a matching headcount or usage story."
+    },
     "veo-3": {
       "primary_role": "role-ai-product-engineer",
       "secondary_roles": [
@@ -23183,7 +23450,8 @@
     "video-editing": {
       "primary_role": "role-motion-designer",
       "secondary_roles": [
-        "role-frontend-engineer"
+        "role-frontend-engineer",
+        "role-social-media-manager"
       ],
       "tier": 2,
       "description": "AI-assisted video editing workflows for cutting, structuring, and augmenting real footage. Covers the full pipeline from raw capture through FFmpeg, Remotion, ElevenLabs, fal.ai, and final polish in Descript or CapCut. Use when the user wants to edit video, cut footage, create vlogs, or build video content."
@@ -23191,10 +23459,17 @@
     "video-editing-principles": {
       "primary_role": "role-motion-designer",
       "secondary_roles": [
-        "role-frontend-engineer"
+        "role-frontend-engineer",
+        "role-social-media-manager"
       ],
       "tier": 2,
       "description": "The 440-principle master reference for professional video editing across Hollywood films, premium advertising, YouTube long-form, social formats, and documentary production. Incorporates Walter Murch's Rule of Six, cinematic techniques, sound and color engineering, AI-assisted workflows, and an autonomous self-improvement protocol for continuous evolution."
+    },
+    "video-production-orchestrator": {
+      "primary_role": "role-motion-designer",
+      "secondary_roles": [],
+      "tier": 1,
+      "description": "Master AGYOS video production and editing orchestrator. Routes across Google Flow, Chopify, ai-video-editor, faceless-shorts, Manim, FFmpeg EDL rendering, AI repair, and organic film finishing with 12 production hard rules and post-render self-eval."
     },
     "videodb-media-engine": {
       "primary_role": "role-motion-designer",
@@ -23689,6 +23964,12 @@
       ],
       "tier": 1,
       "description": "Use this skill when implementing tasks according to Conductor's TDD workflow, handling phase checkpoints, managing git commits for tasks, or understanding the verification protocol."
+    },
+    "workforce-compliance-tracker": {
+      "primary_role": "role-hr-ops-specialist",
+      "secondary_roles": [],
+      "tier": 2,
+      "description": "Track work-authorization expiries and drive the offboarding compliance sequence with evidence at every step. Use when a visa or permit approaches expiry, when any employment ends, or when an audit asks who verified what and when. The offboarding path hands explicitly to the security zeroize-audit flow."
     },
     "workplace-wellness-assistant": {
       "primary_role": "role-staff-engineer",
@@ -24289,166 +24570,6 @@
       ],
       "tier": 2,
       "description": "Create Zustand stores following established patterns with proper TypeScript types and middleware."
-    },
-    "daily-cashflow-forecast": {
-      "primary_role": "role-treasury-banking-spec",
-      "secondary_roles": []
-    },
-    "fx-hedging-advisor": {
-      "primary_role": "role-treasury-banking-spec",
-      "secondary_roles": []
-    },
-    "settlement-reconciliation-audit": {
-      "primary_role": "role-treasury-banking-spec",
-      "secondary_roles": []
-    },
-    "sprint-backlog-grooming": {
-      "primary_role": "role-scrum-agile-coach",
-      "secondary_roles": []
-    },
-    "story-pointing-calibration": {
-      "primary_role": "role-scrum-agile-coach",
-      "secondary_roles": []
-    },
-    "retrospective-synthesis": {
-      "primary_role": "role-scrum-agile-coach",
-      "secondary_roles": []
-    },
-    "partner-ecosystem-mapping": {
-      "primary_role": "role-partnership-bd-manager",
-      "secondary_roles": []
-    },
-    "co-marketing-term-sheet-builder": {
-      "primary_role": "role-partnership-bd-manager",
-      "secondary_roles": []
-    },
-    "affiliate-program-ops": {
-      "primary_role": "role-partnership-bd-manager",
-      "secondary_roles": []
-    },
-    "payroll-cycle-ops": {
-      "primary_role": "role-hr-ops-specialist",
-      "secondary_roles": []
-    },
-    "benefits-leave-administration": {
-      "primary_role": "role-hr-ops-specialist",
-      "secondary_roles": []
-    },
-    "workforce-compliance-tracker": {
-      "primary_role": "role-hr-ops-specialist",
-      "secondary_roles": []
-    },
-    "vendor-rfp-generator": {
-      "primary_role": "role-procurement-vendor-manager",
-      "secondary_roles": []
-    },
-    "vendor-spend-consolidator": {
-      "primary_role": "role-procurement-vendor-manager",
-      "secondary_roles": []
-    },
-    "vendor-sla-breach-watch": {
-      "primary_role": "role-procurement-vendor-manager",
-      "secondary_roles": []
-    },
-    "cap-table-modeler": {
-      "primary_role": "role-cfo",
-      "secondary_roles": []
-    },
-    "runway-sensitivity-analysis": {
-      "primary_role": "role-cfo",
-      "secondary_roles": []
-    },
-    "fundraising-data-room": {
-      "primary_role": "role-cfo",
-      "secondary_roles": []
-    },
-    "microcopy-pattern-library": {
-      "primary_role": "role-ux-copywriter",
-      "secondary_roles": []
-    },
-    "onboarding-tooltip-system": {
-      "primary_role": "role-ux-copywriter",
-      "secondary_roles": []
-    },
-    "a11y-copy-audit": {
-      "primary_role": "role-ux-copywriter",
-      "secondary_roles": []
-    },
-    "cohort-retention-curves": {
-      "primary_role": "role-churn-analyst",
-      "secondary_roles": []
-    },
-    "customer-health-score": {
-      "primary_role": "role-churn-analyst",
-      "secondary_roles": []
-    },
-    "nps-sentiment-root-cause": {
-      "primary_role": "role-churn-analyst",
-      "secondary_roles": []
-    },
-    "ap-ar-aging-schedules": {
-      "primary_role": "role-accounts-manager",
-      "secondary_roles": []
-    },
-    "ledger-reconciliation": {
-      "primary_role": "role-accounts-manager",
-      "secondary_roles": []
-    },
-    "collections-dunning-automation": {
-      "primary_role": "role-accounts-manager",
-      "secondary_roles": []
-    },
-    "prior-art-search": {
-      "primary_role": "role-ip-patent-attorney",
-      "secondary_roles": []
-    },
-    "patent-claim-drafter": {
-      "primary_role": "role-ip-patent-attorney",
-      "secondary_roles": []
-    },
-    "oss-license-risk-audit": {
-      "primary_role": "role-ip-patent-attorney",
-      "secondary_roles": []
-    },
-    "dsar-pipeline": {
-      "primary_role": "role-privacy-engineer",
-      "secondary_roles": []
-    },
-    "deidentification-benchmark": {
-      "primary_role": "role-privacy-engineer",
-      "secondary_roles": []
-    },
-    "crossborder-tia": {
-      "primary_role": "role-privacy-engineer",
-      "secondary_roles": []
-    },
-    "moderation-escalation-ladder": {
-      "primary_role": "role-community-manager",
-      "secondary_roles": []
-    },
-    "community-sentiment-trends": {
-      "primary_role": "role-community-manager",
-      "secondary_roles": []
-    },
-    "ambassador-event-ops": {
-      "primary_role": "role-community-manager",
-      "secondary_roles": []
-    },
-    "redline-diff-analyzer": {
-      "primary_role": "role-contract-manager",
-      "secondary_roles": []
-    },
-    "renewal-and-liability-watch": {
-      "primary_role": "role-contract-manager",
-      "secondary_roles": []
-    },
-    "corporate-governance-resolutions": {
-      "primary_role": "role-general-counsel",
-      "secondary_roles": []
-    },
-    "litigation-regulatory-risk-scanner": {
-      "primary_role": "role-general-counsel",
-      "secondary_roles": []
     }
   }
 }

@@ -1515,8 +1515,8 @@
   {
     "id": "ai-video-quality-enhancement",
     "name": "Ai Video Quality Enhancement",
-    "module": "Domain & Research Extensions",
-    "category": "Specialized",
+    "module": "Verification & Testing",
+    "category": "QA & Testing",
     "tier": 2,
     "runtime": [
       "AGY CLI",
@@ -1527,7 +1527,7 @@
     "command": "bin/agyos skill ai-video-quality-enhancement",
     "path": ".agents/skills/ai-video-quality-enhancement",
     "risk": "assess_for_task",
-    "description": "Master reference and CLI toolkit for repairing AI-generated video defects (Google Flow & Veo 2026). Maps 200 forensic detection principles to actionable restoration pipelines using FFmpeg, CodeFormer, Real-ESRGAN, Video2X, ProPainter, DeepFilterNet, Demucs, whisper.cpp, PySceneDetect, VapourSynth, VidStab, and VMAF. Includes generation-time prompt engineering for Google Flow studio."
+    "description": "Diagnose and repair AI-generated video defects (Google Flow and Veo) via scripts/repair_ai_video.py, FFmpeg, VidStab, CodeFormer, ProPainter, DeepFilterNet, Demucs, PySceneDetect, and ebur128/VMAF verification."
   },
   {
     "id": "ai-voiceover",
@@ -1819,8 +1819,8 @@
     "description": "Expert guidance for building modern Android UIs with Jetpack Compose, covering state management, navigation, performance, and Material Design 3."
   },
   {
-    "id": "android_ui_verification",
-    "name": "Android_Ui_Verification",
+    "id": "android-ui-verification",
+    "name": "Android Ui Verification",
     "module": "Verification & Testing",
     "category": "QA & Testing",
     "tier": 1,
@@ -1830,8 +1830,8 @@
       "Claude Code",
       "Codex"
     ],
-    "command": "bin/agyos skill android_ui_verification",
-    "path": ".agents/skills/android_ui_verification",
+    "command": "bin/agyos skill android-ui-verification",
+    "path": ".agents/skills/android-ui-verification",
     "risk": "assess_for_task",
     "description": "Automated end-to-end UI testing and verification on an Android Emulator using ADB."
   },
@@ -7121,6 +7121,23 @@
     "path": ".agents/skills/chat-widget",
     "risk": "assess_for_task",
     "description": "Build a real-time support chat system with a floating widget for users and an admin dashboard for support staff. Use when the user wants live chat, customer support chat, real-time messaging, or in-app support."
+  },
+  {
+    "id": "chopify",
+    "name": "Chopify",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 2,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill chopify",
+    "path": ".agents/skills/chopify",
+    "risk": "assess_for_task",
+    "description": "Headless local AI video clipper for Shorts, Reels, and TikTok via bin/chopify. Converts long recordings, URLs, or live streams into scored, tightened, speaker-tracked, captioned clips."
   },
   {
     "id": "chrome-extension-developer",
@@ -13313,8 +13330,8 @@
   {
     "id": "ffmpeg-video-editor",
     "name": "Ffmpeg Video Editor",
-    "module": "Domain & Research Extensions",
-    "category": "Specialized",
+    "module": "Verification & Testing",
+    "category": "QA & Testing",
     "tier": 2,
     "runtime": [
       "AGY CLI",
@@ -13325,7 +13342,7 @@
     "command": "bin/agyos skill ffmpeg-video-editor",
     "path": ".agents/skills/ffmpeg-video-editor",
     "risk": "assess_for_task",
-    "description": "Automated, programmatic video and audio editing using local FFmpeg. Covers silence detection, audio ducking with sidechain compression, YouTube loudness normalization (-14 LUFS), B-roll overlay cutaways, dynamic zoom punch-ins, SRT caption styling, and multi-clip concatenation with transitions."
+    "description": "Programmatic FFmpeg video editing, EDL rendering, 30ms boundary fades, PTS-shifted overlays, subtitles-last compositing, two-pass -14 LUFS mastering, and ebur128/blackdetect verification."
   },
   {
     "id": "ffuf-web-fuzzing",
@@ -15421,8 +15438,8 @@
   {
     "id": "google-flow",
     "name": "Google Flow",
-    "module": "Domain & Research Extensions",
-    "category": "Specialized",
+    "module": "Verification & Testing",
+    "category": "QA & Testing",
     "tier": 2,
     "runtime": [
       "AGY CLI",
@@ -15433,7 +15450,7 @@
     "command": "bin/agyos skill google-flow",
     "path": ".agents/skills/google-flow",
     "risk": "assess_for_task",
-    "description": "Headless video generation and media retrieval using Google Flow and Veo 3.1. Enforces zero visible browser windows (--headless=new), automatic local downloads, machine-verified media integrity, and mandatory skill-first research routing before crafting prompts."
+    "description": "Headless video generation and Scene Builder automation using Google Flow and Veo 3.1 via google-flow-mcp. Enforces Obscura headless execution, dry-run confirmation, Veo 3.1 prompting, local download, and post-render verification."
   },
   {
     "id": "google-sheets-automation",
@@ -19683,7 +19700,7 @@
     "command": "bin/agyos skill jake-seed-seed-closer",
     "path": ".agents/skills/jake-seed-seed-closer",
     "risk": "assess_for_task",
-    "description": "The Closer. Sends personalised outreach emails to investors, manages the conversations and keeps following up until an investor call is booked, and nothing leaves the user's inbox without their yes. Drafts one RFC 5322 .eml per investor from seed/investors.json and a template (a real personal line, the sender's real name and an opt-out line, generic lines refused), shows the batch, records the user's yes word for word, enforces a daily cap of 20, then Claude sends through the user's own Gmail connector where the Allow once card is a second check. Schedules follow-ups on +3 and +7 business days (3 touches at most, never after a reply), sorts replies into interested / question / not now / no / out of office, stops a thread for good on a no, an opt-out or a bounce, writes a valid .ics invite and shows the funnel. Reads seed/config.json and seed/investors.json, writes seed/pipeline.json, seed/outreach/ and seed/calls/. Use when the user says \"email the investors\", \"send the outreach\", \"follow up with everyone who hasn't replied\", \"who do I follow up with today\", \"sort my replies\", \"book the call\", \"send her an invite\", \"how is the raise going\", or after /seed-investors ranks the list."
+    "description": "Manage investor outreach and follow-ups without sending externally without approval. Draft and review investor emails, triage replies, stop threads after declines or opt-outs, schedule calls, and maintain the raise pipeline. Use for investor email outreach, follow-ups, reply sorting, call scheduling, or raise status."
   },
   {
     "id": "jake-seed-seed-coach",
@@ -19836,7 +19853,7 @@
     "command": "bin/agyos skill jake-seed-seed-terms",
     "path": ".agents/skills/jake-seed-seed-terms",
     "risk": "assess_for_task",
-    "description": "Term Sheet Reader. Reads a SAFE or a term sheet in plain English, does the dilution math and flags the clauses to ask a lawyer about. Works out what a post-money SAFE owns at its cap and what it converts into at a priced round (cap price vs discount price, whichever is lower), builds a priced round's cap table with the option-pool shuffle (price per share, new shares, the pool top-up, the effective pre-money, everyone's dilution), and scans a pasted term sheet for the traps: liquidation preference over 1x, participating preferred, full ratchet, redemption, cumulative dividends, board control, operating vetoes, pay-to-play, drag-along, long no-shops, exploding deadlines, founder vesting resets, super pro rata and MFN, each with a severity and a question for the lawyer. Not legal advice. Writes seed/terms/ with --write. Use when the user says \"read this term sheet\", \"is this a good deal\", \"what does this SAFE mean\", \"how much do I own after\", \"how much dilution\", \"what's the option pool shuffle\", \"what is a post-money cap\", \"any red flags in this\", or when an investor sends terms after a /seed-closer call."
+    "description": "Explain SAFEs and term sheets in plain English, calculate dilution, build priced-round cap-table scenarios, and flag clauses that need legal review. Covers liquidation preferences, participation, ratchets, board rights, and vesting. This is analytical guidance, not legal advice."
   },
   {
     "id": "jake-seed-seed-updates",
@@ -26177,7 +26194,7 @@
     "command": "bin/agyos skill organic-film-de-ai",
     "path": ".agents/skills/organic-film-de-ai",
     "risk": "assess_for_task",
-    "description": "Master craft and CLI engine for transforming AI-generated and AI-edited video into authentic, organic cinema. Eliminates the artificial 'AI sheen' (waxy skin, hyper-saturation, sliding camera, sterile silence, and staccato motion) using photochemical 35mm film grain, highlight halation bloom, lens optical distortion, handheld micro-drift, 180-degree shutter motion blur, Kodak 2383 tone curves, and room impulse acoustics. Integrates with the entire AGYOS video editing ecosystem."
+    "description": "Transform AI-generated video into organic cinema using Kodak 2383 curves, halation bloom, 35mm grain, lens optics, 180-degree shutter blur, aspect-preserving handheld drift, and room acoustics via scripts/organic_film_engine.py."
   },
   {
     "id": "os-scripting",
@@ -36514,6 +36531,23 @@
     "path": ".agents/skills/video-editing-principles",
     "risk": "assess_for_task",
     "description": "The 440-principle master reference for professional video editing across Hollywood films, premium advertising, YouTube long-form, social formats, and documentary production. Incorporates Walter Murch's Rule of Six, cinematic techniques, sound and color engineering, AI-assisted workflows, and an autonomous self-improvement protocol for continuous evolution."
+  },
+  {
+    "id": "video-production-orchestrator",
+    "name": "Video Production Orchestrator",
+    "module": "Domain & Research Extensions",
+    "category": "Specialized",
+    "tier": 1,
+    "runtime": [
+      "AGY CLI",
+      "Gemini",
+      "Claude Code",
+      "Codex"
+    ],
+    "command": "bin/agyos skill video-production-orchestrator",
+    "path": ".agents/skills/video-production-orchestrator",
+    "risk": "assess_for_task",
+    "description": "Master AGYOS video production and editing orchestrator. Routes across Google Flow, Chopify, ai-video-editor, faceless-shorts, Manim, FFmpeg EDL rendering, AI repair, and organic film finishing with 12 production hard rules and post-render self-eval."
   },
   {
     "id": "videodb-media-engine",

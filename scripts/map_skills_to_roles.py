@@ -62,7 +62,7 @@ PREFIX_RULES: List[Tuple[str, str, List[str]]] = [
 
     # 3D, Motion, Web Graphics
     (r"^(threejs|3d-|blender|spline)", "role-3d-visual-designer", ["role-frontend-engineer"]),
-    (r"^(animejs|magic-animator|remotion|motion-|lottie|video-|ffmpeg|audio-)", "role-motion-designer", ["role-frontend-engineer"]),
+    (r"^(animejs|magic-animator|remotion|motion-|lottie|video-|ffmpeg|audio-|chopify)", "role-motion-designer", ["role-frontend-engineer", "role-social-media-manager"]),
 
     # SEO & Search Engine Optimization
     (r"^(seo-|geo-|programmatic-seo)", "role-seo-specialist", ["role-content-strategist"]),

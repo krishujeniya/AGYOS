@@ -18,6 +18,8 @@
   },
   "last_updated": "2026-11-20T18:04:00+05:30",
   "last_known_commit": "2cefaea3a60e7b53012a3b9f4443f1ee3c0ae8be",
+  "last_known_commit_COMPACT": null,
+  "skill_versions": {},
   "complexity_score": 5,
   "verification": {
     "status": "PASS",

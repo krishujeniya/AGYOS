@@ -49,6 +49,8 @@ class RoutingTests(unittest.TestCase):
         "modern web guidance for native dialog and popover": "modern-web-guidance",
         "build Chrome extension with Manifest V3": "chrome-extensions",
         "draft research paper using paper-orchestra": "paper-orchestra",
+        "clip this podcast into vertical shorts with chopify": "chopify",
+        "orchestrate video production pipeline with edl and self eval": "video-production-orchestrator",
     }
 
     def test_frozen_task_cases(self):

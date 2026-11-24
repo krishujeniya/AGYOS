@@ -3,7 +3,7 @@
   "description": "The Autonomous Cognitive Operating System for AGY CLI.",
   "url": "https://agyos-docs.pages.dev/",
   "version": "3.1.0",
-  "total_skills": 2287,
+  "total_skills": 2289,
   "modules": [
     "AGYOS Governance",
     "Agent Council",

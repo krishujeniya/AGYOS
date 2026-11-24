@@ -43,10 +43,13 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install dependencies
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          version: "latest"
+      - name: Install dependencies via uv
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          uv pip install --system jsonschema pyyaml "mistune==3.2.1" fastapi pydantic httpx pytest
       - name: Verify full TOON skill catalog and scout delivery
         run: node scripts/agyos-runtime/ci/check-toon-prompts.mjs
       - name: Generate and audit SBOM license compliance
@@ -180,7 +183,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build documentation image
-        run: docker build -t agyos-docs-ci .
+        run: docker build -t agyos-docs-ci -f deploy/docker/Dockerfile .
       - name: Verify public image contents
         run: |
           docker run --rm agyos-docs-ci sh -ec '

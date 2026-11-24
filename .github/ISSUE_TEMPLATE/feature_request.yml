@@ -1,0 +1,51 @@
+name: "Feature Request"
+description: "Suggest a new idea or improvement for AGYOS."
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting a feature for AGYOS!
+  - type: input
+    id: title
+    attributes:
+      label: Feature Title
+      description: A clear and concise title.
+      placeholder: "e.g., Real-time WebSocket streaming for Agent Council deliberations"
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: Is your feature request related to a specific problem or friction point?
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: A detailed description of the solution you would like to see implemented.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Any alternative solutions or workarounds you considered.
+    validations:
+      required: false
+  - type: dropdown
+    id: component
+    attributes:
+      label: Target Component
+      options:
+        - "Backend (FastAPI)"
+        - "Frontend (Next.js 15+)"
+        - "Decision & Router Engine"
+        - "Roles & Skills Catalog"
+        - "Autonomous 7-Step Cycle"
+        - "Developer Tooling & CLI"
+    validations:
+      required: true

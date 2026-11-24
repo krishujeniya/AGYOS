@@ -54,7 +54,8 @@ Commands:
   e2e <task>  Execute autonomous end-to-end lifecycle without manual commands
   obscura|browser  Control Obscura headless browser engine (MCP, CDP, fetch, scrape)
   strix|pentest    Run Strix autonomous security pentesting and vulnerability checks
-  video       Automate vertical video scripting, psychology audit, and Manim 9:16
+  video       Unified AGYOS Video Studio (route, veo-prompt, script, audit, manim, edl-*, self-eval, repair, film)
+  chopify     Headless local AI video clipper (describe, preflight, styles, project, batch, live, cli, studio)
   gemini-notebook|notebooklm|nlm Run Gemini Notebook (NotebookLM) MCP server or nlm CLI
   workspace   Manage transactional workspace milestones and revisions (status|transact|project|restore|replay)
   diagnostics Export redacted system diagnostics, state, and environment metrics
@@ -646,6 +647,9 @@ print(json.dumps(output, indent=2))
     ;;
   video)
     run_py scripts/video_pipeline.py "$@"
+    ;;
+  chopify)
+    exec bash bin/chopify "$@"
     ;;
   gemini-notebook|notebooklm|nlm)
     exec bash mcp/gemini-notebook-mcp.sh "$@"

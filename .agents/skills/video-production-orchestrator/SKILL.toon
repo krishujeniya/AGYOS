@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: video-production-orchestrator\ndescription: >-\n  Master AGYOS video production and editing orchestrator. Routes across Google Flow, Chopify,\n  ai-video-editor, faceless-shorts, Manim, FFmpeg EDL rendering, AI repair, and organic film\n  finishing with 12 production hard rules and post-render self-eval.\nmetadata:\n  version: 1.0.0\n  license: MIT\nprompt-source: prompt.toon\n---\n"

@@ -21,4 +21,10 @@ if ! curl -s -m 1 "http://127.0.0.1:${FLOW_MCP_CDP_PORT}/json/version" >/dev/nul
     sleep 1
 fi
 
-exec node "${REPO_DIR}/dist/cli.js" "${@:-serve}"
+if [[ -f "${REPO_DIR}/dist/cli.js" ]]; then
+    exec node "${REPO_DIR}/dist/cli.js" "${@:-serve}"
+elif command -v google-flow-mcp >/dev/null 2>&1; then
+    exec google-flow-mcp "${@:-serve}"
+else
+    exec npx -y @park-sang-gwon/google-flow-mcp "${@:-serve}"
+fi
