@@ -285,7 +285,8 @@ def _json_ld(title: str, description: str, canonical: str, page_class: str) -> s
         '@type': 'Person',
         '@id': f'{URL}#krish-ujeniya',
         'name': 'Krish Ujeniya',
-        'alternateName': 'krishujeniya',
+        'alternateName': ['krishujeniya', '@krishujeniya'],
+        'mainEntityOfPage': URL,
         'url': 'https://github.com/krishujeniya',
         'sameAs': [
             'https://github.com/krishujeniya',
@@ -310,9 +311,15 @@ def _json_ld(title: str, description: str, canonical: str, page_class: str) -> s
     website = {
         '@type': 'WebSite',
         '@id': f'{URL}#website',
-        'name': 'AGYOS by Krish Ujeniya',
+        'name': 'AGYOS by Krish Ujeniya (krishujeniya)',
+        'alternateName': ['AGYOS', 'krishujeniya'],
         'url': URL,
         'publisher': {'@id': f'{URL}#krish-ujeniya'},
+        'potentialAction': {
+            '@type': 'SearchAction',
+            'target': f'{URL}catalog/?q={{search_term_string}}',
+            'query-input': 'required name=search_term_string',
+        },
     }
     page_type = 'TechArticle' if page_class == 'docs-page' else 'WebPage'
     webpage = {
@@ -399,7 +406,7 @@ def site_header(base: str, docs: bool = False) -> str:
 def footer(base: str) -> str:
     return (f'<footer class="site-footer"><div class="footer-inner"><div><a href="{base}" class="footer-brand">AGYOS<span class="footer-dot">.</span></a><p>Autonomous agent engineering, with governance built in.</p></div><div class="footer-links">'
         f'<a href="{base}docs/overview/">Docs</a><a href="{base}catalog/">Catalog</a><a href="{base}docs/security/">Security</a><a href="https://github.com/sponsors/krishujeniya" target="_blank" rel="noopener noreferrer">Buy me a coffee ↗</a><a href="https://github.com/krishujeniya/AGYOS" target="_blank" rel="noopener noreferrer">Source ↗</a></div></div><div class="footer-bottom">'
-        '<span>Open-source project by Krish Ujeniya.</span><span>Designed for clarity. Built for builders.</span></div></footer>')
+        '<span>Open-source project by Krish Ujeniya (@krishujeniya).</span><span>Designed for clarity. Built for builders.</span></div></footer>')
 
 
 def search_dialog(base: str) -> str:
@@ -458,7 +465,7 @@ def build(out: Path, base: str) -> dict:
         inventory.append({'source':doc['source'],'url':base+'docs/'+doc['slug']+'/', 'title':doc['title'],'category':doc['category'],'visibility':'public','imported':True,'headings':len(renderer.headings),'notes':renderer.unsupported})
     home = (ROOT / 'frontend/index.html').read_text(encoding='utf-8').replace('{{BASE}}', base).replace('{{DOCS_COUNT}}', str(len(docs)))
     home = home.replace('<!-- SITE-HEADER -->',site_header(base)).replace('<!-- SITE-FOOTER -->',footer(base)).replace('<!-- SITE-SEARCH -->',search_dialog(base))
-    (out / 'index.html').write_text(template(base,'AGYOS by Krish Ujeniya — Autonomous Cognitive Operating System','AGYOS by Krish Ujeniya: 6-layer hierarchical agent operating system, 104 enterprise roles across 5 pods, and 2,289 TOON engineering skills.', URL, home, 'home-page'),encoding='utf-8')
+    (out / 'index.html').write_text(template(base,'AGYOS by Krish Ujeniya (krishujeniya) — Autonomous Cognitive Operating System','AGYOS by Krish Ujeniya (krishujeniya): 6-layer hierarchical agent operating system, 104 enterprise roles across 5 pods, and 2,289 TOON engineering skills.', URL, home, 'home-page'),encoding='utf-8')
     (out / 'docs/index.html').write_text('<!doctype html><meta http-equiv="refresh" content="0;url='+base+'docs/overview/"><a href="'+base+'docs/overview/">Open documentation</a>',encoding='utf-8')
     (out / 'search-index.json').write_text(json.dumps(search_index,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (out / 'content-inventory.json').write_text(json.dumps({'published':inventory,'excluded':config['exclude'],'policy':'Explicit allowlist'},indent=2),encoding='utf-8')
