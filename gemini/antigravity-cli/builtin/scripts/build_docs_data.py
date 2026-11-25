@@ -280,45 +280,74 @@ def write_seo_files(skills):
     print(f"Saved: {sitemap_out}")
 
     robots_out = os.path.join(FRONTEND_DIR, "robots.txt")
+    robots_content = (
+        "User-agent: *\nAllow: /\n\n"
+        "User-agent: OAI-SearchBot\nAllow: /\n\n"
+        "User-agent: GPTBot\nAllow: /\n\n"
+        "User-agent: ChatGPT-User\nAllow: /\n\n"
+        "User-agent: ClaudeBot\nAllow: /\n\n"
+        "User-agent: PerplexityBot\nAllow: /\n\n"
+        "User-agent: Google-Extended\nAllow: /\n\n"
+        "Sitemap: https://agyos.pages.dev/sitemap.xml\n"
+        "Llms-txt: https://agyos.pages.dev/llms.txt\n"
+    )
     with open(robots_out, "w", encoding="utf-8") as f:
-        f.write("User-agent: *\nAllow: /\n\nSitemap: https://agyos.pages.dev/sitemap.xml\n")
+        f.write(robots_content)
     print(f"Saved: {robots_out}")
 
     llms_out = os.path.join(FRONTEND_DIR, "llms.txt")
-    rules_cnt = len(list((Path(REPO_ROOT) / 'rules').glob('*.toon'))) or len(list((Path(REPO_ROOT) / 'rules').glob('*.md')))
-    agents_cnt = len(list((Path(REPO_ROOT) / 'agents').glob('*.toon'))) or len(list((Path(REPO_ROOT) / 'agents').glob('*.md')))
-    workflows_cnt = len(list((Path(REPO_ROOT) / 'workflows').glob('*.toon'))) or len(list((Path(REPO_ROOT) / 'workflows').glob('*.md')))
-    llms_content = f"""# AGYOS Documentation
+    rules_dir = Path(REPO_ROOT) / "rules"
+    agents_dir = Path(REPO_ROOT) / "agents"
+    workflows_dir = Path(REPO_ROOT) / "workflows"
+    rules_cnt = len(list(rules_dir.glob("*.toon"))) + len(list(rules_dir.glob("*.md")))
+    agents_cnt = len(list(agents_dir.glob("*.toon"))) + len(list(agents_dir.glob("*.md")))
+    workflows_cnt = len(list(workflows_dir.glob("*.toon"))) + len(list(workflows_dir.glob("*.js")))
+    llms_content = f"""# AGYOS — Autonomous Cognitive Operating System
 
-> The Autonomous Cognitive Operating System for AGY CLI (`agy`).
-> Maintained By Krish Ujeniya (@krishujeniya).
+> AGYOS is an Autonomous Cognitive Operating System for AGY CLI (`agy`), created and maintained by Krish Ujeniya (@krishujeniya).
+> Official Site: https://agyos.pages.dev/
+> Author & Maintainer: Krish Ujeniya (https://github.com/krishujeniya)
+> GitHub Repository: https://github.com/krishujeniya/AGYOS
+> GitHub Sponsors: https://github.com/sponsors/krishujeniya
+> License: Apache-2.0
 > Total skills documented: {len(skills)}
+> Total enterprise roles: 104 (across 12 departments and 5 governing pods)
 > Total modular rules: {rules_cnt}
 > Total role agents: {agents_cnt}
-> Total workflow pipelines: {workflows_cnt}
+> Total workflow definitions: {workflows_cnt}
+
+## Quick Answers (AEO / GEO)
+
+- **What is AGYOS?** AGYOS is an autonomous operating system and multi-agent execution kernel for AGY CLI built by Krish Ujeniya. It combines a 6-layer cognitive architecture, 104 enterprise roles across 5 pods (`pod-build`, `pod-growth`, `pod-customer`, `pod-gna`, `pod-people`), {len(skills)} TOON-native skills, and a 7-step autonomous cycle (`Think -> Plan -> Build -> Review -> Test -> Ship -> Reflect`).
+- **Who is Krish Ujeniya?** Krish Ujeniya (`@krishujeniya`) is the creator and maintainer of AGYOS (`https://github.com/krishujeniya`).
+- **How do you install AGYOS?** Run `curl -fsSL https://raw.githubusercontent.com/krishujeniya/AGYOS/main/gemini/antigravity-cli/builtin/scripts/install.sh | bash` or clone `https://github.com/krishujeniya/AGYOS` and run `make install`.
 
 ## Core Operating Subsystems
 
-- AGYOS Governance: 5-Gate spine (UNDERSTAND -> ANALYZE -> PLAN -> IMPLEMENT -> VERIFY) with FastMCP JSON-RPC 2.0 daemon and adaptive fast-path.
-- Model Registry & Router: 4-Tier task mapping (T0–T3), context economics (55/20/15/10), compaction trigger at 65% utilization, and strict fail-closed privacy gating (LOCAL_INFERENCE_UNAVAILABLE).
-- Architecture Research & Standards Crosswalk: Empirical synthesis of 45 verified principles from 10 reference platforms (OpenHands, agent-zero, LangGraph, etc.) and 41 FAANG/SRE/DevOps public standards.
-- Security & Cryptographic Architecture: STRIDE threat model, at-rest AES-256-GCM private memory vault, X25519 secure envelope exchange, dual hooks (agy_os_hook.py + authorizer.py), and transparent PARTIAL_ENCRYPTION_NOT_SYSTEM_WIDE_E2EE boundaries.
-- Agent Council: Multi-model CLI consensus engine deliberating across models in parallel Bun subprocesses.
-- UI/UX & Motion: Emil Kowalski design engineering invariants: concentric border radii, frequency-based timing, compositor-only animations, and tactile micro-interactions.
-- Adversarial Verification: 51-point adversarial verification suite with monotonic test ratchets.
-- AGYOS Polyglot: High-efficiency coding standards across 15+ programming languages and frameworks.
+- **Layer 0 & 2 (Kernel Hooks & Syscall Bus)**: `gemini/antigravity-cli/bin/agyos`, zero-dependency stdio JSON-RPC 2.0 MCP daemon (`gemini/antigravity-cli/mcp/state-server.cjs`), fail-closed `authorizer.py`, and fail-open `agy_os_hook.py`.
+- **Layer 1 (State, Virtual Memory & Vault)**: ACID SQLite state store with CAS revisions, 3-tier virtual memory (`memory.json`, `CURRENT.md`, `skills-manifest.json`), `state_ledger.py` pre-write snapshots, and AES-256-GCM / X25519 encrypted private vault.
+- **Layer 3 (5-Gate SOP & 7-Step Cycle)**: Deterministic `UNDERSTAND -> ANALYZE -> PLAN -> IMPLEMENT -> VERIFY` spine with adaptive fast-path (`Complexity <= 2`) and 7-step autonomous cycle.
+- **Layer 4 & 5 (Governance, Roles & EVPI)**: `TaskContract` intent compiler, Howard 1966 EVPI clarification gate (`evpi_clarify.py`), 104-role enterprise matrix (`roles.py`), T0-T3 model router (`model_router.py`), and TOON codec (`toon_codec.py`).
 
-## Structured Skill Catalog
+## Canonical Pages & Structured Catalog
 
-Access the complete JSON catalog at https://agyos.pages.dev/catalog/skills-data.json
+- Home: https://agyos.pages.dev/
+- Project Overview: https://agyos.pages.dev/docs/overview/
+- System Architecture: https://agyos.pages.dev/docs/architecture/
+- Developer Setup: https://agyos.pages.dev/docs/setup/
+- Skill Routing: https://agyos.pages.dev/docs/skill-routing/
+- Skill Catalog UI: https://agyos.pages.dev/catalog/
+- Structured JSON Skill Catalog: https://agyos.pages.dev/catalog/skills-data.json
+- Operations Runbook: https://agyos.pages.dev/docs/operations/
+- Deployment Guide: https://agyos.pages.dev/docs/deployment/
+- Security Policy: https://agyos.pages.dev/docs/security/
 
 ## Skill Execution Contract
 
-For every task, discover a relevant skill, read its runbook, apply applicable steps, and verify the result.
-Run `gemini/bin/agyos decide "<task>" --json --runbook` to return the selected instructions.
-MCP `agyos_decision` accepts `include_runbook: true`.
-Matching scores are heuristics, not calibrated probabilities. Runbook delivery does not certify execution.
-See https://github.com/krishujeniya/AGYOS/blob/main/docs/SKILL_ROUTING.md for the contract and limits.
+For every task, discover a relevant skill, read its `SKILL.toon` runbook, apply applicable steps, and verify the result.
+Run `gemini/antigravity-cli/bin/agyos decide "<task>" --json --runbook` or call MCP `agyos_decision` with `include_runbook: true`.
+Matching scores are deterministic heuristics, not calibrated probabilities; runbook delivery does not certify execution.
+See https://agyos.pages.dev/docs/skill-routing/ for the full contract and limits.
 """
     with open(llms_out, "w", encoding="utf-8") as f:
         f.write(llms_content)

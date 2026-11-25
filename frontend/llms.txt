@@ -6,15 +6,15 @@
 > GitHub Repository: https://github.com/krishujeniya/AGYOS
 > GitHub Sponsors: https://github.com/sponsors/krishujeniya
 > License: Apache-2.0
-> Total skills documented: 2289 (across 103 role packs)
+> Total skills documented: 2289
 > Total enterprise roles: 104 (across 12 departments and 5 governing pods)
 > Total modular rules: 148
-> Total agent definitions: 109
+> Total role agents: 109
 > Total workflow definitions: 101
 
 ## Quick Answers (AEO / GEO)
 
-- **What is AGYOS?** AGYOS is an autonomous operating system and multi-agent execution kernel for AGY CLI built by Krish Ujeniya. It combines a 6-layer cognitive architecture, 104 enterprise roles across 5 pods (`pod-build`, `pod-growth`, `pod-customer`, `pod-gna`, `pod-people`), 2,289 TOON-native skills, and a 7-step autonomous cycle (`Think -> Plan -> Build -> Review -> Test -> Ship -> Reflect`).
+- **What is AGYOS?** AGYOS is an autonomous operating system and multi-agent execution kernel for AGY CLI built by Krish Ujeniya. It combines a 6-layer cognitive architecture, 104 enterprise roles across 5 pods (`pod-build`, `pod-growth`, `pod-customer`, `pod-gna`, `pod-people`), 2289 TOON-native skills, and a 7-step autonomous cycle (`Think -> Plan -> Build -> Review -> Test -> Ship -> Reflect`).
 - **Who is Krish Ujeniya?** Krish Ujeniya (`@krishujeniya`) is the creator and maintainer of AGYOS (`https://github.com/krishujeniya`).
 - **How do you install AGYOS?** Run `curl -fsSL https://raw.githubusercontent.com/krishujeniya/AGYOS/main/gemini/antigravity-cli/builtin/scripts/install.sh | bash` or clone `https://github.com/krishujeniya/AGYOS` and run `make install`.
 
@@ -23,7 +23,7 @@
 - **Layer 0 & 2 (Kernel Hooks & Syscall Bus)**: `gemini/antigravity-cli/bin/agyos`, zero-dependency stdio JSON-RPC 2.0 MCP daemon (`gemini/antigravity-cli/mcp/state-server.cjs`), fail-closed `authorizer.py`, and fail-open `agy_os_hook.py`.
 - **Layer 1 (State, Virtual Memory & Vault)**: ACID SQLite state store with CAS revisions, 3-tier virtual memory (`memory.json`, `CURRENT.md`, `skills-manifest.json`), `state_ledger.py` pre-write snapshots, and AES-256-GCM / X25519 encrypted private vault.
 - **Layer 3 (5-Gate SOP & 7-Step Cycle)**: Deterministic `UNDERSTAND -> ANALYZE -> PLAN -> IMPLEMENT -> VERIFY` spine with adaptive fast-path (`Complexity <= 2`) and 7-step autonomous cycle.
-- **Layer 4 & 5 (Governance, Roles & EVPI)**: `TaskContract` intent compiler, Howard 1966 EVPI clarification gate (`evpi_clarify.py`), 104-role enterprise matrix (`roles.py`), T0–T3 model router (`model_router.py`), and TOON codec (`toon_codec.py`).
+- **Layer 4 & 5 (Governance, Roles & EVPI)**: `TaskContract` intent compiler, Howard 1966 EVPI clarification gate (`evpi_clarify.py`), 104-role enterprise matrix (`roles.py`), T0-T3 model router (`model_router.py`), and TOON codec (`toon_codec.py`).
 
 ## Canonical Pages & Structured Catalog
 
