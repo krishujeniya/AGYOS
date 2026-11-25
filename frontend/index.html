@@ -24,50 +24,72 @@
       <a href="{{BASE}}docs/operations/" class="feature-line reveal"><span class="feature-no">06</span><span class="feature-name">Operate with clear runbooks</span><span class="feature-desc">SLOs, vault setup, diagnostics, and host compatibility checks.</span><span class="feature-arrow" aria-hidden="true">↗</span></a>
     </div></div></section>
 
-  <section class="architecture-section section-pad" id="architecture"><div class="container"><div class="section-label reveal">System Architecture</div><div class="arch-top"><div><h2 class="section-big reveal">From intention<br>to execution.</h2><p class="arch-intro reveal">The complete multi-layer architecture combines a Python cognitive decision kernel, a 104-role enterprise organization across 12 departments, and an autonomous 7-step cycle.</p></div><a class="outline-action reveal" href="{{BASE}}docs/architecture/">Explore architecture <span>↗</span></a></div>
+  <section class="architecture-section section-pad" id="architecture"><div class="container"><div class="section-label reveal">System Architecture</div><div class="arch-top"><div><h2 class="section-big reveal">From intention<br>to execution.</h2><p class="arch-intro reveal">A 6-layer hierarchical cognitive architecture combining kernel safety hooks, an MCP syscall bus, a 104-role enterprise matrix across 12 departments, and an autonomous 7-step cycle.</p></div><a class="outline-action reveal" href="{{BASE}}docs/architecture/">Explore architecture <span>↗</span></a></div>
 
   <div class="arch-flowchart reveal" aria-label="AGYOS System Architecture Flowchart">
     <div class="flow-trigger">
       <div class="flow-pill operator-node">
-        <span class="flow-pill-tag">User Input</span>
+        <span class="flow-pill-tag">Operator Input</span>
         <strong>Operator / User Request</strong>
         <span class="flow-pill-sub">Natural Language Prompt</span>
       </div>
-      <div class="flow-arrow-down" aria-hidden="true">↓ <span>Compiles Intent &amp; Evaluates EVPI</span></div>
+      <div class="flow-arrow-down" aria-hidden="true">↓ <span>Routes via CLI &amp; MCP Syscall Bus</span></div>
     </div>
 
     <div class="flow-subgraph">
       <div class="subgraph-header">
-        <span class="subgraph-num">01</span>
-        <h3>Intent &amp; Cognitive Governance</h3>
-        <span class="subgraph-sub">Prompt Ingestion &amp; Organization Routing</span>
+        <span class="subgraph-num">L0 / L2</span>
+        <h3>Kernel Hooks &amp; Syscall Bus</h3>
+        <span class="subgraph-sub">gemini/antigravity-cli/bin/agyos • state-server.cjs • hooks/</span>
       </div>
-      <div class="subgraph-cards triple-grid">
+      <div class="subgraph-cards double-grid">
         <div class="flow-card">
-          <span class="card-kicker">Compiler</span>
-          <strong>Intent Compilation &amp; EVPI</strong>
-          <p>Compiles prompt into typed <code>TaskContract</code> and computes Howard 1966 EVPI</p>
+          <span class="card-kicker">Layer 2 • Syscall Bus</span>
+          <strong>CLI &amp; MCP Daemon</strong>
+          <p><code>bin/agyos</code> dispatcher and zero-dependency stdio JSON-RPC 2.0 <code>state-server.cjs</code></p>
         </div>
         <div class="flow-card">
-          <span class="card-kicker">Hierarchy</span>
-          <strong>104-Role Virtual Org</strong>
-          <p>12 functional departments partitioned into 5 governing operational pods</p>
-        </div>
-        <div class="flow-card">
-          <span class="card-kicker">Runbooks</span>
-          <strong>Skill Discovery &amp; Retrieval</strong>
-          <p>2,289 modular engineering skills with JIT on-demand runbook retrieval</p>
+          <span class="card-kicker">Layer 0 • Safety Interceptor</span>
+          <strong>Dual Hook Boundary</strong>
+          <p>Fail-closed <code>authorizer.py</code> (R3 outbox blocking) and fail-open <code>agy_os_hook.py</code></p>
         </div>
       </div>
     </div>
 
-    <div class="flow-connector" aria-hidden="true">↓ <span>Dispatches TaskContract to Autonomous Cycle</span></div>
+    <div class="flow-connector" aria-hidden="true">↓ <span>Compiles Intent, EVPI &amp; Role Assignment</span></div>
+
+    <div class="flow-subgraph">
+      <div class="subgraph-header">
+        <span class="subgraph-num">L4 / L5</span>
+        <h3>Governance, 104-Role Matrix &amp; EVPI</h3>
+        <span class="subgraph-sub">gemini/antigravity-cli/builtin/agyos_decision/ • 12 Departments • 5 Pods</span>
+      </div>
+      <div class="subgraph-cards triple-grid">
+        <div class="flow-card">
+          <span class="card-kicker">Layer 5 • EVPI Gate</span>
+          <strong>Intent &amp; EVPI Compiler</strong>
+          <p>Compiles prompt into typed <code>TaskContract</code> and computes Howard 1966 EVPI</p>
+        </div>
+        <div class="flow-card">
+          <span class="card-kicker">Layer 4 • Hierarchy</span>
+          <strong>104-Role Virtual Org</strong>
+          <p>12 functional departments partitioned into 5 governing operational pods (<code>roles.py</code>)</p>
+        </div>
+        <div class="flow-card">
+          <span class="card-kicker">Layer 4 • Runbooks</span>
+          <strong>TOON Skill Catalog</strong>
+          <p>2,289 TOON skills across 103 role packs with JIT on-demand runbook retrieval</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-connector" aria-hidden="true">↓ <span>Dispatches TaskContract to 5-Gate SOP &amp; 7-Step Cycle</span></div>
 
     <div class="flow-subgraph cycle-subgraph">
       <div class="subgraph-header">
-        <span class="subgraph-num">02</span>
+        <span class="subgraph-num">L3</span>
         <h3>7-Step Autonomous Engineering Cycle</h3>
-        <span class="subgraph-sub">Automated End-to-End Workflow Execution</span>
+        <span class="subgraph-sub">5-Gate SOP Engine • UNDERSTAND → ANALYZE → PLAN → IMPLEMENT → VERIFY</span>
       </div>
       <div class="cycle-track">
         <div class="cycle-step"><span class="step-num">1</span><strong>Think</strong><small>Role Alignment</small></div>
@@ -86,30 +108,30 @@
       </div>
     </div>
 
-    <div class="flow-connector" aria-hidden="true">↓ <span>Atomic Persistence &amp; Dispatched Execution</span></div>
+    <div class="flow-connector" aria-hidden="true">↓ <span>Atomic Persistence &amp; Runtime Compression</span></div>
 
     <div class="flow-dual-grid">
       <div class="flow-subgraph">
         <div class="subgraph-header">
-          <span class="subgraph-num">03</span>
-          <h3>Transactional State &amp; Memory</h3>
-          <span class="subgraph-sub">gemini/antigravity-cli/mcp/state-server.cjs • SQLite &amp; Vault</span>
+          <span class="subgraph-num">L1</span>
+          <h3>State, Memory &amp; Encrypted Vault</h3>
+          <span class="subgraph-sub">SQLite Store • Projections • AES-256-GCM</span>
         </div>
         <div class="subgraph-cards double-grid">
           <div class="flow-card">
             <span class="card-kicker">Persistence</span>
-            <strong>ACID SQLite State Store</strong>
-            <p>Monotonic revisions, CAS checks, and idempotent operation replay</p>
+            <strong>ACID SQLite State</strong>
+            <p>Monotonic revisions, CAS conflict checks, and idempotent operation replay</p>
           </div>
           <div class="flow-card">
             <span class="card-kicker">Safety</span>
             <strong>R3 Outbox &amp; Snapshots</strong>
-            <p>Pre-write backups and <code>PENDING_COMMIT</code> holds for external actions</p>
+            <p>Pre-write backups (<code>state_ledger.py</code>) and <code>PENDING_COMMIT</code> holds</p>
           </div>
           <div class="flow-card">
             <span class="card-kicker">Memory Tiers</span>
             <strong>3-Tier Virtual Memory</strong>
-            <p>Core working, recall checkpoints, and JIT archival catalog paging</p>
+            <p><code>memory.json</code> working set, <code>CURRENT.md</code> recall, and archival catalog</p>
           </div>
           <div class="flow-card">
             <span class="card-kicker">Confidentiality</span>
@@ -121,16 +143,11 @@
 
       <div class="flow-subgraph">
         <div class="subgraph-header">
-          <span class="subgraph-num">04</span>
-          <h3>Decision Kernel &amp; TOON Codec</h3>
-          <span class="subgraph-sub">gemini/antigravity-cli/builtin/agyos_decision • 104 Roles &amp; 2,289 Skills</span>
+          <span class="subgraph-num">CODEC</span>
+          <h3>Model Router &amp; TOON Codec</h3>
+          <span class="subgraph-sub">T0–T3 Complexity • Exact Encoding</span>
         </div>
         <div class="subgraph-cards vertical-grid">
-          <div class="flow-card">
-            <span class="card-kicker">Query Optimizer</span>
-            <strong>Intent &amp; EVPI Gate</strong>
-            <p>Compiles 11 company functions and asks at most one R3 question</p>
-          </div>
           <div class="flow-card">
             <span class="card-kicker">Routing Policy</span>
             <strong>Skill &amp; Model Router</strong>
@@ -139,30 +156,35 @@
           <div class="flow-card">
             <span class="card-kicker">Data Protocol</span>
             <strong>TOON Codec Engine</strong>
-            <p>Typed Token-Oriented Object Notation parsing and compression</p>
+            <p>Typed Token-Oriented Object Notation parsing, validation, and compression</p>
+          </div>
+          <div class="flow-card">
+            <span class="card-kicker">Static Portal</span>
+            <strong>Docs &amp; Catalog Builder</strong>
+            <p>Allowlisted Markdown site generator (<code>build_docs_site.py</code>) and search index</p>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="flow-connector" aria-hidden="true">↓ <span>Monotonic Ratchet Verification</span></div>
+    <div class="flow-connector" aria-hidden="true">↓ <span>Monotonic Ratchet Verification &amp; Release</span></div>
 
     <div class="flow-subgraph delivery-subgraph">
       <div class="subgraph-header">
-        <span class="subgraph-num">05</span>
+        <span class="subgraph-num">SHIP</span>
         <h3>Gated Verification &amp; Delivery</h3>
-        <span class="subgraph-sub">Strict Single Branch &amp; Provenance Locking</span>
+        <span class="subgraph-sub">Single main Branch • Cloudflare Pages • GHCR</span>
       </div>
       <div class="subgraph-cards double-grid">
         <div class="flow-card highlight-card">
           <span class="card-kicker">CI/CD Pipeline</span>
-          <strong>GitHub Actions Remote Builder</strong>
-          <p>Clean rebuild verification, provenance digests, and monotonic test ratchets</p>
+          <strong>GitHub Actions Verification</strong>
+          <p><code>ci.yml</code>, <code>deploy.yml</code>, and <code>codeql.yml</code> with monotonic test ratchets</p>
         </div>
         <div class="flow-card highlight-card">
           <span class="card-kicker">Protected Deployment</span>
-          <strong>Single main Branch Invariant</strong>
-          <p>Verified author lock (Krish Ujeniya) with fast-forward convergence</p>
+          <strong>Single main Branch &amp; Edge</strong>
+          <p>Verified author lock (Krish Ujeniya) deploying to <code>agyos.pages.dev</code></p>
         </div>
       </div>
     </div>
