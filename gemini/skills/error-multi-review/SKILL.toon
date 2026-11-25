@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: error-multi-review\ndescription: \"Review a reproducible software error from independent code, test, and operational perspectives. Use when a defect crosses modules or needs a structured root-cause review.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

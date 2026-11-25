@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: jake-chatgpt-youtube-yt-comment\ndescription: \"Draft replies to YouTube comments in the creator's voice, triaged by which ones are worth answering. Use for \\\"reply to my comments\\\", \\\"handle the comment section\\\", \\\"someone asked X\\\", or a pasted comment thread.\"\nlicense: MIT\nmetadata:\n  upstream_repository: Jakeschincariol/chatgpt-youtube-agent-skill\n  upstream_skill: yt-comment\n  upstream_commit: 6314d3c17dfa1e5960966542048e8a09e28cdfd74\nprompt-source: prompt.toon\n---\n"

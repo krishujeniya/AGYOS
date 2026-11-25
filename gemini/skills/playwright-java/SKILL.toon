@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: playwright-java\ndescription: \"Scaffold, write, debug, and enhance enterprise-grade Playwright E2E tests in Java using Page Object Model, JUnit 5, Allure reporting, and parallel execution.\"\ncategory: test-automation\nrisk: safe\nsource: community\ndate_added: \"2025-03-08\"\nauthor: \"Krish Ujeniya\"\ntags: [playwright, java, e2e-testing, junit5, page-object-model, allure, selenium-alternative]\ntools: [claude, cursor,antigravity]\nprompt-source: prompt.toon\n---\n"

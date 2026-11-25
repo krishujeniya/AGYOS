@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-storage-blob-py\ndescription: Azure Blob Storage SDK for Python. Use for uploading, downloading, listing blobs, managing containers, and blob lifecycle.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

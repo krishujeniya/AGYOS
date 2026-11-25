@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nsource: \"https://github.com/huggingface/skills/tree/main/skills/huggingface-gradio\"\nname: hugging-face-gradio\ndescription: Build or edit Gradio apps, layouts, components, and chat interfaces in Python.\nrisk: unknown\nprompt-source: prompt.toon\n---\n"

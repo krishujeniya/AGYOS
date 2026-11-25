@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: harvey-sales-agent-guide\ndescription: Review or plan a setup of the Harvey/Sellbird AI sales agent using the user-supplied setup guide while checking current upstream documentation, license, provider, and approval settings. Use for Harvey, Sellbird, local prospect research, sales-agent setup, or cold-email workflow questions.\nmetadata:\n  origin: user-supplied-reference\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: python-testing\ndescription: Python testing strategies using pytest, TDD methodology, fixtures, mocking, parametrization, and coverage requirements. Use when writing pytest tests — fixtures, mocks, parametrization, or coverage.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

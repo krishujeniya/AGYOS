@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: odoo-woocommerce-bridge\ndescription: \"Sync Odoo with WooCommerce: products, inventory, orders, and customers via WooCommerce REST API and Odoo external API.\"\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

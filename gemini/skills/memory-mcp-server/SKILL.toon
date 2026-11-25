@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: memory-mcp-server\ndescription: \"A hybrid memory system that provides persistent, searchable knowledge management for AI agents (Architecture, Patterns, Decisions).\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

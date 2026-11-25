@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: app-manifest-generator\ndescription: Install and configure the Manifest observability plugin for your agents. Use when setting up telemetry, configuring API keys, or troubleshooting the plugin.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

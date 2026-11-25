@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: google-workspace-ops\ndescription: Operate across Google Drive, Docs, Sheets, and Slides as one workflow surface for plans, trackers, decks, and shared documents. Use when the user needs to find, summarize, edit, migrate, or clean up Google Workspace assets without dropping to raw tool calls.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

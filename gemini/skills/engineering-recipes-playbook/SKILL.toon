@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: engineering-recipes-playbook\ndescription: Find the appropriate AGYOS workflow recipe and its ordered steps and stopping conditions.\nprompt-source: prompt.toon\n---\n"

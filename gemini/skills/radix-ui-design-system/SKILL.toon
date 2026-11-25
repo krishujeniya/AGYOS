@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: radix-ui-design-system\ndescription: \"Build accessible design systems with Radix UI primitives. Headless component customization, theming strategies, and compound component patterns for production-grade UI libraries.\"\nrisk: safe\nsource: self\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

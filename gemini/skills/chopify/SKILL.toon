@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: chopify\ndescription: >-\n  Headless local AI video clipper for Shorts, Reels, and TikTok via bin/chopify. Converts long\n  recordings, URLs, or live streams into scored, tightened, speaker-tracked, captioned clips.\nmetadata:\n  version: 1.1.0\n  license: MIT\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: auction-market-research\ndescription: Analise de mercado imobiliario para leiloes. Liquidez, desagio tipico, ROI, estrategias de saida (flip/reforma/renda), Selic 2025 e benchmark CDI/FII.\nauthor: Krish Ujeniya\ntags:\n- market-analysis\n- real-estate\n- roi\n- brazilian\ntools:\n- claude-code\n- antigravity\n- cursor\n- gemini-cli\n- codex-cli\nprompt-source: prompt.toon\n---\n"

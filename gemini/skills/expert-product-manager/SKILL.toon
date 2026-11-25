@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: expert-product-manager\ndescription: \"Senior PM agent with frameworks, SaaS metrics, and strategic project planning. Use this when starting a software project, defining vision, creating PRDs, evaluating market opportunity, or prioritizing features.\"\nprompt-source: prompt.toon\n---\n"

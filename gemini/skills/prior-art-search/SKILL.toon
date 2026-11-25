@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: prior-art-search\ndescription: \"Run a structured prior-art search and write the novelty report for an invention disclosure, including the trademark watch check. Use when a disclosure arrives from engineering, before any patent filing decision, or when a competitor filing needs screening against the company's roadmap.\"\nrisk: safe\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

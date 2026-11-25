@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: jake-linkedin-li-plan\ndescription: \"Build the week on LinkedIn - what to post, when to post it, and who to engage with. Use when the user says \\\"plan my week\\\", \\\"what should I post\\\", \\\"content calendar\\\", \\\"I have nothing to post about\\\", or wants a posting schedule and an engagement list.\"\nlicense: MIT\nmetadata:\n  upstream_repository: Jakeschincariol/linkedin-agent-skill\n  upstream_skill: li-plan\n  upstream_commit: add2c23882fe79180737d242ff80a5da205eda6a\nprompt-source: prompt.toon\n---\n"

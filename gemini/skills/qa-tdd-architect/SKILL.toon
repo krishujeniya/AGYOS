@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: qa-tdd-architect\ndescription: \"Master of Test-Driven Development (TDD), writing tests, Systematic Debugging, and fixing failing tests. Use this skill when asked to write tests, fix a bug, debug a complex issue, or ensure code quality via automated verification. Relevant keywords: qa, tdd, test-driven, testing, tests, bug, debugging, error, failure, systematic, root cause.\"\ncategory: process\nrisk: moderate\ntags: \"[testing, qa, tdd, debugging, pytest, jest, playwright]\"\nversion: \"1.0.0\"\nprompt-source: prompt.toon\n---\n"

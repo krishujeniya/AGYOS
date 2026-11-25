@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: perl-patterns\ndescription: Modern Perl 5.36+ idioms, best practices, and conventions for building robust, maintainable Perl applications. Use when writing or reviewing modern Perl 5.36+ code.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

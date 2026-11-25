@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: legal-contract-truth-engine\ndescription: Centralized 'Truth Engine' for cross-jurisdictional legal context (US, EU, CA) and contract scaffolding.\ncategory: business\nrisk: safe\nsource: community\ndate_added: '2026-03-10'\nauthor: Krish Ujeniya\ntags:\n- legal\n- context\n- cross-jurisdictional\n- compliance\n- scaffolding\ntools:\n- claude\n- cursor\n- gemini\nprompt-source: prompt.toon\n---\n"

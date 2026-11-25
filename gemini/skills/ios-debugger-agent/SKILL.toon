@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ios-debugger-agent\ndescription: Debug the current iOS project on a booted simulator with XcodeBuildMCP.\nrisk: safe\nsource: \"Dimillian/Skills (MIT)\"\ndate_added: \"2026-03-25\"\nprompt-source: prompt.toon\n---\n"

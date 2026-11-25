@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nid: 20-andruia-niche-intelligence\nname: andruia-niche-intel\ndescription: \"Estratega de Inteligencia de Dominio de Andru.ia. Analiza el nicho específico de un proyecto para inyectar conocimientos, regulaciones y estándares únicos del sector. Actívalo tras definir el nicho.\"\ncategory: andruia\nrisk: safe\nsource: personal\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

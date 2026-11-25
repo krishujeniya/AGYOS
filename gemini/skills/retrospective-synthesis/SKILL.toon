@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: retrospective-synthesis\ndescription: \"Convert a sprint retrospective into evidence-linked actions. Use at sprint end, after an incident, or whenever velocity or burndown moves without an obvious cause. Clusters the transcript into themes, ties each theme to a delivery metric, and caps the action list at what the team can actually carry.\"\nrisk: safe\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

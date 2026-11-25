@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: rich-elicitation\ndescription: \"Asks clarifying questions in multiple rounds before starting ambiguous tasks. Fires when 2+ task dimensions each have 3+ viable answers.\"\ncategory: productivity\nrisk: none\nsource: self\nsource_type: self\ndate_added: \"2026-05-07\"\nauthor: \"Krish Ujeniya\"\ntags: [elicitation, clarifying-questions, ambiguity, multi-round, prompt-engineering]\ntools: [antigravity]\nprompt-source: prompt.toon\n---\n"

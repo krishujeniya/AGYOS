@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: llm-assistant-dev\ndescription: \"Design or implement an AI assistant or chatbot with defined user needs, model boundaries, tool access, and evaluation. Use for conversational product development.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

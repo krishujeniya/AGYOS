@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agyos-decision\ndescription: Select relevant AGYOS skills for any task or follow-up, inspect their runbooks, and assess workflow complexity. Use when starting work, changing objectives, or maintaining skill routing and discovery metadata.\nprompt-source: prompt.toon\n---\n"

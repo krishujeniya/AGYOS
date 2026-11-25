@@ -1,0 +1,1 @@
+../../taste-application/scripts/mint.py

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: fal-image-edit\ndescription: \"AI-powered image editing with style transfer and object removal\"\nrisk: safe\nsource: \"https://github.com/fal-ai-community/skills/blob/main/skills/claude.ai/fal-image-edit/SKILL.md\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

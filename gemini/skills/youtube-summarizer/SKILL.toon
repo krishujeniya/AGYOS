@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: youtube-summarizer\ndescription: \"Extract transcripts from YouTube videos and generate comprehensive, detailed summaries using intelligent analysis frameworks\"\ncategory: content\nrisk: safe\nsource: community\ntags: \"[video, summarization, transcription, youtube, content-analysis]\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

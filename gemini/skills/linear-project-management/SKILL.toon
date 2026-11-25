@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: linear-project-management\ndescription: Manage Linear issues, projects, and teams\nrisk: safe\nsource: https://github.com/wrsmith108/linear-claude-skill\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

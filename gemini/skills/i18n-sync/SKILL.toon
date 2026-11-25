@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: i18n-sync\ndescription: \"Translate and synchronize application JSON locale files using source-key usage, project terminology, and focused validation. Use when adding keys or languages, updating source copy, or reviewing missing and stale translations.\"\nmetadata:\n  origin: community\nprompt-source: prompt.toon\n---\n"

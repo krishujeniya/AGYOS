@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: git-pr-review\ndescription: Generate a concise and structured PR description from commit history with minimal token usage\nrisk: safe\nsource: community\nsource_type: community\ndate_added: \"2026-05-03\"\nauthor: \"Krish Ujeniya\"\nprompt-source: prompt.toon\n---\n"

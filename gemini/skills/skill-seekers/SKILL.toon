@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: skill-seekers\ndescription: \"Convert approved documentation sites, GitHub repositories, or PDFs into a draft skill with Skill Seekers. Use when a source needs to become a searchable skill; review provenance, generated instructions, and outputs before adoption.\"\nrisk: safe\nsource: \"https://github.com/yusufkaraaslan/Skill_Seekers\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-search-documents-ts\ndescription: \"Build search applications with vector, hybrid, and semantic search capabilities.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

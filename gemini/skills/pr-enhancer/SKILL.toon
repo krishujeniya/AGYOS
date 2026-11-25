@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: pr-enhancer\ndescription: \"Prepare a pull request for review with a clear summary, scoped changes, test evidence, and reviewer context. Use when improving a PR before review.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

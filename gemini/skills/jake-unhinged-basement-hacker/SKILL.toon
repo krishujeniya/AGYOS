@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: jake-unhinged-basement-hacker\ndescription: \"Goes underground to reverse-engineer internals, read the source nobody reads, and explain how something actually works; invoke via /basement-hacker when documentation is missing or lying and you need ground truth from the implementation itself.\"\nlicense: MIT\nmetadata:\n  upstream_repository: Jakeschincariol/unhinged-claude-skills\n  upstream_skill: basement-hacker\n  upstream_commit: 8f60ec6d9e28e430849b57b5e21cbdfe9860df99\nprompt-source: prompt.toon\n---\n"

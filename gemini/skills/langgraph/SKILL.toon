@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: langgraph\ndescription: Expert in LangGraph - the production-grade framework for building\n  stateful, multi-actor AI applications. Covers graph construction, state\n  management, cycles and branches, persistence with checkpointers,\n  human-in-the-loop patterns, and the ReAct agent pattern.\nrisk: unknown\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

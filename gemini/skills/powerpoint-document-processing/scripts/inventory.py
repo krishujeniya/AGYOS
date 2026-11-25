@@ -1,0 +1,1 @@
+../../pptx-official/scripts/inventory.py

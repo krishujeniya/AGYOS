@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: architecture-python-backend\ndescription: \"Master of Python backend architecture. Enforces layered architecture, BFRI risk assessment, and strict error boundaries. Use when designing or reviewing core Python backend services.\"\ncategory: architecture\nrisk: safe\ntags: \"[python, backend, architecture, fastapi, guidelines, patterns, layers]\"\nversion: \"1.0.0\"\nprompt-source: prompt.toon\n---\n"

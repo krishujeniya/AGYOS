@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: partner-ecosystem-mapping\ndescription: \"Map the partner landscape by category, score candidates on reach, overlap and effort, and produce a ranked target list with written rationale. Use when entering a new channel, when a partnership underperforms for two consecutive quarters, or before any outreach campaign so pursuit effort is spent on scored targets, not guesses.\"\nrisk: safe\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

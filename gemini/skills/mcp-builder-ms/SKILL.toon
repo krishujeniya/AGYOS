@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: mcp-builder-ms\ndescription: \"Use this skill when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

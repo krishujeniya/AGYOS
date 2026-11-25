@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: skill-creator-ms\ndescription: \"Guide for creating effective skills for AI coding agents working with Azure SDKs and Microsoft Foundry services. Use when creating new skills or updating existing skills.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

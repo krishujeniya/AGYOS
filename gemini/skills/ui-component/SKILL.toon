@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ui-component\ndescription: \"Generate a new UI component that follows StyleSeed Toss conventions for structure, tokens, accessibility, and component ergonomics.\"\ncategory: design\nrisk: safe\nsource: community\nsource_repo: bitjaru/styleseed\nsource_type: community\ndate_added: \"2026-04-08\"\nauthor: \"Krish Ujeniya\"\ntags: [ui, components, design-system, frontend, styleseed]\ntools: [claude, cursor, codex, gemini]\nprompt-source: prompt.toon\n---\n"

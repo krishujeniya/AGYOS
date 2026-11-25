@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-storage-file-share-ts\ndescription: Azure File Share JavaScript/TypeScript SDK (@azure/storage-file-share) for SMB file share operations.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

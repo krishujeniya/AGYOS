@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: auction-property-appraisal\ndescription: Avaliacao pericial de imoveis em leilao. Valor de mercado, liquidacao forcada, ABNT NBR 14653, metodos comparativo/renda/custo, CUB e margem de seguranca.\nauthor: Krish Ujeniya\ntags:\n- real-estate\n- valuation\n- appraisal\n- brazilian\ntools:\n- claude-code\n- antigravity\n- cursor\n- gemini-cli\n- codex-cli\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: odoo-accounting-setup\ndescription: \"Expert guide for configuring Odoo Accounting: chart of accounts, journals, fiscal positions, taxes, payment terms, and bank reconciliation.\"\nrisk: safe\nsource: \"self\"\nprompt-source: prompt.toon\n---\n"

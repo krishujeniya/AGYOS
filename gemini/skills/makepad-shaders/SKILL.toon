@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: makepad-shaders\ndescription: |\n  CRITICAL: Use for Makepad shader system. Triggers on:\n  makepad shader, makepad draw_bg, Sdf2d, makepad pixel,\n  makepad glsl, makepad sdf, draw_quad, makepad gpu,\n  makepad 着色器, makepad shader 语法, makepad 绘制\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

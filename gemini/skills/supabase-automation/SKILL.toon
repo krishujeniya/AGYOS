@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: supabase-automation\ndescription: \"Automate Supabase database queries, table management, project administration, storage, edge functions, and SQL execution via Rube MCP (Composio). Always search tools first for current schemas.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

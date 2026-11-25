@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: energy-based-models-jepa\ndescription: Sub-skill técnica de Yann LeCun. Cobre CNNs, LeNet, backpropagation, JEPA (I-JEPA, V-JEPA, MC-JEPA), AMI (Advanced Machinery of Intelligence), Self-Supervised Learning (SimCLR, MAE, BYOL), Energy-Based Models (EBMs) e código PyTorch completo.\nrisk: safe\nsource: community\ndate_added: '2026-03-06'\nauthor: Krish Ujeniya\ntags:\n- persona\n- cnn\n- jepa\n- self-supervised\n- pytorch\ntools:\n- claude-code\n- antigravity\n- cursor\n- gemini-cli\n- codex-cli\nprompt-source: prompt.toon\n---\n"

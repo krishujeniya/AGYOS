@@ -1,0 +1,2 @@
+mode: "100755"
+header: "---\nname: elite-database-architect\ndescription: PostgreSQL, schema design, migrations, and optimization. Use for all database architecture and query optimization.\nprompt-source: prompt.toon\n---\n"

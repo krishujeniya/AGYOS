@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: chrome-extension-developer\ndescription: \"Expert in building Chrome Extensions using Manifest V3. Covers background scripts, service workers, content scripts, and cross-context communication.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

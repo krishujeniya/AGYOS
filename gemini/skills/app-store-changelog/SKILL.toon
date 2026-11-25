@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: app-store-changelog\ndescription: Generate user-facing App Store release notes from git history since the last tag.\nrisk: safe\nsource: \"Dimillian/Skills (MIT)\"\ndate_added: \"2026-03-25\"\nprompt-source: prompt.toon\n---\n"

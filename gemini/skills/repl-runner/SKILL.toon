@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: repl-runner\ndescription: Operate and extend NanoClaw, ECC's zero-dependency session-aware REPL, with persistent markdown-backed sessions and slash commands for model switching, skill loading, session branching, cross-session search, history compaction, and export. Use when running or extending scripts/claw.js, or when resuming, branching, compacting, searching, or exporting a NanoClaw session.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

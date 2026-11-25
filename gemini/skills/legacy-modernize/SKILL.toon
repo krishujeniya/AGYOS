@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: legacy-modernize\ndescription: \"Plan an incremental modernization of a legacy system while preserving existing behavior. Use for strangler-pattern migrations, compatibility boundaries, and rollback planning.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

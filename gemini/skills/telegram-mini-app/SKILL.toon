@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: telegram-mini-app\ndescription: Expert in building Telegram Mini Apps (TWA) - web apps that run\n  inside Telegram with native-like experience. Covers the TON ecosystem,\n  Telegram Web App API, payments, user authentication, and building viral mini\n  apps that monetize.\nrisk: unknown\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

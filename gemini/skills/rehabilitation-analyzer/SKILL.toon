@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: rehabilitation-analyzer\ndescription: 分析康复训练数据、识别康复模式、评估康复进展，并提供个性化康复建议\nallowed-tools: Read, Grep, Glob, Write, Edit\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

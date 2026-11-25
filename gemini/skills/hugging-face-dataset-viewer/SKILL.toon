@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nsource: \"https://github.com/huggingface/skills/tree/main/skills/huggingface-datasets\"\nname: hugging-face-dataset-viewer\ndescription: Query Hugging Face datasets through the Dataset Viewer API for splits, rows, search, filters, and parquet links.\nrisk: unknown\nprompt-source: prompt.toon\n---\n"

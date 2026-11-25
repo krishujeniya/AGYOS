@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-monitor-opentelemetry-exporter-java\ndescription: Azure Monitor OpenTelemetry Exporter for Java. Export OpenTelemetry traces, metrics, and logs to Azure Monitor/Application Insights.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

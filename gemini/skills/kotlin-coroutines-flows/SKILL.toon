@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: kotlin-coroutines-flows\ndescription: Kotlin Coroutines and Flow patterns for Android and KMP — structured concurrency, Flow operators, StateFlow, error handling, and testing. Use when writing coroutines or Flow code on Android or KMP, or debugging cancellation and concurrency.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

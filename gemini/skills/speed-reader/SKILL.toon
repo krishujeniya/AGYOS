@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: speed-reader\ndescription: \"Present a Claude Code response in a rapid serial visual presentation reader with an ORP highlight. Use only when the skill is installed in Claude Code on macOS and the user wants that display.\"\nrisk: safe\nsource: \"https://github.com/SeanZoR/claude-speed-reader\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: semgrep-rule-variant-creator\ndescription: Creates language variants of existing Semgrep rules. Use when porting a Semgrep rule to specified target languages. Takes an existing rule and target languages as input, produces independent rule+test directories for each language.\nallowed-tools:\n ...\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

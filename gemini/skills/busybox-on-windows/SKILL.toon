@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: busybox-on-windows\ndescription: \"How to use a Win32 build of BusyBox to run many of the standard UNIX command line tools on Windows.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

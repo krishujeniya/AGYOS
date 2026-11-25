@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: seo-snippet-hunter\ndescription: Formats content to be eligible for featured snippets and SERP features. Creates snippet-optimized content blocks based on best practices. Use PROACTIVELY for question-based content.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

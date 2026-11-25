@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: jake-duel-duel\ndescription: \"Have an OpenAI model challenge Claude's answer, then defend or revise it through a short evidence-led debate. Use for \\\"duel this with ChatGPT\\\", \\\"face off this answer\\\", or an explicit request for a second model to critique an answer.\"\nlicense: MIT\nmetadata:\n  upstream_repository: Jakeschincariol/duel-skill\n  upstream_skill: duel\n  upstream_commit: eacccef179a4d301afb1169504296a9afac68743\nprompt-source: prompt.toon\n---\n"

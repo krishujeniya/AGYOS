@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ai-first-engineering\ndescription: Engineering operating model for teams where AI agents generate a large share of implementation output. Use when setting team process, review gates, or ownership rules for a codebase largely written by agents.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: mobile-xss-scan\ndescription: \"Review frontend code for XSS risks in HTML rendering, URL handling, and user-controlled content. Use when auditing React, Vue, Angular, or browser JavaScript.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

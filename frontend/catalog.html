@@ -1,0 +1,50 @@
+<!-- SITE-HEADER -->
+<main id="main">
+  <section class="catalog-hero section-pad" aria-labelledby="catalog-title">
+    <div class="container">
+      <div class="section-label reveal">Runbook Directory</div>
+      <h1 id="catalog-title" class="section-big reveal">Skill Catalog</h1>
+      <p class="catalog-desc reveal">2,289 modular engineering skills across governance, security, UI/UX, polyglot engineering, and verification.</p>
+
+      <div class="explorer-controls reveal">
+        <div class="explorer-search-wrap">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg>
+          <input
+            type="search"
+            id="explorer-search"
+            class="explorer-search"
+            placeholder="Search skills by name, module, or description…"
+            aria-label="Search skills catalog"
+            autocomplete="off"
+          >
+        </div>
+        <div class="filter-tabs" role="tablist" aria-label="Filter skills by module">
+          <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="filter-tab" data-filter="Governance" role="tab" aria-selected="false">Governance</button>
+          <button class="filter-tab" data-filter="Security" role="tab" aria-selected="false">Security</button>
+          <button class="filter-tab" data-filter="UI/UX" role="tab" aria-selected="false">UI/UX &amp; Motion</button>
+          <button class="filter-tab" data-filter="Polyglot" role="tab" aria-selected="false">Polyglot</button>
+          <button class="filter-tab" data-filter="Testing" role="tab" aria-selected="false">Testing</button>
+        </div>
+      </div>
+
+      <div class="catalog-meta reveal">
+        <p id="skills-count" class="skills-count" aria-live="polite" aria-atomic="true">Loading skills catalog…</p>
+      </div>
+
+      <div id="skills-grid" class="skills-grid" aria-label="Skills catalog">
+        <div class="skill-card skeleton" aria-hidden="true"></div>
+        <div class="skill-card skeleton" aria-hidden="true"></div>
+        <div class="skill-card skeleton" aria-hidden="true"></div>
+      </div>
+
+      <div class="catalog-actions">
+        <button id="load-more-skills" class="primary-action" style="display: none;" aria-label="Load more skills">
+          <span>Load more skills</span> <span aria-hidden="true">↓</span>
+        </button>
+      </div>
+    </div>
+  </section>
+</main>
+<!-- SITE-FOOTER -->
+<!-- SITE-SEARCH -->

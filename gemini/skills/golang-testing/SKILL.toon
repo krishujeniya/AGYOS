@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: golang-testing\ndescription: Go testing patterns including table-driven tests, subtests, benchmarks, fuzzing, and test coverage. Follows TDD methodology with idiomatic Go practices. Use when writing Go tests — table-driven cases, subtests, benchmarks, fuzzing, or coverage.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

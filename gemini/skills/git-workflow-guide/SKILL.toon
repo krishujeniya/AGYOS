@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: git-workflow-guide\ndescription: \"Plan repository work from code review through tests and pull-request readiness. Use when coordinating a multi-step Git workflow and its required checks.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

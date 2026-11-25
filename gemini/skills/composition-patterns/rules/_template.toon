@@ -1,0 +1,2 @@
+mode: "100644"
+text: "---\ntitle: Rule Title Here\nimpact: MEDIUM\nimpactDescription: brief description of impact\ntags: composition, components\n---\n\n## Rule Title Here\n\nBrief explanation of the rule and why it matters.\n\n**Incorrect:**\n\n```tsx\n// Bad code example\n```\n\n**Correct:**\n\n```tsx\n// Good code example\n```\n\nReference: [Link](https://example.com)\n"

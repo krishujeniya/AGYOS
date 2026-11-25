@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: conductor-implement\ndescription: \"Execute tasks from a track's implementation plan following TDD workflow\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

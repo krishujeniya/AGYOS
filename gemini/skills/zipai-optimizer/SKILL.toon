@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nid: zipai-optimizer\nname: zipai-optimizer\nversion: \"12.0\"\ndescription: \"Adaptive token optimizer: intelligent filtering, surgical output, ambiguity-first, context-window-aware, VCS-aware, MCP-aware.\"\ncategory: agent-behavior\nrisk: safe\nsource: community\nprompt-source: prompt.toon\n---\n"

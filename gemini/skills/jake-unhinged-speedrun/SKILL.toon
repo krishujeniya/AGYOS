@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: jake-unhinged-speedrun\ndescription: \"Finds the shortest path to done and takes it — no detours, no nice-to-haves; invoke via /speedrun when the only goal is to complete the task as fast as possible with nothing extra.\"\nlicense: MIT\nmetadata:\n  upstream_repository: Jakeschincariol/unhinged-claude-skills\n  upstream_skill: speedrun\n  upstream_commit: 8f60ec6d9e28e430849b57b5e21cbdfe9860df99\nprompt-source: prompt.toon\n---\n"

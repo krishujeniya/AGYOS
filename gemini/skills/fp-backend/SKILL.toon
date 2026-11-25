@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: fp-backend\ndescription: Functional programming patterns for Node.js/Deno backend development using fp-ts, ReaderTaskEither, and functional dependency injection\nrisk: unknown\nsource: community\nversion: 1.0.0\nauthor: \"Krish Ujeniya\"\ntags:\n  - fp-ts\n  - typescript\n  - backend\n  - functional-programming\n  - node\n  - deno\n  - dependency-injection\n  - reader-task-either\nprompt-source: prompt.toon\n---\n"

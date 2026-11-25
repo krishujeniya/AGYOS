@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: jake-unhinged-macgyver\ndescription: \"Improvises a solution from primitives — standard library and cleverness instead of reaching for a new framework; invoke via /macgyver when the elegant answer is a few smart lines of plain code rather than another heavy dependency.\"\nlicense: MIT\nmetadata:\n  upstream_repository: Jakeschincariol/unhinged-claude-skills\n  upstream_skill: macgyver\n  upstream_commit: 8f60ec6d9e28e430849b57b5e21cbdfe9860df99\nprompt-source: prompt.toon\n---\n"

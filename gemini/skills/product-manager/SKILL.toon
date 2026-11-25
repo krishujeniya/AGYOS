@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: product-manager\ndescription: \"Senior PM agent with 6 knowledge domains, 30+ frameworks, 12 templates, and 32 SaaS metrics with formulas. Pure Markdown, zero scripts.\"\nrisk: safe\nversion: \"1.0.0\"\nauthor: \"Krish Ujeniya\"\ntags: [\"product-management\", \"saas\", \"frameworks\", \"metrics\", \"strategy\"]\nsource: \"Digidai/product-manager-skills (MIT)\"\ndate_added: \"2026-03-06\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: fullstack-app-deployment\ndescription: Deploy web apps with backend APIs, database, and file storage. Use when the user asks to deploy or publish a website or web app and wants a public URL. Uses HTTP API via curl.\nrisk: safe\nsource: AppDeploy (MIT)\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

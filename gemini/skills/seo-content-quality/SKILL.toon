@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: seo-content-quality\ndescription: \"Audits content for SEO and AEO performance with scored reports, severity-ranked fix lists, and projected scores after fixes. Activate when the user wants to audit, review, or score content for SEO or AEO compliance.\"\nrisk: safe\nsource: community\ndate_added: \"2026-04-01\"\nprompt-source: prompt.toon\n---\n"

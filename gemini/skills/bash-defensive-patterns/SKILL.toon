@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: bash-defensive-patterns\ndescription: \"Master defensive Bash programming techniques for production-grade scripts. Use when writing robust shell scripts, CI/CD pipelines, or system utilities requiring fault tolerance and safety.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

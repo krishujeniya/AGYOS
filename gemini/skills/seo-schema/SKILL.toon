@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: seo-schema\ndescription: >\n  Detect, validate, and generate Schema.org structured data. JSON-LD format\n  preferred. Use when user says \"schema\", \"structured data\", \"rich results\",\n  \"JSON-LD\", or \"markup\".\nrisk: unknown\nsource: \"https://github.com/AgriciDaniel/claude-seo\"\ndate_added: \"2026-03-21\"\nuser-invokable: true\nargument-hint: \"[url]\"\nallowed-tools:\n  - Read\n  - Grep\n  - Glob\n  - Bash\n  - WebFetch\n  - Write\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: expert-devops\ndescription: \"DevOps Expert for CI/CD pipelines, Docker, deployment, infrastructure, monitoring, and cloud operations. Triggers: deploy, CI/CD, pipeline, docker, kubernetes, infrastructure, monitoring, terraform, ansible, github actions, gitlab ci\"\ncategory: domain\nrisk: high\ntags: \"[devops, cicd, docker, kubernetes, infrastructure, deployment, monitoring]\"\nversion: \"1.0.0\"\nprompt-source: prompt.toon\n---\n"

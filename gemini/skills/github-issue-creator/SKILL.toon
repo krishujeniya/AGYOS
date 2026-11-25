@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: github-issue-creator\ndescription: \"Turn error logs, screenshots, voice notes, and rough bug reports into crisp, developer-ready GitHub issues with repro steps, impact, and evidence.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

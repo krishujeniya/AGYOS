@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: colab-cloud-execution\ndescription: Provision remote Google Colab GPU/TPU/CPU runtimes and execute Python scripts, notebooks, or shell workloads headlessly via the official Google Colab CLI (`colab`).\nmetadata:\n  origin: AGYOS\nprompt-source: prompt.toon\n---\n"

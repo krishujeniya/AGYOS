@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: closed-loop-delivery\ndescription: Use when a coding task must be completed against explicit acceptance criteria with minimal user re-intervention across implementation, review feedback, deployment, and runtime verification.\nrisk: safe\nsource: community\ndate_added: \"2026-03-12\"\nprompt-source: prompt.toon\n---\n"

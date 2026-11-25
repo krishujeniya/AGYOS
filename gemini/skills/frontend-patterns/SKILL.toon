@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: frontend-patterns\ndescription: Frontend development patterns for React, Next.js, state management, performance optimization, and UI best practices. Use when building or reviewing React or Next.js components, state, or render performance.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

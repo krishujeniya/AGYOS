@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: conductor-new-track\ndescription: \"Create a new track with specification and phased implementation plan\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

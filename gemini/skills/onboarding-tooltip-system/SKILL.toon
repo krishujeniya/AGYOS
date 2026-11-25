@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: onboarding-tooltip-system\ndescription: \"Design the first-run and feature-discovery tooltip sequence: step copy, dismissal rules and the instrumentation events that prove whether guidance works. Use when activation drops at a known funnel step, when a major surface ships, or when tooltips are added ad hoc and start competing with each other.\"\nrisk: safe\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

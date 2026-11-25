@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: github-actions-templates\ndescription: \"Production-ready GitHub Actions workflow patterns for testing, building, and deploying applications.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

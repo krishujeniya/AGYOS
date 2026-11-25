@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: lightning-architecture-review\ndescription: Review Bitcoin Lightning Network protocol designs, compare channel factory approaches, and analyze Layer 2 scaling tradeoffs. Covers trust models, on-chain footprint, consensus requirements, HTLC/PTLC compatibility, liveness, and watchtower support.\nrisk: safe\nsource: community\ndate_added: '2026-03-03'\nprompt-source: prompt.toon\n---\n"

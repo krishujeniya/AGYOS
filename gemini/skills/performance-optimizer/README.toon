@@ -1,0 +1,2 @@
+mode: "100644"
+text: "# Performance Optimizer\n\nFixes performance bottlenecks. Tracks performance before and after to quantify improvement.\n\n## What It Does\n\n- Profiles code to identify performance bottlenecks\n- Optimizes database queries\n- Reduces response times for APIs\n- Improves frontend performance\n- Fixes memory leaks\n- Tracks performance impact\n\n## Usage\n\n```\nUse @performance-optimizer to speed up the user dashboard\n```\n\nThe skill will track, optimize, and verify performance.\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: standup-notes\ndescription: \"You are an expert team communication specialist focused on async-first standup practices, AI-assisted note generation from commit history, and effective remote team coordination patterns.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: jake-chatgpt-youtube-yt-plan\ndescription: \"Plan a week or a month of YouTube uploads - what to post, when, and in what order, sized to the creator's actual capacity. Use for \\\"plan my week\\\", \\\"content calendar\\\", \\\"what should I post\\\", \\\"I have no idea what to make next\\\".\"\nlicense: MIT\nmetadata:\n  upstream_repository: Jakeschincariol/chatgpt-youtube-agent-skill\n  upstream_skill: yt-plan\n  upstream_commit: 6314d3c17dfa1e5960966542048e8a09e28cdfd74\nprompt-source: prompt.toon\n---\n"

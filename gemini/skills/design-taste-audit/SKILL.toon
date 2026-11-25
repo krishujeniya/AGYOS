@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: design-taste-audit\ndescription: \"Use when generating Google Stitch DESIGN.md systems for premium typography, color, layout, motion intent, and anti-generic UI rules.\"\ncategory: frontend\nrisk: safe\nsource: community\nsource_repo: Leonxlnx/taste-skill\nsource_type: community\ndate_added: \"2026-04-17\"\nauthor: \"Krish Ujeniya\"\ntags: [stitch, design-system, frontend, ui]\ntools: [claude, cursor, codex, antigravity]\nprompt-source: prompt.toon\n---\n"

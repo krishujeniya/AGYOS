@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agentic-engineering\ndescription: Operate as an agentic engineer using eval-first execution, decomposition, and cost-aware model routing. Use when planning or executing engineering work that agents will carry out end to end.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

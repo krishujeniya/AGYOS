@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: unreal-engine-cpp-pro\ndescription: \"Expert guide for Unreal Engine 5.x C++ development, covering UObject hygiene, performance patterns, and best practices.\"\nrisk: safe\nsource: self\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

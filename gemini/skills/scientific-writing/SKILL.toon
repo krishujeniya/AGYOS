@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: scientific-writing\ndescription: \"This is the core skill for the deep research and writing tool—combining AI-driven deep research with well-formatted written outputs. Every document produced is backed by comprehensive literature search and verified citations through the research-lookup skill.\"\nlicense: MIT license\nmetadata:\n    skill-author: K-Dense Inc.\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

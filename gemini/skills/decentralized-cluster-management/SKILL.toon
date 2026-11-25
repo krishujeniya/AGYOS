@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: decentralized-cluster-management\ndescription: Inspect and manage decentralized service clusters, private networking, service discovery, and generated proxy configuration.\nprompt-source: prompt.toon\n---\n"

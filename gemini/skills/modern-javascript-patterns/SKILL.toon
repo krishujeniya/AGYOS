@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: modern-javascript-patterns\ndescription: \"Comprehensive guide for mastering modern JavaScript (ES6+) features, functional programming patterns, and best practices for writing clean, maintainable, and performant code.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: seo-authority-builder\ndescription: 'Analyzes content for E-E-A-T signals and suggests improvements to\n\n  build authority and trust. Identifies missing credibility elements. Use\n\n  PROACTIVELY for YMYL topics.\n\n  '\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

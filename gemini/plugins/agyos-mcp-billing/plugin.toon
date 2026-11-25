@@ -1,0 +1,6 @@
+name: "agyos-mcp-billing"
+description: "remote MCP (Stripe) for AGYOS corporate operations. settlement-reconciliation-audit and collections-dunning-automation both start from processor exports that today arrive by hand. The Stripe MCP provides payouts, balance t..."
+version: "3.1.0"
+author: "Krish Ujeniya"
+logo: "assets/logo.svg"
+repository: "https://github.com/krishujeniya/AGYOS"

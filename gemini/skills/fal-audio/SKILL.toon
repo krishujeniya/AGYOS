@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: fal-audio\ndescription: \"Text-to-speech and speech-to-text using fal.ai audio models\"\nrisk: safe\nsource: \"https://github.com/fal-ai-community/skills/blob/main/skills/claude.ai/fal-audio/SKILL.md\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: algorithmic-art\ndescription: Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request creating art using code, generative art, algorithmic art, flow fields, or particle systems. Create original algorithmic art rather than copying existing artists' work to avoid copyright violations.\nlicense: Complete terms in LICENSE.txt\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-ai-agents-persistent-dotnet\ndescription: Azure AI Agents Persistent SDK for .NET. Low-level SDK for creating and managing AI agents with threads, messages, runs, and tools.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

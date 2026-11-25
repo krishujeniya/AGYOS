@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: privacy-by-design\ndescription: \"Use when building apps that collect user data. Ensures privacy protections are built in from the start—data minimization, consent, encryption.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-23\"\nprompt-source: prompt.toon\n---\n"

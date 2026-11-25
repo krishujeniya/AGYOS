@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: wordpress-woocommerce-development\ndescription: \"WooCommerce store development workflow covering store setup, payment integration, shipping configuration, customization, and WordPress 7.0 features: AI connectors, DataViews, and collaboration tools.\"\ncategory: granular-workflow-bundle\nrisk: safe\nsource: personal\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

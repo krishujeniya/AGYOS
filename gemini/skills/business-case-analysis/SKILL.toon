@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: business-case-analysis\ndescription: 'Generate comprehensive investor-ready business case document with\n\n  market, solution, financials, and strategy\n\n  '\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

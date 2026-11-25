@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: revenue-operations-analytics\ndescription: Design and improve revenue operations, lead lifecycle rules, scoring, routing, handoffs, and CRM process automation. Use when marketing, sales, and customer success workflows need clearer operational structure.\nrisk: unknown\nsource: https://github.com/coreyhaines31/marketingskills\ndate_added: '2026-03-21'\nmetadata:\n  version: 1.1.0\nprompt-source: prompt.toon\n---\n"

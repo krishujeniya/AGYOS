@@ -1,0 +1,6 @@
+skill: "rsvp-speed-reader"
+sections[4]:
+  - "s prior response into a word-by-word reading view.\n- You need a quick reading aid rather than a document transformation or summary.\n\n"
+  - "## Instructions\n\n1. **Get the text:**\n   - If `$ARGUMENTS` is provided, use that text\n   - Otherwise, extract the main content from your **previous response** in this conversation\n\n2. **Prepare the content:**\n   - Strip markdown formatting (headers, bold, links, code blocks)\n   - Keep clean, readable prose\n   - Escape quotes and backslashes for JavaScript\n\n3. **Write and launch:**\n   - Read `~/.claude/skills/speed/data/reader.html`\n   - Replace `<!-- CONTENT_PLACEHOLDER -->` with:\n     ```html\n     <script>window.SPEED_READER_CONTENT = \"your escaped text\";</script>\n     <!-- CONTENT_PLACEHOLDER -->\n     ```\n   - Run: `open ~/.claude/skills/speed/data/reader.html`\n\n4. **Confirm:** Tell the user it's opening. Mention `Space` to play/pause.\n\n"
+  - "## Arguments\n$ARGUMENTS\n\n"
+  - "## Limitations\n- Use this skill only when the task clearly matches the scope described above.\n- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.\n- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.\n"

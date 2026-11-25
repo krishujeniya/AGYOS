@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: news-sentiment-engine\ndescription: Multi-source RSS news aggregation with Claude-powered sentiment analysis and structured briefing output\ncategory: research\nrisk: safe\nsource: community\nsource_repo: tellmefrankie/news-engine\nsource_type: community\ndate_added: \"2026-05-13\"\nauthor: \"Krish Ujeniya\"\ntags: [news, rss, sentiment-analysis, briefing, research]\ntools: [claude, websearch]\nprompt-source: prompt.toon\n---\n"

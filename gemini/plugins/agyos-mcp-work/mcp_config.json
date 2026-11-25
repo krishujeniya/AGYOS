@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "jira-remote": {
+      "type": "http",
+      "url": "https://api.atlassian.com/mcp/",
+      "env_ref": "AGY_JIRA_MCP_TOKEN",
+      "tool_scope": [
+        "boards:read",
+        "sprints:read",
+        "issues:read"
+      ],
+      "enabled": true
+    }
+  }
+}

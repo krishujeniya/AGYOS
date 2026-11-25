@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: vector-index-tuning\ndescription: \"Optimize vector index performance for latency, recall, and memory. Use when tuning HNSW parameters, selecting quantization strategies, or scaling vector search infrastructure.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

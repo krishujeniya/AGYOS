@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-ai-projects-dotnet\ndescription: Azure AI Projects SDK for .NET. High-level client for Azure AI Foundry projects including agents, connections, datasets, deployments, evaluations, and indexes.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

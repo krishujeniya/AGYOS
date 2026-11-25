@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: seo-page\ndescription: >\n  Deep single-page SEO analysis covering on-page elements, content quality,\n  technical meta tags, schema, images, and performance. Use when user says\n  \"analyze this page\", \"check page SEO\", or provides a single URL for review.\nrisk: safe\nsource: \"https://github.com/AgriciDaniel/claude-seo\"\ndate_added: \"2026-03-21\"\nuser-invokable: true\nargument-hint: \"[url]\"\nallowed-tools:\n  - Read\n  - Grep\n  - Glob\n  - Bash\n  - WebFetch\nprompt-source: prompt.toon\n---\n"

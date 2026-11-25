@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: threejs-textures\ndescription: Three.js textures - texture types, UV mapping, environment maps, texture settings. Use when working with images, UV coordinates, cubemaps, HDR environments, or texture optimization.\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

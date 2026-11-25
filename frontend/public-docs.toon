@@ -1,0 +1,15 @@
+site: AGYOS
+base: /
+documents[10]:
+  - source, slug, title, category, description
+  - README.md, overview, Project overview, Start here, "What AGYOS is, how it works, and where to begin."
+  - docs/setup.md, setup, Developer setup, Start here, "Toolchain prerequisites (uv, Node 22+), local checks, and Makefile targets."
+  - docs/ARCHITECTURE.md, architecture, System architecture, Core concepts, "The six-layer architecture, governance, memory, and execution."
+  - docs/SKILL_ROUTING.md, skill-routing, Skill routing, Core concepts, How runbooks are discovered and selected.
+  - docs/RULES.md, rules, Rules and standards, Core concepts, Modular TOON rules and priority ordering under gemini/rules/.
+  - docs/NATIVE_WORKFLOWS.md, native-workflows, Native workflows, Guides, Review workflow pilot and its limitations.
+  - docs/OPERATIONS_RUNBOOK.md, operations, Operations runbook, Guides, "SLOs, encrypted vault setup, incident response, and disaster recovery."
+  - docs/HOST_COMPATIBILITY.md, compatibility, Host compatibility, Guides, Qualified CLI interfaces and unverified host limits.
+  - docs/deployment.md, deployment, Deployment guide, Guides, Cloudflare Pages (agyos.pages.dev) and Docker deployment procedures.
+  - .github/SECURITY.md, security, Security policy, Project, "Vulnerability reporting, E2EE CLI scope, and trust boundaries."
+exclude[16]: AGENTS.md, GEMINI.md, TRACKER.md, AI_HANDOFF.md, docs/prompts.md, gemini/, .agents/, skills/, state/, rules/, agents/, plugins/, workflows/, skill-sources/, .env, skills-by-role/

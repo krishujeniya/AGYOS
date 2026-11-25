@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: accessibility-audit\ndescription: \"You are an accessibility expert specializing in WCAG compliance, inclusive design, and assistive technology compatibility. Conduct audits, identify barriers, and provide remediation guidance.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

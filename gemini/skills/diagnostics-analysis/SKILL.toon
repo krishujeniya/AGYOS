@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: diagnostics-analysis\ndescription: \"Analyze errors and production incidents across distributed systems. Use when tracing failures across services or reviewing observability evidence.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

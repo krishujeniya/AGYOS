@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: sharp-edges\ndescription: Use when reviewing APIs, configurations, cryptographic interfaces, or security-sensitive developer choices for misuse risks.\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

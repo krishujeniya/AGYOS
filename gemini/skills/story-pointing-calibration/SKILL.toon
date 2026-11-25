@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: story-pointing-calibration\ndescription: \"Anchor estimation to reference stories and detect drift. Use during backlog refinement, when velocity swings more than the control band between sprints, or when estimates from different contributors stop being comparable. Produces calibrated estimates with a recorded spread, not false precision.\"\nrisk: safe\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

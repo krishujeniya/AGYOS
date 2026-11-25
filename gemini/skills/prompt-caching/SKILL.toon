@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: prompt-caching\ndescription: Caching strategies for LLM prompts including Anthropic prompt\n  caching, response caching, and CAG (Cache Augmented Generation)\nrisk: none\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

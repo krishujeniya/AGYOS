@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: swiftui-liquid-glass\ndescription: Implement or review SwiftUI Liquid Glass APIs with correct fallbacks and modifier order.\nrisk: safe\nsource: \"Dimillian/Skills (MIT)\"\ndate_added: \"2026-03-25\"\nprompt-source: prompt.toon\n---\n"

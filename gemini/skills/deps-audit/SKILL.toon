@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: deps-audit\ndescription: \"Compatibility ID for dependency audits. Use for vulnerability, license, package freshness, or supply-chain reviews; details are in dependency-management-deps-audit.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

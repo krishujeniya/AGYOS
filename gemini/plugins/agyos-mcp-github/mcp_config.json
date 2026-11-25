@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "github-remote": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "env_ref": "AGY_GITHUB_MCP_PAT",
+      "tool_scope": [
+        "pull_requests:read",
+        "issues:write",
+        "code_scanning:read",
+        "labels:write"
+      ],
+      "enabled": true
+    }
+  }
+}

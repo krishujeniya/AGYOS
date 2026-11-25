@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: react-modernization\ndescription: \"Master React version upgrades, class to hooks migration, concurrent features adoption, and codemods for automated transformation.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

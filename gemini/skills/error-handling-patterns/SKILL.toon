@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: error-handling-patterns\ndescription: \"Build resilient applications with robust error handling strategies that gracefully handle failures and provide excellent debugging experiences.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

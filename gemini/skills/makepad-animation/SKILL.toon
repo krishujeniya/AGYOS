@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: makepad-animation\ndescription: |\n  CRITICAL: Use for Makepad animation system. Triggers on:\n  makepad animation, makepad animator, makepad hover, makepad state,\n  makepad transition, \"from: { all: Forward\", makepad pressed,\n  makepad 动画, makepad 状态, makepad 过渡, makepad 悬停效果\nrisk: safe\nsource: community\nprompt-source: prompt.toon\n---\n"

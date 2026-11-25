@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: kotlin-exposed-patterns\ndescription: JetBrains Exposed ORM patterns including DSL queries, DAO pattern, transactions, HikariCP connection pooling, Flyway migrations, and repository pattern. Use when working with the Exposed ORM — DSL or DAO queries, transactions, pooling, or migrations.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

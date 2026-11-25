@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: obsidian-clipper-template-creator\ndescription: Guide for creating templates for the Obsidian Web Clipper. Use when you want to create a new clipping template, understand available variables, or format clipped content.\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

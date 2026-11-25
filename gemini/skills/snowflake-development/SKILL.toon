@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: snowflake-development\ndescription: \"Comprehensive Snowflake development assistant covering SQL best practices, data pipeline design (Dynamic Tables, Streams, Tasks, Snowpipe), Cortex AI functions, Cortex Agents, Snowpark Python, dbt integration, performance tuning, and security hardening.\"\ncategory: data-engineering\nrisk: safe\nsource: community\ndate_added: \"2026-03-24\"\nprompt-source: prompt.toon\n---\n"

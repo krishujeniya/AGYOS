@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ui-page\ndescription: \"Scaffold a new mobile-first page using StyleSeed Toss layout patterns, section rhythm, and existing shell components.\"\ncategory: design\nrisk: safe\nsource: community\nsource_repo: bitjaru/styleseed\nsource_type: community\ndate_added: \"2026-04-08\"\nauthor: \"Krish Ujeniya\"\ntags: [ui, page-design, mobile, layout, styleseed]\ntools: [claude, cursor, codex, gemini]\nprompt-source: prompt.toon\n---\n"

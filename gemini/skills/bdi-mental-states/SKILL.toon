@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: bdi-mental-states\ndescription: This skill should be used when the user asks to \"model agent mental states\", \"implement BDI architecture\", \"create belief-desire-intention models\", \"transform RDF to beliefs\", \"build cognitive agent\", or mentions BDI ontology, mental state modeling, rational agency, or neuro-symbolic AI integration.\nprompt-source: prompt.toon\n---\n"

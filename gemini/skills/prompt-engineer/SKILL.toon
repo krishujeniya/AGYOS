@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: prompt-engineer\ndescription: \"Transforms user requests into clear prompts using optional task-fit structures, examples, and output contracts.\"\ncategory: automation\nrisk: safe\nsource: community\ntags: \"[prompt-engineering, optimization, frameworks, ai-enhancement]\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

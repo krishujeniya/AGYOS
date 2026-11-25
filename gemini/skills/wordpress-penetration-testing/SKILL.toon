@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: wordpress-penetration-testing\ndescription: \"Assess WordPress installations for common vulnerabilities and WordPress 7.0 attack surfaces.\"\nrisk: offensive\nsource: community\nauthor: \"Krish Ujeniya\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

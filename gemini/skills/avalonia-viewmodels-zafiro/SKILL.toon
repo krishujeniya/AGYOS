@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: avalonia-viewmodels-zafiro\ndescription: \"Optimal ViewModel and Wizard creation patterns for Avalonia using Zafiro and ReactiveUI.\"\nrisk: none\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

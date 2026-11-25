@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agent-improvement\ndescription: \"Systematic improvement of existing agents through performance analysis, prompt engineering, and continuous iteration.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

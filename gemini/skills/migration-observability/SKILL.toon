@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: migration-observability\ndescription: \"Migration monitoring, CDC, and observability infrastructure\"\nrisk: unknown\nsource: community\ntags: \"database, cdc, debezium, kafka, prometheus, grafana, monitoring\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

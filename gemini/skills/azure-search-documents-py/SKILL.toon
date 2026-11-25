@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-search-documents-py\ndescription: Azure AI Search SDK for Python. Use for vector search, hybrid search, semantic ranking, indexing, and skillsets.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

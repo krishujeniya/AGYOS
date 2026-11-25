@@ -1,0 +1,49 @@
+name: Strix Security Scan
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: strix-security-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  strix-security-scan:
+    name: Strix Security Verification & Pentest
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run Strix Security Verification
+        env:
+          STRIX_LLM: ${{ secrets.STRIX_LLM }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          STRIX_API_TOKEN: ${{ secrets.STRIX_API_TOKEN }}
+        run: |
+          python3 gemini/scripts/strix_runner.py scan --target ./ --mode quick --fail-on critical
+
+      - name: Upload SARIF report
+        if: always()
+        run: |
+          if [ -d "strix_runs" ]; then
+            echo "Strix test artifacts preserved."
+            find strix_runs -type f -name "findings.sarif" -exec echo "Discovered SARIF: {}" \;
+          fi

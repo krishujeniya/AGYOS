@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ui-review\ndescription: \"Review UI code for StyleSeed design-system compliance, accessibility, mobile ergonomics, spacing discipline, and implementation quality.\"\ncategory: design\nrisk: safe\nsource: community\nsource_repo: bitjaru/styleseed\nsource_type: community\ndate_added: \"2026-04-08\"\nauthor: \"Krish Ujeniya\"\ntags: [ui, review, design-system, accessibility, styleseed]\ntools: [claude, cursor, codex, gemini]\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: system-guide\ndescription: Answer questions about AGYOS by reading the live repo surface — agents, skills, commands, hooks, rules, install profiles, and docs — instead of memory. Use when the user asks what AGYOS includes, how to install or reset it, which skill or command fits a task, or how project onboarding works.\nmetadata:\n  origin: community\nprompt-source: prompt.toon\n---\n"

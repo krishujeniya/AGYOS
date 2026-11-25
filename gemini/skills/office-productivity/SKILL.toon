@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: office-productivity\ndescription: \"Office productivity workflow covering document creation, spreadsheet automation, presentation generation, and integration with LibreOffice and Microsoft Office formats.\"\ncategory: workflow-bundle\nrisk: safe\nsource: personal\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

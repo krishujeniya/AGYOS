@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: seo-blog-writer\ndescription: \"Writes long-form blog posts with TL;DR block, definition sentence, comparison table, and 5-question FAQ for SEO ranking and AEO citation. Activate when the user wants to write a blog post, article, or long-form content piece.\"\nrisk: safe\nsource: community\ndate_added: \"2026-04-01\"\nprompt-source: prompt.toon\n---\n"

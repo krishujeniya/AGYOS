@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: emblemai-crypto-wallet\ndescription: \"Crypto wallet management across 7 blockchains via EmblemAI Agent Hustle API. Balance checks, token swaps, portfolio analysis, and transaction execution for Solana, Ethereum, Base, BSC, Polygon, Hedera, and Bitcoin.\"\nrisk: critical\nsource: \"EmblemCompany/Agent-skills (MIT)\"\ndate_added: \"2026-03-06\"\nprompt-source: prompt.toon\n---\n"

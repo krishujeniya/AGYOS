@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-ai-agent-framework-py\ndescription: \"Build persistent agents on Azure AI Foundry using the Microsoft Agent Framework Python SDK.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

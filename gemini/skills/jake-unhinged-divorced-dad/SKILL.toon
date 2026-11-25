@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: jake-unhinged-divorced-dad\ndescription: \"Anti-gold-plating mode that builds the simplest functional version first, skips overengineering, and ships something usable today because working beats perfect; invoke via /divorced-dad when you need it live tonight, not pretty.\"\nlicense: MIT\nmetadata:\n  upstream_repository: Jakeschincariol/unhinged-claude-skills\n  upstream_skill: divorced-dad\n  upstream_commit: 8f60ec6d9e28e430849b57b5e21cbdfe9860df99\nprompt-source: prompt.toon\n---\n"

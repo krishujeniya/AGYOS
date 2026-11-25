@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: api-documentation-generator\ndescription: \"Generate comprehensive, developer-friendly API documentation from code, including endpoints, parameters, examples, and best practices\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,161 @@
+# Model Context Protocol (MCP) Daemons
+
+This directory contains Model Context Protocol (MCP) daemon implementations.
+All MCP tools reside directly in this directory with zero subfolders.
+
+## Components
+
+### `state-server.cjs` (Anchor FastMCP Daemon)
+- **Runtime**: Node.js (Zero external dependencies, vanilla JSON-RPC 2.0 over standard I/O).
+- **Protocol**: Model Context Protocol (MCP) v2024-11-05.
+- **Transport**: `stdio`.
+- **Registered Tools**:
+  - `anchor_state`: Returns current active milestone, gate status, iteration count, and governance flags from `state/state.json`.
+  - `anchor_current`: Read CURRENT.md human-readable session and milestone status summary.
+  - `anchor_graph`: Read context-graph.json dependency index and invariant map.
+  - `anchor_checkpoint`: Atomically appends structured machine execution records to `state/checkpoints/`.
+  - `agyos_find_skill`: Search the unified catalog of skills to find the best matching specialist skills.
+  - `agyos_sys_info`: Get full system overview including kernel status, active gate, and subsystem health.
+  - `agyos_memory`: Hierarchical memory manager for cross-session continuity.
+
+### `azure-mcp.sh` (Microsoft Azure MCP Server)
+- **Runtime**: Node.js via `npx -y @azure/mcp@latest server start`.
+- **Upstream**: [`microsoft/mcp`](https://github.com/microsoft/mcp).
+- **Transport**: `stdio`.
+- **Coverage**: Unified Azure operations across subscriptions, resource groups, App Service, Functions, AKS, ACR, Container Apps, Cosmos DB, Azure SQL, Blob Storage, Key Vault, Monitor, AI Search, OpenAI, and Well-Architected Framework best practices.
+- **Authentication**: Azure CLI (`az login`), Azure Developer CLI (`azd auth login`), or `DefaultAzureCredential` environment variables.
+
+### `aws-mcp.sh` (AWS Labs MCP Servers)
+- **Runtime**: Python FastMCP via `uvx`.
+- **Upstream**: [`awslabs/mcp`](https://github.com/awslabs/mcp).
+- **Transport**: `stdio`.
+- **Modes**:
+  - `aws-api-mcp` (`./mcp/aws-mcp.sh api`): Universal AWS API execution (`call_aws`, `suggest_aws_commands`) across all AWS services.
+  - `aws-docs-mcp` (`./mcp/aws-mcp.sh docs`): Search and retrieve official AWS documentation.
+  - `aws-iac-mcp` (`./mcp/aws-mcp.sh iac`): CloudFormation, AWS CDK, and Terraform synthesis and validation.
+- **Authentication**: Standard AWS credential chain (`~/.aws/credentials`, `AWS_PROFILE`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION`).
+
+### `ibm-mcp.sh` (IBM MCP Servers)
+- **Runtime**: Python / Node.js via `uvx` and `npx`.
+- **Upstream**: [`IBM/mcp`](https://github.com/IBM/mcp).
+- **Transport**: `stdio`.
+- **Modes**:
+  - `ibm-docling-mcp` (`./mcp/ibm-mcp.sh docling`): IBM Docling document understanding, multi-format conversion (PDF, DOCX, PPTX to Markdown/JSON), and RAG extraction.
+  - `ibm-watsonxdata-mcp` (`./mcp/ibm-mcp.sh watsonxdata`): IBM watsonx.data lakehouse engine management and queries.
+  - `ibm-carbon-mcp` (`./mcp/ibm-mcp.sh carbon`): IBM Carbon Design System component exploration and tokens.
+
+### `kaggle-mcp.sh` (Kaggle Remote MCP Bridge)
+- **Runtime**: Node.js via `npx -y mcp-remote https://www.kaggle.com/mcp`.
+- **Transport**: `stdio` wrapper over remote HTTP endpoint.
+- **Authentication**: Bearer token loaded securely from `~/.config/kaggle-mcp/token` (file permission `600`).
+- **Coverage**: Notebooks, datasets, competitions, models, and benchmarks.
+
+### `mongodb-mcp.sh` (MongoDB MCP Server)
+- **Runtime**: Node.js via `mongodb-mcp-server` (`@mongodb-js/mongodb-mcp-server`).
+- **Upstream**: [`mongodb-js/mongodb-mcp-server`](https://github.com/mongodb-js/mongodb-mcp-server).
+- **Transport**: `stdio`.
+- **Authentication**: Authenticated via MongoDB Atlas CLI (`atlas`) Service Account OAuth 2.0 Client Credentials stored in `~/.config/mongodb-mcp/credentials` (file permission `600`).
+- **Coverage**: 49 tools across MongoDB Database operations (`find`, `aggregate`, `collection-schema`, `create-index`, `insert-many`, `update-many`, `delete-many`) and MongoDB Atlas cluster/project management (`atlas-list-clusters`, `atlas-list-projects`, `atlas-inspect-cluster`, `atlas-create-access-list`, `atlas-list-db-users`, `atlas-get-performance-advisor`, etc.).
+
+### `google-flow-mcp.sh` (Google Flow MCP Server)
+- **Runtime**: Node.js v24 via [`integrations/google-flow-mcp`](../integrations/google-flow-mcp).
+- **Upstream**: [`ParkSangGwon/google-flow-mcp`](https://github.com/ParkSangGwon/google-flow-mcp).
+- **Transport**: `stdio`.
+- **Authentication**: Reuses existing authenticated Google Chrome session and cookies from `~/.config/google-chrome/Default` synchronized into `~/.google-flow-chrome`.
+- **CDP Port**: `9333` (auto-launches dedicated Chrome or attaches to existing instance).
+- **Coverage**: 11 tools for Google Flow automation:
+  - `flow_connect`: Attach to dedicated Chrome instance and verify login state.
+  - `flow_status`: Query active session and running generation jobs.
+  - `flow_screenshot`: Inspect current tab state via screenshot.
+  - `flow_inspect`: Probe DOM elements and selectors.
+  - `flow_project_open`: Open or switch to a Google Flow project.
+  - `flow_generate_video`: Video generation via Google Veo.
+  - `flow_generate_image`: Image generation via Nano Banana.
+  - `flow_media_download`: Download generated assets to local disk.
+  - `flow_scene_add`: Add scene to Scene Builder.
+  - `flow_scene_status`: Check status of Scene Builder scenes.
+  - `flow_scene_extend`: Extend existing video scene.
+
+### `firebase-mcp-server` (`.mcp.json`)
+- **Runtime**: Node.js/npm via `npx -y firebase-tools@latest mcp`, following the [official Firebase MCP setup](https://firebase.google.com/docs/ai-assistance/mcp-server).
+- **Transport**: Local `stdio` MCP server.
+- **Authentication**: Reuses Firebase CLI credentials or Application Default Credentials; Node.js and npm must be available.
+- **Scope**: Firebase tools can manage projects and Auth users, read or write Firestore data and security rules, send FCM messages, initialize or deploy Firebase resources, and inspect Crashlytics. Treat operations as capable of remote side effects and review tool calls before approval.
+- **Context and tool limits**: The upstream server accepts `--dir <absolute-path>` to select a Firebase project context and `--only <feature1,feature2>` to limit feature groups. Core tools remain enabled even with `--only`.
+- **Package selection**: `firebase-tools@latest` is the selector shown in Firebase's documentation. It is mutable; this repository does not resolve, install, or launch it. Pin a reviewed version if reproducible package selection is required.
+
+### `docker-hub-mcp.sh` (Docker Hub MCP Server)
+- **Runtime**: Containerized via Docker (`docker run -i --rm mcp/dockerhub`) or local compiled Node.js build.
+- **Upstream**: [`docker/hub-mcp`](https://github.com/docker/hub-mcp).
+- **Transport**: `stdio`.
+- **Authentication**: Personal Access Token (PAT) via `HUB_PAT_TOKEN` or `~/.config/docker-hub-mcp/token` (file permission `600`), Docker Hub username via `DOCKER_HUB_USERNAME` or `~/.config/docker-hub-mcp/username`.
+- **Coverage**: 8 tools for Docker Hub management and discovery:
+  - `search`: Search container images and repositories across Docker Hub.
+  - `checkRepository`: Verify repository existence in a namespace.
+  - `checkRepositoryTag`: Verify tag existence for a repository.
+  - `getRepositoryInfo`: Query repository metadata, descriptions, stars, and pull counts.
+  - `listRepositoriesByNamespace`: Enumerate repositories under a user or organization namespace.
+  - `listRepositoryTags`: Enumerate tags, digest hashes, and supported architectures.
+  - `createRepository`: Provision a new repository in a namespace.
+  - `dockerHardenedImages`: Query certified Docker Hardened Images (DHI) with security attestations.
+
+### `obscura-mcp.sh` & `obscura-server.cjs` (Obscura Headless Browser Engine)
+- **Runtime**: Native Rust binary (`obscura mcp`), Docker container (`h4ckf0r0day/obscura`), or Node.js FastMCP daemon (`obscura-server.cjs`).
+- **Upstream**: [`h4ckf0r0day/obscura`](https://github.com/h4ckf0r0day/obscura).
+- **Transport**: `stdio`.
+- **Mode**: Strictly headless. Never opens a graphical browser window or desktop session.
+- **Coverage**: 12 tools for web scraping, page navigation, and agent automation:
+  - `browser_navigate`: Direct navigation to URLs with configurable wait triggers (`load`, `domcontentloaded`, `networkidle0`).
+  - `browser_snapshot`: Structured semantic accessibility and interactive element tree snapshot.
+  - `browser_click`: Element click by reference id or CSS selector.
+  - `browser_fill`: Form field and text input value population.
+  - `browser_type`: Sequential keyboard typing into target elements.
+  - `browser_wait_for`: State synchronization on elements and selectors.
+  - `browser_evaluate`: JavaScript execution inside the headless V8 runtime.
+  - `browser_search`: In-page text and pattern searches.
+  - `browser_screenshot`: Headless base64 PNG rendering.
+  - `browser_pdf`: Document export as PDF.
+  - `browser_cdp_endpoint`: Active WebSocket endpoint for drop-in Playwright/Puppeteer connections.
+  - `browser_close`: Active tab and session reset.
+
+### `gemini-notebook-mcp.sh` (Gemini Notebook / NotebookLM MCP Server & CLI)
+- **Runtime**: Python FastMCP via `notebooklm-mcp` or `uvx --from notebooklm-mcp-cli notebooklm-mcp`.
+- **Upstream**: [`jacob-bd/gemini-notebook-mcp-cli`](https://github.com/jacob-bd/gemini-notebook-mcp-cli).
+- **Transport**: `stdio`.
+- **Modes**:
+  - MCP Server (`./mcp/gemini-notebook-mcp.sh`): FastMCP daemon exposing 53 tools.
+  - CLI (`./mcp/gemini-notebook-mcp.sh cli <command>` or `./mcp/gemini-notebook-mcp.sh nlm <command>`): `nlm` terminal command interface.
+- **Authentication**:
+  - `NOTEBOOKLM_COOKIES` environment variable or saved cookie credentials in `~/.config/gemini-notebook-mcp/cookies` (or legacy `~/.config/notebooklm-mcp/cookies`, file permission `600`).
+  - Automated CSRF token refresh and session ID extraction.
+  - Optional protected keychain credential encryption via `nlm auth storage set protected`.
+- **Coverage**: 53 tools across notebook and research workflows:
+  - Notebook lifecycle: `notebook_list`, `notebook_get`, `notebook_create`, `notebook_rename`, `notebook_delete`.
+  - Multi-source ingestion: `source_add` (supports URL, text, PDF/local files, Google Drive), `source_list`, `source_get_content`, `source_rename`, `source_delete`, `source_list_drive`, `source_sync_drive`.
+  - Source-grounded queries: `chat_send`, `chat_list`, `chat_delete`, `chat_save_to_note`.
+  - Automated research: `research_start` (Web and Drive research in fast or deep mode), `research_status`, `research_import`.
+  - Studio content generation: `studio_create` (Audio Overviews, videos, infographics, slide decks, reports, study guides, quizzes, flashcards, mind maps), `studio_status`, `studio_delete`, `studio_revise`.
+  - Artifact exports: `download_artifact`, `download_all_artifacts`, `export_artifact` (Google Docs & Sheets).
+  - Notebook administration: `note`, `label`, `profile`, `alias`, `pipeline`, `refresh_auth`, `save_auth_tokens`.
+
+## Verification
+
+The daemon is verified via deterministic JSON-RPC queries:
+
+```bash
+echo '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"anchor_state","arguments":{}}}' | node mcp/state-server.cjs
+```
+
+## Select and read a skill
+
+Send this JSON-RPC line to `node mcp/state-server.cjs`:
+
+```json
+{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"agyos_decision","arguments":{"task":"fix python crash","include_runbook":true}}}
+```
+
+The result contains the decision JSON and selected runbook. Without
+`include_runbook`, `execution_status` remains `pending_runbook_read`; read the
+returned `runbook_path` before specialist work. `runbook_returned` confirms
+file delivery only. Scores are heuristics, not calibrated probabilities.
+Apply relevant steps and report actual verification evidence.

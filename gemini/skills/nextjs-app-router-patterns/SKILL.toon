@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: nextjs-app-router-patterns\ndescription: \"Comprehensive patterns for Next.js 14+ App Router architecture, Server Components, and modern full-stack React development.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

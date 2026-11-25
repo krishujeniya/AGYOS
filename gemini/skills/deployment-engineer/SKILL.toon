@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: deployment-engineer\ndescription: Expert deployment engineer specializing in modern CI/CD pipelines, GitOps workflows, and advanced deployment automation.\nrisk: critical\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

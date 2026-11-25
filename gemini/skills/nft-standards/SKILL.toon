@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: nft-standards\ndescription: \"Master ERC-721 and ERC-1155 NFT standards, metadata best practices, and advanced NFT features.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

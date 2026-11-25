@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: sentry-automation\ndescription: \"Automate Sentry tasks via Rube MCP (Composio): manage issues/events, configure alerts, track releases, monitor projects and teams. Always search tools first for current schemas.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

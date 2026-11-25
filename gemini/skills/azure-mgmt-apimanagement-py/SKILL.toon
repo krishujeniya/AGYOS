@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-mgmt-apimanagement-py\ndescription: Azure API Management SDK for Python. Use for managing APIM services, APIs, products, subscriptions, and policies.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

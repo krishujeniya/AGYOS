@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: multi-agent-execution-benchmark\ndescription: BlockRun works with Claude Code and Google Antigravity.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

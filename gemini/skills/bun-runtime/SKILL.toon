@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: bun-runtime\ndescription: Bun as runtime, package manager, bundler, and test runner. When to choose Bun vs Node, migration notes, and Vercel support.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

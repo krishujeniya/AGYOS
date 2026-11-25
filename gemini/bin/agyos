@@ -1,0 +1,679 @@
+#!/usr/bin/env bash
+# agyos — Unified Command Line Interface for AGYOS
+set -euo pipefail
+
+SCRIPT_PATH="$(realpath "${BASH_SOURCE[0]}")"
+PROJECT_ROOT="$(cd "$(dirname "$SCRIPT_PATH")/.." && pwd)"
+cd "$PROJECT_ROOT"
+export PYTHONPATH="${PROJECT_ROOT}:${PYTHONPATH:-}"
+export UV_PYTHON="${UV_PYTHON:-$(which python3 2>/dev/null || echo python3)}"
+
+run_py() {
+  if command -v uv >/dev/null 2>&1; then
+    uv run python "$@"
+  else
+    python3 "$@"
+  fi
+}
+
+usage() {
+  cat << 'EOF'
+Usage: agyos <command> [arguments]
+
+Commands:
+  init        Initialize or self-repair AGYOS in this workspace
+  verify      Execute the adversarial verification suite
+  state       Display current milestone, active gate, and iteration
+  gate <name> Transition active gate (UNDERSTAND|ANALYZE|PLAN|IMPLEMENT|VERIFY)
+  compact     Execute context window compaction and reset CURRENT.md
+  fast        Fast-path bypass for trivial edits (complexity <= 2 straight to IMPLEMENT)
+  decide <task> [--json] [--runbook] Select a skill and optionally return its instructions
+  find <query> Search the physical AGYOS skill catalog for relevant runbooks
+  skill <name> Display instructions and documentation for a skill
+  sysinfo     Display system architecture, memory tiers, and health
+  mem <tier>  Read hierarchical memory (tier0: core, tier1: recall, tier2: archival)
+  query [--compact] [--json] [--xml] <p> Optimize query end-to-end (role, skills, EVPI, model, KV-cache XML)
+  intent [--xml] [--compact] <prompt> Compile natural language intent to TaskContract and EVPI decision
+  toon-agent <role-id> [--compact] Compile role definition into pure TOON with tabular skills
+  toon-skill <skill> [--compact]   Compile skill runbook into compact TOON card
+  xml-agent <role-id> [--compact] (Alias for toon-agent)
+  xml-skill <skill> [--compact]   (Alias for toon-skill)
+  toon-skills <role>  Serialize role skills into compact TOON tabular format
+  cached-prompt [--compact] <p>   Generate KV-cache-aligned static prefix and dynamic suffix prompt
+  roles [--dept <d>] [--seniority <s>] List enterprise roles from 104-role matrix
+  role <role-id> Display profile, mandate, psychology levers, and skills for a role
+  client-interview <query> Run Amazon Working Backwards discovery interview for a project
+  benchmark   Run A/B benchmark evaluation across Single, Flat, and Adaptive architectures
+  canary      Run pre-release canary launch gate and audit receipt generator
+  rollback    Safely abort and revert the active milestone
+  council     Run multi-model deliberation via Agent Council
+  secure      Exchange authenticated encrypted files between trusted endpoints
+  privacy-audit  Inspect local plaintext data paths and encryption limits
+  model-route <task>  Determine optimal model, thinking level, and privacy compliance
+  cycle <goal> Execute 7-step autonomous cycle (Think->Plan->Build->Review->Test->Ship->Reflect)
+  e2e <task>  Execute autonomous end-to-end lifecycle without manual commands
+  obscura|browser  Control Obscura headless browser engine (MCP, CDP, fetch, scrape)
+  strix|pentest    Run Strix autonomous security pentesting and vulnerability checks
+  video       Unified AGYOS Video Studio (route, veo-prompt, script, audit, manim, edl-*, self-eval, repair, film)
+  chopify     Headless local AI video clipper (describe, preflight, styles, project, batch, live, cli, studio)
+  gemini-notebook|notebooklm|nlm Run Gemini Notebook (NotebookLM) MCP server or nlm CLI
+  workspace   Manage transactional workspace milestones and revisions (status|transact|project|restore|replay)
+  diagnostics Export redacted system diagnostics, state, and environment metrics
+  ondemand    Manage on-demand MCP servers and plugins (startup, status, activate, reset)
+  use <name>  Activate an MCP server or plugin on-demand
+  prune       Prune historical AGY CLI sessions and execution buffers older than 2 days
+  help        Show this help message
+EOF
+}
+
+cmd="${1:-help}"
+shift || true
+
+case "$cmd" in
+  init)
+    bash scripts/agyos-init.sh "$@"
+    ;;
+  verify)
+    bash scripts/agyos-verify.sh "$@"
+    ;;
+  benchmark)
+    run_py scripts/ab_compare_benchmark.py "$@"
+    ;;
+  canary)
+    run_py scripts/canary_launch_gate.py "$@"
+    ;;
+  query|optimize-query)
+    use_compact=0
+    use_json=0
+    use_xml=0
+    args=()
+    for arg in "$@"; do
+      if [ "$arg" = "--compact" ]; then
+        use_compact=1
+      elif [ "$arg" = "--json" ]; then
+        use_json=1
+      elif [ "$arg" = "--xml" ]; then
+        use_xml=1
+      else
+        args+=("$arg")
+      fi
+    done
+    q_str="${args[*]:-}"
+    if [ -z "$q_str" ]; then
+      echo "Usage: agyos query [--compact] [--json] [--xml] <prompt>" >&2
+      exit 1
+    fi
+    run_py -c "
+import json, sys
+sys.path.insert(0, '.')
+from agyos_decision.query_optimizer import optimize_query
+
+query = sys.argv[1]
+compact = sys.argv[2] == '1' if len(sys.argv) > 2 else False
+as_json = sys.argv[3] == '1' if len(sys.argv) > 3 else False
+as_xml = sys.argv[4] == '1' if len(sys.argv) > 4 else False
+
+plan = optimize_query(query, compact=compact)
+
+if as_json:
+    print(json.dumps(plan.to_dict(), indent=2))
+elif as_xml:
+    print(plan.to_xml(compact=compact))
+else:
+    print('============================================================')
+    print('AGYOS Unified Query Optimizer')
+    print('============================================================')
+    print(f'Query:              {plan.query}')
+    print(f'Assigned Lead Role: {plan.role_title} ({plan.role_id})')
+    print(f'Department / Tier:  {plan.department} [{plan.seniority}]')
+    print(f'Governing Pod:      {plan.governing_pod}')
+    print(f'Risk Tier:          {plan.risk} (Complexity: {plan.complexity}/5 — {plan.complexity_reason})')
+    print(f'Primary Skill:      {plan.primary_skill}')
+    if plan.candidate_skills:
+        print(f'Specialist Skills:  {\", \".join(plan.candidate_skills)}')
+    print(f'Recommended Model:  {plan.model_id} ({plan.model_provider}) [Thinking: {plan.thinking_level or \"none\"}]')
+    print(f'Error Budget:       {plan.token_budget} tokens | \${plan.cost_ceiling_usd:.2f}')
+    print('------------------------------------------------------------')
+    print('Amazon Working Backwards & EVPI Clarification:')
+    if plan.evpi_should_ask:
+        print(f'  [Action Required] Discovery Question for Client:')
+        print(f'  >> {plan.evpi_question}')
+    else:
+        print('  [Proceed Immediately] Safe default assumptions applied:')
+        for a in plan.assumptions:
+            print(f'  - {a}')
+    print('------------------------------------------------------------')
+    print(f'KV-Cache Prompt Structure:')
+    print(f'  - Static Prefix:  {len(plan.static_prefix_xml)} chars (~{len(plan.static_prefix_xml)//4} tokens) [Eligible for 90% cache discount]')
+    print(f'  - Dynamic Suffix: {len(plan.dynamic_suffix_xml)} chars (~{len(plan.dynamic_suffix_xml)//4} tokens) [Per-task delta]')
+    print('============================================================')
+" "$q_str" "$use_compact" "$use_json" "$use_xml"
+    ;;
+  intent)
+    use_xml=0
+    use_compact=0
+    args=()
+    for arg in "$@"; do
+      if [ "$arg" = "--xml" ]; then
+        use_xml=1
+      elif [ "$arg" = "--compact" ]; then
+        use_compact=1
+      else
+        args+=("$arg")
+      fi
+    done
+    query="${args[*]:-}"
+    if [ -z "$query" ]; then
+      echo "Usage: agyos intent [--xml] [--compact] <natural-language-prompt>" >&2
+      exit 1
+    fi
+    run_py -c "
+import json, sys
+sys.path.insert(0, '.')
+from agyos_decision.intent_compiler import compile_intent
+from agyos_decision.evpi_clarify import evaluate_evpi
+
+prompt = sys.argv[1]
+use_xml = sys.argv[2] == '1' if len(sys.argv) > 2 else False
+use_compact = sys.argv[3] == '1' if len(sys.argv) > 3 else False
+contract = compile_intent(prompt)
+decision = evaluate_evpi(prompt, contract)
+
+if use_xml:
+    print(contract.to_xml(compact=use_compact))
+else:
+    print('=== AGYOS TaskContract ===')
+    print(json.dumps(contract.to_dict(), indent=2))
+    print(f'Assigned Role:         {contract.role_id} ({contract.department}, {contract.seniority})')
+    print('=== EVPI Clarification Decision ===')
+    print(f'Should Ask Question:  {decision.should_ask_question}')
+    print(f'Question:              {decision.question}')
+    print(f'Outbox Status:         {decision.outbox_status}')
+    print(f'Proceed Immediately:   {decision.proceed_immediately}')
+    if decision.assumptions_applied:
+        print(decision.format_assumptions_header())
+" "$query" "$use_xml" "$use_compact"
+    ;;
+  toon-agent|xml-agent|xml_agent)
+    role_id="${1:-}"
+    compact_flag="${2:-}"
+    if [ -z "$role_id" ]; then
+      echo "Usage: agyos toon-agent <role-id> [--compact]" >&2
+      exit 1
+    fi
+    run_py -c "
+import sys
+sys.path.insert(0, '.')
+from agyos_decision.toon_compiler import compile_agent_to_toon
+compact = sys.argv[2] == '--compact' if len(sys.argv) > 2 else False
+print(compile_agent_to_toon(sys.argv[1], compact=compact))
+" "$role_id" "$compact_flag"
+    ;;
+  toon-skill|xml-skill|xml_skill)
+    skill_name="${1:-}"
+    compact_flag="${2:-}"
+    if [ -z "$skill_name" ]; then
+      echo "Usage: agyos toon-skill <skill-name> [--compact]" >&2
+      exit 1
+    fi
+    run_py -c "
+import sys
+sys.path.insert(0, '.')
+from agyos_decision.toon_compiler import compile_skill_to_toon
+compact = sys.argv[2] == '--compact' if len(sys.argv) > 2 else False
+print(compile_skill_to_toon(sys.argv[1], compact=compact))
+" "$skill_name" "$compact_flag"
+    ;;
+  cached-prompt)
+    use_compact=0
+    args=()
+    for arg in "$@"; do
+      if [ "$arg" = "--compact" ]; then
+        use_compact=1
+      else
+        args+=("$arg")
+      fi
+    done
+    query="${args[*]:-}"
+    if [ -z "$query" ]; then
+      echo "Usage: agyos cached-prompt [--compact] <task-prompt>" >&2
+      exit 1
+    fi
+    run_py -c "
+import sys
+sys.path.insert(0, '.')
+from agyos_decision.intent_compiler import compile_intent
+from agyos_decision.toon_compiler import compile_cached_toon_prompt
+
+prompt = sys.argv[1]
+compact = sys.argv[2] == '1' if len(sys.argv) > 2 else False
+contract = compile_intent(prompt)
+parts = compile_cached_toon_prompt(contract, compact=compact)
+
+print('=== AGYOS KV-Cache Optimized Prompt Split ===')
+print('--- [STATIC PREFIX: Cache-Hit Candidate] ---')
+print(parts['static_prefix'])
+print('\n--- [DYNAMIC SUFFIX: Per-Task Delta] ---')
+print(parts['dynamic_suffix'])
+" "$query" "$use_compact"
+    ;;
+  toon-skills)
+    role_id="${1:-}"
+    if [ -z "$role_id" ]; then
+      echo "Usage: agyos toon-skills <role-id> [--all]" >&2
+      exit 1
+    fi
+    all_flag="${2:-}"
+    run_py -c "
+import sys
+sys.path.insert(0, '.')
+from agyos_decision.roles import get_role, get_skills_for_role, get_all_skills_for_role
+from agyos_decision.toon_codec import encode_toon
+
+role_id = sys.argv[1]
+all_skills = sys.argv[2] == '--all' if len(sys.argv) > 2 else False
+role = get_role(role_id)
+if not role:
+    print(f'Role not found: {role_id}', file=sys.stderr)
+    sys.exit(1)
+
+skills = get_all_skills_for_role(role_id) if all_skills else get_skills_for_role(role_id, all_skills=False)
+records = [
+    {'name': s, 'tier': '1' if s in role.primary_skills else '2', 'domain': role.department, 'path': f'skills-by-role/{role.role_id}/{s}'}
+    for s in skills
+]
+print(encode_toon(records, key_name=f'{role_id}_skills'))
+" "$role_id" "$all_flag"
+    ;;
+  toon)
+    if [ $# -eq 0 ]; then
+      echo "Usage: agyos toon <encode|decode|minify> [args]" >&2
+      exit 1
+    fi
+    toon_subcmd="$1"
+    shift
+    uv run python -c "
+import sys, json
+from pathlib import Path
+from agyos_decision.toon_codec import encode_toon, decode_toon
+from agyos_decision.toon_compiler import minify_toon
+
+subcmd = sys.argv[1]
+args = sys.argv[2:]
+
+if subcmd == 'encode':
+    fpath = args[0] if args else '-'
+    content = Path(fpath).read_text(encoding='utf-8') if fpath != '-' else sys.stdin.read()
+    data = json.loads(content)
+    key = 'items'
+    if '--key' in args:
+        idx = args.index('--key')
+        if idx + 1 < len(args):
+            key = args[idx + 1]
+    print(encode_toon(data, key_name=key))
+elif subcmd == 'decode':
+    fpath = args[0] if args else '-'
+    content = Path(fpath).read_text(encoding='utf-8') if fpath != '-' else sys.stdin.read()
+    records = decode_toon(content)
+    print(json.dumps(records, indent=2))
+elif subcmd == 'minify':
+    fpath = args[0] if args else '-'
+    content = Path(fpath).read_text(encoding='utf-8') if fpath != '-' else sys.stdin.read()
+    print(minify_toon(content))
+else:
+    print(f'Unknown toon subcmd: {subcmd}', file=sys.stderr)
+    sys.exit(1)
+" "$toon_subcmd" "$@"
+    ;;
+  roles)
+    dept=""
+    seniority=""
+    show_skills=0
+    while [[ $# -gt 0 ]]; do
+      case "$1" in
+        --dept|--department)
+          dept="$2"
+          shift 2
+          ;;
+        --seniority)
+          seniority="$2"
+          shift 2
+          ;;
+        --skills)
+          show_skills=1
+          shift
+          ;;
+        *)
+          shift
+          ;;
+      esac
+    done
+    run_py -c "
+import sys
+sys.path.insert(0, '.')
+from agyos_decision.roles import list_roles, get_all_skills_for_role
+
+dept = sys.argv[1] if len(sys.argv) > 1 and sys.argv[1] else None
+sen = sys.argv[2] if len(sys.argv) > 2 and sys.argv[2] else None
+show_skills = sys.argv[3] == '1' if len(sys.argv) > 3 else False
+roles = list_roles(department=dept, seniority=sen)
+
+print(f'Total Roles Matching: {len(roles)}')
+if show_skills:
+    print(f'{\"ROLE ID\":<32} {\"TIER\":<6} {\"DEPARTMENT\":<18} {\"SKILLS\":<8} {\"TITLE\"}')
+    print('-' * 88)
+    for r in sorted(roles, key=lambda x: (x.department, x.seniority, x.role_id)):
+        skills = get_all_skills_for_role(r.role_id)
+        print(f'{r.role_id:<32} {r.seniority:<6} {r.department:<18} {len(skills):<8} {r.title}')
+else:
+    print(f'{\"ROLE ID\":<32} {\"TIER\":<6} {\"DEPARTMENT\":<18} {\"TITLE\"}')
+    print('-' * 80)
+    for r in sorted(roles, key=lambda x: (x.department, x.seniority, x.role_id)):
+        print(f'{r.role_id:<32} {r.seniority:<6} {r.department:<18} {r.title}')
+" "$dept" "$seniority" "$show_skills"
+    ;;
+  role)
+    target_role="${1:-}"
+    shift || true
+    show_skills=0
+    while [[ $# -gt 0 ]]; do
+      case "$1" in
+        --skills)
+          show_skills=1
+          shift
+          ;;
+        *)
+          shift
+          ;;
+      esac
+    done
+    if [ -z "$target_role" ]; then
+      echo "Usage: agyos role <role-id> [--skills]" >&2
+      exit 1
+    fi
+    run_py -c "
+import sys
+sys.path.insert(0, '.')
+from agyos_decision.roles import get_role, get_all_skills_for_role
+
+role_id = sys.argv[1]
+show_skills = sys.argv[2] == '1' if len(sys.argv) > 2 else False
+role = get_role(role_id)
+if not role:
+    print(f'Role not found: {role_id}', file=sys.stderr)
+    sys.exit(1)
+
+all_skills = get_all_skills_for_role(role_id)
+print(f'=== Role Profile: {role.title} ({role.role_id}) ===')
+print(f'Department:      {role.department}')
+print(f'Seniority Tier:  {role.seniority}')
+print(f'Governing Pod:   {role.governing_pod}')
+print(f'Default Risk:    {role.default_risk}')
+print(f'Mandate:         {role.mandate}')
+print(f'Skills Workspace: skills-by-role/{role.role_id}/')
+print(f'Total Skills:    {len(all_skills)} (Primary: {len(role.primary_skills)}, Specialized: {len(all_skills) - len(role.primary_skills)})')
+print(f'Primary Skills:  {\", \".join(role.primary_skills)}')
+print(f'Psychology:      {\", \".join(role.psychology_principles)}')
+print(f'Keywords:        {\", \".join(role.keywords[:10])}...')
+
+if show_skills:
+    print('\n--- All Mapped Skills ---')
+    for s in all_skills:
+        marker = ' (PRIMARY)' if s in role.primary_skills else ''
+        print(f'  - {s}{marker}')
+" "$target_role" "$show_skills"
+    ;;
+  client-interview)
+    query="$*"
+    if [ -z "$query" ]; then
+      echo "Usage: agyos client-interview <project-query>" >&2
+      exit 1
+    fi
+    run_py -c "
+import sys
+sys.path.insert(0, '.')
+from agyos_decision.sdlc import ClientInterviewSession
+
+query = sys.argv[1]
+session = ClientInterviewSession.from_query(query)
+print(f'=== Client Working Backwards Discovery: {session.role.title} ===')
+print(f'Assigned Lead Role: {session.role.title} ({session.role.role_id})')
+print(f'Department:         {session.role.department} [{session.role.seniority}]')
+print(f'Governing Pod:      {session.role.governing_pod}')
+print('\n--- Socratic Discovery Questions (Amazon Working Backwards) ---')
+for q in session.discovery_questions():
+    print(f'\n{q}')
+print('\n--- 7-Phase Delivery Plan ---')
+print(session.phase_plan())
+" "$query"
+    ;;
+  state|status)
+    source bin/state.sh
+    if [ "${1:-}" = "--json" ]; then
+      gate=$(anchor_state_get "current_gate" "IDLE")
+      next_action=$(anchor_next_safe_action "$gate")
+      if [ -f state/state.json ]; then
+        jq --arg nsa "$next_action" '. + {next_safe_action: $nsa}' state/state.json 2>/dev/null || echo "{}"
+      else
+        echo "{}"
+      fi
+    else
+      cat state/CURRENT.md 2>/dev/null || echo "No active session."
+      gate=$(anchor_state_get "current_gate" "IDLE")
+      echo ""
+      echo "Active Gate: $gate"
+      echo "Next Safe Action: $(anchor_next_safe_action "$gate")"
+    fi
+    ;;
+  gate)
+    target_gate="${1:-}"
+    if [ -z "$target_gate" ]; then
+      source bin/state.sh
+      anchor_state_get "current_gate" "IDLE"
+    else
+      source bin/state.sh
+      anchor_gate_transition "$target_gate"
+      echo "Active gate transitioned to: $target_gate"
+    fi
+    ;;
+  compact)
+    bash bin/compact.sh "$@"
+    ;;
+  fast)
+    source bin/state.sh
+    anchor_gate_transition "IMPLEMENT" fast
+    echo "Fast-path activated: Transitioned from ANALYZE to IMPLEMENT (complexity <= 2)"
+    ;;
+  decide|decision)
+    query="$*"
+    if [ -z "$query" ]; then
+      echo "Usage: agyos decide <task-description-or-keywords>" >&2
+      exit 1
+    fi
+    run_py scripts/agyos-decision.py "$@"
+    ;;
+  find|search)
+    query="$*"
+    if [ -z "$query" ]; then
+      echo "Usage: agyos find <task-description-or-keywords>" >&2
+      exit 1
+    fi
+    json_req=$(jq -c -n --arg q "$query" '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"agyos_find_skill","arguments":{"query":$q}}}')
+    echo "$json_req" | node mcp/state-server.cjs | jq -r '.result.content[0].text // .result.error // "No response"'
+    ;;
+  skill)
+    target_skill="${1:-}"
+    if [ -z "$target_skill" ]; then
+      echo "Usage: agyos skill <skill-name>" >&2
+      exit 1
+    fi
+    skill_file="skills/${target_skill}/SKILL.toon"
+    if [[ ! -f "$skill_file" && -f "skills/.system/${target_skill}/SKILL.toon" ]]; then
+      skill_file="skills/.system/${target_skill}/SKILL.toon"
+    fi
+    if [[ "$target_skill" =~ ^[a-z0-9][a-z0-9_-]*$ && -f "$skill_file" ]]; then
+      run_py - "$skill_file" <<'PYTHON'
+from pathlib import Path
+import sys
+from agyos_decision.catalog import read_runbook_text
+
+sys.stdout.write(read_runbook_text(Path(sys.argv[1])))
+PYTHON
+    else
+      echo "❌ Skill not found: $target_skill" >&2
+      exit 1
+    fi
+    ;;
+  sysinfo)
+    json_req='{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"agyos_sys_info","arguments":{}}}'
+    echo "$json_req" | node mcp/state-server.cjs | jq -r '.result.content[0].text // .result.error // "No response"'
+    ;;
+  mem|memory)
+    tier="${1:-tier0}"
+    key="${2:-}"
+    action="list"
+    if [ -n "$key" ]; then
+      action="read"
+      json_req=$(jq -c -n --arg a "$action" --arg t "$tier" --arg k "$key" '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"agyos_memory","arguments":{"action":$a,"tier":$t,"key":$k}}}')
+    else
+      json_req=$(jq -c -n --arg a "$action" --arg t "$tier" '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"agyos_memory","arguments":{"action":$a,"tier":$t}}}')
+    fi
+    echo "$json_req" | node mcp/state-server.cjs | jq -r '.result.content[0].text // .result.error // "No response"'
+    ;;
+  privacy-audit)
+    run_py scripts/agyos-privacy-audit.py "$@"
+    ;;
+  model-route|route-model)
+    task=""
+    sensitivity="internal"
+    override=""
+    while [[ $# -gt 0 ]]; do
+      case "$1" in
+        --sensitivity)
+          sensitivity="$2"
+          shift 2
+          ;;
+        --override)
+          override="$2"
+          shift 2
+          ;;
+        *)
+          if [ -z "$task" ]; then
+            task="$1"
+          else
+            task="$task $1"
+          fi
+          shift
+          ;;
+      esac
+    done
+    if [ -z "$task" ]; then
+      echo "Usage: agyos model-route <task> [--sensitivity <public|internal|confidential|secret>] [--override <model>]" >&2
+      exit 1
+    fi
+    run_py -c "
+import json, sys
+sys.path.insert(0, '.')
+from agyos_decision.skills_router import assess_complexity
+from agyos_decision.model_router import ModelRouter, DataSensitivity
+
+task = sys.argv[1]
+sensitivity_str = sys.argv[2].lower()
+override = sys.argv[3] if len(sys.argv) > 3 and sys.argv[3] else None
+
+try:
+    sensitivity = DataSensitivity(sensitivity_str)
+except ValueError:
+    sensitivity = DataSensitivity.INTERNAL
+
+complexity, reason = assess_complexity(task)
+router = ModelRouter()
+decision = router.route(
+    task=task,
+    complexity=complexity,
+    sensitivity=sensitivity,
+    user_override_model=override
+)
+
+output = {
+    'task': task,
+    'complexity': complexity,
+    'complexity_reason': reason,
+    'allowed': decision.allowed,
+    'tier': decision.tier.value,
+    'model_id': decision.model_id,
+    'provider': decision.provider.value,
+    'thinking_level': decision.thinking_level,
+    'reason': decision.reason,
+    'privacy_boundary': decision.privacy_boundary,
+    'compaction_threshold_tokens': decision.compaction_threshold,
+    'error_code': decision.error_code
+}
+print(json.dumps(output, indent=2))
+" "$task" "$sensitivity" "$override"
+    ;;
+  secure)
+    if [[ "${1:-}" == vault-init || "${1:-}" == vault-status ]]; then
+      exec node scripts/agyos-runtime/private-vault-cli.cjs "$@"
+    fi
+    exec node scripts/agyos-runtime/secure-envelope.cjs "$@"
+    ;;
+  rollback)
+    bash bin/rollback.sh "$@"
+    ;;
+  council)
+    bun run scripts/council/src/council.ts "$@"
+    ;;
+  cycle|auto-cycle)
+    if [ $# -eq 0 ]; then
+      echo "Usage: agyos cycle <goal> [--auto-push] [--step <step>] [--json] [--commit-msg <msg>]" >&2
+      exit 1
+    fi
+    exec uv run python scripts/agyos_cycle.py "$@"
+    ;;
+  e2e|auto|run|pipeline)
+    if [ $# -eq 0 ]; then
+      echo "Usage: agyos e2e <task-description> [--action plan|init|verify|deliver|full] [--auto-push] [--watch-ci] [--json]" >&2
+      exit 1
+    fi
+    exec uv run python scripts/agyos_e2e.py "$@"
+    ;;
+  obscura|browser)
+    exec bash bin/obscura "$@"
+    ;;
+  strix|pentest)
+    exec uv run python scripts/strix_runner.py "$@"
+    ;;
+  video)
+    run_py scripts/video_pipeline.py "$@"
+    ;;
+  chopify)
+    exec bash bin/chopify "$@"
+    ;;
+  gemini-notebook|notebooklm|nlm)
+    exec bash mcp/gemini-notebook-mcp.sh "$@"
+    ;;
+  workspace)
+    exec node bin/workspace-state.cjs "$@"
+    ;;
+  diagnostics)
+    run_py scripts/export_diagnostics.py "$@"
+    ;;
+  ondemand)
+    run_py scripts/agy_ondemand.py "$@"
+    ;;
+  use)
+    run_py scripts/agy_ondemand.py activate "$@"
+    ;;
+  prune)
+    exec uv run scripts/prune_sessions.py "$@"
+    ;;
+  help|--help|-h)
+    usage
+    ;;
+  *)
+    echo "Unknown command: $cmd" >&2
+    usage >&2
+    exit 1
+    ;;
+esac

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: pydantic-ai\ndescription: \"Build production-ready AI agents with PydanticAI — type-safe tool use, structured outputs, dependency injection, and multi-model support.\"\ncategory: ai-agents\nrisk: safe\nsource: community\ndate_added: \"2026-03-18\"\nauthor: \"Krish Ujeniya\"\ntags: [pydantic-ai, ai-agents, llm, openai, anthropic, gemini, tool-use, structured-output, python]\ntools: [claude, cursor, gemini]\nprompt-source: prompt.toon\n---\n"

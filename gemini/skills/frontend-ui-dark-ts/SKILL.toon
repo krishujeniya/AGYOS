@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: frontend-ui-dark-ts\ndescription: \"A modern dark-themed React UI system using Tailwind CSS and Framer Motion. Designed for dashboards, admin panels, and data-rich applications with glassmorphism effects and tasteful animations.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

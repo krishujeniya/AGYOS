@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: finance-billing-ops\ndescription: Evidence-first revenue, pricing, refunds, team-billing, and billing-model truth workflow for ECC. Use when the user wants a sales snapshot, pricing comparison, duplicate-charge diagnosis, or code-backed billing reality instead of generic payments advice.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

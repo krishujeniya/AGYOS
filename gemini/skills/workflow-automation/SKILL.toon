@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: workflow-automation\ndescription: Workflow automation is the infrastructure that makes AI agents\n  reliable. Without durable execution, a network hiccup during a 10-step payment\n  flow means lost money and angry customers. With it, workflows resume exactly\n  where they left off.\nrisk: critical\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

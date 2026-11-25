@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: vibers-code-review\ndescription: Human review workflow for AI-generated GitHub projects with spec-based feedback, security review, and follow-up PRs from the Vibers service.\nrisk: critical\nsource: https://github.com/marsiandeployer/vibers-action\ndate_added: \"2026-03-17\"\nprompt-source: prompt.toon\n---\n"

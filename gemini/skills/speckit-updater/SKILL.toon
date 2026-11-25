@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: speckit-updater\ndescription: SpecKit Safe Update\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: threejs-materials\ndescription: Three.js materials - PBR, basic, phong, shader materials, material properties. Use when styling meshes, working with textures, creating custom shaders, or optimizing material performance.\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

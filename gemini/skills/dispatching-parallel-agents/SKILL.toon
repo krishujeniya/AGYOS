@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: dispatching-parallel-agents\ndescription: Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-eventhub-rust\ndescription: Azure Event Hubs SDK for Rust. Use for sending and receiving events, streaming data ingestion.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: sprint-backlog-grooming\ndescription: \"Turn a raw backlog into a sprint-ready one: definition-of-ready enforcement, oversized story splitting and an explicit dependency map. Use before sprint planning, when items sit in backlog for more than two sprints, or when planning stalls on unclear scope. Feeds kanban-agent-pipeline and conductor-status with clean, ordered work.\"\nrisk: safe\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

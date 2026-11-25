@@ -1,0 +1,8 @@
+{
+  "name": "agyos-policy-guard",
+  "description": "host hook plugin (PreToolUse / PostToolUse) for AGYOS corporate operations.",
+  "version": "3.1.0",
+  "author": "Krish Ujeniya",
+  "logo": "assets/logo.svg",
+  "repository": "https://github.com/krishujeniya/AGYOS"
+}

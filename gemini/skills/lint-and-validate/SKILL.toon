@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: lint-and-validate\ndescription: \"MANDATORY: Run appropriate validation tools after EVERY code change. Do not finish a task until the code is error-free.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

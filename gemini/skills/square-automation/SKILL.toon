@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: square-automation\ndescription: \"Automate Square tasks via Rube MCP (Composio): payments, orders, invoices, locations. Always search tools first for current schemas.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

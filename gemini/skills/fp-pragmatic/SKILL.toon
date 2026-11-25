@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: fp-pragmatic\ndescription: \"Compatibility ID for practical functional programming and the fp-ts 80/20 approach in TypeScript. Use fp-ts-pragmatic as the canonical runbook.\"\nrisk: unknown\nsource: community\nversion: 1.0.1\nauthor: \"Krish Ujeniya\"\ntags:\n  - fp-ts\n  - functional-programming\n  - typescript\n  - pragmatic\nprompt-source: prompt.toon\n---\n"

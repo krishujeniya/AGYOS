@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: hybrid-cloud-networking\ndescription: \"Configure secure, high-performance connectivity between on-premises and cloud environments using VPN, Direct Connect, and ExpressRoute.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: expert-qa-engineer\ndescription: \"QA Engineer Expert for test strategy, test planning, coverage goals, QA gates, and quality metrics. Triggers: test strategy, QA plan, coverage goal, quality gate, test pyramid, regression, test planning, quality metrics, QA process\"\ncategory: domain\nrisk: safe\ntags: \"[qa, testing, strategy, coverage, quality-gates, test-pyramid, metrics]\"\nversion: \"1.0.0\"\nprompt-source: prompt.toon\n---\n"

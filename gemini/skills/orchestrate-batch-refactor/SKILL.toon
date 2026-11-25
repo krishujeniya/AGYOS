@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: \"orchestrate-batch-refactor\"\ndescription: \"Plan and execute large refactors with dependency-aware work packets and parallel analysis.\"\nrisk: safe\nsource: \"Dimillian/Skills (MIT)\"\ndate_added: \"2026-03-25\"\nprompt-source: prompt.toon\n---\n"

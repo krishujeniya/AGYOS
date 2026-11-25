@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ffuf-web-fuzzing\ndescription: Expert guidance for ffuf web fuzzing during penetration testing, including authenticated fuzzing with raw requests, auto-calibration, and result analysis\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

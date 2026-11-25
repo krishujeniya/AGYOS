@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: growth-engine\ndescription: \"Motor de crescimento para produtos digitais -- growth hacking, SEO, ASO, viral loops, email marketing, CRM, referral programs e aquisicao organica.\"\nrisk: none\nsource: community\ndate_added: '2026-03-06'\nauthor: \"Krish Ujeniya\"\ntags:\n- growth\n- seo\n- marketing\n- viral\n- acquisition\ntools:\n- claude-code\n- antigravity\n- cursor\n- gemini-cli\n- codex-cli\nprompt-source: prompt.toon\n---\n"

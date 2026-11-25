@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: n8n-workflow-patterns\ndescription: \"Proven architectural patterns for building n8n workflows.\"\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

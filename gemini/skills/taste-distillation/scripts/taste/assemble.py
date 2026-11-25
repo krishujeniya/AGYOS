@@ -1,0 +1,1 @@
+../../../taste-application/scripts/taste/assemble.py

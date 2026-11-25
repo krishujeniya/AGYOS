@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: skill-rails-upgrade\ndescription: \"Analyze Rails apps and provide upgrade assessments\"\nrisk: safe\nsource: \"https://github.com/robzolkos/skill-rails-upgrade\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

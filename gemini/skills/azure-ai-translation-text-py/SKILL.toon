@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-ai-translation-text-py\ndescription: Azure AI Text Translation SDK for real-time text translation, transliteration, language detection, and dictionary lookup. Use for translating text content in applications.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

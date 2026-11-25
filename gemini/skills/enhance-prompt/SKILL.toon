@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: enhance-prompt\ndescription: Prepares UI requests as structured prompts for Google's Stitch interface, using the project's available design system and stated requirements.\nallowed-tools:\n  - \"Read\"\n  - \"Write\"\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: pairwise-test-generator\ndescription: Pairwise test generation\nrisk: safe\nsource: https://github.com/omkamal/pypict-claude-skill/blob/main/SKILL.md\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: swot-pestel-market-analysis\ndescription: Professional PESTEL/SWOT analysis agent based on Kotler's methodology for strategic market audits.\ncategory: business-strategy\nrisk: safe\nsource: self\nsource_type: self\ndate_added: '2026-04-17'\nauthor: Krish Ujeniya\ntags:\n- marketing\n- economics\n- strategy\n- kotler\n- pestel\ntools:\n- claude\n- cursor\nprompt-source: prompt.toon\n---\n"

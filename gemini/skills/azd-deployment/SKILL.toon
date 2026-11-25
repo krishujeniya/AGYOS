@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azd-deployment\ndescription: \"Deploy containerized frontend + backend applications to Azure Container Apps with remote builds, managed identity, and idempotent infrastructure.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

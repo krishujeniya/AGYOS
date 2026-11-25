@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ai-dev-jobs-mcp\ndescription: \"Search 8,400+ AI and ML jobs across 489 companies, inspect listings and employers, match roles, and view salary and market stats via AI Dev Jobs MCP\"\ncategory: mcp\nrisk: safe\nsource: \"https://aidevboard.com\"\nsource_type: community\ndate_added: \"2026-04-16\"\nauthor: \"Krish Ujeniya\"\ntags: [mcp, jobs, ai-jobs, ml-jobs, recruiting, job-search, career]\ntools: [claude, cursor, gemini]\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: superpowers-lab\ndescription: \"Evaluate experimental Claude Code Superpowers Lab skills for duplicate-function discovery, on-demand MCP use, tmux interaction, or a Windows VM. Use only when the matching extension and prerequisites are installed.\"\nrisk: safe\nsource: \"https://github.com/obra/superpowers-lab\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: bdistill-behavioral-xray\ndescription: \"X-ray any AI model's behavioral patterns — refusal boundaries, hallucination tendencies, reasoning style, formatting defaults. No API key needed.\"\ncategory: ai-testing\nrisk: safe\nsource: community\ndate_added: \"2026-03-20\"\nauthor: \"Krish Ujeniya\"\ntags: [ai, testing, behavioral-analysis, model-evaluation, red-team, compliance, mcp]\ntools: [claude, cursor, codex, copilot]\nprompt-source: prompt.toon\n---\n"

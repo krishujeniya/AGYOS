@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agyos-free-infra-catalog\ndescription: Curated architectural guide to zero-cost developer infrastructure. Covers free tiers for hosting, serverless Postgres, vector databases, authentication, object storage, and background queues.\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: vercel-ai-sdk-expert\ndescription: \"Expert in the Vercel AI SDK. Covers Core API (generateText, streamText), UI hooks (useChat, useCompletion), tool calling, and streaming UI components with React and Next.js.\"\nrisk: safe\nsource: community\ndate_added: \"2026-03-06\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: tcm-constitution-analyzer\ndescription: 分析中医体质数据、识别体质类型、评估体质特征,并提供个性化养生建议。支持与营养、运动、睡眠等健康数据的关联分析。\nallowed-tools: Read, Grep, Glob, Write\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

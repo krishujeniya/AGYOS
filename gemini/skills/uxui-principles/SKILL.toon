@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: uxui-principles\ndescription: \"Evaluate interfaces against 168 research-backed UX/UI principles, detect antipatterns, and inject UX context into AI coding sessions.\"\ncategory: design\nrisk: safe\nsource: community\ndate_added: \"2026-04-03\"\nauthor: \"Krish Ujeniya\"\ntags: [ux, ui, design, evaluation, principles, antipatterns, accessibility]\ntools: [claude, cursor, windsurf]\nprompt-source: prompt.toon\n---\n"

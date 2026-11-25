@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: explore-mode\ndescription: Enter explore mode - a thinking partner for exploring ideas, investigating problems, and clarifying requirements. Use when the user wants to think through something before or during a change.\nlicense: MIT\ncompatibility: Requires aegis CLI.\nmetadata:\n  author: \"Krish Ujeniya\"\n  version: \"1.0\"\n  generatedBy: \"1.2.0\"\nprompt-source: prompt.toon\n---\n"

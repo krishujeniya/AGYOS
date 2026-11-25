@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agent-memory-architecture\ndescription: \"Memory is the cornerstone of intelligent agents. Without it, every\n  interaction starts from zero. This skill covers the architecture of agent\n  memory: short-term (context window), long-term (vector stores), and the\n  cognitive architectures that organize them.\"\nrisk: safe\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ai-wrapper-product\ndescription: Expert in building products that wrap AI APIs (OpenAI, Anthropic,\n  etc. ) into focused tools people will pay for. Not just \"ChatGPT but\n  different\" - products that solve specific problems with AI.\nrisk: unknown\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

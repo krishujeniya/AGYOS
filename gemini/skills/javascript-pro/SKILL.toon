@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: javascript-pro\ndescription: Master modern JavaScript with ES6+, async patterns, and Node.js APIs. Handles promises, event loops, and browser/Node compatibility.\nrisk: safe\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

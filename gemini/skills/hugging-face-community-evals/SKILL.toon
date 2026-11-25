@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nsource: \"https://github.com/huggingface/skills/tree/main/skills/huggingface-community-evals\"\nname: hugging-face-community-evals\ndescription: Run local evaluations for Hugging Face Hub models with inspect-ai or lighteval.\nrisk: unknown\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: web-interface-guidelines\ndescription: \"Master of Web Interface Guidelines and high-craft Frontend Aesthetics. Enforces Vercel UI rules (Accessibility, Focus, Forms) and uncompromising, bold design directions (no generic AI aesthetics). Use when building, reviewing, or styling any React/Next.js/HTML UI.\"\ncategory: frontend\nrisk: safe\ntags: \"[frontend, design, ui, ux, guidelines, aesthetics, vercel, a11y, styling]\"\nversion: \"1.0.0\"\nprompt-source: prompt.toon\n---\n"

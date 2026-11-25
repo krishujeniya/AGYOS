@@ -1,0 +1,11 @@
+request_type: keyword_research
+app_info:
+  name: TaskFlow Pro
+  category: Productivity
+  target_audience: Professionals aged 25-45 working in teams
+  key_features[4]: AI-powered task prioritization, Team collaboration tools, Calendar integration, Cross-platform sync
+  unique_value: AI automatically prioritizes your tasks based on deadlines and importance
+target_keywords[5]: task manager, productivity app, todo list, team collaboration, project management
+competitors[4]: Todoist, Any.do, Microsoft To Do, Things 3
+platform: both
+language: en-US

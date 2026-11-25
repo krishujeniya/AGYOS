@@ -1,0 +1,2 @@
+mode: "100644"
+text: "# Compatibility reference pointer\n\nUse the canonical [fp-ts error-handling full runbook](../../fp-ts-errors/references/FULL_RUNBOOK.md). This legacy ID applies to Either, TaskEither, validation, domain errors, and explicit error contracts.\n"

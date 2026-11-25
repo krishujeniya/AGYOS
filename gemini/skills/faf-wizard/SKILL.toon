@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: faf-wizard\ndescription: \"Done-for-you .faf generator. One-click AI context for any project - new, legacy, or famous. Auto-detects stack, scores readiness, works everywhere.\"\ncategory: productivity\nrisk: safe\nsource: community\nsource_repo: Wolfe-Jam/faf-skills\nsource_type: community\ndate_added: \"2026-04-07\"\nauthor: \"Krish Ujeniya\"\ntags: [faf, automation, project-setup, ai-context, productivity]\ntools: [claude, cursor, gemini, windsurf, any-ai]\nprompt-source: prompt.toon\n---\n"

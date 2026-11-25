@@ -1,0 +1,2 @@
+mode: "100644"
+text: "---\ntitle: Use Set/Map for O(1) Lookups\nimpact: LOW-MEDIUM\nimpactDescription: O(n) to O(1)\ntags: javascript, set, map, data-structures, performance\n---\n\n## Use Set/Map for O(1) Lookups\n\nConvert arrays to Set/Map for repeated membership checks.\n\n**Incorrect (O(n) per check):**\n\n```typescript\nconst allowedIds = ['a', 'b', 'c', ...]\nitems.filter(item => allowedIds.includes(item.id))\n```\n\n**Correct (O(1) per check):**\n\n```typescript\nconst allowedIds = new Set(['a', 'b', 'c', ...])\nitems.filter(item => allowedIds.has(item.id))\n```\n"

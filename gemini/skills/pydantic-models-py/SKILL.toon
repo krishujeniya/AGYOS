@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: pydantic-models-py\ndescription: \"Create Pydantic models following the multi-model pattern for clean API contracts.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

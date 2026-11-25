@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: rag-engineer\ndescription: Expert in building Retrieval-Augmented Generation systems. Masters\n  embedding models, vector databases, chunking strategies, and retrieval\n  optimization for LLM applications.\nrisk: unknown\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

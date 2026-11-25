@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: voice-agents\ndescription: Voice agents represent the frontier of AI interaction - humans\n  speaking naturally with AI systems.\nrisk: safe\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

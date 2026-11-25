@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: api-documentation\ndescription: \"API documentation workflow for generating OpenAPI specs, creating developer guides, and maintaining comprehensive API documentation.\"\ncategory: granular-workflow-bundle\nrisk: safe\nsource: personal\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

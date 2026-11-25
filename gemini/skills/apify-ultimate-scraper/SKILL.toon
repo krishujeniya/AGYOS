@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: apify-ultimate-scraper\ndescription: \"AI-driven data extraction from 55+ Actors across all major platforms. This skill automatically selects the best Actor for your task.\"\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

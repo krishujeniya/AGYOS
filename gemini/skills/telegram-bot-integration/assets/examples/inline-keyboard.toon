@@ -1,0 +1,8 @@
+description: Examples of inline keyboard layouts for Telegram bots
+examples[5]:
+  - name, reply_markup
+  - Simple menu, "{'inline_keyboard': [[{'text': 'Option A', 'callback_data': 'opt_a'}, {'text': 'Option B', 'callback_data': 'opt_b'}], [{'text': 'Cancel', 'callback_data': 'cancel'}]]}"
+  - Pagination, "{'inline_keyboard': [[{'text': 'Item 1', 'callback_data': 'item_1'}, {'text': 'Item 2', 'callback_data': 'item_2'}, {'text': 'Item 3', 'callback_data': 'item_3'}], [{'text': '< Prev', 'callback_data': 'page_prev'}, {'text': '1/5', 'callback_data': 'page_info'}, {'text': 'Next >', 'callback_data': 'page_next'}]]}"
+  - URL buttons, "{'inline_keyboard': [[{'text': 'Visit Website', 'url': 'https://example.com'}, {'text': 'Documentation', 'url': 'https://core.telegram.org/bots/api'}]]}"
+  - Mixed (callback + url), "{'inline_keyboard': [[{'text': 'Buy Premium', 'callback_data': 'buy_premium'}], [{'text': 'Learn More', 'url': 'https://example.com/premium'}], [{'text': 'Share', 'switch_inline_query': 'Check out this bot!'}]]}"
+  - Confirmation dialog, "{'inline_keyboard': [[{'text': 'Yes, confirm', 'callback_data': 'confirm_yes'}, {'text': 'No, cancel', 'callback_data': 'confirm_no'}]]}"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: alpha-vantage\ndescription: \"Access 20+ years of global financial data: equities, options, forex, crypto, commodities, economic indicators, and 50+ technical indicators.\"\nrisk: unknown\nsource: community\nmetadata:\n    skill-author: K-Dense Inc.\nprompt-source: prompt.toon\n---\n"

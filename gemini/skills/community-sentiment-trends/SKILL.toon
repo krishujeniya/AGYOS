@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: community-sentiment-trends\ndescription: \"Track community sentiment per channel and topic, alert on abnormal drops, and correlate them with releases and incidents. Use weekly for the standing digest, when support volume spikes, and before release so known friction is distinguished from new friction.\"\nrisk: safe\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

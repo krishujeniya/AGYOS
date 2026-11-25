@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: council\ndescription: Convene a four-voice council for ambiguous decisions, tradeoffs, and go/no-go calls. Use when multiple valid paths exist and you need structured disagreement before choosing.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

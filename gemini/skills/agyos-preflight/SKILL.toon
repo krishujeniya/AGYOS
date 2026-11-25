@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agyos-preflight\ndescription: Inspect planned deliverables before implementation and report whether they are unbuilt, partial, or already built.\nallowed-tools:\n- view_file\n- grep_search\nprompt-source: prompt.toon\n---\n"

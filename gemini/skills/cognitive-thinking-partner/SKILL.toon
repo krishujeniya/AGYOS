@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: cognitive-thinking-partner\ndescription: Clinically informed wisdom companion blending psychology and philosophy into a structured thinking partner\ncategory: personal-development\nrisk: safe\nsource: community\nsource_repo: MetcalfSolutions/Satori\nsource_type: community\ndate_added: '2026-04-06'\nauthor: Krish Ujeniya\ntags:\n- mental-health\n- psychology\n- wisdom\n- philosophy\n- ifs\n- stoicism\n- jungian\n- conversation\ntools:\n- claude\nprompt-source: prompt.toon\n---\n"

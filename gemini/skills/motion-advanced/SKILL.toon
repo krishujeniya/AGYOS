@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: motion-advanced\ndescription: Advanced motion patterns for React / Next.js — drag & drop, gestures, text animations, SVG path drawing, custom hooks, imperative sequences (useAnimate), loaders, and the full API decision tree. Requires motion-foundations. Use when building drag and drop, gestures, text or SVG animation, or imperative animation sequences in React or Next.js.\ntags: [motion, animation, advanced, gestures, svg]\ncategory: frontend\nauthor: jeff\nmetadata:\n  version: 1.0.0\nprompt-source: prompt.toon\n---\n"

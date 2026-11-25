@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ddd-context-mapping\ndescription: \"Map relationships between bounded contexts and define integration contracts using DDD context mapping patterns.\"\nrisk: safe\nsource: self\ntags: \"[ddd, context-map, anti-corruption-layer, integration]\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

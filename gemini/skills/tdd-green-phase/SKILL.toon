@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: tdd-green-phase\ndescription: \"Implement the minimal code needed to make failing tests pass in the TDD green phase.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

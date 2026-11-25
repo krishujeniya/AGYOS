@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: hipaa-compliance\ndescription: HIPAA-specific entrypoint for healthcare privacy and security work. Use when a task is explicitly framed around HIPAA, PHI handling, covered entities, BAAs, breach posture, or US healthcare compliance requirements.\nmetadata:\n  version: \"1.0.0\"\n  origin: ECC direct-port adaptation\nprompt-source: prompt.toon\n---\n"

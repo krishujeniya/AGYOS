@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: hig-technologies\ndescription: \"Choose or review Apple system technologies such as Siri, Apple Pay, HealthKit, smart home, AR, or identity. Read existing design context and account for privacy and accessibility.\"\nrisk: safe\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

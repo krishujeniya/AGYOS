@@ -1,0 +1,1 @@
+../../../../docx-official/ooxml/scripts/validation/base.py

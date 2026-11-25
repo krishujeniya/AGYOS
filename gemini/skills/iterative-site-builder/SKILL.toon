@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: iterative-site-builder\ndescription: Teaches agents to iteratively build websites using Stitch with an autonomous baton-passing loop pattern\nallowed-tools:\n  - \"stitch*:*\"\n  - \"chrome*:*\"\n  - \"Read\"\n  - \"Write\"\n  - \"Bash\"\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: renewal-and-liability-watch\ndescription: \"Watch the contract register for renewal windows and liability exposure: auto-renewal deadlines with notice cutoffs, liability caps against the policy floor, uncapped exposures and insurance requirements. Use monthly, and whenever a contract is signed, amended or assigned.\"\nrisk: safe\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

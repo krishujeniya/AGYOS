@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: fp-either-ref\ndescription: Quick reference for Either type. Use when user needs error handling, validation, or operations that can fail with typed errors.\nrisk: unknown\nsource: community\nversion: 1.0.0\ntags: [fp-ts, either, error-handling, validation, quick-reference]\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: c4-context\ndescription: Expert C4 Context-level documentation specialist. Creates high-level system context diagrams, documents personas, user journeys, system features, and external dependencies.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

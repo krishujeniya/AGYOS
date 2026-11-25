@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: privilege-escalation-methods\ndescription: \"Provide comprehensive techniques for escalating privileges from a low-privileged user to root/administrator access on compromised Linux and Windows systems. Essential for penetration testing post-exploitation phase and red team operations.\"\nrisk: unknown\nsource: community\nauthor: \"Krish Ujeniya\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

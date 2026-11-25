@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: trending-tech-tracker\ndescription: Research a topic from the last 30 days on Reddit + X + Web, become an expert, and write copy-paste-ready prompts for the user's target tool.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

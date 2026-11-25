@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-data-tables-java\ndescription: \"Build table storage applications using the Azure Tables SDK for Java. Works with both Azure Table Storage and Cosmos DB Table API.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

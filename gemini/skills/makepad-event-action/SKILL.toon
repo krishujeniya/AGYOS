@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: makepad-event-action\ndescription: |\n  CRITICAL: Use for Makepad event and action handling. Triggers on:\n  makepad event, makepad action, Event enum, ActionTrait, handle_event,\n  MouseDown, KeyDown, TouchUpdate, Hit, FingerDown, post_action,\n  makepad 事件, makepad action, 事件处理\nrisk: safe\nsource: community\nprompt-source: prompt.toon\n---\n"

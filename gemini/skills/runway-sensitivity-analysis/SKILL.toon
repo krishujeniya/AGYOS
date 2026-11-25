@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: runway-sensitivity-analysis\ndescription: \"Extend the 13-week cash forecast into scenario runway bands with named cost levers, and synthesize the board financial deck outline from them. Use monthly before board cadence, when a hiring or spend decision lands, or whenever the base-case floor distance narrows below policy tolerance.\"\nrisk: medium\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

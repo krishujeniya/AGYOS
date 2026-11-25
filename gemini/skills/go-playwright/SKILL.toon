@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: go-playwright\ndescription: \"Expert capability for robust, stealthy, and efficient browser automation using Playwright Go.\"\nrisk: safe\nsource: \"https://github.com/playwright-community/playwright-go\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

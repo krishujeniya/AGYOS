@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: archive-change\ndescription: Archive a completed change in the experimental workflow. Use when the user wants to finalize and archive a change after implementation is complete.\nlicense: MIT\ncompatibility: Requires aegis CLI.\nmetadata:\n  author: \"Krish Ujeniya\"\n  version: \"1.0\"\n  generatedBy: \"1.2.0\"\nprompt-source: prompt.toon\n---\n"

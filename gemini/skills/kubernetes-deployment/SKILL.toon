@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: kubernetes-deployment\ndescription: \"Kubernetes deployment workflow for container orchestration, Helm charts, service mesh, and production-ready K8s configurations.\"\ncategory: granular-workflow-bundle\nrisk: safe\nsource: personal\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

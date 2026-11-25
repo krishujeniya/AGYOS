@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: odoo-migration-helper\ndescription: \"Step-by-step guide for migrating Odoo custom modules between versions (v14→v15→v16→v17). Covers API changes, deprecated methods, and view migration.\"\nrisk: safe\nsource: \"self\"\nprompt-source: prompt.toon\n---\n"

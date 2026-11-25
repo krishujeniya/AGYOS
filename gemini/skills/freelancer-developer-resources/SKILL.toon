@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: freelancer-developer-resources\ndescription: Use when requesting development prompts, system design/architecture templates (ADR, tech specs), docker/API boilerplates, CI/CD configs, Prometheus/Grafana monitoring scripts, or technical/behavioral interview preparation guides.\nprompt-source: prompt.toon\n---\n"

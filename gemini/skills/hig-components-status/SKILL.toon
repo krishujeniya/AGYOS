@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: hig-components-status\ndescription: Apple HIG guidance for status and progress UI components including progress indicators, status bars, and activity rings.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

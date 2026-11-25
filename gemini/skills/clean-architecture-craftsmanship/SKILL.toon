@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: clean-architecture-craftsmanship\ndescription: Use when performing code review, writing or refactoring code, or discussing architecture; complements clean-code and does not replace project linter/formatter.\ncategory: code-quality\nrisk: safe\nsource: community\ndate_added: '2026-03-06'\nauthor: Krish Ujeniya\ntags:\n- clean-code\n- clean-architecture\n- solid\n- code-review\n- craftsmanship\n- uncle-bob\ntools:\n- claude\n- cursor\n- gemini\nprompt-source: prompt.toon\n---\n"

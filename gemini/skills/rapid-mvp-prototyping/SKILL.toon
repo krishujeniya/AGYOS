@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: rapid-mvp-prototyping\ndescription: Build and compare bounded interface prototypes for an MVP using explicit acceptance criteria and existing project conventions.\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: pr-writer\ndescription: \"Create pull requests following Sentry's engineering practices.\"\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

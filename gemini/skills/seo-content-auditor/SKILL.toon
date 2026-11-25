@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: seo-content-auditor\ndescription: Analyzes provided content for quality, E-E-A-T signals, and SEO best practices. Scores content and provides improvement recommendations based on established guidelines.\nrisk: safe\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

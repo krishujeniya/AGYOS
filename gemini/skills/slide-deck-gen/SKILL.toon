@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: slide-deck-gen\ndescription: Generates professional slide deck images from content. Creates outlines with style instructions, then generates individual slide images. Use when user asks to \"create slides\", \"make a presentation\", \"generate deck\", \"slide deck\", or \"PPT\".\nversion: 1.56.2\nmetadata:\n  openclaw:\n    homepage: https://github.com/JimLiu/baoyu-skills#baoyu-slide-deck\n    requires:\n      anyBins:\n        - bun\n        - npx\nprompt-source: prompt.toon\n---\n"

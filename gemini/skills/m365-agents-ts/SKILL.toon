@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: m365-agents-ts\ndescription: Microsoft 365 Agents SDK for TypeScript/Node.js.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

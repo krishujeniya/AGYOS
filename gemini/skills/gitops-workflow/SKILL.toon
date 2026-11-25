@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: gitops-workflow\ndescription: \"Complete guide to implementing GitOps workflows with ArgoCD and Flux for automated Kubernetes deployments.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

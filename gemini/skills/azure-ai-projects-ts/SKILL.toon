@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-ai-projects-ts\ndescription: \"High-level SDK for Azure AI Foundry projects with agents, connections, deployments, and evaluations.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

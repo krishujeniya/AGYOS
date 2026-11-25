@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: multi-agent-task-orchestrator\ndescription: \"Route tasks to specialized AI agents with anti-duplication, quality gates, and 30-minute heartbeat monitoring\"\ncategory: agent-orchestration\nrisk: safe\nsource: community\nsource_repo: milkomida77/guardian-agent-prompts\nsource_type: community\ndate_added: \"2026-04-09\"\nauthor: \"Krish Ujeniya\"\ntags: [multi-agent, orchestration, task-routing, quality-gates, anti-duplication]\ntools: [claude, cursor, gemini]\nprompt-source: prompt.toon\n---\n"

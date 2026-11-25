@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: deidentification-benchmark\ndescription: \"Benchmark a dataset's deidentification before it leaves its trust boundary: identifier classification, k-anonymity style measures, re-identification risk tests and differential privacy parameter checks against policy caps. Use before any analytics export, model training share or third-party data release.\"\nrisk: medium\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

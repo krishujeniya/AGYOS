@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: brand-guidelines\ndescription: \"Compatibility ID for Anthropic brand colors, typography, and visual formatting. Use the canonical brand-design-system runbook.\"\nlicense: Complete terms in LICENSE.txt\nprompt-source: prompt.toon\n---\n"

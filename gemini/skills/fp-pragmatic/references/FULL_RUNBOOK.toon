@@ -1,0 +1,2 @@
+mode: "100644"
+text: "# Compatibility reference pointer\n\nUse the canonical [pragmatic fp-ts full runbook](../../fp-ts-pragmatic/references/FULL_RUNBOOK.md). This legacy ID applies to practical TypeScript functional programming and the fp-ts 80/20 approach.\n"

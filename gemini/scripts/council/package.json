@@ -1,0 +1,36 @@
+{
+  "name": "cliagent-council",
+  "version": "0.4.0",
+  "description": "Convene a panel of CLI-based AI agents to deliberate on engineering problems",
+  "type": "module",
+  "main": "install.cjs",
+  "bin": {
+    "cliagent-council": "install.cjs"
+  },
+  "scripts": {
+    "start": "bun run src/council.ts",
+    "test": "bun test",
+    "build": "bun build --compile src/council.ts --outfile bin/council-bin"
+  },
+  "keywords": [
+    "ai",
+    "council",
+    "llm",
+    "multi-agent",
+    "deliberation",
+    "claude",
+    "codex",
+    "gemini",
+    "cli"
+  ],
+  "files": [
+    "install.cjs",
+    "README.md",
+    "LICENSE"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yogirk/agent-council.git"
+  }
+}

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: makepad-deployment\ndescription: |\n  CRITICAL: Use for Makepad packaging and deployment. Triggers on:\n  deploy, package, APK, IPA, 打包, 部署,\n  cargo-packager, cargo-makepad, WASM, Android, iOS,\n  distribution, installer, .deb, .dmg, .nsis,\n  GitHub Actions, CI, action, marketplace\nrisk: critical\nsource: community\nprompt-source: prompt.toon\n---\n"

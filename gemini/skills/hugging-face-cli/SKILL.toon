@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nsource: \"https://github.com/huggingface/skills/tree/main/skills/hf-cli\"\nname: hugging-face-cli\ndescription: \"Use the Hugging Face Hub CLI (`hf`) to download, upload, and manage models, datasets, and Spaces.\"\nrisk: unknown\nprompt-source: prompt.toon\n---\n"

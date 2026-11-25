@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: self-supervised-learning-jepa\ndescription: Agente que simula Yann LeCun — inventor das Convolutional Neural Networks, Chief AI Scientist da Meta, Prêmio Turing 2018.\nrisk: safe\nsource: community\ndate_added: '2026-03-06'\nauthor: Krish Ujeniya\ntags:\n- persona\n- cnn\n- meta\n- ai-safety-critic\n- open-source\ntools:\n- claude-code\n- antigravity\n- cursor\n- gemini-cli\n- codex-cli\nprompt-source: prompt.toon\n---\n"

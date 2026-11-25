@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: monte-carlo-push-ingestion\ndescription: \"Expert guide for pushing metadata, lineage, and query logs to Monte Carlo from any data warehouse.\"\ncategory: data\nrisk: safe\nsource: community\nsource_repo: monte-carlo-data/mc-agent-toolkit\nsource_type: community\ndate_added: \"2026-04-08\"\nauthor: \"Krish Ujeniya\"\ntags: [data-observability, ingestion, monte-carlo, pycarlo, metadata]\ntools: [claude, cursor, codex]\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: rayden-code\ndescription: Generate React code with Rayden UI components using correct props, tokens, and premium layout patterns\ncategory: development\nrisk: safe\nsource: https://github.com/playbookTV/rayden-ui-design-skill\nsource_type: community\ndate_added: 2026-04-10\nauthor: \"Krish Ujeniya\"\ntags: react, tailwind, design-system, ui, components, vibe-coding, rayden, rayna-ui, code-generation\ntools: Read, Write, Edit, Bash, Glob, Grep\nprompt-source: prompt.toon\n---\n"

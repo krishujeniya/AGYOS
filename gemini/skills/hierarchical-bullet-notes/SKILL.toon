@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: hierarchical-bullet-notes\ndescription: Convert input into clean, structured, hierarchical bullet points for summarization, note-taking, and structured thinking.\ncategory: writing\nrisk: safe\nsource: community\ndate_added: '2026-04-21'\nauthor: Krish Ujeniya\ntags:\n- writing\n- summarization\n- note-taking\n- formatting\n- structured-output\ntools:\n- claude\n- cursor\n- gemini\n- codex\nprompt-source: prompt.toon\n---\n"

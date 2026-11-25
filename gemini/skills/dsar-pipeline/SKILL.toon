@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: dsar-pipeline\ndescription: \"Run a data subject request end to end: intake, identity proof, system inventory, fulfillment and certification under the applicable deadline (GDPR 30 days, CCPA/CPRA 45 days with one 45-day extension). Use when a request arrives through any channel, when a deadline clock is running, or when a quarterly DSAR audit is due.\"\nrisk: medium\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: inngest\ndescription: Inngest expert for serverless-first background jobs, event-driven\n  workflows, and durable execution without managing queues or workers.\nrisk: none\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

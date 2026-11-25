@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: frontend-design-direction\ndescription: Set an ECC-specific frontend design direction for production UI work. Use when building or improving websites, dashboards, applications, components, landing pages, visual tools, or any web UI that needs stronger product-specific design judgment.\nmetadata:\n  origin: community\nprompt-source: prompt.toon\n---\n"

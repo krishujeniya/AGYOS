@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: csharp-testing\ndescription: C# and .NET testing patterns with xUnit, FluentAssertions, mocking, integration tests, and test organization best practices. Use when writing or reviewing xUnit tests, mocks, or integration tests in a C# / .NET project.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

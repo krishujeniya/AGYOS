@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-mgmt-apicenter-dotnet\ndescription: Azure API Center SDK for .NET. Centralized API inventory management with governance, versioning, and discovery.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

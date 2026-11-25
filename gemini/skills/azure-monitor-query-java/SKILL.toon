@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-monitor-query-java\ndescription: Azure Monitor Query SDK for Java. Execute Kusto queries against Log Analytics workspaces and query metrics from Azure resources.\nrisk: safe\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

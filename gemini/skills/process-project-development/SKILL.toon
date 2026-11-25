@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: process-project-development\ndescription: \"Master methodology for building LLM-integrated projects or complex data pipelines. Focuses on Pipeline Architecture, File System as State Machine, and Architectural Reduction. Use when designing new system workflows.\"\ncategory: process\nrisk: safe\ntags: \"[architecture, methodology, llm routing, state machine, pipeline, process]\"\nversion: \"1.0.0\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: vibe-code-auditor\ndescription: \"Audit rapidly generated or AI-produced code for structural flaws, fragility, technical debt, and production risks. Automatically triggers before merging large features or concluding deep implementation loops to ensure the code is actually robust.\"\ncategory: guardrail\nrisk: safe\ntags: \"[audit, security, technical-debt, review, architecture]\"\nversion: \"1.0.0\"\nprompt-source: prompt.toon\n---\n"

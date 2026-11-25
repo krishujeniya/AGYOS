@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: red-team-tactics\ndescription: \"Red team tactics principles based on MITRE ATT&CK. Attack phases, detection evasion, reporting.\"\nrisk: offensive\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

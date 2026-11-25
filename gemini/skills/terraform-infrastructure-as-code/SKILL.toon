@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: terraform-infrastructure-as-code\ndescription: Terraform infrastructure as code best practices\nrisk: safe\nsource: https://github.com/antonbabenko/terraform-skill\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

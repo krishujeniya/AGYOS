@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: python-performance-optimization\ndescription: \"Profile and optimize Python code using cProfile, memory profilers, and performance best practices. Use when debugging slow Python code, optimizing bottlenecks, or improving application performance.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

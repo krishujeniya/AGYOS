@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: api-endpoint-builder\ndescription: \"Builds production-ready REST API endpoints with validation, error handling, authentication, and documentation. Follows best practices for security and scalability.\"\ncategory: development\nrisk: safe\nsource: community\ndate_added: \"2026-03-05\"\nprompt-source: prompt.toon\n---\n"

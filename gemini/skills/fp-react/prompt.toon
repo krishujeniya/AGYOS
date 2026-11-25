@@ -1,0 +1,4 @@
+skill: "fp-react"
+sections[2]:
+  - "\n"
+  - "# fp-ts React compatibility ID\n\nUse the canonical [fp-ts-react runbook](../fp-ts-react/SKILL.md) for React hooks, state, forms, and data fetching. This ID also covers React 18/19 and Next.js 14/15 requests.\n"

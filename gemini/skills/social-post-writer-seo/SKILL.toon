@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: social-post-writer-seo\ndescription: \"Social Media Strategist and Content Writer. Creates clear, engaging social media posts for Instagram, LinkedIn, and Facebook.\"\ncategory: growth\nrisk: safe\nsource: self\nsource_type: self\ndate_added: \"2026-04-17\"\nauthor: \"Krish Ujeniya\"\ntags: [social-media, marketing, content-writing, seo, growth]\ntools: [claude, cursor, gemini]\nversion: 1.0.1\nprompt-source: prompt.toon\n---\n"

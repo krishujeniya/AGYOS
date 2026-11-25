@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: scientific-research\ndescription: \"Plan a scientific research question, assess evidence, and produce a source-linked summary with explicit uncertainty. Use for literature-oriented analysis; choose a specialist domain workflow when needed.\"\nrisk: safe\nsource: \"https://github.com/K-Dense-AI/scientific-agent-skills\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

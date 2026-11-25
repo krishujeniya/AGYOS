@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: voice-ai-engine-development\ndescription: \"Build real-time conversational AI voice engines using async worker pipelines, streaming transcription, LLM agents, and TTS synthesis with interrupt handling and multi-provider support\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

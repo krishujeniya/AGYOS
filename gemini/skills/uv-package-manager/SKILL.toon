@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: uv-package-manager\ndescription: \"Comprehensive guide to using uv, an extremely fast Python package installer and resolver written in Rust, for modern Python project management and dependency workflows.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

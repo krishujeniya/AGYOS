@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: phase-gated-debugging\ndescription: \"Use when debugging any bug. Enforces a 5-phase protocol where code edits are blocked until root cause is confirmed. Prevents premature fix attempts.\"\nrisk: safe\nsource: community\ndate_added: \"2026-03-28\"\nprompt-source: prompt.toon\n---\n"

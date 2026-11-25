@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: jake-unhinged-caffeine-overdose\ndescription: \"Goes wide and exhaustive — every option, every edge, every step spelled out, the opposite of a compressor; invoke via /caffeine-overdose when you want maximum thoroughness and nothing left implicit.\"\nlicense: MIT\nmetadata:\n  upstream_repository: Jakeschincariol/unhinged-claude-skills\n  upstream_skill: caffeine-overdose\n  upstream_commit: 8f60ec6d9e28e430849b57b5e21cbdfe9860df99\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-cosmos-java\ndescription: Azure Cosmos DB SDK for Java. NoSQL database operations with global distribution, multi-model support, and reactive patterns.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

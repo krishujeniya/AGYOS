@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: council-list\ndescription: |\n  List all past Agent Council sessions for the current project.\n  Shows session ID, mode, agent count, and question for each.\nallowed-tools:\n  - Bash\nprompt-source: prompt.toon\n---\n"

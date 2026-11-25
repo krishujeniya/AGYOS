@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-ai-contentsafety-ts\ndescription: \"Analyze text and images for harmful content with customizable blocklists.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

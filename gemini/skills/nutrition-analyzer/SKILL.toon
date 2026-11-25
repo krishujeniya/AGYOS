@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: nutrition-analyzer\ndescription: 分析营养数据、识别营养模式、评估营养状况，并提供个性化营养建议。支持与运动、睡眠、慢性病数据的关联分析。\nallowed-tools: Read, Grep, Glob, Write\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

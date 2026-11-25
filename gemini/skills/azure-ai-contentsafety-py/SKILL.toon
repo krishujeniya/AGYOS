@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-ai-contentsafety-py\ndescription: Azure AI Content Safety SDK for Python. Use for detecting harmful content in text and images with multi-severity classification.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

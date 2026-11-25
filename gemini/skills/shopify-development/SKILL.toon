@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: shopify-development\ndescription: Build Shopify apps, extensions, themes using GraphQL Admin API, Shopify CLI, Polaris UI, and Liquid.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

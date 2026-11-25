@@ -1,0 +1,6 @@
+object: list
+data[3]:
+  - id, object, created, owned_by
+  - grok-4-latest, model, 1704067200, xai
+  - grok-4, model, 1701388800, xai
+  - grok-3, model, 1698710400, xai

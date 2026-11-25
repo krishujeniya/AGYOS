@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: itil-expert\ndescription: Expert advisor for ITIL 4 and ITIL 5 (2026 digital product paradigm), specialized in AI-native governance, sustainability, and value co-creation.\nrisk: safe\nsource: community\ndate_added: \"2026-04-18\"\ntriggers:\n  - \"itil expert\"\n  - \"itil 5 guidance\"\n  - \"itil 4 process\"\n  - \"design service value stream\"\n  - \"ai governance guidance\"\n  - \"digital product management itil\"\nprompt-source: prompt.toon\n---\n"

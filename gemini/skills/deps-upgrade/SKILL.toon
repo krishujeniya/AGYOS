@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: deps-upgrade\ndescription: \"Plan safe dependency upgrades, assess breaking changes, and verify compatibility incrementally. Use when updating package versions or preparing a dependency refresh.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

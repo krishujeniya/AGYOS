@@ -1,0 +1,16 @@
+schemaVersion: 0.1.0
+name: Recipe
+behavior: create
+noteContentFormat: "![{{schema:Recipe:image|first}}]\n\n## Description\n{{schema:Recipe:description}}\n\n## Ingredients\n{{schema:Recipe:recipeIngredient|list}}\n\n## Instructions\n{{schema:Recipe:recipeInstructions|map:step =>> step.text|list}}\n\n## Nutrition\n- Calories: {{schema:Recipe:nutrition.calories}}"
+properties[7]:
+  - name, value, type
+  - categories, [[Recipes]], multitext
+  - author, [[{{schema:Recipe:author.name}}]], text
+  - source, {{url}}, text
+  - ingredients, {{schema:Recipe:recipeIngredient}}, multitext
+  - cuisine, {{schema:Recipe:recipeCuisine}}, text
+  - rating, "", number
+  - type, Recipe, text
+triggers[1]: "schema:Recipe"
+noteNameFormat: "{{schema:Recipe:name}}"
+path: Recipes/

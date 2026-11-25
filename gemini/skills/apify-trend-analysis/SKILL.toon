@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: apify-trend-analysis\ndescription: Discover and track emerging trends across Google Trends, Instagram, Facebook, YouTube, and TikTok to inform content strategy.\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

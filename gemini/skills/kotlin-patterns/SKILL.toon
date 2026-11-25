@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: kotlin-patterns\ndescription: Idiomatic Kotlin patterns, best practices, and conventions for building robust, efficient, and maintainable Kotlin applications with coroutines, null safety, and DSL builders. Use when writing or reviewing Kotlin code and idiomatic structure or null safety is in question.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: api-testing-observability-api-mock\ndescription: \"You are an API mocking expert specializing in realistic mock services for development, testing, and demos. Design mocks that simulate real API behavior and enable parallel development.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

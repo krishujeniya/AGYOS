@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: langchain-agent-dev\ndescription: \"You are an expert LangChain agent developer specializing in production-grade AI systems using LangChain 0.1+ and LangGraph.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

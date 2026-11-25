@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: internal-team-communications\ndescription: \"Draft internal team communications with the included examples. Use for 3P updates, newsletters, FAQs, status reports, leadership notes, project updates, and incident reports.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

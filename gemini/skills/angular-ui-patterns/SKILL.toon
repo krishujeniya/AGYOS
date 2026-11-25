@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: angular-ui-patterns\ndescription: \"Modern Angular UI patterns for loading states, error handling, and data display. Use when building UI components, handling async data, or managing component states.\"\nrisk: safe\nsource: self\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

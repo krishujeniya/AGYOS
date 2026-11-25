@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: robius-app-architecture\ndescription: |\n  CRITICAL: Use for Robius app architecture patterns. Triggers on:\n  Tokio, async, submit_async_request, 异步, 架构,\n  SignalToUI, Cx::post_action, worker task,\n  app structure, MatchEvent, handle_startup\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

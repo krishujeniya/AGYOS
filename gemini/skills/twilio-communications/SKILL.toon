@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: twilio-communications\ndescription: \"Build communication features with Twilio: SMS messaging, voice\n  calls, WhatsApp Business API, and user verification (2FA). Covers the full\n  spectrum from simple notifications to complex IVR systems and multi-channel\n  authentication.\"\nrisk: unknown\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

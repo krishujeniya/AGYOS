@@ -1,0 +1,2 @@
+mode: "100644"
+text: "---\ntrigger: glob\nglobs: \"**/*.java,**/pom.xml,**/build.gradle,**/build.gradle.kts\"\n---\n# Java Hooks\n\n> This file extends [common/hooks.md](common-hooks.md) with Java-specific content.\n\n## PostToolUse Hooks\n\nConfigure in `~/.claude/settings.json`:\n\n- **google-java-format**: Auto-format `.java` files after edit\n- **checkstyle**: Run style checks after editing Java files\n- **./mvnw compile** or **./gradlew compileJava**: Verify compilation after changes\n"

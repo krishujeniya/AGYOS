@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: architecture-react-nextjs\ndescription: \"Master of React and Next.js performance and rendering architecture. Enforces server/client boundaries, waterfall elimination, and render optimization.\"\ncategory: architecture\nrisk: safe\ntags: \"[react, nextjs, frontend, performance, architecture, server components]\"\nversion: \"1.0.0\"\nprompt-source: prompt.toon\n---\n"

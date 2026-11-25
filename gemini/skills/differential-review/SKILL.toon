@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: differential-review\ndescription: \"Security-focused code review for PRs, commits, and diffs.\"\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

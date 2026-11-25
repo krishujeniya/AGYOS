@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: expo-api-routes\ndescription: Guidelines for creating API routes in Expo Router with EAS Hosting\nrisk: unknown\nsource: community\nversion: 1.0.0\nlicense: MIT\nprompt-source: prompt.toon\n---\n"

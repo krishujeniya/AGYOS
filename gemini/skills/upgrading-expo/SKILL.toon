@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: upgrading-expo\ndescription: \"Upgrade Expo SDK versions safely. Use when updating an Expo project and checking breaking changes, package compatibility, native configuration, and platform builds.\"\nrisk: safe\nsource: \"https://github.com/expo/skills/tree/main/plugins/upgrading-expo\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+text: "# Legacy reference pointer\n\nUse the canonical [doc-generator implementation playbook](../../doc-generator/resources/implementation-playbook.md). This file remains at its legacy path for compatibility.\n"

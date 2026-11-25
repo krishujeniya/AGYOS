@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: instagram-graph-api\ndescription: Integracao completa com Instagram via Graph API. Publicacao, analytics, comentarios, DMs, hashtags, agendamento, templates e gestao de contas Business/Creator.\nauthor: Krish Ujeniya\ntags:\n- social-media\n- instagram\n- graph-api\n- content\ntools:\n- claude-code\n- antigravity\n- cursor\n- gemini-cli\n- codex-cli\nprompt-source: prompt.toon\n---\n"

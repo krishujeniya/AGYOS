@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agyos-software-protection\ndescription: Defensive software hardening and counter-reverse-engineering playbook. Protects proprietary binaries and builds against automated AI decompilation, resource exhaustion, and static pattern mining.\nprompt-source: prompt.toon\n---\n"

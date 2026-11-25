@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: gitlab-ci-patterns\ndescription: \"Comprehensive GitLab CI/CD pipeline patterns for automated testing, building, and deployment.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

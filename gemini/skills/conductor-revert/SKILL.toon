@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: conductor-revert\ndescription: \"Git-aware undo by logical work unit (track, phase, or task)\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

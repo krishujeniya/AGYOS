@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: audio-transcriber\ndescription: \"Use when transcribing audio or video into text, subtitles, or meeting notes; summaries require a configured model provider.\"\ncategory: content\nrisk: safe\nsource: community\ntags: \"[audio, transcription, whisper, meeting-minutes, speech-to-text]\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

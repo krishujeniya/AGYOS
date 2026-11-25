@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-storage-blob-ts\ndescription: Azure Blob Storage JavaScript/TypeScript SDK (@azure/storage-blob) for blob operations. Use for uploading, downloading, listing, and managing blobs and containers.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+text: "# standard\n\nClassic comic grid, versatile\n\n## Panel Structure\n\n- **Panels per page**: 4-6\n- **Structure**: Regular grid with occasional variation\n- **Gutters**: Consistent white space (8-10px)\n\n## Grid Configuration\n\n- 2-3 columns × 2-3 rows\n- Panel sizes: Mostly equal, occasional variation\n- Reading flow: Left→right, top→bottom (Z-pattern)\n\n## Best For\n\nNarrative flow, dialogue scenes\n\n## Best Style Pairings\n\nclassic, warm, sepia\n"

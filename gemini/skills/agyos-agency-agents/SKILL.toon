@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agyos-agency-agents\ndescription: Specialized agent roles, personas, and pod execution workflows for AGYOS. Use when delegating domain-specific tasks across copywriting, design, system architecture, marketing, and security review.\nprompt-source: prompt.toon\n---\n"

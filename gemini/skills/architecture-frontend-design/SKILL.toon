@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: architecture-frontend-design\ndescription: \"Master of Frontend Design and UI/UX architecture. Enforces DFII, aesthetic intentionality, and usability standards. Use when planning layouts, themes, or UI components.\"\ncategory: architecture\nrisk: safe\ntags: \"[frontend, design, ui, ux, aesthetics, guidelines, architecture]\"\nversion: \"1.0.0\"\nprompt-source: prompt.toon\n---\n"

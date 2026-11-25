@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: seo-dataforseo\ndescription: \"Use DataForSEO for live SERPs, keyword metrics, backlinks, competitor analysis, on-page checks, and AI visibility data. Trigger when the user needs real SEO data rather than static guidance.\"\nrisk: unknown\nsource: \"https://github.com/AgriciDaniel/claude-seo\"\ndate_added: \"2026-03-21\"\nuser-invokable: true\nargument-hint: \"[command] [query]\"\nallowed-tools:\n  - Read\n  - Grep\n  - Glob\n  - Bash\n  - WebFetch\n  - Write\nprompt-source: prompt.toon\n---\n"

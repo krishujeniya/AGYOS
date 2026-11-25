@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: seo-technical\ndescription: \"Audit technical SEO across crawlability, indexability, security, URLs, mobile, Core Web Vitals, structured data, JavaScript rendering, and related platform signals like robots.txt and AI crawler access.\"\nrisk: unknown\nsource: \"https://github.com/AgriciDaniel/claude-seo\"\ndate_added: \"2026-03-21\"\nuser-invokable: true\nargument-hint: \"[url]\"\nallowed-tools:\n  - Read\n  - Grep\n  - Glob\n  - Bash\n  - WebFetch\nprompt-source: prompt.toon\n---\n"

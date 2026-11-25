@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: customer-health-score\ndescription: \"Define, validate and operate the composite customer health score with intervention triggers. Use when customer success needs a ranked at-risk list, after a quarter closes (to validate the score against actual churn), or when triggers fire so the right playbook reaches the right CSM owner.\"\nrisk: safe\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

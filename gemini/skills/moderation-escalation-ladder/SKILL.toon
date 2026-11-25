@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: moderation-escalation-ladder\ndescription: \"Enforce the moderation ladder consistently across channels: policy classes, escalating actions, evidence snapshots, appeals and the weekly false-positive review. Use when a violation is reported or detected, when an appeal arrives, or when moderation stats are due for the transparency report.\"\nrisk: medium\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

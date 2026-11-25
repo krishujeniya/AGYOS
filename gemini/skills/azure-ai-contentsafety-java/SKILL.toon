@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-ai-contentsafety-java\ndescription: \"Build content moderation applications using the Azure AI Content Safety SDK for Java.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

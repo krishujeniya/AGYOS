@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: cal-com-automation\ndescription: \"Automate Cal.com tasks via Rube MCP (Composio): manage bookings, check availability, configure webhooks, and handle teams. Always search tools first for current schemas.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

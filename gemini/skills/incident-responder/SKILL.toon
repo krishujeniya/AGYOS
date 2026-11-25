@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: incident-responder\ndescription: Expert SRE incident responder specializing in rapid problem resolution, modern observability, and comprehensive incident management.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

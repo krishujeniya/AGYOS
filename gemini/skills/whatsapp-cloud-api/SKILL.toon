@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: whatsapp-cloud-api\ndescription: Integracao com WhatsApp Business Cloud API (Meta). Mensagens, templates, webhooks HMAC-SHA256, automacao de atendimento. Boilerplates Node.js e Python.\nrisk: critical\nsource: community\ndate_added: '2026-03-06'\nauthor: \"Krish Ujeniya\"\ntags:\n- messaging\n- whatsapp\n- meta\n- webhooks\ntools:\n- claude-code\n- antigravity\n- cursor\n- gemini-cli\n- codex-cli\nprompt-source: prompt.toon\n---\n"

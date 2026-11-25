@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: internal-comms-community\ndescription: \"Compatibility ID for internal newsletters, FAQs, status reports, leadership notes, project updates, and incident reports. Use internal-team-communications as the canonical runbook.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

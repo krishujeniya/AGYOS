@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ai-agents-architect\ndescription: Expert in designing and building autonomous AI agents. Masters tool\n  use, memory systems, planning strategies, and multi-agent orchestration.\nrisk: unknown\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

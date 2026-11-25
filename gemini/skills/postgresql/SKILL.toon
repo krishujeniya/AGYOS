@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: postgresql\ndescription: \"Design a PostgreSQL-specific schema. Covers best-practices, data types, indexing, constraints, performance patterns, and advanced features\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

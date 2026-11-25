@@ -1,0 +1,2 @@
+mode: "100644"
+text: "---\ntrigger: glob\nglobs: \"**/*.py,**/*.pyi\"\n---\n# Python Hooks\n\n> This file extends [common/hooks.md](common-hooks.md) with Python specific content.\n\n## PostToolUse Hooks\n\nConfigure in `~/.claude/settings.json`:\n\n- **black/ruff**: Auto-format `.py` files after edit\n- **mypy/pyright**: Run type checking after editing `.py` files\n\n## Warnings\n\n- Warn about `print()` statements in edited files (use `logging` module instead)\n"

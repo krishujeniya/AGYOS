@@ -1,0 +1,6 @@
+name: "agyos-policy-guard"
+description: "host hook plugin (PreToolUse / PostToolUse) for AGYOS corporate operations. A hooks plugin is the only proposal here that runs on the host, and it runs only static inspection, which the repository invariants explicitly allow. PreToolUse: block wr..."
+version: "3.1.0"
+author: "Krish Ujeniya"
+logo: "assets/logo.svg"
+repository: "https://github.com/krishujeniya/AGYOS"

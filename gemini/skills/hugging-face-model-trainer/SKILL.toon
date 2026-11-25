@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nsource: \"https://github.com/huggingface/skills/tree/main/skills/huggingface-llm-trainer\"\nname: hugging-face-model-trainer\ndescription: Train or fine-tune TRL language models on Hugging Face Jobs, including SFT, DPO, GRPO, and GGUF export.\nlicense: Complete terms in LICENSE.txt\nrisk: unknown\nprompt-source: prompt.toon\n---\n"

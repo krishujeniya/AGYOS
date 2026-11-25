@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: continuous-code-improvement\ndescription: Guide for continuous improvement, error proofing, and standardization. Use this skill when the user wants to improve code quality, refactor, or discuss process improvements.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: api-security-best-practices\ndescription: \"Implement secure API design patterns including authentication, authorization, input validation, rate limiting, and protection against common API vulnerabilities\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"
