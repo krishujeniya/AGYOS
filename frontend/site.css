@@ -138,3 +138,12 @@ html,body{overflow-x:clip}
 @media(max-width:1050px){.triple-grid{grid-template-columns:1fr}.flow-dual-grid{grid-template-columns:1fr}.double-grid{grid-template-columns:1fr}}
 @media(max-width:800px){.cycle-track{display:flex;flex-direction:column;align-items:stretch}.cycle-arrow{transform:rotate(90deg);text-align:center}}
 @media(max-width:680px){.arch-flowchart{padding:14px;border-radius:16px}.flow-subgraph{padding:18px;border-radius:14px}}
+/* Docs article embedded flowcharts */
+.prose .doc-flowchart{margin:28px 0;padding:clamp(14px,2.2vw,24px)}
+.prose .doc-flowchart .flow-subgraph{padding:20px}
+.prose .doc-flowchart .subgraph-header h3{margin:0;font-size:17px;border:0;padding:0}
+.prose .doc-flowchart .flow-dual-grid{grid-template-columns:1fr}
+.prose .doc-flowchart .triple-grid{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.prose .doc-flowchart .flow-card p{margin:0;font-size:12px;line-height:1.55}
+.prose .doc-flowchart .cycle-track{grid-template-columns:repeat(auto-fit,minmax(64px,auto));justify-content:start}
+.prose .doc-flowchart .cycle-step{min-width:84px;padding:10px}

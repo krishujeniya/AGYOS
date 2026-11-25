@@ -70,6 +70,127 @@ def read_config() -> dict:
     return config
 
 
+def _arch_flowchart_html() -> str:
+    """Return the monochrome 6-layer AGYOS architecture flowchart HTML."""
+    return (
+        '<div class="arch-flowchart doc-flowchart" aria-label="AGYOS System Architecture Flowchart">'
+        '<div class="flow-trigger"><div class="flow-pill operator-node">'
+        '<span class="flow-pill-tag">Operator Input</span>'
+        '<strong>Operator / User Request</strong>'
+        '<span class="flow-pill-sub">Natural Language Prompt</span>'
+        '</div><div class="flow-arrow-down" aria-hidden="true">↓ <span>Routes via CLI &amp; MCP Syscall Bus</span></div></div>'
+        '<div class="flow-subgraph"><div class="subgraph-header"><span class="subgraph-num">L0 / L2</span>'
+        '<h3>Kernel Hooks &amp; Syscall Bus</h3>'
+        '<span class="subgraph-sub">bin/agyos • state-server.cjs • hooks/</span></div>'
+        '<div class="subgraph-cards double-grid">'
+        '<div class="flow-card"><span class="card-kicker">Layer 2 • Syscall Bus</span><strong>CLI &amp; MCP Daemon</strong>'
+        '<p><code>bin/agyos</code> dispatcher and zero-dependency stdio JSON-RPC 2.0 <code>state-server.cjs</code></p></div>'
+        '<div class="flow-card"><span class="card-kicker">Layer 0 • Safety Interceptor</span><strong>Dual Hook Boundary</strong>'
+        '<p>Fail-closed <code>authorizer.py</code> (R3 outbox blocking) and fail-open <code>agy_os_hook.py</code></p></div>'
+        '</div></div>'
+        '<div class="flow-connector" aria-hidden="true">↓ <span>Compiles Intent, EVPI &amp; Role Assignment</span></div>'
+        '<div class="flow-subgraph"><div class="subgraph-header"><span class="subgraph-num">L4 / L5</span>'
+        '<h3>Governance, 104-Role Matrix &amp; EVPI</h3>'
+        '<span class="subgraph-sub">agyos_decision/ • 12 Departments • 5 Pods</span></div>'
+        '<div class="subgraph-cards triple-grid">'
+        '<div class="flow-card"><span class="card-kicker">Layer 5 • EVPI Gate</span><strong>Intent &amp; EVPI Compiler</strong>'
+        '<p>Compiles prompt into typed <code>TaskContract</code> and computes Howard 1966 EVPI</p></div>'
+        '<div class="flow-card"><span class="card-kicker">Layer 4 • Hierarchy</span><strong>104-Role Virtual Org</strong>'
+        '<p>12 functional departments partitioned into 5 governing operational pods (<code>roles.py</code>)</p></div>'
+        '<div class="flow-card"><span class="card-kicker">Layer 4 • Runbooks</span><strong>TOON Skill Catalog</strong>'
+        '<p>2,289 TOON skills across 103 role packs with JIT on-demand runbook retrieval</p></div>'
+        '</div></div>'
+        '<div class="flow-connector" aria-hidden="true">↓ <span>Dispatches TaskContract to 5-Gate SOP &amp; 7-Step Cycle</span></div>'
+        '<div class="flow-subgraph cycle-subgraph"><div class="subgraph-header"><span class="subgraph-num">L3</span>'
+        '<h3>7-Step Autonomous Engineering Cycle</h3>'
+        '<span class="subgraph-sub">5-Gate SOP Engine • UNDERSTAND → VERIFY</span></div>'
+        '<div class="cycle-track">'
+        '<div class="cycle-step"><span class="step-num">1</span><strong>Think</strong><small>Role Alignment</small></div><div class="cycle-arrow" aria-hidden="true">→</div>'
+        '<div class="cycle-step"><span class="step-num">2</span><strong>Plan</strong><small>Checkpoints</small></div><div class="cycle-arrow" aria-hidden="true">→</div>'
+        '<div class="cycle-step"><span class="step-num">3</span><strong>Build</strong><small>Maker TDD</small></div><div class="cycle-arrow" aria-hidden="true">→</div>'
+        '<div class="cycle-step"><span class="step-num">4</span><strong>Review</strong><small>Checker Audit</small></div><div class="cycle-arrow" aria-hidden="true">→</div>'
+        '<div class="cycle-step"><span class="step-num">5</span><strong>Test</strong><small>Static Gates</small></div><div class="cycle-arrow" aria-hidden="true">→</div>'
+        '<div class="cycle-step"><span class="step-num">6</span><strong>Ship</strong><small>Commit &amp; Lock</small></div><div class="cycle-arrow" aria-hidden="true">→</div>'
+        '<div class="cycle-step"><span class="step-num">7</span><strong>Reflect</strong><small>CURRENT.md</small></div>'
+        '</div></div>'
+        '<div class="flow-connector" aria-hidden="true">↓ <span>Atomic Persistence &amp; Runtime Compression</span></div>'
+        '<div class="flow-dual-grid">'
+        '<div class="flow-subgraph"><div class="subgraph-header"><span class="subgraph-num">L1</span>'
+        '<h3>State, Memory &amp; Vault</h3><span class="subgraph-sub">SQLite • AES-256-GCM</span></div>'
+        '<div class="subgraph-cards double-grid">'
+        '<div class="flow-card"><span class="card-kicker">Persistence</span><strong>ACID SQLite State</strong><p>Monotonic revisions, CAS checks, and idempotent replay</p></div>'
+        '<div class="flow-card"><span class="card-kicker">Safety</span><strong>R3 Outbox &amp; Snapshots</strong><p>Pre-write backups (<code>state_ledger.py</code>) and <code>PENDING_COMMIT</code> holds</p></div>'
+        '<div class="flow-card"><span class="card-kicker">Memory Tiers</span><strong>3-Tier Virtual Memory</strong><p><code>memory.json</code> working set, <code>CURRENT.md</code> recall, and archival catalog</p></div>'
+        '<div class="flow-card"><span class="card-kicker">Confidentiality</span><strong>Encrypted Private Vault</strong><p>AES-256-GCM vault &amp; X25519 endpoint-side envelopes</p></div>'
+        '</div></div>'
+        '<div class="flow-subgraph"><div class="subgraph-header"><span class="subgraph-num">CODEC</span>'
+        '<h3>Model Router &amp; TOON</h3><span class="subgraph-sub">T0–T3 • Exact Encoding</span></div>'
+        '<div class="subgraph-cards vertical-grid">'
+        '<div class="flow-card"><span class="card-kicker">Routing Policy</span><strong>Skill &amp; Model Router</strong><p>T0–T3 complexity tiers with privacy gating and KV-cache prefixing</p></div>'
+        '<div class="flow-card"><span class="card-kicker">Data Protocol</span><strong>TOON Codec Engine</strong><p>Typed Token-Oriented Object Notation parsing and compression</p></div>'
+        '<div class="flow-card"><span class="card-kicker">Static Portal</span><strong>Docs &amp; Catalog Builder</strong><p>Allowlisted Markdown site generator (<code>build_docs_site.py</code>)</p></div>'
+        '</div></div></div>'
+        '<div class="flow-connector" aria-hidden="true">↓ <span>Monotonic Ratchet Verification &amp; Release</span></div>'
+        '<div class="flow-subgraph delivery-subgraph"><div class="subgraph-header"><span class="subgraph-num">SHIP</span>'
+        '<h3>Gated Verification &amp; Delivery</h3><span class="subgraph-sub">Single main Branch • Cloudflare Pages</span></div>'
+        '<div class="subgraph-cards double-grid">'
+        '<div class="flow-card highlight-card"><span class="card-kicker">CI/CD Pipeline</span><strong>GitHub Actions Verification</strong><p><code>ci.yml</code>, <code>deploy.yml</code>, and <code>codeql.yml</code> with monotonic test ratchets</p></div>'
+        '<div class="flow-card highlight-card"><span class="card-kicker">Protected Deployment</span><strong>Single main Branch &amp; Edge</strong><p>Verified author lock (Krish Ujeniya) deploying to <code>agyos.pages.dev</code></p></div>'
+        '</div></div></div>\n'
+    )
+
+
+def _render_ascii_diagram(code: str) -> str | None:
+    """Render known ASCII architecture/pipeline blocks as monochrome flowcharts."""
+    if '[GATE 1: UNDERSTAND]' in code:
+        return (
+            '<div class="arch-flowchart doc-flowchart" aria-label="AGYOS 5-Gate SOP Flow">'
+            '<div class="flow-subgraph"><div class="subgraph-header"><span class="subgraph-num">SOP</span>'
+            '<h3>5-Gate Deterministic Pipeline</h3><span class="subgraph-sub">Code = SOP(Team)</span></div>'
+            '<div class="cycle-track">'
+            '<div class="cycle-step"><span class="step-num">1</span><strong>Understand</strong><small>Gate 1</small></div><div class="cycle-arrow" aria-hidden="true">→</div>'
+            '<div class="cycle-step"><span class="step-num">2</span><strong>Analyze</strong><small>Gate 2</small></div><div class="cycle-arrow" aria-hidden="true">→</div>'
+            '<div class="cycle-step"><span class="step-num">3</span><strong>Plan</strong><small>Gate 3</small></div><div class="cycle-arrow" aria-hidden="true">→</div>'
+            '<div class="cycle-step"><span class="step-num">4</span><strong>Implement</strong><small>Gate 4</small></div><div class="cycle-arrow" aria-hidden="true">→</div>'
+            '<div class="cycle-step"><span class="step-num">5</span><strong>Verify</strong><small>Gate 5</small></div>'
+            '</div>'
+            '<div class="flow-connector" aria-hidden="true">↳ <span>Fast-Path Router (Complexity ≤ 2): Bypasses Gates 1–3 → IMPLEMENT → VERIFY</span></div>'
+            '</div></div>\n'
+        )
+    if '[DISCOVERY]' in code and '[HANDOVER]' in code:
+        return (
+            '<div class="arch-flowchart doc-flowchart" aria-label="7-Phase Working Backwards SDLC Pipeline">'
+            '<div class="flow-subgraph"><div class="subgraph-header"><span class="subgraph-num">SDLC</span>'
+            '<h3>7-Phase Working Backwards Pipeline</h3><span class="subgraph-sub">sdlc.py</span></div>'
+            '<div class="cycle-track">'
+            '<div class="cycle-step"><span class="step-num">1</span><strong>Discovery</strong><small>PR / FAQ</small></div><div class="cycle-arrow" aria-hidden="true">→</div>'
+            '<div class="cycle-step"><span class="step-num">2</span><strong>PRD</strong><small>Criteria</small></div><div class="cycle-arrow" aria-hidden="true">→</div>'
+            '<div class="cycle-step"><span class="step-num">3</span><strong>Architecture</strong><small>C4 &amp; ADR</small></div><div class="cycle-arrow" aria-hidden="true">→</div>'
+            '<div class="cycle-step"><span class="step-num">4</span><strong>TDD Build</strong><small>80%+ Cov</small></div><div class="cycle-arrow" aria-hidden="true">→</div>'
+            '<div class="cycle-step"><span class="step-num">5</span><strong>Verify</strong><small>Static Proof</small></div><div class="cycle-arrow" aria-hidden="true">→</div>'
+            '<div class="cycle-step"><span class="step-num">6</span><strong>Release</strong><small>Rollout</small></div><div class="cycle-arrow" aria-hidden="true">→</div>'
+            '<div class="cycle-step"><span class="step-num">7</span><strong>Handover</strong><small>CURRENT.md</small></div>'
+            '</div></div></div>\n'
+        )
+    if 'AGYOS Operational Kernel' in code:
+        return (
+            '<div class="arch-flowchart doc-flowchart" aria-label="AGYOS Operational Kernel Topology">'
+            '<div class="flow-subgraph"><div class="subgraph-header"><span class="subgraph-num">KERNEL</span>'
+            '<h3>AGYOS Operational Kernel</h3><span class="subgraph-sub">gemini/antigravity-cli/bin/agyos</span></div>'
+            '<div class="subgraph-cards triple-grid">'
+            '<div class="flow-card"><span class="card-kicker">Routing</span><strong>Decision Engine</strong><p><code>skills_router.py</code> &amp; <code>model_router.py</code></p></div>'
+            '<div class="flow-card"><span class="card-kicker">Syscall Bus</span><strong>FastMCP Daemon</strong><p><code>state-server.cjs</code> (stdio JSON-RPC)</p></div>'
+            '<div class="flow-card"><span class="card-kicker">Guardrails</span><strong>Security Hooks</strong><p><code>authorizer.py</code> &amp; <code>agy_os_hook.py</code></p></div>'
+            '</div>'
+            '<div class="flow-connector" aria-hidden="true">↓ <span>Persists Projections &amp; Secrets</span></div>'
+            '<div class="subgraph-cards double-grid">'
+            '<div class="flow-card highlight-card"><span class="card-kicker">State Machine</span><strong><code>state.json</code> &amp; SQLite</strong><p><code>gemini/antigravity-cli/builtin/state/state.json</code></p></div>'
+            '<div class="flow-card highlight-card"><span class="card-kicker">Encrypted Store</span><strong>Private Vault</strong><p><code>~/.local/state/agyos/private-memory.vault.json</code></p></div>'
+            '</div></div></div>\n'
+        )
+    return None
+
+
 class Renderer(mistune.HTMLRenderer):
     def __init__(self, source: str, routes: dict, base: str):
         super().__init__(escape=True)
@@ -88,7 +209,12 @@ class Renderer(mistune.HTMLRenderer):
 
     def block_code(self, code: str, info: str | None = None) -> str:
         lang = ((info or '').split() or [''])[0].lower()
-        if lang in ('mermaid', 'plantuml'):
+        if lang == 'mermaid':
+            return _arch_flowchart_html()
+        ascii_html = _render_ascii_diagram(code) if not lang else None
+        if ascii_html:
+            return ascii_html
+        if lang == 'plantuml':
             self.unsupported.append(lang + ' diagram rendered as source')
         return f'<div class="code-shell"><div class="code-toolbar"><span>{html.escape(lang or "text")}</span><button type="button" class="code-copy" aria-label="Copy code">Copy</button></div><pre><code class="language-{html.escape(lang)}">{html.escape(code)}</code></pre></div>\n'
 
