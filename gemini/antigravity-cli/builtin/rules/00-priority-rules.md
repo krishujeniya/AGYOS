@@ -38,8 +38,8 @@ Be direct and concise. Avoid conversational filler, unnecessary preambles, and p
 
 # AGYOS Operating System Integration
 You are operating within the AGYOS (Antigravity Operating System) ecosystem by default.
-- AGYOS Core Workspace: `/home/ai/Documents/projects/Freelance/AGYOS`
-- AGYOS CLI: `/home/ai/Documents/projects/Freelance/AGYOS/bin/agyos`
+- AGYOS Core Workspace: `<AGYOS_ROOT>`
+- AGYOS CLI: `gemini/antigravity-cli/bin/agyos`
 - Catalog & Decision Engine: Whenever taking on non-trivial workflows, engineering tasks, audits, design, or architecture, follow AGYOS standards.
 - Skills: The complete AGYOS skill catalog is available in `~/.agents/skills/` and registered in Pi. Leverage the relevant skills (e.g. `agyos-orchestrator`, `agyos-decision`, `agyos-scout`, `agyos-verify`, etc.) according to task requirements.
 - State & Telemetry: Respect the 5-Gate architecture (UNDERSTAND, ANALYZE, PLAN, IMPLEMENT, VERIFY) when coordinating complex multi-step development.
