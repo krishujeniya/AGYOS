@@ -129,7 +129,7 @@ jobs:
         run: node --test gemini/antigravity-cli/builtin/scripts/tests/test_secure_envelope.cjs gemini/antigravity-cli/builtin/scripts/tests/test_private_vault.cjs gemini/antigravity-cli/builtin/scripts/tests/test_mcp_protocol.cjs gemini/antigravity-cli/builtin/scripts/tests/test_github_coordination_state.cjs gemini/antigravity-cli/builtin/scripts/tests/test_work_item_state.cjs gemini/antigravity-cli/builtin/scripts/tests/test_plan_canvas_sessions.cjs gemini/antigravity-cli/builtin/scripts/tests/test_bash_hook_state.cjs gemini/antigravity-cli/builtin/scripts/tests/test_release_approval_state.cjs gemini/antigravity-cli/builtin/scripts/tests/test_guided_install_state.cjs gemini/antigravity-cli/builtin/scripts/tests/test_observer_session_leases.cjs gemini/antigravity-cli/builtin/scripts/tests/test_install_lifecycle_state.cjs gemini/antigravity-cli/builtin/scripts/tests/test_nasiko_release_state.cjs gemini/antigravity-cli/builtin/scripts/tests/test_process_lock.cjs gemini/antigravity-cli/builtin/scripts/tests/test_session_end_state.cjs gemini/antigravity-cli/builtin/scripts/tests/test_explicit_state_machines.cjs
       - name: Verify generated catalog matches every physical runbook
         run: |
-          git diff --exit-code -- gemini/antigravity-cli/builtin/skills-manifest.json gemini/antigravity-cli/tier1-skills.json docs/skills-data.json docs/ai-catalog.json frontend/llms.txt frontend/sitemap.xml frontend/robots.txt
+          git diff --exit-code -- gemini/antigravity-cli/skills-manifest.json docs/skills-data.json docs/ai-catalog.json frontend/llms.txt frontend/sitemap.xml frontend/robots.txt
 
   council:
     runs-on: ubuntu-latest

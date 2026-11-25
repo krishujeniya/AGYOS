@@ -13,9 +13,9 @@ const path = require('path');
 const { createStateStore } = require('../builtin/scripts/agyos-runtime/lib/state-store');
 
 const PROJECT_ROOT = path.resolve(__dirname, '..');
-const DEFAULT_DB_PATH = path.join(PROJECT_ROOT, 'state', 'workspace-state.db');
-const DEFAULT_STATE_FILE = path.join(PROJECT_ROOT, 'state', 'state.json');
-const DEFAULT_CURRENT_FILE = path.join(PROJECT_ROOT, 'state', 'CURRENT.md');
+const DEFAULT_DB_PATH = path.join(PROJECT_ROOT, 'builtin', 'state', 'workspace-state.db');
+const DEFAULT_STATE_FILE = path.join(PROJECT_ROOT, 'builtin', 'state', 'state.json');
+const DEFAULT_CURRENT_FILE = path.join(PROJECT_ROOT, 'builtin', 'state', 'CURRENT.md');
 
 function parseArgs(args) {
   const parsed = {

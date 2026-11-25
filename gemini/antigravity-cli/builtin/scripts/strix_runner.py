@@ -45,7 +45,7 @@ def check_status() -> Dict[str, Any]:
     """Inspect environment, dependencies, and configuration for Strix."""
     docker_installed = shutil.which("docker") is not None
     uv_installed = shutil.which("uv") is not None
-    obscura_bin = ROOT / "bin" / "obscura"
+    obscura_bin = ROOT.parent / "bin" / "obscura"
 
     strix_present = STRIX_ROOT.is_dir()
     pyproject_file = STRIX_ROOT / "pyproject.toml"
@@ -64,7 +64,7 @@ def check_status() -> Dict[str, Any]:
     cloud_token_configured = bool(os.environ.get("STRIX_API_TOKEN"))
 
     agy_installed = shutil.which("agy") is not None
-    agy_bin = shutil.which("agy") or str(ROOT / "bin" / "agyos")
+    agy_bin = shutil.which("agy") or str(ROOT.parent / "bin" / "agyos")
 
     return {
         "strix_toolkit_present": strix_present,
@@ -78,7 +78,7 @@ def check_status() -> Dict[str, Any]:
         "strix_llm": os.environ.get("STRIX_LLM", "agy/native"),
         "installed_skills_count": len(installed_skills),
         "installed_skills": installed_skills,
-        "agy_cli_available": agy_installed or (ROOT / "bin" / "agyos").is_file(),
+        "agy_cli_available": agy_installed or (ROOT.parent / "bin" / "agyos").is_file(),
         "agy_cli_path": agy_bin,
         "direct_agy_mode": True,
         "api_required": False,
