@@ -90,38 +90,46 @@ def out_height(src_h, want=None):
 
 def load_state(work):
     p = os.path.join(work, "edit.json")
-    return json.load(open(p, encoding="utf-8")) if os.path.exists(p) else {}
+    if not os.path.exists(p):
+        return {}
+    with open(p, encoding="utf-8") as f:
+        return json.load(f)
 
 
 def save_state(work, **kv):
     st = load_state(work)
     st.update(kv)
-    json.dump(st, open(os.path.join(work, "edit.json"), "w", encoding="utf-8"), indent=1, ensure_ascii=False)
+    with open(os.path.join(work, "edit.json"), "w", encoding="utf-8") as f:
+        json.dump(st, f, indent=1, ensure_ascii=False)
     return st
 
 
 def styles():
-    return json.load(open(os.path.join(STYLES_DIR, "index.json"), encoding="utf-8"))
+    with open(os.path.join(STYLES_DIR, "index.json"), encoding="utf-8") as f:
+        return json.load(f)
 
 
 def style_meta(sid):
     p = os.path.join(STYLES_DIR, sid, "style.json")
     if not os.path.exists(p):
         die(f"unknown style '{sid}'. Choose one of: " + ", ".join(s["id"] for s in styles()))
-    return json.load(open(p, encoding="utf-8"))
+    with open(p, encoding="utf-8") as f:
+        return json.load(f)
 
 
 def build_page(work, style_id, story="story.js", out="page.html", skill_url="/skill", footage="cut.mp4"):
     """Write the preview/render page for this project."""
     meta = style_meta(style_id)
-    tpl = open(os.path.join(SKILL_DIR, "engine", "page.html"), encoding="utf-8").read()
+    with open(os.path.join(SKILL_DIR, "engine", "page.html"), encoding="utf-8") as f:
+        tpl = f.read()
     html = (tpl.replace("{{TITLE}}", f"{meta['title']} edit")
                .replace("{{SKILL}}", skill_url)
                .replace("{{STYLE}}", style_id)
                .replace("{{STORY}}", story)
                .replace("{{FONTS}}", json.dumps(meta["fonts"]))
                .replace("{{FOOTAGE}}", json.dumps(footage)))
-    open(os.path.join(work, out), "w", encoding="utf-8").write(html)
+    with open(os.path.join(work, out), "w", encoding="utf-8") as f:
+        f.write(html)
     return os.path.join(work, out)
 
 

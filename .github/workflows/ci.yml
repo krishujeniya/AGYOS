@@ -58,7 +58,7 @@ jobs:
           version: "latest"
       - name: Install dependencies via uv
         run: |
-          uv pip install --system jsonschema pyyaml "mistune==3.2.1" fastapi pydantic httpx pytest
+          uv pip install --system jsonschema pyyaml "mistune==3.3.4" fastapi pydantic httpx pytest
       - name: Verify full TOON skill catalog and scout delivery
         run: node gemini/antigravity-cli/builtin/scripts/agyos-runtime/ci/check-toon-prompts.mjs
       - name: Generate and audit SBOM license compliance

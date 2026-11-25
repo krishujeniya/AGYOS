@@ -70,7 +70,7 @@ def _fix_tokenizer_config(path: str):
                 except OSError:
                     pass
                 os.replace(tmp_file, cfg_file)
-            except BaseException:
+            except Exception:
                 try:
                     os.unlink(tmp_file)
                 except OSError:
@@ -452,6 +452,7 @@ class Agent(HookRegistry):
                 raise RuntimeError("roxx fast path needs a CUDA device")
             return False
         last = None
+        last: Optional[Exception] = None
         for _attempt in range(2):  # tilelang's JIT cache has been seen to fail once, then succeed
             try:
                 from .fast import FastRoxx
@@ -461,7 +462,7 @@ class Agent(HookRegistry):
                 last = e
         if self._fast is None:
             if strict:
-                raise last
+                raise last if last is not None else RuntimeError("roxx fast path unavailable")
             print("Warning: roxx fast path unavailable (%s); using the stock forward." % last)
             return False
         self._stock_forward = self.model.forward
@@ -823,7 +824,7 @@ class Agent(HookRegistry):
             ctx.error = exc
             try:
                 dispatch(active, "on_error", ctx, raise_errors=raise_errors, lock=self._hooks_lock)
-            except BaseException as hook_exc:
+            except Exception as hook_exc:
                 # A failing on_error hook must not hide the failure that triggered it.
                 exc.__context__ = hook_exc
             raise
@@ -833,7 +834,7 @@ class Agent(HookRegistry):
                 ctx.usage = aggregate_usage(ctx.results)
             try:
                 dispatch(active, "on_predict_end", ctx, raise_errors=raise_errors, lock=self._hooks_lock)
-            except BaseException as hook_exc:
+            except Exception as hook_exc:
                 # End hooks run on the failure path too; do not let one mask the real error.
                 if ctx.error is not None:
                     ctx.error.__context__ = hook_exc

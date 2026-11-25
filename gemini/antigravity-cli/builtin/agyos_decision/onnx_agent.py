@@ -193,7 +193,7 @@ class ONNXAgent(HookRegistry):
             ctx.error = exc
             try:
                 dispatch(active, "on_error", ctx, raise_errors=raise_errors, lock=self._hooks_lock)
-            except BaseException as hook_exc:
+            except Exception as hook_exc:
                 exc.__context__ = hook_exc
             raise
         finally:
@@ -202,7 +202,7 @@ class ONNXAgent(HookRegistry):
                 ctx.usage = aggregate_usage(ctx.results)
             try:
                 dispatch(active, "on_predict_end", ctx, raise_errors=raise_errors, lock=self._hooks_lock)
-            except BaseException as hook_exc:
+            except Exception as hook_exc:
                 if ctx.error is not None:
                     ctx.error.__context__ = hook_exc
                 else:

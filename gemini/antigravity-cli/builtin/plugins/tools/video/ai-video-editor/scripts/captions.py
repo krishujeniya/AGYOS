@@ -58,7 +58,8 @@ def build(work, spans, style_id, W, H, out="captions.ass"):
     tr = os.path.join(work, "transcript_edited.json")
     if not os.path.exists(tr):
         die("transcript_edited.json not found (run cut.py first)")
-    words = json.load(open(tr, encoding="utf-8"))["words"]
+    with open(tr, encoding="utf-8") as f:
+        words = json.load(f)["words"]
     inspan = lambda t: any(a - 0.05 <= t < b + 0.05 for a, b in spans)  # noqa: E731
     words = [w for w in words if not inspan((w["s"] + w["e"]) / 2)]
     font, size, col, hi, outl, bord, shad, upper = STYLE.get(style_id, STYLE["clean-tech"])
@@ -101,7 +102,8 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             pop = "{\\fad(60,0)}" if i == 0 else ""
             ev.append(f"Dialogue: 0,{ts(s)},{ts(e)},{sty},,0,0,0,,{pop}" + " ".join(parts))
     path = os.path.join(work, out)
-    open(path, "w", encoding="utf-8").write(head + "\n".join(ev) + "\n")
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(head + "\n".join(ev) + "\n")
     return path
 
 

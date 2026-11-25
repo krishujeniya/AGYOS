@@ -127,7 +127,8 @@ async def stills(page, cut, times, w, h, work):
         b64 = base64.b64encode(p.stdout).decode() if p.stdout else None
         png = base64.b64decode(await page.evaluate("([t, b]) => window.__renderStill(t, b)", [t, b64]))
         path = os.path.join(work, "stills", f"still_{t:08.2f}.png")
-        open(path, "wb").write(png)
+        with open(path, "wb") as f:
+            f.write(png)
         paths.append((t, path))
     cols = 3 if len(paths) > 4 else 2 if len(paths) > 1 else 1
     tw, th = 640, 360
@@ -160,7 +161,8 @@ def final_mix(work, cut, sfx, chunks, out, crf, preset, captions, sfx_gain, has_
         lines.append(f"[1:a]aresample=48000,aformat=channel_layouts=stereo[va];{fx};[va][fx]amix=inputs=2:normalize=0:duration=first," + ("loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000," if normalize else "") + "alimiter=limit=0.97:level=false[a]")
     else:
         lines.append(fx.replace("[fx]", "[a]"))
-    open(os.path.join(work, ".final_filter.txt"), "w").write("\n".join(lines))
+    with open(os.path.join(work, ".final_filter.txt"), "w") as f:
+        f.write("\n".join(lines))
     cmd += ["-filter_complex_script", ".final_filter.txt", "-map", "[v]", "-map", "[a]", "-c:a", "aac", "-b:a", "192k",
             "-c:v", "libx264", "-preset", preset, "-crf", str(crf), "-movflags", "+faststart", out]
     run(cmd, cwd=work)

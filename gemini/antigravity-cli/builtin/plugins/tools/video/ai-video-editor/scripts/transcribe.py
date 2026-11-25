@@ -83,7 +83,8 @@ def write_txt(path, words, duration, title, note="wN = word index (use these in 
             f"# {len(words)} words, video length {duration:.1f}s. Times are seconds. {note}",
             "# Words marked ~ were heard with low confidence.", ""]
     shown = [dict(w, w=(w["w"] + "~") if w.get("p", 1) < 0.45 else w["w"]) for w in words]
-    open(path, "w", encoding="utf-8").write("\n".join(head + phrase_lines(shown)) + "\n")
+    with open(path, "w", encoding="utf-8") as f:
+        f.write("\n".join(head + phrase_lines(shown)) + "\n")
 
 
 def main():
@@ -132,7 +133,8 @@ def main():
     print()
     detected = tinfo.language if lang == "auto" else lang
     out = {"source": src, "language": detected, "model": model, "duration": info["duration"], "words": words, "segments": segments}
-    json.dump(out, open(os.path.join(work, "transcript.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=0)
+    with open(os.path.join(work, "transcript.json"), "w", encoding="utf-8") as f:
+        json.dump(out, f, ensure_ascii=False, indent=0)
     write_txt(os.path.join(work, "transcript.txt"), words, info["duration"], "Transcript of the original video")
     save_state(work, source=src, language=detected, whisper_model=model, source_info=info)
     print(json.dumps({"work": work, "language": detected, "words": len(words), "device": dev,

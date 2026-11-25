@@ -37,6 +37,8 @@ class GoogleSafeMessage(dict):
         self.content = content
     def to_json_dict(self):
         return {"role": self.role, "parts": [{"text": self.content}]}
+    def __eq__(self, other):
+        return isinstance(other, GoogleSafeMessage) and super().__eq__(other) and self.role == other.role and self.content == other.content
 
 class GoogleSafeContext:
     def __init__(self, messages=None):

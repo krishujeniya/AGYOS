@@ -166,7 +166,8 @@ def render_cut(src, work, frames, fps, W, H, audio):
     # video: constant frame rate, then keep only the planned frame ranges
     expr = "+".join(f"between(n,{a},{b - 1})" for a, b in frames)
     vf = f"[0:v]fps={fps},scale={W}:{H}:force_original_aspect_ratio=increase:flags=bicubic,crop={W}:{H},setsar=1,select='{expr}',setpts=N/({fps}*TB)[v]"
-    open(os.path.join(work, ".cut_filter.txt"), "w").write(vf)
+    with open(os.path.join(work, ".cut_filter.txt"), "w") as f:
+        f.write(vf)
     # audio: slice by the same frame grid, 6 ms fades at every join so there are no clicks
     parts, f = [], int(SR * 0.006)
     ramp = np.linspace(0, 1, f, dtype=np.float32)[:, None]
@@ -211,13 +212,18 @@ def main():
     tr_path = os.path.join(work, "transcript.json")
     if not os.path.exists(tr_path):
         die("transcript.json not found. Run transcribe.py first.")
-    tr = json.load(open(tr_path, encoding="utf-8"))
+    with open(tr_path, encoding="utf-8") as f:
+        tr = json.load(f)
     src = st.get("source") or tr["source"]
     info = probe(src)
     if a.style:
         style_meta(a.style)
     ed_path = a.edits or os.path.join(work, "edits.json")
-    edits = json.load(open(ed_path, encoding="utf-8")) if os.path.exists(ed_path) else {}
+    if os.path.exists(ed_path):
+        with open(ed_path, encoding="utf-8") as f:
+            edits = json.load(f)
+    else:
+        edits = {}
     audio = load_audio(src)
     duration = min(info["duration"], len(audio) / SR) if len(audio) else info["duration"]
     words = tr["words"]
@@ -237,7 +243,8 @@ def main():
     summary = {"original_seconds": round(duration, 2), "edited_seconds": round(new_len, 2), "removed_seconds": round(duration - new_len, 2),
                "removed_by_reason": {k: round(v, 2) for k, v in by.items()}, "pieces_kept": len(frames), "fps": fps, "audio_levels": stats,
                "mistake_cuts": [{"from_s": round(s, 2), "to_s": round(e, 2), "why": why, "text": txt} for s, e, why, txt in removed if why not in ("pause",)]}
-    json.dump({"summary": summary, "keep_frames": frames, "removed": removed}, open(os.path.join(work, "cut_plan.json"), "w", encoding="utf-8"), indent=1, ensure_ascii=False)
+    with open(os.path.join(work, "cut_plan.json"), "w", encoding="utf-8") as f:
+        json.dump({"summary": summary, "keep_frames": frames, "removed": removed}, f, indent=1, ensure_ascii=False)
     kv = {"fps": fps, "silence_cut": a.silence}
     if a.style:
         kv["style"] = a.style
@@ -256,7 +263,8 @@ def main():
     print(f"rendering cut.mp4: {duration:.1f}s -> {new_len:.1f}s, {W}x{H} @ {fps}fps", flush=True)
     render_cut(src, work, frames, fps, W, H, audio)
     ew, elen = remap_words(words, gone, frames, fps)
-    json.dump({"language": tr.get("language"), "duration": round(elen, 3), "words": ew}, open(os.path.join(work, "transcript_edited.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=0)
+    with open(os.path.join(work, "transcript_edited.json"), "w", encoding="utf-8") as f:
+        json.dump({"language": tr.get("language"), "duration": round(elen, 3), "words": ew}, f, ensure_ascii=False, indent=0)
     write_txt(os.path.join(work, "transcript_edited.txt"), ew, elen, "Transcript of the EDITED video (cut.mp4). Time your graphics to these times.", note="wN = word index in transcript_edited.json.")
     save_state(work, cut_seconds=round(elen, 3), width=W, height=H)
     summary["outputs"] = [os.path.join(work, "cut.mp4"), os.path.join(work, "transcript_edited.txt")]

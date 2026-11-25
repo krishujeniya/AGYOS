@@ -566,7 +566,7 @@ class Router(HookRegistry):
             ctx.error = exc
             try:
                 dispatch(active, "on_error", ctx, raise_errors=raise_errors, lock=self._hooks_lock)
-            except BaseException as hook_exc:
+            except Exception as hook_exc:
                 exc.__context__ = hook_exc
             raise
         finally:
@@ -575,7 +575,7 @@ class Router(HookRegistry):
                 ctx.usage = aggregate_usage(ctx.results)
             try:
                 dispatch(active, "on_predict_end", ctx, raise_errors=raise_errors, lock=self._hooks_lock)
-            except BaseException as hook_exc:
+            except Exception as hook_exc:
                 if ctx.error is not None:
                     ctx.error.__context__ = hook_exc
                 else:
@@ -767,11 +767,11 @@ class Router(HookRegistry):
                         ctx.error = exc
                         try:
                             dispatch(active, "on_error", ctx, raise_errors=raise_errors, lock=self._hooks_lock)
-                        except BaseException as hook_exc:
+                        except Exception as hook_exc:
                             exc.__context__ = hook_exc
                 try:
                     self._end_contexts(active, started, raise_errors)
-                except BaseException as hook_exc:
+                except Exception as hook_exc:
                     exc.__context__ = hook_exc
                 raise
 
@@ -805,7 +805,7 @@ class Router(HookRegistry):
         for ctx in contexts:
             try:
                 dispatch(active, "on_predict_end", ctx, raise_errors=raise_errors, lock=self._hooks_lock)
-            except BaseException as hook_exc:
+            except Exception as hook_exc:
                 if ctx.error is not None:
                     ctx.error.__context__ = hook_exc
                 elif first_error is None:
