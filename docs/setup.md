@@ -1,17 +1,6 @@
 # AGYOS Developer Setup Guide
 
-This guide details setting up the AGYOS development environment, toolchain prerequisites, and local commands.
-
-## Prerequisites
-
-- **Linux / macOS**: Modern POSIX shell environment.
-- **Node.js**: `v22+` (or `v24+`).
-- **Python Tooling (`uv` Only)**: Install `uv` via `curl -LsSf https://astral.sh/uv/install.sh | sh`. Raw `python` and `pip` are prohibited by project invariants.
-- **Git**: Configured for maintainer profile:
-  ```bash
-  git config user.name "Krish Ujeniya"
-  git config user.email "100012208+krishujeniya@users.noreply.github.com"
-  ```
+This guide details setting up the AGYOS development environment and local commands.
 
 ---
 
