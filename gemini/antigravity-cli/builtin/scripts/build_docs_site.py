@@ -141,7 +141,7 @@ def source_text(path: Path) -> str:
     # The GitHub README uses HTML layout wrappers and badges; do not execute raw HTML.
     # Leave all Markdown and fenced code unchanged and omit only the decorative header.
     if path.name == 'README.md' and path.parent == ROOT:
-        source = re.sub(r'\A\s*<p align="center">.*?</p>\s*<h1 align="center">.*?</h1>\s*<p align="center">.*?</p>\s*<p align="center">.*?</p>\s*---', '# AGYOS\n', source, flags=re.S)
+        source = re.sub(r'\A(?:\s*<(?:p|h1)\b[^>]*>.*?</(?:p|h1)>)+', '', source, flags=re.S).lstrip()
     return source
 
 
