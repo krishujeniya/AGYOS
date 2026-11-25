@@ -107,7 +107,7 @@ jobs:
           if-no-files-found: ignore
           retention-days: 14
       - name: Check AGY startup contracts
-        run: cd gemini && python -m unittest discover -s scripts/tests -v
+        run: cd gemini/antigravity-cli/builtin && python -m unittest discover -s scripts/tests -v
       - name: Audit pinned prompt principles source
         if: always()
         run: >-
