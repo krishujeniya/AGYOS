@@ -15,6 +15,22 @@ This guide details setting up the AGYOS development environment, toolchain prere
 
 ---
 
+## One-Line Install (`~/.gemini`)
+
+Sync `AGYOS/gemini/` (`config/` and `antigravity-cli/`) directly into `~/.gemini/` (with automatic timestamped backup):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/krishujeniya/AGYOS/main/gemini/antigravity-cli/builtin/scripts/install.sh | bash
+```
+
+Or from a local clone:
+
+```bash
+make install
+```
+
+---
+
 ## Quickstart
 
 ### 1. Clone & Verify Working Copy
@@ -27,9 +43,9 @@ git status
 ### 2. Python Runtime & Dependencies (`uv` Only)
 ```bash
 # Install pinned script dependencies via uv
-uv pip install --system -r gemini/scripts/requirements.txt
+uv pip install --system -r gemini/antigravity-cli/builtin/scripts/requirements.txt
 # Verify syntax
-uv run python -m py_compile gemini/agyos_decision/catalog.py
+uv run python -m py_compile gemini/antigravity-cli/builtin/agyos_decision/catalog.py
 ```
 
 ### 3. Static Frontend & Docs Verification

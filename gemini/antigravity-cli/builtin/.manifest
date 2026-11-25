@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "agents_root": "agents",
+  "decision_root": "agyos_decision",
+  "plugins_root": "plugins",
+  "rules_root": "rules",
+  "scripts_root": "scripts",
+  "skills_root": "skills",
+  "state_root": "state",
+  "workflows_root": "workflows"
+}

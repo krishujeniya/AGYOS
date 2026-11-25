@@ -3,13 +3,13 @@ FROM python:3.12.9-slim-bookworm AS builder
 
 WORKDIR /app
 RUN python -m pip install --no-cache-dir 'mistune==3.2.1'
-COPY gemini/scripts/build_docs_site.py gemini/scripts/
+COPY gemini/antigravity-cli/builtin/scripts/build_docs_site.py gemini/antigravity-cli/builtin/scripts/
 COPY README.md ./
 COPY .github/SECURITY.md .github/SECURITY.md
 COPY docs/ docs/
 COPY assets/ assets/
 COPY frontend/ frontend/
-RUN python gemini/scripts/build_docs_site.py --out /public --base /
+RUN python gemini/antigravity-cli/builtin/scripts/build_docs_site.py --out /public --base /
 
 FROM python:3.12.9-slim-bookworm AS runner
 

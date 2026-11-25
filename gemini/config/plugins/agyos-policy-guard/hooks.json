@@ -1,0 +1,45 @@
+{
+  "agyos-guard": {
+    "PreToolUse": [
+      {
+        "matcher": "write_file|edit_file",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run gemini/antigravity-cli/builtin/scripts/lint_toon.py --check-path",
+            "timeout": 15
+          }
+        ]
+      },
+      {
+        "matcher": "run_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run gemini/antigravity-cli/builtin/scripts/lint_toon.py --check-command",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "write_file|edit_file",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run gemini/antigravity-cli/builtin/scripts/lint_toon.py --lint-changed",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "type": "command",
+        "command": "uv run gemini/antigravity-cli/builtin/scripts/lint_toon.py --summary",
+        "timeout": 15
+      }
+    ]
+  }
+}

@@ -13,13 +13,13 @@ AGYOS operates strictly as a local-first single-operator CLI execution environme
 
 ```
 ┌────────────────────────────────────────────────────────┐
-│ AGYOS Operational Kernel (gemini/bin/agyos)            │
+│ AGYOS Operational Kernel (gemini/antigravity-cli/bin/agyos)            │
 ├───────────────────┬───────────────────┬────────────────┤
 │ Decision Engine   │ FastMCP Daemon    │ Security Hooks │
 │ skills_router.py  │ state-server.cjs  │ authorizer.py  │
 │ model_router.py   │ stdio JSON-RPC    │ agy_os_hook.py │
 ├───────────────────┴───────────────────┴────────────────┤
-│ State Machine: gemini/state/state.json                 │
+│ State Machine: gemini/antigravity-cli/builtin/state/state.json                 │
 │ Private Vault: ~/.local/state/agyos/private-memory...  │
 └────────────────────────────────────────────────────────┘
 ```
@@ -28,16 +28,16 @@ AGYOS operates strictly as a local-first single-operator CLI execution environme
 
 ## 2. Service Level Objectives (SLOs) & Error Budgets
 
-AGYOS enforces local Service Level Indicators (SLIs) and deterministic launch gates evaluated via `gemini/scripts/canary_launch_gate.py`:
+AGYOS enforces local Service Level Indicators (SLIs) and deterministic launch gates evaluated via `gemini/antigravity-cli/builtin/scripts/canary_launch_gate.py`:
 
 | Service / Capability | SLI (Metric) | Target SLO | Measurement Method | Error Budget Policy |
 |---|---|---|---|---|
-| **Skill Selection** | Top-1 Skill Relevance | >= 95% | Frozen corpus in `gemini/scripts/tests/fixtures/` | If test fails, block deployment |
+| **Skill Selection** | Top-1 Skill Relevance | >= 95% | Frozen corpus in `gemini/antigravity-cli/builtin/scripts/tests/fixtures/` | If test fails, block deployment |
 | **Model Routing** | Privacy Compliance | 100% | `test_model_router.py` | Zero confidential leaks permitted |
 | **Tool Execution** | Command Authorization | 100% fail-closed | `test_authorizer_hardening.py` | Untrusted auth tokens rejected |
-| **Fast-Path Latency** | Command-to-Execution | < 250ms | `gemini/bin/agyos fast` execution time | Optimize if startup > 500ms |
+| **Fast-Path Latency** | Command-to-Execution | < 250ms | `gemini/antigravity-cli/bin/agyos fast` execution time | Optimize if startup > 500ms |
 | **Memory Footprint** | Peak Process RSS | < 500MB | `/proc/self/statm` on Ubuntu | Kill agent if RSS > 1.5GB |
-| **Test Monotonicity**| Total Test Assertions | Monotonic | `gemini/bin/gate-check.sh` pre-commit | Total assertions must never decrease |
+| **Test Monotonicity**| Total Test Assertions | Monotonic | `gemini/antigravity-cli/bin/gate-check.sh` pre-commit | Total assertions must never decrease |
 
 ---
 
@@ -50,7 +50,7 @@ git status --short --branch
 node --version && python3 --version && bun --version
 
 # Run full baseline verification
-bash gemini/scripts/agyos-verify.sh
+bash gemini/antigravity-cli/builtin/scripts/agyos-verify.sh
 ```
 
 ### 3.2 Initializing the Private Encrypted Vault
@@ -58,23 +58,23 @@ The encrypted memory vault is stored outside the repository at `~/.local/state/a
 ```bash
 # Initialize vault via non-echoing file descriptor
 read -rs -p "Enter 16+ char vault passphrase: " VAULT_PASS; printf '\n'
-printf '%s' "$VAULT_PASS" | gemini/bin/agyos secure vault-init --passphrase-fd 0
+printf '%s' "$VAULT_PASS" | gemini/antigravity-cli/bin/agyos secure vault-init --passphrase-fd 0
 unset VAULT_PASS
 ```
 
 ### 3.3 Executing Model Routing & Context Checks
 ```bash
 # Check autonomous model selection and context economics
-gemini/bin/agyos model-route "implement user authentication with JWT"
+gemini/antigravity-cli/bin/agyos model-route "implement user authentication with JWT"
 
 # Verify privacy enforcement for confidential data
-gemini/bin/agyos model-route "process customer PII and card records" --sensitivity confidential
+gemini/antigravity-cli/bin/agyos model-route "process customer PII and card records" --sensitivity confidential
 ```
 
 ### 3.4 Context Window Compaction
 When active conversational context exceeds 65% of the effective window (~83,200 tokens for Gemini Flash), execute compaction:
 ```bash
-gemini/bin/agyos compact
+gemini/antigravity-cli/bin/agyos compact
 ```
 
 ---
@@ -85,10 +85,10 @@ gemini/bin/agyos compact
 - **Symptoms:** Agent repeating identical failing commands, `no_progress_strikes >= 3`, or unexpected token expenditure.
 - **Immediate Mitigation:**
   1. Terminate running subagent processes (`manage_subagents` kill action or `kill -9`).
-  2. Inspect `gemini/state/state.json` to verify `iteration_cap` (default 10) was not overridden.
+  2. Inspect `gemini/antigravity-cli/builtin/state/state.json` to verify `iteration_cap` (default 10) was not overridden.
   3. Reset gate to `IDLE`:
      ```bash
-     gemini/bin/agyos gate IDLE
+     gemini/antigravity-cli/bin/agyos gate IDLE
      ```
 
 ### 4.2 SEV-2: Corrupted Working Tree or Erroneous Code Mutations
@@ -96,13 +96,13 @@ gemini/bin/agyos compact
 - **Immediate Mitigation:**
   1. Execute safe single-branch rollback:
      ```bash
-     gemini/bin/agyos rollback
+     gemini/antigravity-cli/bin/agyos rollback
      ```
   2. Verify working tree cleanliness:
      ```bash
      git status --short
      ```
-  3. Pre-write snapshots are preserved in `gemini/state/snapshots/` and can be inspected if individual files need manual recovery.
+  3. Pre-write snapshots are preserved in `gemini/antigravity-cli/builtin/state/snapshots/` and can be inspected if individual files need manual recovery.
 
 ### 4.3 SEV-3: Memory Exhaustion (OOM) on 4GB Ubuntu
 - **Symptoms:** Host system responsiveness degrades, swap thrashing, Python/Node process killed by Linux OOM killer.
@@ -131,31 +131,31 @@ Before tagging or pushing any release to `origin/main`:
    ```bash
    make typecheck
    make lint
-   bash -n gemini/bin/agyos gemini/bin/rollback.sh gemini/scripts/agyos-verify.sh
-   node --check gemini/mcp/state-server.cjs
+   bash -n gemini/antigravity-cli/bin/agyos gemini/antigravity-cli/bin/rollback.sh gemini/antigravity-cli/builtin/scripts/agyos-verify.sh
+   node --check gemini/antigravity-cli/mcp/state-server.cjs
    ```
 
 2. **Automated Unit & Hardening Suite (Executed in GitHub Actions `.github/workflows/ci.yml`):**
    ```bash
    cd gemini && uv run python -m unittest discover -s scripts/tests -q
-   node --test gemini/scripts/tests/test_secure_envelope.cjs
-   node --test gemini/scripts/tests/test_private_vault.cjs
-   node --test gemini/scripts/tests/test_mcp_protocol.cjs
+   node --test gemini/antigravity-cli/builtin/scripts/tests/test_secure_envelope.cjs
+   node --test gemini/antigravity-cli/builtin/scripts/tests/test_private_vault.cjs
+   node --test gemini/antigravity-cli/builtin/scripts/tests/test_mcp_protocol.cjs
    ```
 
 3. **Privacy Audit:**
    ```bash
-   uv run python gemini/scripts/agyos-privacy-audit.py
+   uv run python gemini/antigravity-cli/builtin/scripts/agyos-privacy-audit.py
    ```
 
 4. **Canary Launch Gate Evaluation:**
    ```bash
-   uv run python gemini/scripts/canary_launch_gate.py
+   uv run python gemini/antigravity-cli/builtin/scripts/canary_launch_gate.py
    ```
 
 5. **Monotonic Test Ratchet:**
    ```bash
-   bash gemini/bin/gate-check.sh
+   bash gemini/antigravity-cli/bin/gate-check.sh
    ```
 
 ---
@@ -164,40 +164,40 @@ Before tagging or pushing any release to `origin/main`:
 
 ### 6.1 Workspace State Machine Architecture & Authoritative Storage
 AGYOS uses a dual-layer state architecture:
-1. **Primary Authoritative Store (`gemini/state/workspace-state.db`):** ACID transactional store managing `workspace_milestones` and `workspace_operations` tables with monotonically increasing revision counters, CAS conflict detection, and deterministic replay.
-2. **Projections (`gemini/state/state.json`, `gemini/state/CURRENT.md`):** Derived read-only summaries reconstructed from the authoritative database.
+1. **Primary Authoritative Store (`gemini/antigravity-cli/builtin/state/workspace-state.db`):** ACID transactional store managing `workspace_milestones` and `workspace_operations` tables with monotonically increasing revision counters, CAS conflict detection, and deterministic replay.
+2. **Projections (`gemini/antigravity-cli/builtin/state/state.json`, `gemini/antigravity-cli/builtin/state/CURRENT.md`):** Derived read-only summaries reconstructed from the authoritative database.
 
 ### 6.2 Disaster Recovery Drill: Reconstructing Corrupted State (<5 min MTTR)
-If `gemini/state/state.json` is corrupted, truncated, or removed:
+If `gemini/antigravity-cli/builtin/state/state.json` is corrupted, truncated, or removed:
 ```bash
 # 1. Inspect SQLite workspace status to identify the authoritative milestone and latest revision
-gemini/bin/agyos workspace status
+gemini/antigravity-cli/bin/agyos workspace status
 
 # 2. Re-project the authoritative state directly from SQLite
-gemini/bin/agyos workspace project <milestone_id>
+gemini/antigravity-cli/bin/agyos workspace project <milestone_id>
 
 # 3. If an explicit revision rollback is required:
-gemini/bin/agyos workspace restore <milestone_id> <target_revision>
+gemini/antigravity-cli/bin/agyos workspace restore <milestone_id> <target_revision>
 
 # 4. Verify working state integrity
-gemini/bin/agyos state
+gemini/antigravity-cli/bin/agyos state
 ```
 
 ### 6.3 Transactional Replay & In-Flight Crash Recovery
 If an operation process was terminated in mid-flight (power outage, kill -9):
 ```bash
 # Replay the operation idempotently; if already committed, returns existing result without mutation
-gemini/bin/agyos workspace replay <milestone_id> <operation_id>
+gemini/antigravity-cli/bin/agyos workspace replay <milestone_id> <operation_id>
 ```
 
 ### 6.4 Redacted Diagnostics Export
 To share system state or file an issue without disclosing user paths or secrets:
 ```bash
 # Export redacted diagnostic bundle
-gemini/bin/agyos diagnostics --output /tmp/agyos-diagnostic-bundle.json
+gemini/antigravity-cli/bin/agyos diagnostics --output /tmp/agyos-diagnostic-bundle.json
 
 # Preview redacted diagnostic bundle
-gemini/bin/agyos diagnostics --preview
+gemini/antigravity-cli/bin/agyos diagnostics --preview
 ```
 The export engine guarantees:
 - All `/home/*` and `/Users/*` paths are sanitized to `~`.
@@ -206,7 +206,7 @@ The export engine guarantees:
 
 ### 6.5 Storage Retention & Deletion Policy
 - **Disposable Diagnostics & CI Artifacts:** Retained for 7 days, then automatically purged.
-- **Pre-write Snapshots (`gemini/state/snapshots/`):** Retained for the duration of the active milestone, pruned upon milestone completion.
+- **Pre-write Snapshots (`gemini/antigravity-cli/builtin/state/snapshots/`):** Retained for the duration of the active milestone, pruned upon milestone completion.
 - **Authoritative Milestones & Audit Trails:** Retained locally until explicitly archived by the operator.
 
 ---

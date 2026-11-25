@@ -59,7 +59,7 @@ docker run -d --restart unless-stopped -p 8080:8080 ghcr.io/krishujeniya/agyos:l
 Deploy static documentation to Cloudflare Pages and configure edge bindings via Wrangler CLI:
 ```bash
 # Build and deploy _site directory to Cloudflare Pages
-uv run --with mistune python gemini/scripts/build_docs_site.py --out _site --base /
+uv run --with mistune python gemini/antigravity-cli/builtin/scripts/build_docs_site.py --out _site --base /
 wrangler pages deploy _site --project-name=agyos
 
 # Verify D1 and KV bindings status

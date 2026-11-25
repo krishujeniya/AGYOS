@@ -42,7 +42,7 @@ jobs:
         if: steps.check-secrets.outputs.has_secrets == 'true'
         run: |
           python -m pip install 'mistune==3.2.1'
-          python gemini/scripts/build_docs_site.py --out _site --base /
+          python gemini/antigravity-cli/builtin/scripts/build_docs_site.py --out _site --base /
 
       - name: Deploy Frontend to Cloudflare Pages
         if: steps.check-secrets.outputs.has_secrets == 'true'

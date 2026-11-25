@@ -1,4 +1,4 @@
-.PHONY: all dev test typecheck lint build clean help
+.PHONY: all dev test typecheck lint build install clean help
 
 # Default target
 all: test
@@ -11,6 +11,7 @@ help:
 	@echo "make typecheck   - Run Python bytecode compile check and JS syntax check"
 	@echo "make lint        - Run git hygiene and syntax checks"
 	@echo "make build       - Build static frontend bundle into _site/"
+	@echo "make install     - Install AGYOS/gemini into ~/.gemini (with backup)"
 	@echo "make clean       - Remove temporary caches and build artifacts"
 
 dev: build
@@ -19,12 +20,12 @@ dev: build
 
 test:
 	@echo "Running AGYOS tests..."
-	cd gemini && uv run python -m unittest discover -s scripts/tests -v
-	node --test gemini/scripts/tests/test_materialize_documents.mjs
+	cd gemini/antigravity-cli/builtin && uv run --with-requirements scripts/requirements.txt python -m unittest discover -s scripts/tests -v
+	node --test gemini/antigravity-cli/builtin/scripts/tests/test_materialize_documents.mjs
 
 typecheck:
 	@echo "Checking Python and frontend syntax..."
-	uv run python -m compileall gemini/agyos_decision gemini/scripts
+	uv run python -m compileall gemini/antigravity-cli/builtin/agyos_decision gemini/antigravity-cli/builtin/scripts
 	node --check frontend/site.js
 
 lint:
@@ -34,7 +35,11 @@ lint:
 
 build:
 	@echo "Building AGYOS static frontend into _site/..."
-	uv run --with mistune python gemini/scripts/build_docs_site.py --out _site --base /
+	uv run --with mistune python gemini/antigravity-cli/builtin/scripts/build_docs_site.py --out _site --base /
+
+install:
+	@echo "Installing AGYOS/gemini into ~/.gemini..."
+	bash gemini/antigravity-cli/builtin/scripts/install.sh
 
 clean:
 	@echo "Cleaning transient build caches..."

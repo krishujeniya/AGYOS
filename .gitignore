@@ -26,8 +26,6 @@ COPILOT.md
 copilot.md
 .pi/
 .claude/
-!gemini/skill-sources/jakeschincariol/promptmaster-skill/.claude/
-!gemini/skill-sources/jakeschincariol/promptmaster-skill/.claude/**
 .codex/
 .cursor/
 .cursorrules
@@ -64,14 +62,14 @@ pnpm-debug.log*
 .turbo/
 
 # AGYOS Runtime Binaries
-gemini/bin/council-bin
+gemini/antigravity-cli/bin/council-bin
 
 # AGYOS State, Snapshots & Telemetry
-gemini/state/snapshots/
-gemini/state/decisions/*.json
-gemini/state/state.json.lock
-gemini/state/telemetry/archive/
-gemini/state/checkpoints/archive/
+gemini/antigravity-cli/builtin/state/snapshots/
+gemini/antigravity-cli/builtin/state/decisions/*.json
+gemini/antigravity-cli/builtin/state/state.json.lock
+gemini/antigravity-cli/builtin/state/telemetry/archive/
+gemini/antigravity-cli/builtin/state/checkpoints/archive/
 strix_runs/
 _site/
 /media/
@@ -111,18 +109,16 @@ OLD
 
 # Skills and Agent documents in TOON format; do not commit materialized Markdown
 .agents/
-gemini/skills/**/*.md
-gemini/skills/*.md
-gemini/agents/*.md
-gemini/rules/*.md
-!gemini/rules/00-priority-rules.md
-gemini/workflows/*.md
-gemini/plugins/**/*.md
-gemini/skill-sources/**/*.md
-!gemini/skill-sources/**/README.md
-gemini/tools/**/skills/**.md
-gemini/tools/**/skills/**/*.md
-gemini/tools/video/**/SKILL.md
-gemini/tools/video/**/styles/**.md
-gemini/tools/video/**/styles/**/*.md
-gemini/tools/video/**/*.md
+gemini/antigravity-cli/builtin/skills/**/*.md
+gemini/antigravity-cli/builtin/skills/*.md
+gemini/antigravity-cli/builtin/agents/*.md
+gemini/antigravity-cli/builtin/rules/*.md
+!gemini/antigravity-cli/builtin/rules/00-priority-rules.md
+gemini/antigravity-cli/builtin/workflows/*.md
+gemini/config/plugins/**/*.md
+gemini/antigravity-cli/builtin/plugins/tools/**/skills/**.md
+gemini/antigravity-cli/builtin/plugins/tools/**/skills/**/*.md
+gemini/antigravity-cli/builtin/plugins/tools/video/**/SKILL.md
+gemini/antigravity-cli/builtin/plugins/tools/video/**/styles/**.md
+gemini/antigravity-cli/builtin/plugins/tools/video/**/styles/**/*.md
+gemini/antigravity-cli/builtin/plugins/tools/video/**/*.md

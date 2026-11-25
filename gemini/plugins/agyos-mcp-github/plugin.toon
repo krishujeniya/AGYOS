@@ -1,6 +1,0 @@
-name: "agyos-mcp-github"
-description: "remote MCP for AGYOS corporate operations. The GitHub official remote MCP server gives agents read access to pull requests, checks, code-scanning alerts and issues without local git state, which matches the zero-l..."
-version: "3.1.0"
-author: "Krish Ujeniya"
-logo: "assets/logo.svg"
-repository: "https://github.com/krishujeniya/AGYOS"

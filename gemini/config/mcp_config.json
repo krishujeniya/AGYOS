@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "agyos": {
+      "command": "node",
+      "args": [
+        "gemini/antigravity-cli/mcp/agyos-state-server.cjs"
+      ]
+    },
+    "obscura": {
+      "command": "node",
+      "args": [
+        "gemini/antigravity-cli/mcp/obscura-server.cjs"
+      ]
+    }
+  }
+}

@@ -4,7 +4,7 @@
 > Maintained By Krish Ujeniya (@krishujeniya).
 > Total skills documented: 2289
 > Total modular rules: 147
-> Total role agents: 185
+> Total role agents: 109
 > Total workflow pipelines: 100
 
 ## Core Operating Subsystems

@@ -22,24 +22,24 @@ preserved. No paid calls or global runtime installation are required.
 
 ## Implementation and checks
 
-Shared parsing lives in `gemini/agyos_decision/catalog.py`; routing lives in
-`gemini/agyos_decision/skills_router.py`. `gemini/scripts/agyos-decision.py`, `gemini/bin/agyos`, and
-`gemini/mcp/state-server.cjs` expose the same decision pipeline. Catalog generators read
+Shared parsing lives in `gemini/antigravity-cli/builtin/agyos_decision/catalog.py`; routing lives in
+`gemini/antigravity-cli/builtin/agyos_decision/skills_router.py`. `gemini/antigravity-cli/builtin/scripts/agyos-decision.py`, `gemini/antigravity-cli/bin/agyos`, and
+`gemini/antigravity-cli/mcp/state-server.cjs` expose the same decision pipeline. Catalog generators read
 the same metadata. Adapter checks, catalog generation, tests, and syntax checks
 run in GitHub Actions only. CI uploads generated indexes as
 `agyos-skill-catalog-generated` so a reviewed branch can receive them without a
 local build.
 
-GitHub Actions runs `python gemini/scripts/import_upstream_skill_packs.py --check`, both
+GitHub Actions runs `python gemini/antigravity-cli/builtin/scripts/import_upstream_skill_packs.py --check`, both
 catalog generators, the Python and Node suites, and shell/Python syntax checks.
 Download `agyos-skill-catalog-generated` from the matching Actions run when
 generated files need to be updated. Run full catalog generation and test suites in GitHub Actions.
 
 ## Operating contract
 
-Use `gemini/bin/agyos decide "<task>" --json --runbook`, or MCP `agyos_decision` with
+Use `gemini/antigravity-cli/bin/agyos decide "<task>" --json --runbook`, or MCP `agyos_decision` with
 `include_runbook: true`. Without the option, read `runbook_path` with the host's
-file reader or use `gemini/bin/agyos skill <primary_skill>`. Runbook references are
+file reader or use `gemini/antigravity-cli/bin/agyos skill <primary_skill>`. Runbook references are
 relative to `gemini/`, even when the CLI is started elsewhere.
 
 Scores and `confidence` are deterministic matching heuristics, not calibrated
@@ -80,6 +80,6 @@ hooks remain separate; no undocumented hook response fields are introduced.
 | --- | --- | --- |
 | Probability and fixed fast-path claims | Heuristic matching and explicit risk-aware complexity | Describe implemented behavior accurately. |
 | Selection shown without instructions | CLI/MCP optionally return the runbook | Make the next required action available. |
-| Specialist names copied as commands | Catalog entries use `gemini/bin/agyos skill <id>` | Give every entry a working local inspection command. |
+| Specialist names copied as commands | Catalog entries use `gemini/antigravity-cli/bin/agyos skill <id>` | Give every entry a working local inspection command. |
 
 The pre-commit assertion counter was also fixed to accept zero matches while still blocking assertion removal; two staged Git fixture regressions passed.

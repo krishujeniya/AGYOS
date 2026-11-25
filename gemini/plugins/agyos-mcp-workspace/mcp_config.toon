@@ -1,5 +1,0 @@
-mcpServers:
-  google-workspace: {'type': 'http', 'url': 'https://googleworkspace.googleapis.com/mcp/', 'env_ref': 'AGY_WORKSPACE_OAUTH_REF', 'tool_scope': ['drive:read', 'drive:write', 'docs:export']}
-
-# env_ref values resolve from GitHub Actions secrets or the operator environment.
-# No cloud account identifiers are stored in this repository.

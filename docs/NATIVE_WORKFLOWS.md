@@ -25,7 +25,7 @@ The main loop computes the diff, then calls the Workflow tool:
 
 ```jsonc
 Workflow({
-  scriptPath: "gemini/workflows/orch-review.workflow.js",
+  scriptPath: "gemini/antigravity-cli/builtin/workflows/orch-review.workflow.js",
   args: {
     diff: "<unified git diff text>",   // required
     language: "typescript",            // optional — selects a language reviewer
@@ -54,7 +54,7 @@ The main loop presents `blocking` at Gate 2; the human still approves the commit
 
 ## Invoking it
 
-`/orch-review` (`gemini/workflows/orch-review.toon`) is the command surface: it gathers the
+`/orch-review` (`gemini/antigravity-cli/builtin/workflows/orch-review.toon`) is the command surface: it gathers the
 diff (local uncommitted changes or a GitHub PR), calls this workflow, and reports
 the blocking/advisory split at Gate 2.
 

@@ -2,10 +2,10 @@
 
 ## Structure
 
-AGYOS stores `148` modular rules directly under `gemini/rules/` using Token-Oriented Object Notation (`.toon`) envelopes alongside the priority baseline `00-priority-rules.md`:
+AGYOS stores `148` modular rules directly under `gemini/antigravity-cli/builtin/rules/` using Token-Oriented Object Notation (`.toon`) envelopes alongside the priority baseline `00-priority-rules.md`:
 
 ```text
-gemini/rules/
+gemini/antigravity-cli/builtin/rules/
 ├── 00-priority-rules.md             # Global invariants (single main branch, uv-only, security)
 ├── agyos-*.toon                     # AGYOS lifecycle, handoff, legal/DSAR gates, memory & prompt principles
 ├── common-*.toon                    # Language-agnostic defaults (coding-style, git-workflow, testing, security, skill-routing)
@@ -24,13 +24,13 @@ gemini/rules/
 
 ## Rules vs Skills
 
-- **Rules** (`gemini/rules/`) define standing standards, constraints, and checklists that apply across tasks (for example `common-skill-routing.toon`, `agyos-git-workflow.toon`, `agyos-security.toon`).
-- **Skills** (`gemini/skills/<skill-name>/SKILL.toon` + `prompt.toon`) provide task-specific runbooks discovered on demand via `gemini/bin/agyos decide "<task>" --json --runbook` or `gemini/bin/agyos find "<query>"`.
+- **Rules** (`gemini/antigravity-cli/builtin/rules/`) define standing standards, constraints, and checklists that apply across tasks (for example `common-skill-routing.toon`, `agyos-git-workflow.toon`, `agyos-security.toon`).
+- **Skills** (`gemini/antigravity-cli/builtin/skills/<skill-name>/SKILL.toon` + `prompt.toon`) provide task-specific runbooks discovered on demand via `gemini/antigravity-cli/bin/agyos decide "<task>" --json --runbook` or `gemini/antigravity-cli/bin/agyos find "<query>"`.
 
 Rules state *what invariants and standards must hold*; skills provide *how to execute a specific task*.
 
 ## Rule Priority
 
-1. Global priority invariants (`gemini/rules/00-priority-rules.md`) and explicit user instructions take highest precedence.
+1. Global priority invariants (`gemini/antigravity-cli/builtin/rules/00-priority-rules.md`) and explicit user instructions take highest precedence.
 2. Language- or framework-specific rules override generic `common-*.toon` defaults when language idioms differ.
-3. Domain runbooks in `gemini/skills/` never override higher-priority authorization, scope, or repository safety rules.
+3. Domain runbooks in `gemini/antigravity-cli/builtin/skills/` never override higher-priority authorization, scope, or repository safety rules.

@@ -1,0 +1,24 @@
+# Transient Antigravity CLI runtime artifacts
+cache/
+crashes/
+log/
+cli.log
+conversation_summaries.db
+conversation_summaries.db-shm
+conversation_summaries.db-wal
+history.jsonl
+installation_id
+jetbox_summaries_proto.pb
+jetski_state.pbtxt
+last_check.timestamp
+annotations/
+implicit/
+presence/
+updater/
+voice_chats/
+brain/*
+!brain/.gitkeep
+conversations/*
+!conversations/.gitkeep
+scratch/*
+!scratch/.gitkeep

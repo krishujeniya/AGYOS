@@ -1,6 +1,0 @@
-name: "agyos-seo"
-description: "Technical SEO audits, Schema JSON-LD, sitemaps, E-E-A-T, and AI search answer citations."
-version: "3.1.0"
-author: "Krish Ujeniya"
-logo: "assets/logo.svg"
-repository: "https://github.com/krishujeniya/AGYOS"

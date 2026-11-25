@@ -41,9 +41,9 @@ body:
     attributes:
       label: Target Component
       options:
-        - "CLI & Developer Tooling (gemini/bin/agyos)"
-        - "Decision & Router Engine (gemini/agyos_decision)"
-        - "MCP State Server & Runtime (gemini/mcp)"
+        - "CLI & Developer Tooling (gemini/antigravity-cli/bin/agyos)"
+        - "Decision & Router Engine (gemini/antigravity-cli/builtin/agyos_decision)"
+        - "MCP State Server & Runtime (gemini/antigravity-cli/mcp)"
         - "Roles & Skills Catalog"
         - "Autonomous 7-Step Cycle"
         - "Static Docs Portal (frontend/)"

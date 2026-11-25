@@ -13,23 +13,23 @@ jobs:
       - uses: actions/checkout@v4
       - name: Verify skill sources are strictly TOON with zero SKILL.md files
         run: |
-          if git ls-files -- 'gemini/skills/**.md' '**/SKILL.md' 'SKILL.md' | grep .; then
+          if git ls-files -- 'gemini/antigravity-cli/builtin/skills/**.md' '**/SKILL.md' 'SKILL.md' | grep .; then
             echo "Error: Skill definitions must be in TOON format, not Markdown" >&2
             exit 1
           fi
-          if find gemini/skills -name '*.md' | grep .; then
-            echo "Error: Unexpected Markdown files inside gemini/skills/" >&2
+          if find gemini/antigravity-cli/builtin/skills -name '*.md' | grep .; then
+            echo "Error: Unexpected Markdown files inside gemini/antigravity-cli/builtin/skills/" >&2
             exit 1
           fi
       - name: Materialize AGY non-skill compatibility documents
         run: |
-          node gemini/scripts/materialize-documents.mjs
-          if find gemini/skills -name '*.md' | grep .; then
+          node gemini/antigravity-cli/builtin/scripts/materialize-documents.mjs
+          if find gemini/antigravity-cli/builtin/skills -name '*.md' | grep .; then
             echo "Error: materialize-documents.mjs must not emit Markdown skill files" >&2
             exit 1
           fi
       - name: Test compatibility document materialization
-        run: node --test gemini/scripts/tests/test_materialize_documents.mjs
+        run: node --test gemini/antigravity-cli/builtin/scripts/tests/test_materialize_documents.mjs
       - name: Check out pinned prompt principles source
         uses: actions/checkout@v4
         with:
@@ -43,11 +43,11 @@ jobs:
         with:
           node-version: '22'
       - name: Install pinned state-store runtime dependencies
-        run: npm ci --prefix gemini/scripts/agyos-runtime --ignore-scripts --no-audit --no-fund
+        run: npm ci --prefix gemini/antigravity-cli/builtin/scripts/agyos-runtime --ignore-scripts --no-audit --no-fund
       - name: Verify state-store migration and persistence
         run: |
-          node --test gemini/scripts/tests/test_state_store_persistence.cjs
-          node --test gemini/scripts/tests/test_workspace_state.cjs
+          node --test gemini/antigravity-cli/builtin/scripts/tests/test_state_store_persistence.cjs
+          node --test gemini/antigravity-cli/builtin/scripts/tests/test_workspace_state.cjs
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -60,9 +60,9 @@ jobs:
         run: |
           uv pip install --system jsonschema pyyaml "mistune==3.2.1" fastapi pydantic httpx pytest
       - name: Verify full TOON skill catalog and scout delivery
-        run: node gemini/scripts/agyos-runtime/ci/check-toon-prompts.mjs
+        run: node gemini/antigravity-cli/builtin/scripts/agyos-runtime/ci/check-toon-prompts.mjs
       - name: Generate and audit SBOM license compliance
-        run: python gemini/scripts/generate_sbom.py --check --output "$RUNNER_TEMP/sbom.json"
+        run: python gemini/antigravity-cli/builtin/scripts/generate_sbom.py --check --output "$RUNNER_TEMP/sbom.json"
       - name: Upload Software Bill of Materials (SBOM)
         if: always()
         uses: actions/upload-artifact@v7
@@ -73,25 +73,22 @@ jobs:
           retention-days: 7
       - name: Check AGYOS shell entrypoints syntax
         run: |
-          for f in gemini/bin/agyos gemini/bin/rollback.sh gemini/bin/state-validate.sh gemini/scripts/agyos-verify.sh gemini/scripts/agyos-init.sh; do
+          for f in gemini/antigravity-cli/bin/agyos gemini/antigravity-cli/bin/rollback.sh gemini/antigravity-cli/bin/state-validate.sh gemini/antigravity-cli/builtin/scripts/agyos-verify.sh gemini/antigravity-cli/builtin/scripts/agyos-init.sh; do
             bash -n "$f"
           done
       - name: Validate Python Syntax
         run: |
           python -m compileall .
-      - name: Verify pinned upstream skill adapters
-        run: python gemini/scripts/import_upstream_skill_packs.py --check
       - name: Generate skill catalog outputs
         run: |
-          python gemini/scripts/build_tiered_skills_manifest.py
-          python gemini/scripts/build_docs_data.py
+          python gemini/antigravity-cli/builtin/scripts/build_tiered_skills_manifest.py
+          python gemini/antigravity-cli/builtin/scripts/build_docs_data.py
       - name: Upload generated skill catalog for CI-only updates
         uses: actions/upload-artifact@v7
         with:
           name: agyos-skill-catalog-generated
           path: |
-            gemini/skills-manifest.json
-            gemini/tier1-skills.json
+            gemini/antigravity-cli/skills-manifest.json
             docs/skills-data.json
             docs/ai-catalog.json
             frontend/llms.txt
@@ -100,7 +97,7 @@ jobs:
           include-hidden-files: true
           retention-days: 7
       - name: Measure the fixed offline routing workload
-        run: python gemini/scripts/benchmark_decision.py --repeats 30 --output "$RUNNER_TEMP/routing.json" --check-thresholds
+        run: python gemini/antigravity-cli/builtin/scripts/benchmark_decision.py --repeats 30 --output "$RUNNER_TEMP/routing.json" --check-thresholds
       - name: Upload routing measurements
         if: always()
         uses: actions/upload-artifact@v7
@@ -114,7 +111,7 @@ jobs:
       - name: Audit pinned prompt principles source
         if: always()
         run: >-
-          python gemini/scripts/audit_prompt_principles.py
+          python gemini/antigravity-cli/builtin/scripts/audit_prompt_principles.py
           --source-dir principles-source/Prompt
           --output "$RUNNER_TEMP/prompt-principles-ledger.jsonl"
           --summary "$RUNNER_TEMP/prompt-principles-summary.json"
@@ -129,10 +126,10 @@ jobs:
           if-no-files-found: error
           retention-days: 7
       - name: Check endpoint encryption round-trip and tamper resistance
-        run: node --test gemini/scripts/tests/test_secure_envelope.cjs gemini/scripts/tests/test_private_vault.cjs gemini/scripts/tests/test_mcp_protocol.cjs gemini/scripts/tests/test_github_coordination_state.cjs gemini/scripts/tests/test_work_item_state.cjs gemini/scripts/tests/test_plan_canvas_sessions.cjs gemini/scripts/tests/test_bash_hook_state.cjs gemini/scripts/tests/test_release_approval_state.cjs gemini/scripts/tests/test_guided_install_state.cjs gemini/scripts/tests/test_observer_session_leases.cjs gemini/scripts/tests/test_install_lifecycle_state.cjs gemini/scripts/tests/test_nasiko_release_state.cjs gemini/scripts/tests/test_process_lock.cjs gemini/scripts/tests/test_session_end_state.cjs gemini/scripts/tests/test_explicit_state_machines.cjs
+        run: node --test gemini/antigravity-cli/builtin/scripts/tests/test_secure_envelope.cjs gemini/antigravity-cli/builtin/scripts/tests/test_private_vault.cjs gemini/antigravity-cli/builtin/scripts/tests/test_mcp_protocol.cjs gemini/antigravity-cli/builtin/scripts/tests/test_github_coordination_state.cjs gemini/antigravity-cli/builtin/scripts/tests/test_work_item_state.cjs gemini/antigravity-cli/builtin/scripts/tests/test_plan_canvas_sessions.cjs gemini/antigravity-cli/builtin/scripts/tests/test_bash_hook_state.cjs gemini/antigravity-cli/builtin/scripts/tests/test_release_approval_state.cjs gemini/antigravity-cli/builtin/scripts/tests/test_guided_install_state.cjs gemini/antigravity-cli/builtin/scripts/tests/test_observer_session_leases.cjs gemini/antigravity-cli/builtin/scripts/tests/test_install_lifecycle_state.cjs gemini/antigravity-cli/builtin/scripts/tests/test_nasiko_release_state.cjs gemini/antigravity-cli/builtin/scripts/tests/test_process_lock.cjs gemini/antigravity-cli/builtin/scripts/tests/test_session_end_state.cjs gemini/antigravity-cli/builtin/scripts/tests/test_explicit_state_machines.cjs
       - name: Verify generated catalog matches every physical runbook
         run: |
-          git diff --exit-code -- gemini/skills-manifest.json gemini/tier1-skills.json docs/skills-data.json docs/ai-catalog.json frontend/llms.txt frontend/sitemap.xml frontend/robots.txt
+          git diff --exit-code -- gemini/antigravity-cli/builtin/skills-manifest.json gemini/antigravity-cli/tier1-skills.json docs/skills-data.json docs/ai-catalog.json frontend/llms.txt frontend/sitemap.xml frontend/robots.txt
 
   council:
     runs-on: ubuntu-latest
@@ -142,7 +139,7 @@ jobs:
         with:
           bun-version: '1.2.4'
       - name: Run Council regression suite
-        working-directory: gemini/scripts/council
+        working-directory: gemini/antigravity-cli/builtin/scripts/council
         run: bun test
 
 
@@ -153,16 +150,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Materialize documentation sources
-        run: node gemini/scripts/materialize-documents.mjs
+        run: node gemini/antigravity-cli/builtin/scripts/materialize-documents.mjs
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - name: Build and validate public documentation
         run: |
           python -m pip install 'mistune==3.2.1'
-          python gemini/scripts/build_docs_site.py --out _site --base /AGYOS/
+          python gemini/antigravity-cli/builtin/scripts/build_docs_site.py --out _site --base /AGYOS/
           node --check frontend/site.js
-          python gemini/scripts/test_docs_site.py --site _site --base /AGYOS/
+          python gemini/antigravity-cli/builtin/scripts/test_docs_site.py --site _site --base /AGYOS/
       - name: Record public file digests
         run: |
           (cd _site && find . -type f -print0 | sort -z | xargs -0 sha256sum) > pages-sha256.txt

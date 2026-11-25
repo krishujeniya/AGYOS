@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "agyos": {
+      "command": "node",
+      "args": [
+        "gemini/antigravity-cli/mcp/agyos-state-server.cjs"
+      ]
+    }
+  }
+}

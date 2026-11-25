@@ -15,7 +15,7 @@
 
 AGYOS is an autonomous operating system and multi-agent execution kernel for AGY CLI. It is built for solopreneurs, independent operators, and autonomous agent swarms to plan, build, review, test, and ship software under strict engineering invariants.
 
-The system combines a Python cognitive decision kernel (`gemini/agyos_decision/`), a static documentation and catalog frontend (`frontend/`), and a Node.js MCP state server (`gemini/mcp/`) with an enterprise organization of 104 operational roles across 12 departments, a TOON-native 2,289-skill catalog, a Token-Oriented Object Notation (TOON) codec, and an automated 7-step cycle (`Think -> Plan -> Build -> Review -> Test -> Ship -> Reflect`).
+The system combines a Python cognitive decision kernel (`gemini/antigravity-cli/builtin/agyos_decision/`), a static documentation and catalog frontend (`frontend/`), and a Node.js MCP state server (`gemini/antigravity-cli/mcp/`) with an enterprise organization of 104 operational roles across 12 departments, a TOON-native 2,289-skill catalog, a Token-Oriented Object Notation (TOON) codec, and an automated 7-step cycle (`Think -> Plan -> Build -> Review -> Test -> Ship -> Reflect`).
 
 ---
 
@@ -41,7 +41,7 @@ flowchart TD
         S6 --> S7["7. Reflect<br/><code>AI_HANDOFF & Milestone Close</code>"]
     end
 
-    subgraph StorageEngine["3. Transactional State & Memory (gemini/mcp/ & gemini/agyos_decision/)"]
+    subgraph StorageEngine["3. Transactional State & Memory (gemini/antigravity-cli/mcp/ & gemini/antigravity-cli/builtin/agyos_decision/)"]
         direction TB
         SQLite[("ACID SQLite State<br/><code>Monotonic Revisions • CAS</code>")]
         Outbox["R3 Outbox & Snapshots<br/><code>state_ledger.py • Pre-Write Backup</code>"]
@@ -52,8 +52,8 @@ flowchart TD
 
     subgraph RuntimeLayer["4. Static Frontend, Docs & TOON Codec"]
         Frontend["Static Frontend & SEO (frontend/)<br/><code>index.html • catalog.html • sitemap.xml • llms.txt</code>"]
-        SiteGen["Static Builder (gemini/scripts/build_docs_site.py)<br/><code>Allowlisted Docs • Search Index</code>"]
-        Codec["TOON Codec Engine (gemini/agyos_decision/toon_codec.py)<br/><code>Typed Parsing • Exact Encoding</code>"]
+        SiteGen["Static Builder (gemini/antigravity-cli/builtin/scripts/build_docs_site.py)<br/><code>Allowlisted Docs • Search Index</code>"]
+        Codec["TOON Codec Engine (gemini/antigravity-cli/builtin/agyos_decision/toon_codec.py)<br/><code>Typed Parsing • Exact Encoding</code>"]
     end
 
     subgraph ReleaseGate["5. Gated Verification & Delivery"]
@@ -87,11 +87,11 @@ The repository is organized into modular Python, Node.js, and static frontend su
 
 | Component | Path | Responsibility |
 |:---|:---|:---|
-| **Decision Kernel** | `gemini/agyos_decision/` | Intent compilation, Howard 1966 EVPI, 104-role matrix, TOON codec/compiler, and 7-step cycle |
-| **CLI Dispatcher** | `gemini/bin/agyos` | Unified CLI entry point across routing, TOON skills, verification, and lifecycle |
-| **MCP Daemon** | `gemini/mcp/state-server.cjs` | Zero-dependency stdio JSON-RPC 2.0 server exposing state, memory, and TOON skill search |
+| **Decision Kernel** | `gemini/antigravity-cli/builtin/agyos_decision/` | Intent compilation, Howard 1966 EVPI, 104-role matrix, TOON codec/compiler, and 7-step cycle |
+| **CLI Dispatcher** | `gemini/antigravity-cli/bin/agyos` | Unified CLI entry point across routing, TOON skills, verification, and lifecycle |
+| **MCP Daemon** | `gemini/antigravity-cli/mcp/state-server.cjs` | Zero-dependency stdio JSON-RPC 2.0 server exposing state, memory, and TOON skill search |
 | **Frontend Portal** | `frontend/` | Static documentation templates, skill catalog UI, and SEO files (`sitemap.xml`, `robots.txt`, `llms.txt`) |
-| **Scripts & CI** | `gemini/scripts/` | Site/catalog builders, TOON validators, security scanners, benchmarks, and state-store tests |
+| **Scripts & CI** | `gemini/antigravity-cli/builtin/scripts/` | Site/catalog builders, TOON validators, security scanners, benchmarks, and state-store tests |
 | **Deployment** | `deploy/` | Docker and Cloudflare Pages deployment manifests |
 
 ---
@@ -106,7 +106,7 @@ AGYOS executes engineering workflows autonomously through a 7-step cycle without
 4. **Review:** Independent Checker audit for code quality, secret leakage, OWASP Top 10 vulnerabilities, and git hygiene.
 5. **Test:** Monotonic remote static and integration verification strictly via GitHub Actions.
 6. **Ship:** Delivery strictly to the single `main` branch under verified author identity after passing all gates.
-7. **Reflect:** Logs structured handoffs, updates `gemini/state/CURRENT.md` and milestone checkpoints, and records durable memory.
+7. **Reflect:** Logs structured handoffs, updates `gemini/antigravity-cli/builtin/state/CURRENT.md` and milestone checkpoints, and records durable memory.
 
 ---
 
@@ -134,49 +134,65 @@ AGYOS models an enterprise organization partitioned into 12 functional departmen
 
 ---
 
+## One-Line Install (`~/.gemini`)
+
+Replace or sync your local `~/.gemini` directory with `AGYOS/gemini/` (automatically creates a timestamped backup of `~/.gemini` first):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/krishujeniya/AGYOS/main/gemini/antigravity-cli/builtin/scripts/install.sh | bash
+```
+
+Or from a local clone:
+
+```bash
+git clone https://github.com/krishujeniya/AGYOS.git && cd AGYOS && make install
+```
+
+---
+
 ## Quickstart & CLI Commands
 
 ### 1. Skill Discovery & Selection
 ```bash
 # Select optimal skill and inspect instructions
-gemini/bin/agyos decide "debug concurrent async Rust actor" --json --runbook
+gemini/antigravity-cli/bin/agyos decide "debug concurrent async Rust actor" --json --runbook
 
 # Search catalog across 2,289 capabilities
-gemini/bin/agyos find "database migration reversal"
+gemini/antigravity-cli/bin/agyos find "database migration reversal"
 
 # Display specific runbook
-gemini/bin/agyos skill database-migrations
+gemini/antigravity-cli/bin/agyos skill database-migrations
 ```
 
 ### 2. Autonomous Cycle Dispatch
 ```bash
 # Execute end-to-end 7-step autonomous cycle
-gemini/bin/agyos cycle "Implement tenant isolation adapter with W3C PROV receipt"
+gemini/antigravity-cli/bin/agyos cycle "Implement tenant isolation adapter with W3C PROV receipt"
 
 # Read active operational state and current gate
-gemini/bin/agyos state
+gemini/antigravity-cli/bin/agyos state
 ```
 
 ### 3. Role Matrix Inspection
 ```bash
 # List enterprise roles
-gemini/bin/agyos roles
+gemini/antigravity-cli/bin/agyos roles
 
 # Inspect specific role profile
-gemini/bin/agyos role role-solopreneur-operator
+gemini/antigravity-cli/bin/agyos role role-solopreneur-operator
 ```
 
 ### 4. TOON Codec & Compilation
 ```bash
 # Compile role definition into TOON
-gemini/bin/agyos toon-agent role-swe --compact
+gemini/antigravity-cli/bin/agyos toon-agent role-swe --compact
 
 # Compile skill runbook into compact TOON card
-gemini/bin/agyos toon-skill software-architecture --compact
+gemini/antigravity-cli/bin/agyos toon-skill software-architecture --compact
 
 # Encode or minify TOON documents
-gemini/bin/agyos toon encode --input sample.json --output sample.toon
-gemini/bin/agyos toon minify --input sample.toon
+gemini/antigravity-cli/bin/agyos toon encode --input sample.json --output sample.toon
+gemini/antigravity-cli/bin/agyos toon minify --input sample.toon
 ```
 
 ---
@@ -186,8 +202,8 @@ gemini/bin/agyos toon minify --input sample.toon
 - [Developer Setup](docs/setup.md) — Prerequisites (`uv`, Node 22+), local loadless checks, and `Makefile` targets
 - [System Architecture](docs/ARCHITECTURE.md) — 6-layer cognitive architecture, 5 pods, 104 roles, and EVPI/Saga controls
 - [Skill Routing](docs/SKILL_ROUTING.md) — Discovery contract across the 2,289 TOON skills
-- [Rules & Standards](docs/RULES.md) — Modular rule library (`gemini/rules/`) and precedence
-- [Native Workflows](docs/NATIVE_WORKFLOWS.md) — Background multi-agent workflow scripts (`gemini/workflows/`)
+- [Rules & Standards](docs/RULES.md) — Modular rule library (`gemini/antigravity-cli/builtin/rules/`) and precedence
+- [Native Workflows](docs/NATIVE_WORKFLOWS.md) — Background multi-agent workflow scripts (`gemini/antigravity-cli/builtin/workflows/`)
 - [Operations Runbook](docs/OPERATIONS_RUNBOOK.md) — SLOs, vault setup, compaction, and disaster recovery
 - [Host Compatibility](docs/HOST_COMPATIBILITY.md) — Qualified interfaces and host verification limits
 - [Deployment Guide](docs/deployment.md) — Cloudflare Pages (`agyos.pages.dev`) and Docker deployment
@@ -227,7 +243,7 @@ AGYOS/
 ├── deploy/                            # docker/ (Dockerfile, compose)
 ├── docs/                              # Architecture, setup, deployment, runbooks & catalog JSON
 ├── frontend/                          # Static documentation portal, catalog UI, and SEO files
-├── gemini/                            # Decision kernel, CLI (bin/agyos), MCP servers, 2,289 skills, 185 agents, 148 rules, 101 workflows, 13 plugins, scripts & state
+├── gemini/                            # Mirrors ~/.gemini/ (config/ + antigravity-cli/builtin/ with 2,289 role-based skills, 109 agents, 13 plugins, MCP, state)
 ├── .editorconfig                      # Consistent indentation/line-endings across IDEs
 ├── .gitignore                         # Combined Node, Python, Cloudflare, OS & agent hygiene rules
 ├── CHANGELOG.md                       # Version history & release notes

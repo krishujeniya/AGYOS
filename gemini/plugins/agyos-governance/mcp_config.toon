@@ -1,2 +1,0 @@
-mcpServers:
-  agyos: {'command': 'node', 'args': ['/home/ai/Documents/projects/Freelance/AGYOS/gemini/mcp/agyos-state-server.cjs']}

@@ -21,7 +21,7 @@ body:
       label: Steps to Reproduce
       description: Clear steps to reproduce the issue.
       placeholder: |
-        1. Run `gemini/bin/agyos decide ""`
+        1. Run `gemini/antigravity-cli/bin/agyos decide ""`
         2. Observe exception output
     validations:
       required: true
@@ -45,9 +45,9 @@ body:
     attributes:
       label: Component Affected
       options:
-        - "CLI (gemini/bin/agyos)"
-        - "AGYOS Decision Kernel (gemini/agyos_decision)"
-        - "MCP State Server (gemini/mcp/state-server.cjs)"
+        - "CLI (gemini/antigravity-cli/bin/agyos)"
+        - "AGYOS Decision Kernel (gemini/antigravity-cli/builtin/agyos_decision)"
+        - "MCP State Server (gemini/antigravity-cli/mcp/state-server.cjs)"
         - "Skills Catalog (2,289 Skills)"
         - "104-Role Matrix"
         - "Static Docs Portal (frontend/)"
