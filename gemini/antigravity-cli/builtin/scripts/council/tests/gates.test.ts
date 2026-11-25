@@ -4,7 +4,7 @@ import { resolve } from "path";
 
 const repoRoot = resolve(import.meta.dir, "../../..");
 const rulesDir = resolve(repoRoot, "rules");
-const pluginsDir = resolve(repoRoot, "plugins");
+const pluginsDir = resolve(repoRoot, "../..", "config/plugins");
 
 describe("AGYOS SDLC Gates & Handoff Contracts", () => {
   test("handoff contract rule exists and specifies schema", () => {
@@ -51,10 +51,10 @@ describe("AGYOS SDLC Gates & Handoff Contracts", () => {
     const hooksFile = resolve(pluginsDir, "agyos-policy-guard/hooks.json");
     expect(existsSync(hooksFile)).toBe(true);
     const parsed = JSON.parse(readFileSync(hooksFile, "utf8"));
-    expect(Array.isArray(parsed.hooks)).toBe(true);
-    const events = parsed.hooks.map((h: { event: string }) => h.event);
-    expect(events).toContain("PreToolUse");
-    expect(events).toContain("PostToolUse");
-    expect(events).toContain("Stop");
+    const guard = parsed["agyos-guard"];
+    expect(typeof guard).toBe("object");
+    expect(Array.isArray(guard.PreToolUse)).toBe(true);
+    expect(Array.isArray(guard.PostToolUse)).toBe(true);
+    expect(Array.isArray(guard.Stop)).toBe(true);
   });
 });

@@ -5,9 +5,9 @@ import { dirname, join } from 'node:path'
 import { decode, encode } from '@toon-format/toon'
 
 // Reference spec revision 009074d934289553a61763d70c50ee5160e60110.
-const geminiPrefix = existsSync('gemini/antigravity-cli/builtin/skills') ? 'gemini/antigravity-cli/' : ''
-const skillsPrefix = geminiPrefix ? `${geminiPrefix}builtin/skills/` : 'skills/'
-const directory = `${skillsPrefix}role-swe/agyos-scout`
+const cliPrefix = existsSync('gemini/antigravity-cli/builtin/skills') ? 'gemini/antigravity-cli/' : ''
+const skillsPrefix = cliPrefix ? `${cliPrefix}builtin/skills/` : 'skills/'
+const directory = `${skillsPrefix}role-agentic-workflow-architect/agyos-scout`
 const source = readFileSync(directory + '/prompt.toon', 'utf8')
 const manifest = decode(readFileSync(directory + '/SKILL.toon', 'utf8'), { strict: true })
 const prompt = decode(source, { strict: true })
@@ -16,7 +16,7 @@ assert.equal(prompt.steps.length, 4)
 assert.equal(prompt.output.maximum_tokens, 1000)
 assert.deepEqual(decode(encode(prompt)), prompt)
 assert.ok(manifest.header.includes('\nprompt-source: prompt.toon\n'))
-assert.equal(execFileSync('bash', [`${geminiPrefix}bin/agyos`, 'skill', prompt.skill], {encoding: 'utf8'}), source)
+assert.equal(execFileSync('bash', [`${cliPrefix}bin/agyos`, 'skill', prompt.skill], {encoding: 'utf8'}), source)
 
 const toonManifests = execFileSync('git', ['ls-files', '-z', '--', `${skillsPrefix}*/*/SKILL.toon`, `${skillsPrefix}*/*/SKILL.md.toon`], { encoding: 'utf8', maxBuffer: 8 << 20 }).split('\0').filter(Boolean)
 const sources = new Set(execFileSync('git', ['ls-files', '-z', '--', `${skillsPrefix}*/*/prompt.toon`], { encoding: 'utf8' }).split('\0').filter(Boolean))
