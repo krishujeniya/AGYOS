@@ -127,11 +127,11 @@ class BaseAnalyzer:
     name = "base"
     delay = 1.0
 
-    def __init__(self, buffer, bus):
+    def __init__(self, buffer, bus, available=True):
         self.buffer = buffer
         self.bus = bus
         self.error = None
-        self.available = True
+        self.available = available
         self._seen = set()
 
     def _new_segments(self):
@@ -223,12 +223,10 @@ class TranscriptAnalyzer(BaseAnalyzer):
     delay = 1.0
 
     def __init__(self, buffer, bus, model=None, device="cpu", enabled=True):
-        super().__init__(buffer, bus)
+        super().__init__(buffer, bus, available=bool(enabled))
         self.model = model
         self.device = device
         self.enabled = enabled
-        if not enabled:
-            self.available = False
         self.words = []
         self._next = 0.0
 
@@ -273,13 +271,11 @@ class ChatAnalyzer(BaseAnalyzer):
     delay = 1.0
 
     def __init__(self, buffer, bus, platform="generic", channel="", enabled=True):
-        super().__init__(buffer, bus)
+        super().__init__(buffer, bus, available=bool(enabled and platform == "twitch" and channel))
         self.platform = platform
         self.channel = channel
         self.enabled = enabled
         self.counts = []
-        if not enabled or platform != "twitch" or not channel:
-            self.available = False
 
     def _decode(self, path):
         return self._read_twitch() if self.platform == "twitch" else []

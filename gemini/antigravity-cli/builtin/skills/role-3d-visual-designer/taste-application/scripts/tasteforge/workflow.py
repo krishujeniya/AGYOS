@@ -225,12 +225,11 @@ class _SafeOutput:
 
     def prepare(self, directories: tuple[str, ...]) -> None:
         """Validate every known intermediate before the first artifact write."""
-        opened: list[int] = []
-        try:
-            for directory in directories:
-                opened.append(self._open_dir((directory,), create=True))
-        finally:
-            for descriptor in opened:
+        for directory in directories:
+            descriptor = self._open_dir((directory,), create=True)
+            try:
+                pass
+            finally:
                 os.close(descriptor)
 
     def write_json(self, relative: str, payload: Any) -> None:

@@ -68,6 +68,7 @@ def _fix_tokenizer_config(path: str):
                 try:
                     os.chmod(tmp_file, os.stat(cfg_file).st_mode & 0o777)
                 except OSError:
+                    # Best-effort permission preservation; ignore if chmod is unsupported.
                     pass
                 os.replace(tmp_file, cfg_file)
             except Exception:
