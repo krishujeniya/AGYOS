@@ -507,11 +507,16 @@ print(session.phase_plan())
       echo "Usage: agyos skill <skill-name>" >&2
       exit 1
     fi
-    skill_file="skills/${target_skill}/SKILL.toon"
-    if [[ ! -f "$skill_file" && -f "skills/.system/${target_skill}/SKILL.toon" ]]; then
-      skill_file="skills/.system/${target_skill}/SKILL.toon"
+    skill_file=""
+    if [[ "$target_skill" =~ ^[a-z0-9][a-z0-9_-]*$ ]]; then
+      for candidate in builtin/skills/*/"${target_skill}/SKILL.toon" builtin/skills/"${target_skill}/SKILL.toon"; do
+        if [[ -f "$candidate" ]]; then
+          skill_file="$candidate"
+          break
+        fi
+      done
     fi
-    if [[ "$target_skill" =~ ^[a-z0-9][a-z0-9_-]*$ && -f "$skill_file" ]]; then
+    if [[ -n "$skill_file" && -f "$skill_file" ]]; then
       run_py - "$skill_file" <<'PYTHON'
 from pathlib import Path
 import sys
