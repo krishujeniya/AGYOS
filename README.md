@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/agyos-logo.svg" alt="AGYOS" width="180" />
+  <img src="assets/logo.svg" alt="AGYOS" width="180" />
 </p>
 
 <h1 align="center">AGYOS</h1>
