@@ -219,9 +219,6 @@ AGYOS/
 │   │   ├── ci.yml                     # Lint, typecheck, TOON/catalog validation & tests
 │   │   ├── deploy.yml                 # Auto-deploy static portal on push to main (Cloudflare Pages)
 │   │   ├── codeql.yml                 # Automated CodeQL security scanning
-│   │   ├── security-toolkits.yml      # Strix security toolkit static checks
-│   │   ├── strix-security.yml         # Strix security verification & scan
-│   │   ├── video-toolkits.yml         # Video pipeline static checks & smoke render
 │   │   └── docker-publish.yml         # Verified container publication to GHCR
 │   ├── ISSUE_TEMPLATE/
 │   │   ├── bug_report.yml             # Structured bug report form
