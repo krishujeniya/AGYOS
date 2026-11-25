@@ -25,7 +25,9 @@ html,body{overflow-x:clip}
 .hero{min-height:0;display:block;background:linear-gradient(180deg,var(--white) 0%,var(--paper) 100%);border-bottom:1px solid var(--border)}
 .hero-content{align-items:center;min-height:min(640px,calc(100svh - 78px));padding-top:clamp(70px,10vh,112px);padding-bottom:clamp(70px,10vh,112px)}
 .hero-copy{min-width:0;width:100%;max-width:780px}
-.hero-install{width:100%;max-width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;margin:28px 0 0;padding:6px 10px 6px 16px;background:#0d0d0d;border:1px solid #262626;border-radius:12px}
+.hero-install-wrap{margin-top:28px;width:100%}
+.hero-install-title{display:block;font:600 12px var(--mono);color:var(--muted);margin-bottom:8px;letter-spacing:.02em}
+.hero-install{width:100%;max-width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0;padding:6px 10px 6px 16px;background:#0d0d0d;border:1px solid #262626;border-radius:12px}
 .hero-install pre{margin:0;padding:8px 0;flex:1;min-width:0;overflow-x:auto;color:#f5f5f5;font:12px/1.6 var(--mono);scrollbar-width:thin}
 .hero-copy-btn{flex-shrink:0;white-space:nowrap}
 .hero h1{font:600 clamp(3.2rem,6.6vw,6.6rem)/1.04 var(--display);letter-spacing:-.065em;max-width:850px;margin:0 0 28px;overflow-wrap:break-word}
