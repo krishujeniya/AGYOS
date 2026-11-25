@@ -10,9 +10,13 @@
 **Application Type**: Autonomous Agent Operating System & Skills Knowledge Engine
 
 ### Declared Service Topology
-- **`agyos_engine`**: Python documentation server & agent runtime tooling (Port: `8080`)
+- **`agyos_engine`**: Multi-stage Python `3.12.9-slim-bookworm` container that builds the static documentation and skill catalog portal via `build_docs_site.py` and serves it on port `8080` as a non-root user (`agyos`, uid `1001`).
 
-All services are orchestrated via `deploy/docker/docker-compose.yml` with isolated internal bridge networking, non-root system users (uid 1001), and layer-cached multi-stage container builds.
+All container services are orchestrated via `deploy/docker/docker-compose.yml` with isolated bridge networking (`agyos-net`), health checks, and layer-cached multi-stage builds (`deploy/docker/Dockerfile`).
+
+### Automated CI/CD Pipelines
+- **Cloudflare Pages (`.github/workflows/deploy.yml`)**: Automatically builds `_site/` with `mistune` and deploys to `agyos.pages.dev` on pushes to `main` (when `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` secrets are configured).
+- **Container Registry (`.github/workflows/docker-publish.yml`)**: Builds and publishes container images to GitHub Container Registry (`ghcr.io/krishujeniya/agyos`).
 
 ---
 

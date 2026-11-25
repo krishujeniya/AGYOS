@@ -42,10 +42,8 @@ git status
 
 ### 2. Python Runtime & Dependencies (`uv` Only)
 ```bash
-# Install pinned script dependencies via uv
-uv pip install --system -r gemini/antigravity-cli/builtin/scripts/requirements.txt
-# Verify syntax
-uv run python -m py_compile gemini/antigravity-cli/builtin/agyos_decision/catalog.py
+# Verify Python syntax across decision kernel and scripts
+uv run --with-requirements gemini/antigravity-cli/builtin/scripts/requirements.txt python -m compileall gemini/antigravity-cli/builtin/agyos_decision gemini/antigravity-cli/builtin/scripts
 ```
 
 ### 3. Static Frontend & Docs Verification
@@ -59,16 +57,25 @@ node --check frontend/site.js
 ## Unified Makefile Targets
 
 ```bash
+# Build static frontend and serve locally on http://127.0.0.1:8000
+make dev
+
 # Fast test suite
 make test
 
-# Type checking across frontend and backend
+# Syntax and bytecode checks across Python and frontend JS
 make typecheck
 
-# Production builds
+# Git whitespace hygiene and JS syntax checks
+make lint
+
+# Build static frontend bundle into _site/
 make build
 
-# Clean temporary caches
+# Install AGYOS/gemini into ~/.gemini (with timestamped backup)
+make install
+
+# Clean temporary caches and _site/
 make clean
 ```
 

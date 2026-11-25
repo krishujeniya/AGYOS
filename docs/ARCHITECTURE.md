@@ -85,7 +85,7 @@ flowchart TD
 Inspired by the virtual memory paging architectures of MemGPT and Letta:
 - **Tier 0 (Core Working Memory)**: Active persona, user preferences, runtime identity, and inviolable invariants stored in `gemini/antigravity-cli/builtin/state/memory.json`. Loaded into the active prompt.
 - **Tier 1 (Recall Memory / Cache)**: Conversation summaries, milestone checkpoints (`gemini/antigravity-cli/builtin/state/checkpoints/`), and current session status (`gemini/antigravity-cli/builtin/state/CURRENT.md`).
-- **Tier 2 (Archival Memory / Deep Storage)**: The 2,289-runbook physical catalog, indexed in `gemini/antigravity-cli/builtin/skills-manifest.json` and `docs/skills-data.json`, paged into context JIT via `agyos_find_skill`.
+- **Tier 2 (Archival Memory / Deep Storage)**: The 2,289-skill catalog across 103 role-based skill packs (`gemini/antigravity-cli/builtin/skills/role-*/`), indexed in `gemini/antigravity-cli/skills-manifest.json` and `docs/skills-data.json`, paged into context JIT via `agyos_find_skill`.
 
 ### Layer 2: FastMCP Syscall & Driver Bus
 - **Driver**: `gemini/antigravity-cli/mcp/state-server.cjs` (Zero-dependency stdio JSON-RPC 2.0 daemon, with `gemini/antigravity-cli/mcp/agyos-state-server.cjs` as compatibility wrapper)
@@ -109,7 +109,7 @@ Implements the deterministic Standard Operating Procedure (SOP) paradigm proven 
                                  └───► [FAST-PATH: IMPLEMENT ➔ VERIFY]
 ```
 - **Dual-Layer State Engine**:
-  - **Primary Authoritative Store**: ACID SQLite database (`gemini/antigravity-cli/builtin/state/workspace-state.db`) with schema migrations, monotonically increasing revision numbers, compare-and-swap (CAS) conflict rejection, and idempotent operation replay.
+  - **Primary Authoritative Store**: ACID SQLite database managed by `gemini/antigravity-cli/builtin/scripts/agyos-runtime/` (`workspace-state.db`) with schema migrations, monotonically increasing revision numbers, compare-and-swap (CAS) conflict rejection, and idempotent operation replay.
   - **Projections**: Read-only human/tool summaries (`gemini/antigravity-cli/builtin/state/state.json`, `gemini/antigravity-cli/builtin/state/CURRENT.md`) reconstructed from the authoritative SQLite tables.
 - **Gate Transitions**: Programmatically locked and validated under `gemini/antigravity-cli/bin/state.sh` and `gemini/antigravity-cli/bin/workspace-state.cjs`.
 - **Fast-Path Router**: Complexity $\le 2$ bypasses Gates 1–3, avoiding bureaucracy for minor edits.
@@ -118,23 +118,23 @@ Implements the deterministic Standard Operating Procedure (SOP) paradigm proven 
 Synthesizes company-wide operations across all 12 corporate departments and 104 specialized roles into 5 merged operational pods with bounded tree depth (L0 Coordinator -> L1 Pod -> L2 Leaf Worker), eliminating O(N^2) horizontal chatter:
 
 #### 1. The 5 Governing Operational Pods
-1. **`pod-growth` (`gemini/antigravity-cli/agents/pod-growth.toon` & `gemini/antigravity-cli/builtin/skills/sop-growth/`)**:
+1. **`pod-growth` (`gemini/antigravity-cli/builtin/agents/pod-growth.toon`)**:
    - Covers: Marketing, Lead Generation, Sales & BD, Partnerships.
    - Deliverables: Audience segmentation, lawful prospect lists, proposals, ad campaigns.
    - Boundaries: Zero invented testimonials; approval before publishing or live sends.
-2. **`pod-customer` (`gemini/antigravity-cli/agents/pod-customer.toon` & `gemini/antigravity-cli/builtin/skills/sop-customer/`)**:
+2. **`pod-customer` (`gemini/antigravity-cli/builtin/agents/pod-customer.toon`)**:
    - Covers: Customer Onboarding, Technical Support, Success & Retention, Documentation.
    - Deliverables: Setup checklists, diagnostic reports, policy-adherent customer replies, API docs.
    - Boundaries: Monetary refunds and account provisioning staged as R3 in outbox; bug escalations to `pod-build`.
-3. **`pod-build` (`gemini/antigravity-cli/agents/pod-build.toon` & `gemini/antigravity-cli/builtin/skills/sop-build/`)**:
+3. **`pod-build` (`gemini/antigravity-cli/builtin/agents/pod-build.toon`)**:
    - Covers: Executive CTO/VP, Product Management, Software Engineering, Data & AI, Design, IT & Platform.
    - Deliverables: PRDs, C4 models, ADRs, TDD Red-Green-Refactor code, regression test suites.
    - Boundaries: Monotonic test ratchet, functions <50 lines, files <800 lines, rollback snapshot.
-4. **`pod-gna` (`gemini/antigravity-cli/agents/pod-gna.toon` & `gemini/antigravity-cli/builtin/skills/sop-gna/`)**:
+4. **`pod-gna` (`gemini/antigravity-cli/builtin/agents/pod-gna.toon`)**:
    - Covers: Executive CEO/CFO/CSO/COO, Finance, Legal & Compliance, Procurement & Facilities.
    - Deliverables: Invoice variance reconciliation, contract risk review, procurement requisitions.
    - Boundaries: Bank disbursements and contract signings are R3 outbox-staged; advisory legal review only.
-5. **`pod-people` (`gemini/antigravity-cli/agents/pod-people.toon` & `gemini/antigravity-cli/builtin/skills/sop-people/`)**:
+5. **`pod-people` (`gemini/antigravity-cli/builtin/agents/pod-people.toon`)**:
    - Covers: Hiring, HR Operations, People Strategy, Learning & Development.
    - Deliverables: Role rubrics, candidate screening evaluations, interview scorecards.
    - Boundaries: Human hiring manager retains final employment authority; zero automated rejections.

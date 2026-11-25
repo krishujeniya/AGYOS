@@ -1,9 +1,9 @@
 # AGYOS Operations, SRE & Incident Response Runbook
 
-**System:** AGYOS v3.1 Autonomous Agent Operating System
-**Target Environment:** Local Linux / macOS Workstation (Node 22+, Python 3.12+ via `uv`, Bun 1.2+)
+**System:** AGYOS v3.2.0 Autonomous Agent Operating System
+**Target Environment:** Local Linux / macOS Workstation (Node 22+, Python 3.12+ via `uv`)
 **Standard:** Google SRE Principles, SLSA Level 1-2 Provenance, Monotonic Test Ratchets
-**Document Revision:** 2026-11-08
+**Document Revision:** 2026-11-25
 
 ---
 
@@ -47,7 +47,7 @@ AGYOS enforces local Service Level Indicators (SLIs) and deterministic launch ga
 ```bash
 # Verify system dependencies and git status
 git status --short --branch
-node --version && python3 --version && bun --version
+node --version && uv --version
 
 # Run full baseline verification
 bash gemini/antigravity-cli/builtin/scripts/agyos-verify.sh
@@ -137,7 +137,7 @@ Before tagging or pushing any release to `origin/main`:
 
 2. **Automated Unit & Hardening Suite (Executed in GitHub Actions `.github/workflows/ci.yml`):**
    ```bash
-   cd gemini && uv run python -m unittest discover -s scripts/tests -q
+   cd gemini/antigravity-cli/builtin && uv run --with-requirements scripts/requirements.txt python -m unittest discover -s scripts/tests -q
    node --test gemini/antigravity-cli/builtin/scripts/tests/test_secure_envelope.cjs
    node --test gemini/antigravity-cli/builtin/scripts/tests/test_private_vault.cjs
    node --test gemini/antigravity-cli/builtin/scripts/tests/test_mcp_protocol.cjs
@@ -164,7 +164,7 @@ Before tagging or pushing any release to `origin/main`:
 
 ### 6.1 Workspace State Machine Architecture & Authoritative Storage
 AGYOS uses a dual-layer state architecture:
-1. **Primary Authoritative Store (`gemini/antigravity-cli/builtin/state/workspace-state.db`):** ACID transactional store managing `workspace_milestones` and `workspace_operations` tables with monotonically increasing revision counters, CAS conflict detection, and deterministic replay.
+1. **Primary Authoritative Store (`workspace-state.db` via `gemini/antigravity-cli/builtin/scripts/agyos-runtime/`):** ACID transactional store managing `workspace_milestones` and `workspace_operations` tables with monotonically increasing revision counters, CAS conflict detection, and deterministic replay.
 2. **Projections (`gemini/antigravity-cli/builtin/state/state.json`, `gemini/antigravity-cli/builtin/state/CURRENT.md`):** Derived read-only summaries reconstructed from the authoritative database.
 
 ### 6.2 Disaster Recovery Drill: Reconstructing Corrupted State (<5 min MTTR)

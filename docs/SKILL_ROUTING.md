@@ -30,8 +30,7 @@ run in GitHub Actions only. CI uploads generated indexes as
 `agyos-skill-catalog-generated` so a reviewed branch can receive them without a
 local build.
 
-GitHub Actions runs `python gemini/antigravity-cli/builtin/scripts/import_upstream_skill_packs.py --check`, both
-catalog generators, the Python and Node suites, and shell/Python syntax checks.
+GitHub Actions runs both catalog generators (`gemini/antigravity-cli/builtin/scripts/build_tiered_skills_manifest.py` and `gemini/antigravity-cli/builtin/scripts/build_docs_data.py`), TOON catalog validation (`node gemini/antigravity-cli/builtin/scripts/agyos-runtime/ci/check-toon-prompts.mjs`), the Python and Node suites, and shell/Python syntax checks.
 Download `agyos-skill-catalog-generated` from the matching Actions run when
 generated files need to be updated. Run full catalog generation and test suites in GitHub Actions.
 

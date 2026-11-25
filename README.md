@@ -15,7 +15,23 @@
 
 AGYOS is an autonomous operating system and multi-agent execution kernel for AGY CLI. It is built for solopreneurs, independent operators, and autonomous agent swarms to plan, build, review, test, and ship software under strict engineering invariants.
 
-The system combines a Python cognitive decision kernel (`gemini/antigravity-cli/builtin/agyos_decision/`), a static documentation and catalog frontend (`frontend/`), and a Node.js MCP state server (`gemini/antigravity-cli/mcp/`) with an enterprise organization of 104 operational roles across 12 departments, a TOON-native 2,289-skill catalog, a Token-Oriented Object Notation (TOON) codec, and an automated 7-step cycle (`Think -> Plan -> Build -> Review -> Test -> Ship -> Reflect`).
+The system combines a Python cognitive decision kernel (`gemini/antigravity-cli/builtin/agyos_decision/`), a static documentation and catalog portal (`frontend/`), and a Node.js MCP state server (`gemini/antigravity-cli/mcp/state-server.cjs`) with an enterprise organization of 104 operational roles across 12 departments, 2,289 TOON-native skills across 103 role packs, 109 agent definitions, 148 modular rules, and an automated 7-step cycle (`Think -> Plan -> Build -> Review -> Test -> Ship -> Reflect`).
+
+---
+
+## One-Line Install (`~/.gemini`)
+
+Sync `AGYOS/gemini/` (`config/` and `antigravity-cli/`) into `~/.gemini/` (automatically creates a timestamped backup of `~/.gemini` first):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/krishujeniya/AGYOS/main/gemini/antigravity-cli/builtin/scripts/install.sh | bash
+```
+
+Or from a local clone:
+
+```bash
+git clone https://github.com/krishujeniya/AGYOS.git && cd AGYOS && make install
+```
 
 ---
 
@@ -28,7 +44,7 @@ flowchart TD
     subgraph CognitiveLayer["1. Intent & Cognitive Governance"]
         Intent["Intent Compilation & EVPI<br/><code>TaskContract • Howard 1966 Decision</code>"]
         Pods["104-Role Virtual Organization<br/><code>12 Departments • 5 Governing Pods</code>"]
-        Catalog["Skill Discovery & Retrieval<br/><code>2,289 Skills • On-Demand Runbooks</code>"]
+        Catalog["Skill Discovery & Retrieval<br/><code>2,289 Skills • 103 Role Packs</code>"]
     end
 
     subgraph AutonomousCycle["2. 7-Step Autonomous Engineering Cycle"]
@@ -41,7 +57,7 @@ flowchart TD
         S6 --> S7["7. Reflect<br/><code>AI_HANDOFF & Milestone Close</code>"]
     end
 
-    subgraph StorageEngine["3. Transactional State & Memory (gemini/antigravity-cli/mcp/ & gemini/antigravity-cli/builtin/agyos_decision/)"]
+    subgraph StorageEngine["3. Transactional State & Memory"]
         direction TB
         SQLite[("ACID SQLite State<br/><code>Monotonic Revisions • CAS</code>")]
         Outbox["R3 Outbox & Snapshots<br/><code>state_ledger.py • Pre-Write Backup</code>"]
@@ -52,16 +68,15 @@ flowchart TD
 
     subgraph RuntimeLayer["4. Static Frontend, Docs & TOON Codec"]
         Frontend["Static Frontend & SEO (frontend/)<br/><code>index.html • catalog.html • sitemap.xml • llms.txt</code>"]
-        SiteGen["Static Builder (gemini/antigravity-cli/builtin/scripts/build_docs_site.py)<br/><code>Allowlisted Docs • Search Index</code>"]
-        Codec["TOON Codec Engine (gemini/antigravity-cli/builtin/agyos_decision/toon_codec.py)<br/><code>Typed Parsing • Exact Encoding</code>"]
+        SiteGen["Static Builder (build_docs_site.py)<br/><code>Allowlisted Docs • Search Index</code>"]
+        Codec["TOON Codec Engine (toon_codec.py)<br/><code>Typed Parsing • Exact Encoding</code>"]
     end
 
     subgraph ReleaseGate["5. Gated Verification & Delivery"]
-        CI["GitHub Actions CI/CD<br/><code>ci.yml • Static & Integration Gates</code>"]
+        CI["GitHub Actions CI/CD<br/><code>ci.yml • deploy.yml • codeql.yml</code>"]
         MainBranch[("Protected Single main Branch<br/><code>Author: Krish Ujeniya</code>")]
     end
 
-    %% Connections
     User -->|"Natural Language Prompt"| Intent
     Intent -->|"Assigns Lead Role"| Pods
     Pods -->|"Selects Specialist Skill"| Catalog
@@ -75,7 +90,6 @@ flowchart TD
     CI -->|"Verifies Artifacts & Digests"| S6
     S6 -->|"Fast-Forward Merge"| MainBranch
 
-    %% Class Styles
     classDef operator fill:#2563eb,stroke:#1d4ed8,color:#ffffff,stroke-width:2px;
 ```
 
@@ -83,29 +97,25 @@ flowchart TD
 
 ## Core Components
 
-The repository is organized into modular Python, Node.js, and static frontend subsystems:
-
 | Component | Path | Responsibility |
 |:---|:---|:---|
 | **Decision Kernel** | `gemini/antigravity-cli/builtin/agyos_decision/` | Intent compilation, Howard 1966 EVPI, 104-role matrix, TOON codec/compiler, and 7-step cycle |
 | **CLI Dispatcher** | `gemini/antigravity-cli/bin/agyos` | Unified CLI entry point across routing, TOON skills, verification, and lifecycle |
 | **MCP Daemon** | `gemini/antigravity-cli/mcp/state-server.cjs` | Zero-dependency stdio JSON-RPC 2.0 server exposing state, memory, and TOON skill search |
-| **Frontend Portal** | `frontend/` | Static documentation templates, skill catalog UI, and SEO files (`sitemap.xml`, `robots.txt`, `llms.txt`) |
+| **Frontend Portal** | `frontend/` | Static documentation portal, skill catalog UI, and SEO files (`sitemap.xml`, `robots.txt`, `llms.txt`) |
 | **Scripts & CI** | `gemini/antigravity-cli/builtin/scripts/` | Site/catalog builders, TOON validators, security scanners, benchmarks, and state-store tests |
-| **Deployment** | `deploy/` | Docker and Cloudflare Pages deployment manifests |
+| **Deployment** | `deploy/` | Docker containerization manifests (`deploy/docker/`) alongside root `wrangler.jsonc` |
 
 ---
 
 ## The 7-Step Autonomous Cycle
 
-AGYOS executes engineering workflows autonomously through a 7-step cycle without requiring manual slash commands:
-
 1. **Think:** Compiles natural language intent into a typed `TaskContract`, computes Howard 1966 EVPI for clarification, assigns the lead role, and identifies specialist skill runbooks.
-2. **Plan:** Produces architectural blueprints, acceptance criteria, concrete task breakdowns, and structured milestone checkpoints.
+2. **Plan:** Produces architectural blueprints, acceptance criteria, task breakdowns, and structured milestone checkpoints.
 3. **Build:** Executes Maker TDD (RED -> GREEN -> REFACTOR) complying with production invariants.
 4. **Review:** Independent Checker audit for code quality, secret leakage, OWASP Top 10 vulnerabilities, and git hygiene.
-5. **Test:** Monotonic remote static and integration verification strictly via GitHub Actions.
-6. **Ship:** Delivery strictly to the single `main` branch under verified author identity after passing all gates.
+5. **Test:** Remote static and integration verification via GitHub Actions (`ci.yml`).
+6. **Ship:** Delivery to the single `main` branch under verified author identity after passing all gates.
 7. **Reflect:** Logs structured handoffs, updates `gemini/antigravity-cli/builtin/state/CURRENT.md` and milestone checkpoints, and records durable memory.
 
 ---
@@ -124,76 +134,12 @@ AGYOS models an enterprise organization partitioned into 12 functional departmen
 
 ## Engineering Invariants
 
-- **Single `main` Branch Exclusive:** All development lands strictly on `main`. No feature branches, task branches, or divergent worktrees are permitted.
-- **Identity Lock:** All commits must be authored and committed under the verified GitHub identity:
-  `Krish Ujeniya <100012208+krishujeniya@users.noreply.github.com>`.
-- **GitHub Actions Verification Mandatory:** Unit tests, integration suites, compilers, and linters execute strictly in GitHub Actions runners (`ci.yml`). Local operations are limited to read-only static inspection and `git diff --check`.
-- **Mandatory `uv` for Python:** All Python package management, virtual environments, and script executions strictly use `uv` (`uv run`, `uv pip`, `uv tool`). Raw invocation of `python` or `pip` is forbidden.
+- **Single `main` Branch Exclusive:** All development lands strictly on `main`.
+- **Identity Lock:** All commits are authored under `Krish Ujeniya <100012208+krishujeniya@users.noreply.github.com>`.
+- **GitHub Actions Verification:** Full test suites, catalog builds, and security scans run in GitHub Actions (`ci.yml`, `codeql.yml`); local checks stay fast and loadless (`make typecheck`, `make lint`).
+- **Mandatory `uv` for Python:** All Python package management and script execution uses `uv` (`uv run`, `uv pip`).
 - **Bounded Working Sets:** Bounded telemetry ring buffers and pre-write snapshot caps (`16 MiB` max file snapshot size).
 - **Zero Plaintext Secrets:** Zero hardcoded tokens or secrets; environment variables use startup redaction.
-
----
-
-## One-Line Install (`~/.gemini`)
-
-Replace or sync your local `~/.gemini` directory with `AGYOS/gemini/` (automatically creates a timestamped backup of `~/.gemini` first):
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/krishujeniya/AGYOS/main/gemini/antigravity-cli/builtin/scripts/install.sh | bash
-```
-
-Or from a local clone:
-
-```bash
-git clone https://github.com/krishujeniya/AGYOS.git && cd AGYOS && make install
-```
-
----
-
-## Quickstart & CLI Commands
-
-### 1. Skill Discovery & Selection
-```bash
-# Select optimal skill and inspect instructions
-gemini/antigravity-cli/bin/agyos decide "debug concurrent async Rust actor" --json --runbook
-
-# Search catalog across 2,289 capabilities
-gemini/antigravity-cli/bin/agyos find "database migration reversal"
-
-# Display specific runbook
-gemini/antigravity-cli/bin/agyos skill database-migrations
-```
-
-### 2. Autonomous Cycle Dispatch
-```bash
-# Execute end-to-end 7-step autonomous cycle
-gemini/antigravity-cli/bin/agyos cycle "Implement tenant isolation adapter with W3C PROV receipt"
-
-# Read active operational state and current gate
-gemini/antigravity-cli/bin/agyos state
-```
-
-### 3. Role Matrix Inspection
-```bash
-# List enterprise roles
-gemini/antigravity-cli/bin/agyos roles
-
-# Inspect specific role profile
-gemini/antigravity-cli/bin/agyos role role-solopreneur-operator
-```
-
-### 4. TOON Codec & Compilation
-```bash
-# Compile role definition into TOON
-gemini/antigravity-cli/bin/agyos toon-agent role-swe --compact
-
-# Compile skill runbook into compact TOON card
-gemini/antigravity-cli/bin/agyos toon-skill software-architecture --compact
-
-# Encode or minify TOON documents
-gemini/antigravity-cli/bin/agyos toon encode --input sample.json --output sample.toon
-gemini/antigravity-cli/bin/agyos toon minify --input sample.toon
-```
 
 ---
 
@@ -207,48 +153,6 @@ gemini/antigravity-cli/bin/agyos toon minify --input sample.toon
 - [Operations Runbook](docs/OPERATIONS_RUNBOOK.md) — SLOs, vault setup, compaction, and disaster recovery
 - [Host Compatibility](docs/HOST_COMPATIBILITY.md) — Qualified interfaces and host verification limits
 - [Deployment Guide](docs/deployment.md) — Cloudflare Pages (`agyos.pages.dev`) and Docker deployment
-
----
-
-## Repository Layout
-
-```text
-AGYOS/
-├── .github/
-│   ├── workflows/
-│   │   ├── ci.yml                     # Lint, typecheck, TOON/catalog validation & tests
-│   │   ├── deploy.yml                 # Auto-deploy static portal on push to main (Cloudflare Pages)
-│   │   ├── codeql.yml                 # Automated CodeQL security scanning
-│   │   └── docker-publish.yml         # Verified container publication to GHCR
-│   ├── ISSUE_TEMPLATE/
-│   │   ├── bug_report.yml             # Structured bug report form
-│   │   ├── feature_request.yml        # Structured feature request form
-│   │   └── config.yml                 # Disables blank issues / links to Discussions
-│   ├── PULL_REQUEST_TEMPLATE.md       # Checklist for every PR
-│   ├── PULL_REQUEST_TEMPLATE.toon     # TOON source for PR template
-│   ├── CITATION.cff                   # Repository citation metadata
-│   ├── CODEOWNERS                     # Auto-assigns reviewers per folder
-│   ├── CODE_OF_CONDUCT.md             # Community standards
-│   ├── CONTRIBUTING.md                # How to set up & contribute
-│   ├── FUNDING.yml                    # Enables the GitHub Sponsor button
-│   ├── SECURITY.md                    # Vulnerability reporting & E2EE/vault boundaries
-│   ├── SUPPORT.md                     # Where to ask for help
-│   ├── copilot-instructions.md        # Custom rules for coding assistants
-│   ├── dependabot.yml                 # Auto-updates GitHub Actions
-│   └── settings.yml                   # Declarative repository settings & main branch protection
-├── assets/                            # Brand logos and raster/SVG icons
-├── deploy/                            # docker/ (Dockerfile, compose)
-├── docs/                              # Architecture, setup, deployment, runbooks & catalog JSON
-├── frontend/                          # Static documentation portal, catalog UI, and SEO files
-├── gemini/                            # Mirrors ~/.gemini/ (config/ + antigravity-cli/builtin/ with 2,289 role-based skills, 109 agents, 13 plugins, MCP, state)
-├── .editorconfig                      # Consistent indentation/line-endings across IDEs
-├── .gitignore                         # Combined Node, Python, Cloudflare, OS & agent hygiene rules
-├── CHANGELOG.md                       # Version history & release notes
-├── LICENSE                            # Apache 2.0 license
-├── Makefile                           # Unified commands (make dev, make test, make typecheck, make lint, make build)
-├── README.md                          # Project overview, badges, architecture, quickstart
-└── wrangler.jsonc                     # Cloudflare Pages & edge bindings configuration
-```
 
 ---
 
