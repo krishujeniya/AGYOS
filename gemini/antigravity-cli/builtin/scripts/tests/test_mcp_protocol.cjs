@@ -5,7 +5,7 @@ const test = require('node:test');
 const { spawnSync } = require('node:child_process');
 const path = require('node:path');
 
-const server = path.join(__dirname, '..', '..', 'mcp', 'state-server.cjs');
+const server = path.join(__dirname, '..', '..', '..', 'mcp', 'state-server.cjs');
 
 function rpc(input, entrypoint = server) {
   const result = spawnSync(process.execPath, [entrypoint], {
@@ -100,7 +100,7 @@ test('agyos_pipeline returns valid plan from MCP invocation', () => {
   assert.ok(parsed.skill.name.includes('postgres') || parsed.skill.name.includes('database'));
 });
 
-const obscuraServer = path.join(__dirname, '..', '..', 'mcp', 'obscura-server.cjs');
+const obscuraServer = path.join(__dirname, '..', '..', '..', 'mcp', 'obscura-server.cjs');
 
 function rpcObscura(input) {
   const result = spawnSync(process.execPath, [obscuraServer], {

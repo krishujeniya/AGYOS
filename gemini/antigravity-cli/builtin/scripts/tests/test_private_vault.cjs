@@ -55,7 +55,7 @@ test('MCP memory writes never fall back to plaintext and encrypted state is fail
     jsonrpc: '2.0', id: 1, method: 'tools/call',
     params: { name: 'agyos_memory', arguments: op },
   }) + '\n';
-  const script = path.join(__dirname, '..', '..', 'mcp', 'state-server.cjs');
+  const script = path.join(__dirname, '..', '..', '..', 'mcp', 'state-server.cjs');
   const env = { ...process.env, AGYOS_VAULT_PATH: file };
   delete env.AGYOS_VAULT_PASSPHRASE_FD;
   const one = spawnSync(process.execPath, [script], {
@@ -113,7 +113,7 @@ test('vault CLI initializes without secret appearing in stdout or on disk', () =
 
 test('strict private-only mode never returns checked-in legacy memory', () => temporary(dir => {
   const file = path.join(dir, 'private.vault.json');
-  const script = path.join(__dirname, '..', '..', 'mcp', 'state-server.cjs');
+  const script = path.join(__dirname, '..', '..', '..', 'mcp', 'state-server.cjs');
   const request = JSON.stringify({
     jsonrpc: '2.0', id: 50, method: 'tools/call',
     params: { name: 'agyos_memory', arguments: { action: 'read', tier: 'tier0' } }
