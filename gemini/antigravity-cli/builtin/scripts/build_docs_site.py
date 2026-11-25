@@ -279,15 +279,106 @@ def pages_sidebar(docs: list[dict], active: str, base: str) -> str:
         '<a href="' + base + 'docs/' + doc['slug'] + '/" class="side-link' + (' active' if doc['slug']==active else '') + '"' + (' aria-current="page"' if doc['slug']==active else '') + '>' + html.escape(doc['title']) + '</a>' for doc in items) + '</section>' for category, items in groups.items())
 
 
+def _json_ld(title: str, description: str, canonical: str, page_class: str) -> str:
+    """Build Schema.org JSON-LD graph for SEO, AEO, and GEO."""
+    author = {
+        '@type': 'Person',
+        '@id': f'{URL}#krish-ujeniya',
+        'name': 'Krish Ujeniya',
+        'alternateName': 'krishujeniya',
+        'url': 'https://github.com/krishujeniya',
+        'sameAs': [
+            'https://github.com/krishujeniya',
+            'https://github.com/sponsors/krishujeniya',
+        ],
+    }
+    software = {
+        '@type': 'SoftwareApplication',
+        '@id': f'{URL}#agyos',
+        'name': 'AGYOS',
+        'alternateName': 'AGYOS Cognitive Operating System',
+        'description': 'Autonomous Cognitive Operating System for AGY CLI with a 6-layer governance architecture, 104-role matrix, and 2,289 TOON skills.',
+        'applicationCategory': 'DeveloperApplication',
+        'operatingSystem': 'Linux, macOS',
+        'url': URL,
+        'downloadUrl': 'https://github.com/krishujeniya/AGYOS',
+        'softwareVersion': '3.2.0',
+        'license': 'https://opensource.org/licenses/Apache-2.0',
+        'author': {'@id': f'{URL}#krish-ujeniya'},
+        'creator': {'@id': f'{URL}#krish-ujeniya'},
+    }
+    website = {
+        '@type': 'WebSite',
+        '@id': f'{URL}#website',
+        'name': 'AGYOS by Krish Ujeniya',
+        'url': URL,
+        'publisher': {'@id': f'{URL}#krish-ujeniya'},
+    }
+    page_type = 'TechArticle' if page_class == 'docs-page' else 'WebPage'
+    webpage = {
+        '@type': page_type,
+        '@id': f'{canonical}#webpage',
+        'url': canonical,
+        'name': f'{title} | AGYOS',
+        'description': description,
+        'isPartOf': {'@id': f'{URL}#website'},
+        'about': {'@id': f'{URL}#agyos'},
+        'author': {'@id': f'{URL}#krish-ujeniya'},
+    }
+    if page_type == 'TechArticle':
+        webpage['headline'] = title
+    graph = [author, software, website, webpage]
+    if page_class == 'home-page':
+        graph.append({
+            '@type': 'FAQPage',
+            '@id': f'{URL}#faq',
+            'mainEntity': [
+                {
+                    '@type': 'Question',
+                    'name': 'What is AGYOS?',
+                    'acceptedAnswer': {
+                        '@type': 'Answer',
+                        'text': 'AGYOS is an Autonomous Cognitive Operating System for AGY CLI created by Krish Ujeniya. It combines a 6-layer governance architecture, 104 enterprise roles across 5 pods, 2,289 TOON-native skills, and an automated 7-step engineering cycle.',
+                    },
+                },
+                {
+                    '@type': 'Question',
+                    'name': 'Who created AGYOS?',
+                    'acceptedAnswer': {
+                        '@type': 'Answer',
+                        'text': 'AGYOS is created and maintained by Krish Ujeniya (@krishujeniya) under the Apache 2.0 license at https://github.com/krishujeniya/AGYOS.',
+                    },
+                },
+                {
+                    '@type': 'Question',
+                    'name': 'How do you install AGYOS?',
+                    'acceptedAnswer': {
+                        '@type': 'Answer',
+                        'text': 'Run curl -fsSL https://raw.githubusercontent.com/krishujeniya/AGYOS/main/gemini/antigravity-cli/builtin/scripts/install.sh | bash or clone the repository and run make install.',
+                    },
+                },
+            ],
+        })
+    payload = json.dumps({'@context': 'https://schema.org', '@graph': graph}, ensure_ascii=False, separators=(',', ':'))
+    return payload.replace('</', '<\\/')
+
+
 def template(base: str, title: str, description: str, canonical: str, content: str, page_class: str = '') -> str:
-    origin = URL.rstrip('/') if base == '/AGYOS/' else ''
     content = content.replace('{{BASE}}', base)
+    full_title = f'{title} | AGYOS' if 'AGYOS' not in title else title
+    keywords = 'AGYOS, Krish Ujeniya, krishujeniya, Autonomous Cognitive Operating System, AGY CLI, AI agent operating system, TOON skills, multi-agent governance'
     return (f'<!doctype html><html lang="en" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">'
-        f'<title>{html.escape(title)} | AGYOS</title><meta name="description" content="{html.escape(description,quote=True)}">'
-        f'<meta name="theme-color" content="#f6f7f9"><meta name="robots" content="index,follow"><link rel="canonical" href="{html.escape(canonical)}">'
-        f'<meta property="og:type" content="website"><meta property="og:site_name" content="AGYOS"><meta property="og:title" content="{html.escape(title)} | AGYOS">'
-        f'<meta property="og:description" content="{html.escape(description,quote=True)}"><meta property="og:url" content="{html.escape(canonical)}">'
-        f'<meta property="og:image" content="{URL}assets/social-card.svg"><link rel="icon" type="image/svg+xml" href="{base}assets/logo-mark.svg">'
+        f'<title>{html.escape(full_title)}</title><meta name="description" content="{html.escape(description,quote=True)}">'
+        f'<meta name="author" content="Krish Ujeniya"><meta name="keywords" content="{keywords}">'
+        f'<meta name="theme-color" content="#000000"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">'
+        f'<link rel="canonical" href="{html.escape(canonical)}"><link rel="alternate" type="text/plain" title="LLMs.txt" href="{base}llms.txt">'
+        f'<meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:site_name" content="AGYOS by Krish Ujeniya">'
+        f'<meta property="og:title" content="{html.escape(full_title)}"><meta property="og:description" content="{html.escape(description,quote=True)}">'
+        f'<meta property="og:url" content="{html.escape(canonical)}"><meta property="og:image" content="{URL}assets/social-card.svg">'
+        f'<meta name="twitter:card" content="summary_large_image"><meta name="twitter:creator" content="@krishujeniya">'
+        f'<meta name="twitter:title" content="{html.escape(full_title)}"><meta name="twitter:description" content="{html.escape(description,quote=True)}">'
+        f'<meta name="twitter:image" content="{URL}assets/social-card.svg"><link rel="icon" type="image/svg+xml" href="{base}assets/logo-mark.svg">'
+        f'<script type="application/ld+json">{_json_ld(title, description, canonical, page_class)}</script>'
         f'<link rel="stylesheet" href="{base}site.css"><script defer src="{base}site.js"></script></head><body class="{html.escape(page_class)}">'
         + content + '</body></html>')
 
@@ -367,13 +458,13 @@ def build(out: Path, base: str) -> dict:
         inventory.append({'source':doc['source'],'url':base+'docs/'+doc['slug']+'/', 'title':doc['title'],'category':doc['category'],'visibility':'public','imported':True,'headings':len(renderer.headings),'notes':renderer.unsupported})
     home = (ROOT / 'frontend/index.html').read_text(encoding='utf-8').replace('{{BASE}}', base).replace('{{DOCS_COUNT}}', str(len(docs)))
     home = home.replace('<!-- SITE-HEADER -->',site_header(base)).replace('<!-- SITE-FOOTER -->',footer(base)).replace('<!-- SITE-SEARCH -->',search_dialog(base))
-    (out / 'index.html').write_text(template(base,'Autonomous agent operating system','Discover AGYOS: hierarchical governance, five execution pods, and a searchable engineering runbook catalog.', URL, home, 'home-page'),encoding='utf-8')
+    (out / 'index.html').write_text(template(base,'AGYOS by Krish Ujeniya — Autonomous Cognitive Operating System','AGYOS by Krish Ujeniya: 6-layer hierarchical agent operating system, 104 enterprise roles across 5 pods, and 2,289 TOON engineering skills.', URL, home, 'home-page'),encoding='utf-8')
     (out / 'docs/index.html').write_text('<!doctype html><meta http-equiv="refresh" content="0;url='+base+'docs/overview/"><a href="'+base+'docs/overview/">Open documentation</a>',encoding='utf-8')
     (out / 'search-index.json').write_text(json.dumps(search_index,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (out / 'content-inventory.json').write_text(json.dumps({'published':inventory,'excluded':config['exclude'],'policy':'Explicit allowlist'},indent=2),encoding='utf-8')
-    urls = [URL, URL+'catalog/'] + [URL+'docs/'+doc['slug']+'/' for doc in docs]
-    (out / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+html.escape(url)+'</loc></url>' for url in urls)+'</urlset>',encoding='utf-8')
-    (out / 'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: '+URL+'sitemap.xml\n',encoding='utf-8')
+    sitemap_entries = [(URL, '1.0', 'weekly'), (URL+'catalog/', '0.9', 'weekly')] + [(URL+'docs/'+doc['slug']+'/', '0.8', 'weekly') for doc in docs]
+    (out / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join(f'<url><loc>{html.escape(u)}</loc><changefreq>{freq}</changefreq><priority>{prio}</priority></url>' for u, prio, freq in sitemap_entries)+'</urlset>',encoding='utf-8')
+    (out / 'robots.txt').write_text('User-agent: *\nAllow: /\n\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: GPTBot\nAllow: /\n\nUser-agent: ChatGPT-User\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Google-Extended\nAllow: /\n\nSitemap: '+URL+'sitemap.xml\nLlms-txt: '+URL+'llms.txt\n',encoding='utf-8')
     if (ROOT / 'frontend/llms.txt').exists():
         shutil.copy2(ROOT / 'frontend/llms.txt', out / 'llms.txt')
     (out / '.nojekyll').touch()
