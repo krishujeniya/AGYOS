@@ -64,7 +64,9 @@ discovery headers preserves those bodies rather than inventing missing source.
 Read and assess a selected runbook before following it. Lifecycle permission
 hooks remain separate; no undocumented hook response fields are introduced.
 
-## Verified update, 2026-11-05
+## Verified update, 2026-11-05 (historical baseline)
+
+> Note: Since this baseline check, the catalog expanded to `2,289` TOON skills across `103` role packs (`gemini/antigravity-cli/skills-manifest.json`, `docs/skills-data.json`) and `148` modular rules (`gemini/antigravity-cli/builtin/rules/`).
 
 - 75 Python tests passed, including 17 routing/catalog tests and real local CLI/MCP integration.
 - 59 council tests and 51 host verification checks passed.

@@ -15,57 +15,49 @@ AGYOS embeds Large Language Model agents into a structured, operating-system-lev
 flowchart TD
     User(["Operator / User Request"]):::operator
 
-    subgraph CognitiveLayer["1. Intent & Cognitive Governance"]
-        Intent["Intent Compilation & EVPI<br/><code>TaskContract • Howard 1966 Decision</code>"]
-        Pods["104-Role Virtual Organization<br/><code>12 Departments • 5 Governing Pods</code>"]
-        Catalog["Skill Discovery & Retrieval<br/><code>2,289 Skills • On-Demand Runbooks</code>"]
+    subgraph L0["Layer 0 & 2: Kernel Hooks & Syscall Bus"]
+        CLI["CLI & MCP Bus<br/>bin/agyos • state-server.cjs"]
+        Hooks["Safety & Policy Hooks<br/>authorizer.py • agy_os_hook.py"]
     end
 
-    subgraph AutonomousCycle["2. 7-Step Autonomous Engineering Cycle"]
+    subgraph L4["Layer 4 & 5: Governance, Roles & EVPI"]
+        Intent["Intent & EVPI Gate<br/>TaskContract • evpi_clarify.py"]
+        Org["104-Role Matrix & 5 Pods<br/>12 Departments • roles.py"]
+        Skills["TOON Skill Catalog<br/>2,289 Skills • 103 Role Packs"]
+    end
+
+    subgraph L3["Layer 3: 7-Step Autonomous Cycle & 5-Gate SOP"]
         direction LR
-        S1["1. Think<br/><code>Role & Skill Alignment</code>"] --> S2["2. Plan<br/><code>Checkpoints & Blueprint</code>"]
-        S2 --> S3["3. Build<br/><code>Maker TDD Execution</code>"]
-        S3 --> S4["4. Review<br/><code>Checker Audit & Diff Hygiene</code>"]
-        S4 --> S5["5. Test<br/><code>Deterministic Static Gates</code>"]
-        S5 --> S6["6. Ship<br/><code>Scoped Commit & Lock</code>"]
-        S6 --> S7["7. Reflect<br/><code>AI_HANDOFF & Milestone Close</code>"]
+        S1["1. Think"] --> S2["2. Plan"]
+        S2 --> S3["3. Build"]
+        S3 --> S4["4. Review"]
+        S4 --> S5["5. Test"]
+        S5 --> S6["6. Ship"]
+        S6 --> S7["7. Reflect"]
     end
 
-    subgraph StorageEngine["3. Transactional State & Memory (gemini/antigravity-cli/mcp/ & gemini/antigravity-cli/builtin/agyos_decision/)"]
-        direction TB
-        SQLite[("ACID SQLite State<br/><code>Monotonic Revisions • CAS</code>")]
-        Outbox["R3 Outbox & Snapshots<br/><code>state_ledger.py • Pre-Write Backup</code>"]
-        Vault["Encrypted Private Vault<br/><code>AES-256-GCM • X25519 Envelopes</code>"]
-        SQLite --- Outbox
-        SQLite --- Vault
+    subgraph L1["Layer 1: State, Memory & Encrypted Vault"]
+        SQLite[("ACID SQLite State<br/>CAS • Monotonic Revisions")]
+        Projections["Tiered Memory & Snapshots<br/>memory.json • CURRENT.md • state_ledger.py"]
+        Vault["Encrypted Private Vault<br/>AES-256-GCM • X25519"]
     end
 
-    subgraph RuntimeLayer["4. Static Frontend, Docs & TOON Codec"]
-        Frontend["Static Frontend & SEO (frontend/)<br/><code>index.html • catalog.html • sitemap.xml • llms.txt</code>"]
-        SiteGen["Static Builder (gemini/antigravity-cli/builtin/scripts/build_docs_site.py)<br/><code>Allowlisted Docs • Search Index</code>"]
-        Codec["TOON Codec Engine (gemini/antigravity-cli/builtin/agyos_decision/toon_codec.py)<br/><code>Typed Parsing • Exact Encoding</code>"]
+    subgraph Delivery["Static Portal & Gated Delivery"]
+        Portal["Docs & Catalog Portal<br/>frontend/ • build_docs_site.py"]
+        CI["GitHub Actions & Main<br/>ci.yml • deploy.yml • codeql.yml"]
     end
 
-    subgraph ReleaseGate["5. Gated Verification & Delivery"]
-        CI["GitHub Actions CI/CD<br/><code>ci.yml • Static & Integration Gates</code>"]
-        MainBranch[("Protected Single main Branch<br/><code>Author: Krish Ujeniya</code>")]
-    end
+    User --> CLI
+    CLI <--> Hooks
+    CLI --> Intent
+    Intent --> Org --> Skills --> L3
+    L3 <--> SQLite
+    SQLite --- Projections
+    SQLite --- Vault
+    Skills --> Portal
+    S5 --> CI --> S6
+    S7 --> Projections
 
-    %% Connections
-    User -->|"Natural Language Prompt"| Intent
-    Intent -->|"Assigns Lead Role"| Pods
-    Pods -->|"Selects Specialist Skill"| Catalog
-    Catalog -->|"Dispatches TaskContract"| AutonomousCycle
-
-    S3 <-->|"Atomic Revisions & Snapshot"| StorageEngine
-    S4 <-->|"Audits Evidence Receipts"| RuntimeLayer
-    SiteGen <-->|"Reads Catalog & Docs"| Catalog
-
-    S5 -->|"Triggers Verification"| CI
-    CI -->|"Verifies Artifacts & Digests"| S6
-    S6 -->|"Fast-Forward Merge"| MainBranch
-
-    %% Class Styles
     classDef operator fill:#2563eb,stroke:#1d4ed8,color:#ffffff,stroke-width:2px;
 ```
 
