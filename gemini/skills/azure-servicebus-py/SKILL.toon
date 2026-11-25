@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-servicebus-py\ndescription: Azure Service Bus SDK for Python messaging. Use for queues, topics, subscriptions, and enterprise messaging patterns.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

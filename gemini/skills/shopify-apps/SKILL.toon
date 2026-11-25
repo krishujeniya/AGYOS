@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: shopify-apps\ndescription: Expert patterns for Shopify app development including Remix/React\n  Router apps, embedded apps with App Bridge, webhook handling, GraphQL Admin\n  API, Polaris components, billing, and app extensions.\nrisk: safe\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

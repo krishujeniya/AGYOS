@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-communication-callautomation-java\ndescription: \"Build server-side call automation workflows including IVR systems, call routing, recording, and AI-powered interactions.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

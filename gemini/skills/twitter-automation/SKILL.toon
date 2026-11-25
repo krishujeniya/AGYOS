@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: twitter-automation\ndescription: \"Automate Twitter/X tasks via Rube MCP (Composio): posts, search, users, bookmarks, lists, media. Always search tools first for current schemas.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

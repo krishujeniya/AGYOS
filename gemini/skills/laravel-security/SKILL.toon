@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: laravel-security\ndescription: Laravel security best practices — authentication, authorization, Eloquent safety, CSRF, XSS prevention, API security, and secure deployment configurations. Use when reviewing Laravel auth, Eloquent safety, CSRF, XSS, API security, or deployment configuration.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

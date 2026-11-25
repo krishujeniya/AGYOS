@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: computer-vision-expert\ndescription: \"SOTA Computer Vision Expert (2026). Specialized in YOLO26, Segment Anything 3 (SAM 3), Vision Language Models, and real-time spatial analysis.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

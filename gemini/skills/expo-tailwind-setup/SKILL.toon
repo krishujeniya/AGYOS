@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: expo-tailwind-setup\ndescription: Set up Tailwind CSS v4 in Expo with react-native-css and NativeWind v5 for universal styling\nrisk: unknown\nsource: community\nversion: 1.0.0\nlicense: MIT\nprompt-source: prompt.toon\n---\n"

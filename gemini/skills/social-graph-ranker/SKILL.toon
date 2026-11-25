@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: social-graph-ranker\ndescription: Weighted social-graph ranking for warm intro discovery, bridge scoring, and network gap analysis across X and LinkedIn. Use when the user wants the reusable graph-ranking engine itself, not the broader outreach or network-maintenance workflow layered on top of it.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

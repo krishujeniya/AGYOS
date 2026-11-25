@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ml-pipeline-workflow\ndescription: \"Complete end-to-end MLOps pipeline orchestration from data preparation through model deployment.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: shellcheck-configuration\ndescription: \"Master ShellCheck static analysis configuration and usage for shell script quality. Use when setting up linting infrastructure, fixing code issues, or ensuring script portability.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: makepad-splash\ndescription: |\n  CRITICAL: Use for Makepad Splash scripting language. Triggers on:\n  splash language, makepad script, makepad scripting, script!, cx.eval,\n  makepad dynamic, makepad AI, splash 语言, makepad 脚本\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

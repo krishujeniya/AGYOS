@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: adversarial-red-team\ndescription: \"SOP for the Gate 5 Red Team audit. Actively attempts to break the code, exploit vulnerabilities, and bypass guardrails before HITL approval.\"\ncategory: security\nversion: \"1.0.0\"\nauthor: \"Krish Ujeniya\"\nprompt-source: prompt.toon\n---\n"

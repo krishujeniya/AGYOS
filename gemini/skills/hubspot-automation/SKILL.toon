@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: hubspot-automation\ndescription: \"Automate HubSpot CRM operations (contacts, companies, deals, tickets, properties) via Rube MCP using Composio integration.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

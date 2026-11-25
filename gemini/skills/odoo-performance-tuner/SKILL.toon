@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: odoo-performance-tuner\ndescription: \"Expert guide for diagnosing and fixing Odoo performance issues: slow queries, worker configuration, memory limits, PostgreSQL tuning, and profiling tools.\"\nrisk: safe\nsource: \"self\"\nprompt-source: prompt.toon\n---\n"

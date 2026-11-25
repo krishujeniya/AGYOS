@@ -1,0 +1,19 @@
+# Version control
+.git/
+.gitignore
+.github/
+
+# Python caches and virtual environments
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+.pytest_cache/
+.coverage
+
+# Temporary files
+media/
+assets/
+.DS_Store

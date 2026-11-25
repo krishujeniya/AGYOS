@@ -1,0 +1,17 @@
+{
+  "site": "AGYOS",
+  "base": "/",
+  "documents": [
+    {"source":"README.md","slug":"overview","title":"Project overview","category":"Start here","description":"What AGYOS is, how it works, and where to begin."},
+    {"source":"docs/setup.md","slug":"setup","title":"Developer setup","category":"Start here","description":"Toolchain prerequisites (uv, Node 22+), local checks, and Makefile targets."},
+    {"source":"docs/ARCHITECTURE.md","slug":"architecture","title":"System architecture","category":"Core concepts","description":"The six-layer architecture, governance, memory, and execution."},
+    {"source":"docs/SKILL_ROUTING.md","slug":"skill-routing","title":"Skill routing","category":"Core concepts","description":"How runbooks are discovered and selected."},
+    {"source":"docs/RULES.md","slug":"rules","title":"Rules and standards","category":"Core concepts","description":"Modular TOON rules and priority ordering under gemini/rules/."},
+    {"source":"docs/NATIVE_WORKFLOWS.md","slug":"native-workflows","title":"Native workflows","category":"Guides","description":"Review workflow pilot and its limitations."},
+    {"source":"docs/OPERATIONS_RUNBOOK.md","slug":"operations","title":"Operations runbook","category":"Guides","description":"SLOs, encrypted vault setup, incident response, and disaster recovery."},
+    {"source":"docs/HOST_COMPATIBILITY.md","slug":"compatibility","title":"Host compatibility","category":"Guides","description":"Qualified CLI interfaces and unverified host limits."},
+    {"source":"docs/deployment.md","slug":"deployment","title":"Deployment guide","category":"Guides","description":"Cloudflare Pages (agyos.pages.dev) and Docker deployment procedures."},
+    {"source":".github/SECURITY.md","slug":"security","title":"Security policy","category":"Project","description":"Vulnerability reporting, E2EE CLI scope, and trust boundaries."}
+  ],
+  "exclude": ["AGENTS.md","GEMINI.md","TRACKER.md","AI_HANDOFF.md","docs/prompts.md","gemini/",".agents/","skills/","state/","rules/","agents/","plugins/","workflows/","skill-sources/",".env","skills-by-role/"]
+}

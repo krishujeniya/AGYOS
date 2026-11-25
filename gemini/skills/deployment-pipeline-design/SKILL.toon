@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: deployment-pipeline-design\ndescription: \"Architecture patterns for multi-stage CI/CD pipelines with approval gates and deployment strategies.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

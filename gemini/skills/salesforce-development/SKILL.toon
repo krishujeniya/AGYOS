@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: salesforce-development\ndescription: Expert patterns for Salesforce platform development including\n  Lightning Web Components (LWC), Apex triggers and classes, REST/Bulk APIs,\n  Connected Apps, and Salesforce DX with scratch orgs and 2nd generation\n  packages (2GP).\nrisk: safe\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

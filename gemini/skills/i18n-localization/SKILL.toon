@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: i18n-localization\ndescription: \"Internationalization and localization patterns. Detecting hardcoded strings, managing translations, locale files, RTL support.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ap-ar-aging-schedules\ndescription: \"Produce the receivables and payables aging schedules with dispute flags and cash-impact summary. Use at each period close, when treasury needs the collection outlook, or when an invoice ages past 60 days and needs a named next action. This is the feed that daily-cashflow-forecast and collections-dunning-automation run on.\"\nrisk: safe\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: python-pptx-generator\ndescription: \"Generate complete Python scripts that build polished PowerPoint decks with python-pptx and real slide content.\"\ncategory: development\nrisk: safe\nsource: self\nsource_type: self\ndate_added: \"2026-04-06\"\nauthor: \"Krish Ujeniya\"\ntags: [python, powerpoint, python-pptx, presentations, slide-decks]\ntools: [claude, cursor, gemini, codex]\nprompt-source: prompt.toon\n---\n"

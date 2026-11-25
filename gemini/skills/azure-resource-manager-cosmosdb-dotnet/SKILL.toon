@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-resource-manager-cosmosdb-dotnet\ndescription: Azure Resource Manager SDK for Cosmos DB in .NET.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

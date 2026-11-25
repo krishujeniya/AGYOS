@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: saas-multi-tenant\ndescription: \"Design and implement multi-tenant SaaS architectures with row-level security, tenant-scoped queries, shared-schema isolation, and safe cross-tenant admin patterns in PostgreSQL and TypeScript.\"\nrisk: safe\nsource: community\ndate_added: \"2026-03-28\"\ntags: [multi-tenancy, saas, row-level-security, postgresql, tenant-isolation]\ntools: [claude, cursor, gemini]\nprompt-source: prompt.toon\n---\n"

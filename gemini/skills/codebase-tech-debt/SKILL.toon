@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: codebase-tech-debt\ndescription: \"Inventory technical debt, assess impact and risk, and prepare a prioritized remediation plan. Use for repository-wide debt audits or planned debt cleanup.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

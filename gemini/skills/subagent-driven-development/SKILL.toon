@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: subagent-driven-development\ndescription: Use when executing implementation plans with independent tasks in the current session\nprompt-source: prompt.toon\n---\n"

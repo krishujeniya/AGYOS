@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: hubspot-integration\ndescription: Expert patterns for HubSpot CRM integration including OAuth\n  authentication, CRM objects, associations, batch operations, webhooks, and\n  custom objects. Covers Node.js and Python SDKs.\nrisk: unknown\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

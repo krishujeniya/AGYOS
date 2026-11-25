@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: technical-change-tracker\ndescription: \"Track code changes with structured JSON records, state machine enforcement, and AI session handoff for bot continuity\"\ncategory: development\nrisk: safe\nsource: community\nsource_repo: Elkidogz/technical-change-skill\nsource_type: community\ndate_added: \"2026-04-05\"\nauthor: \"Krish Ujeniya\"\ntags: [change-tracking, session-handoff, documentation, accessibility, state-machine]\ntools: [claude, cursor, gemini, codex]\nprompt-source: prompt.toon\n---\n"

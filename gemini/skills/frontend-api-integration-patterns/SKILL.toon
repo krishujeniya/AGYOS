@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: frontend-api-integration-patterns\ndescription: \"Production-ready patterns for integrating frontend applications with backend APIs, including race condition handling, request cancellation, retry strategies, error normalization, and UI state management.\"\ncategory: frontend\nrisk: safe\nsource: community\ndate_added: \"2026-04-23\"\nauthor: \"Krish Ujeniya\"\ntags:\n  - frontend\n  - api-integration\n  - javascript\n  - react\n  - async\ntools:\n  - claude\n  - cursor\n  - gemini\n  - codex\nprompt-source: prompt.toon\n---\n"

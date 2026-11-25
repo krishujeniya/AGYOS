@@ -1,0 +1,2 @@
+mode: "100644"
+text: "# dense\n\nInformation-rich, educational focus\n\n## Panel Structure\n\n- **Panels per page**: 6-9\n- **Structure**: Compact grid, smaller panels\n- **Gutters**: Tight spacing (4-6px)\n\n## Grid Configuration\n\n- 3 columns × 3 rows\n- Panel sizes: Compact, uniform\n- Reading flow: Rapid progression, information-rich\n\n## Best For\n\nTechnical explanations, complex narratives, timelines\n\n## Best Style Pairings\n\nohmsha, vibrant\n"

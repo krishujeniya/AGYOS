@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: expert-qa-test\ndescription: \"QA Test Expert for test implementation, automation, Playwright/Cypress, test data, and test execution. Uses Factory Pattern for maintainable tests. Triggers: implement test, test automation, playwright, cypress, test data, e2e test, run tests, test suite, test report, test fixture\"\ncategory: domain\nrisk: safe\ntags: \"[qa-testing, automation, playwright, cypress, e2e, test-implementation, factory-pattern, tdd]\"\nversion: \"1.1.0\"\nprompt-source: prompt.toon\n---\n"

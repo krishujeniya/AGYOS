@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-functions\ndescription: Expert patterns for Azure Functions development including isolated\n  worker model, Durable Functions orchestration, cold start optimization, and\n  production patterns. Covers .NET, Python, and Node.js programming models.\nrisk: none\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

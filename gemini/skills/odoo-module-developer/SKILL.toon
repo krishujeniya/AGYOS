@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: odoo-module-developer\ndescription: \"Expert guide for creating custom Odoo modules. Covers __manifest__.py, model inheritance, ORM patterns, and module structure best practices.\"\nrisk: safe\nsource: \"self\"\nprompt-source: prompt.toon\n---\n"

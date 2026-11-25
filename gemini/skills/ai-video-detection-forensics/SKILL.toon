@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ai-video-detection-forensics\ndescription: >-\n  The 200-principle master reference for AI video detection and forensic media analysis.\n  Covers Google SynthID detection, C2PA Content Credentials, metadata analysis, temporal\n  consistency, anatomical and physics heuristics, multimodal audio-visual alignment, and\n  verification workflows using FFmpeg, MediaInfo, and frame extraction.\nmetadata:\n  version: 1.0.0\nlicense: MIT\nprompt-source: prompt.toon\n---\n"

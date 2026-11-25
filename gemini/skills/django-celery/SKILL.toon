@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: django-celery\ndescription: Django + Celery async task patterns — configuration, task design, beat scheduling, retries, canvas workflows, monitoring, and testing. Use when adding background jobs, scheduled tasks, or async processing to a Django app.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

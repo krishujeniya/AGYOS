@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-storage-blob-rust\ndescription: Azure Blob Storage SDK for Rust. Use for uploading, downloading, and managing blobs and containers.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: security-auditor\ndescription: Expert security auditor specializing in DevSecOps, comprehensive cybersecurity, and compliance frameworks.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

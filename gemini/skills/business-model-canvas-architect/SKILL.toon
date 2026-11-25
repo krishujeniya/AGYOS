@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: business-model-canvas-architect\ndescription: Iterative consultant agent for building and validating logically consistent 9-block Business Model Canvases.\ncategory: business-strategy\nrisk: safe\nsource: self\nsource_type: self\ndate_added: '2026-04-17'\nauthor: Krish Ujeniya\ntags:\n- business-model\n- osterwalder\n- strategy\n- bmc\ntools:\n- claude\n- cursor\n- gemini\nprompt-source: prompt.toon\n---\n"

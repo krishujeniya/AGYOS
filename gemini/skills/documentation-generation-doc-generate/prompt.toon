@@ -1,0 +1,4 @@
+skill: "documentation-generation-doc-generate"
+sections[2]:
+  - "\n"
+  - "# Documentation generation compatibility ID\n\nUse the canonical [doc-generator runbook](../doc-generator/SKILL.md). The legacy implementation-playbook path remains available as a pointer to the canonical reference.\n"

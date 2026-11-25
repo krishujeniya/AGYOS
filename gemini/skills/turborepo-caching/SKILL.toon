@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: turborepo-caching\ndescription: \"Configure Turborepo for efficient monorepo builds with local and remote caching. Use when setting up Turborepo, optimizing build pipelines, or implementing distributed caching.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

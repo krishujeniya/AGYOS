@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-ai-voicelive-py\ndescription: \"Build real-time voice AI applications with bidirectional WebSocket communication.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

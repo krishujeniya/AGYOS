@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: web-fuzzing-ffuf\ndescription: \"Run scoped web-content discovery with ffuf for an owned or explicitly authorized target. Use only with a written target list, permitted test window, and agreed request limits.\"\nrisk: safe\nsource: https://github.com/jthack/ffuf_claude_skill\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

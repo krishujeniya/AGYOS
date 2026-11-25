@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: skill-manager\ndescription: Discover, list, create, edit, toggle, copy, move, and delete AI agent skills across 11 tools (Cursor, Claude, Agents, Windsurf, Copilot, Codex, Cline, Aider, Continue, Roo Code, Augment)\nrisk: critical\nsource: community\nsource_repo: umutbozdag/agent-skills-manager\nsource_type: community\nprompt-source: prompt.toon\n---\n"

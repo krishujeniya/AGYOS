@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: cloud-sandbox-execution\ndescription: \"SOP for executing Gate 4 tasks safely using ephemeral, containerized sandboxes (Docker/Cloud VMs).\"\ncategory: devops\nversion: \"1.0.0\"\nauthor: \"Krish Ujeniya\"\nprompt-source: prompt.toon\n---\n"

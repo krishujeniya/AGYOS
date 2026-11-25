@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: cohort-retention-curves\ndescription: \"Build cohort retention curves, fit the decay, and name the segments that fall under benchmark. Use when monthly retention moves, before a pricing or packaging change, or when product asks which acquisition cohort actually sticks. Produces the evidence base that health scores and PRD problem statements are built on.\"\nrisk: safe\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

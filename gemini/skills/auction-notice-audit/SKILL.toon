@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: auction-notice-audit\ndescription: Analise e auditoria de editais de leilao judicial e extrajudicial. Riscos ocultos, clausulas perigosas, debitos, ocupante e classificacao da oportunidade.\nauthor: Krish Ujeniya\ntags:\n- auction\n- legal-analysis\n- risk\n- brazilian\ntools:\n- claude-code\n- antigravity\n- cursor\n- gemini-cli\n- codex-cli\nprompt-source: prompt.toon\n---\n"

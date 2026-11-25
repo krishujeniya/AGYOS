@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: maxia-agent\ndescription: Connect to MAXIA AI-to-AI marketplace on Solana. Discover, buy, sell AI services. Earn USDC. 13 MCP tools, A2A protocol, DeFi yields, sentiment analysis, rug detection.\nrisk: unknown\nsource: community\ntags: [solana, crypto, marketplace, ai-agents, mcp, defi, usdc, web3, a2a]\nauthor: \"Krish Ujeniya\"\nversion: 1.0.0\nhomepage: https://maxiaworld.app\nprompt-source: prompt.toon\n---\n"

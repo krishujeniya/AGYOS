@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: clerk-auth\ndescription: Expert patterns for Clerk auth implementation, middleware,\n  organizations, webhooks, and user sync\nrisk: safe\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

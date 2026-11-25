@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: backtesting-frameworks\ndescription: \"Build robust, production-grade backtesting systems that avoid common pitfalls and produce reliable strategy performance estimates.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

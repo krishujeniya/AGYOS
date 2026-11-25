@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: jake-chatgpt-youtube-yt-chapters\ndescription: \"Write YouTube chapters from a transcript, validated against YouTube's own rules so they actually render. Use for \\\"add chapters\\\", \\\"timestamps\\\", \\\"break this video into sections\\\".\"\nlicense: MIT\nmetadata:\n  upstream_repository: Jakeschincariol/chatgpt-youtube-agent-skill\n  upstream_skill: yt-chapters\n  upstream_commit: 6314d3c17dfa1e5960966542048e8a09e28cdfd74\nprompt-source: prompt.toon\n---\n"

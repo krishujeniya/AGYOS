@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: fp-option-ref\ndescription: Quick reference for Option type. Use when user needs to handle nullable values, optional data, or wants to avoid null checks.\nrisk: unknown\nsource: community\nversion: 1.0.0\ntags: [fp-ts, option, nullable, maybe, quick-reference]\nprompt-source: prompt.toon\n---\n"

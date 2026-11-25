@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: wrike-automation\ndescription: \"Automate Wrike project management via Rube MCP (Composio): create tasks/folders, manage projects, assign work, and track progress. Always search tools first for current schemas.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

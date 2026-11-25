@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: browser-automation\ndescription: Browser automation powers web testing, scraping, and AI agent\n  interactions. The difference between a flaky script and a reliable system\n  comes down to understanding selectors, waiting strategies, and anti-detection\n  patterns.\nrisk: unknown\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: wechat-official-account-strategist\ndescription: \"Grow WeChat Official Accounts (微信公众号) with high-conversion content strategy, title formulas, article architecture, and Mini-Program integration.\"\ncategory: marketing\nrisk: safe\nsource: community\nsource_repo: demo112/yunqu-ai-skills\nsource_type: community\ndate_added: \"2026-05-13\"\nauthor: \"Krish Ujeniya\"\ntags: [wechat, chinese-market, content-strategy, marketing, 公众号, 微信]\ntools: [claude, cursor, gemini]\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: stride-analysis-patterns\ndescription: \"Apply STRIDE methodology to systematically identify threats. Use when analyzing system security, conducting threat modeling sessions, or creating security documentation.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

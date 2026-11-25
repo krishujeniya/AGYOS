@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: vscode-extension-guide-en\ndescription: \"Guide for VS Code extension development from scaffolding to Marketplace publication\"\ncategory: core-dev\nrisk: safe\nsource: community\nsource_repo: lewiswigmore/agent-skills\nsource_type: community\ndate_added: \"2026-04-12\"\nauthor: \"Krish Ujeniya\"\ntags: [vscode, extension, ide, typescript, marketplace]\ntools: [claude, cursor, copilot, codex, gemini]\nprompt-source: prompt.toon\n---\n"

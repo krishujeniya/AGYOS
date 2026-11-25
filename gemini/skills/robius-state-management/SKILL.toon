@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: robius-state-management\ndescription: |\n  CRITICAL: Use for Robius state management patterns. Triggers on:\n  AppState, persistence, theme switch, 状态管理,\n  Scope::with_data, save state, load state, serde,\n  状态持久化, 主题切换\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

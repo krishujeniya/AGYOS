@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "google-workspace": {
+      "type": "http",
+      "url": "https://googleworkspace.googleapis.com/mcp/",
+      "env_ref": "AGY_WORKSPACE_OAUTH_REF",
+      "tool_scope": [
+        "drive:read",
+        "drive:write",
+        "docs:export"
+      ],
+      "folder_scope": "AGYOS-artifacts",
+      "access_log": true,
+      "enabled": true
+    }
+  }
+}

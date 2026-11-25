@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: 2d-games\ndescription: \"2D game development principles. Sprites, tilemaps, physics, camera.\"\nrisk: none\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

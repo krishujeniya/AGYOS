@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: process-verify-completion\ndescription: \"Master rule for verification. Prevents claiming a task is complete, a test passes, or a bug is fixed without providing direct, fresh empirical evidence (command output). Triggers before any PR, commit, or completion claim.\"\ncategory: process\nrisk: safe\ntags: \"[verification, QA, testing, completion, evidence, check]\"\nversion: \"1.0.0\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: sred-project-organizer\ndescription: Take a list of projects and their related documentation, and organize them into the SRED format for submission.\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

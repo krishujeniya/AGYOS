@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: fp-data-transforms\ndescription: Everyday data transformations using functional patterns - arrays, objects, grouping, aggregation, and null-safe access\nrisk: unknown\nsource: community\nversion: 1.0.0\nauthor: \"Krish Ujeniya\"\ntags:\n  - functional-programming\n  - typescript\n  - data-transformation\n  - fp-ts\n  - arrays\n  - objects\n  - grouping\n  - aggregation\n  - null-safety\nprompt-source: prompt.toon\n---\n"

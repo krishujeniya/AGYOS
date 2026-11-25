@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: seo-sitemap\ndescription: >\n  Analyze existing XML sitemaps or generate new ones with industry templates.\n  Validates format, URLs, and structure. Use when user says \"sitemap\",\n  \"generate sitemap\", \"sitemap issues\", or \"XML sitemap\".\nrisk: unknown\nsource: \"https://github.com/AgriciDaniel/claude-seo\"\ndate_added: \"2026-03-21\"\nuser-invokable: true\nargument-hint: \"[url or generate]\"\nallowed-tools:\n  - Read\n  - Grep\n  - Glob\n  - Bash\n  - WebFetch\n  - Write\nprompt-source: prompt.toon\n---\n"

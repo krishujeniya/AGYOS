@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: podcast-generation\ndescription: \"Generate real audio narratives from text content using Azure OpenAI's Realtime API.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

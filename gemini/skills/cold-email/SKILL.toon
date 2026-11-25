@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: cold-email\ndescription: \"Write B2B cold emails and follow-up sequences that earn replies. Use when creating outbound prospecting emails, SDR outreach, personalized opening lines, subject lines, CTAs, and multi-touch follow-up sequences.\"\nrisk: unknown\nsource: \"https://github.com/coreyhaines31/marketingskills\"\ndate_added: \"2026-03-21\"\nmetadata:\n  version: 1.1.0\nprompt-source: prompt.toon\n---\n"

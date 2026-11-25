@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: travis-mcp\ndescription: Manage Travis CI pipelines, monitor build health, retrieve and analyze job logs, compare builds, and optimize CI performance via the Travis CI MCP server (API v3).\nrisk: low\nsource: community (michaelamendy.com/blog/travis-mcp-server)\ndate_added: 2026-11-13\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: openclaw-github-repo-commander\ndescription: \"7-stage super workflow for GitHub repo audit, cleanup, PR review, and competitor analysis\"\ncategory: development-and-testing\nrisk: safe\nsource: community\ndate_added: \"2026-03-18\"\nauthor: \"Krish Ujeniya\"\ntags: [github, git, repository, audit, cleanup, workflow, devtools, automation, code-review, security]\ntools: [claude, cursor]\nprompt-source: prompt.toon\n---\n"

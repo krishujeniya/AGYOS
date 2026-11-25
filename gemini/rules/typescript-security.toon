@@ -1,0 +1,2 @@
+mode: "100644"
+text: "---\ntrigger: glob\nglobs: \"**/*.ts,**/*.tsx,**/*.js,**/*.jsx\"\n---\n# TypeScript/JavaScript Security\n\n> This file extends [common/security.md](common-security.md) with TypeScript/JavaScript specific content.\n\n## Secret Management\n\n```typescript\n// NEVER: Hardcoded secrets\nconst apiKey = \"sk-proj-xxxxx\"\n\n// ALWAYS: Environment variables\nconst apiKey = process.env.API_KEY\n\nif (!apiKey) {\n  throw new Error('API_KEY not configured')\n}\n```\n\n## Agent Support\n\n- Use **security-reviewer** skill for comprehensive security audits\n"

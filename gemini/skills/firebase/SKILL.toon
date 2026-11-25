@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: firebase\ndescription: Firebase gives you a complete backend in minutes - auth, database,\n  storage, functions, hosting. But the ease of setup hides real complexity.\n  Security rules are your last line of defense, and they're often wrong.\nrisk: unknown\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

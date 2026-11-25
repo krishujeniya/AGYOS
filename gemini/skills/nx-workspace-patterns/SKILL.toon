@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: nx-workspace-patterns\ndescription: \"Configure and optimize Nx monorepo workspaces. Use when setting up Nx, configuring project boundaries, optimizing build caching, or implementing affected commands.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

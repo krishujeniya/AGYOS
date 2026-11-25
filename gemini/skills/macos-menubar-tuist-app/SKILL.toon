@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: macos-menubar-tuist-app\ndescription: Build, refactor, or review SwiftUI macOS menubar apps that use Tuist.\nrisk: safe\nsource: \"Dimillian/Skills (MIT)\"\ndate_added: \"2026-03-25\"\nprompt-source: prompt.toon\n---\n"

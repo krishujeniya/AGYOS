@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: avalonia-zafiro-development\ndescription: \"Mandatory skills, conventions, and behavioral rules for Avalonia UI development using the Zafiro toolkit.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

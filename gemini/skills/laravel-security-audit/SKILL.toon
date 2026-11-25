@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: laravel-security-audit\ndescription: \"Security auditor for Laravel applications. Analyzes code for vulnerabilities, misconfigurations, and insecure practices using OWASP standards and Laravel security best practices.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

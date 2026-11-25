@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: prompt-library\ndescription: \"Reusable AGYOS prompt patterns for common tasks. Adapt them to the user's intent, context, and constraints; community provenance is recorded in the runbook.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: jake-unhinged-tax-fraud\ndescription: \"Hunts cost everywhere — trims tokens, kills redundant calls, and reports the cheapest path to the same result; invoke via /tax-fraud when you want aggressive (but technically legal) cost optimization of an AI workflow, pipeline, or process.\"\nlicense: MIT\nmetadata:\n  upstream_repository: Jakeschincariol/unhinged-claude-skills\n  upstream_skill: tax-fraud\n  upstream_commit: 8f60ec6d9e28e430849b57b5e21cbdfe9860df99\nprompt-source: prompt.toon\n---\n"

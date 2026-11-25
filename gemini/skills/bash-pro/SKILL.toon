@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: bash-pro\ndescription: 'Master of defensive Bash scripting for production automation, CI/CD\n\n  pipelines, and system utilities. Expert in safe, portable, and testable shell\n\n  scripts.\n\n  '\nrisk: critical\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

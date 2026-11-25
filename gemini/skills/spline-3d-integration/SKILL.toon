@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: spline-3d-integration\ndescription: \"Use when adding interactive 3D scenes from Spline.design to web projects, including React embedding and runtime control API.\"\nrisk: safe\nsource: community\ndate_added: \"2026-03-07\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: foundation-models-on-device\ndescription: Apple FoundationModels framework for on-device LLM — text generation, guided generation with @Generable, tool calling, and snapshot streaming in iOS 26+. Use when adding on-device LLM features with Apple FoundationModels on iOS 26+.\nprompt-source: prompt.toon\n---\n"

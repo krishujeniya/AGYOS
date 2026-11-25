@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: perf-test-review\ndescription: \"Review performance benchmarks and tests for valid, repeatable measurements. Use when checking a performance regression, optimization claim, benchmark setup, or timing-sensitive test.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: audit-context-building\ndescription: Enables ultra-granular, line-by-line code analysis to build deep architectural context before vulnerability or bug finding.\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

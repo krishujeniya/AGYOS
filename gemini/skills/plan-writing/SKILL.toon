@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: plan-writing\ndescription: \"Structured task planning with clear breakdowns, dependencies, and verification criteria. Use when implementing features, refactoring, or any multi-step work.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

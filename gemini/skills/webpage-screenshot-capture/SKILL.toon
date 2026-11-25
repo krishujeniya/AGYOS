@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: webpage-screenshot-capture\ndescription: Generate marketing screenshots of your app using Playwright. Use when the user wants to create screenshots for Product Hunt, social media, landing pages, or documentation.\nrisk: safe\nsource: https://github.com/Shpigford/skills/tree/main/screenshots\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

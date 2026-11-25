@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: context-restore\ndescription: \"Restore task context after a long or interrupted session by finding the active objective, decisions, artifacts, and next verified step. Use when resuming work.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

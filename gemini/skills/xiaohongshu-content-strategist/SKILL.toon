@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: xiaohongshu-content-strategist\ndescription: \"Create viral Xiaohongshu (小红书) content with platform-native strategy, save-rate optimization, trending formats, and search SEO for China's #1 lifestyle platform.\"\ncategory: marketing\nrisk: safe\nsource: community\nsource_repo: demo112/yunqu-ai-skills\nsource_type: community\ndate_added: \"2026-05-13\"\nauthor: \"Krish Ujeniya\"\ntags: [xiaohongshu, chinese-market, content-strategy, social-media, marketing, 红书, 小红书]\ntools: [claude, cursor, gemini]\nprompt-source: prompt.toon\n---\n"

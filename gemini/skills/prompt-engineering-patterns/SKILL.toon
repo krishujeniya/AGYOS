@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: prompt-engineering-patterns\ndescription: \"Apply task-fit prompt patterns for instructions, examples, output formats, and evaluation without assuming universal performance gains.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

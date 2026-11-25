@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: google-flow\ndescription: >-\n  Headless video generation and Scene Builder automation using Google Flow and Veo 3.1 via\n  google-flow-mcp. Enforces Obscura headless execution, dry-run confirmation, Veo 3.1\n  prompting, local download, and post-render verification.\nmetadata:\n  version: 1.1.0\n  license: MIT\nprompt-source: prompt.toon\n---\n"

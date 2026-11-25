@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: nodejs-best-practices\ndescription: \"Node.js development principles and decision-making. Framework selection, async patterns, security, and architecture. Teaches thinking, not copying.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: interactive-scroll-story\ndescription: Create an interactive scrolling story with a consistent visual direction, readable content, and reduced-motion support.\nprompt-source: prompt.toon\n---\n"

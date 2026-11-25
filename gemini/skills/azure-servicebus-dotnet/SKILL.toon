@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-servicebus-dotnet\ndescription: Azure Service Bus SDK for .NET. Enterprise messaging with queues, topics, subscriptions, and sessions.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

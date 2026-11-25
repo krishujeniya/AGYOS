@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: cloudformation-best-practices\ndescription: \"CloudFormation template optimization, nested stacks, drift detection, and production-ready patterns. Use when writing or reviewing CF templates.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

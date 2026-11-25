@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: odoo-backup-strategy\ndescription: \"Complete Odoo backup and restore strategy: database dumps, filestore backup, automated scheduling, cloud storage upload, and tested restore procedures.\"\nrisk: safe\nsource: \"self\"\nprompt-source: prompt.toon\n---\n"

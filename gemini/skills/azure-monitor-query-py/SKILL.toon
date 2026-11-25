@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-monitor-query-py\ndescription: Azure Monitor Query SDK for Python. Use for querying Log Analytics workspaces and Azure Monitor metrics.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

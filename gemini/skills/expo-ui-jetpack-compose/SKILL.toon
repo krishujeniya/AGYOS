@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: expo-ui-jetpack-compose\ndescription: Use when integrating Android Jetpack Compose views or modifiers into an Expo app with `@expo/ui/jetpack-compose`.\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

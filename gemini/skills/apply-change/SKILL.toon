@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: apply-change\ndescription: Implement tasks from an Aegis change. Use when the user wants to start implementing, continue implementation, or work through tasks.\nlicense: MIT\ncompatibility: Requires aegis CLI.\nmetadata:\n  author: \"Krish Ujeniya\"\n  version: \"1.0\"\n  generatedBy: \"1.2.0\"\nprompt-source: prompt.toon\n---\n"

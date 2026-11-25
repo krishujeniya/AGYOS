@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: similarity-search-patterns\ndescription: \"Implement efficient similarity search with vector databases. Use when building semantic search, implementing nearest neighbor queries, or optimizing retrieval performance.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-ai-projects-py\ndescription: \"Build AI applications on Microsoft Foundry using the azure-ai-projects SDK.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

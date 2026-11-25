@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: production-code-audit\ndescription: \"Audit a repository for production-readiness gaps in correctness, security, maintainability, and operations. Use for broad quality reviews; implement fixes only within the authorized scope.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

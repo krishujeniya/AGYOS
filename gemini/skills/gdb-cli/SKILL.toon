@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: gdb-cli\ndescription: \"GDB debugging assistant for AI agents - analyze core dumps, debug live processes, investigate crashes and deadlocks with source code correlation\"\ncategory: development\nrisk: critical\nsource: community\ndate_added: \"2026-03-22\"\nauthor: \"Krish Ujeniya\"\ntags:\n- debugging\n- gdb\n- core-dump\n- crash-analysis\n- c++\n- c\ntools:\n- claude-code\n- cursor\n- gemini-cli\n- codex-cli\n- antigravity\nprompt-source: prompt.toon\n---\n"

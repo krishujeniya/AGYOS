@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: windows-privilege-escalation\ndescription: \"Provide systematic methodologies for discovering and exploiting privilege escalation vulnerabilities on Windows systems during penetration testing engagements.\"\nrisk: offensive\nsource: community\nauthor: \"Krish Ujeniya\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

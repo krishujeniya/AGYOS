@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: assumption-audit-first-principles\ndescription: 'First-principles assumption auditor. Classifies each hidden assumption (fact / convention / belief / interest-driven), ranks by fragility × impact, and rebuilds conclusions from verified premises. Bilingual: auto-detects Chinese or English.'\nrisk: safe\nsource: community\ndate_added: '2026-04-13'\nprompt-source: prompt.toon\n---\n"

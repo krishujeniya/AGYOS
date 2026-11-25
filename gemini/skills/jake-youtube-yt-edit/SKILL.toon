@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: jake-youtube-yt-edit\ndescription: \"Turn a raw recording's transcript into an edit decision list - dead air, filler cues and retakes, with timecodes. Use for \\\"edit this\\\", \\\"cut the dead space\\\", \\\"tighten this video\\\", \\\"I rambled\\\", or any request to shorten footage from a transcript.\"\nlicense: MIT\nmetadata:\n  upstream_repository: Jakeschincariol/youtube-agent-skill\n  upstream_skill: yt-edit\n  upstream_commit: a2feb2104981a375ffd4f87ee04f4f5344ac43c6\nprompt-source: prompt.toon\n---\n"

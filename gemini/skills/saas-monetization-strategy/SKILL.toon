@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: saas-monetization-strategy\ndescription: Estrategia e implementacao de monetizacao para produtos digitais - Stripe, subscriptions, pricing experiments, freemium, upgrade flows, churn prevention, revenue optimization e modelos de negocio SaaS.\nrisk: none\nsource: community\ndate_added: '2026-03-06'\nauthor: Krish Ujeniya\ntags:\n- monetization\n- stripe\n- saas\n- pricing\n- subscriptions\ntools:\n- claude-code\n- antigravity\n- cursor\n- gemini-cli\n- codex-cli\nprompt-source: prompt.toon\n---\n"

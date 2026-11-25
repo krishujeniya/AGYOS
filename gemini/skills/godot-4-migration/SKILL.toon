@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: godot-4-migration\ndescription: \"Specialized guide for migrating Godot 3.x projects to Godot 4 (GDScript 2.0), covering syntax changes, Tweens, and exports.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

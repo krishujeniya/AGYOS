@@ -1,0 +1,5 @@
+skill_name: collections-dunning-automation
+evals[2]:
+  - id, prompt, expected_output, assertions, files
+  - 1, "Run the collections-dunning-automation skill end to end: ar-aging.toon 61-90 and 90+ slices is ready and current. Follow the workflow and produce the artifact.", "Executes the numbered workflow in order; produces the declared outputs with the declared keys; verifies results with the checks the workflow names; records assumptions with their sources.", "Follows workflow step order|Produces the declared output artifact and keys|Verifies results with the named checks|Records assumptions with sources|Direct technical prose, no filler", ""
+  - 2, "The input ar-aging.toon 61-90 and 90+ slices is missing or older than the staleness window when collections-dunning-automation is invoked. What does the agent do?", "Stops before executing; emits ask_question naming the missing or stale inputs; does not proceed with invented values; does not mark the run complete.", "Stops before execution|Emits ask_question listing the stale inputs|Does not invent values|Does not claim completion", ""

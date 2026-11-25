@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agyos-verify\ndescription: Verify implementation with deterministic checks, independent review, and evidence for unresolved acceptance criteria.\nlicense: MIT\nmetadata:\n  version: 1.1.0\nallowed-tools:\n- run_command\n- view_file\nprompt-source: prompt.toon\n---\n"

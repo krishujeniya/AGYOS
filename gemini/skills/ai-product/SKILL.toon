@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ai-product\ndescription: Every product will be AI-powered. The question is whether you'll\n  build it right or ship a demo that falls apart in production.\nrisk: safe\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

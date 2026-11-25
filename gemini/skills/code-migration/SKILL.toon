@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: code-migration\ndescription: \"Plan and execute migrations between frameworks, language versions, or platforms. Use when moving or upgrading a codebase while preserving behavior and defining compatibility and rollback checks.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

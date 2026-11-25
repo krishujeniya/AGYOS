@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: architecture-patterns\ndescription: \"Master proven backend architecture patterns including Clean Architecture, Hexagonal Architecture, and Domain-Driven Design to build maintainable, testable, and scalable systems.\"\nrisk: none\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

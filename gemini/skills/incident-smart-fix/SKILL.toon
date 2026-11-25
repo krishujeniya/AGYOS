@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: incident-smart-fix\ndescription: \"Investigate a reported software issue, trace its cause, and prepare a verified fix with regression coverage. Use when diagnosing or resolving an incident.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

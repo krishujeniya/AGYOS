@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: media-conversion-toolkit\ndescription: Inspect and convert audio, video, and image files using available media tools; verify output format and preserve source files.\nprompt-source: prompt.toon\n---\n"

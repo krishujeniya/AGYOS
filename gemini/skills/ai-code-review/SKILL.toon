@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ai-code-review\ndescription: \"Review code changes for correctness, security, maintainability, and project conventions. Use when assessing a focused diff or pull request before merge.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

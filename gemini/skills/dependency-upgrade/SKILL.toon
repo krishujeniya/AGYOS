@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: dependency-upgrade\ndescription: \"Master major dependency version upgrades, compatibility analysis, staged upgrade strategies, and comprehensive testing approaches.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

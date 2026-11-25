@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: dev-orchestrator\ndescription: \"The master orchestrator for autonomous development. Activates when building a product from idea to production, managing multi-gate workflows, or when the user says 'build', 'create project', 'aegis mode', 'full lifecycle', or 'idea to deployment'. Coordinates all expert skills through the 5-Gate workflow.\"\ncategory: orchestrator\nversion: \"2.0.0\"\nauthor: \"Krish Ujeniya\"\nprompt-source: prompt.toon\n---\n"

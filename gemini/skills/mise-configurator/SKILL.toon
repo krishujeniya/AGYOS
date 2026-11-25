@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: mise-configurator\ndescription: \"Generate production-ready mise.toml setups for local development, CI/CD pipelines, and toolchain standardization.\"\ncategory: devops\nrisk: safe\nsource: self\nsource_type: self\ndate_added: \"2026-04-16\"\nauthor: \"Krish Ujeniya\"\ntags: [mise, devops, ci-cd, toolchain, runtimes, automation]\ntools: [claude, cursor, gemini]\nprompt-source: prompt.toon\n---\n"

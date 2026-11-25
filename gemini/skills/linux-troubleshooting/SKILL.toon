@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: linux-troubleshooting\ndescription: \"Linux system troubleshooting workflow for diagnosing and resolving system issues, performance problems, and service failures.\"\ncategory: granular-workflow-bundle\nrisk: safe\nsource: personal\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

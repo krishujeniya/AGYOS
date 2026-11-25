@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: settlement-reconciliation-audit\ndescription: \"Three-way match between payment-processor settlement files, the internal payout ledger and bank statements. Use after each settlement period closes, when a payout amount looks wrong, when chargeback volume moves, or before role-cfo signs a payment approval. Classifies breaks, ages them, and drafts processor credit claims.\"\nrisk: medium\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: orch-fix-defect\ndescription: Orchestrate fixing a bug — reproduce it as a failing regression test, fix to green, review, and gated commit — by delegating each phase to the matching ECC agent. Use when existing behavior is broken or wrong.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

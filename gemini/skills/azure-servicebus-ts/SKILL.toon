@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-servicebus-ts\ndescription: \"Enterprise messaging with queues, topics, and subscriptions.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

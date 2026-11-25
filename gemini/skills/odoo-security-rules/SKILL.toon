@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: odoo-security-rules\ndescription: \"Expert in Odoo access control: ir.model.access.csv, record rules (ir.rule), groups, and multi-company security patterns.\"\nrisk: safe\nsource: \"self\"\nprompt-source: prompt.toon\n---\n"

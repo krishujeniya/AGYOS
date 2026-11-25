@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: hig-components-controls\ndescription: \"Design or review Apple platform selection and input controls such as toggles, pickers, sliders, text fields, and steppers. Read existing Apple design context first.\"\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

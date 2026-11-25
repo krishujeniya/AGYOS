@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: freelancer-project-delivery\ndescription: Use when onboarding clients, setting up git repositories, designing MLOps pipelines (ZenML, MLflow, DVC), structuring tests/QA for ML, and managing project milestones or delivery handoffs.\nprompt-source: prompt.toon\n---\n"

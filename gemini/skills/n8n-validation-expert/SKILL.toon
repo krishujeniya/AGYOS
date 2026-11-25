@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: n8n-validation-expert\ndescription: \"Expert guide for interpreting and fixing n8n validation errors.\"\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: diagnostics-trace\ndescription: \"Add or troubleshoot error tracking, structured logs, and alerts. Use when instrumenting observability or tracing production failures to their source.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

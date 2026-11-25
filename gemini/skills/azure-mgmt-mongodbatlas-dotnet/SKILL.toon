@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-mgmt-mongodbatlas-dotnet\ndescription: \"Manage MongoDB Atlas Organizations as Azure ARM resources with unified billing through Azure Marketplace.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

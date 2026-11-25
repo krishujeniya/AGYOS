@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: microsoft-azure-webjobs-extensions-authentication-events-dotnet\ndescription: Microsoft Entra Authentication Events SDK for .NET. Azure Functions triggers for custom authentication extensions.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

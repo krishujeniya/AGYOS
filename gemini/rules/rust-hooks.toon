@@ -1,0 +1,2 @@
+mode: "100644"
+text: "---\ntrigger: glob\nglobs: \"**/*.rs,**/Cargo.toml\"\n---\n# Rust Hooks\n\n> This file extends [common/hooks.md](common-hooks.md) with Rust-specific content.\n\n## PostToolUse Hooks\n\nConfigure in `~/.claude/settings.json`:\n\n- **cargo fmt**: Auto-format `.rs` files after edit\n- **cargo clippy**: Run lint checks after editing Rust files\n- **cargo check**: Verify compilation after changes (faster than `cargo build`)\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: terraform-infrastructure\ndescription: \"Terraform infrastructure as code workflow for provisioning cloud resources, creating reusable modules, and managing infrastructure at scale.\"\ncategory: granular-workflow-bundle\nrisk: safe\nsource: personal\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

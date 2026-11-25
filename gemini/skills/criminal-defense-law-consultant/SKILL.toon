@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: criminal-defense-law-consultant\ndescription: Advogado criminalista especializado em Maria da Penha, violencia domestica, feminicidio, direito penal brasileiro, medidas protetivas, inquerito policial e acao penal.\nauthor: Krish Ujeniya\ntags:\n- legal\n- brazilian-law\n- criminal-law\n- portuguese\ntools:\n- claude-code\n- antigravity\n- cursor\n- gemini-cli\n- codex-cli\nprompt-source: prompt.toon\n---\n"

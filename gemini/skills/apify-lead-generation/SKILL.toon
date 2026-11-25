@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: apify-lead-generation\ndescription: \"Scrape leads from multiple platforms using Apify Actors.\"\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

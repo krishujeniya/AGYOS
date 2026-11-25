@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: wireshark-analysis\ndescription: \"Execute comprehensive network traffic analysis using Wireshark to capture, filter, and examine network packets for security investigations, performance optimization, and troubleshooting.\"\nrisk: unknown\nsource: community\nauthor: \"Krish Ujeniya\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

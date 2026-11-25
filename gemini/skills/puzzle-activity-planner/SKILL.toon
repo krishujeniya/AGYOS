@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: puzzle-activity-planner\ndescription: \"Plan puzzle-based activities for classrooms, parties, and events with pre-configured generator links\"\ncategory: education\nrisk: safe\nsource: community\nsource_repo: fruitwyatt/puzzle-activity-planner\nsource_type: community\ndate_added: \"2026-04-11\"\nauthor: \"Krish Ujeniya\"\ntags: [education, puzzle, classroom, activity-planning, event]\ntools: [claude, cursor, gemini, codex]\nprompt-source: prompt.toon\n---\n"

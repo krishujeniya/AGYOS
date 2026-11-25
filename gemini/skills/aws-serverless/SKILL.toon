@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: aws-serverless\ndescription: Specialized skill for building production-ready serverless\n  applications on AWS. Covers Lambda functions, API Gateway, DynamoDB, SQS/SNS\n  event-driven patterns, SAM/CDK deployment, and cold start optimization.\nrisk: unknown\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: paper-orchestra\ndescription: \"Automated AI research paper drafting and publication-ready LaTeX manuscript generation using Google Cloud AI Research's PaperOrchestra multi-agent architecture and PaperWritingBench methodology.\"\nmetadata:\n  origin: google-research\n  repository: \"https://github.com/google-research/paper-orchestra\"\nprompt-source: prompt.toon\n---\n"

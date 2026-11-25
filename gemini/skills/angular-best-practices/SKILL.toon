@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: angular-best-practices\ndescription: \"Angular performance optimization and best practices guide. Use when writing, reviewing, or refactoring Angular code for optimal performance, bundle size, and rendering efficiency.\"\nrisk: safe\nsource: self\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

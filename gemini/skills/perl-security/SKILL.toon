@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: perl-security\ndescription: Comprehensive Perl security covering taint mode, input validation, safe process execution, DBI parameterized queries, web security (XSS/SQLi/CSRF), and perlcritic security policies. Use when reviewing Perl input handling, process execution, DBI queries, or web-facing code.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

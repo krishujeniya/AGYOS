@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: chrome-extensions\ndescription: \"Build and publish Chrome Extensions using Manifest V3 best practices. Trigger on Chrome extensions, browser extensions, manifest.json, content scripts, extension service workers, side panels, chrome.* APIs, declarativeNetRequest, and Chrome Web Store publishing.\"\nrisk: low\nsource: official (github.com/GoogleChrome/modern-web-guidance)\ndate_added: 2026-11-15\nprompt-source: prompt.toon\n---\n"

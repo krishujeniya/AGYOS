@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: python-packaging\ndescription: \"Comprehensive guide to creating, structuring, and distributing Python packages using modern packaging tools, pyproject.toml, and publishing to PyPI.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: benefits-leave-administration\ndescription: \"Administer benefits enrollment windows and leave accrual enforcement. Use at enrollment windows, when the provider export arrives each month, when an employee questions a balance, or when a policy exception is requested so exceptions are logged with approvals instead of absorbed silently.\"\nrisk: safe\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

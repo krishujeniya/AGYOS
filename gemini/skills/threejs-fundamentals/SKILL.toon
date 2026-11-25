@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: threejs-fundamentals\ndescription: Three.js scene setup, cameras, renderer, Object3D hierarchy, coordinate systems. Use when setting up 3D scenes, creating cameras, configuring renderers, managing object hierarchies, or working with transforms.\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

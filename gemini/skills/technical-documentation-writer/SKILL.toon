@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: technical-documentation-writer\ndescription: Documentation generation workflow covering API docs, architecture docs, README files, code comments, and technical writing.\ncategory: workflow-bundle\nrisk: safe\nsource: personal\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

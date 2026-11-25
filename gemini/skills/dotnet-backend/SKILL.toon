@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: dotnet-backend\ndescription: \"Build ASP.NET Core 8+ backend services with EF Core, auth, background jobs, and production API patterns.\"\nrisk: safe\nsource: self\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

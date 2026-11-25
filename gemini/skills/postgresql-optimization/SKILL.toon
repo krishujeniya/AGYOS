@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: postgresql-optimization\ndescription: \"PostgreSQL database optimization workflow for query tuning, indexing strategies, performance analysis, and production database management.\"\ncategory: granular-workflow-bundle\nrisk: safe\nsource: personal\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

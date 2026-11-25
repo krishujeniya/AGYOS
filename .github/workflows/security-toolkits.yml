@@ -1,0 +1,125 @@
+name: Security Toolkits
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'gemini/tools/security/**'
+      - 'gemini/skills/*strix*/**'
+      - 'gemini/skills/application-security-testing/**'
+      - 'gemini/skills/web-app-penetration-testing/**'
+      - 'gemini/skills/owasp-top-10-testing/**'
+      - 'gemini/skills/find-security-vulnerabilities-in-code/**'
+      - 'gemini/scripts/strix_runner.py'
+      - 'gemini/scripts/agy_security_scanner.py'
+      - 'gemini/scripts/tests/test_strix_runner.py'
+      - '.github/workflows/security-toolkits.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'gemini/tools/security/**'
+      - 'gemini/skills/*strix*/**'
+      - 'gemini/skills/application-security-testing/**'
+      - 'gemini/skills/web-app-penetration-testing/**'
+      - 'gemini/skills/owasp-top-10-testing/**'
+      - 'gemini/skills/find-security-vulnerabilities-in-code/**'
+      - 'gemini/scripts/strix_runner.py'
+      - 'gemini/scripts/agy_security_scanner.py'
+      - 'gemini/scripts/tests/test_strix_runner.py'
+      - '.github/workflows/security-toolkits.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: security-toolkits-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  static-checks:
+    name: Security toolkit static checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Materialize AGY catalog manifests
+        run: node gemini/scripts/materialize-documents.mjs
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install repository requirements
+        run: pip install -r gemini/scripts/requirements.txt
+
+      - name: Check required toolkit entrypoints
+        run: |
+          test -f gemini/tools/security/strix/pyproject.toml
+          test -f gemini/tools/security/strix/strix/interface/main.py
+          test -f gemini/scripts/strix_runner.py
+          test -f gemini/scripts/agy_security_scanner.py
+          test -f gemini/scripts/tests/test_strix_runner.py
+
+      - name: Run Strix runner regression tests
+        run: cd gemini && python -m unittest scripts/tests/test_strix_runner.py -v
+
+      - name: Validate toolkit status and skills via runner
+        run: |
+          python gemini/scripts/strix_runner.py status --json
+          python gemini/scripts/strix_runner.py skills --json
+          python gemini/scripts/strix_runner.py test-inventory --json
+          python gemini/scripts/strix_runner.py scan --target ./ --dry-run
+
+      - name: Check Python syntax across security toolkits
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          for path in Path("gemini/tools/security").rglob("*.py"):
+              compile(path.read_bytes(), str(path), "exec")
+          PY
+
+      - name: Check shell scripts syntax
+        run: |
+          while IFS= read -r -d '' file; do
+            bash -n "$file"
+          done < <(find gemini/tools/security -type f -name '*.sh' -print0)
+
+      - name: Reject committed Python caches
+        run: |
+          if find gemini/tools/security -type d -name __pycache__ -o -type f \( -name '*.pyc' -o -name '*.pyo' \) | grep -q .; then
+            echo 'Generated Python cache files must not be committed.' >&2
+            exit 1
+          fi
+
+      - name: Audit registered security skills
+        run: |
+          python - <<'PY'
+          import sys, tempfile, shutil
+          from pathlib import Path
+          sys.path.insert(0, 'gemini')
+          from scripts.audit_skill_catalog import audit_catalog
+
+          security_skills = [
+              'application-security-testing',
+              'ci-security-scanning-with-strix',
+              'find-security-vulnerabilities-in-code',
+              'fix-security-vulnerabilities-with-strix',
+              'managed-pentesting-with-strix',
+              'owasp-top-10-testing',
+              'penetration-testing-with-strix',
+              'web-app-penetration-testing',
+              'strix-api-security-testing'
+          ]
+          with tempfile.TemporaryDirectory() as td:
+              tdp = Path(td)
+              for s in security_skills:
+                  src = Path('gemini/skills') / s
+                  if src.is_dir():
+                      shutil.copytree(src, tdp / s)
+              report = audit_catalog(tdp)
+              findings = report.get('findings', [])
+              if findings:
+                  print(f"Error: {len(findings)} structural findings in security skills:", findings)
+                  sys.exit(1)
+              print(f"Audited {len(security_skills)} registered security skills: 0 structural findings.")
+          PY

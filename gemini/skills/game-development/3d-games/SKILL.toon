@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: 3d-games\ndescription: \"3D game development principles. Rendering, shaders, physics, cameras.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

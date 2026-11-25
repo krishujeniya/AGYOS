@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ai-video-quality-enhancement\ndescription: >-\n  Diagnose and repair AI-generated video defects (Google Flow and Veo) via\n  scripts/repair_ai_video.py, FFmpeg, VidStab, CodeFormer, ProPainter, DeepFilterNet, Demucs,\n  PySceneDetect, and ebur128/VMAF verification.\nmetadata:\n  version: 1.1.0\n  license: MIT\nprompt-source: prompt.toon\n---\n"

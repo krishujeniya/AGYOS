@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-resource-manager-postgresql-dotnet\ndescription: Azure PostgreSQL Flexible Server SDK for .NET. Database management for PostgreSQL Flexible Server deployments.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

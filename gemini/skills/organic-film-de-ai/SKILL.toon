@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: organic-film-de-ai\ndescription: >-\n  Transform AI-generated video into organic cinema using Kodak 2383 curves, halation bloom,\n  35mm grain, lens optics, 180-degree shutter blur, aspect-preserving handheld drift, and room\n  acoustics via scripts/organic_film_engine.py.\nmetadata:\n  version: 1.1.0\n  license: MIT\nprompt-source: prompt.toon\n---\n"

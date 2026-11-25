@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: threejs-animation\ndescription: Three.js animation - keyframe animation, skeletal animation, morph targets, animation mixing. Use when animating objects, playing GLTF animations, creating procedural motion, or blending animations.\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

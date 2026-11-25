@@ -1,0 +1,128 @@
+# ==============================================================================
+# AGYOS Unified .gitignore
+# Combined Node/Next.js + Python/FastAPI + Cloudflare + OS & Agent Rules
+# ==============================================================================
+
+# OS & Editor Metadata
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+*.tmp
+*.bak
+.idea/
+.vscode/
+
+# Coding Agent Workspace Metadata & Local Harness Invariant
+AGENTS.md
+agent.md
+agents.md
+CLAUDE.md
+claude.md
+GEMINI.md
+gemini.md
+COPILOT.md
+copilot.md
+.pi/
+.claude/
+!gemini/skill-sources/jakeschincariol/promptmaster-skill/.claude/
+!gemini/skill-sources/jakeschincariol/promptmaster-skill/.claude/**
+.codex/
+.cursor/
+.cursorrules
+.windsurfrules
+.roo/
+.cline/
+.hermes/
+.aider*
+skills-lock.json
+
+# Python & UV Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+dist/
+*.egg-info/
+
+# Node, Next.js & TypeScript
+node_modules/
+.next/
+out/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+*.tsbuildinfo
+.turbo/
+
+# AGYOS Runtime Binaries
+gemini/bin/council-bin
+
+# AGYOS State, Snapshots & Telemetry
+gemini/state/snapshots/
+gemini/state/decisions/*.json
+gemini/state/state.json.lock
+gemini/state/telemetry/archive/
+gemini/state/checkpoints/archive/
+strix_runs/
+_site/
+/media/
+*.mp4
+
+# Cloudflare & Secrets Guardrails
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.cert
+*.crt
+.env.local
+.env.*.local
+.dev.vars
+.wrangler/
+.vercel/
+
+# Cryptographic Keys & Exchanged Data
+*.e2ee.json
+*.private-identity.json
+.agyos-secure/
+.agyos-private/
+*.agyos.enc.json
+*.agyos.private.json
+
+# Backups and Bundles
+.backups/
+.bundles/
+*.bundle
+
+# Legacy & Document Materialization State
+OLD/
+OLD
+/.agyos-documents-state.json
+
+# Skills and Agent documents in TOON format; do not commit materialized Markdown
+.agents/
+gemini/skills/**/*.md
+gemini/skills/*.md
+gemini/agents/*.md
+gemini/rules/*.md
+!gemini/rules/00-priority-rules.md
+gemini/workflows/*.md
+gemini/plugins/**/*.md
+gemini/skill-sources/**/*.md
+!gemini/skill-sources/**/README.md
+gemini/tools/**/skills/**.md
+gemini/tools/**/skills/**/*.md
+gemini/tools/video/**/SKILL.md
+gemini/tools/video/**/styles/**.md
+gemini/tools/video/**/styles/**/*.md
+gemini/tools/video/**/*.md

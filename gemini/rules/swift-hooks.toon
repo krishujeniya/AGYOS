@@ -1,0 +1,2 @@
+mode: "100644"
+text: "---\ntrigger: glob\nglobs: \"**/*.swift,**/Package.swift\"\n---\n# Swift Hooks\n\n> This file extends [common/hooks.md](common-hooks.md) with Swift specific content.\n\n## PostToolUse Hooks\n\nConfigure in `~/.claude/settings.json`:\n\n- **SwiftFormat**: Auto-format `.swift` files after edit\n- **SwiftLint**: Run lint checks after editing `.swift` files\n- **swift build**: Type-check modified packages after edit\n\n## Warning\n\nFlag `print()` statements — use `os.Logger` or structured logging instead for production code.\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: app-builder\ndescription: \"Main application building orchestrator. Creates full-stack applications from natural language requests. Determines project type, selects tech stack, coordinates agents.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

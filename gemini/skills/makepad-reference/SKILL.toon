@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: makepad-reference\ndescription: \"This category provides reference materials for debugging, code quality, and advanced layout patterns.\"\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

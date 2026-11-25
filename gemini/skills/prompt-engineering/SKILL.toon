@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: prompt-engineering\ndescription: \"Expert guide on prompt engineering patterns, best practices, and optimization techniques. Use when user wants to improve prompts, learn prompting strategies, or debug agent behavior.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ai-seo\ndescription: \"Optimize content for AI search and LLM citations across AI Overviews, ChatGPT, Perplexity, Claude, Gemini, and similar systems. Use when improving AI visibility, answer engine optimization, or citation readiness.\"\nrisk: unknown\nsource: \"https://github.com/coreyhaines31/marketingskills\"\ndate_added: \"2026-03-21\"\nmetadata:\n  version: 1.1.0\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: fx-hedging-advisor\ndescription: \"Net currency exposures and draft a hedging recommendation inside policy bands. Use when invoicing or spending is concentrated in a currency other than the functional one, when the treasury policy review comes up, or before any forward contract or option is quoted. Outputs a decision memo; it never executes a hedge itself.\"\nrisk: medium\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

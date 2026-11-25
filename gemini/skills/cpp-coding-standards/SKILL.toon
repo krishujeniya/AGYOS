@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: cpp-coding-standards\ndescription: C++ coding standards based on the C++ Core Guidelines (isocpp.github.io). Use when writing, reviewing, or refactoring C++ code to enforce modern, safe, and idiomatic practices.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

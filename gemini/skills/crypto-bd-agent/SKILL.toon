@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: crypto-bd-agent\ndescription: \"Production-tested patterns for building AI agents that autonomously discover, > evaluate, and acquire token listings for cryptocurrency exchanges.\"\nrisk: safe\nsource: community\ntags: null\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

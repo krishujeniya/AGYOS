@@ -1,0 +1,2 @@
+mode: "100644"
+text: "---\ndescription: Mark epic review requested, approved, or changes requested.\n---\n\n# /epic-review\n\nCoordinate review state for an epic issue.\n\n```bash\nnode scripts/github-coordination.js review <issue-number> --repo <owner/repo> --review approved\n```\n\nWhat this does:\n\n1. Updates the review state in the coordination block.\n2. Syncs review labels to GitHub.\n3. Records the review outcome in an audit comment.\n4. Keeps the local cache aligned with the issue body.\n\nCompatibility aliases:\n\n- `/review-pr`\n- `/code-review`\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: hig-components-menus\ndescription: \"Design or review Apple platform menus and buttons, including context menus, toolbars, and command placement. Read existing Apple design context first.\"\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

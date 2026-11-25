@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: fp-react\ndescription: \"Compatibility ID for fp-ts with React hooks, state, forms, and data fetching. Use the fp-ts-react canonical runbook.\"\nrisk: unknown\nsource: community\nversion: 2.0.1\nauthor: \"Krish Ujeniya\"\ntags: [fp-ts, react, typescript, hooks, state-management, forms, data-fetching, remote-data, react-19, next-js]\nprompt-source: prompt.toon\n---\n"

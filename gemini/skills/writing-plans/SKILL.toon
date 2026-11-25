@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: writing-plans\ndescription: Use when you have a spec or requirements for a multi-step task, before touching code\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: council-outcome\ndescription: |\n  Record the outcome of a past Agent Council decision. Was the council right?\n  Builds calibration data over time to learn which models are best at what.\nallowed-tools:\n  - Bash\nprompt-source: prompt.toon\n---\n"

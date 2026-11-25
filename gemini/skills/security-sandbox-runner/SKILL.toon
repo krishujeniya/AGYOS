@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: security-sandbox-runner\ndescription: \"Containerized security tool execution runner. Safely executes security scanners (Nmap, Metasploit, SQLmap) in isolated environments with error recovery.\"\nrisk: safe\nsource: community\nauthor: \"Krish Ujeniya\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-ai-anomalydetector-java\ndescription: \"Build anomaly detection applications with Azure AI Anomaly Detector SDK for Java. Use when implementing univariate/multivariate anomaly detection, time-series analysis, or AI-powered monitoring.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

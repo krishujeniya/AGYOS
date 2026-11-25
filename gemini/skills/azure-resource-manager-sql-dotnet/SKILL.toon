@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-resource-manager-sql-dotnet\ndescription: Azure Resource Manager SDK for Azure SQL in .NET.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

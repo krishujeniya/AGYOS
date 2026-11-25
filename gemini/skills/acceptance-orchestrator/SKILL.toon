@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: acceptance-orchestrator\ndescription: Use when a coding task should be driven end-to-end from issue intake through implementation, review, deployment, and acceptance verification with minimal human re-intervention.\nrisk: safe\nsource: community\ndate_added: \"2026-03-12\"\nprompt-source: prompt.toon\n---\n"

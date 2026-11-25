@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ambassador-event-ops\ndescription: \"Operate the ambassador program and the event runbook: tiers and criteria, contribution tracking, event logistics with consent and code-of-conduct handling, and the post-event report. Use when onboarding or reviewing ambassadors, when an event is planned, and within 72 hours after every event while evidence is fresh.\"\nrisk: safe\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

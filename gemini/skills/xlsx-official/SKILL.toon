@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: xlsx-official\ndescription: \"Unless otherwise stated by the user or existing template\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

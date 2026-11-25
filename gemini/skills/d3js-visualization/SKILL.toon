@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: d3js-visualization\ndescription: \"This skill provides guidance for creating sophisticated, interactive data visualisations using d3.js.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ai-agent-discovery\ndescription: Skill for discovering and researching autonomous AI agents, tools, and ecosystems using the AgentFolio directory.\nrisk: safe\nsource: agentfolio.io\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

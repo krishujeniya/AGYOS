@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: makepad-layout\ndescription: |\n  CRITICAL: Use for Makepad layout system. Triggers on:\n  makepad layout, makepad width, makepad height, makepad flex,\n  makepad padding, makepad margin, makepad flow, makepad align,\n  Fit, Fill, Size, Walk, \"how to center in makepad\",\n  makepad 布局, makepad 宽度, makepad 对齐, makepad 居中\nrisk: safe\nsource: community\nprompt-source: prompt.toon\n---\n"

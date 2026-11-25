@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: memory-safety-patterns\ndescription: \"Cross-language patterns for memory-safe programming including RAII, ownership, smart pointers, and resource management.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

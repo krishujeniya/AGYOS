@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: binary-analysis-patterns\ndescription: \"Comprehensive patterns and techniques for analyzing compiled binaries, understanding assembly code, and reconstructing program logic.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

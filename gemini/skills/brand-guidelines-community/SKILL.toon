@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: brand-guidelines-community\ndescription: \"Compatibility ID for Anthropic brand guidance. Use for brand colors, typography, and visual identity; the canonical runbook is brand-design-system.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

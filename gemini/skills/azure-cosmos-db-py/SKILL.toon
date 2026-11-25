@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-cosmos-db-py\ndescription: \"Build production-grade Azure Cosmos DB NoSQL services following clean code, security best practices, and TDD principles.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

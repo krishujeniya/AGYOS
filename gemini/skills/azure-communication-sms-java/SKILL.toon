@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-communication-sms-java\ndescription: \"Send SMS messages with Azure Communication Services SMS Java SDK. Use when implementing SMS notifications, alerts, OTP delivery, bulk messaging, or delivery reports.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

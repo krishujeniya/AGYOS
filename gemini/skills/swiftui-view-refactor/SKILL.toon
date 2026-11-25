@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: swiftui-view-refactor\ndescription: Refactor SwiftUI views into smaller components with stable, explicit data flow.\nrisk: safe\nsource: \"Dimillian/Skills (MIT)\"\ndate_added: \"2026-03-25\"\nprompt-source: prompt.toon\n---\n"

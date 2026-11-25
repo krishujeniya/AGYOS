@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: robius-widget-patterns\ndescription: |\n  CRITICAL: Use for Robius widget patterns. Triggers on:\n  apply_over, TextOrImage, modal, 可复用, 模态,\n  collapsible, drag drop, reusable widget, widget design,\n  pageflip, 组件设计, 组件模式\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

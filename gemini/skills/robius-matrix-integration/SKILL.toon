@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: robius-matrix-integration\ndescription: |\n  CRITICAL: Use for Matrix SDK integration with Makepad. Triggers on:\n  Matrix SDK, sliding sync, MatrixRequest, timeline,\n  matrix-sdk, matrix client, robrix, matrix room,\n  Matrix 集成, 聊天客户端\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

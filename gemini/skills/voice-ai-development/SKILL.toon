@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: voice-ai-development\ndescription: Expert in building voice AI applications - from real-time voice\n  agents to voice-enabled apps. Covers OpenAI Realtime API, Vapi for voice\n  agents, Deepgram for transcription, ElevenLabs for synthesis, LiveKit for\n  real-time infrastructure, and WebRTC fundamentals.\nrisk: unknown\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

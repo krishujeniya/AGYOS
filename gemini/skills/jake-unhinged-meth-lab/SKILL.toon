@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: jake-unhinged-meth-lab\ndescription: \"Workflow and system optimizer that takes a messy system, bloated prompt, broken automation, or slow process and strips it to the fastest, cheapest, cleanest version that still works; invoke via /meth-lab when something runs but feels heavy, expensive, or held together with tape.\"\nlicense: MIT\nmetadata:\n  upstream_repository: Jakeschincariol/unhinged-claude-skills\n  upstream_skill: meth-lab\n  upstream_commit: 8f60ec6d9e28e430849b57b5e21cbdfe9860df99\nprompt-source: prompt.toon\n---\n"

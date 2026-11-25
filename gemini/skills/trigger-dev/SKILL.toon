@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: trigger-dev\ndescription: Trigger.dev expert for background jobs, AI workflows, and reliable\n  async execution with excellent developer experience and TypeScript-first\n  design.\nrisk: unknown\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

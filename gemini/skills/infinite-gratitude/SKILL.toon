@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: infinite-gratitude\ndescription: \"Multi-agent research skill for parallel research execution (10 agents, battle-tested with real case studies).\"\nrisk: safe\nsource: \"https://github.com/sstklen/infinite-gratitude\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

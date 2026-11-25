@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: security-hardening\ndescription: \"Coordinate multi-layer security scanning and hardening across application, infrastructure, and compliance controls.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

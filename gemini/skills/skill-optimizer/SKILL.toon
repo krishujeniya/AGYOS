@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: skill-optimizer\ndescription: \"Diagnose and optimize Agent Skills (SKILL.md) with real session data and research-backed static analysis. Works with Claude Code, Codex, and any Agent Skills-compatible agent.\"\nrisk: safe\nsource: hqhq1025/skill-optimizer (MIT)\ndate_added: \"2026-04-11\"\nprompt-source: prompt.toon\n---\n"

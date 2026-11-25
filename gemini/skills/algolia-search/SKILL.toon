@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: algolia-search\ndescription: Expert patterns for Algolia search implementation, indexing\n  strategies, React InstantSearch, and relevance tuning\nrisk: unknown\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

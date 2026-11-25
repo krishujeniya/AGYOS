@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agyos-binary-analysis\ndescription: Static and dynamic reverse engineering of binaries, compiled applications, and network protocols. Bridges disassembly engines, decompilation validation, and runtime tracing within AGYOS.\nprompt-source: prompt.toon\n---\n"

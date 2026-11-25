@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: cost-optimization\ndescription: \"Strategies and patterns for optimizing cloud costs across AWS, Azure, and GCP.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

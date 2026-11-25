@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: fp-async\ndescription: Practical async patterns using TaskEither - clean pipelines instead of try/catch hell, with real API examples\nrisk: unknown\nsource: community\nversion: 1.0.0\nauthor: \"Krish Ujeniya\"\ntags:\n  - fp-ts\n  - typescript\n  - async\n  - error-handling\n  - practical\n  - promises\n  - api\n  - fetch\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agyos-app-launch-checklist\ndescription: Production pre-launch verification checklist for web and mobile apps. Covers Open Graph previews, Twitter Cards, favicons, meta tags, canonical URLs, error tracking, and release gates.\nprompt-source: prompt.toon\n---\n"

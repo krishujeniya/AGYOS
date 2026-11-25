@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: odoo-hr-payroll-setup\ndescription: \"Expert guide for Odoo HR and Payroll: salary structures, payslip rules, leave policies, employee contracts, and payroll journal entries.\"\nrisk: safe\nsource: \"self\"\nprompt-source: prompt.toon\n---\n"

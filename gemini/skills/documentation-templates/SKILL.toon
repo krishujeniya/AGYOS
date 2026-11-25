@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: documentation-templates\ndescription: \"Documentation templates and structure guidelines. README, API docs, code comments, and AI-friendly documentation.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

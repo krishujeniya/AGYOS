@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: prediction-market-risk-review\ndescription: Review prediction-market, basket, oracle, and trading-agent workflows for compliance, safety, data-quality, privacy, and execution risk. Use before any workflow handles venue auth, user portfolio data, API keys, or trade planning.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

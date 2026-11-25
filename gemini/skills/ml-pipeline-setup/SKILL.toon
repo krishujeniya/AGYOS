@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ml-pipeline-setup\ndescription: \"Design and implement a complete ML pipeline for: $ARGUMENTS\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

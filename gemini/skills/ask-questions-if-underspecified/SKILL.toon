@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ask-questions-if-underspecified\ndescription: Clarify requirements before implementing. Use when serious doubts arise.\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

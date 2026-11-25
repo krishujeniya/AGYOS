@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: pr-enhancement\ndescription: >\n  Generate structured PR descriptions from diffs, add review checklists,\n  risk assessments, and test coverage summaries. Use when the user says\n  \"write a PR description\", \"improve this PR\", \"summarize my changes\",\n  \"PR review\", \"pull request\", or asks to document a diff for reviewers.\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

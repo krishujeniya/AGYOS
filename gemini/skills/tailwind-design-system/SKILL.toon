@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: tailwind-design-system\ndescription: \"Build production-ready design systems with Tailwind CSS, including design tokens, component variants, responsive patterns, and accessibility.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

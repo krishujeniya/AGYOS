@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: skill-self-evolution\ndescription: This skill enables makepad-skills to self-improve continuously during development.\nrisk: critical\nsource: community\nprompt-source: prompt.toon\n---\n"

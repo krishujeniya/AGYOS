@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: gemini-image-generation\ndescription: AI image generation skill powered by Google Gemini, enabling seamless visual content creation for UI placeholders, documentation, and design assets.\nrisk: safe\nsource: https://github.com/sanjay3290/ai-skills/tree/main/skills/imagen\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,8 @@
+{
+  "name": "agyos-governance",
+  "description": "Deterministic 5-gate workflow governance, scope boundary enforcement, test ratchet, and FastMCP server.",
+  "version": "3.1.0",
+  "author": "Krish Ujeniya",
+  "logo": "assets/logo.svg",
+  "repository": "https://github.com/krishujeniya/AGYOS"
+}

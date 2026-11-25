@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: bdistill-knowledge-extraction\ndescription: \"Extract structured domain knowledge from AI models in-session or from local open-source models via Ollama. No API key needed.\"\ncategory: ai-research\nrisk: safe\nsource: community\ndate_added: \"2026-03-20\"\nauthor: \"Krish Ujeniya\"\ntags: [ai, knowledge-extraction, domain-specific, data-moat, mcp, reference-data]\ntools: [claude, cursor, codex, copilot]\nprompt-source: prompt.toon\n---\n"

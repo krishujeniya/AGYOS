@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: legacy-modernizer\ndescription: Refactor legacy codebases, migrate outdated frameworks, and implement gradual modernization. Handles technical debt, dependency updates, and backward compatibility.\nrisk: safe\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

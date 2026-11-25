@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-appconfiguration-py\ndescription: Azure App Configuration SDK for Python. Use for centralized configuration management, feature flags, and dynamic settings.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: skill-writer\ndescription: Create and improve agent skills following the Agent Skills specification. Use when asked to create, write, or update skills.\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,273 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify skill sources are strictly TOON with zero SKILL.md files
+        run: |
+          if git ls-files -- 'gemini/skills/**.md' '**/SKILL.md' 'SKILL.md' | grep .; then
+            echo "Error: Skill definitions must be in TOON format, not Markdown" >&2
+            exit 1
+          fi
+          if find gemini/skills -name '*.md' | grep .; then
+            echo "Error: Unexpected Markdown files inside gemini/skills/" >&2
+            exit 1
+          fi
+      - name: Materialize AGY non-skill compatibility documents
+        run: |
+          node gemini/scripts/materialize-documents.mjs
+          if find gemini/skills -name '*.md' | grep .; then
+            echo "Error: materialize-documents.mjs must not emit Markdown skill files" >&2
+            exit 1
+          fi
+      - name: Test compatibility document materialization
+        run: node --test gemini/scripts/tests/test_materialize_documents.mjs
+      - name: Check out pinned prompt principles source
+        uses: actions/checkout@v4
+        with:
+          repository: krishujeniya/Principles
+          ref: d1ed7de8cb338f8646d2d2f5394dd9c87bb9223e
+          path: principles-source
+          sparse-checkout: Prompt
+          sparse-checkout-cone-mode: true
+      - name: Set up Node.js for crypto regression tests
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install pinned state-store runtime dependencies
+        run: npm ci --prefix gemini/scripts/agyos-runtime --ignore-scripts --no-audit --no-fund
+      - name: Verify state-store migration and persistence
+        run: |
+          node --test gemini/scripts/tests/test_state_store_persistence.cjs
+          node --test gemini/scripts/tests/test_workspace_state.cjs
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          version: "latest"
+      - name: Install dependencies via uv
+        run: |
+          uv pip install --system jsonschema pyyaml "mistune==3.2.1" fastapi pydantic httpx pytest
+      - name: Verify full TOON skill catalog and scout delivery
+        run: node gemini/scripts/agyos-runtime/ci/check-toon-prompts.mjs
+      - name: Generate and audit SBOM license compliance
+        run: python gemini/scripts/generate_sbom.py --check --output "$RUNNER_TEMP/sbom.json"
+      - name: Upload Software Bill of Materials (SBOM)
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: agyos-sbom
+          path: ${{ runner.temp }}/sbom.json
+          if-no-files-found: ignore
+          retention-days: 7
+      - name: Check AGYOS shell entrypoints syntax
+        run: |
+          for f in gemini/bin/agyos gemini/bin/rollback.sh gemini/bin/state-validate.sh gemini/scripts/agyos-verify.sh gemini/scripts/agyos-init.sh; do
+            bash -n "$f"
+          done
+      - name: Validate Python Syntax
+        run: |
+          python -m compileall .
+      - name: Verify pinned upstream skill adapters
+        run: python gemini/scripts/import_upstream_skill_packs.py --check
+      - name: Generate skill catalog outputs
+        run: |
+          python gemini/scripts/build_tiered_skills_manifest.py
+          python gemini/scripts/build_docs_data.py
+      - name: Upload generated skill catalog for CI-only updates
+        uses: actions/upload-artifact@v7
+        with:
+          name: agyos-skill-catalog-generated
+          path: |
+            gemini/skills-manifest.json
+            gemini/tier1-skills.json
+            docs/skills-data.json
+            docs/ai-catalog.json
+            frontend/llms.txt
+            frontend/sitemap.xml
+            frontend/robots.txt
+          include-hidden-files: true
+          retention-days: 7
+      - name: Measure the fixed offline routing workload
+        run: python gemini/scripts/benchmark_decision.py --repeats 30 --output "$RUNNER_TEMP/routing.json" --check-thresholds
+      - name: Upload routing measurements
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: offline-routing-benchmark
+          path: ${{ runner.temp }}/routing.json
+          if-no-files-found: ignore
+          retention-days: 14
+      - name: Check AGY startup contracts
+        run: cd gemini && python -m unittest discover -s scripts/tests -v
+      - name: Audit pinned prompt principles source
+        if: always()
+        run: >-
+          python gemini/scripts/audit_prompt_principles.py
+          --source-dir principles-source/Prompt
+          --output "$RUNNER_TEMP/prompt-principles-ledger.jsonl"
+          --summary "$RUNNER_TEMP/prompt-principles-summary.json"
+      - name: Upload prompt principles audit
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: prompt-principles-ledger
+          path: |
+            ${{ runner.temp }}/prompt-principles-ledger.jsonl
+            ${{ runner.temp }}/prompt-principles-summary.json
+          if-no-files-found: error
+          retention-days: 7
+      - name: Check endpoint encryption round-trip and tamper resistance
+        run: node --test gemini/scripts/tests/test_secure_envelope.cjs gemini/scripts/tests/test_private_vault.cjs gemini/scripts/tests/test_mcp_protocol.cjs gemini/scripts/tests/test_github_coordination_state.cjs gemini/scripts/tests/test_work_item_state.cjs gemini/scripts/tests/test_plan_canvas_sessions.cjs gemini/scripts/tests/test_bash_hook_state.cjs gemini/scripts/tests/test_release_approval_state.cjs gemini/scripts/tests/test_guided_install_state.cjs gemini/scripts/tests/test_observer_session_leases.cjs gemini/scripts/tests/test_install_lifecycle_state.cjs gemini/scripts/tests/test_nasiko_release_state.cjs gemini/scripts/tests/test_process_lock.cjs gemini/scripts/tests/test_session_end_state.cjs gemini/scripts/tests/test_explicit_state_machines.cjs
+      - name: Verify generated catalog matches every physical runbook
+        run: |
+          git diff --exit-code -- gemini/skills-manifest.json gemini/tier1-skills.json docs/skills-data.json docs/ai-catalog.json frontend/llms.txt frontend/sitemap.xml frontend/robots.txt
+
+  council:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: '1.2.4'
+      - name: Run Council regression suite
+        working-directory: gemini/scripts/council
+        run: bun test
+
+
+  documentation-pages:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Materialize documentation sources
+        run: node gemini/scripts/materialize-documents.mjs
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build and validate public documentation
+        run: |
+          python -m pip install 'mistune==3.2.1'
+          python gemini/scripts/build_docs_site.py --out _site --base /AGYOS/
+          node --check frontend/site.js
+          python gemini/scripts/test_docs_site.py --site _site --base /AGYOS/
+      - name: Record public file digests
+        run: |
+          (cd _site && find . -type f -print0 | sort -z | xargs -0 sha256sum) > pages-sha256.txt
+      - name: Verify candidate contains zero private sentinels or internal state
+        run: |
+          test ! -e _site/.agents
+          test ! -e _site/gemini
+          test ! -e _site/.env
+          test ! -e _site/scripts
+          test ! -e _site/skills
+          test ! -e _site/state
+          if grep -rq "AGYOS_PRIVATE_SENTINEL" _site/; then
+            echo "Error: private sentinel found in documentation pages output" >&2
+            exit 1
+          fi
+      - uses: actions/upload-artifact@v7
+        with:
+          name: pages-candidate
+          path: |
+            _site/
+            pages-sha256.txt
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 14
+
+  documentation-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build documentation image
+        run: docker build -t agyos-docs-ci -f deploy/docker/Dockerfile .
+      - name: Verify public image contents
+        run: |
+          docker run --rm agyos-docs-ci sh -ec '
+            test -f /app/site/index.html
+            test -f /app/site/search-index.json
+            test ! -e /app/.agents
+            test ! -e /app/gemini
+            test ! -e /app/scripts
+            test ! -e /app/skills
+            test ! -e /app/state
+            test ! -e /app/.env
+            if grep -rq "AGYOS_PRIVATE_SENTINEL" /app/site/; then
+              echo "Error: private sentinel found in image site" >&2
+              exit 1
+            fi
+          '
+      - name: Save verified container candidate
+        run: |
+          docker save agyos-docs-ci -o documentation-image.tar
+          sha256sum documentation-image.tar > documentation-image.sha256
+      - uses: actions/upload-artifact@v7
+        with:
+          name: documentation-image-candidate
+          path: |
+            documentation-image.tar
+            documentation-image.sha256
+          if-no-files-found: error
+          retention-days: 14
+
+  secret-detection:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Install checksum-verified Gitleaks
+        run: |
+          archive="$RUNNER_TEMP/gitleaks.tar.gz"
+          curl --fail --silent --show-error --location \
+            https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz \
+            --output "$archive"
+          echo "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb  $archive" | sha256sum --check
+          tar -xzf "$archive" -C "$RUNNER_TEMP" gitleaks
+      - name: Verify scanner negative control
+        run: |
+          test_dir="$RUNNER_TEMP/test-leak-probe"
+          mkdir -p "$test_dir"
+          printf 'TOKEN="g%sp_%s"\n' 'h' '012345678901234567890123456789012345' > "$test_dir/secret.txt"
+          if "$RUNNER_TEMP/gitleaks" detect --source="$test_dir" --no-git --no-banner; then
+            echo "Error: Gitleaks failed negative control (expected leak detection to exit non-zero)" >&2
+            exit 1
+          fi
+          rm -rf "$test_dir"
+      - name: Check commits introduced by this change
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          range="$GITHUB_SHA"
+          if [[ "$BASE_SHA" =~ ^[0-9a-f]{40}$ ]] && git cat-file -e "$BASE_SHA^{commit}" 2>/dev/null; then
+            range="$BASE_SHA..$GITHUB_SHA"
+          fi
+          "$RUNNER_TEMP/gitleaks" git --redact=100 --no-banner --log-opts="$range" \
+            --report-format sarif --report-path "$RUNNER_TEMP/gitleaks.sarif" .
+          test -s "$RUNNER_TEMP/gitleaks.sarif"
+      - name: Upload redacted scan report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: gitleaks-report
+          path: ${{ runner.temp }}/gitleaks.sarif
+          if-no-files-found: error
+          retention-days: 7

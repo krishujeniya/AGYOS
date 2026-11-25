@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: kubernetes-architect\ndescription: Expert Kubernetes architect specializing in cloud-native infrastructure, advanced GitOps workflows (ArgoCD/Flux), and enterprise container orchestration.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

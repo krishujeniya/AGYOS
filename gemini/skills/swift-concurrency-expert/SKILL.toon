@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: swift-concurrency-expert\ndescription: Review and fix Swift concurrency issues such as actor isolation and Sendable violations.\nrisk: safe\nsource: \"Dimillian/Skills (MIT)\"\ndate_added: \"2026-03-25\"\nprompt-source: prompt.toon\n---\n"

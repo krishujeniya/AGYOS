@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: find-bugs\ndescription: Find bugs, security vulnerabilities, and code quality issues in local branch changes. Use when asked to review changes, find bugs, security review, or audit code on the current branch.\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

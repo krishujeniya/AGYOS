@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: core-skill-obedience\ndescription: \"Master rule for skill usage. Prevents rationalization and enforces strict adherence to all existing skills. Triggers on any task, question, or action.\"\ncategory: core\nrisk: safe\ntags: \"[superpowers, obedience, rules, system, core]\"\nversion: \"1.0.0\"\nprompt-source: prompt.toon\n---\n"

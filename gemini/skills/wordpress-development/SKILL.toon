@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: wordpress-development\ndescription: 'Complete WordPress development workflow covering theme development, plugin creation, WooCommerce integration, performance optimization, and security hardening. Includes WordPress 7.0 features: Real-Time Collaboration, AI Connectors, Abilities API, DataViews, and PHP-only blocks.'\ncategory: workflow-bundle\nrisk: safe\nsource: personal\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

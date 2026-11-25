@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: slack-automation\ndescription: \"Automate Slack workspace operations including messaging, search, channel management, and reaction workflows through Composio's Slack toolkit.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: ssrf-oob-interaction-testing\ndescription: \"Out-of-band (OOB) and Server-Side Request Forgery (SSRF) testing. Detects blind SSRF, metadata leaks, and internal network pivot vulnerabilities.\"\nrisk: offensive\nsource: community\nauthor: \"Krish Ujeniya\"\nprompt-source: prompt.toon\n---\n"

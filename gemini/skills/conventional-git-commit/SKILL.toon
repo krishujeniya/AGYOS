@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: conventional-git-commit\ndescription: Prepare Conventional Commit messages and review staged changes before an explicitly authorized Git commit.\nprompt-source: prompt.toon\n---\n"

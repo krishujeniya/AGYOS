@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: favicon-generator\ndescription: Generate a complete set of favicons from the source image at `$1` and update the project's HTML with the appropriate link tags.\nprompt-source: prompt.toon\n---\n"

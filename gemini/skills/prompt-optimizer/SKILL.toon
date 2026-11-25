@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: prompt-optimizer\ndescription: Analyze a draft prompt for intent, constraints, and missing context, then return a ready-to-use revision with a concise diagnosis. Advisory only; does not execute the drafted task. Use for requests to optimize, improve, or rewrite prompts, including 优化prompt, 改进prompt, 怎么写prompt, or 帮我优化这个指令; not for code or performance optimization.\nmetadata:\n  origin: community\n  author: YannJY02\n  version: \"1.0.0\"\nprompt-source: prompt.toon\n---\n"

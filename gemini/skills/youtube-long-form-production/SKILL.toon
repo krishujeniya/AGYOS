@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: youtube-long-form-production\ndescription: >-\n  End-to-end engineering pipeline for high-retention, long-form YouTube videos (8-25 minutes).\n  Integrates packaging pre-production, 4-act retention scripting, B-roll generation with Google Flow\n  and Veo 3.1, audio mastering to -14 LUFS, and programmatic editing via FFmpeg.\nmetadata:\n  version: 1.0.0\nlicense: MIT\nprompt-source: prompt.toon\n---\n"

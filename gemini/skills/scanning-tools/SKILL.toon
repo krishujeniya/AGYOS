@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: scanning-tools\ndescription: \"Master essential security scanning tools for network discovery, vulnerability assessment, web application testing, wireless security, and compliance validation. This skill covers tool selection, configuration, and practical usage across different scanning categories.\"\nrisk: unknown\nsource: community\nauthor: \"Krish Ujeniya\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

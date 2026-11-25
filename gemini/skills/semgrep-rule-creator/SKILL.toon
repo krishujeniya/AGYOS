@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: semgrep-rule-creator\ndescription: Creates custom Semgrep rules for detecting security vulnerabilities, bug patterns, and code patterns. Use when writing Semgrep rules or building custom static analysis detections.\nallowed-tools:\n  - Bash\n  - Read\n  - Write\n  - Edit\n  - Glob\n  - Grep\n  - WebFetch\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

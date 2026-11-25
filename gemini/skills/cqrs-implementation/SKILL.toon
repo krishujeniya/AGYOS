@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: cqrs-implementation\ndescription: \"Implement Command Query Responsibility Segregation for scalable architectures. Use when separating read and write models, optimizing query performance, or building event-sourced systems.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

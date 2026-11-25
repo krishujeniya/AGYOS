@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: google-drive-automation\ndescription: \"Lightweight Google Drive integration with standalone OAuth authentication. No MCP server required. Full read/write access.\"\nlicense: Apache-2.0\nrisk: critical\nsource: community\nmetadata:\n  author: sanjay3290\n  version: \"1.0\"\nprompt-source: prompt.toon\n---\n"

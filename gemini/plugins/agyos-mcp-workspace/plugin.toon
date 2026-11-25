@@ -1,0 +1,6 @@
+name: "agyos-mcp-workspace"
+description: "remote MCP (Google Workspace) for AGYOS corporate operations. Board decks, policy documents and signed-resolution scans live in documents, and the data-room skill's chase list is mostly 'the document someone has in Drive'. A Workspa..."
+version: "3.1.0"
+author: "Krish Ujeniya"
+logo: "assets/logo.svg"
+repository: "https://github.com/krishujeniya/AGYOS"

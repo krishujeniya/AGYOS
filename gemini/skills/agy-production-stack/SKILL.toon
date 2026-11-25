@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agy-production-stack\ndescription: Master runbook for production-grade, free-first AI engineering setups using AGY CLI exclusively. Covers environment audits, MCP server wiring, specialist skill catalog routing, Supabase/Vercel/Cloudflare integration, free-tier cost controls, and automated verification.\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-compute-batch-java\ndescription: Azure Batch SDK for Java. Run large-scale parallel and HPC batch jobs with pools, jobs, tasks, and compute nodes.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

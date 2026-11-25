@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: chrome-mcp-troubleshoot\ndescription: Diagnose and fix Claude in Chrome MCP extension connectivity issues. Use when mcp__claude-in-chrome__* tools fail, return \"Browser extension is not connected\", or behave erratically.\nrisk: critical\nsource: community\nprompt-source: prompt.toon\n---\n"

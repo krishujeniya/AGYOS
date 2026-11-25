@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: clean-code\ndescription: \"This skill embodies the principles of \\\"Clean Code\\\" by Robert C. Martin (Uncle Bob). Use it to transform \\\"code that works\\\" into \\\"code that is clean.\\\"\"\nrisk: safe\nsource: \"ClawForge (https://github.com/jackjin1997/ClawForge)\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

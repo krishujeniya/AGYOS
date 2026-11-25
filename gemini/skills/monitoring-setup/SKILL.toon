@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: monitoring-setup\ndescription: \"Set up application monitoring with useful metrics, logs, traces, dashboards, and actionable alerts. Use when adding observability or improving production monitoring.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

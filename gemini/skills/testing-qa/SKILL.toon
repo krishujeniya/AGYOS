@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: testing-qa\ndescription: \"Comprehensive testing and QA workflow covering unit testing, integration testing, E2E testing, browser automation, and quality assurance.\"\ncategory: workflow-bundle\nrisk: safe\nsource: personal\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

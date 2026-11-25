@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: mcp-tool-developer\ndescription: \"Build Model Context Protocol (MCP) servers and tools from scratch. Full-stack MCP development with TypeScript/Python, testing, deployment, and registry publishing.\"\ncategory: developer-tools\nrisk: safe\nsource: community\nsource_repo: demo112/yunqu-ai-skills\nsource_type: community\ndate_added: \"2026-05-13\"\nauthor: \"Krish Ujeniya\"\ntags: [mcp, ai-agent, tool-development, typescript, python, llm, model-context-protocol]\ntools: [claude, cursor, gemini]\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-ai-projects-java\ndescription: Azure AI Projects SDK for Java. High-level SDK for Azure AI Foundry project management including connections, datasets, indexes, and evaluations.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

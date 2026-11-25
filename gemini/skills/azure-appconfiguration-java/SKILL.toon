@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-appconfiguration-java\ndescription: Azure App Configuration SDK for Java. Centralized application configuration management with key-value settings, feature flags, and snapshots.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

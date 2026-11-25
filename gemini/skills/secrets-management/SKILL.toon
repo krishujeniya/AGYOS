@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: secrets-management\ndescription: \"Secure secrets management practices for CI/CD pipelines using Vault, AWS Secrets Manager, and other tools.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

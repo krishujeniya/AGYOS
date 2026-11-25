@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: cap-table-modeler\ndescription: \"Model funding-round scenarios against the live cap table: dilution per holder, ESOP pool top-ups and exit waterfalls. Use before a term sheet is signed, when an option grant changes the pool, or when the board asks what a down round does to founder and employee ownership. Produces scenarios, never decisions.\"\nrisk: medium\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

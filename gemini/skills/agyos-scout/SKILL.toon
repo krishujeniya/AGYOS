@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agyos-scout\ndescription: Inspect the codebase before planning; identify dependencies, hidden risks, and breaking changes in a concise scope report.\nallowed-tools:\n- view_file\n- grep_search\nprompt-source: prompt.toon\n---\n"

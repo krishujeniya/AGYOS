@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: cofounder-compatibility-matcher\ndescription: Psychological compatibility matching — find cofounders, collaborators, and friends through validated psychometrics\ncategory: collaboration\nrisk: safe\nsource: community\ndate_added: '2026-03-29'\nauthor: Krish Ujeniya\ntags:\n- matching\n- psychology\n- compatibility\n- networking\n- collaboration\ntools:\n- claude\n- cursor\n- codex\n- gemini\n- windsurf\nprompt-source: prompt.toon\n---\n"

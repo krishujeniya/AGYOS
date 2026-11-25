@@ -1,0 +1,2 @@
+mode: "100644"
+text: "---\ndescription: Sync epic issue bodies, labels, and local coordination snapshots from GitHub.\n---\n\n# /epic-sync\n\nRun a deterministic sync for epic issues.\n\n```bash\nnode scripts/github-coordination.js sync --repo <owner/repo>\n```\n\nWhat this does:\n\n1. Reads issue bodies as the canonical epic state.\n2. Reconciles the coordination block with labels.\n3. Writes a fresh local snapshot for each epic issue.\n4. Keeps the SQLite cache aligned with GitHub.\n\nCompatibility aliases:\n\n- `/projects`\n- `/work-items sync-github`\n"

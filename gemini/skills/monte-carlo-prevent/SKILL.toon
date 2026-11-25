@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: monte-carlo-prevent\ndescription: \"Surfaces Monte Carlo data observability context (table health, alerts, lineage, blast radius) before SQL/dbt edits.\"\ncategory: data\nrisk: safe\nsource: community\nsource_repo: monte-carlo-data/mc-agent-toolkit\nsource_type: community\ndate_added: \"2026-04-08\"\nauthor: \"Krish Ujeniya\"\ntags: [data-observability, dbt, schema, monte-carlo, lineage]\ntools: [claude, cursor, codex]\nprompt-source: prompt.toon\n---\n"

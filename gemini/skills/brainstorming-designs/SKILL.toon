@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: brainstorming-designs\ndescription: \"Master of turning ideas into fully formed designs and specs through natural collaborative dialogue. Use this BEFORE any creative work (building features, modifying behavior). Relevant keywords: brainstorm, design, plan, idea, feature planning, outline, dialog.\"\ncategory: process\nrisk: safe\ntags: \"[brainstorming, design, planning, collaboration, architecture]\"\nversion: \"1.0.0\"\nprompt-source: prompt.toon\n---\n"

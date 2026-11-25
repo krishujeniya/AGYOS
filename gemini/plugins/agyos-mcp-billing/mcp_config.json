@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "stripe": {
+      "type": "http",
+      "url": "https://mcp.stripe.com",
+      "env_ref": "AGY_STRIPE_MCP_KEY",
+      "tool_scope": [
+        "payouts:read",
+        "balance_transactions:read",
+        "disputes:read"
+      ],
+      "write_scope": "none",
+      "enabled": true
+    }
+  }
+}

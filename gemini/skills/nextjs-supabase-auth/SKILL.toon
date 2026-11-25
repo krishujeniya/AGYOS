@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: nextjs-supabase-auth\ndescription: Expert integration of Supabase Auth with Next.js App Router\nrisk: none\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

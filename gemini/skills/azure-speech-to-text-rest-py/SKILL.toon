@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-speech-to-text-rest-py\ndescription: Azure Speech to Text REST API for short audio (Python). Use for simple speech recognition of audio files up to 60 seconds without the Speech SDK.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

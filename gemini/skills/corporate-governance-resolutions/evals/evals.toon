@@ -1,0 +1,5 @@
+skill_name: corporate-governance-resolutions
+evals[2]:
+  - id, prompt, expected_output, assertions, files
+  - 1, "Run the corporate-governance-resolutions skill end to end: corporate action request (type, parties, amounts) is ready and current. Follow the workflow and produce the artifact.", "Executes the numbered workflow in order; produces the declared outputs with the declared keys; verifies results with the checks the workflow names; records assumptions with their sources.", "Follows workflow step order|Produces the declared output artifact and keys|Verifies results with the named checks|Records assumptions with sources|Direct technical prose, no filler", ""
+  - 2, "The input corporate action request is missing or older than the staleness window when corporate-governance-resolutions is invoked. What does the agent do?", "Stops before executing; emits ask_question naming the missing or stale inputs; does not proceed with invented values; does not mark the run complete.", "Stops before execution|Emits ask_question listing the stale inputs|Does not invent values|Does not claim completion", ""

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: prisma-patterns\ndescription: Prisma ORM patterns for TypeScript backends — schema design, query optimization, transactions, pagination, and critical traps like updateMany returning count not records, $transaction timeouts, migrate dev resetting the DB, @updatedAt skipped on bulk writes, and serverless connection exhaustion. Use when writing a Prisma schema or query, or debugging transactions, migrations, or serverless connection limits.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

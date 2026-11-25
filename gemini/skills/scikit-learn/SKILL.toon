@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: scikit-learn\ndescription: Machine learning in Python with scikit-learn. Use for classification, regression, clustering, model evaluation, and ML pipelines.\nlicense: BSD-3-Clause license\nmetadata:\n    skill-author: K-Dense Inc.\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

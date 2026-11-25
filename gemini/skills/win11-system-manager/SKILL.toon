@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: win11-system-manager\ndescription: \"Update GitHub Spec Kit templates and manifests in a project. Legacy catalog ID: win11-system-manager; this skill does not manage Windows settings.\"\nrisk: safe\nsource: \"https://github.com/NotMyself/claude-win11-speckit-update-skill\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

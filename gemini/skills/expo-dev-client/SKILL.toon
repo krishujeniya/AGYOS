@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: expo-dev-client\ndescription: Build and distribute Expo development clients locally or via TestFlight\nrisk: unknown\nsource: community\nversion: 1.0.0\nlicense: MIT\nprompt-source: prompt.toon\n---\n"

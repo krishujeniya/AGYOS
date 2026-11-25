@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: local-llm-expert\ndescription: Master local LLM inference, model selection, VRAM optimization, and local deployment using Ollama, llama.cpp, vLLM, and LM Studio. Expert in quantization formats (GGUF, EXL2) and local AI privacy.\ncategory: data-ai\nrisk: safe\nsource: community\ndate_added: '2026-03-11'\nprompt-source: prompt.toon\n---\n"

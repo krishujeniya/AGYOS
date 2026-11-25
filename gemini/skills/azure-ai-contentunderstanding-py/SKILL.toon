@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-ai-contentunderstanding-py\ndescription: Azure AI Content Understanding SDK for Python. Use for multimodal content extraction from documents, images, audio, and video.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

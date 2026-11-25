@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: c-pro\ndescription: \"Write efficient C code with proper memory management, pointer\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: data-structure-protocol\ndescription: \"Give agents persistent structural memory of a codebase — navigate dependencies, track public APIs, and understand why connections exist without re-reading the whole repo.\"\nrisk: safe\nsource: \"https://github.com/k-kolomeitsev/data-structure-protocol\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

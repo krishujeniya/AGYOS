@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: codehealth-mcp\ndescription: Real-time structural Code Health via CodeScene MCP — review before edits, verify score deltas after changes, gate commits and PRs. Use when reviewing code quality, refactoring, checking if AI changes degraded a file, or before commit/PR.\nmetadata:\n  origin: community\nprompt-source: prompt.toon\n---\n"

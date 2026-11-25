@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: magic-ui-generator\ndescription: Utilizes Magic by 21st.dev to generate, compare, and integrate multiple production-ready UI component variations.\nrisk: safe\nsource: community\ndate_added: '2026-03-07'\nprompt-source: prompt.toon\n---\n"

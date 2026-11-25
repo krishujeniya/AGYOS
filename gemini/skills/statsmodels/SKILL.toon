@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: statsmodels\ndescription: \"Statsmodels is Python's premier library for statistical modeling, providing tools for estimation, inference, and diagnostics across a wide range of statistical methods.\"\nlicense: BSD-3-Clause license\nmetadata:\n    skill-author: K-Dense Inc.\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

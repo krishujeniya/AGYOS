@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: database-design\ndescription: \"Database design principles and decision-making. Schema design, indexing strategy, ORM selection, serverless databases.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

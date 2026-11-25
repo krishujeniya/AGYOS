@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: creative-feature-brainstorming\ndescription: You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-keyvault-py\ndescription: Azure Key Vault SDK for Python. Use for secrets, keys, and certificates management with secure storage.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

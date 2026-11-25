@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: multi-platform-apps-multi-platform\ndescription: \"Build and deploy the same feature consistently across web, mobile, and desktop platforms using API-first architecture and parallel implementation strategies.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

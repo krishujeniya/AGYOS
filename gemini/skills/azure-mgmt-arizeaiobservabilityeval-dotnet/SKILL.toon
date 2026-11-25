@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-mgmt-arizeaiobservabilityeval-dotnet\ndescription: Azure Resource Manager SDK for Arize AI Observability and Evaluation (.NET).\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

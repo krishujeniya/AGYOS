@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: explain-like-socrates\ndescription: >\n  Explains concepts using Socratic-style dialogue. Use when the user asks to explain, teach or help understand a concept like socrates.\nrisk: safe\nsource: original\ndate_added: \"2026-03-11\"\nprompt-source: prompt.toon\n---\n"

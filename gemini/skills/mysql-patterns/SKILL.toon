@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: mysql-patterns\ndescription: MySQL and MariaDB schema, query, indexing, transaction, replication, and connection-pool patterns for production backends. Use when designing MySQL or MariaDB schemas and indexes, or when a query, transaction, or replica lags.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

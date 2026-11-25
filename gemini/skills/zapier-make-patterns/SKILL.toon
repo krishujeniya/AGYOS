@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: zapier-make-patterns\ndescription: No-code automation democratizes workflow building. Zapier and Make\n  (formerly Integromat) let non-developers automate business processes without\n  writing code. But no-code doesn't mean no-complexity - these platforms have\n  their own patterns, pitfalls, and breaking points.\nrisk: unknown\nsource: vibeship-spawner-skills (Apache 2.0)\ndate_added: 2026-02-27\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: langchain-architecture\ndescription: \"Master the LangChain framework for building sophisticated LLM applications with agents, chains, memory, and tool integration.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

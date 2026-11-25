@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: monorepo-management\ndescription: \"Build efficient, scalable monorepos that enable code sharing, consistent tooling, and atomic changes across multiple packages and applications.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

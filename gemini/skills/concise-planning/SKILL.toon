@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: concise-planning\ndescription: \"Use when a user asks for a plan for a coding task, to generate a clear, actionable, and atomic checklist.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

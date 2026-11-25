@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: go-concurrency-patterns\ndescription: \"Master Go concurrency with goroutines, channels, sync primitives, and context. Use when building concurrent Go applications, implementing worker pools, or debugging race conditions.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

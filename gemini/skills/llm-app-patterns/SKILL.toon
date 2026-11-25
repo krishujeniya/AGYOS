@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: llm-app-patterns\ndescription: \"Production-ready patterns for building LLM applications, inspired by [Dify](https://github.com/langgenius/dify) and industry best practices.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

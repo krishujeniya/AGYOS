@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: brand-design-system\ndescription: \"Use when creating or reviewing Anthropic-branded materials and need guidance on brand colors, typography, or visual identity.\"\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

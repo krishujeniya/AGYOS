@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agent-phone-calling\ndescription: \"Use when managing AgentPhone AI agents, numbers, calls, transcripts, webhooks, or SMS; require explicit approval before paid or outbound actions.\"\nprompt-source: prompt.toon\n---\n"

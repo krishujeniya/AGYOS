@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: apify-ecommerce\ndescription: \"Extract product data, prices, reviews, and seller information from any e-commerce platform using Apify's E-commerce Scraping Tool.\"\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

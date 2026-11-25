@@ -1,0 +1,5 @@
+mcpServers:
+  stripe: {'type': 'http', 'url': 'https://mcp.stripe.com', 'env_ref': 'AGY_STRIPE_MCP_KEY', 'tool_scope': ['payouts:read', 'balance_transactions:read', 'disputes:read']}
+
+# env_ref values resolve from GitHub Actions secrets or the operator environment.
+# No cloud account identifiers are stored in this repository.

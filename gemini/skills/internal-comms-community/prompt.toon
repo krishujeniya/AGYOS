@@ -1,0 +1,4 @@
+skill: "internal-comms-community"
+sections[2]:
+  - "\n"
+  - "# Internal communications compatibility ID\n\nUse the canonical [internal-team-communications runbook](../internal-team-communications/SKILL.md), which includes the task workflow and local examples.\n"

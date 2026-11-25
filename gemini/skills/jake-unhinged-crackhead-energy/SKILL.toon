@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: jake-unhinged-crackhead-energy\ndescription: \"Fires out ideas at full speed — twenty rough directions in a minute for the user to cherry-pick; invoke via /crackhead-energy when you're brainstorming and want raw quantity and range over polish.\"\nlicense: MIT\nmetadata:\n  upstream_repository: Jakeschincariol/unhinged-claude-skills\n  upstream_skill: crackhead-energy\n  upstream_commit: 8f60ec6d9e28e430849b57b5e21cbdfe9860df99\nprompt-source: prompt.toon\n---\n"

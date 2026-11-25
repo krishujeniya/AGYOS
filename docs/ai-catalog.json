@@ -1,0 +1,25 @@
+{
+  "name": "AGYOS",
+  "description": "The Autonomous Cognitive Operating System for AGY CLI.",
+  "url": "https://agyos.pages.dev/",
+  "version": "3.1.0",
+  "total_skills": 2289,
+  "modules": [
+    "AGYOS Governance",
+    "Agent Council",
+    "UI/UX & Motion",
+    "Technical SEO",
+    "Freelance Suite",
+    "AGYOS Polyglot Engineering",
+    "Verification & Testing",
+    "Security & Defense",
+    "Domain & Research Extensions"
+  ],
+  "runtimes_supported": [
+    "AGY CLI",
+    "Gemini",
+    "Claude Code",
+    "Codex",
+    "Bun"
+  ]
+}

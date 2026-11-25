@@ -1,0 +1,56 @@
+{
+  "mcpServers": {
+    "github-remote": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "env_ref": "AGY_GITHUB_MCP_PAT",
+      "tool_scope": [
+        "pull_requests:read",
+        "issues:write",
+        "code_scanning:read",
+        "labels:write"
+      ],
+      "enabled": true,
+      "disabled": true
+    },
+    "jira-remote": {
+      "type": "http",
+      "url": "https://api.atlassian.com/mcp/",
+      "env_ref": "AGY_JIRA_MCP_TOKEN",
+      "tool_scope": [
+        "boards:read",
+        "sprints:read",
+        "issues:read"
+      ],
+      "enabled": true,
+      "disabled": true
+    },
+    "google-workspace": {
+      "type": "http",
+      "url": "https://googleworkspace.googleapis.com/mcp/",
+      "env_ref": "AGY_WORKSPACE_OAUTH_REF",
+      "tool_scope": [
+        "drive:read",
+        "drive:write",
+        "docs:export"
+      ],
+      "folder_scope": "AGYOS-artifacts",
+      "access_log": true,
+      "enabled": true,
+      "disabled": true
+    },
+    "stripe": {
+      "type": "http",
+      "url": "https://mcp.stripe.com",
+      "env_ref": "AGY_STRIPE_MCP_KEY",
+      "tool_scope": [
+        "payouts:read",
+        "balance_transactions:read",
+        "disputes:read"
+      ],
+      "write_scope": "none",
+      "enabled": true,
+      "disabled": true
+    }
+  }
+}

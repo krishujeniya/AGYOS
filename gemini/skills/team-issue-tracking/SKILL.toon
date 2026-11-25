@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: team-issue-tracking\ndescription: \"Triage and resolve GitHub issues through reproduction, scoped implementation, regression checks, and review-ready notes. Use for issues requiring a complete engineering workflow.\"\nrisk: safe\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-ai-voicelive-ts\ndescription: Azure AI Voice Live SDK for JavaScript/TypeScript. Build real-time voice AI applications with bidirectional WebSocket communication.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

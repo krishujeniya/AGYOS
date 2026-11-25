@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: fal-workflow\ndescription: \"Generate workflow JSON files for chaining AI models\"\nrisk: safe\nsource: \"https://github.com/fal-ai-community/skills/blob/main/skills/claude.ai/fal-workflow/SKILL.md\"\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

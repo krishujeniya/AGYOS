@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: service-mesh-observability\ndescription: \"Complete guide to observability patterns for Istio, Linkerd, and service mesh deployments.\"\nrisk: critical\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

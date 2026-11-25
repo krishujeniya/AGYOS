@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nsource: \"https://github.com/huggingface/skills/tree/main/skills/huggingface-paper-publisher\"\nname: hugging-face-paper-publisher\ndescription: Publish and manage research papers on Hugging Face Hub. Supports creating paper pages, linking papers to models/datasets, claiming authorship, and generating professional markdown-based research articles.\nrisk: unknown\nprompt-source: prompt.toon\n---\n"

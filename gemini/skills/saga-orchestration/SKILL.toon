@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: saga-orchestration\ndescription: \"Patterns for managing distributed transactions and long-running business processes.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

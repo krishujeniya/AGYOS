@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: faceless-shorts-engine\ndescription: >-\n  Use when someone wants an original, code-rendered faceless vertical short with narration,\n  word-timed captions, and animated scenes, or asks for one of the six styles in the supplied\n  faceless-shorts toolkit.\nmetadata:\n  version: 1.1.0\n  tier: 1\n  domain: video\n  origin: user-supplied faceless-shorts toolkit and AGYOS workflow\nprompt-source: prompt.toon\n---\n"

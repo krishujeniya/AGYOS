@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: cloud-devops\ndescription: \"Cloud infrastructure and DevOps workflow covering AWS, Azure, GCP, Kubernetes, Terraform, CI/CD, monitoring, and cloud-native development.\"\ncategory: workflow-bundle\nrisk: safe\nsource: personal\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

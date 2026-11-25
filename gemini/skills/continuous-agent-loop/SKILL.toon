@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: continuous-agent-loop\ndescription: Patterns for continuous autonomous agent loops with quality gates, evals, and recovery controls. Use when running an agent loop that must self-check, gate on evals, and recover from failures.\nmetadata:\n  origin: ECC\nprompt-source: prompt.toon\n---\n"

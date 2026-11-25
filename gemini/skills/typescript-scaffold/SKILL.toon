@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: typescript-scaffold\ndescription: \"Scaffold a TypeScript application or library with package management, modules, type checks, tests, and build tooling. Use when starting a TypeScript project.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

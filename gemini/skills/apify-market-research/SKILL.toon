@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: apify-market-research\ndescription: Analyze market conditions, geographic opportunities, pricing, consumer behavior, and product validation across Google Maps, Facebook, Instagram, Booking.com, and TripAdvisor.\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

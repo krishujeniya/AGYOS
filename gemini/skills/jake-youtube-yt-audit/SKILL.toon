@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: jake-youtube-yt-audit\ndescription: \"Audit a YouTube channel end to end - packaging, consistency, the first fifteen seconds, and what to fix first. Use for \\\"audit my channel\\\", \\\"why isn't my channel growing\\\", \\\"review my videos\\\", or a pasted channel URL.\"\nlicense: MIT\nmetadata:\n  upstream_repository: Jakeschincariol/youtube-agent-skill\n  upstream_skill: yt-audit\n  upstream_commit: a2feb2104981a375ffd4f87ee04f4f5344ac43c6\nprompt-source: prompt.toon\n---\n"

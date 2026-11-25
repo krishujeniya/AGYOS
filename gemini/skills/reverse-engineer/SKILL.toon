@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: reverse-engineer\ndescription: Expert reverse engineer specializing in binary analysis, disassembly, decompilation, and software analysis. Masters IDA Pro, Ghidra, radare2, x64dbg, and modern RE toolchains.\nrisk: offensive\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

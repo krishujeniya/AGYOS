@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agents-v2-py\ndescription: \"Compatibility ID for Python hosted-agent tasks. The canonical current guide is hosted-agents-v2-py; use it for container-based Microsoft Foundry agents.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

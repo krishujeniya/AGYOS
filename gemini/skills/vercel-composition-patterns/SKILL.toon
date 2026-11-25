@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: vercel-composition-patterns\ndescription: \"React and Next.js composition patterns that scale. Use when refactoring components with boolean prop proliferation, building flexible component libraries, designing reusable APIs, or applying Next.js/React 19 Server/Client component architecture. Triggers on React tasks, Next.js components, Compound Components, or context providers.\"\ncategory: domain\nrisk: safe\ntags: \"[react, nextjs, frontend, architecture, patterns, composition]\"\nversion: \"1.0.0\"\nprompt-source: prompt.toon\n---\n"

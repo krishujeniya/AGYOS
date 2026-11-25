@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: react-ui-patterns\ndescription: \"Modern React UI patterns for loading states, error handling, and data fetching. Use when building UI components, handling async data, or managing UI states.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

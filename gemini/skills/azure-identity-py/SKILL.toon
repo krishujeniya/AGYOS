@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: azure-identity-py\ndescription: Azure Identity SDK for Python authentication. Use for DefaultAzureCredential, managed identity, service principals, and token caching.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://agyos.dev/schemas/state-store.schema.json",
+  "title": "AGYOS runtime state store entities",
+  "type": "object",
+  "$defs": {
+    "session": {
+      "type": "object",
+      "required": ["id", "adapterId", "harness", "state", "snapshot"],
+      "properties": {"id":{"type":"string","minLength":1},"adapterId":{"type":"string","minLength":1},"harness":{"type":"string","minLength":1},"state":{"type":"string","minLength":1},"repoRoot":{"type":["string","null"]},"startedAt":{"type":["string","null"]},"endedAt":{"type":["string","null"]},"snapshot":{"type":"object"}}
+    },
+    "skillRun": {
+      "type":"object","required":["id","skillId","skillVersion","sessionId","taskDescription","outcome","createdAt"],
+      "properties":{"id":{"type":"string","minLength":1},"skillId":{"type":"string","minLength":1},"skillVersion":{"type":"string","minLength":1},"sessionId":{"type":"string","minLength":1},"taskDescription":{"type":"string"},"outcome":{"type":"string","minLength":1},"failureReason":{"type":["string","null"]},"tokensUsed":{"type":["integer","null"],"minimum":0},"durationMs":{"type":["integer","null"],"minimum":0},"userFeedback":{"type":["string","null"]},"createdAt":{"type":"string","minLength":1}}
+    },
+    "skillVersion": {
+      "type":"object","required":["skillId","version","contentHash"],
+      "properties":{"skillId":{"type":"string","minLength":1},"version":{"type":"string","minLength":1},"contentHash":{"type":"string","minLength":1},"amendmentReason":{"type":["string","null"]},"promotedAt":{"type":["string","null"]},"rolledBackAt":{"type":["string","null"]}}
+    },
+    "decision": {
+      "type":"object","required":["id","sessionId","title","rationale","alternatives","status","createdAt"],
+      "properties":{"id":{"type":"string","minLength":1},"sessionId":{"type":"string","minLength":1},"title":{"type":"string","minLength":1},"rationale":{"type":"string"},"alternatives":{"type":"array"},"supersedes":{"type":["string","null"]},"status":{"type":"string","minLength":1},"createdAt":{"type":"string","minLength":1}}
+    },
+    "installState": {
+      "type":"object","required":["targetId","targetRoot","modules","operations","installedAt"],
+      "properties":{"targetId":{"type":"string","minLength":1},"targetRoot":{"type":"string","minLength":1},"profile":{"type":["string","null"]},"modules":{"type":"array"},"operations":{"type":"array"},"installedAt":{"type":"string","minLength":1},"sourceVersion":{"type":["string","null"]}}
+    },
+    "governanceEvent": {
+      "type":"object","required":["id","eventType","payload","createdAt"],
+      "properties":{"id":{"type":"string","minLength":1},"sessionId":{"type":["string","null"]},"eventType":{"type":"string","minLength":1},"payload":{},"resolvedAt":{"type":["string","null"]},"resolution":{"type":["string","null"]},"createdAt":{"type":"string","minLength":1}}
+    },
+    "workItem": {
+      "type":"object","required":["id","source","title","status","createdAt","updatedAt"],
+      "properties":{"id":{"type":"string","minLength":1},"source":{"type":"string","minLength":1},"sourceId":{"type":["string","null"]},"title":{"type":"string","minLength":1},"status":{"type":"string","minLength":1},"priority":{"type":["string","null"]},"url":{"type":["string","null"]},"owner":{"type":["string","null"]},"repoRoot":{"type":["string","null"]},"sessionId":{"type":["string","null"]},"metadata":{},"createdAt":{"type":"string","minLength":1},"updatedAt":{"type":"string","minLength":1}}
+    }
+  }
+}

@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: vibe-to-production\ndescription: Transform high-level vibe coding prompts and non-technical ideas into production-grade, FAANG-level software with automated PRD synthesis, TDD, threat modeling, and design engineering.\nprompt-source: prompt.toon\n---\n"

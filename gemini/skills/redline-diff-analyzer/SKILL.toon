@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: redline-diff-analyzer\ndescription: \"Analyze a counterparty's redline against the template: classify every change as added, modified or deleted per clause, flag variances against the clause playbook, and propose fallback language from pre-approved ranges. Use every time a draft comes back from a counterparty, before any human reads it.\"\nrisk: safe\nsource: agyos-blueprint\ndate_added: '2026-11-19'\nprompt-source: prompt.toon\n---\n"

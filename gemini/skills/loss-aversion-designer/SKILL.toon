@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: loss-aversion-designer\ndescription: Use when applying credible loss framing to an offer or message without unsupported risk claims or fear-mongering.\nrisk: safe\nsource: community\ndate_added: \"2026-04-04\"\nprompt-source: prompt.toon\n---\n"

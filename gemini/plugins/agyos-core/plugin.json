@@ -1,0 +1,8 @@
+{
+  "name": "agyos-core",
+  "description": "Complete software development lifecycle automation with specialized expert role agents and quality guardrails.",
+  "version": "3.1.0",
+  "author": "Krish Ujeniya",
+  "logo": "assets/logo.svg",
+  "repository": "https://github.com/krishujeniya/AGYOS"
+}

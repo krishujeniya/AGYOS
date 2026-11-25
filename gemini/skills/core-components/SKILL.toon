@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: core-components\ndescription: \"Core component library and design system patterns. Use when building UI, using design tokens, or working with the component library.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

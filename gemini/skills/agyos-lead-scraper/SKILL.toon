@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agyos-lead-scraper\ndescription: Local and headless web scraping playbook for Google Maps, directories, and business leads. Covers query generation, rate limiting, proxy handling, data normalization, and CSV/JSON export.\nprompt-source: prompt.toon\n---\n"

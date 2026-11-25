@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: agyos-karpathy-guidelines\ndescription: Behavioral guidelines to eliminate LLM coding mistakes. Use when writing, reviewing, or refactoring code to avoid overcomplication, make surgical changes, surface assumptions, and define verifiable success criteria.\nprompt-source: prompt.toon\n---\n"

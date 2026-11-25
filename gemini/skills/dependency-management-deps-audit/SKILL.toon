@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: dependency-management-deps-audit\ndescription: \"Audit project dependencies for known vulnerabilities, license constraints, outdated packages, and supply-chain risks. Use when reviewing manifests or dependency changes.\"\nrisk: unknown\nsource: community\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

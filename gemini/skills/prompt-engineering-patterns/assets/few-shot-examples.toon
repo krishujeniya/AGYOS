@@ -1,0 +1,31 @@
+sentiment_analysis[3]:
+  - input, output
+  - This item exceeded my expectations. The quality is excellent., Positive
+  - The item arrived damaged and support did not resolve the issue., Negative
+  - "It works as described, but nothing stands out.", Neutral
+entity_extraction[2]:
+  - input, output
+  - PERSON_A from ORG_A introduced PRODUCT_A in CITY_A on DATE_A., "{'persons': ['PERSON_A'], 'organizations': ['ORG_A'], 'products': ['PRODUCT_A'], 'locations': ['CITY_A'], 'dates': ['DATE_A']}"
+  - ORG_A acquired ORG_B for AMOUNT_A in YEAR_A., "{'persons': [], 'organizations': ['ORG_A', 'ORG_B'], 'products': [], 'locations': [], 'dates': ['YEAR_A'], 'monetary_values': ['AMOUNT_A']}"
+code_generation[1]:
+  - input, output
+  - "Write a Python function that checks whether a string is a palindrome, ignoring case and spaces.", "def is_palindrome(value: str) -> bool:     normalized = value.replace(' ', '').lower()     return normalized == normalized[::-1]"
+text_classification[4]:
+  - input, output
+  - How do I reset my password?, account_management
+  - My order has not arrived. Where is it?, shipping_inquiry
+  - I want to end my subscription., subscription_cancellation
+  - The application crashes when I sign in., technical_support
+data_transformation[1]:
+  - input, output
+  - "PERSON_A, EMAIL_A, PHONE_A", "{'name': 'PERSON_A', 'email': 'EMAIL_A', 'phone': 'PHONE_A'}"
+question_answering[2]:
+  - context, question, answer
+  - SAMPLE_SITE opened on 3 May 2001 and has a height of 40 meters., When did SAMPLE_SITE open?, SAMPLE_SITE opened on 3 May 2001.
+  - SAMPLE_RELEASE 3.11 was published on 24 October 2022. It adds FEATURE_A and improves ERROR_MESSAGES., What does SAMPLE_RELEASE 3.11 add?, It adds FEATURE_A and improves error messages.
+summarization[1]:
+  - input, output
+  - "Climate change involves long-term shifts in global temperatures and weather patterns. Human activities have been the main driver since the 1800s, largely through greenhouse gas emissions from burning fossil fuels. Effects include rising seas, more extreme weather, and risks to biodiversity.", "Human-caused greenhouse gas emissions have driven long-term climate shifts since the 1800s, contributing to rising seas, extreme weather, and biodiversity risks."
+sql_generation[1]:
+  - schema, request, output
+  - "users (id, name, email, created_at) orders (id, user_id, total, order_date)", Find users whose orders total more than 1000., "SELECT u.id, u.name, u.email, SUM(o.total) AS total_spent FROM users u JOIN orders o ON u.id = o.user_id GROUP BY u.id, u.name, u.email HAVING SUM(o.total) > 1000;"

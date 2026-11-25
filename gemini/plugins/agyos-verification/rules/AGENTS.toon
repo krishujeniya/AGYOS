@@ -1,0 +1,2 @@
+mode: "100644"
+text: "# Verification & Testing Invariants\n- Minimum test coverage: 80% with Arrange-Act-Assert structure.\n- Test Ratchet: Total assertions must never decrease without explicit written rationale.\n- Always require machine evidence: clean compiler, linter, and test exit codes."

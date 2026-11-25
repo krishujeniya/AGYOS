@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: os-scripting\ndescription: \"Operating system and shell scripting troubleshooting workflow for Linux, macOS, and Windows. Covers bash scripting, system administration, debugging, and automation.\"\ncategory: workflow-bundle\nrisk: safe\nsource: personal\ndate_added: \"2026-02-27\"\nprompt-source: prompt.toon\n---\n"

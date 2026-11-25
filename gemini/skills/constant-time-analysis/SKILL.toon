@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: constant-time-analysis\ndescription: \"Analyze cryptographic code to detect operations that leak secret data through execution timing variations.\"\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"

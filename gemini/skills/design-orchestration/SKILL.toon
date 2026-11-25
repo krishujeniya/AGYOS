@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: design-orchestration\ndescription: Orchestrates design workflows by routing work through brainstorming, multi-agent review, and execution readiness in the correct order.\nrisk: unknown\nsource: community\ndate_added: '2026-02-27'\nprompt-source: prompt.toon\n---\n"

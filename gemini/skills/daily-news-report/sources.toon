@@ -1,0 +1,50 @@
+version: "2.1"
+last_updated: 2026-01-21
+sources:
+  tier1:
+    description: 高命中率源，优先抓取
+    batch_a[2]:
+      - id, name, url, fetch_method, extract, enabled, avg_quality, success_rate
+      - hn, Hacker News, https://news.ycombinator.com, webfetch, top_10, true, 4.5, 0.95
+      - hf_papers, HuggingFace Papers, https://huggingface.co/papers, webfetch, top_voted, true, 4.8, 0.98
+    batch_b[2]:
+      - id, name, url, fetch_method, extract, enabled, avg_quality, success_rate
+      - one_useful_thing, One Useful Thing, https://www.oneusefulthing.org, webfetch, latest_3, true, 4.7, 0.92
+      - paul_graham, Paul Graham Essays, https://paulgraham.com/articles.html, webfetch, latest_5, true, 4.6, 0.99
+  tier2:
+    description: 中等命中率，按需抓取
+    batch_a[2]:
+      - id, name, url, fetch_method, extract, enabled, avg_quality, success_rate
+      - james_clear, James Clear 3-2-1, https://jamesclear.com/3-2-1, webfetch, latest_issue, true, 4.3, 0.9
+      - fs_blog, Farnam Street Brain Food, https://fs.blog/brain-food, webfetch, latest_issue, true, 4.4, 0.88
+    batch_b[2]:
+      - id, name, url, fetch_method, extract, enabled, avg_quality, success_rate
+      - hackernoon_pm, HackerNoon PM, https://hackernoon.com/c/product-management, webfetch, latest_5, true, 3.8, 0.85
+      - scotthyoung, Scott Young Blog, https://scotthyoung.com/blog/articles, webfetch, latest_3, true, 4.0, 0.9
+  tier3_browser:
+    description: 需要浏览器渲染的源
+    sources[2]:
+      - id, name, url, fetch_method, extract, enabled, avg_quality, success_rate, note
+      - producthunt, Product Hunt, https://www.producthunt.com, browser, today_top_5, true, 4.2, 0.75, 需要无头浏览器，403 on WebFetch
+      - latent_space, Latent Space, https://www.latent.space, browser, latest_3, true, 4.6, 0.7, Substack 需要 JS 渲染
+  disabled:
+    description: 已禁用的源（失效或低质量）
+    sources[4]:
+      - id, name, url, reason, disabled_date
+      - tldr_ai, TLDR AI, https://tldr.tech/ai, 订阅页面，无文章列表, 2026-01-21
+      - bensbites, Ben's Bites, https://bensbites.com/archive, 需要登录/付费墙, 2026-01-21
+      - interconnects, Interconnects AI, https://interconnects.ai, 内容提取失败，Substack 结构问题, 2026-01-21
+      - beehiiv_rss, Beehiiv RSS feeds, https://rss.beehiiv.com, RSS 抓取困难, 2026-01-21
+fetch_config:
+  webfetch:
+    timeout_ms: 30000
+    retry_count: 1
+    cache_ttl_minutes: 60
+  browser:
+    timeout_ms: 45000
+    wait_for_selector: article, .post, .item
+    screenshot_on_error: true
+quality_thresholds:
+  min_score_to_include: 3
+  target_items: 20
+  early_stop_threshold: 25

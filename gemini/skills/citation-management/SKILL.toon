@@ -1,0 +1,2 @@
+mode: "100644"
+header: "---\nname: citation-management\ndescription: \"Manage citations systematically throughout the research and writing process.\"\nlicense: MIT License\nmetadata:\n    skill-author: K-Dense Inc.\nrisk: unknown\nsource: community\nprompt-source: prompt.toon\n---\n"
