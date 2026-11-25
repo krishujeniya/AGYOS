@@ -5,7 +5,7 @@
 **Date:** 2026-11-20T18:03:00+05:30
 **Verified Commit:** `2cefaea3a60e7b53012a3b9f4443f1ee3c0ae8be`
 **Remote CI Run:** [44736184705](https://github.com/krishujeniya/AGYOS/actions/runs/44736184705)
-**Author:** Krish Ujeniya <100012208+krishujeniya@users.noreply.github.com>
+**Author:** Krish Ujeniya <krishujeniya@users.noreply.github.com>
 
 ---
 
@@ -39,4 +39,4 @@
 - Remote CI Run `44736184705`: Passed with 101 unit and integration tests passing across all 15 crates.
 - Markdown documentation strictly preserved across allowlisted paths (docs/**/*.md, README.md, AI_HANDOFF.md, DEPLOYMENT.md, SECURITY.md).
 - `git diff --check` passes with zero whitespace or conflict errors.
-- Identity enforced strictly as `Krish Ujeniya` (`100012208+krishujeniya@users.noreply.github.com`).
+- Identity enforced strictly as `Krish Ujeniya` (`krishujeniya@users.noreply.github.com`).

@@ -10,7 +10,7 @@ Thank you for your interest in contributing to AGYOS. We enforce strict engineer
 2. **Author Attribution**:
    All commits must match the verified maintainer profile:
    - Name: `Krish Ujeniya`
-   - Email: `100012208+krishujeniya@users.noreply.github.com`
+   - Email: `krishujeniya@users.noreply.github.com`
 
 3. **Python Execution via `uv`**:
    Execute all Python tasks through `uv` (`uv run`, `uv sync`). Direct usage of unmanaged `python` or `pip` is prohibited.

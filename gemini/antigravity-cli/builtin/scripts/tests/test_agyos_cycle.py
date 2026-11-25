@@ -159,7 +159,7 @@ class AutonomousCycleTests(unittest.TestCase):
             tmp_root = Path(tmp_dir)
             subprocess.run(["git", "init", "-b", "main"], cwd=tmp_root, capture_output=True, check=True, timeout=10)
             subprocess.run(["git", "config", "user.name", "Krish Ujeniya"], cwd=tmp_root, check=True, timeout=10)
-            subprocess.run(["git", "config", "user.email", "100012208+krishujeniya@users.noreply.github.com"], cwd=tmp_root, check=True, timeout=10)
+            subprocess.run(["git", "config", "user.email", "test@example.com"], cwd=tmp_root, check=True, timeout=10)
             subprocess.run(["git", "commit", "--allow-empty", "-m", "initial commit"], cwd=tmp_root, capture_output=True, check=True, timeout=10)
 
             # Verify git invariants helper
@@ -186,7 +186,7 @@ class AutonomousCycleTests(unittest.TestCase):
             tmp_root = Path(tmp_dir)
             subprocess.run(["git", "init", "-b", "main"], cwd=tmp_root, capture_output=True, check=True, timeout=10)
             subprocess.run(["git", "config", "user.name", "Krish Ujeniya"], cwd=tmp_root, check=True, timeout=10)
-            subprocess.run(["git", "config", "user.email", "100012208+krishujeniya@users.noreply.github.com"], cwd=tmp_root, check=True, timeout=10)
+            subprocess.run(["git", "config", "user.email", "test@example.com"], cwd=tmp_root, check=True, timeout=10)
             subprocess.run(["git", "commit", "--allow-empty", "-m", "initial commit"], cwd=tmp_root, capture_output=True, check=True, timeout=10)
 
             # 1. Missing review -> BLOCKED
@@ -226,7 +226,7 @@ class AutonomousCycleTests(unittest.TestCase):
             tmp_root = Path(tmp_dir)
             subprocess.run(["git", "init", "-b", "main"], cwd=tmp_root, capture_output=True, check=True, timeout=10)
             subprocess.run(["git", "config", "user.name", "Krish Ujeniya"], cwd=tmp_root, check=True, timeout=10)
-            subprocess.run(["git", "config", "user.email", "100012208+krishujeniya@users.noreply.github.com"], cwd=tmp_root, check=True, timeout=10)
+            subprocess.run(["git", "config", "user.email", "test@example.com"], cwd=tmp_root, check=True, timeout=10)
             subprocess.run(["git", "commit", "--allow-empty", "-m", "initial commit"], cwd=tmp_root, capture_output=True, check=True, timeout=10)
 
             # Create an unrelated file
@@ -313,7 +313,7 @@ class AutonomousCycleTests(unittest.TestCase):
             # Initialize git repo in tmp_root to verify git invariants
             subprocess.run(["git", "init", "-b", "main"], cwd=tmp_root, capture_output=True, check=True, timeout=10)
             subprocess.run(["git", "config", "user.name", "Krish Ujeniya"], cwd=tmp_root, check=True, timeout=10)
-            subprocess.run(["git", "config", "user.email", "100012208+krishujeniya@users.noreply.github.com"], cwd=tmp_root, check=True, timeout=10)
+            subprocess.run(["git", "config", "user.email", "test@example.com"], cwd=tmp_root, check=True, timeout=10)
             (tmp_root / ".github" / "workflows").mkdir(parents=True)
             (tmp_root / ".github" / "workflows" / "ci.yml").write_text("name: CI\n", encoding="utf-8")
             (tmp_root / "AI_HANDOFF.md").write_text("# Baseline handoff\n", encoding="utf-8")

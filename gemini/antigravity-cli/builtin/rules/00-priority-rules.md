@@ -13,7 +13,7 @@ Be direct and concise. Avoid conversational filler, unnecessary preambles, and p
 2. **GitHub Profile & Push Discipline**:
    - Commits and pushes to GitHub must always be made with the profile:
      - Name: `Krish Ujeniya`
-     - Email: `100012208+krishujeniya@users.noreply.github.com`
+     - Email: `krishujeniya@users.noreply.github.com`
      - GitHub URL: `https://github.com/krishujeniya`
    - Ensure the git author, committer, and avatar/profile match `github.com/krishujeniya` accurately.
    - After completing work, commit and push to remote using this profile.

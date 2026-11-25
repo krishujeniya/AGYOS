@@ -7,7 +7,7 @@ Closes #
 
 ## Invariant & Quality Checklist
 - [ ] **Single Git Branch Discipline**: Verified targeting `main` only.
-- [ ] **Author Identity**: Authored under `Krish Ujeniya <100012208+krishujeniya@users.noreply.github.com>`.
+- [ ] **Author Identity**: Authored under `Krish Ujeniya <krishujeniya@users.noreply.github.com>`.
 - [ ] **Zero Local Heavy Builds**: All compilation, tests, and security scans run in GitHub Actions CI/CD.
 - [ ] **Python Tooling (uv Only)**: All Python operations strictly executed with `uv`.
 - [ ] **Mandatory Monorepo Layout**: No stray files in root; all files adhere to the mandatory structure.

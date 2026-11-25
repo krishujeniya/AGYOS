@@ -131,7 +131,7 @@ AGYOS models an enterprise organization partitioned into 12 functional departmen
 ## Engineering Invariants
 
 - **Single `main` Branch Exclusive:** All development lands strictly on `main`.
-- **Identity Lock:** All commits are authored under `Krish Ujeniya <100012208+krishujeniya@users.noreply.github.com>`.
+- **Identity Lock:** All commits are authored under `Krish Ujeniya <krishujeniya@users.noreply.github.com>`.
 - **GitHub Actions Verification:** Full test suites, catalog builds, and security scans run in GitHub Actions (`ci.yml`, `codeql.yml`); local checks stay fast and loadless (`make typecheck`, `make lint`).
 - **Mandatory `uv` for Python:** All Python package management and script execution uses `uv` (`uv run`, `uv pip`).
 - **Bounded Working Sets:** Bounded telemetry ring buffers and pre-write snapshot caps (`16 MiB` max file snapshot size).

@@ -10,7 +10,7 @@ Execute the complete 20-step AGYOS cognitive operating system rebuild plan, movi
 - Governing Specification: 20-Step Qualified Rebuild Plan.
 - Architecture: Native Rust architecture with 13 library crates, 2 application packages, and TOON-authored specifications, policies, and contracts.
 - Branch: `main` (single main branch invariant).
-- Author: `Krish Ujeniya` (`100012208+krishujeniya@users.noreply.github.com`).
+- Author: `Krish Ujeniya` (`krishujeniya@users.noreply.github.com`).
 
 ## 3. Implementation Scope & Crates Delivered
 

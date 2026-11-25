@@ -8,7 +8,7 @@ Maintain these repository invariants at all times:
 
 2. **Commit Profile**:
    - Name: `Krish Ujeniya`
-   - Email: `100012208+krishujeniya@users.noreply.github.com`
+   - Email: `krishujeniya@users.noreply.github.com`
 
 3. **Python Invariant (`uv` Only)**:
    - Exclusively use `uv run`, `uv sync`, `uv add`. Never execute unmanaged `python` or `pip`.
