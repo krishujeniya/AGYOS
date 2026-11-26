@@ -410,7 +410,7 @@ def footer(base: str) -> str:
         '<div class="footer-banner"><div class="footer-wordmark" aria-label="AGYOS">'
         '<span class="footer-letter">A</span><span class="footer-letter">G</span><span class="footer-letter footer-float-1">Y</span><span class="footer-letter footer-float-2">O</span><span class="footer-letter footer-float-3">S</span>'
         '</div></div>'
-        '<div class="footer-bottom"><div class="footer-meta"><span>AGYOS</span><span class="footer-sep">/</span><span>BY KRISH UJENIYA</span><span class="footer-sep">/</span><span>OPEN SOURCE</span></div>'
+        '<div class="footer-bottom"><div class="footer-meta"><span>AGYOS</span><span class="footer-sep">/</span><span>BY KRISH UJENIYA</span></div>'
         '<a href="#" class="back-top" aria-label="Back to top">Back to Top</a>'
         '</div></div></footer>')
 
