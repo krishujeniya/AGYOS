@@ -404,9 +404,15 @@ def site_header(base: str, docs: bool = False) -> str:
 
 
 def footer(base: str) -> str:
-    return (f'<footer class="site-footer"><div class="footer-inner"><div><a href="{base}" class="footer-brand">AGYOS<span class="footer-dot">.</span></a><p>Autonomous agent engineering, with governance built in.</p></div><div class="footer-links">'
-        f'<a href="{base}docs/overview/">Docs</a><a href="{base}catalog/">Catalog</a><a href="{base}docs/security/">Security</a><a href="https://github.com/sponsors/krishujeniya" target="_blank" rel="noopener noreferrer">Sponsor ↗</a><a href="https://github.com/krishujeniya/AGYOS" target="_blank" rel="noopener noreferrer">Source ↗</a></div></div><div class="footer-bottom">'
-        '<span>Open-source project by Krish Ujeniya (@krishujeniya).</span><span>Designed for clarity. Built for builders.</span></div></footer>')
+    return (f'<footer class="site-footer"><div class="footer-shell"><div class="footer-top">'
+        '<div class="footer-tagline">© 2026 · AUTONOMOUS AGENT ENGINEERING WITH GOVERNANCE BUILT IN</div>'
+        f'<nav class="footer-links" aria-label="Footer"><a href="{base}docs/overview/">Docs</a><a href="{base}catalog/">Catalog</a><a href="{base}docs/security/">Security</a><a href="https://github.com/sponsors/krishujeniya" target="_blank" rel="noopener noreferrer">Sponsor</a><a href="https://github.com/krishujeniya/AGYOS" target="_blank" rel="noopener noreferrer">Source</a></nav></div>'
+        '<div class="footer-banner"><div class="footer-wordmark" aria-label="AGYOS">'
+        '<span class="footer-letter">A</span><span class="footer-letter">G</span><span class="footer-letter footer-float-1">Y</span><span class="footer-letter footer-float-2">O</span><span class="footer-letter footer-float-3">S</span>'
+        '</div></div>'
+        '<div class="footer-bottom"><div class="footer-meta"><span>AGYOS</span><span class="footer-sep">/</span><span>BY KRISH UJENIYA</span><span class="footer-sep">/</span><span>OPEN SOURCE</span></div>'
+        '<a href="#" class="back-top" aria-label="Back to top"><span>Back to Top</span><span class="back-top-circle" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg></span></a>'
+        '</div></div></footer>')
 
 
 def search_dialog(base: str) -> str:
