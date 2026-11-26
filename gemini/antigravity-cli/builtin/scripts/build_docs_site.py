@@ -281,20 +281,32 @@ def pages_sidebar(docs: list[dict], active: str, base: str) -> str:
 
 def _json_ld(title: str, description: str, canonical: str, page_class: str) -> str:
     """Build Schema.org JSON-LD graph for SEO, AEO, and GEO."""
+    person_id = 'https://krishujeniya.pages.dev/#person'
     author = {
         '@type': 'Person',
-        '@id': f'{URL}#krish-ujeniya',
+        '@id': person_id,
         'name': 'Krish Ujeniya',
-        'alternateName': 'krishujeniya',
-        'url': 'https://github.com/krishujeniya',
-        'jobTitle': 'Software Engineer & AI Systems Architect',
+        'alternateName': ['krishujeniya', '@krishujeniya'],
+        'url': 'https://krishujeniya.pages.dev/',
+        'jobTitle': ['AI Researcher', 'Data Scientist', 'AI Systems Architect'],
+        'knowsAbout': [
+            'Autonomous AI Agents',
+            'Multi-Agent Governance',
+            'TOON Protocol',
+            'Model Context Protocol (MCP)',
+            'Large Language Models (LLMs)',
+            'Zero-Trust AI Runtimes',
+            'Python',
+        ],
         'sameAs': [
             'https://github.com/krishujeniya',
             'https://github.com/sponsors/krishujeniya',
-            'https://www.linkedin.com/in/krishujeniya',
-            'https://x.com/krishujeniya',
             'https://krishujeniya.pages.dev/',
             'https://amberclaw.pages.dev/',
+            'https://linkedin.com/in/krishujeniya',
+            'https://x.com/krishujeniya',
+            'https://huggingface.co/krishujeniya',
+            'https://medium.com/@krishujeniya',
         ],
     }
     software = {
@@ -305,20 +317,26 @@ def _json_ld(title: str, description: str, canonical: str, page_class: str) -> s
         'description': 'Autonomous Cognitive Operating System for AGY CLI with a 6-layer governance architecture, 104-role matrix, and 2,289 TOON skills. Created by Krish Ujeniya (krishujeniya).',
         'applicationCategory': 'DeveloperApplication',
         'operatingSystem': 'Linux, macOS',
-        'url': URL,
+        'softwareVersion': '3.1.0',
+        'programmingLanguage': 'Python',
+        'codeRepository': 'https://github.com/krishujeniya/AGYOS',
         'downloadUrl': 'https://github.com/krishujeniya/AGYOS',
+        'screenshot': f'{URL}assets/social-card.png',
+        'featureList': '6-layer cognitive architecture, 104 enterprise roles across 5 pods, 2289 TOON-native skills, Howard 1966 EVPI clarification gate, AES-256-GCM encrypted vault, ACID SQLite state store, 5-Gate SOP',
+        'url': URL,
         'license': 'https://opensource.org/licenses/Apache-2.0',
-        'author': {'@id': f'{URL}#krish-ujeniya'},
-        'creator': {'@id': f'{URL}#krish-ujeniya'},
+        'author': {'@id': person_id},
+        'creator': {'@id': person_id},
+        'maintainer': {'@id': person_id},
         'offers': {'@type': 'Offer', 'price': '0', 'priceCurrency': 'USD'},
     }
     website = {
         '@type': 'WebSite',
         '@id': f'{URL}#website',
         'name': 'AGYOS by Krish Ujeniya (krishujeniya)',
-        'alternateName': ['AGYOS', 'krishujeniya'],
+        'alternateName': ['AGYOS', 'krishujeniya AGYOS', 'krishujeniya'],
         'url': URL,
-        'publisher': {'@id': f'{URL}#krish-ujeniya'},
+        'publisher': {'@id': person_id},
         'potentialAction': {
             '@type': 'SearchAction',
             'target': f'{URL}catalog/?q={{search_term_string}}',
@@ -330,15 +348,47 @@ def _json_ld(title: str, description: str, canonical: str, page_class: str) -> s
         '@type': page_type,
         '@id': f'{canonical}#webpage',
         'url': canonical,
-        'name': f'{title} | AGYOS',
+        'name': f'{title} | AGYOS' if 'AGYOS' not in title else title,
         'description': description,
+        'dateModified': '2026-11-26',
+        'primaryImageOfPage': f'{URL}assets/social-card.png',
         'isPartOf': {'@id': f'{URL}#website'},
+        'mainEntityOfPage': canonical,
         'about': {'@id': f'{URL}#agyos'},
-        'author': {'@id': f'{URL}#krish-ujeniya'},
+        'author': {'@id': person_id},
+        'publisher': {'@id': person_id},
     }
     if page_type == 'TechArticle':
         webpage['headline'] = title
-    graph = [author, software, website, webpage]
+        webpage['proficiencyLevel'] = 'Advanced'
+    breadcrumbs = [
+        {'@type': 'ListItem', 'position': 1, 'name': 'Krish Ujeniya', 'item': 'https://krishujeniya.pages.dev/'},
+        {'@type': 'ListItem', 'position': 2, 'name': 'AGYOS', 'item': URL},
+    ]
+    if page_class == 'catalog-page':
+        breadcrumbs.append({'@type': 'ListItem', 'position': 3, 'name': 'Skill catalog', 'item': canonical})
+    elif page_class == 'docs-page':
+        breadcrumbs.append({'@type': 'ListItem', 'position': 3, 'name': 'Documentation', 'item': f'{URL}docs/overview/'})
+        breadcrumbs.append({'@type': 'ListItem', 'position': 4, 'name': title, 'item': canonical})
+    breadcrumb_list = {
+        '@type': 'BreadcrumbList',
+        '@id': f'{canonical}#breadcrumbs',
+        'itemListElement': breadcrumbs,
+    }
+    graph = [author, software, website, webpage, breadcrumb_list]
+    if canonical.rstrip('/') == f'{URL}docs/setup':
+        graph.append({
+            '@type': 'HowTo',
+            '@id': f'{canonical}#howto',
+            'name': 'How to Install and Verify AGYOS',
+            'description': 'Install AGYOS into ~/.gemini/ using the one-line installer or Makefile and verify startup contracts.',
+            'author': {'@id': person_id},
+            'step': [
+                {'@type': 'HowToStep', 'position': 1, 'name': 'Install AGYOS', 'text': 'Run curl -fsSL https://raw.githubusercontent.com/krishujeniya/AGYOS/main/gemini/antigravity-cli/builtin/scripts/install.sh | bash', 'url': canonical},
+                {'@type': 'HowToStep', 'position': 2, 'name': 'Check prerequisites', 'text': 'Verify uv, Python 3.12, and Node.js 22+ are available.', 'url': canonical},
+                {'@type': 'HowToStep', 'position': 3, 'name': 'Run loadless checks', 'text': 'Run make check or make verify to validate local AGYOS contracts.', 'url': canonical},
+            ],
+        })
     if page_class == 'home-page':
         graph.append({
             '@type': 'FAQPage',
@@ -349,7 +399,7 @@ def _json_ld(title: str, description: str, canonical: str, page_class: str) -> s
                     'name': 'What is AGYOS?',
                     'acceptedAnswer': {
                         '@type': 'Answer',
-                        'text': 'AGYOS is an Autonomous Cognitive Operating System for AGY CLI created by Krish Ujeniya. It combines a 6-layer governance architecture, 104 enterprise roles across 5 pods, 2,289 TOON-native skills, and an automated 7-step engineering cycle.',
+                        'text': 'AGYOS is an Autonomous Cognitive Operating System for AGY CLI built by Krish Ujeniya (krishujeniya). It combines a 6-layer governance architecture, 104 enterprise roles across 5 pods, 2,289 TOON-native skills, and an automated 7-step engineering cycle.',
                     },
                 },
                 {
@@ -357,7 +407,7 @@ def _json_ld(title: str, description: str, canonical: str, page_class: str) -> s
                     'name': 'Who created AGYOS?',
                     'acceptedAnswer': {
                         '@type': 'Answer',
-                        'text': 'AGYOS is created and maintained by Krish Ujeniya (@krishujeniya) under the Apache 2.0 license at https://github.com/krishujeniya/AGYOS.',
+                        'text': 'AGYOS was created and is maintained by Krish Ujeniya (@krishujeniya), creator of AmberClaw, under the Apache 2.0 license at https://github.com/krishujeniya/AGYOS.',
                     },
                 },
                 {
@@ -365,7 +415,15 @@ def _json_ld(title: str, description: str, canonical: str, page_class: str) -> s
                     'name': 'How do you install AGYOS?',
                     'acceptedAnswer': {
                         '@type': 'Answer',
-                        'text': 'Run curl -fsSL https://raw.githubusercontent.com/krishujeniya/AGYOS/main/gemini/antigravity-cli/builtin/scripts/install.sh | bash or clone the repository and run make install.',
+                        'text': 'Run curl -fsSL https://raw.githubusercontent.com/krishujeniya/AGYOS/main/gemini/antigravity-cli/builtin/scripts/install.sh | bash or clone https://github.com/krishujeniya/AGYOS and run make install.',
+                    },
+                },
+                {
+                    '@type': 'Question',
+                    'name': 'How does AGYOS relate to AmberClaw?',
+                    'acceptedAnswer': {
+                        '@type': 'Answer',
+                        'text': 'Both are open-source AI agent infrastructure projects created by Krish Ujeniya (krishujeniya): AGYOS provides 6-layer cognitive governance, 104 roles, and 2,289 TOON skills for AGY CLI, while AmberClaw (https://amberclaw.pages.dev/) provides a self-hosted zero-trust runtime for sandboxed tool execution and messaging channels.',
                     },
                 },
             ],
@@ -377,18 +435,24 @@ def _json_ld(title: str, description: str, canonical: str, page_class: str) -> s
 def template(base: str, title: str, description: str, canonical: str, content: str, page_class: str = '') -> str:
     content = content.replace('{{BASE}}', base)
     full_title = f'{title} | AGYOS' if 'AGYOS' not in title else title
-    keywords = 'AGYOS, Krish Ujeniya, krishujeniya, Autonomous Cognitive Operating System, AGY CLI, AI agent operating system, TOON skills, multi-agent governance'
+    keywords = 'AGYOS, Krish Ujeniya, krishujeniya, krishujeniya AGYOS, Autonomous Cognitive Operating System, AGY CLI, AI agent operating system, TOON skills, multi-agent governance'
+    social_alt = 'AGYOS by Krish Ujeniya — Autonomous Cognitive Operating System'
     return (f'<!doctype html><html lang="en" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">'
         f'<title>{html.escape(full_title)}</title><meta name="description" content="{html.escape(description,quote=True)}">'
         f'<meta name="author" content="Krish Ujeniya"><meta name="keywords" content="{keywords}">'
         f'<meta name="theme-color" content="#000000"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">'
-        f'<link rel="canonical" href="{html.escape(canonical)}"><link rel="alternate" type="text/plain" title="LLMs.txt" href="{base}llms.txt">'
+        f'<link rel="canonical" href="{html.escape(canonical)}">'
+        f'<link rel="alternate" type="text/plain" title="LLMs.txt" href="{base}llms.txt">'
+        f'<link rel="alternate" type="text/plain" title="LLMs Full Documentation" href="{base}llms-full.txt">'
         f'<meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:site_name" content="AGYOS by Krish Ujeniya">'
         f'<meta property="og:title" content="{html.escape(full_title)}"><meta property="og:description" content="{html.escape(description,quote=True)}">'
-        f'<meta property="og:url" content="{html.escape(canonical)}"><meta property="og:image" content="{URL}assets/social-card.svg">'
-        f'<meta name="twitter:card" content="summary_large_image"><meta name="twitter:creator" content="@krishujeniya">'
+        f'<meta property="og:url" content="{html.escape(canonical)}"><meta property="og:image" content="{URL}assets/social-card.png">'
+        f'<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png">'
+        f'<meta property="og:image:alt" content="{social_alt}">'
+        f'<meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@krishujeniya"><meta name="twitter:creator" content="@krishujeniya">'
         f'<meta name="twitter:title" content="{html.escape(full_title)}"><meta name="twitter:description" content="{html.escape(description,quote=True)}">'
-        f'<meta name="twitter:image" content="{URL}assets/social-card.svg"><link rel="icon" type="image/svg+xml" href="{base}assets/logo-mark.svg">'
+        f'<meta name="twitter:image" content="{URL}assets/social-card.png"><meta name="twitter:image:alt" content="{social_alt}">'
+        f'<link rel="icon" type="image/svg+xml" href="{base}assets/logo-mark.svg">'
         f'<script type="application/ld+json">{_json_ld(title, description, canonical, page_class)}</script>'
         f'<link rel="stylesheet" href="{base}site.css"><script defer src="{base}site.js"></script></head><body class="{html.escape(page_class)}">'
         + content + '</body></html>')
@@ -410,11 +474,11 @@ def site_header(base: str, docs: bool = False) -> str:
 def footer(base: str) -> str:
     return (f'<footer class="site-footer"><div class="footer-shell"><div class="footer-top">'
         '<div class="footer-tagline">© 2026 · AUTONOMOUS AGENT ENGINEERING WITH GOVERNANCE BUILT IN</div>'
-        f'<nav class="footer-links" aria-label="Footer"><a href="{base}docs/overview/">Docs</a><a href="{base}catalog/">Catalog</a><a href="{base}docs/security/">Security</a><a href="https://github.com/sponsors/krishujeniya" target="_blank" rel="noopener noreferrer">Sponsor</a><a href="https://github.com/krishujeniya/AGYOS" target="_blank" rel="noopener noreferrer">Source</a></nav></div>'
+        f'<nav class="footer-links" aria-label="Footer"><a href="{base}docs/overview/">Docs</a><a href="{base}catalog/">Catalog</a><a href="{base}docs/security/">Security</a><a href="https://amberclaw.pages.dev/" target="_blank" rel="noopener noreferrer">AmberClaw</a><a href="https://github.com/sponsors/krishujeniya" target="_blank" rel="noopener noreferrer">Sponsor</a><a href="https://github.com/krishujeniya/AGYOS" target="_blank" rel="noopener noreferrer">Source</a></nav></div>'
         '<div class="footer-banner"><div class="footer-wordmark" aria-label="AGYOS">'
         '<span class="footer-letter">A</span><span class="footer-letter">G</span><span class="footer-letter footer-float-1">Y</span><span class="footer-letter footer-float-2">O</span><span class="footer-letter footer-float-3">S</span>'
         '</div></div>'
-        '<div class="footer-bottom"><div class="footer-meta"><span>AGYOS</span><span class="footer-sep">/</span><span>BY KRISH UJENIYA</span></div>'
+        '<div class="footer-bottom"><div class="footer-meta"><span>AGYOS</span><span class="footer-sep">/</span><a href="https://krishujeniya.pages.dev/" rel="author">BY KRISH UJENIYA</a></div>'
         '<a href="#" class="back-top" aria-label="Back to top">Back to Top</a>'
         '</div></div></footer>')
 
@@ -479,11 +543,13 @@ def build(out: Path, base: str) -> dict:
     (out / 'docs/index.html').write_text('<!doctype html><meta http-equiv="refresh" content="0;url='+base+'docs/overview/"><a href="'+base+'docs/overview/">Open documentation</a>',encoding='utf-8')
     (out / 'search-index.json').write_text(json.dumps(search_index,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (out / 'content-inventory.json').write_text(json.dumps({'published':inventory,'excluded':config['exclude'],'policy':'Explicit allowlist'},indent=2),encoding='utf-8')
-    sitemap_entries = [(URL, '1.0', 'weekly'), (URL+'catalog/', '0.9', 'weekly')] + [(URL+'docs/'+doc['slug']+'/', '0.8', 'weekly') for doc in docs]
-    (out / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join(f'<url><loc>{html.escape(u)}</loc><changefreq>{freq}</changefreq><priority>{prio}</priority></url>' for u, prio, freq in sitemap_entries)+'</urlset>',encoding='utf-8')
-    (out / 'robots.txt').write_text('User-agent: *\nAllow: /\n\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: GPTBot\nAllow: /\n\nUser-agent: ChatGPT-User\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Google-Extended\nAllow: /\n\nUser-agent: Applebot-Extended\nAllow: /\n\nSitemap: '+URL+'sitemap.xml\nLlms-txt: '+URL+'llms.txt\n',encoding='utf-8')
-    if (ROOT / 'frontend/llms.txt').exists():
-        shutil.copy2(ROOT / 'frontend/llms.txt', out / 'llms.txt')
+    sitemap_entries = [URL, URL+'catalog/'] + [URL+'docs/'+doc['slug']+'/' for doc in docs]
+    (out / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url>\n    <loc>{html.escape(u)}</loc>\n    <lastmod>2026-11-26</lastmod>\n  </url>\n' for u in sitemap_entries)+'</urlset>\n',encoding='utf-8')
+    (out / 'robots.txt').write_text('User-agent: *\nAllow: /\n\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: GPTBot\nAllow: /\n\nUser-agent: ChatGPT-User\nAllow: /\n\nUser-agent: Claude-SearchBot\nAllow: /\n\nUser-agent: Claude-User\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Google-Extended\nAllow: /\n\nUser-agent: Applebot-Extended\nAllow: /\n\nSitemap: '+URL+'sitemap.xml\nLlms-txt: '+URL+'llms.txt\n',encoding='utf-8')
+    for llms_file in ('llms.txt', 'llms-full.txt'):
+        src_llms = ROOT / 'frontend' / llms_file
+        if src_llms.exists():
+            shutil.copy2(src_llms, out / llms_file)
     (out / '.nojekyll').touch()
     return {'pages':len(docs),'source_paths':[d['source'] for d in docs],'destination':str(out)}
 

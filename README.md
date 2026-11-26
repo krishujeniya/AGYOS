@@ -11,9 +11,12 @@
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache--2.0-blue.svg" alt="Apache 2.0 license" /></a>
   <a href="https://agyos.pages.dev"><img src="https://img.shields.io/badge/Cloudflare_Pages-Active-F38020?style=flat-square&logo=cloudflare" alt="Documentation site" /></a>
+  <a href="https://krishujeniya.pages.dev/"><img src="https://img.shields.io/badge/author-krishujeniya-black.svg" alt="Author Krish Ujeniya" /></a>
 </p>
 
-AGYOS is an autonomous operating system and multi-agent execution kernel for AGY CLI. It is built for solopreneurs, independent operators, and autonomous agent swarms to plan, build, review, test, and ship software under strict engineering invariants.
+**Official Documentation:** [agyos.pages.dev](https://agyos.pages.dev/) · **Author:** [Krish Ujeniya (`@krishujeniya`)](https://krishujeniya.pages.dev/) · **GitHub:** [krishujeniya/AGYOS](https://github.com/krishujeniya/AGYOS)
+
+AGYOS is an autonomous operating system and multi-agent execution kernel for AGY CLI, created and maintained by [Krish Ujeniya (`krishujeniya`)](https://github.com/krishujeniya). It is built for solopreneurs, independent operators, and autonomous agent swarms to plan, build, review, test, and ship software under strict engineering invariants.
 
 The system combines a Python cognitive decision kernel (`gemini/antigravity-cli/builtin/agyos_decision/`), a static documentation and catalog portal (`frontend/`), and a Node.js MCP state server (`gemini/antigravity-cli/mcp/state-server.cjs`) with an enterprise organization of 104 operational roles across 12 departments, 2,289 TOON-native skills across 103 role packs, 109 agent definitions, 148 modular rules, and an automated 7-step cycle (`Think -> Plan -> Build -> Review -> Test -> Ship -> Reflect`).
 

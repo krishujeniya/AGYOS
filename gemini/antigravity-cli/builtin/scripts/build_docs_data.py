@@ -251,26 +251,25 @@ def write_json_files(skills):
     print(f"Saved: {catalog_out}")
 
 def write_seo_files(skills):
-    """Write sitemap.xml, robots.txt, llms.txt, and .nojekyll into frontend/."""
+    """Write sitemap.xml, robots.txt, llms.txt, llms-full.txt, and .nojekyll into frontend/."""
     os.makedirs(FRONTEND_DIR, exist_ok=True)
     sitemap_out = os.path.join(FRONTEND_DIR, "sitemap.xml")
     public_docs_path = Path(FRONTEND_DIR) / "public-docs.json"
     doc_routes = []
+    public_docs = {}
     if public_docs_path.is_file():
         public_docs = json.loads(public_docs_path.read_text(encoding="utf-8"))
         doc_routes = [f"docs/{doc['slug'].strip('/')}/" for doc in public_docs.get("documents", [])]
     extra_urls = ["catalog/", *doc_routes]
     sitemap_urls = [
-        f'  <url>\n    <loc>https://agyos.pages.dev/{route}</loc>\n    <lastmod>2026-11-25</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.9</priority>\n  </url>'
+        f'  <url>\n    <loc>https://agyos.pages.dev/{route}</loc>\n    <lastmod>2026-11-26</lastmod>\n  </url>'
         for route in extra_urls
     ]
     sitemap_content = f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://agyos.pages.dev/</loc>
-    <lastmod>2026-11-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-11-26</lastmod>
   </url>
 {chr(10).join(sitemap_urls)}
 </urlset>
@@ -285,9 +284,12 @@ def write_seo_files(skills):
         "User-agent: OAI-SearchBot\nAllow: /\n\n"
         "User-agent: GPTBot\nAllow: /\n\n"
         "User-agent: ChatGPT-User\nAllow: /\n\n"
+        "User-agent: Claude-SearchBot\nAllow: /\n\n"
+        "User-agent: Claude-User\nAllow: /\n\n"
         "User-agent: ClaudeBot\nAllow: /\n\n"
         "User-agent: PerplexityBot\nAllow: /\n\n"
         "User-agent: Google-Extended\nAllow: /\n\n"
+        "User-agent: Applebot-Extended\nAllow: /\n\n"
         "Sitemap: https://agyos.pages.dev/sitemap.xml\n"
         "Llms-txt: https://agyos.pages.dev/llms.txt\n"
     )
@@ -306,9 +308,12 @@ def write_seo_files(skills):
 
 > AGYOS is an Autonomous Cognitive Operating System for AGY CLI (`agy`), created and maintained by Krish Ujeniya (@krishujeniya).
 > Official Site: https://agyos.pages.dev/
+> Full Context Markdown for LLMs: https://agyos.pages.dev/llms-full.txt
 > Author & Maintainer: Krish Ujeniya (https://github.com/krishujeniya)
+> Portfolio: https://krishujeniya.pages.dev/
 > GitHub Repository: https://github.com/krishujeniya/AGYOS
 > GitHub Sponsors: https://github.com/sponsors/krishujeniya
+> Related Project: AmberClaw (https://amberclaw.pages.dev/)
 > License: Apache-2.0
 > Total skills documented: {len(skills)}
 > Total enterprise roles: 104 (across 12 departments and 5 governing pods)
@@ -318,9 +323,10 @@ def write_seo_files(skills):
 
 ## Quick Answers (AEO / GEO)
 
-- **What is AGYOS?** AGYOS is an autonomous operating system and multi-agent execution kernel for AGY CLI built by Krish Ujeniya. It combines a 6-layer cognitive architecture, 104 enterprise roles across 5 pods (`pod-build`, `pod-growth`, `pod-customer`, `pod-gna`, `pod-people`), {len(skills)} TOON-native skills, and a 7-step autonomous cycle (`Think -> Plan -> Build -> Review -> Test -> Ship -> Reflect`).
-- **Who is Krish Ujeniya?** Krish Ujeniya (`@krishujeniya`) is the creator and maintainer of AGYOS (`https://github.com/krishujeniya`).
+- **What is AGYOS?** AGYOS is an Autonomous Cognitive Operating System for AGY CLI built by Krish Ujeniya (`krishujeniya`). It combines a 6-layer governance architecture, 104 enterprise roles across 5 pods (`pod-build`, `pod-growth`, `pod-customer`, `pod-gna`, `pod-people`), {len(skills)} TOON-native skills, and an automated 7-step engineering cycle (`Think -> Plan -> Build -> Review -> Test -> Ship -> Reflect`).
+- **Who created AGYOS?** Krish Ujeniya (`@krishujeniya`), creator of AmberClaw, under the Apache 2.0 license (`https://github.com/krishujeniya/AGYOS`, `https://krishujeniya.pages.dev/`).
 - **How do you install AGYOS?** Run `curl -fsSL https://raw.githubusercontent.com/krishujeniya/AGYOS/main/gemini/antigravity-cli/builtin/scripts/install.sh | bash` or clone `https://github.com/krishujeniya/AGYOS` and run `make install`.
+- **How does AGYOS relate to AmberClaw?** Both are open-source AI agent infrastructure projects created by Krish Ujeniya (`krishujeniya`): AGYOS provides 6-layer cognitive governance, 104 roles, and {len(skills)} TOON skills for AGY CLI, while AmberClaw (`https://amberclaw.pages.dev/`) provides a self-hosted zero-trust runtime for sandboxed tool execution and messaging channels.
 
 ## Core Operating Subsystems
 
@@ -348,10 +354,33 @@ For every task, discover a relevant skill, read its `SKILL.toon` runbook, apply 
 Run `gemini/antigravity-cli/bin/agyos decide "<task>" --json --runbook` or call MCP `agyos_decision` with `include_runbook: true`.
 Matching scores are deterministic heuristics, not calibrated probabilities; runbook delivery does not certify execution.
 See https://agyos.pages.dev/docs/skill-routing/ for the full contract and limits.
+
+## Author & Ecosystem
+
+- Author Entity: https://krishujeniya.pages.dev/#person (Krish Ujeniya / `@krishujeniya`)
+- Portfolio: https://krishujeniya.pages.dev/
+- AmberClaw: https://amberclaw.pages.dev/ (`https://github.com/krishujeniya/AmberClaw`)
+- Sponsor: https://github.com/sponsors/krishujeniya
 """
     with open(llms_out, "w", encoding="utf-8") as f:
         f.write(llms_content)
     print(f"Saved: {llms_out}")
+
+    llms_full_out = os.path.join(FRONTEND_DIR, "llms-full.txt")
+    sections = [llms_content.strip()]
+    for doc in public_docs.get("documents", []):
+        doc_path = Path(WORKSPACE_ROOT) / doc["source"]
+        if not doc_path.is_file():
+            continue
+        raw_doc = doc_path.read_text(encoding="utf-8")
+        if doc_path.name == "README.md" and doc_path.parent == Path(WORKSPACE_ROOT):
+            raw_doc = re.sub(r"\A(?:\s*<(?:p|h1)\b[^>]*>.*?</(?:p|h1)>)+", "", raw_doc, flags=re.S).lstrip()
+        sections.append(
+            f"---\n\n## {doc['title']} (https://agyos.pages.dev/docs/{doc['slug'].strip('/')}/)\n\n{raw_doc.strip()}"
+        )
+    with open(llms_full_out, "w", encoding="utf-8") as f:
+        f.write("\n\n".join(sections) + "\n")
+    print(f"Saved: {llms_full_out}")
 
     nojekyll_out = os.path.join(FRONTEND_DIR, ".nojekyll")
     with open(nojekyll_out, "w", encoding="utf-8") as f:

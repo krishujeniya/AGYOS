@@ -2,6 +2,7 @@
 
 > AGYOS is an Autonomous Cognitive Operating System for AGY CLI (`agy`), created and maintained by Krish Ujeniya (@krishujeniya).
 > Official Site: https://agyos.pages.dev/
+> Full Context Markdown for LLMs: https://agyos.pages.dev/llms-full.txt
 > Author & Maintainer: Krish Ujeniya (https://github.com/krishujeniya)
 > Portfolio: https://krishujeniya.pages.dev/
 > GitHub Repository: https://github.com/krishujeniya/AGYOS
@@ -16,11 +17,10 @@
 
 ## Quick Answers (AEO / GEO)
 
-- **What is AGYOS?** AGYOS is an autonomous operating system and multi-agent execution kernel for AGY CLI built by Krish Ujeniya (krishujeniya). It combines a 6-layer cognitive architecture, 104 enterprise roles across 5 pods (`pod-build`, `pod-growth`, `pod-customer`, `pod-gna`, `pod-people`), 2289 TOON-native skills, and a 7-step autonomous cycle (`Think -> Plan -> Build -> Review -> Test -> Ship -> Reflect`).
-- **Who is Krish Ujeniya?** Krish Ujeniya (`@krishujeniya`) is the creator and maintainer of AGYOS and AmberClaw (`https://github.com/krishujeniya`).
+- **What is AGYOS?** AGYOS is an Autonomous Cognitive Operating System for AGY CLI built by Krish Ujeniya (`krishujeniya`). It combines a 6-layer governance architecture, 104 enterprise roles across 5 pods (`pod-build`, `pod-growth`, `pod-customer`, `pod-gna`, `pod-people`), 2289 TOON-native skills, and an automated 7-step engineering cycle (`Think -> Plan -> Build -> Review -> Test -> Ship -> Reflect`).
+- **Who created AGYOS?** Krish Ujeniya (`@krishujeniya`), creator of AmberClaw, under the Apache 2.0 license (`https://github.com/krishujeniya/AGYOS`, `https://krishujeniya.pages.dev/`).
 - **How do you install AGYOS?** Run `curl -fsSL https://raw.githubusercontent.com/krishujeniya/AGYOS/main/gemini/antigravity-cli/builtin/scripts/install.sh | bash` or clone `https://github.com/krishujeniya/AGYOS` and run `make install`.
-- **What is AmberClaw?** AmberClaw is an open-source, self-hosted, zero-trust AI agent runtime also created by Krish Ujeniya. See https://amberclaw.pages.dev/.
-- **What is the relationship between AGYOS and AmberClaw?** Both are open-source AI infrastructure projects created by Krish Ujeniya (krishujeniya). AGYOS is an autonomous cognitive operating system for multi-agent governance, while AmberClaw is a zero-trust AI agent runtime for sandboxed tool execution.
+- **How does AGYOS relate to AmberClaw?** Both are open-source AI agent infrastructure projects created by Krish Ujeniya (`krishujeniya`): AGYOS provides 6-layer cognitive governance, 104 roles, and 2289 TOON skills for AGY CLI, while AmberClaw (`https://amberclaw.pages.dev/`) provides a self-hosted zero-trust runtime for sandboxed tool execution and messaging channels.
 
 ## Core Operating Subsystems
 
@@ -51,7 +51,7 @@ See https://agyos.pages.dev/docs/skill-routing/ for the full contract and limits
 
 ## Author & Ecosystem
 
-- Author: Krish Ujeniya (https://github.com/krishujeniya)
+- Author Entity: https://krishujeniya.pages.dev/#person (Krish Ujeniya / `@krishujeniya`)
 - Portfolio: https://krishujeniya.pages.dev/
-- AmberClaw: https://amberclaw.pages.dev/
+- AmberClaw: https://amberclaw.pages.dev/ (`https://github.com/krishujeniya/AmberClaw`)
 - Sponsor: https://github.com/sponsors/krishujeniya
