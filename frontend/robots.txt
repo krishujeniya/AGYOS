@@ -19,5 +19,8 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
+User-agent: Applebot-Extended
+Allow: /
+
 Sitemap: https://agyos.pages.dev/sitemap.xml
 Llms-txt: https://agyos.pages.dev/llms.txt

@@ -285,28 +285,32 @@ def _json_ld(title: str, description: str, canonical: str, page_class: str) -> s
         '@type': 'Person',
         '@id': f'{URL}#krish-ujeniya',
         'name': 'Krish Ujeniya',
-        'alternateName': ['krishujeniya', '@krishujeniya'],
-        'mainEntityOfPage': URL,
+        'alternateName': 'krishujeniya',
         'url': 'https://github.com/krishujeniya',
+        'jobTitle': 'Software Engineer & AI Systems Architect',
         'sameAs': [
             'https://github.com/krishujeniya',
             'https://github.com/sponsors/krishujeniya',
+            'https://www.linkedin.com/in/krishujeniya',
+            'https://x.com/krishujeniya',
+            'https://krishujeniya.pages.dev/',
+            'https://amberclaw.pages.dev/',
         ],
     }
     software = {
         '@type': 'SoftwareApplication',
         '@id': f'{URL}#agyos',
         'name': 'AGYOS',
-        'alternateName': 'AGYOS Cognitive Operating System',
-        'description': 'Autonomous Cognitive Operating System for AGY CLI with a 6-layer governance architecture, 104-role matrix, and 2,289 TOON skills.',
+        'alternateName': ['AGYOS Cognitive Operating System', 'krishujeniya AGYOS'],
+        'description': 'Autonomous Cognitive Operating System for AGY CLI with a 6-layer governance architecture, 104-role matrix, and 2,289 TOON skills. Created by Krish Ujeniya (krishujeniya).',
         'applicationCategory': 'DeveloperApplication',
         'operatingSystem': 'Linux, macOS',
         'url': URL,
         'downloadUrl': 'https://github.com/krishujeniya/AGYOS',
-        'softwareVersion': '3.2.0',
         'license': 'https://opensource.org/licenses/Apache-2.0',
         'author': {'@id': f'{URL}#krish-ujeniya'},
         'creator': {'@id': f'{URL}#krish-ujeniya'},
+        'offers': {'@type': 'Offer', 'price': '0', 'priceCurrency': 'USD'},
     }
     website = {
         '@type': 'WebSite',
@@ -477,7 +481,7 @@ def build(out: Path, base: str) -> dict:
     (out / 'content-inventory.json').write_text(json.dumps({'published':inventory,'excluded':config['exclude'],'policy':'Explicit allowlist'},indent=2),encoding='utf-8')
     sitemap_entries = [(URL, '1.0', 'weekly'), (URL+'catalog/', '0.9', 'weekly')] + [(URL+'docs/'+doc['slug']+'/', '0.8', 'weekly') for doc in docs]
     (out / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join(f'<url><loc>{html.escape(u)}</loc><changefreq>{freq}</changefreq><priority>{prio}</priority></url>' for u, prio, freq in sitemap_entries)+'</urlset>',encoding='utf-8')
-    (out / 'robots.txt').write_text('User-agent: *\nAllow: /\n\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: GPTBot\nAllow: /\n\nUser-agent: ChatGPT-User\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Google-Extended\nAllow: /\n\nSitemap: '+URL+'sitemap.xml\nLlms-txt: '+URL+'llms.txt\n',encoding='utf-8')
+    (out / 'robots.txt').write_text('User-agent: *\nAllow: /\n\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: GPTBot\nAllow: /\n\nUser-agent: ChatGPT-User\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Google-Extended\nAllow: /\n\nUser-agent: Applebot-Extended\nAllow: /\n\nSitemap: '+URL+'sitemap.xml\nLlms-txt: '+URL+'llms.txt\n',encoding='utf-8')
     if (ROOT / 'frontend/llms.txt').exists():
         shutil.copy2(ROOT / 'frontend/llms.txt', out / 'llms.txt')
     (out / '.nojekyll').touch()
