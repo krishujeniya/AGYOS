@@ -395,11 +395,11 @@ def site_header(base: str, docs: bool = False) -> str:
         f'<img src="{base}assets/logo-mark.svg" width="30" height="30" alt=""><span>AGYOS</span></a>'
         f'<nav class="toplinks" aria-label="Primary"><a href="{base}#capabilities">Platform</a><a href="{base}#architecture">Architecture</a><a href="{base}docs/overview/" {"aria-current=\"page\"" if docs else ""}>Documentation</a><a href="{base}catalog/">Skill catalog</a></nav>'
         f'<div class="header-actions"><button class="search-trigger" type="button" data-search-open aria-label="Search documentation"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg><span>Search docs</span><kbd>⌘ K</kbd></button>'
-        f'<button type="button" class="theme-button" data-theme-toggle aria-label="Change theme"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.4 1.4m11.34 11.34 1.4 1.4M2 12h2m16 0h2M4.93 19.07l1.4-1.4M17.67 6.33l1.4-1.4"/></svg></button>'
+        f'<button type="button" class="theme-button" data-theme-toggle aria-label="Toggle black and white theme" title="Toggle theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v18a9 9 0 0 0 0-18Z" fill="currentColor" stroke="none"/></svg></button>'
         f'<a class="sponsor-pill" href="https://github.com/sponsors/krishujeniya" target="_blank" rel="noopener noreferrer" aria-label="Sponsor on GitHub">'
         f'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6.5 5.5 5.5 0 0 1 21.5 12C19 16.5 12 21 12 21Z"/></svg>'
         f'<span>Sponsor</span></a>'
-        f'<a class="header-github" href="https://github.com/krishujeniya/AGYOS" target="_blank" rel="noopener noreferrer">GitHub ↗</a>'
+        f'<a class="sponsor-pill header-github" href="https://github.com/krishujeniya/AGYOS" target="_blank" rel="noopener noreferrer">GitHub ↗</a>'
         f'<button class="menu-button" type="button" data-menu aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button></div></div></header>')
 
 
