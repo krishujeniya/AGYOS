@@ -396,16 +396,16 @@ def site_header(base: str, docs: bool = False) -> str:
         f'<nav class="toplinks" aria-label="Primary"><a href="{base}#capabilities">Platform</a><a href="{base}#architecture">Architecture</a><a href="{base}docs/overview/" {"aria-current=\"page\"" if docs else ""}>Documentation</a><a href="{base}catalog/">Skill catalog</a></nav>'
         f'<div class="header-actions"><button class="search-trigger" type="button" data-search-open aria-label="Search documentation"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg><span>Search docs</span><kbd>⌘ K</kbd></button>'
         f'<button type="button" class="theme-button" data-theme-toggle aria-label="Change theme"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.4 1.4m11.34 11.34 1.4 1.4M2 12h2m16 0h2M4.93 19.07l1.4-1.4M17.67 6.33l1.4-1.4"/></svg></button>'
-        f'<a class="sponsor-pill" href="https://github.com/sponsors/krishujeniya" target="_blank" rel="noopener noreferrer" aria-label="Buy me a coffee via GitHub Sponsors">'
-        f'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" x2="6" y1="2" y2="4"/><line x1="10" x2="10" y1="2" y2="4"/><line x1="14" x2="14" y1="2" y2="4"/></svg>'
-        f'<span>Buy me a coffee</span></a>'
+        f'<a class="sponsor-pill" href="https://github.com/sponsors/krishujeniya" target="_blank" rel="noopener noreferrer" aria-label="Sponsor on GitHub">'
+        f'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6.5 5.5 5.5 0 0 1 21.5 12C19 16.5 12 21 12 21Z"/></svg>'
+        f'<span>Sponsor</span></a>'
         f'<a class="header-github" href="https://github.com/krishujeniya/AGYOS" target="_blank" rel="noopener noreferrer">GitHub ↗</a>'
         f'<button class="menu-button" type="button" data-menu aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button></div></div></header>')
 
 
 def footer(base: str) -> str:
     return (f'<footer class="site-footer"><div class="footer-inner"><div><a href="{base}" class="footer-brand">AGYOS<span class="footer-dot">.</span></a><p>Autonomous agent engineering, with governance built in.</p></div><div class="footer-links">'
-        f'<a href="{base}docs/overview/">Docs</a><a href="{base}catalog/">Catalog</a><a href="{base}docs/security/">Security</a><a href="https://github.com/sponsors/krishujeniya" target="_blank" rel="noopener noreferrer">Buy me a coffee ↗</a><a href="https://github.com/krishujeniya/AGYOS" target="_blank" rel="noopener noreferrer">Source ↗</a></div></div><div class="footer-bottom">'
+        f'<a href="{base}docs/overview/">Docs</a><a href="{base}catalog/">Catalog</a><a href="{base}docs/security/">Security</a><a href="https://github.com/sponsors/krishujeniya" target="_blank" rel="noopener noreferrer">Sponsor ↗</a><a href="https://github.com/krishujeniya/AGYOS" target="_blank" rel="noopener noreferrer">Source ↗</a></div></div><div class="footer-bottom">'
         '<span>Open-source project by Krish Ujeniya (@krishujeniya).</span><span>Designed for clarity. Built for builders.</span></div></footer>')
 
 
