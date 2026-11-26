@@ -411,7 +411,7 @@ def footer(base: str) -> str:
         '<span class="footer-letter">A</span><span class="footer-letter">G</span><span class="footer-letter footer-float-1">Y</span><span class="footer-letter footer-float-2">O</span><span class="footer-letter footer-float-3">S</span>'
         '</div></div>'
         '<div class="footer-bottom"><div class="footer-meta"><span>AGYOS</span><span class="footer-sep">/</span><span>BY KRISH UJENIYA</span><span class="footer-sep">/</span><span>OPEN SOURCE</span></div>'
-        '<a href="#" class="back-top" aria-label="Back to top"><span>Back to Top</span><span class="back-top-circle" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg></span></a>'
+        '<a href="#" class="back-top" aria-label="Back to top">Back to Top</a>'
         '</div></div></footer>')
 
 
