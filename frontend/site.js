@@ -252,6 +252,28 @@
     });
   }
 
+  const topbar = doc.querySelector('.topbar');
+  if (topbar) {
+    let lastScrollY = window.scrollY || 0;
+    let navRaf = 0;
+    const updateNavbar = () => {
+      navRaf = 0;
+      const y = Math.max(0, window.scrollY || 0);
+      topbar.classList.toggle('is-scrolled', y > 16);
+      if (y <= 64 || doc.body.classList.contains('menu-open')) {
+        topbar.classList.remove('is-hidden');
+        lastScrollY = y;
+        return;
+      }
+      if (Math.abs(y - lastScrollY) < 6) return;
+      topbar.classList.toggle('is-hidden', y > lastScrollY && y > 80);
+      lastScrollY = y;
+    };
+    const queueNavbar = () => { if (!navRaf) navRaf = requestAnimationFrame(updateNavbar); };
+    window.addEventListener('scroll', queueNavbar, { passive: true });
+    updateNavbar();
+  }
+
   document.querySelectorAll('.back-top').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
