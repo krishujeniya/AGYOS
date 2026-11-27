@@ -252,5 +252,20 @@
     });
   }
 
-  // Visual decoration removed; navigation, search, theme and copy remain functional.
+  const wordmarkEl = document.getElementById('footer-wordmark');
+  let fRaf = 0;
+  function updateFooterWordmark() {
+    fRaf = 0;
+    if (!wordmarkEl) return;
+    const r = wordmarkEl.getBoundingClientRect();
+    const vh = window.innerHeight || 800;
+    wordmarkEl.classList.toggle('in-view', r.top + r.height * 0.5 <= vh);
+  }
+  if (wordmarkEl && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('has-motion');
+    const queueFooter = () => { if (!fRaf) fRaf = requestAnimationFrame(updateFooterWordmark); };
+    window.addEventListener('scroll', queueFooter, { passive: true });
+    window.addEventListener('resize', queueFooter, { passive: true });
+    updateFooterWordmark();
+  }
 })();

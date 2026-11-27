@@ -10,13 +10,13 @@ help:
 	@echo "make test        - Run fast validation tests across scripts and frontend"
 	@echo "make typecheck   - Run Python bytecode compile check and JS syntax check"
 	@echo "make lint        - Run git hygiene and syntax checks"
-	@echo "make build       - Build static frontend bundle into _site/"
+	@echo "make build       - Build static frontend bundle into frontend/"
 	@echo "make install     - Install AGYOS/gemini into ~/.gemini (with backup)"
 	@echo "make clean       - Remove temporary caches and build artifacts"
 
 dev: build
-	@echo "Serving AGYOS static frontend from _site/ on http://127.0.0.1:8000..."
-	uv run python -m http.server 8000 --directory _site
+	@echo "Serving AGYOS static frontend from frontend/ on http://127.0.0.1:8000..."
+	uv run python -m http.server 8000 --directory frontend
 
 test:
 	@echo "Running AGYOS tests..."
@@ -34,8 +34,8 @@ lint:
 	node --check frontend/site.js
 
 build:
-	@echo "Building AGYOS static frontend into _site/..."
-	uv run --with mistune python gemini/antigravity-cli/builtin/scripts/build_docs_site.py --out _site --base /
+	@echo "Building AGYOS static frontend into frontend/..."
+	uv run --with mistune python gemini/antigravity-cli/builtin/scripts/build_docs_site.py --out frontend --base /
 
 install:
 	@echo "Installing AGYOS/gemini into ~/.gemini..."
@@ -43,6 +43,6 @@ install:
 
 clean:
 	@echo "Cleaning transient build caches..."
-	rm -rf _site .pytest_cache .ruff_cache htmlcov dist
+	rm -rf frontend/docs frontend/catalog frontend/assets frontend/index.html frontend/search-index.json frontend/content-inventory.json frontend/sitemap.xml frontend/robots.txt frontend/.nojekyll .pytest_cache .ruff_cache htmlcov dist
 	find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
 	find . -type f -name "*.pyc" -delete 2>/dev/null || true

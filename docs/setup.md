@@ -58,13 +58,13 @@ make typecheck
 # Git whitespace hygiene and JS syntax checks
 make lint
 
-# Build static frontend bundle into _site/
+# Build static frontend bundle into frontend/
 make build
 
 # Install AGYOS/gemini into ~/.gemini (with timestamped backup)
 make install
 
-# Clean temporary caches and _site/
+# Clean temporary caches and generated frontend/ artifacts
 make clean
 ```
 

@@ -9,7 +9,7 @@ from urllib.parse import urlparse, unquote
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--site', default='_site')
+    parser.add_argument('--site', default='frontend')
     parser.add_argument('--base', default='/AGYOS/')
     args = parser.parse_args()
     site = Path(args.site)

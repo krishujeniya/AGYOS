@@ -15,7 +15,7 @@
 All container services are orchestrated via `deploy/docker/docker-compose.yml` with isolated bridge networking (`agyos-net`), health checks, and layer-cached multi-stage builds (`deploy/docker/Dockerfile`).
 
 ### Automated CI/CD Pipelines
-- **Cloudflare Pages (`.github/workflows/deploy.yml`)**: Automatically builds `_site/` with `mistune` and deploys to `agyos.pages.dev` on pushes to `main` (when `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` secrets are configured).
+- **Cloudflare Pages (`.github/workflows/deploy.yml`)**: Automatically builds `frontend/` with `mistune` and deploys to `agyos.pages.dev` on pushes to `main` (when `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` secrets are configured).
 - **Container Registry (`.github/workflows/docker-publish.yml`)**: Builds and publishes container images to GitHub Container Registry (`ghcr.io/krishujeniya/agyos`).
 
 ---
@@ -62,9 +62,9 @@ docker run -d --restart unless-stopped -p 8080:8080 ghcr.io/krishujeniya/agyos:l
 
 Deploy static documentation to Cloudflare Pages and configure edge bindings via Wrangler CLI:
 ```bash
-# Build and deploy _site directory to Cloudflare Pages
-uv run --with mistune python gemini/antigravity-cli/builtin/scripts/build_docs_site.py --out _site --base /
-wrangler pages deploy _site --project-name=agyos
+# Build and deploy frontend directory to Cloudflare Pages
+uv run --with mistune python gemini/antigravity-cli/builtin/scripts/build_docs_site.py --out frontend --base /
+wrangler pages deploy frontend --project-name=agyos
 
 # Verify D1 and KV bindings status
 wrangler d1 info shared-production-db

@@ -157,21 +157,21 @@ jobs:
       - name: Build and validate public documentation
         run: |
           python -m pip install 'mistune==3.2.1'
-          python gemini/antigravity-cli/builtin/scripts/build_docs_site.py --out _site --base /AGYOS/
+          python gemini/antigravity-cli/builtin/scripts/build_docs_site.py --out frontend --base /AGYOS/
           node --check frontend/site.js
-          python gemini/antigravity-cli/builtin/scripts/test_docs_site.py --site _site --base /AGYOS/
+          python gemini/antigravity-cli/builtin/scripts/test_docs_site.py --site frontend --base /AGYOS/
       - name: Record public file digests
         run: |
-          (cd _site && find . -type f -print0 | sort -z | xargs -0 sha256sum) > pages-sha256.txt
+          (cd frontend && find . -type f -print0 | sort -z | xargs -0 sha256sum) > pages-sha256.txt
       - name: Verify candidate contains zero private sentinels or internal state
         run: |
-          test ! -e _site/.agents
-          test ! -e _site/gemini
-          test ! -e _site/.env
-          test ! -e _site/scripts
-          test ! -e _site/skills
-          test ! -e _site/state
-          if grep -rq "AGYOS_PRIVATE_SENTINEL" _site/; then
+          test ! -e frontend/.agents
+          test ! -e frontend/gemini
+          test ! -e frontend/.env
+          test ! -e frontend/scripts
+          test ! -e frontend/skills
+          test ! -e frontend/state
+          if grep -rq "AGYOS_PRIVATE_SENTINEL" frontend/; then
             echo "Error: private sentinel found in documentation pages output" >&2
             exit 1
           fi
@@ -179,7 +179,7 @@ jobs:
         with:
           name: pages-candidate
           path: |
-            _site/
+            frontend/
             pages-sha256.txt
           include-hidden-files: true
           if-no-files-found: error

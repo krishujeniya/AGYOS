@@ -36,7 +36,7 @@ def safe_path(path: str) -> str:
 
 
 def read_config() -> dict:
-    config = json.loads((ROOT / 'frontend/public-docs.json').read_text(encoding='utf-8'))
+    config = json.loads((ROOT / 'gemini/antigravity-cli/builtin/scripts/site_templates/public-docs.json').read_text(encoding='utf-8'))
     approved = list(config['documents'])
     used = {d['source'] for d in approved}
     public_root_cfg = config.get('public_root')
@@ -475,7 +475,7 @@ def footer(base: str) -> str:
     return (f'<footer class="site-footer"><div class="footer-shell"><div class="footer-top">'
         '<p class="footer-tagline">© 2026 AGYOS — Autonomous Cognitive Operating System for AGY CLI</p>'
         f'<nav class="footer-links" aria-label="Footer"><a href="{base}docs/overview/">Docs</a><a href="{base}catalog/">Catalog</a><a href="{base}docs/security/">Security</a><a href="https://amberclaw.pages.dev/" target="_blank" rel="noopener noreferrer">AmberClaw</a><a href="https://github.com/sponsors/krishujeniya" target="_blank" rel="noopener noreferrer">Sponsor</a><a href="https://github.com/krishujeniya/AGYOS" target="_blank" rel="noopener noreferrer">GitHub</a></nav></div>'
-        '<div class="footer-banner" aria-hidden="true"><div class="footer-wordmark">AGYOS</div></div>'
+        '<div class="footer-banner" aria-hidden="true"><div class="footer-wordmark" id="footer-wordmark"><span class="footer-part footer-left"><span class="footer-letter">A</span><span class="footer-letter">G</span></span><span class="footer-part footer-right"><span class="footer-letter footer-float-1">Y</span><span class="footer-letter footer-float-2">O</span><span class="footer-letter footer-float-3">S</span></span></div></div>'
         '<div class="footer-bottom"><div class="footer-meta"><span>AGYOS</span><span class="footer-sep" aria-hidden="true">/</span><a href="https://krishujeniya.pages.dev/" rel="author">Built by Krish Ujeniya</a></div>'
         '<a href="#" class="back-top" aria-label="Back to top"><span>Back to top</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5l0 14"/><path d="M18 11l-6 -6"/><path d="M6 11l6 -6"/></svg></a>'
         '</div></div></footer>')
@@ -491,11 +491,14 @@ def search_dialog(base: str) -> str:
 def build(out: Path, base: str) -> dict:
     config = read_config()
     routes = {doc['source']: doc['slug'] for doc in config['documents']}
+    templates_dir = ROOT / 'gemini/antigravity-cli/builtin/scripts/site_templates'
+    frontend_dir = ROOT / 'frontend'
     out.mkdir(parents=True, exist_ok=True)
-    for asset in ('site.css', 'site.js'):
-        shutil.copy2(ROOT / 'frontend' / asset, out / asset)
-    if (ROOT / 'frontend/_headers').exists():
-        shutil.copy2(ROOT / 'frontend/_headers', out / '_headers')
+    if out != frontend_dir:
+        for asset in ('site.css', 'site.js'):
+            shutil.copy2(frontend_dir / asset, out / asset)
+        if (frontend_dir / '_headers').exists():
+            shutil.copy2(frontend_dir / '_headers', out / '_headers')
     shutil.copytree(ROOT / 'assets', out / 'assets', dirs_exist_ok=True)
     catalog = out / 'catalog'
     catalog.mkdir(parents=True, exist_ok=True)
@@ -504,7 +507,7 @@ def build(out: Path, base: str) -> dict:
         if src.exists():
             shutil.copy2(src, catalog / asset)
     shutil.copytree(ROOT / 'assets', catalog / 'assets', dirs_exist_ok=True)
-    catalog_template = (ROOT / 'frontend/catalog.html').read_text(encoding='utf-8').replace('{{BASE}}', base)
+    catalog_template = (templates_dir / 'catalog.html').read_text(encoding='utf-8').replace('{{BASE}}', base)
     catalog_template = catalog_template.replace('<!-- SITE-HEADER -->', site_header(base, False)).replace('<!-- SITE-FOOTER -->', footer(base)).replace('<!-- SITE-SEARCH -->', search_dialog(base))
     (catalog / 'index.html').write_text(template(base, 'Skill catalog', 'Search and explore 2,289 modular engineering skills in AGYOS.', URL+'catalog/', catalog_template, 'catalog-page'), encoding='utf-8')
     docs = config['documents']
@@ -535,7 +538,7 @@ def build(out: Path, base: str) -> dict:
         dest.write_text(template(base, doc['title'], doc['description'], URL+'docs/'+doc['slug']+'/', main, 'docs-page'), encoding='utf-8')
         search_index.append({'title':doc['title'],'category':doc['category'],'description':doc['description'],'url':base+'docs/'+doc['slug']+'/', 'content': re.sub(r'\s+', ' ', re.sub(r'```[\s\S]*?```',' ',raw))[:24000]})
         inventory.append({'source':doc['source'],'url':base+'docs/'+doc['slug']+'/', 'title':doc['title'],'category':doc['category'],'visibility':'public','imported':True,'headings':len(renderer.headings),'notes':renderer.unsupported})
-    home = (ROOT / 'frontend/index.html').read_text(encoding='utf-8').replace('{{BASE}}', base).replace('{{DOCS_COUNT}}', str(len(docs)))
+    home = (templates_dir / 'index.html').read_text(encoding='utf-8').replace('{{BASE}}', base).replace('{{DOCS_COUNT}}', str(len(docs)))
     home = home.replace('<!-- SITE-HEADER -->',site_header(base)).replace('<!-- SITE-FOOTER -->',footer(base)).replace('<!-- SITE-SEARCH -->',search_dialog(base))
     (out / 'index.html').write_text(template(base,'AGYOS by Krish Ujeniya (krishujeniya) — Autonomous Cognitive Operating System','AGYOS by Krish Ujeniya (krishujeniya): 6-layer hierarchical agent operating system, 104 enterprise roles across 5 pods, and 2,289 TOON engineering skills.', URL, home, 'home-page'),encoding='utf-8')
     (out / 'docs/index.html').write_text('<!doctype html><meta http-equiv="refresh" content="0;url='+base+'docs/overview/"><a href="'+base+'docs/overview/">Open documentation</a>',encoding='utf-8')
@@ -544,24 +547,34 @@ def build(out: Path, base: str) -> dict:
     sitemap_entries = [URL, URL+'catalog/'] + [URL+'docs/'+doc['slug']+'/' for doc in docs]
     (out / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url>\n    <loc>{html.escape(u)}</loc>\n    <lastmod>2026-11-26</lastmod>\n  </url>\n' for u in sitemap_entries)+'</urlset>\n',encoding='utf-8')
     (out / 'robots.txt').write_text('User-agent: *\nAllow: /\n\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: GPTBot\nAllow: /\n\nUser-agent: ChatGPT-User\nAllow: /\n\nUser-agent: Claude-SearchBot\nAllow: /\n\nUser-agent: Claude-User\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Google-Extended\nAllow: /\n\nUser-agent: Applebot-Extended\nAllow: /\n\nSitemap: '+URL+'sitemap.xml\nLlms-txt: '+URL+'llms.txt\n',encoding='utf-8')
-    for llms_file in ('llms.txt', 'llms-full.txt'):
-        src_llms = ROOT / 'frontend' / llms_file
-        if src_llms.exists():
-            shutil.copy2(src_llms, out / llms_file)
+    if out != frontend_dir:
+        for llms_file in ('llms.txt', 'llms-full.txt'):
+            src_llms = frontend_dir / llms_file
+            if src_llms.exists():
+                shutil.copy2(src_llms, out / llms_file)
     (out / '.nojekyll').touch()
     return {'pages':len(docs),'source_paths':[d['source'] for d in docs],'destination':str(out)}
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--out',default='_site')
+    parser.add_argument('--out',default='frontend')
     parser.add_argument('--base',default='/AGYOS/')
     args = parser.parse_args()
     base = '/' + args.base.strip('/') + '/' if args.base.strip('/') else '/'
     out = Path(args.out).resolve()
-    if out == ROOT or out == ROOT / 'docs' or out == ROOT / 'frontend' or out == ROOT / 'gemini':
+    if out == ROOT or out == ROOT / 'docs' or out == ROOT / 'gemini':
         raise ValueError('Do not overwrite source directories')
-    if out.exists():
+    if out == ROOT / 'frontend':
+        for subdir in ('docs', 'catalog', 'assets'):
+            target = out / subdir
+            if target.exists():
+                shutil.rmtree(target)
+        for gen_file in ('index.html', 'search-index.json', 'content-inventory.json', 'sitemap.xml', 'robots.txt', '.nojekyll'):
+            target = out / gen_file
+            if target.exists():
+                target.unlink()
+    elif out.exists():
         shutil.rmtree(out)
     print(json.dumps(build(out,base),indent=2))
 

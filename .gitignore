@@ -71,7 +71,13 @@ gemini/antigravity-cli/builtin/state/state.json.lock
 gemini/antigravity-cli/builtin/state/telemetry/archive/
 gemini/antigravity-cli/builtin/state/checkpoints/archive/
 strix_runs/
-_site/
+frontend/docs/
+frontend/catalog/
+frontend/assets/
+frontend/index.html
+frontend/search-index.json
+frontend/content-inventory.json
+frontend/.nojekyll
 /media/
 *.mp4
 
