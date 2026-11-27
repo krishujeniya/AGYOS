@@ -254,24 +254,39 @@
 
   const topbar = doc.querySelector('.topbar');
   if (topbar) {
-    let lastScrollY = window.scrollY || 0;
+    let lastScrollY = Math.max(0, window.scrollY || 0);
+    let isScrolled = lastScrollY > 0;
+    let isHidden = false;
     let navRaf = 0;
+    topbar.classList.toggle('is-scrolled', isScrolled);
     const updateNavbar = () => {
       navRaf = 0;
       const y = Math.max(0, window.scrollY || 0);
-      topbar.classList.toggle('is-scrolled', y > 16);
-      if (y <= 64 || doc.body.classList.contains('menu-open')) {
-        topbar.classList.remove('is-hidden');
+      const nextScrolled = y > 0;
+      if (nextScrolled !== isScrolled) {
+        isScrolled = nextScrolled;
+        topbar.classList.toggle('is-scrolled', isScrolled);
+      }
+      if (y <= 0 || doc.body.classList.contains('menu-open')) {
+        if (isHidden) {
+          isHidden = false;
+          topbar.classList.remove('is-hidden');
+        }
         lastScrollY = y;
         return;
       }
-      if (Math.abs(y - lastScrollY) < 6) return;
-      topbar.classList.toggle('is-hidden', y > lastScrollY && y > 80);
-      lastScrollY = y;
+      const delta = y - lastScrollY;
+      if (delta > 5 && !isHidden) {
+        isHidden = true;
+        topbar.classList.add('is-hidden');
+      } else if (delta < -5 && isHidden) {
+        isHidden = false;
+        topbar.classList.remove('is-hidden');
+      }
+      if (Math.abs(delta) > 5) lastScrollY = y;
     };
     const queueNavbar = () => { if (!navRaf) navRaf = requestAnimationFrame(updateNavbar); };
     window.addEventListener('scroll', queueNavbar, { passive: true });
-    updateNavbar();
   }
 
   document.querySelectorAll('.back-top').forEach(btn => {
