@@ -4,6 +4,7 @@ FROM python:3.12.9-slim-bookworm AS builder
 WORKDIR /app
 RUN python -m pip install --no-cache-dir 'mistune==3.2.1'
 COPY gemini/antigravity-cli/builtin/scripts/build_docs_site.py gemini/antigravity-cli/builtin/scripts/
+COPY gemini/antigravity-cli/builtin/scripts/site_templates/ gemini/antigravity-cli/builtin/scripts/site_templates/
 COPY README.md ./
 COPY .github/SECURITY.md .github/SECURITY.md
 COPY docs/ docs/
