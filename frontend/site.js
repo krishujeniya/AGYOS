@@ -252,6 +252,13 @@
     });
   }
 
+  document.querySelectorAll('.back-top').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
   const wordmarkEl = document.getElementById('footer-wordmark');
   let fRaf = 0;
   function updateFooterWordmark() {
