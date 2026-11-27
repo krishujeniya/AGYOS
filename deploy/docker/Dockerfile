@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.4
-FROM python:3.12.9-slim-bookworm@sha256:48a11b7ba705fd53bf15248d1f94d36c39549903c5d59edcfa2f3f84126e7b44 AS builder
+FROM python:3.15.2-slim-bookworm@sha256:498829c717b1e59fc42f0e7865eafe4e04ca0f70a3769d4ae70ba218df54507c AS builder
 
 WORKDIR /app
 RUN python -m pip install --no-cache-dir 'mistune==3.2.1'
@@ -12,7 +12,7 @@ COPY assets/ assets/
 COPY frontend/ frontend/
 RUN python gemini/antigravity-cli/builtin/scripts/build_docs_site.py --out /public --base /
 
-FROM python:3.12.9-slim-bookworm@sha256:48a11b7ba705fd53bf15248d1f94d36c39549903c5d59edcfa2f3f84126e7b44 AS runner
+FROM python:3.15.2-slim-bookworm@sha256:498829c717b1e59fc42f0e7865eafe4e04ca0f70a3769d4ae70ba218df54507c AS runner
 
 RUN groupadd -r agyos -g 1001 && \
     useradd -r -u 1001 -g agyos -d /nonexistent -s /usr/sbin/nologin agyos
