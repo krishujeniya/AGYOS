@@ -147,7 +147,7 @@ class EndToEndPipelineTests(unittest.TestCase):
             import subprocess
             subprocess.run(["git", "init", "-b", "main"], cwd=tmp_root, capture_output=True, check=True)
             subprocess.run(["git", "config", "user.name", "Krish Ujeniya"], cwd=tmp_root, check=True)
-            subprocess.run(["git", "config", "user.email", "test@example.com"], cwd=tmp_root, check=True)
+            subprocess.run(["git", "config", "user.email", "100012208+krishujeniya@users.noreply.github.com"], cwd=tmp_root, check=True)
             subprocess.run(["git", "commit", "--allow-empty", "-m", "initial commit"], cwd=tmp_root, capture_output=True, check=True)
 
             ok, reason = check_git_invariants(tmp_root)
