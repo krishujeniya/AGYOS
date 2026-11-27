@@ -10,10 +10,22 @@ __pycache__/
 *.pyd
 .venv/
 venv/
+env/
 .pytest_cache/
+.ruff_cache/
 .coverage
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+
+# Secrets & Cloudflare local state
+.env
+.env.*
+!.env.example
+.wrangler/
 
 # Temporary files
 media/
-assets/
 .DS_Store

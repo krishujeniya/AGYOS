@@ -6,11 +6,20 @@ on:
   pull_request:
     branches: [main]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.ref || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
 jobs:
   validate:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - name: Verify skill sources are strictly TOON with zero SKILL.md files
         run: |
           if git ls-files -- 'gemini/antigravity-cli/builtin/skills/**.md' '**/SKILL.md' 'SKILL.md' | grep .; then
@@ -31,7 +40,7 @@ jobs:
       - name: Test compatibility document materialization
         run: node --test gemini/antigravity-cli/builtin/scripts/tests/test_materialize_documents.mjs
       - name: Check out pinned prompt principles source
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           repository: krishujeniya/Principles
           ref: d1ed7de8cb338f8646d2d2f5394dd9c87bb9223e
@@ -39,7 +48,7 @@ jobs:
           sparse-checkout: Prompt
           sparse-checkout-cone-mode: true
       - name: Set up Node.js for crypto regression tests
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '22'
       - name: Install pinned state-store runtime dependencies
@@ -49,11 +58,11 @@ jobs:
           node --test gemini/antigravity-cli/builtin/scripts/tests/test_state_store_persistence.cjs
           node --test gemini/antigravity-cli/builtin/scripts/tests/test_workspace_state.cjs
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: '3.12'
       - name: Install uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@d4b2f3b6ecc6e67c4457f6d3e41ec42d3d0fcb86 # v5
         with:
           version: "latest"
       - name: Install dependencies via uv
@@ -65,7 +74,7 @@ jobs:
         run: python gemini/antigravity-cli/builtin/scripts/generate_sbom.py --check --output "$RUNNER_TEMP/sbom.json"
       - name: Upload Software Bill of Materials (SBOM)
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: agyos-sbom
           path: ${{ runner.temp }}/sbom.json
@@ -84,7 +93,7 @@ jobs:
           python gemini/antigravity-cli/builtin/scripts/build_tiered_skills_manifest.py
           python gemini/antigravity-cli/builtin/scripts/build_docs_data.py
       - name: Upload generated skill catalog for CI-only updates
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: agyos-skill-catalog-generated
           path: |
@@ -100,7 +109,7 @@ jobs:
         run: python gemini/antigravity-cli/builtin/scripts/benchmark_decision.py --repeats 30 --output "$RUNNER_TEMP/routing.json" --check-thresholds
       - name: Upload routing measurements
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: offline-routing-benchmark
           path: ${{ runner.temp }}/routing.json
@@ -117,7 +126,7 @@ jobs:
           --summary "$RUNNER_TEMP/prompt-principles-summary.json"
       - name: Upload prompt principles audit
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: prompt-principles-ledger
           path: |
@@ -133,9 +142,11 @@ jobs:
 
   council:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
         with:
           bun-version: '1.2.4'
       - name: Run Council regression suite
@@ -148,10 +159,10 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - name: Materialize documentation sources
         run: node gemini/antigravity-cli/builtin/scripts/materialize-documents.mjs
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: '3.12'
       - name: Build and validate public documentation
@@ -190,7 +201,7 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - name: Build documentation image
         run: docker build -t agyos-docs-ci -f deploy/docker/Dockerfile .
       - name: Verify public image contents
@@ -227,7 +238,7 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0
           persist-credentials: false
@@ -262,7 +273,7 @@ jobs:
           test -s "$RUNNER_TEMP/gitleaks.sarif"
       - name: Upload redacted scan report
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: gitleaks-report
           path: ${{ runner.temp }}/gitleaks.sarif
